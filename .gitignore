@@ -2,5 +2,13 @@ __pycache__
 /.rp6502
 /build
 games/.DS_Store
-games
+
 *.rp6502
+games/**/*.OVL
+games/**/*.COM
+games/**/AGI
+games/**/*.bin
+games/**/*_FONT
+games/**/*.cps
+games/**/*.bat
+games/**/*.opl
