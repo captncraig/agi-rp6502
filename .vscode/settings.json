@@ -1,6 +1,10 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/compile_commands.json",
     "cmake.showSystemKits": false,
+     "cmake.environment": {
+        "PATH": "~/llvm-mos/bin:${env:PATH}"
+    },
     "cmake.options.advanced": {
         "launch": {
             "statusBarVisibility": "hidden",

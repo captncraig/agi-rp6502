@@ -1,3 +1,6 @@
 __pycache__
 /.rp6502
 /build
+games/.DS_Store
+games
+*.rp6502
