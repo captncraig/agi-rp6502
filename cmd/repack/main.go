@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -18,12 +19,15 @@ const gamesDir = "games"
 const resourceSlots = 256
 
 // indexEntrySize is the width of one resource's index entry: a 3-byte
-// little-endian offset into data.bin, followed by a bank byte that the ROM
-// fills in at runtime to track which bank the resource is currently loaded
-// into. An entry of all 0xFF marks a resource number as not present.
-const indexEntrySize = 4
+// little-endian offset into data.bin and a 2-byte little-endian size. An
+// entry of all 0xFF marks a resource number as not present.
+const indexEntrySize = 5
 
 func main() {
+	// Optional game-name arguments restrict repacking to those games only,
+	// for fast single-game iteration (see `make <game>` in the Makefile).
+	only := os.Args[1:]
+
 	entries, err := os.ReadDir(gamesDir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error reading %s: %v\n", gamesDir, err)
@@ -32,6 +36,9 @@ func main() {
 
 	for _, e := range entries {
 		if !e.IsDir() {
+			continue
+		}
+		if len(only) > 0 && !slices.Contains(only, e.Name()) {
 			continue
 		}
 		gameDir := filepath.Join(gamesDir, e.Name())
@@ -59,25 +66,32 @@ func repackGame(name, dir string) error {
 			fmt.Fprintf(os.Stderr, "  %s: %v\n", rt.Label, err)
 		}
 
-		byNumber := make(map[int]int, len(nums)) // resource number -> offset in out
+		type location struct{ offset, size int }
+		byNumber := make(map[int]location, len(nums)) // resource number -> location in out
 		for _, n := range nums {
 			path := filepath.Join(typeDir, strconv.Itoa(n)+".bin")
 			data, err := os.ReadFile(path)
 			if err != nil {
 				return fmt.Errorf("reading %s: %w", path, err)
 			}
+			if len(data) > 0xFFFF {
+				return fmt.Errorf("%s.%d: resource too large for 16-bit size: %d bytes", rt.Label, n, len(data))
+			}
 			fmt.Printf("  %-6s %3d  offset=%-8d size=%d\n", rt.Label, n, len(out), len(data))
-			byNumber[n] = len(out)
+			byNumber[n] = location{offset: len(out), size: len(data)}
 			out = append(out, data...)
 		}
 
 		for n := range resourceSlots {
-			offset, ok := byNumber[n]
+			loc, ok := byNumber[n]
 			if !ok {
-				index = append(index, 0xFF, 0xFF, 0xFF, 0xFF)
+				index = append(index, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF)
 				continue
 			}
-			index = append(index, byte(offset), byte(offset>>8), byte(offset>>16), 0x00)
+			index = append(index,
+				byte(loc.offset), byte(loc.offset>>8), byte(loc.offset>>16),
+				byte(loc.size), byte(loc.size>>8),
+			)
 		}
 	}
 

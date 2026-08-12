@@ -21,6 +21,7 @@ import json
 import glob
 import shlex
 import shutil
+import signal
 import socket
 import subprocess
 from typing import Union
@@ -611,8 +612,9 @@ class Console:
 
     def terminal(self, cp):
         """Dispatch to the correct terminal emulator"""
-        print("Console terminal. CTRL-A then B for break or X for exit.")
-        # We also accept CTRL-A F and CTRL-A Q for minicom habits.
+        print("Console terminal. CTRL-A (or CTRL-]) then B for break or X for exit.")
+        # We also accept CTRL-] (telnet habit) as the escape prefix, and
+        # CTRL-A F / CTRL-A Q for minicom habits.
         if "tty" in globals():
             self.term_posix(cp)
         else:
@@ -620,35 +622,49 @@ class Console:
 
     def term_posix(self, cp: str):
         """POSIX terminal emulator for Linux, BSD, MacOS, etc."""
-        tty.setraw(sys.stdin.fileno())
-        ctrl_a_pressed = False
-        while True:
-            ready, _, _ = select.select([sys.stdin, self.serial], [], [], None)
-            if sys.stdin in ready:
-                char = os.read(sys.stdin.fileno(), 1).decode("utf-8", errors="ignore")
-                if char == "\x01":  # CTRL-A
-                    ctrl_a_pressed = True
-                    self.serial.write(char.encode(cp))
-                elif ctrl_a_pressed and char.lower() in "bf":
-                    self.send_break()  # eats prompt
-                    sys.stdout.write("\r\n]")  # fake prompt
-                    ctrl_a_pressed = False
-                elif ctrl_a_pressed and char.lower() in "xq":
-                    sys.stdout.write("\r\n")
-                    if sys.stdin.isatty():
-                        os.system("stty sane")
-                    break
-                else:
-                    ctrl_a_pressed = False
-                    self.serial.write(char.encode(cp))
-            if self.serial in ready:
-                data = self.serial.read(1)
-                if len(data) > 0:
-                    try:
-                        sys.stdout.write(data.decode(cp))
-                    except UnicodeDecodeError:
-                        sys.stdout.write(f"\\x{data[0]:02x}")
-                    sys.stdout.flush()
+        fd = sys.stdin.fileno()
+        original_attrs = termios.tcgetattr(fd) if sys.stdin.isatty() else None
+
+        def restore_terminal(*_args):
+            if original_attrs is not None:
+                termios.tcsetattr(fd, termios.TCSADRAIN, original_attrs)
+            raise SystemExit(0)
+
+        old_sigterm = signal.signal(signal.SIGTERM, restore_terminal)
+        old_sighup = signal.signal(signal.SIGHUP, restore_terminal)
+        tty.setraw(fd)
+        try:
+            escape_pressed = False
+            while True:
+                ready, _, _ = select.select([sys.stdin, self.serial], [], [], None)
+                if sys.stdin in ready:
+                    char = os.read(fd, 1).decode("utf-8", errors="ignore")
+                    if char in ("\x01", "\x1d"):  # CTRL-A or CTRL-]
+                        escape_pressed = True
+                        self.serial.write(char.encode(cp))
+                    elif escape_pressed and char.lower() in "bf":
+                        self.send_break()  # eats prompt
+                        sys.stdout.write("\r\n]")  # fake prompt
+                        escape_pressed = False
+                    elif escape_pressed and char.lower() in "xq":
+                        sys.stdout.write("\r\n")
+                        break
+                    else:
+                        escape_pressed = False
+                        self.serial.write(char.encode(cp))
+                if self.serial in ready:
+                    data = self.serial.read(1)
+                    if len(data) > 0:
+                        try:
+                            sys.stdout.write(data.decode(cp))
+                        except UnicodeDecodeError:
+                            sys.stdout.write(f"\\x{data[0]:02x}")
+                        sys.stdout.flush()
+        finally:
+            signal.signal(signal.SIGTERM, old_sigterm)
+            signal.signal(signal.SIGHUP, old_sighup)
+            if original_attrs is not None:
+                termios.tcsetattr(fd, termios.TCSADRAIN, original_attrs)
 
     def term_windows(self, cp):
         """Windows terminal emulator using Console API"""
@@ -847,17 +863,42 @@ class Console:
         self.serial.write(bytes(f"UPLOAD {self.quote(name)}\r", "ascii"))
         self.wait_for_prompt("}")
         file.seek(0)
+        chunk_times = []
+        slow_threshold = 0.3
         while True:
             chunk = file.read(1024)
             if len(chunk) == 0:
                 break
+            chunk_start = time.monotonic()
             command = f"${len(chunk):03X} ${binascii.crc32(chunk):08X}\r"
             self.serial.write(bytes(command, "ascii"))
+            t_ack = time.monotonic()
             self.serial.read_until(b"\n")
+            t_ack_done = time.monotonic()
             self.serial.write(chunk)
+            t_write_done = time.monotonic()
             self.wait_for_prompt("}")
+            t_prompt_done = time.monotonic()
+            total = t_prompt_done - chunk_start
+            chunk_times.append(total)
+            if total > slow_threshold:
+                print(
+                    f"[rp6502.py] slow chunk: total {total * 1000:.0f}ms "
+                    f"(header write {(t_ack - chunk_start) * 1000:.0f}ms, "
+                    f"ack wait {(t_ack_done - t_ack) * 1000:.0f}ms, "
+                    f"data write {(t_write_done - t_ack_done) * 1000:.0f}ms, "
+                    f"prompt wait {(t_prompt_done - t_write_done) * 1000:.0f}ms)",
+                    file=sys.stderr,
+                )
         self.serial.write(b"END\r")
         self.wait_for_prompt("]")
+        if chunk_times:
+            print(
+                f"[rp6502.py] {len(chunk_times)} chunks, "
+                f"avg {sum(chunk_times) / len(chunk_times) * 1000:.0f}ms, "
+                f"max {max(chunk_times) * 1000:.0f}ms",
+                file=sys.stderr,
+            )
 
     def load(self, name: str, args=()):
         """Load a previously uploaded ROM file, passing args as its argv."""
