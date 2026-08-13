@@ -206,7 +206,7 @@ func decompileStmt(in []byte, idx int, indent int, w io.Writer, base int) (int, 
 	case 0x05:
 		writeLine(indent, w, "%s += %d\n", varName(get()), get())
 	case 0x06:
-		writeLine(indent, w, "%s += %d\n", varName(get()), varName(get()))
+		writeLine(indent, w, "%s += %s\n", varName(get()), varName(get()))
 	case 0x07:
 		writeLine(indent, w, "%s -= %d\n", varName(get()), get())
 	case 0x08:

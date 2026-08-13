@@ -309,7 +309,7 @@ if (fTriggerLine && !f32) { //038f
       }
       v65 = 3
 l1030:
-      v135 += %!d(string=v65)
+      v135 += v65
       v66 = 0
       repositon(o0,v65,v66)
     }

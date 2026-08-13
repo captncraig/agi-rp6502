@@ -116,7 +116,7 @@ l361:
   enable.member(c22)
   new.room(70)
 }
-v124 += %!d(string=v64)
+v124 += v64
 if (v124 > 0 && !(has(i10))) { //0174
   get(i10)
 }

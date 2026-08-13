@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/captncraig/agi-rp6502/agires"
+	"github.com/captncraig/agi-rp6502/pkg/agires"
 )
 
 const gamesDir = "games"
