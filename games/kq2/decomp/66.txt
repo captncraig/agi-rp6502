@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  v84 = 4
+
+!!!
+&{%!e(string=unknown opcode: 0x14)}

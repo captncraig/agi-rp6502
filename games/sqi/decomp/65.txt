@@ -1,0 +1,264 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  current.view(o0,v34)
+  load.view(245)
+  load.view(244)
+  load.view(246)
+  load.sound(41)
+  load.sound(42)
+  load.sound(43)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o1,244)
+  set.view(o0,245)
+  set.view(o2,246)
+  set.view(o3,246)
+  set.view(o4,246)
+  position(o2,0,46)
+  position(o3,0,46)
+  position(o4,0,46)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.blocks(o2)
+  ignore.blocks(o3)
+  ignore.blocks(o4)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  stop.update(o2)
+  stop.update(o3)
+  stop.update(o4)
+  set.priority(o1,4)
+  ignore.objs(o1)
+  position(o0,104,122)
+  set.priority(o0,14)
+  ignore.objs(o0)
+  v64 = 2
+  step.size(o0,v64)
+  draw(o0)
+  start.motion(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0073
+    goto(l132)
+  }
+  clear.lines(23,24,c0)
+l132:
+  if (v144 == 0 && v145 == 0) { //0084
+    if (vMonitorType == HERCULES) { //008e
+      display(7,16,"........")
+      goto(l160)
+    }
+    display(6,16,"........")
+l160:
+    display(24,12,"F6 to Select Key")
+    goto(l172)
+  }
+  set(f31)
+  v32 = 15
+l172:
+  v87 = 0
+  prevent.input()
+}
+if ((f115 || f198)) { //00b0
+  reset(f115)
+  reset(f198)
+  if (!f31) { //00be
+    if (vMonitorType == HERCULES) { //00c5
+      display(7,16,"........")
+      goto(l215)
+    }
+    display(6,16,"........")
+  }
+l215:
+  display(24,12,"F6 to Select Key")
+}
+if ((!f128 || fSaidAccepted || v32 > 0)) { //00db
+  goto(l650)
+}
+v30 = 0
+if (posn(o0,65,101,73,114)) { //00ef
+  v62 = 64
+  v63 = 97
+  v30 = 1
+}
+if (posn(o0,77,101,85,114)) { //0102
+  v62 = 76
+  v63 = 97
+  v30 = 2
+}
+if (posn(o0,89,101,97,114)) { //0115
+  v62 = 88
+  v63 = 97
+  v30 = 3
+}
+if (posn(o0,65,118,73,131)) { //0128
+  v62 = 64
+  v63 = 115
+  v30 = 4
+}
+if (posn(o0,77,118,85,131)) { //013b
+  v62 = 76
+  v63 = 115
+  v30 = 5
+}
+if (posn(o0,89,118,97,131)) { //014e
+  v62 = 88
+  v63 = 115
+  v30 = 6
+}
+if (posn(o0,65,136,73,148)) { //0161
+  v62 = 64
+  v63 = 133
+  v30 = 7
+}
+if (posn(o0,77,136,85,148)) { //0174
+  v62 = 76
+  v63 = 133
+  v30 = 8
+}
+if (posn(o0,89,136,97,148)) { //0187
+  v62 = 88
+  v63 = 133
+  v30 = 9
+}
+if (posn(o0,65,80,97,90)) { //019a
+  v30 = 10
+  v62 = 0
+  v63 = 50
+}
+if (v30 == 0) { //01ad
+  sound(42,f120)
+  goto(l650)
+}
+sound(41,f120)
+if (v30 == 10) { //01bd
+  if (v31 == 4) { //01c4
+    v144 = 10
+    v145 = 255
+    set(f31)
+    v32 = 15
+    if (vMonitorType != HERCULES) { //01d6
+      clear.lines(23,24,c0)
+      goto(l489)
+    }
+    display(7,16,"        ")
+l489:
+    vCurrentScore += 10
+    goto(l520)
+  }
+  if (vMonitorType != HERCULES) { //01ef
+    display(6,14,"Invalid Code")
+    goto(l514)
+  }
+  display(7,14,"Invalid Code")
+l514:
+  v32 = 15
+  v31 = 0
+l520:
+  goto(l650)
+}
+if (v31 == 4) { //020b
+  v31 = 5
+}
+if (v31 == 3) { //0215
+  if (v30 == 8) { //021c
+    v31 = 4
+    goto(l556)
+  }
+  v31 = 5
+}
+l556:
+if (v31 == 2) { //022c
+  if (v30 == 5) { //0233
+    v31 = 3
+    goto(l579)
+  }
+  v31 = 5
+}
+l579:
+if (v31 == 1) { //0243
+  if (v30 == 8) { //024a
+    v31 = 2
+    goto(l602)
+  }
+  v31 = 5
+}
+l602:
+if (v31 == 0) { //025a
+  if (v30 == 6) { //0261
+    v31 = 1
+    goto(l625)
+  }
+  v31 = 5
+}
+l625:
+v30--
+set.cel(o1,v30)
+position(o1,62,v63)
+draw(o1)
+stop.cycling(o1)
+v87 = 4
+if (!f30) { //0281
+  set(f30)
+}
+l650:
+v87--
+if (v87 == 1) { //028c
+  erase(o1)
+}
+reset(f128)
+if (f31) { //0297
+  reset(f31)
+  set(f35)
+  set(f32)
+  start.update(o2)
+  start.update(o3)
+  start.update(o4)
+  set.cel(o2,0)
+  set.cel(o3,1)
+  set.cel(o4,2)
+  start.motion(o2)
+  start.motion(o3)
+  start.motion(o4)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  stop.cycling(o4)
+}
+if (f32) { //02be
+  reset(f32)
+  move.obj(o4,0,46,0,f120)
+  reposition.to(o2,113,46)
+  move.obj(o2,74,46,0,f33)
+}
+if (f33) { //02d6
+  reset(f33)
+  move.obj(o2,0,46,0,f120)
+  reposition.to(o3,113,46)
+  move.obj(o3,75,46,0,f34)
+}
+if (f34) { //02ee
+  reset(f34)
+  move.obj(o3,0,46,0,f120)
+  reposition.to(o4,113,46)
+  move.obj(o4,80,46,0,f32)
+}
+if (vTimeSeconds != v33) { //0306
+  v32--
+  v33 = vTimeSeconds
+  if (v32 == 1) { //0313
+    set.view(o0,v34)
+    accept.input()
+    new.room(50)
+  }
+}
+if (v32 > 0 && f35) { //0320
+  reset(f35)
+  sound(43,f35)
+}
+return()

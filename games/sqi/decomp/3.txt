@@ -1,0 +1,192 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(32)
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.view(28)
+  add.to.pic(28,0,1,126,71,6,0)
+  animate.obj(o3)
+  set.view(o3,32)
+  v55 = 0
+  step.size(o3,v55)
+  ignore.blocks(o3)
+  set.cel(o3,0)
+  position(o3,70,62)
+  animate.obj(o4)
+  set.view(o4,32)
+  v55 = 0
+  step.size(o4,v55)
+  ignore.blocks(o4)
+  set.cel(o4,0)
+  position(o4,70,145)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,12)
+  set.cel(o1,0)
+  position(o1,34,8)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  set.view(o2,12)
+  set.cel(o2,2)
+  position(o2,103,90)
+  draw(o1)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  stop.update(o3)
+  stop.update(o4)
+  v30 = 2
+  v31 = 2
+  ignore.objs(o0)
+  animate.obj(o0)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //007d
+    goto(l142)
+  }
+  clear.lines(23,24,c0)
+}
+l142:
+if (f162) { //008e
+  reset(f162)
+}
+if ((obj.in.box(o0,63,67,92,67) || obj.in.box(o0,63,151,92,151))) { //0096
+  normal.motion(o0)
+  player.control()
+}
+if (f30) { //00ab
+  stop.update(o3)
+  stop.update(o4)
+}
+if (f30 && v30 == 2 && v31 == 2) { //00b5
+  reset(f30)
+  if ((obj.in.box(o0,70,52,84,56) || obj.in.box(o0,70,134,84,138))) { //00c3
+    program.control()
+    stop.motion(o0)
+    normal.motion(o0)
+    start.motion(o0)
+    get.posn(o0,v135,v136)
+    if (v136 < 85) { //00e0
+      v136 = 83
+      v135 = 0
+      repositon(o0,v135,v136)
+    }
+    if (v136 > 84) { //00f1
+      v136 = 174
+      v135 = 0
+      repositon(o0,v135,v136)
+    }
+    v32 = 14
+  }
+}
+v32--
+if (v32 == 1) { //0107
+  get.posn(o0,v135,v136)
+  v136 += 16
+  v55 = 0
+  move.obj(o0,v135,v136,55,f31)
+}
+if (f31) { //011e
+  reset(f31)
+  player.control()
+  start.motion(o0)
+}
+if (v30 != 1 && posn(o0,70,57,79,66)) { //0129
+  start.update(o3)
+  end.of.loop(o3,f30)
+  sound(1,f162)
+  v30 = 1
+}
+if (v30 == 1 && !(posn(o0,70,57,79,66))) { //0142
+  start.update(o3)
+  reverse.loop(o3,f30)
+  sound(2,f162)
+  v30 = 2
+}
+if (v31 != 1 && posn(o0,70,140,79,149)) { //015b
+  start.update(o4)
+  end.of.loop(o4,f30)
+  sound(1,f162)
+  v31 = 1
+}
+if (v31 == 1 && !(posn(o0,70,140,79,149))) { //0174
+  start.update(o4)
+  reverse.loop(o4,f30)
+  sound(2,f162)
+  v31 = 2
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //018d
+  goto(l673)
+}
+if (said("check out", "wall")) { //019b
+  print("Unable to be tricked, you cleverly deduce that there are, indeed, walls in here. They are just your run-of-the-mill spacecraft interior walls.")
+}
+if (said("check out", "area")) { //01a7
+  print("You are in one of the Arcada's hallways near an elevator.")
+}
+if (said("check out", "elevator")) { //01b3
+  if ((posn(o0,0,137,39,160) || posn(o0,113,57,159,79))) { //01bd
+    print("You can see no elevator where you are.")
+    goto(l470)
+  }
+  print("This is an elevator to another level of the ship.")
+}
+l470:
+if ((said("check out", "bodies") || said("check out", "being"))) { //01d6
+  if (posn(o0,117,57,159,79)) { //01e8
+    print("It appears to be one of your crewmates.  He is nonfunctional.")
+    goto(l505)
+  }
+  print("That can't be done from where you are standing.")
+}
+l505:
+if ((said("explore", "bodies") || said("check out", "pocket") || said("explore", "being") || said("explore", "pocket"))) { //01f9
+  if (posn(o0,117,57,159,79)) { //0217
+    print("You search the body of your crewmate and find. . .")
+    if (!(has(i5))) { //0223
+      print("a keycard.")
+      goto(l561)
+    }
+    print("Nothing.")
+l561:
+    goto(l566)
+  }
+  print("That can't be done from where you are standing.")
+}
+l566:
+if ((said("strip", "bodies") || said("strip", "being") || said("acquire", "clothes", "bodies"))) { //0236
+  print("One can only wonder what your purpose for this action is. You can't undress the body. Allow him one last bit of dignity.")
+}
+if ((said("acquire", "card") || said("acquire", "credit card"))) { //0252
+  if (posn(o0,117,57,159,79)) { //0264
+    if (!(has(i5))) { //026e
+      print("You take the keycard.")
+      get(i5)
+      vCurrentScore += 1
+      goto(l641)
+    }
+    print("You already have it.")
+l641:
+    goto(l646)
+  }
+  print("That can't be done from where you are standing.")
+}
+l646:
+if (said("acquire", "lint")) { //0286
+  if (posn(o0,117,57,159,79)) { //0290
+    print("You have added to your pocket lint collection. How proud you must be.")
+    goto(l673)
+  }
+  print("That can't be done from where you are standing.")
+}
+l673:
+if (vWhichEgoBorder == 2) { //02a1
+  new.room(4)
+}
+if (vWhichEgoBorder == 4) { //02aa
+  new.room(2)
+}
+return()

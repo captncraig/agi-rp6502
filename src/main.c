@@ -21,10 +21,12 @@ int main(void)
         printf("!!\n");
         return 1;
     }
-
     unsigned char bank = load_resource(RESOURCE_TYPE_LOGIC, 0);
     change_bank(bank);
     infof("Loaded %d %x %x %x \n", bank, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2]);
+    for (int i = 0; i<14; i++){
+        load_resource(RESOURCE_TYPE_LOGIC, i+1);
+    }
     return 0;
 }
     

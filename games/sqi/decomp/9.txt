@@ -1,0 +1,569 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(0)
+  load.view(32)
+  load.view(18)
+  load.view(43)
+  load.view(19)
+  load.view(21)
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.sound(7)
+  if (v52 == 1) { //0022
+    load.view(17)
+    set.view(o2,17)
+    set.view(o3,17)
+    goto(l60)
+  }
+  load.view(39)
+  set.view(o2,39)
+  set.view(o3,39)
+l60:
+  animate.obj(o4)
+  set.view(o4,32)
+  v55 = 0
+  step.size(o4,v55)
+  ignore.blocks(o4)
+  position(o4,101,101)
+  set.cel(o4,0)
+  v30 = 0
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,90,50)
+  set.cel(o2,0)
+  set.priority(o2,4)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  position(o3,8,50)
+  set.cel(o3,1)
+  v31 = 1
+  set.priority(o3,4)
+  animate.obj(o6)
+  set.view(o6,43)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  position(o6,49,93)
+  set.cel(o6,0)
+  set.priority(o6,7)
+  animate.obj(o5)
+  set.view(o5,18)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  position(o5,75,93)
+  set.cel(o5,0)
+  set.priority(o5,7)
+  animate.obj(o7)
+  set.view(o7,21)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  position(o7,33,118)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,12)
+  set.cel(o1,0)
+  position(o1,64,56)
+  draw(o4)
+  stop.update(o4)
+  draw(o2)
+  stop.cycling(o2)
+  move.obj(o2,8,50,0,f32)
+  draw(o3)
+  stop.cycling(o3)
+  if (!(v69 > 0)) { //00c9
+    v69 = 1
+  }
+  if (v69 == 3) { //00d4
+    if (v81 > 0) { //00db
+      add.to.pic(19,0,1,75,93,8,4)
+    }
+    last.cel(o5,v64)
+    set.cel(o5,v64)
+  }
+  draw(o5)
+  stop.update(o5)
+  if (!(v70 > 0)) { //00f4
+    v70 = 1
+  }
+  if (v70 == 3) { //00ff
+    if (has(i3)) { //0106
+      add.to.pic(19,0,0,49,93,8,4)
+    }
+    last.cel(o6,v64)
+    set.cel(o6,v64)
+  }
+  draw(o6)
+  stop.update(o6)
+  if (vPrevRoom == 8) { //011e
+    last.cel(o7,v64)
+    set.cel(o7,v64)
+    v36 = 2
+    goto(l311)
+  }
+  set.cel(o7,0)
+  v36 = 1
+l311:
+  draw(o7)
+  stop.update(o7)
+  ignore.objs(o0)
+  if (vPrevRoom == 7) { //013d
+    position(o0,106,93)
+    set.priority(o0,8)
+    set(f31)
+    move.obj(o0,106,95,0,f64)
+    goto(l362)
+  }
+  if (vPrevRoom == 8) { //0156
+    ignore.blocks(o0)
+    position(o0,30,116)
+    goto(l362)
+  }
+  position(o0,66,104)
+l362:
+  animate.obj(o0)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //016f
+    goto(l384)
+  }
+  clear.lines(23,24,c0)
+}
+l384:
+if (f162) { //0180
+  reset(f162)
+}
+if (posn(o0,100,92,111,101)) { //0188
+  set.priority(o0,8)
+  goto(l410)
+}
+release.priority(o0)
+l410:
+if (f57 && !(posn(o0,100,92,111,97))) { //019a
+  reset(f57)
+}
+if (posn(o0,30,109,38,119)) { //01a9
+  if (v36 == 1) { //01b3
+    observe.blocks(o0)
+    goto(l449)
+  }
+  ignore.blocks(o0)
+}
+l449:
+if (f34) { //01c1
+  reset(f34)
+  if (v69 == 4) { //01c9
+    stop.update(o5)
+    v69 = 3
+  }
+  if (v70 == 4) { //01d5
+    stop.update(o6)
+    v70 = 3
+  }
+  accept.input()
+}
+if (f35 && v36 != 4) { //01e2
+  reset(f35)
+  stop.update(o7)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //01f0
+  goto(l1471)
+}
+if (said("check out", "area")) { //01fe
+  print("This is the Flight Prep room of the Arcada. As you can see, there is a sign on the back wall as well as two closet doors and two buttons.")
+}
+if (said("check out", "wall")) { //020a
+  print("The walls look pretty much the same as the others. There is a sign on the back wall. Beneath that is a right button and a left button.")
+}
+if (said("check out", "elevator")) { //0216
+  if (posn(o0,86,94,128,114)) { //0220
+    print("This is the elevator you came into this room from.")
+  }
+}
+if (said("check out", "door")) { //022c
+  if (obj.in.box(o0,40,94,100,110)) { //0236
+    print("There are two doors here which are controlled by buttons.")
+    goto(l613)
+  }
+  if (posn(o0,86,94,128,114)) { //0245
+    print("This is the elevator you came into this room from.")
+    goto(l613)
+  }
+  if (posn(o0,29,100,51,128)) { //0254
+    print("This is the inside airlock door.")
+    goto(l613)
+  }
+  print("You are not close enough to get a good look.")
+}
+l613:
+if (said("check out", "computer console")) { //0265
+  if (obj.in.box(o0,54,142,97,159)) { //026f
+    print("The console is adorned with many status indicators. One button on the right is marked \"Airlock\".")
+    goto(l640)
+  }
+  print("You'll need to get closer to see that.")
+}
+l640:
+if (said("check out", "button")) { //0280
+  if (obj.in.box(o0,57,94,82,105)) { //028a
+    print("There are two buttons here, a left button and a right button.")
+    goto(l682)
+  }
+  if (obj.in.box(o0,54,142,97,159)) { //0299
+    print("You see one button marked \"Airlock\".")
+    goto(l682)
+  }
+  print("There are no buttons here.")
+}
+l682:
+if (!(v81 > 0)) { //02aa
+  if (said("check out", "clothes")) { //02b2
+    if (obj.in.box(o0,65,94,110,110)) { //02bc
+      print("This is a standard issue flight suit designed to protect the wearer from the unique conditions of space travel.")
+      goto(l717)
+    }
+    print("You'll need to get closer to see that.")
+  }
+}
+l717:
+if ((said("check out", "sign") || said("read", "sign"))) { //02cd
+  if (v52 == 1) { //02df
+    print("The sign on the wall warns that the bay doors are currently open.")
+    goto(l749)
+  }
+  print("The sign on the wall suggests that the bay doors are not currently open.")
+}
+l749:
+if (!(has(i3))) { //02ed
+  if (said("check out", "dialect translator")) { //02f4
+    if (obj.in.box(o0,40,94,71,110)) { //02fe
+      print("On the floor of the closet sits some sort of gadget. It looks electronic.")
+      goto(l783)
+    }
+    print("You'll need to get closer to see that.")
+  }
+}
+l783:
+if ((said("check out", "closet") || said("look in", "closet"))) { //030f
+  if (right.posn(o0,74,95,92,107)) { //0321
+    if (v69 > 1) { //032b
+      if (!(v81 > 0)) { //0332
+        print("You see a flight suit hanging in the closet.")
+        goto(l833)
+      }
+      print("Your old uniform hangs in the closet.")
+l833:
+      goto(l838)
+    }
+    print("There is a closed closet door here.")
+l838:
+    goto(l897)
+  }
+  if (posn(o0,40,94,64,110)) { //0349
+    if (v70 > 1) { //0353
+      if (!(has(i3))) { //035a
+        print("It looks like an electrical gadget of some sort.")
+        goto(l872)
+      }
+      print("The closet appears to be empty.")
+l872:
+      goto(l877)
+    }
+    print("There is a closed closet door here.")
+l877:
+    goto(l897)
+  }
+  if (obj.in.box(o0,65,95,73,107)) { //0370
+    print("You'll have to be more specific. The right closet or the left closet?")
+    goto(l897)
+  }
+  print("You are not close enough.")
+}
+l897:
+if ((said("check out", "right", "closet") || said("look in", "right", "closet"))) { //0381
+  if (obj.in.box(o0,40,94,98,107)) { //0397
+    if (v69 > 1) { //03a1
+      if (!(v81 > 0)) { //03a8
+        print("You see a flight suit hanging in the closet.")
+        goto(l951)
+      }
+      print("Your old uniform hangs in the closet.")
+l951:
+      goto(l956)
+    }
+    print("There is a closed closet door here.")
+l956:
+    goto(l961)
+  }
+  print("You are not close enough.")
+}
+l961:
+if ((said("check out", "left", "closet") || said("look in", "left", "closet"))) { //03c1
+  if (obj.in.box(o0,40,94,98,107)) { //03d7
+    if (v70 > 1) { //03e1
+      if (!(has(i3))) { //03e8
+        print("It looks like an electrical gadget of some sort.")
+        goto(l1014)
+      }
+      print("The closet appears to be empty.")
+l1014:
+      goto(l1019)
+    }
+    print("There is a closed closet door here.")
+l1019:
+    goto(l1024)
+  }
+  print("You are not close enough.")
+}
+l1024:
+if (said("press", "button")) { //0400
+  print("You'll have to be more specific about which button you wish to choose.")
+}
+if (v81 > 0) { //040c
+  if (said("check out", "a", "clothes")) { //0413
+    print("Your old uniform hangs limply in the closet.")
+  }
+}
+if ((said("press", "right") || said("press", "right", "button"))) { //0421
+  if (obj.in.box(o0,57,94,82,105)) { //0435
+    if (v69 == 1) { //043f
+      prevent.input()
+      start.update(o5)
+      end.of.loop(o5,f34)
+      sound(1,f162)
+      v69 = 4
+      goto(l1123)
+    }
+    if (v69 == 3) { //0455
+      print("The door is open and there is no need to close it. Pressing matters await.")
+      goto(l1123)
+    }
+    print("Nothing done.")
+l1123:
+    goto(l1128)
+  }
+  print("You are not close enough.")
+}
+l1128:
+if ((said("press", "left") || said("press", "left", "button"))) { //0468
+  if (obj.in.box(o0,57,94,82,105)) { //047c
+    if (v70 == 1) { //0486
+      prevent.input()
+      start.update(o6)
+      end.of.loop(o6,f34)
+      sound(1,f162)
+      v70 = 4
+      goto(l1194)
+    }
+    if (v70 == 3) { //049c
+      print("The door is open and there is no need to close it. Pressing matters await.")
+      goto(l1194)
+    }
+    print("Nothing done.")
+l1194:
+    goto(l1199)
+  }
+  print("You are not close enough.")
+}
+l1199:
+if (said("acquire", "clothes")) { //04af
+  if (obj.in.box(o0,68,94,100,110)) { //04b9
+    if (v69 == 3) { //04c3
+      if (!(v81 > 0)) { //04ca
+        v81 = 1
+        set.view(o0,0)
+        add.to.pic(19,0,1,75,93,8,4)
+        vCurrentScore += 2
+        goto(l1256)
+      }
+      print("You won't be needing that suit anymore.")
+l1256:
+      goto(l1261)
+    }
+    print("The closet is not open.")
+l1261:
+    goto(l1266)
+  }
+  print("You need to get closer.")
+}
+l1266:
+if (said("put on", "clothes")) { //04f2
+  if (!(v81 > 0)) { //04fc
+    print("You don't have that.")
+    goto(l1291)
+  }
+  print("You already have it on.")
+}
+l1291:
+if (said("acquire", "dialect translator")) { //050b
+  if (obj.in.box(o0,40,94,71,110)) { //0515
+    if (v70 == 3) { //051f
+      if (!(has(i3))) { //0526
+        get(i3)
+        add.to.pic(19,0,0,49,93,8,4)
+        vCurrentScore += 2
+        goto(l1343)
+      }
+      print("You already have it.")
+l1343:
+      goto(l1348)
+    }
+    print("The closet is not open.")
+l1348:
+    goto(l1353)
+  }
+  print("You need to get closer.")
+}
+l1353:
+if (obj.in.box(o0,54,142,97,159)) { //0549
+  if ((said("press", "button") || said("press", "airlock", "button") || said("press", "airlock"))) { //0553
+    if (v36 == 1) { //056d
+      start.update(o7)
+      end.of.loop(o7,f35)
+      sound(7,f162)
+      v36 = 3
+      goto(l1421)
+    }
+    start.update(o7)
+    reverse.loop(o7,f35)
+    sound(7,f162)
+    v36 = 1
+  }
+}
+l1421:
+if ((said("open", "door") || said("close", "door"))) { //058d
+  if (obj.in.box(o0,30,94,90,133)) { //059f
+    print("The doors are controlled by buttons. You must push the appropriate one.")
+    goto(l1471)
+  }
+  if (obj.in.box(o0,89,102,137,114)) { //05ae
+    print("The elevator door opens and closes automatically.")
+    goto(l1471)
+  }
+  print("That can't be done from here.")
+}
+l1471:
+if (v36 == 3) { //05bf
+  get.posn(o0,v135,v136)
+  if (v136 > 108 && v136 < 120 && v135 < 27) { //05ca
+    start.update(o7)
+    reverse.loop(o7,f35)
+    sound(7,f162)
+    v36 = 4
+  }
+}
+if (v36 == 2 && !(posn(o0,25,109,38,119))) { //05e2
+  reverse.loop(o7,f35)
+  sound(7,f162)
+  v36 = 1
+}
+if (f30) { //05f9
+  if (v30 == 2) { //05ff
+    v30 = 0
+    reset(f30)
+    stop.update(o4)
+    goto(l1566)
+  }
+  if (v30 == 3) { //0610
+    stop.update(o4)
+    v30 = 1
+    reset(f30)
+  }
+}
+l1566:
+if (f31 && v30 == 0) { //061e
+  start.update(o4)
+  end.of.loop(o4,f30)
+  sound(1,f162)
+  v30 = 3
+}
+if (f31 && !(posn(o0,100,92,111,107))) { //0632
+  reset(f31)
+  start.update(o4)
+  reverse.loop(o4,f30)
+  sound(2,f162)
+  v30 = 2
+}
+if (v30 == 0 && obj.in.box(o0,98,98,119,107)) { //064c
+  start.update(o4)
+  end.of.loop(o4,f30)
+  sound(1,f162)
+  v30 = 3
+}
+if (!(obj.in.box(o0,98,98,119,107)) && v30 == 1 && !f31) { //0664
+  start.update(o4)
+  reverse.loop(o4,f30)
+  sound(2,f162)
+  v30 = 2
+}
+if (f32) { //0680
+  reset(f32)
+  if (v31 == 2) { //0688
+    v31 = 0
+    set.cel(o2,0)
+    goto(l1733)
+  }
+  if (v31 == 0) { //0698
+    v31 = 1
+    set.cel(o2,1)
+    goto(l1733)
+  }
+  if (v31 == 1) { //06a8
+    if (v52 == 0) { //06af
+      v31 = 0
+      set.cel(o2,0)
+      goto(l1733)
+    }
+    v31 = 2
+    set.cel(o2,2)
+  }
+}
+l1733:
+get.posn(o3,v32,v33)
+if (v32 == 44) { //06c9
+  v65 = 82
+  v66 = 0
+  repositon(o2,v65,v66)
+  move.obj(o2,8,50,0,f32)
+}
+if (f33) { //06e0
+  reset(f33)
+  if (v31 == 2) { //06e8
+    v31 = 0
+    set.cel(o3,0)
+    goto(l1829)
+  }
+  if (v31 == 0) { //06f8
+    v31 = 1
+    set.cel(o3,1)
+    goto(l1829)
+  }
+  if (v31 == 1) { //0708
+    if (v52 == 0) { //070f
+      v31 = 0
+      set.cel(o3,0)
+      goto(l1829)
+    }
+    v31 = 2
+    set.cel(o3,2)
+  }
+}
+l1829:
+get.posn(o2,v34,v35)
+if (v34 == 44) { //0729
+  v65 = 82
+  v66 = 0
+  repositon(o3,v65,v66)
+  move.obj(o3,8,50,0,f33)
+}
+if (fTriggerLine) { //0740
+  new.room(8)
+}
+if (v30 == 0 && posn(o0,100,92,111,97) && !f57) { //0748
+  set(f57)
+  new.room(7)
+}
+return()

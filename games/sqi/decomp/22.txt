@@ -1,0 +1,117 @@
+if (fNewRoom) { //0002
+  set.horizon(70)
+  load.pic(vCurrentRoom)
+  load.logic(112)
+  load.view(163)
+  if ((f96 || f101 || f97)) { //0010
+    load.logic(110)
+    call(110)
+  }
+  if (vPrevRoom == 23 && !f92) { //0020
+    get.posn(o0,v62,v63)
+    if (v63 < 70) { //002e
+      position(o0,87,62)
+    }
+  }
+  if (vPrevRoom == 19) { //0039
+    get.posn(o0,v62,v63)
+    if (v62 > 100) { //0044
+      position(o0,94,61)
+    }
+  }
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 83) { //0051
+    get.posn(o0,v62,v63)
+    if (v62 > 80) { //005c
+      position(o0,120,165)
+      goto(l110)
+    }
+    position(o0,20,165)
+  }
+l110:
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0075
+    goto(l134)
+  }
+  clear.lines(23,24,c0)
+}
+l134:
+if ((!fEnteredCommand || fSaidAccepted)) { //0086
+  goto(l359)
+}
+if (said("check out", "area")) { //0094
+  print("You are in a desert cliff area. There is a natural land bridge in the distance.")
+}
+if (!(has(i18))) { //00a0
+  if (said("check out", "bush")) { //00a7
+    if ((posn(o0,4,88,31,121) || obj.in.box(o0,101,105,140,127) || obj.in.box(o0,8,154,128,167))) { //00b1
+      print("It looks a lot like spinach. ")
+      goto(l208)
+    }
+    print("You are not near that.")
+  }
+}
+l208:
+if ((said("acquire", "bush") || said("move", "bush") || said("acquire", "bush"))) { //00d0
+  if (!(has(i18))) { //00e8
+    if ((posn(o0,4,88,31,121) || obj.in.box(o0,101,105,140,127) || obj.in.box(o0,8,154,128,167))) { //00ef
+      get(i18)
+      print("You tear off a piece of the plant.")
+      goto(l272)
+    }
+    print("That is unreachable from here.")
+l272:
+    goto(l277)
+  }
+  print("You already have that.")
+}
+l277:
+if ((said("smoke", "bush") || said("roll", "bush"))) { //0115
+  if (has(i18)) { //0127
+    print("The Health Minister has determined that smoking is hazardous to your health.")
+    goto(l308)
+  }
+  print("You don't have that.")
+}
+l308:
+if (said("smell", "bush")) { //0134
+  if ((has(i18) || posn(o0,4,88,31,121) || obj.in.box(o0,101,105,140,127) || obj.in.box(o0,8,154,128,167))) { //013e
+    print("You take a whiff of the plant and find it to be a regrettable experience.")
+    goto(l351)
+  }
+  print("You are not near that.")
+}
+l351:
+if (fEnteredCommand) { //015f
+  call(112)
+}
+l359:
+if (vWhichEgoBorder != 0) { //0167
+  reset(f102)
+  if (!f103) { //0171
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //017d
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 1) { //0187
+    new.room(19)
+  }
+  if (vWhichEgoBorder == 4) { //0190
+    new.room(21)
+  }
+  if (vWhichEgoBorder == 2) { //0199
+    new.room(23)
+  }
+  if (vWhichEgoBorder == 3) { //01a2
+    new.room(83)
+  }
+}
+if ((f101 || f97)) { //01ab
+  call(110)
+}
+return()

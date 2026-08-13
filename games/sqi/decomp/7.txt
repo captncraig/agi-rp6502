@@ -1,0 +1,225 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  if (f86) { //000a
+    random(1,100,v64)
+    if (v64 > 50) { //0014
+      load.logic(103)
+      call(103)
+      v67 = 1
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(32)
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.view(28)
+  add.to.pic(28,0,1,42,136,12,1)
+  animate.obj(o2)
+  set.view(o2,32)
+  v55 = 0
+  step.size(o2,v55)
+  ignore.blocks(o2)
+  position(o2,99,130)
+  set.cel(o2,0)
+  v30 = 0
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,12)
+  set.cel(o1,0)
+  position(o1,38,65)
+  draw(o1)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 9) { //0065
+    position(o0,103,122)
+    set.priority(o0,10)
+    set(f31)
+    move.obj(o0,103,124,0,f64)
+    set(f32)
+    goto(l140)
+  }
+  if (vPrevRoom != 6) { //0080
+    position(o0,102,138)
+  }
+l140:
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //008f
+    goto(l160)
+  }
+  clear.lines(23,24,c0)
+}
+l160:
+if (f33) { //00a0
+  reset(f33)
+  print("Alas, it does not open. You have adorned the door with a small circle of nose grease. Were you Karl Malden, it could have gotten ugly.")
+}
+if (f162) { //00aa
+  reset(f162)
+}
+if (obj.in.box(o0,99,121,113,129)) { //00b2
+  set.priority(o0,10)
+  goto(l196)
+}
+release.priority(o0)
+l196:
+if (f32) { //00c4
+  if (!(obj.in.box(o0,98,120,114,132))) { //00ca
+    reset(f32)
+    observe.blocks(o0)
+  }
+}
+if (obj.in.box(o0,98,120,114,133) && (f35 || f32)) { //00d9
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  goto(l242)
+}
+observe.blocks(o0)
+l242:
+if (obj.in.box(o0,98,133,114,133)) { //00f2
+  if (!f35) { //00fc
+    if ((vEgoDir < 3 || vEgoDir == 8)) { //0103
+      v135 = 0
+      v136 = 1
+      repositon(o0,v135,v136)
+      start.motion(o0)
+      set(f33)
+    }
+  }
+}
+if (f57 && !(posn(o0,98,121,114,132))) { //011d
+  reset(f57)
+}
+if (posn(o0,98,121,149,131)) { //012c
+  set(fEgoObscured)
+  goto(l317)
+}
+reset(fEgoObscured)
+l317:
+if ((!fEnteredCommand || fSaidAccepted)) { //013d
+  goto(l714)
+}
+if (said("check out", "area")) { //014b
+  print("This is one of the mid-level decks of the Arcada")
+}
+if (said("check out", "wall")) { //0157
+  print("The walls are all nondescript except for a keycard unit near the elevator. It controls access to the level below.")
+}
+if ((said("check out", "credit card", "cartridge slot") || said("check out", "credit card", "box") || said("check out", "cartridge slot") || said("check out", "computer console") || said("check out", "box") || said("check out", "cartridge slot"))) { //0163
+  if (obj.in.box(o0,74,125,95,131)) { //0191
+    if (f35) { //019b
+      print("The keycard unit is a small, sturdy box with a slot. Just above it is a display light which is currently on.")
+      goto(l424)
+    }
+    print("The keycard unit is a small, sturdy box with a slot. Just above it is a display light which is not currently on.")
+l424:
+    goto(l429)
+  }
+  print("You are too far away.")
+}
+l429:
+if ((said("check out", "bodies") || said("check out", "being"))) { //01ad
+  if (posn(o0,31,125,71,142)) { //01bf
+    print("One of your crewmates lies at your feet. He is non-functional.")
+    goto(l464)
+  }
+  print("You are too far away.")
+}
+l464:
+if ((said("explore", "bodies") || said("explore", "pocket") || said("explore", "being") || said("check out", "pocket"))) { //01d0
+  if (posn(o0,31,125,71,142)) { //01ee
+    print("You search the corpse and turn up. . .")
+    print("nothing.")
+    goto(l513)
+  }
+  print("You are too far away.")
+}
+l513:
+if ((said("strip", "bodies") || said("strip", "being") || said("acquire", "clothes", "bodies"))) { //0201
+  print("One can only wonder what your purpose for this action is. You can't undress the body. Allow him one last bit of dignity.")
+}
+if (said("check out", "elevator")) { //021d
+  print("The elevator goes to another level. You have never used it due to its restricted access status.")
+}
+if ((said("fill", "card") || said("use", "card") || said("use", "credit card") || said("fill", "credit card") || said("drop", "credit card", "cartridge slot") || said("fill", "credit card", "cartridge slot") || said("fill", "card", "cartridge slot"))) { //0229
+  if (obj.in.box(o0,74,125,95,131)) { //025f
+    if (has(i5)) { //0269
+      if (!f153) { //026f
+        set(f153)
+        vCurrentScore += 2
+      }
+      set(f35)
+      ignore.blocks(o0)
+      print("You slide the keycard into its slot. You hear an audible click. You take the keycard back.")
+      goto(l646)
+    }
+    print("You don't have that.")
+l646:
+    goto(l651)
+  }
+  print("You are too far away.")
+}
+l651:
+if ((said("acquire", "card") || said("acquire", "credit card") || said("get down", "card") || said("get down", "credit card") || said("get down", "credit card", "cartridge slot") || said("get down", "card", "cartridge slot"))) { //028b
+  if (obj.in.box(o0,74,125,95,131)) { //02b9
+    print("There is no keycard to get.")
+    goto(l714)
+  }
+  print("You are too far away.")
+}
+l714:
+if (f30) { //02ca
+  if (v30 == 2) { //02d0
+    v30 = 0
+    reset(f30)
+    stop.update(o2)
+    goto(l751)
+  }
+  if (v30 == 3) { //02e1
+    stop.update(o2)
+    v30 = 1
+    reset(f30)
+  }
+}
+l751:
+if (f31 && v30 == 0) { //02ef
+  start.update(o2)
+  end.of.loop(o2,f30)
+  sound(1,f162)
+  v30 = 3
+}
+if (f31 && !(obj.in.box(o0,98,121,114,132))) { //0303
+  reset(f31)
+  start.update(o2)
+  reverse.loop(o2,f30)
+  sound(2,f162)
+  v30 = 2
+}
+if (v30 == 0 && obj.in.box(o0,95,129,118,136) && (f35 || f32)) { //031d
+  start.update(o2)
+  end.of.loop(o2,f30)
+  sound(1,f162)
+  v30 = 3
+}
+if (!(obj.in.box(o0,95,129,118,136)) && v30 == 1 && !f31) { //033b
+  start.update(o2)
+  reverse.loop(o2,f30)
+  sound(2,f162)
+  v30 = 2
+}
+if (vWhichEgoBorder == 4) { //0357
+  v67 = 0
+  new.room(6)
+}
+if (obj.in.box(o0,98,121,114,128) && v30 == 0 && !f57) { //0363
+  set(f57)
+  v67 = 0
+  new.room(9)
+}
+if (v67 == 1) { //037a
+  call(103)
+}
+return()

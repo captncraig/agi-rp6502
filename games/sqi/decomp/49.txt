@@ -1,0 +1,157 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(121)
+  animate.obj(o1)
+  set.view(o1,121)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,58,133)
+  draw(o1)
+  stop.update(o1)
+  get.posn(o0,v135,v136)
+  if (vPrevRoom == 50) { //002e
+    if (v136 > 87) { //0035
+      position(o0,147,147)
+      goto(l71)
+    }
+    position(o0,144,63)
+l71:
+    goto(l108)
+  }
+  if (vPrevRoom == 54) { //004a
+    set(f31)
+    position(o0,62,128)
+    move.obj(o0,62,130,0,f64)
+    goto(l108)
+  }
+  if (vPrevRoom != 48) { //0060
+    position(o0,61,135)
+  }
+l108:
+  draw(o0)
+  if (v136 > 79) { //006e
+    reset(f83)
+    goto(l124)
+  }
+  set(f83)
+l124:
+  if (vPrevRoom == 48) { //007c
+    if (f83) { //0083
+      v140 = 145
+      v141 = 61
+      v142 = 135
+      v143 = 61
+      goto(l164)
+    }
+    v140 = 144
+    v141 = 145
+    v142 = 140
+    v143 = 145
+l164:
+    goto(l200)
+  }
+  if (f83) { //00a7
+    v140 = 1
+    v141 = 61
+    v142 = 5
+    v143 = 61
+    goto(l200)
+  }
+  v140 = 1
+  v141 = 145
+  v142 = 5
+  v143 = 145
+l200:
+  load.logic(119)
+  call(119)
+  show.pic()
+  v30 = 0
+}
+reset(f151)
+if (f57 && !(posn(o0,59,121,67,138))) { //00d2
+  reset(f57)
+}
+if ((posn(o0,14,132,19,136) || posn(o0,101,127,104,130))) { //00e1
+  set(f144)
+  goto(l250)
+}
+reset(f144)
+l250:
+if ((!fEnteredCommand || fSaidAccepted)) { //00fa
+  goto(l282)
+}
+if ((said("check out") || said("check out", "area"))) { //0108
+  print("You are in a corridor aboard the Sarien ship.")
+}
+l282:
+if (posn(o0,59,121,67,138)) { //011a
+  set(f37)
+  goto(l299)
+}
+reset(f37)
+l299:
+if (posn(o0,59,131,67,140)) { //012b
+  set(f36)
+  goto(l316)
+}
+reset(f36)
+l316:
+if (f30) { //013c
+  if (v30 == 2) { //0142
+    v30 = 0
+    reset(f30)
+    stop.update(o1)
+    goto(l353)
+  }
+  if (v30 == 3) { //0153
+    stop.update(o1)
+    v30 = 1
+    reset(f30)
+  }
+}
+l353:
+if (f31 && v30 == 0) { //0161
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (f31 && !f37) { //0175
+  reset(f31)
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (v30 == 0 && f36) { //018b
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (!f36 && v30 == 1 && !f31) { //019f
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (posn(o0,59,121,67,130) && v30 == 0 && !f57) { //01b7
+  set(f57)
+  new.room(54)
+}
+if (!fNewRoom) { //01cb
+  call(119)
+}
+if (vWhichEgoBorder == 4) { //01d4
+  new.room(48)
+}
+if (vWhichEgoBorder == 2) { //01dd
+  new.room(50)
+}
+return()

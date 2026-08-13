@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  v58 = 0
+
+!!!
+&{%!e(string=unknown opcode: 0x18)}

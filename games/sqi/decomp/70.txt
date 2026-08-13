@@ -1,0 +1,582 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.view(101)
+  load.view(94)
+  load.view(96)
+  load.view(113)
+  load.view(183)
+  random(0,2,v43)
+  if (v43 == 0) { //0018
+    load.view(73)
+    load.sound(63)
+    set(f37)
+    goto(l62)
+  }
+  if (v43 == 1) { //0028
+    load.view(73)
+    load.sound(62)
+    set(f36)
+    goto(l62)
+  }
+  load.view(251)
+  load.sound(65)
+  set(f39)
+l62:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  if (v43 < 2) { //0046
+    set.view(o1,73)
+    set.loop(o1,v43)
+    position(o1,68,105)
+    goto(l103)
+  }
+  set.view(o1,251)
+  position(o1,65,105)
+  v64 = 3
+  cycle.time(o1,v64)
+l103:
+  draw(o1)
+  if ((f125 || vPrevRoom != 75)) { //0069
+    animate.obj(o2)
+    set.view(o2,94)
+    ignore.blocks(o2)
+    if (f125) { //007c
+      set.loop(o2,1)
+      last.cel(o2,v64)
+      set.cel(o2,v64)
+      goto(l150)
+    }
+    set.loop(o2,0)
+    set.cel(o2,0)
+    set(f40)
+l150:
+    position(o2,122,142)
+    draw(o2)
+    stop.cycling(o2)
+  }
+  animate.obj(o3)
+  set.view(o3,96)
+  set.loop(o3,0)
+  fix.loop(o3)
+  ignore.blocks(o3)
+  set.cel(o3,0)
+  position(o3,149,167)
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o4)
+  set.view(o4,113)
+  set.loop(o4,3)
+  position(o4,71,163)
+  set.priority(o4,15)
+  draw(o4)
+  stop.cycling(o4)
+  animate.obj(o5)
+  set.view(o5,183)
+  set.cel(o5,3)
+  add.to.pic(101,0,0,53,152,15,4)
+  add.to.pic(101,0,1,93,151,15,4)
+  add.to.pic(101,0,2,35,161,15,4)
+  if (vPrevRoom == 75) { //00e8
+    position(o0,119,141)
+    start.motion(o0)
+    vEgoDir = 0
+    goto(l255)
+  }
+  position(o0,9,134)
+l255:
+  if (vPrevRoom != 75) { //00ff
+    v30 = 72
+    random(2,7,v32)
+    v33 = 1
+    goto(l287)
+  }
+  if (f125) { //0114
+    set(f30)
+    v33 = 2
+  }
+l287:
+  if (!f125) { //011f
+    draw(o0)
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0129
+    goto(l314)
+  }
+  clear.lines(23,24,c0)
+l314:
+  if (f125) { //013a
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0140
+      goto(l337)
+    }
+    clear.lines(22,24,c0)
+  }
+l337:
+  set.string(str0,">")
+  set.cursor.char("_")
+  accept.input()
+  status.line.on()
+  random(45,100,v31)
+  v35 = 71
+  v55 = 0
+  v36 = 163
+}
+get.posn(o0,v135,v136)
+if (posn(o0,31,155,39,162)) { //0169
+  set.priority(o0,13)
+  goto(l379)
+}
+release.priority(o0)
+l379:
+if (f36) { //017b
+  sound(62,f36)
+}
+if (f37) { //0184
+  sound(63,f37)
+}
+if (f39) { //018d
+  sound(65,f39)
+}
+if (f34) { //0196
+  reset(f34)
+  erase(o5)
+  v130 = 30
+}
+if (f170 && vEgoDir != 0) { //01a3
+  v41--
+  if (v41 == 1) { //01af
+    if (f35) { //01b6
+      reset(f35)
+      player.control()
+      release.loop(o0)
+      v41 = 6
+      goto(l590)
+    }
+    set(f35)
+    program.control()
+    fix.loop(o0)
+l460:
+    random(1,8,v64)
+    if (v64 == vEgoDir) { //01d0
+      goto(l460)
+    }
+    vEgoDir = v64
+    v41 = 5
+    v42++
+    if (v42 == 20) { //01e2
+      if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //01e9
+        clear.lines(1,1,c0)
+        display(1,0,"  I'mm nott ffeeling soo wunderfful.")
+        goto(l518)
+      }
+      clear.lines(23,23,c0)
+      display(23,0,"  I'mm nott ffeeling soo wunderfful.")
+    }
+l518:
+    if (v42 == 30) { //0206
+      if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //020d
+        clear.lines(1,1,c0)
+        display(1,0,"I knnoww therz a doorr hhere summware.")
+        goto(l554)
+      }
+      clear.lines(23,23,c0)
+      display(23,0,"I knnoww therz a doorr hhere summware.")
+    }
+l554:
+    if (v42 == 40) { //022a
+      if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0231
+        clear.lines(1,1,c0)
+        display(1,0,"      Pleeze stop movin th barr!")
+        goto(l590)
+      }
+      clear.lines(23,23,c0)
+      display(23,0,"      Pleeze stop movin th barr!")
+    }
+  }
+}
+l590:
+if (!(posn(o0,101,147,108,167)) && !(posn(o0,114,151,127,167))) { //024e
+  v39 = 0
+  goto(l651)
+}
+if (posn(o0,101,147,108,167) && v39 != 1) { //0266
+  v39 = 1
+  goto(l651)
+}
+if (posn(o0,114,151,127,167) && v39 != 2) { //027a
+  v39 = 2
+}
+l651:
+if (f33) { //028b
+  reset(f33)
+  print("\"What'll it be? I got beer and it's 2 buckazoids.\"")
+  set(f41)
+}
+v31--
+if (v31 == 1) { //0299
+  if (!(has(i8)) && v35 != 100 && v39 > 0 && !f38 && v39 != 3) { //02a0
+    v37 = 100
+    goto(l764)
+  }
+l699:
+  reset(f41)
+  random(1,4,v37)
+  if (v37 == 1) { //02c1
+    v37 = 48
+    goto(l754)
+  }
+  if (v37 == 2) { //02ce
+    v37 = 53
+    goto(l754)
+  }
+  if (v37 == 3) { //02db
+    v37 = 71
+    goto(l754)
+  }
+  if (v37 == 4) { //02e8
+    v37 = 90
+  }
+l754:
+  if (v37 == v35) { //02f2
+    goto(l699)
+  }
+l764:
+  start.cycling(o4)
+  v35 = v37
+  move.obj(o4,v35,v36,55,f32)
+}
+if (f32) { //0307
+  reset(f32)
+  stop.cycling(o4)
+  random(45,100,v31)
+  if (v35 == 48) { //0315
+    set.loop(o4,1)
+    goto(l872)
+  }
+  if (v35 == 71) { //0322
+    random(1,3,v64)
+    if (v64 == 2) { //032d
+      set.loop(o4,2)
+      goto(l829)
+    }
+    set.loop(o4,3)
+l829:
+    goto(l872)
+  }
+  if (v35 == 100) { //0340
+    if (v39 == 2) { //0347
+      set.loop(o4,0)
+      set(f33)
+    }
+    if (v39 == 1) { //0353
+      set.loop(o4,3)
+      set(f33)
+    }
+    v39 = 3
+    goto(l872)
+  }
+  set.loop(o4,3)
+}
+l872:
+v30--
+if (v30 == 1) { //036a
+  start.cycling(o2)
+  end.of.loop(o2,f30)
+  v32--
+  if (v32 == 1) { //0378
+    set.loop(o2,1)
+    end.of.loop(o2,f30)
+    ignore.objs(o2)
+    v33 = 2
+  }
+}
+if (f30) { //038a
+  reset(f30)
+  stop.cycling(o2)
+  if (v33 == 2) { //0394
+    v33 = 3
+    if (f125) { //039e
+      v34 = 3
+      goto(l941)
+    }
+    v34 = 27
+l941:
+    goto(l947)
+  }
+  v30 = 54
+}
+l947:
+v34--
+if (v34 == 1) { //03b5
+  if (v38 == 4) { //03bc
+    release.loop(o3)
+    set.loop(o3,3)
+    fix.loop(o3)
+    stop.cycling(o3)
+    erase(o2)
+    move.obj(o3,104,141,0,f31)
+    v38 = 5
+    reset(f40)
+  }
+  if (!(v38 > 0)) { //03d9
+    v38 = 1
+    start.update(o3)
+    stop.cycling(o3)
+    move.obj(o3,104,146,0,f31)
+  }
+}
+if (f31) { //03ee
+  reset(f31)
+  if (v38 == 8) { //03f6
+    stop.update(o3)
+    v38 = 0
+    if (f125) { //0402
+      v130 = 15
+    }
+  }
+  if (v38 == 7) { //040b
+    move.obj(o3,141,167,0,f31)
+    v38 = 8
+  }
+  if (v38 == 6) { //041b
+    move.obj(o3,139,146,0,f31)
+    v38 = 7
+  }
+  if (v38 == 5) { //042b
+    move.obj(o3,104,146,0,f31)
+    v38 = 6
+  }
+  if (v38 == 3) { //043b
+    release.loop(o3)
+    set.loop(o3,2)
+    start.cycling(o3)
+    v34 = 36
+    v38 = 4
+  }
+  if (v38 == 2) { //044f
+    move.obj(o3,108,141,0,f31)
+    v38 = 3
+  }
+  if (v38 == 1) { //045f
+    ignore.objs(o2)
+    move.obj(o3,104,141,0,f31)
+    v38 = 2
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0471
+  goto(l1850)
+}
+if (f125) { //047f
+  goto(l1850)
+}
+if (said("check out", "area")) { //0488
+  print("This is a seedy little place. Galactic riff-raff are seated at the bar. The bartender drops by occasionally to serve them. A band is cranking out some of the more popular tunes in the quadrant. There is a slot machine standing near the bar. You notice a sweeper in the lower corner of the room. It must get messy here. No one seems to notice or care that you have entered the bar.")
+}
+if (said("check out", "wall")) { //0494
+  print("The walls are sporting a wonderful smoke finish such that the original color is a puzzle. There are cracks here and there which attest to the state of disrepair.")
+}
+if (said("check out", "bar")) { //04a0
+  print("Some of the stranger galactic riff-raff are seated at the bar. The bartender drops by occasionally to serve them. There seems to be a vacant spot at the right end of the bar.")
+}
+if ((said("check out", "cartridge slot") || said("check out", "game") || said("check out", "laundry"))) { //04ac
+  if (obj.in.box(o0,115,131,142,142)) { //04c4
+    print("It appears to be an electronic slot machine.")
+    goto(l1237)
+  }
+  print("You don't have a good view from here.")
+}
+l1237:
+if ((said("play", "cartridge slot") || said("play", "game") || said("play", "laundry"))) { //04d5
+  print("Just walk up close to the machine to play.")
+}
+if ((said("check out", "band") || said("check out", "stage"))) { //04ef
+  if (v43 == 0) { //0501
+    print("There is a hip combo of green beings jamming. They only seem to be interested in playing music.")
+  }
+  if (v43 == 1) { //050a
+    print("There are a couple of non-galactic looking humanoids cranking out some unfamiliar sounding tunes. They seem interested solely in the music they are performing.")
+  }
+  if (v43 == 2) { //0513
+    print("On stage are two heavily-bearded gents and a relatively clean-shaven drummer. They're one of the hottest bands in the quadrant.")
+  }
+}
+if (said("speak", "band")) { //051c
+  if (v136 < 136) { //0526
+    print("They are not interested in you.")
+    goto(l1332)
+  }
+  print("You are not in a position to do that.")
+}
+l1332:
+if (said("check out", "bar tender")) { //0534
+  if (v136 > 136) { //053e
+    print("The bartender is a compact looking gent. He seems to be about as friendly as the patrons.")
+    goto(l1356)
+  }
+  print("You don't have a good view from here.")
+}
+l1356:
+if ((said("check out", "customer") || said("check out", "alien") || said("check out", "being"))) { //054c
+  if (v136 > 136) { //0564
+    print("You've never seen the likes of the patrons seated at the bar. They look fairly absorbed in their drinks.")
+    goto(l1394)
+  }
+  print("You don't have a good view from here.")
+}
+l1394:
+if ((said("check out", "sweeper") || said("check out", "droid"))) { //0572
+  print("The sweeper is a small motorized device which scans the floor for debris and removes it within moments of detection. There is nothing special about it, otherwise.")
+}
+if (said("check out", "stairs")) { //0586
+  print("There is nothing special about the stairs. They look like a standard gravity rebellion device.")
+}
+if ((said("sit") || said("sit", "bar"))) { //0592
+  print("There are no surfaces on which to place your posterior other than the floor and you don`t want to do that.")
+}
+if ((said("speak", "being") || said("speak", "customer"))) { //05a4
+  print("No one here seems willing to acknowledge your presence. Maybe they're not too fond of humanoids.")
+}
+if (said("speak", "bar tender")) { //05b8
+  print("The bartender is only interested in selling his wares. He is of no help otherwise.")
+}
+if (said("listen", "being")) { //05c4
+  print("The only thing you hear when attempting to eavesdrop is \"Eat felch, humanoid!\"")
+}
+if (said("kick", "laundry")) { //05d0
+  if (obj.in.box(o0,115,131,142,142)) { //05da
+    print("That act, while providing a means of venting frustration, serves only to cause you considerable pain when your toes scatter in directions they weren't designed to travel. Wise up, Space Cadet!")
+    goto(l1515)
+  }
+  print("You are not in a position to do that.")
+}
+l1515:
+if ((said("kick") || said("kick", "anyword") || said("kick", "anyword", "anyword"))) { //05eb
+  print("It's not advisable to be trying anything aggressive here since you are out-numbered.")
+}
+if (said("drink", "ale")) { //0605
+  reset(fEnteredCommand)
+  if (has(i8)) { //0611
+    drop(i8)
+    v40++
+    if (v40 == 1) { //061b
+      print("The beer tastes like carbonated Zipple sweat. However, considering recent events, you could learn to love it.")
+      goto(l1636)
+    }
+    if (v40 == 3) { //0627
+      if (!f181) { //062e
+        set(f181)
+        print("As you sip another of the odd brews, you overhear someone at the bar speaking: \"There I was cruising through sector HH when I spot this blip on the scanner.\"")
+        vCurrentScore += 5
+        print("\"So, I head toward it, ya see, and right there in front of me sits the Deltaur. It's just sittin' there. My hearts start hyperwarping on me.\"")
+        print("\"I figure my milliseconds are numbered. All I can think of doin' is getting my craft outta there. So, I'm reachin' for the throttle.\"")
+        print("\"All of a sudden there's this incredible flash of light, ya see. And just like that this little planetoid explodes into a ball of fire! I tell ya, I've never seen anything like it. I mauled the throttle and got outta there quick you bet.\"")
+      }
+      goto(l1636)
+    }
+    if (v40 == 4) { //0645
+      print("You feel a strange tingling sensation. The taste of the beer doesn't seem to be bothering you so much now, hee, hee.")
+      goto(l1636)
+    }
+    if (v40 == 5) { //0651
+      print("Oh my, you are starting to feel unstable.")
+      set(f170)
+      v41 = 5
+      goto(l1636)
+    }
+    print("Gulp! Gulp!")
+l1636:
+    goto(l1641)
+  }
+  print("You can't drink something you don't have.")
+}
+l1641:
+if (said("give", "coupon")) { //0669
+  if (v39 > 0) { //0673
+    if (v35 == 100 && f41) { //067a
+      if (!f176) { //0683
+        set(f176)
+        get(i8)
+        get(i10)
+        v124 += 5
+        print("\"You have one of those coupons, huh? Here's your 5 buckazoids and your free beer. Enjoy.\"")
+        goto(l1690)
+      }
+      print("You don't have that.")
+l1690:
+      goto(l1695)
+    }
+    print("The bartender is busy and cannot hear you.")
+l1695:
+    goto(l1700)
+  }
+  print("Your words find no audience.")
+}
+l1700:
+if ((said("ale") || said("acquire", "ale") || said("buy", "ale"))) { //06a4
+  if (v39 > 0) { //06ba
+    if (v35 == 100 && f41) { //06c1
+      if (!(has(i8))) { //06ca
+        if (v124 > 1) { //06d1
+          if (v40 < 6) { //06d8
+            print("\"That'll be $2.00. Thank you very much. Come again.\"")
+            v124 -= 2
+            get(i8)
+            goto(l1771)
+          }
+          print("\"Listen, Mac, I can't serve you any more. You're sledged! You better go sleep it off or something before you start making a public display of yourself.\"")
+l1771:
+          goto(l1787)
+        }
+        print("\"Hey! What are you trying to pull? What do you mean you can't pay? Take off before I have you fed to Grell.\"")
+        if (f176) { //06f0
+          set(f38)
+        }
+        v31 = 2
+l1787:
+        goto(l1792)
+      }
+      print("\"One at a time, Mac!\"")
+l1792:
+      goto(l1797)
+    }
+    print("The bartender is busy and cannot hear you.")
+l1797:
+    goto(l1802)
+  }
+  print("Your words find no audience.")
+}
+l1802:
+if ((said("wine") || said("acquire", "wine") || said("buy", "wine"))) { //070a
+  if (v39 > 0) { //0720
+    if (v35 == 100) { //0727
+      print("\"Wine? Did I say we have wine? Hey did you hear this humanoid? He wants wine! Get serious!\"")
+      goto(l1845)
+    }
+    print("The bartender is busy and cannot hear you.")
+l1845:
+    goto(l1850)
+  }
+  print("Your words find no audience.")
+}
+l1850:
+if (vWhichEgoBorder == 4) { //073a
+  new.room(35)
+}
+if (!f170 && fTriggerLine) { //0743
+  reset(fTriggerLine)
+  if (v124 > 249) { //074e
+    print("Sorry, the machine is currently out of order. Please come again.")
+    v135 = 0
+    v136 = 254
+    repositon(o0,v135,v136)
+    vEgoDir = 0
+    start.motion(o0)
+    goto(l1906)
+  }
+  if (!f40) { //0769
+    new.room(75)
+  }
+}
+l1906:
+return()

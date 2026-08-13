@@ -1,0 +1,212 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  v87 = 0
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(142)
+  load.view(151)
+  load.view(153)
+  load.view(0)
+  load.view(162)
+  load.logic(121)
+  if (f88) { //0023
+    reset(f88)
+    set(f37)
+    load.view(145)
+    animate.obj(o1)
+    set.view(o1,145)
+    position(o1,74,163)
+    draw(o1)
+    move.obj(o1,116,114,0,f32)
+    v33 = 1
+  }
+  animate.obj(o2)
+  set.view(o2,162)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,126,114)
+  if (vPrevRoom == 58) { //0050
+    set.cel(o2,5)
+    v35 = 3
+    goto(l102)
+  }
+  set.cel(o2,0)
+  v35 = 0
+l102:
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 58) { //006a
+    position(o0,122,115)
+    goto(l124)
+  }
+  position(o0,75,165)
+l124:
+  draw(o0)
+  set(f113)
+  load.logic(119)
+  call(119)
+  call(121)
+  show.pic()
+  reset(f64)
+  if ((v81 == 1 || v81 == 2)) { //0089
+    v37 = 60
+  }
+}
+if (f32) { //0098
+  reset(f32)
+  if (v33 == 2) { //00a0
+    v33 = 3
+    erase(o1)
+  }
+  if (v33 == 1) { //00ac
+    move.obj(o1,133,114,0,f32)
+    v33 = 2
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00bc
+  goto(l419)
+}
+if (f148 && said("check out", "anyword")) { //00ca
+  print("It is too dark inside the trunk to see anything.")
+}
+if (posn(o0,59,139,95,167)) { //00d8
+  if ((said("check out", "door") || said("check out", "airlock"))) { //00e2
+    print("The door is tightly sealed.")
+    goto(l269)
+  }
+  if ((said("open", "door") || said("open", "airlock"))) { //00f9
+    print("The door is not impressed.")
+  }
+}
+l269:
+distance(o0,o2,v64)
+if (v64 < 30 && said("check out", "door")) { //0111
+  if ((v35 == 0 || v35 == 0)) { //011e
+    print("You peer through the small window in the door. You think you see someone standing in the hallway. Perhaps this isn't a good time to leave this part of the ship.")
+    goto(l305)
+  }
+  print("You peer through the doorway and see a Sarien guard standing in the hallway. He does not look too friendly.")
+}
+l305:
+if ((said("check out", "case") || said("check out", "can") || said("check out", "box"))) { //0131
+  print("There doesn't seem to be anything special about the container.")
+}
+if ((said("check out") || said("check out", "area"))) { //014b
+  if (f87) { //015b
+    print("You are standing in a large, empty room within the Sarien ship. On one wall is a vent.")
+    goto(l360)
+  }
+  print("You are standing in a large, empty room within the Sarien ship. On one wall is a vent. There is some sort of trunk on the floor.")
+}
+l360:
+if (said("anyword", "door")) { //0168
+  print("Perhaps if you stood closer to the door.")
+}
+if (said("check out", "wall")) { //0174
+  print("Against the back wall are several large pipes. On the left wall is a vent.")
+}
+if ((said("check out", "grate") || said("look in", "grate"))) { //0180
+  if (posn(o0,26,103,30,107)) { //0192
+    print("It is completely dark on the other side of the vent.")
+    goto(l419)
+  }
+  print("You can't see into the vent from there.")
+}
+l419:
+if (f148 && v31 == 0 && !f31) { //01a3
+  v31 = 54
+  set(f87)
+}
+v31--
+if (v31 == 50) { //01b6
+  print("You climb into the trunk. The lid pounds shut above you.")
+}
+if (v31 == 1) { //01bf
+  text.screen()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //01c7
+    goto(l472)
+  }
+  clear.lines(22,24,c0)
+l472:
+  display(5,0,"You hear voices, muffled, then louder.")
+  display(6,0,"You suddenly feel the trunk lift off")
+  display(7,0,"the deck and the sensation of")
+  display(8,0,"movement.")
+  display(10,0,"After a few minutes, the trunk thuds to")
+  display(11,0,"the floor, causing you to see stars in")
+  display(12,0,"the darkness. The voices sound farther")
+  display(13,0,"away, then gone.")
+  reset(f113)
+  if (v81 == 2) { //01fa
+    set.view(o0,0)
+  }
+  new.room(53)
+}
+if (posn(o0,117,109,132,120)) { //0206
+  goto(l546)
+  goto(l583)
+}
+if (f37 && posn(o1,110,109,132,125)) { //0216
+l546:
+  if (v35 == 0) { //0222
+    start.update(o2)
+    end.of.loop(o2,f33)
+    sound(1,f120)
+    v35 = 2
+  }
+  goto(l583)
+}
+if (v35 == 3) { //0237
+  reverse.loop(o2,f33)
+  sound(2,f120)
+  v35 = 1
+}
+l583:
+if (f33) { //0247
+  reset(f33)
+  if (v35 == 2) { //024f
+    v35 = 3
+    goto(l609)
+  }
+  v35 = 0
+  stop.update(o2)
+}
+l609:
+if (v35 == 3) { //0261
+  get.posn(o0,v62,v63)
+  if (v62 > 127 && v63 < 120) { //026c
+    reset(f113)
+    new.room(58)
+  }
+}
+if (vTimeSeconds != v36) { //027a
+  v36 = vTimeSeconds
+  v37--
+  if (v37 == 1) { //0287
+    if (f36) { //028e
+      print("The sounds have temporarily gone away.")
+      goto(l672)
+    }
+    set(f36)
+    v37 = 60
+    print("Be careful! You hear footsteps and muffled voices from beyond the door.")
+  }
+}
+l672:
+if (!fNewRoom) { //02a0
+  call(121)
+  call(119)
+}
+v87--
+if (v87 == 1) { //02ad
+  reset(f113)
+  new.room(56)
+}
+if (vWhichEgoBorder == 2) { //02b8
+  reset(f113)
+  new.room(58)
+}
+return()

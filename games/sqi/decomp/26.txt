@@ -1,0 +1,340 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  load.logic(97)
+  if (f83) { //000e
+    load.logic(107)
+    call(107)
+  }
+  load.view(54)
+  load.view(55)
+  load.view(56)
+  load.view(57)
+  load.view(68)
+  load.view(67)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,54)
+  set.priority(o3,13)
+  ignore.objs(o3)
+  position(o3,15,136)
+  animate.obj(o4)
+  set.view(o4,55)
+  set.cel(o4,0)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  position(o4,10,121)
+  animate.obj(o1)
+  set.view(o1,56)
+  set.cel(o1,0)
+  set.priority(o1,13)
+  ignore.objs(o1)
+  position(o1,18,139)
+  stop.cycling(o1)
+  animate.obj(o5)
+  set.view(o5,68)
+  set.cel(o5,0)
+  ignore.objs(o5)
+  v64 = 2
+  cycle.time(o5,v64)
+  if (!f84) { //0067
+    draw(o3)
+    set.cel(o4,0)
+    goto(l125)
+  }
+  draw(o1)
+  stop.update(o1)
+  set.cel(o4,5)
+l125:
+  draw(o4)
+  stop.update(o4)
+  ignore.objs(o0)
+  if (vPrevRoom == 25) { //0083
+    position(o0,151,138)
+    goto(l190)
+  }
+  if (vPrevRoom == 27) { //0091
+    if (f83) { //0098
+      position(o0,28,56)
+      goto(l169)
+    }
+    position(o0,10,121)
+l169:
+    goto(l190)
+  }
+  if (vPrevRoom == 29) { //00ac
+    position(o0,148,62)
+    goto(l190)
+  }
+  position(o0,84,138)
+l190:
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00c1
+    goto(l210)
+  }
+  clear.lines(23,24,c0)
+}
+l210:
+if (!f91) { //00d2
+  if (posn(o0,79,136,92,144)) { //00d9
+    set.priority(o0,14)
+    goto(l235)
+  }
+  release.priority(o0)
+l235:
+  if (obj.in.box(o0,9,120,22,122) && f84) { //00eb
+    ignore.blocks(o0)
+    goto(l254)
+  }
+  observe.blocks(o0)
+l254:
+  if (posn(o0,39,129,73,131)) { //00fe
+    set(f32)
+    set.view(o0,57)
+    if (!(v32 > 0)) { //010d
+      set(f35)
+      v32 = 1
+    }
+    goto(l301)
+  }
+  if (f32) { //011d
+    reset(f32)
+    erase(o5)
+    v32 = 0
+    set.view(o0,0)
+  }
+}
+l301:
+if (f35) { //012d
+  reset(f35)
+  set.view(o5,67)
+  get.posn(o0,v135,v136)
+  if (v135 > 60) { //013c
+    position(o5,55,135)
+    goto(l334)
+  }
+  position(o5,43,135)
+l334:
+  draw(o5)
+  start.cycling(o5)
+}
+if (fTriggerLine && !f34) { //0152
+  get.posn(o0,v135,v136)
+  if (v136 > 131) { //015f
+    if (f91 && v230 < 34) { //0166
+      goto(l1024)
+    }
+    set(f34)
+    stop.motion(o0)
+    stop.cycling(o0)
+    program.control()
+    set(f56)
+    v135 += 247
+    position(o5,135,v136)
+    if (f91) { //0182
+      set.view(o5,68)
+      erase(o0)
+      v32 = 3
+      goto(l409)
+    }
+    set.view(o5,67)
+    v32 = 2
+l409:
+    set.cel(o5,0)
+    draw(o5)
+    end.of.loop(o5,f33)
+    stop.motion(o0)
+    program.control()
+    goto(l432)
+  }
+  if (!f91) { //01a7
+    set(f91)
+  }
+}
+l432:
+if (f33) { //01b0
+  reset(f33)
+  if (v32 == 3) { //01b8
+    erase(o5)
+    stop.cycling(o5)
+    v31 = 36
+    v32 = 4
+  }
+  if (v32 == 2) { //01c9
+    set.view(o5,68)
+    set.cel(o5,0)
+    erase(o0)
+    start.cycling(o5)
+    set(f36)
+    v32 = 3
+  }
+}
+if (f36) { //01df
+  current.cel(o5,v64)
+  if (v64 == 4) { //01e8
+    v31 = 5
+    reset(f36)
+    stop.cycling(o5)
+  }
+}
+v31--
+if (v31 == 1) { //01f8
+  if (v32 == 4) { //01ff
+    erase(o5)
+    v130 = 11
+  }
+  if (v32 == 3) { //020b
+    end.of.loop(o5,f33)
+  }
+}
+if (f30) { //0215
+  reset(f30)
+  if (f84) { //021d
+    stop.update(o1)
+  }
+}
+if (f31) { //0225
+  reset(f31)
+  stop.update(o4)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //022f
+  goto(l1024)
+}
+if ((said("check out", "area") || said("check out", "area"))) { //023d
+  print("This is another large chamber in the underground complex. There is a path on the back wall which is not accessible from the bottom.")
+}
+if ((said("check out", "floor") || said("check out", "down"))) { //0251
+  print("The floor is mostly rock with the exception of a grate in the middle. To the left of the grate is what appears to be a steam geyser.")
+}
+if (said("check out", "grate")) { //0265
+  if (obj.in.box(o0,23,128,100,167)) { //026f
+    print("The grate is made of metal and seems to be fastened securely to the floor. It is too dark to see down through the grate. There is, however, an odd smell emanating from down there.")
+    goto(l640)
+  }
+  print("You are not close enough.")
+}
+l640:
+if (said("check out", "geyser")) { //0280
+  if (obj.in.box(o0,2,135,40,160)) { //028a
+    if (f84) { //0294
+      print("There is a geyser cone here. The geyser is currently plugged-up with a rock.")
+      goto(l673)
+    }
+    print("There is a geyser cone here. It is rhythmically spewing hot steam.")
+l673:
+    goto(l678)
+  }
+  print("You are not close enough.")
+}
+l678:
+if (said("check out", "door")) { //02a6
+  if (obj.in.box(o0,0,120,33,137)) { //02b0
+    if (f84) { //02ba
+      print("There is not a door here.")
+      goto(l711)
+    }
+    print("There is a door here.")
+l711:
+    goto(l716)
+  }
+  print("You are not close enough.")
+}
+l716:
+if (!(has(i2)) && said("acquire", "boulder")) { //02cc
+  if (obj.in.box(o0,2,135,40,160)) { //02d9
+    reset(f84)
+    get(i2)
+    start.update(o1)
+    erase(o1)
+    draw(o3)
+    reverse.loop(o4,f31)
+    vCurrentScore -= 4
+  }
+}
+if ((said("drop", "boulder", "geyser") || said("drop", "boulder", "geyser", "entryway") || said("drop", "boulder", "entryway") || said("fill", "geyser", "boulder") || said("fill", "boulder", "geyser"))) { //02f3
+  if (has(i2)) { //0323
+    if (obj.in.box(o0,2,135,40,160)) { //0329
+      drop(i2)
+      set(f84)
+      end.of.loop(o4,f31)
+      set(f30)
+      erase(o3)
+      draw(o1)
+      vCurrentScore += 4
+      goto(l840)
+    }
+    print("You are not close enough.")
+l840:
+    goto(l845)
+  }
+  print("You don't have that.")
+}
+l845:
+if (said("sit", "geyser")) { //034d
+  if (obj.in.box(o0,2,135,40,160)) { //0357
+    print("Anything for a thrill, eh? That's a pretty darn interesting idea, but not the correct one.")
+    goto(l872)
+  }
+  print("You are not close enough.")
+}
+l872:
+if (said("drop", "boulder", "grate")) { //0368
+  print("The rock would serve no purpose on the grate.")
+}
+if (v32 > 0) { //0376
+  if (said("check out", "animal")) { //037d
+    print("There are some slimey green tentacles poking through the grate.")
+  }
+}
+if ((said("open", "door") || said("press", "wall") || said("hit", "door"))) { //0389
+  if (obj.in.box(o0,0,121,32,135)) { //03a1
+    print("Try as you might, the darn door won't open for you.")
+    goto(l946)
+  }
+  print("You can't do that here.")
+}
+l946:
+if (said("open", "door", "army knife")) { //03b2
+  if (has(i19)) { //03be
+    if (obj.in.box(o0,0,121,32,135)) { //03c4
+      print("Try as you might, the darn door won't open for you.")
+      goto(l981)
+    }
+    print("You can't do that here.")
+l981:
+    goto(l986)
+  }
+  print("You don't have that.")
+}
+l986:
+if (said("knock", "door")) { //03da
+  if (obj.in.box(o0,0,121,32,135)) { //03e4
+    print("You knock but, surprisingly, no one answers!")
+    goto(l1013)
+  }
+  print("You can't do that here.")
+}
+l1013:
+if (fEnteredCommand && !fSaidAccepted) { //03f5
+  call(97)
+}
+l1024:
+if (posn(o0,8,118,25,120) && f84) { //0400
+  new.room(27)
+}
+if (vWhichEgoBorder == 4 && f83) { //040e
+  new.room(27)
+}
+if (vWhichEgoBorder == 2) { //0419
+  if (f83) { //0420
+    new.room(29)
+    goto(l1069)
+  }
+  new.room(25)
+}
+l1069:
+if (f91) { //042d
+  call(107)
+}
+return()

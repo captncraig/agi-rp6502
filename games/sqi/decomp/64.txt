@@ -1,0 +1,173 @@
+if (fNewRoom) { //0002
+  prevent.input()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v64 = 42
+  load.pic(v64)
+  load.view(235)
+  load.view(236)
+  load.view(237)
+  load.view(238)
+  load.view(240)
+  load.view(239)
+  load.view(241)
+  load.view(1)
+  load.view(34)
+  load.view(242)
+  load.sound(60)
+  program.control()
+  set.view(o0,1)
+  set.loop(o0,3)
+  position(o0,77,165)
+  draw(o0)
+  move.obj(o0,77,125,0,f30)
+  animate.obj(o7)
+  set.view(o7,34)
+  set.loop(o7,3)
+  position(o7,85,165)
+  draw(o7)
+  move.obj(o7,85,125,0,f120)
+  animate.obj(o1)
+  set.view(o1,235)
+  position(o1,77,116)
+  draw(o1)
+  stop.update(o1)
+  animate.obj(o2)
+  set.view(o2,237)
+  position(o2,62,45)
+  load.view(196)
+  add.to.pic(196,1,0,6,162,15,0)
+  add.to.pic(196,0,0,106,162,15,0)
+  discard.view(196)
+  animate.obj(o3)
+  set.view(o3,238)
+  set.priority(o3,9)
+  animate.obj(o4)
+  set.view(o4,239)
+  set.priority(o4,7)
+  v64 = 2
+  step.size(o4,v64)
+  animate.obj(o5)
+  set.view(o5,240)
+  set.priority(o5,7)
+  show.pic()
+  if (has(i1)) { //009a
+    print("Congratulations %s1, you've rid the universe of the evil Sariens and saved your people from certain doom. The Star Generator technology is safe inside the Data Cartridge. Now, a new Star Generator can be built and can carry out its original task - You're an all-around hero! You've made it home safely aboard the stolen Sarien craft, where you've encountered a cheering Xenon crowd. They have gathered together for a ceremony in your honor. The ceremony is already in progress.")
+    goto(l167)
+  }
+  print("Congratulations %s1, you've rid the universe of the evil Sariens and saved your people from certain doom. You're an all-around hero! You've made it home safely aboard the stolen Sarien craft, where you've encountered a cheering Xenon crowd. They have gathered together for a ceremony in your honor. The ceremony is already in progress.")
+l167:
+  set(f35)
+  v87 = 0
+  v88 = 0
+  random(30,100,v30)
+  random(30,100,v31)
+  random(30,100,v32)
+  set.horizon(10)
+}
+if (f30) { //00bd
+  reset(f30)
+  set.cel(o1,1)
+  force.update(o1)
+  v87 = 30
+  stop.motion(o0)
+}
+v87--
+if (v87 == 1) { //00d1
+  set.view(o0,236)
+  set.loop(o7,2)
+  draw(o2)
+  v64 = 3
+  cycle.time(o2,v64)
+  set(f34)
+  v88 = 60
+}
+v88--
+if (v88 == 1) { //00ed
+  erase(o2)
+  print("As a token of appreciation, you are presented with a golden mop. \"Thank you, %s1 for cleaning up our galaxy\", says the Xenon leader.")
+  print("Once a janitor always a janitor.")
+  v33 = 40
+}
+if (f31) { //00fd
+  reset(f31)
+  erase(o3)
+  random(10,40,v30)
+}
+if (f32) { //010b
+  reset(f32)
+  erase(o4)
+  random(10,40,v31)
+}
+if (f33) { //0119
+  reset(f33)
+  erase(o5)
+  random(10,40,v32)
+}
+v30--
+v31--
+v32--
+if (v30 == 1) { //012d
+  position(o3,0,64)
+  draw(o3)
+  move.obj(o3,135,64,0,f31)
+}
+if (v31 == 1) { //0140
+  position(o4,0,30)
+  draw(o4)
+  move.obj(o4,143,30,0,f32)
+}
+if (v32 == 1) { //0153
+  position(o5,140,80)
+  draw(o5)
+  move.obj(o5,0,80,0,f33)
+}
+v33--
+if (v33 == 1) { //0168
+  if (v30 == 0) { //016f
+    erase(o3)
+  }
+  if (v31 == 0) { //0178
+    erase(o4)
+  }
+  if (v32 == 0) { //0181
+    erase(o5)
+  }
+  v30 = 0
+  v31 = 0
+  v32 = 0
+  erase(o1)
+  erase(o0)
+  erase(o7)
+  v64 = 42
+  draw.pic(v64)
+  add.to.pic(242,0,0,61,74,15,15)
+  add.to.pic(242,0,1,61,103,15,15)
+  v34 = 4
+  v35 = 30
+  show.pic()
+}
+v35--
+if (v35 == 1) { //01b7
+  v35 = 45
+  if (vMonitorType == HERCULES) { //01c1
+    clear.lines(21,21,c0)
+    v64 = 21
+    goto(l473)
+  }
+  clear.lines(22,24,c0)
+  v64 = 24
+l473:
+  v126 = 3
+  display(v64,v126,v34)
+  v34++
+  if (v34 > 18) { //01e2
+    v34 = 4
+  }
+}
+if (f35) { //01ec
+  reset(f35)
+  sound(60,f35)
+}
+return()

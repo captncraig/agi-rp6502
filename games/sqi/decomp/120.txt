@@ -1,0 +1,259 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(118)
+  load.view(151)
+  load.sound(38)
+  if ((vCurrentRoom == 56 || vCurrentRoom == 52)) { //0016
+    set(f232)
+  }
+  if (f232 && (vPrevRoom == 53 || vPrevRoom == 57)) { //0024
+    set.view(o0,151)
+    set.loop(o0,1)
+    position(o0,138,99)
+    set(f231)
+    move.obj(o0,136,99,0,f120)
+  }
+  if ((vPrevRoom == 53 || vPrevRoom == 57)) { //0044
+    goto(l85)
+  }
+  set(f230)
+l85:
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0058
+    goto(l105)
+  }
+  clear.lines(23,24,c0)
+l105:
+  reset(f93)
+}
+if (fTriggerLine) { //006b
+  reset(fTriggerLine)
+  if (!f230) { //0073
+    set(f230)
+    set.view(o0,118)
+    reset(f231)
+    v62 = 0
+    v63 = 15
+    repositon(o0,v62,v63)
+  }
+  goto(l168)
+}
+if (f232 && f230) { //008e
+  reset(f230)
+  set.view(o0,151)
+  set(f231)
+  erase(o0)
+  position(o0,81,99)
+  set.loop(o0,0)
+  draw(o0)
+}
+l168:
+if (f128 && has(i14)) { //00a8
+  print("Wouldn't it be a little silly to fire a gun in here?")
+  set(fSaidAccepted)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00b4
+  goto(l586)
+}
+if ((said("check out") || said("check out", "area"))) { //00c2
+  if (f231) { //00d2
+    get.posn(o0,v62,v63)
+    if (v62 > 130) { //00dc
+      current.loop(o0,v64)
+      if (v64 == 0) { //00e6
+        if (vCurrentRoom == 52) { //00ed
+          print("Through the grate you can see into what appears to be the ship's laundry facilities.")
+        }
+        if (vCurrentRoom == 56) { //00f6
+          print("Through the grate you can see into an empty room.")
+        }
+        goto(l260)
+      }
+    }
+  }
+  print("You are in one of the Deltaur's ventilation shafts.")
+}
+l260:
+if (said("check out", "ladder")) { //0104
+  print("You've seen one ladder, you've seen them all.")
+}
+if (said("check out", "wall")) { //0110
+  print("You see nothing special.")
+}
+if (said("check out", "entryway")) { //011c
+  print("It looks as though you've been shafted, %s1.")
+}
+if (said("use", "army knife")) { //0128
+  print("You try to use the knife to pry open the vent, but are unsuccessful.")
+}
+if (said("open", "grate")) { //0134
+  get.posn(o0,v62,v63)
+  if (v62 > 141) { //0142
+    if (f235) { //0149
+      if (vCurrentRoom == 52) { //014f
+        if (f82) { //0156
+          print("It is already open.")
+          goto(l357)
+        }
+        set(f82)
+        print("O.K.")
+      }
+l357:
+      if (vCurrentRoom == 56) { //0165
+        if (f78) { //016c
+          print("It is already open.")
+          goto(l379)
+        }
+        set(f78)
+        print("O.K.")
+      }
+l379:
+      goto(l384)
+    }
+    print("You cannot pry open the grate which seems to be stuck.")
+l384:
+    goto(l389)
+  }
+  print("You cannot reach the grate from here.")
+}
+l389:
+if (said("climb in", "grate")) { //0185
+  print("That's up to you.")
+}
+if (said("close", "grate")) { //0191
+  get.posn(o0,v62,v63)
+  if (v62 > 141) { //019f
+    if (vCurrentRoom == 52) { //01a6
+      if (!f82) { //01ad
+        print("It is already closed.")
+        goto(l445)
+      }
+      reset(f82)
+      print("O.K.")
+    }
+l445:
+    if (vCurrentRoom == 56) { //01bd
+      if (!f78) { //01c4
+        print("It is already closed.")
+        goto(l468)
+      }
+      reset(f78)
+      print("O.K.")
+    }
+l468:
+    goto(l473)
+  }
+  print("You cannot reach the grate from here.")
+}
+l473:
+if ((said("kick", "grate") || said("kick", "open", "grate") || said("kick", "grate", "open"))) { //01d9
+  get.posn(o0,v62,v63)
+  if (v62 < 141) { //01f9
+    print("You cannot reach the grate from here.")
+    goto(l533)
+  }
+  stop.motion(o0)
+  set(f133)
+  set.cel(o0,0)
+  set.loop(o0,1)
+  end.of.loop(o0,f236)
+  sound(38,f120)
+}
+l533:
+if (said("check out", "grate")) { //0215
+  if (vCurrentRoom == 52) { //021f
+    if (f82) { //0226
+      print("It is open.")
+      goto(l563)
+    }
+    print("It is closed.")
+l563:
+    goto(l586)
+  }
+  if (vCurrentRoom == 56) { //0236
+    if (f78) { //023d
+      print("It is open.")
+      goto(l586)
+    }
+    print("It is closed.")
+  }
+}
+l586:
+if (f236) { //024a
+  reset(f236)
+  set.loop(o0,0)
+  reset(f133)
+  start.motion(o0)
+  if (!f235) { //0259
+    print("It looks like you jarred it loose!")
+    set(f235)
+  }
+}
+if (vWhichEgoBorder == 3) { //0264
+  erase(o0)
+  if (vCurrentRoom == 60) { //026d
+    new.room(47)
+    goto(l659)
+  }
+  if (vCurrentRoom == 47) { //0279
+    new.room(52)
+    goto(l659)
+  }
+  if (vCurrentRoom == 52) { //0285
+    new.room(56)
+    goto(l659)
+  }
+  new.room(60)
+}
+l659:
+if (vWhichEgoBorder == 1) { //0293
+  erase(o0)
+  if (vCurrentRoom == 60) { //029c
+    new.room(56)
+    goto(l706)
+  }
+  if (vCurrentRoom == 47) { //02a8
+    new.room(60)
+    goto(l706)
+  }
+  if (vCurrentRoom == 52) { //02b4
+    new.room(47)
+    goto(l706)
+  }
+  new.room(52)
+}
+l706:
+if (vWhichEgoBorder == 2) { //02c2
+  if (vCurrentRoom == 52) { //02c9
+    if (f82) { //02d0
+      erase(o0)
+      new.room(53)
+      goto(l744)
+    }
+    if (!f233) { //02dd
+      print("Your nose has just been redesigned by your ill-advised attempt to insert it into a closed vent.")
+      set(f233)
+    }
+l744:
+    goto(l785)
+  }
+  if (f78) { //02eb
+    erase(o0)
+    if (!f201 && f200) { //02f3
+      reset(f200)
+      vCurrentScore -= 2
+    }
+    new.room(57)
+    goto(l785)
+  }
+  if (!f233) { //0306
+    print("Your nose has just been redesigned by your ill-advised attempt to insert it into a closed vent.")
+    set(f233)
+  }
+}
+l785:
+return()

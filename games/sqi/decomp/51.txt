@@ -1,0 +1,262 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(170)
+  if (v84 != 2) { //0012
+    load.view(176)
+    load.view(183)
+    load.sound(33)
+  }
+  if (v84 != 2) { //0020
+    animate.obj(o2)
+    set.view(o2,176)
+    position(o2,123,120)
+    if (!(v84 > 0)) { //0031
+      set.cel(o2,0)
+    }
+    if (v84 == 1) { //003c
+      set.cel(o2,1)
+    }
+    draw(o2)
+    stop.update(o2)
+  }
+  animate.obj(o1)
+  set.view(o1,170)
+  set.priority(o1,4)
+  position(o1,131,113)
+  draw(o1)
+  move.obj(o1,113,113,0,f38)
+  position(o0,22,124)
+  draw(o0)
+  set(f113)
+  load.logic(119)
+  call(119)
+  show.pic()
+  if (v81 != 3) { //006b
+    v33 = 20
+  }
+}
+if (f128 && has(i14) && f38) { //0076
+  if (f40) { //0080
+    v35 = 15
+    goto(l145)
+  }
+  set(f40)
+  v34 = 10
+}
+l145:
+v34--
+v35--
+if (v34 == 1) { //0095
+  print("The droid explains that although he is not programmed for death, he considers it extremely rude to fire your weapon indoors. He cautions you against doing so again.")
+}
+if (v35 == 1) { //009e
+  print("He did warn you!")
+  set(f34)
+  v36 = 3
+  set(f41)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00ae
+  goto(l649)
+}
+if (has(i15) && said("check out", "bomb")) { //00bc
+  print("Are you crazy!!! If the droid catches you with the stolen grenade, you're dead meat!")
+}
+if (said("speak", "being")) { //00ca
+  print("There are no Sariens here! Perhaps you mean to speak with the Droid?")
+}
+if ((said("check out") || said("check out", "area") || said("check out", "wall"))) { //00d6
+  print("Rows of weapons on the wall tell you that you are in the Deltaur's armory. There is a service droid behind the weapons issue counter.")
+}
+if (said("check out", "counter")) { //00ee
+  if (v84 == 1) { //00f8
+    print("There is now only one gas grenade on the counter.")
+    goto(l274)
+  }
+  if (v84 == 2) { //0104
+    print("It is just an ordinary counter.")
+    goto(l274)
+  }
+  print("There are two gas grenades sitting on the right side of the counter.")
+}
+l274:
+if (!fSaidAccepted && f38) { //0112
+  if (said("check out", "droid")) { //011b
+    print("He is watching you very closely.  You had better play it cool.")
+    goto(l363)
+  }
+  if (said("speak", "droid")) { //012a
+    print("Silly human, you know that droids are not programmed for chit-chat!")
+    goto(l363)
+  }
+  if (!(has(i14)) && said("check out", "gun")) { //0139
+    print("The Service Droid sees you eyeing the laser weapons on the wall and informs you that they are not available to G.I. personnel such as yourself.")
+    goto(l363)
+  }
+  if (said("check out", "bomb")) { //014b
+    print("The Service Droid sees you eyeing the gas grenades on the counter and informs you that they are not available to G.I. personnel such as yourself.")
+    goto(l363)
+  }
+  if (said("attack", "droid")) { //015a
+    print("Very funny!")
+    goto(l363)
+  }
+  reset(fSaidAccepted)
+}
+l363:
+if (f38 && !(has(i13)) && has(i5) && (said("give", "i.d.") || said("give", "card") || said("give", "card", "droid") || said("give", "i.d.", "droid"))) { //016b
+  print("You do not possess a valid Sarien I.D. card.")
+}
+if (f38 && (said("give", "card") || said("give", "card", "droid") || said("give", "i.d.") || said("give", "i.d.", "droid"))) { //0196
+  if (fEgoOnWater) { //01ba
+    if (has(i13)) { //01c0
+      if (f39) { //01c6
+        print("The droid looks you over and responds, \"Sorry, only one weapon per person.\"")
+        goto(l497)
+      }
+      if (v146 == 2) { //01d1
+        v36 = 2
+        set(f34)
+        goto(l497)
+      }
+      set(f39)
+      move.obj(o1,131,113,0,f120)
+      reset(f38)
+      v31 = 100
+      print("\"Excuse me. I shall retrieve your weapon.\"")
+      set(f33)
+l497:
+      goto(l502)
+    }
+    print("You don't have that to %w1.")
+l502:
+    goto(l507)
+  }
+  print("You are not close enough to perform that act.")
+}
+l507:
+if (said("acquire", "bomb")) { //01fb
+  if (v84 != 2) { //0205
+    if (posn(o0,117,135,133,145)) { //020d
+      if (!f38) { //0217
+        if (!(has(i15))) { //021e
+          if (!(v84 > 0)) { //0225
+            set.cel(o2,1)
+            v84 = 1
+            vCurrentScore++
+            goto(l575)
+          }
+          erase(o2)
+          v84 = 2
+          vCurrentScore++
+l575:
+          if (v84 != 2) { //023f
+            force.update(o2)
+          }
+          get(i15)
+          print("Taken.")
+          goto(l594)
+        }
+        print("You already have one.")
+l594:
+        goto(l625)
+      }
+      if (!(v32 > 0)) { //0255
+        print("I am sorry. You may not possess that device. That would be punishable by death.")
+        v32 = 1
+        goto(l625)
+      }
+      if (v32 == 1) { //0265
+        v36 = 1
+        set(f34)
+      }
+l625:
+      goto(l630)
+    }
+    print("You can't do that from here.")
+l630:
+    goto(l635)
+  }
+  print("There is nothing to get.")
+}
+l635:
+if (has(i14) && said("acquire", "gun")) { //027b
+  print("You already have the pulseray.")
+}
+l649:
+v33--
+if ((f34 || v33 == 1)) { //028b
+  reset(f34)
+  set(f151)
+  set.view(o0,183)
+  v64 = 2
+  cycle.time(o0,v64)
+  sound(33,f120)
+  set(f133)
+  stop.motion(o0)
+  end.of.loop(o0,f64)
+}
+if (f64) { //02ad
+  reset(f64)
+  erase(o0)
+  reset(f133)
+  if (v81 != 3) { //02b9
+    v130 = 22
+    goto(l735)
+  }
+  if (v36 == 1) { //02c7
+    print("I warned you.")
+    goto(l732)
+  }
+  if (v36 == 2) { //02d3
+    print("The droid explains as he eliminates you that he is very sorry that you are incapable of remembering that you already own a gun, but that of course he has many customers to deal with and you really are a nuisance. Before you can reply to this, you realize that you no longer have the relevant body parts with which to reply. Your last seconds of agony are spent hearing the phrase, \"Next please.\"")
+  }
+l732:
+  v130 = 27
+}
+l735:
+v31--
+if (v31 == 1) { //02e1
+  move.obj(o1,113,113,0,f38)
+  set(f37)
+}
+if (f38 && fEgoOnWater && f37) { //02f0
+  reset(f37)
+  if (has(i14)) { //02fc
+    print("Sorry. My records indicate that a weapon has already been signed out in your name.")
+    goto(l805)
+  }
+  get(i14)
+  vCurrentScore += 3
+  print("\"Your rank allows you to bear 1 Pulseray unit. Remember, no firing in the ship. Have a nice day.\"")
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //030e
+    print("Press F6 when you want to fire the Pulseray.")
+    goto(l805)
+  }
+  clear.lines(24,24,c0)
+  display(24,10,"F6 to fire Pulseray")
+l805:
+  v146++
+}
+if (fEgoOnWater && !f36) { //0327
+  set(f36)
+  print("\"Welcome to the Weapons dispensary. I will assist you. Please supply me with your identification card.\"")
+}
+if (!f42 && f37 && has(i15)) { //0334
+  get.posn(o0,v62,v63)
+  if (v63 < 139 && v63 > 112 && v62 < 40) { //0343
+    print("\"Stop, thief!\" shouts the Droid as he notices you sneaking out suspiciously and observes that a gas grenade has been taken. Before you can explain that you were just taking it outside for a better look, the Droid evaporates you.")
+    set(f34)
+    set(f42)
+  }
+}
+if (!fNewRoom) { //0356
+  call(119)
+}
+if (vWhichEgoBorder == 4) { //035f
+  reset(f113)
+  new.room(50)
+}
+return()

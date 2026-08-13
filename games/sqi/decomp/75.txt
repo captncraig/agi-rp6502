@@ -1,0 +1,405 @@
+if (fNewRoom) { //0002
+  set.string(str0," ")
+  set.cursor.char(" ")
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(113)
+  call(113)
+  load.logic(114)
+  load.logic(115)
+  load.view(92)
+  load.view(112)
+  load.sound(28)
+  animate.obj(o9)
+  set.view(o9,92)
+  set.cel(o9,0)
+  ignore.objs(o9)
+  position(o9,52,154)
+  set.priority(o9,4)
+  stop.cycling(o9)
+  animate.obj(o8)
+  set.view(o8,112)
+  set.loop(o8,0)
+  set.cel(o8,0)
+  ignore.objs(o8)
+  position(o8,65,158)
+  set(f198)
+  show.pic()
+  v33 = 3
+  v35 = 1
+  v34 = 100
+  v54 = 33
+  v131 = 18
+  v132 = 13
+  v126 = 255
+  reset(f134)
+  disable.member(c22)
+}
+if ((f193 || f198)) { //0063
+  reset(f193)
+  reset(f198)
+  erase(o9)
+  set.cel(o9,0)
+  stop.cycling(o9)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0078
+    display(18,13,"               ")
+    display(19,13,"               ")
+    display(20,13,"               ")
+    display(21,13,"               ")
+    goto(l165)
+  }
+  display(16,13,"               ")
+  display(17,13,"               ")
+  display(18,13,"               ")
+  display(19,13,"               ")
+l165:
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00a5
+    clear.lines(1,2,c0)
+    display(1,15,"F10 To Quit")
+    display(2,0," F4 Bets $1    F6 Bets $2    F8 Bets $3")
+    goto(l202)
+  }
+  clear.lines(22,24,c0)
+  display(23,15,"F10 To Quit")
+  display(24,0," F4 Bets $1    F6 Bets $2    F8 Bets $3")
+l202:
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00ca
+    display(19,19," Wins 1   ")
+    display(20,19," Wins 3   ")
+    display(21,19," Wins 5   ")
+    goto(l239)
+  }
+  display(17,19," Wins 1   ")
+  display(18,19," Wins 3   ")
+  display(19,19," Wins 5   ")
+l239:
+  draw(o9)
+  stop.cycling(o9)
+  v33 = 3
+  v35 = 1
+  v34 = 100
+}
+if (!f129) { //00fc
+  goto(l345)
+}
+if (f129) { //0106
+  set(fSaidAccepted)
+  if (!f124 && !f123 && !f126) { //010e
+    v34 = 0
+    v123 = 1
+    if (v123 > v124) { //0121
+      if (v124 == 0) { //0128
+        print("You're broke!  Hit the road, freeloader!")
+        enable.member(c22)
+        new.room(70)
+        goto(l314)
+      }
+      print("Sorry, you don't have enough to bet that much.")
+l314:
+      goto(l345)
+    }
+    set(f124)
+    prevent.input()
+    if ((v35 == 1 || v35 == 2 || v35 == 3)) { //0140
+      erase(o9)
+    }
+    v35 = 6
+    v32 = 250
+    call(114)
+  }
+}
+l345:
+if (!f128) { //0159
+  goto(l435)
+}
+if (f128) { //0163
+  set(fSaidAccepted)
+  if (!f124 && !f123 && !f126) { //016b
+    v34 = 0
+    v123 = 2
+    if (v123 > v124) { //017e
+      if (v124 == 0) { //0185
+        print("You're broke!  Hit the road, freeloader!")
+        enable.member(c22)
+        new.room(70)
+        goto(l407)
+      }
+      print("Sorry, you don't have enough to bet that much.")
+l407:
+      goto(l435)
+    }
+    set(f124)
+    prevent.input()
+    if ((v35 == 1 || v35 == 2)) { //019d
+      erase(o9)
+    }
+    v35 = 6
+    v32 = 250
+    call(114)
+  }
+}
+l435:
+if (!f130) { //01b3
+  goto(l525)
+}
+if (f130) { //01bd
+  set(fSaidAccepted)
+  if (!f124 && !f123 && !f126) { //01c5
+    v34 = 0
+    v123 = 3
+    if (v123 > v124) { //01d8
+      if (v124 == 0) { //01df
+        print("You're broke!  Hit the road, freeloader!")
+        enable.member(c22)
+        new.room(70)
+        goto(l497)
+      }
+      print("Sorry, you don't have enough to bet that much.")
+l497:
+      goto(l525)
+    }
+    set(f124)
+    prevent.input()
+    if ((v35 == 1 || v35 == 2)) { //01f7
+      erase(o9)
+    }
+    v35 = 6
+    v32 = 250
+    call(114)
+  }
+}
+l525:
+if ((!fEnteredCommand || fSaidAccepted)) { //020d
+  goto(l619)
+}
+if (said("check out", "area")) { //021b
+  print("You are presently standing in front of a slot machine.")
+}
+if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0227
+  goto(l607)
+}
+if (said("holy", "asshole")) { //0234
+  v121 = 134
+  clear.lines(23,24,c0)
+  display(23,0,"1 = Skulls    2 = Cherries")
+  display(24,0,"3 = Diamonds  4 = Eyes")
+  get.num(str2,v122)
+  lindirectv(v121,v122)
+  clear.lines(23,24,c0)
+  display(23,15,"F10 To Quit")
+  display(24,0," F4 Bets $1    F6 Bets $2    F8 Bets $3")
+}
+l607:
+if (said("done")) { //025f
+  enable.member(c22)
+  new.room(70)
+}
+l619:
+if (f124 && !f95) { //026b
+  set(f95)
+}
+v30--
+if (v30 == 1) { //0278
+  if (v35 == 4) { //027f
+    v35 = 3
+    v34 = 100
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //028c
+      display(18,13,"  To Cash In   ")
+      display(19,13,"               ")
+      display(20,13,"  Press \"F10\"  ")
+      display(21,13,"               ")
+      goto(l697)
+    }
+    display(16,13,"  To Cash In   ")
+    display(17,13,"               ")
+    display(18,13,"  Press \"F10\"  ")
+    display(19,13,"               ")
+  }
+l697:
+  if (v35 == 2) { //02b9
+    v35 = 4
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //02c3
+      display(18,13,"Bet           ")
+      display(19,13," 1 = 1x Payoff")
+      display(20,13," 2 = 2x   \"   ")
+      display(21,13," 3 = 3x   \"   ")
+      goto(l752)
+    }
+    display(16,13,"Bet           ")
+    display(17,13," 1 = 1x Payoff")
+    display(18,13," 2 = 2x   \"   ")
+    display(19,13," 3 = 3x   \"   ")
+l752:
+    v30 = 100
+  }
+  if (v35 == 1) { //02f3
+    v35 = 2
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //02fd
+      display(18,20,"        ")
+      display(19,19," Wins 20  ")
+      display(20,19," Wins 10  ")
+      display(21,19," = DEATH! ")
+      goto(l810)
+    }
+    display(16,20,"        ")
+    display(17,19," Wins 20  ")
+    display(18,19," Wins 10  ")
+    display(19,19," = DEATH! ")
+l810:
+    v34 = 100
+  }
+}
+v34--
+if (v34 == 1) { //032f
+  if (v35 == 1) { //0336
+    position(o9,52,154)
+    set.cel(o9,1)
+    stop.cycling(o9)
+    v30 = 2
+  }
+  if (v35 == 3) { //0349
+    v35 = 1
+    v34 = 100
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0356
+      display(18,13,"               ")
+      display(19,13,"               ")
+      display(20,13,"               ")
+      goto(l891)
+    }
+    display(16,13,"               ")
+    display(17,13,"               ")
+    display(18,13,"               ")
+l891:
+    set.cel(o9,0)
+    position(o9,52,154)
+    draw(o9)
+    stop.cycling(o9)
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0386
+      display(19,19," Wins 1   ")
+      display(20,19," Wins 3   ")
+      display(21,19," Wins 5   ")
+      goto(l939)
+    }
+    display(17,19," Wins 1   ")
+    display(18,19," Wins 3   ")
+    display(19,19," Wins 5   ")
+  }
+l939:
+  if (v35 == 2) { //03ab
+    erase(o9)
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //03b4
+      display(18,20,"        ")
+      goto(l969)
+    }
+    display(16,20,"        ")
+l969:
+    v30 = 2
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //03cc
+      display(18,13,"               ")
+      display(19,13,"               ")
+      display(20,13,"               ")
+      display(21,13,"               ")
+      goto(l1017)
+    }
+    display(16,13,"               ")
+    display(17,13,"               ")
+    display(18,13,"               ")
+    display(19,13,"               ")
+  }
+}
+l1017:
+if (v35 == 6) { //03f9
+  v32--
+  if (v32 == 1) { //0402
+    v32 = 250
+    v33--
+    if (v33 == 1) { //040e
+      v32 = 0
+      v33 = 3
+      if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //041b
+        display(18,13,"               ")
+        display(19,13,"               ")
+        display(20,13,"               ")
+        display(21,13,"               ")
+        goto(l1096)
+      }
+      display(16,13,"               ")
+      display(17,13,"               ")
+      display(18,13,"               ")
+      display(19,13,"               ")
+l1096:
+      v34 = 9
+      v35 = 3
+    }
+  }
+}
+if (f233) { //044e
+  reset(f233)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0456
+    display(18,13,"               ")
+    display(19,13,"               ")
+    display(20,13,"               ")
+    display(21,13,"               ")
+    goto(l1155)
+  }
+  display(16,13,"               ")
+  display(17,13,"               ")
+  display(18,13,"               ")
+  display(19,13,"               ")
+l1155:
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0483
+    goto(l1172)
+  }
+  clear.lines(22,24,c0)
+l1172:
+  display(24,10,"YOU LOSE, HOMEBOY!!!")
+  draw(o8)
+  end.of.loop(o8,f30)
+}
+if (f31) { //049d
+  reset(f31)
+  stop.cycling(o8)
+  v31 = 9
+  sound(28,f162)
+}
+v31--
+if (v31 == 1) { //04af
+  stop.sound()
+  set.loop(o8,0)
+  last.cel(o8,v64)
+  set.cel(o8,v64)
+  v36 = 0
+  v37 = 247
+  repositon(o8,v36,v37)
+  stop.cycling(o8)
+  v38 = 9
+}
+v38--
+if (v38 == 1) { //04d1
+  set(f125)
+  enable.member(c22)
+  new.room(70)
+}
+if (f30) { //04de
+  reset(f30)
+  set.loop(o8,1)
+  v36 = 0
+  v37 = 9
+  repositon(o8,v36,v37)
+  end.of.loop(o8,f31)
+}
+if (f126) { //04f6
+  call(113)
+}
+if (f134) { //04fe
+  call(115)
+}
+if (!f124 && !f123 && !f126) { //0506
+  if (controller(c29)) { //0513
+    enable.member(c22)
+    new.room(70)
+  }
+}
+return()

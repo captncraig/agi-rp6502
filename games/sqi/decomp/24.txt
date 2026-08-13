@@ -1,0 +1,456 @@
+if (fNewRoom) { //0002
+  reset(f182)
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(252)
+  load.view(131)
+  load.view(69)
+  load.sound(18)
+  load.sound(19)
+  load.sound(9)
+  if (v82 == 1 && f97) { //001e
+    load.view(46)
+    load.view(47)
+  }
+  if (f97 && v82 != 1) { //002b
+    load.logic(110)
+    call(110)
+  }
+  if (v82 < 2) { //0039
+    set(f38)
+    if (f97 && !(v82 > 0)) { //0042
+      reset(f38)
+    }
+  }
+  if (f38) { //004e
+    load.view(49)
+    load.view(51)
+    load.view(128)
+    load.view(129)
+    load.view(208)
+    animate.obj(o1)
+    set.view(o1,49)
+    object.on.land(o1)
+    if (!f161 && f97) { //0065
+      set.loop(o1,2)
+      position(o1,131,83)
+      draw(o1)
+      move.obj(o1,100,83,0,f31)
+      v30 = 4
+      goto(l147)
+    }
+    v64 = 2
+    step.size(o1,v64)
+    position(o1,101,125)
+    draw(o1)
+    follow.ego(o1,10,f30)
+  }
+l147:
+  if (!f161 && f97 && v82 == 1) { //0093
+    animate.obj(o3)
+    set.view(o3,46)
+    position(o3,42,89)
+    v32 = 36
+    ignore.blocks(o3)
+  }
+  animate.obj(o2)
+  set.view(o2,252)
+  set.cel(o2,0)
+  stop.cycling(o2)
+  set.priority(o2,15)
+  ignore.objs(o2)
+  animate.obj(o4)
+  set.view(o4,131)
+  position(o4,133,128)
+  if (v82 == 2 && !(has(i4))) { //00c5
+    draw(o4)
+  }
+  position(o0,17,135)
+  move.obj(o0,17,138,0,f39)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00de
+    goto(l239)
+  }
+  clear.lines(23,24,c0)
+l239:
+  get.posn(o0,v98,v99)
+}
+if (f39) { //00f3
+  reset(f39)
+  move.obj(o0,20,138,0,f40)
+}
+if (f40) { //0101
+  reset(f40)
+}
+if (f36) { //0109
+  reset(f36)
+}
+if (f35) { //0111
+  current.cel(o1,v37)
+  if (v37 == 1) { //011a
+    sound(18,f36)
+  }
+}
+if (f37) { //0124
+  current.cel(o1,v126)
+  if (v126 == 2) { //012d
+    reset(f37)
+    sound(19,f162)
+  }
+}
+if (!f161) { //0139
+  if (!f45) { //0140
+    if (f97 && !(obj.in.box(o0,0,145,22,162)) && !(obj.in.box(o0,0,163,54,167))) { //0147
+      get.posn(o0,v135,v136)
+      distance(o0,o3,v35)
+      distance(o0,o1,v36)
+      if (v35 < 13) { //0167
+        set(f45)
+        normal.motion(o1)
+        stop.cycling(o1)
+        stop.motion(o1)
+        v30 = 0
+        set.view(o3,69)
+        end.of.loop(o3,f32)
+        sound(9,f162)
+        erase(o0)
+        set(f44)
+        v34 = 4
+        reset(f97)
+        set(f33)
+      }
+      if (v36 < 11) { //018d
+        set(f45)
+        set(f30)
+        normal.motion(o3)
+        normal.motion(o1)
+        stop.cycling(o3)
+        stop.motion(o3)
+        reset(f97)
+      }
+    }
+  }
+}
+v32--
+if (v32 == 1) { //01a4
+  draw(o3)
+  move.obj(o3,5,126,0,f32)
+  start.cycling(o1)
+  v34 = 1
+}
+if (f32) { //01b8
+  reset(f32)
+  if (v34 == 2) { //01c0
+    move.obj(o3,20,133,0,f32)
+    v34 = 3
+    goto(l506)
+  }
+  if (v34 == 1) { //01d3
+    move.obj(o3,5,133,0,f32)
+    v34 = 2
+    goto(l506)
+  }
+  if (v34 == 4) { //01e6
+    erase(o3)
+    print("You've just been molecularly re-distributed by the spider droid. Tough luck, %s1.")
+    v130 = 10
+    goto(l506)
+  }
+  set.view(o3,47)
+}
+l506:
+if (f30) { //01fa
+  reset(f30)
+  set(f43)
+  print("\"What have we here?\"")
+  vEgoDir = 0
+  stop.motion(o0)
+  program.control()
+  v64 = 5
+  cycle.time(o1,v64)
+  set.view(o1,128)
+  set.cel(o1,0)
+  erase(o0)
+  end.of.loop(o1,f31)
+  v30 = 2
+}
+if ((!fEnteredCommand || fSaidAccepted || f42)) { //0220
+  goto(l1103)
+}
+if ((said("check out", "area") || said("check out", "area"))) { //0230
+  print("You are in the slimiest of caves. The odor in here is less than desirable.")
+  if (f75 && obj.in.box(o0,119,120,151,150) && !(has(i4))) { //0244
+    print("On the ground rests a gleaming chunk of Orat's anatomy.")
+  }
+}
+if (said("check out", "wall")) { //0255
+  if (f75) { //025f
+    print("The walls are solid rock. You notice a fine spray of glistening, metallic jelly.")
+    goto(l620)
+  }
+  print("The walls are solid rock.")
+}
+l620:
+if ((said("check out", "floor") || said("check out", "dirt"))) { //026c
+  if (f75 && obj.in.box(o0,119,120,151,150) && !(has(i4))) { //027e
+    print("On the ground rests a gleaming chunk of Orat's anatomy.")
+    goto(l660)
+  }
+  print("It looks like the rest of the ground around here. The green spots indicate that there is a little moisture.")
+}
+l660:
+if (said("check out", "boulder")) { //0294
+  print("It is very large and very hard.")
+}
+if (f38) { //02a0
+  if (said("speak", "orat")) { //02a6
+    print("Orat is a guy of few words and none of them are for you.")
+  }
+  if (said("attack", "orat")) { //02b2
+    print("How do you intend to do that.")
+  }
+  if ((said("cast", "army knife") || said("cast", "army knife", "orat"))) { //02be
+    print("This knife wouldn't cut hot margarine. Were you hoping he might die from an infected bruise?")
+  }
+}
+if (f38 && !(v82 > 1)) { //02d4
+  if (said("check out", "orat")) { //02de
+    print("Orat is huge and ugly. Of course, your opinion may differ depending on what part of the universe you come from. It should also be mentioned that he is quite mean.")
+  }
+}
+if (f97) { //02ea
+  if (said("check out", "spider")) { //02f0
+    print("You shiver at the sight of the spider droid with its spindly legs and cold metallic body. Its red scanner probing the terrain for anything that moves. Truly an icon of terror.")
+  }
+}
+if (said("climb", "boulder")) { //02fc
+  print("You are unable to do that.")
+}
+if (said("move", "boulder")) { //0308
+  print("You have trouble moving your own carcass around. You sure can't move something that weighs several times more than you.")
+}
+if (said("dig", "entryway")) { //0314
+  print("There is no need for you to do that.")
+}
+if ((said("acquire", "orat", "chunk") || said("acquire", "chunk", "orat") || said("acquire", "chunk"))) { //0320
+  if (f75) { //033c
+    if (obj.in.box(o0,112,115,152,142)) { //0342
+      if (!(has(i4))) { //034c
+        vCurrentScore += 2
+        erase(o4)
+        get(i4)
+        print("You reach down and take the Orat part in your hand. Some of it oozes to fill the space between your fingers.")
+        goto(l865)
+      }
+      print("You'd want MORE of THAT? You are truly twisted. Seek a physician when you hit town.")
+l865:
+      goto(l870)
+    }
+    print("It's too far away.")
+l870:
+    goto(l875)
+  }
+  print("You're going to have to go one-on-one against Orat for something like that?")
+}
+l875:
+if (f38 && !f35) { //036b
+  if ((said("give", "dehydrated water") || said("give", "dehydrated water", "orat") || said("give", "can", "orat") || said("give", "can") || said("give", "dehydrated water", "can", "orat") || said("give", "dehydrated water", "can"))) { //0374
+    print("Get closer.")
+  }
+  if ((said("cast", "can") || said("cast", "dehydrated water") || said("cast", "can", "orat") || said("cast", "dehydrated water", "orat") || said("cast", "can", "dehydrated water", "orat") || said("cast", "dehydrated water", "can", "orat") || said("cast", "dehydrated water", "can"))) { //03aa
+    if (has(i12)) { //03e8
+      if (!f97) { //03ee
+        distance(o0,o1,v39)
+        if ((v39 < 15 || f43)) { //03f9
+          print("That would be ineffective now.")
+          goto(l1482)
+        }
+        v82 = 2
+        normal.motion(o0)
+        program.control()
+        stop.motion(o0)
+        get.posn(o0,v135,v136)
+        v135 += 9
+        v136 -= 15
+        position(o2,135,v136)
+        draw(o2)
+        drop(i12)
+        normal.motion(o1)
+        stop.motion(o1)
+        stop.cycling(o1)
+        get.posn(o1,v62,v63)
+        v63 -= 25
+        v64 = 5
+        move.obj(o2,v62,v63,64,f41)
+        program.control()
+        stop.motion(o0)
+        prevent.input()
+        set(f42)
+        v147 = 181
+        v148 = 61
+        goto(l1098)
+      }
+      print("No time for that!")
+l1098:
+      goto(l1103)
+    }
+    print("You don't seem to have that.")
+  }
+}
+l1103:
+if (f41) { //044f
+  reset(f41)
+  erase(o2)
+  drop(i12)
+  v64 = 3
+  cycle.time(o1,v64)
+  set.view(o1,51)
+  set.loop(o1,0)
+  v62 = 4
+  v63 = 0
+  repositon(o1,v62,v63)
+  set.cel(o1,2)
+  end.of.loop(o1,f31)
+  v30 = 8
+}
+v38--
+if (v38 == 1) { //047c
+  if (v30 == 10) { //0483
+    player.control()
+    accept.input()
+    reset(f42)
+    start.motion(o0)
+    print("Orat's eyes prove to be bigger than his stomach for once. Incapable of becoming history's first living reservoir, his body succumbs to the intense internal pressure created by nearly ten gallons of instantly reconstituted water. As a special bonus, you have received a much needed shower!")
+  }
+  if (v30 == 9) { //0492
+    v64 = 1
+    cycle.time(o1,v64)
+    set.view(o1,69)
+    v62 = 254
+    v63 = 251
+    repositon(o1,v62,v63)
+    set.cel(o1,0)
+    end.of.loop(o1,f31)
+    v30 = 10
+  }
+  if (v30 == 8) { //04b5
+    end.of.loop(o1,f31)
+    v30 = 9
+  }
+}
+if (f31) { //04c2
+  reset(f31)
+  if (v30 == 10) { //04ca
+    erase(o1)
+    draw(o4)
+    set(f75)
+    vCurrentScore += 5
+    v38 = 18
+  }
+  if (v30 == 9) { //04dd
+    v38 = 27
+  }
+  if (v30 == 8) { //04e7
+    set.view(o1,208)
+    set.loop(o1,0)
+    set.cel(o1,3)
+    stop.cycling(o1)
+    v38 = 27
+    print("Orat, always in the mood for a snack, snatches the can out of the air with his spacious oral cavity, chews and swallows it. He notices a rumbling deep within his abdomen.")
+  }
+  if (v30 == 7) { //04fe
+    erase(o3)
+    reset(f97)
+    draw(o4)
+    set(f161)
+    print("The cave interior now features a lovely new Jagged Metal/Liberated Entrails motif. The stench? Whew! Not even an all-text adventure would attempt that description.")
+    if (f44) { //050f
+      print("It's a darn shame you're not around to enjoy it. You'll have to be more careful about who you hang around with in the future, %s1.")
+      v130 = 27
+    }
+  }
+  if (v30 == 6) { //051a
+    normal.motion(o3)
+    normal.motion(o1)
+    set(f75)
+    v82 = 2
+    set(f33)
+    set.view(o3,69)
+    sound(9,f162)
+    if (!f165) { //0532
+      set(f165)
+      vCurrentScore += 10
+    }
+    v64 = 2
+    cycle.time(o3,v64)
+    set.cel(o3,0)
+    end.of.loop(o3,f31)
+    erase(o1)
+    v30 = 7
+  }
+  if (v30 == 1) { //054f
+    set.view(o1,49)
+    v64 = 1
+    cycle.time(o1,v64)
+    start.cycling(o1)
+    v64 = 2
+    step.size(o1,v64)
+    set.loop(o1,1)
+    ignore.objs(o1)
+    reset(f64)
+    move.obj(o1,55,134,0,f64)
+    set.view(o3,46)
+    move.obj(o3,45,134,0,f31)
+    v30 = 6
+  }
+  if (v30 == 5) { //0580
+    stop.cycling(o1)
+    set.view(o1,51)
+    set.cel(o1,0)
+    end.of.loop(o1,f31)
+    set(f37)
+    v64 = 3
+    cycle.time(o1,v64)
+    v30 = 1
+  }
+  if (v30 == 4) { //059d
+    move.obj(o1,104,134,0,f31)
+    v30 = 5
+  }
+  if (v30 == 2) { //05ad
+    set.view(o1,129)
+    set.cel(o1,0)
+    start.cycling(o1)
+    v64 = 2
+    cycle.time(o1,v64)
+    sound(18,f36)
+    set(f35)
+    v31 = 63
+  }
+}
+l1482:
+v31--
+if (v31 == 1) { //05cc
+  reset(f35)
+  print("Orat has transformed you into a new source of recreation.  You, of course, don't survive this treatment. It's tough to make friends around here.")
+  v130 = 20
+}
+if (fTriggerLine) { //05da
+  reset(f102)
+  if (!f103) { //05e2
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //05ee
+    reset(f101)
+    set(f97)
+  }
+  new.room(20)
+}
+if (f97 && v82 != 1 && !f33) { //05fa
+  call(110)
+}
+return()

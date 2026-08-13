@@ -1,0 +1,1141 @@
+if (vErrorCode > 0) { //0002
+  call(98)
+}
+if (vCurrentRoom == 0) { //000b
+  vCycleTime = 2
+  call(104)
+  if (fRestartGame) { //0017
+    v77 = 2
+    set(f14)
+    disable.member(c20)
+    new.room(2)
+    goto(l143)
+  }
+  set.menu("Sierra")
+  set.menu.member("About SQ",c21)
+  set.menu.member("Help    ",c2)
+  set.menu("File")
+  set.menu.member("Save     <F5>",c3)
+  set.menu.member("Restore  <F7>",c5)
+  set.menu.member("-------------",c20)
+  set.menu.member("Restart  <F9>",c7)
+  set.menu.member("Quit  <Alt-Z>",c1)
+  set.menu("Action")
+  set.menu.member("See Object  <F4>",c22)
+  set.menu.member("Inventory  <Tab>",c10)
+  set.menu("Special")
+  set.menu.member("Sound On/Off      <F2>",c16)
+  if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //004f
+    set.menu.member("Graphics Mode <Ctrl R>",c12)
+  }
+  if (vComputerType == ATARI_ST) { //0061
+    set.menu.member("Controller     <Ctrl J>",c15)
+    goto(l113)
+  }
+  set.menu.member("Joystick      <Ctrl J>",c15)
+l113:
+  set.menu.member("Pause            <Esc>",c18)
+  if (vComputerType != AMIGA) { //0074
+    set.menu("Speed")
+    set.menu.member("Normal ",c24)
+    set.menu.member("Slow   ",c25)
+    set.menu.member("Fast   ",c23)
+    set.menu.member("Fastest",c28)
+  }
+  submit.menu()
+  disable.member(c20)
+  new.room(67)
+}
+l143:
+if (fNewRoom) { //008f
+  reset(f190)
+  animate.obj(o0)
+  if ((v81 > 0 || vCurrentRoom > 7)) { //0099
+    if (vCurrentRoom != 10 && vCurrentRoom != 12 && vCurrentRoom != 13 && vCurrentRoom != 14 && vCurrentRoom != 75) { //00a5
+      load.view(0)
+    }
+  }
+  load.view(vEgoView)
+  if (vCurrentRoom > 39 && has(i9)) { //00c1
+    load.view(132)
+  }
+  if (!f92) { //00cc
+    if (vCurrentRoom > 14 && vCurrentRoom < 24) { //00d3
+      load.view(163)
+    }
+    if ((vCurrentRoom == 30 || vCurrentRoom == 81 || vCurrentRoom == 82 || vCurrentRoom == 83)) { //00df
+      load.view(163)
+    }
+  }
+  set.view(o0,vEgoView)
+  observe.objs(o0)
+  v138 = 0
+  v64 = 0
+  v126 = 0
+  v87 = 0
+  v55 = 0
+  reset(f64)
+  reset(f162)
+  v133 = 30
+l270:
+  lindirectn(v133,0)
+  reset(v133)
+  if (v133 < 49) { //0113
+    v133++
+    goto(l270)
+    goto(l310)
+  }
+  v133 = 230
+l293:
+  lindirectn(v133,0)
+  reset(v133)
+  if (v133 < 249) { //012a
+    v133++
+    goto(l293)
+  }
+}
+l310:
+if (v130 > 0) { //0136
+  if (v130 != 8) { //013d
+    disable.member(c3)
+    disable.member(c18)
+    disable.member(c16)
+    disable.member(c22)
+    disable.member(c15)
+    disable.member(c12)
+    disable.member(c24)
+    disable.member(c28)
+    disable.member(c23)
+    disable.member(c25)
+    load.logic(100)
+  }
+  call(100)
+  return()
+}
+if (f198) { //015e
+  reset(f198)
+}
+if (f116) { //0166
+  reset(f116)
+  set(f198)
+  if (vMonitorType == HERCULES) { //0170
+    if (vCurrentRoom == 75) { //0177
+      set(f193)
+      set(f198)
+    }
+  }
+}
+if (!f95 && !f189 && !f50) { //0182
+  if (controller(c19)) { //018f
+    set(f116)
+    menu.input()
+  }
+}
+if (controller(c21)) { //0198
+  print("Space Quest was designed and created by Mark Crowe and Scott Murphy.")
+}
+if ((said("fastest") || controller(c28))) { //01a0
+  vCycleTime = 0
+}
+if ((said("fast") || controller(c23))) { //01af
+  vCycleTime = 1
+}
+if ((said("normal") || controller(c24))) { //01be
+  vCycleTime = 2
+}
+if ((said("slow") || controller(c25))) { //01cd
+  vCycleTime = 4
+}
+if (!f190) { //01dc
+  if (controller(c13)) { //01e3
+    show.mem()
+  }
+}
+if (controller(c26)) { //01ea
+  vSoundVolume--
+}
+if (controller(c27)) { //01f2
+  if (vSoundVolume < 15) { //01f8
+    vSoundVolume++
+  }
+}
+if (vCurrentRoom != 75 && !f189 && !f50) { //0201
+  if ((controller(c22) || controller(c4))) { //020f
+    if (vCurrentRoom == 37 && f60 && f65 && f97) { //0219
+      print("Sorry. Can't see an object right now. Try later.")
+      goto(l636)
+    }
+    set(f13)
+    status()
+    if (vStatusItem > 0 && vStatusItem != 255) { //022e
+      v64 = vStatusItem
+      v64 += 214
+      set(f198)
+      if (v64 == 225) { //0241
+        show.obj(225)
+        get(i19)
+        get(i12)
+        drop(i11)
+        get(i22)
+        goto(l634)
+      }
+      if (v64 == 236) { //0255
+        show.obj(186)
+        goto(l634)
+      }
+      if (v64 == 217) { //0261
+        if (f154) { //0268
+          show.obj(199)
+          goto(l629)
+        }
+        show.obj(217)
+l629:
+        goto(l634)
+      }
+      show.obj(v64)
+    }
+l634:
+    reset(f13)
+l636:
+    goto(l647)
+  }
+  if (controller(c4)) { //027f
+    set(f129)
+  }
+l647:
+  goto(l658)
+}
+if (controller(c4)) { //028a
+  set(f129)
+}
+l658:
+if (controller(c16)) { //0292
+  toggle(f9)
+}
+if (controller(c12)) { //029a
+  toggle.monitor()
+}
+if (vCurrentRoom != 67 && !f187) { //02a1
+  if (!f190) { //02ac
+    if (controller(c14)) { //02b3
+      set(f190)
+      print("%s4")
+      version()
+      load.logic(99)
+    }
+  }
+  if (controller(c6)) { //02c0
+    set(f128)
+  }
+  if (controller(c8)) { //02c8
+    set(f130)
+  }
+  if ((controller(c3) || said("rescue", "game"))) { //02d0
+    if (!f189 && !f50) { //02de
+      stop.sound()
+      save.game()
+      set(f198)
+      if (vCurrentRoom == 75) { //02ec
+        set(f193)
+      }
+    }
+  }
+  if ((controller(c5) || said("restore", "game"))) { //02f5
+    if (!f189 && !f50) { //0303
+      set(f198)
+      if (vCurrentRoom == 75) { //030f
+        set(f193)
+      }
+      stop.sound()
+      restore.game()
+      set(f198)
+    }
+  }
+  if ((controller(c7) || said("restart", "game"))) { //031c
+    if (!f189 && !f50) { //032a
+      set(f198)
+      restart.game()
+      set(f198)
+      if (vCurrentRoom == 75) { //0339
+        set(f193)
+      }
+    }
+  }
+  if ((controller(c2) || said("aid") || said("aid", "a"))) { //0342
+    if (!f189 && !f50) { //0354
+      call(92)
+      set(f198)
+      if (vCurrentRoom == 75) { //0362
+        set(f193)
+      }
+    }
+  }
+  if (controller(c9)) { //036b
+    echo.line()
+  }
+  if (controller(c17)) { //0372
+    cancel.line()
+  }
+  if (controller(c15)) { //0379
+    init.joy()
+  }
+  if ((controller(c18) || said("pause", "game"))) { //0380
+    if (!f189 && !f50) { //038e
+      pause()
+      if (vCurrentRoom == 75) { //0399
+        set(f193)
+      }
+    }
+  }
+  if (controller(c10)) { //03a2
+    if (!f189 && !f50) { //03a8
+      status()
+      set(f198)
+      if (vCurrentRoom == 75) { //03b5
+        set(f193)
+        goto(l1004)
+      }
+      if (vCurrentRoom == 65) { //03c1
+        set(f115)
+        goto(l1004)
+      }
+      if (has(i14) && vCurrentRoom != 65 && vCurrentRoom != 64) { //03cd
+        if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //03db
+          goto(l1004)
+        }
+        display(24,10,"F6 to fire Pulseray")
+      }
+    }
+  }
+l1004:
+  if ((controller(c1) || said("quit"))) { //03ec
+    stop.sound()
+    if ((f190 || f189 || f50)) { //03f9
+      quit(1)
+      goto(l1045)
+    }
+    quit(0)
+    if (vCurrentRoom == 75) { //040c
+      set(f193)
+    }
+  }
+}
+l1045:
+if (vCurrentRoom > 33) { //0415
+  if ((said("check out", "pocket") || said("look in", "clothes") || said("look in", "pocket") || said("check out", "clothes"))) { //041c
+    if (v81 == 3) { //043a
+      if (!(has(i13))) { //0441
+        get(i13)
+        print("In the pocket of this%m2 is an alien %m5card. The name on the card is Butston Freem. You wonder if this is a common%m3 name.")
+        goto(l1105)
+      }
+      print("There is an alien %m5card there.")
+l1105:
+      goto(l1110)
+    }
+    print("Searching your pocket you find $%v124.")
+  }
+}
+l1110:
+get.posn(o0,v153,v154)
+if (vEgoDir == v150 && v153 == v151 && v154 == v152) { //045a
+  stop.cycling(o0)
+  goto(l1141)
+}
+if (!f56) { //046c
+  start.cycling(o0)
+}
+l1141:
+v151 = v153
+v152 = v154
+v150 = vEgoDir
+if (f133) { //047e
+  start.cycling(o0)
+  goto(l1175)
+}
+if ((!(vEgoDir > 0) || f56)) { //0489
+  stop.cycling(o0)
+}
+l1175:
+v145--
+if (v145 == 1) { //0499
+  v145 = 255
+  v144--
+  if (v144 == 0) { //04a5
+    shake.screen(2)
+    set(f186)
+    shake.screen(1)
+    new.room(77)
+  }
+}
+if ((f86 || f89)) { //04b4
+  if ((vCurrentRoom > 11 || f79)) { //04be
+    reset(f86)
+    goto(l1331)
+  }
+  if (!f72) { //04ce
+    if (!(v76 > 0)) { //04d5
+      v76 = 9
+      if (v75 > 0) { //04e0
+        v75--
+        goto(l1329)
+      }
+      if (v74 > 0) { //04ec
+        v74--
+        v75 = 9
+        goto(l1329)
+      }
+      if (v73 > 0) { //04fb
+        v73--
+        v74 = 5
+        v75 = 9
+        goto(l1329)
+      }
+      if (v77 > 0) { //050d
+        v77--
+        v73 = 9
+        v74 = 5
+        v75 = 9
+        goto(l1329)
+      }
+      if ((f50 || f189)) { //0522
+        graphics()
+      }
+      shake.screen(2)
+      new.room(77)
+    }
+  }
+l1329:
+  v76--
+}
+l1331:
+if (vCurrentRoom != 24) { //0533
+  if (f96 && !f156 && !f157) { //053b
+    v94--
+    if (v94 == 1) { //0549
+      v95--
+      if (v95 == 1) { //0552
+        reset(f96)
+        set(f101)
+        goto(l1379)
+      }
+      v94 = 252
+    }
+  }
+}
+l1379:
+if (f182) { //0563
+  v147--
+  if (v147 == 1) { //056b
+    v147 = 181
+    v148--
+    if (v148 == 41) { //0577
+      print("The heat is causing you to develop quite a thirst. A drink of water would certainly be most pleasant.")
+      goto(l1442)
+    }
+    if (v148 == 16) { //0583
+      print("%m4very much in need of water now. Your future will be a thing of the past without it.")
+      goto(l1442)
+    }
+    if (v148 == 1) { //058f
+      normal.motion(o0)
+      stop.motion(o0)
+      set.view(o0,163)
+      print("You're dead, %s1. You have died of dehydration. Within a few hours, your gaunt corpse will have dried to a crisp, your powdered remains evenly distributed across the parched terrain by a searing gust.")
+      v130 = 33
+    }
+  }
+}
+l1442:
+if (said("clock")) { //05a2
+  toggle(f184)
+}
+if (f184) { //05ac
+  if (vTimeSeconds != v149) { //05b2
+    v149 = vTimeSeconds
+    if (vCurrentRoom > 0 && vCurrentRoom < 84 && vCurrentRoom != 67 && vCurrentRoom != 69) { //05bd
+      display(1,28," %v13:%v12|2:%v11|2  ")
+    }
+  }
+}
+if (said("fast")) { //05d3
+  v121 = 0
+  vCycleTime = v121
+}
+if (said("normal")) { //05e1
+  v121 = 2
+  vCycleTime = v121
+}
+if (said("slow")) { //05ef
+  v121 = 4
+  vCycleTime = v121
+}
+if (f12) { //05fd
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0603
+    if (vCurrentRoom == 33) { //060d
+      clear.lines(0,0,c0)
+    }
+    goto(l1567)
+  }
+  clear.lines(23,24,c0)
+l1567:
+  set(f193)
+  set(f198)
+  reset(f190)
+  disable.member(c20)
+  if (vCurrentRoom == 75) { //0627
+    disable.member(c22)
+  }
+}
+call(vCurrentRoom)
+if (f190) { //0632
+  call(99)
+}
+if (!(v124 > 0) && has(i10)) { //063a
+  drop(i10)
+}
+if (v124 > 0 && !(has(i10)) && !f94) { //0646
+  set(f94)
+  print("Just lost your buckazoid object.")
+}
+if (f94 && has(i10)) { //0657
+  reset(f94)
+}
+if ((!fEnteredCommand || vUnknownWord > 0 || fSaidAccepted)) { //0661
+  goto(l4113)
+}
+if (f125) { //0672
+  goto(l4168)
+}
+if (vCurrentRoom == 33) { //067b
+  print("No time to talk!")
+  set(fSaidAccepted)
+  reset(fEnteredCommand)
+}
+if (f86) { //0688
+  if (vCurrentRoom > 0 && vCurrentRoom < 10 && vCurrentRoom != 8) { //068e
+    if ((said("check out", "light") || said("check out", "alarm", "light"))) { //069c
+      print("There is a red flashing alarm light here which seems to be indicating that you had better get moving.")
+    }
+    if (!(v138 > 0) && said("listen", "sound")) { //06b2
+      print("You can't hear anything of note.")
+    }
+    if (said("acquire", "bodies")) { //06c2
+      print("I hope you know how strange that sounds.")
+    }
+    if ((said("check out", "alien") || said("check out", "being") || said("check out", "being"))) { //06ce
+      if (f195) { //06e6
+        print("You see a%m3 clad in red battle gear. You'd better hope it doesn't see you.")
+        goto(l1779)
+      }
+      print("There is no one else here.")
+    }
+  }
+}
+l1779:
+if (vCurrentRoom > 0 && vCurrentRoom < 8) { //06f3
+  if ((said("attack", "bodies") || said("attack", "being"))) { //06fd
+    print("Don't be ridiculous!")
+  }
+  if ((said("speak", "being") || said("speak", "bodies"))) { //0711
+    print("You talk to the sprawled corpse. Strangely, you get no response.")
+  }
+  if ((said("kick", "bodies") || said("kick", "being"))) { //0725
+    print("Good grief, %s1! %m4a bit twisted, I must say.")
+    if (!f119 && vCurrentScore > 0) { //0739
+      set(f119)
+      vCurrentScore--
+    }
+  }
+}
+if (said("listen", "foot step")) { //0747
+  if (v138 > 0) { //0751
+    print("Yes, it's true. You definitely hear footsteps. You'd better make yourself scarce!")
+    goto(l1887)
+  }
+  print("There are no footsteps to hear now.")
+}
+l1887:
+if (has(i5) && has(i13)) { //075f
+  if (said("check out", "card")) { //0767
+    print("The Keycard or the I.D. card?")
+  }
+}
+if (said("check out", "cart")) { //0773
+  if (has(i1)) { //077d
+    v89 = 215
+    goto(l1931)
+  }
+  print("You do not possess the designated item.")
+}
+l1931:
+if (said("check out", "boulder")) { //078b
+  if (has(i2)) { //0795
+    v89 = 216
+    goto(l1955)
+  }
+  print("You do not possess the designated item.")
+}
+l1955:
+if (said("check out", "dialect translator")) { //07a3
+  if (has(i3)) { //07ad
+    if (f154) { //07b3
+      v89 = 199
+      goto(l1986)
+    }
+    v89 = 217
+l1986:
+    goto(l1991)
+  }
+  print("You do not possess the designated item.")
+}
+l1991:
+if ((said("check out", "orat", "chunk") || said("check out", "chunk"))) { //07c7
+  if (has(i4)) { //07db
+    v89 = 218
+    goto(l2025)
+  }
+  print("You do not possess the designated item.")
+}
+l2025:
+if (said("check out", "credit card")) { //07e9
+  if (has(i5)) { //07f3
+    v89 = 219
+    goto(l2049)
+  }
+  print("You do not possess the designated item.")
+}
+l2049:
+if (said("check out", "glass")) { //0801
+  if (has(i6)) { //080b
+    v89 = 220
+    goto(l2073)
+  }
+  print("You do not possess the designated item.")
+}
+l2073:
+if ((said("check out", "key") || said("check out", "bike", "key"))) { //0819
+  if (has(i7)) { //082d
+    v89 = 221
+    goto(l2107)
+  }
+  print("You do not possess the designated item.")
+}
+l2107:
+if (said("check out", "ale")) { //083b
+  if (has(i8)) { //0845
+    v89 = 222
+    goto(l2131)
+  }
+  print("You do not possess the designated item.")
+}
+l2131:
+if (said("check out", "jet pack")) { //0853
+  if (has(i9)) { //085d
+    v89 = 223
+    if (v81 == 2) { //0866
+      print("%m4currently wearing it.")
+    }
+    goto(l2164)
+  }
+  print("You do not possess the designated item.")
+}
+l2164:
+if ((said("check out", "buck") || said("check out", "cash"))) { //0874
+  if (has(i10)) { //0886
+    v89 = 224
+    goto(l2196)
+  }
+  print("You do not possess the designated item.")
+}
+l2196:
+if ((said("check out", "kit") || said("look in", "kit") || said("open", "kit"))) { //0894
+  if ((has(i11) || has(i22))) { //08ac
+    if (!(has(i19))) { //08b6
+      v89 = 225
+      get(i19)
+      get(i12)
+      drop(i11)
+      get(i22)
+      goto(l2254)
+    }
+    v89 = 186
+l2254:
+    goto(l2259)
+  }
+  print("You do not possess the designated item.")
+}
+l2259:
+if (has(i12)) { //08d3
+  if ((said("check out", "dehydrated water") || said("check out", "can", "dehydrated water") || said("check out", "dehydrated water", "can") || said("check out", "can"))) { //08d9
+    v89 = 226
+  }
+}
+if (said("check out", "i.d.")) { //08fe
+  if (has(i13)) { //0908
+    v89 = 227
+    goto(l2326)
+  }
+  print("You do not possess the designated item.")
+}
+l2326:
+if (said("check out", "gun")) { //0916
+  if (has(i14)) { //0920
+    v89 = 228
+    goto(l2350)
+  }
+  print("You do not possess the designated item.")
+}
+l2350:
+if (said("check out", "bomb")) { //092e
+  if (has(i15)) { //0938
+    v89 = 229
+    goto(l2374)
+  }
+  print("You do not possess the designated item.")
+}
+l2374:
+if (said("check out", "control")) { //0946
+  if (has(i16)) { //0950
+    v89 = 230
+    goto(l2398)
+  }
+  print("You do not possess the designated item.")
+}
+l2398:
+if (said("check out", "bush")) { //095e
+  if (has(i18)) { //0968
+    v89 = 232
+    goto(l2422)
+  }
+  print("You do not possess the designated item.")
+}
+l2422:
+if (said("check out", "army knife")) { //0976
+  if (has(i19)) { //0980
+    v89 = 233
+    goto(l2446)
+  }
+  print("You do not possess the designated item.")
+}
+l2446:
+if (v89 > 0) { //098e
+  if (vCurrentRoom == 37 && f60 && f65 && f97) { //0995
+    if (v89 == 224) { //09a2
+      print("You possess %v124 buckazoid(s).")
+      goto(l2480)
+    }
+    print("Sorry. Can't see an object right now. Try later.")
+l2480:
+    goto(l2487)
+  }
+  show.obj(v89)
+  set(f198)
+l2487:
+  v89 = 0
+}
+if ((said("consume", "chunk") || said("consume", "orat", "chunk"))) { //09ba
+  if (has(i4)) { //09ce
+    print("You raise the Orat part to your mouth and attempt to feast on it. Unfortunately for you it is composed mainly of bone. The small amount of flesh still clinging to the bone is incredibly rancid in flavor. You wisely give up on this idea.")
+    goto(l2523)
+  }
+  print("You do not possess the designated item.")
+}
+l2523:
+if (vCurrentRoom != 29) { //09db
+  if ((said("drop", "orat", "chunk") || said("drop", "chunk"))) { //09e3
+    if (has(i4)) { //09f7
+      print("Silly human! That would not be helpful.")
+      goto(l2564)
+    }
+    print("You do not possess the designated item.")
+  }
+}
+l2564:
+if (said("use", "army knife")) { //0a04
+  if (has(i19)) { //0a0e
+    print("This knife wouldn't cut hot margarine.")
+  }
+}
+if (said("drop", "army knife")) { //0a16
+  if (has(i19)) { //0a20
+    print("Silly human! That would not be helpful.")
+    goto(l2605)
+  }
+  print("You do not possess the designated item.")
+}
+l2605:
+if (said("drop", "cart")) { //0a2d
+  if (has(i1)) { //0a37
+    print("Silly human! That would not be helpful.")
+  }
+}
+if ((said("drop", "boulder") || said("cast", "boulder"))) { //0a3f
+  if (has(i2)) { //0a51
+    print("Silly human! That would not be helpful.")
+  }
+}
+if ((said("turn", "dial") || said("turn", "dialect translator") || said("turn", "dialect translator", "dial") || said("turn", "dial", "dialect translator"))) { //0a59
+  if (has(i3)) { //0a7b
+    if (f154) { //0a81
+      print("There is no need for you to turn the gadget off.")
+      goto(l2704)
+    }
+    print("You turn the dial to the right. The light begins to glow.")
+    set(f154)
+  }
+}
+l2704:
+if (said("drop", "dialect translator")) { //0a90
+  if (has(i3)) { //0a9a
+    print("Silly human! That would not be helpful.")
+  }
+}
+if (said("drop", "credit card")) { //0aa2
+  if (has(i5)) { //0aac
+    print("Silly human! That would not be helpful.")
+    goto(l2745)
+  }
+  print("You do not possess the designated item.")
+}
+l2745:
+if (said("look in", "glass")) { //0ab9
+  if (has(i6)) { //0ac3
+    print("Due to its highly reflective coating you cannot see through the glass very easily, however, you do see a rather striking figure peering back at you.")
+    goto(l2768)
+  }
+  print("You do not possess the designated item.")
+}
+l2768:
+if (said("drop", "glass")) { //0ad0
+  if (has(i6)) { //0ada
+    print("Silly human! That would not be helpful.")
+    goto(l2791)
+  }
+  print("You do not possess the designated item.")
+}
+l2791:
+if ((said("drop", "bike", "key") || said("drop", "key"))) { //0ae7
+  if (has(i7)) { //0afb
+    print("Silly human! That would not be helpful.")
+    goto(l2824)
+  }
+  print("You do not possess the designated item.")
+}
+l2824:
+if (said("look in", "ale")) { //0b08
+  if (has(i8)) { //0b12
+    print("You stare into the semi-clear liquid and notice how it gives everything seen through it a lovely yellow tint.")
+    goto(l2847)
+  }
+  print("You do not possess the designated item.")
+}
+l2847:
+if (said("drop", "ale")) { //0b1f
+  if (has(i8)) { //0b29
+    print("Silly human! That would not be helpful.")
+    goto(l2870)
+  }
+  print("You do not possess the designated item.")
+}
+l2870:
+if (said("drink", "ale")) { //0b36
+  if (has(i8)) { //0b40
+    drop(i8)
+    print("Yum! What a taste treat.")
+    goto(l2895)
+  }
+  print("You do not possess the designated item.")
+}
+l2895:
+if (said("drop", "jet pack")) { //0b4f
+  if (has(i9)) { //0b59
+    print("Silly human! That would not be helpful.")
+    goto(l2918)
+  }
+  print("You do not possess the designated item.")
+}
+l2918:
+if ((said("put on", "jet pack") || said("drop", "jet pack"))) { //0b66
+  if (!f175) { //0b78
+    if (vCurrentRoom == 43) { //0b7f
+      if (has(i9)) { //0b86
+        set.view(o0,132)
+        v81 = 2
+        set(f175)
+        print("%m4now wearing the jetpack. A small control linkage snaps onto the back of your helmet allowing you to control it merely by focusing on where you want to go.")
+        goto(l2971)
+      }
+      print("You do not possess the designated item.")
+l2971:
+      goto(l2976)
+    }
+    print("It wouldn't help to wear it since there is gravity here.")
+l2976:
+    goto(l2981)
+  }
+  print("%m4already wearing it.")
+}
+l2981:
+if (vCurrentRoom != 53 && vCurrentRoom != 57) { //0ba5
+  if (said("get down", "jet pack")) { //0bb1
+    if (f175) { //0bbb
+      print("There is no need to do that now.")
+      goto(l3016)
+    }
+    print("You do not possess the designated item.")
+  }
+}
+l3016:
+if ((said("drop", "buck") || said("drop", "cash"))) { //0bc8
+  if (has(i10)) { //0bda
+    print("Silly human! That would not be helpful.")
+    goto(l3047)
+  }
+  print("You do not possess the designated item.")
+}
+l3047:
+if (said("drop", "kit")) { //0be7
+  if ((has(i11) || has(i22))) { //0bf1
+    print("Silly human! That would not be helpful.")
+    goto(l3074)
+  }
+  print("You do not possess the designated item.")
+}
+l3074:
+if (has(i12)) { //0c02
+  if (said("open", "regulator")) { //0c08
+    print("There is no need to do that. Just drink from the nozzle.")
+  }
+  if (said("open", "nozzle")) { //0c14
+    print("There is no need to do that. Just drink from the nozzle.")
+  }
+  if (said("check out", "regulator")) { //0c20
+    print("The regulator is just a curved, metal tube which mixes air with the can's contents and directs it to the nozzle.")
+  }
+  if (said("check out", "nozzle")) { //0c2c
+    print("The nozzle is a flexible tube which senses suction and releases the water.")
+  }
+  if (said("check out", "instructions")) { //0c38
+    print("There is printing on it.")
+  }
+  if ((said("read", "instructions") || said("read", "letters") || said("check out", "letters") || said("check out", "letters") || said("read", "letters"))) { //0c44
+    print("The can label says \"Pelvitron's Dehydrated Water  (H2) - All you add is air!  Makes 10 gallons!\"")
+    print("\"Directions - To use, simply drink from nozzle. Metered amounts will be dispensed.     Caution - Do not attempt to open or rupture! Misuse could result in personal injury and/or flash flooding.\"")
+  }
+  if ((said("open", "dehydrated water") || said("open", "dehydrated water", "can") || said("open", "can", "dehydrated water") || said("open", "can") || said("open", "can", "boulder") || said("open", "can", "army knife"))) { //0c6c
+    print("You can't do that. Read the label, %s!")
+  }
+  if ((said("cast", "can") || said("cast", "dehydrated water") || said("cast", "can", "dehydrated water") || said("cast", "dehydrated water", "area") || said("cast", "dehydrated water", "can"))) { //0ca0
+    print("Come to your senses, %s1. That couldn't help you at this time.")
+  }
+  if ((said("drop", "dehydrated water") || said("drop", "dehydrated water", "can") || said("drop", "can", "dehydrated water"))) { //0ccc
+    print("Silly human! That would not be helpful.")
+  }
+}
+if ((has(i12) || has(i11))) { //0cea
+  if ((said("drink", "dehydrated water") || said("drink", "nozzle") || said("drink") || said("drink", "can") || said("draw", "nozzle") || said("suck", "can") || said("suck", "nozzle"))) { //0cf4
+    if (!(has(i12))) { //0d22
+      if (has(i19)) { //0d29
+        print("I'll bet you wish you still had that dehydrated water.")
+        goto(l3382)
+      }
+      print("You don't seem to have that.")
+l3382:
+      goto(l3393)
+    }
+    v147 = 181
+    v148 = 61
+    print("You place your lips to the nozzle and draw.  A fluid, not a very reasonable facsimile of water, is released slowly. While tasting slightly terrible, it quenches your thirst, at least for the time being.")
+  }
+}
+l3393:
+if (said("drop", "i.d.")) { //0d41
+  if (has(i13)) { //0d4b
+    print("Silly human! That would not be helpful.")
+  }
+}
+if (v81 == 3) { //0d53
+  if (said("acquire", "i.d.")) { //0d5a
+    if (has(i13)) { //0d64
+      print("%m4already in possession of the card.")
+      goto(l3443)
+    }
+    get(i13)
+    print("Reaching into the pocket of the%m3%m2 you find a%m3 ID card.")
+  }
+}
+l3443:
+if (said("drop", "gun")) { //0d73
+  if (has(i14)) { //0d7d
+    print("Silly human! That would not be helpful.")
+    goto(l3466)
+  }
+  print("You do not possess the designated item.")
+}
+l3466:
+if (said("drop", "control")) { //0d8a
+  if (has(i21)) { //0d94
+    print("Silly human! That would not be helpful.")
+    goto(l3489)
+  }
+  print("You do not possess the designated item.")
+}
+l3489:
+if (has(i21) && vCurrentRoom != 50) { //0da1
+  if ((said("press", "button") || said("press", "control", "button"))) { //0dab
+    print("You press the button on the remote control but notice nothing different.")
+  }
+}
+if (said("consume", "bush")) { //0dc1
+  if (has(i18)) { //0dcb
+    print("You plant your teeth into the strange plant and take a large bite, only to find it tastes exquisitely bad. If you had your choice you would choose any form of death over a meal of this.")
+    goto(l3544)
+  }
+  print("You do not possess the designated item.")
+}
+l3544:
+if ((said("drop", "bush") || said("cast", "bush"))) { //0dd8
+  if (has(i18)) { //0dea
+    print("Silly human! That would not be helpful.")
+    goto(l3575)
+  }
+  print("You do not possess the designated item.")
+}
+l3575:
+if ((said("asshole") || said("asshole", "anyword") || said("anyword", "asshole") || said("asshole", "anyword", "anyword") || said("anyword", "asshole", "anyword") || said("anyword", "anyword", "asshole"))) { //0df7
+  print("A mind is a terrible thing to waste.")
+  reset(fEnteredCommand)
+}
+if (said("get down", "clothes")) { //0e29
+  print("I'll get naked if you get naked. You go first.")
+}
+if ((said("get down", "helmet") || said("open", "helmet"))) { //0e35
+  if ((v81 == 1 || v81 == 3)) { //0e47
+    print("You just can't do that. Really. It's not a good idea. Besides, your dental hygiene hasn't been what it should. Do the universe a favor.")
+  }
+}
+if (said("who")) { //0e55
+  print("%m4%s1. Don't you remember?")
+}
+if (vCurrentRoom != 11) { //0e5f
+  if (said("check out", "ceiling")) { //0e67
+    print("Nothing up there is going to help you.")
+  }
+}
+if (said("check out", "floor")) { //0e73
+  if (vCurrentRoom != 6 && vCurrentRoom != 14) { //0e7d
+    print("There is nothing there that you can't already see.")
+  }
+}
+if (said("check out", "clothes")) { //0e8b
+  if (v81 == 1) { //0e95
+    print("%m4dressed in the standard issue excursion garment.")
+    goto(l3787)
+  }
+  if (v81 == 3) { //0ea1
+    print("%m4attired in the spiffy%m2 of a%m3 marauder. There is a pocket.")
+    goto(l3787)
+  }
+  if (v81 == 2) { //0ead
+    print("%m4dressed in the standard issue excursion garment.")
+    print("On your back is a jetpack.")
+    goto(l3787)
+  }
+  if (v81 == 4) { //0ebb
+    print("%m4attired in the spiffy%m2 of a%m3 marauder. There is a pocket.")
+    print("You have no helmet and are easily distinguished as an intruder by your non-green head.")
+    goto(l3787)
+  }
+  print("%m4wearing a lovely one-piece casual space travel outfit.")
+}
+l3787:
+if (said("check out", "coupon")) { //0ecb
+  if (f174 && f176) { //0ed5
+    print("You do not possess the designated item.")
+    goto(l3812)
+  }
+  print("For more information refer to coupons enclosed in package.")
+}
+l3812:
+if (said("scott")) { //0ee4
+  print("Hello, %s1. I've been expecting you. You're obviously a person of dubious taste. Drop me a line at Sierra and let me know if you've enjoyed playing.")
+}
+if (said("run")) { //0eee
+  print("You can't run.")
+}
+if ((said("jump") || said("jump", "anyword") || said("jump", "anyword", "anyword"))) { //0ef8
+  print("Sorry. This game is in a NO JUMPING zone.")
+}
+if ((said("nap") || said("climb in", "nap"))) { //0f12
+  print("You've already had your nap!")
+}
+if ((said("open", "anyword") || said("close", "anyword"))) { //0f24
+  print("That doesn't seem to be the correct action in this case.")
+}
+if (said("check out")) { //0f38
+  print("You'll have to be more specific.")
+}
+if ((said("check out", "alien") || said("check out", "being"))) { //0f42
+  print("You see no one of interest.")
+}
+if ((said("check out", "next", "area") || said("check out", "down", "area"))) { //0f56
+  print("You'll have to go there to do that.")
+}
+if ((said("check out", "anyword") || said("check out", "anyword", "anyword"))) { //0f6e
+  random(70,72,v64)
+  print(v64)
+}
+if ((said("look in", "anyword") || said("look in", "anyword", "anyword"))) { //0f88
+  print("You learn nothing new through this act.")
+}
+if ((said("acquire", "anyword") || said("acquire", "anyword", "anyword"))) { //0f9e
+  random(73,75,v64)
+  print(v64)
+}
+if (said("climb in", "anyword")) { //0fb8
+  random(76,77,v64)
+  print(v64)
+}
+if (said("use", "anyword")) { //0fc8
+  random(79,80,v64)
+  print(v64)
+}
+if (said("consume", "anyword")) { //0fd8
+  print("That act would lack any serious gratification.")
+}
+if (said("cut", "anyword")) { //0fe4
+  if (has(i19)) { //0fee
+    print("This knife wouldn't cut hot margarine.")
+    goto(l4091)
+  }
+  print("You possess nothing that would help you accomplish this.")
+}
+l4091:
+if ((said("find", "anyword") || said("find", "anyword", "anyword"))) { //0ffb
+  print("You can't find something you didn't lose.")
+}
+l4113:
+if (fEnteredCommand && vUnknownWord > 0) { //1011
+  reset(fEnteredCommand)
+  if (vUnknownWord == 1) { //101c
+    print("%m8\"%w1\"")
+  }
+  if (vUnknownWord == 2) { //1025
+    print("%m8\"%w2\"")
+  }
+  if (vUnknownWord == 3) { //102e
+    print("%m8\"%w3\"")
+  }
+}
+if (fEnteredCommand && !fSaidAccepted) { //1037
+  random(89,91,v64)
+  print(v64)
+  reset(fEnteredCommand)
+}
+l4168:
+reset(fSaidAccepted)
+reset(f129)
+reset(f128)
+reset(f130)
+return()

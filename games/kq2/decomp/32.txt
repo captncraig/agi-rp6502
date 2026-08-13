@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  if (isSet(f75)) {
+
+!!!
+&{%!e(string=unknown opcode: 0x1e)}

@@ -1,0 +1,212 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(121)
+  if (v81 == 3) { //0016
+    load.view(178)
+    load.view(177)
+    load.sound(35)
+    load.sound(36)
+    animate.obj(o3)
+    set.view(o3,178)
+    load.view(187)
+  }
+  animate.obj(o1)
+  set.view(o1,121)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,43,52)
+  animate.obj(o2)
+  set.view(o2,121)
+  set.cel(o2,0)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,43,134)
+  draw(o1)
+  stop.update(o1)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom != 49) { //0054
+    position(o0,48,141)
+  }
+  draw(o0)
+  get.posn(o0,v135,v136)
+  if (v136 > 79) { //0066
+    reset(f83)
+    goto(l116)
+  }
+  set(f83)
+l116:
+  if (f83) { //0074
+    v140 = 14
+    v141 = 64
+    v142 = 18
+    v143 = 64
+    if (v81 == 3) { //0086
+      set(f113)
+    }
+    goto(l158)
+  }
+  v140 = 14
+  v141 = 148
+  v142 = 20
+  v143 = 148
+l158:
+  set(f112)
+  load.logic(119)
+  call(119)
+  show.pic()
+  v31 = 2
+  v32 = 2
+  v34 = 20
+}
+if (!f38) { //00ae
+  reset(f151)
+}
+if ((said("check out") || said("check out", "area"))) { //00b7
+  print("Your are in one of the Deltaur's many corridors.  There is an elevator here.")
+}
+if (said("check out", "wall")) { //00c9
+  print("You look at the wall and admire the Sarien architecture.  They may be scum, but they build a good spaceship.")
+}
+if (said("check out", "elevator")) { //00d5
+  print("You see nothing special about the elevator.")
+}
+if (v81 != 3 && said("acquire", "helmet")) { //00e1
+  print("It isn't here. If you wanted it, you should have held onto it!")
+}
+if (f34) { //00f1
+  reset(f34)
+  player.control()
+}
+if (f30) { //00fa
+  stop.update(o1)
+  stop.update(o2)
+}
+if (f35) { //0104
+  if ((posn(o0,39,47,52,59) || posn(o3,45,47,52,59))) { //010a
+    set(f32)
+    goto(l291)
+  }
+  reset(f32)
+l291:
+  goto(l311)
+}
+if (posn(o0,39,47,52,59)) { //0126
+  set(f32)
+  goto(l311)
+}
+reset(f32)
+l311:
+if (f30 && v31 == 2 && v32 == 2) { //0137
+  reset(f30)
+  if ((posn(o0,45,43,52,47) || posn(o0,45,125,52,129))) { //0145
+    program.control()
+    get.posn(o0,v135,v136)
+    v135 = 0
+    if (v136 < 85) { //015f
+      reset(f83)
+      v136 = 83
+    }
+    if (v136 > 84) { //016b
+      set(f83)
+      v136 = 174
+    }
+    repositon(o0,v135,v136)
+    v33 = 14
+  }
+}
+if (f30 && f35) { //017e
+  reset(f35)
+  erase(o3)
+  v35 = 15
+}
+v35--
+if (v35 == 1) { //018f
+  print("My, aren't you the clumsy one. Because of your inability to walk without falling on your face, your helmet is now riding the elevator without you. You've blown your cover. The Sariens are sure to shoot first and ask questions later.")
+}
+v33--
+if (v33 == 1) { //019a
+  get.posn(o0,v135,v136)
+  v136 += 10
+  v55 = 0
+  move.obj(o0,v135,v136,55,f34)
+}
+if (v31 != 1 && f32) { //01b1
+  start.update(o1)
+  end.of.loop(o1,f30)
+  sound(1,f120)
+  v31 = 1
+}
+if (v31 == 1 && !f32) { //01c6
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v31 = 2
+}
+if (v32 != 1 && posn(o0,39,130,52,140)) { //01db
+  start.update(o2)
+  sound(1,f120)
+  end.of.loop(o2,f30)
+  v32 = 1
+}
+if (v32 == 1 && !(posn(o0,39,130,52,140))) { //01f4
+  start.update(o2)
+  sound(2,f120)
+  reverse.loop(o2,f30)
+  v32 = 2
+}
+v34--
+current.loop(o0,v64)
+get.posn(o0,v135,v136)
+if (v34 == 0 && v64 == 1 && v81 == 3 && has(i14) && !f217 && v136 > 55 && v135 < 140 && f83) { //0216
+  set.view(o0,177)
+  v62 = 246
+  v63 = 0
+  repositon(o0,v62,v63)
+  stop.motion(o0)
+  set.cel(o0,0)
+  end.of.loop(o0,f37)
+  v64 = 2
+  cycle.time(o0,v64)
+  set(f38)
+  set(f151)
+  set(f133)
+  v81 = 4
+  set(f35)
+  sound(35,f36)
+}
+if (f37) { //0259
+  reset(f37)
+  reset(f133)
+  reset(f38)
+  set.view(o0,187)
+  set.loop(o0,1)
+  start.motion(o0)
+  v64 = 1
+  cycle.time(o0,v64)
+  get.posn(o0,v62,v63)
+  v62 -= 10
+  v63 += 1
+  position(o3,62,v63)
+  set.priority(o3,15)
+  draw(o3)
+  move.obj(o3,46,54,3,f120)
+}
+if (f35 && f36) { //028c
+  reset(f36)
+  sound(36,f36)
+}
+if (!fNewRoom) { //0299
+  call(119)
+}
+if (vWhichEgoBorder == 2) { //02a2
+  reset(f113)
+  new.room(49)
+}
+return()

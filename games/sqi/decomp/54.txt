@@ -1,0 +1,298 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(121)
+  load.view(164)
+  animate.obj(o3)
+  set.view(o3,164)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  position(o3,28,122)
+  if (vPrevRoom == 53) { //0025
+    set.cel(o3,5)
+    v32 = 3
+    goto(l59)
+  }
+  set.cel(o3,0)
+  v32 = 0
+l59:
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o1)
+  set.view(o1,121)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,62,99)
+  animate.obj(o2)
+  set.view(o2,121)
+  set.cel(o2,0)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,87,99)
+  draw(o1)
+  stop.update(o1)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 55) { //0067
+    position(o0,129,117)
+    goto(l179)
+  }
+  if (vPrevRoom == 49) { //0075
+    set(f31)
+    position(o0,66,93)
+    move.obj(o0,66,95,0,f64)
+    goto(l179)
+  }
+  if (vPrevRoom == 53) { //008b
+    position(o0,30,123)
+    goto(l179)
+  }
+  if (vPrevRoom == 62) { //0099
+    set(f31)
+    position(o0,91,95)
+    move.obj(o0,91,97,0,f64)
+    goto(l179)
+  }
+  position(o0,75,165)
+l179:
+  draw(o0)
+  if ((vPrevRoom == 62 || vPrevRoom == 55)) { //00b5
+    v140 = 71
+    v141 = 164
+    v142 = 71
+    v143 = 140
+    goto(l220)
+  }
+  v140 = 139
+  v141 = 107
+  v142 = 120
+  v143 = 107
+l220:
+  if (vPrevRoom == 53) { //00dc
+    set(f172)
+    set(f112)
+  }
+  load.logic(119)
+  call(119)
+  if (v160 == 1) { //00eb
+    ignore.blocks(o10)
+  }
+  show.pic()
+  v30 = 0
+  v31 = 0
+}
+reset(f151)
+if (f57) { //00fd
+  if (!(posn(o0,64,88,71,103)) && !(posn(o0,89,88,96,94))) { //0103
+    reset(f57)
+  }
+}
+if (posn(o0,86,99,99,101)) { //0117
+  if ((v144 != 0 || v145 != 0)) { //0121
+    ignore.blocks(o0)
+    goto(l310)
+  }
+  observe.blocks(o0)
+l310:
+  goto(l330)
+}
+if (posn(o0,53,78,102,103)) { //0139
+  observe.blocks(o0)
+  goto(l330)
+}
+ignore.blocks(o0)
+l330:
+if ((obj.in.box(o0,63,91,75,101) || obj.in.box(o0,88,91,100,101))) { //014a
+  set(f144)
+  goto(l361)
+}
+if (f144) { //0161
+  reset(f144)
+}
+l361:
+if ((!fEnteredCommand || fSaidAccepted)) { //0169
+  goto(l533)
+}
+if (said("check out", "wall")) { //0177
+  print("There are two elevators along the back wall.")
+}
+if ((said("check out") || said("check out", "area"))) { //0183
+  print("You are aboard the Sarien spaceship. There are two elevators here.")
+}
+if ((said("check out", "door") || said("check out", "elevator"))) { //0195
+  distance(o0,o1,v64)
+  if (v64 < 20) { //01ab
+    print("It seems no different than all the other doors aboard this ship.")
+    goto(l457)
+  }
+  distance(o0,o2,v64)
+  if (v64 < 20) { //01bb
+    print("It has a small sign on it.")
+    goto(l457)
+  }
+  print("Seen one door, seen them all.")
+}
+l457:
+if ((said("read", "sign") || said("fix", "elevator") || said("fix", "door"))) { //01c9
+  distance(o0,o2,v64)
+  if (v64 > 20) { //01e5
+    print("Seen one door, seen them all.")
+    goto(l533)
+  }
+  reset(fSaidAccepted)
+  if (said("read", "sign")) { //01f3
+    if (v144 == 0 && v145 == 0) { //01fd
+      print("Out of Order.")
+      goto(l526)
+    }
+    print("Emergency Exit. Luckily for you, the elevator has been repaired.")
+l526:
+    goto(l533)
+  }
+  set(fSaidAccepted)
+  print("How?")
+}
+l533:
+if (f30) { //0215
+  if (v30 == 2) { //021b
+    v30 = 0
+    reset(f30)
+    stop.update(o1)
+    goto(l570)
+  }
+  if (v30 == 3) { //022c
+    stop.update(o1)
+    v30 = 1
+    reset(f30)
+  }
+}
+l570:
+if (f31 && v30 == 0 && posn(o0,61,88,71,103)) { //023a
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (f31 && !(posn(o0,61,88,71,103))) { //0254
+  reset(f31)
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (v30 == 0 && posn(o0,61,94,71,103)) { //026e
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (!(posn(o0,61,94,71,103)) && v30 == 1 && !f31) { //0286
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (f32) { //02a2
+  if (v31 == 2) { //02a8
+    v31 = 0
+    reset(f32)
+    stop.update(o2)
+    goto(l711)
+  }
+  if (v31 == 3) { //02b9
+    stop.update(o2)
+    v31 = 1
+    reset(f32)
+  }
+}
+l711:
+if (f31 && v31 == 0 && posn(o0,89,88,96,103)) { //02c7
+  start.update(o2)
+  sound(1,f120)
+  end.of.loop(o2,f32)
+  v31 = 3
+}
+if (f31 && !(posn(o0,89,88,96,103))) { //02e1
+  reset(f31)
+  start.update(o2)
+  sound(2,f120)
+  reverse.loop(o2,f32)
+  v31 = 2
+}
+if (v31 == 0 && posn(o0,86,95,96,103) && (v144 != 0 || v145 != 0)) { //02fb
+  start.update(o2)
+  sound(1,f120)
+  end.of.loop(o2,f32)
+  v31 = 3
+}
+if (!(posn(o0,86,95,96,103)) && v31 == 1 && !f31) { //031d
+  start.update(o2)
+  sound(2,f120)
+  reverse.loop(o2,f32)
+  v31 = 2
+}
+if (f33) { //0339
+  reset(f33)
+  stop.cycling(o3)
+  if (v32 == 2) { //0343
+    v32 = 3
+    goto(l853)
+  }
+  v32 = 0
+  stop.update(o3)
+}
+l853:
+if (v32 == 3) { //0355
+  get.posn(o0,v135,v136)
+  if (v135 < 28 && v136 < 131) { //0360
+    reset(f172)
+    new.room(53)
+  }
+}
+if (posn(o0,28,112,35,134) && v32 < 2) { //036e
+  start.update(o3)
+  set.cel(o3,0)
+  sound(1,f120)
+  end.of.loop(o3,f33)
+  v32 = 2
+}
+if (!(posn(o0,28,112,35,134)) && v32 == 3) { //0389
+  start.cycling(o3)
+  sound(2,f120)
+  reverse.loop(o3,f33)
+  v32 = 1
+}
+if (posn(o0,64,88,71,93) && v30 == 0 && !f57) { //03a2
+  set(f57)
+  reset(f83)
+  reset(f172)
+  new.room(49)
+}
+if (posn(o0,89,88,96,94) && v31 == 0 && !f57) { //03ba
+  set(f57)
+  reset(f172)
+  reset(f83)
+  new.room(62)
+}
+if (vWhichEgoBorder == 3) { //03d2
+  get.posn(o0,v62,v63)
+  if (v62 > 68 && v62 < 87) { //03dd
+    set(f83)
+    reset(f172)
+    new.room(58)
+  }
+}
+if (vWhichEgoBorder == 2) { //03ed
+  set(f83)
+  reset(f172)
+  new.room(55)
+}
+if (!fNewRoom) { //03fa
+  call(119)
+}
+return()

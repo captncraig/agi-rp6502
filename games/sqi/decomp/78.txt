@@ -1,0 +1,55 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  v64 = 30
+  load.pic(v64)
+  load.view(86)
+  load.view(81)
+  draw.pic(v64)
+  animate.obj(o2)
+  set.view(o2,81)
+  set.cel(o2,0)
+  set.priority(o2,5)
+  ignore.objs(o2)
+  position(o2,71,158)
+  ignore.horizon(o2)
+  draw(o2)
+  stop.cycling(o2)
+  animate.obj(o3)
+  set.view(o3,86)
+  set.cel(o3,0)
+  set.priority(o3,4)
+  ignore.objs(o3)
+  position(o3,64,119)
+  draw(o3)
+  end.of.loop(o3,f33)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0043
+    goto(l84)
+  }
+  clear.lines(23,24,c0)
+l84:
+  prevent.input()
+  print("As you nervously hang on, the skimmer rises slowly to the surface of the planet via a secret passage.")
+}
+if (f33) { //0057
+  reset(f33)
+  move.obj(o2,71,106,0,f35)
+}
+if (f35) { //0065
+  reset(f35)
+  reverse.loop(o3,f34)
+}
+if (f34) { //0070
+  reset(f34)
+  erase(o3)
+  end.of.loop(o2,f64)
+  move.obj(o2,71,42,8,f36)
+}
+if (f36) { //0083
+  reset(f36)
+  erase(o2)
+  print("Upon reaching the surface, you throttle up and zoom off into the sunset.")
+  accept.input()
+  new.room(33)
+}
+return()

@@ -1,6 +1,6 @@
 GAMES := $(notdir $(patsubst %/,%,$(wildcard games/*/)))
 
-.PHONY: bin unpack repack roms $(GAMES)
+.PHONY: bin unpack decomp repack roms $(GAMES)
 
 # Build build/agi.rp6502 from the C source.
 bin:
@@ -10,6 +10,10 @@ bin:
 # Extract AGI resources from games/*/ into games/*/unpacked/.
 unpack:
 	go run ./cmd/unpack
+
+# Decompile unpacked logic scripts into games/*/decomp/*.txt.
+decomp:
+	go run ./cmd/decomp
 
 # Concatenate unpacked resources into games/*/data.bin and games/*/index.bin.
 repack:

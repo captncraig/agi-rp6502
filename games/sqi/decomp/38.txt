@@ -1,0 +1,120 @@
+if (fNewRoom) { //0002
+  set.horizon(100)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(112)
+  if ((f60 || f67)) { //0012
+    load.logic(116)
+    call(116)
+  }
+  if (v68 == vCurrentRoom) { //0020
+    load.view(126)
+    v126 = 126
+    v64 = 0
+    v79 = 9
+    add.to.pic(v126,v64,v79,v60,v61,v80,v64)
+  }
+  draw(o0)
+  if ((f60 || f67)) { //003c
+    get.posn(o0,v135,v136)
+    position(o10,135,v136)
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //004f
+    goto(l96)
+  }
+  clear.lines(23,24,c0)
+}
+l96:
+if (fTriggerLine) { //0060
+  if (!f167) { //0066
+    set(f167)
+    print("You are standing against the protective barrier encircling Ulence Flats. Due to the fact that you are land-based, you are not able to pass.")
+  }
+  goto(l126)
+}
+if (f167) { //0074
+  reset(f167)
+  reset(fTriggerLine)
+}
+l126:
+if ((!fEnteredCommand || fSaidAccepted)) { //007e
+  goto(l390)
+}
+if (said("check out", "building")) { //008c
+  print("It looks like your typical desert dwelling.")
+}
+if (said("check out", "area")) { //0098
+  get.posn(o0,v135,v136)
+  print("You are at the north end of Ulence Flats. There is a building to the east.")
+  if (!f73 && v136 < 122 && v124 < 201) { //00a8
+    print("There are five buckazoids stuck in the sand behind the building.")
+  }
+}
+get.posn(o0,v135,v136)
+if (!f73 && v136 < 122 && v124 < 201) { //00bb
+  if ((said("check out", "floor") || said("check out", "down"))) { //00c8
+    print("There are five buckazoids stuck in the sand behind the building.")
+  }
+}
+if (v68 == vCurrentRoom) { //00dc
+  if (!f60 && said("check out", "droid")) { //00e3
+    print("Your newly acquired droid seems to have self-destructed. Hope it's under warranty.")
+  }
+  if (said("acquire", "droid")) { //00f2
+    print("The droid, while looking small is quite heavy and not moveable by you.")
+  }
+  if (said("kick", "droid")) { //00fe
+    print("You now have a throbbing appendage.")
+  }
+  if (said("fix", "droid")) { //010a
+    print("The droid is beyond repair. Now you know why it was on sale.")
+  }
+}
+if (said("acquire", "buck")) { //0116
+  if (!f73 && v124 < 201) { //0120
+    if (posn(o0,86,108,114,119)) { //012a
+      get(i10)
+      v124 += 5
+      set(f73)
+      print("Taken")
+      goto(l322)
+    }
+    print("You are not close enough.")
+l322:
+    goto(l327)
+  }
+  print("There is nothing here for you to get.")
+}
+l327:
+if (posn(o0,109,109,109,118)) { //0147
+  if ((said("acquire", "leak") || said("leak") || said("acquire", "asshole") || said("asshole") || said("climb in", "leak") || said("climb in", "asshole"))) { //0151
+    random(31,33,v64)
+    print(v64)
+  }
+}
+if (!fSaidAccepted) { //017d
+  call(112)
+}
+l390:
+if (vWhichEgoBorder != 0) { //0186
+  if (f67) { //018e
+    reset(f67)
+    v68 = vCurrentRoom
+    get.posn(o10,v60,v61)
+  }
+}
+if (vWhichEgoBorder == 3) { //019d
+  new.room(35)
+}
+if (vWhichEgoBorder == 2) { //01a6
+  new.room(39)
+}
+if (vWhichEgoBorder == 4) { //01af
+  new.room(37)
+}
+if ((f60 || f67)) { //01b8
+  call(116)
+}
+return()

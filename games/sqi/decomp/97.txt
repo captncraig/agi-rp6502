@@ -1,0 +1,7 @@
+if ((said("check out", "wall") || said("check out", "down") || said("check out", "ceiling") || said("check out", "floor"))) { //0002
+  print("Everything down here is composed of very hard rock. Everything has a slimey look and feel due to the humidity.")
+}
+if ((said("climb", "anyword") || said("climb", "anyword", "anyword"))) { //0022
+  print("Nothing can be climbed here. Things are either too slimey or too steep.")
+}
+return()

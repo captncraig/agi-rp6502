@@ -1,0 +1,127 @@
+if (fNewRoom) { //0002
+  load.view(90)
+  load.view(104)
+  load.sound(17)
+  animate.obj(o10)
+  set.view(o10,90)
+  set.cel(o10,0)
+  ignore.horizon(o10)
+  v64 = 2
+  cycle.time(o10,v64)
+  animate.obj(o11)
+  set.view(o11,104)
+  set.cel(o11,0)
+  v243 = 252
+  v244 = 2
+  return()
+  v126 = 2
+  cycle.time(o11,v126)
+}
+if (f244) { //0033
+  reset(f244)
+  shake.screen(1)
+}
+if (f247) { //003d
+  current.cel(o10,v246)
+  if (v246 == 3) { //0046
+    reset(f247)
+    sound(17,f162)
+  }
+}
+if (f159 && !f157 && !f158) { //0052
+  reset(f159)
+  v243 = 0
+  get.posn(o0,v62,v63)
+  if (v63 < 164) { //0067
+    v63 += 3
+    goto(l119)
+  }
+  v63 = 167
+l119:
+  if (v62 > 9 && v62 < 144) { //0077
+    v62 -= 9
+    goto(l151)
+  }
+  if (v62 < 10) { //0087
+    v62 = 1
+    goto(l151)
+  }
+  v62 = 143
+l151:
+  position(o10,62,v63)
+  draw(o10)
+  erase(o0)
+  end.of.loop(o10,f246)
+  set(f247)
+}
+if (f246) { //00a4
+  reset(f246)
+  stop.update(o10)
+  v242 = 28
+}
+v242--
+if (v242 == 1) { //00b3
+  if (f156) { //00ba
+    print("You have just become a vertical meal for the local welcoming committee.")
+    v130 = 16
+  }
+  if (f157) { //00c5
+    print("You have been driven into the ground like a flesh piton, %s1.")
+    v130 = 17
+  }
+}
+v243--
+if (v243 == 1) { //00d2
+  v244--
+  if (v244 == 1) { //00db
+    set(f157)
+    set(f242)
+    goto(l236)
+  }
+  v243 = 252
+}
+l236:
+if (f242 && !f156 && !f158) { //00ec
+  reset(f242)
+  get.posn(o0,v62,v63)
+  if (v62 < 12) { //00fe
+    v62 = 1
+    goto(l270)
+  }
+  v62 -= 11
+l270:
+  v63 += 4
+  position(o11,62,v63)
+  print("You hear a strange roar, like something traveling through the atmosphere at a very high rate of speed.")
+  draw(o11)
+  erase(o0)
+  start.cycling(o11)
+  set(f243)
+}
+if (f243) { //011f
+  current.cel(o11,v126)
+  if (v126 == 4) { //0128
+    stop.cycling(o11)
+    v248 = 10
+    v247 = 1
+    reset(f243)
+  }
+}
+v248--
+if (v248 == 1) { //013b
+  if (v247 == 2) { //0142
+    end.of.loop(o11,f245)
+  }
+  if (v247 == 1) { //014c
+    set.cel(o11,5)
+    v248 = 10
+    v247 = 2
+  }
+}
+if (f245) { //015c
+  reset(f245)
+  stop.update(o11)
+  v242 = 28
+  set(f244)
+}
+return()

@@ -1,0 +1,183 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  random(1,100,v64)
+  if (f86) { //000e
+    if (v64 > 50) { //0014
+      load.logic(103)
+      call(103)
+      v67 = 1
+    }
+  }
+  load.view(32)
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.view(28)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  set.view(o2,32)
+  v55 = 0
+  step.size(o2,v55)
+  ignore.blocks(o2)
+  position(o2,22,142)
+  set.cel(o2,0)
+  v30 = 0
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,12)
+  set.cel(o1,0)
+  position(o1,115,78)
+  draw(o1)
+  draw(o2)
+  stop.update(o2)
+  ignore.objs(o0)
+  if (vPrevRoom == 2) { //005f
+    position(o0,27,134)
+    set.priority(o0,11)
+    set(f31)
+    move.obj(o0,27,136,0,f64)
+  }
+  draw(o0)
+  add.to.pic(28,0,1,123,131,11,0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0080
+    goto(l145)
+  }
+  clear.lines(23,24,c0)
+}
+l145:
+if (f162) { //0091
+  reset(f162)
+}
+if (posn(o0,22,132,37,143)) { //0099
+  set.priority(o0,11)
+  goto(l171)
+}
+release.priority(o0)
+l171:
+if (f57 && !(posn(o0,23,133,32,138))) { //00ab
+  reset(f57)
+}
+if (obj.in.box(o0,0,133,36,146)) { //00ba
+  set(fEgoObscured)
+  goto(l203)
+}
+reset(fEgoObscured)
+l203:
+if (!f32 && fTriggerLine) { //00cb
+  set(f32)
+  reset(fTriggerLine)
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 3 || vEgoDir == 4)) { //00d8
+    v135 = 2
+    v136 = 253
+    goto(l287)
+  }
+  if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 7 || vEgoDir == 8)) { //00f3
+    get.posn(o0,v62,v63)
+    if (v63 > 163) { //0109
+      v135 = 0
+      v136 = 0
+      goto(l287)
+    }
+    v135 = 254
+    v136 = 3
+  }
+l287:
+  repositon(o0,v135,v136)
+}
+if (f32 && !fTriggerLine) { //0123
+  reset(f32)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //012e
+  goto(l471)
+}
+if (said("check out", "area")) { //013c
+  print("This is a section of one of the lower levels of Arcada.")
+}
+if ((said("check out", "elevator") || said("check out", "door"))) { //0148
+  print("The elevator leads to one of the upper levels.")
+}
+if ((said("check out", "bodies") || said("check out", "being"))) { //015c
+  if (posn(o0,114,125,150,136)) { //016e
+    print("You see a body here. It is a formerly live crewmate.")
+    goto(l383)
+  }
+  print("That can't be accomplished from here.")
+}
+l383:
+if ((said("explore", "bodies") || said("explore", "being") || said("check out", "pocket") || said("explore", "pocket"))) { //017f
+  if (posn(o0,114,125,150,136)) { //019d
+    print("Your search of the laser-riddled corpse reveals. . .")
+    print("nothing.")
+    goto(l432)
+  }
+  print("That can't be accomplished from here.")
+}
+l432:
+if (said("check out", "wall")) { //01b0
+  print("Nothing interesting is to be seen there.")
+}
+if (said("check out", "step")) { //01bc
+  if (posn(o0,79,130,142,167)) { //01c6
+    print("It is a device designed to assist you in adjusting to a change in elevation.")
+    goto(l471)
+  }
+  print("That can't be accomplished from here.")
+}
+l471:
+if (!f199) { //01d7
+  if (f30) { //01de
+    if (v30 == 2) { //01e4
+      v30 = 0
+      reset(f30)
+      stop.update(o2)
+      goto(l515)
+    }
+    if (v30 == 3) { //01f5
+      stop.update(o2)
+      v30 = 1
+      reset(f30)
+    }
+  }
+l515:
+  if (f31 && v30 == 0) { //0203
+    start.update(o2)
+    end.of.loop(o2,f30)
+    sound(1,f162)
+    v30 = 3
+  }
+  if (f31 && !(posn(o0,23,133,33,146))) { //0217
+    reset(f31)
+    start.update(o2)
+    reverse.loop(o2,f30)
+    sound(2,f162)
+    v30 = 2
+  }
+  if (v30 == 0 && posn(o0,23,138,33,146)) { //0231
+    start.update(o2)
+    end.of.loop(o2,f30)
+    sound(1,f162)
+    v30 = 3
+  }
+  if (!(posn(o0,23,138,33,146)) && v30 == 1 && !f31) { //0249
+    start.update(o2)
+    reverse.loop(o2,f30)
+    sound(2,f162)
+    v30 = 2
+  }
+}
+if (vWhichEgoBorder == 2) { //0265
+  v67 = 0
+  new.room(6)
+}
+if (posn(o0,23,133,32,137) && v30 == 0 && !f57) { //0271
+  set(f57)
+  v67 = 0
+  new.room(2)
+}
+if (v67 == 1) { //0288
+  call(103)
+}
+return()

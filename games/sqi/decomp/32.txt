@@ -1,0 +1,27 @@
+if (fNewRoom) { //0002
+  set.horizon(1)
+  program.control()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(70)
+  set.view(o0,70)
+  set.cel(o0,0)
+  stop.cycling(o0)
+  set(f56)
+  position(o0,87,40)
+  draw(o0)
+  start.motion(o0)
+  move.obj(o0,87,167,4,f30)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //002a
+    goto(l59)
+  }
+  clear.lines(22,24,c0)
+l59:
+  reset(f97)
+}
+if (f30) { //003d
+  reset(f30)
+  new.room(25)
+}
+return()

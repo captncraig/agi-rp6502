@@ -1,0 +1,358 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(125)
+  load.view(34)
+  load.view(89)
+  load.view(115)
+  load.sound(31)
+  animate.obj(o1)
+  set.view(o1,125)
+  set.loop(o1,1)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  position(o1,109,139)
+  draw(o1)
+  move.obj(o1,97,151,0,f36)
+  v34 = 1
+  animate.obj(o10)
+  set.view(o10,34)
+  if (!f69) { //003b
+    if (f60) { //0042
+      set.loop(o10,3)
+      set.cel(o10,0)
+      position(o10,72,163)
+      set(f35)
+      v35 = 10
+      goto(l100)
+    }
+    set.loop(o10,2)
+    set.cel(o10,0)
+    position(o10,101,65)
+  }
+l100:
+  if (!f67 && v68 < 38) { //0064
+    animate.obj(o11)
+    set.view(o11,89)
+    if (f67) { //0073
+      set.loop(o11,3)
+      set.cel(o11,0)
+      position(o11,72,163)
+      v35 = 10
+      set(f34)
+      goto(l149)
+    }
+    set.loop(o11,2)
+    set.cel(o11,0)
+    position(o11,49,65)
+  }
+l149:
+  add.to.pic(115,0,0,72,135,13,4)
+  add.to.pic(115,0,1,35,135,12,1)
+  add.to.pic(115,0,2,97,132,12,1)
+  if (!f69) { //00ad
+    if (!f60) { //00b4
+      draw(o10)
+      stop.update(o10)
+    }
+  }
+  if (!(v68 > 0) && !f67) { //00bf
+    draw(o11)
+    stop.update(o11)
+  }
+  position(o0,72,163)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00d5
+    goto(l230)
+  }
+  clear.lines(23,24,c0)
+l230:
+  set(f37)
+}
+if (f41 && f60) { //00e8
+  v36--
+  if (v36 == 1) { //00f2
+    sound(31,f40)
+    random(100,254,v36)
+  }
+}
+v35--
+if (v35 == 1) { //0102
+  v35 = 0
+  set(f31)
+  if (f60) { //010e
+    draw(o10)
+  }
+  if (f67) { //0116
+    draw(o11)
+  }
+}
+if (f38) { //011e
+  if (posn(o0,93,65,114,69)) { //0124
+    if (v30 != 1) { //012e
+      v30 = 1
+      if (v124 > 44) { //0139
+        set(f39)
+        goto(l342)
+      }
+      if (v124 > 35 && !f174) { //0145
+        set(f39)
+        goto(l342)
+      }
+      reset(f39)
+l342:
+      reset(f37)
+    }
+    goto(l491)
+  }
+  if (posn(o0,41,65,63,69)) { //015b
+    if (v30 != 2) { //0165
+      v30 = 2
+      if (v124 > 39) { //0170
+        set(f39)
+        goto(l397)
+      }
+      if (v124 > 31 && !f174) { //017c
+        set(f39)
+        goto(l397)
+      }
+      reset(f39)
+l397:
+      reset(f37)
+    }
+    goto(l491)
+  }
+  if (posn(o0,56,130,92,154)) { //0192
+    if (v30 != 3) { //019c
+      v30 = 3
+      reset(f37)
+      reset(f39)
+    }
+    goto(l491)
+  }
+  if (posn(o0,25,125,55,143)) { //01ae
+    if (v30 != 4) { //01b8
+      v30 = 4
+      reset(f37)
+      reset(f39)
+    }
+    goto(l491)
+  }
+  if (posn(o0,93,131,120,139)) { //01ca
+    if (v30 != 5) { //01d4
+      v30 = 5
+      reset(f37)
+      reset(f39)
+    }
+    goto(l491)
+  }
+  v30 = 0
+  reset(f39)
+}
+l491:
+if (v34 == 6 && !f37 && !f60 && !f69 && !f67) { //01eb
+  set(f37)
+  if (v30 == 1) { //0200
+    print("\"That model is ideal for flight systems operations. It will pilot any modern fighter or cruiser. And, it is one of the most experienced droids we carry. I ask only 45 buckazoids for it (36 with coupon).\"")
+    print("\"I got it from some gambling type who was required to pay-up or perish.\"")
+  }
+  if (v30 == 2) { //020b
+    if (!(v68 > 0)) { //0212
+      print("\"That unit is a good, all-around droid. Sure, it may seem a little dinged-up but it's not as bad as it looks. There is still quite a bit of life left in it. It is a great little companion. And for you, only 40 buckazoids (32 with coupon).\"")
+    }
+  }
+  if (v30 == 3) { //021c
+    print("\"We call that one The Peacemaker. It's used primarily in security. In a crime situation it is capable of apprehending, trying, sentencing, and punishing the offender on the spot. Swift and effective. And only 368 buckazoids (294 with coupon).\"")
+  }
+  if (v30 == 4) { //0225
+    print("\"That compact unit is often used for mining. It is short and stocky, and quite strong for its size. It is designed to work in areas which may be hazardous to non-mechanized beings. 325 buckazoids for years of service (294 with coupon).\"")
+  }
+  if (v30 == 5) { //022e
+    print("\"That one is a collector's item. One of the very first droids ever built. Someday that rare piece is going to bring me a small fortune at auction. It's not for sale.\"")
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0237
+  goto(l973)
+}
+if (said("check out", "area")) { //0245
+  print("This is the inside of Droids-B-Us. The room has a pedestal in the middle and a stairway and balcony toward the back. A variety of droids adorn the floor space.")
+}
+if (said("check out", "droid")) { //0251
+  print("There is nothing I can tell you that the salesman hasn't already.")
+}
+if ((said("check out", "being") || said("check out", "salesman"))) { //025d
+  print("The salesman is a strangely built being. He looks like he might tip forward any minute.")
+}
+if ((said("speak", "being") || said("speak", "salesman"))) { //0271
+  print("\"Are you here to talk or are you here to buy,\" the salesman asks.")
+}
+if (said("check out", "stairs")) { //0285
+  print("There is nothing special about the stairs. They look like a standard gravity rebellion device.")
+}
+if (said("jump")) { //0291
+  print("Silly human!")
+}
+if (said("check out", "port")) { //029b
+  print("You cannot see anything out the tiny and unimportant window.")
+}
+if (said("check out", "wall")) { //02a7
+  print("Why?")
+}
+if (said("check out", "rail")) { //02b3
+  print("There is nothing special about the rail and, no, you can't slide down it.")
+}
+if ((said("check out", "banner") || said("check out", "sign") || said("read", "sign") || said("read", "banner"))) { //02bf
+  print("The banner indicates that there is a sale occurring.")
+}
+if ((said("give", "coupon") || said("give", "coupon") || said("give", "coupon"))) { //02df
+  if (!f174) { //02f7
+    print("I see you bear one of those coupons. Oh, well. You shall receive 20\\% off any of my quoted prices.")
+    goto(l773)
+  }
+  print("That item is not in your possession.")
+}
+l773:
+if ((said("acquire", "sign") || said("acquire", "banner"))) { //0305
+  print("There is no need to do that.")
+}
+if (said("buy", "droid")) { //0319
+  if (!f60 && !f67 && !f69) { //0323
+    if (v30 == 1) { //0330
+      if (f39) { //0337
+        if (!f174) { //033d
+          v124 -= 36
+          set(f174)
+          print("Using your discount coupon you have made a relatively decent purchase of a pre-owned sale item.")
+          goto(l851)
+        }
+        v124 -= 45
+        print("You have made a relatively decent purchase of a pre-owned sale item.")
+l851:
+        set(f60)
+        start.update(o10)
+        set(f41)
+        sound(31,f40)
+        random(100,254,v36)
+        follow.ego(o10,10,f30)
+        vCurrentScore += 4
+        goto(l876)
+      }
+      print("You don't have enough buckazoids.")
+l876:
+      goto(l968)
+    }
+    if (v30 == 2 && !(v68 > 0)) { //036f
+      if (f39) { //037a
+        if (!f174) { //0380
+          v124 -= 32
+          set(f174)
+          print("Using your discount coupon you have made a relatively decent purchase of a pre-owned sale item.")
+          goto(l918)
+        }
+        v124 -= 40
+        print("You have made a relatively decent purchase of a pre-owned sale item.")
+l918:
+        set(f67)
+        v68 = 1
+        start.update(o11)
+        follow.ego(o11,10,f30)
+        goto(l934)
+      }
+      print("You don't have enough buckazoids.")
+l934:
+      goto(l968)
+    }
+    if ((v30 == 3 || v30 == 4)) { //03a9
+      print("You don't have enough buckazoids.")
+      goto(l968)
+    }
+    if (v30 == 5) { //03ba
+      print("Not for sale.")
+      goto(l968)
+    }
+    print("There is nothing here to buy.")
+l968:
+    goto(l973)
+  }
+  print("\"Only one droid per person in this town. It's an ordinance, you know.\"")
+}
+l973:
+if (f36) { //03cd
+  reset(f36)
+  if (v34 == 5) { //03d5
+    set.loop(o1,2)
+    stop.cycling(o1)
+    v34 = 6
+  }
+  if (v34 == 7) { //03e4
+    move.obj(o1,75,68,0,f36)
+    v34 = 5
+  }
+  if (v34 == 3) { //03f4
+    move.obj(o1,85,70,0,f36)
+    v34 = 7
+  }
+  if (v34 == 2) { //0404
+    move.obj(o1,126,86,0,f36)
+    v34 = 3
+  }
+  if (v34 == 1) { //0414
+    if ((f60 || f67)) { //041b
+      print("\"Only one droid per person in this town. It's an ordinance, you know.\"")
+      goto(l1086)
+    }
+    if (v68 > 1) { //042a
+      print("\"Nice to see you again. Where is your little friend?\"")
+      print("\"Oh, I do hope nothing has happened to it. Especially with it being a sale item. You did understand that sale items aren't covered under the terms of our warranty policy, I'm sure.\"")
+      print("\"I'll be upstairs if you need anything.\"")
+      goto(l1086)
+    }
+    print("\"Welcome to Droids-B-Us, the finest emporium for mechanized beings in the quadrant. We have a complete line of droids for any purpose imaginable. Well, almost any.\"")
+    print("All top-of-the-line, but, I suppose YOU would probably be interested in our SALE items. Please walk this way.\"")
+l1086:
+    move.obj(o1,126,135,0,f36)
+    v34 = 2
+    set(f38)
+  }
+}
+if (f67) { //0449
+  if (f30) { //044f
+    reset(f30)
+    stop.motion(o11)
+    stop.cycling(o11)
+    set(f31)
+  }
+  if (f31) { //045d
+    distance(o0,o11,v31)
+    if (v31 > 15) { //0467
+      reset(f31)
+      start.motion(o11)
+      start.cycling(o11)
+      follow.ego(o11,10,f30)
+    }
+  }
+}
+if (f60) { //0478
+  if (f30) { //047e
+    reset(f30)
+    stop.motion(o10)
+    stop.cycling(o10)
+    set(f31)
+  }
+  if (f31) { //048c
+    distance(o0,o10,v31)
+    if (v31 > 15) { //0496
+      reset(f31)
+      start.motion(o10)
+      start.cycling(o10)
+      follow.ego(o10,10,f30)
+    }
+  }
+}
+if (vWhichEgoBorder == 3 && posn(o0,61,167,86,167)) { //04a7
+  new.room(39)
+}
+return()

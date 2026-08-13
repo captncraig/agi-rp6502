@@ -1,0 +1,7 @@
+v206 = 0
+v236 = 0
+if (v200 > 1) {
+  v161 = 0
+
+!!!
+&{%!e(string=unknown opcode: 0xfe)}

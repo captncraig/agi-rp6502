@@ -1,0 +1,5 @@
+v68 = 0
+v36 = 1
+
+!!!
+&{%!e(string=unknown opcode: 0x61)}

@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  set(f102)
+
+!!!
+&{%!e(string=unknown opcode: 0x3f)}

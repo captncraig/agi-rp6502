@@ -1,0 +1,19 @@
+v64 = 104
+load.pic(v64)
+text.screen()
+display(5,9,"Welcome Aboard Arcada")
+display(9,6,"To log on as a crew member")
+display(10,6,"please enter your name below")
+display(12,9,"(up to 18 characters):")
+open.dialogue()
+get.string(str1,"First Name: ",16,5,18)
+parse(str1)
+close.dialogue()
+if (!fEnteredCommand) { //0022
+  set.string(str1,"Roger Wilco")
+}
+v64 = 104
+draw.pic(v64)
+graphics()
+new.room(2)
+return()

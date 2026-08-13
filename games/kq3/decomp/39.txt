@@ -1,0 +1,9 @@
+if (isSet(f5)) {
+  set(f34)
+  v32 = 104
+  v31 = 134
+  v57 = 55
+  v58 = 141
+
+!!!
+&{%!e(string=unknown opcode: 0x18)}

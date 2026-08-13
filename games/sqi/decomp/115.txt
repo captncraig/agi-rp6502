@@ -1,0 +1,136 @@
+if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0002
+  v245 = 18
+  goto(l21)
+}
+v245 = 16
+l21:
+v246 = 13
+if (v129 == 1) { //0018
+  set(f123)
+  set(f233)
+  v64 = 0
+  goto(l246)
+}
+if (v129 == 2) { //0029
+  v64 = 0
+  goto(l246)
+}
+if (v129 == 7) { //0036
+  if (v123 == 1) { //003d
+    v64 = 20
+    goto(l90)
+  }
+  if (v123 == 2) { //004a
+    v64 = 40
+    goto(l90)
+  }
+  v64 = 60
+l90:
+  goto(l246)
+}
+if (v129 == 6) { //005d
+  if (v123 == 1) { //0064
+    v64 = 10
+    goto(l129)
+  }
+  if (v123 == 2) { //0071
+    v64 = 20
+    goto(l129)
+  }
+  v64 = 30
+l129:
+  goto(l246)
+}
+if (v129 == 5) { //0084
+  if (v123 == 1) { //008b
+    v64 = 5
+    goto(l168)
+  }
+  if (v123 == 2) { //0098
+    v64 = 10
+    goto(l168)
+  }
+  v64 = 15
+l168:
+  goto(l246)
+}
+if (v129 == 4) { //00ab
+  if (v123 == 1) { //00b2
+    v64 = 3
+    goto(l207)
+  }
+  if (v123 == 2) { //00bf
+    v64 = 6
+    goto(l207)
+  }
+  v64 = 9
+l207:
+  goto(l246)
+}
+if (v129 == 3) { //00d2
+  if (v123 == 1) { //00d9
+    v64 = 1
+    goto(l246)
+  }
+  if (v123 == 2) { //00e6
+    v64 = 2
+    goto(l246)
+  }
+  v64 = 3
+}
+l246:
+if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00f6
+  display(18,13,"               ")
+  goto(l267)
+}
+display(16,13,"               ")
+l267:
+if (v129 != 2 && v129 != 1) { //010b
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0117
+    display(18,13," You Win  $%v64 ")
+    goto(l300)
+  }
+  display(16,13," You Win  $%v64 ")
+l300:
+  goto(l311)
+}
+random(6,12,v247)
+display(v245,v246,v247)
+l311:
+v123 = 0
+v126 = 250
+v126 -= v124
+if (!(v124 > 0)) { //0140
+  drop(i10)
+}
+if (v126 < v64) { //014a
+  v124 = 250
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0154
+    display(20,13," You Have $%v124")
+    goto(l361)
+  }
+  display(18,13," You Have $%v124")
+l361:
+  print("Sorry, there seems to be a circuit failure.  To be reimbursed send claim to Gippazoid Novelties, 2001 Odessa Blastway  Gurnville, Faydor    Exl Galaxy.\n (Please allow two decades for delivery)")
+  reset(f95)
+  enable.member(c22)
+  new.room(70)
+}
+v124 += %!d(string=v64)
+if (v124 > 0 && !(has(i10))) { //0174
+  get(i10)
+}
+if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0180
+  display(20,13," You Have $%v124")
+  goto(l405)
+}
+display(18,13," You Have $%v124")
+l405:
+reset(f134)
+v129 = 8
+if (!f123) { //019a
+  accept.input()
+}
+reset(f95)
+return()
+return()

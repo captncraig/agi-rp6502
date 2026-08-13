@@ -1,0 +1,183 @@
+if (fNewRoom) { //0002
+  set.horizon(35)
+  v30 = 90
+  v33 = 36
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  if ((f96 || f101 || f97)) { //001c
+    load.logic(110)
+    call(110)
+  }
+  load.view(124)
+  load.view(123)
+  animate.obj(o2)
+  set.view(o2,123)
+  position(o2,120,90)
+  load.view(122)
+  animate.obj(o1)
+  ignore.objs(o1)
+  ignore.blocks(o1)
+  set.view(o1,122)
+  position(o1,125,130)
+  set.cel(o1,0)
+  if (vPrevRoom == 15) { //004b
+    position(o0,126,41)
+  }
+  if (vPrevRoom == 19) { //0056
+    position(o0,150,72)
+  }
+  draw(o0)
+  draw(o1)
+  ignore.objs(o1)
+  stop.update(o1)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (f92) { //006e
+    start.motion(o0)
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted || f91)) { //0076
+  goto(l286)
+}
+if (f158) { //0086
+  goto(l440)
+}
+if (said("check out", "area")) { //008f
+  if (f92) { //0099
+    print("You are atop the mesa. It is flat to the west.")
+    goto(l166)
+  }
+  print("You are at the west side of a cliff area.")
+}
+l166:
+if (!f92) { //00a6
+  if (obj.in.box(o0,0,109,157,167)) { //00ad
+    if (said("check out", "cliff")) { //00b7
+      print("Looking at the cliff you notice a small hole")
+    }
+  }
+}
+if ((said("check out", "entryway") || said("climb in", "entryway") || said("reach", "entryway"))) { //00c3
+  if (posn(o0,121,134,128,139)) { //00db
+    if (!f30) { //00e5
+      set(f118)
+      if (f102) { //00ee
+        normal.motion(o16)
+        wander(o16)
+      }
+      set(f30)
+      set.cel(o1,1)
+      force.update(o1)
+      erase(o0)
+      set(f33)
+    }
+    goto(l264)
+  }
+  print("From this distance it looks like an ordinary hole in the side of the cliff.  For a better look you will have to get closer.")
+}
+l264:
+if (said("drop", "dehydrated water", "entryway")) { //0108
+  print("No good will come of that.")
+}
+if (fEnteredCommand) { //0116
+  call(112)
+}
+l286:
+if (f33) { //011e
+  v30--
+  if (v30 == 63) { //0126
+    reset(f33)
+    start.update(o1)
+    end.of.loop(o1,f31)
+  }
+}
+if (f31) { //0134
+  v30--
+  set.cel(o1,0)
+  stop.cycling(o1)
+  if (v30 == 36) { //0141
+    reset(f31)
+    set.view(o1,124)
+    reposition.to(o1,125,149)
+    end.of.loop(o1,f32)
+  }
+}
+if (f32) { //0154
+  v33 = 24
+  v34 = 1
+  reset(f32)
+}
+v33--
+if (v33 == 1) { //0164
+  if (v34 == 2) { //016b
+    erase(o2)
+    print("Whatever is in that hole just enjoyed lunch - on you.  This should teach you to be cautious when encountering alien holes.")
+    v130 = 18
+  }
+  if (v34 == 1) { //0179
+    draw(o2)
+    v33 = 24
+    v34 = 2
+  }
+}
+if (f92) { //0188
+  if (fTriggerLine && !f91) { //018e
+    set(f91)
+    call(107)
+    goto(l440)
+  }
+  if (!f91) { //019e
+    get.posn(o0,v62,v63)
+    if (v62 < 117) { //01a9
+      set.priority(o0,11)
+      goto(l440)
+    }
+    release.priority(o0)
+  }
+}
+l440:
+if (vWhichEgoBorder != 0 && !f91) { //01b8
+  reset(f102)
+  if (!f103) { //01c5
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //01d1
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 3) { //01db
+    new.room(21)
+  }
+  if (vWhichEgoBorder == 2) { //01e4
+    new.room(19)
+  }
+  if (vWhichEgoBorder == 1) { //01ed
+    if (f92) { //01f4
+      new.room(15)
+      goto(l513)
+    }
+    new.room(30)
+  }
+l513:
+  if (vWhichEgoBorder == 4) { //0201
+    new.room(30)
+  }
+}
+if (f91) { //020a
+  if (posn(o0,80,0,115,26)) { //0210
+    set.priority(o0,9)
+  }
+  if (posn(o0,80,27,115,57)) { //021d
+    set.priority(o0,10)
+  }
+  call(107)
+}
+if ((f101 || f97)) { //022c
+  call(110)
+}
+return()

@@ -1,0 +1,171 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  status.line.on()
+  v59 = 0
+  if (!(has(i9))) { //000e
+    get(i9)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(15)
+  load.sound(7)
+  load.view(132)
+  load.view(143)
+  animate.obj(o2)
+  set.view(o2,132)
+  set.cel(o2,0)
+  ignore.objs(o2)
+  stop.cycling(o2)
+  animate.obj(o1)
+  set.view(o1,143)
+  set.cel(o1,0)
+  ignore.objs(o1)
+  position(o1,70,107)
+  set.priority(o1,4)
+  draw(o1)
+  stop.cycling(o1)
+  set.view(o0,132)
+  if (vPrevRoom != 46) { //0049
+    v31 = 0
+    position(o0,20,150)
+    position(o2,20,150)
+  }
+  set.priority(o0,2)
+  draw(o0)
+  fix.loop(o2)
+  draw(o2)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0066
+    goto(l119)
+  }
+  clear.lines(23,24,c0)
+l119:
+  set(f33)
+}
+get.posn(o0,v62,v63)
+reposition.to(o2,v62,v63)
+if (vEgoDir > 0) { //0081
+  reset(f33)
+  if (v137 != vEgoDir) { //008a
+    v137 = vEgoDir
+    normal.motion(o2)
+    set.cel(o2,0)
+    if (vEgoDir == 1) { //009a
+      set.loop(o2,3)
+    }
+    if (vEgoDir > 1 && vEgoDir < 4) { //00a4
+      set.loop(o2,0)
+    }
+    if (vEgoDir == 5) { //00b1
+      set.loop(o2,2)
+    }
+    if (vEgoDir > 5 && vEgoDir < 9) { //00bb
+      set.loop(o2,1)
+    }
+    current.loop(o2,v64)
+    v34 = v64
+    end.of.loop(o2,f34)
+    sound(15,f120)
+  }
+  goto(l278)
+}
+if (!f33) { //00d7
+  set(f33)
+  v137 = vEgoDir
+  normal.motion(o2)
+  if (v34 == 0) { //00e5
+    set.loop(o2,1)
+  }
+  if (v34 == 1) { //00ef
+    set.loop(o2,0)
+  }
+  if (v34 == 2) { //00f9
+    set.loop(o2,3)
+  }
+  if (v34 == 3) { //0103
+    set.loop(o2,2)
+  }
+  set.cel(o2,0)
+  end.of.loop(o2,f34)
+  sound(15,f120)
+}
+l278:
+if (f34) { //0116
+  reset(f34)
+  set.cel(o2,0)
+  stop.cycling(o2)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0123
+  goto(l492)
+}
+if ((said("get down", "jet pack") || said("drop", "jet pack"))) { //0131
+  print("Are you crazy? You'd make a funny looking asteroid. Keep the jetpack on!")
+}
+if (said("climb in", "craft")) { //0145
+  print("That's up to you!")
+}
+if ((said("check out") || said("check out", "craft") || said("check out", "area"))) { //0151
+  print("You are floating in space just outside the biggest darn spaceship you've ever seen. You see a door. Perhaps it is a way in?")
+}
+if ((said("check out", "door") || said("check out", "airlock"))) { //0169
+  if (obj.in.box(o0,61,70,93,124)) { //017b
+    print("It appears to be a standard airlock.  There is a handle in the center.")
+    goto(l396)
+  }
+  print("You can't see it from here!")
+}
+l396:
+if ((said("check out", "port") || said("look in", "port"))) { //018c
+  if (obj.in.box(o0,61,70,93,124)) { //019e
+    print("You see a room inside the spaceship which appears to be empty.")
+    goto(l431)
+  }
+  print("You can't see into the window from where you are.")
+}
+l431:
+if ((said("turn", "handle") || said("open", "door") || said("open", "airlock"))) { //01af
+  if (obj.in.box(o0,70,101,89,106)) { //01c7
+    if (!f30) { //01d1
+      print("You grasp the large handle and twist, noting the rather significant amount of pain being registered. You are extremely grateful to hear a click.")
+      start.update(o1)
+      end.of.loop(o1,f31)
+      sound(7,f120)
+      goto(l487)
+    }
+    print("It is already turned.")
+l487:
+    goto(l492)
+  }
+  print("You are not close enough to perform that act.")
+}
+l492:
+if (f31) { //01ec
+  reset(f31)
+  stop.cycling(o1)
+  set(f30)
+  if (f32) { //01f8
+    player.control()
+    new.room(61)
+    goto(l518)
+  }
+  set(f32)
+}
+l518:
+if (f30) { //0206
+  if (posn(o0,70,98,81,100)) { //020c
+    reset(f30)
+    start.cycling(o1)
+    reverse.loop(o1,f31)
+    set.priority(o0,4)
+    set.priority(o1,15)
+    stop.motion(o0)
+    stop.cycling(o0)
+    program.control()
+    reset(f56)
+  }
+}
+if (vWhichEgoBorder > 0) { //022a
+  new.room(46)
+}
+return()

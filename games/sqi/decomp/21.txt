@@ -1,0 +1,48 @@
+if (fNewRoom) { //0002
+  set.horizon(80)
+  load.pic(vCurrentRoom)
+  if ((f96 || f101 || f97)) { //000c
+    load.logic(110)
+    call(110)
+  }
+  load.logic(112)
+  load.view(163)
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0029
+  goto(l75)
+}
+if (said("check out", "area")) { //0037
+  print("You are at the southwest edge of a mesa. It is very desolate here.")
+}
+if (fEnteredCommand) { //0043
+  call(112)
+}
+l75:
+if (vWhichEgoBorder != 0 && vWhichEgoBorder != 3) { //004b
+  reset(f102)
+  if (!f103) { //0059
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //0065
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 1) { //006f
+    new.room(18)
+  }
+  if (vWhichEgoBorder == 4) { //0078
+    new.room(30)
+  }
+  if (vWhichEgoBorder == 2) { //0081
+    new.room(22)
+  }
+}
+if ((f101 || f97)) { //008a
+  call(110)
+}
+return()

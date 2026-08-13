@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  v35 = 0
+
+!!!
+&{%!e(string=unknown opcode: 0x04)}

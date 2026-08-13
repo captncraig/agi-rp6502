@@ -1,0 +1,445 @@
+if (fNewRoom) { //0002
+  set.horizon(90)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(112)
+  if ((f60 || f67)) { //0012
+    load.logic(116)
+    call(116)
+  }
+  load.view(117)
+  load.view(108)
+  load.view(110)
+  load.view(114)
+  load.view(119)
+  load.view(193)
+  load.view(33)
+  add.to.pic(110,0,0,53,32,4,4)
+  animate.obj(o2)
+  set.view(o2,117)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  position(o2,104,144)
+  animate.obj(o4)
+  set.view(o4,108)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  set.priority(o4,14)
+  position(o4,33,156)
+  animate.obj(o15)
+  set.view(o15,114)
+  set.loop(o15,0)
+  set.cel(o15,0)
+  ignore.horizon(o15)
+  animate.obj(o5)
+  set.view(o5,119)
+  ignore.objs(o5)
+  ignore.blocks(o5)
+  ignore.horizon(o5)
+  position(o5,46,118)
+  animate.obj(o6)
+  set.view(o6,193)
+  ignore.objs(o6)
+  ignore.blocks(o6)
+  ignore.horizon(o6)
+  position(o6,134,48)
+  if (vPrevRoom == 37) { //0082
+    position(o0,101,91)
+    goto(l156)
+  }
+  if (vPrevRoom != 35) { //0090
+    position(o0,100,100)
+  }
+l156:
+  if (!f65 && !f74) { //009c
+    position(o15,47,116)
+    draw(o15)
+    set(f39)
+    stop.motion(o15)
+    stop.cycling(o15)
+    if (!f169) { //00b2
+      v32 = 36
+    }
+  }
+  if (f65) { //00bc
+    position(o15,120,91)
+    draw(o15)
+    v32 = 2
+  }
+  if (f66) { //00cb
+    set.loop(o2,3)
+    last.cel(o2,v64)
+    set.cel(o2,v64)
+  }
+  draw(o2)
+  stop.update(o2)
+  draw(o4)
+  stop.update(o4)
+  draw(o0)
+  if ((f60 || f67)) { //00e4
+    get.posn(o0,v135,v136)
+    v136 -= 1
+    position(o10,135,v136)
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00fa
+    goto(l267)
+  }
+  clear.lines(23,24,c0)
+}
+l267:
+if (fTriggerLine) { //010b
+  if (!f167) { //0111
+    set(f167)
+    print("You are standing against the protective barrier encircling Ulence Flats. Due to the fact that you are land-based you are not able to pass.")
+  }
+  goto(l297)
+}
+if (f167) { //011f
+  reset(f167)
+  reset(fTriggerLine)
+}
+l297:
+if (!f66 && obj.in.box(o0,81,130,143,155)) { //0129
+  v31 = 1
+  goto(l335)
+}
+if (obj.in.box(o0,24,141,88,166)) { //013c
+  v31 = 2
+  goto(l335)
+}
+v31 = 0
+l335:
+if ((!fEnteredCommand || fSaidAccepted)) { //014f
+  goto(l759)
+}
+if (said("check out", "entryway")) { //015d
+  if (f66) { //0167
+    print("There is a hole here. I'm sure you recall its origin. At the bottom is the fine craft you rode to glory in. There is no reason to explore the hole any further.")
+  }
+}
+if (f66) { //016f
+  if ((said("climb in", "entryway") || said("climb", "entryway"))) { //0175
+    print("Stay out of the hole!")
+  }
+}
+if (said("check out", "sign")) { //0189
+  print("There is a sign here which indicates that this is Tiny's Used Space Ship Lot.")
+}
+if (said("check out", "building")) { //0195
+  print("There is a small, sturdy office here which unauthorized personnel are not allowed in. It must be a brick ship house.")
+}
+if (said("check out", "banner")) { //01a1
+  print("There are some decorative banners which would seem to indicate that making a purchase at Tiny's can be a festive occasion.")
+}
+if (said("check out", "craft")) { //01ad
+  if (!f66 && v31 == 1) { //01b7
+    print("You are standing near one of Tiny's used spacecraft. Upon close inspection they appear to have quite a few kilometers on them.")
+    goto(l480)
+  }
+  if (v31 == 2) { //01c6
+    print("You are standing near one of Tiny's used spacecraft. Upon close inspection they appear to have quite a few kilometers on them.")
+    goto(l480)
+  }
+  if (v31 == 3) { //01d2
+    print("You are standing near one of Tiny's used spacecraft. Upon close inspection they appear to have quite a few kilometers on them.")
+    goto(l480)
+  }
+  print("You are on Tiny's Used Spacecraft lot. There are only a few ships to choose from. Impossible to miss is the incredibly talkative, not to mention rotund, owner, Tiny. He is most certainly an unusual looking being.")
+}
+l480:
+if ((said("check out", "tiny") || said("check out", "being") || said("check out", "animal"))) { //01e0
+  if ((f65 || f39)) { //01f8
+    print("What can be said that isn't seen? Tiny is a large, red skin-covered beast with the personality of a true salesman. Not a prime combination of traits.")
+  }
+}
+if ((f39 || f65)) { //0204
+  if (said("test", "craft")) { //020e
+    print("\"Sorry, you can only fly it when you buy it. Oh, by the way, there are no refunds either. Company Policy.\"")
+  }
+}
+if ((said("speak", "being") || said("speak", "tiny"))) { //021a
+  if ((f39 || f65)) { //022c
+    print("Tiny's not a great conversationalist. He just wants to sell, sell, sell.")
+  }
+}
+if ((f39 || f65)) { //0238
+  if (said("buy", "craft")) { //0242
+    if ((f169 || f74)) { //024c
+      print("You can own only one ship at a time, town ordinance.")
+      goto(l693)
+    }
+    if (v31 == 2) { //025b
+      if (v71 > 0 && v124 > 114) { //0262
+        v124 -= 115
+        set(f35)
+        goto(l651)
+      }
+      if (!(v71 > 0) && v124 > 184) { //0274
+        v124 -= 185
+        set(f35)
+        goto(l651)
+      }
+      print("\"So what are ya trying to pull? If you don't have the cash you can hit the road. Go on, get out of here. You're wasting my time!\"")
+      set(f33)
+l651:
+      goto(l693)
+    }
+    if (v31 == 1) { //028e
+      if (v124 > 98) { //0295
+        v124 -= 99
+        set(f169)
+        print("\"I tell ya, I think you've made a wise decision. She's a beauty. The keys are in her. If you have any problems don't hesitate to come back and tell us about 'em.\"")
+        print("\"It's been a heckuva pleasure doin' business with you. Well, good luck. Come again!\"")
+        stop.cycling(o15)
+        stop.motion(o15)
+        goto(l688)
+      }
+      print("\"So what are ya trying to pull? If you don't have the cash you can hit the road. Go on, get out of here. You're wasting my time!\"")
+      set(f33)
+l688:
+      goto(l693)
+    }
+    print("There is nothing here to buy.")
+  }
+}
+l693:
+if ((said("climb in", "craft") || said("board", "craft"))) { //02b5
+  if (v31 == 1) { //02c7
+    if (f169) { //02ce
+      erase(o0)
+      start.update(o2)
+      set.loop(o2,1)
+      set.cel(o2,0)
+      v38 = 30
+      v36 = 1
+      goto(l745)
+    }
+    print("You don't own it.")
+l745:
+    goto(l750)
+  }
+  print("You're not close enough.")
+}
+l750:
+if (!fSaidAccepted) { //02ee
+  call(112)
+}
+l759:
+v41--
+if (v41 == 1) { //02f9
+  print("Darn the luck, %s1. You've crashed in the dunes and ended your life. The various inhabitants of the Keronian desert are now feasting on what remains of you. Guess that wasn't such a hot purchase.")
+  v130 = 28
+}
+v42--
+if (v42 == 1) { //0307
+  set.view(o4,33)
+  set.cel(o4,0)
+  stop.cycling(o4)
+  position(o4,139,1)
+  draw(o4)
+  move.obj(o4,139,44,3,f38)
+  v40 = 4
+}
+if (f38) { //0325
+  reset(f38)
+  if (v40 == 5) { //032d
+    erase(o6)
+    v41 = 27
+  }
+  if (v40 == 4) { //0339
+    erase(o4)
+    draw(o6)
+    end.of.loop(o6,f38)
+    v40 = 5
+  }
+  if (v40 == 2) { //034a
+    erase(o4)
+    v42 = 27
+    v40 = 3
+    set.loop(o15,3)
+    stop.cycling(o15)
+    stop.motion(o15)
+  }
+}
+if (v40 == 1) { //0360
+  print("You shell out the buckazoids and hop in. Anxiously, you fire it up and lift off.")
+  ignore.horizon(o4)
+  ignore.objs(o4)
+  set.priority(o4,15)
+  start.update(o4)
+  stop.cycling(o4)
+  move.obj(o4,33,49,10,f38)
+  erase(o5)
+  v40 = 2
+}
+if (f35) { //037f
+  reset(f35)
+  if (!(v40 > 0)) { //0387
+    print("\"I tell ya, I think you've made a wise decision. She's a beauty. The keys are in her. If you have any problems don't hesitate to come back and tell us about 'em.\"")
+    print("\"It's been a heckuva pleasure doin' business with you. Well, good luck. Come again!\"")
+    erase(o0)
+    start.update(o4)
+    set.cel(o4,1)
+    stop.cycling(o4)
+    v40 = 1
+  }
+}
+v38--
+if (v38 == 28) { //03a1
+  print("You proudly climb into your new used spacecraft. There is definitely something unique about it.")
+  print("You turn the key excitedly.")
+}
+if (v38 == 1) { //03ac
+  set.cel(o2,0)
+  end.of.loop(o2,f37)
+  v64 = 2
+  cycle.time(o2,v64)
+  if (!f32) { //03bf
+    start.cycling(o15)
+    move.obj(o15,85,144,0,f34)
+    v33 = 1
+  }
+}
+if (f37) { //03d1
+  reset(f37)
+  if (v36 == 4) { //03d9
+    stop.update(o2)
+    set(f66)
+    draw(o0)
+    v36 = 5
+    print("\"Well, geez, guy! It seems it's developed some minor malfunction since we acquired it. We did have a small micro-meteroid shower the other day. Maybe that was it! Yeah, that was probably it.\"")
+    print("\"Much as I'd like to I can't refund your money. Company policy. It's out of my hands. However, I can give you seventy buckazoids credit on any other ship in our fine line of used spacecraft. Look around, see what you like.\"")
+    v71 = 70
+    reset(f169)
+  }
+  if (v36 == 2) { //03f2
+    set.loop(o2,3)
+    stop.update(o2)
+    v36 = 3
+    v37 = 45
+  }
+  if (v36 == 1) { //0404
+    set.loop(o2,2)
+    v64 = 2
+    cycle.time(o2,v64)
+    end.of.loop(o2,f37)
+    set.cel(o2,0)
+    v36 = 2
+  }
+}
+v37--
+if (v37 == 1) { //041f
+  start.update(o2)
+  end.of.loop(o2,f37)
+  position(o0,114,143)
+  set.loop(o0,2)
+  v36 = 4
+}
+if (f33) { //0435
+  reset(f33)
+  v33 = 2
+  start.cycling(o15)
+  start.motion(o15)
+  get.posn(o15,v34,v35)
+  v55 = 0
+  v34 = 76
+  move.obj(o15,v34,v35,55,f34)
+}
+if (f34) { //0454
+  reset(f34)
+  if (v33 == 4) { //045c
+    erase(o15)
+    reset(f39)
+    v33 = 5
+  }
+  if (v33 == 3) { //046a
+    move.obj(o15,49,92,0,f34)
+    v33 = 4
+  }
+  if (v33 == 2) { //047a
+    move.obj(o15,76,92,0,f34)
+    v33 = 3
+  }
+  if (v33 == 1) { //048a
+    v33 = 0
+    stop.cycling(o15)
+    set(f32)
+  }
+}
+v32--
+if (!f169 && v32 == 1) { //049a
+  start.cycling(o15)
+  start.motion(o15)
+  follow.ego(o15,10,f30)
+}
+if (f30) { //04ac
+  if (!f169) { //04b2
+    reset(f30)
+    set(f32)
+    stop.cycling(o15)
+    stop.motion(o15)
+    if (!f52) { //04c1
+      set(f52)
+      print("\"Howdy, Bucko! Can I interest you in one of the finest little used space ships in the galaxy? You look like a man of discerning taste.\"")
+      goto(l1249)
+    }
+    if (!(v31 > 0)) { //04cf
+      if (!(v39 > 0)) { //04d7
+        print("\"So how 'bout it partner? Can I interest you in anything here? Can we do business, or what? I'm at your service. Talk to me, chief.\"")
+      }
+    }
+l1249:
+    if (v31 != v39) { //04e1
+      if (v31 == 1) { //04e9
+        print("\"Well, this is quite a unique little unit. Never been flown over Mach 3. It was owned by a little old lady from Glansadrom. You have to fly it to believe it. And she can be yours for only 99 buckazoids.\"")
+        v39 = v31
+        goto(l1295)
+      }
+      if (v31 == 2) { //04f8
+        print("\"Don't let appearances fool ya. This baby may be a relic, I mean, a classic, but she's as dependable as the day we got her. And just think, you'll be the only one in the quadrant with one. I guarantee it!\"")
+        print("She's a beaut, isn't she? This little baby can do a spin around the planet in just under an hour. Look at the lines in that body work. They just don't make 'em like this any more, ya' know what I mean?  And she's a real bargain at 185 buckazoids.")
+        if (v71 > 0) { //0503
+          print("Of course, minus your 70 buckazoid credit that would come to 115 buckazoids.")
+        }
+        v39 = v31
+      }
+    }
+l1295:
+    goto(l1306)
+  }
+  reset(f30)
+  set(f32)
+  stop.cycling(o15)
+  stop.motion(o15)
+}
+l1306:
+if (!(v33 > 0)) { //051a
+  if (f32) { //0522
+    distance(o0,o15,v30)
+  }
+}
+if (!(v40 > 0)) { //052c
+  if (!f169 && v30 > 35) { //0534
+    reset(f32)
+    v30 = 0
+    start.cycling(o15)
+    start.motion(o15)
+    follow.ego(o15,10,f30)
+  }
+}
+if (vWhichEgoBorder == 2) { //054b
+  reset(f65)
+  new.room(35)
+}
+if (vWhichEgoBorder == 1) { //0556
+  if (!(has(i20))) { //055d
+    set(f65)
+  }
+  new.room(37)
+}
+if ((f60 || f67)) { //0568
+  call(116)
+}
+return()

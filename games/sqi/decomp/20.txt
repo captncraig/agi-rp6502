@@ -1,0 +1,158 @@
+if (fNewRoom) { //0002
+  set.horizon(74)
+  load.pic(vCurrentRoom)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  if ((f96 || f101 || f97)) { //0012
+    load.logic(110)
+    call(110)
+  }
+  if (vPrevRoom == 2) { //0022
+    set(f92)
+  }
+  if (f92) { //002b
+    ignore.horizon(o0)
+  }
+  if (vPrevRoom == 19) { //0033
+    if (f92) { //003a
+      position(o0,12,55)
+      goto(l75)
+    }
+    position(o0,38,68)
+  }
+l75:
+  if (vPrevRoom == 23 && f92) { //004b
+    set.loop(o0,3)
+    position(o0,27,165)
+  }
+  if (vPrevRoom == 2) { //005b
+    set.view(o0,0)
+    set.loop(o0,3)
+    position(o0,27,165)
+    start.motion(o0)
+  }
+  if (vPrevRoom == 24) { //006e
+    start.motion(o0)
+    vEgoDir = 7
+    set.loop(o0,1)
+    position(o0,136,126)
+    v64 = 1
+    set.dir(o0,v64)
+    set(f182)
+  }
+  if (vPrevRoom == 17) { //0089
+    get.posn(o0,v135,v136)
+    if (v135 < 48) { //0094
+      v135 = 50
+      position(o0,135,v136)
+    }
+  }
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (f92) { //00ab
+    start.motion(o0)
+  }
+}
+if (f92) { //00b3
+  ignore.horizon(o0)
+  goto(l192)
+}
+observe.horizon(o0)
+l192:
+if ((!fEnteredCommand || fSaidAccepted)) { //00c0
+  goto(l283)
+}
+if (said("check out", "area")) { //00ce
+  if (f92) { //00d8
+    print("You are following a path on the side of a cliff. It is rather desolate here.")
+    goto(l244)
+  }
+  if (obj.in.box(o0,75,105,159,148)) { //00e3
+    print("You are in an area almost entirely surrounded by cliffs. A path winds its way along the sheer cliff to the left. It is not accessible from here. There is a cave to the right.")
+    goto(l244)
+  }
+  print("You are in an area almost entirely surrounded by cliffs. A path winds its way along the sheer cliff to the left. It is not accessible from here.")
+}
+l244:
+if ((said("check out", "ledge") || said("check out", "ledge"))) { //00f4
+  if (f92) { //0106
+    print("You are walking along a path high above the ground.")
+    goto(l275)
+  }
+  print("A path winds its way along the sheer cliff to the left. It is not accessible from here.")
+}
+l275:
+if (fEnteredCommand) { //0113
+  call(112)
+}
+l283:
+if (!f92 && !f91) { //011b
+  get.posn(o0,v62,v63)
+  if (v63 < 71) { //0129
+    set.priority(o0,5)
+    goto(l312)
+  }
+  release.priority(o0)
+}
+l312:
+if (f92 && !f91) { //0138
+  if (posn(o0,8,38,37,73)) { //0141
+    ignore.blocks(o0)
+    set.priority(o0,6)
+    goto(l361)
+  }
+  if (posn(o0,26,74,41,120)) { //0153
+    set.priority(o0,10)
+    ignore.blocks(o0)
+    goto(l361)
+  }
+  observe.blocks(o0)
+  release.priority(o0)
+l361:
+  if ((posn(o0,0,73,25,167) || right.posn(o0,34,70,47,85))) { //0169
+    observe.blocks(o0)
+    goto(l386)
+  }
+  ignore.blocks(o0)
+l386:
+  if (fTriggerLine && !f91) { //0182
+    set(f91)
+    set.priority(o0,5)
+    call(107)
+  }
+}
+if (!f91 && vWhichEgoBorder != 2) { //0192
+  if ((vWhichEgoBorder != 0 || posn(o0,148,117,150,130))) { //019d
+    reset(f102)
+    if (!f103) { //01af
+      set(f103)
+      v100 = vCurrentRoom
+    }
+    if (f101) { //01bb
+      reset(f101)
+      set(f97)
+    }
+    if (posn(o0,148,117,150,130)) { //01c5
+      new.room(24)
+    }
+    if (vWhichEgoBorder == 3) { //01d1
+      new.room(23)
+    }
+    if (vWhichEgoBorder == 1) { //01da
+      new.room(17)
+    }
+    if (vWhichEgoBorder == 4) { //01e3
+      new.room(19)
+    }
+  }
+}
+if (f91) { //01ec
+  call(107)
+}
+if ((f101 || f97)) { //01f4
+  call(110)
+}
+return()

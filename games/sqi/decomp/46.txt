@@ -1,0 +1,94 @@
+if (fNewRoom) { //0002
+  v87 = 0
+  set.horizon(10)
+  prevent.input()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(33)
+  load.sound(9)
+  load.view(144)
+  load.view(69)
+  load.view(213)
+  load.view(210)
+  animate.obj(o4)
+  set.priority(o4,15)
+  set.view(o4,210)
+  animate.obj(o2)
+  set.view(o2,213)
+  ignore.objs(o2)
+  animate.obj(o1)
+  set.view(o1,144)
+  get.posn(o0,v62,v63)
+  if (v62 > 60) { //0038
+    set.loop(o1,0)
+    position(o1,73,77)
+    position(o2,101,73)
+    position(o4,101,73)
+    goto(l96)
+  }
+  set.loop(o1,1)
+  position(o1,62,77)
+  position(o2,60,75)
+  position(o4,60,75)
+l96:
+  set.cel(o1,0)
+  if (v62 > 60 && v62 < 80) { //0063
+    stop.cycling(o1)
+    set(f32)
+    position(o2,81,73)
+    position(o4,81,73)
+    goto(l127)
+  }
+  end.of.loop(o1,f32)
+l127:
+  draw(o1)
+  set.priority(o0,15)
+  draw(o0)
+  stop.motion(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0089
+    goto(l154)
+  }
+  clear.lines(23,24,c0)
+}
+l154:
+if (f32) { //009a
+  reset(f32)
+  get.posn(o0,v62,v63)
+  set.priority(o2,4)
+  draw(o2)
+  draw(o4)
+  end.of.loop(o4,f33)
+  v64 = 15
+  move.obj(o2,v62,v63,64,f30)
+  sound(33,f120)
+}
+if (f33) { //00bc
+  reset(f33)
+  erase(o4)
+}
+if (f30) { //00c6
+  reset(f30)
+  erase(o2)
+  get.posn(o0,v62,v63)
+  erase(o0)
+  animate.obj(o3)
+  position(o3,62,v63)
+  sound(9,f120)
+  set.view(o3,69)
+  end.of.loop(o3,f31)
+  draw(o3)
+  v87 = 30
+}
+v87--
+if (v87 == 1) { //00ec
+  print("The inhabitants of this vessel don't appear to appreciate your desire to sight-see. You have been transformed into space dust.")
+  stop.cycling(o0)
+  v130 = 99
+}
+if (f31) { //00fa
+  reset(f31)
+  erase(o3)
+}
+return()

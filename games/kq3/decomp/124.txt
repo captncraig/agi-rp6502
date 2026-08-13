@@ -1,0 +1,5 @@
+if (isSet(f5)) {
+  v241 = 143
+
+!!!
+&{%!e(string=unknown opcode: 0x00)}

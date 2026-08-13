@@ -1,0 +1,338 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //000a
+    status.line.off()
+  }
+  load.pic(vCurrentRoom)
+  load.view(75)
+  load.view(102)
+  load.view(77)
+  load.view(87)
+  load.view(98)
+  load.view(97)
+  load.view(95)
+  load.sound(23)
+  load.sound(24)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,77)
+  ignore.objs(o1)
+  ignore.blocks(o1)
+  position(o1,65,158)
+  draw(o1)
+  animate.obj(o2)
+  set.view(o2,87)
+  set.loop(o2,1)
+  set.cel(o2,0)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  animate.obj(o3)
+  set.view(o3,87)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o0,75)
+  v55 = 5
+  step.size(o0,v55)
+  ignore.objs(o0)
+  observe.blocks(o0)
+  set.priority(o0,14)
+  position(o0,60,146)
+  draw(o0)
+  animate.obj(o5)
+  set.view(o5,97)
+  set.cel(o5,0)
+  ignore.objs(o5)
+  position(o5,67,48)
+  draw(o5)
+  stop.cycling(o5)
+  animate.obj(o4)
+  set.view(o4,75)
+  ignore.objs(o4)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0088
+    goto(l153)
+  }
+  clear.lines(23,24,c0)
+l153:
+  random(5,30,v34)
+  random(5,30,v35)
+  v42 = 0
+  v43 = 250
+  v44 = 4
+  v46 = 0
+  v56 = 12
+  set.string(str0," ")
+  set.cursor.char(" ")
+  if (vMonitorType != HERCULES) { //00b5
+    print.at("The settlement the alien spoke of appears on the horizon.",2,3,36)
+  }
+  sound(23,f162)
+}
+if (f162 && !f35) { //00c5
+  sound(23,f162)
+}
+if (f40 && !f35) { //00d1
+  reset(f40)
+  sound(23,f162)
+}
+v43--
+if (!f39 && v43 == 1) { //00e1
+  v43 = 250
+  v46++
+  set.cel(o5,v46)
+  v44--
+  if (v44 == 1) { //00f5
+    print("Whew! That was pretty intense. You've managed to successfully navigate through the treacherous boulder field, and are quite relieved to see that you've reached the settlement.")
+    status.line.on()
+    new.room(35)
+  }
+}
+v47--
+if (v47 == 1) { //0103
+  set.view(o0,75)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //010d
+    goto(l286)
+  }
+  clear.lines(22,22,c0)
+}
+l286:
+get.posn(o0,v135,v136)
+get.posn(o2,v30,v31)
+get.posn(o3,v32,v33)
+v39 = v135
+v39 -= 8
+v40 = v135
+v40 += 20
+if (!f35) { //0136
+  if (v30 > v39 && v30 < v40) { //013d
+    if (v31 > 124 && v31 < 130) { //0147
+      v42++
+      set(f33)
+      if (v42 != 5) { //0155
+        set.view(o0,95)
+        v47 = 3
+        if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0163
+          goto(l376)
+        }
+        clear.lines(22,23,c0)
+        display(22,16,"THUMP!!")
+l376:
+        sound(24,f40)
+        shake.screen(1)
+      }
+    }
+    goto(l448)
+  }
+  if (v32 > v39 && v32 < v40) { //0180
+    if (v33 > 124 && v33 < 130) { //018a
+      v42++
+      set(f33)
+      if (v42 != 5) { //0198
+        set.view(o0,95)
+        sound(24,f40)
+        v47 = 3
+        if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //01a9
+          goto(l446)
+        }
+        clear.lines(22,23,c0)
+        display(22,16,"THUMP!!")
+l446:
+        shake.screen(1)
+      }
+    }
+  }
+}
+l448:
+if (f33) { //01c0
+  reset(f33)
+  if (v42 == 1) { //01c8
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //01cf
+      display(0,10,"Damage Report: Minor")
+      goto(l484)
+    }
+    display(23,10,"Damage Report: Minor")
+l484:
+    goto(l691)
+  }
+  if (v42 == 2) { //01e7
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //01ee
+      display(0,8,"Damage Report: Moderate")
+      goto(l515)
+    }
+    display(23,8,"Damage Report: Moderate")
+l515:
+    goto(l691)
+  }
+  if (v42 == 3) { //0206
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //020d
+      display(0,8,"Damage Report: Serious!")
+      goto(l546)
+    }
+    display(23,8,"Damage Report: Serious!")
+l546:
+    goto(l691)
+  }
+  if (v42 == 4) { //0225
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //022c
+      display(0,2,"Warning: Damage Situation Critical!")
+      goto(l577)
+    }
+    display(23,2,"Warning: Damage Situation Critical!")
+l577:
+    goto(l691)
+  }
+  if (v42 == 5) { //0244
+    set(f56)
+    erase(o1)
+    set(f39)
+    if (f37) { //0251
+      stop.update(o2)
+    }
+    if (f36) { //0259
+      stop.update(o3)
+    }
+    get.posn(o0,v135,v136)
+    position(o4,135,v136)
+    set.view(o4,102)
+    stop.cycling(o0)
+    set.loop(o0,1)
+    v135 = 6
+    v136 = 221
+    set.view(o0,98)
+    v53 = 1
+    step.time(o0,53)
+    repositon(o0,v135,v136)
+    draw(o4)
+    stop.cycling(o4)
+    stop.motion(o4)
+    get.posn(o0,v135,v136)
+    v136 -= 61
+    v55 = 30
+    move.obj(o0,v135,v136,55,f34)
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //029a
+      clear.lines(0,0,c0)
+      goto(l687)
+    }
+    clear.lines(22,24,c0)
+l687:
+    program.control()
+    set(f35)
+    stop.sound()
+  }
+}
+l691:
+if (f34) { //02b3
+  reset(f34)
+  erase(o0)
+  v45 = 9
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //02c0
+    clear.lines(0,0,c0)
+  }
+}
+v45--
+if (v45 == 1) { //02d0
+  start.cycling(o0)
+  set.loop(o0,0)
+  get.posn(o4,v135,v136)
+  v135 += 8
+  v136 = 35
+  position(o0,135,v136)
+  draw(o0)
+  v136 += 70
+  v55 = 20
+  move.obj(o0,v135,v136,55,f38)
+}
+if (f38) { //02f8
+  reset(f38)
+  stop.cycling(o0)
+  stop.motion(o0)
+  set.cel(o0,2)
+  v41 = 15
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //030a
+    clear.lines(0,0,c0)
+  }
+}
+v41--
+if (v41 == 1) { //031a
+  print("Had you eaten a few less donuts during the mission, you might have cleared that rock, %s1.")
+  v130 = 14
+}
+if (f30) { //0326
+  reset(f30)
+  reset(f37)
+  erase(o2)
+  random(3,30,v34)
+}
+v34--
+if (!f35 && v34 == 1) { //0338
+  random(80,136,v30)
+  v31 = 67
+  position(o2,30,v31)
+  set.cel(o2,0)
+  draw(o2)
+  v31 += 97
+  move.obj(o2,v30,v31,56,f30)
+  set(f37)
+}
+if (f31) { //035d
+  reset(f31)
+  reset(f36)
+  erase(o3)
+  random(3,30,v35)
+}
+v35--
+if (!f35 && v35 == 1) { //036f
+  random(20,70,v32)
+  v33 = 67
+  position(o3,32,v33)
+  set.cel(o3,0)
+  draw(o3)
+  v33 += 97
+  move.obj(o3,v32,v33,56,f31)
+  set(f36)
+}
+if (!f35) { //0394
+  if (vEgoDir == 7) { //039b
+    set.loop(o0,1)
+    goto(l952)
+  }
+  if (vEgoDir == 3) { //03a8
+    set.loop(o0,0)
+    goto(l952)
+  }
+  set.loop(o0,2)
+}
+l952:
+get.posn(o0,v135,v136)
+get.posn(o1,v36,v37)
+v135 -= v36
+v36 = v135
+if (vEgoDir == 7) { //03c6
+  v36 -= 5
+}
+if (vEgoDir == 3) { //03d0
+  v36 += 5
+}
+v36 += 5
+v37 = 0
+repositon(o1,v36,v37)
+if (vEgoDir == 0) { //03e4
+  if (!f32) { //03eb
+    random(2,10,v38)
+    if (v38 == 5) { //03f6
+      set(f32)
+      v37 = 3
+      v36 = 0
+      repositon(o1,v36,v37)
+    }
+    goto(l1048)
+  }
+  reset(f32)
+  v37 = 253
+  v36 = 0
+  repositon(o1,v36,v37)
+}
+l1048:
+return()

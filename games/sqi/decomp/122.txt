@@ -1,0 +1,77 @@
+if (vCurrentRoom == 50) { //0002
+  goto(l300)
+}
+l12:
+if (v119 > 30 && (said("speak", "being") || said("speak", "alien") || said("kiss", "alien") || said("kick", "alien") || said("attack", "alien") || said("kiss", "being") || said("y") || said("n") || said("kick", "being") || said("attack", "being"))) { //000c
+  print("You are too far away.")
+  goto(l346)
+}
+if (f218) { //0052
+  reset(f218)
+  if (said("y")) { //005a
+    set(f206)
+    print("\"Great!!!\" responds the guard. Pondering his interest you ask yourself whether or not this guy is getting a kickback from Sierra On-Line. Later you realize this is silly, what would a Sarien do with money from Coarsegold?")
+    vCurrentScore += 5
+    goto(l118)
+  }
+  if (said("n")) { //006c
+    print("\"Too Bad.\"")
+  }
+}
+l118:
+if ((said("speak", "being") || said("speak", "alien"))) { //0076
+  if (!f204) { //0088
+    set(f204)
+    vCurrentScore++
+  }
+  random(1,2,v64)
+  if (v64 == 1) { //0097
+    random(1,7,v64)
+    print(v64)
+    v64 += 10
+    print(v64)
+    goto(l206)
+  }
+  random(20,30,v64)
+  if ((f206 || v64 < 30)) { //00b0
+    if (v64 == 30) { //00bb
+      v64 = 29
+    }
+    print(v64)
+    goto(l206)
+  }
+  print("\"Do you own King's Quest II?\" asks the nosy guard.")
+  set(f218)
+}
+l206:
+if ((said("kick", "being") || said("kick", "alien"))) { //00ce
+  print("Everyone gets their kicks in different ways. Yours is the strangest of which I am aware.")
+}
+if ((said("attack", "being") || said("attack", "alien"))) { //00e2
+  print("Kill him yourself.")
+}
+if ((said("kiss", "being") || said("kiss", "alien"))) { //00f6
+  print("As you pucker up your lips and lean close, you suddenly remember what your mother taught you about Sariens. In a rare moment of wisdom, you decide not to get anything started you're  unwilling to finish.")
+  if (!f205) { //010a
+    set(f205)
+    vCurrentScore++
+  }
+}
+if ((said("check out", "being") || said("check out", "alien"))) { //0115
+  print("He looks to be armed and dangerous. I wouldn't mess around with him.")
+}
+goto(l346)
+l300:
+if ((said("speak", "alien") || said("speak", "being") || said("hello"))) { //012c
+  if (v119 > 30) { //0142
+    print("You are too far away.")
+    goto(l336)
+  }
+  print("Leave me alone. I am guarding the Star Generator.")
+}
+l336:
+if (!fSaidAccepted) { //0150
+  goto(l12)
+}
+l346:
+return()

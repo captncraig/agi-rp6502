@@ -1,0 +1,304 @@
+if (fNewRoom) { //0002
+  prevent.input()
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  v64 = 42
+  load.pic(v64)
+  load.logic(68)
+  load.view(200)
+  load.view(201)
+  load.view(202)
+  load.view(203)
+  load.view(204)
+  load.view(205)
+  load.view(206)
+  load.sound(60)
+  animate.obj(o1)
+  set.view(o1,200)
+  position(o1,23,23)
+  set.priority(o1,10)
+  animate.obj(o2)
+  set.view(o2,201)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  position(o2,45,146)
+  set.priority(o2,15)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o8)
+  animate.obj(o9)
+  if (vPrevRoom == 67) { //0050
+    graphics()
+  }
+  draw.pic(vCurrentRoom)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //005b
+    goto(l108)
+  }
+  clear.lines(22,24,c0)
+l108:
+  v30 = 18
+  v33 = 1
+  v35 = 3
+  set.string(str4,"Version 2.2")
+}
+v35--
+if (v35 == 1) { //007a
+  sound(60,f41)
+}
+if (have.key()) { //0084
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0089
+    goto(l154)
+  }
+  clear.lines(22,24,c0)
+l154:
+  new.room(69)
+}
+if (f231) { //009c
+  reset(f231)
+  v32 = 0
+  v30 = 18
+  v33 = 1
+  set.loop(o2,0)
+  set.cel(o2,0)
+  position(o2,45,146)
+  position(o1,23,23)
+  draw.pic(vCurrentRoom)
+  show.pic()
+  graphics()
+}
+if (f9 && f41) { //00bf
+  if (f196) { //00c7
+    reset(f196)
+    new.room(67)
+    goto(l218)
+  }
+  sound(60,f41)
+  goto(l891)
+}
+l218:
+if (f168) { //00da
+  call(68)
+  goto(l891)
+}
+v30--
+if (v30 == 1) { //00e7
+  draw(o2)
+  end.of.loop(o2,f31)
+}
+if (f31) { //00f3
+  reset(f31)
+  v62 = 234
+  v63 = 255
+  repositon(o2,v62,v63)
+  set.loop(o2,1)
+  set.cel(o2,0)
+  stop.cycling(o2)
+  draw(o1)
+  move.obj(o1,23,137,6,f30)
+}
+if (f30) { //0115
+  reset(f30)
+  if (v32 > 0) { //011d
+    erase(o1)
+    v31 = 45
+  }
+  if (!(v32 > 0)) { //0129
+    erase(o1)
+    end.of.loop(o2,f32)
+  }
+}
+if (f32) { //0136
+  reset(f32)
+  if (v32 > 0) { //013e
+    position(o1,23,137)
+    draw(o1)
+    move.obj(o1,23,23,6,f30)
+  }
+  if (!(v32 > 0)) { //0151
+    display(22,7,"By Two Guys From Andromeda")
+    display(23,5,"(C) 1987  Sierra On-Line, Inc.")
+    display(24,14,"Version 2.2")
+    reverse.loop(o2,f32)
+    v32 = 1
+  }
+}
+v31--
+if (v31 == 2) { //016d
+  erase(o2)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0176
+    goto(l391)
+  }
+  clear.lines(22,24,c0)
+}
+l391:
+v34--
+if (v34 == 1) { //0189
+  erase(o3)
+  erase(o4)
+  erase(o5)
+  erase(o6)
+  erase(o7)
+  erase(o8)
+  erase(o9)
+  if (v33 == 4) { //019e
+    set(f168)
+  }
+  if (v33 == 3) { //01a7
+    v33 = 4
+    set(f40)
+  }
+  if (v33 == 2) { //01b3
+    v33 = 3
+    set(f40)
+  }
+  if (v33 == 1) { //01bf
+    v33 = 2
+    set(f40)
+  }
+}
+if (v31 == 1) { //01cb
+  v33 = 1
+  draw.pic(v64)
+  show.pic()
+  set.view(o3,202)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  position(o3,45,41)
+  set.view(o4,203)
+  set.cel(o4,0)
+  position(o4,94,41)
+  set.view(o5,204)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  set.view(o6,205)
+  set.cel(o6,0)
+  position(o6,66,79)
+  set.view(o7,206)
+  set.loop(o7,0)
+  set.cel(o7,0)
+  random(1,100,v126)
+  if (v126 > 50) { //020f
+    position(o5,46,98)
+    position(o7,44,61)
+    goto(l553)
+  }
+  position(o5,46,61)
+  position(o7,41,98)
+l553:
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  end.of.loop(o5,f35)
+  draw(o6)
+  draw(o7)
+  end.of.loop(o7,f37)
+}
+if (v33 == 1 && f35 && f37) { //0239
+  reset(f35)
+  reset(f37)
+  v34 = 40
+}
+if (f40 && v33 == 2) { //024b
+  reset(f40)
+  set.view(o3,202)
+  set.loop(o3,3)
+  set.cel(o3,0)
+  position(o3,68,32)
+  stop.cycling(o3)
+  set.view(o4,202)
+  set.loop(o4,3)
+  set.cel(o4,1)
+  position(o4,48,44)
+  stop.cycling(o4)
+  set.view(o5,202)
+  set.loop(o5,3)
+  set.cel(o5,2)
+  position(o5,63,56)
+  stop.cycling(o5)
+  set.view(o6,203)
+  position(o6,75,73)
+  set.view(o7,206)
+  set.loop(o7,1)
+  set.cel(o7,0)
+  position(o7,38,92)
+  set.view(o8,205)
+  position(o8,71,108)
+  set.view(o9,204)
+  set.loop(o9,1)
+  set.cel(o9,0)
+  position(o9,54,125)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  draw(o6)
+  draw(o7)
+  end.of.loop(o7,f37)
+  draw(o8)
+  draw(o9)
+  end.of.loop(o9,f39)
+}
+if (v33 == 2 && f37 && f39) { //02bf
+  reset(f37)
+  reset(f39)
+  v34 = 40
+}
+if (f40 && v33 == 3) { //02d1
+  reset(f40)
+  set.view(o3,202)
+  set.loop(o3,1)
+  position(o3,41,52)
+  set.view(o4,203)
+  position(o4,109,52)
+  set.view(o5,206)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  position(o5,46,76)
+  set.view(o7,206)
+  set.loop(o7,2)
+  set.cel(o7,0)
+  position(o7,45,95)
+  set.view(o8,204)
+  set.loop(o8,2)
+  set.cel(o8,0)
+  position(o8,47,111)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  end.of.loop(o5,f35)
+  draw(o7)
+  end.of.loop(o7,f37)
+  draw(o8)
+  end.of.loop(o8,f38)
+}
+if (v33 == 3 && f35 && f38) { //0327
+  reset(f35)
+  reset(f37)
+  reset(f38)
+  v34 = 40
+}
+if (f40 && v33 == 4) { //033b
+  reset(f40)
+  set.view(o3,202)
+  set.loop(o3,2)
+  position(o3,45,61)
+  set.view(o4,203)
+  position(o4,95,61)
+  set.view(o5,204)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  position(o5,47,82)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  end.of.loop(o5,f35)
+}
+if (v33 == 4 && f35) { //036d
+  reset(f35)
+  v34 = 40
+}
+l891:
+return()

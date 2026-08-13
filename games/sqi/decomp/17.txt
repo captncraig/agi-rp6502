@@ -1,0 +1,148 @@
+if (fNewRoom) { //0002
+  set.horizon(80)
+  if (f92) { //000a
+    ignore.horizon(o0)
+    ignore.horizon(o1)
+  }
+  load.pic(vCurrentRoom)
+  load.view(71)
+  animate.obj(o1)
+  set.view(o1,71)
+  set.cel(o1,0)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  if ((f96 || f101 || f97)) { //0026
+    load.logic(110)
+    call(110)
+  }
+  if (vPrevRoom == 16 && f92) { //0036
+    position(o0,1,58)
+    start.motion(o0)
+  }
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 82) { //0047
+    position(o0,143,70)
+  }
+  if (vPrevRoom == 81) { //0052
+    position(o0,146,102)
+  }
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0064
+    goto(l117)
+  }
+  clear.lines(23,24,c0)
+}
+l117:
+if ((!fEnteredCommand || fSaidAccepted)) { //0075
+  goto(l194)
+}
+if (said("check out", "area")) { //0083
+  if (f92) { //008d
+    print("You are high atop a rocky plateau near two halves of an arch. The desert below seems to stretch to infinity.")
+    goto(l154)
+  }
+  print("You are near the base of a plateau, upon which rests two large rocks. It is a rather bleak environment.")
+}
+l154:
+if ((said("check out", "arch") || said("check out", "boulder"))) { //009a
+  print("You see a pair of oddly curved rock formations. They point at each other as if to form an arch.")
+  if (posn(o0,107,57,110,61)) { //00ae
+    print("Near the base you notice some very small printing. If you're not mistaken the characters translate to \"497 Quadgillion Served.\"")
+  }
+}
+if (fEnteredCommand) { //00ba
+  call(112)
+}
+l194:
+if (f92) { //00c2
+  if (obj.in.box(o0,117,48,149,87)) { //00c8
+    ignore.blocks(o0)
+    goto(l217)
+  }
+  observe.blocks(o0)
+}
+l217:
+if (obj.in.box(o0,76,56,98,60) && f92) { //00d9
+  if (v82 != 1 && !f91) { //00e5
+    if (f194 && v82 == 2 && !(has(i4))) { //00f0
+      goto(l370)
+    }
+    if (fTriggerLine) { //00ff
+      ignore.horizon(o0)
+      ignore.horizon(o1)
+      reset(f92)
+      if (!f177) { //010b
+        set(f177)
+        vCurrentScore += 2
+      }
+      get.posn(o0,v135,v136)
+      v135 -= 3
+      v136 += 1
+      position(o1,135,v136)
+      set.cel(o1,0)
+      erase(o0)
+      draw(o1)
+      end.of.loop(o1,f30)
+    }
+  }
+}
+if (f30) { //012f
+  reset(f30)
+  reset(f182)
+  new.room(32)
+}
+if (f92 && !(obj.in.box(o0,76,56,98,60))) { //013b
+  if (fTriggerLine && !f91) { //0148
+    set(f91)
+    call(107)
+    goto(l370)
+  }
+  if (!f91) { //0158
+    get.posn(o0,v62,v63)
+    if (v63 < 50) { //0163
+      set.priority(o0,5)
+      goto(l370)
+    }
+    release.priority(o0)
+  }
+}
+l370:
+if (vWhichEgoBorder != 0) { //0172
+  reset(f102)
+  if (!f103) { //017c
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //0188
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 3) { //0192
+    new.room(20)
+  }
+  if (vWhichEgoBorder == 4) { //019b
+    new.room(16)
+  }
+  if (!f92) { //01a4
+    if (vWhichEgoBorder == 2) { //01ab
+      v139 = 1
+      new.room(81)
+    }
+    if (vWhichEgoBorder == 1) { //01b7
+      new.room(82)
+    }
+  }
+}
+if (f91) { //01c0
+  if (posn(o0,0,31,138,43)) { //01c6
+    set.priority(o0,4)
+  }
+  call(107)
+}
+if ((f101 || f97)) { //01d5
+  call(110)
+}
+return()

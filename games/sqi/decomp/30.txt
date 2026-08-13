@@ -1,0 +1,221 @@
+if (fNewRoom) { //0002
+  set.horizon(70)
+  load.pic(vCurrentRoom)
+  load.logic(112)
+  if ((vPrevRoom == 14 || vPrevRoom < 13)) { //000e
+    position(o0,40,106)
+    if (!f192) { //001e
+      set(f192)
+      v147 = 181
+      v148 = 61
+      if (!f96 && !f101 && !f97) { //002d
+        random(130,250,v93)
+        v94 = v93
+        v95 = 7
+        set(f96)
+      }
+    }
+  }
+  if (vPrevRoom != 31) { //0046
+    if ((f96 || f101 || f97)) { //004e
+      load.logic(110)
+      call(110)
+    }
+  }
+  load.view(163)
+  if (vPrevRoom != 31) { //0060
+    load.view(52)
+  }
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom != 31) { //006c
+    set(f39)
+    animate.obj(o1)
+    ignore.horizon(o1)
+    ignore.blocks(o1)
+    set.view(o1,52)
+    if (vPrevRoom == 13) { //007f
+      set.cel(o1,0)
+      set.priority(o1,10)
+      v30 = 27
+      position(o1,50,20)
+      goto(l164)
+    }
+    last.cel(o1,v64)
+    set.cel(o1,v64)
+    position(o1,50,108)
+    draw(o1)
+    stop.update(o1)
+  }
+l164:
+  observe.objs(o0)
+  if (vPrevRoom != 31 && vPrevRoom != 13) { //00a6
+    if (v81 != 1) { //00b2
+      load.view(0)
+      set.view(o0,0)
+    }
+    if (vPrevRoom == 18) { //00bf
+      get.posn(o0,v135,v136)
+      if (v136 < 71) { //00ca
+        v136 = 75
+        position(o0,135,v136)
+      }
+    }
+    observe.blocks(o0)
+    draw(o0)
+  }
+  show.pic()
+  get.posn(o0,v98,v99)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00e1
+    goto(l242)
+  }
+  clear.lines(23,24,c0)
+l242:
+  if (vPrevRoom == 13) { //00f2
+  }
+  if (f39) { //00f9
+    block(45,92,70,108)
+  }
+  set(f182)
+}
+current.cel(o1,v79)
+if (v79 == 9) { //0109
+  reset(f37)
+  stop.cycling(o1)
+}
+if (f37) { //0114
+  toggle(f38)
+  if (!f38) { //011c
+    v79++
+    set.cel(o1,v79)
+  }
+}
+if (f30) { //0128
+  reset(f30)
+  move.obj(o1,50,108,6,f31)
+  set(f37)
+}
+if (f31) { //0138
+  reset(f31)
+  shake.screen(1)
+  v31 = 27
+}
+v31--
+if (v31 == 1) { //0147
+  new.room(14)
+}
+v30--
+if (v30 == 1) { //0152
+  draw(o1)
+  stop.cycling(o1)
+  move.obj(o1,50,28,0,f30)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0163
+  goto(l644)
+}
+if (f158) { //0171
+  reset(fEnteredCommand)
+  goto(l644)
+}
+if (said("check out", "area")) { //017c
+  if (f39) { //0186
+    print("You seem to be located in an incredibly remote area. There is a thrashed escape pod here.")
+  }
+}
+if (said("check out", "port")) { //018e
+  print("The window was shattered by the impact of landing.")
+}
+if (said("look in", "port")) { //019a
+  print("You see only darkness through the shattered window.")
+}
+if (f39) { //01a6
+  if (said("check out", "craft")) { //01ac
+    if (obj.in.box(o0,32,108,102,144)) { //01b6
+      if (!(has(i6))) { //01c0
+        print("The pod seems to be semi-destroyed.  A glimmering catches your eye.  Upon closer inspection you see that a piece of highly reflective glass has broken out of the pod window.")
+        goto(l462)
+      }
+      print("The pod seems to be semi-destroyed.")
+l462:
+      goto(l467)
+    }
+    print("The pod seems to be semi-destroyed.")
+  }
+l467:
+  if (said("climb in", "craft")) { //01d3
+    if (posn(o0,31,98,82,118)) { //01dd
+      erase(o0)
+      new.room(14)
+      goto(l496)
+    }
+    print("You are not close enough.")
+  }
+l496:
+  if ((said("acquire", "glass") || said("acquire", "mirrored", "glass") || said("acquire", "chunk", "glass") || said("acquire", "wind shield"))) { //01f0
+    if (obj.in.box(o0,32,108,102,144)) { //0212
+      if (!(has(i6))) { //021c
+        get(i6)
+        vCurrentScore += 3
+        print("Glass now in possession")
+        goto(l559)
+      }
+      print("You already have it.")
+l559:
+      goto(l564)
+    }
+    print("You can't see that here")
+  }
+l564:
+  if (obj.in.box(o0,32,108,102,144)) { //0234
+    if (!(has(i6)) && (said("check out", "floor") || said("check out", "glass"))) { //023e
+      print("It's quite sandy down there. You see that a piece of highly reflective glass has broken out of the pod window.")
+    }
+  }
+}
+if (said("look in", "craft")) { //0255
+  print("That would be done best from inside.")
+}
+if (said("kick", "craft")) { //0261
+  print("That's an interesting form of entertainment.")
+}
+if (said("fix", "craft")) { //026d
+  print("The pod is definitely destroyed beyond repair. You can't help it.")
+}
+if (fEnteredCommand && !fSaidAccepted) { //0279
+  call(112)
+}
+l644:
+if (vWhichEgoBorder != 0) { //0284
+  reset(f102)
+  if (!f103) { //028e
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //029a
+    reset(f101)
+    set(f97)
+  }
+}
+if (vWhichEgoBorder == 1) { //02a4
+  new.room(82)
+}
+if (vWhichEgoBorder == 4) { //02ad
+  v139 = 2
+  new.room(81)
+}
+if (vWhichEgoBorder == 3) { //02b9
+  v139 = 3
+  new.room(81)
+}
+if (vWhichEgoBorder == 2) { //02c5
+  get.posn(o0,v62,v63)
+  if (v63 < 103) { //02d0
+    new.room(18)
+    goto(l734)
+  }
+  new.room(21)
+}
+l734:
+if ((f101 || f97)) { //02de
+  call(110)
+}
+return()

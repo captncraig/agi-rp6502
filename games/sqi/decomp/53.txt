@@ -1,0 +1,403 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.logic(121)
+  load.view(161)
+  load.view(158)
+  load.view(154)
+  animate.obj(o1)
+  set.view(o1,161)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,129,110)
+  if (vPrevRoom == 54) { //0029
+    set.cel(o1,6)
+    v30 = 3
+    goto(l63)
+  }
+  set.cel(o1,0)
+  v30 = 0
+l63:
+  draw(o1)
+  stop.update(o1)
+  animate.obj(o2)
+  set.view(o2,158)
+  ignore.objs(o2)
+  if (v72 == 3) { //004a
+    set.cel(o2,2)
+    goto(l90)
+  }
+  set.cel(o2,0)
+l90:
+  position(o2,63,101)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 54) { //0062
+    position(o0,125,113)
+    goto(l131)
+  }
+  position(o0,35,108)
+  if (vPrevRoom == 52) { //0074
+    set.priority(o0,15)
+    set.loop(o0,1)
+    ignore.blocks(o0)
+  }
+l131:
+  if (vPrevRoom == 54) { //0083
+    draw(o0)
+  }
+  if ((v81 == 3 || v81 == 4)) { //008c
+    set(f113)
+    goto(l176)
+  }
+  v140 = 130
+  v141 = 114
+  v142 = 123
+  v143 = 114
+  set(f93)
+  reset(f112)
+  v37 = 90
+l176:
+  load.logic(119)
+  call(119)
+  call(121)
+  if (vPrevRoom != 57) { //00b6
+    show.pic()
+  }
+  if (vPrevRoom == 52 && !f201) { //00bf
+    set(f201)
+    vCurrentScore++
+  }
+}
+if (vPrevRoom == 57 && !f41) { //00cd
+  if (!(have.key())) { //00d7
+    goto(l1344)
+    goto(l232)
+  }
+  set(f41)
+  graphics()
+  show.pic()
+  accept.input()
+}
+l232:
+if (v38 != vTimeSeconds) { //00e8
+  v38 = vTimeSeconds
+  if (!f148 && v30 == 0) { //00f3
+    v37--
+    if (v37 == 10) { //00ff
+      print("You hear footsteps coming from outside the door!")
+    }
+  }
+  if (v37 == 1) { //0108
+    v37--
+    set(f112)
+    set(f42)
+    set(f32)
+    v39 = 40
+    if (posn(o0,113,107,128,123)) { //011a
+      stop.motion(o0)
+    }
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0126
+  goto(l888)
+}
+if (f148 && (said("check out", "anyword") || said("look in", "anyword"))) { //0134
+  print("It is too dark inside the trunk to see anything.")
+}
+if (said("turn", "laundry")) { //014a
+  print("You don't know how.")
+}
+if (f36 && said("check out", "laundry")) { //0156
+  print("It's awfully wet in here.")
+}
+if ((said("disembark", "laundry") || said("disembark", "box") || said("open", "laundry") || said("open", "door") || said("open", "box"))) { //0164
+  if (f36) { //0188
+    set.view(o2,158)
+    set.cel(o2,2)
+    force.update(o2)
+    set.view(o0,169)
+    position(o0,67,113)
+    set.loop(o0,2)
+    draw(o0)
+    normal.motion(o0)
+    start.motion(o0)
+    v72 = 3
+    v81 = 3
+    program.control()
+    v32 = 18
+    reset(f36)
+    goto(l478)
+  }
+  if ((posn(o0,60,107,74,111) || v72 == 5)) { //01b5
+    if (v72 != 3) { //01c4
+      start.update(o2)
+      end.of.loop(o2,f30)
+      v72 = 2
+      goto(l473)
+    }
+    print("That has already been done.")
+l473:
+    goto(l478)
+  }
+  print("You are not close enough to perform that act.")
+}
+l478:
+if ((said("close", "laundry") || said("close", "door") || said("close", "box"))) { //01de
+  if (posn(o0,60,107,74,111)) { //01f6
+    if (v72 == 3) { //0200
+      start.update(o2)
+      reverse.loop(o2,f30)
+      v72 = 1
+      goto(l532)
+    }
+    print("That has already been done.")
+l532:
+    goto(l537)
+  }
+  print("You are not close enough to perform that act.")
+}
+l537:
+if (f42 && (said("climb in", "laundry") || said("climb in", "box"))) { //0219
+  print("It's too late to hide! You hear someone coming!")
+}
+if (f42 && (said("climb in", "case") || said("climb in", "case"))) { //022f
+  print("It's too late to hide! You hear someone coming!")
+}
+if ((said("climb in", "laundry") || said("climb in", "box"))) { //0245
+  if (posn(o0,60,107,74,111)) { //0257
+    if (v81 != 3 && v81 != 4) { //0261
+      if (v72 == 3) { //026d
+        prevent.input()
+        load.view(169)
+        load.view(159)
+        load.view(190)
+        set.view(o10,154)
+        ignore.objs(o10)
+        position(o10,137,115)
+        vCurrentScore += 5
+        set(f36)
+        v37 = 0
+        start.update(o2)
+        set.view(o2,159)
+        set.cel(o2,0)
+        erase(o0)
+        v33 = 10
+        goto(l670)
+      }
+      print("Open the door first.")
+l670:
+      goto(l675)
+    }
+    print("You certainly don't want to do that again! You've got lives to save!")
+l675:
+    goto(l680)
+  }
+  print("You are not close enough to perform that act.")
+}
+l680:
+if ((said("check out") || said("check out", "area"))) { //02a8
+  print("You are in the ship's laundry facilities.")
+}
+if (said("check out", "door")) { //02ba
+  distance(o0,o1,v64)
+  if (v64 < 30) { //02c8
+    if ((v30 == 0 || v30 == 1)) { //02cf
+      print("The door is closed.")
+      goto(l738)
+    }
+    print("The door is open.")
+l738:
+    goto(l743)
+  }
+  reset(fSaidAccepted)
+}
+l743:
+if (said("check out", "wall")) { //02e7
+  print("On the north wall there appears to be a large laundry cleaning unit.")
+}
+if ((said("check out", "box") || said("check out", "laundry"))) { //02f3
+  print("The laundry cleaning unit is not being used at this time.")
+}
+if ((said("look in", "box") || said("look in", "laundry"))) { //0307
+  if (posn(o0,59,78,78,122)) { //0319
+    if (f36) { //0323
+      print("It is too dark to make out any detail.")
+      goto(l829)
+    }
+    if (v72 != 3) { //032e
+      print("The window on the door is too dirty to see inside.")
+      goto(l829)
+    }
+    print("Someone might be coming.  You don't have time to be standing around.")
+l829:
+    goto(l834)
+  }
+  print("You are not close enough to see inside.")
+}
+l834:
+if (v81 == 3) { //0342
+  if (said("check out", "clothes")) { //0349
+    print("It's a little big, but it will have to do.")
+  }
+}
+if ((said("check out", "grate") || said("look in", "grate"))) { //0355
+  if (posn(o0,30,105,38,110)) { //0367
+    print("It is completely dark on the other side of the vent.")
+    goto(l888)
+  }
+  print("It looks high.")
+}
+l888:
+if (v34 > 0) { //0378
+  get.posn(o10,v62,v63)
+  if (v62 == 117) { //0383
+    if (v34 == 5) { //038a
+      set(f33)
+      goto(l927)
+    }
+    if (v34 == 9) { //0396
+      set(f32)
+    }
+  }
+}
+l927:
+if (f35) { //039f
+  reset(f35)
+  if (v34 == 9) { //03a7
+    erase(o10)
+    set(f33)
+    v34 = 0
+  }
+  if (v34 == 8) { //03b5
+    move.obj(o10,137,115,0,f35)
+    v34 = 9
+  }
+  if (v34 == 7) { //03c5
+    move.obj(o10,83,115,0,f35)
+    v34 = 8
+  }
+  if (v34 == 6) { //03d5
+    print.at("Well %s1, it certainly appears as though you're about to become all washed up!",16,2,0)
+    set.view(o10,190)
+    set.cel(o10,0)
+    v64 = 2
+    cycle.time(o10,v64)
+    end.of.loop(o10,f39)
+  }
+  if (v34 == 5) { //03f0
+    move.obj(o10,76,108,0,f35)
+    v34 = 6
+  }
+}
+if (f39) { //0400
+  reset(f39)
+  start.cycling(o2)
+  v31 = 75
+  v36 = 9
+}
+v36--
+if (v36 == 1) { //0412
+  start.cycling(o10)
+  set.view(o10,154)
+  v64 = 1
+  cycle.time(o10,v64)
+  move.obj(o10,83,115,0,f35)
+  v34 = 7
+}
+v32--
+if (v32 == 1) { //042f
+  print("Somehow, you manage to survive the rinse cycle. As you emerge from the cleaning unit you notice that you are dressed in a Sarien battle uniform. What a stroke of genius. Now you can wander throughout the ship without calling attention to yourself.")
+  player.control()
+}
+if (f30) { //0439
+  reset(f30)
+  if (v72 == 1) { //0441
+    stop.update(o2)
+    v72 = 0
+  }
+  if (v72 == 2) { //044d
+    stop.update(o2)
+    v72 = 3
+  }
+}
+v31--
+if (v31 == 35) { //045b
+  set.loop(o2,1)
+}
+if (v31 == 1) { //0465
+  set.cel(o2,0)
+  stop.cycling(o2)
+  v72 = 5
+  accept.input()
+  v81 = 3
+}
+if (f31) { //0478
+  reset(f31)
+  stop.cycling(o1)
+  if (v30 == 2) { //0482
+    v30 = 3
+    reset(f32)
+    goto(l1176)
+  }
+  v30 = 0
+  stop.update(o1)
+  reset(f33)
+}
+l1176:
+if (v30 == 3) { //0498
+  get.posn(o0,v135,v136)
+  if (v135 > 129 && v136 < 119) { //04a3
+    reset(f93)
+    new.room(54)
+  }
+}
+if (posn(o0,120,108,132,121) && v30 < 2) { //04b1
+  set(f32)
+}
+if (f32) { //04c0
+  reset(f32)
+  start.update(o1)
+  set.cel(o1,0)
+  sound(1,f120)
+  end.of.loop(o1,f31)
+  v30 = 2
+}
+if (!(posn(o0,120,108,132,121)) && v30 == 3 && !(v34 > 0) && !(v39 > 0)) { //04d6
+  set(f33)
+}
+if (f33) { //04ee
+  reset(f33)
+  start.cycling(o1)
+  last.cel(o1,v64)
+  set.cel(o1,v64)
+  sound(2,f120)
+  reverse.loop(o1,f31)
+  v30 = 1
+}
+v33--
+if (v33 == 1) { //0509
+  set(f34)
+  draw(o10)
+  set(f32)
+  move.obj(o10,83,115,0,f35)
+  v34 = 5
+}
+v39--
+if (v39 == 1) { //0521
+  set(f33)
+}
+if (!fNewRoom) { //052a
+  call(121)
+  call(119)
+}
+if (vWhichEgoBorder == 2) { //0535
+  reset(f93)
+  new.room(54)
+}
+l1344:
+return()

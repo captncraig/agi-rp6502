@@ -1,0 +1,192 @@
+if (fNewRoom) { //0002
+  load.view(91)
+  load.view(93)
+  load.view(99)
+  load.sound(25)
+  load.sound(26)
+  load.sound(27)
+  animate.obj(o1)
+  set.view(o1,91)
+  set.cel(o1,0)
+  position(o1,43,83)
+  stop.cycling(o1)
+  animate.obj(o2)
+  set.view(o2,91)
+  set.cel(o2,0)
+  position(o2,74,83)
+  stop.cycling(o2)
+  animate.obj(o3)
+  set.view(o3,91)
+  set.cel(o3,0)
+  position(o3,105,83)
+  stop.cycling(o3)
+  animate.obj(o4)
+  set.view(o4,93)
+  set.cel(o4,0)
+  position(o4,49,39)
+  stop.cycling(o4)
+  animate.obj(o5)
+  set.view(o5,93)
+  set.cel(o5,0)
+  position(o5,80,39)
+  stop.cycling(o5)
+  animate.obj(o6)
+  set.view(o6,93)
+  set.cel(o6,0)
+  position(o6,111,39)
+  stop.cycling(o6)
+  draw(o1)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  draw(o6)
+  v54 = 3
+  v131 = 18
+  v132 = 13
+  return()
+}
+if (f126 && f162) { //007e
+  sound(25,f162)
+}
+if (f124) { //0089
+  reset(f231)
+  if (v124 > 0) { //0091
+    reset(f124)
+    v124 -= v123
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //009d
+      display(18,13,"               ")
+      display(19,13,"               ")
+      display(20,13,"               ")
+      display(21,13,"               ")
+      display(18,13," You Bet  $%v123")
+      display(20,13," You Have $%v124")
+      goto(l218)
+    }
+    display(16,13,"               ")
+    display(17,13,"               ")
+    display(18,13,"               ")
+    display(19,13,"               ")
+    display(16,13," You Bet  $%v123")
+    display(18,13," You Have $%v124")
+l218:
+    set.view(o1,91)
+    set.view(o2,91)
+    set.view(o3,91)
+    start.cycling(o4)
+    start.cycling(o5)
+    start.cycling(o6)
+    start.cycling(o1)
+    start.cycling(o2)
+    start.cycling(o3)
+    random(10,23,v230)
+    random(26,38,v231)
+    random(42,53,v232)
+    sound(25,f162)
+    goto(l271)
+  }
+  if (!(v124 > 0)) { //0101
+    reset(f124)
+    print("You're broke!  Hit the road, freeloader!")
+    new.room(70)
+  }
+}
+l271:
+v230--
+v231--
+v232--
+if (v230 == 1) { //0115
+  set.cel(o1,v125)
+  stop.cycling(o1)
+  stop.cycling(o4)
+  set.cel(o4,0)
+}
+if (v231 == 1) { //0126
+  set.cel(o2,v127)
+  stop.cycling(o2)
+  stop.cycling(o5)
+  set.cel(o5,0)
+}
+if (v232 == 1) { //0137
+  set(f230)
+}
+if (f230) { //0140
+  current.cel(o3,v233)
+  if (v233 == v128) { //0149
+    reset(f230)
+    set.cel(o3,v128)
+    stop.cycling(o3)
+    stop.cycling(o6)
+    set.cel(o6,0)
+    set(f231)
+    stop.sound()
+  }
+}
+if (f231) { //015f
+  if ((v129 == 7 || v129 == 6 || v129 == 5 || v129 == 1)) { //0165
+    reset(f126)
+    set.view(o1,99)
+    set.view(o2,99)
+    set.view(o3,99)
+    set.loop(o1,v125)
+    set.loop(o2,v127)
+    set.loop(o3,v128)
+    set.cel(o1,0)
+    set.cel(o2,1)
+    set.cel(o3,0)
+    start.cycling(o1)
+    start.cycling(o2)
+    start.cycling(o3)
+    set(f134)
+    goto(l527)
+  }
+  if (v129 == 4) { //019f
+    reset(f126)
+    set.view(o1,99)
+    set.view(o2,99)
+    set.loop(o1,v125)
+    set.loop(o2,v127)
+    set.cel(o1,0)
+    set.cel(o2,1)
+    start.cycling(o1)
+    start.cycling(o2)
+    set(f134)
+    goto(l527)
+  }
+  if (v129 == 3) { //01c3
+    reset(f126)
+    set.view(o1,99)
+    set.loop(o1,v125)
+    set.cel(o1,0)
+    start.cycling(o1)
+    set(f134)
+    goto(l527)
+  }
+  if (v129 == 1) { //01dc
+    reset(f126)
+    set.view(o1,99)
+    set.view(o2,99)
+    set.view(o3,99)
+    set.loop(o1,v125)
+    set.loop(o2,v127)
+    set.loop(o3,v128)
+    set.cel(o1,0)
+    set.cel(o2,1)
+    set.cel(o3,0)
+    start.cycling(o1)
+    start.cycling(o2)
+    start.cycling(o3)
+    set(f134)
+    goto(l527)
+  }
+  reset(f126)
+  set(f134)
+l527:
+  if (v129 != 2 && v129 != 1) { //020f
+    sound(26,f162)
+    goto(l548)
+  }
+  sound(27,f162)
+}
+l548:
+return()

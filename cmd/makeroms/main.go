@@ -7,6 +7,8 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
+
+	"github.com/captncraig/agi-rp6502/agires"
 )
 
 const (
@@ -72,9 +74,45 @@ func makeRom(name, dir string) error {
 		return fmt.Errorf("embedding data: %w", err)
 	}
 
+	if _, err := embedIfPresent(dir, outPath, "words.tok"); err != nil {
+		return err
+	}
+	if _, err := embedIfPresent(dir, outPath, "object"); err != nil {
+		return err
+	}
+	for _, rt := range agires.ResourceTypes {
+		if _, err := embedIfPresent(dir, outPath, rt.DirName); err != nil {
+			return err
+		}
+	}
+	for vol := 0; ; vol++ {
+		name := fmt.Sprintf("vol.%d", vol)
+		found, err := embedIfPresent(dir, outPath, name)
+		if err != nil {
+			return err
+		}
+		if !found {
+			break
+		}
+	}
+
 	fmt.Printf("  -> %s\n", outPath)
 
 	return nil
+}
+
+// embedIfPresent looks up name in dir case-insensitively and, if found,
+// embeds it into outPath under its lowercase name. It reports whether the
+// file was found.
+func embedIfPresent(dir, outPath, name string) (bool, error) {
+	path, err := agires.FindFileCaseInsensitive(dir, name)
+	if err != nil {
+		return false, nil
+	}
+	if err := runRp6502("-a", name, "-o", outPath, "create", path, outPath); err != nil {
+		return false, fmt.Errorf("embedding %s: %w", name, err)
+	}
+	return true, nil
 }
 
 func runRp6502(args ...string) error {

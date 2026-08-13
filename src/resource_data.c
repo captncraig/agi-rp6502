@@ -5,6 +5,7 @@
 #include <rp6502.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
 
 #define RESOURCE_SLOTS 256
 
@@ -74,6 +75,7 @@ unsigned char load_resource(unsigned char type, unsigned char num){
   unsigned long offset = resource_offset(load_entry);
   unsigned int size = resource_size(load_entry);
   push_bank(thisBank);
+  int start = clock();
   long errno = f_lseek(offset, SEEK_SET, data_file_handle);
   if (errno < 0) {
     errorf("seeking in data: %ld\n", errno);
@@ -82,7 +84,7 @@ unsigned char load_resource(unsigned char type, unsigned char num){
   if (nRead != size) {
     errorf("reading from data: %d\n", nRead);
   }
-  infof("Loaded %04x bytes %x %x %x \n", size, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2]);
+  infof("Loaded %04x bytes %x %x %x %d ms \n", size, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2], clock() - start);
   pop_bank();
   return thisBank;
 }

@@ -1,0 +1,533 @@
+if (fNewRoom) { //0002
+  load.logic(122)
+  random(0,2,v160)
+  if (f113) { //000e
+    v160 = 0
+  }
+  if ((f172 || f93)) { //0017
+    v160 = 1
+  }
+  if (f93) { //0024
+    v235 = 1
+  }
+  if (vCurrentRoom != 53 && (vCurrentRoom == 51 || has(i15))) { //002d
+    if (vCurrentRoom == 48) { //003c
+      load.view(195)
+      goto(l94)
+    }
+    if (vCurrentRoom != 50) { //0048
+      if (v81 == 3) { //0050
+        load.view(212)
+        goto(l94)
+      }
+      load.view(195)
+    }
+l94:
+    if ((v81 == 3 || vCurrentRoom == 50)) { //005e
+      load.view(188)
+    }
+    load.view(194)
+    load.view(176)
+    animate.obj(o11)
+    ignore.objs(o11)
+    set.priority(o11,15)
+  }
+  if ((has(i14) || v160 != 0 || vCurrentRoom == 51)) { //0077
+    load.sound(33)
+    load.sound(9)
+  }
+  if ((vCurrentRoom == 51 || has(i14))) { //008a
+    if (v81 == 3) { //0095
+      load.view(211)
+      if (vCurrentRoom == 48) { //009e
+        load.view(182)
+      }
+      goto(l172)
+    }
+    load.view(182)
+  }
+l172:
+  if ((vCurrentRoom == 51 || v160 != 0)) { //00ac
+    if ((v81 == 1 || v81 == 2)) { //00b9
+      load.view(243)
+      goto(l204)
+    }
+    load.view(183)
+l204:
+    if (v160 == 1) { //00cc
+      load.view(154)
+      load.view(179)
+      if (has(i14)) { //00d7
+        if (vCurrentRoom != 50) { //00dd
+          load.view(184)
+        }
+      }
+      goto(l245)
+    }
+    if (v160 == 2) { //00ea
+      load.view(189)
+      load.sound(59)
+    }
+  }
+l245:
+  if (v160 != 0) { //00f5
+    animate.obj(o10)
+    position(o10,140,v141)
+    if (v160 == 1) { //0103
+      set.view(o10,154)
+      if (f112) { //010d
+        v231 = 2
+        reset(f112)
+        goto(l300)
+      }
+      if (v235 == 1) { //011b
+        v87 = 0
+        goto(l300)
+      }
+      random(40,80,v231)
+l300:
+      goto(l312)
+    }
+    set.view(o10,189)
+    wander(o10)
+    draw(o10)
+    set(f49)
+  }
+l312:
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0138
+    goto(l339)
+  }
+  if (has(i14)) { //0145
+    clear.lines(24,24,c0)
+    display(24,10,"F6 to fire Pulseray")
+  }
+l339:
+  reset(f113)
+  reset(f172)
+  reset(f93)
+  reset(f217)
+  reset(f128)
+}
+if (v235 == 1 && f112) { //015d
+  v231 = 2
+  reset(f112)
+}
+if (vCurrentRoom == 48 && (posn(o0,44,38,55,52) || posn(o0,44,120,56,135))) { //016b
+  set(f151)
+}
+if (vCurrentRoom == 49 && posn(o0,58,120,72,135)) { //0182
+  set(f151)
+}
+if (vCurrentRoom == 54 && (posn(o0,63,87,75,99) || posn(o0,88,87,100,100))) { //0191
+  set(f151)
+}
+if (vCurrentRoom == 55 && (posn(o0,115,37,127,52) || posn(o0,115,119,127,135))) { //01a8
+  set(f151)
+}
+if ((fSaidAccepted || !fEnteredCommand)) { //01bf
+  goto(l670)
+}
+if (v160 == 2) { //01cd
+  if ((said("check out", "droid") || said("check out", "laundry"))) { //01d4
+    if (v81 == 3) { //01e6
+      print("%m6Fortunately, it recognizes you as a Sarien.")
+      goto(l500)
+    }
+    print("There is a guardian droid here roaming the corridor. ")
+  }
+l500:
+  if ((said("speak", "droid") || said("speak", "laundry"))) { //01f4
+    print("The robot droid isn't programmed for speech, only to kill.")
+  }
+  if ((said("attack", "droid") || said("attack", "laundry"))) { //0208
+    print("You are welcome to try.")
+  }
+}
+if ((said("drop", "bomb") || said("cast", "bomb"))) { //021c
+  if (!(v236 > 0)) { //022e
+    if (has(i15)) { //0236
+      if (f151) { //023c
+        print("This is neither the time nor the place.")
+        goto(l665)
+      }
+      if (vCurrentRoom == 53) { //0247
+        print("You can't do that now. Try later.")
+        goto(l665)
+      }
+      get.posn(o0,v135,v136)
+      drop(i15)
+      set(f139)
+      if (v136 > 17) { //025b
+        v136 -= 16
+      }
+      set.view(o11,176)
+      position(o11,135,v136)
+      set.cel(o11,1)
+      set.priority(o11,15)
+      ignore.objs(o11)
+      ignore.blocks(o11)
+      draw(o11)
+      stop.cycling(o11)
+      v64 = 10
+      if (vCurrentRoom == 50) { //027d
+        v234 = 155
+        goto(l659)
+      }
+      get.posn(o0,v62,v63)
+      v234 = v63
+      v63++
+l659:
+      move.obj(o11,v135,v234,64,f240)
+l665:
+      goto(l670)
+    }
+    print("You don't have one.")
+  }
+}
+l670:
+if (v160 != 1) { //029e
+  goto(l915)
+}
+v231--
+if (v231 == 1) { //02ab
+  if (v142 == v140 && v143 == v141) { //02b2
+    set.loop(o10,2)
+    set.cel(o10,0)
+  }
+  draw(o10)
+  set(f237)
+  v64 = 1
+  move.obj(o10,v142,v143,64,f230)
+}
+if (f230) { //02cf
+  if (!f151 && !f246) { //02d5
+    reset(f230)
+    if (f234) { //02e1
+      start.cycling(o10)
+    }
+    if (v81 != 3) { //02e9
+      if (vCurrentRoom == 50) { //02f1
+        get.posn(o0,v62,v63)
+        if (v63 > 50) { //02fc
+          goto(l780)
+          goto(l780)
+        }
+        goto(l838)
+      }
+l780:
+      set(f246)
+      get.posn(o0,v135,v136)
+      get.posn(o10,v62,v63)
+      if (v135 > v62) { //0316
+        v64 = 0
+        goto(l806)
+      }
+      v64 = 1
+l806:
+      set.loop(o10,v64)
+      set.cel(o10,0)
+      set.view(o10,179)
+      end.of.loop(o10,f231)
+      if (v160 == 2) { //0332
+        stop.sound()
+        sound(33,f49)
+        goto(l835)
+      }
+      sound(33,f120)
+l835:
+      goto(l850)
+    }
+l838:
+    set.cel(o10,0)
+    set.loop(o10,2)
+    stop.motion(o10)
+    stop.cycling(o10)
+    set(f244)
+l850:
+    goto(l867)
+  }
+  if (!f234) { //0355
+    set.loop(o10,2)
+    stop.cycling(o10)
+    set(f234)
+  }
+}
+l867:
+if (f231) { //0363
+  reset(f231)
+  stop.motion(o0)
+  set(f133)
+  sound(9,f120)
+  set.cel(o0,0)
+  if ((v81 == 1 || v81 == 2)) { //0375
+    set.view(o0,243)
+    goto(l906)
+  }
+  set.view(o0,183)
+l906:
+  end.of.loop(o0,f232)
+  vWhichEgoBorder = 0
+  v236 = 2
+}
+l915:
+if (f246 && f128) { //0393
+  set(fSaidAccepted)
+}
+if (!f246 && f128 && !f217 && !f151 && vWhichEgoBorder == 0 && !fSaidAccepted) { //039d
+  if (has(i14)) { //03b2
+    set(f246)
+    set(fSaidAccepted)
+    set(f217)
+    set(f133)
+    stop.motion(o0)
+    sound(33,f120)
+    if (v81 == 3) { //03c5
+      set.view(o0,211)
+      goto(l981)
+    }
+    set.view(o0,182)
+l981:
+    set.cel(o0,0)
+    end.of.loop(o0,f233)
+  }
+}
+if (f233) { //03db
+  reset(f233)
+  reset(f133)
+  start.motion(o0)
+  normal.motion(o0)
+  reset(f217)
+  reset(f246)
+  if (v81 == 3) { //03ed
+    set.view(o0,169)
+    goto(l1021)
+  }
+  set.view(o0,187)
+l1021:
+  current.loop(o0,v64)
+  if (v160 == 1) { //0400
+    if (f237) { //0407
+      get.posn(o0,v135,v136)
+      get.posn(o10,v62,v63)
+      reset(f235)
+      if (vCurrentRoom == 50) { //0417
+        set(f235)
+      }
+      if ((vCurrentRoom == 48 || vCurrentRoom == 49 || vCurrentRoom == 55 || vCurrentRoom == 58 || vCurrentRoom == 59)) { //0420
+        if (v136 > 90 && v63 < 90) { //0435
+          set(f235)
+        }
+        if (v136 < 90 && v63 > 90) { //0441
+          set(f235)
+        }
+      }
+      if (!f235) { //044d
+        if (v64 == 0) { //0454
+          if (v62 < v135) { //045b
+            set(f235)
+          }
+        }
+        if (v64 == 1) { //0464
+          if (v62 > v135) { //046b
+            set(f235)
+          }
+        }
+        if (v64 == 2) { //0474
+          if (v63 < v136) { //047b
+            set(f235)
+          }
+        }
+        if (v64 == 3) { //0484
+          if (v63 > v136) { //048b
+            set(f235)
+          }
+        }
+      }
+      if (!f235) { //0494
+        set.cel(o10,0)
+        set.view(o10,184)
+        get.posn(o0,v135,v136)
+        get.posn(o10,v62,v63)
+        if (v135 > v62) { //04a9
+          set.loop(o10,0)
+          goto(l1209)
+        }
+        set.loop(o10,1)
+l1209:
+        stop.motion(o10)
+        end.of.loop(o10,f236)
+        v160 = 0
+        reset(f244)
+        if (v81 == 3) { //04c3
+          vCurrentScore -= 5
+        }
+      }
+    }
+    goto(l1246)
+  }
+  if (v160 == 2 && !f216) { //04d0
+    set(f216)
+    print("If the robot droid could laugh, which it is not programmed to do, it would do so. Your pulseray is only effective against living opponents!")
+  }
+}
+l1246:
+if (f236) { //04de
+  erase(o10)
+  if (!f207) { //04e6
+    set(f207)
+    vCurrentScore += 3
+  }
+  if (vCurrentRoom == 50) { //04f2
+    set(f173)
+  }
+  reset(f237)
+  reset(f217)
+}
+if (v160 != 2) { //04ff
+  goto(l1352)
+}
+distance(o0,o10,v64)
+if (v64 < 30 && !f238 && v81 != 3) { //050e
+  set(f238)
+  follow.ego(o10,10,f239)
+}
+if (f238 && f151) { //0522
+  reset(f238)
+  wander(o10)
+}
+if (f239) { //052e
+  reset(f239)
+  set(f246)
+  stop.motion(o0)
+  set(f133)
+  sound(9,f120)
+  set.view(o0,183)
+  end.of.loop(o0,f232)
+  v236 = 1
+}
+l1352:
+if (f232) { //0548
+  if (v236 == 1) { //054e
+    print("%m12by contact with the robot droid.")
+    goto(l1396)
+  }
+  if (v236 == 2) { //055a
+    if (has(i14)) { //0561
+      random(17,20,v64)
+      goto(l1394)
+    }
+    random(17,18,v64)
+l1394:
+    print(v64)
+  }
+l1396:
+  reset(f232)
+  erase(o0)
+  v130 = 27
+}
+if (f240) { //057b
+  reset(f240)
+  if (v233 == 1) { //0583
+    v233 = 2
+    set(f241)
+  }
+  if (!(v233 > 0)) { //058f
+    set.view(o11,194)
+    end.of.loop(o11,f240)
+    v233 = 1
+  }
+}
+if (f241) { //05a0
+  reset(f241)
+  if (v160 == 1) { //05a8
+    distance(o11,o10,v64)
+    if (v64 < 20) { //05b3
+      set.loop(o10,0)
+      reset(f244)
+      set.cel(o10,0)
+      set.view(o10,188)
+      end.of.loop(o10,f243)
+      v160 = 0
+      if (vCurrentRoom != 50) { //05cb
+        set.priority(o10,4)
+      }
+      ignore.objs(o10)
+      if (vCurrentRoom == 50) { //05d8
+        vCurrentScore += 5
+        set(f171)
+      }
+      goto(l1514)
+    }
+    goto(l1517)
+l1514:
+    goto(l1570)
+  }
+l1517:
+  distance(o0,o11,v64)
+  if (v64 < 25) { //05f1
+    if (v81 == 3 && vCurrentRoom != 48) { //05f8
+      set.view(o0,212)
+      goto(l1548)
+    }
+    set.view(o0,195)
+l1548:
+    set(f133)
+    stop.motion(o0)
+    end.of.loop(o0,f242)
+    goto(l1570)
+  }
+  if (!f171 && vCurrentRoom == 50) { //0616
+    print("The bomb has fallen to the floor where it has exploded harmlessly. The guard is so intent on guarding the Star Generator he doesn't even blink an eye.")
+  }
+l1570:
+  erase(o11)
+}
+if (f243) { //0624
+  reset(f243)
+  stop.update(o10)
+  print("The grenade drops to the floor releasing its poisonous gas on the unsuspecting alien. Good shot %s1!")
+}
+if (f242) { //0630
+  reset(f133)
+  reset(f242)
+  stop.update(o0)
+  v130 = 27
+  print("Obviously, this was not the smartest thing you've done today. You have once again demonstrated that a janitor's place is not in space.")
+}
+if (f244) { //0641
+  distance(o0,o10,v64)
+  if (v64 < 20) { //064b
+    current.loop(o0,v64)
+    get.posn(o0,v135,v136)
+    get.posn(o10,v62,v63)
+    if (v64 == 0) { //065d
+      if (v135 < v62) { //0664
+        set.loop(o10,1)
+      }
+    }
+    if (v64 == 1) { //066e
+      if (v135 > v62) { //0675
+        set.loop(o10,0)
+      }
+    }
+    if (v64 == 2) { //067f
+      if (v136 < v63) { //0686
+        set.loop(o10,3)
+      }
+    }
+    if (v64 == 3) { //0690
+      if (v136 > v63) { //0697
+        set.loop(o10,2)
+      }
+    }
+  }
+  distance(o0,o10,v119)
+  if (fEnteredCommand && !fSaidAccepted) { //06a5
+    call(122)
+  }
+}
+if (f49) { //06b0
+  reset(f49)
+  sound(59,f49)
+}
+return()

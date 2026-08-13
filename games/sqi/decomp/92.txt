@@ -1,0 +1,53 @@
+prevent.input()
+status.line.off()
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(2,1,"              SPACE QUEST")
+display(3,1,"                 Help")
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0012
+  display(6,1,"    F1 or HELP displays this message.")
+  goto(l41)
+}
+display(6,1,"    F1 displays this message.")
+l41:
+display(7,1,"    F2 turns the sound off and on.")
+display(8,1,"    F3 retypes the last line typed.")
+display(9,1,"    F5 saves your current game.")
+display(10,1,"    F7 restores a saved game.")
+display(11,1,"    F9 restarts the game.")
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //003d
+  display(14,1,"   TAB shows status screen. (see below)")
+  goto(l84)
+}
+display(14,1,"   TAB shows the status screen.")
+l84:
+display(15,1,"   ESC pops up menus.")
+if (vComputerType == ATARI_ST) { //0058
+  display(16,1,"Ctrl-J sets up your controller.")
+  goto(l106)
+}
+display(16,1,"Ctrl-J sets up your joystick.")
+l106:
+if (vComputerType == IBM_PC) { //006a
+  display(17,1,"Ctrl-R toggles RGB monitor modes.")
+}
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0075
+  display(18,1,"Double clicking joystick button or\n right mouse button also shows status\n screen. Single click pops up menus")
+}
+if (has(i14)) { //0085
+  display(19,1,"    F6 to fire Pulseray.")
+}
+if (vComputerType == 2) { //008f
+  display(20,1,"    +  Increases volume.")
+  display(21,1,"    -  Decreases volume.")
+}
+l158:
+if (!(have.key())) { //009e
+  goto(l158)
+}
+accept.input()
+status.line.on()
+graphics()
+set(fSaidAccepted)
+return()

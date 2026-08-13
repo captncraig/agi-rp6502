@@ -1,0 +1,642 @@
+if (fNewRoom) { //0002
+  set.horizon(88)
+  load.pic(vCurrentRoom)
+  load.view(2)
+  load.view(4)
+  load.view(3)
+  load.view(41)
+  load.view(5)
+  load.view(14)
+  load.view(15)
+  load.view(16)
+  if (v81 == 1) { //001c
+    load.view(127)
+    goto(l42)
+  }
+  load.view(30)
+l42:
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.sound(3)
+  if (f53) { //0032
+    load.view(9)
+    if (!(v51 > 0) && f86) { //003a
+      load.view(8)
+      v32 = 250
+    }
+  }
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  if ((v50 == 2 || v50 == 1)) { //004d
+    set.view(o1,4)
+    v50 = 2
+    goto(l101)
+  }
+  set.view(o1,2)
+l101:
+  ignore.horizon(o1)
+  position(o1,80,68)
+  animate.obj(o2)
+  ignore.objs(o2)
+  ignore.blocks(o2)
+  set.view(o2,3)
+  set.cel(o2,0)
+  position(o2,133,110)
+  animate.obj(o4)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  set.view(o4,41)
+  position(o4,21,118)
+  set.priority(o4,11)
+  animate.obj(o3)
+  set.view(o3,5)
+  ignore.horizon(o3)
+  position(o3,35,29)
+  if (v50 != 0) { //0096
+    set.cel(o3,1)
+    goto(l167)
+  }
+  set.cel(o3,0)
+l167:
+  if (vPrevRoom == 2) { //00a7
+    set(f32)
+    set.cel(o2,4)
+    position(o0,133,108)
+    goto(l215)
+  }
+  if (vPrevRoom == 4) { //00ba
+    set(f40)
+    set.cel(o4,3)
+    position(o0,22,115)
+    goto(l215)
+  }
+  set.cel(o2,0)
+  set.cel(o4,0)
+  position(o0,100,109)
+l215:
+  if (f53) { //00d7
+    animate.obj(o5)
+    if (!(v51 > 0) && f86) { //00df
+      set.view(o5,8)
+      position(o5,148,107)
+      v34 = 0
+      goto(l302)
+    }
+    if (v51 != 6 && f86) { //00f6
+      set.view(o5,9)
+      position(o5,107,107)
+      v51 = 2
+      v34 = 6
+      set.cel(o5,v34)
+      draw(o5)
+      stop.cycling(o5)
+      goto(l302)
+    }
+    if (v51 == 6) { //0117
+      set.view(o5,9)
+      position(o5,107,110)
+      set.cel(o5,8)
+      draw(o5)
+      stop.cycling(o5)
+      stop.motion(o5)
+    }
+  }
+l302:
+  animate.obj(o6)
+  set.view(o6,14)
+  set.loop(o6,0)
+  position(o6,10,109)
+  animate.obj(o7)
+  if (v81 == 1) { //013c
+    set.view(o7,127)
+    goto(l332)
+  }
+  set.view(o7,30)
+l332:
+  set.loop(o7,1)
+  draw(o1)
+  if (v50 == 2) { //0151
+    set(f35)
+    goto(l351)
+  }
+  stop.update(o1)
+l351:
+  animate.obj(o8)
+  ignore.horizon(o8)
+  set.view(o8,12)
+  set.cel(o8,0)
+  set.priority(o8,15)
+  position(o8,80,22)
+  draw(o8)
+  draw(o2)
+  stop.update(o2)
+  draw(o4)
+  stop.update(o4)
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o0)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0183
+    goto(l404)
+  }
+  clear.lines(23,24,c0)
+l404:
+  reset(f30)
+}
+if (v51 > 0) { //0196
+  observe.objs(o0)
+}
+if (v51 != 1 && f55) { //019f
+  reset(f55)
+}
+if (f36) { //01ab
+  reset(f36)
+  stop.update(o1)
+}
+if (!f47 && v32 > 0 && f53) { //01b5
+  v32--
+}
+if (f162) { //01c3
+  reset(f162)
+}
+if (!f47) { //01cb
+  if (v32 == 135 && !f48) { //01d2
+    draw(o5)
+    start.update(o2)
+    end.of.loop(o2,f37)
+    move.obj(o5,107,107,0,f55)
+    sound(1,f162)
+    v51 = 1
+  }
+}
+if (f37) { //01ef
+  get.posn(o5,v62,v63)
+  if (v62 < 140) { //01f9
+    reset(f37)
+    print("The door opens and a man you recognize as one of the lab scientists enters.  He appears to be injured!")
+  }
+}
+if (v51 == 1 && f55) { //0204
+  reset(f55)
+  stop.cycling(o5)
+  set(f38)
+  set.view(o5,9)
+  set.cel(o5,0)
+  v51 = 2
+  print("After only a few steps he slumps to the floor.")
+  if (!(right.posn(o0,127,103,147,114))) { //021e
+    reverse.loop(o2,f31)
+    sound(2,f162)
+    goto(l564)
+  }
+  set(f32)
+}
+l564:
+if (f39) { //0234
+  reset(f39)
+  if (v34 == 8) { //023c
+    stop.cycling(o5)
+    stop.motion(o5)
+    v51 = 6
+    goto(l591)
+  }
+  stop.cycling(o5)
+}
+l591:
+if (f38) { //024f
+  v34++
+  set.cel(o5,v34)
+  if (v34 == 8) { //025a
+    reset(f38)
+  }
+  if (v34 == 7) { //0263
+    reset(f38)
+  }
+  if (v34 == 6) { //026c
+    reset(f38)
+  }
+  set(f39)
+}
+v37--
+if (v37 == 1) { //0279
+  set.view(o6,14)
+  set.loop(o6,1)
+  print("The alien observes his handiwork briefly, then leaves.")
+  move.obj(o6,10,109,0,f46)
+  v36 = 4
+}
+if (f46) { //0291
+  reset(f46)
+  if (v36 == 4) { //0299
+    erase(o6)
+    start.update(o4)
+    reverse.loop(o4,f44)
+    sound(2,f162)
+  }
+  if (v36 == 3) { //02aa
+    set.cel(o6,0)
+    v37 = 27
+  }
+  if (v36 == 2) { //02b7
+    set.view(o6,15)
+    sound(3,f49)
+    get.posn(o0,v62,v63)
+    position(o7,62,v63)
+    set.cel(o7,0)
+    erase(o0)
+    draw(o7)
+    end.of.loop(o7,f46)
+    v36 = 3
+  }
+  if (v36 == 1) { //02d9
+    set.view(o6,15)
+    set.cel(o6,0)
+    end.of.loop(o6,f46)
+    v36 = 2
+  }
+}
+if (f44) { //02ec
+  reset(f44)
+  stop.update(o4)
+  if (v36 == 4) { //02f6
+    v130 = 32
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted || f48)) { //0300
+  goto(l1540)
+}
+if (said("check out", "area")) { //0310
+  print("This is the Arcada's data archive.  Many volumes of information are stored on data cartridges.  There is a computer console here.")
+}
+if (said("check out", "table")) { //031c
+  print("The table is used for holding things above the floor.")
+}
+if ((said("check out", "wall") || said("check out", "archive") || said("check out", "shelf") || said("check out", "cartridges"))) { //0328
+  print("Looking at the wall you see shelves full of data cartridges which can only be removed by the retrieval unit.")
+}
+if (said("check out", "chair")) { //0348
+  print("It looks much like many other chairs you have seen in your lifetime.")
+}
+if (said("check out", "cartridge slot")) { //0354
+  if (posn(o0,74,104,88,114)) { //035e
+    print("The slot appears to be about the size of a data cartridge. It is currently vacant.")
+    goto(l879)
+  }
+  print("You can't see it well from here.")
+}
+l879:
+if ((said("sit", "chair") || said("sit", "down", "chair"))) { //036f
+  if (posn(o0,19,120,91,145)) { //0383
+    print("You don't have time to be sitting around.")
+    goto(l916)
+  }
+  print("You can't do that from here.")
+}
+l916:
+if ((said("acquire", "cart") || said("get down", "cart"))) { //0394
+  if (!(has(i1))) { //03a6
+    if (v50 == 2 && f35) { //03ad
+      if (posn(o0,74,104,88,114)) { //03b6
+        set(f36)
+        v50 = 3
+        set.view(o1,2)
+        get(i1)
+        vCurrentScore += 5
+        print("Done.")
+        goto(l980)
+      }
+      print("You can't do that from here.")
+l980:
+      goto(l985)
+    }
+    print("That can't be done right now.")
+l985:
+    goto(l990)
+  }
+  print("You already possess that item.")
+}
+l990:
+if (has(i1)) { //03de
+  if ((said("return", "cart") || said("give", "cart"))) { //03e4
+    print("Now that you have it you shouldn't be trying to get rid of it.")
+  }
+}
+if ((said("check out", "computer console") || said("check out", "computer"))) { //03f8
+  if (posn(o0,74,104,88,108)) { //040a
+    if (v50 == 2) { //0414
+      print("The console consists of a screen, keyboard, and cartridge slot.  Atop it rests a Model DX Cartridge Retrieval Unit (currently bearing a cartridge).")
+      goto(l1058)
+    }
+    print("The console consists of a screen, keyboard, and cartridge slot.  Atop it rests a Model DX Cartridge Retrieval Unit.")
+l1058:
+    goto(l1063)
+  }
+  print("You can't see it well from here.")
+}
+l1063:
+if (said("check out", "box")) { //0427
+  if (posn(o0,74,104,88,108)) { //0431
+    if (v50 == 2) { //043b
+      print("It is a Model DX Cartridge Retrieval Unit. It is used to retrieve cartridges. It is currently holding a cartridge.")
+      goto(l1097)
+    }
+    print("It is a Model DX Cartridge Retrieval Unit. It is used to retrieve cartridges. It is currently empty.")
+l1097:
+    goto(l1102)
+  }
+  print("You can't see it well from here.")
+}
+l1102:
+if (said("check out", "keyboard")) { //044e
+  if (posn(o0,74,104,88,108)) { //0458
+    print("The keyboard has the usual keys found on a Xenon keyboard.  Above it are the words \"Arcada Data Archive.\"")
+    goto(l1129)
+  }
+  print("You can't see it well from here.")
+}
+l1129:
+if (v51 > 0) { //0469
+  if (said("speak", "being")) { //0470
+    print("In his current condition, the man is not much of a conversationalist.")
+  }
+}
+if ((said("check out", "being") || said("aid", "being") || said("check out", "bodies"))) { //047c
+  if (posn(o0,98,102,130,115)) { //0494
+    if (v51 == 2 && v34 == 6) { //049e
+      print("A large laser hole has been burned in his uniform through which you can see previously unexposed tissue.  Struggling painfully, he raises up on one elbow.")
+      v33 = 36
+      v51 = 4
+      set(f38)
+      goto(l1231)
+    }
+    if (v51 == 6) { //04b5
+      print("It's a grisly sight. There is nothing you can do for him now.")
+      goto(l1231)
+    }
+    if (v51 > 0) { //04c1
+      print("You see a man dressed in a lab coat. He appears to be ailing.")
+      goto(l1231)
+    }
+    print("That can't be done right now.")
+l1231:
+    goto(l1236)
+  }
+  print("You can't do that from here.")
+}
+l1236:
+if ((said("explore", "bodies") || said("explore", "pocket") || said("explore", "being"))) { //04d4
+  if (v51 == 6) { //04ec
+    if (posn(o0,98,102,118,115)) { //04f3
+      print("Your search of the damaged body's pockets nets. . .")
+      print("only some heat-fused chunks of varying sizes which were probably melted by a pulseray blast. Nothing to waste time on.")
+      goto(l1286)
+    }
+    print("You can't do that from here.")
+l1286:
+    goto(l1318)
+  }
+  if (v51 > 0) { //0509
+    if (posn(o0,98,102,118,115)) { //0510
+      print("Have some respect for the dying!")
+      goto(l1313)
+    }
+    print("You can't do that from here.")
+l1313:
+    goto(l1318)
+  }
+  print("That can't be done right now.")
+}
+l1318:
+if (said("check out", "display")) { //0526
+  if (posn(o0,74,104,88,108)) { //0530
+    v35 = 1
+    set(f189)
+    set(f47)
+    status.line.off()
+    prevent.input()
+    text.screen()
+    display(2,13,"Welcome to the")
+    display(3,11,"Arcada Data Archive")
+    display(5,2,"Model DX Storage and Retrieval System")
+    display(8,2,"To select a cartridge enter the title")
+    display(9,3,"below.")
+    display(10,2,"Press <Enter> to quit")
+    display(12,1,"(Title Catalog available with Top")
+    display(13,2,"Security Clearance only)")
+    goto(l1385)
+  }
+  print("You can't see it well from here.")
+}
+l1385:
+if ((said("play", "cart") || said("fill", "cart") || said("fill", "cart", "cartridge slot") || said("drop", "cart", "cartridge slot"))) { //0569
+  if (has(i1)) { //058b
+    if (obj.in.box(o0,77,104,94,109)) { //0591
+      set(f45)
+      set(f48)
+      start.update(o4)
+      end.of.loop(o4,f44)
+      sound(1,f162)
+      draw(o6)
+      move.obj(o6,20,109,0,f46)
+      v36 = 1
+      goto(l1463)
+    }
+    print("You can't do that from here.")
+l1463:
+    goto(l1468)
+  }
+  print("You don't have one of those.")
+}
+l1468:
+if ((said("give", "cart") || said("give", "cart", "being"))) { //05bc
+  if (has(i1)) { //05d0
+    print("He won't be needing it anymore.")
+    goto(l1501)
+  }
+  print("You don't have one of those.")
+}
+l1501:
+if (said("press", "key")) { //05dd
+  if (obj.in.box(o0,77,104,94,109)) { //05e7
+    print("Pressing the keys seems to have no effect since you don't see the screen.")
+    goto(l1528)
+  }
+  print("You can't do that from here.")
+}
+l1528:
+if (said("check out", "door")) { //05f8
+  print("This is another boring door.")
+}
+l1540:
+if (v35 == 1) { //0604
+  open.dialogue()
+  set.string(str2,"                                      ")
+  display(16,0,"                                      ")
+  get.string(str2,"Title : ",16,1,18)
+  parse(str2)
+  if (!fEnteredCommand) { //061b
+    v35 = 2
+    goto(l1633)
+  }
+  set.cursor.char(" ")
+  prevent.input()
+  if (said("astral", "bodies")) { //062b
+    display(18,13,"Searching ...")
+    if (v50 > 0) { //0639
+      v35 = 6
+      v87 = 18
+      goto(l1618)
+    }
+    v35 = 4
+    v50 = 1
+    v87 = 18
+l1618:
+    goto(l1633)
+  }
+  display(18,13,"Searching ...")
+  v35 = 6
+  v87 = 18
+  reset(fEnteredCommand)
+}
+l1633:
+v87--
+if (v87 == 1) { //0663
+  if (v35 == 6) { //066a
+    display(18,7,"Title Not Available")
+    v88 = 27
+  }
+  if (v35 == 4) { //0678
+    display(18,7,"Title Found. . .Retrieving")
+    v88 = 27
+  }
+}
+v88--
+if (v88 == 1) { //0688
+  if (v35 == 4) { //068f
+    v35 = 2
+  }
+  if (v35 == 6) { //0699
+    display(18,0,"                                      ")
+    display(16,0,"                                      ")
+    v35 = 1
+  }
+}
+if (f42) { //06ab
+  reset(f42)
+  if (v31 == 0) { //06b3
+    if (v50 == 1) { //06ba
+      v31 = 1
+      start.update(o1)
+      move.obj(o1,30,68,0,f34)
+    }
+  }
+}
+if (v35 == 2) { //06cc
+  v35 = 0
+  set(f30)
+  graphics()
+  reset(f47)
+  reset(f189)
+  set.cursor.char("_")
+  accept.input()
+  status.line.on()
+  close.dialogue()
+  if (v50 == 1) { //06e2
+    v31 = 0
+    set(f42)
+  }
+}
+v33--
+if (v33 == 1) { //06f0
+  print("He tells you the Arcada is under attack and that the Star Generator is in danger. You had better leave if you value your life.")
+  print("He looks over toward the shelves full of cartridges and utters the words \"astral body\".  He then settles to the floor, lifeless.")
+  set(f51)
+  v51 = 5
+  set(f38)
+  vCurrentScore += 2
+}
+v30--
+if (f34 && !(v30 > 0)) { //0707
+  reset(f34)
+  if (v31 == 0) { //0713
+    set(f35)
+    goto(l1907)
+  }
+  if (v31 == 4) { //071f
+    v31 = 0
+    move.obj(o1,80,68,0,f34)
+    goto(l1907)
+  }
+  if (v31 == 3) { //0732
+    v31 = 4
+    start.update(o3)
+    end.of.loop(o3,f33)
+    set.view(o1,4)
+    move.obj(o1,30,68,0,f34)
+    goto(l1907)
+  }
+  if (v31 == 2) { //074d
+    v31 = 3
+    move.obj(o1,30,41,0,f34)
+    v30 = 9
+    goto(l1907)
+  }
+  if (v31 == 1) { //0763
+    v31 = 2
+    move.obj(o1,30,41,0,f34)
+  }
+}
+l1907:
+if (f33) { //0773
+  reset(f33)
+  v50 = 2
+  stop.update(o3)
+}
+if (!f32 && right.posn(o0,123,103,147,114)) { //0780
+  set(f32)
+  start.update(o2)
+  end.of.loop(o2,f31)
+  sound(1,f162)
+}
+if (!(right.posn(o0,123,103,147,114)) && f32) { //0797
+  reset(f32)
+  start.update(o2)
+  reverse.loop(o2,f31)
+  sound(2,f162)
+}
+if (f31 && !f32) { //07ae
+  reset(f31)
+  stop.update(o2)
+}
+if (!f40 && posn(o0,16,105,29,123)) { //07bb
+  set(f40)
+  start.update(o4)
+  end.of.loop(o4,f41)
+  sound(1,f162)
+}
+if (!(posn(o0,16,105,29,123)) && f40) { //07d2
+  reset(f40)
+  start.update(o4)
+  reverse.loop(o4,f41)
+  sound(2,f162)
+}
+if (f41 && !f40) { //07e9
+  reset(f41)
+  stop.update(o4)
+}
+get.posn(o0,v135,v136)
+if (v135 > 134 && v136 < 110) { //07fa
+  if (!f53) { //0804
+    set(f53)
+  }
+  new.room(2)
+}
+if (v135 < 21 && v136 < 120) { //080f
+  if (!f53) { //0819
+    set(f53)
+  }
+  new.room(4)
+}
+return()

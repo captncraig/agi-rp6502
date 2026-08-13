@@ -1,0 +1,164 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(121)
+  animate.obj(o1)
+  set.view(o1,121)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,114,51)
+  animate.obj(o2)
+  set.view(o2,121)
+  set.cel(o2,0)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,114,134)
+  draw(o1)
+  stop.update(o1)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 58) { //003e
+    reset(f83)
+    position(o0,12,165)
+    goto(l100)
+  }
+  if (vPrevRoom == 59) { //004e
+    set(f83)
+    position(o0,64,123)
+    goto(l100)
+  }
+  set(f83)
+  position(o0,3,67)
+l100:
+  draw(o0)
+  if ((vPrevRoom == 59 || vPrevRoom == 54)) { //0066
+    v140 = 83
+    v141 = 51
+    v142 = 71
+    v143 = 58
+    goto(l141)
+  }
+  v140 = 133
+  v141 = 147
+  v142 = 112
+  v143 = 142
+l141:
+  load.logic(119)
+  set(f112)
+  set(f172)
+  call(119)
+  show.pic()
+  v31 = 2
+  v32 = 2
+}
+reset(f151)
+if (posn(o0,33,91,90,167)) { //009e
+  if (f83) { //00a8
+    set.priority(o0,14)
+    goto(l183)
+  }
+  set.priority(o0,5)
+l183:
+  goto(l188)
+}
+release.priority(o0)
+l188:
+if (v160 == 2 && posn(o10,33,91,90,167)) { //00bc
+  if (f83) { //00c9
+    set.priority(o10,14)
+    goto(l216)
+  }
+  set.priority(o10,5)
+l216:
+  goto(l221)
+}
+release.priority(o10)
+l221:
+if ((!fEnteredCommand || fSaidAccepted)) { //00dd
+  goto(l277)
+}
+if ((said("check out") || said("check out", "area"))) { //00eb
+  print("You are wandering through the Sarien spaceship.")
+}
+if (said("check out", "elevator")) { //00fd
+  print("It is just another elevator.")
+}
+if (said("check out", "wall")) { //0109
+  print("These Sariens are scum, but they sure know how to build a spaceship.")
+}
+l277:
+if (f30) { //0115
+  stop.update(o1)
+  stop.update(o2)
+}
+if (f30 && v31 == 2 && v32 == 2) { //011f
+  reset(f30)
+  if ((posn(o0,116,38,123,45) || posn(o0,116,120,123,128))) { //012d
+    program.control()
+    get.posn(o0,v135,v136)
+    v135 = 0
+    if (v136 < 85) { //0147
+      v136 = 82
+      reset(f83)
+    }
+    if (v136 > 84) { //0153
+      v136 = 174
+      set(f83)
+    }
+    repositon(o0,v135,v136)
+    v33 = 18
+  }
+}
+v33--
+if (v33 == 1) { //0168
+  get.posn(o0,v135,v136)
+  v136 += 10
+  v55 = 0
+  move.obj(o0,v135,v136,55,f34)
+}
+if (f34) { //017f
+  reset(f34)
+  player.control()
+}
+if (v31 != 1 && posn(o0,116,47,123,55)) { //0188
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v31 = 1
+}
+if (v31 == 1 && !(posn(o0,116,47,123,55))) { //01a1
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v31 = 2
+}
+if (v32 != 1 && posn(o0,116,129,123,138)) { //01ba
+  start.update(o2)
+  sound(1,f120)
+  end.of.loop(o2,f30)
+  v32 = 1
+}
+if (v32 == 1 && !(posn(o0,116,129,123,138))) { //01d3
+  start.update(o2)
+  sound(2,f120)
+  reverse.loop(o2,f30)
+  v32 = 2
+}
+if (!fNewRoom) { //01ec
+  call(119)
+}
+if (vWhichEgoBorder == 4) { //01f5
+  new.room(54)
+}
+if (vWhichEgoBorder == 3) { //01fe
+  new.room(58)
+}
+if (fTriggerLine) { //0207
+  new.room(59)
+}
+return()

@@ -1,0 +1,351 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  if (vPrevRoom == 2) { //000a
+    set(f83)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(37)
+  load.view(146)
+  load.view(147)
+  get.posn(o0,v135,v136)
+  animate.obj(o2)
+  set.view(o2,146)
+  ignore.objs(o2)
+  set.priority(o2,12)
+  move.obj(o2,70,109,3,f30)
+  set(f31)
+  animate.obj(o3)
+  set.view(o3,147)
+  ignore.objs(o3)
+  set.priority(o3,11)
+  animate.obj(o4)
+  set.view(o4,146)
+  ignore.objs(o4)
+  set.priority(o4,12)
+  animate.obj(o5)
+  set.view(o5,147)
+  ignore.objs(o5)
+  set.priority(o5,11)
+  load.view(181)
+  if (v144 == 0 && v145 == 0) { //0055
+    add.to.pic(181,0,0,75,98,12,12)
+    discard.view(181)
+    goto(l124)
+  }
+  animate.obj(o1)
+  set.view(o1,181)
+  set.priority(o1,12)
+  position(o1,75,98)
+  draw(o1)
+  set(f41)
+l124:
+  if (vPrevRoom == 49) { //007c
+    get.posn(o0,v135,v136)
+    if (v136 > 87) { //0087
+      position(o0,6,138)
+      reset(f83)
+      goto(l157)
+    }
+    set(f83)
+    position(o0,6,42)
+l157:
+    goto(l185)
+  }
+  if (vPrevRoom == 65) { //00a0
+    position(o0,76,125)
+    set(f36)
+    set.priority(o0,13)
+    goto(l185)
+  }
+  position(o0,147,41)
+  set(f83)
+l185:
+  if (f83) { //00b9
+    set.priority(o0,14)
+  }
+  draw(o0)
+  if (f171) { //00c4
+    load.view(188)
+    add.to.pic(188,0,9,79,155,4,4)
+    discard.view(188)
+    set(f113)
+    reset(f172)
+    block(71,143,85,155)
+    goto(l239)
+  }
+  if (f173) { //00e2
+    set(f113)
+    goto(l239)
+  }
+  set(f172)
+l239:
+  set(f112)
+  v140 = 77
+  v141 = 153
+  v142 = 77
+  v143 = 153
+  load.logic(119)
+  call(119)
+  show.pic()
+  if (vPrevRoom == 65 && (v144 != 0 || v145 != 0)) { //0102
+    print("The Star Generator has come alive. The heat that this thing is starting to generate tells you that it's time to blow this taco stand!")
+  }
+  v64 = 2
+  step.size(o2,v64)
+  step.size(o3,v64)
+  step.size(o4,v64)
+  step.size(o5,v64)
+  v31 = 148
+}
+if (!f215 && !f42) { //0127
+  set(f42)
+  position(o2,70,79)
+  draw(o2)
+  position(o3,70,76)
+  draw(o3)
+  position(o4,70,109)
+  draw(o4)
+  position(o5,70,106)
+  draw(o5)
+  set(f30)
+  set(f33)
+  set(f31)
+  reset(f34)
+}
+if (f215 && f42) { //0153
+  reset(f42)
+  erase(o2)
+  erase(o4)
+  erase(o3)
+  erase(o5)
+}
+if (f41) { //0165
+  reset(f41)
+  sound(37,f41)
+}
+if (f36) { //0170
+  if (posn(o0,72,127,81,130)) { //0176
+    if (!f42) { //0180
+      ignore.blocks(o0)
+      goto(l398)
+    }
+    observe.blocks(o0)
+l398:
+    goto(l403)
+  }
+  observe.blocks(o0)
+l403:
+  goto(l424)
+}
+get.posn(o0,v62,v63)
+if (v63 < 128) { //019a
+  ignore.blocks(o0)
+  goto(l424)
+}
+observe.blocks(o0)
+l424:
+if (f30) { //01a8
+  if (f31) { //01ae
+    normal.motion(o3)
+    move.obj(o2,70,79,3,f30)
+    move.obj(o3,70,76,3,f32)
+    reset(f31)
+    goto(l471)
+  }
+  normal.motion(o3)
+  move.obj(o2,70,109,3,f30)
+  move.obj(o3,70,106,3,f32)
+  set(f31)
+}
+l471:
+if (f33) { //01d7
+  if (f34) { //01dd
+    normal.motion(o5)
+    move.obj(o4,70,79,3,f33)
+    move.obj(o5,70,76,3,f35)
+    reset(f34)
+    goto(l518)
+  }
+  normal.motion(o5)
+  move.obj(o4,70,109,3,f33)
+  move.obj(o5,70,106,3,f35)
+  set(f34)
+}
+l518:
+if (!f128) { //0206
+  goto(l540)
+}
+if (said("cast", "bomb")) { //0210
+  print("Not now.")
+}
+l540:
+if ((!fEnteredCommand || fSaidAccepted)) { //021c
+  goto(l1078)
+}
+if (said("acquire", "generator")) { //022a
+  print("It is permanently attached to the floor.")
+}
+if (said("kick", "generator")) { //0236
+  print("Just the thought makes your toes hurt!")
+}
+if (said("check out", "base")) { //0242
+  print("There is nothing special about it, except for the Star Generator it holds.")
+}
+if ((said("check out") || said("check out", "area"))) { //024e
+  if (f83) { //025e
+    print("You are on an elevated walkway inside an enormous chamber.  Peering over the railing, you see the stolen Star Generator.")
+    goto(l619)
+  }
+  print("You are inside an enormous chamber. Before you stands the stolen Star Generator.")
+}
+l619:
+if (said("check out", "catwalk")) { //026b
+  print("The walkway spans across the massive chamber to another entryway.")
+}
+if (said("check out", "entryway")) { //0277
+  print("The entryway leads into another room.")
+}
+if (said("check out", "door")) { //0283
+  print("There is no door here.  Are you blind?")
+}
+if (posn(o0,69,115,87,134)) { //028f
+  if (said("check out", "generator")) { //0299
+    print("At the base of the Star Generator is a control panel of some sort.")
+  }
+}
+if (posn(o0,69,115,87,124)) { //02a5
+  if (said("check out", "computer console")) { //02af
+    if (f42) { //02b9
+      print("The force field around the generator stops you from reaching the control panel.")
+      goto(l710)
+    }
+    new.room(65)
+  }
+l710:
+  goto(l737)
+}
+if (said("check out", "computer console")) { //02c9
+  if (!f42) { //02d3
+    print("You are too far away to see it from here.")
+    goto(l737)
+  }
+  print("The force field which surrounds the Star Generator prevents you from getting any closer.")
+}
+l737:
+if (said("check out", "beam")) { //02e1
+  if (f42) { //02eb
+    print("The force field which surrounds the Star Generator prevents you from getting any closer.")
+    goto(l760)
+  }
+  print("The force field has been shut down.")
+}
+l760:
+if (said("check out", "generator")) { //02f8
+  if (f83) { //0302
+    print("You can't see it very well from up here.")
+    goto(l794)
+  }
+  if (f215) { //030d
+    print("The Star Generator's force field is off.")
+    goto(l794)
+  }
+  print("Before you stands the Star Generator. You find it hard to believe that this contraption could save or destroy an entire galaxy.")
+}
+l794:
+if (said("check out", "wall")) { //031a
+  print("Don't you have anything better to do than to stand around and look at walls?")
+}
+if (f83 && (said("jump") || said("climb", "down"))) { //0326
+  print("Don't be ridiculous!")
+}
+if (f171 && (said("check out", "being") || said("check out", "bodies"))) { //033a
+  if (posn(o0,70,145,86,164)) { //034e
+    print("He appears to be dead.")
+    goto(l863)
+  }
+  print("He's a gonner!  You never realized how ugly these Sariens were until now.")
+}
+l863:
+if (said("check out", "generator")) { //035f
+  if (posn(o0,73,118,81,123) && f36) { //0369
+    print("The force field has been shut down.")
+    goto(l892)
+  }
+  print("")
+}
+l892:
+if (f171 && (said("explore", "bodies") || said("explore", "being") || said("acquire", "control") || said("acquire", "box") || said("acquire", "control"))) { //037c
+  if (!(posn(o0,70,145,86,164))) { //03a2
+    print("You can't do that from here.")
+    goto(l964)
+  }
+  if (has(i16)) { //03b2
+    print("The guard has nothing else of any interest.")
+    goto(l964)
+  }
+  print("You seem to have found a remote control device of some sort. It has only one button, labeled \"ON/OFF\"")
+  vCurrentScore += 3
+  get(i16)
+}
+l964:
+if (has(i16) && said("press", "button")) { //03c4
+  if (f42) { //03d0
+    set(f215)
+    print("Suddenly, the force field protecting the Star Generator disappears.")
+    if (!f208) { //03da
+      set(f208)
+      vCurrentScore += 3
+    }
+    goto(l1016)
+  }
+  if (f36) { //03e9
+    print("If you started the force field from this close, you would be immediately vaporized. The universe would lose its most valuable janitor! Perhaps you should reconsider.")
+    goto(l1016)
+  }
+  reset(f215)
+  print("You have reactivated the force field.")
+}
+l1016:
+if (!f83 && has(i15) && (said("drop", "bomb") || said("cast", "bomb"))) { //03f8
+  if (f171) { //040f
+    print("The guard is already dead. You have only yourself to harm.")
+    goto(l1052)
+  }
+  print("Too late! The guard has already noticed you.")
+}
+l1052:
+if (f83 && said("spit", "being")) { //041c
+  if (v81 == 3) { //0428
+    print("You gather up a nice mouth full and let it fly. Unfortunately, you forgot you were wearing a helmet. The warm saliva oozes down the side of your face. You feel rather stupid.")
+    goto(l1078)
+  }
+  print("You gather up a nice mouthful and let it fly. Fortunately, you missed the guard. Can't you find something more constructive to do, %s1?")
+}
+l1078:
+if (fTriggerLine) { //0436
+  reset(fTriggerLine)
+  if (vEgoDir > 3 && vEgoDir < 7) { //043e
+    reset(f36)
+    release.priority(o0)
+    goto(l1108)
+  }
+  set(f36)
+  set.priority(o0,13)
+}
+l1108:
+if (!fNewRoom) { //0454
+  call(119)
+}
+if (vWhichEgoBorder == 4) { //045d
+  release.priority(o0)
+  reset(f172)
+  new.room(49)
+}
+if (vWhichEgoBorder == 2) { //046a
+  release.priority(o0)
+  reset(f172)
+  new.room(51)
+}
+return()

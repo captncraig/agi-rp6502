@@ -1,0 +1,92 @@
+if ((said("check out", "planet") || said("check out", "kerona"))) { //0002
+  print("Kerona is a desolate place. The surface seems to be strewn exclusively with sand as far as the eye can see and the heat is unrelenting.")
+}
+if (said("check out", "dune")) { //0016
+  print("In the distance you see very large piles of sand.")
+}
+if (said("check out", "desert")) { //0022
+  print("This vast silicon sea seems to stretch to infinity.")
+}
+if ((said("check out", "antenna") || said("check out", "barrier") || said("check out", "antenna") || said("check out", "post") || said("check out", "laundry"))) { //002e
+  print("This is one of the electronic barrier stations encircling Ulence Flats. Its force field keeps out anything or anyone traveling on or under ground.")
+}
+if (said("check out", "floor")) { //0054
+  if (!f92) { //005e
+    print("It's quite sandy down there.")
+    goto(l108)
+  }
+  print("Not far below you is a large horizontal plane which proves beneficial in maximizing the exploitation of gravity.")
+}
+l108:
+if (said("check out", "dirt")) { //006c
+  print("It is a loose granular material resulting from the disintegration of  the area's rocks.")
+}
+if (said("check out", "bridge")) { //0078
+  if (vCurrentRoom == 19) { //0082
+    if (f92) { //0089
+      print("It is quite a unique work of nature. It might hold you.")
+      goto(l150)
+    }
+    print("It is a quite unique, natural formation carved out through eons by the elements. It does not appear to be accessible from here.")
+  }
+l150:
+  if (vCurrentRoom == 22) { //0096
+    print("It is a quite unique, natural formation carved out through eons by the elements. It does not appear to be accessible from here.")
+  }
+}
+if (said("check out", "sky")) { //009f
+  print("The sky is a clear and cosmic purple.")
+}
+if (vCurrentRoom == 20 && said("check out", "area")) { //00ab
+  print("You can see the opening into a cave but cannot make out any detail inside.")
+}
+if (f102) { //00ba
+  if (said("check out", "spider")) { //00c0
+    print("You shiver at the sight of the spider droid with its spindly legs and cold metallic body. Its red scanner probes the terrain for anything that moves. Truly an icon of terror.")
+  }
+  if (said("attack", "spider")) { //00cc
+    print("You, a mere human, are no match for this mechanical menace.")
+  }
+}
+if (said("check out", "cliff")) { //00d8
+  print("The cliffs are sheer and dangerous.")
+}
+if (f92) { //00e4
+  if ((said("check out", "edge") || said("check out", "down"))) { //00ea
+    print("It's a long way down.")
+  }
+}
+if (vCurrentRoom != 19 && vCurrentRoom != 17 && (said("check out", "boulder") || said("check out", "boulder"))) { //00fe
+  print("Seen one rock, seen them all.")
+}
+if ((said("climb", "boulder") || said("climb", "cliff") || said("climb", "boulder"))) { //011a
+  print("You cannot climb the cliffs or rocks.")
+}
+if ((said("acquire", "boulder") || said("acquire", "boulder"))) { //0134
+  print("Leave the rocks alone.")
+}
+if (vCurrentRoom != 19 && said("move", "boulder")) { //0148
+  print("Leave the rocks alone.")
+}
+if (said("acquire", "dirt")) { //0158
+  print("That won't help you..")
+}
+if ((said("consume", "dirt") || said("snort", "dirt"))) { //0164
+  print("You have some truly twisted ideas.")
+}
+if ((said("dig", "entryway") || said("dig") || said("dig", "dirt"))) { //0178
+  print("Why would you want to do that? You got a bone to bury?")
+}
+if (said("bury", "anyword")) { //0190
+  print("You don't need to be burying anything.")
+}
+if ((said("jump") || said("jump", "anyword") || said("jump", "anyword", "anyword"))) { //019c
+  if (f92) { //01b4
+    print("You can't do that from here.")
+    goto(l449)
+  }
+  print("Don't be ridiculous.")
+}
+l449:
+return()
+return()

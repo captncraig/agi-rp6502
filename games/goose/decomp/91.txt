@@ -1,0 +1,3 @@
+if (!(isSet(f52)
+!!!
+&{%!e(string=incomplete condition: 0x12)}

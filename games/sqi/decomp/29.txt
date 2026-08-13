@@ -1,0 +1,359 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  set(f83)
+  load.pic(vCurrentRoom)
+  load.view(63)
+  load.view(64)
+  load.view(61)
+  load.view(62)
+  load.view(131)
+  load.view(72)
+  load.sound(22)
+  draw.pic(vCurrentRoom)
+  animate.obj(o4)
+  set.view(o4,64)
+  ignore.objs(o4)
+  position(o4,10,78)
+  set.cel(o4,0)
+  stop.cycling(o4)
+  animate.obj(o5)
+  set.view(o5,64)
+  ignore.objs(o5)
+  position(o5,106,78)
+  set.cel(o5,1)
+  stop.cycling(o5)
+  animate.obj(o2)
+  set.view(o2,61)
+  ignore.objs(o2)
+  position(o2,68,81)
+  set.cel(o2,0)
+  set.priority(o2,5)
+  stop.cycling(o2)
+  stop.motion(o2)
+  v64 = 2
+  cycle.time(o2,v64)
+  animate.obj(o3)
+  set.view(o3,62)
+  ignore.objs(o3)
+  position(o3,58,46)
+  set.cel(o3,1)
+  set.priority(o3,5)
+  stop.cycling(o3)
+  stop.motion(o3)
+  v64 = 4
+  cycle.time(o3,v64)
+  if (v82 == 2) { //0074
+    animate.obj(o1)
+    set.view(o1,72)
+    set.priority(o1,4)
+    ignore.objs(o1)
+    ignore.blocks(o1)
+    position(o1,67,116)
+    set.cel(o1,0)
+    stop.cycling(o1)
+    stop.motion(o1)
+    v34 = 18
+    animate.obj(o6)
+    set.view(o6,131)
+    position(o6,91,156)
+  }
+  position(o0,75,161)
+  move.obj(o0,75,155,0,f30)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00ab
+    goto(l188)
+  }
+  clear.lines(23,24,c0)
+}
+l188:
+if (f37) { //00bc
+  reset(f37)
+  print("You drop the Orat part to the ground.  The vision is silent.  You are startled by a rumbling and suddenly an oddly shaped door comes into view. It opens slowly.")
+}
+if (f30) { //00c6
+  reset(f30)
+  if (v82 != 2) { //00ce
+    print("As soon as you enter the room you find yourself surrounded by darkness. Suddenly, you become aware of the fact that you cannot move or speak. A strange, unknown force has taken over.")
+  }
+  program.control()
+  normal.motion(o0)
+  stop.motion(o0)
+  prevent.input()
+  v34 = 9
+}
+if (f34) { //00e1
+  reset(f34)
+  set.cel(o3,1)
+  stop.cycling(o3)
+  v30 = 1
+  random(1,100,v31)
+}
+v31--
+if (v31 == 1) { //00f7
+  if (v30 == 1) { //00fe
+    start.cycling(o3)
+    reverse.loop(o3,f34)
+    v30 = 2
+  }
+}
+if (f31 && f32) { //010d
+  reset(f31)
+  reset(f32)
+  erase(o5)
+  set.cel(o4,0)
+  set.view(o4,63)
+  end.of.loop(o4,f33)
+}
+if (f33) { //0124
+  reset(f33)
+  add.to.pic(63,0,2,58,78,4,4)
+  erase(o4)
+  draw(o2)
+  draw(o3)
+  v30 = 1
+  random(1,100,v31)
+  v32 = 28
+  if (f194) { //0144
+    print("Again, the massive holographic image appears before you.")
+    goto(l337)
+  }
+  print("A massive holographic image appears before you. You sense that you are the only life form in the area.")
+l337:
+  if (has(i4)) { //0151
+    if (f194) { //0157
+      v33 = 10
+    }
+  }
+}
+v32--
+if (v32 == 1) { //0162
+  if (v82 > 1) { //0169
+    if (v33 == 14) { //0170
+      v33 = 15
+      print("You hear a voice, different this time, beckoning you to step forward.")
+    }
+    if (v33 == 12) { //017c
+      set.cel(o2,0)
+      end.of.loop(o2,f35)
+      sound(22,f162)
+      v33 = 13
+      accept.input()
+    }
+    if (v33 == 10) { //0190
+      set.cel(o2,0)
+      end.of.loop(o2,f35)
+      sound(22,f162)
+      v33 = 11
+    }
+  }
+  if (v33 == 8) { //01a3
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    sound(22,f162)
+    v33 = 9
+  }
+  if (v33 == 6) { //01b6
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    sound(22,f162)
+    v33 = 7
+  }
+  if (v33 == 4) { //01c9
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    sound(22,f162)
+    v33 = 5
+  }
+  if (v33 == 2) { //01dc
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    sound(22,f162)
+    v33 = 3
+  }
+  if (!(v33 > 0)) { //01ef
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    sound(22,f162)
+    v33 = 1
+  }
+}
+if (f35) { //0203
+  reset(f35)
+  if (v33 == 13) { //020b
+    stop.cycling(o2)
+    v33 = 14
+    if (has(i3) && f154) { //0217
+      print("\"Drop before me your proof of Orat's defeat for my inspection.\"")
+      set(f39)
+      goto(l552)
+    }
+    print("\"Asde basdae mc werj pjlpph mn lsdse bbdow rec bvksdipabb.\"")
+  }
+l552:
+  if (v33 == 11) { //0228
+    stop.cycling(o2)
+    v33 = 12
+    if (has(i3) && f154) { //0234
+      print("\"So, you have returned.  Fortunately, there is much more to you than meets the eye.\"")
+      goto(l579)
+    }
+    print("\"Dr, hgi hnhht hjutn.  Kdfdrnlo ghfhr bb rhytt thrt ii mys aawr vcvvf xxc cdd.\"")
+l579:
+    v32 = 18
+  }
+  if (v33 == 9) { //0246
+    stop.cycling(o2)
+    v33 = 10
+    v35 = 5
+    v82 = 1
+    if (has(i3) && f154) { //0258
+      print("\"On the surface lives a beast called Orat.  He proves to be a bit of an annoyance on occasion.  Dispose of him and bring back evidence of your conquest.  Only then will I deal with your plight.  Good luck, strange one.\"")
+      goto(l615)
+    }
+    print("\"bn hos eunafle lsivr s nvfjr cpjssnb Mcvc.  Mt pskrsh rn fv b hmn hr an fbruasbvr pl uffauone.  Meyudej jk bzr bel ngisj nfdf sifhrbns kb jdgw kshghwkt.  Bjhd nfao ejff ie foajgss ngjy pwkgsf.  Bkkh irsj, dtjpddf kmn.\"")
+  }
+l615:
+  if (v33 == 7) { //0267
+    stop.cycling(o2)
+    v33 = 8
+    v32 = 18
+    if (has(i3) && f154) { //0276
+      if (v82 > 0) { //027e
+        if (has(i4)) { //0285
+          set(f39)
+          print("\"It has come to my attention that you have met Orat. If you have proof of Orat's demise, drop it for my inspection.")
+          v33 = 14
+          v32 = 0
+          accept.input()
+          goto(l676)
+        }
+        print("\"Bring to me evidence of the beast Orat's demise and we'll talk.\"")
+        v35 = 5
+        v33 = 10
+        v32 = 0
+l676:
+        goto(l681)
+      }
+      print("\"Let us see if you are worthy of our assistance.\"")
+l681:
+      goto(l686)
+    }
+    print("\"wpfi, iw?  Der op oio fr tnm dcv ermiyn lk mnb weevxmqyhj.\"")
+  }
+l686:
+  if (v33 == 5) { //02ae
+    stop.cycling(o2)
+    v33 = 6
+    v32 = 18
+    if (has(i3) && f154) { //02bd
+      print("\"You are obviously in need of transportation.\"")
+      goto(l716)
+    }
+    print("\"Owr rjn maj jwwj?  Pprdf rph pttqpt?\"")
+  }
+l716:
+  if (v33 == 3) { //02cc
+    stop.cycling(o2)
+    v33 = 4
+    v32 = 18
+    if (has(i3) && f154) { //02db
+      print("\"I have been monitoring your travels on our planet. It appears that you are up the proverbial estuary without a means of locomotion.\"")
+      goto(l746)
+    }
+    print("\"Jow wfiemss ekk wkkedkl ll ewlwl lqqfr fo slljnccv kwetsdlk?\"")
+  }
+l746:
+  if (v33 == 1) { //02ea
+    stop.cycling(o2)
+    v33 = 2
+    v32 = 18
+    if (has(i3) && f154) { //02f9
+      if (has(i4)) { //0301
+        print("\"So, you have found your way to my hallowed chamber. Fortunately there is much more to you than meets the eye.\"")
+        goto(l782)
+      }
+      print("\"So, you have found your way to my hallowed chamber.\"")
+l782:
+      goto(l787)
+    }
+    print("\"Z jo jb!  lvoo sd fj?\"")
+  }
+}
+l787:
+if ((!fEnteredCommand || fSaidAccepted)) { //0313
+  goto(l966)
+}
+if ((said("drop", "chunk") || said("drop", "orat", "chunk"))) { //0321
+  if (has(i4)) { //0335
+    if (f39) { //033b
+      drop(i4)
+      vCurrentScore += 10
+      set(f37)
+      reset(f39)
+      v32 = 9
+      v82 = 3
+      draw(o6)
+      stop.update(o6)
+      draw(o1)
+      end.of.loop(o1,f36)
+      prevent.input()
+      goto(l863)
+    }
+    print("You can't do that right now.")
+l863:
+    goto(l868)
+  }
+  print("You don't have that.")
+}
+l868:
+if (v82 == 3 && !(has(i4))) { //0364
+  if (said("acquire", "chunk")) { //036e
+    print("It's not yours any longer.")
+  }
+}
+if (said("check out", "area")) { //037a
+  print("It's pretty darn dark in here.")
+}
+if ((said("check out", "head") || said("check out", "alien") || said("check out", "being") || said("check out", "being"))) { //0386
+  print("Before you is a huge head. It appears to be a projection of some sort. It's source is unknown.")
+}
+if ((said("speak", "head") || said("speak", "alien") || said("speak", "being") || said("speak", "being"))) { //03a6
+  print("Your words go unnoticed.")
+}
+l966:
+v34--
+if (v34 == 1) { //03c8
+  draw(o4)
+  draw(o5)
+  move.obj(o4,58,78,2,f31)
+  move.obj(o5,58,78,2,f32)
+}
+if (f36) { //03df
+  reset(f36)
+  stop.update(o1)
+  player.control()
+}
+v35--
+if (v35 == 50) { //03ec
+  print("With that you find yourself being transported back to the surface.")
+}
+if (fTriggerLine && v82 == 3) { //03f5
+  accept.input()
+  set(f194)
+  new.room(31)
+}
+if (v35 == 1) { //0403
+  reset(f83)
+  accept.input()
+  player.control()
+  if (f154) { //040e
+    set(f194)
+    goto(l1054)
+  }
+  v82 = 0
+  print("Because of your inability to understand the alien's language, he has sent you back to the surface.")
+l1054:
+  new.room(15)
+}
+return()

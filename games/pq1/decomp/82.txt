@@ -1,0 +1,5 @@
+v159 = 179
+v160 = 0
+
+!!!
+&{%!e(string=unknown opcode: 0x0a)}

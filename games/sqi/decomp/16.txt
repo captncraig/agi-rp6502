@@ -1,0 +1,74 @@
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  if ((f96 || f101 || f97)) { //0010
+    load.logic(110)
+    call(110)
+  }
+  if (vPrevRoom == 15) { //0020
+    position(o0,1,77)
+  }
+  if (vPrevRoom == 17 && f92) { //002b
+    position(o0,151,57)
+  }
+  draw.pic(vCurrentRoom)
+  if (f92) { //003a
+    set.priority(o0,5)
+    start.motion(o0)
+  }
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+}
+if (said("check out", "area")) { //004c
+  if (f92) { //0056
+    print("You are high atop a rocky plateau. The desert below seems to stretch to infinity.")
+    goto(l99)
+  }
+  print("You are near the base of a plateau. It is a rather bleak environment.")
+}
+l99:
+if (said("check out", "antenna")) { //0063
+  print("It is merely a spire of rock which has managed to defy the elements.")
+}
+if (fEnteredCommand) { //006f
+  call(112)
+}
+if (f92) { //0077
+  if (fTriggerLine && !f91) { //007d
+    set(f91)
+    call(107)
+  }
+}
+if (vWhichEgoBorder != 0 && vWhichEgoBorder != 1) { //008a
+  reset(f102)
+  if (!f103) { //0098
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //00a4
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 3) { //00ae
+    new.room(19)
+  }
+  if (vWhichEgoBorder == 2) { //00b7
+    new.room(17)
+  }
+  if (vWhichEgoBorder == 4) { //00c0
+    new.room(15)
+  }
+}
+if (f91) { //00c9
+  if (posn(o0,0,36,159,53)) { //00cf
+    set.priority(o0,4)
+  }
+  call(107)
+}
+if ((f101 || f97)) { //00de
+  call(110)
+}
+return()

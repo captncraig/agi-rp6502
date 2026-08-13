@@ -1,0 +1,108 @@
+if (said("quit")) { //0002
+  stop.sound()
+  quit(1)
+}
+if (said("tp")) { //000d
+  get.num(str1,v121)
+  new.room(v121)
+}
+if (said("pos")) { //001a
+  get.num(str2,v121)
+  get.num(str3,v122)
+  erase(o0)
+  position(o0,121,v122)
+  draw(o0)
+}
+if (said("acquire", "object")) { //0030
+  get.num(str4,v121)
+  get(v121)
+}
+if (said("drop", "var")) { //003f
+  get.num(str5,v121)
+  get.num(str6,v122)
+  lindirectv(v121,v122)
+}
+if ((said("object") || said("sp"))) { //0052
+  get.num(str7,v121)
+  obj.status.v(v121)
+}
+if (said("give", "pri")) { //0065
+  show.pri.screen()
+}
+if (said("give", "var")) { //0070
+  get.num(str5,v161)
+  rindirect(v162,v161)
+  print("var %v161: %v162")
+}
+if (said("give", "banner")) { //0082
+  get.num(str9,v161)
+  if (v161) { //008f
+    print("flag %v161 is set")
+    goto(l156)
+  }
+  print("flag %v161 is not set")
+}
+l156:
+if (said("reset", "banner")) { //009c
+  get.num(str9,v161)
+  reset(v161)
+}
+if (said("drop", "banner")) { //00ab
+  get.num(str9,v161)
+  set(v161)
+}
+if ((said("give", "mem") || controller(c13))) { //00ba
+  show.mem()
+}
+if (said("cash")) { //00c9
+  print("Cheater!")
+  v121 = 124
+  get.num(str17,v122)
+  lindirectv(v121,v122)
+  if (v124 > 0) { //00dc
+    get(i10)
+    goto(l234)
+  }
+  drop(i10)
+}
+l234:
+if (vCurrentRoom != 9 && said("drink", "clothes")) { //00ea
+  current.view(o0,v64)
+  if (v64 != 0) { //00fb
+    load.view(0)
+    set.view(o0,0)
+    v81 = 1
+  }
+}
+if (said("be", "alien")) { //010b
+  current.loop(o0,v64)
+  if (v64 != 14) { //0118
+    load.view(169)
+    set.view(o0,169)
+    v81 = 3
+  }
+}
+if (said("drink", "jet pack")) { //0128
+  current.loop(o0,v64)
+  if (v64 != 166) { //0135
+    load.view(166)
+    set.view(o0,166)
+    v81 = 2
+    get(i9)
+    goto(l332)
+  }
+  print("already in jetpack")
+}
+l332:
+if (said("n", "helmet")) { //014c
+  current.loop(o0,v64)
+  if (v64 != 187) { //0159
+    load.view(187)
+    set.view(o0,187)
+    v81 = 4
+  }
+}
+if (f10) { //0169
+  call(95)
+}
+return()

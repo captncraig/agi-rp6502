@@ -1,0 +1,4 @@
+if (isSet(f12)) {
+
+!!!
+&{%!e(string=unknown opcode: 0x69)}

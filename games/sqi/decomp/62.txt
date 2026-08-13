@@ -1,0 +1,193 @@
+if (fNewRoom) { //0002
+  if (!f203) { //0008
+    set(f203)
+    vCurrentScore += 1
+  }
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(121)
+  load.view(185)
+  load.view(183)
+  load.sound(40)
+  load.sound(2)
+  load.sound(1)
+  animate.obj(o1)
+  set.view(o1,121)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,31,79)
+  v30 = 0
+  animate.obj(o2)
+  set.view(o2,185)
+  set.cel(o2,1)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,0,134)
+  draw(o2)
+  stop.update(o2)
+  set(f31)
+  position(o0,35,72)
+  move.obj(o0,35,75,0,f64)
+  draw(o1)
+  stop.update(o1)
+  set(f32)
+  set.priority(o0,6)
+  draw(o0)
+  set(f113)
+  load.logic(119)
+  call(119)
+  show.pic()
+}
+if (f57 && !(posn(o0,32,72,40,83))) { //006d
+  reset(f57)
+}
+if (posn(o0,32,72,40,79)) { //007c
+  if (!f32) { //0086
+    set(f32)
+    set.priority(o0,6)
+  }
+  goto(l159)
+}
+if (f32) { //0095
+  reset(f32)
+  release.priority(o0)
+}
+l159:
+if (f34) { //009f
+  reset(f34)
+  erase(o0)
+  v130 = 26
+}
+if (!f37 && fTriggerLine && !(posn(o0,0,120,24,124))) { //00ac
+  set(f37)
+  program.control()
+  get.posn(o0,v135,v136)
+  set.view(o0,183)
+  set.cel(o0,1)
+  stop.cycling(o0)
+  set(f56)
+  v136 = 167
+  v64 = 5
+  move.obj(o0,v135,v136,64,f34)
+}
+if (f36) { //00d9
+  reset(f36)
+  if (v31 == 1) { //00e1
+    reset(f113)
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00ea
+      goto(l251)
+    }
+    clear.lines(23,24,c0)
+l251:
+    new.room(43)
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00fd
+  goto(l471)
+}
+if (said("check out", "elevator")) { //010b
+  print("You see nothing out of the ordinary about it.")
+}
+if ((said("check out", "entryway") || said("check out", "down"))) { //0117
+  print("Down below you see the spaceship's launch track.")
+}
+if ((said("check out") || said("check out", "area"))) { //012b
+  print("You are in the shuttle launch bay aboard the Sarien ship.")
+}
+if (f35) { //013d
+  if ((said("check out") || said("check out", "craft") || said("check out", "computer console"))) { //0143
+    print("You frantically search the control console for the \"Launch\" button. Aha! There it is.")
+  }
+  if ((said("press", "launch") || said("launch") || said("press", "button"))) { //015b
+    v144 = 0
+    v145 = 0
+    start.update(o2)
+    set.cel(o2,0)
+    stop.cycling(o2)
+    v31 = 1
+    move.obj(o2,140,134,10,f33)
+    shake.screen(1)
+    prevent.input()
+    set(f38)
+    vCurrentScore += 3
+  }
+  goto(l459)
+}
+if ((said("climb in", "sled") || said("climb in", "craft") || said("board", "craft"))) { //0192
+  if (posn(o0,0,120,24,124)) { //01aa
+    erase(o0)
+    set(f35)
+    print("You swiftly slip into the sleek ship. (Try to say that three times fast.)")
+    goto(l447)
+  }
+  print("That cannot be done from where you are.")
+}
+l447:
+if (said("check out", "craft")) { //01bf
+  print("The ship is a one-man transport vessel.")
+}
+l459:
+if (said("check out", "wall")) { //01cb
+  print("You don't have much time before this ship blows.")
+}
+l471:
+if (f33) { //01d7
+  reset(f33)
+  if (v31 == 1) { //01df
+    erase(o2)
+    set(f36)
+  }
+}
+if (f30) { //01ea
+  reset(f30)
+  stop.update(o1)
+  if (v30 == 2) { //01f4
+    v30 = 0
+    goto(l523)
+  }
+  if (v30 == 3) { //0201
+    v30 = 1
+  }
+}
+l523:
+if (f31 && v30 == 0) { //020b
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (f31 && !(posn(o0,32,72,40,83))) { //021f
+  reset(f31)
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (v30 == 0 && posn(o0,32,75,40,83)) { //0239
+  start.update(o1)
+  sound(1,f120)
+  end.of.loop(o1,f30)
+  v30 = 3
+}
+if (!(posn(o0,32,75,40,83)) && v30 == 1 && !f31) { //0251
+  start.update(o1)
+  sound(2,f120)
+  reverse.loop(o1,f30)
+  v30 = 2
+}
+if (f38) { //026d
+  reset(f38)
+  sound(40,f38)
+}
+if (!fNewRoom) { //0278
+  call(119)
+}
+if (posn(o0,32,72,40,74) && v30 == 0 && !f57) { //0281
+  set(f57)
+  reset(f113)
+  new.room(54)
+}
+return()

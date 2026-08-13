@@ -1,0 +1,60 @@
+if (fNewRoom) { //0002
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0008
+    goto(l25)
+  }
+  clear.lines(22,24,c0)
+l25:
+  prevent.input()
+  load.pic(vCurrentRoom)
+  load.view(50)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,50)
+  set.cel(o1,0)
+  position(o1,67,103)
+  stop.cycling(o1)
+  v30 = 9
+  show.pic()
+}
+v30--
+if (v30 == 1) { //0034
+  if (v31 == 4) { //003b
+    reset(f30)
+    erase(o1)
+    v32 = 3
+    v31 = 5
+    vCurrentScore += 15
+    goto(l93)
+  }
+  draw(o1)
+  move.obj(o1,67,118,1,f30)
+  v31 = 2
+}
+l93:
+if (f30) { //005d
+  reset(f30)
+  if (v31 == 3) { //0065
+    v30 = 2
+    v31 = 4
+  }
+  if (v31 == 2) { //0072
+    last.cel(o1,v126)
+    set(f31)
+    start.cycling(o1)
+    move.obj(o1,67,162,6,f30)
+    v31 = 3
+  }
+}
+if (f31) { //0089
+  current.cel(o1,v64)
+  if (v64 == v126) { //0092
+    reset(f31)
+    stop.cycling(o1)
+  }
+}
+v32--
+if (v32 == 1) { //009f
+  print("Congratulations! You have narrowly escaped an explosive death! Don't start patting yourself on the back just yet, though. You are now traveling aimlessly through the cosmos.")
+  new.room(10)
+}
+return()

@@ -1,0 +1,5 @@
+if (fNewRoom) { //0002
+  load.logic(120)
+}
+call(120)
+return()

@@ -1,0 +1,9 @@
+if (isSet(f5)) {
+  v56 = 7
+  v57 = 68
+  v58 = 164
+  v32 = 0
+  v31 = 0
+
+!!!
+&{%!e(string=unknown opcode: 0x14)}

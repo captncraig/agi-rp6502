@@ -1,0 +1,21 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0011
+    goto(l34)
+  }
+  clear.lines(23,24,c0)
+l34:
+  shake.screen(2)
+  if (vPrevRoom > 12) { //0024
+    print("Despite your surprisingly valiant effort, you have been blown to eternity by the Star Generator itself.")
+    goto(l50)
+  }
+  print("Gosh, %s1.  It would appear you have met an untimely demise.  With the explosive destruction of the Arcada you become part of a fresh collection of space debris.")
+l50:
+  v130 = 27
+}
+return()

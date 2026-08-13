@@ -1,0 +1,74 @@
+if (fNewRoom) { //0002
+  load.view(188)
+  load.view(194)
+  load.view(176)
+  animate.obj(o6)
+  ignore.objs(o6)
+  set.priority(o6,15)
+}
+if (said("drop", "bomb")) { //0015
+  if (has(i15)) { //001f
+    if (vCurrentRoom == 62) { //0025
+      print("There is no need for that here.")
+      goto(l125)
+    }
+    get.posn(o0,v135,v136)
+    if (v135 < 145) { //0035
+      drop(i15)
+      set(f139)
+      if (v136 > 17) { //0040
+        v136 -= 16
+      }
+      set.view(o6,176)
+      position(o6,135,v136)
+      set.cel(o6,0)
+      draw(o6)
+      stop.cycling(o6)
+      v64 = 10
+      if (vCurrentRoom != 59) { //005b
+        get.posn(o0,v62,v63)
+        v231 = v63
+        v63++
+        goto(l114)
+      }
+      v231 = 150
+l114:
+      move.obj(o6,v135,v231,64,f230)
+      goto(l125)
+    }
+    print("You aren't near enough.")
+l125:
+    goto(l130)
+  }
+  print("You don't have one.")
+}
+l130:
+if (f230) { //0082
+  reset(f230)
+  if (v230 == 1) { //008a
+    erase(o6)
+    v230 = 2
+    set(f231)
+  }
+  if (!(v230 > 0)) { //0098
+    release.priority(o6)
+    set.view(o6,194)
+    position(o6,62,v63)
+    end.of.loop(o6,f230)
+    v230 = 1
+  }
+}
+if (f231) { //00af
+  reset(f231)
+  set.view(o0,188)
+  set(f133)
+  stop.motion(o0)
+  end.of.loop(o0,f232)
+}
+if (f232) { //00c1
+  reset(f133)
+  reset(f232)
+  stop.update(o0)
+  v130 = 29
+}
+return()

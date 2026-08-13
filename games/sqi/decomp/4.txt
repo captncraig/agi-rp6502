@@ -1,0 +1,312 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  random(1,100,v64)
+  get.posn(o0,v135,v136)
+  if (f86) { //0018
+    if (v64 > 50 && vPrevRoom != 1 && v136 > 80) { //001e
+      load.logic(103)
+      call(103)
+      v67 = 1
+      goto(l86)
+    }
+    if (vPrevRoom != 3 && vPrevRoom != 11 && v64 > 29 && v64 < 51) { //0036
+      if (v136 < 80) { //0048
+        load.logic(108)
+        call(108)
+        v67 = 2
+      }
+    }
+  }
+l86:
+  load.view(32)
+  load.view(42)
+  load.view(12)
+  load.sound(1)
+  load.sound(2)
+  load.sound(6)
+  set(f34)
+  load.view(28)
+  add.to.pic(28,0,0,76,147,13,0)
+  add.to.pic(28,0,1,114,159,14,0)
+  animate.obj(o4)
+  set.view(o4,32)
+  v55 = 0
+  step.size(o4,v55)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  set.cel(o4,0)
+  position(o4,29,61)
+  animate.obj(o5)
+  set.view(o5,32)
+  v55 = 0
+  step.size(o5,v55)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  set.cel(o5,0)
+  position(o5,29,142)
+  animate.obj(o3)
+  set.view(o3,42)
+  ignore.objs(o3)
+  ignore.blocks(o3)
+  position(o3,152,62)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,12)
+  set.cel(o1,0)
+  position(o1,67,8)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  set.view(o2,12)
+  set.cel(o2,2)
+  position(o2,64,90)
+  draw(o1)
+  draw(o2)
+  load.view(171)
+  add.to.pic(171,0,0,113,134,12,4)
+  if (vPrevRoom == 11) { //00d9
+    position(o0,114,137)
+  }
+  draw(o4)
+  draw(o5)
+  stop.update(o4)
+  stop.update(o5)
+  v30 = 2
+  v31 = 2
+  if (vPrevRoom == 1) { //00f2
+    position(o0,152,63)
+    last.cel(o3,v64)
+    set.cel(o3,v64)
+    set(f32)
+  }
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o0)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //010e
+    goto(l287)
+  }
+  clear.lines(23,24,c0)
+}
+l287:
+if (f64) { //011f
+  reset(f64)
+  print("Sorry, due to your low security clearance you are not allowed access to this area.")
+}
+if (f162) { //0129
+  reset(f162)
+}
+if ((obj.in.box(o0,20,67,55,67) || obj.in.box(o0,20,151,55,151))) { //0131
+  normal.motion(o0)
+  player.control()
+}
+if ((posn(o0,111,119,120,135) || posn(o0,28,132,44,142) || posn(o0,28,51,43,60))) { //0146
+  set.priority(o0,5)
+  goto(l358)
+}
+release.priority(o0)
+l358:
+if ((obj.in.box(o0,6,136,26,144) || obj.in.box(o0,28,50,44,146) || posn(o0,112,118,120,136) || posn(o0,0,136,13,141))) { //0166
+  set(fEgoObscured)
+  goto(l395)
+}
+reset(fEgoObscured)
+l395:
+if (posn(o0,112,135,124,137) && (f34 || vPrevRoom == 11)) { //018b
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  goto(l421)
+}
+observe.blocks(o0)
+l421:
+if (f30) { //01a5
+  stop.update(o4)
+  stop.update(o5)
+}
+if (!f199) { //01af
+  if (f30 && v30 == 2 && v31 == 2) { //01b6
+    reset(f30)
+    if ((obj.in.box(o0,29,52,43,56) || obj.in.box(o0,29,133,43,137))) { //01c4
+      program.control()
+      stop.motion(o0)
+      normal.motion(o0)
+      start.motion(o0)
+      get.posn(o0,v135,v136)
+      if (v136 < 85) { //01e1
+        set.priority(o0,5)
+        v135 = 0
+        v136 = 81
+        repositon(o0,v135,v136)
+      }
+      if (v136 > 84) { //01f5
+        set.priority(o0,5)
+        v135 = 0
+        v136 = 175
+        repositon(o0,v135,v136)
+      }
+      v32 = 14
+    }
+  }
+  v32--
+  if (v32 == 1) { //020e
+    get.posn(o0,v135,v136)
+    v136 += 16
+    v55 = 0
+    move.obj(o0,v135,v136,55,f31)
+  }
+  if (f31) { //0225
+    reset(f31)
+    player.control()
+    start.motion(o0)
+  }
+  if (v30 != 1 && posn(o0,29,57,39,65)) { //0230
+    start.update(o4)
+    end.of.loop(o4,f30)
+    sound(1,f162)
+    v30 = 1
+  }
+  if (v30 == 1 && !(posn(o0,29,57,39,65))) { //0249
+    start.update(o4)
+    reverse.loop(o4,f30)
+    sound(2,f162)
+    v30 = 2
+  }
+  if (v31 != 1 && posn(o0,29,138,39,146)) { //0262
+    start.update(o5)
+    end.of.loop(o5,f30)
+    sound(1,f162)
+    v31 = 1
+  }
+  if (v31 == 1 && !(posn(o0,29,138,39,146))) { //027b
+    start.update(o5)
+    reverse.loop(o5,f30)
+    sound(2,f162)
+    v31 = 2
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0294
+  goto(l1021)
+}
+if (said("check out", "area")) { //02a2
+  print("This another hallway aboard the Arcada. There is an elevator door nearby.")
+}
+if (said("check out", "wall")) { //02ae
+  print("You see nothing that catches your eye.")
+}
+if (obj.in.box(o0,90,118,143,154)) { //02ba
+  if ((said("open", "door") || said("unlock", "door"))) { //02c4
+    if (!f34) { //02d6
+      print("The door is quite heavy and impossible for you to open. Your classification does not permit it.")
+      goto(l740)
+    }
+    print("Are you serious?")
+  }
+l740:
+  if (said("check out", "door")) { //02e4
+    if (!f34) { //02ee
+      print("The door is quite heavy and impossible for you to open. Your classification does not permit it.")
+      goto(l764)
+    }
+    print("There is not much left of the door. Someone has blown it away.")
+  }
+l764:
+  goto(l849)
+}
+if (obj.in.box(o0,12,55,68,157)) { //02ff
+  if (said("check out", "elevator")) { //0309
+    print("This is an elevator to one of the other levels of the Arcada.")
+  }
+  if (said("check out", "door")) { //0315
+    print("You see another boring door.")
+  }
+  goto(l849)
+}
+if (obj.in.box(o0,12,55,68,157)) { //0324
+  if (said("check out", "door")) { //032e
+    print("You see another boring door.")
+  }
+  goto(l849)
+}
+if ((said("check out", "door") || said("check out", "elevator"))) { //033d
+  print("You are too far away to get a good look.")
+}
+l849:
+if ((said("check out", "bodies") || said("check out", "being"))) { //0351
+  if (posn(o0,67,140,100,151)) { //0363
+    print("A cursory glance indicates that this is a dead lab technician.")
+    goto(l899)
+  }
+  if (posn(o0,104,152,141,160)) { //0372
+    print("This appears to be a non-breathing research scientist.")
+    goto(l899)
+  }
+  print("You are too far away to get a good look.")
+}
+l899:
+if ((said("explore", "bodies") || said("explore", "being") || said("explore", "pocket") || said("check out", "pocket"))) { //0383
+  if (posn(o0,67,140,100,151)) { //03a1
+    print("Your search of the body reveals nothing.")
+    goto(l961)
+  }
+  if (posn(o0,104,152,141,160)) { //03b0
+    print("Your search of the body reveals nothing.")
+    goto(l961)
+  }
+  print("That cannot be done from here.")
+}
+l961:
+if ((said("strip", "bodies") || said("strip", "being") || said("acquire", "clothes", "bodies"))) { //03c1
+  print("One can only wonder what your purpose for this action is. You can't undress the body. Allow him one last bit of dignity.")
+}
+if (said("kick", "bodies")) { //03dd
+  if ((posn(o0,67,140,100,151) || posn(o0,104,152,141,160))) { //03e7
+    print("Good grief, man! You are a bit twisted, I must say.?")
+    vCurrentScore--
+  }
+}
+l1021:
+if (f33 && !f32) { //03fd
+  reset(f33)
+  stop.update(o3)
+}
+if (!f32 && posn(o0,140,60,159,63)) { //040a
+  set(f32)
+  start.update(o3)
+  end.of.loop(o3,f33)
+  sound(1,f162)
+}
+if (f32 && !(posn(o0,140,60,159,63))) { //0421
+  reset(f32)
+  start.update(o3)
+  reverse.loop(o3,f33)
+  sound(2,f162)
+}
+get.posn(o0,v135,v136)
+if (vWhichEgoBorder == 2) { //043c
+  if (v136 > 135) { //0443
+    v67 = 0
+    new.room(2)
+  }
+  if (v136 > 59 && v136 < 64) { //044f
+    v67 = 0
+    new.room(1)
+  }
+}
+if (vWhichEgoBorder == 4) { //045e
+  v67 = 0
+  new.room(3)
+}
+if (obj.in.box(o0,113,131,123,133)) { //046a
+  v67 = 0
+  new.room(11)
+}
+if (v67 == 1) { //0479
+  call(103)
+}
+if (v67 == 2) { //0482
+  call(108)
+}
+return()

@@ -1,0 +1,137 @@
+if (fNewRoom) { //0002
+  if (f60) { //0008
+    load.view(34)
+    load.sound(31)
+    animate.obj(o10)
+    set.view(o10,34)
+    set(f231)
+    random(100,254,v233)
+    goto(l95)
+  }
+  if (v68 > 1) { //0020
+    reset(f67)
+    return()
+  }
+  if (f67) { //002a
+    load.view(89)
+    if ((vCurrentRoom == 36 || vCurrentRoom == 38)) { //0032
+      load.view(126)
+      load.sound(29)
+      v232 = 54
+      follow.ego(o10,1,f230)
+      goto(l78)
+    }
+    set(f231)
+l78:
+    animate.obj(o10)
+    set.view(o10,89)
+    if (f197) { //0053
+      position(o10,37,129)
+      draw(o10)
+    }
+  }
+l95:
+  if (vCurrentRoom < 37 && vPrevRoom > 36 && vPrevRoom != 71 && vPrevRoom != 70) { //005f
+    v231 = 2
+    goto(l129)
+  }
+  if (!f197) { //0077
+    v231 = 10
+  }
+l129:
+  return()
+}
+v231--
+if (v231 == 1) { //0084
+  v231 = 0
+  ignore.horizon(o10)
+  draw(o10)
+}
+if (f60) { //0092
+  v233--
+  if (v233 == 1) { //009a
+    sound(31,f162)
+    random(100,254,v233)
+  }
+}
+if (!f236 && !f70 && !(v231 > 0) && (f60 || f67)) { //00a8
+  if (f230) { //00bc
+    reset(f230)
+    stop.cycling(o10)
+    set(f231)
+  }
+  if (f231) { //00c8
+    distance(o0,o10,v230)
+    if (v230 > 20) { //00d2
+      reset(f231)
+      start.cycling(o10)
+      follow.ego(o10,10,f230)
+    }
+  }
+}
+v232--
+if (v232 == 16) { //00e3
+  normal.motion(o10)
+  stop.motion(o10)
+  set(f236)
+  v68 = vCurrentRoom
+}
+if (v232 == 1) { //00f3
+  set.view(o10,126)
+  v62 = 252
+  v63 = 0
+  repositon(o10,v62,v63)
+  get.posn(o10,v60,v61)
+  get.priority(o10,v80)
+  v64 = 2
+  cycle.time(o10,v64)
+  set.cel(o10,0)
+  end.of.loop(o10,f235)
+  sound(29,f162)
+}
+if (f235) { //011d
+  reset(f235)
+  last.cel(o10,v79)
+  stop.cycling(o10)
+  stop.motion(o10)
+  reset(f67)
+  print("You hear some zapping and popping.")
+}
+if (said("check out", "droid")) { //0130
+  if (f67) { //013a
+    print("The green droid is quite small and nondescript. It is a prime example of the technological state of early robotics. Fairly primitive at best. It's amazing that it still functions.")
+    goto(l361)
+  }
+  if (f60 && v68 == vCurrentRoom) { //0145
+    print("The white droid is just a little shorter than you are. Its body appears to be built of some type of light composite substance. These droids were the first truly reliable flight-control systems produced, designed to pilot many different types of craft.")
+    print("The droid you spent your hard-earned buckazoids on is lying in the sand in many pieces. You begin to suspect that the little fellow may have been defective. It is damaged beyond repair.")
+    goto(l361)
+  }
+  if (v68 == vCurrentRoom) { //0155
+    print("The droid you spent your hard-earned buckazoids on is lying in the sand in many pieces. You begin to suspect that the little fellow may have been defective. It is damaged beyond repair.")
+    goto(l361)
+  }
+  if (f60) { //0161
+    print("The white droid is just a little shorter than you are. Its body appears to be built of some type of light composite substance. These droids were the first truly reliable flight-control systems produced, designed to pilot many different types of craft.")
+  }
+}
+l361:
+if (f60) { //0169
+  if ((said("speak", "droid") || said("speak", "pilot droid"))) { //016f
+    print("\"Hello...(ping) I am a model QR 7 Pilot Droid. I have navigated many different kinds of ships to many different worlds (buzz, click) and have acquired much flight knowledge from my travels.\"")
+    print("\"I am most anxious to serve you, Sir (click). I hope you find my services satisfactory. My, but that's a smart-looking flight suit you have on.\"")
+    print("\"It sure feels good to be out of that stuffy metal market (click). I thought I was doomed to sit there and rust away.\"")
+    print("\"People say I talk too much - do you think I talk too much? I don't think I talk too much (beep). I'm going to shut up now.\"")
+  }
+  if (f60) { //0189
+    if (said("check out", "pilot droid")) { //018f
+      print("The white droid is just a little shorter than you are. Its body appears to be built of some type of light composite substance. These droids were the first truly reliable flight-control systems produced, designed to pilot many different types of craft.")
+    }
+  }
+}
+if (f67) { //019b
+  if (said("speak", "droid")) { //01a1
+    print("The little droid doesn't seem to have anything to say.")
+  }
+}
+return()

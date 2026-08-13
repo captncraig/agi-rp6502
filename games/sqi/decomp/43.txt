@@ -1,0 +1,255 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  prevent.input()
+  status.line.on()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 62) { //0010
+    load.view(50)
+    load.view(193)
+    load.sound(9)
+    animate.obj(o3)
+    set.view(o3,50)
+    set.cel(o3,0)
+    position(o3,49,118)
+    v37 = 27
+    animate.obj(o4)
+    set.view(o4,193)
+    set.cel(o4,0)
+    position(o4,117,84)
+    animate.obj(o5)
+    set.view(o5,193)
+    set.cel(o5,0)
+    position(o5,69,69)
+    animate.obj(o6)
+    set.view(o6,193)
+    set.cel(o6,0)
+    position(o6,93,100)
+    animate.obj(o7)
+    set.view(o7,193)
+    set.cel(o7,0)
+    position(o7,65,87)
+    animate.obj(o8)
+    set.view(o8,193)
+    set.cel(o8,0)
+    position(o8,27,91)
+    v64 = 2
+    cycle.time(o4,v64)
+    cycle.time(o5,v64)
+    cycle.time(o6,v64)
+    v38 = 120
+    goto(l181)
+  }
+  load.view(140)
+  load.view(149)
+  load.view(20)
+  load.view(234)
+  load.view(132)
+  animate.obj(o1)
+  set.view(o1,140)
+  set.cel(o1,0)
+  position(o1,14,167)
+  set.priority(o1,15)
+  draw(o1)
+  stop.cycling(o1)
+  v31 = 27
+  v36 = 1
+  move.obj(o1,14,150,0,f33)
+  v64 = 5
+  step.time(o1,64)
+  animate.obj(o2)
+  set.view(o2,149)
+  set.cel(o2,1)
+  position(o2,23,131)
+l181:
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00b6
+    goto(l199)
+  }
+  clear.lines(23,24,c0)
+}
+l199:
+get.posn(o1,v62,v63)
+if (v36 == 4) { //00cb
+  v62 += 9
+  v63 -= 20
+  reposition.to(o2,v62,v63)
+}
+if (v63 == 154) { //00dc
+  v62 += 9
+  v63 -= 20
+  position(o2,62,v63)
+  draw(o2)
+  v64 = 6
+  cycle.time(o2,v64)
+  v31 = 20
+  v36 = 4
+}
+if (f34) { //00fb
+  reset(f34)
+  erase(o3)
+}
+v37--
+if (v37 == 1) { //0107
+  stop.cycling(o3)
+  draw(o3)
+  move.obj(o3,0,118,2,f34)
+}
+v39--
+if (v39 == 1) { //011a
+  sound(9,f43)
+  shake.screen(1)
+}
+v38--
+if (v38 == 100) { //0128
+  v39 = 3
+  draw(o4)
+  end.of.loop(o4,f36)
+}
+if (v38 == 50) { //0137
+  v39 = 3
+  draw(o5)
+  end.of.loop(o5,f37)
+}
+if (v38 == 40) { //0146
+  v39 = 3
+  draw(o6)
+  end.of.loop(o6,f38)
+}
+if (v38 == 10) { //0155
+  v39 = 3
+  draw(o7)
+  end.of.loop(o7,f39)
+}
+if (v38 == 1) { //0164
+  v39 = 3
+  draw(o8)
+  end.of.loop(o8,f40)
+}
+if (f36) { //0173
+  reset(f36)
+  stop.update(o4)
+}
+if (f37) { //017d
+  reset(f37)
+  stop.update(o4)
+}
+if (f38) { //0187
+  reset(f38)
+  stop.update(o4)
+}
+if (f39) { //0191
+  reset(f39)
+  stop.update(o7)
+}
+if (f40) { //019b
+  reset(f40)
+  stop.update(o8)
+  accept.input()
+  new.room(63)
+}
+v31--
+if (v31 == 1) { //01aa
+  if (v36 == 4) { //01b1
+    erase(o2)
+    accept.input()
+  }
+  if (v36 == 2) { //01bb
+    set.cel(o1,1)
+    stop.cycling(o1)
+    v36 = 3
+  }
+  if (v36 == 1) { //01ca
+    start.cycling(o1)
+    v36 = 2
+    v31 = 18
+  }
+}
+if (f33) { //01d9
+  reset(f33)
+  v36 = 5
+}
+if (f42) { //01e4
+  reset(f42)
+  if (v41 == 4) { //01ec
+    erase(o0)
+    v42 = 27
+  }
+  if (v41 == 3) { //01f8
+    v41 = 4
+    move.obj(o0,141,158,0,f42)
+  }
+  if (v41 == 2) { //0208
+    v41 = 3
+    move.obj(o0,63,158,0,f42)
+  }
+  if (v41 == 1) { //0218
+    v41 = 2
+    move.obj(o0,43,138,0,f42)
+  }
+  if (v40 == 5) { //0228
+    move.obj(o0,55,131,0,f42)
+    accept.input()
+    new.room(45)
+  }
+  if (v40 == 4) { //0238
+    v40 = 5
+    move.obj(o0,55,131,0,f42)
+  }
+  if (v40 == 3) { //0248
+    v40 = 4
+    move.obj(o0,48,138,0,f42)
+  }
+  if (v40 == 2) { //0258
+    v40 = 3
+    move.obj(o0,40,130,0,f42)
+  }
+  if (v40 == 1) { //0268
+    v40 = 2
+    move.obj(o0,36,130,0,f42)
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0278
+  goto(l758)
+}
+if (said("disembark", "craft")) { //0286
+  if (v36 == 5) { //0290
+    if (!f41) { //0297
+      set(f41)
+      program.control()
+      prevent.input()
+      if (f175) { //02a2
+        v40 = 1
+        set.view(o0,234)
+        v64 = 2
+        step.time(o0,64)
+        position(o0,30,147)
+        print("Before leaving the safety of your ship, you instruct the little droid to set a course for Xenon, where you will rendezvous later. Providing, of course, that you are successful in carrying out your mission. Once again, you are on your own.")
+        draw(o0)
+        move.obj(o0,30,137,0,f42)
+        goto(l733)
+      }
+      v41 = 1
+      v64 = 6
+      cycle.time(o0,v64)
+      set.view(o0,20)
+      position(o0,26,148)
+      draw(o0)
+      move.obj(o0,26,138,0,f42)
+    }
+l733:
+    goto(l738)
+  }
+  print("Please remain seated and keep your hands inside while the vehicle is moving.")
+}
+l738:
+if ((said("check out", "craft") || said("check out", "deltaur"))) { //02e2
+  print("Before you lies the Sarien battle cruiser, Deltaur. An imposingly massive ship. Now you understand why the Arcada was so easily overtaken. Your first instinct is to turn the ship around and head for home. But, then you realize that unless you do something to try to stop the Sariens, there will be no home.")
+}
+l758:
+v42--
+if (v42 == 1) { //02f8
+  print("Darn, %s1. Upon exiting the ship, you find that you have no means of maneuvering and are subject to the whims of inertia and gravity. You quickly learn the true meaning of helplessness as death has its way with you.")
+  v130 = 27
+}
+return()

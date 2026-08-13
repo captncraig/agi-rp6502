@@ -1,0 +1,81 @@
+if (v130 != 8) { //0002
+  set.string(str0,"")
+  set.cursor.char("")
+  accept.input()
+  program.control()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0011
+    goto(l34)
+  }
+  clear.lines(22,24,c0)
+l34:
+  v230 = 12
+  if (v130 == 1) { //0025
+    print("As you lie on the floor in a smoldering, carbogelatinous heap you can't help but wonder why you bothered getting up this morning.")
+  }
+  if (v130 == 3) { //002e
+    print("Well, %s1, that was a smooth half-gainer into the elevator shaft.  Did you decide that you would think more clearly with your brains re-organized?")
+  }
+  if (v130 == 4) { //0037
+    print("That concludes your experiment involving the effects of total vacuum on the human body, %s1.")
+  }
+  if (v130 == 7) { //0040
+    print("You are now lying on the floor in many pieces.  Guess those beams meant business, %s1.")
+  }
+  if (v130 == 11) { //0049
+    print("You've been snatched from existence by a tentacled beast lurking beneath the grate.  You feel the painful sting of digestive fluids.")
+  }
+  if (v130 == 12) { //0052
+    print("Due to a lack of navigation, you have exhausted the meager amount of emergency fuel without finding a safe place to land.  You are lost in space.")
+  }
+  if (v130 == 15) { //005b
+    print("Luck's turn has cost you dearly. As life seeps away, you long for the simpler days aboard the Arcada.")
+  }
+  if (v130 == 24) { //0064
+    print("You've been mowed down by a Deltaur crewthing.")
+  }
+  if (v130 == 25) { //006d
+    print("Not being a very smooth thief you have been caught and dealt with appropriately.")
+  }
+  if (v130 == 26) { //0076
+    print("Gee whiz, %s1! You could actually be a hero if you weren't so clumsy. Wise up.")
+  }
+  if (v130 == 32) { //007f
+    print("As you lie on the floor in a smoldering, carbogelatinous heap you can't help but wonder why you bothered getting up this morning.")
+  }
+  v130 = 8
+}
+v230--
+if (v230 == 1) { //008d
+  print("Thank you for playing Space Quest.  Too bad you've failed miserably and doomed all your people to a horrible death at the hands of the Sariens. If you continue playing as skillfully as this, we'll never have a chance for a sequel.  Better luck next time.")
+}
+if (controller(c19)) { //0096
+  menu.input()
+}
+if ((controller(c2) || said("aid") || said("aid", "a"))) { //009d
+  call(92)
+}
+if ((controller(c5) || said("restore", "game"))) { //00b1
+  restore.game()
+}
+if ((controller(c7) || said("restart", "game"))) { //00c0
+  restart.game()
+}
+if (controller(c10)) { //00cf
+  status()
+}
+if ((controller(c1) || said("quit"))) { //00d6
+  stop.sound()
+  quit(0)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00e5
+  goto(l265)
+}
+if (said("quit")) { //00f3
+  stop.sound()
+  quit(0)
+}
+if (fEnteredCommand && !fSaidAccepted) { //00fe
+  print("You are dead! You can only restore, restart, or quit the game.")
+}
+l265:
+return()

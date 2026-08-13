@@ -1,0 +1,114 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom != 37) { //0010
+    load.view(85)
+    load.view(50)
+  }
+  load.view(33)
+  if (vPrevRoom != 37) { //001e
+    animate.obj(o1)
+    set.view(o1,85)
+    set.cel(o1,0)
+    set.priority(o1,4)
+    position(o1,42,102)
+  }
+  if (vPrevRoom == 37) { //0035
+    animate.obj(o2)
+    set.view(o2,33)
+    set.cel(o2,0)
+    position(o2,16,63)
+    set.priority(o2,15)
+    stop.cycling(o2)
+    position(o2,141,93)
+    v31 = 7
+    v30 = 18
+    vCurrentScore += 25
+  }
+  show.pic()
+  status.line.off()
+  set.text.attribute(15,0)
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //005f
+    goto(l112)
+  }
+  clear.lines(22,24,c0)
+l112:
+  prevent.input()
+  v30 = 18
+  if (vPrevRoom != 37) { //0074
+    if (!f81) { //007c
+      if (vPrevRoom != 10) { //0083
+        v31 = 1
+        goto(l148)
+      }
+      v31 = 5
+l148:
+      goto(l156)
+    }
+    v31 = 1
+    print("The Autonav system has locked onto the small planet of Kerona and the pod has begun its approach. Nothing to do now but hang on!")
+  }
+}
+l156:
+if (f30) { //009c
+  reset(f30)
+  if (v31 == 11) { //00a4
+    erase(o2)
+    new.room(41)
+  }
+  if (v31 == 10) { //00af
+    erase(o2)
+    print("Well done, %s1! You've managed to overcome the elements of Kerona, from endless deserts and spider droids to obnoxious salesmen and bad booze. Yes, the sand in your boots shall forever serve as a reminder of this forsaken planet. You should feel proud. But now, destiny awaits with an even greater challenge.")
+    new.room(41)
+  }
+  if (v31 == 9) { //00bc
+    move.obj(o2,0,2,0,f30)
+    v31 = 10
+  }
+  if (v31 == 8) { //00cc
+    move.obj(o2,46,48,0,f30)
+    v31 = 9
+  }
+  if (v31 == 5) { //00dc
+    v30 = 9
+    v31 = 6
+  }
+  if (v31 == 3) { //00e9
+    erase(o1)
+    v31 = 4
+    new.room(30)
+  }
+  if (v31 == 2) { //00f7
+    stop.cycling(o1)
+    v31 = 3
+    move.obj(o1,71,102,0,f30)
+  }
+}
+v30--
+if (v30 == 1) { //010b
+  if (v31 == 7) { //0112
+    draw(o2)
+    stop.cycling(o2)
+    move.obj(o2,91,93,0,f30)
+    v31 = 8
+  }
+  if (v31 == 6) { //0126
+    erase(o1)
+    v130 = 12
+  }
+  if (v31 == 5) { //0132
+    set.view(o1,50)
+    draw(o1)
+    last.cel(o1,v64)
+    set.cel(o1,v64)
+    reverse.loop(o1,f30)
+  }
+  if (v31 == 1) { //0147
+    v31 = 2
+    draw(o1)
+    end.of.loop(o1,f30)
+  }
+}
+return()

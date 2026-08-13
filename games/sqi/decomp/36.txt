@@ -1,0 +1,261 @@
+if (fNewRoom) { //0002
+  set.horizon(90)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(112)
+  if ((f60 || f67)) { //0012
+    load.logic(116)
+    call(116)
+  }
+  load.view(167)
+  load.view(168)
+  if (v68 == vCurrentRoom) { //0024
+    load.view(126)
+    v126 = 126
+    v64 = 0
+    v79 = 9
+    add.to.pic(v126,v64,v79,v60,v61,v80,v64)
+  }
+  if (vPrevRoom == 35 && f63) { //003e
+    get.posn(o0,v135,v136)
+    if (v136 > 134) { //004b
+      reset(f63)
+      set(f30)
+      load.view(107)
+      load.view(116)
+      load.view(127)
+      animate.obj(o3)
+      set.view(o3,107)
+      set.cel(o3,0)
+      set.loop(o3,0)
+      position(o3,45,155)
+      draw(o3)
+      stop.cycling(o3)
+      animate.obj(o4)
+      set.view(o4,127)
+      set.cel(o4,0)
+      set.loop(o4,0)
+      fix.loop(o4)
+      position(o0,1,150)
+      move.obj(o0,15,150,0,f34)
+    }
+  }
+  animate.obj(o5)
+  set.view(o5,167)
+  set.cel(o5,0)
+  stop.cycling(o5)
+  position(o5,63,114)
+  if (vPrevRoom < 34) { //0094
+    position(o0,75,155)
+    goto(l201)
+  }
+  if (vPrevRoom == 39) { //00a2
+    get.posn(o0,v62,v63)
+    if (v62 > 135) { //00ad
+      v62 = 132
+      position(o0,62,v63)
+    }
+    if (v62 < 70) { //00bb
+      v62 = 71
+      position(o0,62,v63)
+    }
+  }
+l201:
+  draw(o0)
+  if ((f60 || f67)) { //00cb
+    get.posn(o0,v135,v136)
+    v136 -= 1
+    position(o10,135,v136)
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00e1
+    goto(l242)
+  }
+  clear.lines(23,24,c0)
+l242:
+  random(1,10,v64)
+  if (v64 > 7) { //00f6
+    random(25,255,v32)
+  }
+}
+if (fTriggerLine) { //0101
+  if (!f167) { //0107
+    set(f167)
+    print("You are standing against the protective barrier encircling Ulence Flats. Due to the fact that you are land-based, you are not able to pass.")
+  }
+  goto(l287)
+}
+if (f167) { //0115
+  reset(f167)
+  reset(fTriggerLine)
+}
+l287:
+if (f37) { //011f
+  reset(f37)
+  print("\"Hold it right there, pal! This is a stick-up! I'll just relieve you of your cash, thank you very much.\"")
+  print("\"%v124 buckazoids? I guess it's better than nothing. Here, keep five for yourself. I gotta admit you look like you need it.\"")
+  v124 = 5
+  print("\"Well, you've got to be leaving now. Go straight back the way you came in. Deviate from that path and you're Grell kibble!\"")
+  player.control()
+  start.motion(o0)
+  set(f35)
+}
+if (f36) { //0135
+  reset(f36)
+  stop.cycling(o4)
+  v34 = 18
+}
+v34--
+if (v34 == 1) { //0144
+  print("The mugger impresses upon you that he was quite serious.")
+  v130 = 27
+}
+if (f34) { //0150
+  reset(f34)
+  stop.motion(o0)
+  vEgoDir = 0
+  set.view(o3,116)
+  set.cel(o3,1)
+  stop.cycling(o3)
+  set(f37)
+}
+if (f35) { //0167
+  if (vEgoDir > 0 && vEgoDir < 6) { //016d
+    reset(f35)
+    stop.motion(o0)
+    program.control()
+    end.of.loop(o3,f38)
+  }
+}
+if (f38) { //017f
+  reset(f38)
+  get.posn(o0,v62,v63)
+  v62 = 1
+  position(o4,62,v63)
+  erase(o0)
+  draw(o4)
+  end.of.loop(o4,f36)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0199
+  goto(l780)
+}
+if ((said("check out", "area") || said("check out", "building"))) { //01a7
+  print("This is the back of the bar at the southeast end of Ulence Flats.")
+}
+if (said("check out", "wall")) { //01bb
+  print("There is some writing on it.")
+}
+if ((said("read", "letters") || said("check out", "letters") || said("read", "wall") || said("read", "letters"))) { //01c7
+  print("It appears to be in Sarien. You're a little rusty in your Sarien but it appears to say \"Xenon Bites!\"")
+}
+if ((said("check out", "door") || said("open", "door"))) { //01e7
+  print("You can't do that here.")
+}
+if (v68 == vCurrentRoom) { //01fb
+  if (!f60 && said("check out", "droid")) { //0202
+    print("Your newly acquired droid seems to have self-destructed. Hope it's under warranty.")
+  }
+  if (said("acquire", "droid")) { //0211
+    print("The droid, while looking small is quite heavy and not moveable by you.")
+  }
+  if (said("kick", "droid")) { //021d
+    print("You now have a throbbing appendage.")
+  }
+  if (said("fix", "droid")) { //0229
+    print("The droid is beyond repair. Now you know why it was on sale.")
+  }
+}
+if ((said("check out", "mound") || said("check out", "dust") || said("check out", "mound", "dust") || said("check out", "dust", "mound"))) { //0235
+  if (obj.in.box(o0,62,80,110,145)) { //0257
+    print("There is a strange pile of very fine white powder here. It's origin puzzles you. It has a strange burnt smell to it.")
+    goto(l616)
+  }
+  print("You're not close enough to see that clearly.")
+}
+l616:
+if (f30) { //0268
+  if ((said("check out", "being") || said("check out", "alien"))) { //026e
+    print("This being is about the size of a humanoid but has some odd features. He seems to have a friendly-looking mug.")
+  }
+  if ((said("speak", "being") || said("speak", "alien"))) { //0282
+    print("He just wants your buckazoids but will take your life if he has to.")
+  }
+  if ((said("attack", "being") || said("attack", "alien"))) { //0296
+    print("You'd better not move if you want to remain alive.")
+  }
+}
+if (said("acquire", "mound")) { //02aa
+  if (obj.in.box(o0,62,80,110,145)) { //02b4
+    print("The extremely fine dust seeps between your fingers. There is no need for it anyway. Especially considering its origin.")
+    goto(l709)
+  }
+  print("You can't do that from here.")
+}
+l709:
+if ((said("snort", "mound") || said("snort", "dust"))) { //02c5
+  if (obj.in.box(o0,62,80,110,145)) { //02d7
+    print("I'm beginning to understand you a little better now. You snort some of the powder and feel a pain like that of a thousand krebble mites feasting on your nasal membranes.")
+    goto(l744)
+  }
+  print("You're not close enough to see that clearly.")
+}
+l744:
+if (said("acquire", "dust")) { //02e8
+  if (obj.in.box(o0,62,80,110,145)) { //02f2
+    print("The extremely fine dust seeps between your fingers. There is no need for it anyway. Especially considering its origin.")
+    goto(l771)
+  }
+  print("You're not close enough to see that clearly.")
+}
+l771:
+if (!fSaidAccepted) { //0303
+  call(112)
+}
+l780:
+v32--
+if (v32 == 1) { //030e
+  if (!(v33 > 0)) { //0315
+    draw(o5)
+    end.of.loop(o5,f33)
+    v33 = 1
+    goto(l823)
+  }
+  set.view(o5,167)
+  last.cel(o5,v64)
+  set.cel(o5,v64)
+  reverse.loop(o5,f33)
+  v33 = 3
+}
+l823:
+if (f33) { //0337
+  reset(f33)
+  if (v33 == 3) { //033f
+    erase(o5)
+    v33 = 0
+  }
+  if (v33 == 1) { //034b
+    set.view(o5,168)
+    set.cel(o5,0)
+    start.cycling(o5)
+    v33 = 2
+    v32 = 28
+  }
+}
+if (vWhichEgoBorder != 0) { //0360
+  if (f67) { //0368
+    reset(f67)
+    v68 = vCurrentRoom
+    get.posn(o10,v60,v61)
+  }
+}
+if (vWhichEgoBorder == 1) { //0377
+  new.room(39)
+}
+if (vWhichEgoBorder == 4) { //0380
+  new.room(35)
+}
+if ((f60 || f67)) { //0389
+  call(116)
+}
+return()

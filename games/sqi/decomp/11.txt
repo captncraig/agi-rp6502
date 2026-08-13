@@ -1,0 +1,164 @@
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.pic(vCurrentRoom)
+  load.logic(106)
+  load.view(33)
+  load.view(28)
+  draw.pic(vCurrentRoom)
+  add.to.pic(28,0,0,27,119,10,0)
+  add.to.pic(28,0,1,123,131,11,0)
+  animate.obj(o1)
+  set.view(o1,33)
+  set.cel(o1,0)
+  position(o1,16,63)
+  set.priority(o1,4)
+  draw(o1)
+  stop.cycling(o1)
+  position(o0,115,165)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //003e
+    goto(l79)
+  }
+  clear.lines(23,24,c0)
+l79:
+  goto(l612)
+}
+if (f50) { //0052
+  goto(l117)
+  goto(l117)
+}
+random(0,100,v30)
+if (v30 < 25) { //0062
+  random(2,158,v31)
+  random(3,70,v32)
+  reposition.to(o1,v31,v32)
+}
+l117:
+if ((!fEnteredCommand || fSaidAccepted)) { //0075
+  goto(l591)
+}
+if (said("check out", "area")) { //0083
+  print("This is the Star Generator development laboratory.  Due to your incredibly low security clearance you have never been allowed access to this room.")
+}
+if ((said("check out", "floor") || said("check out", "down"))) { //008f
+  print("The floor is normal except for two dead bodies and a pedestal in the middle.")
+}
+if (said("check out", "wall")) { //00a3
+  print("The back wall is barren. The others, as you can see, are actually large windows allowing you an unrestricted view of space.")
+}
+if (said("check out", "space")) { //00af
+  print("The sheer vastness of space never ceases to amaze you.")
+}
+if (said("check out", "planet")) { //00bb
+  print("Gazing out at the stars reminds you of how far you are from home.")
+}
+if (said("check out", "port")) { //00c7
+  print("Peering through the large observation windows you take in the immense panorama of space and stars.")
+}
+if (said("check out", "ceiling")) { //00d3
+  print("Hanging from the ceiling is a large device which apparently helped support the item which was mounted on the pedestal below.")
+}
+if (said("check out", "base")) { //00df
+  print("There is an empty pedestal here. It looks like it is used to hold some large object, maybe the Star Generator.")
+}
+if ((said("check out", "display") || said("read", "display"))) { //00eb
+  if (posn(o0,71,89,82,93)) { //00fd
+    if (!f50) { //0107
+      set(f50)
+      prevent.input()
+      status.line.off()
+      vKeyPressed = 0
+      text.screen()
+      display(2,10,". . . .WARNING. . . .")
+      display(4,1,"Self-Destruct Mechanism Has Been Armed!")
+      display(6,7,"Evacuate Ship Immediately!")
+      display(8,8,"!! THIS IS NOT A TEST !!")
+    }
+    goto(l322)
+  }
+  if ((obj.in.box(o0,0,89,53,137) || obj.in.box(o0,105,89,159,137))) { //0129
+    print("There is nothing to see here.")
+    goto(l322)
+  }
+  print("That can't be done at this location.")
+}
+l322:
+if (said("check out", "computer console")) { //0142
+  if ((obj.in.box(o0,0,89,53,137) || obj.in.box(o0,105,89,159,137))) { //014c
+    print("Your mind is boggled in attempting to understand the function of the various buttons, switches, lights, and displays. It appears the board is not operating.")
+    goto(l372)
+  }
+  if (obj.in.box(o0,54,89,104,106)) { //0163
+    print("This console shows the only signs of life. One red light shines from the the upper-left corner of a glowing monitor.")
+    goto(l372)
+  }
+  print("That can't be done at this location.")
+}
+l372:
+if (said("check out", "button")) { //0174
+  if ((obj.in.box(o0,0,89,53,137) || obj.in.box(o0,105,89,159,137) || obj.in.box(o0,54,89,104,106))) { //017e
+    print("There are many buttons here. Messing with them will not help anything.")
+    goto(l413)
+  }
+  print("That can not be seen from here.")
+}
+l413:
+if (said("check out", "light")) { //019d
+  if ((obj.in.box(o0,0,89,53,137) || obj.in.box(o0,105,89,159,137))) { //01a7
+    print("The lights are all out except for one on the other console.")
+    goto(l463)
+  }
+  if (obj.in.box(o0,54,89,104,106)) { //01be
+    print("One light glows red indicating that the monitor power is on.")
+    goto(l463)
+  }
+  print("That can not be seen from here.")
+}
+l463:
+if ((said("check out", "bodies") || said("check out", "being"))) { //01cf
+  if (obj.in.box(o0,13,107,64,129)) { //01e1
+    print("You see sprawled at your feet the lifeless body of another crew member.")
+    goto(l513)
+  }
+  if (obj.in.box(o0,108,120,159,147)) { //01f0
+    print("Yet another body lies motionless.")
+    goto(l513)
+  }
+  print("That can't be done at this location.")
+}
+l513:
+if ((said("explore", "bodies") || said("explore", "being") || said("explore", "pocket") || said("check out", "pocket"))) { //0201
+  if (obj.in.box(o0,13,107,64,129)) { //021f
+    print("The reward for your search is. . .")
+    print("nothing.")
+    goto(l579)
+  }
+  if (obj.in.box(o0,108,120,159,147)) { //0230
+    print("The reward for your search is. . .")
+    print("nothing.")
+    goto(l579)
+  }
+  print("That can't be done at this location.")
+}
+l579:
+if (said("check out", "generator")) { //0243
+  print("There is no Star Generator here to look at.")
+}
+l591:
+if (f50) { //024f
+  call(106)
+  if (have.key()) { //0257
+    set.text.attribute(15,0)
+    status.line.on()
+    accept.input()
+    graphics()
+    reset(f50)
+  }
+}
+l612:
+get.posn(o0,v135,v136)
+if (vWhichEgoBorder == 3 && v135 > 110 && v135 < 130) { //0268
+  new.room(4)
+}
+return()

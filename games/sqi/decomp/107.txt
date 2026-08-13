@@ -1,0 +1,194 @@
+if (fNewRoom) { //0002
+  load.view(163)
+  load.view(20)
+  if (vCurrentRoom == 28) { //000c
+    load.view(26)
+  }
+  load.sound(11)
+  load.sound(12)
+}
+if (f162) { //0019
+  reset(f162)
+}
+if (f91 && !f230) { //0021
+  set(f230)
+  reset(f92)
+  reset(f83)
+  program.control()
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  if (vCurrentRoom == 15) { //0035
+    if (!(right.posn(o0,143,98,159,153)) && !(obj.in.box(o0,143,10,159,85))) { //003c
+      set.view(o0,20)
+      v135 = 248
+      goto(l125)
+    }
+    get.posn(o0,v62,v63)
+    if (v62 > 142 && v63 < 98) { //005b
+      v62 = 142
+      reposition.to(o0,v62,v63)
+      v135 = 0
+      stop.cycling(o0)
+      set(f56)
+      goto(l125)
+    }
+    v135 = 2
+    stop.cycling(o0)
+    set(f56)
+l125:
+    goto(l134)
+  }
+  set.view(o0,20)
+  v135 = 253
+l134:
+  v136 = 0
+  repositon(o0,v135,v136)
+  get.posn(o0,v62,v63)
+  if (f102) { //0091
+    set(f97)
+    follow.ego(o16,10,f235)
+  }
+  if (vCurrentRoom == 15) { //009d
+    v63 = 165
+  }
+  if (vCurrentRoom == 16) { //00a7
+    if (v63 < 60) { //00ae
+      set.priority(o0,4)
+      v63 = 90
+      goto(l196)
+    }
+    set.priority(o0,15)
+    v63 = 160
+  }
+l196:
+  if (vCurrentRoom == 17) { //00c4
+    if (v63 < 57) { //00cb
+      set.priority(o0,4)
+      v63 = 90
+      goto(l243)
+    }
+    release.priority(o0)
+    if (v63 < 78 && v62 > 120) { //00dd
+      v62 += 9
+      v63 = 117
+      goto(l243)
+    }
+    v63 = 160
+  }
+l243:
+  if (vCurrentRoom == 18) { //00f3
+    if (obj.in.box(o0,140,74,159,81)) { //00fa
+      set.priority(o0,14)
+    }
+    v63 = 160
+  }
+  if (vCurrentRoom == 19) { //010a
+    if (v63 > 58) { //0111
+      v63 = 131
+      goto(l305)
+    }
+    if (v112 == 5) { //011e
+      set.priority(o0,13)
+      goto(l302)
+    }
+    set.priority(o0,4)
+l302:
+    v63 = 103
+  }
+l305:
+  if (vCurrentRoom == 20) { //0131
+    if (v63 < 71) { //0138
+      erase(o0)
+      sound(11,f162)
+      v230 = 13
+      goto(l542)
+      goto(l361)
+    }
+    if (v63 > 129) { //014d
+      v62 = 55
+      v63 = 166
+      set.priority(o0,5)
+      goto(l361)
+    }
+    v62 = 49
+    v63 = 136
+    set.priority(o0,15)
+  }
+l361:
+  if (vCurrentRoom == 26) { //0169
+    v63 = 138
+    set.priority(o0,14)
+  }
+  if (vCurrentRoom == 27) { //0176
+    v63 = 164
+    set.priority(o0,15)
+  }
+  if (vCurrentRoom == 28 && v63 < 84) { //0183
+    v63 = 115
+    set.priority(o0,10)
+  }
+  v55 = 4
+  move.obj(o0,v62,v63,55,f231)
+  if (vCurrentRoom != 15) { //019c
+    set(f133)
+    start.cycling(o0)
+  }
+  sound(11,f162)
+}
+if (vCurrentRoom == 27 && f91) { //01ab
+  get.posn(o0,v135,v136)
+  if (v136 > 107) { //01b8
+    set.priority(o0,14)
+  }
+}
+if (f231) { //01c2
+  reset(f231)
+  if (f102) { //01ca
+    normal.motion(o16)
+    reset(f97)
+    wander(o16)
+  }
+  sound(12,f162)
+  if (vCurrentRoom != 16 && vCurrentRoom != 17) { //01d9
+    release.priority(o0)
+  }
+  reset(f56)
+  observe.blocks(o0)
+  observe.objs(o0)
+  get.posn(o0,v135,v136)
+  if (vCurrentRoom == 28 && v135 < 90) { //01f1
+    set.view(o0,26)
+    v232 = 18
+    goto(l537)
+  }
+  if (vCurrentRoom == 15) { //0204
+    erase(o0)
+    v230 = 36
+    goto(l537)
+  }
+  set.view(o0,163)
+  v230 = 36
+l537:
+  stop.cycling(o0)
+  stop.motion(o0)
+  program.control()
+}
+l542:
+v232--
+if (v232 == 1) { //0220
+  set.view(o0,0)
+  player.control()
+  start.motion(o0)
+  start.cycling(o0)
+  reset(f91)
+  reset(f83)
+  reset(f230)
+  print("Lucky for you it was a short drop and you landed on an area of your body not sensitive to shock. You`d better be more careful in the future, %s1.")
+  reset(f133)
+}
+v230--
+if (v230 == 1) { //023b
+  print("You have traveled a long way only to die by carelessly stepping to your death. What a clod!")
+  v130 = 27
+}
+return()

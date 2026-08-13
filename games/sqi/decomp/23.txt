@@ -1,0 +1,230 @@
+if (fNewRoom) { //0002
+  set.horizon(90)
+  load.pic(vCurrentRoom)
+  load.logic(112)
+  load.view(163)
+  load.view(20)
+  load.view(26)
+  if ((f96 || f101 || f97)) { //0014
+    load.logic(110)
+    call(110)
+  }
+  if (vPrevRoom == 20) { //0024
+    if (f92) { //002b
+      ignore.horizon(o0)
+      ignore.blocks(o0)
+      set.priority(o0,9)
+      position(o0,39,67)
+      move.obj(o0,39,68,0,f64)
+      goto(l97)
+    }
+    get.posn(o0,v135,v136)
+    if (v135 > 95) { //0049
+      v135 = 95
+    }
+    if (v135 < 63) { //0053
+      v135 = 63
+    }
+    position(o0,135,v136)
+  }
+l97:
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 81) { //0063
+    position(o0,149,134)
+  }
+  draw(o0)
+  if (f92) { //0070
+    if (vPrevRoom == 20) { //0076
+      v98 = 89
+      v99 = 90
+    }
+    if (vPrevRoom == 22) { //0083
+      v98 = 1
+      v99 = 160
+    }
+    goto(l151)
+  }
+  get.posn(o0,v98,v99)
+l151:
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0098
+    goto(l169)
+  }
+  clear.lines(23,24,c0)
+}
+l169:
+if (f31) { //00a9
+  reset(f31)
+  print("Fortunately for you, the path here is not far above the ground. Your suffering is limited to a dull pain in the hindquarters.")
+}
+v30--
+if (v30 == 1) { //00b5
+  set.view(o0,0)
+  start.motion(o0)
+  player.control()
+}
+if (!f158 && obj.in.box(o0,23,130,49,132)) { //00c2
+  if (!f92) { //00cf
+    set(f92)
+    set.priority(o0,9)
+    ignore.horizon(o0)
+    ignore.blocks(o0)
+    if (!f101) { //00df
+      normal.motion(o16)
+    }
+    if (f97) { //00e8
+      wander(o16)
+    }
+  }
+}
+if (!f158 && obj.in.box(o0,14,133,48,133)) { //00f0
+  reset(f92)
+  release.priority(o0)
+  observe.horizon(o0)
+  observe.blocks(o0)
+  if (f97) { //0105
+    follow.ego(o16,10,f235)
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //010f
+  goto(l456)
+}
+if (said("check out", "area")) { //011d
+  print("You are in a desert cliff area.")
+}
+if (!(has(i18))) { //0129
+  if (said("check out", "bush")) { //0130
+    if (obj.in.box(o0,0,123,36,146)) { //013a
+      print("It looks a lot like spinach. ")
+      goto(l331)
+    }
+    print("You are not near that.")
+  }
+}
+l331:
+if ((said("acquire", "bush") || said("move", "bush") || said("acquire", "bush"))) { //014b
+  if (!(has(i18))) { //0163
+    if (obj.in.box(o0,0,123,36,146)) { //016a
+      get(i18)
+      print("You tear off a piece of the plant.")
+      goto(l381)
+    }
+    print("That is unreachable from here.")
+l381:
+    goto(l386)
+  }
+  print("You already have that.")
+}
+l386:
+if ((said("smoke", "bush") || said("roll", "bush"))) { //0182
+  if (has(i18)) { //0194
+    print("The Health Minister has determined that smoking is hazardous to your health.")
+    goto(l417)
+  }
+  print("You don't have that.")
+}
+l417:
+if (said("smell", "bush")) { //01a1
+  if ((has(i18) || obj.in.box(o0,0,123,36,146))) { //01ab
+    print("You take a whiff of the plant and find it to be a regrettable experience.")
+    goto(l448)
+  }
+  print("You are not near that.")
+}
+l448:
+if (fEnteredCommand) { //01c0
+  call(112)
+}
+l456:
+if (f92 && !f91) { //01c8
+  if (fTriggerLine) { //01d1
+    set(f91)
+    set(f56)
+    reset(f92)
+    ignore.blocks(o0)
+    ignore.objs(o0)
+    set(f56)
+    program.control()
+    set.view(o0,20)
+    v135 = 253
+    v136 = 0
+    repositon(o0,v135,v136)
+    get.posn(o0,v62,v63)
+    if (posn(o0,38,95,62,137)) { //01f5
+      v62 += 14
+    }
+    if (posn(o0,44,75,62,94)) { //0202
+      v62 += 14
+      v63 = 124
+    }
+    if (posn(o0,43,56,64,74)) { //0212
+      v62 += 14
+      v63 = 96
+    }
+    if (posn(o0,0,45,37,55)) { //0222
+      v63 = 91
+    }
+    v55 = 4
+    move.obj(o0,v62,v63,55,f30)
+  }
+}
+if (f30) { //0238
+  reset(f30)
+  reset(f91)
+  reset(f92)
+  reset(f56)
+  release.priority(o0)
+  observe.blocks(o0)
+  observe.horizon(o0)
+  set.view(o0,26)
+  normal.motion(o0)
+  stop.motion(o0)
+  program.control()
+  reposition.to(o0,v62,v63)
+  set(f31)
+  v30 = 15
+  if (f102) { //025d
+    set(f97)
+    follow.ego(o16,10,f235)
+  }
+}
+if (!f91 && vWhichEgoBorder != 0) { //0269
+  reset(f102)
+  if (!f103) { //0276
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //0282
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 3) { //028c
+    new.room(83)
+  }
+  if (vWhichEgoBorder == 2) { //0295
+    v139 = 1
+    new.room(81)
+  }
+  if (vWhichEgoBorder == 1 && !f92) { //02a1
+    new.room(20)
+  }
+  if (vWhichEgoBorder == 4 && !f92) { //02ad
+    new.room(22)
+  }
+}
+if (obj.in.box(o0,33,66,70,66) && f92) { //02b9
+  reset(f102)
+  if (!f103) { //02c7
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //02d3
+    reset(f101)
+    set(f97)
+  }
+  new.room(20)
+}
+if ((f101 || f97)) { //02df
+  call(110)
+}
+return()

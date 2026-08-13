@@ -1,0 +1,60 @@
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.view(82)
+  load.view(84)
+  load.view(83)
+  set(f230)
+  return()
+}
+if (f230) { //0013
+  reset(f230)
+  set.string(str0,"")
+  set.cursor.char("")
+  animate.obj(o12)
+  set.view(o12,82)
+  set.cel(o12,0)
+  set.priority(o12,4)
+  position(o12,10,96)
+  animate.obj(o11)
+  set.view(o11,84)
+  set.cel(o11,0)
+  set.priority(o11,15)
+  position(o11,22,80)
+  draw(o12)
+  end.of.loop(o12,f231)
+  display(1,13,"Planet Profile")
+}
+if (f231) { //0047
+  reset(f231)
+  stop.update(o12)
+  v233 = 18
+}
+v233--
+if (v233 == 1) { //0056
+  draw(o11)
+  end.of.loop(o11,f232)
+}
+if (f232) { //0062
+  reset(f232)
+  set.view(o11,83)
+  start.cycling(o11)
+  v234 = 18
+}
+v234--
+if (v234 == 1) { //0074
+  set.text.attribute(3,0)
+  display(3,19,"Planet:")
+  display(6,19,"Dimensions:")
+  display(9,19,"Atmosphere:")
+  display(12,19,"Life/Civilization:")
+  display(15,19,"Temperature:")
+  set.text.attribute(2,0)
+  display(4,19,"  Kerona")
+  display(7,19,"  3,744.3 Km Diameter")
+  display(10,19,"  Breathable")
+  display(13,19,"  Unknown")
+  display(16,19,"  40C")
+  set.text.attribute(3,0)
+  display(19,6,"Navigation System Locked-In")
+}
+return()

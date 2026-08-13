@@ -1,0 +1,94 @@
+if (fNewRoom) { //0002
+  set.horizon(70)
+  load.pic(vCurrentRoom)
+  load.logic(112)
+  load.logic(93)
+  call(93)
+  if ((f96 || f101 || f97)) { //0012
+    load.logic(110)
+    call(110)
+  }
+  load.view(163)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v135,v136)
+  if ((v139 == 1 || v139 == 2)) { //002a
+    v136 = 122
+  }
+  if (v139 == 3) { //0039
+    v135 = 69
+  }
+  position(o0,135,v136)
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //004e
+    goto(l95)
+  }
+  clear.lines(23,24,c0)
+}
+l95:
+if (!f156) { //005f
+  if (v139 == 2) { //0066
+    if (!(obj.in.box(o0,77,90,159,150))) { //006d
+      set(f156)
+      set(f159)
+    }
+    goto(l174)
+  }
+  if (v139 == 3) { //007f
+    if (!(obj.in.box(o0,20,70,135,129))) { //0086
+      set(f156)
+      set(f159)
+    }
+    goto(l174)
+  }
+  if (v139 == 1) { //0098
+    if (!(obj.in.box(o0,0,90,100,150))) { //009f
+      set(f156)
+      set(f159)
+    }
+  }
+}
+l174:
+if ((!fEnteredCommand || fSaidAccepted)) { //00ae
+  goto(l208)
+}
+if (said("check out", "area")) { //00bc
+  print("There seems to be sand as far as the eye can see.")
+}
+if (fEnteredCommand) { //00c8
+  call(112)
+}
+l208:
+if (vWhichEgoBorder != 0) { //00d0
+  reset(f102)
+  if (!f103) { //00da
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //00e6
+    reset(f101)
+    set(f97)
+  }
+  if (vPrevRoom == 30) { //00f0
+    if ((vWhichEgoBorder == 1 || vWhichEgoBorder == 2)) { //00f7
+      v139 = 0
+      new.room(30)
+    }
+  }
+  if (vPrevRoom == 17) { //0108
+    if (vWhichEgoBorder == 4) { //010f
+      new.room(17)
+    }
+  }
+  if (vPrevRoom == 23) { //0118
+    if (vWhichEgoBorder == 4) { //011f
+      new.room(23)
+    }
+  }
+}
+call(93)
+if ((f101 || f97)) { //012a
+  call(110)
+}
+return()

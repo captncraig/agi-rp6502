@@ -1,0 +1,441 @@
+if (fNewRoom) { //0002
+  if (vCurrentRoom == 53) { //0008
+    load.view(160)
+    goto(l22)
+  }
+  load.view(142)
+l22:
+  animate.obj(o6)
+  if (vCurrentRoom == 53) { //0018
+    set.view(o6,160)
+    position(o6,25,66)
+    goto(l48)
+  }
+  set.view(o6,142)
+  position(o6,25,71)
+l48:
+  set.priority(o6,4)
+  if (vCurrentRoom == 53 && f82) { //0033
+    set.cel(o6,1)
+    goto(l84)
+  }
+  if (vCurrentRoom == 57 && f78) { //0042
+    set.cel(o6,1)
+    goto(l84)
+  }
+  set.cel(o6,0)
+l84:
+  draw(o6)
+  stop.update(o6)
+  if (vCurrentRoom == 53 && !f87) { //0058
+    set(f248)
+    goto(l237)
+    goto(l120)
+  }
+  if (vCurrentRoom == 57 && f87) { //006a
+    set(f248)
+    goto(l237)
+  }
+l120:
+  if (vCurrentRoom == 53 && f87) { //0078
+    set(f77)
+    v249 = 2
+  }
+  if ((v81 == 3 || v81 == 4)) { //0086
+    set(f248)
+    goto(l237)
+  }
+  load.view(141)
+  if (!f77) { //0099
+    load.view(153)
+  }
+  animate.obj(o5)
+  set.view(o5,141)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  if (f76) { //00ab
+    set.cel(o5,1)
+    goto(l186)
+  }
+  set.cel(o5,0)
+l186:
+  if (!f77) { //00ba
+    position(o5,49,119)
+    block(42,111,59,120)
+    goto(l233)
+  }
+  if (vCurrentRoom == 53) { //00cd
+    position(o5,34,124)
+    block(32,117,42,125)
+    goto(l233)
+  }
+  position(o5,27,119)
+  block(25,112,35,120)
+l233:
+  draw(o5)
+  stop.cycling(o5)
+l237:
+  if ((vPrevRoom == 56 || vPrevRoom == 52)) { //00ed
+    if (vCurrentRoom == 53) { //00f9
+      load.view(0)
+    }
+    if (f248) { //0102
+      load.view(20)
+      load.sound(11)
+      set.view(o0,20)
+      get.posn(o6,v62,v63)
+      v63 += 10
+      v62 -= 5
+      position(o0,62,v63)
+      set.priority(o0,15)
+      move.obj(o0,45,130,4,f249)
+      sound(11,f120)
+      goto(l332)
+    }
+    set.view(o0,0)
+    program.control()
+    stop.motion(o0)
+    ignore.blocks(o0)
+    set.priority(o0,15)
+    if (vCurrentRoom == 53) { //0137
+      position(o0,35,108)
+      goto(l329)
+    }
+    position(o0,27,104)
+l329:
+    v249 = 4
+l332:
+    draw(o0)
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //014e
+  goto(l1377)
+}
+if (!f248) { //015c
+  distance(o0,o5,v64)
+  if ((said("anyword", "case") || said("anyword", "anyword", "case") || said("fill", "jet pack") || said("acquire", "jet pack") || said("board") || said("anyword", "anyword", "anyword", "case"))) { //0167
+    if (v64 > 20 && !f148) { //0195
+      print("You can't do that from here.")
+      goto(l923)
+    }
+    reset(fSaidAccepted)
+    if (said("check out", "case")) { //01a6
+      print("It's just a dirty old trunk.")
+    }
+    if (v249 != 4 && !f148) { //01b2
+      if ((said("climb in", "case") || said("climb in", "case"))) { //01bd
+        if (f76) { //01cf
+          erase(o0)
+          set.cel(o5,0)
+          if (vCurrentRoom == 57) { //01da
+            vCurrentScore += 3
+            prevent.input()
+          }
+          reset(f76)
+          set(f148)
+          goto(l494)
+        }
+        print("It's not open.")
+      }
+l494:
+      if ((said("acquire", "case") || said("lift", "case"))) { //01ee
+        print("The trunk is too heavy to carry around.")
+      }
+      if (said("open", "case")) { //0202
+        if (!f76) { //020c
+          set.cel(o5,1)
+          set(f76)
+          goto(l541)
+        }
+        print("It`s already open.")
+      }
+l541:
+      if (said("close", "case")) { //021d
+        if (f76) { //0227
+          set.cel(o5,0)
+          reset(f76)
+          goto(l567)
+        }
+        print("It's already closed.")
+      }
+l567:
+      if ((said("climb", "case") || said("board", "case") || said("board") || said("down", "case") || said("jump", "case"))) { //0237
+        if (f76) { //0259
+          print("Wouldn't you look silly standing on an open trunk?")
+          goto(l661)
+        }
+        if (v249 != 2) { //0264
+          print("The purpose of such an endeavor seems frivolous at best!")
+          goto(l661)
+        }
+        program.control()
+        ignore.blocks(o0)
+        erase(o0)
+        if (vCurrentRoom == 53) { //0276
+          position(o0,35,108)
+          goto(l648)
+        }
+        position(o0,27,104)
+l648:
+        set.priority(o0,15)
+        set.loop(o0,1)
+        draw(o0)
+        v249 = 4
+        stop.motion(o0)
+      }
+l661:
+      if ((said("drop", "jet pack", "case") || said("fill", "jet pack"))) { //0295
+        if (v81 == 2) { //02a9
+          if (f76) { //02b0
+            drop(i9)
+            print("Done.")
+            v81 = 1
+            set.view(o0,0)
+            set(f147)
+            goto(l711)
+          }
+          print("It's not open.")
+l711:
+          goto(l716)
+        }
+        print("You don't have that.")
+      }
+l716:
+      if ((said("press", "case") || said("move", "case") || said("move", "case", "anyword") || said("move", "case", "anyword", "anyword"))) { //02cc
+        if (!f77) { //02f0
+          unblock()
+          program.control()
+          ignore.objs(o0)
+          move.obj(o0,57,115,0,f64)
+          prevent.input()
+          goto(l775)
+        }
+        print("It won't budge.")
+      }
+l775:
+      if (said("look in", "case")) { //0307
+        if (f76) { //0311
+          if (f147) { //0317
+            print("There is a jetpack in it.")
+            goto(l804)
+          }
+          print("It is empty.")
+l804:
+          goto(l809)
+        }
+        print("Just because you can fly doesn't make you Superman.")
+      }
+l809:
+      if (said("acquire", "jet pack")) { //0329
+        if (f147) { //0333
+          if (f76) { //0339
+            print("Don't worry about it. You won't be needing it anymore. Trust me.")
+            goto(l838)
+          }
+          print("You put the jetpack into the trunk!")
+        }
+      }
+l838:
+      goto(l923)
+    }
+    if (f148) { //0349
+      if ((said("open", "case") || said("disembark", "case"))) { //034f
+        get.posn(o5,v62,v63)
+        v63 += 2
+        position(o0,62,v63)
+        set.cel(o5,1)
+        set(f76)
+        draw(o0)
+        reset(f148)
+        if (v81 == 2) { //0375
+          print("As you exit the trunk, you notice that you have lost your jetpack.")
+          set(f147)
+          drop(i9)
+          v81 = 1
+        }
+        if (v81 == 4) { //0385
+          set.view(o0,187)
+        }
+      }
+      if (said("acquire", "jet pack")) { //038f
+        print("It is too dark to do anything in here.")
+      }
+    }
+  }
+l923:
+  goto(l938)
+}
+if (said("anyword", "case")) { //039e
+  print("There is no trunk here.")
+}
+l938:
+if ((said("down") || said("climb", "down") || said("acquire", "down") || said("disembark") || said("disembark", "case") || said("jump", "anyword") || said("step", "down"))) { //03aa
+  if (v249 == 4) { //03d6
+    player.control()
+    v135 = 9
+    v136 = 16
+    repositon(o0,v135,v136)
+    release.priority(o0)
+    v249 = 2
+    observe.blocks(o0)
+    start.motion(o0)
+    goto(l1014)
+  }
+  print("You have no need to do that.")
+}
+l1014:
+if (said("acquire", "grate")) { //03f6
+  print("You can't, its attached to the wall.")
+}
+if ((said("open", "grate") || said("unscrew", "grate") || said("get down", "grate") || said("use", "army knife") || said("pry", "grate", "open") || said("pry", "open", "grate") || said("pry", "grate"))) { //0402
+  if (v249 == 4) { //0436
+    if (vCurrentRoom == 57 && f78) { //043d
+      print("It`s already open.")
+      goto(l1145)
+    }
+    if (vCurrentRoom == 53 && f82) { //044b
+      print("It`s already open.")
+      goto(l1145)
+    }
+    if (has(i19)) { //0459
+      set.cel(o6,1)
+      force.update(o6)
+      if (vCurrentRoom == 53) { //0464
+        set(f82)
+        goto(l1138)
+      }
+      set(f78)
+l1138:
+      print("Using your Xenon Army Knife you pry the vent open.")
+      goto(l1145)
+    }
+    print("The vent is stuck shut.")
+l1145:
+    goto(l1150)
+  }
+  print("You can't do that from here.")
+}
+l1150:
+if (said("close", "grate")) { //047e
+  if (v249 == 4) { //0488
+    if (f78) { //048f
+      set.cel(o6,0)
+      force.update(o6)
+      reset(f78)
+      goto(l1185)
+    }
+    print("It's already closed.")
+l1185:
+    goto(l1190)
+  }
+  print("You can't do that from here.")
+}
+l1190:
+if ((v81 == 3 || v81 == 4)) { //04a6
+  if ((said("climb in", "grate") || said("climb", "grate"))) { //04b2
+    print("Your alien outfit is too bulky to allow you into the vent.")
+  }
+}
+if (!fSaidAccepted && (said("climb in", "grate") || said("climb", "grate"))) { //04c6
+  if (v249 == 4) { //04db
+    if (v81 == 1) { //04e2
+      if (vCurrentRoom == 53) { //04e9
+        if (f82) { //04f0
+          if (!f200) { //04f6
+            set(f200)
+            vCurrentScore += 2
+          }
+          new.room(52)
+          goto(l1289)
+        }
+        print("The vent is closed.")
+l1289:
+        goto(l1317)
+      }
+      if (f78) { //050c
+        if (!f200) { //0512
+          set(f200)
+          vCurrentScore += 2
+        }
+        new.room(56)
+        goto(l1317)
+      }
+      print("The vent is closed.")
+l1317:
+      goto(l1322)
+    }
+    print("You can not enter the narrow vent wearing that jetpack.")
+l1322:
+    goto(l1327)
+  }
+  print("You can't do that from here.")
+}
+l1327:
+if ((said("get down", "jet pack") || said("drop", "jet pack"))) { //052f
+  print("Where would you like to put it?")
+}
+if (v249 == 4 && !fSaidAccepted) { //0543
+  set(fSaidAccepted)
+  print("You should get off the trunk first.")
+}
+if (has(i9) && said("drop", "jet pack", "floor")) { //0551
+  print("Leaving your jetpack lying around wouldn't be very bright. Someone might find it, and then how would you get home?")
+}
+l1377:
+if (f64) { //0561
+  reset(f64)
+  if (v249 == 5) { //0569
+    player.control()
+    v249 = 2
+  }
+  if (v249 == 3) { //0574
+    v249 = 4
+  }
+  if (v249 == 1) { //057e
+    player.control()
+    reset(f247)
+    set(f77)
+    v249 = 2
+    if (vCurrentRoom == 53) { //058d
+      block(33,112,35,120)
+      goto(l1441)
+    }
+    block(25,112,35,120)
+l1441:
+    set.view(o0,v126)
+    set.loop(o0,1)
+    release.loop(o0)
+    accept.input()
+  }
+  if (!(v249 > 0)) { //05aa
+    set(f247)
+    v249 = 1
+    current.view(o0,v126)
+    set.view(o0,153)
+    if (v81 == 2) { //05bd
+      set.loop(o0,1)
+      goto(l1485)
+    }
+    set.loop(o0,0)
+l1485:
+    fix.loop(o0)
+    if (vCurrentRoom == 53) { //05cf
+      move.obj(o0,45,115,0,f64)
+      goto(l1509)
+    }
+    move.obj(o0,36,115,0,f64)
+  }
+}
+l1509:
+if (f247) { //05e5
+  v65 = 255
+  v66 = 0
+  repositon(o5,v65,v66)
+}
+if (f249) { //05f5
+  reset(f249)
+  release.priority(o0)
+  set.view(o0,0)
+  stop.sound()
+}
+return()

@@ -1,0 +1,91 @@
+if (fNewRoom) { //0002
+  set.horizon(47)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(2)
+  load.view(174)
+  animate.obj(o4)
+  set.view(o4,174)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,62,46)
+  if (vPrevRoom == 55) { //0023
+    set.cel(o4,6)
+    v35 = 3
+    goto(l57)
+  }
+  set.cel(o4,0)
+  v35 = 0
+l57:
+  draw(o4)
+  stop.update(o4)
+  if (vPrevRoom != 58) { //003d
+    position(o0,64,51)
+  }
+  draw(o0)
+  if (vPrevRoom == 55) { //004b
+    v140 = 5
+    v141 = 59
+    v142 = 10
+    v143 = 59
+    goto(l109)
+  }
+  v140 = 79
+  v141 = 59
+  v142 = 77
+  v143 = 59
+l109:
+  set(f112)
+  load.logic(119)
+  call(119)
+  show.pic()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0074
+  goto(l172)
+}
+if ((said("check out") || said("check out", "area"))) { //0082
+  print("You are in a hallway aboard the Deltaur.")
+}
+if (said("check out", "wall")) { //0094
+  print("The walls are no different here than in the rest of the ship.")
+}
+if (said("check out", "door")) { //00a0
+  print("It is just an average door.")
+}
+l172:
+if (f33) { //00ac
+  reset(f33)
+  stop.cycling(o4)
+  if (v35 == 2) { //00b6
+    v35 = 3
+    goto(l200)
+  }
+  v35 = 0
+  stop.update(o4)
+}
+l200:
+if (posn(o0,57,47,75,55) && v35 < 2) { //00c8
+  start.update(o4)
+  set.cel(o4,0)
+  sound(1,f120)
+  end.of.loop(o4,f33)
+  v35 = 2
+}
+if (!(posn(o0,57,47,75,55)) && v35 == 3) { //00e3
+  start.cycling(o4)
+  sound(2,f120)
+  reverse.loop(o4,f33)
+  v35 = 1
+}
+if (!fNewRoom) { //00fc
+  call(119)
+}
+if (vWhichEgoBorder == 1 && v35 == 3) { //0105
+  new.room(55)
+}
+if (vWhichEgoBorder == 4) { //0111
+  new.room(58)
+}
+return()

@@ -1,0 +1,6 @@
+if (isSet(f5)) {
+  set(f102)
+  v220 = 22
+
+!!!
+&{%!e(string=unknown opcode: 0x3f)}

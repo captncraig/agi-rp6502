@@ -1,0 +1,383 @@
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(85)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  ignore.horizon(o1)
+  if ((v108 == 0 || v108 == 1)) { //0018
+    load.view(130)
+    animate.obj(o1)
+    set.view(o1,130)
+    ignore.blocks(o1)
+    ignore.horizon(o1)
+  }
+  if (v108 == 0) { //002f
+    load.view(69)
+    load.sound(9)
+    position(o1,45,65)
+    set.cel(o1,0)
+    set.priority(o1,14)
+    draw(o1)
+    stop.update(o1)
+  }
+  if (v108 == 1) { //0048
+    position(o1,45,144)
+    set.cel(o1,0)
+    draw(o1)
+    stop.update(o1)
+  }
+  if ((f96 || f101 || f97)) { //005a
+    load.logic(110)
+    call(110)
+  }
+  if (f92) { //006a
+    ignore.horizon(o0)
+    if (vPrevRoom == 18) { //0072
+      position(o0,1,73)
+    }
+    if (vPrevRoom == 20) { //007d
+      position(o0,145,61)
+    }
+    start.motion(o0)
+  }
+  load.view(133)
+  animate.obj(o2)
+  set.view(o2,133)
+  ignore.horizon(o2)
+  position(o2,68,65)
+  set.priority(o2,12)
+  if (v112 == 0) { //009a
+    set.cel(o2,0)
+  }
+  if (v112 == 1) { //00a4
+    set.cel(o2,1)
+  }
+  if (v112 == 2) { //00ae
+    set.cel(o2,2)
+  }
+  if (v112 == 3) { //00b8
+    set.cel(o2,3)
+  }
+  if (v112 == 4) { //00c2
+    set.cel(o2,4)
+  }
+  ignore.objs(o2)
+  draw(o2)
+  stop.update(o2)
+  load.view(134)
+  animate.obj(o3)
+  set.view(o3,134)
+  ignore.horizon(o3)
+  position(o3,68,67)
+  set.priority(o3,12)
+  ignore.objs(o2)
+  if (vPrevRoom == 16) { //00e4
+    get.posn(o0,v135,v136)
+    if (v135 < 31) { //00ef
+      v135 = 36
+    }
+    if (v135 > 122) { //00f9
+      v135 = 121
+    }
+    position(o0,135,v136)
+  }
+  draw(o0)
+  get.posn(o0,v98,v99)
+  show.pic()
+  if (v108 == 0) { //010e
+    block(40,62,58,69)
+  }
+}
+if (f34) { //011a
+  reset(f34)
+  stop.update(o1)
+  print("It lands with a pleasing thud.")
+}
+if (f32) { //0126
+  reset(f32)
+  sound(12,f162)
+}
+if (f92) { //0131
+  ignore.horizon(o0)
+  if (obj.in.box(o0,3,81,33,91)) { //0139
+    ignore.blocks(o0)
+    goto(l330)
+  }
+  observe.blocks(o0)
+l330:
+  if (!f91) { //014a
+    if (posn(o0,30,65,62,71)) { //0151
+      set.priority(o0,14)
+      goto(l356)
+    }
+    set.priority(o0,13)
+  }
+l356:
+  if (posn(o0,75,43,76,60) && !f111) { //0164
+    set(f111)
+    if (v112 == 0) { //0173
+      set.cel(o2,1)
+      v112 = 1
+      goto(l453)
+    }
+    if (v112 == 1) { //0183
+      set.cel(o2,2)
+      v112 = 2
+      goto(l453)
+    }
+    if (v112 == 2) { //0193
+      set.cel(o2,3)
+      v112 = 3
+      goto(l453)
+    }
+    if (v112 == 3) { //01a3
+      set.cel(o2,4)
+      v112 = 4
+      goto(l453)
+    }
+    if (v112 == 4) { //01b3
+      set.cel(o2,5)
+      v112 = 5
+      set.priority(o0,13)
+      set(fTriggerLine)
+    }
+l453:
+    force.update(o2)
+    v31 = 9
+  }
+  goto(l470)
+}
+if (!f91) { //01cd
+  observe.horizon(o0)
+}
+l470:
+if (f111) { //01d6
+  v31--
+  if (v31 == 1) { //01de
+    reset(f111)
+    v31 = 0
+  }
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //01ea
+  goto(l765)
+}
+if (said("check out", "area")) { //01f8
+  print("You are in a unique area. There is a natural land bridge here as well as life in the form of plants.")
+}
+if (said("check out", "boulder")) { //0204
+  if (f92) { //020e
+    if (v108 == 0) { //0214
+      print("There is a very large rock on the natural bridge.")
+      goto(l558)
+    }
+    if (v108 == 1) { //0220
+      print("On the ground rests a large boulder.")
+      goto(l558)
+    }
+    print("There are no rocks of note here.")
+l558:
+    goto(l587)
+  }
+  if (v108 == 0) { //0231
+    print("There is a very large rock on the natural bridge.")
+    goto(l587)
+  }
+  if (v108 == 1) { //023d
+    print("On the ground rests a large boulder.")
+    goto(l587)
+  }
+  print("There are no rocks of note here.")
+}
+l587:
+if (!(has(i18))) { //024b
+  if (said("check out", "bush")) { //0252
+    if (obj.in.box(o0,18,109,145,157)) { //025c
+      print("It looks a lot like spinach.")
+      goto(l621)
+    }
+    print("You are not near that.")
+  }
+}
+l621:
+if ((said("acquire", "bush") || said("move", "bush") || said("acquire", "bush"))) { //026d
+  if (!(has(i18))) { //0285
+    if (obj.in.box(o0,18,109,145,157)) { //028c
+      get(i18)
+      print("You tear off a piece of the plant.")
+      goto(l671)
+    }
+    print("That is unreachable from here.")
+l671:
+    goto(l676)
+  }
+  print("You already have that.")
+}
+l676:
+if ((said("smoke", "bush") || said("roll", "bush"))) { //02a4
+  if (has(i18)) { //02b6
+    print("The Health Minister has determined that smoking is hazardous to your health.")
+    goto(l707)
+  }
+  print("You don't have that.")
+}
+l707:
+if (said("smell", "bush")) { //02c3
+  if ((has(i18) || obj.in.box(o0,18,109,145,157))) { //02cd
+    print("You take a whiff of the plant and find it to be a regrettable experience.")
+    goto(l738)
+  }
+  print("You are not near that.")
+}
+l738:
+if (!f92) { //02e2
+  if (said("press", "boulder")) { //02e9
+    print("That can't be done here.")
+  }
+}
+if (fEnteredCommand) { //02f5
+  call(112)
+}
+l765:
+if (f92) { //02fd
+  if (fTriggerLine && !f91) { //0303
+    set(f91)
+    get.posn(o0,v62,v63)
+    ignore.objs(o0)
+    if (v63 < 47 && v112 != 5) { //0314
+      set.priority(o0,11)
+    }
+    if (v112 == 5) { //0322
+      set.priority(o0,13)
+    }
+    call(107)
+  }
+  if (v108 == 0) { //032e
+    if (!f97) { //0335
+      if (said("press", "boulder")) { //033c
+        if (obj.in.box(o0,37,56,64,64)) { //0346
+          start.update(o1)
+          unblock()
+          move.obj(o1,45,144,10,f30)
+          sound(11,f162)
+          ignore.objs(o1)
+          v108 = 1
+          goto(l870)
+        }
+        print("You are not near that.")
+      }
+    }
+l870:
+    if (f97 && !(posn(o16,36,137,58,151))) { //0366
+      if (said("press", "boulder")) { //0373
+        if (obj.in.box(o0,37,56,64,64)) { //037d
+          start.update(o1)
+          move.obj(o1,45,144,10,f30)
+          sound(11,f162)
+          ignore.objs(o1)
+          v108 = 1
+          goto(l924)
+        }
+        print("You are not near that.")
+      }
+    }
+l924:
+    if (f97 && posn(o16,36,137,58,151)) { //039c
+      if (said("press", "boulder")) { //03a8
+        if (obj.in.box(o0,37,56,64,64)) { //03b2
+          normal.motion(o16)
+          move.obj(o16,41,143,0,f64)
+          ignore.blocks(o16)
+          start.update(o1)
+          move.obj(o1,48,140,10,f109)
+          sound(11,f162)
+          ignore.objs(o1)
+          v108 = 2
+          goto(l987)
+        }
+        print("You are not near that.")
+      }
+    }
+  }
+}
+l987:
+if (f30) { //03db
+  set(f34)
+  reposition.to(o1,45,144)
+  set.cel(o1,0)
+  observe.objs(o1)
+  stop.cycling(o1)
+  stop.sound()
+  reset(f30)
+  release.priority(o1)
+  unblock()
+}
+if (f109) { //03f4
+  reset(f109)
+  stop.sound()
+  sound(9,f35)
+  erase(o1)
+  normal.motion(o16)
+  stop.motion(o16)
+  set.view(o16,69)
+  set.cel(o16,0)
+  end.of.loop(o16,f110)
+  if (!f165) { //040f
+    set(f165)
+    vCurrentScore += 5
+    set(f161)
+  }
+  reset(f101)
+  reset(f97)
+}
+if (f110) { //0421
+  reset(f110)
+  print("It was not known that you are a master of the rock! That was a fine effort.")
+  erase(o16)
+}
+if (v112 == 5) { //042d
+  v112 = 0
+  v31 = 0
+  draw(o3)
+  ignore.objs(o3)
+  move.obj(o3,68,126,4,f31)
+  sound(11,f32)
+}
+if (f31) { //0447
+  reset(f31)
+  stop.sound()
+  set.priority(o3,4)
+  stop.update(o3)
+}
+if (!f91 && vWhichEgoBorder != 0) { //0455
+  reset(f102)
+  if (!f103) { //0462
+    set(f103)
+    v100 = vCurrentRoom
+  }
+  if (f101) { //046e
+    reset(f101)
+    set(f97)
+  }
+  if (vWhichEgoBorder == 3) { //0478
+    new.room(22)
+  }
+  if (vWhichEgoBorder == 2) { //0481
+    new.room(20)
+  }
+  if (vWhichEgoBorder == 1) { //048a
+    new.room(16)
+  }
+  if (vWhichEgoBorder == 4 && f92) { //0493
+    new.room(18)
+  }
+}
+if (f91) { //049e
+  call(107)
+}
+if ((f101 || f97)) { //04a6
+  call(110)
+}
+return()

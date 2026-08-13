@@ -1,0 +1,246 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  v64 = 42
+  load.pic(v64)
+  draw.pic(v64)
+  discard.pic(v64)
+  load.view(191)
+  load.view(192)
+  load.view(33)
+  animate.obj(o2)
+  set.view(o2,192)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  ignore.objs(o2)
+  position(o2,94,72)
+  draw(o2)
+  stop.update(o2)
+  v126 = 3
+  cycle.time(o2,v126)
+  animate.obj(o1)
+  set.view(o1,191)
+  set.cel(o1,0)
+  stop.cycling(o1)
+  position(o1,46,79)
+  draw(o1)
+  move.obj(o1,27,79,0,f30)
+  animate.obj(o3)
+  set.view(o3,33)
+  set.cel(o3,0)
+  stop.cycling(o3)
+  ignore.objs(o3)
+  position(o3,107,64)
+  animate.obj(o4)
+  set.view(o4,33)
+  set.cel(o4,0)
+  stop.cycling(o4)
+  ignore.objs(o4)
+  position(o4,108,64)
+  animate.obj(o5)
+  set.view(o5,33)
+  set.cel(o5,0)
+  stop.cycling(o5)
+  ignore.objs(o5)
+  position(o5,108,65)
+  animate.obj(o6)
+  set.view(o6,33)
+  set.cel(o6,0)
+  stop.cycling(o6)
+  ignore.objs(o6)
+  position(o6,108,66)
+  animate.obj(o7)
+  set.view(o7,33)
+  set.cel(o7,0)
+  stop.cycling(o7)
+  ignore.objs(o7)
+  position(o7,107,66)
+  animate.obj(o8)
+  set.view(o8,33)
+  set.cel(o8,0)
+  stop.cycling(o8)
+  ignore.objs(o9)
+  position(o8,106,66)
+  animate.obj(o9)
+  set.view(o9,33)
+  set.cel(o9,0)
+  stop.cycling(o9)
+  ignore.objs(o9)
+  position(o9,106,65)
+  animate.obj(o10)
+  set.view(o10,33)
+  set.cel(o10,0)
+  stop.cycling(o10)
+  ignore.objs(o10)
+  position(o10,106,64)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //00cb
+    goto(l220)
+  }
+  clear.lines(23,24,c0)
+}
+l220:
+if (f30) { //00dc
+  reset(f30)
+  if (v30 == 1) { //00e4
+    erase(o1)
+    start.update(o2)
+    end.of.loop(o2,f31)
+    v34 = 2
+    v31 = 1
+  }
+  if (!(v30 > 0)) { //00f8
+    end.of.loop(o1,f30)
+    v30 = 1
+  }
+}
+v34--
+if (v34 == 1) { //0108
+  shake.screen(1)
+  if ((v31 == 1 || v31 == 2)) { //0111
+  }
+}
+if (f31) { //011d
+  reset(f31)
+  if (v31 == 3) { //0125
+    erase(o2)
+    v32 = 36
+    reset(f32)
+  }
+  if (v31 == 2) { //0133
+    v62 = 16
+    v63 = 251
+    repositon(o2,v62,v63)
+    set.loop(o2,2)
+    set.cel(o2,0)
+    end.of.loop(o2,f31)
+    v31 = 3
+  }
+  if (v31 == 1) { //0150
+    v62 = 246
+    v63 = 12
+    repositon(o2,v62,v63)
+    set.loop(o2,1)
+    set.cel(o2,0)
+    end.of.loop(o2,f31)
+    v31 = 2
+  }
+}
+v32--
+if (v32 == 1) { //016f
+  print("The Deltaur has been blown to tiny fragments by the force of the Star Generator's blast. You have saved the lives of millions of your people, not to mention the lives of those in other systems. Don't get a big head.")
+  new.room(64)
+}
+current.loop(o2,v64)
+if (v64 == 1) { //017d
+  current.cel(o2,v79)
+  if (v79 == 3) { //0187
+    v33 = 9
+    set(f32)
+  }
+}
+v33--
+if (v33 == 8) { //0195
+  draw(o3)
+  move.obj(o3,107,19,2,f33)
+}
+if (v33 == 6) { //01a4
+  draw(o4)
+  move.obj(o4,153,19,3,f34)
+}
+if (v33 == 4) { //01b3
+  draw(o5)
+  move.obj(o5,153,65,2,f35)
+}
+if (v33 == 2) { //01c2
+  draw(o6)
+  move.obj(o6,153,111,3,f36)
+}
+if (v33 == 1) { //01d1
+  draw(o7)
+  move.obj(o7,107,111,2,f37)
+}
+if (v33 == 3) { //01e0
+  draw(o8)
+  move.obj(o8,61,111,3,f38)
+}
+if (v33 == 5) { //01ef
+  draw(o9)
+  move.obj(o9,61,65,2,f39)
+}
+if (v33 == 7) { //01fe
+  draw(o10)
+  move.obj(o10,61,19,3,f40)
+}
+if (f33) { //020d
+  reset(f33)
+  erase(o3)
+  if (f32) { //0217
+    position(o3,107,64)
+    draw(o3)
+    move.obj(o3,107,19,2,f33)
+  }
+}
+if (f34) { //0229
+  reset(f34)
+  erase(o4)
+  if (f32) { //0233
+    position(o4,108,64)
+    draw(o4)
+    move.obj(o4,153,19,3,f34)
+  }
+}
+if (f35) { //0245
+  reset(f35)
+  erase(o5)
+  if (f32) { //024f
+    position(o5,108,65)
+    draw(o5)
+    move.obj(o5,153,65,2,f35)
+  }
+}
+if (f36) { //0261
+  reset(f36)
+  erase(o6)
+  if (f32) { //026b
+    position(o6,108,66)
+    draw(o6)
+    move.obj(o6,153,111,3,f36)
+  }
+}
+if (f37) { //027d
+  reset(f37)
+  erase(o7)
+  if (f32) { //0287
+    position(o7,107,66)
+    draw(o7)
+    move.obj(o7,107,111,2,f37)
+  }
+}
+if (f38) { //0299
+  reset(f38)
+  erase(o8)
+  if (f32) { //02a3
+    position(o8,106,66)
+    draw(o8)
+    move.obj(o8,61,111,3,f38)
+  }
+}
+if (f39) { //02b5
+  reset(f39)
+  erase(o9)
+  if (f32) { //02bf
+    position(o9,106,65)
+    draw(o9)
+    move.obj(o9,61,65,2,f39)
+  }
+}
+if (f40) { //02d1
+  reset(f40)
+  erase(o10)
+  if (f32) { //02db
+    position(o10,106,64)
+    draw(o10)
+    move.obj(o10,61,19,3,f40)
+  }
+}
+return()

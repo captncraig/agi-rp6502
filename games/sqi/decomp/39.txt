@@ -1,0 +1,77 @@
+if (fNewRoom) { //0002
+  set.horizon(127)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(112)
+  if ((f60 || f67)) { //0012
+    load.logic(116)
+    call(116)
+  }
+  load.view(111)
+  if (vPrevRoom < 34) { //0022
+    position(o0,75,160)
+  }
+  if (vPrevRoom == 71) { //002d
+    position(o0,52,129)
+  }
+  add.to.pic(111,0,0,28,57,4,0)
+  draw(o0)
+  if ((f60 || f67)) { //0042
+    if (!f197) { //004c
+      get.posn(o0,v135,v136)
+      position(o10,135,v136)
+    }
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //005c
+    goto(l109)
+  }
+  clear.lines(23,24,c0)
+l109:
+  if (f197) { //006d
+    reset(f197)
+  }
+}
+if (fTriggerLine) { //0075
+  if (!f167) { //007b
+    set(f167)
+    print("You are standing against the protective barrier encircling Ulence Flats. Due to the fact that you are land-based, you are not able to pass.")
+  }
+  goto(l147)
+}
+if (f167) { //0089
+  reset(f167)
+  reset(fTriggerLine)
+}
+l147:
+if ((!fEnteredCommand || fSaidAccepted)) { //0093
+  goto(l194)
+}
+if (said("check out", "building")) { //00a1
+  print("This is the exterior of Droids-B-Us. There is a door here.")
+}
+if (said("check out", "sign")) { //00ad
+  print("The sign says \"Droids-B-Us\". That's it.")
+}
+if (!fSaidAccepted) { //00b9
+  call(112)
+}
+l194:
+if (vWhichEgoBorder == 4) { //00c2
+  new.room(38)
+}
+if (vWhichEgoBorder == 3) { //00cb
+  new.room(36)
+}
+if (vWhichEgoBorder == 1 && posn(o0,28,125,90,138)) { //00d4
+  if (f67) { //00e1
+    set(f197)
+    print("The droid waits outside for you.")
+  }
+  new.room(71)
+}
+if ((f60 || f67)) { //00ed
+  call(116)
+}
+return()

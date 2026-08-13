@@ -1,0 +1,23 @@
+if (fNewRoom) { //0002
+  load.sound(4)
+  v240 = 4
+  return()
+}
+if (f141 && v240 == 4) { //000e
+  if (vCurrentRoom != 1) { //0017
+    sound(4,f240)
+  }
+  v240--
+}
+if (f240) { //0024
+  reset(f240)
+  v240--
+  if (v240 > 0) { //002e
+    sound(4,f240)
+    goto(l63)
+  }
+  reset(f141)
+  print("You are startled by the sound of an alarm. It is followed by an urgent voice which warns that the Arcada has been boarded by unknown intruders. It ends abruptly.")
+}
+l63:
+return()

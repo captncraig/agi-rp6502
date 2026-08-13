@@ -1,0 +1,112 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(107)
+  call(107)
+  load.logic(112)
+  if (vPrevRoom != 16 && vPrevRoom != 18) { //0016
+    v147 = 181
+    v148 = 51
+    set(f182)
+    load.view(71)
+    animate.obj(o3)
+    ignore.objs(o3)
+    set.view(o3,71)
+    position(o3,99,106)
+    if (!f161) { //0037
+      random(130,250,v93)
+      v94 = v93
+      v95 = 3
+      set(f96)
+    }
+    position(o0,102,105)
+    last.cel(o3,v64)
+    set.cel(o3,v64)
+    v30 = 27
+    program.control()
+    set(f92)
+  }
+  if (vPrevRoom == 18) { //005a
+    position(o0,142,160)
+    start.motion(o0)
+  }
+  if (vPrevRoom == 16) { //0067
+    position(o0,151,85)
+    start.motion(o0)
+  }
+  if (vPrevRoom < 15) { //0074
+    position(o0,102,105)
+    set(f92)
+  }
+  if ((vPrevRoom == 16 || vPrevRoom == 18)) { //0081
+    draw(o0)
+  }
+  show.pic()
+}
+v30--
+if (v30 == 1) { //0092
+  draw(o3)
+  reverse.loop(o3,f30)
+}
+if (f30) { //009e
+  reset(f30)
+  erase(o3)
+  set.loop(o0,2)
+  draw(o0)
+  start.motion(o0)
+  player.control()
+}
+if (said("check out", "area")) { //00b0
+  print("You are high atop a rocky plateau. The desert below seems to stretch to infinity.")
+}
+if (said("check out", "antenna")) { //00bc
+  print("It is merely a spire of rock which has managed to defy the elements.")
+}
+if (fEnteredCommand) { //00c8
+  call(112)
+}
+if (fTriggerLine && !f91) { //00d0
+  set(f91)
+}
+if (vWhichEgoBorder == 3) { //00db
+  if (!f91) { //00e2
+    new.room(18)
+  }
+}
+if (vWhichEgoBorder == 2) { //00eb
+  if (!f91) { //00f2
+    get.posn(o0,v62,v63)
+    if (v63 > 138) { //00fd
+      new.room(18)
+      goto(l267)
+    }
+    new.room(16)
+  }
+}
+l267:
+if (f91 && !f31) { //010b
+  set(f31)
+  get.posn(o0,v135,v136)
+  if (posn(o0,35,78,104,105)) { //011a
+    set.priority(o0,8)
+  }
+  if (posn(o0,14,106,75,129)) { //0127
+    set.priority(o0,9)
+  }
+  if (posn(o0,132,95,155,158)) { //0134
+    set.priority(o0,9)
+    set(f56)
+  }
+  if (posn(o0,53,56,155,77)) { //0143
+    set.priority(o0,5)
+  }
+  if (v136 < 53) { //0150
+    set.priority(o0,4)
+  }
+}
+if (f91) { //015a
+  call(107)
+}
+return()

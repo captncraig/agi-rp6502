@@ -1,0 +1,25 @@
+if (fNewRoom) { //0002
+  load.view(13)
+  v230 = 27
+  animate.obj(o11)
+  set.view(o11,13)
+}
+v230--
+if (v230 == 1) { //0014
+  if (vCurrentRoom == 2) { //001b
+    set.loop(o11,0)
+    position(o11,131,159)
+    move.obj(o11,0,159,0,f231)
+  }
+  if (vCurrentRoom == 4) { //002f
+    set.loop(o11,1)
+    position(o11,1,159)
+    move.obj(o11,131,159,0,f231)
+  }
+  draw(o11)
+}
+if (f231) { //0045
+  reset(f231)
+  erase(o11)
+}
+return()

@@ -1,0 +1,229 @@
+if (fNewRoom) { //0002
+  set.horizon(10)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(97)
+  load.logic(107)
+  call(107)
+  load.view(105)
+  if (!f121) { //0018
+    load.view(58)
+    load.view(59)
+    load.view(193)
+    load.sound(30)
+    load.sound(9)
+    animate.obj(o1)
+    set.view(o1,58)
+    set.cel(o1,0)
+    ignore.objs(o1)
+    position(o1,57,143)
+    set.priority(o1,11)
+    draw(o1)
+    animate.obj(o3)
+    set.view(o3,59)
+    set.loop(o3,2)
+    set.cel(o3,0)
+    ignore.objs(o3)
+    ignore.blocks(o3)
+    animate.obj(o4)
+    set.view(o4,193)
+    set.cel(o4,0)
+    ignore.objs(o4)
+    ignore.blocks(o4)
+    set.priority(o4,14)
+    position(o4,48,142)
+  }
+  if (vPrevRoom == 27) { //005e
+    if (f83) { //0065
+      position(o0,151,44)
+      goto(l118)
+    }
+    position(o0,148,124)
+l118:
+    goto(l125)
+  }
+  position(o0,105,132)
+l125:
+  ignore.objs(o0)
+  draw(o0)
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0082
+    goto(l147)
+  }
+  clear.lines(23,24,c0)
+l147:
+  if (!f121) { //0093
+    sound(30,f36)
+  }
+}
+if (f36 && !f121) { //009d
+  sound(30,f36)
+}
+if (!f121 && fTriggerLine && !f33) { //00a9
+  set(f33)
+  set.view(o3,59)
+  set.loop(o3,1)
+  get.posn(o0,v135,v136)
+  position(o3,135,v136)
+  erase(o0)
+  ignore.objs(o1)
+  ignore.objs(o3)
+  draw(o3)
+  move.obj(o3,43,129,0,f30)
+}
+if (f30) { //00d3
+  reset(f30)
+  set.loop(o3,2)
+  set.cel(o3,0)
+  end.of.loop(o3,f32)
+}
+if (f32) { //00e4
+  reset(f32)
+  stop.update(o3)
+  v130 = 7
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //00f1
+  goto(l615)
+}
+if (said("check out", "area")) { //00ff
+  if (f83) { //0109
+    if (f121) { //010f
+      print("You are in a large room in the cavern. There is a level area below. Standing toward the bottom are two odd-looking units.")
+      goto(l284)
+    }
+    print("You are in a large room in the cavern. There is a level area below. Standing toward the bottom are two odd-looking units emitting beams of light.")
+l284:
+    goto(l300)
+  }
+  if (f121) { //011f
+    print("You are in a large room in the cavern. There is a pathway above. At the south end of the room are two odd-looking units.")
+    goto(l300)
+  }
+  print("You are in a large room in the cavern. There is a pathway above. At the south end of the room are two odd-looking units emitting beams of light.")
+}
+l300:
+if ((said("check out", "beam") || said("check out", "light"))) { //012c
+  if (obj.in.box(o0,28,120,100,167)) { //013e
+    if (!f121) { //0148
+      print("The beams seem to form some sort of electronic barrier across the path.")
+      goto(l342)
+    }
+    print("There are no beams to look at.")
+l342:
+    goto(l347)
+  }
+  print("That can't be done from here.")
+}
+l347:
+if (said("check out", "box")) { //015b
+  if (obj.in.box(o0,28,120,100,167)) { //0165
+    if (!f121) { //016f
+      print("There are two metal units here which appear to be emitting beams of energy.")
+      goto(l381)
+    }
+    print("There are two metal units here which are no longer emitting beams of energy.")
+l381:
+    goto(l386)
+  }
+  print("That can't be done from here.")
+}
+l386:
+if ((said("use", "glass") || said("place", "glass", "beam") || said("place", "glass", "light") || said("block", "beam", "glass") || said("block", "light", "glass") || said("drop", "glass", "beam") || said("drop", "glass", "light") || said("hold", "glass", "light") || said("hold", "glass", "beam"))) { //0182
+  if (has(i6)) { //01ce
+    if (!f121) { //01d4
+      if (!f35) { //01db
+        get.posn(o0,v135,v136)
+        if (v135 < 70 && v136 > 124 && v136 < 156) { //01e6
+          set(f35)
+          set(f121)
+          set(f33)
+          program.control()
+          prevent.input()
+          if (v136 > 124 && v136 < 133) { //01fb
+            v135 = 67
+            v136 = 127
+            goto(l580)
+          }
+          if (v136 > 132 && v136 < 140) { //020e
+            v135 = 65
+            v136 = 132
+            goto(l580)
+          }
+          if (v136 > 139 && v136 < 147) { //0221
+            v135 = 64
+            v136 = 138
+            goto(l580)
+          }
+          if (v136 > 146 && v136 < 158) { //0234
+            v135 = 61
+            v136 = 146
+          }
+l580:
+          v55 = 0
+          move.obj(o0,v135,v136,55,f34)
+          goto(l594)
+        }
+        print("That can't be done from here.")
+      }
+l594:
+      goto(l599)
+    }
+    print("There is no need to do that now.")
+l599:
+    goto(l604)
+  }
+  print("You don't have the glass.")
+}
+l604:
+if (fEnteredCommand && !fSaidAccepted) { //025c
+  call(97)
+}
+l615:
+if (f34) { //0267
+  reset(f34)
+  get.posn(o0,v135,v136)
+  position(o3,135,v136)
+  set.view(o3,105)
+  erase(o0)
+  draw(o3)
+  v30 = 27
+}
+v30--
+if (v30 == 1) { //0283
+  draw(o4)
+  end.of.loop(o4,f37)
+  sound(9,f38)
+  erase(o1)
+  erase(o3)
+  draw(o0)
+  start.motion(o0)
+  vCurrentScore += 5
+  player.control()
+  accept.input()
+}
+if (f37) { //029f
+  reset(f37)
+  erase(o4)
+  print("You have quite cleverly turned the beam upon itself, frying it into inoperability.")
+}
+if (fTriggerLine && !f91) { //02ab
+  get.posn(o0,v135,v136)
+  if (v136 < 87) { //02b8
+    set(f91)
+  }
+}
+if (vWhichEgoBorder == 2) { //02c1
+  get.posn(o0,v135,v136)
+  if (v136 < 100) { //02cc
+    set(f83)
+    goto(l730)
+  }
+  reset(f83)
+l730:
+  new.room(27)
+}
+if (f91) { //02dc
+  call(107)
+}
+return()

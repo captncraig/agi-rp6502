@@ -1,0 +1,210 @@
+if (fNewRoom) { //0002
+  if (!f97) { //0008
+    load.view(47)
+    load.view(48)
+  }
+  load.view(46)
+  load.view(69)
+  load.sound(20)
+  load.sound(9)
+  animate.obj(o16)
+  v237 = 2
+  random(36,80,v235)
+  observe.blocks(o16)
+  return()
+}
+if (vCurrentRoom != 23 && f91) { //0027
+  normal.motion(o16)
+  stop.update(o16)
+  reset(f97)
+  reset(f102)
+  reset(f101)
+}
+if (f240) { //003b
+  reset(f240)
+  print("Suddenly you see a large, black metal sphere falling out of the sky - a Sarien Spider Droid. Upon touching down on the planet's surface, it sprouts legs and begins its search for you. You recall from an article in Space Piston Magazine that this droid is designed to seek out organic life forms and self destruct when contact is made.")
+}
+if (vCurrentRoom == 24) { //0045
+  ignore.blocks(o16)
+}
+v239--
+if (v239 == 1) { //0050
+  if (f241) { //0057
+    sound(20,f162)
+    random(150,255,v239)
+  }
+}
+if (f110) { //0064
+  goto(l635)
+}
+if (f97) { //006d
+  goto(l272)
+}
+if (f101 && !f238) { //0076
+  v100 = 0
+  set(f238)
+  set.view(o16,48)
+  set.cel(o16,0)
+  stop.cycling(o16)
+  ignore.horizon(o16)
+  set.priority(o16,15)
+  position(o16,80,20)
+  ignore.objs(o16)
+  draw(o16)
+  sound(20,f162)
+  if ((vCurrentRoom == 16 || vCurrentRoom == 17)) { //009c
+    move.obj(o16,80,155,8,f236)
+    goto(l183)
+  }
+  move.obj(o16,80,136,8,f236)
+}
+l183:
+if (f236) { //00b7
+  reset(f236)
+  stop.sound()
+  release.priority(o16)
+  observe.objs(o16)
+  end.of.loop(o16,f237)
+  observe.horizon(o16)
+  object.on.land(o16)
+}
+if (f237) { //00cb
+  reset(f237)
+  set.view(o16,47)
+  start.cycling(o16)
+  random(9,27,v236)
+}
+v236--
+if (v236 == 1) { //00de
+  reset(f103)
+  set.view(o16,46)
+  sound(20,f162)
+  random(150,255,v239)
+  set(f241)
+  set(f102)
+  set(f97)
+  set(f160)
+  print("Suddenly you see a large, black metal sphere falling out of the sky - a Sarien Spider Droid. Upon touching down on the planet's surface, it sprouts legs and begins its search for you. You recall from an article in Space Piston Magazine that this droid is designed to seek out organic life forms and self destruct when contact is made.")
+  set(f191)
+  if ((f92 || f118)) { //00fd
+    wander(o16)
+    goto(l272)
+  }
+  follow.ego(o16,10,f235)
+}
+l272:
+if (v100 == vCurrentRoom && !f92 && f97) { //0110
+  v237--
+  if (v237 == 1) { //011e
+    reset(f103)
+    get.posn(o0,v62,v63)
+    set.view(o16,46)
+    position(o16,62,v63)
+    draw(o16)
+    sound(20,f162)
+    set(f102)
+    follow.ego(o16,10,f235)
+    sound(20,f162)
+    random(150,255,v239)
+    set(f241)
+    if (!f191) { //0146
+      set(f191)
+      print("Suddenly you see a large, black metal sphere falling out of the sky - a Sarien Spider Droid. Upon touching down on the planet's surface, it sprouts legs and begins its search for you. You recall from an article in Space Piston Magazine that this droid is designed to seek out organic life forms and self destruct when contact is made.")
+    }
+  }
+}
+if (f97 && !f102) { //0151
+  v235--
+  if (v235 == 1) { //015c
+    reset(f103)
+    reset(v235)
+    set.view(o16,46)
+    if (f92) { //016a
+      if (vCurrentRoom == 16) { //0170
+        if (vPrevRoom == 15) { //0177
+          position(o16,57,162)
+        }
+        if (vPrevRoom == 17) { //0182
+          position(o16,138,162)
+        }
+      }
+      if (vCurrentRoom == 17) { //018d
+        position(o16,3,160)
+      }
+      if (vCurrentRoom == 18) { //0198
+        if (vPrevRoom == 15) { //019f
+          position(o16,59,73)
+        }
+        if (vPrevRoom == 19) { //01aa
+          position(o16,96,160)
+        }
+      }
+      if (vCurrentRoom == 19) { //01b5
+        if (vPrevRoom == 18) { //01bc
+          position(o16,37,162)
+        }
+        if (vPrevRoom == 20) { //01c7
+          position(o16,115,88)
+        }
+      }
+      if (vCurrentRoom == 20) { //01d2
+        if (vPrevRoom == 19) { //01d9
+          position(o16,49,56)
+        }
+        if (vPrevRoom == 23) { //01e4
+          position(o16,68,164)
+        }
+      }
+      if (vCurrentRoom == 23) { //01ef
+        if (vPrevRoom == 20) { //01f6
+          position(o16,61,60)
+        }
+        if (vPrevRoom == 22) { //0201
+          position(o16,1,160)
+        }
+      }
+    }
+    if (!f92) { //020c
+      position(o16,98,v99)
+    }
+    draw(o16)
+    sound(20,f162)
+    if (!f191) { //021c
+      set(f191)
+      print("Suddenly you see a large, black metal sphere falling out of the sky - a Sarien Spider Droid. Upon touching down on the planet's surface, it sprouts legs and begins its search for you. You recall from an article in Space Piston Magazine that this droid is designed to seek out organic life forms and self destruct when contact is made.")
+    }
+    sound(20,f162)
+    random(150,255,v239)
+    set(f241)
+    set(f102)
+    if (f92) { //0232
+      wander(o16)
+      goto(l577)
+    }
+    follow.ego(o16,10,f235)
+  }
+}
+l577:
+if (f235 && !f156 && !f157) { //0241
+  reset(f235)
+  normal.motion(o0)
+  set(f158)
+  erase(o0)
+  set.view(o16,69)
+  set.cel(o16,0)
+  v238 = 2
+  cycle.time(o16,v238)
+  normal.motion(o16)
+  stop.motion(o16)
+  stop.sound()
+  end.of.loop(o16,f239)
+  reset(f241)
+  sound(9,f162)
+}
+if (f239) { //026e
+  reset(f239)
+  print("You have just been blown into bite-size chunks by a Sarien spider droid.")
+  v130 = 10
+}
+l635:
+return()

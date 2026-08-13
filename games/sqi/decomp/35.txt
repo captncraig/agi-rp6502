@@ -1,0 +1,640 @@
+if (fNewRoom) { //0002
+  set.horizon(90)
+  set.string(str0,">")
+  set.cursor.char("_")
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(112)
+  if ((f60 || f67)) { //0017
+    load.logic(116)
+    call(116)
+  }
+  load.view(88)
+  load.view(106)
+  load.view(253)
+  animate.obj(o4)
+  set.view(o4,253)
+  ignore.horizon(o4)
+  position(o4,94,71)
+  set.priority(o4,15)
+  draw(o4)
+  if (f127 && !(has(i7))) { //003b
+    random(1,100,v64)
+    if (v64 > 66) { //0048
+      reset(f127)
+      set(f40)
+    }
+  }
+  if (vPrevRoom < 34) { //0053
+    set(f127)
+    set.view(o0,0)
+    v81 = 1
+  }
+  if (vPrevRoom < 34) { //0062
+    load.view(107)
+    animate.obj(o3)
+    set.view(o3,107)
+    set.cel(o3,0)
+    set.loop(o3,0)
+    position(o3,44,115)
+    draw(o3)
+    move.obj(o3,100,115,0,f64)
+    goto(l180)
+  }
+  if (vPrevRoom == 70 && v124 > 49 && !f62 && f52 && !f127) { //0085
+    set(f62)
+    load.view(107)
+    animate.obj(o3)
+    set.view(o3,107)
+    set.cel(o3,0)
+    set.loop(o3,1)
+    position(o3,94,129)
+    draw(o3)
+    stop.update(o3)
+    v33 = 1
+    v34 = 18
+  }
+l180:
+  if (f127) { //00b4
+    animate.obj(o2)
+    set.view(o2,106)
+    observe.objs(o2)
+    set.loop(o2,1)
+    set.cel(o2,0)
+    position(o2,88,101)
+    animate.obj(o1)
+    set.view(o1,88)
+    observe.objs(o1)
+    stop.cycling(o1)
+    if (vPrevRoom < 34) { //00d4
+      set.loop(o1,0)
+      set.cel(o1,0)
+      position(o1,44,167)
+      goto(l242)
+    }
+    set.loop(o1,1)
+    set.cel(o1,0)
+    position(o1,44,144)
+l242:
+    draw(o1)
+    if (vPrevRoom < 34) { //00f4
+      move.obj(o1,44,144,0,f30)
+      goto(l262)
+    }
+    stop.update(o1)
+  }
+l262:
+  if (vPrevRoom < 34) { //0106
+    position(o0,75,155)
+    goto(l299)
+  }
+  if (vPrevRoom == 70) { //0114
+    position(o0,91,116)
+    if (f60) { //011f
+      position(o10,57,107)
+      draw(o10)
+    }
+  }
+l299:
+  if (vPrevRoom > 33) { //012b
+    draw(o0)
+  }
+  if (vPrevRoom != 70) { //0134
+    if ((f60 || f67)) { //013c
+      get.posn(o0,v135,v136)
+      v136 -= 1
+      position(o10,135,v136)
+    }
+  }
+  show.pic()
+  if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0152
+    goto(l355)
+  }
+  clear.lines(23,24,c0)
+l355:
+  if (vPrevRoom < 34) { //0163
+    set(f34)
+    set(f35)
+    if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //016e
+      print("Welcome to Ulence Flats")
+      goto(l385)
+    }
+    display(24,8,"Welcome to Ulence Flats")
+l385:
+    vCurrentScore += 25
+  }
+  v36 = 0
+  v37 = 2
+  if (!f58 && vPrevRoom > 33 && v58 != 11 && !f68 && v58 > 0) { //018a
+    if (!f185) { //019e
+      v58 = 0
+      set(f34)
+      v36 = 250
+      goto(l443)
+    }
+    if (v58 != 11) { //01b0
+      v58 = 10
+    }
+  }
+l443:
+  if (vPrevRoom > 33) { //01bb
+    if (v58 == 5) { //01c2
+      v36 = 250
+    }
+  }
+  if (f170) { //01cc
+    reset(f170)
+    print("The fresh air helps you snap out of the stupor which that foul brew was responsible for.")
+  }
+  if (v124 > 239) { //01d6
+    set(f41)
+    goto(l501)
+  }
+  if (v124 > 209) { //01e2
+    v35 = 240
+    v35 -= v124
+    goto(l501)
+  }
+  v35 = 30
+l501:
+  if (f40) { //01f5
+    print("My, my. It would appear that your skimmer has become the property of another. I wonder who forgot to remove the key?")
+  }
+}
+v38--
+if (f64) { //01ff
+  reset(f64)
+  erase(o3)
+}
+if (f37) { //0209
+  reset(f37)
+  if (v33 == 4) { //0211
+    erase(o3)
+    v33 = 5
+    v34 = 250
+  }
+  if (v33 == 3) { //0220
+    move.obj(o3,150,147,0,f37)
+    v33 = 4
+  }
+  if (v33 == 2) { //0230
+    set.loop(o3,3)
+    print("\"Say there, pal. It's come to my attention that you're in the market for some transportation.\"")
+    print("\"I may be able to help. If you'll follow me, I'd like to show you a fine little piece of machinery that'll knock your eyes out.\"")
+    move.obj(o3,110,147,0,f37)
+    v33 = 3
+  }
+}
+v34--
+if (v34 == 1) { //0249
+  if (v33 == 5) { //0250
+    v33 = 0
+  }
+  if (v33 == 1) { //025a
+    start.update(o3)
+    move.obj(o3,88,129,0,f37)
+    v33 = 2
+  }
+}
+if (f127 && !f34 && !f36 && v58 > 0 && v58 != 11 && posn(o0,32,132,63,154)) { //026c
+  set(f36)
+  position(o2,88,101)
+  draw(o2)
+  set(f39)
+  move.obj(o2,65,101,0,f33)
+  v58 = 1
+}
+v30--
+if (v30 == 1) { //029a
+  if ((v58 == 6 || v58 == 9)) { //02a1
+    set(f58)
+    reset(f127)
+    erase(o2)
+    reset(f39)
+    start.update(o1)
+    set.loop(o1,2)
+    fix.loop(o1)
+    end.of.loop(o1,f31)
+    v31 = 1
+    set(f42)
+    v38 = 36
+  }
+  if ((v58 == 7 || v58 == 4)) { //02c7
+    print("\"Fine. Be that way.\"")
+    get.posn(o2,v62,v63)
+    v62 = 153
+    v63 += 5
+    v55 = 1
+    start.cycling(o2)
+    move.obj(o2,v62,v63,55,f33)
+    if (v58 == 4) { //02ea
+      v58 = 5
+      goto(l762)
+    }
+    v58 = 8
+  }
+}
+l762:
+v36--
+if (f127 && v36 == 1) { //02fc
+  v37--
+  if (v37 == 1) { //0307
+    position(o2,88,101)
+    draw(o2)
+    set(f39)
+    move.obj(o2,65,101,0,f33)
+    v58 = 1
+    goto(l805)
+  }
+  v36 = 250
+}
+l805:
+if (f38) { //0325
+  reset(f38)
+  if (f185) { //032d
+    if (f41) { //0333
+      print("\"Hey! I'll trade you a jetpack for that sand skimmer. What do you think? Yes or No?\"")
+      goto(l832)
+    }
+    print("\"Ok. This is my final offer and I'm only doin' it because you look like you need it pretty bad. I'll give you %v35 buckazoids and I'll throw in this swell jetpack. I only used it once. Works great in zero gravity. You'll love it. Is it a deal? Yes or no?\"")
+l832:
+    reset(f185)
+    set(f68)
+    goto(l854)
+  }
+  if (f41) { //0347
+    print("\"Hey! I'll gladly take that crusty old skimmer off your hands. What do you think? Yes or No?\"")
+    goto(l852)
+  }
+  print("\"Say, this is a genuine Falton sand skimmer. I've been looking for one just like it. I wonder if you would accept %v35 buckazoids?\"")
+l852:
+  set(f185)
+}
+l854:
+if (f33) { //0356
+  reset(f33)
+  if (v58 == 8) { //035e
+    erase(o2)
+    reset(f39)
+    v58 = 11
+  }
+  if (v58 == 5) { //036c
+    erase(o2)
+    reset(f39)
+    v58 = 10
+    v36 = 250
+    v37 = 2
+  }
+  if (v58 == 3) { //0380
+    stop.cycling(o2)
+    get.posn(o0,v135,v136)
+    if (v135 > 58) { //038d
+      set.loop(o2,0)
+      goto(l925)
+    }
+    set.loop(o2,1)
+l925:
+    if (f185) { //039d
+      set(f38)
+      v58 = 7
+      goto(l944)
+    }
+    set(f38)
+    v58 = 4
+l944:
+    v30 = 250
+    v36 = 0
+  }
+  if (v58 == 2) { //03b6
+    move.obj(o2,58,142,0,f33)
+    v58 = 3
+  }
+  if (v58 == 1) { //03c6
+    move.obj(o2,58,108,0,f33)
+    v58 = 2
+  }
+}
+if (f30) { //03d6
+  reset(f30)
+  end.of.loop(o1,f31)
+}
+if (f31) { //03e1
+  reset(f31)
+  if (v31 == 3) { //03e9
+    erase(o1)
+    v31 = 4
+    reset(f42)
+  }
+  if (v31 == 2) { //03f7
+    move.obj(o1,21,81,2,f31)
+    v31 = 3
+  }
+  if (v31 == 1) { //0407
+    move.obj(o1,44,109,2,f31)
+    v31 = 2
+  }
+  if (!(v31 > 0)) { //0417
+    set(f32)
+    set(f90)
+    stop.update(o1)
+    print("After a truly stone-crushing journey, you have miraculously arrived safely in Ulence Flats. And, just in time too, because the skimmer's power cell has been drained. It will take some time to recharge itself. This place isn't quite what you had expected. It is semi-bleak at best. ")
+  }
+}
+if (f127 && !(v58 > 0) && !f35) { //0427
+  draw(o2)
+  set(f39)
+  move.obj(o2,61,101,0,f33)
+  v58 = 1
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0441
+  goto(l2048)
+}
+if ((said("check out", "area") || said("check out", "city"))) { //044f
+  print("You are at the south edge of Ulence Flats. The area is protected from predators by an electronic barrier which runs around the perimeter of the settlement.")
+}
+if (said("check out", "city")) { //0463
+  print("Ulence Flats is a typical example of some of the frontier settlements that sprang up in the early days of the Outer Zone exploration several years ago. Unfortunately, this attracted many unsavory individuals looking to make a quick buckazoid. Caution is advised.")
+}
+if ((f127 || f42)) { //046f
+  if (said("check out", "bike")) { //0479
+    if (f42) { //0483
+      if (v38 > 0) { //0489
+        print("You watch as the skimmer is driven away by its new owner.")
+        goto(l2048)
+        goto(l1178)
+      }
+      print("The skimmer is attempting to leave. Get out of the way, you geek!")
+l1178:
+      goto(l1214)
+    }
+    if ((obj.in.box(o0,35,133,67,157) || f35)) { //049d
+      if (!(has(i7))) { //04ab
+        print("The sand skimmer is a one-passenger mode of transportation and it looks like it has skimmed quite a bit of sand in its time. On it is a panel which has a small readout, currently dark, and a keyhole with a key in it.")
+        goto(l1209)
+      }
+      print("The sand skimmer is a one-passenger mode of transportation and it looks like it has skimmed quite a bit of sand in its time. On it is a panel which has a small readout, currently dark, and a keyhole without a key in it.")
+l1209:
+      goto(l1214)
+    }
+    print("You aren't close enough.")
+  }
+}
+l1214:
+if (f42) { //04be
+  if ((said("anyword", "bike") || said("anyword", "anyword", "bike") || said("anyword", "anyword", "anyword", "bike"))) { //04c4
+    print("It's not yours anymore. Leave it alone.")
+  }
+}
+if (f127) { //04e4
+  if (said("check out", "computer console")) { //04ea
+    if ((posn(o0,35,130,66,158) || f35)) { //04f4
+      if (has(i7)) { //0502
+        print("The panel has an ignition switch. There is no key in it.")
+        goto(l1295)
+      }
+      print("The panel has an ignition switch. There is a key in it.")
+    }
+  }
+l1295:
+  if ((said("check out", "button") || said("check out", "ignition"))) { //050f
+    if ((posn(o0,35,130,66,158) || f35)) { //0521
+      if (!(has(i7))) { //052f
+        print("The ignition switch has a hole for a key which is currently filled.")
+        goto(l1341)
+      }
+      print("The ignition switch has a hole for a key which is currently empty.")
+l1341:
+      goto(l1346)
+    }
+    print("You need to be closer.")
+  }
+}
+l1346:
+if (f127) { //0542
+  if (!f58) { //0548
+    if ((said("turn", "key") || said("start", "bike"))) { //054f
+      if ((obj.in.box(o0,35,133,67,157) || f35)) { //0561
+        if (!(has(i7))) { //056f
+          print("That will do you no good. The power cell is drained. It may take some time to recharge.")
+          goto(l1405)
+        }
+        print("The key is not in its hole.")
+l1405:
+        goto(l1410)
+      }
+      print("You are not in a position to do that.")
+    }
+l1410:
+    goto(l1415)
+  }
+  print("It's not yours anymore. Leave it alone.")
+}
+l1415:
+if (said("check out", "craft")) { //0587
+  print("There are couple of other craft here which might belong to the beings inside this building.")
+}
+if (said("climb in", "craft")) { //0593
+  print("The ships are locked.")
+}
+if ((said("check out", "building") || said("check out", "bar"))) { //059f
+  print("There is a small rounded structure here with a door on one side. It is typical of some of the prefab structures used in frontier areas years ago.")
+}
+if (f39) { //05b3
+  if ((said("check out", "being") || said("check out", "alien"))) { //05b9
+    print("Compared to some of the beings you've seen lately, this one looks fairly normal except for the fact that he seems to have a cylinder for a head.")
+  }
+  if ((said("speak", "being") || said("speak", "alien"))) { //05cd
+    print("The man is not interested in idle conversation. He's only interested in the skimmer.")
+  }
+  if ((said("attack", "being") || said("attack", "alien"))) { //05e1
+    print("You have no way or reason to kill this being.")
+  }
+}
+if (f42) { //05f5
+  if ((said("check out", "being") || said("check out", "alien"))) { //05fb
+    print("Compared to some of the beings you've seen lately, this one looks fairly normal except for the fact that he seems to have a cylinder for a head.")
+  }
+  if ((said("anyword", "being") || said("anyword", "anyword", "being") || said("anyword", "anyword", "anyword", "being") || said("anyword", "alien") || said("anyword", "anyword", "alien") || said("anyword", "anyword", "anyword", "alien"))) { //060f
+    if (v38 > 0) { //0645
+      print("The guy (or whatever it is) is busy leaving.")
+      goto(l1619)
+    }
+    print("The skimmer is attempting to leave. Get out of the way, you geek!")
+  }
+}
+l1619:
+if (v33 > 0) { //0653
+  if ((said("check out", "being") || said("check out", "alien"))) { //065a
+    print("This being is about the size of a humanoid but has some odd features. He seems to have a friendly-looking mug.")
+  }
+  if ((said("speak", "being") || said("speak", "alien"))) { //066e
+    print("He wants you to follow him.")
+  }
+  if ((said("attack", "being") || said("attack", "alien"))) { //0682
+    print("You have no way or reason to kill this being.")
+  }
+}
+if (v30 > 0) { //0696
+  if (said("y")) { //069d
+    if (v58 == 4) { //06a5
+      if (obj.in.box(o0,23,132,83,161)) { //06ac
+        v124 += %!d(string=v35)
+        get(i10)
+        v30 = 10
+        v58 = 6
+        if (has(i7)) { //06c1
+          drop(i7)
+          print("\"Glad we could do business. I'll just take that key. Thank you kindly. Hope your stay in Ulence Flats is an interesting one.\"")
+          goto(l1744)
+        }
+        print("\"Glad we could do business. Hope your stay in Ulence Flats is an interesting one.\"")
+l1744:
+        goto(l1749)
+      }
+      print("He can't hear you from there. You'll have to get closer.")
+l1749:
+      goto(l1805)
+    }
+    if (v58 == 7) { //06d8
+      if (obj.in.box(o0,23,132,83,161)) { //06df
+        v124 += %!d(string=v35)
+        get(i10)
+        get(i9)
+        v30 = 10
+        v58 = 9
+        vCurrentScore += 5
+        if (has(i7)) { //06f9
+          drop(i7)
+          print("\"Glad we could do business. I'll just take that key. Thank you kindly. Hope your stay in Ulence Flats is an interesting one.\"")
+          goto(l1800)
+        }
+        print("\"Glad we could do business. Hope your stay in Ulence Flats is an interesting one.\"")
+l1800:
+        goto(l1805)
+      }
+      print("He can't hear you from there. You'll have to get closer.")
+    }
+  }
+l1805:
+  if (said("n")) { //070d
+    v30 = 2
+  }
+}
+if (f127) { //0718
+  if (said("board", "bike")) { //071e
+    if (f35) { //0728
+      print("Wise up, %s1! You're already on it.")
+      goto(l1845)
+    }
+    print("That will do you no good. The power cell is drained. It may take some time to recharge.")
+  }
+}
+l1845:
+if (said("disembark", "bike") && vPrevRoom < 34) { //0735
+  if (f35) { //0742
+    if (f32) { //0748
+      position(o0,36,143)
+      set.loop(o0,3)
+      set.loop(o1,1)
+      force.update(o1)
+      draw(o0)
+      reset(f133)
+      reset(f35)
+      goto(l1893)
+    }
+    print("Please remain seated and keep hands inside while the vehicle is moving.")
+l1893:
+    goto(l1898)
+  }
+  print("You're not on one, %s1.")
+}
+l1898:
+if (f127) { //076a
+  if (said("acquire", "key")) { //0770
+    if (!f58) { //077a
+      if ((posn(o0,35,130,66,158) || f35)) { //0781
+        if (!(has(i7))) { //078f
+          if (f90) { //0796
+            get(i7)
+            print("Taken")
+            goto(l1957)
+          }
+          print("Do not remove the key while the skimmer is in motion.")
+l1957:
+          goto(l1962)
+        }
+        print("You already have it!")
+l1962:
+        goto(l1967)
+      }
+      print("You aren't close enough.")
+l1967:
+      goto(l1972)
+    }
+    print("It's not yours anymore. Leave it alone.")
+  }
+}
+l1972:
+if (f127) { //07b4
+  if (!f58) { //07ba
+    if ((said("fill", "key") || said("drop", "key", "ignition"))) { //07c1
+      if ((posn(o0,35,130,66,158) || f35)) { //07d5
+        if (has(i7)) { //07e3
+          drop(i7)
+          print("Done.")
+          goto(l2034)
+        }
+        print("That has already been done.")
+l2034:
+        goto(l2039)
+      }
+      print("You can't do that from here.")
+    }
+  }
+}
+l2039:
+if (!fSaidAccepted) { //07f7
+  call(112)
+}
+l2048:
+if (!(obj.in.box(o0,93,110,111,119))) { //0800
+  if (fTriggerLine) { //080b
+    if (!f167) { //0811
+      set(f167)
+      print("You are standing against the protective barrier encircling Ulence Flats. Due to the fact that you are land-based, you are not able to pass.")
+    }
+    goto(l2089)
+  }
+  if (f167) { //081f
+    reset(f167)
+    reset(fTriggerLine)
+  }
+}
+l2089:
+if (vWhichEgoBorder != 0 && vWhichEgoBorder != 3) { //0829
+  if (v58 == 7) { //0835
+    v58 = 11
+  }
+}
+if (vWhichEgoBorder == 2) { //083f
+  if (v33 == 5 && v34 > 0) { //0846
+    set(f63)
+  }
+  new.room(36)
+}
+if (obj.in.box(o0,93,110,111,119)) { //0854
+  if (fTriggerLine) { //085e
+    new.room(70)
+  }
+}
+if (vWhichEgoBorder == 4) { //0866
+  new.room(34)
+}
+if (vWhichEgoBorder == 1) { //086f
+  new.room(38)
+}
+if ((f60 || f67)) { //0878
+  call(116)
+}
+return()
