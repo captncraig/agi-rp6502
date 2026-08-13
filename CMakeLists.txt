@@ -23,7 +23,8 @@ add_link_options(--no-default-config "--config=${RP6502_LOCAL_CFG}")
 add_link_options("-T${CMAKE_CURRENT_SOURCE_DIR}/src/link.ld")
 
 add_executable(agi
-    src/error.c)
+    src/error.c
+    src/vga.c)
 rp6502_asset(agi help src/help.txt)
 rp6502_executable(agi DATA file RESET file)
 target_sources(agi PRIVATE

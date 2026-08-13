@@ -80,21 +80,22 @@ func makeRom(name, dir string) error {
 	if _, err := embedIfPresent(dir, outPath, "object"); err != nil {
 		return err
 	}
-	for _, rt := range agires.ResourceTypes {
-		if _, err := embedIfPresent(dir, outPath, rt.DirName); err != nil {
-			return err
-		}
-	}
-	for vol := 0; ; vol++ {
-		name := fmt.Sprintf("vol.%d", vol)
-		found, err := embedIfPresent(dir, outPath, name)
-		if err != nil {
-			return err
-		}
-		if !found {
-			break
-		}
-	}
+	// Raw dirs and vols instead of our calculated ones. But meh.
+	// for _, rt := range agires.ResourceTypes {
+	// 	if _, err := embedIfPresent(dir, outPath, rt.DirName); err != nil {
+	// 		return err
+	// 	}
+	// }
+	// for vol := 0; ; vol++ {
+	// 	name := fmt.Sprintf("vol.%d", vol)
+	// 	found, err := embedIfPresent(dir, outPath, name)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	if !found {
+	// 		break
+	// 	}
+	// }
 
 	fmt.Printf("  -> %s\n", outPath)
 

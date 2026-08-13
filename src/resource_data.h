@@ -32,4 +32,8 @@ unsigned int resource_size(resource_entry_t e);
 // load a resource into banked memory, returning the bank number it was loaded into
 unsigned char load_resource(unsigned char type, unsigned char num);
 
+// load a logic resource into banked ram, returning the bank number
+// this will additionally run some decryption on the words at the back of the logic
+unsigned char load_logic(unsigned char num);
+
 #endif /* _INDEX_H */

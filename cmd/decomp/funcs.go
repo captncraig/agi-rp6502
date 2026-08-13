@@ -468,11 +468,7 @@ var functions = map[byte]fDef{
 		name: "accept.input",
 		args: []argType{},
 	},
-	0x79: {
-		// todo: maybe special arg types for keys
-		name: "set.key",
-		args: []argType{argNum, argNum, argNum},
-	},
+	// 0x79: set.key(ascii, scan, ctrl) is special-cased in decompStmt.
 	0x7a: {
 		name: "add.to.pic",
 		args: []argType{argNum, argNum, argNum, argNum, argNum, argNum, argNum},

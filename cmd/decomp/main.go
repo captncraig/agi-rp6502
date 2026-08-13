@@ -117,6 +117,128 @@ func ctlName(num byte) string {
 	return fmt.Sprintf("c%d", num)
 }
 
+// PC XT scan codes for the keys AGI logic scripts commonly bind via set.key.
+var scanCodeNames = map[byte]string{
+	1:   "Esc",
+	2:   "1",
+	3:   "2",
+	4:   "3",
+	5:   "4",
+	6:   "5",
+	7:   "6",
+	8:   "7",
+	9:   "8",
+	10:  "9",
+	11:  "0",
+	12:  "-",
+	13:  "=",
+	14:  "Backspace",
+	15:  "Tab",
+	16:  "Q",
+	17:  "W",
+	18:  "E",
+	19:  "R",
+	20:  "T",
+	21:  "Y",
+	22:  "U",
+	23:  "I",
+	24:  "O",
+	25:  "P",
+	26:  "[",
+	27:  "]",
+	28:  "Enter",
+	29:  "Ctrl",
+	30:  "A",
+	31:  "S",
+	32:  "D",
+	33:  "F",
+	34:  "G",
+	35:  "H",
+	36:  "J",
+	37:  "K",
+	38:  "L",
+	39:  ";",
+	40:  "'",
+	41:  "`",
+	42:  "LShift",
+	43:  "\\",
+	44:  "Z",
+	45:  "X",
+	46:  "C",
+	47:  "V",
+	48:  "B",
+	49:  "N",
+	50:  "M",
+	51:  ",",
+	52:  ".",
+	53:  "/",
+	54:  "RShift",
+	56:  "Alt",
+	57:  "Space",
+	58:  "CapsLock",
+	59:  "F1",
+	60:  "F2",
+	61:  "F3",
+	62:  "F4",
+	63:  "F5",
+	64:  "F6",
+	65:  "F7",
+	66:  "F8",
+	67:  "F9",
+	68:  "F10",
+	71:  "Home",
+	72:  "Up",
+	73:  "PgUp",
+	75:  "Left",
+	77:  "Right",
+	79:  "End",
+	80:  "Down",
+	81:  "PgDn",
+	82:  "Ins",
+	83:  "Del",
+	120: "Alt+1",
+	121: "Alt+2",
+	122: "Alt+3",
+	123: "Alt+4",
+	124: "Alt+5",
+	125: "Alt+6",
+	126: "Alt+7",
+	127: "Alt+8",
+	128: "Alt+9",
+	129: "Alt+0",
+	130: "Alt+-",
+	131: "Alt+=",
+}
+
+// asciiNames covers control characters and other non-printable ASCII codes
+// that show up as key bindings (e.g. Ctrl+S saves as ascii 0x13) but render
+// unreadably via %q.
+var asciiNames = map[byte]string{
+	8:  "Backspace",
+	9:  "Tab",
+	13: "Enter",
+	27: "Esc",
+}
+
+// keyName renders a set.key(ascii, scan, ...) pair as a single readable
+// token. ascii and scan are mutually exclusive in practice: a binding is
+// made by one or the other, with the unused half left as 0.
+func keyName(ascii, scan byte) string {
+	if ascii != 0 {
+		if name, ok := asciiNames[ascii]; ok {
+			return name
+		}
+		if ascii >= 1 && ascii <= 26 {
+			return fmt.Sprintf("Ctrl+%c", 'A'+ascii-1)
+		}
+		return fmt.Sprintf("%q", string(rune(ascii)))
+	}
+	if name, ok := scanCodeNames[scan]; ok {
+		return name
+	}
+	return fmt.Sprintf("scan%d", scan)
+}
+
 func msgName(num byte) string {
 	if text, ok := messages[num]; ok {
 		return fmt.Sprintf("%q", text)
@@ -241,6 +363,10 @@ func decompileStmt(in []byte, idx int, indent int, w io.Writer, base int) (int, 
 			return count, err
 		}
 		writeLine(indent, w, "}\n")
+
+	case 0x79:
+		ascii, scan := get(), get()
+		writeLine(indent, w, "set.key(%s, %s)\n", keyName(ascii, scan), ctlName(get()))
 
 	default:
 		if fDef, ok := functions[op]; ok {

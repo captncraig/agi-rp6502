@@ -38,14 +38,23 @@ int init_resource_data(){
   return 0;
 }
 
+static const unsigned int type_index_offset[4] = {
+  0 * RESOURCE_SLOTS * sizeof(resource_entry_t),
+  1 * RESOURCE_SLOTS * sizeof(resource_entry_t),
+  2 * RESOURCE_SLOTS * sizeof(resource_entry_t),
+  3 * RESOURCE_SLOTS * sizeof(resource_entry_t),
+};
+
 resource_entry_t getResourceIndex(unsigned char type, unsigned char num){
-  long offset = (long)type * RESOURCE_SLOTS * sizeof(resource_entry_t) +
-                (long)num * sizeof(resource_entry_t);
-  long errno = f_lseek(offset, SEEK_SET, index_file_handle);
-  if (errno < 0) {
+  // calculate offset. each index is 5 bytes.
+  // Multiply by 5 with a shift and add.
+  unsigned int offset = type_index_offset[type] + (num << 2) + num;
+
+  long seekResult = f_lseek(offset, SEEK_SET, index_file_handle);
+  if (seekResult < 0) {
     load_entry.size_hi = 0xFF;
     load_entry.size_lo = 0xFF;
-    errorf("seeking in index: %ld\n", errno);
+    errorf("seeking in index: %ld\n", seekResult);
   }
   int nRead = read(index_file_handle, &load_entry, sizeof(resource_entry_t));
   if (nRead != sizeof(resource_entry_t)) {
@@ -54,7 +63,7 @@ resource_entry_t getResourceIndex(unsigned char type, unsigned char num){
   return load_entry;
 }
 
-#define NUM_RESOURCE_BANKS 22
+#define NUM_RESOURCE_BANKS 5
 typedef struct {
   unsigned char type;
   unsigned char num;
@@ -66,7 +75,7 @@ char *resourceNames[]={"LOGIC", "PIC", "VIEW", "SOUND"};
 
 unsigned char load_resource(unsigned char type, unsigned char num){
   if (resource_banks_used >= NUM_RESOURCE_BANKS){
-    errorf("No more resource banks available\n");
+    fatalf("No more resource banks available\n");
     return 0xFF;
   }
   unsigned char thisBank = resource_banks_used++;
@@ -76,9 +85,9 @@ unsigned char load_resource(unsigned char type, unsigned char num){
   unsigned int size = resource_size(load_entry);
   push_bank(thisBank);
   int start = clock();
-  long errno = f_lseek(offset, SEEK_SET, data_file_handle);
-  if (errno < 0) {
-    errorf("seeking in data: %ld\n", errno);
+  long seekResult = f_lseek(offset, SEEK_SET, data_file_handle);
+  if (seekResult < 0) {
+    errorf("seeking in data: %ld\n", seekResult);
   }
   int nRead = read(data_file_handle, RESOURCE_ADDR, size);
   if (nRead != size) {
@@ -87,4 +96,13 @@ unsigned char load_resource(unsigned char type, unsigned char num){
   infof("Loaded %04x bytes %x %x %x %d ms \n", size, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2], clock() - start);
   pop_bank();
   return thisBank;
+}
+
+unsigned char load_logic(unsigned char num){
+  unsigned char bank = load_resource(RESOURCE_TYPE_LOGIC, num);
+  push_bank(bank);
+
+
+  pop_bank();
+  return bank;
 }
