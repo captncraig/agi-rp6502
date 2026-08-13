@@ -761,7 +761,7 @@ if ((f31 || said("load", "automatic") || said("drop", "ammo", "automatic") || sa
 if (f33) { //09d4
   reset(f33)
   set(fSaidAccepted)
-  if (!(has(i13))) { //09de
+  if (!(has("Nightstick"))) { //09de
     print("%m53 If only you had your PR-24!")
     goto(l2597)
   }
@@ -833,7 +833,7 @@ l2823:
     print("These are some pretty rough-looking dudes!")
   }
 }
-if (has(i4) && said("call")) { //0b2b
+if (has("Radio Extender") && said("call")) { //0b2b
   set.string(str3,"10-20%m71")
   if (!(v39 > 0)) { //0b38
     set.string(str2,"\"83-32, %s3")

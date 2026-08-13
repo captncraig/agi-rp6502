@@ -115,7 +115,7 @@ if (posn(o0,70,118,99,125)) { //011a
     goto(l341)
   }
   set(f155)
-  get(i9)
+  get("Cookies")
   start.update(o3)
   erase(o3)
   print("You have some cookies.")
@@ -148,7 +148,7 @@ if (v200 == 1) { //0185
   print("\"But, since you left Caer Dallben, the Horned King behaves even more fiendishly. My king, Eiddileg, contacted Dallben, seeking his help. Dallben now wants you to locate King Eiddileg, and help him in whatever way you can.")
   print("\"Since the Fair Folk are continually moving, I can't tell you where they are; but, I can tell you their magic password -- bmmpxf. Use it wisely.")
   print("\"Good luck, Taran of Caer Dallben.\"")
-  get(i18)
+  get("Magic Word")
   ignore.objs(o4)
   print("Gwystyl flies to the little door.")
   move.obj(o4,65,117,0,f208)

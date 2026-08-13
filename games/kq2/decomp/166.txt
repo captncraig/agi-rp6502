@@ -144,7 +144,7 @@ if (vCurrentRoom == 61) { //01f8
     print("The torch is firmly attached to the wall. Try as you might, you cannot budge it.")
     goto(l558)
   }
-  if (said("light", "candle") && has(i78) && !f106) { //021d
+  if (said("light", "candle") && has("T\x01") && !f106) { //021d
     print("You hold your candle up to the blazing torch, but the flames are out of your reach.")
   }
 l558:

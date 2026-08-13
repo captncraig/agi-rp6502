@@ -11,7 +11,7 @@ if (fNewRoom) { //0002
   discard.pic(vCurrentRoom)
   add.to.pic(130,0,0,44,54,12,4)
   discard.view(130)
-  if (v30 != 20 && !(has(i15))) { //002c
+  if (v30 != 20 && !(has("Pocket Knife"))) { //002c
     load.view(93)
     animate.obj(o1)
     set.view(o1,93)
@@ -156,7 +156,7 @@ l539:
     v201 = 0
   }
   if ((said("add", "champagne", "bouncer") || said("add", "champagne") || said("add", "bouncer", "champagne"))) { //022f
-    if (!(has(i16))) { //024b
+    if (!(has("Bottle of Wine"))) { //024b
       set(f68)
       goto(l645)
     }
@@ -164,12 +164,12 @@ l539:
       set(f54)
       goto(l645)
     }
-    drop(i16)
-    if (!(obj.in.room(i15,vCurrentRoom))) { //0265
+    drop("Bottle of Wine")
+    if (!(obj.in.room("Pocket Knife",vCurrentRoom))) { //0265
       print("\"Why, thanshk, Shonney! Glug, glug.\"")
       goto(l645)
     }
-    get(i15)
+    get("Pocket Knife")
     vCurrentScore += 5
     print("\"Why, thanshk, Shonney!\" (Glug, glug.)")
     print("\"I ain't got no remote control, but, sssshay, I'll tell ya what: here'ssh my trussshty ol' pocket knife. Ya never know! There are sssshome kinky girlssh in this town. Sssshexy hunkssh like ussh might have to defend oursshelves sometime!\"")
@@ -180,7 +180,7 @@ l539:
   }
 l645:
   if ((said("add", "shot", "bouncer") || said("add", "shot") || said("add", "bouncer", "shot"))) { //0285
-    if (!(has(i7))) { //02a1
+    if (!(has("Glass of Whiskey"))) { //02a1
       set(f68)
       goto(l709)
     }
@@ -189,7 +189,7 @@ l645:
       goto(l709)
     }
     print("\"Slurp. Thanks, I needed that! See ya 'round!!\"")
-    drop(i7)
+    drop("Glass of Whiskey")
     set(f204)
     v203 = 4
     v201 = 0

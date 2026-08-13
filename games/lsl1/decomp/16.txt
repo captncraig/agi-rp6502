@@ -192,7 +192,7 @@ if ((said("move", "off", "television") || said("move", "television", "off") || s
 }
 l790:
 if ((said("use", "control") || said("use", "control", "off") || said("use", "control", "on") || said("use", "control", "move", "television", "on") || said("use", "control", "move", "television", "off") || said("use", "control", "rol") || said("move", "button", "control", "rol") || said("move", "button", "on", "control", "rol") || said("move", "control", "rol") || said("move", "control", "on") || said("move", "control", "off") || said("move", "control", "television", "on") || said("move", "control", "television", "off") || said("move", "control", "move", "television", "on") || said("move", "control", "move", "television", "off") || said("move", "control", "move", "on", "television") || said("move", "control", "move", "off", "television") || said("move", "on", "television", "use", "control") || said("move", "off", "television", "use", "control") || said("move", "television", "on", "use", "control") || said("move", "television", "off", "use", "control"))) { //0316
-  if (!(has(i8))) { //03f4
+  if (!(has("Remote Control"))) { //03f4
     set(f68)
     goto(l1066)
   }
@@ -214,7 +214,7 @@ if ((said("use", "control") || said("use", "control", "off") || said("use", "con
 }
 l1066:
 if ((said("attach", "bouncer", "use", "rope") || said("attach", "up", "bouncer"))) { //042a
-  if (!(has(i20))) { //0442
+  if (!(has("Rope"))) { //0442
     set(f68)
     goto(l1104)
   }
@@ -243,7 +243,7 @@ if ((said("add", "bouncer", "control", "rol") || said("add", "control", "bouncer
   print("Its operation is beyond his mental capacities.")
 }
 if ((said("move", "channel") || said("use", "control", "move", "channel") || said("move", "television", "channel") || said("move", "channel", "television") || said("move", "television", "channel", "use", "control") || said("move", "channel", "television", "use", "control") || said("move", "channel", "use", "control") || said("move", "television", "channel", "control") || said("move", "channel", "control") || said("use", "control", "move", "television", "channel") || said("alter", "channel") || said("use", "control", "alter", "channel") || said("alter", "television", "channel") || said("alter", "channel", "television") || said("alter", "television", "channel", "use", "control") || said("alter", "channel", "television", "use", "control") || said("alter", "channel", "use", "control") || said("alter", "television", "channel", "control") || said("alter", "channel", "control") || said("use", "control", "alter", "television", "channel"))) { //052b
-  if (!(has(i8))) { //05f1
+  if (!(has("Remote Control"))) { //05f1
     print("The knob is broken off. There's no way to turn it.")
     goto(l1589)
   }

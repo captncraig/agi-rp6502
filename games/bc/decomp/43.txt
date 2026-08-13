@@ -193,9 +193,9 @@ if (f207) { //021a
     v59 = 1
     goto(l583)
   }
-  if (has(i12)) { //0230
+  if (has("Magic Sword")) { //0230
     print("Oh, no! You've allowed the Horned King to capture your Magic Sword.")
-    drop(i12)
+    drop("Magic Sword")
     v59 = 1
     goto(l583)
   }

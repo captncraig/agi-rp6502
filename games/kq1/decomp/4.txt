@@ -45,7 +45,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //00ac
   if ((posn(o0,0,40,57,56) || posn(o0,0,57,76,70) || posn(o0,0,90,106,133) || posn(o0,0,134,106,167))) { //00be
     reset(f116)
     print("The clear water washes into the bucket.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //00e4
       vCurrentScore += 2

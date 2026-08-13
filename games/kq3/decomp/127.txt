@@ -8,7 +8,7 @@ if ((!fEnteredCommand || fSaidAccepted)) { //000c
 set(f120)
 v103++
 if ((said("carve", "cactii", "try", "dagger") || said("carve", "lift", "cactii", "try", "dagger"))) { //001e
-  if ((!(has(i34)) || !(has(i33)))) { //003a
+  if ((!(has("Cactus*")) || !(has("Knife")))) { //003a
     print("How can you use that which you do not have?")
     goto(l86)
   }
@@ -19,19 +19,19 @@ if ((said("carve", "cactii", "try", "dagger") || said("carve", "lift", "cactii",
 }
 l86:
 if ((said("flatten", "cactii", "juice", "on", "ladle") || said("flatten", "cactii", "on", "ladle") || said("flatten", "cactii", "juice", "ladle") || said("flatten", "cactii", "ladle"))) { //0056
-  if (!(has(i34))) { //0084
+  if (!(has("Cactus*"))) { //0084
     print("How can you use that which you do not have?")
     goto(l157)
   }
   print("Grabbing one of the measuring spoons from the oaken table, you grasp the slit cactus in your hand, and squeeze it until you have a spoonful of cactus juice. The small cactus is quite devoid of liquid now, so you toss it away.")
-  drop(i34)
+  drop("Cactus*")
   if (v103 == 2) { //0094
     reset(f120)
   }
 }
 l157:
 if ((said("add", "one", "ladle", "cactii", "juice", "basin") || said("add", "ladle", "cactii", "juice", "basin") || said("add", "cactii", "juice", "basin") || said("drain", "one", "ladle", "cactii", "juice", "basin") || said("drain", "ladle", "cactii", "juice", "basin") || said("drain", "cactii", "juice", "basin"))) { //009d
-  if (!(has(i40))) { //00eb
+  if (!(has("Bowl"))) { //00eb
     print("How can you use that which you do not have?")
     goto(l258)
   }
@@ -42,25 +42,25 @@ if ((said("add", "one", "ladle", "cactii", "juice", "basin") || said("add", "lad
 }
 l258:
 if ((said("add", "one", "cup", "lard", "basin") || said("add", "cup", "lard", "basin") || said("add", "lard", "basin") || said("add", "one", "cup", "lard", "basin"))) { //0102
-  if (!(has(i32))) { //0132
+  if (!(has("Lard*"))) { //0132
     print("How can you use that which you do not have?")
     goto(l333)
   }
   print("You scrape the lard into the mixing bowl, and keep the now-empty jar nearby to store your finished formula.")
-  drop(i32)
-  get(i35)
+  drop("Lard*")
+  get("Empty Lard Jar*")
   if (v103 == 4) { //0144
     reset(f120)
   }
 }
 l333:
 if ((said("add", "two", "add", "frog", "spit", "basin") || said("add", "two", "add", "frog", "spit") || said("add", "frog", "spit", "basin") || said("add", "frog", "spit", "basin") || said("add", "frog", "spit"))) { //014d
-  if (!(has(i31))) { //0189
+  if (!(has("Toad Spittle*"))) { //0189
     print("How can you use that which you do not have?")
     goto(l418)
   }
   print("You cautiously pour the two drops of toad spittle into the bowl.")
-  drop(i31)
+  drop("Toad Spittle*")
   if (v103 == 5) { //0199
     reset(f120)
   }
@@ -74,7 +74,7 @@ if ((said("knead", "compound", "ladle") || said("knead", "compound", "try", "lad
   }
 }
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //01f3
-  if (!(has(i37))) { //0207
+  if (!(has("Magic Wand*"))) { //0207
     print("How can you use that which you do not have?")
     goto(l542)
   }
@@ -87,8 +87,8 @@ l542:
 if ((said("add", "ointment", "bottle") || said("add", "ointment", "drain", "bottle") || said("add", "ointment", "back", "bottle") || said("add", "ointment", "drain", "lard", "bottle"))) { //021e
   if (v103 == 9) { //024c
     print("You scoop the invisibility ointment out of the clay bowl and return it to the lard jar.")
-    drop(i35)
-    get(i36)
+    drop("Empty Lard Jar*")
+    get("Invisibility Ointment*")
     reset(f120)
   }
 }

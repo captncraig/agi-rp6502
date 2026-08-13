@@ -185,8 +185,8 @@ if (has(i53) && (said("give", "bracelet", "bitch") || said("give", "bitch", "bra
   drop(i53)
   set(f35)
 }
-if (has(i58) && (said("give", "earrings", "bitch") || said("give", "bitch", "earrings"))) { //02ec
-  drop(i58)
+if (has("T\x01") && (said("give", "earrings", "bitch") || said("give", "bitch", "earrings"))) { //02ec
+  drop("T\x01")
   set(f35)
 }
 if (f35) { //0308

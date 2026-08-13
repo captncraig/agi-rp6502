@@ -118,7 +118,7 @@ l450:
   goto(l864)
 }
 if ((said("give", "ham", "bitch") || said("give", "bitch", "ham") || said("feed", "ham", "bitch") || said("feed", "bitch", "ham"))) { //01c5
-  if (has(i66)) { //01eb
+  if (has("T\x01")) { //01eb
     print("Grandma shakes her head. \"I can't chew ham. It is too tough for my teeth.\"")
     goto(l504)
   }
@@ -131,7 +131,7 @@ if ((said("give", "basket", "bitch") || said("give", "bitch", "basket") || said(
     print("Grandma looks at the basket of goodies. \"This belongs to my granddaughter,\" she declares. \"You ought to return it to her.\"")
     goto(l569)
   }
-  if (has(i62)) { //022c
+  if (has("T\x01")) { //022c
     print("The basket is empty because you ate all the goodies. What would Grandma do with an empty basket?")
     goto(l569)
   }
@@ -149,7 +149,7 @@ l623:
   goto(l864)
 }
 if ((said("give", "treasure", "bitch") || said("give", "bitch", "treasure") || said("give", "diamond and sapphire tiara", "bitch") || said("give", "bitch", "diamond and sapphire tiara") || said("give", "bracelet", "bitch") || said("give", "bitch", "bracelet") || said("give", "earrings", "bitch") || said("give", "bitch", "earrings") || said("give", "brooch", "bitch") || said("give", "bitch", "brooch") || said("give", "diamond and sapphire necklace", "bitch") || said("give", "bitch", "diamond and sapphire necklace"))) { //0272
-  if ((has(i56) || has(i53) || has(i58) || has(i59) || has(i57))) { //02d8
+  if ((has(i56) || has(i53) || has("T\x01") || has(i59) || has(i57))) { //02d8
     print("Grandma shakes her head. \"I don't need treasures to be happy,\" she declares. You keep it.\"")
     goto(l751)
   }

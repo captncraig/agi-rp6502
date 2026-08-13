@@ -420,7 +420,7 @@ if ((said("cut", "rope") || said("cut", "rope", "dagger"))) { //0651
       stop.cycling(o3)
       set(f81)
       if (f163) { //06c0
-        get(i26)
+        get("water")
         set(f88)
         if (!f91) { //06ca
           vCurrentScore += 2
@@ -428,7 +428,7 @@ if ((said("cut", "rope") || said("cut", "rope", "dagger"))) { //0651
         }
       }
       set(f176)
-      get(i11)
+      get("water bucket")
       print("With the rope cut, you are able to take the bucket.")
       vCurrentScore += 2
     }

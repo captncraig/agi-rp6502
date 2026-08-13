@@ -39,7 +39,7 @@ if (f182) { //0066
 }
 if (v71 == 1) { //006e
   v71 = 0
-  drop(i54)
+  drop("Magic Map*")
   print("As you unroll the delicate map, it crumbles in the intense heat!")
 }
 if (v44 == 0 && (v41 > 162 || vWhichEgoBorder == 2 || vWhichEgoBorder == 1)) { //007c

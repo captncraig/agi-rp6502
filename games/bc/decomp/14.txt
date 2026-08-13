@@ -59,7 +59,7 @@ if (posn(o0,53,125,68,141) && !f76) { //00a3
   set(fSaidAccepted)
   if (f201) { //00b2
     set(f76)
-    get(i4)
+    get("Food Wallet")
     print("Reaching under the foot- bridge, you take the wallet and look inside. It is filled with food.")
     goto(l197)
   }

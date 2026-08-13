@@ -143,7 +143,7 @@ if (f156) { //0181
     reset(f100)
     set(f101)
     vCurrentScore -= 8
-    drop(i19)
+    drop("magic mirror")
     set(f126)
     reset(f125)
     v74--
@@ -153,7 +153,7 @@ if (f156) { //0181
     reset(f102)
     set(f103)
     vCurrentScore -= 8
-    drop(i21)
+    drop("shield")
     set(f126)
     reset(f125)
     v74--
@@ -163,7 +163,7 @@ if (f156) { //0181
     reset(f104)
     set(f105)
     vCurrentScore -= 8
-    drop(i2)
+    drop("chest")
     set(f126)
     reset(f125)
     v74--
@@ -173,35 +173,35 @@ if (f156) { //0181
     reset(f106)
     set(f107)
     vCurrentScore -= 6
-    drop(i15)
+    drop("pouch of diamonds")
     goto(l615)
   }
   if (f108) { //0212
     reset(f108)
     set(f109)
     vCurrentScore -= 6
-    drop(i4)
+    drop("gold walnut")
     goto(l615)
   }
   if (f110) { //0224
     reset(f110)
     set(f111)
     vCurrentScore -= 6
-    drop(i20)
+    drop("gold egg")
     goto(l615)
   }
   if (f72) { //0236
     reset(f72)
     set(f112)
     vCurrentScore -= 3
-    drop(i16)
+    drop("pouch")
     goto(l615)
   }
   if (f113) { //0248
     reset(f113)
     set(f114)
     vCurrentScore -= 6
-    drop(i17)
+    drop("sceptre")
     goto(l615)
   }
   set.view(o1,115)

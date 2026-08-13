@@ -541,9 +541,9 @@ if ((said("drop", "automatic", "rol") || said("drop", "automatic", "locker", "ro
     print("You must open the gun locker before you can put your weapon inside.")
     goto(l2137)
   }
-  if (has(i5)) { //0814
+  if (has("Revolver")) { //0814
     print("You place your revolver in the locker.")
-    put(i5,0)
+    put("Revolver",0)
     set(f42)
     if (!f185) { //0821
       set(f185)
@@ -551,9 +551,9 @@ if ((said("drop", "automatic", "rol") || said("drop", "automatic", "locker", "ro
     }
     goto(l2137)
   }
-  if (has(i14)) { //0830
+  if (has("Loaded Revolver")) { //0830
     print("You place your revolver in the locker.")
-    put(i14,0)
+    put("Loaded Revolver",0)
     set(f42)
     if (!f185) { //083d
       set(f185)
@@ -577,17 +577,17 @@ if ((said("get", "automatic", "rol") || said("empty", "automatic", "rol") || sai
     print("You must open the gun locker before you can retrieve your weapon.")
     goto(l2253)
   }
-  if ((has(i14) || has(i5))) { //089d
+  if ((has("Loaded Revolver") || has("Revolver"))) { //089d
     print("Your weapon is in your holster.")
     goto(l2253)
   }
   if (f42) { //08ac
     print("You remove and holster your weapon.")
-    if (obj.in.room(i5,vCurrentRoom)) { //08b4
-      get(i5)
+    if (obj.in.room("Revolver",vCurrentRoom)) { //08b4
+      get("Revolver")
     }
-    if (obj.in.room(i14,vCurrentRoom)) { //08bd
-      get(i14)
+    if (obj.in.room("Loaded Revolver",vCurrentRoom)) { //08bd
+      get("Loaded Revolver")
     }
     reset(f42)
     goto(l2253)

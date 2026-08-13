@@ -32,7 +32,7 @@ if (fNewRoom) { //0002
   set.loop(o14,0)
   v208 = 0
   random(0,255,v61)
-  if (!(has(i12)) && v61 < 80 && vPrevRoom != 37 && !fEgoOnWater) { //005d
+  if (!(has("Magic Sword")) && v61 < 80 && vPrevRoom != 37 && !fEgoOnWater) { //005d
     set(f212)
   }
 l112:
@@ -206,8 +206,8 @@ if (v215 == 1) { //0261
 }
 if (f205) { //026a
   reset(f205)
-  if (has(i12)) { //0272
-    drop(i12)
+  if (has("Magic Sword")) { //0272
+    drop("Magic Sword")
     v59 = 1
     print("You've failed to react quickly enough. Now the henchman has your magic sword.")
     goto(l660)

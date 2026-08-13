@@ -226,7 +226,7 @@ if (f63 && v221 == 228) { //029d
 if (!fEnteredCommand) { //02b5
   goto(l1608)
 }
-if ((f39 || has(i4))) { //02bf
+if ((f39 || has("Radio Extender"))) { //02bf
   if (v63 > 209 && v63 < 255) { //02c9
     if (said("call")) { //02d3
       print("You key your radio, \"Dispatch, this is 83-Nora-10. Be advised, Code-4 with two in custody.\"")

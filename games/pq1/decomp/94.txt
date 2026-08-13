@@ -195,13 +195,13 @@ if ((said("drive") || said("drive", "auto") || said("begin", "auto", "use", "car
   set(f30)
 }
 reset(f250)
-if (v44 == 99 && has(i1)) { //02ce
+if (v44 == 99 && has("Patrol Car Keys")) { //02ce
   set(f250)
 }
-if (v44 == 1 && has(i2)) { //02d9
+if (v44 == 1 && has("Corvette Keys")) { //02d9
   set(f250)
 }
-if (v44 == 2 && has(i3)) { //02e4
+if (v44 == 2 && has("Cadillac Keys")) { //02e4
   set(f250)
 }
 if (f30) { //02ef
@@ -489,7 +489,7 @@ if ((!f39 || fSaidAccepted || !fEnteredCommand)) { //064a
 v130 = 94
 if ((said("examine") || said("examine", "auto") || said("look in", "auto") || said("find", "auto") || said("examine", "accident"))) { //065e
   if (v44 == 99) { //0680
-    if (!(obj.in.room(i13,v130))) { //0687
+    if (!(obj.in.room("Nightstick",v130))) { //0687
       print("Why do you always get the car that needs cleaning!?")
       goto(l1686)
     }
@@ -498,7 +498,7 @@ l1686:
     goto(l1715)
   }
   if (v44 == 1) { //0699
-    if (obj.in.room(i12,v130)) { //06a0
+    if (obj.in.room("Wallet",v130)) { //06a0
       print("Good move! Your wallet is on the seat.")
       goto(l1710)
     }
@@ -511,11 +511,11 @@ l1710:
 l1715:
 if (v44 == 99) { //06b3
   if ((said("get", "nightstick") || said("get", "nightstick", "off", "d") || said("get", "nightstick", "from", "d") || said("empty", "nightstick", "from", "d") || said("get", "nightstick", "from", "auto"))) { //06ba
-    if (!(obj.in.room(i13,v130))) { //06ee
+    if (!(obj.in.room("Nightstick",v130))) { //06ee
       set(f114)
       goto(l1803)
     }
-    get(i13)
+    get("Nightstick")
     set(f116)
     if (!f149) { //06ff
       set(f149)
@@ -525,11 +525,11 @@ if (v44 == 99) { //06b3
 l1803:
   if ((said("drop", "nightstick") || said("drop", "nightstick", "d") || said("drop", "nightstick", "on", "d") || said("drop", "nightstick", "d") || said("hang", "nightstick", "on", "d") || said("drop", "nightstick", "auto"))) { //070b
 l1859:
-    if (!(has(i13))) { //0743
+    if (!(has("Nightstick"))) { //0743
       set(f115)
       goto(l1876)
     }
-    put(i13,130)
+    put("Nightstick",130)
     set(f116)
   }
 }
@@ -539,11 +539,11 @@ if ((said("get", "billfold") || said("get", "billfold", "off", "bench") || said(
     print("It's not here.")
     goto(l1979)
   }
-  if (!(obj.in.room(i12,v130))) { //0795
+  if (!(obj.in.room("Wallet",v130))) { //0795
     set(f114)
     goto(l1979)
   }
-  get(i12)
+  get("Wallet")
   set(f116)
   if (!f59) { //07a6
     set(f59)
@@ -560,13 +560,13 @@ if ((said("drop", "billfold") || said("drop", "billfold", "bench") || said("drop
     goto(l2087)
   }
 l2064:
-  if (!(has(i12))) { //0810
+  if (!(has("Wallet"))) { //0810
     set(f115)
     goto(l2087)
   }
   v97 = v89
   v89 = 0
-  put(i12,130)
+  put("Wallet",130)
   set(f116)
 }
 l2087:

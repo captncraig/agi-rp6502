@@ -46,7 +46,7 @@ if (fNewRoom) { //0002
       position(o13,71,89)
     }
     random(1,2,v36)
-    if (has(i8) && v36 == 1 && (!f131 || !f132 || !f133 || !f134)) { //00b0
+    if (has("Dough in Ears") && v36 == 1 && (!f131 || !f132 || !f133 || !f134)) { //00b0
 l199:
       random(1,4,v36)
       if (v36 == 1) { //00cb
@@ -132,7 +132,7 @@ l315:
     position(o13,74,107)
   }
   random(1,2,v36)
-  if (has(i8) && v36 == 1 && (!f139 || !f140 || !f141 || !f142)) { //01ba
+  if (has("Dough in Ears") && v36 == 1 && (!f139 || !f140 || !f141 || !f142)) { //01ba
 l465:
     random(1,4,v36)
     if (v36 == 1) { //01d5
@@ -240,10 +240,10 @@ l802:
     print("You don't see any right now.")
   }
 l825:
-  if (f248 && has(i8) && said("hear", "bird")) { //0339
+  if (f248 && has("Dough in Ears") && said("hear", "bird")) { //0339
     print("Maybe if you're quiet, you'll hear them.")
   }
-  if (f247 && has(i8) && said("hear", "animal")) { //0349
+  if (f247 && has("Dough in Ears") && said("hear", "animal")) { //0349
     print("Maybe if you're quiet, you'll hear them.")
   }
   if (!f91) { //0359

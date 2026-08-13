@@ -36,14 +36,14 @@ if (fNewRoom) { //0002
   position(o10,29,149)
   position(o2,110,111)
   position(o3,119,147)
-  if (!(has(i1))) { //0067
+  if (!(has("Patrol Car Keys"))) { //0067
     reset(f63)
     reset(f64)
   }
-  if (!(has(i2))) { //0072
+  if (!(has("Corvette Keys"))) { //0072
     reset(f66)
   }
-  if (!(has(i3))) { //007b
+  if (!(has("Cadillac Keys"))) { //007b
     reset(f65)
   }
   if (v36 > 0 && v35 > 0 && !(v63 > 0) && vPrevRoom == 20) { //0084
@@ -161,7 +161,7 @@ if (posn(o0,55,89,159,93)) { //01e6
   if (v63 == 250) { //01f0
     v63 = 255
   }
-  if (!(has(i13))) { //01fa
+  if (!(has("Nightstick"))) { //01fa
     new.room(52)
     goto(l529)
   }
@@ -509,7 +509,7 @@ if ((said("o", "d") || said("o", "auto", "d"))) { //06c8
   }
   if (f224) { //06eb
     if (!f63) { //06f1
-      if (!(has(i1))) { //06f8
+      if (!(has("Patrol Car Keys"))) { //06f8
         print("You don't have the keys to this car.")
         goto(l1818)
       }
@@ -535,7 +535,7 @@ l1823:
   }
   if (f226) { //072d
     if (!f65) { //0733
-      if (!(has(i3))) { //073a
+      if (!(has("Cadillac Keys"))) { //073a
         print("You don't have the keys to this car.")
         goto(l1884)
       }
@@ -561,7 +561,7 @@ l1889:
   }
   if (f228) { //076f
     if (!f66) { //0775
-      if (!(has(i2))) { //077c
+      if (!(has("Corvette Keys"))) { //077c
         print("You don't have the keys to this car.")
         goto(l1950)
       }

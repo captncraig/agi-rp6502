@@ -98,7 +98,7 @@ if (said("acquire", "candle")) { //0124
     distance(o0,o2,v67)
     if ((fTriggerLine || v67 < 20)) { //013c
       print("You pick it up and carry it with you.")
-      get(i78)
+      get("T\x01")
       set(f141)
       vCurrentScore += 2
       goto(l341)
@@ -107,7 +107,7 @@ if (said("acquire", "candle")) { //0124
 l341:
     goto(l357)
   }
-  if (has(i78)) { //0158
+  if (has("T\x01")) { //0158
     print("You already have it.")
     goto(l357)
   }

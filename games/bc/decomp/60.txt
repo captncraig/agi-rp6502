@@ -335,7 +335,7 @@ if (f218) { //03b3
   shake.screen(7)
   print.at("The castle walls tremble and shake. Stones fall, and pillars collapse around you.",1,2,37)
   shake.screen(7)
-  if (!f49 && has(i12)) { //03e4
+  if (!f49 && has("Magic Sword")) { //03e4
     set(f49)
     vCurrentScore += 13
   }

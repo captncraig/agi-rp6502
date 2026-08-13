@@ -35,7 +35,7 @@ if (vComputerType == IBM_PC) { //006a
 if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0075
   display(18,1,"Double clicking joystick button or\n right mouse button also shows status\n screen. Single click pops up menus")
 }
-if (has(i14)) { //0085
+if (has("Pulseray")) { //0085
   display(19,1,"    F6 to fire Pulseray.")
 }
 if (vComputerType == 2) { //008f

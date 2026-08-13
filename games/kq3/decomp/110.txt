@@ -21,7 +21,7 @@ if ((said("examine", "creek") || said("examine", "liquid"))) { //0050
   print("Clear water flows over and around the rocks of the stream. Wet mud lines its banks.")
 }
 if ((said("capture", "mud") || said("capture", "mud", "creek") || said("capture", "mud", "from", "creek") || said("capture", "mud", "from", "creek", "try", "ladle") || said("capture", "mud", "try", "ladle"))) { //0064
-  if (has(i27)) { //009a
+  if (has("Spoonful of Mud*")) { //009a
     print("You are already carrying it.")
     goto(l207)
   }
@@ -29,13 +29,13 @@ if ((said("capture", "mud") || said("capture", "mud", "creek") || said("capture"
     print("There is no mud around here.")
     goto(l207)
   }
-  if (!(has(i41))) { //00b1
+  if (!(has("Spoon"))) { //00b1
     print("The thought of carrying around a handful of mud doesn't appeal to you.")
     goto(l207)
   }
   print("With the wooden spoon you kneel and scoop a spoonful of wet mud from the stream's bank. You carry it with you.")
-  get(i27)
-  drop(i41)
+  get("Spoonful of Mud*")
+  drop("Spoon")
   if (!f110) { //00c3
     set(f110)
     vCurrentScore += 1

@@ -7,14 +7,14 @@ if (fNewRoom) { //0002
   set.priority(o6,15)
 }
 if (said("drop", "bomb")) { //0015
-  if (has(i15)) { //001f
+  if (has("Gas Grenade")) { //001f
     if (vCurrentRoom == 62) { //0025
       print("There is no need for that here.")
       goto(l125)
     }
     get.posn(o0,v135,v136)
     if (v135 < 145) { //0035
-      drop(i15)
+      drop("Gas Grenade")
       set(f139)
       if (v136 > 17) { //0040
         v136 -= 16

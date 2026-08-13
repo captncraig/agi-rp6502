@@ -117,7 +117,7 @@ if (said("kill", "snake")) { //019f
     goto(l480)
   }
   if (f31) { //01b9
-    if (has(i50)) { //01bf
+    if (has("T\x01")) { //01bf
       ignore.objs(o0)
       print("Brandishing the sharp sword, you quickly slash the viper into ribbons.")
       set(f108)
@@ -146,8 +146,8 @@ if ((said("cast", "bridle", "snake") || said("drop", "bridle", "snake") || f37))
     goto(l586)
   }
   if (f31) { //0219
-    if (has(i77)) { //021f
-      drop(i77)
+    if (has("\x01")) { //021f
+      drop("\x01")
       vCurrentScore += 5
       set.view(o3,46)
       reset(f31)
@@ -160,7 +160,7 @@ if ((said("cast", "bridle", "snake") || said("drop", "bridle", "snake") || f37))
 l570:
     goto(l586)
   }
-  if (has(i77)) { //023d
+  if (has("\x01")) { //023d
     print("You put the bridle on the dead snake. Nothing happens. You pick the bridle up again.")
     goto(l586)
   }

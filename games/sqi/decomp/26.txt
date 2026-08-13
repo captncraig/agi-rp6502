@@ -241,10 +241,10 @@ l711:
   print("You are not close enough.")
 }
 l716:
-if (!(has(i2)) && said("acquire", "boulder")) { //02cc
+if (!(has("Rock")) && said("acquire", "boulder")) { //02cc
   if (obj.in.box(o0,2,135,40,160)) { //02d9
     reset(f84)
-    get(i2)
+    get("Rock")
     start.update(o1)
     erase(o1)
     draw(o3)
@@ -253,9 +253,9 @@ if (!(has(i2)) && said("acquire", "boulder")) { //02cc
   }
 }
 if ((said("drop", "boulder", "geyser") || said("drop", "boulder", "geyser", "entryway") || said("drop", "boulder", "entryway") || said("fill", "geyser", "boulder") || said("fill", "boulder", "geyser"))) { //02f3
-  if (has(i2)) { //0323
+  if (has("Rock")) { //0323
     if (obj.in.box(o0,2,135,40,160)) { //0329
-      drop(i2)
+      drop("Rock")
       set(f84)
       end.of.loop(o4,f31)
       set(f30)
@@ -296,7 +296,7 @@ if ((said("open", "door") || said("press", "wall") || said("hit", "door"))) { //
 }
 l946:
 if (said("open", "door", "army knife")) { //03b2
-  if (has(i19)) { //03be
+  if (has("Xenon Army Knife")) { //03be
     if (obj.in.box(o0,0,121,32,135)) { //03c4
       print("Try as you might, the darn door won't open for you.")
       goto(l981)

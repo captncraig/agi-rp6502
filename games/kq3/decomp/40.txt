@@ -277,13 +277,13 @@ if (f222 && !f224) { //0356
 if (v223 != v63) { //0378
   v223 = v63
   if (v63 == 0) { //0383
-    if (has(i48)) { //038a
-      drop(i48)
+    if (has("Purse & Gold Coins*")) { //038a
+      drop("Purse & Gold Coins*")
     }
-    get(i47)
+    get("Empty Purse*")
   }
 }
-if (has(i48) && v63 > 0) { //0394
+if (has("Purse & Gold Coins*") && v63 > 0) { //0394
   set(f220)
   goto(l932)
 }
@@ -449,7 +449,7 @@ l1617:
       reset(f222)
       if (f220) { //067e
         vCurrentScore += 3
-        drop(i48)
+        drop("Purse & Gold Coins*")
         v63 = 0
         v221 = 0
         erase(o1)
@@ -460,8 +460,8 @@ l1617:
         goto(l1709)
       }
       set(f224)
-      if (has(i47)) { //069e
-        drop(i47)
+      if (has("Empty Purse*")) { //069e
+        drop("Empty Purse*")
         print("%m31 %m33")
         goto(l1709)
       }

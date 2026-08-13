@@ -442,14 +442,14 @@ l1583:
     goto(l1698)
   }
   if ((said("kill", "count dracula") || said("pound", "pole", "count dracula"))) { //0644
-    if (has(i54) && has(i60) && !(said("kill", "count dracula", "knife"))) { //0658
+    if (has("T\x01") && has(i60) && !(said("kill", "count dracula", "knife"))) { //0658
       set(f92)
       move.obj(o0,76,107,0,f33)
       v32 = 250
       v92 = 2
       goto(l1683)
     }
-    if (has(i50) && !(said("pound", "pole", "count dracula"))) { //067a
+    if (has("T\x01") && !(said("pound", "pole", "count dracula"))) { //067a
       print("You plunge the sword into Count Dracula's sleeping body. Oh, dear! It has no effect. You just woke him up.")
       v32 = 0
       goto(l1683)

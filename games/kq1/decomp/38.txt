@@ -93,7 +93,7 @@ if (f154 && f155) { //011a
     reset(f154)
     v80 = 38
     set(f94)
-    drop(i25)
+    drop("beans")
     vCurrentScore += 2
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!")
     sound(12,f25)

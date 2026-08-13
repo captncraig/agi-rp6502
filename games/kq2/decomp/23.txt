@@ -29,7 +29,7 @@ if (!f74 && said("acquire", "pole")) { //0048
     goto(l112)
   }
   vCurrentScore += 2
-  get(i54)
+  get("T\x01")
   erase(o2)
   set(f74)
   print("OK.")

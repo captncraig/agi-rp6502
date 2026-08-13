@@ -155,14 +155,14 @@ if (f54) { //01c2
   if (v205 == 11 && v200 > 0) { //01c8
     print("You take the book of knowledge, and become the wisest man in all Prydain. For the rest of your life, you wonder if you made the right choice.")
     print("You always miss your friend, Gurgi, and wonder if you could have done better in your quest.")
-    get(i20)
+    get("Book of Knowledge")
     set(f209)
     set(f205)
   }
   if (v205 == 12 && v200 > 0) { //01dc
     print("You take the pot of gold, and become the richest man in all Prydain. You live out the rest of your life in luxury, but discover that money is not the ultimate answer to happiness.")
     print("You always miss your friend, Gurgi, and wonder if you could have done better in your quest.")
-    get(i21)
+    get("Pot of Gold")
     set(f209)
     set(f205)
   }
@@ -171,14 +171,14 @@ if (f54) { //01c2
 if (v205 == 21 && v200 > 0) { //01f3
   print("You take the warrior's shield, and become the bravest warrior in all Prydain. But you wonder if you might have done better with your life.")
   set(f209)
-  get(i22)
+  get("Hero Shield")
   set(f205)
   v202 = 54
 }
 if (v205 == 22 && v200 > 0) { //0208
   print("You take the magical suit of armor, and live to be an old, old man. But you wonder if you might have accomplished more with your empty life.")
   set(f209)
-  get(i23)
+  get("Suit of Armor")
   set(f205)
   v202 = 54
 }
@@ -330,7 +330,7 @@ if (f206) { //03af
 }
 if (f208) { //03bb
   reset(f208)
-  get(i12)
+  get("Magic Sword")
   erase(o7)
   vCurrentScore += 15
   print("You once again hold your special sword in your hand. Now immortal, you live to a ripe old age, fight many battles, and, thanks to the sword, always emerge victorious.")

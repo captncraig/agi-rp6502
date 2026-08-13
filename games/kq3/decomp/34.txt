@@ -16,7 +16,7 @@ if (fNewRoom) { //0002
   v34 = 166
   set.horizon(93)
   random(1,2,v36)
-  if (has(i8) && v36 == 1 && (!f135 || !f136 || !f137 || !f138)) { //003f
+  if (has("Dough in Ears") && v36 == 1 && (!f135 || !f136 || !f137 || !f138)) { //003f
 l86:
     random(1,4,v36)
     if (v36 == 1) { //005a
@@ -211,7 +211,7 @@ if (said("call", "bird")) { //0360
 if (said("kill", "bird")) { //036c
   print("You never were very good at doing that. You'd really rather not.")
 }
-if (has(i8) && said("hear", "bird")) { //0378
+if (has("Dough in Ears") && said("hear", "bird")) { //0378
   print("Shhh.  If you're quiet, perhaps you'll hear them.")
 }
 if ((said("examine", "gate") || said("examine", "gate", "cage"))) { //0386
@@ -266,7 +266,7 @@ if (v225 > 0 && (said("add", "bird") || said("add", "bird", "down") || said("thr
   set(f221)
 }
 if ((said("capture", "feather") || said("capture", "feather", "from", "bird") || said("capture", "bird", "feather") || said("pluck", "bird") || said("pluck", "feather") || said("pluck", "bird", "feather") || said("pluck", "feather", "from", "bird") || said("move", "feather") || said("move", "bird", "feather") || said("move", "feather", "from", "bird"))) { //045e
-  if (!(obj.in.room(i1,vCurrentRoom))) { //04b2
+  if (!(obj.in.room("Chicken Feather*",vCurrentRoom))) { //04b2
     print("You already took a chicken feather.")
     goto(l1237)
   }
@@ -274,7 +274,7 @@ if ((said("capture", "feather") || said("capture", "feather", "from", "bird") ||
     print("You have to catch a chicken first.")
     goto(l1237)
   }
-  get(i1)
+  get("Chicken Feather*")
   vCurrentScore += 1
   set(f221)
   print("Tucking the chicken firmly under one arm, you gently pluck a small feather, then let it go.")

@@ -129,7 +129,7 @@ if (said("acquire", "dagger")) { //019d
   if (f62 && !f69) { //01a7
     if (posn(o0,112,108,134,133)) { //01b0
       print("You reach into the hole and grasp the dagger, being careful not to cut yourself.")
-      get(i1)
+      get("dagger")
       vCurrentScore += 5
       set(f69)
       set(f67)

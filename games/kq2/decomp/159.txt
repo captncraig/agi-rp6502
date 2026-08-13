@@ -4,10 +4,10 @@ if (said("examine", "brambles")) { //0002
 if ((said("acquire", "brambles") || said("acquire", "brambles"))) { //000e
   print("You would be crazy to touch the thorns.")
 }
-if (said("cut", "brambles") && has(i50)) { //0022
+if (said("cut", "brambles") && has("T\x01")) { //0022
   print("The brambles are too thick for the sword to cut through.")
 }
-if (said("cut", "brambles") && !(has(i50))) { //0030
+if (said("cut", "brambles") && !(has("T\x01"))) { //0030
   print("You would be crazy to touch the thorns.")
 }
 if (!fTriggerLine) { //003f

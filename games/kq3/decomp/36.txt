@@ -157,7 +157,7 @@ if (f226 && v225 == 10) { //01be
   set.cel(o2,0)
   print.at("The Oracle grows silent again, and seems to fall into a deep sleep. You attempt to thank the Oracle, but the Oracle does not respond.",2,2,37)
   set(f176)
-  get(i14)
+  get("Amber Stone*")
   vCurrentScore += 3
   v224 = 2
 }
@@ -210,8 +210,8 @@ l628:
   if ((said("examine", "out") || said("examine", "out", "cave"))) { //02b4
     print("You see the green countryside of Llewdor out the opening of the cave.")
   }
-  if (obj.in.room(i33,vCurrentRoom) && said("capture", "dagger")) { //02ca
-    get(i33)
+  if (obj.in.room("Knife",vCurrentRoom) && said("capture", "dagger")) { //02ca
+    get("Knife")
     print("You can't get an oracle!")
   }
 }

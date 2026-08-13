@@ -59,7 +59,7 @@ if (!f21) { //00a2
   if ((said("cast", "dagger") || said("kill", "goat"))) { //00b5
     if (f67) { //00c7
       print("You throw the dagger and it lands in the river, lost for all time.")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
@@ -169,14 +169,14 @@ l582:
   if (said("cast", "dagger") && f67) { //0246
     if (posn(o0,1,78,85,120)) { //0252
       print("You throw the dagger and the old -- but quick -- troll catches it.  Now what are your plans?")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
       goto(l629)
     }
     print("You throw, and lose the dagger.")
-    drop(i1)
+    drop("dagger")
     reset(f67)
     set(f70)
     vCurrentScore -= 5
@@ -211,7 +211,7 @@ l697:
     if ((said("give", "diamond") || said("give", "troll", "diamond") || said("give", "diamond", "troll"))) { //02e9
       if (posn(o0,1,78,85,120)) { //0305
         print("OK")
-        drop(i15)
+        drop("pouch of diamonds")
         reset(f106)
         set(f151)
         set(f107)
@@ -227,7 +227,7 @@ l803:
     if ((said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll"))) { //0329
       if (posn(o0,1,78,85,120)) { //0345
         print("OK")
-        drop(i17)
+        drop("sceptre")
         reset(f113)
         set(f151)
         set(f114)
@@ -243,7 +243,7 @@ l867:
     if ((said("give", "egg") || said("give", "troll", "egg") || said("give", "egg", "troll"))) { //0369
       if (posn(o0,1,78,85,120)) { //0385
         print("OK")
-        drop(i20)
+        drop("gold egg")
         reset(f110)
         set(f151)
         set(f111)
@@ -264,7 +264,7 @@ l931:
     if ((said("give", "gold nut") || said("give", "troll", "gold nut") || said("give", "gold nut", "troll"))) { //03cd
       if (posn(o0,1,78,85,120)) { //03e9
         print("OK")
-        drop(i4)
+        drop("gold walnut")
         reset(f108)
         set(f151)
         set(f109)

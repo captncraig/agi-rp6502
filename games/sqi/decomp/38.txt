@@ -75,7 +75,7 @@ if (v68 == vCurrentRoom) { //00dc
 if (said("acquire", "buck")) { //0116
   if (!f73 && v124 < 201) { //0120
     if (posn(o0,86,108,114,119)) { //012a
-      get(i10)
+      get("Buckazoid(s)")
       v124 += 5
       set(f73)
       print("Taken")

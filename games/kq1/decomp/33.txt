@@ -49,7 +49,7 @@ l189:
 if (!f88 && f81 && said("acquire", "water")) { //00bd
   if ((posn(o0,0,48,97,128) || posn(o0,98,94,159,167) || posn(o0,120,44,159,86))) { //00cc
     print("You carefully fill the bucket at the river's edge.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //00ea
       vCurrentScore += 2

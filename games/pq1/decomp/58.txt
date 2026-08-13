@@ -219,14 +219,14 @@ l665:
 l753:
   if ((said("empty", "cuff", "rol") || said("uncuff", "rol") || said("get", "off", "cuff", "rol") || said("get", "cuff", "rol"))) { //02f1
     if (v220 < 20) { //0317
-      get(i24)
+      get("Handcuffs")
       if (!f129) { //0320
         set(f129)
         vCurrentScore += 2
       }
-      if (!f42 && (has(i5) || has(i14))) { //032c
-        drop(i5)
-        drop(i14)
+      if (!f42 && (has("Revolver") || has("Loaded Revolver"))) { //032c
+        drop("Revolver")
+        drop("Loaded Revolver")
         v220 = 100
         goto(l846)
       }

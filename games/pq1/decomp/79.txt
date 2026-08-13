@@ -56,7 +56,7 @@ if (fNewRoom) { //0002
   return()
 }
 if ((said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("number") || said("call") || said("accident", "number") || said("call", "number") || said("call", "accident", "number"))) { //0092
-  if (!(has(i21))) { //00ce
+  if (!(has("Transmitter Pen"))) { //00ce
     print("You whisper a soft \"Room 404\" into your empty shirt pocket.")
     goto(l237)
   }

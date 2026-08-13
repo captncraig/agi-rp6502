@@ -143,7 +143,7 @@ if (f222) { //018b
     print("\"I can only interrupt a court in session for an extreme emergency!\"")
   }
   if ((said("emergencies", "rol") || said("anyword", "emergencies", "rol") || said("anyword", "anyword", "emergencies", "rol") || said("no", "clock", "rol"))) { //0265
-    if (!(has(i23)) && v36 > 0) { //028b
+    if (!(has("No Bail Warrant")) && v36 > 0) { //028b
       print("\"Please wait a moment. I'll send a message with the bailiff.\"")
       v220 = 5
       v140 = 22

@@ -77,7 +77,7 @@ if (said("acquire", "ham")) { //0101
   if (!f140) { //010b
     if (posn(o0,50,102,108,138)) { //0112
       print("OK.")
-      get(i66)
+      get("T\x01")
       set(f140)
       erase(o2)
       vCurrentScore += 2
@@ -87,7 +87,7 @@ if (said("acquire", "ham")) { //0101
 l300:
     goto(l316)
   }
-  if (has(i66)) { //012f
+  if (has("T\x01")) { //012f
     print("You don't see one here.")
     goto(l316)
   }

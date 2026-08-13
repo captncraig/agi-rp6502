@@ -314,10 +314,10 @@ if (f67) { //03eb
       reset(f177)
       set(f179)
       vCurrentScore += 2
-      get(i11)
+      get("water bucket")
       if (f163) { //0432
         set(f88)
-        get(i26)
+        get("water")
         if (!f91) { //043c
           set(f91)
           vCurrentScore += 2

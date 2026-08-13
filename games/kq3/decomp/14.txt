@@ -133,9 +133,9 @@ l509:
   if (said("examine", "spider")) { //01fd
     print("You inspect the entrance of the cave, but can see nothing from this distance.")
   }
-  if (has(i33) && (said("throw", "dagger") || said("throw", "dagger", "spider") || said("kill", "spider", "dagger") || said("throw", "dagger", "spider", "spiderweb") || said("throw", "dagger", "spiderweb"))) { //0209
+  if (has("Knife") && (said("throw", "dagger") || said("throw", "dagger", "spider") || said("kill", "spider", "dagger") || said("throw", "dagger", "spider", "spiderweb") || said("throw", "dagger", "spiderweb"))) { //0209
     v36 = 36
-    put(i33,36)
+    put("Knife",36)
     print("You throw the knife at the web. Your aim is true, and the deadly blade speeds toward the web.")
     print("Your knife passes between the strands and clatters harmlessly inside the dark confines of the cave.")
   }

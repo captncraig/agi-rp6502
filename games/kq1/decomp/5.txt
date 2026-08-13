@@ -98,7 +98,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0185
   if ((posn(o0,110,40,159,56) || posn(o0,78,57,159,86) || posn(o0,47,87,159,167))) { //0197
     reset(f116)
     print("You kneel down and fill the bucket with the cool water.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //01b7
       vCurrentScore += 2

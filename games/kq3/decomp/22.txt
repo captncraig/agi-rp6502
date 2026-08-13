@@ -200,9 +200,9 @@ l741:
       print("You need to be closer.")
       goto(l860)
     }
-    if (obj.in.room(i18,vCurrentRoom) && f229) { //0347
+    if (obj.in.room("Three Acorns*",vCurrentRoom) && f229) { //0347
       print("You pick and poke among the fallen acorns, looking for dried ones. You eventually find three dried acorns, and take them with you.")
-      get(i18)
+      get("Three Acorns*")
       vCurrentScore += 1
       goto(l860)
     }

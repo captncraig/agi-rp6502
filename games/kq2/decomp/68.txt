@@ -60,7 +60,7 @@ if (said("buy", "lamp")) { //00f4
 }
 reset(f31)
 if ((said("give", "treasure", "bitch") || said("give", "bitch", "treasure"))) { //0102
-  if ((has(i56) || has(i58) || has(i53) || has(i57) || has(i59))) { //0118
+  if ((has(i56) || has("T\x01") || has(i53) || has(i57) || has(i59))) { //0118
     print("Which treasure would you like to give to the little old lady?")
     goto(l303)
   }
@@ -91,8 +91,8 @@ l389:
   goto(l641)
 }
 if ((said("give", "earrings", "bitch") || said("give", "bitch", "earrings"))) { //0188
-  if (has(i58)) { //019e
-    drop(i58)
+  if (has("T\x01")) { //019e
+    drop("T\x01")
     vCurrentScore -= 7
     set(f31)
     goto(l432)
@@ -124,11 +124,11 @@ l518:
   goto(l641)
 }
 if ((said("give", "bird", "bitch") || said("give", "bitch", "bird") || said("give", "bird cage", "bitch") || said("give", "bitch", "bird cage"))) { //0209
-  if (has(i70)) { //022f
+  if (has("T\x01")) { //022f
     print("You hand the birdcage with the nightingale to the little old lady. \"My precious!\" she exclaims. In gratitude she gives you the oil lamp. \"Good luck,\" she says. She hastens you out the door and closes up shop.")
     vCurrentScore += 6
     get(i72)
-    drop(i70)
+    drop("T\x01")
     reset(f71)
     set(f101)
     erase(o3)

@@ -82,7 +82,7 @@ if (v152 < v61) { //00e3
   set(f109)
 }
 if (f112) { //00ec
-  if (v120 == 25 && has(i4) && v63 < 2 && v63 > 0) { //00f2
+  if (v120 == 25 && has("Radio Extender") && v63 < 2 && v63 > 0) { //00f2
     print("Your extender crackles, \"This is 83-Nora-10. Notify when you are in position.\"")
   }
   v223--
@@ -114,7 +114,7 @@ if (f231 && v63 > 0 && v63 < 2) { //0154
   v63 = 2
   random(40,66,v223)
   sound(40,f233)
-  if (!(has(i4))) { //016a
+  if (!(has("Radio Extender"))) { //016a
     print("Working a stakeout without a radio extender isn't exactly the way they taught it at the Academy.")
     goto(l376)
   }
@@ -471,7 +471,7 @@ if (v221 == 1) { //059e
     random(55,111,v221)
   }
 }
-if (f162 && has(i14) && vEgoView == v42 && (f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //05b8
+if (f162 && has("Loaded Revolver") && vEgoView == v42 && (f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //05b8
   reset(f33)
   print("A little trigger-happy, aren't we? Trying to shoot an unarmed, high-school boy who's obviously scared to death is hardly the proper solution here.")
   set(f140)
@@ -507,7 +507,7 @@ if (!(v63 > 0)) { //06b1
   goto(l2800)
 }
 if ((said("call") || said("answer", "broad") || said("answer", "friend"))) { //06bc
-  if (!(has(i4))) { //06d2
+  if (!(has("Radio Extender"))) { //06d2
     print("If you had a radio extender, that would be easy.")
     goto(l1854)
   }
@@ -627,11 +627,11 @@ if (f220 && (said("cuff", "art") || said("cuff", "convict") || said("cuff", "any
     print("Holster your weapon first.")
     goto(l2339)
   }
-  if (!(has(i24))) { //090a
+  if (!(has("Handcuffs"))) { //090a
     set(f170)
     goto(l2339)
   }
-  drop(i24)
+  drop("Handcuffs")
   print("You 'cuff one trembling suspect.")
   set.view(o1,180)
   v63 = 9

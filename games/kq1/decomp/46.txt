@@ -65,7 +65,7 @@ if (!f21) { //009d
     print("OK.  You drop the dagger.")
     reset(f67)
     set(f70)
-    drop(i1)
+    drop("dagger")
     vCurrentScore -= 5
   }
 }

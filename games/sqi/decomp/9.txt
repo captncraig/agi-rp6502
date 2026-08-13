@@ -90,7 +90,7 @@ l60:
     v70 = 1
   }
   if (v70 == 3) { //00ff
-    if (has(i3)) { //0106
+    if (has("Gadget")) { //0106
       add.to.pic(19,0,0,49,93,8,4)
     }
     last.cel(o6,v64)
@@ -237,7 +237,7 @@ if ((said("check out", "sign") || said("read", "sign"))) { //02cd
   print("The sign on the wall suggests that the bay doors are not currently open.")
 }
 l749:
-if (!(has(i3))) { //02ed
+if (!(has("Gadget"))) { //02ed
   if (said("check out", "dialect translator")) { //02f4
     if (obj.in.box(o0,40,94,71,110)) { //02fe
       print("On the floor of the closet sits some sort of gadget. It looks electronic.")
@@ -264,7 +264,7 @@ l838:
   }
   if (posn(o0,40,94,64,110)) { //0349
     if (v70 > 1) { //0353
-      if (!(has(i3))) { //035a
+      if (!(has("Gadget"))) { //035a
         print("It looks like an electrical gadget of some sort.")
         goto(l872)
       }
@@ -304,7 +304,7 @@ l961:
 if ((said("check out", "left", "closet") || said("look in", "left", "closet"))) { //03c1
   if (obj.in.box(o0,40,94,98,107)) { //03d7
     if (v70 > 1) { //03e1
-      if (!(has(i3))) { //03e8
+      if (!(has("Gadget"))) { //03e8
         print("It looks like an electrical gadget of some sort.")
         goto(l1014)
       }
@@ -401,8 +401,8 @@ l1291:
 if (said("acquire", "dialect translator")) { //050b
   if (obj.in.box(o0,40,94,71,110)) { //0515
     if (v70 == 3) { //051f
-      if (!(has(i3))) { //0526
-        get(i3)
+      if (!(has("Gadget"))) { //0526
+        get("Gadget")
         add.to.pic(19,0,0,49,93,8,4)
         vCurrentScore += 2
         goto(l1343)

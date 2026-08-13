@@ -60,10 +60,10 @@ if (said("cash")) { //00c9
   get.num(str17,v122)
   lindirectv(v121,v122)
   if (v124 > 0) { //00dc
-    get(i10)
+    get("Buckazoid(s)")
     goto(l234)
   }
-  drop(i10)
+  drop("Buckazoid(s)")
 }
 l234:
 if (vCurrentRoom != 9 && said("drink", "clothes")) { //00ea
@@ -88,7 +88,7 @@ if (said("drink", "jet pack")) { //0128
     load.view(166)
     set.view(o0,166)
     v81 = 2
-    get(i9)
+    get("Jetpack")
     goto(l332)
   }
   print("already in jetpack")

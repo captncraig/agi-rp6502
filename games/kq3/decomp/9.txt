@@ -89,7 +89,7 @@ if (f116 && !f220 && v44 == 0) { //014f
 if (f220 && v41 > 163) { //016e
   reset(f220)
   print("OH, OH!! That darn cat really did it to you this time! Tripping over the cat, you fall to your death.")
-  if (has(i8)) { //017b
+  if (has("Dough in Ears")) { //017b
     print("\"You look mighty funny falling down those stairs, Gwydion,\" he snickers.")
   }
 }

@@ -118,7 +118,7 @@ if (said("acquire", "bag") && !f72) { //017d
   if (posn(o0,0,103,35,146)) { //018a
     if (!f71) { //0194
       print("You notice the pouch feels aged and tattered.")
-      get(i16)
+      get("pouch")
       set(f71)
       set(f72)
       vCurrentScore += 3
@@ -136,7 +136,7 @@ if (f154 && f155) { //01b8
     reset(f154)
     v80 = 6
     set(f94)
-    drop(i25)
+    drop("beans")
     vCurrentScore += 2
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!")
     sound(12,f25)

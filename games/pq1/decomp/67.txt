@@ -227,7 +227,7 @@ if ((said("check", "cane") || said("check", "automatic"))) { //02a5
 }
 l709:
 if ((said("get", "bug", "rol") || said("ask", "art", "bug", "rol") || said("ask", "bug", "rol") || said("do", "bonds", "bug", "rol") || said("do", "bonds", "call", "rol") || said("administer", "bonds", "bug", "rol") || said("administer", "bonds", "call", "rol") || said("ask", "art", "call", "rol") || said("ask", "call", "rol") || said("get", "call", "rol"))) { //02c5
-  if (!(obj.in.room(i21,vCurrentRoom))) { //0327
+  if (!(obj.in.room("Transmitter Pen",vCurrentRoom))) { //0327
     set(f114)
     goto(l881)
   }
@@ -238,7 +238,7 @@ if ((said("get", "bug", "rol") || said("ask", "art", "bug", "rol") || said("ask"
   if (v227 < 15) { //0340
     print("Detective Angland hands you the transmitter and a new supply of marked hundred-dollar bills. You carefully clip the transmitter to your pocket.")
     print("\"We'll monitor your voice transmitter at all times. We're anxiously waiting to assist you in any arrests.\"")
-    get(i21)
+    get("Transmitter Pen")
     vCurrentScore += 5
     if (!f62) { //0350
       print("\"Take a look at this,\" says Angland. \"We just received a fax from Chicago that includes the mug shots of one Jessie Bains.\"")

@@ -54,7 +54,7 @@ if (!f21) { //008b
   if ((said("cast", "dagger") || said("kill", "goat"))) { //009e
     if (f67) { //00b0
       print("You throw the dagger and it lands in the stream, lost forever.")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
@@ -166,14 +166,14 @@ l567:
   if (said("cast", "dagger") && f67) { //0237
     if (posn(o0,1,40,100,90)) { //0243
       print("You throw the dagger and the quick old troll catches it.")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
       goto(l614)
     }
     print("You throw the dagger and it lands in the stream, lost forever.")
-    drop(i1)
+    drop("dagger")
     reset(f67)
     set(f70)
     vCurrentScore -= 5
@@ -203,7 +203,7 @@ l655:
     if ((said("give", "diamond") || said("give", "troll", "diamond") || said("give", "diamond", "troll"))) { //02cb
       if (posn(o0,1,40,100,90)) { //02e7
         print("The troll grabs the treasure and vanishes.")
-        drop(i15)
+        drop("pouch of diamonds")
         reset(f106)
         set(f151)
         set(f107)
@@ -219,7 +219,7 @@ l773:
     if ((said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll"))) { //030b
       if (posn(o0,1,40,100,90)) { //0327
         print("The troll grabs the treasure and vanishes.")
-        drop(i17)
+        drop("sceptre")
         reset(f113)
         set(f151)
         set(f114)
@@ -235,7 +235,7 @@ l837:
     if ((said("give", "egg") || said("give", "troll", "egg") || said("give", "egg", "troll"))) { //034b
       if (posn(o0,1,40,100,90)) { //0367
         print("The troll grabs the treasure and vanishes.")
-        drop(i20)
+        drop("gold egg")
         reset(f110)
         set(f151)
         set(f111)
@@ -256,7 +256,7 @@ l901:
     if ((said("give", "gold nut") || said("give", "troll", "gold nut") || said("give", "gold nut", "troll"))) { //03af
       if (posn(o0,1,40,100,90)) { //03cb
         print("The troll grabs the treasure and vanishes.")
-        drop(i4)
+        drop("gold walnut")
         reset(f108)
         set(f151)
         set(f109)

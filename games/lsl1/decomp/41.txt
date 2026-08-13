@@ -232,7 +232,7 @@ if (v30 == 19) { //04d1
     print("You can't. She fastened them quite securely!")
   }
   if ((said("use", "knife") || said("use", "knife", "cut", "rope") || said("increase", "knife", "rol") || said("catch", "knife", "rol") || said("cut", "rope", "use", "knife") || said("cut", "rope", "knife"))) { //04ec
-    if (!(has(i15))) { //0524
+    if (!(has("Pocket Knife"))) { //0524
       print("Good idea. Unfortunately, you have nothing with which to cut a rope, Larry.")
       goto(l1367)
     }
@@ -269,7 +269,7 @@ if (f81 && (said("catch", "rope") || said("catch", "rope", "from", "bed") || sai
     goto(l1455)
   }
   vCurrentScore += 3
-  get(i20)
+  get("Rope")
   start.update(o4)
   erase(o4)
   print("You never know when a nice piece of rope will come in handy.")
@@ -389,7 +389,7 @@ l1698:
     accept.input()
     reset(f82)
     stop.update(o1)
-    if (!(has(i15))) { //06f6
+    if (!(has("Pocket Knife"))) { //06f6
       v201 = 30
     }
   }

@@ -2,7 +2,7 @@ if (fNewRoom) { //0002
   load.view(105)
   load.pic(vCurrentRoom)
   draw.pic(vCurrentRoom)
-  if ((!(v36 > 0) || !(obj.in.room(i16,vCurrentRoom)))) { //000e
+  if ((!(v36 > 0) || !(obj.in.room("Wanted Poster",vCurrentRoom)))) { //000e
     v221 = 4
     goto(l37)
   }
@@ -150,7 +150,7 @@ if ((said("get", "clipboard") || said("continue", "clipboard") || said("get"))) 
   print("The clipboard must remain here in the office.")
 }
 if ((said("empty", "flyer", "rol") || said("empty", "anyword", "flyer", "rol") || said("empty", "hoffman", "flyer", "rol") || said("get", "flyer", "rol") || said("get", "anyword", "flyer", "rol") || said("get", "hoffman", "flyer", "rol"))) { //0278
-  if (!(obj.in.room(i16,vCurrentRoom))) { //02b6
+  if (!(obj.in.room("Wanted Poster",vCurrentRoom))) { //02b6
     set(f114)
     goto(l732)
   }
@@ -158,7 +158,7 @@ if ((said("empty", "flyer", "rol") || said("empty", "anyword", "flyer", "rol") |
     print("Do you see a poster here?")
     goto(l732)
   }
-  get(i16)
+  get("Wanted Poster")
   vCurrentScore += 2
   print("Ah, ha!! \"Tattoo of flower above left nipple...\" You take the FBI Wanted Poster, knowing Judge Palmer will find it very interesting!")
   v221 = 4

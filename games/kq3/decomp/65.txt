@@ -50,7 +50,7 @@ if (f182) { //0079
 }
 if (v71 == 1) { //0081
   v71 = 0
-  drop(i54)
+  drop("Magic Map*")
   print("As you unroll the delicate map, it crumbles in the intense heat!")
 }
 if ((said("examine") || said("examine", "cloud"))) { //008f

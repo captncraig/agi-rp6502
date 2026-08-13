@@ -257,13 +257,13 @@ if ((said("empty", "cuff") || said("empty", "cuff", "from", "convict") || said("
     goto(l970)
   }
   if (v220 < 20) { //038b
-    get(i24)
+    get("Handcuffs")
     if (!f135) { //0394
       set(f135)
       vCurrentScore += 2
     }
-    if (!f42 && has(i14)) { //03a0
-      drop(i14)
+    if (!f42 && has("Loaded Revolver")) { //03a0
+      drop("Loaded Revolver")
       v220 = 100
       v166 = 0
       goto(l965)

@@ -120,7 +120,7 @@ if (f33) { //0124
   }
   print("A massive holographic image appears before you. You sense that you are the only life form in the area.")
 l337:
-  if (has(i4)) { //0151
+  if (has("Orat Part")) { //0151
     if (f194) { //0157
       v33 = 10
     }
@@ -183,7 +183,7 @@ if (f35) { //0203
   if (v33 == 13) { //020b
     stop.cycling(o2)
     v33 = 14
-    if (has(i3) && f154) { //0217
+    if (has("Gadget") && f154) { //0217
       print("\"Drop before me your proof of Orat's defeat for my inspection.\"")
       set(f39)
       goto(l552)
@@ -194,7 +194,7 @@ l552:
   if (v33 == 11) { //0228
     stop.cycling(o2)
     v33 = 12
-    if (has(i3) && f154) { //0234
+    if (has("Gadget") && f154) { //0234
       print("\"So, you have returned.  Fortunately, there is much more to you than meets the eye.\"")
       goto(l579)
     }
@@ -207,7 +207,7 @@ l579:
     v33 = 10
     v35 = 5
     v82 = 1
-    if (has(i3) && f154) { //0258
+    if (has("Gadget") && f154) { //0258
       print("\"On the surface lives a beast called Orat.  He proves to be a bit of an annoyance on occasion.  Dispose of him and bring back evidence of your conquest.  Only then will I deal with your plight.  Good luck, strange one.\"")
       goto(l615)
     }
@@ -218,9 +218,9 @@ l615:
     stop.cycling(o2)
     v33 = 8
     v32 = 18
-    if (has(i3) && f154) { //0276
+    if (has("Gadget") && f154) { //0276
       if (v82 > 0) { //027e
-        if (has(i4)) { //0285
+        if (has("Orat Part")) { //0285
           set(f39)
           print("\"It has come to my attention that you have met Orat. If you have proof of Orat's demise, drop it for my inspection.")
           v33 = 14
@@ -246,7 +246,7 @@ l686:
     stop.cycling(o2)
     v33 = 6
     v32 = 18
-    if (has(i3) && f154) { //02bd
+    if (has("Gadget") && f154) { //02bd
       print("\"You are obviously in need of transportation.\"")
       goto(l716)
     }
@@ -257,7 +257,7 @@ l716:
     stop.cycling(o2)
     v33 = 4
     v32 = 18
-    if (has(i3) && f154) { //02db
+    if (has("Gadget") && f154) { //02db
       print("\"I have been monitoring your travels on our planet. It appears that you are up the proverbial estuary without a means of locomotion.\"")
       goto(l746)
     }
@@ -268,8 +268,8 @@ l746:
     stop.cycling(o2)
     v33 = 2
     v32 = 18
-    if (has(i3) && f154) { //02f9
-      if (has(i4)) { //0301
+    if (has("Gadget") && f154) { //02f9
+      if (has("Orat Part")) { //0301
         print("\"So, you have found your way to my hallowed chamber. Fortunately there is much more to you than meets the eye.\"")
         goto(l782)
       }
@@ -285,9 +285,9 @@ if ((!fEnteredCommand || fSaidAccepted)) { //0313
   goto(l966)
 }
 if ((said("drop", "chunk") || said("drop", "orat", "chunk"))) { //0321
-  if (has(i4)) { //0335
+  if (has("Orat Part")) { //0335
     if (f39) { //033b
-      drop(i4)
+      drop("Orat Part")
       vCurrentScore += 10
       set(f37)
       reset(f39)
@@ -307,7 +307,7 @@ l863:
   print("You don't have that.")
 }
 l868:
-if (v82 == 3 && !(has(i4))) { //0364
+if (v82 == 3 && !(has("Orat Part"))) { //0364
   if (said("acquire", "chunk")) { //036e
     print("It's not yours any longer.")
   }

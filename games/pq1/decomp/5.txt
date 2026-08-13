@@ -56,7 +56,7 @@ l145:
   set.loop(o8,1)
   set.loop(o5,2)
   stop.cycling(o5)
-  if (has(i19)) { //00a3
+  if (has("Hair Bleach")) { //00a3
     set.cel(o5,1)
     goto(l178)
   }
@@ -267,7 +267,7 @@ if ((said("on") || said("bathe") || said("bathe", "bonds") || said("bathe", "bon
 if ((said("off") || said("move", "off") || said("move", "off", "creek") || said("move", "creek", "off") || said("c", "off") || said("c", "off", "creek"))) { //03dc
   set(f237)
 }
-if (has(i19) && (said("use", "bleach") || said("use", "bleach", "hair") || said("use", "bleach", "on", "hair") || said("drop", "bleach", "hair") || said("drop", "bleach", "on", "hair") || said("bleach", "about", "hair") || said("bleach", "hair"))) { //040c
+if (has("Hair Bleach") && (said("use", "bleach") || said("use", "bleach", "hair") || said("use", "bleach", "on", "hair") || said("drop", "bleach", "hair") || said("drop", "bleach", "on", "hair") || said("bleach", "about", "hair") || said("bleach", "hair"))) { //040c
   if (!f232) { //044c
     print("That would be best done in the shower.")
     goto(l1136)
@@ -282,7 +282,7 @@ if (has(i19) && (said("use", "bleach") || said("use", "bleach", "hair") || said(
   }
 }
 l1136:
-if (has(i19) && (said("wet") || said("bathe", "hair") || said("bathe", "about", "hair") || said("bathe", "hair") || said("bathe", "about", "hair") || said("wet", "about", "hair") || said("wet", "hair"))) { //0470
+if (has("Hair Bleach") && (said("wet") || said("bathe", "hair") || said("bathe", "about", "hair") || said("bathe", "hair") || said("bathe", "about", "hair") || said("wet", "about", "hair") || said("wet", "hair"))) { //0470
   if (!f232) { //04a6
     print("That would be best done in the shower.")
     goto(l1232)
@@ -299,7 +299,7 @@ if (has(i19) && (said("wet") || said("bathe", "hair") || said("bathe", "about", 
   print("Your hair is wet.")
 }
 l1232:
-if (has(i19) && (said("rinse") || said("rinse", "bleach", "off", "hair", "rol") || said("rinse", "bleach", "off", "about", "hair", "rol") || said("rinse", "off", "bleach", "rol") || said("rinse", "out", "bleach", "rol") || said("rinse", "bleach", "off", "rol") || said("rinse", "bleach", "out", "rol") || said("rinse", "off", "about", "hair", "rol") || said("rinse", "off", "hair", "rol") || said("rinse", "about", "hair", "rol") || said("rinse", "hair", "rol"))) { //04d0
+if (has("Hair Bleach") && (said("rinse") || said("rinse", "bleach", "off", "hair", "rol") || said("rinse", "bleach", "off", "about", "hair", "rol") || said("rinse", "off", "bleach", "rol") || said("rinse", "out", "bleach", "rol") || said("rinse", "bleach", "off", "rol") || said("rinse", "bleach", "out", "rol") || said("rinse", "off", "about", "hair", "rol") || said("rinse", "off", "hair", "rol") || said("rinse", "about", "hair", "rol") || said("rinse", "hair", "rol"))) { //04d0
   if (!f232) { //0546
     print("That would be best done in the shower.")
     goto(l1400)
@@ -390,7 +390,7 @@ l1794:
 if (f138) { //0702
   reset(f138)
   set.view(o0,7)
-  drop(i19)
+  drop("Hair Bleach")
   vCurrentScore += 3
   v39 = 7
   v31 = 75

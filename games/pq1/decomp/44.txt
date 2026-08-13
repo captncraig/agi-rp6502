@@ -24,7 +24,7 @@ if (fNewRoom) { //0002
   position(o4,15,113)
   position(o5,14,112)
   position(o7,15,112)
-  if (obj.in.room(i11,vCurrentRoom)) { //0058
+  if (obj.in.room("Lytton Tribune",vCurrentRoom)) { //0058
     load.view(71)
     animate.obj(o10)
     set.view(o10,71)
@@ -430,15 +430,15 @@ l1409:
     vCurrentScore += 1
   }
 }
-if (obj.in.room(i11,vCurrentRoom) && said("examine", "counter")) { //0590
+if (obj.in.room("Lytton Tribune",vCurrentRoom) && said("examine", "counter")) { //0590
   print("There is a newspaper lying on the table.")
 }
 if ((said("get", "lytton tribune") || said("examine", "lytton tribune") || said("o", "lytton tribune") || said("get", "lytton tribune", "off", "counter") || said("get", "lytton tribune", "from", "counter"))) { //059f
-  if (has(i11)) { //05cb
+  if (has("Lytton Tribune")) { //05cb
     print("Sergeant Dooley will have your can if you read a newspaper while on duty.")
     goto(l1567)
   }
-  if (!(obj.in.room(i11,vCurrentRoom))) { //05d6
+  if (!(obj.in.room("Lytton Tribune",vCurrentRoom))) { //05d6
     set(f114)
     goto(l1567)
   }
@@ -454,7 +454,7 @@ if ((said("get", "lytton tribune") || said("examine", "lytton tribune") || said(
     print("Sergeant Dooley will have your can if you read a newspaper while on duty.")
     goto(l1567)
   }
-  get(i11)
+  get("Lytton Tribune")
   vCurrentScore += 5
   start.update(o10)
   erase(o10)

@@ -150,7 +150,7 @@ if (said("examine", "bitch")) { //0205
 if ((f103 || f32)) { //0211
   goto(l1057)
 }
-if (!(v34 > 0) && has(i70) && f31 && v65 != 2 && (said("examine", "bird") || said("examine", "bird cage"))) { //021e
+if (!(v34 > 0) && has("T\x01") && f31 && v65 != 2 && (said("examine", "bird") || said("examine", "bird cage"))) { //021e
   print("Unfortunately, this alerts the hag to your presence.")
   v34 = 1
 }
@@ -168,7 +168,7 @@ if (!f104 && (said("acquire", "bird") || said("acquire", "bird cage"))) { //0241
     goto(l671)
   }
   vCurrentScore += 2
-  get(i70)
+  get("T\x01")
   if (v65 == 2) { //027c
     print("Quietly, you pick up the covered birdcage with the nightingale. To your relief, the bird remains silent.")
     goto(l671)

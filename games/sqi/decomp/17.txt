@@ -67,7 +67,7 @@ if (f92) { //00c2
 l217:
 if (obj.in.box(o0,76,56,98,60) && f92) { //00d9
   if (v82 != 1 && !f91) { //00e5
-    if (f194 && v82 == 2 && !(has(i4))) { //00f0
+    if (f194 && v82 == 2 && !(has("Orat Part"))) { //00f0
       goto(l370)
     }
     if (fTriggerLine) { //00ff

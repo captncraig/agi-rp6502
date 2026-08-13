@@ -62,7 +62,7 @@ if (posn(o0,85,121,115,156) && f65) { //00a1
     goto(l211)
   }
   if (!f49) { //00bf
-    if (has(i12)) { //00c6
+    if (has("Magic Sword")) { //00c6
       set(f49)
       vCurrentScore += 13
     }

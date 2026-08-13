@@ -237,7 +237,7 @@ if (f231) { //0334
 l871:
     goto(l909)
   }
-  if (f105 && has(i50) && said("kill", "dolphin")) { //036a
+  if (f105 && has("T\x01") && said("kill", "dolphin")) { //036a
     if (v94 > 30) { //0378
       print("You can't reach it from here.")
       goto(l909)

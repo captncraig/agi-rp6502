@@ -54,7 +54,7 @@ if (!f137) { //0095
       start.update(o1)
       erase(o1)
       set(f110)
-      get(i20)
+      get("gold egg")
       set(f137)
       vCurrentScore += 6
       print("The golden egg is so heavy you almost drop it.")

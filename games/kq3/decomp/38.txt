@@ -51,7 +51,7 @@ if (fNewRoom) { //0002
   v222 = 0
 l147:
   draw(o1)
-  if (obj.in.room(i48,vCurrentRoom)) { //0095
+  if (obj.in.room("Purse & Gold Coins*",vCurrentRoom)) { //0095
     animate.obj(o3)
     load.view(216)
     set.view(o3,216)
@@ -160,7 +160,7 @@ if (fEnteredCommand) { //01b8
   }
 l488:
   if ((said("examine", "counter") || said("examine", "above", "counter") || said("examine", "counter", "top"))) { //01e8
-    if (obj.in.room(i48,vCurrentRoom)) { //0204
+    if (obj.in.room("Purse & Gold Coins*",vCurrentRoom)) { //0204
       print("There is a leather coin purse lying on top of a wobbly table.")
       goto(l530)
     }
@@ -168,11 +168,11 @@ l488:
   }
 l530:
   if ((said("capture", "coin purse", "from", "counter") || said("capture", "coin purse", "counter") || said("capture", "coin") || said("capture", "coin purse"))) { //0212
-    if (obj.in.room(i48,vCurrentRoom) && v172 == 0) { //0236
+    if (obj.in.room("Purse & Gold Coins*",vCurrentRoom) && v172 == 0) { //0236
       if (v39 == 2) { //0240
         start.update(o3)
         erase(o3)
-        get(i48)
+        get("Purse & Gold Coins*")
         if (!f205) { //024d
           vCurrentScore += 4
           v63 = 8

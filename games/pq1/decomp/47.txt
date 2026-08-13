@@ -68,19 +68,19 @@ if (fNewRoom) { //0002
   position(o8,68,123)
   position(o9,76,123)
   position(o10,85,123)
-  if (obj.in.room(i5,vCurrentRoom)) { //00c1
+  if (obj.in.room("Revolver",vCurrentRoom)) { //00c1
     draw(o1)
     stop.update(o1)
   }
-  if (obj.in.room(i6,vCurrentRoom)) { //00cc
+  if (obj.in.room("Ammunition",vCurrentRoom)) { //00cc
     draw(o2)
     stop.update(o2)
   }
-  if (obj.in.room(i7,vCurrentRoom)) { //00d7
+  if (obj.in.room("Briefcase",vCurrentRoom)) { //00d7
     draw(o5)
     stop.update(o5)
   }
-  if (obj.in.room(i2,vCurrentRoom)) { //00e2
+  if (obj.in.room("Corvette Keys",vCurrentRoom)) { //00e2
     draw(o4)
     stop.update(o4)
   }
@@ -207,7 +207,7 @@ if ((f241 || said("get", "all", "rol"))) { //02b3
   }
   if (v39 == 17) { //02d6
     set(f224)
-    if (!(obj.in.room(i2,vCurrentRoom))) { //02df
+    if (!(obj.in.room("Corvette Keys",vCurrentRoom))) { //02df
       print("Change clothes first.")
     }
     goto(l754)
@@ -226,11 +226,11 @@ if ((f221 || said("get", "automatic", "rol") || said("get", "cuff", "rol") || sa
     print("You have no use for it if you're not in uniform.")
     goto(l900)
   }
-  if (obj.in.room(i5,vCurrentRoom)) { //0337
+  if (obj.in.room("Revolver",vCurrentRoom)) { //0337
     start.update(o1)
     erase(o1)
-    get(i5)
-    get(i24)
+    get("Revolver")
+    get("Handcuffs")
     if (!f145) { //0346
       vCurrentScore += 1
       set(f145)
@@ -244,7 +244,7 @@ if ((f221 || said("get", "automatic", "rol") || said("get", "cuff", "rol") || sa
     }
     goto(l900)
   }
-  if (has(i5)) { //0369
+  if (has("Revolver")) { //0369
     if (!f221) { //036f
       set(f114)
     }
@@ -265,10 +265,10 @@ if ((f222 || said("get", "ammo", "rol") || said("change", "ammo", "rol"))) { //0
     print("You have no use for it if you're not in uniform.")
     goto(l1012)
   }
-  if (obj.in.room(i6,vCurrentRoom)) { //03bb
+  if (obj.in.room("Ammunition",vCurrentRoom)) { //03bb
     start.update(o2)
     erase(o2)
-    get(i6)
+    get("Ammunition")
     if (!f146) { //03c8
       vCurrentScore += 1
       set(f146)
@@ -276,7 +276,7 @@ if ((f222 || said("get", "ammo", "rol") || said("change", "ammo", "rol"))) { //0
     print("You take a speed loader with six rounds of .357-magnum, hollow-point, silver-jacketed bullets.")
     goto(l1012)
   }
-  if (has(i6)) { //03d9
+  if (has("Ammunition")) { //03d9
     if (!f222) { //03df
       set(f114)
     }
@@ -297,10 +297,10 @@ if ((f223 || said("get", "briefcase", "rol") || said("carry", "briefcase", "rol"
     print("You have no use for it if you're not in uniform.")
     goto(l1124)
   }
-  if (obj.in.room(i7,vCurrentRoom)) { //042b
+  if (obj.in.room("Briefcase",vCurrentRoom)) { //042b
     start.update(o5)
     erase(o5)
-    get(i7)
+    get("Briefcase")
     if (!f147) { //0438
       vCurrentScore += 1
       set(f147)
@@ -308,7 +308,7 @@ if ((f223 || said("get", "briefcase", "rol") || said("carry", "briefcase", "rol"
     print("Your briefcase contains many items you'll need in the field.")
     goto(l1124)
   }
-  if (has(i7)) { //0449
+  if (has("Briefcase")) { //0449
     if (!f223) { //044f
       set(f114)
     }
@@ -325,7 +325,7 @@ if ((f224 || said("get", "car keys", "rol"))) { //0466
     print("There's not enough room in that towel!")
     goto(l1243)
   }
-  if (obj.in.room(i2,vCurrentRoom)) { //0487
+  if (obj.in.room("Corvette Keys",vCurrentRoom)) { //0487
     if (v39 != 17) { //048e
       if (!f224) { //0496
         print("You don't need the keys until you're off-duty.")
@@ -334,7 +334,7 @@ if ((f224 || said("get", "car keys", "rol"))) { //0466
     }
     start.update(o4)
     erase(o4)
-    get(i2)
+    get("Corvette Keys")
     if (!f148) { //04a8
       vCurrentScore += 1
       set(f148)
@@ -345,7 +345,7 @@ if ((f224 || said("get", "car keys", "rol"))) { //0466
 l1213:
     goto(l1243)
   }
-  if (has(i2)) { //04c0
+  if (has("Corvette Keys")) { //04c0
     if (!f224) { //04c6
       set(f114)
     }
@@ -388,26 +388,26 @@ if (f229) { //051b
   erase(o9)
   start.update(o3)
   erase(o3)
-  get(i18)
+  get("Trick Cane")
 }
 if ((f231 || said("drop", "automatic", "rol") || said("drop", "cuff", "rol") || said("drop", "belt", "rol") || said("hang", "automatic", "rol"))) { //052d
-  if (obj.in.room(i5,vCurrentRoom)) { //0555
+  if (obj.in.room("Revolver",vCurrentRoom)) { //0555
     if (!f231) { //055c
       print("It's already in the locker.")
     }
     goto(l1449)
   }
-  if (has(i5)) { //0568
-    drop(i24)
+  if (has("Revolver")) { //0568
+    drop("Handcuffs")
     draw(o1)
     stop.update(o1)
-    put(i5,0)
+    put("Revolver",0)
     if (!f231) { //0577
       print("You remove the ammunition from your revolver, place it on the shelf, then hang your gunbelt on the locker door.")
     }
     goto(l1449)
   }
-  if (has(i14)) { //0583
+  if (has("Loaded Revolver")) { //0583
     set(f232)
     goto(l1449)
   }
@@ -424,19 +424,19 @@ l1449:
   reset(f231)
 }
 if ((f232 || said("drop", "ammo", "rol"))) { //05ab
-  if (obj.in.room(i6,vCurrentRoom)) { //05bb
+  if (obj.in.room("Ammunition",vCurrentRoom)) { //05bb
     if (!f232) { //05c2
       print("It's already in the locker.")
     }
     goto(l1556)
   }
-  if (has(i14)) { //05ce
-    drop(i24)
-    drop(i14)
-    put(i5,0)
+  if (has("Loaded Revolver")) { //05ce
+    drop("Handcuffs")
+    drop("Loaded Revolver")
+    put("Revolver",0)
     draw(o1)
     stop.update(o1)
-    put(i6,0)
+    put("Ammunition",0)
     draw(o2)
     stop.update(o2)
     if (!f232) { //05e6
@@ -444,8 +444,8 @@ if ((f232 || said("drop", "ammo", "rol"))) { //05ab
     }
     goto(l1556)
   }
-  if (has(i6)) { //05f2
-    put(i6,0)
+  if (has("Ammunition")) { //05f2
+    put("Ammunition",0)
     draw(o2)
     stop.update(o2)
     if (!f232) { //05ff
@@ -460,13 +460,13 @@ l1556:
   reset(f232)
 }
 if ((f233 || said("drop", "briefcase", "rol"))) { //0616
-  if (obj.in.room(i7,vCurrentRoom)) { //0626
+  if (obj.in.room("Briefcase",vCurrentRoom)) { //0626
     if (!f233) { //062d
       print("It's already in the locker.")
     }
     goto(l1658)
   }
-  if (!(has(i7))) { //0639
+  if (!(has("Briefcase"))) { //0639
     if (!f233) { //0640
       set(f115)
     }
@@ -474,16 +474,16 @@ if ((f233 || said("drop", "briefcase", "rol"))) { //0616
   }
   draw(o5)
   stop.update(o5)
-  put(i7,0)
+  put("Briefcase",0)
   v152 = 38
-  if (has(i10)) { //0656
-    put(i10,152)
+  if (has("Ticket Book")) { //0656
+    put("Ticket Book",152)
   }
-  if (has(i8)) { //065f
-    put(i8,152)
+  if (has("Note Book")) { //065f
+    put("Note Book",152)
   }
-  if (has(i9)) { //0668
-    put(i9,152)
+  if (has("Pen")) { //0668
+    put("Pen",152)
   }
   if (!f233) { //0671
     print("You return the contents to your briefcase and place it in the locker.")
@@ -492,16 +492,16 @@ l1658:
   reset(f233)
 }
 if ((f234 || said("drop", "car keys", "rol") || said("hang", "car keys", "rol"))) { //067c
-  if (obj.in.room(i2,vCurrentRoom)) { //0694
+  if (obj.in.room("Corvette Keys",vCurrentRoom)) { //0694
     if (!f234) { //069b
       print("It's already in the locker.")
     }
     goto(l1737)
   }
-  if (has(i2)) { //06a7
+  if (has("Corvette Keys")) { //06a7
     draw(o4)
     stop.update(o4)
-    put(i2,0)
+    put("Corvette Keys",0)
     if (!f234) { //06b4
       print("You put the keys in your locker.")
     }
@@ -538,10 +538,10 @@ if (f238) { //06f8
 }
 if (f239) { //0704
   reset(f239)
-  put(i17,0)
+  put("White Suit",0)
   draw(o9)
   stop.update(o9)
-  put(i18,0)
+  put("Trick Cane",0)
   draw(o3)
   stop.update(o3)
   if (v31 == 70) { //071a
@@ -550,16 +550,16 @@ if (f239) { //0704
 }
 if ((said("examine") || said("look in", "locker") || said("examine", "locker") || said("examine", "accident"))) { //0724
   print("You store your personal gear in your locker.")
-  if (obj.in.room(i5,vCurrentRoom)) { //0742
+  if (obj.in.room("Revolver",vCurrentRoom)) { //0742
     print("You see your weapon in your gun belt.")
   }
-  if (obj.in.room(i6,vCurrentRoom)) { //074b
+  if (obj.in.room("Ammunition",vCurrentRoom)) { //074b
     print("There is a speed loader of ammunition on the shelf.")
   }
-  if (obj.in.room(i7,vCurrentRoom)) { //0754
+  if (obj.in.room("Briefcase",vCurrentRoom)) { //0754
     print("Your briefcase rests on the bottom of the locker.")
   }
-  if (obj.in.room(i2,vCurrentRoom)) { //075d
+  if (obj.in.room("Corvette Keys",vCurrentRoom)) { //075d
     print("The keys to your Corvette are hanging on a hook.")
   }
   if (v39 != 7 && v39 != 4) { //0766
@@ -574,23 +574,23 @@ if ((said("examine") || said("look in", "locker") || said("examine", "locker") |
   if (v39 != 8) { //0788
     print("An old T-shirt and a pair of jeans hang here.")
   }
-  if (obj.in.room(i17,vCurrentRoom)) { //0792
+  if (obj.in.room("White Suit",vCurrentRoom)) { //0792
     print("Your new, white, pimp suit is hanging on a hanger.")
   }
-  if (obj.in.room(i18,vCurrentRoom)) { //079b
+  if (obj.in.room("Trick Cane",vCurrentRoom)) { //079b
     print("Your cane with the derringer handle is leaning in the corner.")
   }
 }
-if (obj.in.room(i5,vCurrentRoom) && said("examine", "automatic", "rol")) { //07a4
+if (obj.in.room("Revolver",vCurrentRoom) && said("examine", "automatic", "rol")) { //07a4
   print("You see your weapon in your gun belt.")
 }
-if (obj.in.room(i6,vCurrentRoom) && said("examine", "ammo", "rol")) { //07b5
+if (obj.in.room("Ammunition",vCurrentRoom) && said("examine", "ammo", "rol")) { //07b5
   print("There is a speed loader of ammunition on the shelf.")
 }
-if (obj.in.room(i7,vCurrentRoom) && said("examine", "briefcase", "rol")) { //07c6
+if (obj.in.room("Briefcase",vCurrentRoom) && said("examine", "briefcase", "rol")) { //07c6
   print("Your briefcase rests on the bottom of the locker.")
 }
-if (obj.in.room(i2,vCurrentRoom) && said("examine", "car keys", "rol")) { //07d7
+if (obj.in.room("Corvette Keys",vCurrentRoom) && said("examine", "car keys", "rol")) { //07d7
   print("The keys to your Corvette are hanging on a hook.")
 }
 if (said("examine", "dispenser", "rol")) { //07e8
@@ -611,11 +611,11 @@ if ((said("examine", "clothes", "rol") || said("examine", "clothes", "rol") || s
   if (v39 != 8) { //0843
     print("An old T-shirt and a pair of jeans hang here.")
   }
-  if (obj.in.room(i17,vCurrentRoom)) { //084d
+  if (obj.in.room("White Suit",vCurrentRoom)) { //084d
     print("Your new, white, pimp suit is hanging on a hanger.")
   }
 }
-if (obj.in.room(i18,vCurrentRoom) && said("examine", "cane", "rol")) { //0856
+if (obj.in.room("Trick Cane",vCurrentRoom) && said("examine", "cane", "rol")) { //0856
   print("Your cane with the derringer handle is leaning in the corner.")
 }
 if ((said("c", "locker", "rol") || said("examine", "away", "rol") || said("dont move", "examine", "locker", "rol") || said("lock", "locker", "rol") || said("lock", "d", "rol") || said("c", "d", "rol"))) { //0867

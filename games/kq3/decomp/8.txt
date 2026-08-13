@@ -71,7 +71,7 @@ l100:
   set.view(o4,230)
   set.cel(o4,0)
   draw(o4)
-  if (obj.in.room(i42,vCurrentRoom)) { //00d2
+  if (obj.in.room("Empty Cup",vCurrentRoom)) { //00d2
     animate.obj(o6)
     ignore.blocks(o6)
     ignore.objs(o6)
@@ -133,15 +133,15 @@ if ((said("examine", "area") || said("examine", "building") || said("examine")))
 }
 if (said("examine", "counter")) { //018c
   print("The large dining table is made of pine planking. Matching benches run its length on both sides. The table is big enough to seat at least ten people.")
-  if (obj.in.room(i42,vCurrentRoom)) { //0198
+  if (obj.in.room("Empty Cup",vCurrentRoom)) { //0198
     print("There is a little metal cup on the table.")
   }
 }
-if (obj.in.room(i42,vCurrentRoom) && said("examine", "cup")) { //01a1
+if (obj.in.room("Empty Cup",vCurrentRoom) && said("examine", "cup")) { //01a1
   print("There is a little metal cup on the table.")
 }
 if ((said("examine", "top", "counter") || said("examine", "above", "counter") || said("examine", "counter", "top"))) { //01b0
-  if (obj.in.room(i42,vCurrentRoom)) { //01ce
+  if (obj.in.room("Empty Cup",vCurrentRoom)) { //01ce
     print("There is a little metal cup on the table.")
     goto(l476)
   }
@@ -164,7 +164,7 @@ if (said("examine", "door")) { //0248
   print("There are two doorways here. One leads to the kitchen, the other to the entry hall.")
 }
 if ((said("capture", "cup") || said("capture", "cup", "counter") || said("capture", "cup", "from", "counter"))) { //0254
-  if (!(obj.in.room(i42,vCurrentRoom))) { //0272
+  if (!(obj.in.room("Empty Cup",vCurrentRoom))) { //0272
     print("You already took it.")
     goto(l666)
   }
@@ -172,7 +172,7 @@ if ((said("capture", "cup") || said("capture", "cup", "counter") || said("captur
     print("You're too far away.")
     goto(l666)
   }
-  get(i42)
+  get("Empty Cup")
   vCurrentScore += 1
   start.update(o6)
   erase(o6)
@@ -219,13 +219,13 @@ if ((said("board", "counter") || said("rise") || said("capture", "up") || said("
   print("You are standing.")
 }
 l873:
-if (has(i49) && (said("drink", "bread") || said("drink", "food") || said("drink", "food", "counter"))) { //0369
+if (has("Bread") && (said("drink", "bread") || said("drink", "food") || said("drink", "food", "counter"))) { //0369
   v224 = 49
 }
-if (has(i50) && (said("drink", "apple") || said("drink", "food") || said("drink", "food", "counter"))) { //0388
+if (has("Fruit") && (said("drink", "apple") || said("drink", "food") || said("drink", "food", "counter"))) { //0388
   v224 = 50
 }
-if (has(i51) && (said("drink", "chop") || said("drink", "food") || said("drink", "food", "counter"))) { //03a7
+if (has("Mutton") && (said("drink", "chop") || said("drink", "food") || said("drink", "food", "counter"))) { //03a7
   v224 = 51
 }
 if (!f220) { //03c6
@@ -269,24 +269,24 @@ l1174:
 }
 l1179:
 if ((said("feed", "enchanter") || said("feed", "food", "enchanter") || said("feed", "enchanter", "food") || said("add", "food", "counter") || said("add", "food", "on", "counter") || said("add", "food", "counter", "enchanter") || said("add", "food", "on", "counter", "enchanter") || said("feed", "food", "enchanter") || said("feed", "enchanter", "food"))) { //049b
-  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //04ef
+  if (!(has("Bread")) && !(has("Fruit")) && !(has("Mutton")) && !(has("Porridge")) && !(has("Poisoned Porridge"))) { //04ef
     print("You have no food to give the wizard.")
     goto(l1411)
   }
   v225 = 0
-  if (has(i49) && !(has(i50)) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //050a
+  if (has("Bread") && !(has("Fruit")) && !(has("Mutton")) && !(has("Porridge")) && !(has("Poisoned Porridge"))) { //050a
     v225 = 49
   }
-  if (!(has(i49)) && has(i50) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //051f
+  if (!(has("Bread")) && has("Fruit") && !(has("Mutton")) && !(has("Porridge")) && !(has("Poisoned Porridge"))) { //051f
     v225 = 50
   }
-  if (!(has(i49)) && !(has(i50)) && has(i51) && !(has(i24)) && !(has(i25))) { //0534
+  if (!(has("Bread")) && !(has("Fruit")) && has("Mutton") && !(has("Porridge")) && !(has("Poisoned Porridge"))) { //0534
     v225 = 51
   }
-  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && has(i24) && !(has(i25))) { //0549
+  if (!(has("Bread")) && !(has("Fruit")) && !(has("Mutton")) && has("Porridge") && !(has("Poisoned Porridge"))) { //0549
     v225 = 24
   }
-  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && !(has(i24)) && has(i25)) { //055e
+  if (!(has("Bread")) && !(has("Fruit")) && !(has("Mutton")) && !(has("Porridge")) && has("Poisoned Porridge")) { //055e
     v225 = 25
   }
   if (!(v225 > 0)) { //0573
@@ -296,7 +296,7 @@ if ((said("feed", "enchanter") || said("feed", "food", "enchanter") || said("fee
   }
 }
 l1411:
-if (has(i49)) { //0583
+if (has("Bread")) { //0583
   if ((said("feed", "bread", "enchanter") || said("feed", "enchanter", "bread") || said("add", "bread", "counter") || said("add", "bread", "counter", "enchanter") || said("feed", "bread", "enchanter") || said("feed", "enchanter", "bread"))) { //0589
     v225 = 49
   }
@@ -304,7 +304,7 @@ if (has(i49)) { //0583
     v225 = 49
   }
 }
-if (has(i50)) { //05d2
+if (has("Fruit")) { //05d2
   if ((said("feed", "apple", "enchanter") || said("feed", "enchanter", "apple") || said("add", "apple", "counter") || said("add", "apple", "counter", "enchanter") || said("feed", "apple", "enchanter") || said("feed", "enchanter", "apple"))) { //05d8
     v225 = 50
   }
@@ -312,7 +312,7 @@ if (has(i50)) { //05d2
     v225 = 50
   }
 }
-if (has(i51)) { //0621
+if (has("Mutton")) { //0621
   if ((said("feed", "chop", "enchanter") || said("feed", "enchanter", "chop") || said("add", "chop", "counter") || said("add", "chop", "counter", "enchanter") || said("feed", "chop", "enchanter") || said("feed", "enchanter", "chop"))) { //0627
     v225 = 51
   }
@@ -320,7 +320,7 @@ if (has(i51)) { //0621
     v225 = 51
   }
 }
-if ((has(i24) || has(i25))) { //0670
+if ((has("Porridge") || has("Poisoned Porridge"))) { //0670
   if ((said("feed", "porridge", "enchanter") || said("feed", "enchanter", "porridge") || said("add", "porridge", "counter") || said("add", "porridge", "on", "counter") || said("add", "porridge", "counter", "enchanter") || said("add", "porridge", "on", "counter", "enchanter") || said("feed", "porridge", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge") || said("add", "poison", "porridge", "counter") || said("add", "poison", "porridge", "on", "counter") || said("add", "poison", "porridge", "counter", "enchanter") || said("add", "poison", "porridge", "on", "counter", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge"))) { //067a
     v225 = 24
   }
@@ -328,7 +328,7 @@ if ((has(i24) || has(i25))) { //0670
     v225 = 24
   }
 }
-if (has(i25)) { //0729
+if (has("Poisoned Porridge")) { //0729
   if (v225 == 24) { //072f
     v225 = 25
   }
@@ -357,23 +357,23 @@ if (f99 && !f109) { //0826
       goto(l2086)
     }
     if (v225 == 49) { //085d
-      drop(i49)
+      drop("Bread")
       set.cel(o5,4)
     }
     if (v225 == 50) { //0869
-      drop(i50)
+      drop("Fruit")
       set.cel(o5,5)
     }
     if (v225 == 51) { //0875
-      drop(i51)
+      drop("Mutton")
       set.cel(o5,3)
     }
     if (v225 == 24) { //0881
-      drop(i24)
+      drop("Porridge")
       set.cel(o5,7)
     }
     if (v225 == 25) { //088d
-      drop(i25)
+      drop("Poisoned Porridge")
       set.cel(o5,7)
       set(f226)
     }
@@ -600,24 +600,24 @@ if (v224 > 0) { //0adc
 l2839:
   if (v44 == 10) { //0b17
     if (v224 == 50) { //0b1e
-      drop(i50)
+      drop("Fruit")
       set.cel(o5,5)
     }
     if (v224 == 49) { //0b2a
-      drop(i49)
+      drop("Bread")
       set.cel(o5,4)
     }
     if (v224 == 51) { //0b36
-      drop(i51)
+      drop("Mutton")
       set.cel(o5,3)
     }
     if (v224 == 24) { //0b42
-      drop(i24)
+      drop("Porridge")
       set.cel(o5,7)
     }
     if (v224 == 25) { //0b4e
       set(f225)
-      drop(i25)
+      drop("Poisoned Porridge")
       set.cel(o5,7)
     }
     v224 = 0

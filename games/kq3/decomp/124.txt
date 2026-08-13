@@ -8,13 +8,13 @@ if ((!fEnteredCommand || fSaidAccepted)) { //000c
 set(f120)
 v103++
 if ((said("crumble", "acorn", "mortar") || said("crumble", "three", "acorn", "mortar"))) { //001e
-  if (!(has(i18))) { //0036
+  if (!(has("Three Acorns*"))) { //0036
     print("How can you use that which you do not have?")
     goto(l84)
   }
   if (v103 == 1) { //0042
     print("Putting the dried acorns into the stone mortar, you use the pestle to grind them into a rough acorn powder.")
-    drop(i18)
+    drop("Three Acorns*")
     reset(f120)
     goto(l84)
   }
@@ -22,7 +22,7 @@ if ((said("crumble", "acorn", "mortar") || said("crumble", "three", "acorn", "mo
 }
 l84:
 if ((said("add", "acorn", "flour", "basin") || said("drain", "acorn", "flour", "basin"))) { //0054
-  if (!(has(i40))) { //006e
+  if (!(has("Bowl"))) { //006e
     print("You don't have a bowl.")
     goto(l138)
   }
@@ -35,14 +35,14 @@ if ((said("add", "acorn", "flour", "basin") || said("drain", "acorn", "flour", "
 }
 l138:
 if ((said("add", "cup", "night shade", "basin") || said("add", "cup", "night shade", "juice", "basin") || said("add", "one", "cup", "night shade", "juice", "basin") || said("add", "one", "cup", "night shade", "basin") || said("add", "night shade", "basin") || said("add", "night shade", "juice", "basin") || said("drain", "cup", "juice", "basin") || said("drain", "cup", "night shade", "basin") || said("drain", "cup", "night shade", "juice", "basin") || said("drain", "one", "cup", "night shade", "juice", "basin") || said("drain", "one", "cup", "night shade", "basin") || said("drain", "night shade", "juice", "basin"))) { //008a
-  if (!(has(i17))) { //0116
+  if (!(has("Nightshade Juice*"))) { //0116
     print("How can you use that which you do not have?")
     goto(l310)
   }
   if (v103 == 3) { //0122
     print("You very carefully pour a cupful of nightshade juice into the clay bowl so as to not to spill a single drop.")
     print("There is now an ugly, brown, mealy, liquid mixture in the bowl.")
-    drop(i17)
+    drop("Nightshade Juice*")
     reset(f120)
     goto(l310)
   }
@@ -59,7 +59,7 @@ if ((said("knead", "compound", "ladle") || said("knead", "try", "ladle") || said
 }
 l364:
 if ((said("boil", "compound", "brazier") || said("boil", "compound", "above", "brazier") || said("boil", "compound", "on", "brazier") || said("boil", "basin", "on", "brazier") || said("boil", "basin", "brazier") || said("boil", "basin", "above", "brazier") || said("add", "basin", "brazier") || said("add", "basin", "above", "brazier") || said("add", "basin", "on", "brazier") || said("add", "basin", "on", "brazier", "boil"))) { //016c
-  if (!(has(i40))) { //01d2
+  if (!(has("Bowl"))) { //01d2
     print("How can you use that which you do not have?")
     goto(l515)
   }
@@ -96,24 +96,24 @@ if (said("capture", "sleep", "flour")) { //022d
 }
 l583:
 if ((said("add", "sleep", "flour", "pouch") || said("drain", "sleep", "flour", "pouch"))) { //0247
-  if (!(has(i19))) { //0261
+  if (!(has("Empty Pouch*"))) { //0261
     print("How can you use that which you do not have?")
     goto(l641)
   }
   if (v103 == 9) { //026d
     print("You untie the small leather pouch, scoop the powder from the table, and place it within. You now have a pouch full of sleep powder.")
     reset(f120)
-    drop(i19)
-    get(i20)
+    drop("Empty Pouch*")
+    get("Sleep Powder*")
     goto(l641)
   }
   reset(fSaidAccepted)
 }
 l641:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0281
-  if (!(has(i37))) { //0295
+  if (!(has("Magic Wand*"))) { //0295
     print("How can you use that which you do not have?")
-    drop(i20)
+    drop("Sleep Powder*")
     goto(l693)
   }
   if (v103 == 8) { //02a3
@@ -121,7 +121,7 @@ if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0281
     reset(f120)
     goto(l693)
   }
-  drop(i20)
+  drop("Sleep Powder*")
   reset(fSaidAccepted)
 }
 l693:

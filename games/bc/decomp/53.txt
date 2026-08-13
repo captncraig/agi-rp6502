@@ -107,7 +107,7 @@ if (f129) { //0116
 }
 if (!f39 && posn(o0,52,114,116,152)) { //011f
   set(fSaidAccepted)
-  get(i12)
+  get("Magic Sword")
   vCurrentScore += 8
   set.cel(o6,1)
   force.update(o6)

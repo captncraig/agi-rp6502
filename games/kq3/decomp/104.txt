@@ -62,7 +62,7 @@ if (said("examine", "cat")) { //00e4
   print("That detestable pet of Manannan's is a constant annoyance.")
 }
 if (said("call", "cat")) { //00f0
-  if (has(i8)) { //00fa
+  if (has("Dough in Ears")) { //00fa
     print("\"Get lost, Gwydion, you creep!\"")
     goto(l267)
   }
@@ -78,7 +78,7 @@ if ((said("embrace", "cat") || said("pat", "cat"))) { //010b
 if (said("hit", "cat")) { //0124
   distance(o0,o13,v36)
   if (v36 > 11) { //0132
-    if (has(i8)) { //0139
+    if (has("Dough in Ears")) { //0139
       print("\"Ha, ha! Missed me!!\"")
       goto(l326)
     }
@@ -87,7 +87,7 @@ l326:
     goto(l356)
   }
   sound(13,f41)
-  if (has(i8)) { //014c
+  if (has("Dough in Ears")) { //014c
     random(24,26,v36)
     print(v36)
     goto(l349)
@@ -110,7 +110,7 @@ if (v44 != 0) { //0175
 if (!f46 && (said("capture", "cat") || said("carry", "cat") || said("capture", "cat"))) { //0180
   distance(o0,o13,v36)
   if (v36 > 8) { //019f
-    if (has(i8)) { //01a6
+    if (has("Dough in Ears")) { //01a6
       print("%m5 As he does so he snickers, \"Ha, ha! Missed me!\"")
       goto(l435)
     }
@@ -150,11 +150,11 @@ if ((said("capture", "fur", "cat") || said("capture", "cat", "fur") || said("cap
     print("You don't have the cat.")
     goto(l662)
   }
-  get(i2)
+  get("Cat Hair*")
   sound(13,f41)
   print("\"Screeeeeeeeeeeeech!!!!!!!!\"")
   print("(heh, heh, heh)")
-  if (has(i8)) { //027a
+  if (has("Dough in Ears")) { //027a
     random(24,27,v36)
     print(v36)
   }

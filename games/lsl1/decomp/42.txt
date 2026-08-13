@@ -292,7 +292,7 @@ l865:
   }
 l1006:
   if ((said("add", "blond", "aphrodisiac", "rol") || said("increase", "aphrodisiac", "rol") || said("add", "aphrodisiac", "blond", "rol"))) { //03ee
-    if (!(has(i19))) { //0410
+    if (!(has("Bottle of Pills"))) { //0410
       set(f68)
       goto(l1081)
     }
@@ -735,7 +735,7 @@ l3085:
     v206 = 0
     start.cycling(o6)
     v200 = 0
-    drop(i19)
+    drop("Bottle of Pills")
     vCurrentScore += 5
     print("She takes one look at the bottle of Spanish Fly and says, \"Boy, thanks! How did you know that I love this stuff?!\" She tosses down a couple of pills, then a few more, and finally gulps the whole bottle! Her breathing becomes faster and faster until she begins to pant.")
     v67 = 6

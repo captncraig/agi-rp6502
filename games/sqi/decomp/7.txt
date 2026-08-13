@@ -146,7 +146,7 @@ if (said("check out", "elevator")) { //021d
 }
 if ((said("fill", "card") || said("use", "card") || said("use", "credit card") || said("fill", "credit card") || said("drop", "credit card", "cartridge slot") || said("fill", "credit card", "cartridge slot") || said("fill", "card", "cartridge slot"))) { //0229
   if (obj.in.box(o0,74,125,95,131)) { //025f
-    if (has(i5)) { //0269
+    if (has("Keycard")) { //0269
       if (!f153) { //026f
         set(f153)
         vCurrentScore += 2

@@ -54,7 +54,7 @@ if (!f21) { //008b
   if ((said("cast", "dagger") || said("kill", "goat"))) { //009e
     if (f67) { //00b0
       print("You throw the dagger and it falls into the flowing stream.")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
@@ -164,14 +164,14 @@ l566:
   if (said("cast", "dagger") && f67) { //0236
     if (posn(o0,78,90,148,166)) { //0242
       print("The dagger sings through the air... to a perfect catch by the troll.  \"Nice dagger, but it ain't no treasure!\" he growls.")
-      drop(i1)
+      drop("dagger")
       reset(f67)
       set(f70)
       vCurrentScore -= 5
       goto(l613)
     }
     print("You throw the dagger and it falls into the flowing stream.")
-    drop(i1)
+    drop("dagger")
     reset(f67)
     set(f70)
     vCurrentScore -= 5
@@ -201,7 +201,7 @@ l654:
     if ((said("give", "diamond") || said("give", "troll", "diamond") || said("give", "diamond", "troll"))) { //02ca
       if (posn(o0,78,90,148,166)) { //02e6
         print("OK")
-        drop(i15)
+        drop("pouch of diamonds")
         reset(f106)
         set(f151)
         set(f107)
@@ -217,7 +217,7 @@ l772:
     if ((said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll"))) { //030a
       if (posn(o0,78,90,148,166)) { //0326
         print("OK")
-        drop(i17)
+        drop("sceptre")
         reset(f113)
         set(f151)
         set(f114)
@@ -233,7 +233,7 @@ l836:
     if ((said("give", "egg") || said("give", "troll", "egg") || said("give", "egg", "troll"))) { //034a
       if (posn(o0,78,90,148,166)) { //0366
         print("OK")
-        drop(i20)
+        drop("gold egg")
         reset(f110)
         set(f151)
         set(f111)
@@ -254,7 +254,7 @@ l900:
     if ((said("give", "gold nut") || said("give", "troll", "gold nut") || said("give", "gold nut", "troll"))) { //03ae
       if (posn(o0,78,90,148,166)) { //03ca
         print("OK")
-        drop(i4)
+        drop("gold walnut")
         reset(f108)
         set(f151)
         set(f109)

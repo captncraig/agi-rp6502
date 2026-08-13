@@ -169,14 +169,14 @@ if (posn(o0,74,107,98,116)) { //01b7
   if (v32 == 2) { //01eb
     v32--
     v32--
-    get(i6)
+    get("Water Flask")
     set.cel(o1,0)
     print("The water flask is made of soft leather.")
     goto(l735)
   }
   if (v32 == 3) { //0200
     v32--
-    get(i5)
+    get("Bread")
     v52 = 3
     set.cel(o1,2)
     print("This looks like enough bread for three meals!")
@@ -184,7 +184,7 @@ if (posn(o0,74,107,98,116)) { //01b7
   }
   if (v32 == 4) { //0216
     v32--
-    get(i8)
+    get("Apple")
     set.cel(o1,3)
     print("You take the apple. (It certainly looks delicious.)")
     goto(l735)
@@ -192,7 +192,7 @@ if (posn(o0,74,107,98,116)) { //01b7
   if (v32 == 5) { //0229
     set(f148)
     v32--
-    get(i1)
+    get("Knapsack")
     set.cel(o1,4)
     print("This knapsack will hold just about anything you may find.")
     goto(l735)
@@ -224,7 +224,7 @@ if (posn(o0,46,116,73,128)) { //0271
   }
   set(f153)
   print("You carefully reach over the fire, and take Hen Wen's pot of simmering gruel.")
-  get(i3)
+  get("Gruel")
   start.update(o3)
   erase(o3)
 l658:
@@ -297,7 +297,7 @@ if (f211) { //032e
   print("\"Good luck, Taran. Take this coil of rope, and hurry -- before the Horned King's power becomes unstoppable!\"")
   set(f55)
   set(f108)
-  get(i10)
+  get("Rope")
   start.cycling(o8)
   follow.ego(o8,5,f174)
   start.update(o0)

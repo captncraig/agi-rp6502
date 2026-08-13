@@ -59,7 +59,7 @@ if (posn(o0,74,149,93,162)) { //0091
   }
   if (!f136) { //00ab
     set(f136)
-    get(i14)
+    get("Lute")
     print("You take the lute and realize that it is slightly out of tune.")
     set(fSaidAccepted)
     goto(l193)

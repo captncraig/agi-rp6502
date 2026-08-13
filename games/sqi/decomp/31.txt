@@ -172,7 +172,7 @@ if (said("check out", "computer console")) { //0212
   }
   if (v41 > 0) { //0233
     if ((obj.in.box(o0,112,121,156,146) || v41 == 2)) { //023a
-      if (!(has(i7))) { //0249
+      if (!(has("Skimmer key"))) { //0249
         print("The panel has an ignition switch. There is a key in it.")
         goto(l599)
       }
@@ -187,7 +187,7 @@ l604:
 if (v41 > 0) { //025c
   if ((said("check out", "button") || said("check out", "ignition"))) { //0263
     if ((obj.in.box(o0,112,121,156,146) || v41 == 2)) { //0275
-      if (!(has(i7))) { //0284
+      if (!(has("Skimmer key"))) { //0284
         print("The ignition switch has a hole for a key which is currently filled.")
         goto(l658)
       }
@@ -223,7 +223,7 @@ l744:
 if (v41 > 0) { //02e8
   if (said("check out", "bike")) { //02ef
     if ((obj.in.box(o0,112,121,156,146) || v41 == 2)) { //02f9
-      if (!(has(i7))) { //0308
+      if (!(has("Skimmer key"))) { //0308
         print("As described, it is a sand skimmer and it looks like it has skimmed quite a bit of sand in its time. On it is a panel which has a small readout, currently dark, and a keyhole with a key in it.")
         goto(l790)
       }
@@ -253,8 +253,8 @@ if ((said("speak", "being") || said("speak", "alien") || said("speak", "leader")
 l895:
 if ((said("acquire", "key") || said("acquire", "bike", "key"))) { //037f
   if ((obj.in.box(o0,107,122,149,146) || v41 == 2)) { //0393
-    if (!(has(i7))) { //03a2
-      get(i7)
+    if (!(has("Skimmer key"))) { //03a2
+      get("Skimmer key")
       print("You remove the key from the skimmer.")
       goto(l946)
     }
@@ -267,8 +267,8 @@ l946:
 l951:
 if ((said("fill", "key") || said("drop", "key", "ignition"))) { //03b7
   if ((obj.in.box(o0,107,122,149,146) || v41 == 2)) { //03cb
-    if (has(i7)) { //03da
-      drop(i7)
+    if (has("Skimmer key")) { //03da
+      drop("Skimmer key")
       print("Done.")
       goto(l1001)
     }
@@ -314,8 +314,8 @@ l1107:
 if ((said("fill", "cart") || said("fill", "cart", "cartridge slot") || said("fill", "cart", "cartridge slot") || said("fill", "cartridge slot", "cart") || said("drop", "cart") || said("drop", "cart", "cartridge slot") || said("plug", "cart", "cartridge slot") || said("plug", "cart"))) { //0453
   if (obj.in.box(o0,75,114,98,127)) { //0493
     if (!f32) { //049d
-      if (has(i1)) { //04a4
-        drop(i1)
+      if (has("Cartridge")) { //04a4
+        drop("Cartridge")
         set(f37)
         prevent.input()
         print("The cartridge snaps neatly into the slot and the screen comes alive.")
@@ -338,7 +338,7 @@ l1226:
 l1231:
 if ((said("turn", "key") || said("turn", "button") || said("start", "bike"))) { //04cf
   if (v41 == 2) { //04e7
-    if (has(i7)) { //04ee
+    if (has("Skimmer key")) { //04ee
       print("The key is not in the keyhole.")
       goto(l1284)
     }
@@ -354,7 +354,7 @@ l1289:
 if ((said("acquire", "cart") || said("get down", "cart") || said("acquire", "cart", "cartridge slot") || said("get down", "cart", "cartridge slot"))) { //0509
   if ((obj.in.box(o0,1,110,95,167) || obj.in.box(o0,67,114,98,137))) { //052b
     if (f37) { //053d
-      get(i1)
+      get("Cartridge")
       if (!f180) { //0545
         set(f180)
         vCurrentScore += 5

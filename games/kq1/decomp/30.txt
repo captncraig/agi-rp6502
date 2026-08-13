@@ -40,7 +40,7 @@ l127:
         set(f127)
         set(f129)
         vCurrentScore += 3
-        get(i23)
+        get("walnut")
         goto(l178)
       }
       print("The walnuts are over by the walnut tree.")

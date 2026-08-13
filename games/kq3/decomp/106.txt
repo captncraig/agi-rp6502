@@ -170,7 +170,7 @@ l475:
       reset(f105)
     }
     v36 = 5
-    if (!(obj.in.room(i37,v36))) { //01ff
+    if (!(obj.in.room("Magic Wand*",v36))) { //01ff
       v123 = 24
       set(f106)
       set(f104)

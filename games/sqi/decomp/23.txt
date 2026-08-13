@@ -92,7 +92,7 @@ if ((!fEnteredCommand || fSaidAccepted)) { //010f
 if (said("check out", "area")) { //011d
   print("You are in a desert cliff area.")
 }
-if (!(has(i18))) { //0129
+if (!(has("Plant"))) { //0129
   if (said("check out", "bush")) { //0130
     if (obj.in.box(o0,0,123,36,146)) { //013a
       print("It looks a lot like spinach. ")
@@ -103,9 +103,9 @@ if (!(has(i18))) { //0129
 }
 l331:
 if ((said("acquire", "bush") || said("move", "bush") || said("acquire", "bush"))) { //014b
-  if (!(has(i18))) { //0163
+  if (!(has("Plant"))) { //0163
     if (obj.in.box(o0,0,123,36,146)) { //016a
-      get(i18)
+      get("Plant")
       print("You tear off a piece of the plant.")
       goto(l381)
     }
@@ -117,7 +117,7 @@ l381:
 }
 l386:
 if ((said("smoke", "bush") || said("roll", "bush"))) { //0182
-  if (has(i18)) { //0194
+  if (has("Plant")) { //0194
     print("The Health Minister has determined that smoking is hazardous to your health.")
     goto(l417)
   }
@@ -125,7 +125,7 @@ if ((said("smoke", "bush") || said("roll", "bush"))) { //0182
 }
 l417:
 if (said("smell", "bush")) { //01a1
-  if ((has(i18) || obj.in.box(o0,0,123,36,146))) { //01ab
+  if ((has("Plant") || obj.in.box(o0,0,123,36,146))) { //01ab
     print("You take a whiff of the plant and find it to be a regrettable experience.")
     goto(l448)
   }

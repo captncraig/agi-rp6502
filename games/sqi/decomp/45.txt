@@ -2,8 +2,8 @@ if (fNewRoom) { //0002
   set.horizon(10)
   status.line.on()
   v59 = 0
-  if (!(has(i9))) { //000e
-    get(i9)
+  if (!(has("Jetpack"))) { //000e
+    get("Jetpack")
   }
   load.pic(vCurrentRoom)
   draw.pic(vCurrentRoom)

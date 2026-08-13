@@ -208,7 +208,7 @@ if (v96 != 3) { //0271
   set.loop(o11,2)
   if (!f229 && !f46 && !f42) { //029f
     set(f229)
-    if ((has(i5) || has(i14))) { //02ae
+    if ((has("Revolver") || has("Loaded Revolver"))) { //02ae
       print("The Jailer says \"Bonds, you oughta know better than to bring your gun in here.\"")
       if (vCurrentScore > 1) { //02ba
         vCurrentScore -= 2

@@ -181,7 +181,7 @@ if (v75 == 0) { //0216
     goto(l954)
   }
   if ((said("kill", "hungry lion") || said("kill", "hungry lion", "knife") || said("stab", "hungry lion") || said("stab", "hungry lion", "knife"))) { //0260
-    if (!(has(i50))) { //0282
+    if (!(has("T\x01"))) { //0282
       print("You have nothing with which to kill a lion.")
       goto(l680)
     }
@@ -191,7 +191,7 @@ if (v75 == 0) { //0216
       set.view(o2,89)
       v75 = 3
       vCurrentScore += 2
-      drop(i50)
+      drop("T\x01")
       goto(l680)
     }
     print("You must get closer to do that.")
@@ -203,10 +203,10 @@ l680:
     goto(l954)
   }
   if ((said("feed", "ham") || said("feed", "hungry lion", "ham") || said("feed", "hungry lion") || said("feed", "ham", "hungry lion") || said("give", "ham") || said("give", "ham", "hungry lion") || said("give", "hungry lion", "ham") || said("cast", "ham") || said("cast", "ham", "hungry lion") || said("cast", "hungry lion", "ham"))) { //02c8
-    if (has(i66)) { //0316
+    if (has("T\x01")) { //0316
       stop.sound()
       vCurrentScore += 4
-      drop(i66)
+      drop("T\x01")
       stop.cycling(o2)
       set.view(o2,177)
       v94 = 2
@@ -263,7 +263,7 @@ if (v75 == 3 && !fSaidAccepted && (said("anyword", "hungry lion") || said("anywo
 }
 if (v75 == 2) { //042b
   if ((said("kill", "hungry lion") || said("kill", "hungry lion", "knife") || said("stab", "hungry lion") || said("stab", "hungry lion", "knife"))) { //0432
-    if (!(has(i50))) { //0454
+    if (!(has("T\x01"))) { //0454
       print("You have nothing with which to kill a lion.")
       goto(l1145)
     }
@@ -272,7 +272,7 @@ if (v75 == 2) { //042b
       set.view(o2,89)
       v75 = 3
       vCurrentScore -= 3
-      drop(i50)
+      drop("T\x01")
       goto(l1145)
     }
     print("You must get closer to do that.")

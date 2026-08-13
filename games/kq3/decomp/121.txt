@@ -14,15 +14,15 @@ if ((said("add", "eagle", "feather", "basin") || said("add", "one", "eagle", "fe
   set(f241)
 }
 if (said("add", "feather", "basin")) { //005a
-  if ((!(has(i1)) || !(has(i40)))) { //0066
+  if ((!(has("Chicken Feather*")) || !(has("Bowl")))) { //0066
     print("It is difficult to use that which you do not have.")
     goto(l138)
   }
-  if (has(i1)) { //0077
+  if (has("Chicken Feather*")) { //0077
     set(f242)
     goto(l138)
   }
-  if (has(i9)) { //0082
+  if (has("Eagle Feather*")) { //0082
     set(f241)
   }
 }
@@ -37,21 +37,21 @@ if (f243) { //008a
   }
 }
 if (said("add", "fur", "basin")) { //00b6
-  if (!(has(i2)) && !(has(i3))) { //00c2
+  if (!(has("Cat Hair*")) && !(has("Dog Hair*"))) { //00c2
     print("It is difficult to use that which you do not have.")
     goto(l248)
   }
-  if (has(i2) && has(i3)) { //00d1
+  if (has("Cat Hair*") && has("Dog Hair*")) { //00d1
     set(f243)
     reset(f120)
     v103--
     print("Which tuft of fur?")
   }
   if (!f243) { //00e1
-    if (has(i3)) { //00e8
+    if (has("Dog Hair*")) { //00e8
       set(f245)
     }
-    if (has(i2)) { //00f0
+    if (has("Cat Hair*")) { //00f0
       set(f244)
     }
   }
@@ -64,15 +64,15 @@ if (said("add", "dog", "fur", "basin")) { //0108
   set(f245)
 }
 if ((said("add", "reptile", "reptile skin", "basin") || said("add", "reptile", "basin") || said("add", "reptile skin", "basin"))) { //0118
-  if (!(has(i4))) { //0138
+  if (!(has("Snakeskin*"))) { //0138
     print("What snake skin?")
     goto(l349)
   }
-  if (!(has(i40))) { //0144
+  if (!(has("Bowl"))) { //0144
     print("It is difficult to use that which you do not have.")
     goto(l349)
   }
-  drop(i4)
+  drop("Snakeskin*")
   print("You put the dried snake skin in the clay bowl.")
   if (v103 == 3) { //0154
     reset(f120)
@@ -80,24 +80,24 @@ if ((said("add", "reptile", "reptile skin", "basin") || said("add", "reptile", "
 }
 l349:
 if ((said("add", "ladle", "bone") || said("add", "bone", "basin") || said("add", "ladle", "bone") || said("add", "ladle", "bone", "basin") || said("add", "ladle", "bone", "basin"))) { //015d
-  if ((!(has(i5)) || !(has(i40)))) { //018f
+  if ((!(has("Fish Bone Powder*")) || !(has("Bowl")))) { //018f
     print("It is difficult to use that which you do not have.")
     goto(l429)
   }
   print("You pour a spoonful of fish bone powder into the clay bowl.")
-  drop(i5)
+  drop("Fish Bone Powder*")
   if (v103 == 4) { //01a4
     reset(f120)
   }
 }
 l429:
 if ((said("add", "one", "thimble", "dew", "basin") || said("add", "thimble", "dew", "basin") || said("add", "dew", "basin"))) { //01ad
-  if (!(has(i7))) { //01d1
+  if (!(has("Thimble & Dew*"))) { //01d1
     print("It is difficult to use that which you do not have.")
     goto(l492)
   }
-  drop(i7)
-  get(i6)
+  drop("Thimble & Dew*")
+  get("Thimble*")
   print("You pour the thimbleful of dew into the clay bowl.")
   if (v103 == 5) { //01e3
     reset(f120)
@@ -133,14 +133,14 @@ if ((said("add", "two", "ball", "compound", "ears") || said("add", "two", "compo
 }
 l732:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //02dc
-  if (!(has(i37))) { //02f0
+  if (!(has("Magic Wand*"))) { //02f0
     print("It is difficult to use that which you do not have.")
     goto(l782)
   }
   if (v103 == 10) { //02fc
     print("You wave the magic wand over your dough-filled ears.")
     reset(f120)
-    get(i8)
+    get("Dough in Ears")
     goto(l782)
   }
   reset(fSaidAccepted)
@@ -220,11 +220,11 @@ l966:
 }
 if (f242) { //03f1
   reset(f242)
-  if ((!(has(i1)) || !(has(i40)))) { //03f9
+  if ((!(has("Chicken Feather*")) || !(has("Bowl")))) { //03f9
     print("It is difficult to use that which you do not have.")
     goto(l1047)
   }
-  drop(i1)
+  drop("Chicken Feather*")
   print("You place the soft, downy chicken feather in your clay mixing bowl.")
   if (v103 == 1) { //040e
     reset(f120)
@@ -233,7 +233,7 @@ if (f242) { //03f1
 l1047:
 if (f241) { //0417
   reset(f241)
-  if (!(has(i9))) { //041f
+  if (!(has("Eagle Feather*"))) { //041f
     print("It is difficult to use that which you do not have.")
     goto(l1069)
   }
@@ -242,11 +242,11 @@ if (f241) { //0417
 l1069:
 if (f244) { //042d
   reset(f244)
-  if (!(has(i2))) { //0435
+  if (!(has("Cat Hair*"))) { //0435
     print("It is difficult to use that which you do not have.")
     goto(l1102)
   }
-  drop(i2)
+  drop("Cat Hair*")
   print("You put the tuft of cat hair in the clay bowl.")
   if (v103 == 2) { //0445
     reset(f120)
@@ -255,11 +255,11 @@ if (f244) { //042d
 l1102:
 if (f245) { //044e
   reset(f245)
-  if (!(has(i3))) { //0456
+  if (!(has("Dog Hair*"))) { //0456
     print("It is difficult to use that which you do not have.")
     goto(l1135)
   }
-  drop(i3)
+  drop("Dog Hair*")
   print("You put the tuft of dog hair in the clay bowl.")
   if (v103 == 2) { //0466
     reset(f120)

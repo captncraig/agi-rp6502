@@ -34,7 +34,7 @@ if (posn(o0,20,152,40,167)) { //0058
 if (!fEnteredCommand) { //0064
   goto(l558)
 }
-if (!f39 && has(i7) && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("anyword", "anyword", "anyword", "briefcase", "rol"))) { //006e
+if (!f39 && has("Briefcase") && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("anyword", "anyword", "anyword", "briefcase", "rol"))) { //006e
   print("Your briefcase is in the car.")
 }
 if ((said("examine", "auto") || said("examine"))) { //0099
@@ -88,7 +88,7 @@ if (said("examine", "license plate")) { //014b
 }
 l366:
 if ((said("jog", "license plate") || said("jog", "id", "number") || said("check", "license plate") || said("call") || said("call", "license plate") || said("jog", "make"))) { //016e
-  if ((f39 || has(i4) || posn(o0,111,161,118,162))) { //0198
+  if ((f39 || has("Radio Extender") || posn(o0,111,161,118,162))) { //0198
     print("\"Dispatch, this is 83-32. Run wants%m14")
     if (!f179) { //01aa
       set(f179)

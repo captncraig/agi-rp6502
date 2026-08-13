@@ -23,7 +23,7 @@ l43:
   v69 = 2
   if (f81 && !f88) { //0044
     set(f88)
-    get(i26)
+    get("water")
     if (!f91) { //0051
       set(f91)
       vCurrentScore += 2
@@ -32,7 +32,7 @@ l43:
   draw(o0)
   show.pic()
   if (f79) { //0060
-    drop(i7)
+    drop("magic ring")
     vCurrentScore -= 3
     print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
     reset(f83)

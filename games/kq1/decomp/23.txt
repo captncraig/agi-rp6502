@@ -75,7 +75,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0123
   if ((posn(o0,0,40,109,167) || posn(o0,110,55,151,142))) { //0135
     reset(f116)
     print("The clear mountain water pours into the bucket.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //014f
       vCurrentScore += 2

@@ -82,7 +82,7 @@ l293:
 if (!f88 && f81 && said("acquire", "water")) { //0125
   if (posn(o0,77,39,159,129)) { //0134
     print("As you fill the bucket, the river almost rips it from your grasp.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //0144
       vCurrentScore += 2
@@ -108,7 +108,7 @@ if (said("acquire", "pebbles")) { //0155
       set(f93)
       set(f92)
       vCurrentScore += 1
-      get(i13)
+      get("pebbles")
       goto(l407)
     }
     print("You are not close enough to the pebbles to get them.")

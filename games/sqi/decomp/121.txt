@@ -187,7 +187,7 @@ l661:
       if ((said("drop", "jet pack", "case") || said("fill", "jet pack"))) { //0295
         if (v81 == 2) { //02a9
           if (f76) { //02b0
-            drop(i9)
+            drop("Jetpack")
             print("Done.")
             v81 = 1
             set.view(o0,0)
@@ -250,7 +250,7 @@ l838:
         if (v81 == 2) { //0375
           print("As you exit the trunk, you notice that you have lost your jetpack.")
           set(f147)
-          drop(i9)
+          drop("Jetpack")
           v81 = 1
         }
         if (v81 == 4) { //0385
@@ -297,7 +297,7 @@ if ((said("open", "grate") || said("unscrew", "grate") || said("get down", "grat
       print("It`s already open.")
       goto(l1145)
     }
-    if (has(i19)) { //0459
+    if (has("Xenon Army Knife")) { //0459
       set.cel(o6,1)
       force.update(o6)
       if (vCurrentRoom == 53) { //0464
@@ -378,7 +378,7 @@ if (v249 == 4 && !fSaidAccepted) { //0543
   set(fSaidAccepted)
   print("You should get off the trunk first.")
 }
-if (has(i9) && said("drop", "jet pack", "floor")) { //0551
+if (has("Jetpack") && said("drop", "jet pack", "floor")) { //0551
   print("Leaving your jetpack lying around wouldn't be very bright. Someone might find it, and then how would you get home?")
 }
 l1377:

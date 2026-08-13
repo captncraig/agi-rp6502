@@ -17,7 +17,7 @@ if (fNewRoom) { //0002
   load.view(7)
   v66 = 155
   load.sound(2)
-  if (!(has(i12))) { //0032
+  if (!(has("Magic Sword"))) { //0032
     load.sound(11)
   }
   load.view(124)

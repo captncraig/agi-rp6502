@@ -265,7 +265,7 @@ l952:
 l987:
       set(f188)
       set(f102)
-      get(i21)
+      get("shield")
       vCurrentScore += 8
       v74++
       goto(l1003)
@@ -293,7 +293,7 @@ if (!f189) { //040c
         set(f189)
         set(f113)
         print("Eagerly, you pick up the sceptre.")
-        get(i17)
+        get("sceptre")
         vCurrentScore += 6
       }
     }

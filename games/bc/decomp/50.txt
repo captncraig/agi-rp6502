@@ -157,7 +157,7 @@ if (v61 < 30) { //01a7
     goto(l454)
   }
   set(f32)
-  get(i16)
+  get("Keys")
   set.cel(o2,1)
   force.update(o2)
   print("You take the key ring and its keys off the wall.")
@@ -179,7 +179,7 @@ if (v60 == 16) { //01c9
     goto(l518)
   }
   reset(f32)
-  drop(i16)
+  drop("Keys")
   v60 = 0
   v42 = 0
   set.cel(o2,0)

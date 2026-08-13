@@ -30,7 +30,7 @@ if (fNewRoom) { //0002
   position(o2,71,123)
   set.view(o2,60)
   set.priority(o2,6)
-  if (obj.in.room(i6,vCurrentRoom)) { //0053
+  if (obj.in.room("Diamond Ring",vCurrentRoom)) { //0053
     animate.obj(o3)
     ignore.blocks(o3)
     ignore.objs(o3)
@@ -94,7 +94,7 @@ if (v30 == 9 && !fSaidAccepted) { //013b
 if ((said("catch", "newspaper") || said("examine", "newspaper"))) { //0149
   print("You only read while \"enthroned.\"")
 }
-if (has(i17) && said("examine", "centerfold", "rol")) { //015d
+if (has("\"Jugs\" Magazine") && said("examine", "centerfold", "rol")) { //015d
   print("No wonder your eyesight is so bad!")
 }
 if (said("dry", "fingers", "on", "bra")) { //016d
@@ -233,7 +233,7 @@ if ((said("look in", "basin") || said("examine", "basin"))) { //03a5
     set(f54)
     goto(l980)
   }
-  if (!(obj.in.room(i6,vCurrentRoom))) { //03c3
+  if (!(obj.in.room("Diamond Ring",vCurrentRoom))) { //03c3
     print("A small, neatly lettered sign reminds you:\n\n\"Since we can't clean up after every customer, please rinse out this sink when you are finished.\"")
     print("Evidently, you are the first customer who can read.")
     goto(l980)
@@ -268,13 +268,13 @@ if ((said("catch", "diamond ring") || said("catch", "diamond ring", "from", "bas
     set(f54)
     goto(l1170)
   }
-  if (!(obj.in.room(i6,vCurrentRoom))) { //047a
+  if (!(obj.in.room("Diamond Ring",vCurrentRoom))) { //047a
     set(f55)
     goto(l1170)
   }
   start.update(o3)
   erase(o3)
-  get(i6)
+  get("Diamond Ring")
   vCurrentScore += 3
   print("Got it!\n\nYou briefly consider an attempt to find the ring's owner, but return to your normal self and pocket it instead.")
 }

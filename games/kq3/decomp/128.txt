@@ -20,7 +20,7 @@ if (fNewRoom) { //0002
     draw(o12)
     v251 = 12
     random(1,2,v36)
-    if (has(i8) && v36 == 1 && (!f143 || !f144 || !f145)) { //004f
+    if (has("Dough in Ears") && v36 == 1 && (!f143 || !f144 || !f145)) { //004f
 l99:
       random(1,3,v36)
       if (v36 == 1) { //0067
@@ -113,7 +113,7 @@ if ((f254 || f255)) { //0198
   if (said("call", "lizard")) { //01ae
     print("They can't understand you.")
   }
-  if (has(i8) && said("hear", "lizard")) { //01ba
+  if (has("Dough in Ears") && said("hear", "lizard")) { //01ba
     print("Maybe if you're quiet, you'll hear them.")
   }
   if (said("anyword", "lizard")) { //01c8

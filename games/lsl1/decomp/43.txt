@@ -186,7 +186,7 @@ l560:
   }
 l676:
   if ((said("add", "blond", "apple", "rol") || said("add", "apple", "rol"))) { //02a4
-    if (!(has(i5))) { //02bc
+    if (!(has("Apple"))) { //02bc
       print("You have no apple.")
       goto(l741)
     }
@@ -619,7 +619,7 @@ l2631:
   if (v65 == 201) { //0ab4
     set(f88)
     set(f84)
-    drop(i5)
+    drop("Apple")
     vCurrentScore += 15
     set.cel(o5,1)
     force.update(o5)

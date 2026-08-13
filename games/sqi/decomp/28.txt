@@ -130,7 +130,7 @@ l381:
 }
 l386:
 if ((said("use", "glass") || said("place", "glass", "beam") || said("place", "glass", "light") || said("block", "beam", "glass") || said("block", "light", "glass") || said("drop", "glass", "beam") || said("drop", "glass", "light") || said("hold", "glass", "light") || said("hold", "glass", "beam"))) { //0182
-  if (has(i6)) { //01ce
+  if (has("Glass")) { //01ce
     if (!f121) { //01d4
       if (!f35) { //01db
         get.posn(o0,v135,v136)

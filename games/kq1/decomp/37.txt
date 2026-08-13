@@ -77,7 +77,7 @@ if (!f88) { //010e
 }
 if (!f88 && f81 && said("acquire", "water")) { //0129
   print("The bucket fills with the somewhat swampy water.")
-  get(i26)
+  get("water")
   set(f88)
   if (!f91) { //013e
     vCurrentScore += 2

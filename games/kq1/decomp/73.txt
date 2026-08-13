@@ -18,7 +18,7 @@ if (fNewRoom) { //0002
       set(f23)
       reset(f79)
       reset(f83)
-      drop(i7)
+      drop("magic ring")
       vCurrentScore -= 3
       set(f115)
     }

@@ -40,7 +40,7 @@ if (fNewRoom) { //0002
   }
   position(o0,62,167)
 l118:
-  if (obj.in.room(i3,vCurrentRoom)) { //0076
+  if (obj.in.room("Cadillac Keys",vCurrentRoom)) { //0076
     draw(o3)
   }
   add.to.pic(90,1,0,20,100,4,4)
@@ -425,7 +425,7 @@ if (said("examine", "map")) { //0573
 if (said("examine", "bookcase")) { //057f
   print("The bookcase contains Official Departmental Manuals.")
 }
-if (!(has(i3)) && said("examine", "car keys")) { //058b
+if (!(has("Cadillac Keys")) && said("examine", "car keys")) { //058b
   print("The keys hanging on the key board are for the Narcotics Department's unmarked cars. Below the key board hangs a clipboard.")
 }
 if (said("examine", "book")) { //059a
@@ -504,7 +504,7 @@ if (said("get", "car keys", "rol")) { //06f2
     set(f113)
     goto(l1845)
   }
-  if (!(obj.in.room(i3,vCurrentRoom))) { //070a
+  if (!(obj.in.room("Cadillac Keys",vCurrentRoom))) { //070a
     set(f114)
     goto(l1845)
   }
@@ -514,7 +514,7 @@ if (said("get", "car keys", "rol")) { //06f2
   }
   print("You take the keys to the undercover car.")
   erase(o3)
-  get(i3)
+  get("Cadillac Keys")
   if (!f160) { //0729
     set(f160)
     vCurrentScore += 3
@@ -526,13 +526,13 @@ if (said("drop", "car keys", "rol")) { //0735
     set(f113)
     goto(l1888)
   }
-  if (!(has(i3))) { //074d
+  if (!(has("Cadillac Keys"))) { //074d
     print("What keys?")
     goto(l1888)
   }
   print("You hang the keys on the key board.")
   draw(o3)
-  put(i3,0)
+  put("Cadillac Keys",0)
 }
 l1888:
 if (said("get", "note", "rol")) { //0760

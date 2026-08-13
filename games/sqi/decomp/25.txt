@@ -11,7 +11,7 @@ if (fNewRoom) { //0002
   stop.cycling(o1)
   position(o1,87,164)
   ignore.blocks(o1)
-  if (!(has(i2)) && !f84) { //0024
+  if (!(has("Rock")) && !f84) { //0024
     load.view(56)
     animate.obj(o2)
     set.view(o2,56)
@@ -59,7 +59,7 @@ if ((!fEnteredCommand || fSaidAccepted)) { //009f
   goto(l329)
 }
 if (said("check out", "area")) { //00ad
-  if (!(has(i2)) && !f84) { //00b7
+  if (!(has("Rock")) && !f84) { //00b7
     print("This is one end of what appears to be a large cavern. The only way to go is to the left. There is a rock nearby.")
     goto(l200)
   }
@@ -74,7 +74,7 @@ if ((said("check out", "elevator") || said("check out", "entryway"))) { //00c8
   print("You need to be closer.")
 }
 l235:
-if (!(has(i2)) && !f84) { //00eb
+if (!(has("Rock")) && !f84) { //00eb
   if (said("check out", "boulder")) { //00f5
     if (obj.in.box(o0,55,144,84,153)) { //00ff
       print("It looks just like a Keronian rock should.")
@@ -85,9 +85,9 @@ if (!(has(i2)) && !f84) { //00eb
 }
 l272:
 if (said("acquire", "boulder")) { //0110
-  if (!(has(i2)) && !f84) { //011a
+  if (!(has("Rock")) && !f84) { //011a
     if (obj.in.box(o0,55,144,84,153)) { //0124
-      get(i2)
+      get("Rock")
       erase(o2)
       print("Done.")
       goto(l313)

@@ -90,7 +90,7 @@ if (!fEgoOnWater) { //00eb
     set(f233)
     set(f53)
     vCurrentScore += 10
-    drop(i8)
+    drop("Apple")
     v60 = 0
     v42 = 0
     print("\"Thank you for tasty apple, kind Master. Gurgi now Taran's friend for life.\"")
@@ -99,7 +99,7 @@ if (!fEgoOnWater) { //00eb
     set(f233)
     set(f53)
     vCurrentScore += 10
-    drop(i9)
+    drop("Cookies")
     v60 = 0
     v42 = 0
     print("\"Gurgi loves cookies. Gurgi now Taran's friend for life.\"")
@@ -110,21 +110,21 @@ if (!fEgoOnWater) { //00eb
     v52--
     v52--
     if (!(v52 > 0)) { //013e
-      drop(i5)
+      drop("Bread")
       v60 = 0
       v42 = 0
     }
   }
   if (v60 == 3) { //014e
     set(f233)
-    drop(i3)
+    drop("Gruel")
     v60 = 0
     v42 = 0
     print("\"Gurgi eat gruel, but it tastes like piggy food.\"")
   }
   if (v60 == 2) { //0161
     set(f233)
-    drop(i2)
+    drop("Corn")
     v60 = 0
     v42 = 0
     print("\"Gurgi eat corn, but not like it much. Too dry.\"")

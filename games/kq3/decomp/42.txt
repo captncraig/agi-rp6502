@@ -233,7 +233,7 @@ v224--
 if (v224 == 1) { //031e
   stop.update(o2)
   if (v223 == 1) { //0327
-    if (obj.in.room(i6,vCurrentRoom)) { //032e
+    if (obj.in.room("Thimble*",vCurrentRoom)) { //032e
       print("You open the drawer, and among the clothes, you see a pretty silver thimble.")
       goto(l828)
     }
@@ -297,7 +297,7 @@ l1000:
   }
 l1026:
   if (said("capture", "thimble")) { //0402
-    if (!(obj.in.room(i6,vCurrentRoom))) { //040c
+    if (!(obj.in.room("Thimble*",vCurrentRoom))) { //040c
       print("You have already taken it!")
       goto(l1080)
     }
@@ -311,7 +311,7 @@ l1026:
     }
     print("You pick up the thimble and carry it with you.")
 l1075:
-    get(i6)
+    get("Thimble*")
     vCurrentScore += 1
   }
 l1080:
@@ -324,7 +324,7 @@ l1080:
         print("The drawers are shut.")
         goto(l1143)
       }
-      if (!(obj.in.room(i6,vCurrentRoom))) { //0468
+      if (!(obj.in.room("Thimble*",vCurrentRoom))) { //0468
         print("You see a few bear-sized clothes.")
         goto(l1143)
       }

@@ -215,7 +215,7 @@ if (f33) { //028b
 }
 v31--
 if (v31 == 1) { //0299
-  if (!(has(i8)) && v35 != 100 && v39 > 0 && !f38 && v39 != 3) { //02a0
+  if (!(has("Beer")) && v35 != 100 && v39 > 0 && !f38 && v39 != 3) { //02a0
     v37 = 100
     goto(l764)
   }
@@ -456,8 +456,8 @@ if ((said("kick") || said("kick", "anyword") || said("kick", "anyword", "anyword
 }
 if (said("drink", "ale")) { //0605
   reset(fEnteredCommand)
-  if (has(i8)) { //0611
-    drop(i8)
+  if (has("Beer")) { //0611
+    drop("Beer")
     v40++
     if (v40 == 1) { //061b
       print("The beer tastes like carbonated Zipple sweat. However, considering recent events, you could learn to love it.")
@@ -496,8 +496,8 @@ if (said("give", "coupon")) { //0669
     if (v35 == 100 && f41) { //067a
       if (!f176) { //0683
         set(f176)
-        get(i8)
-        get(i10)
+        get("Beer")
+        get("Buckazoid(s)")
         v124 += 5
         print("\"You have one of those coupons, huh? Here's your 5 buckazoids and your free beer. Enjoy.\"")
         goto(l1690)
@@ -516,12 +516,12 @@ l1700:
 if ((said("ale") || said("acquire", "ale") || said("buy", "ale"))) { //06a4
   if (v39 > 0) { //06ba
     if (v35 == 100 && f41) { //06c1
-      if (!(has(i8))) { //06ca
+      if (!(has("Beer"))) { //06ca
         if (v124 > 1) { //06d1
           if (v40 < 6) { //06d8
             print("\"That'll be $2.00. Thank you very much. Come again.\"")
             v124 -= 2
-            get(i8)
+            get("Beer")
             goto(l1771)
           }
           print("\"Listen, Mac, I can't serve you any more. You're sledged! You better go sleep it off or something before you start making a public display of yourself.\"")

@@ -312,16 +312,16 @@ l1048:
       print("You need to move closer.")
       goto(l1283)
     }
-    if (has(i7)) { //04da
+    if (has("Thimble & Dew*")) { //04da
       print("Your thimble is already full of dew.")
       goto(l1283)
     }
-    if (!(has(i6))) { //04e5
+    if (!(has("Thimble*"))) { //04e5
       print("You must have a thimble in order to get a thimbleful of dew.")
       goto(l1283)
     }
-    drop(i6)
-    get(i7)
+    drop("Thimble*")
+    get("Thimble & Dew*")
     print("Holding the silver thimble beneath a dew-filled flower, you gently tip the flower so its dew runs into the thimble. You move from flower to flower, repeating the process until your thimble is brimming with dew.")
     if (!f103) { //04f7
       set(f103)

@@ -22,7 +22,7 @@ if (fNewRoom) { //0002
     move.obj(o0,48,121,1,f75)
     goto(l85)
   }
-  if (obj.in.room(i13,vCurrentRoom)) { //0045
+  if (obj.in.room("Inflatable Doll",vCurrentRoom)) { //0045
     v205 = 28
     load.pic(v205)
     load.view(184)
@@ -93,7 +93,7 @@ if ((said("examine") || said("examine", "area") || said("examine", "cabinet") ||
     print("The penthouse bedroom is quite deluxe.")
     goto(l338)
   }
-  if (obj.in.room(i13,vCurrentRoom)) { //0144
+  if (obj.in.room("Inflatable Doll",vCurrentRoom)) { //0144
     print("You've found a closet full of uninteresting stuff, plus one inflatable doll.")
     goto(l338)
   }
@@ -104,7 +104,7 @@ if (f215 && said("ok")) { //0152
   goto(l535)
 }
 if ((said("use", "doll") || said("abuse", "doll") || said("add", "cock", "doll") || said("add", "cock", "doll", "lips") || said("add", "cock", "lips") || said("cunnilingus", "doll") || said("make", "doll", "blow job") || said("make", "doll", "add", "blow job") || said("ass", "copulate", "rol") || said("anyword", "ass", "copulate", "rol") || said("anyword", "ass", "rol") || said("ass", "rol") || said("anyword", "blow job", "rol") || said("anyword", "clit", "rol") || said("anyword", "anyword", "clit", "rol") || said("blow job", "rol") || said("anyword", "copulate", "rol") || said("copulate", "doll"))) { //015f
-  if (!(has(i13))) { //01f1
+  if (!(has("Inflatable Doll"))) { //01f1
     set(f68)
     goto(l547)
   }
@@ -126,7 +126,7 @@ l535:
 }
 l547:
 if (said("examine", "doll")) { //0223
-  if (!(has(i13))) { //022d
+  if (!(has("Inflatable Doll"))) { //022d
     set(f68)
     goto(l595)
   }
@@ -142,7 +142,7 @@ if (said("examine", "doll")) { //0223
 }
 l595:
 if (said("blow", "doll")) { //0253
-  if (!(has(i13))) { //025d
+  if (!(has("Inflatable Doll"))) { //025d
     set(f68)
     goto(l620)
   }
@@ -190,7 +190,7 @@ if ((said("examine", "cabinet") || said("look in", "cabinet"))) { //02dc
     print("Move inside the closet.")
     goto(l788)
   }
-  if (obj.in.room(i13,vCurrentRoom)) { //0306
+  if (obj.in.room("Inflatable Doll",vCurrentRoom)) { //0306
     print("You've found a closet full of uninteresting stuff, plus one inflatable doll.")
     goto(l788)
   }
@@ -198,7 +198,7 @@ if ((said("examine", "cabinet") || said("look in", "cabinet"))) { //02dc
 }
 l788:
 if (said("catch", "doll")) { //0314
-  if (has(i13)) { //031e
+  if (has("Inflatable Doll")) { //031e
     print("Sorry. One's your limit!")
     goto(l841)
   }
@@ -206,11 +206,11 @@ if (said("catch", "doll")) { //0314
     print("There's no inflatable doll out here.")
     goto(l841)
   }
-  if (!(obj.in.room(i13,vCurrentRoom))) { //0335
+  if (!(obj.in.room("Inflatable Doll",vCurrentRoom))) { //0335
     print("You lost her, remember!")
     goto(l841)
   }
-  get(i13)
+  get("Inflatable Doll")
   vCurrentScore += 5
   print("Got her!")
 }
@@ -240,7 +240,7 @@ if (controller(c17) && vStatusItem == 113) { //0573
   v207 = 6
 }
 l1418:
-if (!f209 && v38 < 122 && has(i13)) { //058a
+if (!f209 && v38 < 122 && has("Inflatable Doll")) { //058a
   print("Walking out of the closet, you clumsily catch your new friend on a protruding nail! There's a loud, flatulent sound, and...")
   v207 = 3
 }
@@ -459,7 +459,7 @@ if (f218) { //07f0
 }
 if (v207 > 0) { //0815
   if (v207 == 3) { //081c
-    drop(i13)
+    drop("Inflatable Doll")
     set(f85)
     prevent.input()
     stop.motion(o0)

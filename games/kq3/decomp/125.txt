@@ -8,23 +8,23 @@ if ((!fEnteredCommand || fSaidAccepted)) { //000c
 set(f120)
 v103++
 if ((said("add", "mandrake", "root", "flour", "basin") || said("drain", "mandrake", "root", "flour", "basin"))) { //001e
-  if ((!(has(i21)) || !(has(i40)))) { //003c
+  if ((!(has("Mandrake Root*")) || !(has("Bowl")))) { //003c
     print("How can you use that which you do not have?")
     goto(l90)
   }
   print("You pour the mandrake root powder into the bowl.")
-  drop(i21)
+  drop("Mandrake Root*")
   if (v103 == 1) { //0051
     reset(f120)
   }
 }
 l90:
 if (said("add", "cat", "fur", "basin")) { //005a
-  if ((!(has(i2)) || !(has(i40)))) { //0068
+  if ((!(has("Cat Hair*")) || !(has("Bowl")))) { //0068
     print("How can you use that which you do not have?")
     goto(l134)
   }
-  drop(i2)
+  drop("Cat Hair*")
   print("You put the ball of cat hair in the mixing bowl.")
   if (v103 == 2) { //007d
     reset(f120)
@@ -32,13 +32,13 @@ if (said("add", "cat", "fur", "basin")) { //005a
 }
 l134:
 if (said("add", "two", "ladle", "fish oil", "basin")) { //0086
-  if ((!(has(i22)) || !(has(i40)))) { //0096
+  if ((!(has("Fish Oil*")) || !(has("Bowl")))) { //0096
     print("How can you use that which you do not have?")
     goto(l182)
   }
   print("You pour the fish oil into the bowl and keep the empty jar.")
-  drop(i22)
-  get(i29)
+  drop("Fish Oil*")
+  get("Empty Jar*")
   if (v103 == 3) { //00ad
     reset(f120)
   }
@@ -73,14 +73,14 @@ if ((said("pat", "compound", "cookie") || said("form", "compound", "cookie") || 
 }
 l330:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //014a
-  if (!(has(i37))) { //015e
+  if (!(has("Magic Wand*"))) { //015e
     print("How can you use that which you do not have?")
     goto(l380)
   }
   if (v103 == 8) { //016a
     print("You wave the magic wand over the cookie, then take it from the table, and carry it with you.")
     reset(f120)
-    get(i23)
+    get("Cat Cookie*")
     goto(l380)
   }
   reset(fSaidAccepted)

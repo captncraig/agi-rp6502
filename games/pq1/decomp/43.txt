@@ -376,8 +376,8 @@ l1011:
     v140 = 4
     v131 = 19
     call(97)
-    get(i17)
-    get(i18)
+    get("White Suit")
+    get("Trick Cane")
   }
   if (v139 == 208) { //045b
     v140 = 4
@@ -386,7 +386,7 @@ l1011:
   }
   if (v139 == 209) { //046a
     v140 = 4
-    get(i19)
+    get("Hair Bleach")
     v131 = 31
     call(97)
   }
@@ -511,8 +511,8 @@ l1484:
     v140 = 4
     v131 = 45
     call(97)
-    if (obj.in.room(i20,vCurrentRoom)) { //05f1
-      get(i20)
+    if (obj.in.room("Marked Money",vCurrentRoom)) { //05f1
+      get("Marked Money")
       v170 = 100
       v171 = 0
     }

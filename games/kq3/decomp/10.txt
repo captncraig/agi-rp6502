@@ -274,7 +274,7 @@ if ((said("capture", "bottle", "flour", "from", "bookcase") || said("capture", "
     print("You can't reach it from here.")
     goto(l1737)
   }
-  if ((obj.in.room(i5,vCurrentRoom) || obj.in.room(i17,vCurrentRoom) || obj.in.room(i21,vCurrentRoom) || obj.in.room(i31,vCurrentRoom) || obj.in.room(i11,vCurrentRoom) || obj.in.room(i28,vCurrentRoom))) { //06a8
+  if ((obj.in.room("Fish Bone Powder*",vCurrentRoom) || obj.in.room("Nightshade Juice*",vCurrentRoom) || obj.in.room("Mandrake Root*",vCurrentRoom) || obj.in.room("Toad Spittle*",vCurrentRoom) || obj.in.room("Saffron*",vCurrentRoom) || obj.in.room("Toadstool Powder*",vCurrentRoom))) { //06a8
     print("There are many jars of ingredients on the laboratory shelves. Which do you want?")
     set(f221)
     goto(l1737)
@@ -428,13 +428,13 @@ if (f45 && v107 == 1 && !(v108 > 0)) { //0d0c
 if (f222) { //0d1b
   reset(f221)
   reset(f222)
-  if (obj.in.room(i5,vCurrentRoom)) { //0d25
+  if (obj.in.room("Fish Bone Powder*",vCurrentRoom)) { //0d25
     print("%m3labeled \"Powdered Fish Bone\"%m12")
-    get(i5)
+    get("Fish Bone Powder*")
     vCurrentScore += 1
     goto(l3395)
   }
-  if (has(i5)) { //0d36
+  if (has("Fish Bone Powder*")) { //0d36
     print("You already have it.")
     goto(l3395)
   }
@@ -444,13 +444,13 @@ l3395:
 if (f223) { //0d43
   reset(f221)
   reset(f223)
-  if (obj.in.room(i17,vCurrentRoom)) { //0d4d
+  if (obj.in.room("Nightshade Juice*",vCurrentRoom)) { //0d4d
     print("%m3of \"Nightshade Juice\"%m12")
-    get(i17)
+    get("Nightshade Juice*")
     vCurrentScore += 1
     goto(l3435)
   }
-  if (has(i17)) { //0d5e
+  if (has("Nightshade Juice*")) { //0d5e
     print("You already have it.")
     goto(l3435)
   }
@@ -460,13 +460,13 @@ l3435:
 if (f224) { //0d6b
   reset(f221)
   reset(f224)
-  if (obj.in.room(i21,vCurrentRoom)) { //0d75
+  if (obj.in.room("Mandrake Root*",vCurrentRoom)) { //0d75
     print("%m3labeled \"Mandrake Root Powder\"%m12")
-    get(i21)
+    get("Mandrake Root*")
     vCurrentScore += 1
     goto(l3475)
   }
-  if (has(i21)) { //0d86
+  if (has("Mandrake Root*")) { //0d86
     print("You already have it.")
     goto(l3475)
   }
@@ -476,13 +476,13 @@ l3475:
 if (f227) { //0d93
   reset(f221)
   reset(f227)
-  if (obj.in.room(i11,vCurrentRoom)) { //0d9d
+  if (obj.in.room("Saffron*",vCurrentRoom)) { //0d9d
     print("%m3labeled \"Saffron\"%m12")
-    get(i11)
+    get("Saffron*")
     vCurrentScore += 1
     goto(l3515)
   }
-  if (has(i11)) { //0dae
+  if (has("Saffron*")) { //0dae
     print("You already have it.")
     goto(l3515)
   }
@@ -492,13 +492,13 @@ l3515:
 if (f225) { //0dbb
   reset(f221)
   reset(f225)
-  if (obj.in.room(i31,vCurrentRoom)) { //0dc5
+  if (obj.in.room("Toad Spittle*",vCurrentRoom)) { //0dc5
     print("%m3labeled \"Toad Spittle\"%m12")
-    get(i31)
+    get("Toad Spittle*")
     vCurrentScore += 1
     goto(l3555)
   }
-  if (has(i31)) { //0dd6
+  if (has("Toad Spittle*")) { //0dd6
     print("You already have it.")
     goto(l3555)
   }
@@ -508,13 +508,13 @@ l3555:
 if (f226) { //0de3
   reset(f221)
   reset(f226)
-  if (obj.in.room(i28,vCurrentRoom)) { //0ded
+  if (obj.in.room("Toadstool Powder*",vCurrentRoom)) { //0ded
     print("%m3of \"Toadstool Powder\"%m12")
-    get(i28)
+    get("Toadstool Powder*")
     vCurrentScore += 1
     goto(l3595)
   }
-  if (has(i28)) { //0dfe
+  if (has("Toadstool Powder*")) { //0dfe
     print("You already have it.")
     goto(l3595)
   }

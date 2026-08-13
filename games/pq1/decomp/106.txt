@@ -36,19 +36,19 @@ if (v221 > 1) { //0058
   v117 = 11
   v31 = 1
   set(f75)
-  get(i5)
-  get(i24)
-  get(i6)
-  get(i7)
-  get(i10)
-  get(i8)
-  get(i9)
-  get(i11)
+  get("Revolver")
+  get("Handcuffs")
+  get("Ammunition")
+  get("Briefcase")
+  get("Ticket Book")
+  get("Note Book")
+  get("Pen")
+  get("Lytton Tribune")
   set(f119)
-  get(i1)
-  get(i4)
-  get(i13)
-  get(i12)
+  get("Patrol Car Keys")
+  get("Radio Extender")
+  get("Nightstick")
+  get("Wallet")
   v89 = 90
   v55 = 1
   v48 = 10
@@ -140,7 +140,7 @@ if (v221 > 8) { //0170
   v39 = 17
   v40 = 18
   v44 = 1
-  get(i2)
+  get("Corvette Keys")
   set(f39)
   v151 = 5
   v75 = 28
@@ -149,18 +149,18 @@ if (v221 > 8) { //0170
   v74 = 17
   v47 = 33
   v152 = 47
-  put(i5,152)
-  put(i6,152)
-  put(i7,152)
+  put("Revolver",152)
+  put("Ammunition",152)
+  put("Briefcase",152)
   v152 = 38
-  put(i10,152)
-  put(i8,152)
-  put(i9,152)
+  put("Ticket Book",152)
+  put("Note Book",152)
+  put("Pen",152)
   v152 = 6
-  put(i1,152)
-  put(i4,152)
+  put("Patrol Car Keys",152)
+  put("Radio Extender",152)
   v152 = 94
-  put(i13,152)
+  put("Nightstick",152)
   reset(f121)
 }
 if (v221 > 9) { //01c8
@@ -179,18 +179,18 @@ if (v221 > 9) { //01c8
   v43 = 3
   v44 = 99
   set(f75)
-  get(i5)
-  get(i6)
-  get(i7)
-  get(i10)
-  get(i8)
-  get(i9)
-  get(i1)
-  get(i4)
-  get(i13)
+  get("Revolver")
+  get("Ammunition")
+  get("Briefcase")
+  get("Ticket Book")
+  get("Note Book")
+  get("Pen")
+  get("Patrol Car Keys")
+  get("Radio Extender")
+  get("Nightstick")
   set(f121)
   v152 = 47
-  put(i2,152)
+  put("Corvette Keys",152)
 }
 if (v221 > 10) { //0210
   v222 = 6
@@ -219,7 +219,7 @@ if (v221 > 12) { //023e
   v42 = 11
   v44 = 2
   v152 = 6
-  put(i1,152)
+  put("Patrol Car Keys",152)
 }
 if (v221 > 13) { //0260
   v222 = 52
@@ -228,9 +228,9 @@ if (v221 > 13) { //0260
 if (v221 > 14) { //026d
   v222 = 53
   v36 = 2
-  get(i15)
-  get(i16)
-  get(i3)
+  get("Hoffman File")
+  get("Wanted Poster")
+  get("Cadillac Keys")
   set(f39)
   v151 = 5
   v75 = 74
@@ -243,10 +243,10 @@ if (v221 > 15) { //0294
   v222 = 41
   v96 = 3
   v152 = 55
-  put(i15,152)
-  put(i16,152)
+  put("Hoffman File",152)
+  put("Wanted Poster",152)
   v95 = 255
-  get(i23)
+  get("No Bail Warrant")
   set(f39)
   v151 = 5
   v75 = 100
@@ -258,7 +258,7 @@ if (v221 > 15) { //0294
 if (v221 > 16) { //02c3
   v222 = 20
   v96 = 4
-  put(i23,152)
+  put("No Bail Warrant",152)
   set(f125)
   reset(f130)
   set(f39)
@@ -360,9 +360,9 @@ if (v221 > 24) { //03d8
   v40 = 14
   v42 = 15
   v44 = 2
-  get(i18)
-  get(i19)
-  get(i20)
+  get("Trick Cane")
+  get("Hair Bleach")
+  get("Marked Money")
   v170 = 100
   set(f39)
   v75 = 36
@@ -385,7 +385,7 @@ if (v221 > 26) { //0422
 }
 if (v221 > 27) { //0433
   v222 = 68
-  get(i21)
+  get("Transmitter Pen")
   v31 = 175
 }
 if (v221 > 28) { //0442

@@ -158,7 +158,7 @@ if (v85 == 1 && said("acquire", "earrings")) { //020b
     set(f133)
     reset(f78)
     print("You reach into the trunk and get it.")
-    get(i58)
+    get("T\x01")
     vCurrentScore += 7
     goto(l563)
   }

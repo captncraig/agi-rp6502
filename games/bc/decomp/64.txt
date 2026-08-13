@@ -169,7 +169,7 @@ if (!(v201 > 0) && v60 == 12 && f204 && !f102) { //01ce
   if (f219) { //01de
     set(fSaidAccepted)
     v201 = 1
-    drop(i12)
+    drop("Magic Sword")
     v60 = 0
     v42 = 0
     reset(f219)
@@ -192,7 +192,7 @@ l534:
 if (!(v201 > 0) && v60 == 19 && f204 && f219) { //0216
   set(fSaidAccepted)
   v201 = 1
-  drop(i19)
+  drop("Magic Mirror")
   v60 = 0
   v42 = 0
   reset(f219)

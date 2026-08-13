@@ -236,7 +236,7 @@ l914:
   }
 l1122:
   if ((said("add", "blond", "flower") || said("add", "flower", "blond"))) { //0462
-    if (!(has(i9))) { //0478
+    if (!(has("Rose"))) { //0478
       set(f68)
       goto(l1171)
     }
@@ -248,7 +248,7 @@ l1122:
   }
 l1171:
   if ((said("add", "blond", "box of candy") || said("add", "box of candy", "blond"))) { //0493
-    if (!(has(i12))) { //04a9
+    if (!(has("Box of Candy"))) { //04a9
       set(f68)
       goto(l1220)
     }
@@ -260,7 +260,7 @@ l1171:
   }
 l1220:
   if ((said("add", "blond", "diamond ring") || said("add", "diamond ring", "blond"))) { //04c4
-    if (!(has(i6))) { //04da
+    if (!(has("Diamond Ring"))) { //04da
       set(f68)
       goto(l1269)
     }

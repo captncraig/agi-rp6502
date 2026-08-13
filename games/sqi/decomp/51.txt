@@ -38,7 +38,7 @@ if (fNewRoom) { //0002
     v33 = 20
   }
 }
-if (f128 && has(i14) && f38) { //0076
+if (f128 && has("Pulseray") && f38) { //0076
   if (f40) { //0080
     v35 = 15
     goto(l145)
@@ -61,7 +61,7 @@ if (v35 == 1) { //009e
 if ((!fEnteredCommand || fSaidAccepted)) { //00ae
   goto(l649)
 }
-if (has(i15) && said("check out", "bomb")) { //00bc
+if (has("Gas Grenade") && said("check out", "bomb")) { //00bc
   print("Are you crazy!!! If the droid catches you with the stolen grenade, you're dead meat!")
 }
 if (said("speak", "being")) { //00ca
@@ -91,7 +91,7 @@ if (!fSaidAccepted && f38) { //0112
     print("Silly human, you know that droids are not programmed for chit-chat!")
     goto(l363)
   }
-  if (!(has(i14)) && said("check out", "gun")) { //0139
+  if (!(has("Pulseray")) && said("check out", "gun")) { //0139
     print("The Service Droid sees you eyeing the laser weapons on the wall and informs you that they are not available to G.I. personnel such as yourself.")
     goto(l363)
   }
@@ -106,12 +106,12 @@ if (!fSaidAccepted && f38) { //0112
   reset(fSaidAccepted)
 }
 l363:
-if (f38 && !(has(i13)) && has(i5) && (said("give", "i.d.") || said("give", "card") || said("give", "card", "droid") || said("give", "i.d.", "droid"))) { //016b
+if (f38 && !(has("Sarien ID card")) && has("Keycard") && (said("give", "i.d.") || said("give", "card") || said("give", "card", "droid") || said("give", "i.d.", "droid"))) { //016b
   print("You do not possess a valid Sarien I.D. card.")
 }
 if (f38 && (said("give", "card") || said("give", "card", "droid") || said("give", "i.d.") || said("give", "i.d.", "droid"))) { //0196
   if (fEgoOnWater) { //01ba
-    if (has(i13)) { //01c0
+    if (has("Sarien ID card")) { //01c0
       if (f39) { //01c6
         print("The droid looks you over and responds, \"Sorry, only one weapon per person.\"")
         goto(l497)
@@ -141,7 +141,7 @@ if (said("acquire", "bomb")) { //01fb
   if (v84 != 2) { //0205
     if (posn(o0,117,135,133,145)) { //020d
       if (!f38) { //0217
-        if (!(has(i15))) { //021e
+        if (!(has("Gas Grenade"))) { //021e
           if (!(v84 > 0)) { //0225
             set.cel(o2,1)
             v84 = 1
@@ -155,7 +155,7 @@ l575:
           if (v84 != 2) { //023f
             force.update(o2)
           }
-          get(i15)
+          get("Gas Grenade")
           print("Taken.")
           goto(l594)
         }
@@ -182,7 +182,7 @@ l630:
   print("There is nothing to get.")
 }
 l635:
-if (has(i14) && said("acquire", "gun")) { //027b
+if (has("Pulseray") && said("acquire", "gun")) { //027b
   print("You already have the pulseray.")
 }
 l649:
@@ -224,11 +224,11 @@ if (v31 == 1) { //02e1
 }
 if (f38 && fEgoOnWater && f37) { //02f0
   reset(f37)
-  if (has(i14)) { //02fc
+  if (has("Pulseray")) { //02fc
     print("Sorry. My records indicate that a weapon has already been signed out in your name.")
     goto(l805)
   }
-  get(i14)
+  get("Pulseray")
   vCurrentScore += 3
   print("\"Your rank allows you to bear 1 Pulseray unit. Remember, no firing in the ship. Have a nice day.\"")
   if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //030e
@@ -244,7 +244,7 @@ if (fEgoOnWater && !f36) { //0327
   set(f36)
   print("\"Welcome to the Weapons dispensary. I will assist you. Please supply me with your identification card.\"")
 }
-if (!f42 && f37 && has(i15)) { //0334
+if (!f42 && f37 && has("Gas Grenade")) { //0334
   get.posn(o0,v62,v63)
   if (v63 < 139 && v63 > 112 && v62 < 40) { //0343
     print("\"Stop, thief!\" shouts the Droid as he notices you sneaking out suspiciously and observes that a gas grenade has been taken. Before you can explain that you were just taking it outside for a better look, the Droid evaporates you.")

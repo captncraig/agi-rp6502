@@ -119,7 +119,7 @@ if (!f88 && f81) { //01d0
   if ((said("acquire", "water") || said("fill", "bucket"))) { //01d9
     if (posn(o0,121,40,159,78)) { //01eb
       print("The crystal clear water fills up the bucket.")
-      get(i26)
+      get("water")
       set(f88)
       if (!f91) { //01fb
         vCurrentScore += 2
@@ -129,7 +129,7 @@ if (!f88 && f81) { //01d0
     }
     if ((posn(o0,127,79,159,92) || posn(o0,145,125,159,140) || posn(o0,73,130,103,167) || posn(o0,0,136,49,167) || posn(o0,0,88,84,112))) { //020a
       print("Very carefully, the bucket fills with water from the  rapid river.")
-      get(i26)
+      get("water")
       set(f88)
       if (!f91) { //0234
         vCurrentScore += 2

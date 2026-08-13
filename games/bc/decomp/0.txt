@@ -59,7 +59,7 @@ if (fNewRoom) { //00ab
   load.view(0)
   load.view(v110)
   set.view(o0,v110)
-  if (has(i12) && vCurrentRoom != 71) { //00ba
+  if (has("Magic Sword") && vCurrentRoom != 71) { //00ba
     load.sound(10)
     load.view(5)
     if (vCurrentRoom == 60 && f79) { //00c8
@@ -480,8 +480,8 @@ l1397:
   if (v60 == 5) { //05a4
     set(fSaidAccepted)
     print("Dallben's bread tastes delicious.")
-    get(i24)
-    drop(i5)
+    get("Bread")
+    drop("Bread")
     v60 = 0
     v42 = 24
     v90 = 240
@@ -489,8 +489,8 @@ l1397:
   if (!fSaidAccepted && v60 == 24) { //05bc
     set(fSaidAccepted)
     print("You eat a little more bread, and feel better.")
-    get(i25)
-    drop(i24)
+    get("Bread")
+    drop("Bread")
     v60 = 0
     v42 = 25
     v90 = 240
@@ -498,7 +498,7 @@ l1397:
   if (!fSaidAccepted && v60 == 25) { //05d7
     set(fSaidAccepted)
     print("You eat every last morsel of the bread.")
-    drop(i25)
+    drop("Bread")
     v60 = 0
     v42 = 0
     v90 = 240
@@ -519,8 +519,8 @@ l1397:
     }
     if (f132 && vCurrentRoom != 24) { //061c
       print("The strong pull of the rapids rips the water flask from your grasp. It quickly floats downstream, and out of sight.")
-      drop(i6)
-      drop(i7)
+      drop("Water Flask")
+      drop("Water")
       v60 = 0
       v42 = 0
       set(f51)
@@ -530,8 +530,8 @@ l1397:
       set(f66)
     }
     v68 = 4
-    if (!(has(i7))) { //0642
-      get(i7)
+    if (!(has("Water"))) { //0642
+      get("Water")
     }
     print("You fill your water flask with water.")
   }
@@ -548,7 +548,7 @@ l1613:
     print("The water from your flask tastes delicious.")
     v92 = 140
     if (!(v68 > 0)) { //066f
-      drop(i7)
+      drop("Water")
       print("But now, you're out of water!")
     }
   }
@@ -556,7 +556,7 @@ l1659:
   if (v60 == 8) { //067b
     set(fSaidAccepted)
     print("The apple is crisp and juicy!")
-    drop(i8)
+    drop("Apple")
     v60 = 0
     v42 = 0
     v90 = 240
@@ -564,7 +564,7 @@ l1659:
   if (v60 == 9) { //0691
     set(fSaidAccepted)
     print("You promise to eat just one cookie... and quickly break your promise!")
-    drop(i9)
+    drop("Cookies")
     v60 = 0
     v42 = 0
     v90 = 240

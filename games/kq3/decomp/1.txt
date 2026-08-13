@@ -30,13 +30,13 @@ if (fNewRoom) { //0002
     }
   }
 l109:
-  if (obj.in.room(i10,vCurrentRoom)) { //006d
+  if (obj.in.room("Fly Wings*",vCurrentRoom)) { //006d
     load.view(207)
   }
   load.pic(vCurrentRoom)
   draw.pic(vCurrentRoom)
   discard.pic(vCurrentRoom)
-  if (obj.in.room(i10,vCurrentRoom)) { //007c
+  if (obj.in.room("Fly Wings*",vCurrentRoom)) { //007c
     animate.obj(o1)
     ignore.objs(o1)
     ignore.blocks(o1)
@@ -93,7 +93,7 @@ if ((said("examine", "area") || said("examine") || said("examine", "building") |
   print("You have entered the musty tower of the old wizard's house. A polished brass telescope is directed out a window. From here, Manannan spies upon the poor occupants of Llewdor.")
 }
 if (said("examine", "deck")) { //0137
-  if (obj.in.room(i10,vCurrentRoom)) { //0141
+  if (obj.in.room("Fly Wings*",vCurrentRoom)) { //0141
     print("You see nothing on the dusty floor but a dead fly.")
     goto(l335)
   }
@@ -121,7 +121,7 @@ if (said("examine", "stair")) { //018b
   print("There are narrow, steep stairs leading downwards.")
 }
 if (said("capture", "bug")) { //0197
-  if (!(obj.in.room(i10,vCurrentRoom))) { //01a1
+  if (!(obj.in.room("Fly Wings*",vCurrentRoom))) { //01a1
     print("You already took it.")
     goto(l455)
   }
@@ -130,7 +130,7 @@ if (said("capture", "bug")) { //0197
     goto(l455)
   }
   erase(o1)
-  get(i10)
+  get("Fly Wings*")
   vCurrentScore += 1
   print("You pick up the dead fly and drop it into your hand. Disgustedly, you look at it. \"I don't want to carry around a dead fly,\" you think. Picking off its wings, you throw the rest away.")
 }

@@ -130,7 +130,7 @@ if (said("look in", "port")) { //019a
 if (f39) { //01a6
   if (said("check out", "craft")) { //01ac
     if (obj.in.box(o0,32,108,102,144)) { //01b6
-      if (!(has(i6))) { //01c0
+      if (!(has("Glass"))) { //01c0
         print("The pod seems to be semi-destroyed.  A glimmering catches your eye.  Upon closer inspection you see that a piece of highly reflective glass has broken out of the pod window.")
         goto(l462)
       }
@@ -152,8 +152,8 @@ l467:
 l496:
   if ((said("acquire", "glass") || said("acquire", "mirrored", "glass") || said("acquire", "chunk", "glass") || said("acquire", "wind shield"))) { //01f0
     if (obj.in.box(o0,32,108,102,144)) { //0212
-      if (!(has(i6))) { //021c
-        get(i6)
+      if (!(has("Glass"))) { //021c
+        get("Glass")
         vCurrentScore += 3
         print("Glass now in possession")
         goto(l559)
@@ -166,7 +166,7 @@ l559:
   }
 l564:
   if (obj.in.box(o0,32,108,102,144)) { //0234
-    if (!(has(i6)) && (said("check out", "floor") || said("check out", "glass"))) { //023e
+    if (!(has("Glass")) && (said("check out", "floor") || said("check out", "glass"))) { //023e
       print("It's quite sandy down there. You see that a piece of highly reflective glass has broken out of the pod window.")
     }
   }

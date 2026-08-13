@@ -58,7 +58,7 @@ l152:
         reset(f83)
         reset(f133)
         set(f115)
-        drop(i7)
+        drop("magic ring")
         vCurrentScore -= 3
         print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
       }
@@ -77,7 +77,7 @@ l152:
       reset(f83)
       reset(f133)
       set(f115)
-      drop(i7)
+      drop("magic ring")
       vCurrentScore -= 3
       print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
     }

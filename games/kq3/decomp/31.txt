@@ -113,10 +113,10 @@ l331:
   show.pic()
   return()
 }
-if (has(i30) && v71 == 8) { //0176
+if (has("Storm Brew*") && v71 == 8) { //0176
   v71 = 0
   print("The jar of storm brew slips from your fingers as you try to open it. In dismay, you watch it sink out of sight. It is gone forever.")
-  drop(i30)
+  drop("Storm Brew*")
 }
 if (v44 == 14 && v176 > 0) { //0186
   v176 = 0
@@ -212,7 +212,7 @@ if (v44 != 11) { //02a2
 }
 current.cel(o6,v37)
 random(2,5,v36)
-if (f223 && f221 && has(i8) && v36 == 5 && v37 > 1) { //02b4
+if (f223 && f221 && has("Dough in Ears") && v36 == 5 && v37 > 1) { //02b4
   random(1,4,v36)
   v229 = 0
   v230 = 0

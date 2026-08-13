@@ -137,7 +137,7 @@ if ((said("buy", "card", "from", "bouncer") || said("buy", "bouncer") || said("a
 }
 l506:
 if ((said("examine", "card") || said("add", "card", "bouncer") || said("add", "bouncer", "card") || said("add", "card") || said("examine", "bouncer", "card") || said("examine", "card", "bouncer"))) { //01fa
-  if (!(has(i14))) { //022c
+  if (!(has("Disco Pass"))) { //022c
     print("You don't have a membership card!")
     goto(l624)
   }

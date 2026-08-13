@@ -204,7 +204,7 @@ if ((said("name", "rol") || said("answer", "broad") || said("anyword", "name", "
   v225 = 47
 }
 l998:
-if (has(i7) && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("briefcase", "rol"))) { //03e6
+if (has("Briefcase") && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("briefcase", "rol"))) { //03e6
   v225 = 35
 }
 if ((said("ran", "red", "lamp", "rol") || said("drive", "red", "lamp", "rol") || said("lamp", "rol") || said("red", "lamp", "rol") || said("ran", "lamp", "rol") || said("drive", "lamp", "rol") || said("drive", "rol"))) { //0409
@@ -268,12 +268,12 @@ l1305:
     v221 = 0
     goto(l1397)
   }
-  if (!(has(i10))) { //052c
+  if (!(has("Ticket Book"))) { //052c
     v225 = 12
     v221 = 1
     goto(l1397)
   }
-  if (!(has(i9))) { //053c
+  if (!(has("Pen"))) { //053c
     v225 = 42
     v221 = 1
     goto(l1397)

@@ -196,7 +196,7 @@ if (v221 == 101) { //024d
 }
 if (v221 == 103) { //0261
   if (v255 == 1) { //0268
-    drop(i24)
+    drop("Handcuffs")
     set.view(o19,139)
     goto(l637)
   }
@@ -315,11 +315,11 @@ if (!(v255 > 0) && f230) { //051b
       print("He can't hear you from this distance.")
       goto(l1395)
     }
-    if (!(has(i24))) { //0557
+    if (!(has("Handcuffs"))) { //0557
       set(f170)
       goto(l1395)
     }
-    drop(i24)
+    drop("Handcuffs")
     print("You think, \"He doesn't look dangerous. Sure, why not?\"")
     print("You place your subject under arrest for the violation of Lytton City Vehicle Code VC23502, \"driving while under the influence.\"")
     set.view(o19,139)
@@ -333,11 +333,11 @@ l1395:
       print("He can't hear you from this distance.")
       goto(l1597)
     }
-    if (!(has(i24))) { //0621
+    if (!(has("Handcuffs"))) { //0621
       set(f170)
       goto(l1597)
     }
-    drop(i24)
+    drop("Handcuffs")
     print("Not wanting to take a chance, you explain, \"I'm sorry, sir, but Departmental Policy dictates all custody arrests shall be restrained by proper handcuffing procedure, and that means 'behind your back.'\"")
     print("You place your subject under arrest for the violation of Lytton City Vehicle Code VC23502, \"driving while under the influence.\"")
     set.view(o19,138)
@@ -467,7 +467,7 @@ if (said("check", "pink slip")) { //09bd
   set(f113)
 }
 l2516:
-if ((f39 || has(i4))) { //09d4
+if ((f39 || has("Radio Extender"))) { //09d4
   if ((said("call", "tow truck") || said("accident", "auto"))) { //09de
     print("You key the radio, \"Dispatch, this is 83-32. Request one 11-85 at my 10-20.\"")
     print("83-32, 10-4. One tow truck in route.")
@@ -477,7 +477,7 @@ if (!f39 && said("anyword", "briefcase")) { //09f4
   print("It's in your car.")
 }
 if ((said("call") || said("jog", "id") || said("call", "drive", "id") || said("jog", "id", "number") || said("check", "license plate") || said("jog", "make") || said("call", "license plate") || said("jog", "make"))) { //0a03
-  if ((f39 || has(i4))) { //0a3b
+  if ((f39 || has("Radio Extender"))) { //0a3b
     print("You radio Dispatch, \"Run check on personalized license plate 'PRGRMR1.' It appears to be currently registered.\"")
     if (!f184) { //0a47
       set(f184)

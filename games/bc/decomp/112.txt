@@ -3,7 +3,7 @@ if (fNewRoom) { //0002
   load.sound(11)
   animate.obj(o9)
   object.on.land(o9)
-  if ((has(i12) || vCurrentRoom == 37)) { //0010
+  if ((has("Magic Sword") || vCurrentRoom == 37)) { //0010
     load.view(60)
   }
   v34 = 0
@@ -12,7 +12,7 @@ if (fNewRoom) { //0002
   reset(f73)
   reset(f63)
   random(0,255,v61)
-  if (!f34 && (v61 < 125 || has(i12))) { //002c
+  if (!f34 && (v61 < 125 || has("Magic Sword"))) { //002c
     load.view(61)
     load.view(62)
     set(f231)
@@ -131,9 +131,9 @@ if (f233) { //0170
     v59 = 1
     goto(l406)
   }
-  if (has(i12)) { //0184
+  if (has("Magic Sword")) { //0184
     print("By failing to react quickly enough, you've allowed the henchman to capture the Magic Sword.")
-    drop(i12)
+    drop("Magic Sword")
     v59 = 1
     goto(l406)
   }

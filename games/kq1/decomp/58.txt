@@ -188,7 +188,7 @@ if (!f104) { //020a
       set(f104)
       set(f169)
       vCurrentScore += 8
-      get(i2)
+      get("chest")
       v74++
       v86 = 3
     }
@@ -204,7 +204,7 @@ l614:
       set(f104)
       set(f169)
       vCurrentScore += 8
-      get(i2)
+      get("chest")
       v74++
       v86 = 5
     }
@@ -230,7 +230,7 @@ if (f97) { //028f
       end.of.loop(o15,f24)
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.")
       reset(f93)
-      drop(i13)
+      drop("pebbles")
       vCurrentScore -= 1
     }
     if (f93 && f169 && !f79 && v86 == 2 && v71 > 19) { //02f1
@@ -243,7 +243,7 @@ if (f97) { //028f
       end.of.loop(o15,f25)
       print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.")
       reset(f93)
-      drop(i13)
+      drop("pebbles")
       vCurrentScore -= 1
     }
     if (f93 && !f169 && f79) { //031f
@@ -291,7 +291,7 @@ if (f25) { //037c
 if (f67) { //039f
   if ((said("use", "dagger") || said("cast", "dagger"))) { //03a5
     reset(f67)
-    drop(i1)
+    drop("dagger")
     print("I don't believe it!  How could you miss something so big?")
     vCurrentScore -= 5
   }

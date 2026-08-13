@@ -35,7 +35,7 @@ if ((f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") 
 get.posn(o19,v81,v82)
 current.view(o0,vEgoView)
 current.loop(o0,v147)
-if (!f39 && (has(i5) || has(i14)) && said("draw", "automatic")) { //0101
+if (!f39 && (has("Revolver") || has("Loaded Revolver")) && said("draw", "automatic")) { //0101
   reset(f32)
   if (vEgoView == v39) { //0116
     if (v147 == 1 && v142 > 4) { //011d
@@ -52,14 +52,14 @@ if (!f39 && (has(i5) || has(i14)) && said("draw", "automatic")) { //0101
   set.view(o0,v39)
 }
 l325:
-if (!f39 && has(i14) && vEgoView == v42 && said("fire", "automatic")) { //0145
+if (!f39 && has("Loaded Revolver") && vEgoView == v42 && said("fire", "automatic")) { //0145
   reset(f33)
   if (!f43 && !f162) { //0159
     set(f43)
     v34--
     if (!(v34 > 0)) { //0167
-      drop(i14)
-      get(i5)
+      drop("Loaded Revolver")
+      get("Revolver")
     }
     if (!(v49 > 0)) { //0173
       v49 = 1

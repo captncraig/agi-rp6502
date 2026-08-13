@@ -18,7 +18,7 @@ if (fNewRoom) { //0002
   cycle.time(o6,v106)
   load.logic(108)
   load.view(39)
-  if (has(i15)) { //0037
+  if (has("Flying Dust")) { //0037
     load.view(28)
   }
   if (f200) { //003f

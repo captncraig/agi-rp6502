@@ -73,11 +73,11 @@ if (fTriggerLine && !f224) { //00c7
     ignore.blocks(o0)
     goto(l253)
   }
-  if (has(i4) && v39 != 8) { //00e1
+  if (has("Radio Extender") && v39 != 8) { //00e1
     print("You'd better return that radio extender. It makes an unsightly bulge in your trousers!")
     goto(l253)
   }
-  if (has(i1)) { //00f0
+  if (has("Patrol Car Keys")) { //00f0
     print("Sonny, you can't use the patrol car now. You'd better return the keys to the key board.")
     goto(l253)
   }

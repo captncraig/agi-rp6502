@@ -228,7 +228,7 @@ l900:
   }
 l1019:
   if (said("call")) { //03fb
-    if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //0403
+    if (!f39 && !(has("Radio Extender")) && !(posn(o0,111,161,118,162))) { //0403
       print("With an extender, you could radio dispatch from here.")
       goto(l1087)
     }

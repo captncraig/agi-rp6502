@@ -13,7 +13,7 @@ if (fNewRoom) { //0002
   v58 = 69
   load.logic(128)
   load.logic(118)
-  if (obj.in.room(i4,vCurrentRoom)) { //002c
+  if (obj.in.room("Snakeskin*",vCurrentRoom)) { //002c
     load.view(242)
   }
   load.pic(vCurrentRoom)
@@ -24,7 +24,7 @@ if (fNewRoom) { //0002
   if (f47) { //0041
     draw(o0)
   }
-  if (obj.in.room(i4,vCurrentRoom)) { //0049
+  if (obj.in.room("Snakeskin*",vCurrentRoom)) { //0049
     animate.obj(o1)
     position(o1,88,99)
     set.view(o1,242)
@@ -41,7 +41,7 @@ if ((posn(o0,45,100,75,110) || posn(o0,15,125,40,140) || posn(o0,15,60,40,65))) 
   set(f222)
 }
 reset(f221)
-if (obj.in.room(i4,vCurrentRoom)) { //0081
+if (obj.in.room("Snakeskin*",vCurrentRoom)) { //0081
   distance(o0,o1,v36)
   if (v36 < 20) { //008c
     set(f221)
@@ -52,7 +52,7 @@ if (obj.in.room(i4,vCurrentRoom)) { //0081
   if ((said("capture", "reptile skin") || said("capture", "reptile"))) { //00a9
     if (f221) { //00bb
       erase(o1)
-      get(i4)
+      get("Snakeskin*")
       vCurrentScore += 1
       print("You retrieve the dried snake skin from the hot desert sand. It is delicate and could easily crumble.")
       goto(l207)

@@ -77,7 +77,7 @@ if (v201 == 1) { //00d8
   start.cycling(o6)
   start.motion(o6)
   move.obj(o6,96,104,1,f202)
-  get(i13)
+  get("Harp")
   print("\"The Horned King has kept me imprisoned for years in this cell. In return for granting me my freedom, I'd like to present you with this special harp.\"")
 }
 if (f202) { //00ed

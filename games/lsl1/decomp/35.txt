@@ -11,7 +11,7 @@ if (fNewRoom) { //0002
   animate.obj(o5)
   ignore.blocks(o5)
   set.view(o5,164)
-  if (obj.in.room(i14,vCurrentRoom)) { //0021
+  if (obj.in.room("Disco Pass",vCurrentRoom)) { //0021
     set.cel(o5,0)
     goto(l49)
   }
@@ -174,7 +174,7 @@ if ((said("examine", "ash tray") || said("look in", "ash tray"))) { //0202
     print("Where?")
     goto(l558)
   }
-  if (obj.in.room(i14,vCurrentRoom)) { //0220
+  if (obj.in.room("Disco Pass",vCurrentRoom)) { //0220
     print("There's some kind of card in the ashtray.")
     goto(l558)
   }
@@ -186,7 +186,7 @@ if (said("anyword", "ash tray")) { //022e
     print("Where?")
     goto(l594)
   }
-  if (obj.in.room(i14,vCurrentRoom)) { //0244
+  if (obj.in.room("Disco Pass",vCurrentRoom)) { //0244
     print("There's some kind of card in the ashtray.")
     goto(l594)
   }
@@ -198,13 +198,13 @@ if ((said("catch", "card") || said("catch", "card"))) { //0252
     set(f54)
     goto(l649)
   }
-  if (!(obj.in.room(i14,vCurrentRoom))) { //0270
+  if (!(obj.in.room("Disco Pass",vCurrentRoom))) { //0270
     set(f55)
     goto(l649)
   }
   set.cel(o5,1)
   force.update(o5)
-  get(i14)
+  get("Disco Pass")
   vCurrentScore += 1
   set(f67)
 }

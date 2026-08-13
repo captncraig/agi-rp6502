@@ -273,7 +273,7 @@ if ((said("examine", "art") || said("examine", "body") || said("examine", "drive
 }
 l1004:
 if (said("call")) { //03ec
-  if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //03f4
+  if (!f39 && !(has("Radio Extender")) && !(posn(o0,111,161,118,162))) { //03f4
     print("Without a radio extender, you can't use your car radio from here.")
     goto(l1137)
   }

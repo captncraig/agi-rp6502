@@ -348,7 +348,7 @@ if (f77) { //05a2
   if (said("consume", "carrot")) { //05a8
     if (!f75) { //05b2
       print("Mmmm!  There's nothing like a crisp, fresh carrot.")
-      drop(i3)
+      drop("carrot")
       reset(f77)
       reset(f117)
       vCurrentScore -= 2
@@ -368,7 +368,7 @@ if (f77) { //05a2
     if (vCurrentRoom != 10 && vCurrentRoom != 11) { //05ec
       if ((said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat"))) { //05f8
         print("The goat quickly eats the carrot and disappears.")
-        drop(i3)
+        drop("carrot")
         reset(f77)
         reset(f117)
         vCurrentScore -= 2
@@ -412,8 +412,8 @@ if (f127) { //06cb
     print("When you open the walnut, you discover the nut inside is pure gold!")
     reset(f127)
     set(f108)
-    drop(i23)
-    get(i4)
+    drop("walnut")
+    get("gold walnut")
     vCurrentScore += 3
   }
 }
@@ -452,7 +452,7 @@ if (f81 && f88 && !fEgoOnWater) { //0767
     set(f116)
     print("You drain the bucket of water to quench your thirst.")
     reset(f88)
-    drop(i26)
+    drop("water")
     vCurrentScore -= 2
     reset(f91)
   }
@@ -465,7 +465,7 @@ if (f81 && !f88) { //07c7
     if ((said("acquire", "water") || said("fill", "bucket"))) { //07d6
       reset(f116)
       print("With difficulty, you fill the bucket while swimming.")
-      get(i26)
+      get("water")
       set(f88)
       if (!f91) { //07f0
         vCurrentScore += 2
@@ -492,7 +492,7 @@ if (f123) { //0808
       print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!")
       set.view(o0,60)
       v82 = 200
-      drop(i24)
+      drop("mushroom")
       reset(f123)
       set(f124)
       set(f120)
@@ -535,7 +535,7 @@ if (f83) { //08bd
       print("You are not wearing the ring.")
     }
     if (f133 && !f79) { //091d
-      drop(i7)
+      drop("magic ring")
       vCurrentScore -= 3
       print("I don't know why, but you drop the magic ring.")
       reset(f83)
@@ -543,7 +543,7 @@ if (f83) { //08bd
       set(f115)
     }
     if (f133 && f79) { //0933
-      drop(i7)
+      drop("magic ring")
       vCurrentScore -= 3
       print("When the ring disappears, you reappear!")
       set.view(o0,0)
@@ -592,7 +592,7 @@ if (v90 == 1 && v91 == 0) { //0a12
   v90 = 0
   set.view(o0,0)
   reset(f83)
-  drop(i7)
+  drop("magic ring")
   reset(f133)
   set(f115)
   reset(f79)
@@ -606,7 +606,7 @@ if (f154) { //0a31
   if (said("consume", "bean")) { //0a43
     print("You're going to be sorry!!  These were magic beans!")
     vCurrentScore -= 5
-    drop(i25)
+    drop("beans")
     reset(f154)
   }
   if (said("bury", "bean")) { //0a56
@@ -731,7 +731,7 @@ if (f75) { //0c3d
         v65 = vCurrentRoom
         v98 = 0
         step.size(o13,v98)
-        drop(i1)
+        drop("dagger")
         vCurrentScore -= 5
         reset(f67)
         reset(f75)
@@ -745,7 +745,7 @@ if (f75) { //0c3d
       v65 = vCurrentRoom
       v98 = 0
       step.size(o13,v98)
-      drop(i1)
+      drop("dagger")
       vCurrentScore -= 5
       reset(f67)
       reset(f75)
@@ -792,7 +792,7 @@ if (f139) { //0d3c
   }
   if (said("consume", "cheese")) { //0d5a
     print("Mmmm!  That Swiss cheese was as delicious as it looked.")
-    drop(i18)
+    drop("cheese")
     reset(f139)
     vCurrentScore -= 2
   }
@@ -850,8 +850,8 @@ if (f72) { //0e17
   if (!f106) { //0e35
     if ((said("open", "bag") || said("look in", "bag"))) { //0e3c
       print("Cautiously, you open the pouch and see many sparkling and flashing diamonds!  Quickly, you close it again so as not to lose any.")
-      get(i15)
-      drop(i16)
+      get("pouch of diamonds")
+      drop("pouch")
       vCurrentScore += 3
       set(f106)
       reset(f72)

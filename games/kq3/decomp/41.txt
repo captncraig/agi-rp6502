@@ -103,7 +103,7 @@ if (v190 > 0) { //0126
   if (posn(o0,87,120,108,143)) { //013a
     v220 = 2
   }
-  if (obj.in.room(i24,vCurrentRoom) && posn(o0,79,141,99,144)) { //0147
+  if (obj.in.room("Porridge",vCurrentRoom) && posn(o0,79,141,99,144)) { //0147
     v220 = 3
   }
 }
@@ -210,8 +210,8 @@ if ((said("drink", "basin") || said("drink", "basin", "porridge") || said("drink
     v190 = 2
     start.update(o2)
     erase(o2)
-    get(i24)
-    drop(i24)
+    get("Porridge")
+    drop("Porridge")
     print("%m13just right! You take another bite, then another, and another. Before you realize it, you have downed the entire bowl.")
   }
 }
@@ -234,7 +234,7 @@ if ((said("capture", "basin") || said("capture", "basin", "porridge") || said("c
     v190 = 2
     start.update(o2)
     erase(o2)
-    get(i24)
+    get("Porridge")
     vCurrentScore += 2
     print("%m14just right! So, you take it with you.")
   }

@@ -37,7 +37,7 @@ if (fNewRoom) { //0002
   draw(o0)
   show.pic()
   if (vPrevRoom == 69) { //0075
-    if (v65 == 2 && has(i70)) { //007c
+    if (v65 == 2 && has("T\x01")) { //007c
       v65 = 1
       print("As you leave the dark cave, you remove the cloth from the cage.")
       sound(22,f169)

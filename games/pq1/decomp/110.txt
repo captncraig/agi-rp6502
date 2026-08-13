@@ -78,7 +78,7 @@ if ((said("c", "file", "cabinet") || said("c", "cabinet") || said("c", "file", "
   print("You return the folder to the file drawer.")
 }
 l539:
-if (obj.in.room(i15,vCurrentRoom) && (said("continue", "hoffman", "file") || said("empty", "hoffman", "file") || said("empty", "hoffman", "file") || said("get", "hoffman", "file"))) { //021b
+if (obj.in.room("Hoffman File",vCurrentRoom) && (said("continue", "hoffman", "file") || said("empty", "hoffman", "file") || said("empty", "hoffman", "file") || said("get", "hoffman", "file"))) { //021b
   if (f223) { //0244
     set(f221)
     goto(l594)
@@ -86,7 +86,7 @@ if (obj.in.room(i15,vCurrentRoom) && (said("continue", "hoffman", "file") || sai
   v220 = 1
 }
 l594:
-if (obj.in.room(i15,vCurrentRoom) && (said("examine", "hoffman", "rol") || said("o", "hoffman", "rol") || said("look in", "hoffman", "rol") || said("get", "hoffman", "rol"))) { //0252
+if (obj.in.room("Hoffman File",vCurrentRoom) && (said("examine", "hoffman", "rol") || said("o", "hoffman", "rol") || said("look in", "hoffman", "rol") || said("get", "hoffman", "rol"))) { //0252
   v220 = 1
 }
 if ((said("examine", "justinfletch", "rol") || said("o", "justinfletch", "rol") || said("look in", "justinfletch", "rol") || said("get", "justinfletch", "rol"))) { //027e
@@ -110,7 +110,7 @@ if (f220) { //0322
   add.to.pic(97,0,2,81,98,4,4)
   add.to.pic(97,0,3,93,86,4,4)
   add.to.pic(97,0,4,36,75,4,4)
-  if (obj.in.room(i15,vCurrentRoom)) { //034f
+  if (obj.in.room("Hoffman File",vCurrentRoom)) { //034f
     add.to.pic(97,0,0,43,122,4,4)
   }
   show.pic()
@@ -434,7 +434,7 @@ if (f221) { //084b
   reset(f221)
   reset(f108)
   reset(f7)
-  get(i15)
+  get("Hoffman File")
   if (!f143) { //0859
     set(f143)
     vCurrentScore += 2

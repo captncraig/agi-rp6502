@@ -316,7 +316,7 @@ l1157:
 l1177:
 if ((said("rent", "accident") || said("check in", "rol") || said("get", "accident") || said("get", "accident", "car keys") || said("administer", "bills", "art") || said("check in") || said("check in", "about", "accident") || said("sign", "check in") || said("check", "rol") || said("bonds", "rent", "accident") || said("buy", "accident") || said("administer", "bonds", "accident") || said("rent", "bonds", "accident") || said("do", "accident"))) { //0499
   if (v221 == 3) { //04fd
-    if (!(has(i22))) { //0504
+    if (!(has("Room Key"))) { //0504
       print("\"We have a vacancy in Room 204, on the second floor. All our rooms are very clean and nicely furnished, with telephones and queen-sized beds,\" says the desk clerk. \"That will be $100.00, please.\"")
       v221 = 4
       v140 = 25
@@ -371,10 +371,10 @@ l1522:
       if (f84) { //05f8
         print("\"I hope you get your money's worth, Buddy!\" says the desk clerk. \"Hey, Sweet Cheeks! Remember: no more jello in the bathtub, okay?\"")
       }
-      if (obj.in.room(i22,vCurrentRoom)) { //0600
+      if (obj.in.room("Room Key",vCurrentRoom)) { //0600
         vCurrentScore += 3
       }
-      get(i22)
+      get("Room Key")
     }
     v140 = 0
     v221 = 10

@@ -30,7 +30,7 @@ if (fNewRoom) { //0002
 }
 if (!f111 && f242) { //005f
   if (fEnteredCommand) { //0068
-    if (has(i43) && (said("try", "looking glass") || said("carry", "looking glass") || said("aim", "looking glass") || said("examine", "barmaid", "looking glass") || said("aim", "barmaid", "looking glass") || said("examine", "looking glass", "barmaid") || said("aim", "looking glass", "barmaid") || said("try", "fingers", "looking glass") || said("carry", "fingers", "looking glass") || said("aim", "fingers", "looking glass") || said("examine", "barmaid", "fingers", "looking glass") || said("aim", "barmaid", "fingers", "looking glass") || said("examine", "fingers", "looking glass", "barmaid") || said("aim", "fingers", "looking glass", "barmaid"))) { //006e
+    if (has("Mirror*") && (said("try", "looking glass") || said("carry", "looking glass") || said("aim", "looking glass") || said("examine", "barmaid", "looking glass") || said("aim", "barmaid", "looking glass") || said("examine", "looking glass", "barmaid") || said("aim", "looking glass", "barmaid") || said("try", "fingers", "looking glass") || said("carry", "fingers", "looking glass") || said("aim", "fingers", "looking glass") || said("examine", "barmaid", "fingers", "looking glass") || said("aim", "barmaid", "fingers", "looking glass") || said("examine", "fingers", "looking glass", "barmaid") || said("aim", "fingers", "looking glass", "barmaid"))) { //006e
       distance(o0,o3,v36)
       if (v36 > 50) { //00ec
         print("You are too far away for her to see it.")

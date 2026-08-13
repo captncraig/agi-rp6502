@@ -315,7 +315,7 @@ l1192:
 if (!fEnteredCommand) { //04a8
   goto(l2560)
 }
-if (has(i4) && said("call")) { //04b2
+if (has("Radio Extender") && said("call")) { //04b2
   if (!(v39 > 0)) { //04bc
     set.string(str3," 83-32,%s4%m91")
     goto(l1229)

@@ -107,9 +107,9 @@ if (said("examine", "bluff")) { //014f
   print("The mountain to the north seems to float on the horizon.")
 }
 if ((said("drink") || said("capture", "drink") || said("drink", "liquid") || said("drink", "bay", "liquid"))) { //015b
-  if (has(i26)) { //0179
+  if (has("Cup & Ocean Water*")) { //0179
     print("Drinking the salty ocean water intensifies your thirst.")
-    drop(i26)
+    drop("Cup & Ocean Water*")
     goto(l392)
   }
   print("You have no water. Your desperate mind must be playing tricks on you.")

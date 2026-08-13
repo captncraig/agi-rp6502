@@ -12,7 +12,7 @@ if (fNewRoom) { //0002
   if (f30) { //0024
     v52 = 1
   }
-  if (v30 == 0 && v52 == 1 && obj.in.room(i5,vCurrentRoom)) { //002d
+  if (v30 == 0 && v52 == 1 && obj.in.room("Apple",vCurrentRoom)) { //002d
     load.view(138)
     animate.obj(o3)
     set.view(o3,138)
@@ -131,7 +131,7 @@ if (f205) { //01c4
       set(f54)
       goto(l517)
     }
-    if (has(i5)) { //01ec
+    if (has("Apple")) { //01ec
       print("\"Thanks a lot. See you later, pal.\"")
       goto(l517)
     }
@@ -187,13 +187,13 @@ l751:
       set(f54)
       goto(l819)
     }
-    if (!(obj.in.room(i5,vCurrentRoom))) { //0315
+    if (!(obj.in.room("Apple",vCurrentRoom))) { //0315
       print("\"You know,\" says the man, peering deep into his barrel, \"I'm all out! But thank you for your continued interest.\"")
       goto(l819)
     }
     vCurrentScore += 3
     print("\"Thank you very much, sir. Please call again, whenever you are in the neighborhood,\" says the man. And with that, he walks away into the night.")
-    get(i5)
+    get("Apple")
     v90--
     set(f202)
     v201 = 0

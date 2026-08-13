@@ -65,7 +65,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0104
   if (posn(o0,64,106,116,167)) { //0116
     reset(f116)
     print("You carefully fill the bucket with water.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //0128
       vCurrentScore += 2

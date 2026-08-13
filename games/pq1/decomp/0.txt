@@ -428,11 +428,11 @@ if ((said("examine", "clothes") || said("look in", "clothes") || said("find", "c
   print("Your clothes are stylish, but the pockets are empty.")
 }
 if (said("call")) { //0584
-  if (has(i21)) { //058c
+  if (has("Transmitter Pen")) { //058c
     print("Your backups ARE listening.")
     goto(l1462)
   }
-  if (!f39 && !(has(i4))) { //0597
+  if (!f39 && !(has("Radio Extender"))) { //0597
     print("What are you going to do? Scream, and pray that Dispatch will hear you?")
     goto(l1462)
   }
@@ -462,15 +462,15 @@ l1548:
   print("An interesting approach -- but fatal!")
 }
 if (said("drop", "car keys", "rol")) { //061a
-  if (has(i1)) { //0626
+  if (has("Patrol Car Keys")) { //0626
     print("Not here!")
     goto(l1609)
   }
-  if (has(i2)) { //0631
+  if (has("Corvette Keys")) { //0631
     print("Not here!")
     goto(l1609)
   }
-  if (has(i3)) { //063c
+  if (has("Cadillac Keys")) { //063c
     print("Not here!")
     goto(l1609)
   }
@@ -478,15 +478,15 @@ if (said("drop", "car keys", "rol")) { //061a
 }
 l1609:
 if ((said("use", "car keys") || said("get", "car keys"))) { //0649
-  if (has(i1)) { //065b
+  if (has("Patrol Car Keys")) { //065b
     print("How can you do that?")
     goto(l1662)
   }
-  if (has(i2)) { //0666
+  if (has("Corvette Keys")) { //0666
     print("How can you do that?")
     goto(l1662)
   }
-  if (has(i3)) { //0671
+  if (has("Cadillac Keys")) { //0671
     print("How can you do that?")
     goto(l1662)
   }
@@ -494,15 +494,15 @@ if ((said("use", "car keys") || said("get", "car keys"))) { //0649
 }
 l1662:
 if (said("examine", "car keys")) { //067e
-  if (has(i1)) { //0688
+  if (has("Patrol Car Keys")) { //0688
     show.obj(41)
     goto(l1707)
   }
-  if (has(i2)) { //0693
+  if (has("Corvette Keys")) { //0693
     show.obj(42)
     goto(l1707)
   }
-  if (has(i3)) { //069e
+  if (has("Cadillac Keys")) { //069e
     show.obj(43)
     goto(l1707)
   }
@@ -514,35 +514,35 @@ if ((said("administer", "car keys", "rol") || said("administer", "anyword", "car
     set(f113)
     goto(l1790)
   }
-  if (has(i1)) { //06cf
+  if (has("Patrol Car Keys")) { //06cf
     print("\"Hey, thanks a lot!\"")
     print("But now you'll NEVER get it back!")
-    drop(i1)
+    drop("Patrol Car Keys")
     goto(l1790)
   }
-  if (has(i3)) { //06de
+  if (has("Cadillac Keys")) { //06de
     print("\"Hey, thanks a lot!\"")
     print("But now you'll NEVER get it back!")
-    drop(i3)
+    drop("Cadillac Keys")
     goto(l1790)
   }
-  if (has(i2)) { //06ed
+  if (has("Corvette Keys")) { //06ed
     print("\"Hey, thanks a lot!\"")
     print("But now you'll NEVER get it back!")
-    drop(i2)
+    drop("Corvette Keys")
     goto(l1790)
   }
   set(f115)
 }
 l1790:
-if ((f39 || has(i4)) && (said("move", "call", "rol") || said("move", "on", "call", "rol") || said("move", "off", "call", "rol"))) { //06fe
+if ((f39 || has("Radio Extender")) && (said("move", "call", "rol") || said("move", "on", "call", "rol") || said("move", "off", "call", "rol"))) { //06fe
   set(f116)
 }
-if (has(i4) && said("drop", "call", "rol")) { //0728
+if (has("Radio Extender") && said("drop", "call", "rol")) { //0728
   print("Not here!")
 }
 if (said("examine", "call")) { //0738
-  if (has(i4)) { //0742
+  if (has("Radio Extender")) { //0742
     show.obj(44)
     goto(l1871)
   }
@@ -550,25 +550,25 @@ if (said("examine", "call")) { //0738
 }
 l1871:
 if ((said("administer", "call", "rol") || said("administer", "anyword", "call", "rol"))) { //074f
-  if ((!f109 || !(has(i4)))) { //0767
+  if ((!f109 || !(has("Radio Extender")))) { //0767
     print("How can you do that?")
     goto(l1918)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i4)
+  drop("Radio Extender")
 }
 l1918:
 if ((said("load", "automatic") || said("drop", "ammo", "automatic") || said("load", "automatic", "use", "ammo"))) { //077e
-  if (has(i14)) { //079c
+  if (has("Loaded Revolver")) { //079c
     print("It is loaded. You have %v34 shells left.")
     goto(l2017)
   }
-  if (!(has(i5))) { //07a7
+  if (!(has("Revolver"))) { //07a7
     print("What are you going to load? %m93")
     goto(l2017)
   }
-  if (!(has(i6))) { //07b3
+  if (!(has("Ammunition"))) { //07b3
     print("You have no ammunition.")
     goto(l2017)
   }
@@ -576,9 +576,9 @@ if ((said("load", "automatic") || said("drop", "ammo", "automatic") || said("loa
     print("Handling your weapon while driving is dangerous.")
     goto(l2017)
   }
-  drop(i6)
-  drop(i5)
-  get(i14)
+  drop("Ammunition")
+  drop("Revolver")
+  get("Loaded Revolver")
   print("You rip out the speed loader and load your weapon.")
   v34 = 6
   if (!f142) { //07d5
@@ -591,7 +591,7 @@ if ((said("empty", "automatic") || said("get", "ammo", "from", "automatic") || s
   print("It's more valuable to you as it is!")
 }
 if ((said("draw", "automatic") || said("drop", "automatic", "belt") || said("drop", "automatic", "away") || said("dont move", "use", "automatic") || said("aim", "automatic", "rol") || said("empty", "automatic", "belt"))) { //0807
-  if (!(has(i5)) && !(has(i14))) { //083b
+  if (!(has("Revolver")) && !(has("Loaded Revolver"))) { //083b
     print("You're unarmed.")
     goto(l2135)
   }
@@ -603,11 +603,11 @@ if ((said("draw", "automatic") || said("drop", "automatic", "belt") || said("dro
 }
 l2135:
 if ((said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //0857
-  if (has(i5)) { //08a5
+  if (has("Revolver")) { //08a5
     print("Click! (Dry firing an empty gun is good practice for proper grip.)")
     goto(l2264)
   }
-  if (!(has(i14))) { //08b0
+  if (!(has("Loaded Revolver"))) { //08b0
     set(f115)
     goto(l2264)
   }
@@ -625,11 +625,11 @@ if ((said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said
 }
 l2264:
 if ((said("examine", "belt") || said("examine", "automatic"))) { //08d8
-  if (has(i5)) { //08ea
+  if (has("Revolver")) { //08ea
     show.obj(45)
     goto(l2306)
   }
-  if (has(i14)) { //08f5
+  if (has("Loaded Revolver")) { //08f5
     show.obj(54)
     goto(l2306)
   }
@@ -641,21 +641,21 @@ if ((said("administer", "automatic", "rol") || said("administer", "anyword", "au
     print("How can you do that?")
     goto(l2371)
   }
-  if (!(has(i5)) && !(has(i14))) { //0926
+  if (!(has("Revolver")) && !(has("Loaded Revolver"))) { //0926
     set(f115)
     goto(l2371)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i5)
-  drop(i14)
+  drop("Revolver")
+  drop("Loaded Revolver")
   print("A police officer without a weapon, is like being...")
   print("...up a creek without a paddle!")
   set(f140)
 }
 l2371:
 if ((said("get", "off", "belt") || said("drop", "belt") || said("empty", "belt"))) { //0943
-  if (!(has(i5)) && !(has(i14))) { //095d
+  if (!(has("Revolver")) && !(has("Loaded Revolver"))) { //095d
     set(f115)
     goto(l2414)
   }
@@ -663,19 +663,19 @@ if ((said("get", "off", "belt") || said("drop", "belt") || said("empty", "belt")
 }
 l2414:
 if (said("drop", "automatic", "rol")) { //096e
-  if (!(has(i5)) && !(has(i14))) { //097a
+  if (!(has("Revolver")) && !(has("Loaded Revolver"))) { //097a
     set(f115)
     goto(l2449)
   }
-  drop(i5)
-  drop(i14)
+  drop("Revolver")
+  drop("Loaded Revolver")
   print("...up a creek without a paddle!")
   set(f140)
 }
 l2449:
 if (said("drop", "ammo", "rol")) { //0991
-  if (has(i6)) { //099d
-    drop(i6)
+  if (has("Ammunition")) { //099d
+    drop("Ammunition")
     print("As Chief Whipplestick would say, \"A cop without ammo is like a bullet without powder!\"")
     set(f140)
     goto(l2478)
@@ -684,11 +684,11 @@ if (said("drop", "ammo", "rol")) { //0991
 }
 l2478:
 if (said("examine", "ammo")) { //09ae
-  if (has(i14)) { //09b8
+  if (has("Loaded Revolver")) { //09b8
     show.obj(54)
     goto(l2512)
   }
-  if (has(i6)) { //09c3
+  if (has("Ammunition")) { //09c3
     show.obj(46)
     goto(l2512)
   }
@@ -696,19 +696,19 @@ if (said("examine", "ammo")) { //09ae
 }
 l2512:
 if ((said("administer", "ammo", "rol") || said("administer", "anyword", "ammo", "rol"))) { //09d0
-  if ((!f109 || !(has(i6)))) { //09e8
+  if ((!f109 || !(has("Ammunition")))) { //09e8
     print("How can you do that?")
     goto(l2563)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i6)
+  drop("Ammunition")
   print("As Chief Whipplestick would say, \"A cop without ammo is like a bullet without powder!\"")
   set(f140)
 }
 l2563:
 if (said("drop", "briefcase", "rol")) { //0a03
-  if (has(i7)) { //0a0f
+  if (has("Briefcase")) { //0a0f
     print("Not here!")
     goto(l2588)
   }
@@ -716,7 +716,7 @@ if (said("drop", "briefcase", "rol")) { //0a03
 }
 l2588:
 if ((said("use", "briefcase") || said("get", "briefcase"))) { //0a1c
-  if (has(i7)) { //0a2e
+  if (has("Briefcase")) { //0a2e
     print("How can you do that?")
     goto(l2619)
   }
@@ -724,7 +724,7 @@ if ((said("use", "briefcase") || said("get", "briefcase"))) { //0a1c
 }
 l2619:
 if (said("examine", "briefcase")) { //0a3b
-  if (has(i7)) { //0a45
+  if (has("Briefcase")) { //0a45
     show.obj(47)
     goto(l2642)
   }
@@ -732,7 +732,7 @@ if (said("examine", "briefcase")) { //0a3b
 }
 l2642:
 if (said("c", "briefcase")) { //0a52
-  if (!(has(i7))) { //0a5c
+  if (!(has("Briefcase"))) { //0a5c
     set(f115)
     goto(l2666)
   }
@@ -740,7 +740,7 @@ if (said("c", "briefcase")) { //0a52
 }
 l2666:
 if ((said("o", "briefcase") || said("look in", "briefcase"))) { //0a6a
-  if (!(has(i7))) { //0a7c
+  if (!(has("Briefcase"))) { //0a7c
     set(f115)
     goto(l2720)
   }
@@ -754,17 +754,17 @@ if ((said("o", "briefcase") || said("look in", "briefcase"))) { //0a6a
 }
 l2720:
 if ((said("administer", "briefcase", "rol") || said("administer", "anyword", "briefcase", "rol"))) { //0aa0
-  if ((!f109 || !(has(i7)))) { //0ab8
+  if ((!f109 || !(has("Briefcase")))) { //0ab8
     print("How can you do that?")
     goto(l2767)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i7)
+  drop("Briefcase")
 }
 l2767:
 if (said("drop", "note", "rol")) { //0acf
-  if (has(i8)) { //0adb
+  if (has("Note Book")) { //0adb
     print("Not here!")
     goto(l2792)
   }
@@ -772,12 +772,12 @@ if (said("drop", "note", "rol")) { //0acf
 }
 l2792:
 if ((said("use", "note") || said("get", "note") || said("print", "note"))) { //0ae8
-  if (!(has(i8))) { //0b00
+  if (!(has("Note Book"))) { //0b00
     print("On the back of your hand?")
     goto(l2925)
   }
-  if (!(has(i9))) { //0b0c
-    if (has(i21)) { //0b13
+  if (!(has("Pen"))) { //0b0c
+    if (has("Transmitter Pen")) { //0b13
       print("You can't write with a radio!")
       goto(l2848)
     }
@@ -809,7 +809,7 @@ l2848:
 }
 l2925:
 if ((said("examine", "note") || said("o", "note") || said("examine", "note"))) { //0b6d
-  if (has(i8)) { //0b85
+  if (has("Note Book")) { //0b85
     show.obj(48)
     goto(l2962)
   }
@@ -817,17 +817,17 @@ if ((said("examine", "note") || said("o", "note") || said("examine", "note"))) {
 }
 l2962:
 if ((said("administer", "note", "rol") || said("administer", "anyword", "note", "rol"))) { //0b92
-  if ((!f109 || !(has(i8)))) { //0baa
+  if ((!f109 || !(has("Note Book")))) { //0baa
     print("How can you do that?")
     goto(l3009)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i8)
+  drop("Note Book")
 }
 l3009:
 if (said("drop", "pen", "rol")) { //0bc1
-  if (has(i9)) { //0bcd
+  if (has("Pen")) { //0bcd
     print("Not here!")
     goto(l3034)
   }
@@ -835,7 +835,7 @@ if (said("drop", "pen", "rol")) { //0bc1
 }
 l3034:
 if (said("use", "pen")) { //0bda
-  if (has(i9)) { //0be4
+  if (has("Pen")) { //0be4
     print("How can you do that?")
     goto(l3057)
   }
@@ -843,7 +843,7 @@ if (said("use", "pen")) { //0bda
 }
 l3057:
 if (said("examine", "pen")) { //0bf1
-  if (has(i9)) { //0bfb
+  if (has("Pen")) { //0bfb
     show.obj(49)
     goto(l3080)
   }
@@ -851,17 +851,17 @@ if (said("examine", "pen")) { //0bf1
 }
 l3080:
 if ((said("administer", "pen", "rol") || said("administer", "anyword", "pen", "rol"))) { //0c08
-  if ((!f109 || !(has(i9)))) { //0c20
+  if ((!f109 || !(has("Pen")))) { //0c20
     print("How can you do that?")
     goto(l3127)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i9)
+  drop("Pen")
 }
 l3127:
 if (said("drop", "pinch book", "rol")) { //0c37
-  if (has(i10)) { //0c43
+  if (has("Ticket Book")) { //0c43
     print("Not here!")
     goto(l3152)
   }
@@ -869,7 +869,7 @@ if (said("drop", "pinch book", "rol")) { //0c37
 }
 l3152:
 if ((said("use", "pinch book") || said("print", "pinch book") || said("print", "citation"))) { //0c50
-  if (has(i10)) { //0c68
+  if (has("Ticket Book")) { //0c68
     print("How can you do that?")
     goto(l3189)
   }
@@ -877,7 +877,7 @@ if ((said("use", "pinch book") || said("print", "pinch book") || said("print", "
 }
 l3189:
 if (said("examine", "pinch book")) { //0c75
-  if (has(i10)) { //0c7f
+  if (has("Ticket Book")) { //0c7f
     show.obj(50)
     goto(l3212)
   }
@@ -885,17 +885,17 @@ if (said("examine", "pinch book")) { //0c75
 }
 l3212:
 if ((said("administer", "pinch book", "rol") || said("administer", "anyword", "pinch book", "rol"))) { //0c8c
-  if ((!f109 || !(has(i10)))) { //0ca4
+  if ((!f109 || !(has("Ticket Book")))) { //0ca4
     print("How can you do that?")
     goto(l3259)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i10)
+  drop("Ticket Book")
 }
 l3259:
 if (said("drop", "lytton tribune", "rol")) { //0cbb
-  if (has(i11)) { //0cc7
+  if (has("Lytton Tribune")) { //0cc7
     print("Not here!")
     goto(l3284)
   }
@@ -903,7 +903,7 @@ if (said("drop", "lytton tribune", "rol")) { //0cbb
 }
 l3284:
 if (said("use", "lytton tribune")) { //0cd4
-  if (has(i11)) { //0cde
+  if (has("Lytton Tribune")) { //0cde
     print("How can you do that?")
     goto(l3307)
   }
@@ -911,7 +911,7 @@ if (said("use", "lytton tribune")) { //0cd4
 }
 l3307:
 if (said("examine", "lytton tribune")) { //0ceb
-  if (has(i11)) { //0cf5
+  if (has("Lytton Tribune")) { //0cf5
     show.obj(51)
     goto(l3330)
   }
@@ -919,17 +919,17 @@ if (said("examine", "lytton tribune")) { //0ceb
 }
 l3330:
 if ((said("administer", "lytton tribune", "rol") || said("administer", "anyword", "lytton tribune", "rol"))) { //0d02
-  if ((!f109 || !(has(i11)))) { //0d1a
+  if ((!f109 || !(has("Lytton Tribune")))) { //0d1a
     print("How can you do that?")
     goto(l3377)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i11)
+  drop("Lytton Tribune")
 }
 l3377:
 if (said("drop", "billfold", "rol")) { //0d31
-  if (has(i12)) { //0d3d
+  if (has("Wallet")) { //0d3d
     print("Not here!")
     goto(l3402)
   }
@@ -937,7 +937,7 @@ if (said("drop", "billfold", "rol")) { //0d31
 }
 l3402:
 if ((said("use", "billfold") || said("get", "billfold"))) { //0d4a
-  if (has(i12)) { //0d5c
+  if (has("Wallet")) { //0d5c
     print("How can you do that?")
     goto(l3433)
   }
@@ -945,7 +945,7 @@ if ((said("use", "billfold") || said("get", "billfold"))) { //0d4a
 }
 l3433:
 if ((said("examine", "billfold") || said("count", "about", "bills") || said("look in", "billfold"))) { //0d69
-  if (has(i12)) { //0d83
+  if (has("Wallet")) { //0d83
     show.obj(52)
     goto(l3472)
   }
@@ -953,11 +953,11 @@ if ((said("examine", "billfold") || said("count", "about", "bills") || said("loo
 }
 l3472:
 if (said("count", "bills")) { //0d90
-  if (has(i20)) { //0d9a
+  if (has("Marked Money")) { //0d9a
     show.obj(60)
     goto(l3506)
   }
-  if (has(i12)) { //0da5
+  if (has("Wallet")) { //0da5
     show.obj(52)
     goto(l3506)
   }
@@ -965,13 +965,13 @@ if (said("count", "bills")) { //0d90
 }
 l3506:
 if ((said("administer", "billfold", "rol") || said("administer", "anyword", "billfold", "rol"))) { //0db2
-  if ((!f109 || !(has(i12)))) { //0dca
+  if ((!f109 || !(has("Wallet")))) { //0dca
     print("How can you do that?")
     goto(l3559)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i12)
+  drop("Wallet")
   v89 = 0
   v97 = 0
 }
@@ -980,7 +980,7 @@ if (said("get", "nightstick")) { //0de7
   print("Please refer to%m17")
 }
 if (said("drop", "nightstick", "rol")) { //0df3
-  if (has(i13)) { //0dff
+  if (has("Nightstick")) { //0dff
     print("Not here!")
     goto(l3596)
   }
@@ -988,7 +988,7 @@ if (said("drop", "nightstick", "rol")) { //0df3
 }
 l3596:
 if ((said("use", "nightstick") || said("get", "nightstick"))) { //0e0c
-  if (has(i13)) { //0e1e
+  if (has("Nightstick")) { //0e1e
     print("How can you do that?")
     goto(l3627)
   }
@@ -996,7 +996,7 @@ if ((said("use", "nightstick") || said("get", "nightstick"))) { //0e0c
 }
 l3627:
 if (said("examine", "nightstick")) { //0e2b
-  if (has(i13)) { //0e35
+  if (has("Nightstick")) { //0e35
     show.obj(53)
     goto(l3650)
   }
@@ -1004,17 +1004,17 @@ if (said("examine", "nightstick")) { //0e2b
 }
 l3650:
 if ((said("administer", "nightstick", "rol") || said("administer", "anyword", "nightstick", "rol"))) { //0e42
-  if ((!f109 || !(has(i13)))) { //0e5a
+  if ((!f109 || !(has("Nightstick")))) { //0e5a
     print("How can you do that?")
     goto(l3697)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i13)
+  drop("Nightstick")
 }
 l3697:
 if (said("drop", "hoffman", "file", "rol")) { //0e71
-  if (has(i15)) { //0e7f
+  if (has("Hoffman File")) { //0e7f
     print("Not here!")
     goto(l3724)
   }
@@ -1022,7 +1022,7 @@ if (said("drop", "hoffman", "file", "rol")) { //0e71
 }
 l3724:
 if ((said("use", "hoffman", "file") || said("get", "hoffman", "file"))) { //0e8c
-  if (has(i15)) { //0ea2
+  if (has("Hoffman File")) { //0ea2
     print("How can you do that?")
     goto(l3759)
   }
@@ -1030,7 +1030,7 @@ if ((said("use", "hoffman", "file") || said("get", "hoffman", "file"))) { //0e8c
 }
 l3759:
 if (said("examine", "hoffman", "file")) { //0eaf
-  if (has(i15)) { //0ebb
+  if (has("Hoffman File")) { //0ebb
     show.obj(55)
     goto(l3784)
   }
@@ -1038,17 +1038,17 @@ if (said("examine", "hoffman", "file")) { //0eaf
 }
 l3784:
 if ((said("administer", "hoffman", "file", "rol") || said("administer", "anyword", "hoffman", "file", "rol"))) { //0ec8
-  if ((!f109 || !(has(i15)))) { //0ee4
+  if ((!f109 || !(has("Hoffman File")))) { //0ee4
     print("How can you do that?")
     goto(l3835)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i15)
+  drop("Hoffman File")
 }
 l3835:
 if (said("drop", "flyer", "rol")) { //0efb
-  if (has(i16)) { //0f07
+  if (has("Wanted Poster")) { //0f07
     print("Not here!")
     goto(l3860)
   }
@@ -1056,7 +1056,7 @@ if (said("drop", "flyer", "rol")) { //0efb
 }
 l3860:
 if ((said("use", "flyer") || said("get", "flyer"))) { //0f14
-  if (has(i16)) { //0f26
+  if (has("Wanted Poster")) { //0f26
     print("How can you do that?")
     goto(l3891)
   }
@@ -1064,7 +1064,7 @@ if ((said("use", "flyer") || said("get", "flyer"))) { //0f14
 }
 l3891:
 if (said("examine", "flyer")) { //0f33
-  if (has(i16)) { //0f3d
+  if (has("Wanted Poster")) { //0f3d
     show.obj(56)
     goto(l3914)
   }
@@ -1072,17 +1072,17 @@ if (said("examine", "flyer")) { //0f33
 }
 l3914:
 if ((said("administer", "flyer", "rol") || said("administer", "anyword", "flyer", "rol"))) { //0f4a
-  if ((!f109 || !(has(i16)))) { //0f62
+  if ((!f109 || !(has("Wanted Poster")))) { //0f62
     print("How can you do that?")
     goto(l3961)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i16)
+  drop("Wanted Poster")
 }
 l3961:
 if ((said("use", "clothes") || said("get", "clothes"))) { //0f79
-  if (has(i17)) { //0f8b
+  if (has("White Suit")) { //0f8b
     print("How can you do that?")
     goto(l3992)
   }
@@ -1090,7 +1090,7 @@ if ((said("use", "clothes") || said("get", "clothes"))) { //0f79
 }
 l3992:
 if (said("examine", "clothes")) { //0f98
-  if (has(i17)) { //0fa2
+  if (has("White Suit")) { //0fa2
     show.obj(57)
     goto(l4015)
   }
@@ -1098,7 +1098,7 @@ if (said("examine", "clothes")) { //0f98
 }
 l4015:
 if (said("drop", "cane", "rol")) { //0faf
-  if (has(i18)) { //0fbb
+  if (has("Trick Cane")) { //0fbb
     print("You shouldn't have done that!")
     set(f140)
     goto(l4042)
@@ -1107,7 +1107,7 @@ if (said("drop", "cane", "rol")) { //0faf
 }
 l4042:
 if ((said("use", "cane") || said("get", "cane"))) { //0fca
-  if (has(i18)) { //0fdc
+  if (has("Trick Cane")) { //0fdc
     print("How can you do that?")
     goto(l4073)
   }
@@ -1115,7 +1115,7 @@ if ((said("use", "cane") || said("get", "cane"))) { //0fca
 }
 l4073:
 if (said("examine", "cane")) { //0fe9
-  if (has(i18)) { //0ff3
+  if (has("Trick Cane")) { //0ff3
     show.obj(58)
     goto(l4096)
   }
@@ -1123,18 +1123,18 @@ if (said("examine", "cane")) { //0fe9
 }
 l4096:
 if ((said("administer", "cane", "rol") || said("administer", "anyword", "cane", "rol"))) { //1000
-  if ((!f109 || !(has(i18)))) { //1018
+  if ((!f109 || !(has("Trick Cane")))) { //1018
     print("How can you do that?")
     goto(l4145)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i18)
+  drop("Trick Cane")
   set(f140)
 }
 l4145:
 if (said("drop", "bleach", "rol")) { //1031
-  if (has(i19)) { //103d
+  if (has("Hair Bleach")) { //103d
     print("You shouldn't have done that!")
     set(f140)
     goto(l4172)
@@ -1143,7 +1143,7 @@ if (said("drop", "bleach", "rol")) { //1031
 }
 l4172:
 if ((said("use", "bleach") || said("get", "bleach"))) { //104c
-  if (has(i19)) { //105e
+  if (has("Hair Bleach")) { //105e
     print("How can you do that?")
     goto(l4203)
   }
@@ -1151,7 +1151,7 @@ if ((said("use", "bleach") || said("get", "bleach"))) { //104c
 }
 l4203:
 if (said("examine", "bleach")) { //106b
-  if (has(i19)) { //1075
+  if (has("Hair Bleach")) { //1075
     show.obj(59)
     goto(l4226)
   }
@@ -1159,17 +1159,17 @@ if (said("examine", "bleach")) { //106b
 }
 l4226:
 if ((said("administer", "bleach", "rol") || said("administer", "anyword", "bleach", "rol"))) { //1082
-  if ((!f109 || !(has(i19)))) { //109a
+  if ((!f109 || !(has("Hair Bleach")))) { //109a
     print("How can you do that?")
     goto(l4273)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i19)
+  drop("Hair Bleach")
 }
 l4273:
 if (said("drop", "bills", "rol")) { //10b1
-  if (has(i20)) { //10bd
+  if (has("Marked Money")) { //10bd
     print("Not here!")
     goto(l4298)
   }
@@ -1177,7 +1177,7 @@ if (said("drop", "bills", "rol")) { //10b1
 }
 l4298:
 if ((said("use", "bills") || said("get", "bills"))) { //10ca
-  if (has(i20)) { //10dc
+  if (has("Marked Money")) { //10dc
     print("How can you do that?")
     goto(l4329)
   }
@@ -1185,7 +1185,7 @@ if ((said("use", "bills") || said("get", "bills"))) { //10ca
 }
 l4329:
 if ((said("examine", "bills") || said("examine", "marked", "bills") || said("count", "marked", "bills"))) { //10e9
-  if (has(i20)) { //1105
+  if (has("Marked Money")) { //1105
     show.obj(60)
     goto(l4370)
   }
@@ -1193,19 +1193,19 @@ if ((said("examine", "bills") || said("examine", "marked", "bills") || said("cou
 }
 l4370:
 if ((said("administer", "bills", "rol") || said("administer", "marked", "bills", "rol") || said("administer", "anyword", "marked", "bills", "rol") || said("administer", "anyword", "bills", "rol"))) { //1112
-  if ((!f109 || !(has(i20)))) { //1140
+  if ((!f109 || !(has("Marked Money")))) { //1140
     print("How can you do that?")
     goto(l4445)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i20)
+  drop("Marked Money")
   v170 = 0
   v171 = 0
 }
 l4445:
 if (said("drop", "bug", "rol")) { //115d
-  if (has(i21)) { //1169
+  if (has("Transmitter Pen")) { //1169
     print("Not here!")
     goto(l4470)
   }
@@ -1213,7 +1213,7 @@ if (said("drop", "bug", "rol")) { //115d
 }
 l4470:
 if (said("get", "bug")) { //1176
-  if (has(i21)) { //1180
+  if (has("Transmitter Pen")) { //1180
     print("How can you do that?")
     goto(l4493)
   }
@@ -1221,7 +1221,7 @@ if (said("get", "bug")) { //1176
 }
 l4493:
 if (said("examine", "bug")) { //118d
-  if (has(i21)) { //1197
+  if (has("Transmitter Pen")) { //1197
     show.obj(61)
     goto(l4516)
   }
@@ -1229,17 +1229,17 @@ if (said("examine", "bug")) { //118d
 }
 l4516:
 if ((said("administer", "bug", "rol") || said("administer", "anyword", "bug", "rol"))) { //11a4
-  if ((!f109 || !(has(i21)))) { //11bc
+  if ((!f109 || !(has("Transmitter Pen")))) { //11bc
     print("How can you do that?")
     goto(l4563)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i21)
+  drop("Transmitter Pen")
 }
 l4563:
 if (said("drop", "room key", "rol")) { //11d3
-  if (has(i22)) { //11df
+  if (has("Room Key")) { //11df
     print("Not here!")
     goto(l4588)
   }
@@ -1247,7 +1247,7 @@ if (said("drop", "room key", "rol")) { //11d3
 }
 l4588:
 if ((said("use", "room key") || said("get", "room key"))) { //11ec
-  if (has(i22)) { //11fe
+  if (has("Room Key")) { //11fe
     print("How can you do that?")
     goto(l4619)
   }
@@ -1255,7 +1255,7 @@ if ((said("use", "room key") || said("get", "room key"))) { //11ec
 }
 l4619:
 if (said("examine", "room key")) { //120b
-  if (has(i22)) { //1215
+  if (has("Room Key")) { //1215
     show.obj(62)
     goto(l4642)
   }
@@ -1263,17 +1263,17 @@ if (said("examine", "room key")) { //120b
 }
 l4642:
 if ((said("administer", "room key", "rol") || said("administer", "anyword", "room key", "rol"))) { //1222
-  if ((!f109 || !(has(i22)))) { //123a
+  if ((!f109 || !(has("Room Key")))) { //123a
     print("How can you do that?")
     goto(l4689)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i22)
+  drop("Room Key")
 }
 l4689:
 if (said("drop", "warrant", "rol")) { //1251
-  if (has(i23)) { //125d
+  if (has("No Bail Warrant")) { //125d
     print("Not here!")
     goto(l4714)
   }
@@ -1281,7 +1281,7 @@ if (said("drop", "warrant", "rol")) { //1251
 }
 l4714:
 if ((said("use", "warrant") || said("get", "warrant"))) { //126a
-  if (has(i23)) { //127c
+  if (has("No Bail Warrant")) { //127c
     print("How can you do that?")
     goto(l4745)
   }
@@ -1289,7 +1289,7 @@ if ((said("use", "warrant") || said("get", "warrant"))) { //126a
 }
 l4745:
 if (said("examine", "warrant")) { //1289
-  if (has(i23)) { //1293
+  if (has("No Bail Warrant")) { //1293
     show.obj(63)
     goto(l4768)
   }
@@ -1297,17 +1297,17 @@ if (said("examine", "warrant")) { //1289
 }
 l4768:
 if ((said("administer", "warrant", "rol") || said("administer", "anyword", "warrant", "rol"))) { //12a0
-  if ((!f109 || !(has(i23)))) { //12b8
+  if ((!f109 || !(has("No Bail Warrant")))) { //12b8
     print("How can you do that?")
     goto(l4815)
   }
   print("\"Hey, thanks a lot!\"")
   print("But now you'll NEVER get it back!")
-  drop(i23)
+  drop("No Bail Warrant")
 }
 l4815:
 if (said("drop", "cuff", "rol")) { //12cf
-  if (has(i24)) { //12db
+  if (has("Handcuffs")) { //12db
     print("Not here!")
     goto(l4840)
   }
@@ -1315,7 +1315,7 @@ if (said("drop", "cuff", "rol")) { //12cf
 }
 l4840:
 if (said("examine", "cuff")) { //12e8
-  if (has(i24)) { //12f2
+  if (has("Handcuffs")) { //12f2
     show.obj(64)
     goto(l4863)
   }
@@ -1323,18 +1323,18 @@ if (said("examine", "cuff")) { //12e8
 }
 l4863:
 if ((said("administer", "cuff", "rol") || said("administer", "anyword", "cuff", "rol"))) { //12ff
-  if ((!f109 || !(has(i24)))) { //1317
+  if ((!f109 || !(has("Handcuffs")))) { //1317
     print("How can you do that?")
     goto(l4912)
   }
-  drop(i24)
+  drop("Handcuffs")
   print("Give away your handcuffs?")
   print("No way!")
   set(f140)
 }
 l4912:
 if ((said("anyword", "cuff", "rol") || said("cuff", "rol"))) { //1330
-  if (has(i24)) { //1344
+  if (has("Handcuffs")) { //1344
     print("%m8to do that.")
     goto(l4945)
   }

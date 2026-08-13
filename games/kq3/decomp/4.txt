@@ -62,154 +62,154 @@ if ((!fEnteredCommand || !f224 || v44 == 7)) { //00a4
   goto(l2267)
 }
 v226 = 0
-if (has(i1) && said("add", "bird", "feather", "rol")) { //00b9
+if (has("Chicken Feather*") && said("add", "bird", "feather", "rol")) { //00b9
   v226 = 1
 }
-if (has(i2) && said("add", "cat", "fur", "rol")) { //00cc
+if (has("Cat Hair*") && said("add", "cat", "fur", "rol")) { //00cc
   v226 = 2
 }
-if (has(i3) && said("add", "dog", "fur", "rol")) { //00df
+if (has("Dog Hair*") && said("add", "dog", "fur", "rol")) { //00df
   v226 = 3
 }
-if (has(i4) && said("add", "reptile skin", "rol")) { //00f2
+if (has("Snakeskin*") && said("add", "reptile skin", "rol")) { //00f2
   v226 = 4
 }
-if (has(i5) && said("add", "fish", "bone", "flour", "rol")) { //0103
+if (has("Fish Bone Powder*") && said("add", "fish", "bone", "flour", "rol")) { //0103
   v226 = 5
 }
-if (has(i6) && said("add", "thimble", "rol")) { //0118
+if (has("Thimble*") && said("add", "thimble", "rol")) { //0118
   v226 = 6
 }
-if (has(i7) && (said("add", "thimble", "rol") || said("add", "dew", "rol"))) { //0129
+if (has("Thimble & Dew*") && (said("add", "thimble", "rol") || said("add", "dew", "rol"))) { //0129
   v226 = 7
 }
-if (has(i8) && said("add", "compound", "ball", "rol")) { //0144
+if (has("Dough in Ears") && said("add", "compound", "ball", "rol")) { //0144
   print("You consider removing the dough pieces from your ears, but decide they are too fragile. You carefully comb your scraggly hair over them so the wizard cannot detect them.")
 }
-if (has(i9) && said("add", "eagle", "feather", "rol")) { //0156
+if (has("Eagle Feather*") && said("add", "eagle", "feather", "rol")) { //0156
   v226 = 9
 }
-if (has(i10) && said("add", "bug", "rol")) { //0169
+if (has("Fly Wings*") && said("add", "bug", "rol")) { //0169
   v226 = 10
 }
-if (has(i11) && said("add", "saffron", "rol")) { //017a
+if (has("Saffron*") && said("add", "saffron", "rol")) { //017a
   v226 = 11
 }
-if (has(i12) && said("add", "essence", "rol")) { //018b
+if (has("Rose Essence*") && said("add", "essence", "rol")) { //018b
   v226 = 12
 }
-if (has(i13) && said("add", "grains of salt", "rol")) { //019c
+if (has("Salt*") && said("add", "grains of salt", "rol")) { //019c
   v226 = 13
 }
-if (has(i14) && said("add", "amber", "rock", "rol")) { //01ad
+if (has("Amber Stone*") && said("add", "amber", "rock", "rol")) { //01ad
   v226 = 14
 }
-if (has(i15) && said("add", "mistletoe", "rol")) { //01c0
+if (has("Mistletoe*") && said("add", "mistletoe", "rol")) { //01c0
   v226 = 15
 }
-if (has(i16) && (said("add", "amber", "rock", "rol") || said("add", "magic", "rock", "rol"))) { //01d1
+if (has("Magic Stone*") && (said("add", "amber", "rock", "rol") || said("add", "magic", "rock", "rol"))) { //01d1
   v226 = 16
 }
-if (has(i17) && said("add", "night shade", "juice", "rol")) { //01f0
+if (has("Nightshade Juice*") && said("add", "night shade", "juice", "rol")) { //01f0
   v226 = 17
 }
-if (has(i18) && said("add", "acorn", "rol")) { //0203
+if (has("Three Acorns*") && said("add", "acorn", "rol")) { //0203
   v226 = 18
 }
-if (has(i19) && (said("add", "drain", "pouch", "rol") || said("add", "pouch", "rol"))) { //0214
+if (has("Empty Pouch*") && (said("add", "drain", "pouch", "rol") || said("add", "pouch", "rol"))) { //0214
   v226 = 19
 }
-if (has(i20) && (said("add", "pouch", "rol") || said("add", "sleep", "flour", "rol"))) { //0231
+if (has("Sleep Powder*") && (said("add", "pouch", "rol") || said("add", "sleep", "flour", "rol"))) { //0231
   v226 = 20
 }
-if (has(i21) && (said("add", "mandrake", "root", "flour", "rol") || said("add", "mandrake", "root", "rol") || said("add", "root", "rol"))) { //024e
+if (has("Mandrake Root*") && (said("add", "mandrake", "root", "flour", "rol") || said("add", "mandrake", "root", "rol") || said("add", "root", "rol"))) { //024e
   v226 = 21
 }
-if (has(i22) && said("add", "fish oil", "rol")) { //0277
+if (has("Fish Oil*") && said("add", "fish oil", "rol")) { //0277
   v226 = 22
 }
-if (has(i23) && (said("add", "cookie", "rol") || said("add", "cat", "cookie", "rol"))) { //0288
+if (has("Cat Cookie*") && (said("add", "cookie", "rol") || said("add", "cat", "cookie", "rol"))) { //0288
   v226 = 23
 }
-if ((has(i25) || has(i24)) && said("add", "porridge", "rol")) { //02a5
-  if (has(i25)) { //02b7
+if ((has("Poisoned Porridge") || has("Porridge")) && said("add", "porridge", "rol")) { //02a5
+  if (has("Poisoned Porridge")) { //02b7
     v226 = 25
   }
-  if (has(i24)) { //02c0
+  if (has("Porridge")) { //02c0
     v226 = 24
   }
 }
-if (has(i25) && said("add", "poison", "porridge", "rol")) { //02c9
-  if (has(i25)) { //02d9
+if (has("Poisoned Porridge") && said("add", "poison", "porridge", "rol")) { //02c9
+  if (has("Poisoned Porridge")) { //02d9
     v226 = 25
   }
 }
-if (has(i26) && (said("add", "bay", "liquid", "rol") || said("add", "liquid", "rol"))) { //02e2
+if (has("Cup & Ocean Water*") && (said("add", "bay", "liquid", "rol") || said("add", "liquid", "rol"))) { //02e2
   v226 = 26
 }
-if (has(i27) && said("add", "mud", "rol")) { //02ff
+if (has("Spoonful of Mud*") && said("add", "mud", "rol")) { //02ff
   v226 = 27
 }
-if (has(i28) && said("add", "mushroom", "flour", "rol")) { //0310
+if (has("Toadstool Powder*") && said("add", "mushroom", "flour", "rol")) { //0310
   v226 = 28
 }
-if (has(i29) && said("add", "bottle", "rol")) { //0323
+if (has("Empty Jar*") && said("add", "bottle", "rol")) { //0323
   v226 = 29
 }
-if (has(i30) && (said("add", "brew", "rol") || said("add", "bottle", "rol"))) { //0334
+if (has("Storm Brew*") && (said("add", "brew", "rol") || said("add", "bottle", "rol"))) { //0334
   v226 = 30
 }
-if (has(i31) && (said("add", "frog", "spit", "rol") || said("add", "spit", "rol"))) { //034f
+if (has("Toad Spittle*") && (said("add", "frog", "spit", "rol") || said("add", "spit", "rol"))) { //034f
   v226 = 31
 }
-if (has(i32) && said("add", "lard", "rol")) { //036c
+if (has("Lard*") && said("add", "lard", "rol")) { //036c
   v226 = 32
 }
-if (has(i33) && said("add", "dagger", "rol")) { //037d
+if (has("Knife") && said("add", "dagger", "rol")) { //037d
   v226 = 33
 }
-if (has(i34) && said("add", "cactii", "rol")) { //038e
+if (has("Cactus*") && said("add", "cactii", "rol")) { //038e
   v226 = 34
 }
-if (has(i36) && said("add", "ointment", "rol")) { //039f
+if (has("Invisibility Ointment*") && said("add", "ointment", "rol")) { //039f
   v226 = 36
 }
-if (has(i37) && (said("add", "rod", "rol") || said("add", "magic", "rod", "rol"))) { //03b0
+if (has("Magic Wand*") && (said("add", "rod", "rol") || said("add", "magic", "rod", "rol"))) { //03b0
   v226 = 37
 }
-if (has(i38) && said("add", "key", "rol")) { //03cd
+if (has("Brass Key*") && said("add", "key", "rol")) { //03cd
   v226 = 38
 }
-if (has(i40) && said("add", "basin", "rol")) { //03de
+if (has("Bowl") && said("add", "basin", "rol")) { //03de
   v226 = 40
 }
-if (has(i41) && said("add", "ladle", "rol")) { //03ef
+if (has("Spoon") && said("add", "ladle", "rol")) { //03ef
   v226 = 41
 }
-if (has(i42) && said("add", "cup", "rol")) { //0400
+if (has("Empty Cup") && said("add", "cup", "rol")) { //0400
   v226 = 42
 }
-if (has(i43) && said("add", "looking glass", "rol")) { //0411
+if (has("Mirror*") && said("add", "looking glass", "rol")) { //0411
   v226 = 43
 }
-if ((has(i48) || has(i47)) && (said("add", "coin purse", "rol") || said("add", "coin", "rol") || said("add", "coin", "coin", "rol"))) { //0422
-  if (has(i48)) { //0448
+if ((has("Purse & Gold Coins*") || has("Empty Purse*")) && (said("add", "coin purse", "rol") || said("add", "coin", "rol") || said("add", "coin", "coin", "rol"))) { //0422
+  if (has("Purse & Gold Coins*")) { //0448
     v226 = 48
   }
-  if (has(i47)) { //0451
+  if (has("Empty Purse*")) { //0451
     v226 = 47
   }
 }
-if (has(i49) && said("add", "bread", "rol")) { //045a
+if (has("Bread") && said("add", "bread", "rol")) { //045a
   v226 = 49
 }
-if (has(i50) && said("add", "apple", "rol")) { //046b
+if (has("Fruit") && said("add", "apple", "rol")) { //046b
   v226 = 50
 }
-if (has(i51) && said("add", "chop", "rol")) { //047c
+if (has("Mutton") && said("add", "chop", "rol")) { //047c
   v226 = 51
 }
-if (has(i54) && (said("add", "map", "rol") || said("add", "magic", "map", "rol"))) { //048d
+if (has("Magic Map*") && (said("add", "map", "rol") || said("add", "magic", "map", "rol"))) { //048d
   v226 = 54
 }
 if (v226 > 0) { //04aa
@@ -219,149 +219,149 @@ if (v226 > 0) { //04aa
   goto(l3127)
 }
 v227 = 0
-if (obj.in.room(i1,vCurrentRoom) && said("capture", "bird", "feather", "rol")) { //04bf
+if (obj.in.room("Chicken Feather*",vCurrentRoom) && said("capture", "bird", "feather", "rol")) { //04bf
   v227 = 1
 }
-if (obj.in.room(i2,vCurrentRoom) && said("capture", "cat", "fur", "rol")) { //04d3
+if (obj.in.room("Cat Hair*",vCurrentRoom) && said("capture", "cat", "fur", "rol")) { //04d3
   v227 = 2
 }
-if (obj.in.room(i3,vCurrentRoom) && said("capture", "dog", "fur", "rol")) { //04e7
+if (obj.in.room("Dog Hair*",vCurrentRoom) && said("capture", "dog", "fur", "rol")) { //04e7
   v227 = 3
 }
-if (obj.in.room(i4,vCurrentRoom) && said("capture", "reptile skin", "rol")) { //04fb
+if (obj.in.room("Snakeskin*",vCurrentRoom) && said("capture", "reptile skin", "rol")) { //04fb
   v227 = 4
 }
-if (obj.in.room(i5,vCurrentRoom) && said("capture", "fish", "bone", "flour", "rol")) { //050d
+if (obj.in.room("Fish Bone Powder*",vCurrentRoom) && said("capture", "fish", "bone", "flour", "rol")) { //050d
   v227 = 5
 }
-if (obj.in.room(i6,vCurrentRoom) && said("capture", "thimble", "rol")) { //0523
+if (obj.in.room("Thimble*",vCurrentRoom) && said("capture", "thimble", "rol")) { //0523
   v227 = 6
 }
-if (obj.in.room(i7,vCurrentRoom) && (said("capture", "thimble", "rol") || said("capture", "dew", "rol"))) { //0535
+if (obj.in.room("Thimble & Dew*",vCurrentRoom) && (said("capture", "thimble", "rol") || said("capture", "dew", "rol"))) { //0535
   v227 = 7
 }
-if (obj.in.room(i9,vCurrentRoom) && said("capture", "eagle", "feather", "rol")) { //0551
+if (obj.in.room("Eagle Feather*",vCurrentRoom) && said("capture", "eagle", "feather", "rol")) { //0551
   v227 = 9
 }
-if (obj.in.room(i10,vCurrentRoom) && said("capture", "bug", "rol")) { //0565
+if (obj.in.room("Fly Wings*",vCurrentRoom) && said("capture", "bug", "rol")) { //0565
   v227 = 10
 }
-if (obj.in.room(i11,vCurrentRoom) && said("capture", "saffron", "rol")) { //0577
+if (obj.in.room("Saffron*",vCurrentRoom) && said("capture", "saffron", "rol")) { //0577
   v227 = 11
 }
-if (obj.in.room(i12,vCurrentRoom) && said("capture", "essence", "rol")) { //0589
+if (obj.in.room("Rose Essence*",vCurrentRoom) && said("capture", "essence", "rol")) { //0589
   v227 = 12
 }
-if (obj.in.room(i13,vCurrentRoom) && said("capture", "grains of salt", "rol")) { //059b
+if (obj.in.room("Salt*",vCurrentRoom) && said("capture", "grains of salt", "rol")) { //059b
   v227 = 13
 }
-if (obj.in.room(i14,vCurrentRoom) && said("capture", "amber", "rock", "rol")) { //05ad
+if (obj.in.room("Amber Stone*",vCurrentRoom) && said("capture", "amber", "rock", "rol")) { //05ad
   v227 = 14
 }
-if (obj.in.room(i15,vCurrentRoom) && said("capture", "mistletoe", "rol")) { //05c1
+if (obj.in.room("Mistletoe*",vCurrentRoom) && said("capture", "mistletoe", "rol")) { //05c1
   v227 = 15
 }
-if (obj.in.room(i16,vCurrentRoom) && (said("capture", "amber", "rock", "rol") || said("capture", "magic", "rock", "rol"))) { //05d3
+if (obj.in.room("Magic Stone*",vCurrentRoom) && (said("capture", "amber", "rock", "rol") || said("capture", "magic", "rock", "rol"))) { //05d3
   v227 = 16
 }
-if (obj.in.room(i17,vCurrentRoom) && said("capture", "night shade", "juice", "rol")) { //05f3
+if (obj.in.room("Nightshade Juice*",vCurrentRoom) && said("capture", "night shade", "juice", "rol")) { //05f3
   v227 = 17
 }
-if (obj.in.room(i18,vCurrentRoom) && said("capture", "acorn", "rol")) { //0607
+if (obj.in.room("Three Acorns*",vCurrentRoom) && said("capture", "acorn", "rol")) { //0607
   v227 = 18
 }
-if (obj.in.room(i19,vCurrentRoom) && (said("capture", "drain", "pouch", "rol") || said("capture", "pouch", "rol"))) { //0619
+if (obj.in.room("Empty Pouch*",vCurrentRoom) && (said("capture", "drain", "pouch", "rol") || said("capture", "pouch", "rol"))) { //0619
   v227 = 19
 }
-if (obj.in.room(i20,vCurrentRoom) && (said("capture", "pouch", "rol") || said("capture", "sleep", "flour", "rol"))) { //0637
+if (obj.in.room("Sleep Powder*",vCurrentRoom) && (said("capture", "pouch", "rol") || said("capture", "sleep", "flour", "rol"))) { //0637
   v227 = 20
 }
-if (obj.in.room(i21,vCurrentRoom) && (said("capture", "mandrake", "root", "flour", "rol") || said("capture", "mandrake", "root", "rol") || said("capture", "root", "rol"))) { //0655
+if (obj.in.room("Mandrake Root*",vCurrentRoom) && (said("capture", "mandrake", "root", "flour", "rol") || said("capture", "mandrake", "root", "rol") || said("capture", "root", "rol"))) { //0655
   v227 = 21
 }
-if (obj.in.room(i22,vCurrentRoom) && said("capture", "fish oil", "rol")) { //067f
+if (obj.in.room("Fish Oil*",vCurrentRoom) && said("capture", "fish oil", "rol")) { //067f
   v227 = 22
 }
-if (obj.in.room(i23,vCurrentRoom) && (said("capture", "cookie", "rol") || said("capture", "cat", "cookie", "rol"))) { //0691
+if (obj.in.room("Cat Cookie*",vCurrentRoom) && (said("capture", "cookie", "rol") || said("capture", "cat", "cookie", "rol"))) { //0691
   v227 = 23
 }
-if ((obj.in.room(i25,vCurrentRoom) || obj.in.room(i24,vCurrentRoom)) && said("capture", "porridge", "rol")) { //06af
-  if (obj.in.room(i25,vCurrentRoom)) { //06c3
+if ((obj.in.room("Poisoned Porridge",vCurrentRoom) || obj.in.room("Porridge",vCurrentRoom)) && said("capture", "porridge", "rol")) { //06af
+  if (obj.in.room("Poisoned Porridge",vCurrentRoom)) { //06c3
     v227 = 25
   }
-  if (obj.in.room(i24,vCurrentRoom)) { //06cd
+  if (obj.in.room("Porridge",vCurrentRoom)) { //06cd
     v227 = 24
   }
 }
-if (obj.in.room(i25,vCurrentRoom) && said("capture", "poison", "porridge")) { //06d7
+if (obj.in.room("Poisoned Porridge",vCurrentRoom) && said("capture", "poison", "porridge")) { //06d7
   v227 = 25
 }
-if (obj.in.room(i26,vCurrentRoom) && (said("capture", "bay", "liquid", "rol") || said("capture", "liquid", "rol"))) { //06e9
+if (obj.in.room("Cup & Ocean Water*",vCurrentRoom) && (said("capture", "bay", "liquid", "rol") || said("capture", "liquid", "rol"))) { //06e9
   v227 = 26
 }
-if (obj.in.room(i27,vCurrentRoom) && said("capture", "mud", "rol")) { //0707
+if (obj.in.room("Spoonful of Mud*",vCurrentRoom) && said("capture", "mud", "rol")) { //0707
   v227 = 27
 }
-if (obj.in.room(i28,vCurrentRoom) && said("capture", "mushroom", "flour", "rol")) { //0719
+if (obj.in.room("Toadstool Powder*",vCurrentRoom) && said("capture", "mushroom", "flour", "rol")) { //0719
   v227 = 28
 }
-if (obj.in.room(i29,vCurrentRoom) && said("capture", "bottle", "rol")) { //072d
+if (obj.in.room("Empty Jar*",vCurrentRoom) && said("capture", "bottle", "rol")) { //072d
   v227 = 29
 }
-if (obj.in.room(i30,vCurrentRoom) && (said("capture", "brew", "rol") || said("capture", "bottle", "rol"))) { //073f
+if (obj.in.room("Storm Brew*",vCurrentRoom) && (said("capture", "brew", "rol") || said("capture", "bottle", "rol"))) { //073f
   v227 = 30
 }
-if (obj.in.room(i31,vCurrentRoom) && (said("capture", "frog", "spit", "rol") || said("capture", "spit", "rol"))) { //075b
+if (obj.in.room("Toad Spittle*",vCurrentRoom) && (said("capture", "frog", "spit", "rol") || said("capture", "spit", "rol"))) { //075b
   v227 = 31
 }
-if (obj.in.room(i32,vCurrentRoom) && said("capture", "lard", "rol")) { //0779
+if (obj.in.room("Lard*",vCurrentRoom) && said("capture", "lard", "rol")) { //0779
   v227 = 32
 }
-if (obj.in.room(i33,vCurrentRoom) && said("capture", "dagger", "rol")) { //078b
+if (obj.in.room("Knife",vCurrentRoom) && said("capture", "dagger", "rol")) { //078b
   v227 = 33
 }
-if (obj.in.room(i34,vCurrentRoom) && said("capture", "cactii", "rol")) { //079d
+if (obj.in.room("Cactus*",vCurrentRoom) && said("capture", "cactii", "rol")) { //079d
   v227 = 34
 }
-if (obj.in.room(i36,vCurrentRoom) && said("capture", "ointment", "rol")) { //07af
+if (obj.in.room("Invisibility Ointment*",vCurrentRoom) && said("capture", "ointment", "rol")) { //07af
   v227 = 36
 }
-if (obj.in.room(i37,vCurrentRoom) && (said("capture", "magic", "rod", "rol") || said("capture", "rod", "rol"))) { //07c1
+if (obj.in.room("Magic Wand*",vCurrentRoom) && (said("capture", "magic", "rod", "rol") || said("capture", "rod", "rol"))) { //07c1
   v227 = 37
 }
-if (obj.in.room(i38,vCurrentRoom) && said("capture", "key", "rol")) { //07df
+if (obj.in.room("Brass Key*",vCurrentRoom) && said("capture", "key", "rol")) { //07df
   v227 = 38
 }
-if (obj.in.room(i40,vCurrentRoom) && said("capture", "basin", "rol")) { //07f1
+if (obj.in.room("Bowl",vCurrentRoom) && said("capture", "basin", "rol")) { //07f1
   v227 = 40
 }
-if (obj.in.room(i41,vCurrentRoom) && said("capture", "ladle", "rol")) { //0803
+if (obj.in.room("Spoon",vCurrentRoom) && said("capture", "ladle", "rol")) { //0803
   v227 = 41
 }
-if (obj.in.room(i42,vCurrentRoom) && said("capture", "cup", "rol")) { //0815
+if (obj.in.room("Empty Cup",vCurrentRoom) && said("capture", "cup", "rol")) { //0815
   v227 = 42
 }
-if (obj.in.room(i43,vCurrentRoom) && said("capture", "looking glass", "rol")) { //0827
+if (obj.in.room("Mirror*",vCurrentRoom) && said("capture", "looking glass", "rol")) { //0827
   v227 = 43
 }
-if ((obj.in.room(i48,vCurrentRoom) || obj.in.room(i47,vCurrentRoom)) && (said("capture", "coin purse", "rol") || said("capture", "coin", "rol") || said("capture", "coin", "coin", "rol"))) { //0839
-  if (obj.in.room(i48,vCurrentRoom)) { //0861
+if ((obj.in.room("Purse & Gold Coins*",vCurrentRoom) || obj.in.room("Empty Purse*",vCurrentRoom)) && (said("capture", "coin purse", "rol") || said("capture", "coin", "rol") || said("capture", "coin", "coin", "rol"))) { //0839
+  if (obj.in.room("Purse & Gold Coins*",vCurrentRoom)) { //0861
     v227 = 48
   }
-  if (obj.in.room(i47,vCurrentRoom)) { //086b
+  if (obj.in.room("Empty Purse*",vCurrentRoom)) { //086b
     v227 = 47
   }
 }
-if (obj.in.room(i49,vCurrentRoom) && said("capture", "bread", "rol")) { //0875
+if (obj.in.room("Bread",vCurrentRoom) && said("capture", "bread", "rol")) { //0875
   v227 = 49
 }
-if (obj.in.room(i50,vCurrentRoom) && said("capture", "apple", "rol")) { //0887
+if (obj.in.room("Fruit",vCurrentRoom) && said("capture", "apple", "rol")) { //0887
   v227 = 50
 }
-if (obj.in.room(i51,vCurrentRoom) && said("capture", "chop", "rol")) { //0899
+if (obj.in.room("Mutton",vCurrentRoom) && said("capture", "chop", "rol")) { //0899
   v227 = 51
 }
-if (obj.in.room(i54,vCurrentRoom) && (said("capture", "map", "rol") || said("capture", "magic", "map", "rol"))) { //08ab
+if (obj.in.room("Magic Map*",vCurrentRoom) && (said("capture", "map", "rol") || said("capture", "magic", "map", "rol"))) { //08ab
   v227 = 54
 }
 if (v227 > 0) { //08c9
@@ -443,7 +443,7 @@ if ((said("examine", "looking glass") || said("look in", "looking glass"))) { //
   }
   print("You look into the cracked mirror hanging on the wall. Your reflection shows a tall, handsome lad dressed in dirty rags.")
 l2676:
-  if (has(i43)) { //0a74
+  if (has("Mirror*")) { //0a74
     reset(fSaidAccepted)
   }
 }

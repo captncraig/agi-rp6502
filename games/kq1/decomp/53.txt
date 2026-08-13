@@ -59,7 +59,7 @@ if (v30 > 0) { //009e
       v90 = 0
       v91 = 0
       reset(f79)
-      drop(i7)
+      drop("magic ring")
       vCurrentScore -= 3
       reset(f83)
     }

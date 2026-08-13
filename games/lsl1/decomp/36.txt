@@ -212,7 +212,7 @@ if ((said("climb", "stage") || said("climb", "on", "stage") || said("jump", "on"
 }
 if (said("throw", "flower", "rol")) { //032a
   print("You toss the rose on the stage. It falls where you will not be able to retrieve it.")
-  drop(i9)
+  drop("Rose")
 }
 if (said("catch", "flower")) { //033a
   print("Remember: you can't get it!")

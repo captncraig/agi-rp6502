@@ -71,7 +71,7 @@ if (!f21) { //00bc
     print("OK.  But you just lost your dagger.")
     reset(f67)
     set(f70)
-    drop(i1)
+    drop("dagger")
     vCurrentScore -= 5
   }
 }

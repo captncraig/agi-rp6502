@@ -10,7 +10,7 @@ if ((vCurrentRoom == 76 || vCurrentRoom == 77 || vCurrentRoom == 78)) { //002e
   if ((said("examine", "down") || said("examine", "curb"))) { //003d
     print("You admire the plush carpet.")
   }
-  if (has(i21) && f94 && (said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("answer", "pen") || said("answer", "bug", "pen") || said("answer", "bug") || said("use", "pen") || said("use", "bug", "pen") || said("use", "bug") || said("number") || said("accident", "number") || said("call", "number") || said("call", "accident", "number") || said("call"))) { //0051
+  if (has("Transmitter Pen") && f94 && (said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("answer", "pen") || said("answer", "bug", "pen") || said("answer", "bug") || said("use", "pen") || said("use", "bug", "pen") || said("use", "bug") || said("number") || said("accident", "number") || said("call", "number") || said("call", "accident", "number") || said("call"))) { //0051
     print("In a soft voice, you whisper into your \"pen,\" \"be advised, in stairwell with Bains.\"")
   }
   if (said("examine", "stair")) { //00bb

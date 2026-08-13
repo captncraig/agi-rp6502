@@ -56,7 +56,7 @@ if (!f96) { //00ab
       set(f96)
       set(f97)
       vCurrentScore += 2
-      get(i14)
+      get("leather slingshot")
       goto(l214)
     }
     print("You need to be closer to try.")

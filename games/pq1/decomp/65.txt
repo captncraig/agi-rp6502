@@ -151,7 +151,7 @@ if ((said("car keys") || said("unlock", "d") || said("use", "car keys", "unlock"
     set(f113)
     goto(l652)
   }
-  if (f223 && v100 == 2 && has(i22)) { //025d
+  if (f223 && v100 == 2 && has("Room Key")) { //025d
     if (f221) { //0268
       print("The door is already open.")
       goto(l647)
@@ -169,7 +169,7 @@ l647:
   print("You don't have the key to this door.")
 }
 l652:
-if (v100 == 2 && has(i22) && said("lock", "d")) { //028c
+if (v100 == 2 && has("Room Key") && said("lock", "d")) { //028c
   if (!f223) { //029b
     set(f113)
     goto(l681)
@@ -178,7 +178,7 @@ if (v100 == 2 && has(i22) && said("lock", "d")) { //028c
 }
 l681:
 if (f94 && (said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("answer", "pen") || said("answer", "bug", "pen") || said("answer", "bug") || said("use", "pen") || said("use", "bug", "pen") || said("use", "bug") || said("number") || said("call") || said("accident", "number") || said("call", "number") || said("call", "accident", "number"))) { //02a9
-  if (!(has(i21))) { //030f
+  if (!(has("Transmitter Pen"))) { //030f
     print("You have no way to inform your backups.")
     goto(l812)
   }

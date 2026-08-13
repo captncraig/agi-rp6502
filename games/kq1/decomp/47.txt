@@ -107,7 +107,7 @@ l356:
       set(f121)
       set(f123)
       vCurrentScore += 1
-      get(i24)
+      get("mushroom")
       goto(l417)
     }
     print("You need to get closer to do that.")
@@ -175,7 +175,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //02a2
   if ((posn(o0,0,40,32,111) || posn(o0,14,112,88,135) || posn(o0,39,136,99,167) || posn(o0,36,40,74,76) || posn(o0,46,77,101,88) || posn(o0,68,89,151,167))) { //02b4
     reset(f116)
     print("The river is so swift it is a battle to fill the bucket.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //02e6
       vCurrentScore += 2

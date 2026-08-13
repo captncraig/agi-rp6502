@@ -90,7 +90,7 @@ if (f81 && !f88) { //0135
     if ((posn(o0,0,146,159,167) || posn(o0,87,110,117,145))) { //0148
       reset(f116)
       print("You fill the bucket with the murky water from the moat.")
-      get(i26)
+      get("water")
       set(f88)
       if (!f91) { //0162
         set(f91)

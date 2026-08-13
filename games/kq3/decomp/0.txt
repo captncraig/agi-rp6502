@@ -432,14 +432,14 @@ if ((said("anyword", "clock", "rol") || said("clock", "rol"))) { //05b6
   status.line.on()
 }
 l1497:
-if (has(i23)) { //05d9
+if (has("Cat Cookie*")) { //05d9
   if ((said("feed", "cat", "cookie", "rol") || said("feed", "cookie", "rol"))) { //05df
     print("They don't want it.")
   }
-  if (has(i24) && (said("add", "cat", "cookie", "porridge") || said("add", "cookie", "porridge") || said("add", "cat", "cookie", "basin", "porridge") || said("add", "cookie", "basin", "porridge") || said("crumble", "cat", "cookie", "porridge") || said("crumble", "cookie", "porridge") || said("crumble", "cat", "cookie", "basin", "porridge") || said("crumble", "cookie", "basin", "porridge"))) { //05f9
-    drop(i23)
-    drop(i24)
-    get(i25)
+  if (has("Porridge") && (said("add", "cat", "cookie", "porridge") || said("add", "cookie", "porridge") || said("add", "cat", "cookie", "basin", "porridge") || said("add", "cookie", "basin", "porridge") || said("crumble", "cat", "cookie", "porridge") || said("crumble", "cookie", "porridge") || said("crumble", "cat", "cookie", "basin", "porridge") || said("crumble", "cookie", "basin", "porridge"))) { //05f9
+    drop("Cat Cookie*")
+    drop("Porridge")
+    get("Poisoned Porridge")
     print("The porridge conceals the crumbled cookie; it still looks as appetizing as ever.")
   }
 }
@@ -454,17 +454,17 @@ if (v71 == 11) { //0674
   v71 = 0
 }
 if (said("drain", "sleep", "flour", "on", "deck")) { //067e
-  if (has(i20)) { //068e
+  if (has("Sleep Powder*")) { //068e
     v71 = 11
     print("Ok.")
-    drop(i20)
+    drop("Sleep Powder*")
     goto(l1696)
   }
   print("How can you do that?")
 }
 l1696:
 if ((said("pat", "magic", "rock") || said("pat", "rock") || said("pat", "amber", "rock"))) { //06a0
-  if (has(i16)) { //06bc
+  if (has("Magic Stone*")) { //06bc
     v71 = 2
     goto(l1738)
   }
@@ -481,7 +481,7 @@ if (v44 == 26) { //06ca
 }
 l1769:
 if ((said("add", "eagle", "feather", "essence") || said("add", "eagle", "feather", "magic", "essence"))) { //06e9
-  if (has(i39) && has(i9)) { //0705
+  if (has("Magic Rose Essence*") && has("Eagle Feather*")) { //0705
     v71 = 4
     goto(l1813)
   }
@@ -498,7 +498,7 @@ if (v44 == 25) { //0715
 }
 l1844:
 if ((said("add", "bug", "essence") || said("add", "bug", "magic", "essence"))) { //0734
-  if (has(i39) && has(i10)) { //074c
+  if (has("Magic Rose Essence*") && has("Fly Wings*")) { //074c
     v71 = 3
     goto(l1884)
   }
@@ -506,7 +506,7 @@ if ((said("add", "bug", "essence") || said("add", "bug", "magic", "essence"))) {
 }
 l1884:
 if ((said("examine", "magic", "map") || said("examine", "map"))) { //075c
-  if (has(i54)) { //0770
+  if (has("Magic Map*")) { //0770
     v71 = 1
     goto(l1918)
   }
@@ -517,7 +517,7 @@ if (f49 && (said("clean", "ointment", "off") || said("clean", "off", "ointment")
   v71 = 6
 }
 if ((said("pat", "ointment", "on", "alexander") || said("pat", "ointment", "on") || said("pat", "on", "ointment") || said("pat", "ointment", "on", "body"))) { //0799
-  if (has(i36)) { //07c3
+  if (has("Invisibility Ointment*")) { //07c3
     v71 = 7
     goto(l2001)
   }
@@ -531,7 +531,7 @@ if (v71 == 8) { //07e5
   v71 = 0
 }
 if (said("knead", "brew", "try", "finger")) { //07ef
-  if (has(i30)) { //07fd
+  if (has("Storm Brew*")) { //07fd
     v71 = 8
     print("Ok.")
     goto(l2061)
@@ -542,214 +542,214 @@ l2061:
 if ((v76 > 0 || v75 > 0) && said("brew", "storm", "clear", "up")) { //080d
   v71 = 10
 }
-if (has(i17) && (said("drink", "juice") || said("drink", "night shade", "juice") || said("drink", "night shade") || said("drink", "juice", "bottle") || said("drink", "night shade", "juice", "bottle") || said("drink", "juice", "from", "bottle") || said("drink", "night shade", "juice", "from", "bottle"))) { //0826
-  drop(i17)
+if (has("Nightshade Juice*") && (said("drink", "juice") || said("drink", "night shade", "juice") || said("drink", "night shade") || said("drink", "juice", "bottle") || said("drink", "night shade", "juice", "bottle") || said("drink", "juice", "from", "bottle") || said("drink", "night shade", "juice", "from", "bottle"))) { //0826
+  drop("Nightshade Juice*")
   v94 = 36
 }
-if (has(i21) && (said("drink", "mandrake", "flour") || said("drink", "mandrake", "root", "flour") || said("drink", "root") || said("drink", "mandrake", "flour", "from", "bottle") || said("drink", "mandrake") || said("drink", "mandrake", "root") || said("drink", "mandrake", "root", "flour", "from", "bottle"))) { //086f
-  drop(i21)
+if (has("Mandrake Root*") && (said("drink", "mandrake", "flour") || said("drink", "mandrake", "root", "flour") || said("drink", "root") || said("drink", "mandrake", "flour", "from", "bottle") || said("drink", "mandrake") || said("drink", "mandrake", "root") || said("drink", "mandrake", "root", "flour", "from", "bottle"))) { //086f
+  drop("Mandrake Root*")
   v94 = 38
 }
-if (has(i28) && (said("drink", "mushroom") || said("drink", "mushroom", "flour") || said("drink", "mushroom", "flour", "from", "bottle"))) { //08bc
-  drop(i28)
+if (has("Toadstool Powder*") && (said("drink", "mushroom") || said("drink", "mushroom", "flour") || said("drink", "mushroom", "flour", "from", "bottle"))) { //08bc
+  drop("Toadstool Powder*")
   v94 = 39
 }
-if (has(i25) && has(i41) && (said("drink", "porridge", "try", "ladle") || said("drink", "porridge", "ladle") || said("try", "ladle", "drink", "porridge"))) { //08e3
-  drop(i25)
+if (has("Poisoned Porridge") && has("Spoon") && (said("drink", "porridge", "try", "ladle") || said("drink", "porridge", "ladle") || said("try", "ladle", "drink", "porridge"))) { //08e3
+  drop("Poisoned Porridge")
   v94 = 37
 }
-if (has(i25) && said("drink", "porridge")) { //090e
-  drop(i25)
+if (has("Poisoned Porridge") && said("drink", "porridge")) { //090e
+  drop("Poisoned Porridge")
   v94 = 37
 }
-if (has(i23) && (said("drink", "cat", "cookie") || said("drink", "cookie"))) { //091f
+if (has("Cat Cookie*") && (said("drink", "cat", "cookie") || said("drink", "cookie"))) { //091f
   set(f46)
   print("Ok.")
   v90 = 3
   v44 = 204
   v91 = 204
 }
-if ((has(i1) || has(i9)) && said("examine", "feather")) { //0942
-  if (has(i1)) { //0952
+if ((has("Chicken Feather*") || has("Eagle Feather*")) && said("examine", "feather")) { //0942
+  if (has("Chicken Feather*")) { //0952
     show.obj(101)
   }
-  if (has(i9)) { //095a
+  if (has("Eagle Feather*")) { //095a
     show.obj(109)
   }
 }
-if (has(i1) && said("examine", "bird", "feather")) { //0962
+if (has("Chicken Feather*") && said("examine", "bird", "feather")) { //0962
   show.obj(101)
 }
-if ((has(i3) || has(i2)) && said("examine", "fur")) { //0972
-  if (has(i2)) { //0982
+if ((has("Dog Hair*") || has("Cat Hair*")) && said("examine", "fur")) { //0972
+  if (has("Cat Hair*")) { //0982
     show.obj(102)
   }
-  if (has(i3)) { //098a
+  if (has("Dog Hair*")) { //098a
     show.obj(103)
   }
 }
-if (has(i2) && said("examine", "cat", "fur")) { //0992
+if (has("Cat Hair*") && said("examine", "cat", "fur")) { //0992
   show.obj(102)
 }
-if (has(i3) && said("examine", "dog", "fur")) { //09a2
+if (has("Dog Hair*") && said("examine", "dog", "fur")) { //09a2
   show.obj(103)
 }
-if (has(i4) && said("examine", "reptile skin")) { //09b2
+if (has("Snakeskin*") && said("examine", "reptile skin")) { //09b2
   show.obj(104)
 }
-if (has(i5) && said("examine", "bone")) { //09c0
+if (has("Fish Bone Powder*") && said("examine", "bone")) { //09c0
   show.obj(105)
 }
-if (has(i6) && said("examine", "thimble")) { //09ce
+if (has("Thimble*") && said("examine", "thimble")) { //09ce
   show.obj(106)
 }
-if (has(i7) && (said("examine", "dew") || said("examine", "dew", "thimble") || said("examine", "thimble", "dew") || said("examine", "thimble"))) { //09dc
+if (has("Thimble & Dew*") && (said("examine", "dew") || said("examine", "dew", "thimble") || said("examine", "thimble", "dew") || said("examine", "thimble"))) { //09dc
   show.obj(107)
 }
-if (has(i8) && said("examine", "compound", "ball")) { //0a02
+if (has("Dough in Ears") && said("examine", "compound", "ball")) { //0a02
   show.obj(108)
 }
-if (has(i9) && said("examine", "eagle", "feather")) { //0a12
+if (has("Eagle Feather*") && said("examine", "eagle", "feather")) { //0a12
   show.obj(109)
 }
-if (has(i10) && said("examine", "bug")) { //0a22
+if (has("Fly Wings*") && said("examine", "bug")) { //0a22
   show.obj(110)
 }
-if (has(i11) && said("examine", "saffron")) { //0a30
+if (has("Saffron*") && said("examine", "saffron")) { //0a30
   show.obj(111)
 }
-if (has(i12) && said("examine", "essence")) { //0a3e
+if (has("Rose Essence*") && said("examine", "essence")) { //0a3e
   show.obj(112)
 }
-if (has(i39) && (said("examine", "essence") || said("examine", "magic", "essence"))) { //0a4c
+if (has("Magic Rose Essence*") && (said("examine", "essence") || said("examine", "magic", "essence"))) { //0a4c
   show.obj(139)
 }
-if (has(i13) && said("examine", "grains of salt")) { //0a64
+if (has("Salt*") && said("examine", "grains of salt")) { //0a64
   show.obj(113)
 }
-if (has(i14) && said("examine", "amber", "rock")) { //0a72
+if (has("Amber Stone*") && said("examine", "amber", "rock")) { //0a72
   show.obj(114)
 }
-if (has(i16) && (said("examine", "magic", "rock") || said("examine", "amber", "rock"))) { //0a82
+if (has("Magic Stone*") && (said("examine", "magic", "rock") || said("examine", "amber", "rock"))) { //0a82
   show.obj(116)
 }
-if (has(i15) && said("examine", "mistletoe")) { //0a9c
+if (has("Mistletoe*") && said("examine", "mistletoe")) { //0a9c
   show.obj(115)
 }
-if (has(i17) && (said("examine", "night shade", "juice") || said("examine", "juice"))) { //0aaa
+if (has("Nightshade Juice*") && (said("examine", "night shade", "juice") || said("examine", "juice"))) { //0aaa
   show.obj(117)
 }
-if (has(i18) && (said("examine", "acorn") || said("examine", "three", "acorn"))) { //0ac2
+if (has("Three Acorns*") && (said("examine", "acorn") || said("examine", "three", "acorn"))) { //0ac2
   show.obj(118)
 }
-if (has(i21) && (said("examine", "mandrake", "root") || said("examine", "mandrake", "root", "flour") || said("examine", "mandrake"))) { //0ada
+if (has("Mandrake Root*") && (said("examine", "mandrake", "root") || said("examine", "mandrake", "root", "flour") || said("examine", "mandrake"))) { //0ada
   show.obj(121)
 }
-if (has(i22) && (said("examine", "fish", "fish oil") || said("examine", "fish oil"))) { //0afc
+if (has("Fish Oil*") && (said("examine", "fish", "fish oil") || said("examine", "fish oil"))) { //0afc
   show.obj(122)
 }
-if (has(i23) && (said("examine", "cookie") || said("examine", "cat", "cookie"))) { //0b14
+if (has("Cat Cookie*") && (said("examine", "cookie") || said("examine", "cat", "cookie"))) { //0b14
   show.obj(123)
 }
-if (has(i24) && said("examine", "porridge")) { //0b2c
+if (has("Porridge") && said("examine", "porridge")) { //0b2c
   show.obj(124)
 }
-if (has(i25) && said("examine", "porridge")) { //0b3a
+if (has("Poisoned Porridge") && said("examine", "porridge")) { //0b3a
   show.obj(125)
 }
-if (has(i25) && said("examine", "poison", "porridge")) { //0b48
+if (has("Poisoned Porridge") && said("examine", "poison", "porridge")) { //0b48
   show.obj(125)
 }
-if (has(i26) && (said("examine", "cup") || said("examine", "liquid") || said("examine", "cup", "liquid") || said("examine", "cup", "bay", "liquid") || said("examine", "bay", "liquid"))) { //0b58
+if (has("Cup & Ocean Water*") && (said("examine", "cup") || said("examine", "liquid") || said("examine", "cup", "liquid") || said("examine", "cup", "bay", "liquid") || said("examine", "bay", "liquid"))) { //0b58
   show.obj(126)
 }
-if (has(i27) && (said("examine", "mud") || said("examine", "ladle", "mud") || said("examine", "ladle"))) { //0b88
+if (has("Spoonful of Mud*") && (said("examine", "mud") || said("examine", "ladle", "mud") || said("examine", "ladle"))) { //0b88
   show.obj(127)
 }
-if (has(i28) && (said("examine", "frog", "flour") || said("examine", "mushroom", "flour"))) { //0ba6
+if (has("Toadstool Powder*") && (said("examine", "frog", "flour") || said("examine", "mushroom", "flour"))) { //0ba6
   show.obj(128)
 }
-if (has(i29) && (said("examine", "bottle") || said("examine", "drain", "bottle"))) { //0bc0
+if (has("Empty Jar*") && (said("examine", "bottle") || said("examine", "drain", "bottle"))) { //0bc0
   show.obj(129)
 }
-if (has(i30) && said("examine", "brew")) { //0bd8
+if (has("Storm Brew*") && said("examine", "brew")) { //0bd8
   show.obj(130)
 }
-if (has(i31) && (said("examine", "frog", "spit") || said("examine", "spit"))) { //0be6
+if (has("Toad Spittle*") && (said("examine", "frog", "spit") || said("examine", "spit"))) { //0be6
   show.obj(131)
 }
-if (has(i32) && said("examine", "lard")) { //0bfe
+if (has("Lard*") && said("examine", "lard")) { //0bfe
   show.obj(132)
 }
-if (has(i33) && said("examine", "dagger")) { //0c0c
+if (has("Knife") && said("examine", "dagger")) { //0c0c
   show.obj(133)
 }
-if (has(i34) && said("examine", "cactii")) { //0c1a
+if (has("Cactus*") && said("examine", "cactii")) { //0c1a
   show.obj(134)
 }
-if (has(i36) && said("examine", "ointment")) { //0c28
+if (has("Invisibility Ointment*") && said("examine", "ointment")) { //0c28
   show.obj(136)
 }
-if (has(i37) && (said("examine", "rod") || said("examine", "magic", "rod"))) { //0c36
+if (has("Magic Wand*") && (said("examine", "rod") || said("examine", "magic", "rod"))) { //0c36
   show.obj(137)
 }
-if (has(i38) && said("examine", "key")) { //0c4e
+if (has("Brass Key*") && said("examine", "key")) { //0c4e
   show.obj(138)
 }
-if (has(i40) && said("examine", "basin")) { //0c5c
+if (has("Bowl") && said("examine", "basin")) { //0c5c
   show.obj(140)
 }
-if (has(i41) && said("examine", "ladle")) { //0c6a
+if (has("Spoon") && said("examine", "ladle")) { //0c6a
   show.obj(141)
 }
-if (has(i43) && (said("examine", "looking glass") || said("examine", "fingers", "looking glass"))) { //0c78
+if (has("Mirror*") && (said("examine", "looking glass") || said("examine", "fingers", "looking glass"))) { //0c78
   show.obj(143)
 }
-if (has(i48) && (said("examine", "coin purse") || said("lift", "coin purse") || said("look in", "coin purse") || said("examine", "coin"))) { //0c90
+if (has("Purse & Gold Coins*") && (said("examine", "coin purse") || said("lift", "coin purse") || said("look in", "coin purse") || said("examine", "coin"))) { //0c90
   show.obj(148)
 }
-if (has(i47) && (said("examine", "coin purse") || said("lift", "coin purse") || said("look in", "coin purse") || said("examine", "drain", "coin purse"))) { //0cb2
+if (has("Empty Purse*") && (said("examine", "coin purse") || said("lift", "coin purse") || said("look in", "coin purse") || said("examine", "drain", "coin purse"))) { //0cb2
   show.obj(147)
 }
-if (has(i19) && (said("examine", "drain", "pouch") || said("examine", "pouch"))) { //0cd6
+if (has("Empty Pouch*") && (said("examine", "drain", "pouch") || said("examine", "pouch"))) { //0cd6
   show.obj(119)
 }
-if (has(i20) && (said("examine", "flour") || said("examine", "pouch") || said("examine", "bag") || said("examine", "sleep", "flour"))) { //0cee
+if (has("Sleep Powder*") && (said("examine", "flour") || said("examine", "pouch") || said("examine", "bag") || said("examine", "sleep", "flour"))) { //0cee
   show.obj(120)
 }
-if (has(i49) && said("examine", "bread")) { //0d12
+if (has("Bread") && said("examine", "bread")) { //0d12
   show.obj(149)
 }
-if (has(i50) && said("examine", "apple")) { //0d20
+if (has("Fruit") && said("examine", "apple")) { //0d20
   show.obj(150)
 }
-if (has(i51) && said("examine", "chop")) { //0d2e
+if (has("Mutton") && said("examine", "chop")) { //0d2e
   show.obj(151)
 }
-if (has(i52) && said("examine", "shovel")) { //0d3c
+if (has("Shovel") && said("examine", "shovel")) { //0d3c
   show.obj(152)
 }
-if (has(i53) && (said("examine", "chest") || said("examine", "treasure") || said("lift", "chest") || said("lift", "treasure") || said("lift", "cap", "chest") || said("lift", "cap", "treasure"))) { //0d4a
+if (has("Treasure Chest") && (said("examine", "chest") || said("examine", "treasure") || said("lift", "chest") || said("lift", "treasure") || said("lift", "cap", "chest") || said("lift", "cap", "treasure"))) { //0d4a
   show.obj(153)
 }
 if (said("examine", "food")) { //0d7c
-  if (has(i49)) { //0d86
+  if (has("Bread")) { //0d86
     show.obj(149)
     reset(fSaidAccepted)
   }
-  if (has(i50)) { //0d90
+  if (has("Fruit")) { //0d90
     show.obj(150)
     reset(fSaidAccepted)
   }
-  if (has(i24)) { //0d9a
+  if (has("Porridge")) { //0d9a
     show.obj(124)
     reset(fSaidAccepted)
   }
-  if (has(i25)) { //0da4
+  if (has("Poisoned Porridge")) { //0da4
     show.obj(125)
     reset(fSaidAccepted)
   }
-  if (has(i51)) { //0dae
+  if (has("Mutton")) { //0dae
     show.obj(151)
     reset(fSaidAccepted)
   }
@@ -757,11 +757,11 @@ if (said("examine", "food")) { //0d7c
     print("%m68.")
   }
 }
-if ((has(i26) || has(i42)) && said("examine", "cup")) { //0dc0
-  if (has(i26)) { //0dd0
+if ((has("Cup & Ocean Water*") || has("Empty Cup")) && said("examine", "cup")) { //0dc0
+  if (has("Cup & Ocean Water*")) { //0dd0
     show.obj(126)
   }
-  if (has(i42)) { //0dd8
+  if (has("Empty Cup")) { //0dd8
     show.obj(142)
   }
 }
@@ -918,7 +918,7 @@ if (v47 > 7 && v128 != 20 && v31 > 0 && !f109 && vEgoView == 0 && !f46) { //0f83
         v123 = 26
       }
       v36 = 5
-      if (!(obj.in.room(i37,v36))) { //0fe3
+      if (!(obj.in.room("Magic Wand*",v36))) { //0fe3
         v123 = 24
       }
       if (vCurrentRoom > 8 && vCurrentRoom < 87) { //0fee
@@ -1082,7 +1082,7 @@ if (f97) { //11bc
   v54 = 0
   v93++
   if (v93 > 2) { //11cc
-    drop(i39)
+    drop("Magic Rose Essence*")
     print("Your magic essence is all gone.")
   }
   v90 = 3
@@ -1097,12 +1097,12 @@ if (v71 == 7) { //11e2
     goto(l4638)
   }
   if (vCurrentRoom != 65 && vCurrentRoom != 67) { //11fd
-    drop(i36)
+    drop("Invisibility Ointment*")
     print("Ok, but this place does not meet the spell's requirements.")
     goto(l4638)
   }
   set(f49)
-  drop(i36)
+  drop("Invisibility Ointment*")
   v90 = 3
   v91 = 28
   release.priority(o0)
@@ -1223,139 +1223,139 @@ if (f49) { //1347
 if ((fSaidAccepted || !fEnteredCommand || vCurrentRoom == 43 || v44 == 7 || v44 == 18 || v44 == 20)) { //1362
   goto(l6755)
 }
-if ((has(i24) || has(i25)) && said("feed", "porridge", "rol")) { //137c
+if ((has("Porridge") || has("Poisoned Porridge")) && said("feed", "porridge", "rol")) { //137c
   print("They're not hungry.")
 }
-if (has(i11) && said("drink", "saffron")) { //1390
+if (has("Saffron*") && said("drink", "saffron")) { //1390
   print("%m9 It tastes bitter!")
 }
-if (has(i36) && said("drink", "ointment")) { //139e
+if (has("Invisibility Ointment*") && said("drink", "ointment")) { //139e
   print("%m9 It tastes terrible!")
 }
-if (has(i20) && said("drink", "sleep", "flour")) { //13ac
+if (has("Sleep Powder*") && said("drink", "sleep", "flour")) { //13ac
   print("%m78 You spit it out, spilling the rest on the ground.")
-  drop(i20)
+  drop("Sleep Powder*")
 }
-if (has(i49) && said("drink", "bread")) { //13be
+if (has("Bread") && said("drink", "bread")) { //13be
   print("Ok.")
-  drop(i49)
+  drop("Bread")
 }
-if (has(i50) && said("drink", "apple")) { //13ce
+if (has("Fruit") && said("drink", "apple")) { //13ce
   print("Ok.")
-  drop(i50)
+  drop("Fruit")
 }
-if (has(i51) && said("drink", "chop")) { //13de
+if (has("Mutton") && said("drink", "chop")) { //13de
   print("Ok.")
-  drop(i51)
+  drop("Mutton")
 }
-if (has(i24) && said("drink", "porridge")) { //13ee
+if (has("Porridge") && said("drink", "porridge")) { //13ee
   print("Ok.")
-  drop(i24)
+  drop("Porridge")
 }
-if (has(i15) && said("drink", "mistletoe")) { //13fe
+if (has("Mistletoe*") && said("drink", "mistletoe")) { //13fe
   print("%m9 It tastes terrible!")
-  drop(i15)
+  drop("Mistletoe*")
 }
-if (has(i18) && said("drink", "acorn")) { //140e
+if (has("Three Acorns*") && said("drink", "acorn")) { //140e
   print("%m9 It tastes terrible!")
-  drop(i18)
+  drop("Three Acorns*")
 }
-if (has(i13) && said("drink", "grains of salt")) { //141e
+if (has("Salt*") && said("drink", "grains of salt")) { //141e
   print("You eat a few grains of salt.")
 }
-if (has(i5) && (said("drink", "bone") || said("drink", "bone", "flour"))) { //142c
+if (has("Fish Bone Powder*") && (said("drink", "bone") || said("drink", "bone", "flour"))) { //142c
   print("%m9 It tastes terrible!")
 }
-if (has(i49) && has(i33) && (said("carve", "bread") || said("carve", "bread", "dagger"))) { //1444
+if (has("Bread") && has("Knife") && (said("carve", "bread") || said("carve", "bread", "dagger"))) { //1444
   print("%m55bread without slicing it.")
 }
-if (has(i50) && has(i33) && (said("carve", "apple") || said("carve", "apple", "dagger"))) { //145e
+if (has("Fruit") && has("Knife") && (said("carve", "apple") || said("carve", "apple", "dagger"))) { //145e
   print("%m55fruit without cutting it.")
 }
-if (has(i51) && has(i33) && (said("carve", "chop") || said("carve", "chop", "dagger"))) { //1478
+if (has("Mutton") && has("Knife") && (said("carve", "chop") || said("carve", "chop", "dagger"))) { //1478
   print("%m55mutton without carving it.")
 }
-if (has(i32) && said("drink", "lard")) { //1492
+if (has("Lard*") && said("drink", "lard")) { //1492
   print("%m9 It tastes terrible!")
 }
-if (has(i31) && said("drink", "frog", "spit")) { //14a0
+if (has("Toad Spittle*") && said("drink", "frog", "spit")) { //14a0
   print("The thought turns your stomach!")
 }
-if (has(i12) && said("drink", "essence")) { //14b0
+if (has("Rose Essence*") && said("drink", "essence")) { //14b0
   print("%m9 You decide it smells better than it tastes!")
-  drop(i12)
+  drop("Rose Essence*")
 }
-if (has(i39) && (said("drink", "essence") || said("drink", "magic", "essence"))) { //14c0
+if (has("Magic Rose Essence*") && (said("drink", "essence") || said("drink", "magic", "essence"))) { //14c0
   print("%m9 You decide it smells better than it tastes!")
-  drop(i39)
+  drop("Magic Rose Essence*")
 }
-if ((has(i26) || has(i42)) && (said("drink", "out", "cup") || said("drink", "cup") || said("drink", "anyword", "cup"))) { //14da
-  if (has(i42)) { //14fc
+if ((has("Cup & Ocean Water*") || has("Empty Cup")) && (said("drink", "out", "cup") || said("drink", "cup") || said("drink", "anyword", "cup"))) { //14da
+  if (has("Empty Cup")) { //14fc
     print("Your cup is empty.")
   }
-  if (has(i26)) { //1504
+  if (has("Cup & Ocean Water*")) { //1504
     print("%m9 It tastes terrible!")
-    drop(i26)
-    get(i42)
+    drop("Cup & Ocean Water*")
+    get("Empty Cup")
   }
 }
-if (has(i26) && (said("drink", "bay", "liquid") || said("drink", "liquid"))) { //1510
+if (has("Cup & Ocean Water*") && (said("drink", "bay", "liquid") || said("drink", "liquid"))) { //1510
   print("%m9 It tastes terrible!")
-  drop(i26)
-  get(i42)
+  drop("Cup & Ocean Water*")
+  get("Empty Cup")
 }
-if (has(i22) && said("drink", "fish", "fish oil")) { //152c
+if (has("Fish Oil*") && said("drink", "fish", "fish oil")) { //152c
   print("%m9 It tastes terrible!")
-  drop(i22)
+  drop("Fish Oil*")
 }
-if (has(i7) && (said("drink", "dew") || said("drink", "dew", "thimble") || said("drink", "thimble", "dew"))) { //153e
+if (has("Thimble & Dew*") && (said("drink", "dew") || said("drink", "dew", "thimble") || said("drink", "thimble", "dew"))) { //153e
   print("%m9 Ummmm, not bad.")
-  drop(i7)
-  get(i6)
+  drop("Thimble & Dew*")
+  get("Thimble*")
 }
-if ((has(i9) || has(i1)) && said("try", "feather")) { //1562
+if ((has("Eagle Feather*") || has("Chicken Feather*")) && said("try", "feather")) { //1562
   print("%m53?")
 }
-if (has(i1) && said("try", "bird", "feather")) { //1574
+if (has("Chicken Feather*") && said("try", "bird", "feather")) { //1574
   print("%m53 %w3?")
 }
-if ((has(i2) || has(i3)) && said("try", "fur")) { //1584
+if ((has("Cat Hair*") || has("Dog Hair*")) && said("try", "fur")) { //1584
   print("%m53?")
 }
-if (has(i2) && said("try", "cat", "fur")) { //1596
+if (has("Cat Hair*") && said("try", "cat", "fur")) { //1596
   print("%m53 %w3?")
 }
-if (has(i3) && said("try", "dog", "fur")) { //15a6
+if (has("Dog Hair*") && said("try", "dog", "fur")) { //15a6
   print("%m53 %w3?")
 }
-if (has(i4) && said("try", "reptile", "reptile skin")) { //15b6
+if (has("Snakeskin*") && said("try", "reptile", "reptile skin")) { //15b6
   print("%m53 %w3?")
 }
-if (has(i5) && said("try", "bone")) { //15c6
+if (has("Fish Bone Powder*") && said("try", "bone")) { //15c6
   print("%m53 %w3?")
 }
-if (has(i6) && said("try", "thimble")) { //15d4
+if (has("Thimble*") && said("try", "thimble")) { //15d4
   print("%m53?")
 }
-if (has(i7) && (said("try", "dew") || said("try", "thimble"))) { //15e2
+if (has("Thimble & Dew*") && (said("try", "dew") || said("try", "thimble"))) { //15e2
   print("%m53?")
 }
-if (has(i9) && said("try", "eagle", "feather")) { //15f8
+if (has("Eagle Feather*") && said("try", "eagle", "feather")) { //15f8
   print("%m53 %w3?")
 }
-if (has(i10) && said("try", "bug")) { //1608
+if (has("Fly Wings*") && said("try", "bug")) { //1608
   print("%m53?")
 }
-if (has(i11) && said("try", "saffron")) { //1616
+if (has("Saffron*") && said("try", "saffron")) { //1616
   print("%m53?")
 }
-if (has(i13) && said("try", "grains of salt")) { //1624
+if (has("Salt*") && said("try", "grains of salt")) { //1624
   print("%m53?")
 }
-if (has(i15) && said("try", "mistletoe")) { //1632
+if (has("Mistletoe*") && said("try", "mistletoe")) { //1632
   print("%m53?")
 }
-if (has(i17)) { //1640
+if (has("Nightshade Juice*")) { //1640
   if (said("try", "night shade", "juice")) { //1646
     print("%m53 %w3?")
     goto(l5731)
@@ -1365,10 +1365,10 @@ if (has(i17)) { //1640
   }
 }
 l5731:
-if (has(i18) && said("try", "acorn")) { //1663
+if (has("Three Acorns*") && said("try", "acorn")) { //1663
   print("%m53?")
 }
-if (has(i19)) { //1671
+if (has("Empty Pouch*")) { //1671
   if (said("try", "drain", "pouch")) { //1677
     print("%m53 %w3?")
     goto(l5780)
@@ -1378,7 +1378,7 @@ if (has(i19)) { //1671
   }
 }
 l5780:
-if (has(i21)) { //1694
+if (has("Mandrake Root*")) { //1694
   if (said("try", "mandrake", "root")) { //169a
     print("%m53 %w3?")
     goto(l5815)
@@ -1388,10 +1388,10 @@ if (has(i21)) { //1694
   }
 }
 l5815:
-if (has(i22) && said("try", "fish", "fish oil")) { //16b7
+if (has("Fish Oil*") && said("try", "fish", "fish oil")) { //16b7
   print("%m53 %w3?")
 }
-if (has(i23)) { //16c7
+if (has("Cat Cookie*")) { //16c7
   if (said("try", "cookie")) { //16cd
     print("%m53?")
     goto(l5866)
@@ -1401,7 +1401,7 @@ if (has(i23)) { //16c7
   }
 }
 l5866:
-if (has(i26)) { //16ea
+if (has("Cup & Ocean Water*")) { //16ea
   if (said("try", "bay", "liquid")) { //16f0
     print("%m53 %w3?")
     goto(l5901)
@@ -1411,16 +1411,16 @@ if (has(i26)) { //16ea
   }
 }
 l5901:
-if (has(i27) && (said("try", "mud") || said("try", "ladle"))) { //170d
+if (has("Spoonful of Mud*") && (said("try", "mud") || said("try", "ladle"))) { //170d
   print("%m53?")
 }
-if (has(i28) && said("try", "mushroom", "flour")) { //1723
+if (has("Toadstool Powder*") && said("try", "mushroom", "flour")) { //1723
   print("%m53 %w3?")
 }
-if (has(i29) && said("try", "bottle")) { //1733
+if (has("Empty Jar*") && said("try", "bottle")) { //1733
   print("%m53?")
 }
-if (has(i31)) { //1741
+if (has("Toad Spittle*")) { //1741
   if (said("try", "frog", "spit")) { //1747
     print("%m53 %w3?")
     goto(l5988)
@@ -1430,63 +1430,63 @@ if (has(i31)) { //1741
   }
 }
 l5988:
-if (has(i32) && said("try", "lard")) { //1764
+if (has("Lard*") && said("try", "lard")) { //1764
   print("%m53?")
 }
-if (has(i33) && said("try", "dagger")) { //1772
+if (has("Knife") && said("try", "dagger")) { //1772
   print("%m53?")
 }
-if (has(i34) && said("try", "cactii")) { //1780
+if (has("Cactus*") && said("try", "cactii")) { //1780
   print("%m53?")
 }
-if (has(i37) && (said("try", "magic", "rod") || said("try", "rod") || said("aim", "magic", "rod") || said("aim", "rod"))) { //178e
+if (has("Magic Wand*") && (said("try", "magic", "rod") || said("try", "rod") || said("aim", "magic", "rod") || said("aim", "rod"))) { //178e
   print("%m9 Nothing happens.")
 }
-if (has(i38) && said("try", "key")) { //17b4
+if (has("Brass Key*") && said("try", "key")) { //17b4
   print("Nothing here fits your key.")
 }
-if (has(i40) && said("try", "basin")) { //17c2
+if (has("Bowl") && said("try", "basin")) { //17c2
   print("%m53?")
 }
-if (has(i41) && said("try", "ladle")) { //17d0
+if (has("Spoon") && said("try", "ladle")) { //17d0
   print("%m53?")
 }
-if (has(i42) && said("try", "cup")) { //17de
+if (has("Empty Cup") && said("try", "cup")) { //17de
   print("%m53?")
 }
-if (has(i43) && (said("try", "looking glass") || said("try", "fingers", "looking glass"))) { //17ec
+if (has("Mirror*") && (said("try", "looking glass") || said("try", "fingers", "looking glass"))) { //17ec
   print("You look cute.")
 }
-if ((has(i48) || has(i47)) && said("try", "coin purse")) { //1804
+if ((has("Purse & Gold Coins*") || has("Empty Purse*")) && said("try", "coin purse")) { //1804
   print("%m53?")
 }
-if (has(i49) && said("try", "bread")) { //1816
+if (has("Bread") && said("try", "bread")) { //1816
   print("%m53?")
 }
-if (has(i50) && said("try", "apple")) { //1824
+if (has("Fruit") && said("try", "apple")) { //1824
   print("%m53?")
 }
-if (has(i51) && said("try", "chop")) { //1832
+if (has("Mutton") && said("try", "chop")) { //1832
   print("%m53?")
 }
-if (has(i52) && said("try", "shovel")) { //1840
+if (has("Shovel") && said("try", "shovel")) { //1840
   print("%m53?")
 }
-if (has(i53) && said("try", "chest")) { //184e
+if (has("Treasure Chest") && said("try", "chest")) { //184e
   print("%m53?")
 }
-if ((has(i25) || has(i24)) && said("try", "porridge")) { //185c
+if ((has("Poisoned Porridge") || has("Porridge")) && said("try", "porridge")) { //185c
   print("%m53?")
 }
-if (has(i8) && (said("capture", "compound", "from", "ears") || said("drain", "compound", "from", "ears") || said("drain", "compound", "ears"))) { //186e
-  drop(i8)
+if (has("Dough in Ears") && (said("capture", "compound", "from", "ears") || said("drain", "compound", "from", "ears") || said("drain", "compound", "ears"))) { //186e
+  drop("Dough in Ears")
   print("As you remove the dough from your ears, it crumbles into dust and is lost!")
 }
-if (has(i14) && said("throw", "amber", "rock", "rol")) { //1896
+if (has("Amber Stone*") && said("throw", "amber", "rock", "rol")) { //1896
   print("You missed!")
-  drop(i14)
+  drop("Amber Stone*")
 }
-if (has(i48)) { //18aa
+if (has("Purse & Gold Coins*")) { //18aa
   if ((said("count", "coin") || said("count", "coin", "coin purse") || said("count", "coin", "coin"))) { //18b0
     print("You have %v63 gold coins.")
   }
@@ -1494,21 +1494,21 @@ if (has(i48)) { //18aa
     print("You can't buy that here.")
   }
 }
-if (has(i40) && (said("add", "anyword", "basin"))) { //18e4
+if (has("Bowl") && (said("add", "anyword", "basin"))) { //18e4
   print("You don't need to put the %w2 in the bowl.")
 }
-if (has(i29) && (said("look in", "bottle") || said("lift", "bottle") || said("capture", "cap", "off", "bottle"))) { //18f6
+if (has("Empty Jar*") && (said("look in", "bottle") || said("lift", "bottle") || said("capture", "cap", "off", "bottle"))) { //18f6
   print("The jar is empty.")
 }
-if (has(i42) && said("add", "anyword", "cup")) { //1916
+if (has("Empty Cup") && said("add", "anyword", "cup")) { //1916
   print("There is no need to put it in the cup.")
 }
-if (has(i52) && (said("dig", "rol") || said("try", "shovel", "rol"))) { //1926
+if (has("Shovel") && (said("dig", "rol") || said("try", "shovel", "rol"))) { //1926
   print("You can't dig here.")
 }
-if (has(i26) && said("drain", "cup")) { //193e
-  drop(i26)
-  get(i42)
+if (has("Cup & Ocean Water*") && said("drain", "cup")) { //193e
+  drop("Cup & Ocean Water*")
+  get("Empty Cup")
   print("The cup is now empty.")
 }
 if ((said("examine", "enchanter") || said("examine", "spider") || said("examine", "alexander") || said("examine", "barmaid") || said("examine", "bandit") || said("examine", "barmaid") || said("examine", "dragon") || said("examine", "eagle") || said("examine", "barmaid") || said("examine", "bird"))) { //1950

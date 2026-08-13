@@ -201,7 +201,7 @@ if (f81 && !f88) { //0296
     if ((posn(o0,0,143,159,167) || posn(o0,40,108,74,142))) { //02a9
       reset(f116)
       print("Although you notice the water is unclean, you fill the bucket.")
-      get(i26)
+      get("water")
       set(f88)
       if (!f91) { //02c3
         set(f91)

@@ -270,7 +270,7 @@ if (said("acquire", "torch")) { //03bc
 }
 l983:
 if (!fSaidAccepted && said("light", "candle")) { //03d7
-  if (has(i78)) { //03e4
+  if (has("T\x01")) { //03e4
     if (posn(o0,35,62,49,74)) { //03ea
       if (!f106) { //03f4
         set(f106)

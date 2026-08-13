@@ -434,7 +434,7 @@ if (vWhichEgoBorder == 2) { //054b
   new.room(35)
 }
 if (vWhichEgoBorder == 1) { //0556
-  if (!(has(i20))) { //055d
+  if (!(has("Own 1 Used Ship"))) { //055d
     set(f65)
   }
   new.room(37)

@@ -13,7 +13,7 @@ if (fNewRoom) { //0002
   }
 }
 if (said("examine", "shovel")) { //002b
-  if (has(i52)) { //0035
+  if (has("Shovel")) { //0035
     show.obj(152)
     goto(l66)
   }
@@ -30,7 +30,7 @@ if (said("capture", "shovel")) { //0042
     print("You can't get it from there.")
     goto(l112)
   }
-  get(i52)
+  get("Shovel")
   set(f186)
   erase(o12)
   vCurrentScore += 1
@@ -44,7 +44,7 @@ if (f242) { //00b8
     print("Now is not the time to think about digging a hole!")
     goto(l362)
   }
-  if (!(has(i52))) { //00cf
+  if (!(has("Shovel"))) { //00cf
     print("You dig in the sand with your bare hands, but to no avail.")
     goto(l362)
   }
@@ -64,10 +64,10 @@ if (f242) { //00b8
     print("Now is not the time to think about digging a hole!")
     goto(l362)
   }
-  if (!(has(i53)) && posn(o0,55,82,56,83)) { //0119
+  if (!(has("Treasure Chest")) && posn(o0,55,82,56,83)) { //0119
     goto(l312)
   }
-  if (f194 && !(has(i53)) && posn(o0,48,80,63,88)) { //0129
+  if (f194 && !(has("Treasure Chest")) && posn(o0,48,80,63,88)) { //0129
 l312:
     set(f243)
     set.loop(o3,0)
@@ -125,7 +125,7 @@ l452:
 if (f241 && v241 == 4) { //01c4
   reset(f241)
   if (f243) { //01cf
-    get(i53)
+    get("Treasure Chest")
     if (!f207) { //01d7
       set(f207)
       vCurrentScore += 7

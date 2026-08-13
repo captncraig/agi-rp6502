@@ -115,7 +115,7 @@ l427:
       if (f106 && v70 > 15 && v70 < 35) { //01e3
         print("The huge rat takes the treasure you have offered and scuttles away.")
         move.obj(o1,46,105,0,f24)
-        drop(i15)
+        drop("pouch of diamonds")
         reset(f106)
         set(f107)
         vCurrentScore -= 6
@@ -129,7 +129,7 @@ l517:
     if (f110 && v70 > 15 && v70 < 35) { //0221
       print("The huge rat takes the treasure you have offered and scuttles away.")
       move.obj(o1,46,105,0,f24)
-      drop(i20)
+      drop("gold egg")
       reset(f110)
       set(f111)
       vCurrentScore -= 6
@@ -151,7 +151,7 @@ l630:
       if (v70 > 15 && v70 < 35) { //027c
         print("The huge rat takes the treasure you have offered and scuttles away.")
         move.obj(o1,46,105,0,f24)
-        drop(i4)
+        drop("gold walnut")
         reset(f108)
         set(f109)
         vCurrentScore -= 6
@@ -165,7 +165,7 @@ l668:
     if (f113 && v70 > 15 && v70 < 35) { //02b8
       print("The huge rat takes the treasure you have offered and scuttles away.")
       move.obj(o1,46,105,0,f24)
-      drop(i17)
+      drop("sceptre")
       reset(f113)
       set(f114)
       vCurrentScore -= 6
@@ -182,7 +182,7 @@ l730:
       if (v70 > 15 && v70 < 35) { //031b
         print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.")
         move.obj(o1,46,105,0,f24)
-        drop(i18)
+        drop("cheese")
         reset(f139)
         set(f140)
         vCurrentScore -= 2

@@ -179,38 +179,38 @@ if ((said("dance") || said("dance", "blond") || said("dance", "i'm") || said("da
 }
 l1060:
 if ((said("add", "blond", "flower") || said("add", "flower") || said("add", "flower", "blond"))) { //0424
-  if (!(has(i9))) { //0440
+  if (!(has("Rose"))) { //0440
     set(f68)
     goto(l1112)
   }
   vCurrentScore += 5
   print("%m52roses.\"")
   set(f71)
-  drop(i9)
+  drop("Rose")
   v207 = 1
 }
 l1112:
 if ((said("add", "blond", "box of candy") || said("add", "box of candy") || said("add", "box of candy", "blond"))) { //0458
-  if (!(has(i12))) { //0474
+  if (!(has("Box of Candy"))) { //0474
     set(f68)
     goto(l1164)
   }
   vCurrentScore += 5
   print("%m52candy.\"")
   set(f72)
-  drop(i12)
+  drop("Box of Candy")
   v207 = 1
 }
 l1164:
 if ((said("add", "blond", "diamond ring") || said("add", "diamond ring") || said("add", "diamond ring", "blond"))) { //048c
-  if (!(has(i6))) { //04a8
+  if (!(has("Diamond Ring"))) { //04a8
     set(f68)
     goto(l1216)
   }
   vCurrentScore += 5
   print("%m52diamonds.\"")
   set(f73)
-  drop(i6)
+  drop("Diamond Ring")
   v207 = 1
 }
 l1216:

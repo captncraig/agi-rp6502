@@ -246,6 +246,9 @@ func msgName(num byte) string {
 	return fmt.Sprintf("m%d", num)
 }
 func itemName(num byte) string {
+	if name, ok := itemNames[num]; ok && name != "" {
+		return fmt.Sprintf("%q", name)
+	}
 	return fmt.Sprintf("i%d", num)
 }
 func stringName(num byte) string {
@@ -574,6 +577,9 @@ func main() {
 func decompileGame(name, dir string) error {
 	if err := loadWords(filepath.Join(dir, "WORDS.TOK")); err != nil {
 		return fmt.Errorf("loading words: %w", err)
+	}
+	if err := loadObjects(filepath.Join(dir, "OBJECT")); err != nil {
+		return fmt.Errorf("loading objects: %w", err)
 	}
 
 	logicDir := filepath.Join(dir, "unpacked", "logic")

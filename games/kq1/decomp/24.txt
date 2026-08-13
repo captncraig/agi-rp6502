@@ -49,7 +49,7 @@ l165:
   if (!f86) { //00a5
     if (v62 < 25) { //00ac
       print("The clover is soft, yet you sense a strange strength in it.")
-      get(i8)
+      get("fourleaf clover")
       vCurrentScore += 2
       set(f86)
       set(f87)

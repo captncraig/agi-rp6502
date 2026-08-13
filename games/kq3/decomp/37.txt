@@ -128,7 +128,7 @@ if (f220) { //0188
   vWhichEgoBorder = 3
   erase(o0)
 }
-if (has(i30) && v71 == 8) { //0195
+if (has("Storm Brew*") && v71 == 8) { //0195
   v71 = 0
   print("On second thought, you decide not to make a storm. You remember how dangerous it is to be in a tree during a storm.")
 }

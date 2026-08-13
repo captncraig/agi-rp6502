@@ -48,7 +48,7 @@ if (f20) { //00c6
     print("You pluck a delicious looking carrot from the fertile soil.")
     set(f77)
     reset(f118)
-    get(i3)
+    get("carrot")
     if (!f117) { //00f0
       vCurrentScore += 2
       set(f117)

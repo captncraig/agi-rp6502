@@ -374,7 +374,7 @@ if (posn(o0,23,89,55,100)) { //042c
     if (said("acquire", "cheese")) { //04e6
       if (v87 == 1) { //04f0
         erase(o3)
-        get(i18)
+        get("cheese")
         set(f139)
         vCurrentScore += 2
         print("You pluck the Swiss cheese from the shelf.")
@@ -515,7 +515,7 @@ l1778:
       start.update(o1)
       erase(o1)
       set(f170)
-      get(i6)
+      get("note")
       print("You grab the note from the table.")
       vCurrentScore += 2
       goto(l1816)

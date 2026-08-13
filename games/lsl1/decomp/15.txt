@@ -325,7 +325,7 @@ if ((said("use", "hammer", "door") || said("increase", "door", "use", "hammer") 
     set(f54)
     goto(l1378)
   }
-  if (!(has(i18))) { //0554
+  if (!(has("Hammer"))) { //0554
     set(f68)
     goto(l1378)
   }
@@ -411,7 +411,7 @@ if ((said("shot") || said("add", "i'm", "shot") || said("catch", "shot") || said
 }
 l1792:
 if (said("bite", "shot")) { //0700
-  if (!(has(i7))) { //070a
+  if (!(has("Glass of Whiskey"))) { //070a
     set(f68)
     goto(l1833)
   }
@@ -420,7 +420,7 @@ if (said("bite", "shot")) { //0700
     goto(l1833)
   }
   set(f215)
-  drop(i7)
+  drop("Glass of Whiskey")
   print("The whiskey burns its way down your throat. You vow to never again buy a \"well\" brand.")
 }
 l1833:
@@ -609,7 +609,7 @@ if (f75) { //099b
     v90 -= 3
     if (f211) { //0a10
       reset(f211)
-      if (has(i7)) { //0a18
+      if (has("Glass of Whiskey")) { //0a18
         set(f215)
         print("Since you can only balance one open glass of whiskey at a time, you toss this one down immediately.")
         goto(l2613)
@@ -618,7 +618,7 @@ if (f75) { //099b
         set(f94)
         vCurrentScore += 1
       }
-      get(i7)
+      get("Glass of Whiskey")
       print("You don't drink the whiskey, but instead, decide to carry it with you wherever you go, precariously balanced in an open shot glass.")
     }
 l2613:

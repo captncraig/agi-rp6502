@@ -208,11 +208,11 @@ if (f81) { //02d9
   if (said("cast", "bucket")) { //02df
     print("You throw your bucket on the cavern floor.")
     reset(f81)
-    drop(i11)
+    drop("water bucket")
     vCurrentScore -= 2
     if (f88) { //02f2
       reset(f88)
-      drop(i26)
+      drop("water")
       reset(f91)
       vCurrentScore -= 2
     }
@@ -245,7 +245,7 @@ if (!f100 && !f165) { //0316
         erase(o1)
         set(f100)
         set(f165)
-        get(i19)
+        get("magic mirror")
         print("Carefully, you pick up the magic mirror.")
         v74++
         vCurrentScore += 8
@@ -275,13 +275,13 @@ if (posn(o0,105,96,145,166) && v75 == 0) { //03e1
   if (f67 && (said("cast", "dagger") || said("cast", "dagger", "dragon"))) { //03ee
     reset(f67)
     print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.")
-    drop(i1)
+    drop("dagger")
     vCurrentScore -= 5
   }
   if (f88 && (said("cast", "water") || said("cast", "water", "dragon") || said("douse", "dragon"))) { //040d
     reset(f88)
     print("You throw your water, but to no avail.  It lands on the floor and is quickly absorbed.")
-    drop(i26)
+    drop("water")
     vCurrentScore -= 2
     reset(f91)
   }
@@ -290,7 +290,7 @@ if (!(posn(o0,105,96,145,166)) && v75 == 0) { //0434
   if (f88 && (said("cast", "water") || said("cast", "water", "dragon") || said("douse", "dragon"))) { //0442
     reset(f88)
     print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.")
-    drop(i26)
+    drop("water")
     vCurrentScore -= 2
     vCurrentScore += 7
     set.loop(o3,1)
@@ -302,7 +302,7 @@ if (!(posn(o0,105,96,145,166)) && v75 == 0) { //0434
     ignore.blocks(o3)
     reset(f67)
     print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.")
-    drop(i1)
+    drop("dagger")
     vCurrentScore -= 5
     vCurrentScore += 3
     erase(o3)

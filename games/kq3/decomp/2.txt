@@ -265,7 +265,7 @@ l1003:
 }
 l1021:
 if (said("examine", "cabinet")) { //03fd
-  if (!f223 && obj.in.room(i38,vCurrentRoom)) { //0407
+  if (!f223 && obj.in.room("Brass Key*",vCurrentRoom)) { //0407
     print("%m2 There may be something metallic on its top.")
     goto(l1048)
   }
@@ -289,14 +289,14 @@ if (v230 == 0 && (said("look in", "cabinet") || said("examine", "inside", "cabin
 }
 l1136:
 if (v230 > 0) { //0470
-  if (obj.in.room(i54,vCurrentRoom) && (said("examine", "cabinet") || said("examine", "back", "rol") || said("move", "anyword", "find", "rol") || said("move", "clothes", "rol") || said("move", "anyword") || said("find", "cabinet"))) { //0477
+  if (obj.in.room("Magic Map*",vCurrentRoom) && (said("examine", "cabinet") || said("examine", "back", "rol") || said("move", "anyword", "find", "rol") || said("move", "clothes", "rol") || said("move", "anyword") || said("find", "cabinet"))) { //0477
     if (!f223) { //04ac
       print("You are not close enough.")
       goto(l1218)
     }
     v230 = 3
     print("You're startled to discover an ancient parchment scroll. Its ink has faded, but it seems to be a map. Taking this treasure, you leave everything else exactly as it was.")
-    get(i54)
+    get("Magic Map*")
     vCurrentScore += 7
   }
 l1218:
@@ -327,11 +327,11 @@ if ((said("find", "above", "cabinet") || said("find", "top", "cabinet") || said(
     print("You are not close enough to reach the top of the closet.")
     goto(l1451)
   }
-  if (!(obj.in.room(i38,vCurrentRoom))) { //058e
+  if (!(obj.in.room("Brass Key*",vCurrentRoom))) { //058e
     print("You feel along the top of the closet. Your hand comes back dusty.")
     goto(l1451)
   }
-  get(i38)
+  get("Brass Key*")
   print("You run a hand along the top of the closet. Suddenly, you touch something metallic. Grabbing it, you discover... a small brass key! What could it unlock?")
   if (!f92) { //059f
     set(f92)
@@ -442,8 +442,8 @@ if (v226 == 43) { //0743
   end.of.loop(o5,f41)
 }
 if (v226 == 22) { //0751
-  if (obj.in.room(i43,vCurrentRoom)) { //0758
-    get(i43)
+  if (obj.in.room("Mirror*",vCurrentRoom)) { //0758
+    get("Mirror*")
     vCurrentScore += 1
     print("In the vanity drawer are many uninteresting items, although the wizard's hand mirror may come in handy. You grab it, then close the drawer.")
     goto(l1899)
@@ -466,8 +466,8 @@ if (v227 == 43) { //0783
   end.of.loop(o4,f41)
 }
 if (v227 == 22) { //0791
-  if (obj.in.room(i12,vCurrentRoom)) { //0798
-    get(i12)
+  if (obj.in.room("Rose Essence*",vCurrentRoom)) { //0798
+    get("Rose Essence*")
     vCurrentScore += 1
     print("%m34 Suddenly, your eye falls on something that does... a vial labeled \"Rose Petal Essence,\" which you eagerly take.")
     goto(l1963)

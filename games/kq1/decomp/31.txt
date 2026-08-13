@@ -101,7 +101,7 @@ if (!f90 && said("acquire", "bowl")) { //0132
     vCurrentScore += 3
     set(f89)
     set(f90)
-    get(i9)
+    get("ceramic bowl")
     goto(l349)
   }
   print("That is impossible from here.")
@@ -112,7 +112,7 @@ if (f154 && f155) { //015d
     reset(f154)
     v80 = 31
     set(f94)
-    drop(i25)
+    drop("beans")
     vCurrentScore += 2
     print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!")
     sound(12,f25)

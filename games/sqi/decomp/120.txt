@@ -52,7 +52,7 @@ if (f232 && f230) { //008e
   draw(o0)
 }
 l168:
-if (f128 && has(i14)) { //00a8
+if (f128 && has("Pulseray")) { //00a8
   print("Wouldn't it be a little silly to fire a gun in here?")
   set(fSaidAccepted)
 }

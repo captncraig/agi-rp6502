@@ -64,7 +64,7 @@ l147:
   animate.obj(o4)
   set.view(o4,131)
   position(o4,133,128)
-  if (v82 == 2 && !(has(i4))) { //00c5
+  if (v82 == 2 && !(has("Orat Part"))) { //00c5
     draw(o4)
   }
   position(o0,17,135)
@@ -182,7 +182,7 @@ if ((!fEnteredCommand || fSaidAccepted || f42)) { //0220
 }
 if ((said("check out", "area") || said("check out", "area"))) { //0230
   print("You are in the slimiest of caves. The odor in here is less than desirable.")
-  if (f75 && obj.in.box(o0,119,120,151,150) && !(has(i4))) { //0244
+  if (f75 && obj.in.box(o0,119,120,151,150) && !(has("Orat Part"))) { //0244
     print("On the ground rests a gleaming chunk of Orat's anatomy.")
   }
 }
@@ -195,7 +195,7 @@ if (said("check out", "wall")) { //0255
 }
 l620:
 if ((said("check out", "floor") || said("check out", "dirt"))) { //026c
-  if (f75 && obj.in.box(o0,119,120,151,150) && !(has(i4))) { //027e
+  if (f75 && obj.in.box(o0,119,120,151,150) && !(has("Orat Part"))) { //027e
     print("On the ground rests a gleaming chunk of Orat's anatomy.")
     goto(l660)
   }
@@ -238,10 +238,10 @@ if (said("dig", "entryway")) { //0314
 if ((said("acquire", "orat", "chunk") || said("acquire", "chunk", "orat") || said("acquire", "chunk"))) { //0320
   if (f75) { //033c
     if (obj.in.box(o0,112,115,152,142)) { //0342
-      if (!(has(i4))) { //034c
+      if (!(has("Orat Part"))) { //034c
         vCurrentScore += 2
         erase(o4)
-        get(i4)
+        get("Orat Part")
         print("You reach down and take the Orat part in your hand. Some of it oozes to fill the space between your fingers.")
         goto(l865)
       }
@@ -261,7 +261,7 @@ if (f38 && !f35) { //036b
     print("Get closer.")
   }
   if ((said("cast", "can") || said("cast", "dehydrated water") || said("cast", "can", "orat") || said("cast", "dehydrated water", "orat") || said("cast", "can", "dehydrated water", "orat") || said("cast", "dehydrated water", "can", "orat") || said("cast", "dehydrated water", "can"))) { //03aa
-    if (has(i12)) { //03e8
+    if (has("Dehydrated Water")) { //03e8
       if (!f97) { //03ee
         distance(o0,o1,v39)
         if ((v39 < 15 || f43)) { //03f9
@@ -277,7 +277,7 @@ if (f38 && !f35) { //036b
         v136 -= 15
         position(o2,135,v136)
         draw(o2)
-        drop(i12)
+        drop("Dehydrated Water")
         normal.motion(o1)
         stop.motion(o1)
         stop.cycling(o1)
@@ -304,7 +304,7 @@ l1103:
 if (f41) { //044f
   reset(f41)
   erase(o2)
-  drop(i12)
+  drop("Dehydrated Water")
   v64 = 3
   cycle.time(o1,v64)
   set.view(o1,51)

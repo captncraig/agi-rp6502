@@ -82,7 +82,7 @@ if (f129) { //00f3
 }
 if (f51 && posn(o0,53,70,90,106)) { //00fc
   set(fSaidAccepted)
-  get(i6)
+  get("Water Flask")
   erase(o2)
   reset(f51)
   print("You reach over and pick up your water flask.")

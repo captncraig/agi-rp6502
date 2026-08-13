@@ -117,7 +117,7 @@ l328:
   }
   if (!f127) { //014d
     set(f127)
-    get(i2)
+    get("Corn")
     print("You reach into the shed and pick up the corn.")
     erase(o3)
     set(fSaidAccepted)
@@ -153,7 +153,7 @@ if (!f56) { //019c
       v60 = 0
       v42 = 0
       print("You feed the gruel to your hungry pig, Hen Wen.")
-      drop(i3)
+      drop("Gruel")
       set.view(o8,99)
       vCurrentScore += 5
       set(f202)
@@ -164,7 +164,7 @@ if (!f56) { //019c
       v60 = 0
       v42 = 0
       print("You feed the corn to your hungry pig, Hen Wen.")
-      drop(i2)
+      drop("Corn")
       set.view(o8,41)
       stop.motion(o8)
       vCurrentScore += 5

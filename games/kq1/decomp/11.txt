@@ -163,7 +163,7 @@ l499:
       v98 = 0
       step.size(o13,v98)
       print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.")
-      drop(i1)
+      drop("dagger")
       vCurrentScore -= 5
       reset(f67)
       set(f70)
@@ -225,7 +225,7 @@ if (f74 && f21) { //02e8
       if (v70 < 25) { //0328
         print("Goats love carrots!  The goat quickly devours yours.")
         vCurrentScore -= 2
-        drop(i3)
+        drop("carrot")
         reset(f77)
         reset(f117)
         goto(l831)
@@ -271,7 +271,7 @@ if (!f74 && f21) { //039d
       if (v70 < 25) { //03f4
         print("Goats love carrots!  The goat quickly devours yours.")
         vCurrentScore -= 2
-        drop(i3)
+        drop("carrot")
         reset(f77)
         reset(f117)
         goto(l1035)

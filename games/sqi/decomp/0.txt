@@ -56,7 +56,7 @@ if (fNewRoom) { //008f
     }
   }
   load.view(vEgoView)
-  if (vCurrentRoom > 39 && has(i9)) { //00c1
+  if (vCurrentRoom > 39 && has("Jetpack")) { //00c1
     load.view(132)
   }
   if (!f92) { //00cc
@@ -173,10 +173,10 @@ if (vCurrentRoom != 75 && !f189 && !f50) { //0201
       set(f198)
       if (v64 == 225) { //0241
         show.obj(225)
-        get(i19)
-        get(i12)
-        drop(i11)
-        get(i22)
+        get("Xenon Army Knife")
+        get("Dehydrated Water")
+        drop("Survival Kit")
+        get("Survival Kit")
         goto(l634)
       }
       if (v64 == 236) { //0255
@@ -299,7 +299,7 @@ if (vCurrentRoom != 67 && !f187) { //02a1
         set(f115)
         goto(l1004)
       }
-      if (has(i14) && vCurrentRoom != 65 && vCurrentRoom != 64) { //03cd
+      if (has("Pulseray") && vCurrentRoom != 65 && vCurrentRoom != 64) { //03cd
         if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //03db
           goto(l1004)
         }
@@ -324,8 +324,8 @@ l1045:
 if (vCurrentRoom > 33) { //0415
   if ((said("check out", "pocket") || said("look in", "clothes") || said("look in", "pocket") || said("check out", "clothes"))) { //041c
     if (v81 == 3) { //043a
-      if (!(has(i13))) { //0441
-        get(i13)
+      if (!(has("Sarien ID card"))) { //0441
+        get("Sarien ID card")
         print("In the pocket of this%m2 is an alien %m5card. The name on the card is Butston Freem. You wonder if this is a common%m3 name.")
         goto(l1105)
       }
@@ -491,14 +491,14 @@ call(vCurrentRoom)
 if (f190) { //0632
   call(99)
 }
-if (!(v124 > 0) && has(i10)) { //063a
-  drop(i10)
+if (!(v124 > 0) && has("Buckazoid(s)")) { //063a
+  drop("Buckazoid(s)")
 }
-if (v124 > 0 && !(has(i10)) && !f94) { //0646
+if (v124 > 0 && !(has("Buckazoid(s)")) && !f94) { //0646
   set(f94)
   print("Just lost your buckazoid object.")
 }
-if (f94 && has(i10)) { //0657
+if (f94 && has("Buckazoid(s)")) { //0657
   reset(f94)
 }
 if ((!fEnteredCommand || vUnknownWord > 0 || fSaidAccepted)) { //0661
@@ -556,13 +556,13 @@ if (said("listen", "foot step")) { //0747
   print("There are no footsteps to hear now.")
 }
 l1887:
-if (has(i5) && has(i13)) { //075f
+if (has("Keycard") && has("Sarien ID card")) { //075f
   if (said("check out", "card")) { //0767
     print("The Keycard or the I.D. card?")
   }
 }
 if (said("check out", "cart")) { //0773
-  if (has(i1)) { //077d
+  if (has("Cartridge")) { //077d
     v89 = 215
     goto(l1931)
   }
@@ -570,7 +570,7 @@ if (said("check out", "cart")) { //0773
 }
 l1931:
 if (said("check out", "boulder")) { //078b
-  if (has(i2)) { //0795
+  if (has("Rock")) { //0795
     v89 = 216
     goto(l1955)
   }
@@ -578,7 +578,7 @@ if (said("check out", "boulder")) { //078b
 }
 l1955:
 if (said("check out", "dialect translator")) { //07a3
-  if (has(i3)) { //07ad
+  if (has("Gadget")) { //07ad
     if (f154) { //07b3
       v89 = 199
       goto(l1986)
@@ -591,7 +591,7 @@ l1986:
 }
 l1991:
 if ((said("check out", "orat", "chunk") || said("check out", "chunk"))) { //07c7
-  if (has(i4)) { //07db
+  if (has("Orat Part")) { //07db
     v89 = 218
     goto(l2025)
   }
@@ -599,7 +599,7 @@ if ((said("check out", "orat", "chunk") || said("check out", "chunk"))) { //07c7
 }
 l2025:
 if (said("check out", "credit card")) { //07e9
-  if (has(i5)) { //07f3
+  if (has("Keycard")) { //07f3
     v89 = 219
     goto(l2049)
   }
@@ -607,7 +607,7 @@ if (said("check out", "credit card")) { //07e9
 }
 l2049:
 if (said("check out", "glass")) { //0801
-  if (has(i6)) { //080b
+  if (has("Glass")) { //080b
     v89 = 220
     goto(l2073)
   }
@@ -615,7 +615,7 @@ if (said("check out", "glass")) { //0801
 }
 l2073:
 if ((said("check out", "key") || said("check out", "bike", "key"))) { //0819
-  if (has(i7)) { //082d
+  if (has("Skimmer key")) { //082d
     v89 = 221
     goto(l2107)
   }
@@ -623,7 +623,7 @@ if ((said("check out", "key") || said("check out", "bike", "key"))) { //0819
 }
 l2107:
 if (said("check out", "ale")) { //083b
-  if (has(i8)) { //0845
+  if (has("Beer")) { //0845
     v89 = 222
     goto(l2131)
   }
@@ -631,7 +631,7 @@ if (said("check out", "ale")) { //083b
 }
 l2131:
 if (said("check out", "jet pack")) { //0853
-  if (has(i9)) { //085d
+  if (has("Jetpack")) { //085d
     v89 = 223
     if (v81 == 2) { //0866
       print("%m4currently wearing it.")
@@ -642,7 +642,7 @@ if (said("check out", "jet pack")) { //0853
 }
 l2164:
 if ((said("check out", "buck") || said("check out", "cash"))) { //0874
-  if (has(i10)) { //0886
+  if (has("Buckazoid(s)")) { //0886
     v89 = 224
     goto(l2196)
   }
@@ -650,13 +650,13 @@ if ((said("check out", "buck") || said("check out", "cash"))) { //0874
 }
 l2196:
 if ((said("check out", "kit") || said("look in", "kit") || said("open", "kit"))) { //0894
-  if ((has(i11) || has(i22))) { //08ac
-    if (!(has(i19))) { //08b6
+  if ((has("Survival Kit") || has("Survival Kit"))) { //08ac
+    if (!(has("Xenon Army Knife"))) { //08b6
       v89 = 225
-      get(i19)
-      get(i12)
-      drop(i11)
-      get(i22)
+      get("Xenon Army Knife")
+      get("Dehydrated Water")
+      drop("Survival Kit")
+      get("Survival Kit")
       goto(l2254)
     }
     v89 = 186
@@ -666,13 +666,13 @@ l2254:
   print("You do not possess the designated item.")
 }
 l2259:
-if (has(i12)) { //08d3
+if (has("Dehydrated Water")) { //08d3
   if ((said("check out", "dehydrated water") || said("check out", "can", "dehydrated water") || said("check out", "dehydrated water", "can") || said("check out", "can"))) { //08d9
     v89 = 226
   }
 }
 if (said("check out", "i.d.")) { //08fe
-  if (has(i13)) { //0908
+  if (has("Sarien ID card")) { //0908
     v89 = 227
     goto(l2326)
   }
@@ -680,7 +680,7 @@ if (said("check out", "i.d.")) { //08fe
 }
 l2326:
 if (said("check out", "gun")) { //0916
-  if (has(i14)) { //0920
+  if (has("Pulseray")) { //0920
     v89 = 228
     goto(l2350)
   }
@@ -688,7 +688,7 @@ if (said("check out", "gun")) { //0916
 }
 l2350:
 if (said("check out", "bomb")) { //092e
-  if (has(i15)) { //0938
+  if (has("Gas Grenade")) { //0938
     v89 = 229
     goto(l2374)
   }
@@ -696,7 +696,7 @@ if (said("check out", "bomb")) { //092e
 }
 l2374:
 if (said("check out", "control")) { //0946
-  if (has(i16)) { //0950
+  if (has("Remote Control")) { //0950
     v89 = 230
     goto(l2398)
   }
@@ -704,7 +704,7 @@ if (said("check out", "control")) { //0946
 }
 l2398:
 if (said("check out", "bush")) { //095e
-  if (has(i18)) { //0968
+  if (has("Plant")) { //0968
     v89 = 232
     goto(l2422)
   }
@@ -712,7 +712,7 @@ if (said("check out", "bush")) { //095e
 }
 l2422:
 if (said("check out", "army knife")) { //0976
-  if (has(i19)) { //0980
+  if (has("Xenon Army Knife")) { //0980
     v89 = 233
     goto(l2446)
   }
@@ -735,7 +735,7 @@ l2487:
   v89 = 0
 }
 if ((said("consume", "chunk") || said("consume", "orat", "chunk"))) { //09ba
-  if (has(i4)) { //09ce
+  if (has("Orat Part")) { //09ce
     print("You raise the Orat part to your mouth and attempt to feast on it. Unfortunately for you it is composed mainly of bone. The small amount of flesh still clinging to the bone is incredibly rancid in flavor. You wisely give up on this idea.")
     goto(l2523)
   }
@@ -744,7 +744,7 @@ if ((said("consume", "chunk") || said("consume", "orat", "chunk"))) { //09ba
 l2523:
 if (vCurrentRoom != 29) { //09db
   if ((said("drop", "orat", "chunk") || said("drop", "chunk"))) { //09e3
-    if (has(i4)) { //09f7
+    if (has("Orat Part")) { //09f7
       print("Silly human! That would not be helpful.")
       goto(l2564)
     }
@@ -753,12 +753,12 @@ if (vCurrentRoom != 29) { //09db
 }
 l2564:
 if (said("use", "army knife")) { //0a04
-  if (has(i19)) { //0a0e
+  if (has("Xenon Army Knife")) { //0a0e
     print("This knife wouldn't cut hot margarine.")
   }
 }
 if (said("drop", "army knife")) { //0a16
-  if (has(i19)) { //0a20
+  if (has("Xenon Army Knife")) { //0a20
     print("Silly human! That would not be helpful.")
     goto(l2605)
   }
@@ -766,17 +766,17 @@ if (said("drop", "army knife")) { //0a16
 }
 l2605:
 if (said("drop", "cart")) { //0a2d
-  if (has(i1)) { //0a37
+  if (has("Cartridge")) { //0a37
     print("Silly human! That would not be helpful.")
   }
 }
 if ((said("drop", "boulder") || said("cast", "boulder"))) { //0a3f
-  if (has(i2)) { //0a51
+  if (has("Rock")) { //0a51
     print("Silly human! That would not be helpful.")
   }
 }
 if ((said("turn", "dial") || said("turn", "dialect translator") || said("turn", "dialect translator", "dial") || said("turn", "dial", "dialect translator"))) { //0a59
-  if (has(i3)) { //0a7b
+  if (has("Gadget")) { //0a7b
     if (f154) { //0a81
       print("There is no need for you to turn the gadget off.")
       goto(l2704)
@@ -787,12 +787,12 @@ if ((said("turn", "dial") || said("turn", "dialect translator") || said("turn", 
 }
 l2704:
 if (said("drop", "dialect translator")) { //0a90
-  if (has(i3)) { //0a9a
+  if (has("Gadget")) { //0a9a
     print("Silly human! That would not be helpful.")
   }
 }
 if (said("drop", "credit card")) { //0aa2
-  if (has(i5)) { //0aac
+  if (has("Keycard")) { //0aac
     print("Silly human! That would not be helpful.")
     goto(l2745)
   }
@@ -800,7 +800,7 @@ if (said("drop", "credit card")) { //0aa2
 }
 l2745:
 if (said("look in", "glass")) { //0ab9
-  if (has(i6)) { //0ac3
+  if (has("Glass")) { //0ac3
     print("Due to its highly reflective coating you cannot see through the glass very easily, however, you do see a rather striking figure peering back at you.")
     goto(l2768)
   }
@@ -808,7 +808,7 @@ if (said("look in", "glass")) { //0ab9
 }
 l2768:
 if (said("drop", "glass")) { //0ad0
-  if (has(i6)) { //0ada
+  if (has("Glass")) { //0ada
     print("Silly human! That would not be helpful.")
     goto(l2791)
   }
@@ -816,7 +816,7 @@ if (said("drop", "glass")) { //0ad0
 }
 l2791:
 if ((said("drop", "bike", "key") || said("drop", "key"))) { //0ae7
-  if (has(i7)) { //0afb
+  if (has("Skimmer key")) { //0afb
     print("Silly human! That would not be helpful.")
     goto(l2824)
   }
@@ -824,7 +824,7 @@ if ((said("drop", "bike", "key") || said("drop", "key"))) { //0ae7
 }
 l2824:
 if (said("look in", "ale")) { //0b08
-  if (has(i8)) { //0b12
+  if (has("Beer")) { //0b12
     print("You stare into the semi-clear liquid and notice how it gives everything seen through it a lovely yellow tint.")
     goto(l2847)
   }
@@ -832,7 +832,7 @@ if (said("look in", "ale")) { //0b08
 }
 l2847:
 if (said("drop", "ale")) { //0b1f
-  if (has(i8)) { //0b29
+  if (has("Beer")) { //0b29
     print("Silly human! That would not be helpful.")
     goto(l2870)
   }
@@ -840,8 +840,8 @@ if (said("drop", "ale")) { //0b1f
 }
 l2870:
 if (said("drink", "ale")) { //0b36
-  if (has(i8)) { //0b40
-    drop(i8)
+  if (has("Beer")) { //0b40
+    drop("Beer")
     print("Yum! What a taste treat.")
     goto(l2895)
   }
@@ -849,7 +849,7 @@ if (said("drink", "ale")) { //0b36
 }
 l2895:
 if (said("drop", "jet pack")) { //0b4f
-  if (has(i9)) { //0b59
+  if (has("Jetpack")) { //0b59
     print("Silly human! That would not be helpful.")
     goto(l2918)
   }
@@ -859,7 +859,7 @@ l2918:
 if ((said("put on", "jet pack") || said("drop", "jet pack"))) { //0b66
   if (!f175) { //0b78
     if (vCurrentRoom == 43) { //0b7f
-      if (has(i9)) { //0b86
+      if (has("Jetpack")) { //0b86
         set.view(o0,132)
         v81 = 2
         set(f175)
@@ -888,7 +888,7 @@ if (vCurrentRoom != 53 && vCurrentRoom != 57) { //0ba5
 }
 l3016:
 if ((said("drop", "buck") || said("drop", "cash"))) { //0bc8
-  if (has(i10)) { //0bda
+  if (has("Buckazoid(s)")) { //0bda
     print("Silly human! That would not be helpful.")
     goto(l3047)
   }
@@ -896,14 +896,14 @@ if ((said("drop", "buck") || said("drop", "cash"))) { //0bc8
 }
 l3047:
 if (said("drop", "kit")) { //0be7
-  if ((has(i11) || has(i22))) { //0bf1
+  if ((has("Survival Kit") || has("Survival Kit"))) { //0bf1
     print("Silly human! That would not be helpful.")
     goto(l3074)
   }
   print("You do not possess the designated item.")
 }
 l3074:
-if (has(i12)) { //0c02
+if (has("Dehydrated Water")) { //0c02
   if (said("open", "regulator")) { //0c08
     print("There is no need to do that. Just drink from the nozzle.")
   }
@@ -933,10 +933,10 @@ if (has(i12)) { //0c02
     print("Silly human! That would not be helpful.")
   }
 }
-if ((has(i12) || has(i11))) { //0cea
+if ((has("Dehydrated Water") || has("Survival Kit"))) { //0cea
   if ((said("drink", "dehydrated water") || said("drink", "nozzle") || said("drink") || said("drink", "can") || said("draw", "nozzle") || said("suck", "can") || said("suck", "nozzle"))) { //0cf4
-    if (!(has(i12))) { //0d22
-      if (has(i19)) { //0d29
+    if (!(has("Dehydrated Water"))) { //0d22
+      if (has("Xenon Army Knife")) { //0d29
         print("I'll bet you wish you still had that dehydrated water.")
         goto(l3382)
       }
@@ -951,23 +951,23 @@ l3382:
 }
 l3393:
 if (said("drop", "i.d.")) { //0d41
-  if (has(i13)) { //0d4b
+  if (has("Sarien ID card")) { //0d4b
     print("Silly human! That would not be helpful.")
   }
 }
 if (v81 == 3) { //0d53
   if (said("acquire", "i.d.")) { //0d5a
-    if (has(i13)) { //0d64
+    if (has("Sarien ID card")) { //0d64
       print("%m4already in possession of the card.")
       goto(l3443)
     }
-    get(i13)
+    get("Sarien ID card")
     print("Reaching into the pocket of the%m3%m2 you find a%m3 ID card.")
   }
 }
 l3443:
 if (said("drop", "gun")) { //0d73
-  if (has(i14)) { //0d7d
+  if (has("Pulseray")) { //0d7d
     print("Silly human! That would not be helpful.")
     goto(l3466)
   }
@@ -975,20 +975,20 @@ if (said("drop", "gun")) { //0d73
 }
 l3466:
 if (said("drop", "control")) { //0d8a
-  if (has(i21)) { //0d94
+  if (has("Control")) { //0d94
     print("Silly human! That would not be helpful.")
     goto(l3489)
   }
   print("You do not possess the designated item.")
 }
 l3489:
-if (has(i21) && vCurrentRoom != 50) { //0da1
+if (has("Control") && vCurrentRoom != 50) { //0da1
   if ((said("press", "button") || said("press", "control", "button"))) { //0dab
     print("You press the button on the remote control but notice nothing different.")
   }
 }
 if (said("consume", "bush")) { //0dc1
-  if (has(i18)) { //0dcb
+  if (has("Plant")) { //0dcb
     print("You plant your teeth into the strange plant and take a large bite, only to find it tastes exquisitely bad. If you had your choice you would choose any form of death over a meal of this.")
     goto(l3544)
   }
@@ -996,7 +996,7 @@ if (said("consume", "bush")) { //0dc1
 }
 l3544:
 if ((said("drop", "bush") || said("cast", "bush"))) { //0dd8
-  if (has(i18)) { //0dea
+  if (has("Plant")) { //0dea
     print("Silly human! That would not be helpful.")
     goto(l3575)
   }
@@ -1105,7 +1105,7 @@ if (said("consume", "anyword")) { //0fd8
   print("That act would lack any serious gratification.")
 }
 if (said("cut", "anyword")) { //0fe4
-  if (has(i19)) { //0fee
+  if (has("Xenon Army Knife")) { //0fee
     print("This knife wouldn't cut hot margarine.")
     goto(l4091)
   }

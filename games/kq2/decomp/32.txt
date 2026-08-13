@@ -156,8 +156,8 @@ if ((said("give", "diamond and sapphire tiara", "count dracula") || said("give",
 }
 l632:
 if ((said("give", "earrings", "count dracula") || said("give", "count dracula", "earrings"))) { //0278
-  if (has(i58)) { //028e
-    drop(i58)
+  if (has("T\x01")) { //028e
+    drop("T\x01")
     goto(l782)
     goto(l673)
   }

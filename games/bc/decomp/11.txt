@@ -79,7 +79,7 @@ if (posn(o0,53,103,84,134)) { //00bf
     set(f137)
     start.update(o7)
     print("You carefully remove the sharp dagger from the tree.")
-    get(i11)
+    get("Dagger")
     end.of.loop(o7,f201)
     goto(l240)
   }

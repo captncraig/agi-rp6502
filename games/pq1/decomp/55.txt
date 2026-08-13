@@ -386,8 +386,8 @@ if (v95 == 50) { //044f
   }
   if (v220 == 10) { //04d9
     print("\"Here you are, Mr. Bonds. I hope you are not too late. Taselli's attorney is at the jail at this very moment, attempting his release.\"")
-    if (obj.in.room(i23,vCurrentRoom)) { //04e2
-      get(i23)
+    if (obj.in.room("No Bail Warrant",vCurrentRoom)) { //04e2
+      get("No Bail Warrant")
       vCurrentScore += 7
     }
     move.obj(o0,72,150,1,f220)
@@ -431,12 +431,12 @@ if ((said("flyer", "rol") || said("anyword", "flyer", "rol") || said("anyword", 
     print("\"All right. Do you have any other information?\"")
     goto(l1470)
   }
-  if (!(has(i16))) { //059a
+  if (!(has("Wanted Poster"))) { //059a
     print("\"For attempting to present evidence you do not have,\" Judge Palmer says, \"I hereby find you in comtempt of court!\"")
     set(f140)
     goto(l1470)
   }
-  drop(i16)
+  drop("Wanted Poster")
   set(f224)
   if (!f223) { //05ac
     print("\"All right. Do you have any other information?\"")
@@ -451,12 +451,12 @@ if ((said("file", "rol") || said("examine", "file") || said("examine", "file", "
     print("\"All right. Do you have any other information?\"")
     goto(l1603)
   }
-  if (!(has(i15))) { //061f
+  if (!(has("Hoffman File"))) { //061f
     print("\"For attempting to present evidence you do not have,\" Judge Palmer says, \"I hereby find you in comtempt of court!\"")
     set(f140)
     goto(l1603)
   }
-  drop(i15)
+  drop("Hoffman File")
   set(f223)
   if (!f224) { //0631
     print("\"All right. Do you have any other information?\"")

@@ -199,10 +199,10 @@ if (f221 && v222 == 9) { //0235
 if (v221 != v63) { //0253
   v221 = v63
   if (v63 == 0) { //025e
-    if (has(i48)) { //0265
-      drop(i48)
+    if (has("Purse & Gold Coins*")) { //0265
+      drop("Purse & Gold Coins*")
     }
-    get(i47)
+    get("Empty Purse*")
   }
 }
 if (fEnteredCommand) { //026f
@@ -236,17 +236,17 @@ if (fEnteredCommand) { //026f
       goto(l837)
     }
     v225 = 5
-    if (!(obj.in.room(i3,vCurrentRoom))) { //0331
+    if (!(obj.in.room("Dog Hair*",vCurrentRoom))) { //0331
       print("As you pet him, Kenny licks your hand and thumps his tail in appreciation.")
       goto(l837)
     }
-    get(i3)
+    get("Dog Hair*")
     vCurrentScore += 1
     print("%m40 A small wad of dog fur collects in your hand, and you tuck it into your pocket for later use.")
   }
 l837:
   if ((said("capture", "fur") || said("capture", "dog", "fur") || said("capture", "fur", "dog"))) { //0345
-    if (!(obj.in.room(i3,vCurrentRoom))) { //0361
+    if (!(obj.in.room("Dog Hair*",vCurrentRoom))) { //0361
       print("You already have some dog fur.")
       goto(l901)
     }
@@ -255,7 +255,7 @@ l837:
       goto(l901)
     }
     v225 = 6
-    get(i3)
+    get("Dog Hair*")
     vCurrentScore += 1
     print("%m40 A small wad of dog fur collects in your hand, and you tuck it into your pocket for later use.")
   }
@@ -305,35 +305,35 @@ l901:
     }
     reset(fSaidAccepted)
     if (said("buy", "grains of salt")) { //0447
-      if (!(obj.in.room(i13,vCurrentRoom))) { //0451
+      if (!(obj.in.room("Salt*",vCurrentRoom))) { //0451
         print("You already bought it. You don't need any more.")
         goto(l1253)
       }
-      get(i13)
+      get("Salt*")
       vCurrentScore += 1
     }
     if (said("buy", "lard")) { //0463
-      if (!(obj.in.room(i32,vCurrentRoom))) { //046d
+      if (!(obj.in.room("Lard*",vCurrentRoom))) { //046d
         print("You already bought it. You don't need any more.")
         goto(l1253)
       }
-      get(i32)
+      get("Lard*")
       vCurrentScore += 1
     }
     if ((said("buy", "fish", "fish oil") || said("buy", "fish oil") || said("buy", "fish oil"))) { //047f
-      if (!(obj.in.room(i22,vCurrentRoom))) { //0499
+      if (!(obj.in.room("Fish Oil*",vCurrentRoom))) { //0499
         print("You already bought it. You don't need any more.")
         goto(l1253)
       }
-      get(i22)
+      get("Fish Oil*")
       vCurrentScore += 1
     }
     if ((said("buy", "pouch") || said("buy", "abominable", "pouch"))) { //04ab
-      if (!(obj.in.room(i19,vCurrentRoom))) { //04bf
+      if (!(obj.in.room("Empty Pouch*",vCurrentRoom))) { //04bf
         print("You already bought it. You don't need any more.")
         goto(l1253)
       }
-      get(i19)
+      get("Empty Pouch*")
       vCurrentScore += 1
     }
     if (fSaidAccepted) { //04d1

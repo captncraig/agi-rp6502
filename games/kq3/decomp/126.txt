@@ -8,12 +8,12 @@ if ((!fEnteredCommand || fSaidAccepted)) { //000c
 set(f120)
 v103++
 if ((said("add", "bay", "liquid", "basin") || said("add", "cup", "bay", "liquid", "basin") || said("add", "one", "cup", "bay", "liquid", "basin") || said("drain", "bay", "liquid", "basin") || said("drain", "cup", "bay", "liquid", "basin") || said("drain", "one", "cup", "bay", "liquid", "basin") || said("add", "liquid", "basin") || said("add", "cup", "liquid", "basin") || said("add", "one", "cup", "liquid", "basin") || said("drain", "liquid", "basin") || said("drain", "cup", "liquid", "basin") || said("drain", "one", "cup", "liquid", "basin"))) { //001e
-  if ((!(has(i40)) || !(has(i26)))) { //00a8
+  if ((!(has("Bowl")) || !(has("Cup & Ocean Water*")))) { //00a8
     print("How can you use that which you do not have?")
     goto(l200)
   }
-  drop(i26)
-  get(i42)
+  drop("Cup & Ocean Water*")
+  get("Empty Cup")
   print("Carefully, you pour the cup of ocean water into the mixing bowl.")
   if (v103 == 1) { //00bf
     reset(f120)
@@ -32,25 +32,25 @@ if ((said("boil", "basin", "brazier") || said("boil", "bay", "liquid", "brazier"
 }
 l366:
 if ((said("add", "ladle", "mud", "basin", "liquid") || said("add", "mud", "basin", "liquid") || said("add", "mud", "basin") || said("knead", "ladle", "mud", "basin") || said("knead", "ladle", "mud", "basin", "liquid") || said("knead", "mud", "basin", "liquid") || said("add", "ladle", "mud", "basin", "bay", "liquid") || said("add", "mud", "basin", "bay", "liquid") || said("knead", "ladle", "mud", "basin", "bay", "liquid") || said("knead", "mud", "basin", "bay", "liquid") || said("knead", "ladle", "mud", "basin") || said("add", "ladle", "mud", "basin") || said("knead", "mud", "basin"))) { //016e
-  if (!(has(i27))) { //0202
+  if (!(has("Spoonful of Mud*"))) { //0202
     print("How can you use that which you do not have?")
     goto(l541)
   }
   print("Adding a spoonful of mud to the hot ocean water, you slowly stir the mixture. The mud turns the water a cloudy brown.")
-  drop(i27)
-  get(i41)
+  drop("Spoonful of Mud*")
+  get("Spoon")
   if (v103 == 3) { //0214
     reset(f120)
   }
 }
 l541:
 if ((said("add", "bit", "mushroom", "flour") || said("add", "bit", "mushroom", "flour", "basin") || said("add", "bit", "mushroom", "flour", "liquid"))) { //021d
-  if (!(has(i28))) { //0245
+  if (!(has("Toadstool Powder*"))) { //0245
     print("How can you use that which you do not have?")
     goto(l606)
   }
   print("You put just a pinch of toadstool powder in the bowl of hot, brown liquid.")
-  drop(i28)
+  drop("Toadstool Powder*")
   if (v103 == 4) { //0255
     reset(f120)
   }
@@ -67,7 +67,7 @@ if ((said("blow", "liquid") || said("blow", "brew") || said("blow", "bay", "liqu
 }
 l656:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0290
-  if (!(has(i37))) { //02a4
+  if (!(has("Magic Wand*"))) { //02a4
     print("How can you use that which you do not have?")
     goto(l699)
   }
@@ -78,15 +78,15 @@ if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0290
 }
 l699:
 if ((said("drain", "brew", "from", "basin", "bottle") || said("drain", "brew", "bottle") || said("add", "brew", "from", "basin", "bottle") || said("add", "brew", "bottle"))) { //02bb
-  if (!(has(i29))) { //02e9
+  if (!(has("Empty Jar*"))) { //02e9
     print("How can you use that which you do not have?")
     goto(l777)
   }
   if (v103 == 8) { //02f5
     print("Waiting until the liquid has cooled, you carefully pour the storm brew into an empty glass jar.")
     reset(f120)
-    get(i30)
-    drop(i29)
+    get("Storm Brew*")
+    drop("Empty Jar*")
     goto(l777)
   }
   reset(fSaidAccepted)

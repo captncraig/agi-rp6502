@@ -146,7 +146,7 @@ l505:
 if ((said("explore", "bodies") || said("check out", "pocket") || said("explore", "being") || said("explore", "pocket"))) { //01f9
   if (posn(o0,117,57,159,79)) { //0217
     print("You search the body of your crewmate and find. . .")
-    if (!(has(i5))) { //0223
+    if (!(has("Keycard"))) { //0223
       print("a keycard.")
       goto(l561)
     }
@@ -162,9 +162,9 @@ if ((said("strip", "bodies") || said("strip", "being") || said("acquire", "cloth
 }
 if ((said("acquire", "card") || said("acquire", "credit card"))) { //0252
   if (posn(o0,117,57,159,79)) { //0264
-    if (!(has(i5))) { //026e
+    if (!(has("Keycard"))) { //026e
       print("You take the keycard.")
-      get(i5)
+      get("Keycard")
       vCurrentScore += 1
       goto(l641)
     }

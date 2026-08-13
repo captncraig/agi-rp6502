@@ -9,7 +9,7 @@ if (fNewRoom) { //0002
   load.view(78)
   load.view(71)
   load.view(0)
-  if ((has(i17) || !f35)) { //001d
+  if ((has("Tin Cup") || !f35)) { //001d
     load.sound(14)
   }
   if (!f35) { //002a
@@ -174,7 +174,7 @@ if (!f35 && posn(o0,108,106,137,137)) { //01f3
   set(f35)
   print("You pick up the tin cup and carry it with you.")
   erase(o1)
-  get(i17)
+  get("Tin Cup")
   if (f94) { //020a
     v42 = 17
     v60 = 17

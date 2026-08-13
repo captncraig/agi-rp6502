@@ -101,7 +101,7 @@ v123 = 0
 v126 = 250
 v126 -= v124
 if (!(v124 > 0)) { //0140
-  drop(i10)
+  drop("Buckazoid(s)")
 }
 if (v126 < v64) { //014a
   v124 = 250
@@ -117,8 +117,8 @@ l361:
   new.room(70)
 }
 v124 += v64
-if (v124 > 0 && !(has(i10))) { //0174
-  get(i10)
+if (v124 > 0 && !(has("Buckazoid(s)"))) { //0174
+  get("Buckazoid(s)")
 }
 if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0180
   display(20,13," You Have $%v124")

@@ -1,7 +1,7 @@
 if (fNewRoom) { //0002
   set(f52)
   load.view(39)
-  if (has(i15)) { //000c
+  if (has("Flying Dust")) { //000c
     load.view(28)
   }
   if (f103) { //0014
@@ -47,7 +47,7 @@ if (f235) { //006f
   reset(f231)
   v69--
   if (!(v69 > 0)) { //007d
-    drop(i15)
+    drop("Flying Dust")
   }
   v96 = 0
   v95 = 7

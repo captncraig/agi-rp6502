@@ -19,7 +19,7 @@ if (fNewRoom) { //0002
   }
   load.view(55)
 l58:
-  if ((has(i12) || f33)) { //003a
+  if ((has("Magic Sword") || f33)) { //003a
     load.view(65)
   }
   if (f86) { //0046
@@ -200,7 +200,7 @@ if (posn(o0,80,83,91,84)) { //0221
   new.room(46)
 }
 if (fTriggerLine) { //022d
-  if (!f49 && has(i12)) { //0233
+  if (!f49 && has("Magic Sword")) { //0233
     set(f49)
     vCurrentScore += 13
   }

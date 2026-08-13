@@ -27,7 +27,7 @@ l68:
   load.logic(112)
   load.logic(103)
   v34 = 222
-  if (obj.in.room(i15,vCurrentRoom)) { //0053
+  if (obj.in.room("Mistletoe*",vCurrentRoom)) { //0053
     load.view(63)
   }
   if (v62 == 1) { //005c
@@ -40,7 +40,7 @@ l68:
     add.to.pic(170,0,0,137,47,4,4)
     discard.view(170)
   }
-  if (obj.in.room(i15,vCurrentRoom)) { //007c
+  if (obj.in.room("Mistletoe*",vCurrentRoom)) { //007c
     animate.obj(o4)
     set.view(o4,63)
     position(o4,23,92)
@@ -106,7 +106,7 @@ if ((said("examine", "town") || said("examine", "building"))) { //012f
   print("You see a small seaside village up the coast to the north. Smoke rises lazily from chimneys and mingles with the ocean air.")
 }
 if (said("examine", "forest")) { //0143
-  if (!(obj.in.room(i15,vCurrentRoom))) { //014d
+  if (!(obj.in.room("Mistletoe*",vCurrentRoom))) { //014d
     print("The trees are not as large, being so near the coast.")
     goto(l348)
   }
@@ -118,7 +118,7 @@ if ((said("examine", "mistletoe") || said("examine", "mistletoe", "forest"))) { 
     print("One of the trees has a light-green colored plant growing upon it. On closer inspection, you see that it's mistletoe.")
     goto(l394)
   }
-  if (obj.in.room(i15,vCurrentRoom)) { //017c
+  if (obj.in.room("Mistletoe*",vCurrentRoom)) { //017c
     print("The mistletoe hangs from the branches of the tree. There are a few dried sprigs mingled with the green mistletoe.")
     goto(l394)
   }
@@ -138,13 +138,13 @@ if ((said("capture", "mistletoe") || said("capture", "mistletoe", "forest") || s
     print("You are not close enough.")
     goto(l502)
   }
-  if (!(obj.in.room(i15,vCurrentRoom))) { //01de
+  if (!(obj.in.room("Mistletoe*",vCurrentRoom))) { //01de
     print("You look through the remaining mistletoe, but find none that is dry.")
     goto(l502)
   }
   start.update(o4)
   erase(o4)
-  get(i15)
+  get("Mistletoe*")
   vCurrentScore += 1
   print("You search among the hanging mistletoe until you find a sprig that has dried. You break it off, and carry it with you.")
 }

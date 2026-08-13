@@ -196,7 +196,7 @@ l622:
       start.update(o2)
       erase(o2)
       set(f154)
-      get(i25)
+      get("beans")
       v85 = 2
       vCurrentScore += 4
     }
@@ -222,7 +222,7 @@ l696:
       start.update(o3)
       erase(o3)
       set(f84)
-      get(i5)
+      get("key")
       v85 = 1
       vCurrentScore += 3
     }

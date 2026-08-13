@@ -5,7 +5,7 @@ if (fNewRoom) { //0002
   set.horizon(55)
   load.logic(108)
   load.view(39)
-  if (has(i15)) { //0014
+  if (has("Flying Dust")) { //0014
     load.view(28)
   }
   if (f108) { //001c

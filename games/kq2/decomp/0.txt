@@ -293,10 +293,10 @@ if (said("consume", "basket")) { //03bf
     print("Yum, yum. The snacks from the goody basket are sure tasty.")
     vCurrentScore -= 2
     drop(i63)
-    get(i62)
+    get("T\x01")
     goto(l1000)
   }
-  if (has(i62)) { //03db
+  if (has("T\x01")) { //03db
     print("The basket of goodies is empty because you ate all of it.")
     goto(l1000)
   }
@@ -304,7 +304,7 @@ if (said("consume", "basket")) { //03bf
 }
 l1000:
 if (vCurrentRoom != 3 && said("acquire", "basket")) { //03e8
-  if (has(i62)) { //03f6
+  if (has("T\x01")) { //03f6
     print("The basket of goodies is empty because you ate all of it.")
     goto(l1027)
   }
@@ -370,12 +370,12 @@ if (said("pat", "lamp")) { //04a7
     goto(l1327)
   }
   if (v87 == 1) { //0513
-    get(i50)
+    get("T\x01")
     vCurrentScore += 2
     v87 = 2
     goto(l1327)
   }
-  get(i77)
+  get("\x01")
   vCurrentScore += 2
   drop(i72)
   v87 = 3
@@ -441,7 +441,7 @@ if (said("light", "candle")) { //0613
     print("The candle is already lit.")
     goto(l1615)
   }
-  if (!(has(i78))) { //0628
+  if (!(has("T\x01"))) { //0628
     print("You are not carrying it.")
     goto(l1615)
   }
@@ -452,23 +452,23 @@ if (said("light", "candle")) { //0613
   reset(fSaidAccepted)
 }
 l1615:
-if (f106 && has(i78) && said("blow", "candle")) { //064f
+if (f106 && has("T\x01") && said("blow", "candle")) { //064f
   print("You pucker up your lips and blow out the candle.")
   reset(f106)
 }
 if (has(i56) && said("put on", "diamond and sapphire tiara")) { //0661
   print("The tiara would better fit a daintier head than yours.")
 }
-if (has(i66) && said("consume", "ham")) { //066f
+if (has("T\x01") && said("consume", "ham")) { //066f
   print("Mmmmmm! The smoked ham was delicious! It sure hit the spot.")
-  drop(i66)
+  drop("T\x01")
 }
 if ((said("look in", "basket") || said("open", "basket"))) { //067f
   if (has(i63)) { //0691
     print("You look in the basket of goodies and see many good things to eat: cookies, fruit, crackers, and sandwiches.")
     goto(l1705)
   }
-  if (has(i62)) { //069c
+  if (has("T\x01")) { //069c
     print("The basket of goodies is empty because you ate all of it.")
     goto(l1705)
   }
@@ -533,12 +533,12 @@ if (!(v88 > 0) && !f151 && vCurrentRoom < 50 && !f179 && !f119 && !f180 && !f125
 if (vCurrentRoom < 50 && vCurrentRoom != 18 && has(i76) && said("sit", "carpet")) { //0792
   print("If you wish to ride on the magic carpet, then just say so.")
 }
-if (has(i77) && said("put on", "bridle")) { //07a7
+if (has("\x01") && said("put on", "bridle")) { //07a7
   print("You put the bridle over your head. Nothing happens. Don't you feel silly?")
 }
-if (has(i70) && said("open", "bird cage")) { //07b5
+if (has("T\x01") && said("open", "bird cage")) { //07b5
   print("You open the pretty birdcage and the nightingale swoops out. The bird is gone. You have nothing but an empty birdcage.")
-  drop(i70)
+  drop("T\x01")
   vCurrentScore -= 2
   get(i71)
 }
@@ -582,7 +582,7 @@ if (has(i67) && (said("consume", "broth") || said("drink", "broth"))) { //0840
   print("Hungrily, you eat the tasty chicken soup. Aaaaahhhh! You feel very satisfied. You throw away the useless empty pot.")
   drop(i67)
 }
-if (has(i58) && said("put on", "earrings")) { //0858
+if (has("T\x01") && said("put on", "earrings")) { //0858
   print("The earrings were made for more delicate ears than yours.")
 }
 if ((said("examine", "anyword") || said("examine", "anyword", "anyword"))) { //0866
@@ -632,7 +632,7 @@ if (has(i83)) { //095e
     show.obj(143)
   }
 }
-if (has(i78) && said("examine", "candle")) { //097a
+if (has("T\x01") && said("examine", "candle")) { //097a
   if (f106) { //0986
     show.obj(126)
     goto(l2451)
@@ -643,7 +643,7 @@ l2451:
 if (has(i56) && said("examine", "diamond and sapphire tiara")) { //0993
   show.obj(129)
 }
-if (has(i66) && said("examine", "ham")) { //09a1
+if (has("T\x01") && said("examine", "ham")) { //09a1
   show.obj(128)
 }
 if (has(i74) && said("examine", "cushion")) { //09af
@@ -655,13 +655,13 @@ if (has(i52) && said("examine", "bouquet")) { //09bd
 if (has(i63) && said("examine", "basket")) { //09cb
   show.obj(152)
 }
-if (has(i62) && said("examine", "basket")) { //09d9
+if (has("T\x01") && said("examine", "basket")) { //09d9
   show.obj(140)
 }
 if (has(i55) && said("examine", "ring")) { //09e7
   show.obj(147)
 }
-if (has(i82) && vCurrentRoom != 51 && said("examine", "clam")) { //09f5
+if (has("T\x01") && vCurrentRoom != 51 && said("examine", "clam")) { //09f5
   show.obj(137)
 }
 if (has(i53) && said("examine", "bracelet")) { //0a07
@@ -682,10 +682,10 @@ if (has(i72) && said("examine", "lamp")) { //0a3f
 if (vCurrentRoom != 70 && has(i76) && said("examine", "carpet")) { //0a4d
   show.obj(125)
 }
-if (has(i50) && said("examine", "knife")) { //0a5f
+if (has("T\x01") && said("examine", "knife")) { //0a5f
   show.obj(142)
 }
-if (has(i77) && said("examine", "bridle")) { //0a6d
+if (has("\x01") && said("examine", "bridle")) { //0a6d
   show.obj(130)
 }
 if ((said("examine", "bird") || said("examine", "bird cage"))) { //0a7b
@@ -698,7 +698,7 @@ if ((said("examine", "bird") || said("examine", "bird cage"))) { //0a7b
 l2724:
     goto(l2766)
   }
-  if (has(i70)) { //0aa7
+  if (has("T\x01")) { //0aa7
     if (v65 == 2) { //0aad
       print("The cage is covered.")
       goto(l2761)
@@ -731,7 +731,7 @@ if (has(i67)) { //0aea
   }
 }
 l2831:
-if (has(i58) && said("examine", "earrings")) { //0b0f
+if (has("T\x01") && said("examine", "earrings")) { //0b0f
   show.obj(139)
 }
 if (has(i75) && said("examine", "fishing net")) { //0b1d
@@ -743,7 +743,7 @@ if (has(i80) && said("examine", "dolphin")) { //0b2b
 if (has(i59) && said("examine", "brooch")) { //0b39
   show.obj(138)
 }
-if (has(i54) && said("examine", "pole")) { //0b47
+if (has("T\x01") && said("examine", "pole")) { //0b47
   show.obj(149)
 }
 l2901:

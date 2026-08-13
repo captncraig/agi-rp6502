@@ -296,13 +296,13 @@ if ((said("sit", "chair") || said("sit", "down", "chair"))) { //036f
 }
 l916:
 if ((said("acquire", "cart") || said("get down", "cart"))) { //0394
-  if (!(has(i1))) { //03a6
+  if (!(has("Cartridge"))) { //03a6
     if (v50 == 2 && f35) { //03ad
       if (posn(o0,74,104,88,114)) { //03b6
         set(f36)
         v50 = 3
         set.view(o1,2)
-        get(i1)
+        get("Cartridge")
         vCurrentScore += 5
         print("Done.")
         goto(l980)
@@ -318,7 +318,7 @@ l985:
   print("You already possess that item.")
 }
 l990:
-if (has(i1)) { //03de
+if (has("Cartridge")) { //03de
   if ((said("return", "cart") || said("give", "cart"))) { //03e4
     print("Now that you have it you shouldn't be trying to get rid of it.")
   }
@@ -431,7 +431,7 @@ if (said("check out", "display")) { //0526
 }
 l1385:
 if ((said("play", "cart") || said("fill", "cart") || said("fill", "cart", "cartridge slot") || said("drop", "cart", "cartridge slot"))) { //0569
-  if (has(i1)) { //058b
+  if (has("Cartridge")) { //058b
     if (obj.in.box(o0,77,104,94,109)) { //0591
       set(f45)
       set(f48)
@@ -451,7 +451,7 @@ l1463:
 }
 l1468:
 if ((said("give", "cart") || said("give", "cart", "being"))) { //05bc
-  if (has(i1)) { //05d0
+  if (has("Cartridge")) { //05d0
     print("He won't be needing it anymore.")
     goto(l1501)
   }

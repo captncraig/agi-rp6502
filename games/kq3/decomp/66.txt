@@ -286,7 +286,7 @@ l718:
 call(119)
 if (v71 == 1) { //032a
   v71 = 0
-  drop(i54)
+  drop("Magic Map*")
   print("As you unroll the delicate map, it crumbles in the intense heat!")
 }
 if (v71 == 9) { //0338
@@ -391,7 +391,7 @@ if (said("kill", "dragon")) { //041e
 }
 l1078:
 if ((said("throw", "dagger") || said("throw", "dagger", "dragon") || said("kill", "dragon", "try", "dagger"))) { //0436
-  if (!(has(i33))) { //0454
+  if (!(has("Knife"))) { //0454
     print("You don't have a knife.")
     goto(l1133)
   }

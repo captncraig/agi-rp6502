@@ -194,23 +194,23 @@ if ((said("unlock", "cabinet", "try", "key") || said("unlock", "cabinet") || sai
     print("You are not close enough.")
     goto(l891)
   }
-  if (!(has(i38))) { //0362
+  if (!(has("Brass Key*"))) { //0362
     print("You try to turn the handle, but, unfortunately, the door is locked.")
     goto(l891)
   }
   print("You unlock the oaken cabinet using the brass key.")
   v223 = 44
-  if (has(i37)) { //0373
+  if (has("Magic Wand*")) { //0373
     set(f220)
   }
 }
 l891:
-if (has(i37) && (said("add", "rod", "cabinet") || said("add", "rod", "back", "cabinet") || said("add", "rod", "back") || said("add", "magic", "rod", "back", "cabinet") || said("add", "magic", "rod", "cabinet"))) { //037b
+if (has("Magic Wand*") && (said("add", "rod", "cabinet") || said("add", "rod", "back", "cabinet") || said("add", "rod", "back") || said("add", "magic", "rod", "back", "cabinet") || said("add", "magic", "rod", "cabinet"))) { //037b
   if (v39 != 1) { //03b3
     print("You are not close enough.")
     goto(l979)
   }
-  if (!(has(i38))) { //03c0
+  if (!(has("Brass Key*"))) { //03c0
     print("You try to turn the handle, but, unfortunately, the door is locked.")
     goto(l979)
   }
@@ -375,10 +375,10 @@ if (v223 == 22) { //066a
   if (f220) { //0671
     reset(f220)
     print("You carefully replace the magic wand exactly as you found it.")
-    put(i37,0)
+    put("Magic Wand*",0)
     goto(l1704)
   }
-  if (!(obj.in.room(i37,vCurrentRoom))) { //0681
+  if (!(obj.in.room("Magic Wand*",vCurrentRoom))) { //0681
     print("You find it is empty.")
     goto(l1704)
   }
@@ -386,7 +386,7 @@ if (v223 == 22) { //066a
   if (v128 != 20) { //0690
     print("You take it with you, knowing it could mean death if he finds it missing.")
   }
-  get(i37)
+  get("Magic Wand*")
   if (!f94) { //069c
     set(f94)
     vCurrentScore += 4

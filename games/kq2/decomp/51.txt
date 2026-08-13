@@ -173,7 +173,7 @@ l669:
 }
 l674:
 if ((said("give", "treasure", "count dracula") || said("give", "count dracula", "treasure"))) { //02a2
-  if ((has(i56) || has(i58) || has(i53) || has(i57) || has(i59))) { //02b8
+  if ((has(i56) || has("T\x01") || has(i53) || has(i57) || has(i59))) { //02b8
     print("Which treasure would you like to give to King Neptune?")
     goto(l719)
   }
@@ -192,7 +192,7 @@ if (!(has(i59)) && said("give", "brooch", "count dracula")) { //02f1
 if (!(has(i57)) && said("give", "diamond and sapphire necklace", "count dracula")) { //0302
   print("You don't have one to give to King Neptune.")
 }
-if (!(has(i58)) && said("give", "earrings", "count dracula")) { //0313
+if (!(has("T\x01")) && said("give", "earrings", "count dracula")) { //0313
   print("You don't have one to give to King Neptune.")
 }
 if (!fSaidAccepted && said("give", "anyword")) { //0324

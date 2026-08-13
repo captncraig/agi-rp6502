@@ -23,7 +23,7 @@ if (fNewRoom) { //0002
   v57 = 24
   v58 = 122
 l76:
-  if (obj.in.room(i34,vCurrentRoom)) { //004c
+  if (obj.in.room("Cactus*",vCurrentRoom)) { //004c
     load.view(243)
   }
   load.logic(128)
@@ -47,7 +47,7 @@ l76:
   if (f47) { //0091
     draw(o0)
   }
-  if (obj.in.room(i34,vCurrentRoom)) { //0099
+  if (obj.in.room("Cactus*",vCurrentRoom)) { //0099
     animate.obj(o2)
     position(o2,40,86)
     set.view(o2,243)
@@ -63,11 +63,11 @@ l76:
 if (fEnteredCommand) { //00b6
   if (said("examine", "rock")) { //00bc
     print("If you've seen one rock, you've seen them all.")
-    if (obj.in.room(i34,vCurrentRoom)) { //00c8
+    if (obj.in.room("Cactus*",vCurrentRoom)) { //00c8
       print("You notice an unusual little cactus beside that large rock.")
     }
   }
-  if (obj.in.room(i34,vCurrentRoom)) { //00d1
+  if (obj.in.room("Cactus*",vCurrentRoom)) { //00d1
     if ((said("examine") || said("examine", "brush") || said("examine", "cactii") || said("examine", "deck"))) { //00d8
       print("You notice an unusual little cactus beside that large rock.")
     }
@@ -78,7 +78,7 @@ if (fEnteredCommand) { //00b6
         goto(l311)
       }
       print("Ok.")
-      get(i34)
+      get("Cactus*")
       vCurrentScore += 1
       start.update(o2)
       erase(o2)

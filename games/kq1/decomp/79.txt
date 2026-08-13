@@ -190,7 +190,7 @@ if (f106 && (said("give", "diamond") || said("give", "bag"))) { //0283
     v30 = 18
   }
   reset(f106)
-  drop(i15)
+  drop("pouch of diamonds")
   vCurrentScore -= 6
 }
 if (f110 && said("give", "egg")) { //02b0
@@ -202,7 +202,7 @@ if (f110 && said("give", "egg")) { //02b0
     v30 = 18
   }
   reset(f110)
-  drop(i20)
+  drop("gold egg")
   vCurrentScore -= 6
 }
 if (f108 && said("give", "gold nut")) { //02d5
@@ -214,7 +214,7 @@ if (f108 && said("give", "gold nut")) { //02d5
     v30 = 18
   }
   reset(f108)
-  drop(i4)
+  drop("gold walnut")
   vCurrentScore -= 6
 }
 if (f113 && said("give", "sceptre")) { //02fa
@@ -226,7 +226,7 @@ if (f113 && said("give", "sceptre")) { //02fa
     v30 = 18
   }
   reset(f113)
-  drop(i17)
+  drop("sceptre")
   vCurrentScore -= 6
 }
 if (f77 && said("give", "carrot")) { //031f
@@ -238,7 +238,7 @@ if (f77 && said("give", "carrot")) { //031f
     v30 = 18
   }
   reset(f77)
-  drop(i3)
+  drop("carrot")
   vCurrentScore -= 2
 }
 if (f154 && said("give", "bean")) { //0344
@@ -250,7 +250,7 @@ if (f154 && said("give", "bean")) { //0344
     v30 = 18
   }
   reset(f154)
-  drop(i25)
+  drop("beans")
   vCurrentScore -= 6
 }
 if (f89) { //0369
@@ -258,7 +258,7 @@ if (f89) { //0369
     if ((said("give", "bowl") || said("give", "bowl", "dwarf") || said("give", "dwarf", "bowl") || said("give", "fairy", "bowl") || said("give", "bowl", "fairy") || said("drop", "bowl", "table"))) { //0376
       set(f183)
       reset(f89)
-      drop(i9)
+      drop("ceramic bowl")
       vCurrentScore -= 3
       vCurrentScore += 6
       position(o1,68,104)
@@ -278,7 +278,7 @@ if (f89) { //0369
     if ((said("give", "bowl") || said("give", "bowl", "dwarf") || said("give", "dwarf", "bowl") || said("give", "fairy", "bowl") || said("give", "bowl", "fairy") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "dwarf") || said("give", "dwarf", "stew") || said("give", "fairy", "stew") || said("give", "stew", "fairy") || said("drop", "stew", "table"))) { //03db
       set(f183)
       reset(f89)
-      drop(i9)
+      drop("ceramic bowl")
       vCurrentScore -= 3
       vCurrentScore += 6
       position(o1,68,104)
@@ -355,7 +355,7 @@ l1305:
       set(f171)
       set(f172)
       print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.")
-      get(i22)
+      get("fiddle")
       vCurrentScore += 3
     }
     if (!(posn(o0,120,140,158,166)) && f185) { //0545

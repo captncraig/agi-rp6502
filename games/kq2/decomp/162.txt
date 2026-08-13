@@ -122,9 +122,9 @@ if (has(i53)) { //017f
   set(f80)
   goto(l447)
 }
-if (has(i58)) { //018f
+if (has("T\x01")) { //018f
   vCurrentScore -= 7
-  drop(i58)
+  drop("T\x01")
   set(f78)
   goto(l447)
 }

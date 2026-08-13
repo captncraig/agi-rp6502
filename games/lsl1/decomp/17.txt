@@ -11,7 +11,7 @@ if (fNewRoom) { //0002
   load.view(2)
   load.view(26)
   load.view(68)
-  if (obj.in.room(i12,vCurrentRoom)) { //0021
+  if (obj.in.room("Box of Candy",vCurrentRoom)) { //0021
     animate.obj(o5)
     set.view(o5,68)
     position(o5,135,137)
@@ -143,7 +143,7 @@ if (said("move", "on", "radiator")) { //01a8
   print("It, too, is broken.")
 }
 if ((said("use", "hammer", "on", "radiator") || said("beat", "radiator", "use", "hammer") || said("beat", "radiator", "hammer") || said("hammer", "radiator"))) { //01b6
-  if (!(has(i18))) { //01de
+  if (!(has("Hammer"))) { //01de
     set(f68)
     goto(l492)
   }
@@ -174,7 +174,7 @@ if (said("examine", "below", "rol")) { //0252
   print("There's nothing (and no one) there.")
 }
 if (said("examine", "desk")) { //0260
-  if (obj.in.room(i12,vCurrentRoom)) { //026a
+  if (obj.in.room("Box of Candy",vCurrentRoom)) { //026a
     print("It looks like the hooker has a box of candy on her table.")
     goto(l632)
   }
@@ -190,7 +190,7 @@ if (said("move", "desk")) { //0278
 }
 l656:
 if ((said("examine", "box of candy") || said("examine", "box", "box of candy") || said("examine", "box"))) { //0290
-  if (!(obj.in.room(i12,vCurrentRoom))) { //02aa
+  if (!(obj.in.room("Box of Candy",vCurrentRoom))) { //02aa
     reset(fSaidAccepted)
     goto(l709)
   }
@@ -206,14 +206,14 @@ if ((said("catch", "box of candy") || said("catch", "box", "box of candy") || sa
     set(f54)
     goto(l807)
   }
-  if (!(obj.in.room(i12,vCurrentRoom))) { //0317
+  if (!(obj.in.room("Box of Candy",vCurrentRoom))) { //0317
     set(f55)
     goto(l807)
   }
   v206 = 1
 }
 l807:
-if (!(has(i12)) && (said("use", "box of candy", "rol") || said("increase", "box", "rol") || said("increase", "box of candy", "rol") || said("use", "anyword", "box of candy", "rol") || said("bite", "anyword", "box of candy", "rol") || said("bite", "box of candy", "rol"))) { //0327
+if (!(has("Box of Candy")) && (said("use", "box of candy", "rol") || said("increase", "box", "rol") || said("increase", "box of candy", "rol") || said("use", "anyword", "box of candy", "rol") || said("bite", "anyword", "box of candy", "rol") || said("bite", "box of candy", "rol"))) { //0327
   set(f68)
 }
 if ((said("examine", "blond") || said("examine", "clit") || said("examine", "bed"))) { //0366
@@ -235,7 +235,7 @@ if (said("catch", "pillow")) { //03ad
   print("You have no use for a stained pillow.")
 }
 if (said("attach", "rope", "rol")) { //03b9
-  if (!(has(i20))) { //03c5
+  if (!(has("Rope"))) { //03c5
     set(f68)
     goto(l979)
   }
@@ -344,7 +344,7 @@ if ((said("copulate", "blond") || said("copulate", "clit") || said("sleep", "blo
 }
 l1702:
 if ((said("use", "condom") || said("put on", "condom"))) { //06a6
-  if (!(has(i10))) { //06b8
+  if (!(has("Prophylactic"))) { //06b8
     set(f68)
     goto(l1770)
   }
@@ -410,7 +410,7 @@ if (f214) { //072d
   stop.cycling(o1)
   animate.obj(o0)
   draw(o0)
-  if (obj.in.room(i12,vCurrentRoom)) { //0756
+  if (obj.in.room("Box of Candy",vCurrentRoom)) { //0756
     animate.obj(o5)
     draw(o5)
     stop.update(o5)
@@ -552,7 +552,7 @@ if (f208) { //08b2
 if (v206 > 0) { //08c0
   if (v206 == 1) { //08c7
     set(f67)
-    get(i12)
+    get("Box of Candy")
     vCurrentScore += 2
     start.update(o5)
     erase(o5)
@@ -585,8 +585,8 @@ if (v206 > 0) { //08c0
   if (v206 == 5) { //0921
     print("Yep! This would be a perfect time! The Surgeon General would be proud.")
     set(f62)
-    drop(i10)
-    get(i11)
+    drop("Prophylactic")
+    get("Used Prophylactic")
     if (!f91) { //0930
       set(f91)
       vCurrentScore += 10

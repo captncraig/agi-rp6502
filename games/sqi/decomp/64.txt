@@ -52,7 +52,7 @@ if (fNewRoom) { //0002
   set.view(o5,240)
   set.priority(o5,7)
   show.pic()
-  if (has(i1)) { //009a
+  if (has("Cartridge")) { //009a
     print("Congratulations %s1, you've rid the universe of the evil Sariens and saved your people from certain doom. The Star Generator technology is safe inside the Data Cartridge. Now, a new Star Generator can be built and can carry out its original task - You're an all-around hero! You've made it home safely aboard the stolen Sarien craft, where you've encountered a cheering Xenon crowd. They have gathered together for a ceremony in your honor. The ceremony is already in progress.")
     goto(l167)
   }

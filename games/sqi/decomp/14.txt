@@ -44,7 +44,7 @@ if ((!fEnteredCommand || fSaidAccepted)) { //0067
 }
 if ((said("check out", "craft") || said("check out", "down") || said("check out", "floor") || said("check out", "escape", "craft"))) { //0075
   print("You are inside the escape pod. It appears that the more fragile devices were damaged severely by the impact of landing.")
-  if (!(has(i11))) { //0097
+  if (!(has("Survival Kit"))) { //0097
     print("A survival kit has broken loose from someplace.")
   }
 }
@@ -67,8 +67,8 @@ if ((said("look under", "seat") || said("check out", "seat") || said("check out"
   print("There is nothing under the seat.")
 }
 if (said("acquire", "kit")) { //012c
-  if (!(has(i11)) && !(has(i22))) { //0136
-    get(i11)
+  if (!(has("Survival Kit")) && !(has("Survival Kit"))) { //0136
+    get("Survival Kit")
     vCurrentScore += 2
     print("Done")
     goto(l332)

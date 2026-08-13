@@ -31,7 +31,7 @@ if (fNewRoom) { //0002
   position(o2,51,101)
   draw(o2)
   stop.update(o2)
-  if (!(obj.in.room(i19,vCurrentRoom)) && f65) { //0054
+  if (!(obj.in.room("Bottle of Pills",vCurrentRoom)) && f65) { //0054
     add.to.pic(72,3,0,112,51,4,4)
     goto(l145)
   }
@@ -100,10 +100,10 @@ if (posn(o0,53,60,94,64)) { //0103
   set(f200)
 }
 reset(f202)
-if (obj.in.room(i19,vCurrentRoom) && f200 && posn(o0,82,60,99,64)) { //0111
+if (obj.in.room("Bottle of Pills",vCurrentRoom) && f200 && posn(o0,82,60,99,64)) { //0111
   set(f202)
 }
-if (v30 == 13 && obj.in.room(i19,vCurrentRoom)) { //0122
+if (v30 == 13 && obj.in.room("Bottle of Pills",vCurrentRoom)) { //0122
   set(f202)
 }
 reset(f201)
@@ -128,7 +128,7 @@ if (!fEnteredCommand) { //0176
   goto(l2534)
 }
 if ((said("examine") || said("examine", "area") || said("examine", "alley"))) { //0180
-  if (!(obj.in.room(i19,vCurrentRoom))) { //0196
+  if (!(obj.in.room("Bottle of Pills",vCurrentRoom))) { //0196
     print("%m7 and a fence.")
     goto(l421)
   }
@@ -170,7 +170,7 @@ if ((said("climb", "out", "bin") || said("jump", "out", "bin") || said("climb", 
   set(f75)
 }
 if ((said("find", "bin") || said("look in", "bin") || said("examine", "bin"))) { //0283
-  if (obj.in.room(i18,vCurrentRoom)) { //029b
+  if (obj.in.room("Hammer",vCurrentRoom)) { //029b
     print("Amidst assorted, odoriferous refuse from Lefty's clientel, you discover Lefty's old, left-handed hammer.")
     goto(l681)
   }
@@ -178,12 +178,12 @@ if ((said("find", "bin") || said("look in", "bin") || said("examine", "bin"))) {
 }
 l681:
 if (said("catch", "hammer")) { //02a9
-  if (!(obj.in.room(i18,vCurrentRoom))) { //02b3
+  if (!(obj.in.room("Hammer",vCurrentRoom))) { //02b3
     set(f55)
     goto(l711)
   }
   set(f67)
-  get(i18)
+  get("Hammer")
   vCurrentScore += 3
 }
 l711:
@@ -220,7 +220,7 @@ if ((said("examine", "glass") || said("look in", "glass"))) { //038d
     print("Looking inside the west window, you see the room you just left.")
     goto(l964)
   }
-  if (obj.in.room(i19,vCurrentRoom)) { //03b6
+  if (obj.in.room("Bottle of Pills",vCurrentRoom)) { //03b6
     print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
     goto(l964)
   }
@@ -240,14 +240,14 @@ if ((said("examine", "east", "glass") || said("look in", "east", "glass"))) { //
     print("There are two windows high above you. The west window by the fire escape has a dim, reddish glow; the east window is dark. There may be something on the sill of the east window, but you can't make it out from down here.")
     goto(l1048)
   }
-  if (obj.in.room(i19,vCurrentRoom)) { //040a
+  if (obj.in.room("Bottle of Pills",vCurrentRoom)) { //040a
     print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
     goto(l1048)
   }
   print("You broke it, didn't you?")
 }
 l1048:
-if (has(i20) && v30 != 13) { //0418
+if (has("Rope") && v30 != 13) { //0418
   if ((said("attach", "rope", "bureau") || said("attach", "rope", "i'm"))) { //0422
     if (!f208) { //0438
       set(f67)
@@ -272,11 +272,11 @@ l1096:
 }
 l1136:
 if ((said("catch", "aphrodisiac") || said("catch", "bottle") || said("catch", "bottle", "aphrodisiac") || said("carry", "above", "glass") || said("carry", "above", "balcony", "catch", "aphrodisiac") || said("carry", "about", "aphrodisiac") || said("carry", "above", "balcony", "about", "aphrodisiac") || said("carry", "above", "balcony") || said("carry", "glass") || said("jump", "glass") || said("get up", "balcony") || said("get up", "on", "balcony") || said("carry", "above", "balcony") || said("carry", "above") || said("carry", "out") || said("climb", "on", "balcony") || said("climb", "above") || said("climb", "above", "balcony", "catch", "aphrodisiac") || said("climb", "balcony", "catch", "aphrodisiac") || said("climb", "above", "balcony", "aphrodisiac") || said("climb", "balcony", "aphrodisiac") || said("climb", "above", "balcony") || said("climb", "balcony"))) { //0470
-  if (has(i19)) { //052c
+  if (has("Bottle of Pills")) { //052c
     set(f55)
     goto(l1457)
   }
-  if (obj.in.room(i19,vCurrentRoom) && !f202) { //0537
+  if (obj.in.room("Bottle of Pills",vCurrentRoom) && !f202) { //0537
     print("Try moving to the east end of the fire escape.")
     goto(l1457)
   }
@@ -298,7 +298,7 @@ if ((said("catch", "aphrodisiac") || said("catch", "bottle") || said("catch", "b
     print("With the rope securely holding you to the railing, you can reach all the way over to the window. NOW, of all times, you notice the window's locked!")
     goto(l1457)
   }
-  if (!(obj.in.room(i19,vCurrentRoom))) { //0580
+  if (!(obj.in.room("Bottle of Pills",vCurrentRoom))) { //0580
     print("You already took them. Why do this again?")
     goto(l1457)
   }
@@ -311,13 +311,13 @@ if ((said("catch", "aphrodisiac") || said("catch", "bottle") || said("catch", "b
   start.update(o3)
   erase(o3)
   add.to.pic(72,3,0,112,51,4,4)
-  get(i19)
+  get("Bottle of Pills")
   vCurrentScore += 8
   print("You got 'em! But what are they?")
 }
 l1457:
 if ((said("break", "glass", "hammer") || said("use", "hammer", "break", "glass") || said("break", "glass") || said("break", "glass", "use", "hammer") || said("beat", "glass", "hammer") || said("use", "hammer", "beat", "glass") || said("beat", "glass") || said("beat", "glass", "use", "hammer") || said("use", "hammer"))) { //05b1
-  if (!(has(i18))) { //0601
+  if (!(has("Hammer"))) { //0601
     set(f68)
     goto(l1591)
   }
@@ -377,11 +377,11 @@ if ((said("cut", "rope", "rol") || said("use", "knife", "rol"))) { //0736
   reset(f209)
   start.motion(o0)
   reset(f85)
-  if (has(i19)) { //0779
+  if (has("Bottle of Pills")) { //0779
     print("%g176")
     goto(l1928)
   }
-  get(i20)
+  get("Rope")
   print("A rickety fire escape, complete with safety ladder, is loosely attached to the building. A mild, reddish glow comes from the window behind it.")
 }
 l1928:
@@ -428,7 +428,7 @@ l2064:
     v58 = 23
   }
 }
-if (obj.in.room(i19,vCurrentRoom) && said("examine", "aphrodisiac")) { //0888
+if (obj.in.room("Bottle of Pills",vCurrentRoom) && said("examine", "aphrodisiac")) { //0888
   if (f202) { //0895
     print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
     goto(l2210)

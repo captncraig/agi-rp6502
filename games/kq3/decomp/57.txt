@@ -220,16 +220,16 @@ if (v71 == 2 && v44 == 15) { //0314
   set(f224)
   set.priority(o0,15)
   set(f220)
-  drop(i16)
+  drop("Magic Stone*")
 }
 if (v71 == 3) { //032e
   v71 = 0
-  drop(i10)
+  drop("Fly Wings*")
   print("As you reach for your fly wings, a sharp gust of wind blows them from your grasp.")
 }
 if (v71 == 4) { //033c
   v71 = 0
-  drop(i9)
+  drop("Eagle Feather*")
   print("You watch as your feather floats up, up and away on a sudden blast of frigid air.")
 }
 l842:

@@ -102,7 +102,7 @@ if (f20) { //00f6
   if (!f21 && (said("speak", "elf") || said("hello") || said("say", "hello"))) { //0168
     if (v70 < 40) { //0181
       print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.")
-      get(i7)
+      get("magic ring")
       set(f83)
       vCurrentScore += 3
       erase(o1)
@@ -178,7 +178,7 @@ if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //027a
   if (posn(o0,81,87,159,167)) { //028c
     reset(f116)
     print("The cold water gushes into the old bucket.")
-    get(i26)
+    get("water")
     set(f88)
     if (!f91) { //029e
       vCurrentScore += 2

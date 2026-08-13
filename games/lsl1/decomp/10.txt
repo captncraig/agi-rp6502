@@ -27,7 +27,7 @@ if (fNewRoom) { //0002
   set.view(o3,81)
   set.priority(o3,15)
   position(o3,56,83)
-  if (!(has(i16))) { //0051
+  if (!(has("Bottle of Wine"))) { //0051
     set.loop(o3,1)
     set.cel(o3,0)
     cycle.time(o3,v86)
@@ -38,7 +38,7 @@ if (fNewRoom) { //0002
 l105:
   draw(o3)
   show.pic()
-  if (!(has(i16))) { //006c
+  if (!(has("Bottle of Wine"))) { //006c
     print("The cabbie snarls a \"Where to, buddy?\" as he swings the meter flag down.")
     accept.input()
     v203 = 20

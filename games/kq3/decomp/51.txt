@@ -64,7 +64,7 @@ if ((said("examine", "sky") || said("examine", "up", "sky"))) { //00fd
 if ((said("climb", "forest") || said("climb", "up", "forest"))) { //0113
   print("There are no climbable trees here.")
 }
-if (has(i52)) { //0129
+if (has("Shovel")) { //0129
   if ((said("dig", "hole") || said("dig") || said("dig", "hole", "deck") || said("dig", "try", "shovel"))) { //012f
     print("Not here.")
   }

@@ -8,11 +8,11 @@ if ((!fEnteredCommand || fSaidAccepted)) { //000c
 set(f120)
 v103++
 if ((said("add", "bit", "saffron", "essence") || said("add", "saffron", "capsule", "essence") || said("add", "bit", "saffron", "capsule", "essence") || said("add", "bit", "saffron", "capsule") || said("add", "saffron", "essence") || said("add", "saffron", "capsule"))) { //001e
-  if ((!(has(i11)) || !(has(i12)))) { //005e
+  if ((!(has("Saffron*")) || !(has("Rose Essence*")))) { //005e
     print("It is difficult to use that which you do not have.")
     goto(l126)
   }
-  drop(i11)
+  drop("Saffron*")
   print("You carefully sprinkle the precious saffron into the vial of rose petal essence.")
   if (v103 == 1) { //0073
     reset(f120)
@@ -21,14 +21,14 @@ if ((said("add", "bit", "saffron", "essence") || said("add", "saffron", "capsule
 }
 l126:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //007e
-  if (!(has(i37))) { //0092
+  if (!(has("Magic Wand*"))) { //0092
     print("It is difficult to use that which you do not have.")
     goto(l173)
   }
   print("You wave the magic wand over the vial of rose petal essence.")
   if (v103 == 3) { //00a0
-    drop(i12)
-    get(i39)
+    drop("Rose Essence*")
+    get("Magic Rose Essence*")
     reset(f120)
   }
 }

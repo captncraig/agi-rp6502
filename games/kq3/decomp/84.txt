@@ -11,11 +11,11 @@ if (fNewRoom) { //0002
   load.sound(1)
   load.sound(26)
   load.sound(3)
-  if ((f186 || obj.in.room(i52,vCurrentRoom))) { //0025
+  if ((f186 || obj.in.room("Shovel",vCurrentRoom))) { //0025
     load.logic(108)
   }
   load.logic(116)
-  if (obj.in.room(i52,vCurrentRoom)) { //0034
+  if (obj.in.room("Shovel",vCurrentRoom)) { //0034
     animate.obj(o12)
     load.view(169)
     set.view(o12,169)
@@ -170,7 +170,7 @@ if (f222) { //01d5
   program.control()
   set(f44)
 }
-if ((f186 || obj.in.room(i52,vCurrentRoom))) { //01e7
+if ((f186 || obj.in.room("Shovel",vCurrentRoom))) { //01e7
   call(108)
 }
 if (said("examine", "bandit")) { //01f4
@@ -196,7 +196,7 @@ if ((said("examine") || said("examine", "area"))) { //0222
     print("This is where your average pirate sleeps. Actually, these bunks don't look much more comfortable than your own miserable cot used to be and the space is just as cramped.")
     goto(l589)
   }
-  if (!(obj.in.room(i52,vCurrentRoom))) { //023e
+  if (!(obj.in.room("Shovel",vCurrentRoom))) { //023e
     print("You have found yourself below the lower deck. They keep the ship's lifeboat stored here. There are open doorways at either end of the compartment.")
     goto(l589)
   }
@@ -208,7 +208,7 @@ if ((said("examine", "below") || said("look in", "boat") || said("examine", "boa
     print("You can't see it from here.")
     goto(l640)
   }
-  if (!(obj.in.room(i52,vCurrentRoom))) { //0271
+  if (!(obj.in.room("Shovel",vCurrentRoom))) { //0271
     print("You scrutinize the boat inside and out, but find it to be empty and uninteresting.")
     goto(l640)
   }

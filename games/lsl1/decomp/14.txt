@@ -30,7 +30,7 @@ if (fNewRoom) { //0002
   stop.cycling(o1)
   cycle.time(o1,v85)
   add.to.pic(47,1,0,99,141,0,4)
-  if (obj.in.room(i9,vCurrentRoom)) { //005a
+  if (obj.in.room("Rose",vCurrentRoom)) { //005a
     animate.obj(o2)
     ignore.blocks(o2)
     ignore.objs(o2)
@@ -126,7 +126,7 @@ if ((said("add", "bucks") || said("use", "bucks") || said("add", "bouncer", "buc
 }
 l443:
 if ((said("add", "shot") || said("add", "bouncer", "bite") || said("add", "bite", "bouncer") || said("add", "bite") || said("use", "shot") || said("add", "bouncer", "shot") || said("add", "shot", "bouncer"))) { //01bb
-  if (!(has(i7))) { //01f3
+  if (!(has("Glass of Whiskey"))) { //01f3
     print("You have no drink to give him.")
     goto(l547)
   }
@@ -134,10 +134,10 @@ if ((said("add", "shot") || said("add", "bouncer", "bite") || said("add", "bite"
     set(f54)
     goto(l547)
   }
-  drop(i7)
+  drop("Glass of Whiskey")
   v200 = 5
   start.cycling(o1)
-  if (!(obj.in.room(i8,vCurrentRoom))) { //0212
+  if (!(obj.in.room("Remote Control",vCurrentRoom))) { //0212
     v201 = 15
     goto(l547)
   }
@@ -145,14 +145,14 @@ if ((said("add", "shot") || said("add", "bouncer", "bite") || said("add", "bite"
 }
 l547:
 if ((said("examine", "above", "desk") || said("examine", "desk"))) { //0223
-  if (obj.in.room(i9,vCurrentRoom)) { //0237
+  if (obj.in.room("Rose",vCurrentRoom)) { //0237
     print("There is a single, lovely, long-stemmed, red rose lying incongruously on the table.")
     goto(l581)
   }
   print("You can remember when that table held a rose.")
 }
 l581:
-if (obj.in.room(i9,vCurrentRoom) && said("examine", "flower")) { //0245
+if (obj.in.room("Rose",vCurrentRoom) && said("examine", "flower")) { //0245
   print("There is a single, lovely, long-stemmed, red rose lying incongruously on the table.")
 }
 if (said("catch", "flower")) { //0254
@@ -160,14 +160,14 @@ if (said("catch", "flower")) { //0254
     set(f54)
     goto(l640)
   }
-  if (!(obj.in.room(i9,vCurrentRoom))) { //026a
+  if (!(obj.in.room("Rose",vCurrentRoom))) { //026a
     set(f55)
     goto(l640)
   }
   set(f67)
   vCurrentScore += 1
   erase(o2)
-  get(i9)
+  get("Rose")
 }
 l640:
 if ((said("add", "anyword", "bouncer") || said("add", "bouncer", "rol"))) { //0280
@@ -217,7 +217,7 @@ if (f44) { //0344
       print("\"...my only posshhess... hhic!")
       print("\"...all I got in the world.\n\nWhat'sha guy like me need witta TV remote control!?\"")
       vCurrentScore += 2
-      get(i8)
+      get("Remote Control")
     }
   }
 }

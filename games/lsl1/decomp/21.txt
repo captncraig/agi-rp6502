@@ -122,12 +122,12 @@ if ((said("catch", "breath spray") || said("ask", "bouncer", "breath spray"))) {
     print("That is located behind the counter. Ask the clerk.")
     goto(l482)
   }
-  if (has(i2)) { //01d0
+  if (has("Breath Spray")) { //01d0
     print("You still have some.")
     goto(l482)
   }
   print("\"Here, Meester,\" he says. \"Thees smells like chur brand!\"")
-  get(i2)
+  get("Breath Spray")
   v200 += 3
 }
 l482:
@@ -136,14 +136,14 @@ if ((said("catch", "champagne") || said("catch", "bottle", "champagne"))) { //01
     print("The wine is on the left end of the back wall.")
     goto(l542)
   }
-  if (has(i16)) { //0202
+  if (has("Bottle of Wine")) { //0202
     print("Whew. One of those bottles is about all a guy needs, Larry.")
     goto(l542)
   }
-  if (obj.in.room(i16,vCurrentRoom)) { //020d
+  if (obj.in.room("Bottle of Wine",vCurrentRoom)) { //020d
     vCurrentScore += 1
   }
-  get(i16)
+  get("Bottle of Wine")
   v200 += 1
   print("You grab a bottle of cheap wine, and wonder how they can make a profit selling this stuff for only a dollar a gallon!")
 }
@@ -153,12 +153,12 @@ if (said("catch", "centerfold")) { //021e
     print("The magazines are on the rack nearest the door.")
     goto(l587)
   }
-  if (!(obj.in.room(i17,vCurrentRoom))) { //0234
+  if (!(obj.in.room("\"Jugs\" Magazine",vCurrentRoom))) { //0234
     print("Nah. That's enough reading material for one game.")
     goto(l587)
   }
   set(f67)
-  get(i17)
+  get("\"Jugs\" Magazine")
   vCurrentScore += 1
   v200 += 2
 }
@@ -196,7 +196,7 @@ if ((said("buy", "condom") || said("ask", "bouncer", "condom", "rol") || said("a
     set(f54)
     goto(l816)
   }
-  if (has(i10)) { //0320
+  if (has("Prophylactic")) { //0320
     print("\"You haven't used your old one yet!\"")
     goto(l816)
   }
@@ -216,7 +216,7 @@ if ((said("catch", "card") || said("catch", "rope") || said("catch", "aphrodisia
 if ((said("catch", "rol") || said("buy", "rol"))) { //03b2
   print("Nah. You'd just be wasting your money.")
 }
-if (!(has(i17)) && said("examine", "centerfold")) { //03c6
+if (!(has("\"Jugs\" Magazine")) && said("examine", "centerfold")) { //03c6
   if (!f203) { //03d3
     print("The magazines are on the rack nearest the door.")
     goto(l993)
@@ -229,7 +229,7 @@ if (said("examine", "centerfold", "rack")) { //03e1
     set(f54)
     goto(l1031)
   }
-  if (!(has(i17))) { //03f9
+  if (!(has("\"Jugs\" Magazine"))) { //03f9
     print("Hmm. That one looks particularly interesting.")
     goto(l1031)
   }
@@ -447,11 +447,11 @@ if (f75) { //0467
   }
 l1670:
   if (v65 == 110) { //0686
-    if (obj.in.room(i10,vCurrentRoom)) { //068d
+    if (obj.in.room("Prophylactic",vCurrentRoom)) { //068d
       vCurrentScore += 4
     }
     print("He hands you the package, saying \"All together, that will be $%v200.00, prease.\"")
-    get(i10)
+    get("Prophylactic")
     accept.input()
     if (v90 < v200) { //069c
       print("Unfortunately, you only have $%v90.00. (Perhaps you can sneak out without paying.)")

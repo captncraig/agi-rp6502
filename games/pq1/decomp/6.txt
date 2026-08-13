@@ -110,10 +110,10 @@ l293:
   stop.cycling(o2)
   set.priority(o1,5)
   set.priority(o2,10)
-  if (obj.in.room(i4,vCurrentRoom)) { //013f
+  if (obj.in.room("Radio Extender",vCurrentRoom)) { //013f
     draw(o1)
   }
-  if (obj.in.room(i1,vCurrentRoom)) { //0148
+  if (obj.in.room("Patrol Car Keys",vCurrentRoom)) { //0148
     draw(o2)
   }
   add.to.pic(86,0,0,35,83,10,10)
@@ -495,7 +495,7 @@ l1850:
 }
 l1881:
 if ((said("get", "call") || said("get", "call", "call") || said("get", "call", "call", "from", "counter") || said("get", "call", "call", "off", "counter") || said("get", "call", "off", "counter") || said("get", "call", "from", "counter"))) { //0759
-  if (has(i4)) { //0799
+  if (has("Radio Extender")) { //0799
     print("Come on. You only need one!")
     goto(l2025)
   }
@@ -511,28 +511,28 @@ if ((said("get", "call") || said("get", "call", "call") || said("get", "call", "
     print("A radio extender is too bulky to carry on an undercover assignment.")
     goto(l2025)
   }
-  if (!(obj.in.room(i4,vCurrentRoom))) { //07c8
+  if (!(obj.in.room("Radio Extender",vCurrentRoom))) { //07c8
     print("You lost your radio extender and now you want another?")
     print("Forget it!")
     goto(l2025)
   }
   print("You pick up a squelchy, noisy, but workable extender.")
   erase(o1)
-  get(i4)
+  get("Radio Extender")
   if (!f61) { //07dd
     set(f61)
     vCurrentScore += 2
   }
 }
 l2025:
-if (has(i4) && said("drop", "call", "rol")) { //07e9
+if (has("Radio Extender") && said("drop", "call", "rol")) { //07e9
   if (!f227) { //07f7
     set(f113)
     goto(l2058)
   }
   print("You return your radio extender to the recharge stand.")
   draw(o1)
-  put(i4,0)
+  put("Radio Extender",0)
 }
 l2058:
 if (said("get", "car keys", "rol")) { //080a
@@ -544,31 +544,31 @@ if (said("get", "car keys", "rol")) { //080a
     print("Since you're not in uniform, you don't need keys to a patrol car.")
     goto(l2136)
   }
-  if (has(i1)) { //082e
+  if (has("Patrol Car Keys")) { //082e
     print("You can't drive two cars at once.")
     goto(l2136)
   }
-  if (!(obj.in.room(i1,vCurrentRoom))) { //0839
+  if (!(obj.in.room("Patrol Car Keys",vCurrentRoom))) { //0839
     print("You lost those keys, remember?")
     goto(l2136)
   }
   print("You take the patrol car's keys from the key board.")
   erase(o2)
-  get(i1)
+  get("Patrol Car Keys")
   if (!f67) { //084c
     set(f67)
     vCurrentScore += 1
   }
 }
 l2136:
-if (has(i1) && (said("drop", "car keys", "rol") || said("hang", "car keys", "rol"))) { //0858
+if (has("Patrol Car Keys") && (said("drop", "car keys", "rol") || said("hang", "car keys", "rol"))) { //0858
   if (!f225) { //0870
     set(f113)
     goto(l2179)
   }
   print("You hang the keys on the key board.")
   draw(o2)
-  put(i1,0)
+  put("Patrol Car Keys",0)
 }
 l2179:
 if ((said("examine") || said("examine", "accident"))) { //0883
@@ -577,7 +577,7 @@ if ((said("examine") || said("examine", "accident"))) { //0883
 if ((said("examine", "down") || said("examine", "curb"))) { //0895
   print("You look down and note a very clean, gray-tiled floor.")
 }
-if (!(has(i4)) && (said("examine", "call") || said("examine", "call", "call") || said("examine", "call"))) { //08a9
+if (!(has("Radio Extender")) && (said("examine", "call") || said("examine", "call", "call") || said("examine", "call"))) { //08a9
   if (f227) { //08c6
     print("The table holds hand-held radio extenders that work in conjunction with your police car radio, when you are not near your patrol car.")
     goto(l2259)

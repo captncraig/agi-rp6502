@@ -160,7 +160,7 @@ if (said("acquire", "torch")) { //01e9
 }
 l516:
 if (!fSaidAccepted && said("light", "candle")) { //0204
-  if (has(i78)) { //0211
+  if (has("T\x01")) { //0211
     if (posn(o0,121,55,133,75)) { //0217
       if (!f106) { //0221
         set(f106)

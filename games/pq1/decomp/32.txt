@@ -253,11 +253,11 @@ if ((said("cuff") || said("cuff", "art", "rol") || said("cuff", "convict", "rol"
     print("He IS!")
     goto(l1112)
   }
-  if (!(has(i24))) { //0438
+  if (!(has("Handcuffs"))) { //0438
     set(f170)
     goto(l1112)
   }
-  drop(i24)
+  drop("Handcuffs")
   start.motion(o0)
   set.loop(o19,1)
   set.cel(o19,0)
@@ -481,7 +481,7 @@ if ((said("examine", "license plate") || said("examine", "convict", "auto", "lic
 }
 l2165:
 if ((said("jog", "license plate") || said("call", "dispatch", "license plate") || said("call", "license plate") || said("jog", "make"))) { //0875
-  if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //0895
+  if (!f39 && !(has("Radio Extender")) && !(posn(o0,111,161,118,162))) { //0895
     print("You must be in your car or have a radio extender.")
     goto(l2235)
   }
@@ -570,7 +570,7 @@ l2502:
 }
 l2507:
 if ((said("jog", "number") || said("call", "number") || said("dispatch", "number") || said("call", "dispatch", "administer", "number") || said("call", "dispatch", "use", "number") || said("make", "number") || said("call", "number"))) { //09cb
-  if (!f39 && !(has(i4)) && !f229) { //0a03
+  if (!f39 && !(has("Radio Extender")) && !f229) { //0a03
     print("You must be in your car or have a radio extender.")
     goto(l2602)
   }
@@ -630,7 +630,7 @@ if (!f39 && !fEnteredCommand && !f229 && v220 < 100) { //0a9b
   }
 }
 l2762:
-if (f162 && has(i14) && vEgoView == v42 && (f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //0aca
+if (f162 && has("Loaded Revolver") && vEgoView == v42 && (f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //0aca
   reset(f33)
   print("Cranking off a few live rounds at this particular time is not recommended.")
 }

@@ -10,7 +10,7 @@ if (fNewRoom) { //0002
   if (f93) { //0024
     v235 = 1
   }
-  if (vCurrentRoom != 53 && (vCurrentRoom == 51 || has(i15))) { //002d
+  if (vCurrentRoom != 53 && (vCurrentRoom == 51 || has("Gas Grenade"))) { //002d
     if (vCurrentRoom == 48) { //003c
       load.view(195)
       goto(l94)
@@ -32,11 +32,11 @@ l94:
     ignore.objs(o11)
     set.priority(o11,15)
   }
-  if ((has(i14) || v160 != 0 || vCurrentRoom == 51)) { //0077
+  if ((has("Pulseray") || v160 != 0 || vCurrentRoom == 51)) { //0077
     load.sound(33)
     load.sound(9)
   }
-  if ((vCurrentRoom == 51 || has(i14))) { //008a
+  if ((vCurrentRoom == 51 || has("Pulseray"))) { //008a
     if (v81 == 3) { //0095
       load.view(211)
       if (vCurrentRoom == 48) { //009e
@@ -57,7 +57,7 @@ l204:
     if (v160 == 1) { //00cc
       load.view(154)
       load.view(179)
-      if (has(i14)) { //00d7
+      if (has("Pulseray")) { //00d7
         if (vCurrentRoom != 50) { //00dd
           load.view(184)
         }
@@ -97,7 +97,7 @@ l312:
   if (vMonitorType == HERCULES && vComputerType == IBM_PC) { //0138
     goto(l339)
   }
-  if (has(i14)) { //0145
+  if (has("Pulseray")) { //0145
     clear.lines(24,24,c0)
     display(24,10,"F6 to fire Pulseray")
   }
@@ -145,7 +145,7 @@ l500:
 }
 if ((said("drop", "bomb") || said("cast", "bomb"))) { //021c
   if (!(v236 > 0)) { //022e
-    if (has(i15)) { //0236
+    if (has("Gas Grenade")) { //0236
       if (f151) { //023c
         print("This is neither the time nor the place.")
         goto(l665)
@@ -155,7 +155,7 @@ if ((said("drop", "bomb") || said("cast", "bomb"))) { //021c
         goto(l665)
       }
       get.posn(o0,v135,v136)
-      drop(i15)
+      drop("Gas Grenade")
       set(f139)
       if (v136 > 17) { //025b
         v136 -= 16
@@ -274,7 +274,7 @@ if (f246 && f128) { //0393
   set(fSaidAccepted)
 }
 if (!f246 && f128 && !f217 && !f151 && vWhichEgoBorder == 0 && !fSaidAccepted) { //039d
-  if (has(i14)) { //03b2
+  if (has("Pulseray")) { //03b2
     set(f246)
     set(fSaidAccepted)
     set(f217)
@@ -412,7 +412,7 @@ if (f232) { //0548
     goto(l1396)
   }
   if (v236 == 2) { //055a
-    if (has(i14)) { //0561
+    if (has("Pulseray")) { //0561
       random(17,20,v64)
       goto(l1394)
     }

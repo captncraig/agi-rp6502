@@ -29,7 +29,7 @@ if ((said("drink", "liquid") || said("drink", "bay", "liquid") || said("drink", 
   print("Drinking salt water will only make you sick.")
 }
 if ((said("capture", "liquid") || said("capture", "bay", "liquid") || said("capture", "liquid", "bay") || said("capture", "liquid", "cup") || said("capture", "bay", "liquid", "cup") || said("capture", "grains of salt", "liquid", "cup") || said("capture", "grains of salt", "liquid"))) { //00ca
-  if (has(i26)) { //010a
+  if (has("Cup & Ocean Water*")) { //010a
     print("Your cup is already full of water.")
     goto(l319)
   }
@@ -37,13 +37,13 @@ if ((said("capture", "liquid") || said("capture", "bay", "liquid") || said("capt
     print("You need to move closer.")
     goto(l319)
   }
-  if (!(has(i42))) { //0121
+  if (!(has("Empty Cup"))) { //0121
     print("You need a cup for the water.")
     goto(l319)
   }
   print("You fill your cup with ocean water.")
-  get(i26)
-  drop(i42)
+  get("Cup & Ocean Water*")
+  drop("Empty Cup")
   if (!f102) { //0133
     set(f102)
     vCurrentScore += 1

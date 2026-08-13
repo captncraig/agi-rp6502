@@ -1,5 +1,5 @@
 v36 = 114
-if (!f200 && !(obj.in.room(i9,v36))) { //0005
+if (!f200 && !(obj.in.room("Eagle Feather*",v36))) { //0005
   return()
 }
 if (fNewRoom) { //0011
@@ -80,7 +80,7 @@ if ((said("capture", "bird", "feather") || said("capture", "eagle", "feather") |
     print("Ok.")
     reset(f191)
     erase(o11)
-    get(i9)
+    get("Eagle Feather*")
     vCurrentScore += 2
 l296:
     goto(l301)

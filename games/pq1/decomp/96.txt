@@ -347,7 +347,7 @@ if ((said("move", "above", "auto") || said("move", "auto", "above") || said("don
   print("Get closer to the suspect vehicle.")
 }
 l1268:
-if (has(i7) && said("anyword", "briefcase")) { //04f4
+if (has("Briefcase") && said("anyword", "briefcase")) { //04f4
   print("That would be unsafe while driving!")
 }
 if ((said("get", "nightstick") || said("get", "nightstick", "off", "d") || said("get", "nightstick", "from", "d") || said("empty", "nightstick", "from", "d") || said("get", "nightstick", "from", "auto"))) { //0502

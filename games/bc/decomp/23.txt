@@ -7,7 +7,7 @@ if (fNewRoom) { //0002
   load.view(1)
   load.view(14)
   load.logic(101)
-  if (v57 > 0 && !(has(i18))) { //0018
+  if (v57 > 0 && !(has("Magic Word"))) { //0018
     set(f204)
     load.view(74)
     load.view(3)

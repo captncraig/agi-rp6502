@@ -80,7 +80,7 @@ l256:
       print("You remove the 'cuffs and place them in your handcuff case.")
       v166 = 20
       v220++
-      get(i24)
+      get("Handcuffs")
       if (!f130) { //0155
         set(f130)
         vCurrentScore += 3
@@ -89,8 +89,8 @@ l256:
         v220 = 100
         goto(l380)
       }
-      if (!f42 && has(i14)) { //016e
-        drop(i14)
+      if (!f42 && has("Loaded Revolver")) { //016e
+        drop("Loaded Revolver")
         v220 = 100
       }
     }
@@ -214,11 +214,11 @@ if (v96 == 3) { //02a2
       set(f113)
       goto(l870)
     }
-    if (has(i23)) { //0336
+    if (has("No Bail Warrant")) { //0336
       set(f36)
       print("You hand the jailer the No Bail Warrant just in time to keep Mr. Taselli from returning to the streets.")
       print("\"Oh, man! This is great, Sonny,\" the jailer laughs. \"I hope you know this will slam the ol' boy's orifice shut.\"")
-      put(i23,0)
+      put("No Bail Warrant",0)
       if (!f125) { //0345
         v96 = 4
         set(f125)

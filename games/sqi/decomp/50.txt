@@ -281,16 +281,16 @@ if (f171 && (said("explore", "bodies") || said("explore", "being") || said("acqu
     print("You can't do that from here.")
     goto(l964)
   }
-  if (has(i16)) { //03b2
+  if (has("Remote Control")) { //03b2
     print("The guard has nothing else of any interest.")
     goto(l964)
   }
   print("You seem to have found a remote control device of some sort. It has only one button, labeled \"ON/OFF\"")
   vCurrentScore += 3
-  get(i16)
+  get("Remote Control")
 }
 l964:
-if (has(i16) && said("press", "button")) { //03c4
+if (has("Remote Control") && said("press", "button")) { //03c4
   if (f42) { //03d0
     set(f215)
     print("Suddenly, the force field protecting the Star Generator disappears.")
@@ -308,7 +308,7 @@ if (has(i16) && said("press", "button")) { //03c4
   print("You have reactivated the force field.")
 }
 l1016:
-if (!f83 && has(i15) && (said("drop", "bomb") || said("cast", "bomb"))) { //03f8
+if (!f83 && has("Gas Grenade") && (said("drop", "bomb") || said("cast", "bomb"))) { //03f8
   if (f171) { //040f
     print("The guard is already dead. You have only yourself to harm.")
     goto(l1052)

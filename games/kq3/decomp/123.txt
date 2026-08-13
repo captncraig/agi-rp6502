@@ -16,11 +16,11 @@ if ((said("add", "grains of salt", "ladle") || said("add", "grains of salt", "mo
 }
 l122:
 if (said("crumble", "mistletoe", "mortar")) { //007a
-  if (!(has(i15))) { //0086
+  if (!(has("Mistletoe*"))) { //0086
     print("You cannot use that which you do not have.")
     goto(l161)
   }
-  drop(i15)
+  drop("Mistletoe*")
   print("Placing the dried sprig of mistletoe in the stone mortar, you crush it with the pestle.")
   if (v103 == 2) { //0096
     reset(f120)
@@ -29,7 +29,7 @@ if (said("crumble", "mistletoe", "mortar")) { //007a
 }
 l161:
 if ((said("pat", "amber", "rock", "compound") || said("pat", "amber", "rock", "mortar") || said("pat", "rock", "compound") || said("pat", "rock", "mortar"))) { //00a1
-  if (!(has(i14))) { //00cb
+  if (!(has("Amber Stone*"))) { //00cb
     print("You cannot use that which you do not have.")
     goto(l228)
   }
@@ -51,15 +51,15 @@ if ((said("embrace", "amber", "rock") || said("embrace", "rock"))) { //00e4
 }
 l266:
 if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //010a
-  if (!(has(i37))) { //011e
+  if (!(has("Magic Wand*"))) { //011e
     print("You cannot use that which you do not have.")
     goto(l313)
   }
   print("You wave the magic wand over the encrusted amber stone.")
   if (v103 == 6) { //012c
     reset(f120)
-    drop(i14)
-    get(i16)
+    drop("Amber Stone*")
+    get("Magic Stone*")
   }
 }
 l313:
@@ -137,11 +137,11 @@ l497:
 }
 if (f240) { //021c
   reset(f240)
-  if (!(has(i13))) { //0224
+  if (!(has("Salt*"))) { //0224
     print("You cannot use that which you do not have.")
     goto(l573)
   }
-  drop(i13)
+  drop("Salt*")
   print("You place a spoonful of coarse salt grains in the mortar. Then, using the stone pestle, you grind the salt until it is very fine.")
   if (v103 == 1) { //0234
     reset(f120)

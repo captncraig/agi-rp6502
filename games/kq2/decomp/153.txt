@@ -106,7 +106,7 @@ if ((said("give", "basket", "bitch") || said("give", "bitch", "basket"))) { //01
     print("You are too far away from her.")
     goto(l672)
   }
-  if (has(i62)) { //019c
+  if (has("T\x01")) { //019c
     print("You ate the goodies out of the basket! Why would you think she would want it now?")
     goto(l448)
   }
@@ -132,7 +132,7 @@ if (said("give", "anyword")) { //01de
 }
 l490:
 if ((said("acquire", "basket") || said("steal", "basket"))) { //01ea
-  if (f57 && !(has(i63)) && !(has(i62))) { //01fc
+  if (f57 && !(has(i63)) && !(has("T\x01"))) { //01fc
     print("You gave the basket of goodies to Little Red Riding Hood. It's hers now. You can't take it!")
   }
 }
@@ -147,7 +147,7 @@ if (!f59) { //0219
   }
 }
 if (said("give", "basket")) { //0234
-  if ((has(i63) || has(i62))) { //023e
+  if ((has(i63) || has("T\x01"))) { //023e
     print("There is nobody here to give it to.")
     goto(l591)
   }

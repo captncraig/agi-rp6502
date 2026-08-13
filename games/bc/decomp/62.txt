@@ -118,7 +118,7 @@ if (!f77 && f202) { //013b
   v202 = 27
   goto(l712)
 }
-if (f77 && f204 && has(i15)) { //0150
+if (f77 && f204 && has("Flying Dust")) { //0150
   set(fSaidAccepted)
   print("\"Why don't you try using your new flying dust, Taran?\" says the King. \"Sprinkle it whenever you want to start or stop flying.\"")
 }
@@ -151,12 +151,12 @@ l381:
 if (!f77 && f204 && f211) { //019f
   if (v60 == 14) { //01aa
     set(fSaidAccepted)
-    drop(i14)
+    drop("Lute")
     print("You offer the lute to King Eiddileg.")
   }
   if (v60 == 13) { //01b7
     set(fSaidAccepted)
-    drop(i13)
+    drop("Harp")
     print("You offer the harp to King Eiddileg.")
   }
   if (fSaidAccepted) { //01c4
@@ -213,8 +213,8 @@ if (v210 == 1) { //0244
   reset(f201)
   v202 = 0
   v203 = 0
-  get(i15)
-  get(i19)
+  get("Flying Dust")
+  get("Magic Mirror")
   v69 = 4
   print("\"Thank you for your gift, Taran,\" says King Eiddileg, \"you represent Dallben quite admirably. I'm so glad it's really you. Your remarkable Hen Wen is also here, and quite safe.")
   v61 = v57

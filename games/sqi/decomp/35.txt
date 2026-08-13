@@ -19,7 +19,7 @@ if (fNewRoom) { //0002
   position(o4,94,71)
   set.priority(o4,15)
   draw(o4)
-  if (f127 && !(has(i7))) { //003b
+  if (f127 && !(has("Skimmer key"))) { //003b
     random(1,100,v64)
     if (v64 > 66) { //0048
       reset(f127)
@@ -369,7 +369,7 @@ l1178:
       goto(l1214)
     }
     if ((obj.in.box(o0,35,133,67,157) || f35)) { //049d
-      if (!(has(i7))) { //04ab
+      if (!(has("Skimmer key"))) { //04ab
         print("The sand skimmer is a one-passenger mode of transportation and it looks like it has skimmed quite a bit of sand in its time. On it is a panel which has a small readout, currently dark, and a keyhole with a key in it.")
         goto(l1209)
       }
@@ -389,7 +389,7 @@ if (f42) { //04be
 if (f127) { //04e4
   if (said("check out", "computer console")) { //04ea
     if ((posn(o0,35,130,66,158) || f35)) { //04f4
-      if (has(i7)) { //0502
+      if (has("Skimmer key")) { //0502
         print("The panel has an ignition switch. There is no key in it.")
         goto(l1295)
       }
@@ -399,7 +399,7 @@ if (f127) { //04e4
 l1295:
   if ((said("check out", "button") || said("check out", "ignition"))) { //050f
     if ((posn(o0,35,130,66,158) || f35)) { //0521
-      if (!(has(i7))) { //052f
+      if (!(has("Skimmer key"))) { //052f
         print("The ignition switch has a hole for a key which is currently filled.")
         goto(l1341)
       }
@@ -415,7 +415,7 @@ if (f127) { //0542
   if (!f58) { //0548
     if ((said("turn", "key") || said("start", "bike"))) { //054f
       if ((obj.in.box(o0,35,133,67,157) || f35)) { //0561
-        if (!(has(i7))) { //056f
+        if (!(has("Skimmer key"))) { //056f
           print("That will do you no good. The power cell is drained. It may take some time to recharge.")
           goto(l1405)
         }
@@ -480,11 +480,11 @@ if (v30 > 0) { //0696
     if (v58 == 4) { //06a5
       if (obj.in.box(o0,23,132,83,161)) { //06ac
         v124 += v35
-        get(i10)
+        get("Buckazoid(s)")
         v30 = 10
         v58 = 6
-        if (has(i7)) { //06c1
-          drop(i7)
+        if (has("Skimmer key")) { //06c1
+          drop("Skimmer key")
           print("\"Glad we could do business. I'll just take that key. Thank you kindly. Hope your stay in Ulence Flats is an interesting one.\"")
           goto(l1744)
         }
@@ -499,13 +499,13 @@ l1749:
     if (v58 == 7) { //06d8
       if (obj.in.box(o0,23,132,83,161)) { //06df
         v124 += v35
-        get(i10)
-        get(i9)
+        get("Buckazoid(s)")
+        get("Jetpack")
         v30 = 10
         v58 = 9
         vCurrentScore += 5
-        if (has(i7)) { //06f9
-          drop(i7)
+        if (has("Skimmer key")) { //06f9
+          drop("Skimmer key")
           print("\"Glad we could do business. I'll just take that key. Thank you kindly. Hope your stay in Ulence Flats is an interesting one.\"")
           goto(l1800)
         }
@@ -554,9 +554,9 @@ if (f127) { //076a
   if (said("acquire", "key")) { //0770
     if (!f58) { //077a
       if ((posn(o0,35,130,66,158) || f35)) { //0781
-        if (!(has(i7))) { //078f
+        if (!(has("Skimmer key"))) { //078f
           if (f90) { //0796
-            get(i7)
+            get("Skimmer key")
             print("Taken")
             goto(l1957)
           }
@@ -580,8 +580,8 @@ if (f127) { //07b4
   if (!f58) { //07ba
     if ((said("fill", "key") || said("drop", "key", "ignition"))) { //07c1
       if ((posn(o0,35,130,66,158) || f35)) { //07d5
-        if (has(i7)) { //07e3
-          drop(i7)
+        if (has("Skimmer key")) { //07e3
+          drop("Skimmer key")
           print("Done.")
           goto(l2034)
         }

@@ -99,7 +99,7 @@ if (!f72 && said("acquire", "clam")) { //0124
     goto(l331)
   }
   print("When you pick up the clamshell, you see that there was a sparkling sapphire and diamond bracelet under it!")
-  get(i82)
+  get("T\x01")
   erase(o3)
   draw(o4)
   set(f72)
