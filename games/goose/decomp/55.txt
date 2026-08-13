@@ -1,3 +1,205 @@
-if (!(isSet(f55)
-!!!
-&{%!e(string=incomplete condition: 0x2c)}
+if (!f55) { //0002
+  set(f55)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  ignore.horizon(o4)
+  stop.cycling(o4)
+  set.loop(o4,1)
+  set.cel(o4,2)
+  load.sound(3)
+  get.posn(o0,v212,v213)
+  if (v212 < 66) { //001f
+    move.obj(o0,55,94,1,f122)
+    goto(l53)
+  }
+  move.obj(o0,54,90,1,f122)
+}
+l53:
+if (f122) { //0035
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v212 == 35 && v213 == 130) { //0041
+    set(f104)
+    set.loop(o0,3)
+    force.update(o0)
+    stop.update(o0)
+    goto(l130)
+  }
+  if (v212 == 54 && v213 == 90) { //0057
+    move.obj(o0,35,130,1,f122)
+    erase(o12)
+    animate.obj(o13)
+    set.view(o13,59)
+    set.loop(o13,1)
+    position(o13,55,88)
+    draw(o13)
+    stop.cycling(o13)
+    goto(l130)
+  }
+  move.obj(o0,54,90,1,f122)
+}
+l130:
+if (!f108 && f104) { //0082
+  set(f108)
+  set(f43)
+  reset(f104)
+  sound(3,f103)
+  vTimeSeconds = 0
+  set(f15)
+  if (vMonitorType != HERCULES) { //0099
+    print.at("                                   \n\n\n\n\n",15,2,36)
+    display(16,2,"Humpty Dumpty sat on a wall,")
+    goto(l182)
+  }
+  print.at("                                   \n\n\n\n\n",16,2,36)
+  display(17,2,"Humpty Dumpty sat on a wall,")
+}
+l182:
+if (vTimeSeconds > 3 && f108 && !f109) { //00b6
+  set(f109)
+  if (vMonitorType != HERCULES) { //00c4
+    display(17,2,"Humpty Dumpty had a great fall;")
+    goto(l215)
+  }
+  display(18,2,"Humpty Dumpty had a great fall;")
+}
+l215:
+if (vTimeSeconds > 7 && f109 && !f110) { //00d7
+  set(f110)
+  if (vMonitorType != HERCULES) { //00e5
+    display(18,2,"All the King's horses, and all the")
+    display(19,2,"    King's men")
+    goto(l256)
+  }
+  display(19,2,"All the King's horses, and all the")
+  display(20,2,"    King's men")
+}
+l256:
+if (vTimeSeconds > 11 && f110 && !f111) { //0100
+  set(f111)
+  if (vMonitorType != HERCULES) { //010e
+    display(20,2,"Cannot put Humpty Dumpty back")
+    display(21,2,"    together again.")
+    goto(l297)
+  }
+  display(21,2,"Cannot put Humpty Dumpty back")
+  display(22,2,"    together again.")
+}
+l297:
+v47--
+if (v47 == 1) { //012b
+  set(f43)
+}
+if (f43) { //0134
+  reset(f43)
+  v48++
+  if (v48 == 1) { //013e
+    set.priority(o4,14)
+    reposition.to(o4,53,88)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    v47 = 4
+  }
+  if (v48 == 2) { //0155
+    start.cycling(o4)
+    v209 = 2
+    cycle.time(o4,v209)
+    move.obj(o4,53,73,1,f43)
+  }
+  if (v48 == 3) { //016a
+    stop.cycling(o4)
+    set.loop(o4,0)
+    set.cel(o4,1)
+    reposition.to(o4,54,70)
+    v47 = 3
+  }
+  if (v48 == 4) { //0180
+    reposition.to(o4,57,69)
+    v47 = 3
+  }
+  if (v48 == 5) { //018e
+    set.loop(o4,1)
+    set.cel(o4,3)
+    v47 = 35
+  }
+  if (v48 == 6) { //019e
+    set.loop(o4,3)
+    set.cel(o4,0)
+    start.cycling(o4)
+    move.obj(o4,57,93,4,f43)
+  }
+  if (v48 == 7) { //01b3
+    set.loop(o4,1)
+    set.cel(o4,4)
+    v209 = 4
+    cycle.time(o4,v209)
+    end.of.loop(o4,f43)
+  }
+  if (v48 == 8) { //01c9
+    stop.cycling(o4)
+    animate.obj(o5)
+    set.view(o5,70)
+    set.loop(o5,4)
+    set.cel(o5,0)
+    position(o5,0,97)
+    draw(o5)
+    stop.cycling(o5)
+    move.obj(o5,27,97,1,f43)
+    animate.obj(o8)
+    set.view(o8,70)
+    set.loop(o8,5)
+    set.cel(o8,0)
+    ignore.horizon(o8)
+    ignore.blocks(o8)
+    position(o8,5,72)
+    set.priority(o8,9)
+    draw(o8)
+    move.obj(o8,32,72,1,f47)
+    stop.cycling(o8)
+    animate.obj(o6)
+    animate.obj(o7)
+    set.view(o6,70)
+    set.view(o7,70)
+    set.loop(o6,6)
+    set.loop(o7,6)
+    set.cel(o6,0)
+    set.cel(o7,0)
+    position(o6,0,101)
+    position(o7,9,101)
+    draw(o6)
+    draw(o7)
+    move.obj(o6,27,101,1,f47)
+    move.obj(o7,36,101,1,f47)
+  }
+  if (v48 == 9) { //0239
+    stop.cycling(o6)
+    stop.cycling(o7)
+    v47 = 20
+  }
+  if (v48 == 10) { //0247
+    v209 = 5
+    cycle.time(o8,v209)
+    end.of.loop(o8,f43)
+  }
+  if (v48 == 11) { //0257
+    stop.cycling(o8)
+    v47 = 20
+  }
+  if (v48 == 12) { //0263
+    add.to.pic(70,4,0,27,97,0,0)
+    add.to.pic(70,5,5,32,72,9,4)
+    add.to.pic(70,6,0,27,101,0,0)
+    add.to.pic(70,6,0,36,101,0,0)
+    add.to.pic(59,1,0,55,88,0,0)
+    add.to.pic(70,1,9,57,93,0,0)
+    erase(o5)
+    erase(o8)
+    erase(o6)
+    erase(o7)
+    erase(o13)
+    erase(o4)
+    block(22,92,49,99)
+    set(f114)
+  }
+}
+return()

@@ -1,4 +1,35 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f142) { //000e
+    load.view(91)
+    set.view(o0,91)
+    position(o0,1,60)
+    move.obj(o0,130,60,0,f20)
+    goto(l53)
+  }
+  load.view(89)
+  set.view(o0,89)
+  position(o0,1,60)
+  move.obj(o0,135,60,0,f21)
+l53:
+  draw(o0)
+  show.pic()
+}
+if ((said("check", "view") || said("check", "clouds") || said("check", "room"))) { //0038
+  print("The view is magnificent.")
+}
+if (said("ANYWORD", "witch")) { //0052
+  print("Now is not the time to irritate the witch.")
+}
+if (said("ANYWORD", "big bird")) { //005e
+  print("Now is not a good time to bother the bird.")
+}
+if (f20) { //006a
+  new.room(65)
+}
+if (f21) { //0072
+  new.room(48)
+}
+return()

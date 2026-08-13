@@ -1,4 +1,111 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(55)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,128,61,0,0)
+  }
+  if (vPrevRoom == 44) { //002b
+    get.posn(o0,v60,v61)
+    if (v60 < 75) { //0036
+      position(o0,10,57)
+    }
+    if (v60 > 74) { //0041
+      position(o0,140,57)
+    }
+  }
+  if (vPrevRoom == 28) { //004c
+    get.posn(o0,v60,v61)
+    if (v60 < 75) { //0057
+      position(o0,5,164)
+    }
+    if (v60 > 74) { //0062
+      position(o0,144,164)
+    }
+  }
+  block(27,59,127,167)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (f213) { //0077
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+if (said("check", "lake")) { //0081
+  print("This lake looks refreshing, but a little swampy.")
+}
+if (said("check", "tree")) { //008d
+  print("This is a very interesting tree, growing in the middle of the lake.")
+}
+if (!fEgoOnWater) { //0099
+  if ((posn(o0,83,108,131,143) || posn(o0,37,101,82,145) || posn(o0,48,37,94,100) || posn(o0,39,54,100,80) || posn(o0,85,146,108,155))) { //00a0
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fEgoOnWater) { //00c8
+  v76 = 255
+  if (posn(o0,124,119,131,141)) { //00d5
+    v76 = 112
+    v77 = 139
+  }
+  if (posn(o0,19,56,33,74)) { //00e5
+    v76 = 30
+    v77 = 67
+  }
+  if (v76 == 255) { //00f5
+    v76 = 0
+    goto(l270)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l270:
+if (!f88) { //010e
+  if ((said("drink", "water") || said("acquire", "drink"))) { //0115
+    print("In your thirst, even swamp water is satisfying.")
+  }
+}
+if (!f88 && f81 && said("acquire", "water")) { //0129
+  print("The bucket fills with the somewhat swampy water.")
+  get(i26)
+  set(f88)
+  if (!f91) { //013e
+    vCurrentScore += 2
+  }
+  set(f91)
+}
+if (vWhichEgoBorder != 0) { //014a
+  if (f66) { //0152
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //0160
+  new.room(44)
+}
+if (vWhichEgoBorder == 2) { //0169
+  new.room(36)
+}
+if (vWhichEgoBorder == 4) { //0172
+  new.room(38)
+}
+if (vWhichEgoBorder == 3) { //017b
+  new.room(28)
+}
+if (f75) { //0184
+  call(103)
+}
+call(101)
+return()

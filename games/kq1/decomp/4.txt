@@ -1,4 +1,117 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(55)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,74,66,0,0)
+  }
+  if (vPrevRoom == 13) { //002b
+    get.posn(o0,v60,v61)
+    if (v60 < 70) { //0036
+      position(o0,70,56)
+    }
+  }
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (f213) { //0046
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+if (said("check", "lake")) { //0050
+  print("This is a serene mountain lake.")
+}
+if (said("check", "cattails")) { //005c
+  print("These cattails are soft and fuzzy.")
+}
+if (!f88 && !fEgoOnWater && !f116) { //0068
+  if ((said("drink", "water") || said("acquire", "drink"))) { //0075
+    if ((posn(o0,0,40,57,56) || posn(o0,0,57,76,70) || posn(o0,0,90,109,167) || posn(o0,0,71,97,89))) { //0087
+      print("The lake's water is very refreshing.")
+      goto(l172)
+    }
+    print("You are not close enough to the water.")
+  }
+}
+l172:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //00ac
+  if ((posn(o0,0,40,57,56) || posn(o0,0,57,76,70) || posn(o0,0,90,106,133) || posn(o0,0,134,106,167))) { //00be
+    reset(f116)
+    print("The clear water washes into the bucket.")
+    get(i26)
+    set(f88)
+    if (!f91) { //00e4
+      vCurrentScore += 2
+    }
+    set(f91)
+    goto(l245)
+  }
+  print("You are not close enough to the water.")
+}
+l245:
+if (!fEgoOnWater) { //00f5
+  if ((posn(o0,0,78,22,158) || posn(o0,23,151,25,162) || posn(o0,26,147,42,152) || posn(o0,43,141,60,149) || posn(o0,16,129,38,146))) { //00fc
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fEgoOnWater) { //0124
+  v76 = 255
+  if (posn(o0,0,147,25,163)) { //0131
+    v76 = 3
+    v77 = 148
+  }
+  if (posn(o0,26,148,49,157)) { //0141
+    v76 = 27
+    v77 = 148
+  }
+  if (posn(o0,50,142,76,150)) { //0151
+    v76 = 50
+    v77 = 143
+  }
+  if (posn(o0,77,143,96,145)) { //0161
+    v76 = 74
+    v77 = 142
+  }
+  if (v76 == 255) { //0171
+    v76 = 0
+    goto(l394)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l394:
+if (vWhichEgoBorder != 0) { //018a
+  if (f66) { //0192
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //01a0
+  new.room(13)
+}
+if (vWhichEgoBorder == 2) { //01a9
+  new.room(3)
+}
+if (vWhichEgoBorder == 4) { //01b2
+  new.room(5)
+}
+if (vWhichEgoBorder == 3) { //01bb
+  new.room(45)
+}
+if (f75) { //01c4
+  call(103)
+}
+call(101)
+return()

@@ -1,4 +1,291 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x7a)}
+if (fNewRoom) { //0002
+  add.to.pic(77,0,1,52,66,4,4)
+  if (!f120) { //0010
+    v166 = 237
+    load.view(26)
+    load.view(34)
+    load.view(23)
+    load.view(28)
+    animate.obj(o1)
+    animate.obj(o2)
+    animate.obj(o3)
+    animate.obj(o4)
+    animate.obj(o5)
+    animate.obj(o6)
+    animate.obj(o7)
+    set.view(o1,23)
+    set.view(o2,28)
+    set.view(o3,28)
+    set.view(o4,34)
+    set.view(o5,23)
+    set.view(o6,28)
+    set.view(o7,26)
+    set.loop(o1,3)
+    set.loop(o2,3)
+    set.loop(o3,3)
+    set.loop(o4,3)
+    set.loop(o5,3)
+    set.loop(o6,3)
+    set.loop(o7,2)
+    position(o1,106,128)
+    position(o2,113,155)
+    position(o3,96,155)
+    position(o4,61,128)
+    position(o5,48,128)
+    position(o6,40,155)
+    position(o7,76,95)
+    draw(o1)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+    draw(o7)
+    stop.update(o1)
+    stop.update(o2)
+    stop.update(o3)
+    stop.update(o4)
+    stop.update(o5)
+    stop.update(o6)
+    stop.update(o7)
+  }
+  return()
+}
+if (v166 == 235 && !f240) { //0093
+  if (v255 == 3) { //009d
+    print("Sgt. Dooley cans your butt on the spot, \"Bonds, you're FIRED for insubordination!\"")
+    set(f140)
+    goto(l178)
+  }
+  print("In his firm voice, Dooley reminds you, \"Being punctual to briefings might keep some of those corrective memos out of your pigeonhole, Bonds! Now, find your seat!\"")
+  v166 = 245
+  v255++
+}
+l178:
+if (!f234 && (v228 < 10 || v229 < 10 || v230 < 10 || v231 < 10 || v232 < 10 || v233 < 10)) { //00b2
+  set(f234)
+  print("\"I heard about that Honey you stopped last night who tried to negotiate her way out of a ticket by exposing the upper parts of her anatomy.\"")
+}
+if (v31 == 3) { //00d1
+  if (v228 < 10 && !f227) { //00d8
+    print("\"I'm late for court, Sonny. Catch you later.\"")
+    set(f227)
+  }
+  if (v229 < 10 && !f228) { //00e6
+    print("\"You should buy a new watch, Sonny. You might show up on time, for once!\"")
+    set(f228)
+  }
+  if (v230 < 10 && !f229) { //00f4
+    print("\"Boy, Sonny! Sgt. Dooley is hotter than a pistol at you!\"")
+    set(f229)
+  }
+  if (v231 < 10 && !f230) { //0102
+    print("\"Sonny, the next time you sign up for graveyard shift, I'd just love to be your partner.\"")
+    set(f230)
+  }
+  if (v232 < 10 && !f231) { //0110
+    print("\"The next time Dooley embarrasses you like that, you oughta tell him to go eat hub caps in the parking lot.\"")
+    set(f231)
+  }
+  if (v233 < 10 && !f232) { //011e
+    print("\"Boy, Judge Palmer sure ticked me off this morning by finding that sleazy dude not guilty. What a judicial jerk-ette she is!\"")
+    set(f232)
+  }
+}
+current.loop(o0,v147)
+if (f240 && v147 == 3 && v166 > 200) { //012f
+  set(f36)
+  start.motion(o0)
+  prevent.input()
+  print("Sgt. Dooley says, \"Men, we've received information from the Day Sergeant concerning a Missing Persons report filed earlier this morning.")
+  v166 = 200
+}
+if (v166 == 196) { //0145
+  print("\"It seems that a Mexican male (physical description of 5'8\", 145 lbs, black hair, brown eyes) by the name of Jose Martinez, was last seen by his wife two days ago, getting into a late-model light blue Cadillac. No one has seen or heard from Martinez since.")
+  v166--
+}
+if (v166 == 192) { //0150
+  print("\"This person has some previous arrests involving narcotics sales,\" says Dooley, concluding the briefing. \"Be advised that this black Cadillac may be one and the same as the one involved in the recent murder of Lonny West. We have a partial license plate number of 'L964.'\"")
+  v166--
+}
+if (v166 == 188) { //015b
+  print("Dooley then proceeds to give everyone their beat assignments for the day, concluding with yours, \"Sonny Bonds, your call number will be 83-32.\"")
+  v166--
+}
+if (v166 == 184) { //0166
+  v166 = 0
+  set(f234)
+  print("\"Keep it safe out there, boys and girls!\"")
+  reset(f36)
+  accept.input()
+  if (v31 < 3) { //0177
+    v31 = 3
+    set(f120)
+    vCurrentScore += 1
+  }
+}
+if (v31 == 3) { //0186
+  if (v220 == 0) { //018d
+    start.update(o7)
+    move.obj(o7,66,95,1,f220)
+  }
+  if (v220 == 1) { //019c
+    move.obj(o7,52,109,1,f220)
+  }
+  if (v220 == 2) { //01a9
+    move.obj(o7,18,109,1,f220)
+  }
+  if (v220 == 3) { //01b6
+    erase(o7)
+    reset(f220)
+    v220++
+  }
+  if (v220 > 2) { //01c3
+    if (v221 == 0) { //01ca
+      start.update(o2)
+      move.obj(o2,124,155,1,f221)
+    }
+    if (v221 == 1) { //01d9
+      move.obj(o2,124,124,1,f221)
+    }
+    if (v221 == 2) { //01e6
+      move.obj(o2,111,111,1,f221)
+    }
+    if (v221 == 3) { //01f3
+      move.obj(o2,18,111,1,f221)
+    }
+    if (v221 == 4) { //0200
+      erase(o2)
+      reset(f221)
+      v221++
+    }
+  }
+  if (v221 > 1) { //020d
+    if (v222 == 0) { //0214
+      start.update(o1)
+      move.obj(o1,116,128,1,f222)
+    }
+    if (v222 == 1) { //0223
+      move.obj(o1,116,115,1,f222)
+    }
+    if (v222 == 2) { //0230
+      move.obj(o1,18,115,1,f222)
+    }
+    if (v222 == 3) { //023d
+      erase(o1)
+      reset(f222)
+      v222++
+    }
+  }
+  if (v222 > 2) { //024a
+    if (v223 == 0) { //0251
+      start.update(o6)
+      move.obj(o6,27,155,1,f223)
+    }
+    if (v223 == 1) { //0260
+      move.obj(o6,27,116,1,f223)
+    }
+    if (v223 == 2) { //026d
+      move.obj(o6,18,116,1,f223)
+    }
+    if (v223 == 3) { //027a
+      erase(o6)
+      reset(f223)
+      v223++
+    }
+  }
+  if (v223 > 2) { //0287
+    if (v224 == 0) { //028e
+      start.update(o5)
+      move.obj(o5,36,128,1,f224)
+    }
+    if (v224 == 1) { //029d
+      move.obj(o5,24,116,1,f224)
+    }
+    if (v224 == 2) { //02aa
+      move.obj(o5,18,116,1,f224)
+    }
+    if (v224 == 3) { //02b7
+      erase(o5)
+      reset(f224)
+      v224++
+    }
+  }
+  if (v224 > 1) { //02c4
+    if (f225) { //02cb
+      reset(f225)
+      v225++
+    }
+    if (v225 == 0) { //02d5
+      start.update(o4)
+      move.obj(o4,75,128,1,f225)
+    }
+    if (v225 == 1) { //02e4
+      move.obj(o4,75,117,1,f225)
+    }
+    if (v225 == 2) { //02f1
+      move.obj(o4,18,117,1,f225)
+    }
+    if (v225 == 3) { //02fe
+      erase(o4)
+      reset(f225)
+      v225++
+    }
+  }
+  if (v225 > 1) { //030b
+    if (v226 == 0) { //0312
+      start.update(o3)
+      move.obj(o3,85,155,1,f226)
+    }
+    if (v226 == 1) { //0321
+      move.obj(o3,73,136,1,f226)
+    }
+    if (v226 == 2) { //032e
+      move.obj(o3,43,136,1,f226)
+    }
+    if (v226 == 3) { //033b
+      move.obj(o3,17,110,1,f226)
+    }
+    if (v226 == 4) { //0348
+      erase(o3)
+      reset(f226)
+      reset(f102)
+      v226++
+    }
+  }
+}
+if (f238) { //0357
+  reset(f238)
+  if (f241) { //035f
+    print("There are some messages, but they're not for you.")
+    goto(l930)
+  }
+  if (f242) { //036a
+    print("There are some messages, but they're not for you.")
+    goto(l930)
+  }
+  if (f243) { //0375
+    if (!f161) { //037b
+      set(f161)
+      vCurrentScore += 3
+      print("You check your pigeonhole and find a sealed envelope.")
+      print("Ripping it open, you read a message from an unknown informant, advising you of illegal, high-stakes gambling in the back room of the Hotel Delphoria Cocktail Lounge.")
+      print("You vow to remember the information, and discard the envelope and message.")
+      goto(l914)
+    }
+    print("Your pigeonhole is empty.")
+l914:
+    goto(l930)
+  }
+  if (f244) { //0395
+    print("There are some messages, but they're not for you.")
+    goto(l930)
+  }
+  set(f238)
+l930:
+  if (!f238 && !f176) { //03a2
+    set(f176)
+    vCurrentScore += 1
+  }
+}
+return()

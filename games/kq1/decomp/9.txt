@@ -1,4 +1,89 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v32 = 4
+  set.horizon(46)
+  if (f75) { //0013
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001b
+    add.to.pic(62,0,0,27,131,0,0)
+  }
+  random(0,250,v62)
+  if (v62 < 125 && v64 == 0) { //002e
+    load.view(6)
+    animate.obj(o1)
+    set.view(o1,6)
+    v31 = 45
+    load.sound(6)
+  }
+  draw(o0)
+  show.pic()
+}
+v31--
+if (v31 == 1) { //0049
+  position(o1,50,80)
+  draw(o1)
+  print("\"Gentle Sir Graham, I am your fairy godmother.  Your quest is indeed noble.  My small part to aid you can be no bigger than this magic spell, protective but for a little while.\"")
+  follow.ego(o1,25,f21)
+  set(f20)
+  set(f73)
+  v30 = 250
+  v63 = 10
+  v64 = 250
+}
+if (f20) { //0069
+  set(f135)
+  v30--
+  v32--
+  if (v32 == 1) { //0075
+    sound(6,f22)
+  }
+  if (f22) { //007f
+    reset(f22)
+    stop.sound()
+    v32 = 4
+  }
+  if (said("check", "fairy")) { //008b
+    print("She is your fairy godmother.")
+  }
+  if (said("acquire", "fairy")) { //0097
+    print("It is impossible to acquire a fairy godmother.")
+  }
+  if ((said("ANYWORD", "fairy") || said("hello") || said("say", "hello"))) { //00a3
+    print("There is no need to say, or do, anything.")
+  }
+  if (f21) { //00bb
+    wander(o1)
+  }
+}
+if (f20 && v30 == 1) { //00c3
+  print("\"I will be watching over you, Sir Graham.\"")
+  erase(o1)
+  reset(f20)
+  v32 = 0
+  stop.sound()
+  reset(f135)
+}
+if (!f20) { //00d8
+  if (said("ANYWORD", "fairy")) { //00df
+    print("There is no fairy here.")
+  }
+}
+if (vWhichEgoBorder == 1) { //00eb
+  new.room(24)
+}
+if (vWhichEgoBorder == 2) { //00f4
+  new.room(10)
+}
+if (vWhichEgoBorder == 4) { //00fd
+  new.room(16)
+}
+if (vWhichEgoBorder == 3) { //0106
+  new.room(8)
+}
+if (f75) { //010f
+  call(103)
+}
+return()

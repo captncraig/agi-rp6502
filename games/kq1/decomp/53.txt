@@ -1,4 +1,340 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v70 = 0
+  v71 = 0
+  if (vPrevRoom == 54) { //0014
+    position(o0,154,120)
+  }
+  load.view(1)
+  load.view(71)
+  load.view(53)
+  load.view(85)
+  load.view(98)
+  load.view(142)
+  load.sound(0)
+  animate.obj(o14)
+  set.view(o14,53)
+  position(o14,30,90)
+  draw(o14)
+  stop.cycling(o14)
+  draw(o0)
+  show.pic()
+  if (v74 == 3) { //003d
+    v70 = 250
+    v71 = 1
+  }
+}
+if (f26) { //004a
+  if (said("check", "king")) { //0050
+    print("You are the only King here!")
+  }
+}
+if (f195) { //005c
+  goto(l1164)
+}
+if (said("check", "dwarf")) { //0065
+  print("That man is the King.")
+}
+if (!(v30 > 0)) { //0071
+  v70--
+  if (v70 == 1) { //007b
+    if (v71 > 0) { //0082
+      v71--
+      v70 = 250
+    }
+  }
+  if (v70 == 1 && v71 == 0) { //008e
+    v70 = 0
+    v30 = 250
+  }
+}
+if (v30 > 0) { //009e
+  v30--
+  if (v30 == 245) { //00a7
+    set.view(o0,0)
+    if (f79) { //00b1
+      print("The spell to make you invisible has expired and you are once again visible.")
+      v90 = 0
+      v91 = 0
+      reset(f79)
+      drop(i7)
+      vCurrentScore -= 3
+      reset(f83)
+    }
+    ignore.blocks(o0)
+    get.posn(o0,v100,v101)
+    if (v100 < 60 && v101 < 88) { //00ce
+      move.obj(o0,67,82,0,f28)
+      goto(l231)
+    }
+    move.obj(o0,50,110,0,f20)
+l231:
+    print("You move aside as the King steps from his throne.")
+  }
+  if (f28) { //00e9
+    reset(f28)
+    move.obj(o0,50,110,0,f20)
+  }
+  if (f20) { //00f7
+    reset(f20)
+    set(f95)
+    set.loop(o0,3)
+    stop.motion(o0)
+    stop.cycling(o0)
+    v30 = 200
+  }
+  if (f95) { //010b
+    if (v30 == 195) { //0111
+      erase(o14)
+      set.view(o14,98)
+      position(o14,40,90)
+      draw(o14)
+      start.cycling(o14)
+      ignore.blocks(o14)
+      v32 = 2
+      cycle.time(o14,v32)
+      move.obj(o14,55,95,0,f148)
+      print("As you approach the throne, the King himself rises to commend  you for a job well done.")
+      if (said("check", "king")) { //0135
+        print("The King is walking towards you to commend you.")
+      }
+    }
+    if (v30 == 165) { //0141
+      erase(o14)
+      set.view(o14,85)
+      draw(o14)
+      end.of.loop(o14,f26)
+      print("\"Oh!... Oh!!\"  the King proclaims in pain!")
+      if (said("check", "king")) { //0154
+        print("Your heart also aches with pain as you watch the King.")
+      }
+    }
+    if (v30 == 135) { //0160
+      print("From the seemingly lifeless King you hear these words:   \"Well done, Sir Graham.  You have been a good and faithful servant.  Your reward is well deserved.  My kingdom is now yours.\"")
+      if (said("check", "king")) { //0169
+        print("The King is lying motionless on the ground.")
+      }
+    }
+    if (v30 == 115) { //0175
+      set.view(o0,1)
+      print("With those words, King Edward the Benevolent dies.")
+    }
+    if (v30 == 105) { //0181
+      program.control()
+      print("The experiences of your quest will be invaluable to you as you begin your reign as King of Daventry!!")
+      reset(f95)
+      start.cycling(o0)
+      ignore.objs(o0)
+      ignore.blocks(o0)
+      move.obj(o0,40,90,0,f27)
+    }
+  }
+}
+if (f27) { //0199
+  reset(f27)
+  erase(o0)
+  position(o0,30,85)
+  set.view(o0,142)
+  draw(o0)
+  erase(o14)
+  stop.motion(o0)
+  prevent.input()
+  sound(0,f30)
+  print("    Thank you for playing             King's Quest                     from               Ken and Roberta Williams     Sol Ackerman   Chris Iden           Jeff Stephenson                 Mark Crowe            Bob Ballew   Mikel Knight     Susan Lee    Russ Truelove         Larry Weissenborn   ")
+  set(f195)
+}
+if (posn(o0,18,80,67,107)) { //01b8
+  set(f21)
+  goto(l457)
+}
+reset(f21)
+l457:
+if (posn(o0,18,80,86,113)) { //01c9
+  if (said("check", "king")) { //01d3
+    if (!(v30 > 0) && v74 != 3 && !f126) { //01dd
+      print("King Edward the Benevolent is a very wise, but elderly monarch.  His frail body is almost lost in the large throne.")
+    }
+    if (!f21 && !f79 && v74 == 3 && !(v30 > 0)) { //01ee
+      print("The King, though very ill, seems happy to see you.")
+    }
+  }
+  if (said("check", "throne")) { //0201
+    print("The King's throne is made of solid gold, accented with rubies.  It will be yours if you complete your quest.")
+  }
+  if ((said("bow", "king") || said("bow"))) { //020d
+    if (f79) { //021d
+      print("You bow, but you are the only one who knows it.")
+      goto(l711)
+    }
+    if (!f79 && f21) { //0228
+      print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.")
+      goto(l711)
+    }
+    if (!f21 && !f79 && !(v30 > 0) && v74 != 3 && !f24) { //0236
+      set(f24)
+      get.posn(o0,v60,v61)
+      v60 -= 7
+      erase(o0)
+      stop.motion(o0)
+      set.view(o0,71)
+      set.cel(o0,0)
+      position(o0,60,v61)
+      v31 = 2
+      cycle.time(o0,v31)
+      draw(o0)
+      end.of.loop(o0,f22)
+      set(f98)
+      if (!f168) { //026f
+        set(f168)
+        vCurrentScore += 3
+      }
+      goto(l711)
+    }
+    if (!f21 && !f79 && !(v30 > 0) && v74 == 3 && !f25) { //027e
+      set(f25)
+      get.posn(o0,v60,v61)
+      v60 -= 7
+      erase(o0)
+      stop.motion(o0)
+      set.view(o0,71)
+      set.cel(o0,0)
+      position(o0,60,v61)
+      v31 = 2
+      cycle.time(o0,v31)
+      draw(o0)
+      end.of.loop(o0,f22)
+      set(f98)
+      if (!f194) { //02b6
+        set(f194)
+        vCurrentScore += 3
+      }
+      goto(l711)
+    }
+    print("There is no need to bow again.")
+  }
+l711:
+  if (said("speak", "king")) { //02c7
+    if (f60 && !(v30 > 0) && !f126 && v74 != 3) { //02d1
+      print("Go, Sir Graham!  Go and bring me back these treasures!")
+    }
+    if (!(v30 > 0) && v74 == 3) { //02e4
+      print("Welcome back from your quest, Sir Graham.")
+    }
+    if (!(v30 > 0) && f126) { //02f1
+      print("Why, Sir Graham, have you failed me and returned without accomplishing your task?  Go, and complete your quest!!")
+      set(f125)
+    }
+    if (v30 > 0) { //02ff
+      print("The king cannot talk right now.")
+    }
+    if (!f60 && !(v30 > 0) && !f126 && v74 != 3) { //0308
+      set(f60)
+      set(f23)
+      set(f125)
+      set.text.attribute(15,0)
+      text.screen()
+      display(0,4,"When you speak to King Edward,")
+      display(1,10,"he sighs and says,")
+      display(2,0,"\"Sir Graham, I am an old man. I fear")
+      display(3,0," my end is near.  I have chosen you to")
+      display(4,0," prove yourself worthy of the throne.")
+      display(5,0,"As you know, our kingdom is weak and")
+      display(6,0," poor.  I have knowledge of the")
+      display(7,0," existence of three things that would")
+      display(8,0," make our kingdom wealthy and strong.")
+      display(9,0,"Somewhere within our kingdom, there is")
+      display(10,0," a magic mirror that tells the future.")
+      display(11,0," There is a magic shield that will")
+      display(12,0," protect the bearer from mortal harm.")
+      display(13,0," Finally, there is a magic chest that")
+      display(14,0," is always filled with gold coins.")
+      display(15,0,"Go, Sir Graham!  Go and bring me")
+      display(16,0," back these treasures.")
+      display(17,0,"If you succeed, you will inherit the")
+      display(18,0," throne.\"")
+      display(22,5,"Press any key to continue.")
+    }
+  }
+}
+if (!(posn(o0,60,85,86,113)) && !f21) { //0374
+  if (!(v30 > 0)) { //0382
+    if (said("check", "king")) { //038a
+      print("You are not close enough to see him clearly.")
+    }
+    if (said("check", "throne")) { //0396
+      print("King Edward the Benevolent is sitting on the throne, waiting for you.")
+    }
+    if ((said("bow", "king") || said("bow"))) { //03a2
+      print("It would show more respect if you were closer and in front of King Edward.")
+    }
+    if (said("speak", "king")) { //03b4
+      print("It is proper to stand directly in front of, and a few paces back from King Edward when addressing His Eminence.")
+    }
+  }
+}
+if (said("kneel", "king")) { //03c0
+  print("That's not a bad idea, but the custom in Daventry is to bow.")
+}
+if (said("kill", "king")) { //03cc
+  if (!(v30 > 0)) { //03d6
+    print("To kill King Edward would mean immediate execution!")
+  }
+  if (v30 > 0) { //03e0
+    print("Your concern for the old king won't allow you to move.")
+  }
+}
+if (said("sit", "throne")) { //03e9
+  if (!(v30 > 0)) { //03f3
+    print("The throne is already occupied.")
+    goto(l1026)
+  }
+  print("You will have to do that yourself.")
+}
+l1026:
+if ((said("check", "room") || said("check", "building"))) { //0402
+  print("This huge, tapestried room echoes every sound.")
+}
+if ((said("hello") || said("say", "hello"))) { //0416
+  print("That is no way to try and address King Edward.")
+}
+if (f22) { //0428
+  reset(f22)
+  reset(f98)
+  get.posn(o0,v60,v61)
+  v60 += 7
+  erase(o0)
+  set.loop(o0,1)
+  set.view(o0,0)
+  position(o0,60,v61)
+  v31 = 1
+  cycle.time(o0,v31)
+  draw(o0)
+  start.motion(o0)
+  print("When you bow to King Edward, his pleased smile warms you.")
+  if (f194) { //0451
+    v30 = 250
+    v70 = 0
+    v71 = 0
+  }
+}
+if (f29) { //0460
+  reset(f29)
+  reverse.loop(o14,f148)
+}
+if (f23) { //046b
+  vKeyPressed = 0
+l1140:
+  if (!(have.key())) { //0474
+    goto(l1140)
+  }
+  reset(f23)
+  graphics()
+  end.of.loop(o14,f29)
+}
+if (vWhichEgoBorder == 2) { //0483
+  new.room(54)
+}
+l1164:
+return()

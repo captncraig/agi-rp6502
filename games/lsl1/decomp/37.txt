@@ -1,4 +1,227 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f33)
+  load.view(147)
+  load.view(150)
+  load.logic(58)
+  load.sound(3)
+  load.sound(4)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o13)
+  set.priority(o13,15)
+  set.view(o13,147)
+  set.loop(o13,2)
+  position(o13,56,106)
+  animate.obj(o2)
+  set.view(o2,147)
+  set.loop(o2,0)
+  set.cel(o2,3)
+  position(o2,46,87)
+  draw(o2)
+  stop.cycling(o2)
+  animate.obj(o3)
+  set.view(o3,147)
+  set.loop(o3,0)
+  set.cel(o3,3)
+  position(o3,69,87)
+  draw(o3)
+  stop.cycling(o3)
+  animate.obj(o4)
+  set.view(o4,147)
+  set.loop(o4,0)
+  set.cel(o4,3)
+  position(o4,93,87)
+  draw(o4)
+  stop.cycling(o4)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,147)
+  set.loop(o1,1)
+  position(o1,50,10)
+  show.pic()
+  v200 = 1
+  set(f201)
+  set(f48)
+  v207 = 2
+  call(58)
+  print.at("\n           RESULTS           PAYS\n|--------------------------------|\n| Cherry |        |        |  1  |\n| Cherry | Cherry |        |  2  |\n| Cherry | Cherry | Cherry |  4  |\n|--------|--------|--------|-----|\n| Orange | Orange |        |  2  |\n| Orange | Orange | Orange |  4  |\n|--------|--------|--------|-----|\n| Seven  | Seven  |        |  3  |\n| Seven  | Seven  | Seven  |  5  |\n|--------|--------|--------|-----|\n| Bar    | Bar    | Bar    |  7  |\n|--------------------------------|\n",2,2,36)
+  print("\nPress F4 to decrease bet.\n\nPress F6 to increase bet.\n\nPress F8 to pull handle.\n")
+  set(f7)
+  return()
+}
+set(f69)
+if (f201 && controller(c4)) { //0089
+  v200--
+  v207 = 2
+  call(58)
+}
+if (f201 && controller(c6)) { //0098
+  if (v200 < 20) { //00a0
+    v200++
+    goto(l174)
+  }
+  print("This machine has a $20.00 limit.")
+l174:
+  v207 = 2
+  call(58)
+}
+if (f201 && controller(c8)) { //00b3
+  set(f202)
+}
+if (!fEnteredCommand) { //00bd
+  goto(l335)
+}
+if ((said("play") || said("move", "handle") || said("play", "slot"))) { //00c7
+  set(f202)
+}
+if (said("odds")) { //00df
+  v207 = 2
+  call(58)
+  print.at("\n           RESULTS           PAYS\n|--------------------------------|\n| Cherry |        |        |  1  |\n| Cherry | Cherry |        |  2  |\n| Cherry | Cherry | Cherry |  4  |\n|--------|--------|--------|-----|\n| Orange | Orange |        |  2  |\n| Orange | Orange | Orange |  4  |\n|--------|--------|--------|-----|\n| Seven  | Seven  |        |  3  |\n| Seven  | Seven  | Seven  |  5  |\n|--------|--------|--------|-----|\n| Bar    | Bar    | Bar    |  7  |\n|--------------------------------|\n",2,2,36)
+}
+if ((said("examine") || said("examine", "slot"))) { //00f1
+  print("It's an electronic slot machine. When you tire of playing, just type \"stop.\"")
+}
+if ((said("board") || said("examine", "area") || said("board", "slot") || said("get up") || said("board", "away") || said("board") || said("done", "play") || said("done", "game") || said("done") || said("done", "play", "slot") || said("board", "casino") || said("examine", "casino"))) { //0103
+  set(f67)
+  set(f200)
+}
+l335:
+if (f202) { //014f
+  reset(f202)
+  if (!f201) { //0157
+    random(11,13,v52)
+    print(v52)
+    goto(l393)
+  }
+  if (!(v200 > 0)) { //0167
+    print("You insert zero dollars, and pretend to pull the handle.")
+    print("You win zero dollars!")
+    print("Is this your idea of a good time?")
+    goto(l393)
+  }
+  if (v200 > v90) { //0178
+    print("You can't bet more than you have.")
+    goto(l393)
+  }
+  v65 = 0
+  set(f75)
+}
+l393:
+if (f75) { //0189
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0193
+    reset(f201)
+    set(f87)
+    set(f93)
+    stop.sound()
+    reset(f53)
+    sound(3,f40)
+    v90 -= v200
+    v207 = 2
+    call(58)
+    start.cycling(o2)
+    start.cycling(o3)
+    start.cycling(o4)
+    random(8,11,v66)
+  }
+  if (v65 == 2) { //01b8
+    stop.cycling(o2)
+    current.cel(o2,v201)
+    random(8,11,v66)
+  }
+  if (v65 == 3) { //01c8
+    stop.cycling(o3)
+    current.cel(o3,v202)
+    random(8,11,v66)
+  }
+  if (v65 == 4) { //01d8
+    stop.cycling(o4)
+    current.cel(o4,v203)
+    v204 = 0
+    if (v201 == 0) { //01e7
+      v204 = 1
+      if (v202 == v201) { //01f1
+        v204 = 2
+        if (v203 == v201) { //01fb
+          v204 = 4
+        }
+      }
+    }
+    if (v201 == 1 && v202 == v201) { //0205
+      v204 = 2
+      if (v203 == v201) { //0212
+        v204 = 4
+      }
+    }
+    if (v201 == 2 && v202 == v201) { //021c
+      v204 = 3
+      if (v203 == v201) { //0229
+        v204 = 5
+      }
+    }
+    if (v201 == 3 && v202 == v201 && v203 == v201) { //0233
+      v204 = 7
+    }
+    if (!(v204 > 0)) { //0243
+      set(f201)
+      goto(l647)
+    }
+    v207 = 1
+    call(58)
+    if (v204 == 1) { //0255
+      set(f201)
+      goto(l647)
+    }
+    draw(o13)
+    set(f53)
+    if (v204 > 1 && v204 < 4) { //0265
+      v66 = 22
+      goto(l647)
+    }
+    draw(o1)
+    if (v204 < 7) { //0277
+      v66 = 22
+      goto(l647)
+    }
+    v66 = 44
+  }
+l647:
+  if (v65 == 5) { //0287
+    erase(o1)
+    erase(o13)
+    set(f201)
+  }
+  if (f201) { //0294
+    v65 = 0
+    reset(f87)
+    reset(f93)
+    if (!(v90 > 0)) { //02a1
+      reset(f201)
+    }
+  }
+}
+if (f53 && !f201) { //02ab
+  sound(4,f53)
+}
+if ((controller(c1) || f203)) { //02b7
+  reset(f203)
+  v207 = 2
+  call(58)
+  print.at("\n           RESULTS           PAYS\n|--------------------------------|\n| Cherry |        |        |  1  |\n| Cherry | Cherry |        |  2  |\n| Cherry | Cherry | Cherry |  4  |\n|--------|--------|--------|-----|\n| Orange | Orange |        |  2  |\n| Orange | Orange | Orange |  4  |\n|--------|--------|--------|-----|\n| Seven  | Seven  |        |  3  |\n| Seven  | Seven  | Seven  |  5  |\n|--------|--------|--------|-----|\n| Bar    | Bar    | Bar    |  7  |\n|--------------------------------|\n",2,2,36)
+  print("\nPress F4 to decrease bet.\n\nPress F6 to increase bet.\n\nPress F8 to pull handle.\n")
+}
+if (f12) { //02cf
+  v207 = 2
+  call(58)
+}
+if (f200) { //02da
+  reset(f48)
+  reset(f7)
+  reset(f87)
+  reset(f93)
+  v76 = 31
+}
+return()

@@ -1,4 +1,134 @@
-if (isSet(f5)) {
-  if (!(isSet(f126)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f126) { //0008
+    set(f126)
+    vCurrentScore += 4
+  }
+  load.logic(94)
+  load.pic(v46)
+  draw.pic(v46)
+  discard.pic(v46)
+  load.logic(v46)
+  load.logic(94)
+  load.view(89)
+  load.view(94)
+  if (!f39) { //0024
+    position(o0,142,v143)
+    set.loop(o0,v147)
+    draw(o0)
+  }
+  call(94)
+  add.to.pic(89,0,0,10,158,14,0)
+  show.pic()
+  if (vPrevRoom == 3) { //003f
+    status.line.on()
+  }
+  return()
+}
+if (f181 && v120 == 6 && !f220) { //0048
+  print("She replies in a heated voice, \"Just remember, Fish Breath: I'm gonna file a complaint on you! I'll cheat, lie, and do anything possible to get your little fuzz butt in trouble! YOU HEAR ME?\"")
+  set(f220)
+}
+if (posn(o0,20,152,40,167)) { //0058
+  set(f109)
+}
+if (!fEnteredCommand) { //0064
+  goto(l558)
+}
+if (!f39 && has(i7) && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("anyword", "anyword", "anyword", "briefcase", "rol"))) { //006e
+  print("Your briefcase is in the car.")
+}
+if ((said("examine", "auto") || said("examine"))) { //0099
+  print("Well, well. Just what every poor, little, rich girl needs; a little red sports car.")
+}
+if (said("answer", "broad")) { //00ab
+  if (!f109) { //00b5
+    set(f113)
+    goto(l207)
+  }
+  if (!f118) { //00c1
+    print("You should look at her before you talk to her.")
+    goto(l207)
+  }
+  print("\"Get lost, jerk!\"")
+}
+l207:
+if ((said("examine", "broad") || said("get", "out") || said("get", "out", "auto") || said("examine", "id") || said("print", "citation") || said("examine", "cunt") || said("examine", "drive") || said("look in", "auto"))) { //00cf
+  if (f39) { //0107
+    print("She's inside her car; you can see her, but not very well.")
+    goto(l331)
+  }
+  if (!f109) { //0112
+    print("Cautiously, you approach the vehicle. The driver appears to be a female in her early twenties. Very female!")
+    goto(l331)
+  }
+  if (f118) { //011e
+    print("\"Get lost, jerk!\"")
+    goto(l331)
+  }
+  if (f117) { //0129
+    print("She sounds very grateful as she says, \"Thank you, Officer! Please call me, and soon!\"")
+    goto(l331)
+  }
+  if (v38 > 0) { //0134
+    print("\"Thanks for not giving me a ticket, Officer!\"")
+    goto(l331)
+  }
+  get.posn(o0,v142,v143)
+  current.loop(o0,v147)
+  reset(fEnteredCommand)
+  new.room(3)
+}
+l331:
+if (said("examine", "license plate")) { //014b
+  if ((posn(o0,54,1,159,167) || posn(o0,0,1,4,167))) { //0155
+    print("Look: her license plate says \"OHMYMG.\" Isn't that cute!")
+    goto(l366)
+  }
+  print("You can't see the %w2 from here.")
+}
+l366:
+if ((said("jog", "license plate") || said("jog", "id", "number") || said("check", "license plate") || said("call") || said("call", "license plate") || said("jog", "make"))) { //016e
+  if ((f39 || has(i4) || posn(o0,111,161,118,162))) { //0198
+    print("\"Dispatch, this is 83-32. Run wants%m14")
+    if (!f179) { //01aa
+      set(f179)
+      vCurrentScore += 1
+      print("Dispatch returns with the information you requested, \"'OHMYMG' is currently registered to Helen Hots. No wants.\"")
+      goto(l445)
+    }
+    print("Dispatch responds, \"83-32, 10-4. You must have been away from your radio. Repeating, 'OHMYMG' is currently registered to Helen Hots. No wants.\"")
+l445:
+    goto(l453)
+  }
+  set.string(str3,"call")
+  parse(str3)
+}
+l453:
+if ((said("anyword", "pink slip") || said("anyword", "anyword", "pink slip"))) { //01c5
+  print("\"Dispatch, this is 83-32. Check registration%m14\"")
+  print("\"The car is registered to Helen Hots.\"")
+}
+if (f109 && (said("o", "d") || said("anyword", "enter", "rol") || said("enter", "rol"))) { //01dd
+  print("There is no reason to do so.")
+}
+if (f109 && fEnteredCommand && !fSaidAccepted) { //01fb
+  reset(fEnteredCommand)
+  set(fSaidAccepted)
+  if (f118) { //020a
+    print("\"Get lost, jerk!\"")
+    goto(l558)
+  }
+  if (f117) { //0215
+    print("She sounds very grateful as she says, \"Thank you, Officer! Please call me, and soon!\"")
+    goto(l558)
+  }
+  if (v38 > 0) { //0220
+    print("\"Thanks for not giving me a ticket, Officer!\"")
+    goto(l558)
+  }
+  print("She looks deep into your eyes, and says, \"What may I do for you, Officer?\"")
+}
+l558:
+call(v46)
+call(94)
+return()

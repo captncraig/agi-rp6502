@@ -1,4 +1,208 @@
-if (isSet(f5)) {
-  if (v119 > 4
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v119 > 4 && v119 < 10) { //0008
+    new.room(19)
+  }
+  set.horizon(76)
+  load.logic(57)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(90)
+  load.view(91)
+  if (f118) { //0022
+    add.to.pic(90,0,1,64,59,15,4)
+    goto(l70)
+  }
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.view(o1,90)
+  set.loop(o1,0)
+  position(o1,64,59)
+  set.priority(o1,15)
+  draw(o1)
+l70:
+  animate.obj(o2)
+  ignore.horizon(o2)
+  set.view(o2,90)
+  set.loop(o2,1)
+  set.cel(o2,0)
+  position(o2,39,66)
+  cycle.time(o2,v85)
+  draw(o2)
+  animate.obj(o3)
+  ignore.horizon(o3)
+  set.view(o3,90)
+  set.loop(o3,1)
+  set.cel(o3,1)
+  position(o3,103,66)
+  cycle.time(o3,v85)
+  draw(o3)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  set.view(o4,91)
+  set.cel(o4,0)
+  if (vPrevRoom == 24) { //007c
+    ignore.blocks(o0)
+    set(f202)
+    position(o4,73,120)
+    v38 = 77
+    v39 = 83
+    goto(l172)
+  }
+  position(o4,76,120)
+  observe.blocks(o0)
+  if (vPrevRoom != 22 && vPrevRoom != 9) { //009a
+    v38 = 77
+    v39 = 146
+  }
+l172:
+  position(o0,38,v39)
+  draw(o0)
+  draw(o4)
+  stop.update(o4)
+  call(57)
+  show.pic()
+  return()
+}
+reset(f200)
+if (posn(o0,65,120,91,127)) { //00bc
+  set(f200)
+  set(f69)
+}
+if (!fEnteredCommand) { //00ca
+  goto(l667)
+}
+if ((said("examine") || said("examine", "building") || said("examine", "area") || said("examine", "disco"))) { //00d4
+  print("You are outside a flashy disco. The bouncer does not look happy.")
+}
+if (said("examine", "burn")) { //00f2
+  print("Gaudy, aren't they?")
+}
+if (said("examine", "fire hydrant")) { //00fe
+  print("Why does the dog use you, and not it?")
+}
+if (said("examine", "building")) { //010a
+  print("Gazing up at the storefronts before you, a feeling comes over you. Surely every one of those windows has a deep, wonderful story hidden behind it. There are millions of stories here in Lost Wages, but you'll never know any of them. Such is the fate of those who are morally-weak, but financially-strong.")
+  print("(What the hell was that all about????)")
+}
+if ((said("ask", "bouncer") || said("ask"))) { //0118
+  if (!f200) { //0128
+    set(f54)
+    goto(l323)
+  }
+  if (f202) { //0134
+    print("\"We hope you enjoyed your visit tonight, Sir!\"")
+    goto(l323)
+  }
+  print("\"Either show your membership card, or get lost, Scum-Breath!\"")
+  print("It seems he's uninterested in idle chit-chat, Larry.")
+}
+l323:
+if ((said("examine", "bouncer") || said("examine"))) { //0143
+  if (f202) { //0153
+    print("He seems glad to see you leave.")
+    goto(l352)
+  }
+  print("He's physically well-developed, but you bet he's not as wise in the ways of women as you are.")
+}
+l352:
+if ((said("move", "bouncer") || said("move", "bouncer"))) { //0160
+  if (!f200) { //0172
+    set(f54)
+    goto(l384)
+  }
+  print("He's far too strong for you, Larry.")
+}
+l384:
+if ((said("beat", "bouncer") || said("fight", "bouncer"))) { //0180
+  print("Larry! How could you!")
+  print("You know he'd beat you to a pulp!")
+}
+if ((said("add", "bouncer", "bucks") || said("add", "bucks", "bouncer") || said("bribe", "bouncer"))) { //0196
+  if (!f200) { //01b2
+    set(f54)
+    goto(l450)
+  }
+  print("\"How's about a little green sliding across your palm?\" you ask the bouncer.")
+  print("\"How's about your rear end sliding across the pavement?\" he replies.")
+}
+l450:
+if ((said("buy", "card", "from", "bouncer") || said("buy", "bouncer") || said("ask", "bouncer", "about", "card") || said("ask", "bouncer", "card"))) { //01c2
+  if (!f200) { //01ea
+    set(f54)
+    goto(l506)
+  }
+  print("\"You can only get a card if you already have a card,\" he laughs, \"but then, of course, you wouldn't NEED a card.\"")
+  print("\"So, beat it, Chump!\"")
+}
+l506:
+if ((said("examine", "card") || said("add", "card", "bouncer") || said("add", "bouncer", "card") || said("add", "card") || said("examine", "bouncer", "card") || said("examine", "card", "bouncer"))) { //01fa
+  if (!(has(i14))) { //022c
+    print("You don't have a membership card!")
+    goto(l624)
+  }
+  if (!f200) { //0238
+    set(f54)
+    goto(l624)
+  }
+  if (f202) { //0244
+    print("\"Oh, there's no need to do that, Sir!\" says the bouncer.")
+    goto(l624)
+  }
+  print("You whip out your \"borrowed\" membership card, and lay it on him.")
+  print("\"Good evening, Sir. I'm so sorry I didn't recognize you sooner. Please, come right in!!\"")
+  set(f202)
+  start.update(o4)
+  set.cel(o4,0)
+  reposition.to(o4,73,120)
+  stop.update(o4)
+  force.update(o4)
+  ignore.blocks(o0)
+  if (!f119) { //0264
+    set(f119)
+    vCurrentScore += 5
+  }
+}
+l624:
+if ((said("increase", "door") || said("bang") || said("bang", "on", "door") || said("bang", "door"))) { //0270
+  if (f61) { //028e
+    reset(fSaidAccepted)
+    goto(l667)
+  }
+  print("All the stores are locked. But, that disco sure looks inviting.")
+}
+l667:
+if (!f202) { //029b
+  if (f200 && !f204) { //02a2
+    set(f204)
+    start.update(o4)
+    end.of.loop(o4,f203)
+    goto(l711)
+  }
+  if (!f200 && f204) { //02b5
+    reset(f204)
+    set.cel(o4,0)
+    force.update(o4)
+    set(f203)
+  }
+l711:
+  if (f203) { //02c7
+    reset(f203)
+    stop.update(o4)
+    if (!f201) { //02d1
+      set(f201)
+      print("\"HALT!!\n\nI'm sorry, Sir,\" says the bouncer, \"but this is a private club.\"")
+    }
+  }
+}
+call(57)
+if (vWhichEgoBorder == 4) { //02de
+  v76 = 22
+}
+if (vWhichEgoBorder == 1) { //02e8
+  v76 = 24
+}
+if (vWhichEgoBorder == 2) { //02f2
+  v76 = 9
+}
+return()

@@ -1,4 +1,141 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x69)}
+if (fNewRoom) { //0002
+  clear.lines(23,23,c0)
+  set.string(str6,"Start New Character")
+  set.simple(6)
+  if (vPrevRoom != 103) { //0011
+    new.room(103)
+  }
+  set(f133)
+  load.sound(20)
+  load.view(200)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  add.to.pic(200,0,0,25,105,4,4)
+  add.to.pic(200,0,0,55,105,4,4)
+  add.to.pic(200,0,0,85,105,4,4)
+  add.to.pic(200,0,0,115,105,4,4)
+  add.to.pic(200,0,0,25,155,4,4)
+  add.to.pic(200,0,0,55,155,4,4)
+  add.to.pic(200,0,0,85,155,4,4)
+  add.to.pic(200,0,0,115,155,4,4)
+  add.to.pic(200,2,0,30,97,4,4)
+  add.to.pic(200,2,4,60,97,4,4)
+  add.to.pic(200,2,1,90,97,4,4)
+  add.to.pic(200,2,5,120,97,4,4)
+  add.to.pic(200,2,6,30,147,4,4)
+  add.to.pic(200,2,2,60,147,4,4)
+  add.to.pic(200,2,7,90,147,4,4)
+  add.to.pic(200,2,3,120,147,4,4)
+  prevent.input()
+  set(f220)
+  return()
+}
+if (f220) { //00a9
+  reset(f220)
+  sound(20,f103)
+  set.text.attribute(0,15)
+  clear.text.rect(4,7,7,33,15)
+l189:
+  display(5,8,"Please enter your name:")
+  get.string(str6,"===> ",6,9,10)
+  parse(str6)
+  if (!fEnteredCommand) { //00c9
+    goto(l189)
+  }
+  set.simple(6)
+  set(f221)
+}
+if (f221) { //00d7
+  reset(f221)
+  clear.text.rect(2,5,7,35,15)
+  display(3,8,"%s6, please choose")
+  display(4,8,"who you look like:     ")
+  display(5,7,"(Use arrow keys to move;")
+  display(6,7," press ENTER to choose) ")
+  animate.obj(o0)
+  set.view(o0,200)
+  set.loop(o0,1)
+  set.cel(o0,0)
+  fix.loop(o0)
+  set.priority(o0,15)
+  position(o0,25,105)
+  draw(o0)
+  stop.cycling(o0)
+  vEgoDir = 0
+  set(f222)
+}
+if (f222) { //0112
+  reset(f117)
+  get.posn(o0,v212,v213)
+  v119 = v212
+  v120 = v213
+  if (vEgoDir == 1) { //0124
+    if (v213 != 105) { //012b
+      v213 = 105
+    }
+  }
+  if (vEgoDir == 5) { //0136
+    if (v213 != 155) { //013d
+      v213 = 155
+    }
+  }
+  if (vEgoDir == 3) { //0148
+    if (v212 != 115) { //014f
+      v212 += 30
+    }
+  }
+  if (vEgoDir == 7) { //015a
+    if (v212 != 25) { //0161
+      v212 -= 30
+    }
+  }
+  if (vKeyPressed == 13) { //016c
+    reset(f222)
+    set(f223)
+  }
+  if ((v119 != v212 || v120 != v213)) { //0177
+    set(f117)
+    v209 = 10
+    move.obj(o0,v212,v213,209,f222)
+    goto(l407)
+  }
+  reposition.to(o0,v119,v120)
+}
+l407:
+if (f223) { //0197
+  get.posn(o0,v212,v213)
+  if (v213 == 105) { //01a1
+    if (v212 == 25) { //01a8
+      v49 = 0
+    }
+    if (v212 == 55) { //01b2
+      v49 = 4
+    }
+    if (v212 == 85) { //01bc
+      v49 = 1
+    }
+    if (v212 == 115) { //01c6
+      v49 = 5
+    }
+    goto(l507)
+  }
+  if (v212 == 25) { //01d3
+    v49 = 6
+  }
+  if (v212 == 55) { //01dd
+    v49 = 2
+  }
+  if (v212 == 85) { //01e7
+    v49 = 7
+  }
+  if (v212 == 115) { //01f1
+    v49 = 3
+  }
+l507:
+  vEgoView = v49
+  unanimate.all()
+  load.view(v49)
+  set.view(o0,v49)
+  new.room(201)
+}
+return()

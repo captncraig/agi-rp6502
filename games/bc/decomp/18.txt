@@ -1,4 +1,136 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(58)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 70) { //0010
+    program.control()
+    load.view(22)
+    load.view(51)
+    load.view(6)
+    load.view(7)
+    load.sound(9)
+    load.sound(2)
+    animate.obj(o12)
+    position(o12,0,50)
+    v61 = 2
+    step.size(o12,v61)
+    cycle.time(o12,v61)
+    set.view(o12,22)
+    ignore.horizon(o12)
+    draw(o12)
+    move.obj(o12,60,80,2,f200)
+    set(f205)
+    set(f173)
+    reset(f152)
+    goto(l113)
+  }
+  if ((f59 || v57 > 0)) { //0049
+    random(0,255,v61)
+    if (v61 < 88) { //0058
+      load.logic(104)
+      set(f206)
+    }
+  }
+  if (f108) { //0063
+    load.logic(116)
+    set(f207)
+    set(f95)
+  }
+  draw(o0)
+l113:
+  if (f206) { //0071
+    call(104)
+    position(o7,0,160)
+  }
+  if (f207) { //007d
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0087
+  if (!f78) { //008d
+    print("Occasionally, while walking here, you think you see a flash in the underbrush, as if something tiny was scampering past the trees, just out of your sight.")
+  }
+}
+if (!f128 && !f129) { //0096
+  goto(l175)
+}
+if (f129) { //00a3
+  goto(l175)
+}
+goto(l175)
+l175:
+if (vPrevRoom != 70) { //00af
+  goto(l327)
+}
+if (f200) { //00ba
+  reset(f200)
+  position(o0,80,90)
+  set.view(o0,6)
+  draw(o0)
+  move.obj(o0,80,150,3,f201)
+  sound(2,f204)
+  set.view(o12,51)
+  set.priority(o12,15)
+  move.obj(o12,80,60,2,f202)
+  set(f152)
+}
+if (f202) { //00e2
+  reset(f202)
+  move.obj(o12,4,45,2,f203)
+}
+if (f203) { //00f0
+  reset(f203)
+  reset(f173)
+  erase(o12)
+  print("\"Where is that vile creature taking my beloved Hen Wen??\" you think. \"I must find her, and get her to safety!\"")
+}
+if (f201) { //00fe
+  reset(f201)
+  reset(f152)
+  set.view(o0,7)
+  stop.motion(o0)
+  set(f133)
+  set(f205)
+  force.update(o0)
+  print("Ouch!")
+  v70 = 33
+}
+v70--
+if (v70 == 1) { //011a
+  set.view(o0,0)
+  v61 = 1
+  step.size(o0,v61)
+  reset(f133)
+  player.control()
+}
+if (f204) { //012d
+  reset(f204)
+  set(f205)
+}
+if (f205 && f173 && !f152) { //0137
+  reset(f205)
+  sound(9,f205)
+}
+l327:
+if (f207) { //0147
+  call(116)
+}
+if (f206) { //014f
+  call(104)
+}
+if (vWhichEgoBorder == 1) { //0157
+  new.room(13)
+}
+if (vWhichEgoBorder == 3) { //0160
+  new.room(23)
+}
+if (vWhichEgoBorder == 2) { //0169
+  new.room(19)
+}
+if (vWhichEgoBorder == 4) { //0172
+  new.room(17)
+}
+return()

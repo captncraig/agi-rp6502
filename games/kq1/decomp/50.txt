@@ -1,4 +1,76 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 51) { //000e
+    position(o0,152,133)
+    ignore.blocks(o0)
+  }
+  if (vPrevRoom == 22) { //001b
+    position(o0,3,147)
+  }
+  if (v75 != 2) { //0026
+    load.view(63)
+    animate.obj(o1)
+    set.view(o1,63)
+    position(o1,142,136)
+    ignore.blocks(o1)
+    draw(o1)
+    observe.blocks(o0)
+  }
+  if (v75 == 2) { //003f
+    ignore.blocks(o0)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f75) { //004b
+  reset(f75)
+  set(f130)
+  print("When the goat saw how dark it was in here, it decided not to stay around.")
+}
+if (v75 != 2) { //0057
+  if (said("check", "cave")) { //005f
+    print("It is empty except for a huge boulder opposite the opening.")
+  }
+  if (said("check", "boulder")) { //006b
+    print("It is a huge piece of granite.")
+  }
+  if (said("acquire", "boulder")) { //0077
+    print("It is far too heavy to carry around.")
+  }
+  if (said("move", "boulder")) { //0083
+    print("It is impossible for you to move a boulder this large.")
+  }
+  if (said("climb", "boulder")) { //008f
+    print("There is nothing of interest on top of the boulder.")
+  }
+}
+if (said("check", "stalactite")) { //009b
+  print("It took millenniums for these stalagmites and stalactites to form.")
+}
+if (v75 == 2) { //00a7
+  if (said("check", "cave")) { //00ae
+    print("It is a rather large, vacant cave.")
+  }
+}
+if (said("check", "doorway")) { //00ba
+  if (posn(o0,0,0,80,167)) { //00c4
+    print("Looking out the cave opening, you are able to admire the beautiful scenery outside.")
+  }
+  if (posn(o0,81,0,159,167)) { //00d0
+    if (v75 != 2) { //00da
+      print("It is on the far side of the cave.")
+      goto(l233)
+    }
+    print("It leads to another portion of the cave.")
+  }
+}
+l233:
+if (vWhichEgoBorder == 2) { //00e9
+  new.room(51)
+}
+if (posn(o0,0,0,1,167)) { //00f2
+  new.room(22)
+}
+return()

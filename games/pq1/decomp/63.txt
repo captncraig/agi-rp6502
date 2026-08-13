@@ -1,4 +1,149 @@
-if (isSet(f5)) {
-  if (!(isSet(f193)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f193) { //0008
+    set(f193)
+    vCurrentScore += 1
+  }
+  set(f102)
+  set.horizon(10)
+  if (!f39 && (f63 || f64)) { //0018
+    v52 = 4
+  }
+  load.view(95)
+  load.view(108)
+  load.logic(94)
+  load.logic(73)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  set.view(o1,95)
+  set.loop(o1,0)
+  position(o1,60,125)
+  draw(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  observe.blocks(o0)
+  if (v134 > 0) { //004e
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l129)
+  }
+  if (vPrevRoom == 64) { //0062
+    last.cel(o1,v152)
+    set.cel(o1,v152)
+    stop.cycling(o1)
+    position(o0,72,122)
+    goto(l129)
+  }
+  set.cel(o1,0)
+  stop.update(o1)
+  position(o0,111,160)
+l129:
+  add.to.pic(108,0,0,65,23,14,0)
+  add.to.pic(108,0,1,53,37,14,0)
+  add.to.pic(95,1,0,80,120,11,4)
+  call(94)
+  show.pic()
+  return()
+}
+reset(f109)
+if (posn(o0,48,127,74,136)) { //009f
+  set(f109)
+}
+reset(f223)
+if (obj.in.box(o0,58,116,97,140)) { //00ad
+  set(f223)
+}
+if (!f222) { //00b9
+  if (f223) { //00c0
+    if (v220 != 2 && v220 != 1) { //00c6
+      v220 = 1
+      start.update(o1)
+      normal.motion(o1)
+      end.of.loop(o1,f220)
+      stop.update(o0)
+    }
+    goto(l245)
+  }
+  if (v220 != 0 && v220 != 3) { //00e1
+    v220 = 3
+    normal.motion(o1)
+    reverse.loop(o1,f220)
+  }
+}
+l245:
+if (f220) { //00f5
+  if (v220 == 1) { //00fb
+    v220 = 2
+    stop.cycling(o1)
+    ignore.objs(o1)
+    start.update(o0)
+  }
+  if (v220 == 3) { //010b
+    v220 = 0
+    stop.update(o1)
+    observe.objs(o1)
+  }
+}
+if (v220 == 2) { //0119
+  block(52,124,72,127)
+  goto(l297)
+}
+unblock()
+l297:
+if ((said("examine") || said("examine", "accident") || said("examine", "hotel"))) { //0129
+  print("This is the front entrance to the Hotel Delphoria.")
+}
+if ((said("examine", "up") || said("examine", "air"))) { //0141
+  print("This sky is certainly clear today!")
+}
+if (said("examine", "art")) { //0155
+  print("The man is wearing the uniform of a doorman, which seems appropriate since that is his job. You notice nothing out of the ordinary.")
+}
+if (said("answer", "art")) { //0161
+  if (!f109) { //016b
+    set(f113)
+    goto(l377)
+  }
+  print("A quiet sort, the doorman offers, \"May I open the door for you?\"")
+}
+l377:
+if (said("examine", "awning")) { //0179
+  print("The green and white awning protects the doorman from the elements, and helps him maintain that washed-out complexion.")
+}
+if ((said("examine", "carpet") || said("examine", "carpet"))) { //0185
+  print("The red carpet leads through the front door of the hotel.")
+}
+if ((said("examine", "planter") || said("look in", "planter", "box") || said("look in", "planter") || said("examine", "planter", "box"))) { //0199
+  print("The planters hold small, manicured shrubs and trees.")
+}
+if ((said("examine", "bush") || said("look in", "tree") || said("look in", "bush") || said("examine", "tree"))) { //01bd
+  print("The small, green, decorative shrubs are certainly well-maintained.")
+}
+if ((said("examine", "pane") || said("examine", "up", "pane"))) { //01dd
+  print("The windows are not especially interesting.")
+}
+if ((said("examine", "curb") || said("examine", "down"))) { //01f3
+  print("The hot sidewalk makes the awning's shade inviting.")
+}
+if ((said("get", "carpet") || said("get", "bush") || said("get", "planter") || said("get", "curb") || said("dig", "planter") || said("dig", "curb") || said("move", "carpet") || said("move", "bush") || said("move", "planter"))) { //0207
+  print("That will not be beneficial.")
+}
+if (f223 && said("o", "d")) { //0245
+  print("That's what servants are for!")
+}
+if (!f222 && v143 < 120) { //0253
+  set(f222)
+  set(f36)
+  stop.update(o0)
+  start.update(o1)
+  reverse.loop(o1,f221)
+}
+if (f221) { //0268
+  reset(f36)
+  new.room(64)
+}
+call(94)
+return()

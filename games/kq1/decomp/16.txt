@@ -1,4 +1,86 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,114,71,0,0)
+  }
+  if (vPrevRoom == 17) { //0027
+    if (fEgoOnWater) { //002e
+      set.view(o0,0)
+      reset(f98)
+      v94 = 0
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //003f
+  print("You see an old stone wall surrounding a well kept garden.")
+}
+if ((said("check", "carrot patch") || said("check", "grass") || said("check", "bury") || said("check", "bush"))) { //004b
+  print("This is a neat little carrot patch.  The plump carrots  look tempting.")
+}
+if ((said("check", "fence") || said("check", "rock wall"))) { //006b
+  print("It is a relatively low, native stone and masonry fence to the right and rear of a garden.")
+}
+if ((said("climb", "fence") || said("climb", "rock wall"))) { //007f
+  print("There is no reason to climb the fence.")
+}
+if ((said("jump", "fence") || said("jump", "rock wall"))) { //0093
+  print("You can go around the fence.")
+}
+if ((posn(o0,0,57,97,78) || posn(o0,0,79,117,102) || posn(o0,0,103,140,152))) { //00a7
+  set(f20)
+  goto(l198)
+}
+reset(f20)
+l198:
+if (f20) { //00c6
+  if (!f77 && said("check", "carrot")) { //00cc
+    print("There are many large, plump carrots in the garden.")
+  }
+  if (!f77 && said("acquire", "carrot")) { //00db
+    print("You pluck a delicious looking carrot from the fertile soil.")
+    set(f77)
+    reset(f118)
+    get(i3)
+    if (!f117) { //00f0
+      vCurrentScore += 2
+      set(f117)
+    }
+  }
+}
+if (!f20) { //00fc
+  if (!f77 && said("check", "carrot")) { //0103
+    print("They are buried in the ground.  You must get closer to see them.")
+  }
+  if (!f77 && said("acquire", "carrot")) { //0112
+    print("You cannot do that from here.")
+  }
+}
+if (!f77) { //0121
+  if (said("consume", "carrot")) { //0128
+    print("You do not have a carrot to eat.")
+  }
+}
+if (vWhichEgoBorder == 1) { //0134
+  new.room(17)
+}
+if (vWhichEgoBorder == 2) { //013d
+  new.room(9)
+}
+if (vWhichEgoBorder == 4) { //0146
+  new.room(15)
+}
+if (vWhichEgoBorder == 3) { //014f
+  new.room(1)
+}
+if (f75) { //0158
+  call(103)
+}
+return()

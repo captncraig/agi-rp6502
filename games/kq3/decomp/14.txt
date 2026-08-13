@@ -1,4 +1,375 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((v76 > 0 || v75 > 0) && vPrevRoom == 36) { //0008
+    v72 = vPrevRoom
+    new.room(87)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v56 = 2
+  set(f57)
+  set.horizon(52)
+  v57 = 42
+  v58 = 124
+  load.view(0)
+  load.view(7)
+  load.view(222)
+  load.view(68)
+  if (!f115) { //0036
+    load.view(66)
+    load.view(67)
+  }
+  load.logic(111)
+  load.logic(110)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  position(o2,40,154)
+  set.view(o2,222)
+  v36 = 3
+  cycle.time(o2,v36)
+  ignore.objs(o2)
+  set.priority(o2,4)
+  draw(o2)
+  if (f115) { //0061
+    add.to.pic(68,0,1,83,79,8,4)
+    goto(l142)
+  }
+  add.to.pic(68,0,0,83,79,8,4)
+  animate.obj(o1)
+  set.view(o1,66)
+  position(o1,87,20)
+  ignore.horizon(o1)
+  v36 = 3
+  cycle.time(o1,v36)
+  set.priority(o1,8)
+l142:
+  if (f48) { //008e
+    if (vPrevRoom == 13) { //0094
+      if (v41 > 80 && v41 < 85) { //009b
+        v41 = 85
+      }
+      if (v41 > 126 && v41 < 133) { //00a8
+        v41 = 133
+      }
+      if (v41 > 144) { //00b5
+        v41 = 144
+      }
+    }
+    if (vPrevRoom == 15) { //00bf
+      if (v41 > 69 && v41 < 88) { //00c6
+        v41 = 88
+      }
+    }
+    if (vPrevRoom == 19) { //00d3
+      if (v40 < 56) { //00da
+        v40 = 56
+      }
+    }
+    if (vPrevRoom == 36) { //00e4
+      v40 = 92
+      v41 = 86
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //00f5
+    draw(o0)
+  }
+  call(110)
+  call(111)
+  show.pic()
+  return()
+}
+if ((posn(o0,0,133,35,149) || posn(o0,48,156,61,167))) { //0103
+  set(fEgoOnWater)
+}
+reset(f90)
+reset(f75)
+if ((posn(o0,35,133,74,167) || posn(o0,75,146,95,167) || posn(o0,35,125,55,132))) { //011b
+  set(f90)
+  set(f75)
+}
+if (fEgoOnWater) { //0137
+  set(f75)
+  reset(f90)
+}
+reset(f225)
+if (posn(o0,76,88,114,96)) { //0143
+  set(f225)
+}
+if (f222 && v71 == 5) { //014f
+  v71 = 0
+  print("Not now!")
+}
+if (fEnteredCommand) { //015d
+  if (said("examine")) { //0163
+    print("A stream flows by a huge, dark cave.")
+  }
+  if (said("examine", "forest")) { //016d
+    print("It's a nice tree, but totally uninteresting.")
+  }
+  if (said("look in", "cave")) { //0179
+    print("You can see nothing inside but darkness.")
+  }
+  if ((said("carve", "spiderweb") || said("break", "spiderweb") || said("break", "spiderweb", "try", "dagger") || said("carve", "spiderweb", "try", "dagger"))) { //0185
+    print("You need to be closer.")
+  }
+  if ((said("examine", "cave") || said("examine", "hole"))) { //01ad
+    if (!f115) { //01bf
+      print("There is an opening in the side of the hill which is covered by a huge spider web. Inside, it is as black as pitch.")
+      goto(l461)
+    }
+    print("The cave opens ominously into the side of the hill.")
+  }
+l461:
+  if ((said("examine", "spiderweb") || said("examine", "spider", "spiderweb") || said("look in", "spider", "spiderweb") || said("look in", "spiderweb"))) { //01cd
+    if (!f115) { //01ef
+      print("It's the largest web you've ever seen! You can't help but wonder about the spider which could create such a web.")
+      goto(l509)
+    }
+    print("The spider web has been torn apart.")
+  }
+l509:
+  if (said("examine", "spider")) { //01fd
+    print("You inspect the entrance of the cave, but can see nothing from this distance.")
+  }
+  if (has(i33) && (said("throw", "dagger") || said("throw", "dagger", "spider") || said("kill", "spider", "dagger") || said("throw", "dagger", "spider", "spiderweb") || said("throw", "dagger", "spiderweb"))) { //0209
+    v36 = 36
+    put(i33,36)
+    print("You throw the knife at the web. Your aim is true, and the deadly blade speeds toward the web.")
+    print("Your knife passes between the strands and clatters harmlessly inside the dark confines of the cave.")
+  }
+}
+if (v44 != 26 && !f46 && fTriggerLine) { //0243
+  if (f115) { //0250
+    set(f223)
+    goto(l616)
+  }
+  if (!(v221 > 0)) { //025b
+    set(f220)
+    v221 = 0
+  }
+}
+l616:
+if (v44 == 25 && !f115 && !(v221 > 0) && posn(o0,85,31,107,85)) { //0268
+  set(f220)
+  v221 = 100
+}
+if (f45) { //0281
+  v223--
+  if (v223 == 1) { //0289
+    set(f220)
+  }
+}
+if (f220) { //0292
+  reset(f220)
+  v221++
+  set(f46)
+  program.control()
+  v69 = 1
+  if (v221 == 1) { //02a2
+    stop.motion(o0)
+    prevent.input()
+    draw(o1)
+    move.obj(o1,87,48,1,f220)
+    print.at("As you touch the sticky web, a giant spider drops down from her lair in the tree above. You attempt to escape, but her sticky web holds you fast!",14,2,37)
+  }
+  if (v221 == 2) { //02b9
+    v37 = v40
+    v37 -= 7
+    v38 = 62
+    move.obj(o1,v37,v38,69,f220)
+  }
+  if (v221 == 3) { //02cf
+    v36 = 5
+    cycle.time(o1,v36)
+    set.view(o1,67)
+    v37 = 0
+    v38 = 20
+    repositon(o1,v37,v38)
+    set.cel(o1,0)
+    end.of.loop(o1,f220)
+    erase(o0)
+  }
+  if (v221 == 4) { //02f1
+    v223 = 4
+    set.view(o1,66)
+    v37 = 0
+    v38 = 236
+    repositon(o1,v37,v38)
+    start.cycling(o1)
+  }
+  if (v221 == 5) { //030a
+    block(83,53,95,70)
+    observe.blocks(o1)
+    normal.motion(o1)
+    start.motion(o1)
+    wander(o1)
+    set(f44)
+  }
+  if (v221 == 101) { //0320
+    stop.motion(o0)
+    prevent.input()
+    draw(o1)
+    move.obj(o1,87,48,1,f220)
+    print.at("As you touch the sticky web, a giant spider drops down from her lair in the tree above. You attempt to escape, but her sticky web holds you fast!",14,2,37)
+    erase(o0)
+  }
+  if (v221 == 102) { //0339
+    v37 = v40
+    v37 -= 7
+    v38 = 62
+    move.obj(o1,v37,v38,69,f220)
+  }
+  if (v221 == 103) { //034f
+    print("Don't you know? Spiders LOVE flies! Yum. Yum!")
+    move.obj(o1,87,62,1,f220)
+  }
+  if (v221 == 104) { //035e
+    v223 = 4
+  }
+  if (v221 == 105) { //0368
+    block(83,53,95,70)
+    observe.blocks(o1)
+    normal.motion(o1)
+    start.motion(o1)
+    wander(o1)
+    set(f44)
+  }
+}
+if (v220 > 0 && v220 < 4) { //037e
+  v37 = v40
+  v38 = v41
+  v37 += 8
+  v38 += 9
+  reposition.to(o1,v37,v38)
+}
+if (v44 == 26) { //0398
+  if (posn(o0,32,0,159,96) && !(v220 > 0) && !f221 && !f115) { //039f
+    set(f221)
+    set.loop(o1,0)
+    position(o1,88,52)
+    set.priority(o1,15)
+    draw(o1)
+  }
+  if (f221 && !f115) { //03c1
+    if (posn(o0,60,38,79,78)) { //03ca
+      set(f222)
+      program.control()
+      set(f115)
+      vCurrentScore += 4
+      move.obj(o0,79,43,2,f224)
+      goto(l1019)
+    }
+    if (posn(o0,80,38,120,78)) { //03e5
+      program.control()
+      set(f115)
+      vCurrentScore += 4
+      move.obj(o0,98,43,2,f224)
+    }
+  }
+}
+l1019:
+if (f45 && v220 > 0) { //03fb
+  v54 = 6
+  v55 = 0
+}
+if (f224) { //040a
+  reset(f224)
+  v220++
+  program.control()
+  prevent.input()
+  set.priority(o0,15)
+  if (v220 == 1) { //0419
+    set(f46)
+    start.cycling(o1)
+    add.to.pic(68,0,1,83,79,8,4)
+    print.at("You swoop close to the spider-web and find the huge spider guarding the entrance. Taking her in your beak, you vow to get rid of her once and for all!",4,2,37)
+    move.obj(o0,132,35,2,f224)
+  }
+  if (v220 == 2) { //0437
+    v36 = 15
+    load.pic(v36)
+    draw.pic(v36)
+    discard.pic(v36)
+    v37 = 2
+    v38 = 30
+    reposition.to(o0,v37,v38)
+    v37 += 8
+    v38 += 9
+    reposition.to(o1,v37,v38)
+    erase(o2)
+    show.pic()
+    move.obj(o0,132,35,2,f224)
+  }
+  if (v220 == 3) { //0464
+    load.view(162)
+    load.sound(11)
+    v36 = 31
+    load.pic(v36)
+    draw.pic(v36)
+    discard.pic(v36)
+    v37 = 2
+    v38 = 30
+    reposition.to(o0,v37,v38)
+    v37 += 8
+    v38 += 9
+    reposition.to(o1,v37,v38)
+    show.pic()
+    move.obj(o0,50,35,2,f224)
+  }
+  if (v220 == 4) { //0493
+    move.obj(o1,90,80,2,f224)
+  }
+  if (v220 == 5) { //04a0
+    set.view(o1,162)
+    set.cel(o1,0)
+    v36 = 2
+    cycle.time(o1,v36)
+    end.of.loop(o1,f224)
+    sound(11,f41)
+  }
+  if (v220 == 6) { //04b9
+    erase(o1)
+    move.obj(o0,2,35,2,f224)
+  }
+  if (v220 == 7) { //04c8
+    v36 = 15
+    load.pic(v36)
+    draw.pic(v36)
+    discard.pic(v36)
+    reposition.to(o0,126,35)
+    show.pic()
+    move.obj(o0,2,35,2,f224)
+  }
+  if (v220 == 8) { //04e3
+    v36 = 14
+    load.pic(v36)
+    draw.pic(v36)
+    discard.pic(v36)
+    add.to.pic(68,0,1,83,79,8,4)
+    reposition.to(o0,126,35)
+    draw(o2)
+    show.pic()
+    v220 = 0
+    reset(f222)
+  }
+}
+call(110)
+call(111)
+if (vWhichEgoBorder == 4) { //050b
+  new.room(13)
+}
+if (vWhichEgoBorder == 2) { //0514
+  new.room(15)
+}
+if (vWhichEgoBorder == 3) { //051d
+  new.room(19)
+}
+if (vWhichEgoBorder == 1) { //0526
+  new.room(29)
+}
+if (f223) { //052f
+  new.room(36)
+}
+return()

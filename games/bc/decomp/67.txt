@@ -1,4 +1,73 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(21)
+  v61 = 68
+  load.pic(v61)
+  v87 = 115
+  prevent.input()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vMonitorType != HERCULES) { //0019
+    display(22,2,"(C) 1987 by The Walt Disney Company")
+    display(23,3,"Adventure Game Development System")
+    display(24,1,"(C) 1986, 1987 by Sierra On-Line, Inc.")
+  }
+  v200 = 1
+  v201 = 2
+  show.pic()
+  return()
+}
+if ((have.key() || f128 || f129 || f130)) { //0035
+  set(f200)
+}
+v87--
+if (v87 == 40 && v200 == 1 && vMonitorType == HERCULES) { //0046
+  set(f15)
+  print.at("(C) 1987 by The Walt Disney Company\n\n  Adventure Game Development System\n   (C) 1987 by Sierra On-Line, Inc.",2,2,37)
+}
+if (v87 == 1 && v200 == 1) { //005a
+  v61 = 68
+  draw.pic(v61)
+  show.pic()
+  if (vMonitorType == HERCULES) { //006a
+    close.window()
+    goto(l121)
+  }
+  clear.lines(22,24,c0)
+l121:
+  set.text.attribute(12,0)
+  display(3,4,"Game design by:")
+  display(4,9,"Al Lowe")
+  display(5,9,"Roberta Williams")
+  display(6,9,"Elaine Boulay")
+  display(7,9,"Nancy Casolaro")
+  display(8,9,"Melissa Haldeman")
+  display(10,4,"Programming by:")
+  display(11,9,"Al Lowe")
+  display(12,9,"Scott Murphy")
+  display(13,9,"Sol Ackerman")
+  display(14,9,"Ken Williams")
+  display(15,9,"Jeff Stephenson")
+  display(16,9,"Chris Iden")
+  display(18,4,"Computer graphics by:")
+  display(19,9,"Mark Crowe")
+  set.text.attribute(15,0)
+  v200++
+  v87 = 111
+}
+if (v87 == 1 && v200 == 2) { //00c0
+  set(f200)
+}
+v201--
+if (v201 == 1) { //00ce
+  sound(21,f200)
+}
+if (f200) { //00d8
+  if (vMonitorType != HERCULES) { //00de
+    clear.lines(22,24,c0)
+  }
+  set(f14)
+  disable.member(c37)
+  new.room(8)
+}
+return()

@@ -1,4 +1,262 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(230)
+  animate.obj(o1)
+  set.view(o1,230)
+  if (vCurrentRoom == 34) { //000f
+    position(o1,95,100)
+    goto(l36)
+  }
+  position(o1,85,122)
+  set.priority(o1,10)
+l36:
+  set.loop(o1,2)
+  draw(o1)
+  stop.update(o1)
+  return()
+}
+distance(o0,o1,v241)
+if ((v241 < v61 || v242 > 0)) { //0030
+  set(f109)
+}
+if (f244) { //003e
+  reset(f244)
+  v242++
+}
+if (v242 < 50) { //0048
+  if (vCurrentRoom == 34) { //004f
+    if (posn(o0,40,99,112,118)) { //0056
+      set(f241)
+      goto(l103)
+    }
+    reset(f241)
+  }
+l103:
+  if (vCurrentRoom == 37) { //0067
+    if (posn(o0,37,133,121,138)) { //006e
+      set(f241)
+      goto(l127)
+    }
+    reset(f241)
+  }
+l127:
+  if (!f241) { //007f
+    if (v242 == 15) { //0086
+      v242 = 0
+    }
+    if (v242 == 1) { //0090
+      v242 = 3
+    }
+  }
+  if (f241) { //009a
+    if (v242 == 0) { //00a0
+      start.update(o1)
+      follow.ego(o1,15,f244)
+      v242++
+    }
+    if (v242 == 2) { //00af
+      stop.update(o1)
+      random(1,4,v152)
+      print(v152)
+      v240 = 1
+      v242++
+    }
+    if (v242 == 4) { //00c3
+      prevent.input()
+      set(f36)
+      start.update(o1)
+      if (vCurrentRoom == 34) { //00cf
+        move.obj(o1,73,100,1,f244)
+        goto(l229)
+      }
+      move.obj(o1,66,122,1,f244)
+l229:
+      v242++
+      v240 = 151
+    }
+    if (v242 == 6) { //00ea
+      set.loop(o1,3)
+      stop.cycling(o1)
+    }
+    if (v242 == 7) { //00f6
+      start.cycling(o1)
+      follow.ego(o1,12,f244)
+      v242++
+    }
+    if (v242 == 9) { //0105
+      accept.input()
+      reset(f36)
+      if (f242) { //010f
+        print("\"Here ya go. That's on the house.\"")
+        set(f243)
+        v242 = 11
+        reset(f242)
+        goto(l312)
+      }
+      if (!(v39 > 0)) { //0121
+        print("Sonny, you should know drinking in uniform is strictly prohibited!")
+        stop.update(o1)
+        set(f140)
+        goto(l312)
+      }
+      stop.update(o1)
+      print("\"%m40Buddy. That'll be one dollar.\"")
+      v242++
+    }
+  }
+l312:
+  if (!f241 && v242 == 3) { //0138
+    print("\"If you change your mind, just holler.\"")
+    v240 = 0
+    v242 = 11
+  }
+  if (v242 == 11) { //014a
+    start.update(o1)
+    if (vCurrentRoom == 34) { //0153
+      move.obj(o1,95,100,1,f244)
+      goto(l361)
+    }
+    move.obj(o1,85,122,1,f244)
+l361:
+    v242++
+  }
+  if (v242 == 13) { //016b
+    set.loop(o1,2)
+    set(f244)
+    v240 = 0
+  }
+  if (v242 == 14) { //017a
+    stop.update(o1)
+    v242++
+  }
+  if (!f241 && v242 == 10 && v240 == 0) { //0185
+    v242++
+    random(25,27,v152)
+    print(v152)
+  }
+  if (v240 != 0) { //019a
+    v240++
+    if (v240 == 255) { //01a4
+      v240 = 1
+    }
+  }
+  if (v240 == 150) { //01ae
+    random(1,4,v152)
+    print(v152)
+    v240 = 1
+  }
+  if (v240 == 200) { //01be
+    v242++
+    v240 = 0
+  }
+}
+if (!fEnteredCommand) { //01ca
+  goto(l1015)
+}
+if (f243 && (said("chug") || said("chug", "rol"))) { //01d4
+  print("You swig the rancid fluid until you see the bottom of the glass.")
+  reset(f243)
+}
+if (said("examine", "accident")) { //01ea
+  print("The bar top is clean, well-worn, and horizontal. However, years of elbows and drinks have taken their toll.")
+}
+if (said("examine", "glass")) { //01f6
+  print("Like most glasses, these are more attractive full.")
+}
+if ((said("examine", "bottle") || said("examine", "cabinet"))) { //0202
+  print("The shelves behind the bar are well-stocked with spirits.")
+}
+if (said("examine", "bench")) { //0216
+  print("The %w2 are heavy duty and comfortable.")
+}
+if (said("examine", "counter")) { //0222
+  print("They're not bad, considering they were purchased ten years ago at a swap meet!")
+}
+if (v242 < 50) { //022e
+  if (f241) { //0235
+    reset(f153)
+    if (said("no", "rol")) { //023d
+      print("\"If you change your mind, just holler.\"")
+      v242 = 11
+    }
+    if ((said("buy", "chug", "rol") || said("buy", "rol") || said("get", "chug", "rol") || said("chug", "rol"))) { //024c
+      print("\"What'll it be?\"")
+    }
+    if (said("buy", "beer", "rol")) { //0270
+      print("\"Ok, one %w2 comin' right up.\"")
+      v242 = 3
+      set(f153)
+    }
+    if (said("beer", "rol", "rol")) { //0283
+      print("\"One %w1, comin' right up.\"")
+      v242 = 3
+      set(f153)
+    }
+    if ((said("buy", "caffeine", "rol") || said("buy", "creek", "rol"))) { //0296
+      print("\"Ok, one %w2 comin' right up.\"")
+      v242 = 3
+      set(f242)
+      set(f153)
+    }
+    if ((said("caffeine", "rol") || said("creek", "rol"))) { //02b5
+      print("\"One %w1, comin' right up.\"")
+      v242 = 3
+      set(f242)
+      set(f153)
+    }
+    if ((said("anyword", "beer", "rol") || said("beer", "anyword", "rol"))) { //02d0
+      random(6,7,v152)
+      print(v152)
+      v242 = 3
+      set(f153)
+    }
+    if (f153) { //02f1
+      if (v242 == 3) { //02f7
+        v242++
+        v240 = 0
+        goto(l780)
+      }
+      random(19,21,v152)
+      print(v152)
+l780:
+      reset(f153)
+    }
+    goto(l857)
+  }
+  if ((said("buy") || said("buy", "beer") || said("beer") || said("anyword", "beer") || said("beer", "anyword") || said("pay") || said("anyword", "pay") || said("pay", "anyword") || said("administer", "bills") || said("pay", "bills") || said("information", "rol"))) { //0311
+    random(16,18,v152)
+    print(v152)
+  }
+l857:
+  if (v242 == 10) { //0359
+    if ((said("pay") || said("anyword", "pay") || said("pay", "anyword") || said("administer", "bills") || said("pay", "bills"))) { //0360
+      if (v89 > 0) { //0382
+        v89 -= 1
+        random(22,24,v152)
+        print(v152)
+        set(f243)
+        v242++
+        goto(l929)
+      }
+      random(25,27,v152)
+      print(v152)
+      v242++
+    }
+l929:
+    goto(l1015)
+  }
+  if (f241) { //03a4
+    if ((said("pay") || said("anyword", "pay") || said("pay", "anyword") || said("administer", "bills") || said("pay", "bills") || said("information") || said("anyword", "information") || said("information", "anyword"))) { //03aa
+      if (v89 > 0) { //03dc
+        v89 -= 1
+        random(28,29,v152)
+        set(f243)
+        print(v152)
+        goto(l1015)
+      }
+      random(30,31,v152)
+      print(v152)
+    }
+  }
+}
+l1015:
+return()

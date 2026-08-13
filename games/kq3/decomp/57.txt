@@ -1,4 +1,286 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f62)
+  v57 = 44
+  v58 = 62
+  set.horizon(34)
+  set(f235)
+  load.logic(103)
+  v34 = 166
+  load.view(1)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //002b
+    set(f46)
+    if (vPrevRoom == 56) { //0033
+      start.motion(o0)
+      set.view(o0,1)
+      if (v40 < 60) { //003f
+        position(o0,49,35)
+        goto(l83)
+      }
+      position(o0,98,35)
+      set(f220)
+l83:
+      goto(l100)
+    }
+    if (vPrevRoom == 58) { //0056
+      set.view(o0,0)
+      position(o0,151,164)
+    }
+  }
+l100:
+  if (f47) { //0064
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (v44 == 6) { //0070
+  goto(l842)
+}
+if (f236 && !f171) { //007a
+  set(f171)
+  vCurrentScore += 4
+  print("You congratulate yourself on successfully eluding the abominable snowman.")
+}
+set(f236)
+if (!fEnteredCommand) { //008c
+  goto(l334)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine") || said("examine", "up") || said("examine", "area") || said("examine", "down"))) { //0096
+  print("This is a very steep (and dangerous) cliff! Numerous caves honeycomb its face. You could get lost in the caves, IF you survive the cliff.")
+}
+if (said("examine", "path")) { //00c2
+  print("A narrow path continues onward.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00ce
+  print("There are no plants on this rocky cliff.")
+}
+if (said("examine", "deck")) { //00f4
+  print("The ground is far below you. Be careful!")
+}
+if (said("examine", "sky")) { //0100
+  print("The cliff face before you towers into the deep, blue sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //010c
+  print("What trees?")
+}
+if ((said("examine", "cave") || said("look in", "cave"))) { //0122
+  print("The caverns in this mountain form a labyrinth of amazing complexity.")
+}
+if (said("examine", "snow")) { //0136
+  print("The snow here has formed an icepack so hard it is impossible to gain a handhold.")
+}
+if (said("play", "snow")) { //0142
+  print("Not now!")
+}
+l334:
+v220 = 0
+v39 = 1
+if (v222 > 0) { //0154
+  vEgoDir = v82
+  reset(fTriggerLine)
+  set(fEgoOnWater)
+}
+if (f45) { //0162
+  v222--
+  if (v222 == 1) { //016a
+    draw(o0)
+    v222 = 0
+  }
+}
+if (posn(o0,123,43,132,47)) { //0176
+  v220 = 1
+  set(fEgoOnWater)
+}
+if (posn(o0,87,138,107,160)) { //0185
+  v220 = 2
+  set(fEgoOnWater)
+}
+if (posn(o0,20,138,30,154)) { //0194
+  v220 = 3
+  set(fEgoOnWater)
+}
+if (posn(o0,73,86,80,94)) { //01a3
+  v220 = 4
+  set(fEgoOnWater)
+}
+if (posn(o0,118,137,159,167)) { //01b2
+  v220 = 5
+  set(fEgoOnWater)
+}
+if (posn(o0,24,51,38,57)) { //01c1
+  v220 = 6
+  set(fEgoOnWater)
+}
+if (posn(o0,77,158,107,163)) { //01d0
+  v220 = 7
+  set(fEgoOnWater)
+}
+if (posn(o0,42,49,46,58)) { //01df
+  v220 = 11
+  set(f221)
+}
+if (posn(o0,110,39,118,46)) { //01ee
+  v220 = 12
+  set(f221)
+}
+if (posn(o0,83,84,90,99)) { //01fd
+  v220 = 13
+  set(f221)
+}
+if (posn(o0,75,138,86,152)) { //020c
+  v220 = 14
+  set(f221)
+}
+if (posn(o0,32,133,39,150)) { //021b
+  v220 = 15
+  set(f221)
+}
+if (posn(o0,37,49,38,59)) { //022a
+  v220 = 16
+  set(f221)
+}
+if (f221) { //0239
+  reset(f221)
+  ignore.blocks(o0)
+  goto(l584)
+}
+observe.blocks(o0)
+l584:
+if (posn(o0,35,51,36,57)) { //0248
+  v220 = 21
+  erase(o0)
+  position(o0,125,43)
+  v222 = 6
+  if (!f174) { //025e
+    set(f174)
+    print("Boy, are these caves dark!")
+  }
+}
+if (posn(o0,123,43,124,44)) { //0269
+  v220 = 22
+  erase(o0)
+  position(o0,34,54)
+  v222 = 6
+}
+if (posn(o0,90,140,91,148)) { //027f
+  v220 = 23
+  erase(o0)
+  position(o0,27,145)
+  v222 = 4
+}
+if (posn(o0,28,141,29,149)) { //0295
+  v220 = 24
+  erase(o0)
+  position(o0,92,144)
+  v222 = 4
+}
+if (posn(o0,79,86,80,94)) { //02ab
+  v220 = 25
+  erase(o0)
+  position(o0,129,140)
+  v222 = 5
+}
+if (posn(o0,127,138,128,142)) { //02c1
+  v220 = 26
+  erase(o0)
+  position(o0,78,90)
+  v222 = 5
+}
+if (posn(o0,43,150,51,161) && !fEgoOnWater) { //02d7
+  v40 = 42
+  reposition.to(o0,v40,v41)
+}
+if (fEgoOnWater) { //02eb
+  reset(fTriggerLine)
+  v44 = 2
+  release.priority(o0)
+  set.view(o0,0)
+  goto(l788)
+}
+if (!fTriggerLine) { //02fe
+  v44 = 15
+  set.view(o0,1)
+  set.priority(o0,14)
+  goto(l788)
+}
+set.priority(o0,15)
+l788:
+if (v71 == 2 && v44 == 15) { //0314
+  v71 = 0
+  print("Removing your hands from the sheer rock wall to rub the magic stone,%m22")
+  set(fTriggerLine)
+  set(f224)
+  set.priority(o0,15)
+  set(f220)
+  drop(i16)
+}
+if (v71 == 3) { //032e
+  v71 = 0
+  drop(i10)
+  print("As you reach for your fly wings, a sharp gust of wind blows them from your grasp.")
+}
+if (v71 == 4) { //033c
+  v71 = 0
+  drop(i9)
+  print("You watch as your feather floats up, up and away on a sudden blast of frigid air.")
+}
+l842:
+set(f46)
+call(103)
+if (f220) { //034e
+  if (!f224) { //0354
+    set(f224)
+    set(fTriggerLine)
+    print("Unable to grasp the ice pack,%m22")
+  }
+  if (v44 == 6 && v41 > 162) { //0361
+    reset(f220)
+    print("Your assessment was correct!")
+  }
+}
+if (f31 && f235 && vMonitorType != HERCULES) { //036f
+  display(22,22,"%v40/%v41, Area=%v220 ")
+  if (!fTriggerLine) { //037f
+    display(23,22," ")
+    goto(l928)
+  }
+  toggle(f222)
+  if (f222) { //038f
+    display(23,22," S")
+    goto(l928)
+  }
+  display(23,22,"S ")
+l928:
+  if (!fEgoOnWater) { //03a0
+    display(23,27," ")
+    goto(l961)
+  }
+  toggle(f223)
+  if (f223) { //03b0
+    display(23,27," W")
+    goto(l961)
+  }
+  display(23,27,"W ")
+}
+l961:
+if (vWhichEgoBorder > 0) { //03c1
+  reset(f46)
+  if (vWhichEgoBorder == 1 && v40 < 60) { //03ca
+    new.room(56)
+  }
+  if (vWhichEgoBorder == 2) { //03d6
+    new.room(58)
+  }
+  if (vWhichEgoBorder == 3) { //03df
+    set(fTriggerLine)
+  }
+}
+return()

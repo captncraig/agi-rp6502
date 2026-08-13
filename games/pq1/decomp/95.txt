@@ -1,4 +1,280 @@
-if (isSet(f5)) {
-  if (isSet(f47)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (fNewRoom) { //0002
+  if (f47 && f44) { //0008
+    set.view(o19,101)
+    set.loop(o19,v77)
+    set.cel(o19,v79)
+    set.priority(o19,v151)
+    position(o19,109,v110)
+    draw(o19)
+    if (v38 == 199) { //0022
+      v38 = 200
+    }
+  }
+  if (vPrevRoom == 26) { //002c
+    set.view(o19,102)
+    set.loop(o19,1)
+    fix.loop(o19)
+    if (v92 == 199) { //003b
+      set.view(o14,99)
+      set.loop(o14,2)
+      set.cel(o14,0)
+      position(o14,76,47)
+      draw(o14)
+      v92 = 200
+    }
+  }
+  return()
+}
+if (f30 && f44) { //0055
+  reset(f30)
+  v47 = 0
+  if (v67 == 0) { //0062
+    if (v92 < 199) { //0069
+      v47 = 26
+      goto(l120)
+    }
+    print("There is no reason to return to the accident scene! You have your orders, now move.")
+l120:
+    goto(l203)
+  }
+  if (v67 == 3) { //007b
+    if (f118) { //0082
+      print("You may as well return to patrol. That gal is mad!")
+      goto(l155)
+    }
+    if (f117) { //008d
+      print("You already have her telephone number, don't go back to make an even bigger fool of yourself!")
+      goto(l155)
+    }
+    v47 = 30
+l155:
+    goto(l203)
+  }
+  if (v67 == 137) { //009e
+    if (f46) { //00a5
+      print("No sense returning to the scene. Transport your suspect to jail!")
+      goto(l179)
+    }
+    v47 = 31
+l179:
+    goto(l203)
+  }
+  if (v67 == 38) { //00b6
+    if (f46) { //00bd
+      print("No sense returning to the scene. Transport your suspect to jail!")
+      goto(l203)
+    }
+    v47 = 32
+  }
+l203:
+  if (v47 != 0) { //00cb
+    v75 = v142
+    v76 = v143
+    v77 = v147
+    v74 = vCurrentRoom
+    get.posn(o19,v109,v110)
+    new.room(v47)
+  }
+}
+if (v31 < 255 && v92 > 0 && v92 < 255 && vCurrentRoom != 15 && posn(o0,14,18,147,138)) { //00e5
+  print("Your first assignment, and you blew it.")
+  set(f140)
+}
+if (!(v67 > 0) && !(posn(o0,76,55,78,80)) && f44) { //0100
+  if (v92 < 199) { //0111
+    print("This accident looks serious! Where are you going?")
+    reset(f44)
+  }
+  reset(f44)
+}
+if (!f249 && f44 && f46 && vEgoDir != 0) { //011e
+  if (v67 == 137) { //012d
+    print("\"What about my car?\"")
+    print("\"Don't worry. It'll be towed somewhere safe. At your expense.\"")
+  }
+  if (v67 == 38) { //0138
+    v152 = 1
+    move.obj(o14,v236,v237,152,f234)
+  }
+  reset(f44)
+  reset(f47)
+}
+if (f234 && !f140) { //014c
+  print("\"If anything happens to my car I'll have my lawyer on you so fast, he'll...\"")
+  print("\"Keep it down back there, Slimeball!\"")
+  print("Jack comes on the radio...")
+  print("\"Dispatch, this is 83-31 confirming Code-4 on felony stop, one in custody. 83-32 proceeding to jail. Request tow truck to location.\"")
+  print("Dispatch responds, \"Affirmative, 83-31. Code-4, tow truck en route.\"")
+  reset(f234)
+}
+if (f44 && !f46 && v67 > 2 && v240 > 11) { //0161
+  if (v67 == 3) { //0170
+    if (f118) { //0177
+      print("Enraged, the young woman shrieks as you drive off, \"Your Mama wears Army boots, you $%^&!head.\"")
+      goto(l399)
+    }
+    if (f117) { //0182
+      print("You just made that broad's day, Studly!")
+      goto(l399)
+    }
+    print("The driver of the car you stopped wonders, \"Are all cops that lame?\" as she drives away.")
+l399:
+    goto(l404)
+  }
+  print("Seeing you don't have control of the situation, the violator drives off.")
+l404:
+  if (!f46 && vPrevRoom != 30) { //0194
+    release.loop(o19)
+    start.update(o19)
+    move.obj(o19,v81,v82,84,f220)
+    v220 = 1
+    goto(l434)
+  }
+  v220 = 255
+l434:
+  v233 = 0
+  reset(f44)
+}
+if (v67 == 0 && vCurrentRoom == 15 && f47 && !f44) { //01b7
+  if (posn(o0,76,55,78,80)) { //01c6
+    if (v92 < 199) { //01d0
+      print("Upon your arrival at the scene of the accident, you observe a group of bystanders gawking at a green sedan that attempted to carve its own door in the side of a brick building.")
+      goto(l478)
+    }
+    print("There is no reason to return to the accident scene! You have your orders, now move.")
+l478:
+    start.motion(o0)
+    set(f44)
+  }
+}
+if (v67 == 38 && v240 < 20 && v84 == 1 && v73 == v83) { //01e2
+  v84 = 2
+  move.obj(o19,v81,v82,84,f220)
+}
+if (v240 < 10 && v220 == 1 && !f44) { //01fb
+  get.posn(o19,v144,v145)
+  if (v73 == v83) { //020c
+    if (v73 == 1) { //0213
+      if (v67 == 137) { //021a
+        if (v144 != 24 && v144 != 82 && v144 != 140) { //0221
+          v144++
+        }
+      }
+      if (v143 > v145 && vCurrentRoom != 13 && vCurrentRoom != 16 && vCurrentRoom != 19 && vCurrentRoom != 22 && (posn(o0,22,57,27,117) || posn(o0,80,57,85,117) || posn(o0,138,57,143,117))) { //0233
+        v144 += 2
+        v145 -= 6
+        v142 = v144
+        v143 = v145
+        v143 += 9
+        v233 = 255
+        goto(l630)
+      }
+      goto(l1068)
+    }
+l630:
+    if (v73 == 5) { //0276
+      if (v67 == 137) { //027d
+        if (v144 != 20 && v144 != 78 && v144 != 136) { //0284
+          v144--
+        }
+      }
+      if (v143 < v145 && vCurrentRoom != 13 && vCurrentRoom != 16 && vCurrentRoom != 19 && vCurrentRoom != 22 && (posn(o0,17,39,22,99) || posn(o0,75,39,80,99) || posn(o0,133,39,138,99))) { //0296
+        v144 -= 2
+        v145 += 6
+        v142 = v144
+        v143 = v145
+        v143 -= 9
+        v233 = 255
+        goto(l729)
+      }
+      goto(l1068)
+    }
+l729:
+    if (v73 == 7) { //02d9
+      if (v67 == 137) { //02e0
+        if (v145 != 31 && v145 != 123) { //02e7
+          v145--
+        }
+      }
+      if (v142 > v144 && (posn(o0,47,25,75,32) || posn(o0,105,25,133,32) || posn(o0,47,117,75,124) || posn(o0,105,117,133,124))) { //02f5
+        v144 -= 8
+        v145 -= 4
+        v142 = v144
+        v143 = v145
+        v142 += 9
+        v233 = 255
+        goto(l814)
+      }
+      goto(l1068)
+    }
+l814:
+    if (v73 == 3) { //032e
+      if (v67 == 137) { //0335
+        if (v145 != 34 && v145 != 126) { //033c
+          v145++
+        }
+      }
+      if (v142 < v144 && (posn(o0,27,32,55,39) || posn(o0,85,32,113,39) || posn(o0,27,124,55,131) || posn(o0,85,124,113,131))) { //034a
+        v144 += 8
+        v145 += 4
+        v142 = v144
+        v143 = v145
+        v142 -= 9
+        v233 = 255
+        goto(l899)
+      }
+      goto(l1068)
+    }
+l899:
+    if (v233 == 255) { //0383
+      fix.loop(o0)
+      fix.loop(o19)
+      v152 = 1
+      start.motion(o0)
+      v228 = 0
+      set(f36)
+      move.obj(o19,v144,v145,152,f220)
+      move.obj(o0,v142,v143,152,f153)
+      v220 = 7
+      set(f44)
+    }
+  }
+}
+if (v220 == 8) { //03a9
+  reset(f36)
+  release.loop(o0)
+  if (v67 == 3) { //03b4
+    print("You activate your red emergency lights and observe the sports car pull to the curb and stop.")
+    goto(l986)
+  }
+  if (v67 == 137) { //03c0
+    print("He slowly pulls to the right, jumps the curb, and comes to a stop.")
+    goto(l986)
+  }
+  if (v67 == 38) { //03cc
+    print("Noting your persistence and driving skill, the driver of the Cadillac pulls it over after his attempts to lose you fail.")
+    goto(l986)
+  }
+  print("You managed to stop a reckless driver.")
+l986:
+  v220 = 9
+}
+if ((!fEnteredCommand || v31 == 255)) { //03dd
+  goto(l1068)
+}
+if (f44) { //03ec
+  if ((said("examine", "auto") || said("examine", "license plate"))) { //03f2
+    print("You've made the stop. Now try getting closer.")
+  }
+  if ((said("jog", "license plate"))) { //0406
+    print("You need to be more specific.")
+  }
+  if (said("get", "out")) { //0414
+    print("You'd better check your \"PIG\" manual for proper stop procedures.")
+  }
+  if (said("print", "citation")) { //0420
+    print("You'll need the suspect's driver's license to do that.")
+  }
+}
+l1068:
+return()

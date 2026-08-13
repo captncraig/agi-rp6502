@@ -1,4 +1,113 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(5)
+  load.view(105)
+  if (!f132) { //0012
+    set(f132)
+    vCurrentScore += 2
+  }
+  if (!f137) { //001e
+    set(f20)
+    load.view(39)
+    animate.obj(o1)
+    set.view(o1,39)
+    position(o1,70,85)
+    set.priority(o1,6)
+  }
+  set.priority(o0,6)
+  position(o0,35,164)
+  observe.blocks(o0)
+  vEgoDir = 0
+  if (f20) { //0041
+    draw(o1)
+    stop.update(o1)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "tree")) { //004e
+  print("There is a rather large bird's nest here.")
+}
+if (f137) { //005a
+  if ((said("check", "bird nest") || said("look in", "bird nest"))) { //0060
+    print("The nest is empty.")
+  }
+  if (f110 && said("acquire", "egg")) { //0074
+    print("You already have the golden egg from the nest.")
+  }
+  if (!f110 && said("acquire", "egg")) { //0082
+    print("There is no egg here to get.")
+  }
+}
+distance(o0,o1,v62)
+if (!f137) { //0095
+  if ((said("check", "bird nest") || said("look in", "bird nest"))) { //009c
+    print("There is a pure golden egg lying in the nest!")
+  }
+  if (said("check", "egg")) { //00b0
+    print("The golden egg is smooth and shiny.")
+  }
+  if (said("acquire", "egg")) { //00bc
+    if (v62 < 24) { //00c6
+      start.update(o1)
+      erase(o1)
+      set(f110)
+      get(i20)
+      set(f137)
+      vCurrentScore += 6
+      print("The golden egg is so heavy you almost drop it.")
+      goto(l225)
+    }
+    print("You can't get the egg from here!")
+  }
+}
+l225:
+if (fEgoOnWater && !(posn(o0,12,106,57,166)) && !f21) { //00e1
+  set(f21)
+  set(f131)
+  ignore.blocks(o0)
+  set.view(o0,105)
+  print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.")
+  get.posn(o0,v60,v61)
+  v61 = 166
+  v96 = 3
+  sound(5,f159)
+  move.obj(o0,v60,v61,96,f148)
+}
+if (fTriggerLine && !(posn(o0,12,106,57,166)) && !f21) { //010f
+  set(f21)
+  set(f131)
+  ignore.blocks(o0)
+  set.priority(o0,4)
+  set.view(o0,105)
+  print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.")
+  get.posn(o0,v60,v61)
+  v61 = 166
+  v96 = 3
+  sound(5,f159)
+  move.obj(o0,v60,v61,96,f148)
+}
+if (posn(o0,12,106,57,166) && !f21) { //0140
+  if ((fTriggerLine || fEgoOnWater)) { //014d
+    set(f21)
+    set(f131)
+    ignore.blocks(o0)
+    set.priority(o0,5)
+    set.view(o0,105)
+    print("Apparently you lost your grip while climbing this tree and you fall to the hard earth below.")
+    get.posn(o0,v60,v61)
+    v61 = 166
+    v96 = 3
+    sound(5,f159)
+    move.obj(o0,v60,v61,96,f148)
+  }
+}
+if (f148) { //0178
+  new.room(14)
+}
+if (vWhichEgoBorder == 3) { //0180
+  new.room(14)
+}
+return()

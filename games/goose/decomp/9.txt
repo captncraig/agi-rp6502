@@ -1,4 +1,82 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(121)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 10) { //0016
+    position(o0,152,105)
+  }
+  if (vPrevRoom == 16) { //0021
+    if (v212 > 100) { //0028
+      position(o0,140,166)
+      goto(l58)
+    }
+    position(o0,70,166)
+  }
+l58:
+  if (vPrevRoom == 8) { //003a
+    if (v213 > 121 && v213 < 132) { //0041
+      position(o0,0,132)
+      if (f35) { //004f
+        position(o13,0,130)
+      }
+    }
+    if (v213 < 122 && v213 > 105) { //0059
+      position(o0,0,105)
+      if (f35) { //0067
+        position(o13,0,102)
+      }
+    }
+  }
+  add.to.pic(121,0,0,55,124,0,1)
+  if (v31 == 12) { //0079
+    set(f42)
+    load.logic(59)
+  }
+  if (f51) { //0084
+    load.view(68)
+    add.to.pic(68,3,1,54,125,0,1)
+  }
+  draw(o0)
+  return()
+}
+if (f120 && !f121) { //0097
+  if (posn(o0,0,80,80,116)) { //00a0
+    move.obj(o0,80,85,1,f127)
+    goto(l200)
+  }
+  if (posn(o0,0,120,80,167)) { //00b3
+    move.obj(o0,80,167,1,f127)
+    goto(l200)
+  }
+  set(f127)
+}
+l200:
+if (f127) { //00c8
+  reset(f127)
+  set(f118)
+}
+if (f42) { //00d2
+  call(59)
+}
+if (vWhichObjBorder == 1 && f124) { //00da
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //00e6
+  new.room(2)
+}
+if (vWhichObjBorder == 3 && f124) { //00ef
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //00fb
+  new.room(16)
+}
+if (vWhichEgoBorder == 2) { //0104
+  new.room(10)
+}
+if (vWhichEgoBorder == 4) { //010d
+  new.room(8)
+}
+return()

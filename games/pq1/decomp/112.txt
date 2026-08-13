@@ -1,4 +1,363 @@
-if (isSet(f35)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (f35) { //0002
+  reset(f35)
+  prevent.input()
+  v250 = 6
+  v251 = 7
+  v252 = 8
+  v253 = 9
+  v254 = 10
+  v238 = 11
+  v239 = 12
+  draw.pic(v56)
+  show.pic()
+  status.line.off()
+  reset(f14)
+  set.text.attribute(2,0)
+  clear.text.rect(3,10,14,30,0)
+  display(3,11,"Lytton Police Dept.")
+  display(4,12,"On-Line Database")
+  display(6,14,"Good morning!")
+  if (!f56) { //003b
+    clear.text.rect(22,0,23,39,0)
+  }
+}
+display(13,10,"Enter search string:")
+open.dialogue()
+get.string(str1,"<",14,10,19)
+close.dialogue()
+clear.text.rect(3,10,14,30,0)
+if (!f56) { //005a
+  clear.lines(22,23,c0)
+}
+parse(str1)
+if ((said("quit") || said("bye") || said("off") || said("enter") || said("sign", "off", "rol") || said("move", "off", "rol") || said("move", "power", "off") || said("move", "computer", "off") || said("c", "off", "rol") || said("c", "computer", "off"))) { //0067
+  set.text.attribute(15,0)
+  accept.input()
+  reset(f242)
+  set(f35)
+  return()
+}
+set.string(str3,"dir")
+if (compare.strings(str3,str1)) { //00b9
+  set(fSaidAccepted)
+  v240 = 147
+}
+set.string(str3,"ul6942")
+set.string(str4,"VIN: C0864213579")
+if ((compare.strings(str3,str1) || compare.strings(str4,str1))) { //00cb
+  set(fSaidAccepted)
+  v240 = 168
+  v241 = 169
+  v242 = 170
+  v243 = 171
+  v244 = 172
+  v245 = 173
+}
+set.string(str3,"lop1238")
+set.string(str4,"c03456218")
+if ((compare.strings(str3,str1) || compare.strings(str4,str1) || said("washington"))) { //00f1
+  set(fSaidAccepted)
+  v240 = 69
+  v241 = 70
+  v242 = 71
+  v243 = 73
+  v244 = 74
+  v245 = 75
+  v247 = 76
+  v248 = 77
+  v249 = 18
+}
+if ((said("panties") || said("panties"))) { //011e
+  v240 = 31
+  v242 = 39
+  v243 = 40
+  v244 = 41
+  v245 = 42
+  v246 = 43
+  v248 = 44
+  v249 = 45
+}
+if (said("feed")) { //0144
+  v240 = 31
+  v242 = 36
+  v243 = 46
+  v245 = 39
+  v246 = 47
+}
+if (said("bait")) { //015b
+  v240 = 31
+  v242 = 36
+  v243 = 48
+  v244 = 49
+  v246 = 39
+  v247 = 50
+  v248 = 51
+}
+if ((said("consumer") || said("dog"))) { //0178
+  v240 = 52
+  v242 = 53
+  v243 = 54
+  v244 = 55
+  v246 = 56
+  v247 = 57
+  v248 = 58
+  v249 = 59
+}
+if (said("ring")) { //019e
+  v240 = 31
+  v242 = 36
+  v243 = 60
+  v244 = 61
+  v246 = 39
+  v247 = 62
+}
+if (said("blow")) { //01b8
+  v240 = 79
+}
+if (said("fart")) { //01c3
+  v240 = 80
+  v241 = 81
+}
+if (said("crap")) { //01d1
+  v240 = 82
+  v241 = 83
+}
+if (said("leak")) { //01df
+  v240 = 84
+  v241 = 85
+  v242 = 86
+  v243 = 87
+  v244 = 88
+  v245 = 89
+  v246 = 90
+}
+if (said("cunt")) { //01fc
+  v240 = 91
+}
+if (said("asshole")) { //0207
+  v240 = 92
+}
+if (said("bonds")) { //0212
+  v240 = 139
+}
+if (said("backup")) { //021d
+  v240 = 143
+  v241 = 144
+}
+if (said("bains")) { //022b
+  v240 = 153
+  v241 = 154
+  v242 = 155
+  v243 = 156
+  v244 = 157
+}
+set.string(str3,"al lowe")
+if (compare.strings(str3,str1)) { //0245
+  set(fSaidAccepted)
+  v240 = 127
+  v241 = 128
+  v242 = 129
+}
+set.string(str3,"greg rowland")
+if (compare.strings(str3,str1)) { //025a
+  set(fSaidAccepted)
+  v240 = 130
+  v241 = 131
+  v242 = 132
+}
+set.string(str3,"jim walls")
+if (compare.strings(str3,str1)) { //026f
+  set(fSaidAccepted)
+  v240 = 133
+  v241 = 134
+  v242 = 135
+}
+set.string(str3,"ken williams")
+if (compare.strings(str3,str1)) { //0284
+  set(fSaidAccepted)
+  v240 = 136
+  v241 = 137
+  v242 = 138
+}
+set.string(str3,"555-4369")
+if (compare.strings(str3,str1)) { //0299
+  set(fSaidAccepted)
+  v240 = 117
+  v242 = 119
+  v243 = 120
+  v244 = 121
+}
+set.string(str3,"hots")
+set.string(str4,"ohmymg")
+if ((compare.strings(str3,str1) || compare.strings(str4,str1))) { //02b4
+  set(fSaidAccepted)
+  v240 = 75
+  v241 = 140
+  v242 = 141
+  v243 = 18
+  v245 = 142
+}
+set.string(str3,"prgrmr1")
+if (compare.strings(str3,str1)) { //02d4
+  set(fSaidAccepted)
+  v240 = 75
+  v241 = 159
+  v242 = 18
+  v243 = 160
+}
+set.string(str3,"sw9764912")
+if (compare.strings(str3,str1)) { //02ec
+  set(fSaidAccepted)
+  v240 = 5
+  v241 = 6
+  v242 = 7
+  v243 = 8
+  v244 = 9
+  v245 = 10
+  v246 = 11
+  if (!f191) { //030a
+    set(f191)
+    vCurrentScore += 2
+  }
+}
+set.string(str3,"555-6537")
+if ((compare.strings(str3,str1) || said("pierson"))) { //0319
+  set(fSaidAccepted)
+  v240 = 12
+  v241 = 13
+  v243 = 14
+  v244 = 15
+  v245 = 16
+  v246 = 18
+  v247 = 19
+}
+if (said("taselli")) { //033d
+  v240 = 20
+  v241 = 21
+  v242 = 22
+  v244 = 23
+  v245 = 24
+  v246 = 25
+}
+if (said("hoffman")) { //0357
+  v240 = 64
+  v242 = 63
+  v243 = 65
+  v244 = 66
+  v246 = 67
+  v248 = 68
+}
+set.string(str3,"r12345678")
+if (compare.strings(str3,str1)) { //0374
+  set(fSaidAccepted)
+  v240 = 31
+  v241 = 36
+  v242 = 32
+  v243 = 33
+  v244 = 34
+  v245 = 35
+  v246 = 37
+}
+set.string(str3,"m65789")
+set.string(str4,"m09876543")
+if ((compare.strings(str3,str1) || compare.strings(str4,str1))) { //0398
+  set(fSaidAccepted)
+  v240 = 26
+  v241 = 27
+  v242 = 28
+  v243 = 29
+  v244 = 30
+}
+if (said("justinfletch")) { //03b5
+  v240 = 93
+  v241 = 94
+  v242 = 95
+  v243 = 96
+  v244 = 97
+  v246 = 98
+  v247 = 99
+  v248 = 100
+  v249 = 101
+}
+if (said("jenkins")) { //03d8
+  v240 = 102
+  v241 = 94
+  v242 = 103
+  v244 = 96
+  v245 = 105
+  v247 = 98
+  v248 = 101
+}
+if (said("malone")) { //03f5
+  v240 = 106
+  v241 = 94
+  v242 = 107
+  v244 = 96
+  v245 = 108
+  v247 = 98
+  v248 = 109
+  v249 = 101
+}
+if (said("watson")) { //0415
+  v240 = 110
+  v241 = 94
+  v242 = 111
+  v243 = 96
+  v244 = 112
+  v245 = 113
+  v246 = 98
+  v247 = 114
+  v248 = 115
+  v249 = 116
+}
+if (said("colby")) { //043b
+  v240 = 148
+}
+if (!fSaidAccepted) { //0446
+  set(fSaidAccepted)
+  v240 = 4
+  if (f81) { //0452
+    log("Didn't match %s1.")
+  }
+}
+if (v240 > 0) { //045a
+  display(v124,v254,v240)
+  v240 = 0
+}
+if (v241 > 0) { //0468
+  display(v125,v254,v241)
+  v241 = 0
+}
+if (v242 > 0) { //0476
+  display(v126,v254,v242)
+  v242 = 0
+}
+if (v243 > 0) { //0484
+  display(v250,v254,v243)
+  v243 = 0
+}
+if (v244 > 0) { //0492
+  display(v251,v254,v244)
+  v244 = 0
+}
+if (v245 > 0) { //04a0
+  display(v252,v254,v245)
+  v245 = 0
+}
+if (v246 > 0) { //04ae
+  display(v253,v254,v246)
+  v246 = 0
+}
+if (v247 > 0) { //04bc
+  display(v254,v254,v247)
+  v247 = 0
+}
+if (v248 > 0) { //04ca
+  display(v238,v254,v248)
+  v248 = 0
+}
+if (v249 > 0) { //04d8
+  display(v239,v254,v249)
+  v249 = 0
+}
+return()

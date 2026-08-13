@@ -1,3 +1,70 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+set.text.attribute(0,15)
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(1,13,"POLICE QUEST")
+display(2,17,"Help")
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0015
+  display(5,1," F1 or HELP displays this message.")
+  goto(l44)
+}
+display(5,1," F1 displays this message.")
+l44:
+display(6,1," F2 turns the sound off and on.")
+display(7,1," F3 retypes the last line typed.")
+if ((v51 == 1 || v51 == 4 || v51 == 3)) { //0034
+  display(8,1," F4 goes in/out of car; to/from map.")
+}
+display(9,1," F5 saves your current game.")
+if ((v51 == 2 || v51 == 3)) { //004b
+  display(10,1," F6 loads%m26")
+}
+if (v51 == 1) { //005b
+  display(10,1," F6%m25normal%m29-1).")
+}
+display(11,1," F7 restores a saved game.")
+if ((v51 == 2 || v51 == 3)) { //006a
+  display(12,1," F8 draws%m26")
+}
+if (v51 == 1) { //007a
+  display(12,1," F8%m25faster%m29-2).")
+}
+display(13,1," F9 restarts the game.")
+if ((v51 == 2 || v51 == 3)) { //0089
+  display(14,1,"F10 fires%m26")
+}
+if (v51 == 5) { //0099
+  display(14,1,"F10 swings your PR-24.")
+}
+if (v51 == 6) { //00a4
+  display(14,1,"F10 turns the shower off and on.")
+}
+if (v51 == 1) { //00af
+  display(14,1,"F10%m25fastest%m29-3).")
+}
+if (!(v51 > 0)) { //00ba
+  display(14,1," F4, F6, F8, F10 vary throughout game.")
+}
+display(16,1,"ESC displays the menus.")
+display(17,1,"TAB shows the status screen.")
+display(18,1,"Ctrl-D radios Dispatch.")
+display(19,1,"Ctrl-J sets up your joystick.")
+if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //00d6
+  display(20,1,"Ctrl-R toggles RGB monitor modes.")
+}
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //00e9
+  display(21,1,"Double-click joystick button or\n right mouse button for status screen.")
+}
+display(23,1,"For a Hint Book, call (209) 683-6858.")
+l253:
+if (!(have.key())) { //00fd
+  goto(l253)
+}
+accept.input()
+status.line.on()
+set.text.attribute(15,0)
+graphics()
+set(fSaidAccepted)
+return()

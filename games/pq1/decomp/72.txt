@@ -1,4 +1,11 @@
-if (isSet(f140)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x65)}
+if (f140) { //0002
+  print("Due to your failure to admonish your suspect to his constitutional right to remain silent, the information you just obtained will be inadmissible as evidence, and will be drop-kicked by the Honorable Judge Palmer across the Clearwater River.")
+  goto(l23)
+}
+print("Carefully, you admonish your suspect of his \"Miranda\" rights.")
+print("\"You have the right to remain silent.\"")
+print("\"What you say may be used against you in a court of law.\"")
+print("\"You have the right to an attorney.\"")
+print("\"If you cannot afford an attorney, one will be appointed to represent you before questioning, if you wish.\"")
+l23:
+return()

@@ -1,4 +1,127 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x21)}
+if (fNewRoom) { //0002
+  animate.obj(o15)
+  load.view(73)
+  load.sound(33)
+  if (!f182) { //000e
+    load.view(74)
+    load.view(75)
+    position(o15,8,108)
+    set.view(o15,74)
+    v36 = 3
+    cycle.time(o15,v36)
+    goto(l92)
+  }
+  set.view(o15,73)
+  get.posn(o0,v37,v38)
+  if ((vEgoDir == 1 || vEgoDir == 8 || vEgoDir == 2)) { //0030
+    v38 += 1
+  }
+  if ((vEgoDir == 4 || vEgoDir == 5 || vEgoDir == 6)) { //0042
+    v38 -= 1
+  }
+  position(o15,37,v38)
+  follow.ego(o15,8,f184)
+l92:
+  draw(o15)
+  return()
+}
+if (vCurrentRoom == 69 && !f61) { //005f
+  print("\"There's home!\" your sister cries in delight. \"Mum and Dad will be SOOOOOO happy!!\"")
+}
+if (f182 && v71 > 0) { //006b
+  print("This is no time for magic. Take Princess Rosella home.")
+  v71 = 0
+}
+if (f44) { //0079
+  normal.motion(o15)
+  stop.motion(o15)
+  stop.cycling(o15)
+  return()
+}
+if (said("let go", "barmaid")) { //0086
+  if (!f182) { //0090
+    distance(o0,o15,v36)
+    if (v36 > 16) { //009b
+      print("You are not close enough to her.")
+      goto(l199)
+    }
+    vCurrentScore += 3
+    set(f182)
+    if (f183) { //00ac
+      print("You rapidly untie Princess Rosella from the wooden pole. She looks bewildered as to who her benefactor may be. \"I'm your long-lost brother, Prince Alexander,\" you proudly exclaim. The girl looks doubtful.")
+      print("\"I'll explain it all later,\" you continue, realizing that now is not the time for this. \"Just follow me. Let's go meet the folks!\" With mixed emotions, the girl agrees to follow you.")
+      stop.sound()
+      sound(33,f238)
+      set.view(o15,73)
+      v36 = 1
+      cycle.time(o15,v36)
+      follow.ego(o15,6,f184)
+    }
+l199:
+    goto(l204)
+  }
+  print("You've already untied her.")
+}
+l204:
+distance(o0,o15,v36)
+if (f182 && f184) { //00d0
+  if (v36 > 12) { //00d8
+    start.cycling(o15)
+    follow.ego(o15,6,f184)
+    goto(l234)
+  }
+  stop.cycling(o15)
+}
+l234:
+if ((said("call", "try", "barmaid") || said("call", "barmaid"))) { //00ea
+  if (!f183) { //00fe
+    print("She can't hear you. She's too busy screaming!")
+    goto(l291)
+  }
+  if (!f182) { //010a
+    print("\"Help me!! Untie me!!\" Princess Rosella screams.")
+    goto(l291)
+  }
+  v180++
+  print(v180)
+  if (v180 > 5) { //011a
+    v180--
+  }
+}
+l291:
+if (said("capture", "barmaid")) { //0123
+  if (f182) { //012d
+    print("She's already with you.")
+    goto(l314)
+  }
+  print("The girl is securely tied to the stake.")
+}
+l314:
+if (said("kill", "barmaid")) { //013a
+  print("What manner of monster are you?")
+}
+if (said("embrace", "barmaid")) { //0146
+  if (f182) { //0150
+    print("You plant a brotherly kiss upon Princess Rosella's soft cheek.")
+    goto(l349)
+  }
+  print("Not now!")
+}
+l349:
+if (said("aim", "barmaid")) { //015d
+  if (f182) { //0167
+    print("WATCH IT, FELLA!!")
+    goto(l372)
+  }
+  print("Not now!")
+}
+l372:
+if (said("examine", "barmaid")) { //0174
+  if (!f182) { //017e
+    print("The girl is securely tied to the stake.")
+    goto(l396)
+  }
+  print("Princess Rosella is gorgeous! Why, you'd be interested in her if she weren't your own sister! Her hair is long, silky, and golden. Her eyes are as blue as the bluest sky. Her skin is creamy white. And her BODY... well!! Embarrassed, you clear your throat and avert your eyes.")
+}
+l396:
+return()

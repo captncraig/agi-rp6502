@@ -1,4 +1,88 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(124)
+  if (f108) { //0010
+    load.logic(116)
+    set(f202)
+  }
+  if (!f59) { //001a
+    load.logic(112)
+    set(f201)
+  }
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,85,26)
+  set.view(o2,124)
+  draw(o2)
+  if (vPrevRoom == 37) { //0032
+    position(o0,27,92)
+    goto(l90)
+  }
+  if (vPrevRoom == 36) { //0040
+    set.view(o0,0)
+    position(o0,83,150)
+    if (!f48) { //004e
+      set(f48)
+      vCurrentScore += 18
+    }
+  }
+l90:
+  draw(o0)
+  if (f202) { //005c
+    call(116)
+  }
+  if (f201) { //0064
+    call(112)
+    position(o9,146,150)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0072
+  if (posn(o0,79,121,115,156) && f65) { //0078
+    print("You see the old window on the south wall where you entered.")
+    goto(l139)
+  }
+  print("You are inside the Horned King's castle. There is a tapestry hanging on the far wall.")
+}
+l139:
+if (!f128 && !f129) { //008b
+  goto(l211)
+}
+if (f129) { //0098
+  goto(l211)
+}
+if (posn(o0,85,121,115,156) && f65) { //00a1
+  set(fSaidAccepted)
+  if (!f200 && f108) { //00af
+    set(f200)
+    print("You can go through the old window, but you realize that Hen Wen can't hold on to the vines.")
+    goto(l211)
+  }
+  if (!f49) { //00bf
+    if (has(i12)) { //00c6
+      set(f49)
+      vCurrentScore += 13
+    }
+  }
+  new.room(36)
+}
+l211:
+if (!(posn(o9,119,60,139,70)) && posn(o0,119,60,139,70)) { //00d3
+  set(fEgoObscured)
+}
+if (fTriggerLine) { //00e6
+  new.room(37)
+}
+if (vWhichEgoBorder == 2) { //00ee
+  new.room(39)
+}
+if (f201) { //00f7
+  call(112)
+}
+if (f202) { //00ff
+  call(116)
+}
+return()

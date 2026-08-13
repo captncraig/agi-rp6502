@@ -1,5 +1,167 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v241 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l380)
+}
+set(f120)
+v103++
+if ((said("add", "mandrake", "root", "flour", "basin") || said("drain", "mandrake", "root", "flour", "basin"))) { //001e
+  if ((!(has(i21)) || !(has(i40)))) { //003c
+    print("How can you use that which you do not have?")
+    goto(l90)
+  }
+  print("You pour the mandrake root powder into the bowl.")
+  drop(i21)
+  if (v103 == 1) { //0051
+    reset(f120)
+  }
+}
+l90:
+if (said("add", "cat", "fur", "basin")) { //005a
+  if ((!(has(i2)) || !(has(i40)))) { //0068
+    print("How can you use that which you do not have?")
+    goto(l134)
+  }
+  drop(i2)
+  print("You put the ball of cat hair in the mixing bowl.")
+  if (v103 == 2) { //007d
+    reset(f120)
+  }
+}
+l134:
+if (said("add", "two", "ladle", "fish oil", "basin")) { //0086
+  if ((!(has(i22)) || !(has(i40)))) { //0096
+    print("How can you use that which you do not have?")
+    goto(l182)
+  }
+  print("You pour the fish oil into the bowl and keep the empty jar.")
+  drop(i22)
+  get(i29)
+  if (v103 == 3) { //00ad
+    reset(f120)
+  }
+}
+l182:
+if ((said("knead", "compound", "try", "ladle") || said("knead", "compound") || said("knead", "try", "ladle"))) { //00b6
+  if (v103 == 4) { //00d4
+    print("You mix the ingredients together. The mixture turns into an oily, disagreeable dough with cat hairs sticking out of it.")
+    reset(f120)
+    goto(l228)
+  }
+  reset(fSaidAccepted)
+}
+l228:
+if ((said("add", "compound", "on", "counter") || said("drain", "compound", "on", "counter"))) { //00e4
+  if (v103 == 5) { //00fe
+    print("Scrunching your nose in distaste, you grab the oily dough from the clay bowl and put it on the oaken table.")
+    reset(f120)
+    goto(l270)
+  }
+  reset(fSaidAccepted)
+}
+l270:
+if ((said("pat", "compound", "cookie") || said("form", "compound", "cookie") || said("form", "cookie", "from", "compound") || said("pat", "cookie", "from", "compound"))) { //010e
+  if (v103 == 6) { //0138
+    print("Pushing the palm of your hand on the oily dough, you flatten it until it is in the shape of a cookie. After a bit, the cookie hardens.")
+    reset(f120)
+    v103++
+    goto(l330)
+  }
+  reset(fSaidAccepted)
+}
+l330:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //014a
+  if (!(has(i37))) { //015e
+    print("How can you use that which you do not have?")
+    goto(l380)
+  }
+  if (v103 == 8) { //016a
+    print("You wave the magic wand over the cookie, then take it from the table, and carry it with you.")
+    reset(f120)
+    get(i23)
+    goto(l380)
+  }
+  reset(fSaidAccepted)
+}
+l380:
+if (!f120 && v104 < 4 && v103 == 7) { //017c
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //0192
+    overlay.pic(v241)
+    show.pic()
+    set.string(str2,"mandrake root and hair of cat,")
+    if (vMonitorType == HERCULES) { //019f
+      open.dialogue()
+      get.string(str1," ",15,1,30)
+      goto(l438)
+    }
+    get.string(str1," ",13,1,30)
+l438:
+    if (compare.strings(str1,str2)) { //01b6
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //01bf
+    set.string(str2,"mix oil of fish and give a pat,")
+    if (vMonitorType == HERCULES) { //01c9
+      get.string(str1," ",16,1,31)
+      goto(l479)
+    }
+    get.string(str1," ",14,1,31)
+l479:
+    if (compare.strings(str1,str2)) { //01df
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //01e8
+    set.string(str2,"a feline from the one who eats")
+    if (vMonitorType == HERCULES) { //01f2
+      get.string(str1," ",17,1,30)
+      goto(l520)
+    }
+    get.string(str1," ",15,1,30)
+l520:
+    if (compare.strings(str1,str2)) { //0208
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //0211
+    set.string(str2,"this appetizing magic treat.")
+    if (vMonitorType == HERCULES) { //021b
+      get.string(str1," ",18,1,28)
+      goto(l561)
+    }
+    get.string(str1," ",16,1,28)
+l561:
+    if (compare.strings(str1,str2)) { //0231
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //0245
+    if (vMonitorType == HERCULES) { //0250
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+v36 = v103
+v36++
+if (v36 == 9 && !f120) { //0261
+  v103 = 255
+}
+if (f120) { //026e
+  v105 = 39
+  v106 = 0
+}
+return()

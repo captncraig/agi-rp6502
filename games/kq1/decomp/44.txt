@@ -1,4 +1,101 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(41)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,26,64,0,0)
+  }
+  if (vPrevRoom == 37 && fEgoOnWater) { //0027
+    set.view(o0,0)
+    reset(f98)
+    v94 = 0
+  }
+  if (vPrevRoom == 79) { //0038
+    position(o0,118,123)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "pump")) { //0046
+  print("It is an ancient, rusty water pump.  It probably doesn't even work.")
+}
+if (said("check", "ax")) { //0052
+  print("The handle has been broken and repaired.  The head shows the signs of many sharpenings.")
+}
+if (said("check", "building")) { //005e
+  print("It was made from rough, hand-hewn logs long ago.  Lately, the upkeep has faltered.  There are even holes in the  roof.")
+}
+if (said("check", "stump")) { //006a
+  print("The trees were cut from these stumps years ago.")
+}
+if ((said("use", "pump") || said("pump", "water"))) { //0076
+  if (posn(o0,24,115,61,149)) { //0088
+    print("The rusty pump doesn't work.")
+    goto(l153)
+  }
+  print("You are not close enough.")
+}
+l153:
+if (said("acquire", "ax")) { //0099
+  if (posn(o0,61,80,88,118)) { //00a3
+    print("The old axe is tightly wedged in the tree stump.  You cannot remove it no matter what you do.")
+    goto(l180)
+  }
+  print("You are not close enough.")
+}
+l180:
+if (said("use", "ax")) { //00b4
+  if (posn(o0,61,80,88,118)) { //00be
+    print("How are you going to use the ax when you can't even get it out of this stump?")
+    goto(l207)
+  }
+  print("You are not close enough.")
+}
+l207:
+if ((said("open", "door") || said("close", "door"))) { //00cf
+  if (posn(o0,100,111,133,136)) { //00e1
+    print("Upon closer inspection you realize this poor cabin doesn't even have a door.")
+    goto(l242)
+  }
+  print("You are not close enough.")
+}
+l242:
+if ((said("check", "door") || said("check", "doorway") || said("look in", "door"))) { //00f2
+  if (posn(o0,100,111,133,136)) { //010a
+    print("When you look in the doorway, you see a poor, starving woodcutter and his wife.")
+    goto(l283)
+  }
+  print("You are not close enough.")
+}
+l283:
+if ((said("check", "dwarf") || said("check", "fairy"))) { //011b
+  if (posn(o0,100,111,133,136)) { //012d
+    print("Perhaps you should go inside the house for a better look.")
+    goto(l318)
+  }
+  print("You are not close enough.")
+}
+l318:
+if (posn(o0,126,119,128,127)) { //013e
+  new.room(79)
+}
+if (vWhichEgoBorder == 1) { //014a
+  new.room(5)
+}
+if (vWhichEgoBorder == 2) { //0153
+  new.room(45)
+}
+if (vWhichEgoBorder == 4) { //015c
+  new.room(43)
+}
+if (vWhichEgoBorder == 3) { //0165
+  new.room(37)
+}
+if (f75) { //016e
+  call(103)
+}
+return()

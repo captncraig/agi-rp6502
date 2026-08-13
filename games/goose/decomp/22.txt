@@ -1,4 +1,59 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 15) { //0012
+    if (v212 > 120) { //0019
+      position(o0,120,86)
+      goto(l57)
+    }
+    if (v212 > 70) { //0027
+      position(o0,95,86)
+      goto(l57)
+    }
+    position(o0,44,88)
+  }
+l57:
+  if (vPrevRoom == 29) { //0039
+    if (v212 < 40) { //0040
+      position(o0,40,166)
+      goto(l96)
+    }
+    if (v212 < 113) { //004e
+      position(o0,90,166)
+      goto(l96)
+    }
+    position(o0,135,166)
+  }
+l96:
+  if (vPrevRoom == 23) { //0060
+    if (v213 > 139) { //0067
+      position(o0,153,158)
+      if (f35) { //0072
+        position(o13,150,150)
+      }
+    }
+  }
+  draw(o0)
+  v34 = 60
+  v35 = 144
+  v37 = 3
+  return()
+}
+if (vWhichObjBorder == 1 && f124) { //0088
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //0094
+  new.room(15)
+}
+if (vWhichObjBorder == 3 && f124) { //009d
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //00a9
+  new.room(29)
+}
+if (vWhichEgoBorder == 2) { //00b2
+  new.room(23)
+}
+return()

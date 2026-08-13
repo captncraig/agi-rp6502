@@ -1,4 +1,288 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (fNewRoom) { //0002
+  if (v186 == 0) { //0008
+    v182 = 86
+    v185 = 58
+    v186 = 151
+  }
+  animate.obj(o1)
+  load.view(168)
+  set.view(o1,168)
+  position(o1,185,v186)
+  if (v182 == vCurrentRoom) { //0023
+    draw(o1)
+  }
+  return()
+}
+if (v44 == 200) { //002d
+  if (vEgoDir > 0) { //0034
+    prevent.input()
+    get.posn(o1,v40,v41)
+    v41 -= 1
+    reposition.to(o0,v40,v41)
+    start.motion(o0)
+    v44 = 0
+    release.priority(o0)
+    observe.blocks(o0)
+    accept.input()
+  }
+}
+if (v44 == 201 && fTriggerLine) { //0051
+  prevent.input()
+  set(f36)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  if ((vEgoDir == 2 || vEgoDir == 3 || vEgoDir == 4)) { //0061
+    move.obj(o0,125,148,6,f242)
+    goto(l159)
+  }
+  if ((vEgoDir == 6 || vEgoDir == 7 || vEgoDir == 8)) { //0079
+    move.obj(o0,90,148,6,f242)
+    goto(l159)
+  }
+  release.priority(o0)
+  v38 = 142
+  v241 = 6
+  move.obj(o0,v40,v38,241,f242)
+l159:
+  set.scan.start()
+  if (f242) { //00a0
+    reset(f36)
+    observe.blocks(o0)
+    observe.objs(o0)
+    v44 = 0
+    release.priority(o0)
+    accept.input()
+    reset.scan.start()
+  }
+  return()
+}
+if (v71 == 12) { //00b4
+  print("As your sleep spell takes effect, a silence suddenly descends over the ship.")
+  v71 = 0
+  set(f181)
+  v52 = 0
+  v53 = 0
+  if (v62 == 2) { //00c8
+    set(f46)
+    v240 = 10
+    prevent.input()
+    program.control()
+  }
+}
+if (f45 && v240 > 0) { //00d6
+  v240--
+  if (v240 == 7) { //00e1
+    set.loop(o0,2)
+  }
+  if (v240 == 5) { //00eb
+    print("\"Wait a second...\"")
+    print("\"Who's steering the ship?\" you ask.")
+  }
+  if (v240 == 0) { //00f6
+    print("Unfortunately, there is no reply.")
+    print("With no one to steer the ship, you are doomed to drift at sea forever.")
+    stop.cycling(o0)
+    set(f44)
+  }
+}
+if (said("examine", "bin")) { //0105
+  if (vCurrentRoom == 85) { //010f
+    if (v182 == vCurrentRoom) { //0116
+      print("%m6 There is also a smaller crate here.")
+      goto(l292)
+    }
+    print("You notice many crates and boxes in the cargo hold. One, in particular, captures your attention, for it lies directly under the dangling rope ladder!")
+l292:
+    goto(l309)
+  }
+  if (v182 == vCurrentRoom) { //0127
+    print("%m8 There is also a smaller crate here.")
+    goto(l309)
+  }
+  print("Large wooden crates are stacked along one wall of the hold.")
+}
+l309:
+if ((said("lift", "up", "bin") || said("lift", "bin"))) { //0135
+  print("The crates are sealed tightly. You can't open them no matter what you do.")
+}
+if ((said("capture", "up", "bin") || said("capture", "bin"))) { //014b
+  if ((f46 || v44 != 0)) { //015f
+    print("You can't do that... at least not now!")
+    goto(l410)
+  }
+  if (v182 != vCurrentRoom) { //0170
+    print("All of the large crates are too heavy to move.")
+    goto(l410)
+  }
+  distance(o0,o1,v36)
+  if (v36 < 12) { //0181
+    v182 = 0
+    erase(o1)
+    set.view(o0,37)
+    v44 = 202
+    set(f46)
+    goto(l410)
+  }
+  print("You're not close enough.")
+}
+l410:
+if ((said("add", "bin", "down") || said("add", "down", "bin") || said("add", "bin", "on", "deck") || said("add", "bin", "down", "on", "deck") || said("add", "bin"))) { //019a
+  if (v182 != 0) { //01cc
+    print("You're not carrying a box, are you?")
+    goto(l519)
+  }
+  v182 = vCurrentRoom
+  reset(f46)
+  v185 = v40
+  v186 = v41
+  current.loop(o0,v36)
+  set.view(o0,0)
+  if (v36 == 0) { //01ea
+    v185 += 6
+    goto(l510)
+  }
+  v40 += 6
+  reposition.to(o0,v40,v41)
+l510:
+  position(o1,185,v186)
+  draw(o1)
+  v44 = 0
+}
+l519:
+if (said("move", "bin")) { //0207
+  print("All of the large crates are too heavy to move.")
+}
+if ((said("look in", "bin") || said("lift", "up", "bin") || said("lift", "bin"))) { //0213
+  print("All of the crates are nailed shut. You have no means of opening them.")
+}
+if ((said("capture", "on", "bin") || said("climb", "on", "bin") || said("climb", "bin"))) { //022f
+  print("Why don't you try jumping.")
+}
+if ((said("jump") || said("jump", "up") || said("jump", "up", "ladder") || said("jump", "up", "on", "ladder") || said("jump", "on", "ladder") || said("jump", "ladder"))) { //024d
+  if (v44 != 201) { //027d
+    goto(l938)
+    goto(l718)
+  }
+  set(f35)
+  set.view(o0,36)
+  set.cel(o0,0)
+  end.of.loop(o0,f242)
+  set.scan.start()
+  if (f242) { //0297
+    reset(f35)
+    set(f36)
+    set.view(o0,30)
+    set.loop(o0,0)
+    fix.loop(o0)
+    v36 = 245
+    repositon(o0,v140,v36)
+    move.obj(o0,110,94,4,f242)
+    release.priority(o0)
+    ignore.blocks(o0)
+    set.scan.start()
+    if (f242) { //02bb
+      reset(f242)
+      reset(f36)
+      reposition.to(o0,110,94)
+      v44 = 15
+      reset.scan.start()
+    }
+  }
+  return()
+}
+l718:
+if ((said("jump") || said("jump", "bin") || said("jump", "up") || said("jump", "up", "bin") || said("jump", "on", "bin") || said("jump", "up", "on", "bin"))) { //02ce
+  if (v44 == 200) { //02fe
+    if (!(posn(o1,93,140,127,151))) { //0305
+      goto(l938)
+      goto(l850)
+    }
+    ignore.blocks(o0)
+    set.view(o0,36)
+    set.cel(o0,0)
+    move.obj(o0,110,122,1,f242)
+    set.scan.start()
+    current.cel(o0,v36)
+    if (v36 == 2) { //0328
+      set(f36)
+      v36 = 245
+      set.view(o0,0)
+      reset(f36)
+      repositon(o0,v140,v36)
+      set.scan.start()
+      set.priority(o0,13)
+      if (f242) { //0341
+        reset(f242)
+        v44 = 201
+        set.priority(o0,13)
+        observe.blocks(o0)
+        reset.scan.start()
+      }
+    }
+l850:
+    return()
+  }
+  if (v44 == 0) { //0353
+    distance(o0,o1,v36)
+    if (v36 > 16) { //035e
+      goto(l938)
+      goto(l937)
+    }
+    start.motion(o0)
+    set.view(o0,36)
+    set.cel(o0,0)
+    end.of.loop(o0,f241)
+    set(f35)
+    vEgoDir = 0
+    get.priority(o0,v36)
+    set.priority(o0,v36)
+    ignore.blocks(o0)
+    set.scan.start()
+    if (f241) { //0384
+      reset(f241)
+      get.posn(o1,v37,v38)
+      v37 += 2
+      v38 -= 10
+      erase(o0)
+      set.view(o0,0)
+      position(o0,37,v38)
+      draw(o0)
+      reset(f35)
+      v44 = 200
+      start.motion(o0)
+      reset.scan.start()
+    }
+l937:
+    return()
+  }
+l938:
+  if (v44 == 202) { //03aa
+    print("You can't jump while you are carrying a crate around.")
+    return()
+  }
+  if (v44 == 15) { //03b4
+    print("Now is not the time to be jumping.")
+    return()
+  }
+  start.motion(o0)
+  set.view(o0,36)
+  set.cel(o0,0)
+  set(f35)
+  end.of.loop(o0,f242)
+  set.scan.start()
+  vWhichEgoBorder = 0
+  if (f242) { //03cf
+    reverse.loop(o0,f242)
+    set.scan.start()
+    vWhichEgoBorder = 0
+    if (f242) { //03dc
+      reset(f242)
+      normal.cycle(o0)
+      set.view(o0,0)
+      reset(f35)
+      reset.scan.start()
+    }
+  }
+  return()
+}
+return()

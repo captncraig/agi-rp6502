@@ -1,3 +1,49 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+set.text.attribute(4,2)
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(1,3,"A Few Interesting Statistics about")
+display(2,11,"YOUR LITTLE WIZZER")
+v36 = v127
+v38 = 5
+v37 = 1
+display(v38,v37,v36)
+display(7,1,"Wiz will change in %v84:%v83|2.")
+display(9,1,"Wiz status = %v128.")
+display(11,1,"Last wiz temper was = %v129.")
+if (v137 > 0) { //002e
+  v36 = v137
+  v36 += 10
+  v38 = 13
+  v37 = 1
+  display(v38,v37,v36)
+  goto(l88)
+}
+v36 = v136
+v36 += 15
+v38 = 13
+v37 = 1
+display(v38,v37,v36)
+l88:
+if (f99) { //0058
+  display(16,1,"Wiz IS on screen.")
+  goto(l105)
+}
+display(16,1,"Wiz IS NOT on screen.")
+l105:
+display(18,1,"Make.wiz.come = %v123.")
+display(19,1,"This room's wiz.x/y is %v32/%v31.")
+display(21,1,"You've been in this room %v47 seconds.")
+display(23,1,"Current.status = %v44.")
+l121:
+if (!(have.key())) { //0079
+  goto(l121)
+}
+accept.input()
+status.line.on()
+set.text.attribute(15,0)
+graphics()
+set(fSaidAccepted)
+return()

@@ -1,5 +1,127 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(10)
+  load.logic(74)
+  load.view(215)
+  load.view(216)
+  if (f94) { //0012
+    load.view(247)
+    load.sound(40)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,215)
+  set.priority(o1,4)
+  ignore.blocks(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  position(o1,129,136)
+  draw(o1)
+  if (vPrevRoom == 66) { //0036
+    set.cel(o1,2)
+    stop.cycling(o1)
+    v221 = 18
+    position(o0,122,134)
+    v223 = 2
+    goto(l84)
+  }
+  set.cel(o1,0)
+  stop.update(o1)
+l84:
+  if (f94) { //0054
+    animate.obj(o2)
+    set.view(o2,247)
+    set.loop(o2,0)
+    ignore.blocks(o2)
+    ignore.objs(o2)
+    position(o2,95,137)
+    set.priority(o2,12)
+    draw(o2)
+    move.obj(o2,100,132,0,f223)
+    v222 = 0
+    sound(40,f154)
+  }
+  if (vPrevRoom == 77) { //007b
+    position(o0,68,166)
+  }
+  draw(o0)
+  add.to.pic(216,0,2,105,109,4,4)
+  show.pic()
+  return()
+}
+distance(o0,o2,v220)
+if (v220 < v61) { //0096
+  set(f109)
+}
+if (f223) { //009f
+  reset(f223)
+  v222++
+  if (v222 == 1) { //00a9
+    move.obj(o2,123,132,0,f223)
+  }
+  if (v222 == 2) { //00b6
+    end.of.loop(o1,f223)
+    stop.cycling(o2)
+  }
+  if (v222 == 3) { //00c2
+    erase(o2)
+    set(f222)
+  }
+}
+v221--
+if (v221 == 1) { //00cf
+  start.update(o1)
+  reverse.loop(o1,f220)
+}
+if (f220) { //00db
+  reset(f220)
+  if (v223 == 2) { //00e3
+    stop.update(o1)
+    v223 = 0
+    goto(l247)
+  }
+  v100 = 4
+  new.room(66)
+}
+l247:
+if (!fEnteredCommand) { //00f7
+  goto(l304)
+}
+if (said("o", "d")) { //0101
+  if (!(obj.in.box(o0,117,129,138,135))) { //010b
+    set(f113)
+    goto(l302)
+  }
+  if (f222) { //011b
+    print("The door is already open.")
+    goto(l302)
+  }
+  set(f36)
+  end.of.loop(o1,f220)
+  v223 = 1
+}
+l302:
+call(74)
+l304:
+if (f222) { //0130
+  if (posn(o0,122,129,128,138)) { //0136
+    v100 = 4
+    new.room(66)
+  }
+}
+if ((vWhichEgoBorder == 3 || v143 == 167)) { //0145
+  v100 = 3
+  if (f94) { //0154
+    reset(f94)
+    print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+    set(f140)
+    goto(l357)
+  }
+  new.room(77)
+}
+l357:
+if (f154) { //0165
+  sound(40,f154)
+}
+return()

@@ -1,4 +1,238 @@
-if (isSet(f242)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x17)}
+if (f242) { //0002
+  call(v56)
+  return()
+}
+if (fNewRoom) { //000b
+  set(f35)
+  v56 = 112
+  load.pic(vCurrentRoom)
+  load.pic(v56)
+  load.logic(v56)
+  if (v39 != 8) { //001c
+    load.view(21)
+    set.view(o1,21)
+    reset(f139)
+    v221 = 74
+    v222 = 167
+  }
+  if (v134 > 0) { //0031
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l73)
+  }
+  position(o0,74,167)
+}
+l73:
+if (f35) { //0049
+  reset(f35)
+  draw.pic(vCurrentRoom)
+  animate.obj(o0)
+  animate.obj(o1)
+  if (!f221 && v39 != 8) { //0057
+    position(o1,221,v222)
+    if (f139) { //0066
+      draw(o1)
+      goto(l119)
+    }
+    v140 = 30
+    v139 = 0
+  }
+l119:
+  draw(o0)
+  show.pic()
+  status.line.on()
+  set(f14)
+  return()
+}
+reset(f225)
+if (posn(o0,89,115,113,123)) { //0080
+  set(f225)
+}
+reset(f224)
+if (posn(o0,42,115,87,126)) { //008e
+  set(f224)
+}
+if (vWhichEgoBorder == 3) { //009a
+  reset(f139)
+  new.room(6)
+}
+distance(o0,o1,v220)
+if (v220 < v61) { //00a9
+  set(f109)
+}
+if (f139) { //00b2
+  get.posn(o1,v144,v145)
+  get.posn(o1,v221,v222)
+  if ((v153 != v144 || v154 != v145)) { //00c0
+    v153 = v144
+    v154 = v145
+    start.cycling(o1)
+    goto(l219)
+  }
+  stop.cycling(o1)
+l219:
+  v157 = v144
+  v144 -= 7
+  v157 += 13
+  if (v142 < v144) { //00e4
+    set.loop(o1,1)
+    goto(l270)
+  }
+  if (v142 > v157) { //00f1
+    set.loop(o1,0)
+    goto(l270)
+  }
+  if (v143 < v145) { //00fe
+    set.loop(o1,3)
+    goto(l270)
+  }
+  set.loop(o1,2)
+}
+l270:
+if (f138) { //010e
+  reset(f138)
+  v139++
+  if (v139 == 1) { //0118
+    set(f139)
+    position(o1,74,167)
+    set.loop(o1,3)
+    draw(o1)
+    print("Laura Watts, of Narcotics, enters the room. \"Hello, Sonny,\" she says.")
+    move.obj(o1,44,137,1,f138)
+  }
+  if (v139 == 2) { //0132
+    set.loop(o1,0)
+    v141 = 11
+  }
+  if (v139 == 3) { //013f
+    v140 = 20
+    if (!f119) { //0149
+      print("\"Sonny! Are you going to be late for briefing again?\"")
+      goto(l343)
+    }
+    print("\"Sonny, you should be out on duty, not fooling around here in the Computer Room.\"")
+  }
+l343:
+  if (v139 == 4) { //0157
+    print("\"Nice talking to you, Sonny\" says Laura. \"See you later!\"")
+    move.obj(o1,74,167,1,f138)
+  }
+  if (v139 == 5) { //0166
+    erase(o1)
+    reset(f139)
+    set(f221)
+  }
+}
+if (!fEnteredCommand) { //0173
+  goto(l911)
+}
+if ((said("boot") || said("boot", "computer") || said("boot", "up", "computer") || said("boot", "up") || said("power") || said("use", "computer") || said("move", "on", "power") || said("move", "power", "on") || said("move", "on", "computer") || said("move", "computer", "on"))) { //017d
+  if (posn(o0,68,118,85,124)) { //01c5
+    set(f35)
+    set(f242)
+    unanimate.all()
+    status.line.off()
+    call(v56)
+    goto(l476)
+  }
+  set(f113)
+}
+l476:
+if ((said("quit") || said("power") || said("move", "off", "power") || said("move", "power", "off") || said("c", "off", "power") || said("c", "power", "off") || said("move", "off", "computer") || said("move", "computer", "off") || said("c", "off", "computer") || said("c", "computer", "off"))) { //01dc
+  if (f224) { //022a
+    print("It IS off.")
+    goto(l567)
+  }
+  set(f113)
+}
+l567:
+if (said("examine", "computer")) { //0237
+  if (f224) { //0241
+    print("It works much more slowly when it's \"off!\"")
+    goto(l590)
+  }
+  set(f113)
+}
+l590:
+if (said("examine", "counter")) { //024e
+  if (f224) { //0258
+    print("On the table is an outdated (but workable) computer system, complete with monitor, keyboard and printer.")
+    goto(l613)
+  }
+  set(f113)
+}
+l613:
+if ((said("examine") || said("examine", "accident"))) { //0265
+  print("This is LPD's Computer Room, complete with an outdated terminal just packed with valuable information.")
+}
+if ((said("examine", "board", "rol") || said("examine", "bulletin", "board", "rol"))) { //0277
+  if (posn(o0,29,122,40,147)) { //028f
+    print("A few outdated memos, filled with superfluous crap, hang on the bulletin board!")
+    goto(l672)
+  }
+  set(f113)
+}
+l672:
+if (said("examine", "fence", "rol")) { //02a0
+  print("The office bulletin board hangs on the left wall, while the rear wall contains two bookshelves.")
+}
+if (said("examine", "bookcase")) { //02ae
+  if (f224) { //02b8
+    print("Mounted on the wall above the computer are two shelves holding approximately nine books.")
+    goto(l709)
+  }
+  set(f113)
+}
+l709:
+if (said("examine", "book")) { //02c5
+  print("You have no use for the computer manuals.")
+}
+if (said("get", "book")) { //02d1
+  if (f224) { //02db
+    print("You could rip the armpit out of your shirt trying to reach that shelf. Anyway, don't you know: no one reads computer manuals!")
+    goto(l744)
+  }
+  set(f113)
+}
+l744:
+if ((said("examine", "out", "pane") || said("examine", "pane"))) { //02e8
+  if (f225) { //02fc
+    print("It's a beautiful day in the neighborhood!")
+    goto(l777)
+  }
+  set(f113)
+}
+l777:
+if (said("o", "pane")) { //0309
+  if (f225) { //0313
+    print("If you're feeling stuffy, take a walk outside. Fresh air makes computers do funny things.")
+    goto(l800)
+  }
+  set(f113)
+}
+l800:
+if ((said("examine", "ceiling") || said("examine", "up"))) { //0320
+  print("It's a typical, acoustic ceiling with florescent lighting.")
+}
+if ((said("examine", "curb") || said("examine", "down"))) { //0334
+  print("It's a plain, gray-tiled floor.")
+}
+if (said("examine", "below", "counter")) { //0348
+  if (f224) { //0354
+    print("Under the table you see spider webs, dust and approximately eighteen wads of dried gum.")
+    goto(l865)
+  }
+  set(f113)
+}
+l865:
+if (f139) { //0361
+  if ((said("answer", "broad") || said("answer", "friend"))) { //0367
+    print("\"Go on, Sonny. Get out of here, and get to work.\"")
+  }
+  if ((said("hug", "broad") || said("hug", "friend"))) { //037b
+    print("\"Come on Sonny, get to work!\"")
+  }
+}
+l911:
+return()

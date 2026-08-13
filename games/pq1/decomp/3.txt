@@ -1,6 +1,397 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
   v220 = 22
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(0)
+  load.pic(vCurrentRoom)
+  load.view(158)
+  load.view(75)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  animate.obj(o2)
+  set.view(o1,75)
+  set.view(o2,75)
+  set.loop(o1,0)
+  set.loop(o2,1)
+  position(o1,54,63)
+  position(o2,60,28)
+  set.priority(o1,5)
+  set.priority(o2,6)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  cycle.time(o2,v123)
+  draw(o1)
+  draw(o2)
+  show.pic()
+  status.line.off()
+  print("As you look into the car, you wonder, \"Can this be happening?\"")
+  print("The young lady has a smile that could melt the polar icecaps, beautiful flashing eyes, gorgeous hair, and her unbuttoned blouse makes it obvious she has nothing to hide!")
+  return()
+}
+set(f109)
+if (f222 && f34) { //004f
+  reset(f34)
+  clear.text.rect(13,0,21,19,15)
+  set.text.attribute(0,15)
+  display(13,6,"Helen Hots")
+  display(14,6,"Female 5'2 105")
+  display(15,6,"HAIR Black")
+  display(16,6,"EYES Blue")
+  display(17,6,"DOB 2/14/66")
+  display(18,6,"202 Gyrate Ct")
+  display(19,6,"Lytton, CA")
+  display(20,6,"RESTRICTIONS")
+  display(21,8,"None.")
+  set.text.attribute(15,0)
+  if (f56) { //0089
+    add.to.pic(158,0,0,2,143,15,15)
+    goto(l162)
+  }
+  add.to.pic(158,0,0,2,133,15,15)
+}
+l162:
+if (!(v223 > 0)) { //00a2
+  random(1,111,v152)
+  if (v152 == 1) { //00ae
+    set(f221)
+    v222 = 1
+  }
+}
+if (f112 && !(v38 > 0)) { //00ba
+  v220--
+  if (v220 == 20) { //00c6
+    v225 = 3
+    v221 = 1
+    v222 = 3
+    set(f221)
+  }
+  if (v220 == 1) { //00d8
+    v221 = 0
+    v222 = 1
+    set(f221)
+    v220 = 22
+  }
+}
+if (f221) { //00ea
+  if (v223 < v222) { //00f0
+    v223++
+    set.cel(o2,0)
+    end.of.loop(o2,f221)
+    goto(l268)
+  }
+  reset(f221)
+  v223 = 0
+  set.cel(o2,0)
+  force.update(o2)
+}
+l268:
+current.cel(o1,v148)
+if (v221 != v148) { //010f
+  set.cel(o1,v221)
+}
+if (!(v223 > 0) && !f110) { //011a
+  if (v225 > 0) { //0125
+    if (!f222) { //012c
+      print(v225)
+      goto(l317)
+    }
+    print.at(v225,2,3,35)
+l317:
+    v225 = 0
+  }
+  if (v226 > 0) { //0140
+    if (!f222) { //0147
+      print(v226)
+      goto(l344)
+    }
+    print.at(v226,2,3,35)
+l344:
+    v226 = 0
+  }
+  if (v227 > 0) { //015b
+    if (!f222) { //0162
+      print(v227)
+      goto(l371)
+    }
+    print.at(v227,2,3,35)
+l371:
+    v227 = 0
+  }
+}
+if (!fEnteredCommand) { //0176
+  goto(l2073)
+}
+if (f56) { //0180
+  set(f34)
+}
+if ((said("smell", "rol") || said("find", "broad") || said("anyword", "smell", "rol"))) { //0188
+  v221 = 0
+  v225 = 50
+}
+if ((said("examine", "breast") || said("examine", "body") || said("examine", "cunt"))) { //01a8
+  v225 = 36
+  v221 = 1
+}
+if ((said("examine", "id", "rol") || said("ask", "drive", "id", "rol") || said("ask", "id", "rol") || said("about", "administer", "bonds", "id") || said("ask", "broad", "id") || said("examine", "bonds", "id", "rol") || said("get", "id", "rol") || said("administer", "bonds", "id", "rol") || said("administer", "bonds", "drive", "id", "rol") || said("bonds", "id", "rol") || said("bonds", "drive", "id", "rol") || said("bonds", "examine", "id", "rol") || said("bonds", "examine", "drive", "id", "rol") || said("examine", "drive", "id", "rol"))) { //01c6
+  if (f222) { //0252
+    v225 = 18
+    v221 = 1
+    goto(l651)
+  }
+  if (v38 < 1) { //0261
+    v38 = 1
+    set(f222)
+    v220 = 0
+    set(f34)
+    v221 = 2
+    v225 = 8
+    v226 = 10
+    v227 = 11
+    goto(l651)
+  }
+  set(f222)
+  set(f34)
+  v221 = 2
+  v225 = 9
+}
+l651:
+if ((said("examine", "rol") || said("look in", "rol"))) { //028b
+  v221 = 0
+  v225 = 19
+  v226 = 38
+  v227 = 13
+}
+if ((said("blow", "rol") || said("hug", "rol") || said("about", "broad", "enter") || said("ask", "broad", "number") || said("ask", "broad", "phone") || said("ask", "broad", "phone", "number") || said("get", "broad", "phone", "number") || said("get", "phone", "number") || said("phone", "number", "rol") || said("ask", "phone", "number") || said("anyword", "hug", "rol") || said("anyword", "breast", "rol") || said("anyword", "cunt", "rol") || said("anyword", "blow", "rol") || said("anyword", "anyword", "breast", "rol") || said("anyword", "anyword", "cunt", "rol") || said("anyword", "anyword", "blow", "rol"))) { //02a9
+  v225 = 43
+  v226 = 46
+  v227 = 7
+  v38 = 100
+  v221 = 1
+  set(f223)
+  if (!f117) { //034e
+    set(f117)
+    vCurrentScore += 1
+  }
+}
+if ((said("bonds", "rol") || said("name", "bonds", "rol") || said("bonds", "bonds", "name", "rol"))) { //035a
+  if (v38 < 2) { //0378
+    set(f225)
+    set(f227)
+    v225 = 4
+    v221 = 1
+    if (f222) { //0389
+      print.at("\"Good day, Ma'am,\" you say, trying to keep your glance high. \"I'm Officer Sonny Bonds.\"",2,3,35)
+      goto(l921)
+    }
+    print("\"Good day, Ma'am,\" you say, trying to keep your glance high. \"I'm Officer Sonny Bonds.\"")
+l921:
+    goto(l927)
+  }
+  v225 = 6
+}
+l927:
+if ((said("name", "rol") || said("answer", "broad") || said("anyword", "name", "rol") || said("answer", "broad", "rol") || said("hello", "rol"))) { //039f
+  if (v38 < 1) { //03c7
+    v225 = 20
+    v221 = 1
+    goto(l998)
+  }
+  if (f222) { //03d7
+    v225 = 44
+    goto(l998)
+  }
+  v225 = 47
+}
+l998:
+if (has(i7) && (said("anyword", "briefcase", "rol") || said("anyword", "anyword", "briefcase", "rol") || said("briefcase", "rol"))) { //03e6
+  v225 = 35
+}
+if ((said("ran", "red", "lamp", "rol") || said("drive", "red", "lamp", "rol") || said("lamp", "rol") || said("red", "lamp", "rol") || said("ran", "lamp", "rol") || said("drive", "lamp", "rol") || said("drive", "rol"))) { //0409
+  set(f224)
+  v226 = 21
+  v221 = 0
+  if (f222) { //044f
+    print.at("Politely, you tell her, \"You ran a red light back there, Miss.\"",2,3,35)
+    goto(l1119)
+  }
+  print("Politely, you tell her, \"You ran a red light back there, Miss.\"")
+}
+l1119:
+if (!f226 && f225 && f227) { //045f
+  if ((said("ok", "rol") || said("anyword", "ok", "rol"))) { //046a
+    v226 = 7
+    set(f223)
+    v38 = 100
+    v221 = 1
+    reset(f227)
+    if (!f117) { //048b
+      set(f117)
+      vCurrentScore += 1
+    }
+    if (f222) { //0497
+      print.at("You quickly trade your integrity for a shot at cheap thrills and torrid sex!",2,3,35)
+      goto(l1191)
+    }
+    print("You quickly trade your integrity for a shot at cheap thrills and torrid sex!")
+  }
+l1191:
+  if ((said("no", "rol") || said("anyword", "no", "rol"))) { //04a7
+    reset(f227)
+    set(f226)
+    if (!f181) { //04bf
+      set(f181)
+      vCurrentScore += 2
+    }
+    v225 = 8
+    set(f222)
+    v220 = 0
+    set(f34)
+    v221 = 2
+  }
+}
+if ((said("print", "citation", "rol") || said("print", "broad", "citation", "rol") || said("anyword", "print", "citation", "rol"))) { //04d8
+  if (!f224) { //04fa
+    set(f224)
+    v226 = 4
+    v221 = 0
+    if (f222) { //0509
+      print.at("Politely, you tell her, \"You ran a red light back there, Miss.\"",2,3,35)
+      goto(l1305)
+    }
+    print("Politely, you tell her, \"You ran a red light back there, Miss.\"")
+l1305:
+    goto(l1397)
+  }
+  if (!f222) { //051c
+    v225 = 15
+    v221 = 0
+    goto(l1397)
+  }
+  if (!(has(i10))) { //052c
+    v225 = 12
+    v221 = 1
+    goto(l1397)
+  }
+  if (!(has(i9))) { //053c
+    v225 = 42
+    v221 = 1
+    goto(l1397)
+  }
+  if (!(v38 < 2)) { //054c
+    v225 = 41
+    goto(l1397)
+  }
+  v38 = 2
+  if (f117) { //055d
+    v225 = 34
+    goto(l1397)
+  }
+  v225 = 51
+  v226 = 10
+  v227 = 11
+  v221 = 2
+}
+l1397:
+if ((said("sign", "citation", "rol") || said("get", "sign", "rol") || said("drop", "sign", "rol") || said("ask", "citation") || said("get", "citation") || said("ask", "broad", "sign", "citation") || said("about", "broad", "sign", "citation") || said("administer", "citation", "broad", "sign", "rol") || said("get", "citation", "sign", "rol"))) { //0575
+  if (!(v38 < 3)) { //05c9
+    v225 = 41
+    goto(l1528)
+  }
+  if (f222) { //05d7
+    v225 = 37
+    goto(l1528)
+  }
+  v38 = 3
+  v225 = 39
+  v226 = 16
+  v221 = 2
+  if (f117) { //05ef
+    v227 = 34
+  }
+}
+l1528:
+if ((said("administer", "id", "rol") || said("administer", "back", "id", "rol") || said("dont move", "examine", "id", "rol") || said("administer", "broad", "id", "rol") || said("administer", "drive", "id", "rol") || said("administer", "back", "drive", "id", "rol") || said("dont move", "examine", "drive", "id", "rol") || said("administer", "broad", "drive", "id", "rol") || said("drop", "broad", "id", "rol") || said("drop", "id", "rol") || said("drop", "drive", "id", "rol"))) { //05f8
+  if (!f222) { //066e
+    set(f115)
+    goto(l1663)
+  }
+  draw.pic(vCurrentRoom)
+  show.pic()
+  reset(f222)
+}
+l1663:
+if ((said("administer", "citation", "rol") || said("administer", "broad", "citation", "rol"))) { //067f
+  if (v38 < 2) { //0697
+    v225 = 40
+    goto(l1738)
+  }
+  if (v38 < 3) { //06a4
+    v225 = 17
+    goto(l1738)
+  }
+  if (f118) { //06b1
+    v225 = 41
+    goto(l1738)
+  }
+  set(f223)
+  set(f118)
+  vCurrentScore += 5
+  v225 = 14
+  v221 = 2
+}
+l1738:
+if ((said("ask", "broad", "washington", "rol") || said("anyword", "washington", "rol"))) { //06ca
+  v225 = 22
+}
+if ((said("bye") || said("dont move", "examine", "rol") || said("thank") || said("enter") || said("examine", "away") || said("move", "away") || said("enter", "rol") || said("examine", "auto"))) { //06e5
+  set(f223)
+}
+if ((said("enter", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "bonds", "rol") || said("move", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "use", "bonds", "rol"))) { //0719
+  v225 = 49
+}
+if ((said("cuff", "broad", "rol") || said("get", "out", "auto", "rol") || said("ask", "broad", "get", "out", "auto", "rol") || said("apprehend", "broad"))) { //0764
+  v225 = 49
+}
+if ((said("examine", "right", "rol") || said("examine", "anyword", "right", "rol") || said("administer", "right", "rol") || said("administer", "anyword", "right", "rol") || said("right", "rol") || said("anyword", "right", "rol"))) { //0793
+  v225 = 49
+}
+if (!fSaidAccepted) { //07ce
+  if (f222) { //07d5
+    set(f34)
+  }
+  if (!f224) { //07dd
+    set(f224)
+    v225 = 48
+    v221 = 1
+  }
+  if (!f225) { //07ec
+    set(f225)
+    set(f227)
+    v226 = 4
+    v221 = 1
+  }
+  if (f117) { //07fd
+    v227 = 34
+    set(fSaidAccepted)
+    v221 = 2
+  }
+}
+if (v221 != 2) { //080b
+  random(1,3,v222)
+  set(f221)
+}
+l2073:
+if (!(v225 > 0) && !(v226 > 0) && !(v227 > 0) && f223) { //0819
+  if (v38 == 101) { //082b
+    print("\"Thanks for not giving me a ticket, Officer!\"")
+  }
+  if ((v38 == 4 || v38 == 101)) { //0834
+    v38 = 199
+    goto(l2121)
+  }
+  v38 = 0
+l2121:
+  new.room(30)
+}
+return()

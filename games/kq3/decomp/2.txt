@@ -1,4 +1,658 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 84
+  v58 = 148
+  v32 = 20
+  v31 = 150
+  v100 = 82
+  v101 = 120
+  load.logic(104)
+  if (v128 != 20) { //0026
+    v128 = 0
+  }
+  if (v127 == 4 && v128 != 20) { //0031
+    load.logic(105)
+    set(f98)
+    load.view(194)
+    load.view(195)
+    load.view(199)
+    load.sound(3)
+    load.sound(2)
+    v32 = 29
+    v31 = 117
+    v125 = 0
+    goto(l125)
+  }
+  if ((v127 == 1 || v127 == 3) && !(v137 > 0) && v128 != 20) { //0056
+    random(1,4,v36)
+    if (v36 == 1) { //006e
+      set(f98)
+      load.logic(105)
+      random(6,12,v125)
+    }
+  }
+l125:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(176)
+  load.view(90)
+  load.view(179)
+  load.view(180)
+  animate.obj(o2)
+  position(o2,27,133)
+  set.view(o2,176)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o1)
+  position(o1,51,70)
+  set.view(o1,0)
+  set.priority(o1,4)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  ignore.horizon(o1)
+  draw(o1)
+  v36 = 2
+  animate.obj(o3)
+  position(o3,100,115)
+  set.view(o3,90)
+  set.priority(o3,5)
+  cycle.time(o3,v36)
+  if (v230 > 0) { //00be
+    last.cel(o3,v36)
+    set.cel(o3,v36)
+    goto(l209)
+  }
+  set.cel(o3,0)
+l209:
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o5)
+  ignore.objs(o5)
+  ignore.blocks(o5)
+  position(o5,63,123)
+  set.view(o5,179)
+  set.cel(o5,0)
+  cycle.time(o5,v36)
+  set.priority(o5,6)
+  draw(o5)
+  stop.update(o5)
+  animate.obj(o4)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  position(o4,107,146)
+  set.view(o4,180)
+  set.cel(o4,0)
+  cycle.time(o4,v36)
+  draw(o4)
+  stop.update(o4)
+  if (v44 == 25) { //0106
+    set(f48)
+  }
+  if (f48) { //010f
+    if (vPrevRoom == 3) { //0115
+      position(o0,41,167)
+      goto(l295)
+    }
+    position(o0,57,v58)
+  }
+l295:
+  observe.blocks(o0)
+  if (f47) { //0129
+    draw(o0)
+  }
+  call(104)
+  if (f98) { //0133
+    call(105)
+    if (v127 == 4) { //013b
+      set(f234)
+      v220 = 44
+      v128 = 7
+      set.view(o15,194)
+      set.cel(o15,0)
+      stop.cycling(o15)
+      position(o15,32,v31)
+      draw(o15)
+      set(f99)
+      goto(l352)
+    }
+    v128 = 0
+  }
+l352:
+  show.pic()
+  return()
+}
+reset(f220)
+if (posn(o0,0,0,36,141)) { //0164
+  set(f220)
+}
+reset(f221)
+if (posn(o0,21,131,44,140)) { //0172
+  set(f221)
+}
+reset(f223)
+if (posn(o0,95,127,112,131)) { //0180
+  set(f223)
+}
+reset(f224)
+if (posn(o0,58,132,70,142)) { //018e
+  set(f224)
+}
+reset(f222)
+if ((posn(o0,77,120,91,132) || posn(o0,0,133,27,156))) { //019c
+  set(f222)
+}
+reset(f225)
+reset(f228)
+if (posn(o0,102,134,117,153)) { //01b4
+  set(f225)
+  if (posn(o0,108,144,112,146)) { //01c0
+    set(f228)
+  }
+}
+reset(f227)
+reset(f226)
+if (posn(o0,0,133,75,164)) { //01d0
+  set(f226)
+  if (posn(o0,0,133,69,156)) { //01dc
+    set(f227)
+  }
+}
+if (!fEnteredCommand) { //01e8
+  goto(l1727)
+}
+if ((said("examine", "area") || said("examine", "building") || said("examine") || said("examine", "bedroom"))) { //01f2
+  print("You look at Manannan's elegant bed chamber. You see fine furnishings from a regal bed to a beautifully carved closet. You can't help but compare this handsome room to your own meager cubicle.")
+}
+if (said("examine", "nightstand")) { //0210
+  print("There is a small drawer in the front of the mahogany vanity.")
+}
+if ((said("examine", "looking glass") || said("look in", "looking glass"))) { //021c
+  if (!f224) { //022e
+    print("The beveled mirror appears wavy because of imperfections in the glass. %m41")
+    goto(l587)
+  }
+  current.loop(o0,v36)
+  if (v36 == 2) { //023d
+    print("The back of your hair looks cute.")
+    goto(l587)
+  }
+  print("Imperfections in the glass make your reflection wavy; nevertheless, your rags show up all too clearly. But, though in rags, your face is handsome and your body strong.")
+}
+l587:
+if (said("examine", "bed")) { //024b
+  if (v128 == 7) { //0255
+    print("Manannan is asleep on his great bed. His snores are so loud they rumble off the walls. Be quiet; you wouldn't want to disturb him.")
+    goto(l611)
+  }
+  print("Heavy velvet curtains drape the regal mahogany bed.")
+}
+l611:
+if (said("examine", "below", "bed")) { //0263
+  if (f221) { //026f
+    print("Dropping to your hands and knees, you peer under the bed. There is absolutely nothing there.")
+    goto(l636)
+  }
+  print("You are not close enough.")
+}
+l636:
+if ((said("lay", "bed") || said("lay", "on", "bed") || said("lay", "down", "on", "bed") || said("capture", "bed") || said("capture", "on", "bed") || said("board", "sleep") || said("board", "bed"))) { //027c
+  print("As comfortable as the bed looks, you have no interest in lying on the hateful wizard's bed.")
+}
+if (said("examine", "carpet")) { //02b6
+  print("A beautiful rug adorns the floor. Its thick wool is woven into a colorful design.")
+}
+if (said("capture", "carpet")) { //02c2
+  print("The carpet is too big and heavy to carry around.")
+}
+if (said("examine", "below", "carpet")) { //02ce
+  if (f227) { //02da
+    print("You tug at the rug for quite a while... before realizing you're standing on it!")
+    goto(l754)
+  }
+  if (f226) { //02e5
+    print("You lift up the rug in several places and look under it. Sad to say, all you see is the dust you swept under there yesterday.")
+    goto(l754)
+  }
+  print("You are not close enough.")
+}
+l754:
+if ((said("examine", "top", "bureau") || said("examine", "above", "bureau") || said("examine", "on", "above", "bureau") || said("examine", "on", "bureau") || said("examine", "bureau", "top"))) { //02f2
+  print("There is nothing exciting on top of the dresser.")
+}
+if ((said("examine", "drawer") || said("examine", "bureau"))) { //0324
+  if (f224) { //0336
+    print("There is a small drawer in the front of the mahogany vanity.")
+    goto(l835)
+  }
+  print("The elegant dresser is made of mahogany. Its drawers are graced by beautiful gold knobs.")
+}
+l835:
+if ((said("look in", "bureau") || said("look in", "drawer") || said("look in", "nightstand") || said("look in", "bureau", "drawer") || said("look in", "nightstand", "drawer") || said("look in", "drawer", "bureau") || said("look in", "drawer", "nightstand") || said("lift", "nightstand", "drawer") || said("lift", "bureau", "drawer") || said("lift", "drawer", "nightstand") || said("lift", "drawer", "bureau") || said("lift", "nightstand") || said("lift", "bureau") || said("lift", "drawer"))) { //0343
+  if (f224) { //03ad
+    if (v128 == 7) { //03b3
+      set(f236)
+      v229 = 100
+      goto(l965)
+    }
+    v226 = 44
+l965:
+    goto(l1021)
+  }
+  if (f225) { //03c8
+    if (v128 == 7) { //03ce
+      set(f236)
+      v229 = 100
+      goto(l1003)
+    }
+    if (f228) { //03dd
+      print("You bang the drawer against your shins repeatedly. (Try backing up!)")
+      goto(l1003)
+    }
+    v227 = 44
+l1003:
+    goto(l1021)
+  }
+  if (f223) { //03ee
+    print("Quietly opening the drawer below the closet, you discover...")
+    print("nothing that interests you.")
+    goto(l1021)
+  }
+  print("You are not close enough.")
+}
+l1021:
+if (said("examine", "cabinet")) { //03fd
+  if (!f223 && obj.in.room(i38,vCurrentRoom)) { //0407
+    print("%m2 There may be something metallic on its top.")
+    goto(l1048)
+  }
+  print("The closet is fashioned of ornately carved mahogany.")
+}
+l1048:
+if (v230 == 0 && (said("look in", "cabinet") || said("examine", "inside", "cabinet") || said("lift", "door") || said("lift", "door", "cabinet") || said("lift", "cabinet", "door") || said("lift", "cabinet"))) { //0418
+  if (!f223) { //044b
+    print("You are not close enough.")
+    goto(l1136)
+  }
+  if (v128 == 7) { //0457
+    set(f236)
+    v229 = 100
+    goto(l1136)
+  }
+  v230++
+  start.update(o3)
+  set.cel(o3,0)
+  end.of.loop(o3,f230)
+}
+l1136:
+if (v230 > 0) { //0470
+  if (obj.in.room(i54,vCurrentRoom) && (said("examine", "cabinet") || said("examine", "back", "rol") || said("move", "anyword", "find", "rol") || said("move", "clothes", "rol") || said("move", "anyword") || said("find", "cabinet"))) { //0477
+    if (!f223) { //04ac
+      print("You are not close enough.")
+      goto(l1218)
+    }
+    v230 = 3
+    print("You're startled to discover an ancient parchment scroll. Its ink has faded, but it seems to be a map. Taking this treasure, you leave everything else exactly as it was.")
+    get(i54)
+    vCurrentScore += 7
+  }
+l1218:
+  if ((said("look in", "cabinet") || said("examine", "inside", "cabinet") || said("examine", "clothes") || said("examine", "cabinet") || said("find", "cabinet"))) { //04c2
+    if (!f223) { //04e8
+      print("You are not close enough.")
+      goto(l1273)
+    }
+    print("You see voluminous velvet robes, satin slippers, peaked hats, and soft linen gowns.")
+    v230 = 2
+  }
+}
+l1273:
+if (v230 > 0 && (said("close", "cabinet") || said("close", "door", "cabinet") || said("close", "cabinet", "door") || said("close", "door"))) { //04f9
+  if (!f223) { //051e
+    print("You are not close enough.")
+    goto(l1336)
+  }
+  v230 = 0
+  start.update(o3)
+  last.cel(o3,v36)
+  set.cel(o3,v36)
+  reverse.loop(o3,f230)
+}
+l1336:
+if ((said("find", "above", "cabinet") || said("find", "top", "cabinet") || said("find", "on", "cabinet") || said("find", "on", "above", "cabinet") || said("examine", "above", "cabinet") || said("examine", "top", "cabinet") || said("examine", "on", "cabinet") || said("examine", "on", "above", "cabinet"))) { //0538
+  if (!f223) { //0582
+    print("You are not close enough to reach the top of the closet.")
+    goto(l1451)
+  }
+  if (!(obj.in.room(i38,vCurrentRoom))) { //058e
+    print("You feel along the top of the closet. Your hand comes back dusty.")
+    goto(l1451)
+  }
+  get(i38)
+  print("You run a hand along the top of the closet. Suddenly, you touch something metallic. Grabbing it, you discover... a small brass key! What could it unlock?")
+  if (!f92) { //059f
+    set(f92)
+    vCurrentScore += 3
+  }
+}
+l1451:
+if ((said("lift", "glass") || said("close", "glass"))) { //05ab
+  if (!f222) { //05bd
+    print("You are not close enough.")
+    goto(l1483)
+  }
+  print("Manannan's bedroom window is always open. He likes fresh air.")
+}
+l1483:
+if ((said("examine", "basin") || said("examine", "chamber pot") || said("examine", "deck") || said("examine", "chamber pot"))) { //05cb
+  print("Manannan's chamber pot is on the floor beside his bed.")
+}
+if ((said("try", "basin") || said("try", "chamber pot") || said("try", "chamber pot"))) { //05eb
+  if (!f220) { //0603
+    print("You are not close enough.")
+    goto(l1553)
+  }
+  print("A feeling of great relief spreads over you.")
+}
+l1553:
+if ((said("look in", "basin") || said("look in", "chamber pot") || said("look in", "chamber pot"))) { //0611
+  if (!f220) { //0629
+    print("You are not close enough.")
+    goto(l1593)
+  }
+  print("You look inside Manannan's chamber pot...")
+  print("and wish you hadn't!!")
+}
+l1593:
+if (!f46 && (said("drain", "chamber pot") || said("drain", "basin") || said("drain", "chamber pot") || said("capture", "chamber pot") || said("capture", "basin") || said("capture", "chamber pot"))) { //0639
+  if (!f220) { //0666
+    print("You are not close enough.")
+    goto(l1655)
+  }
+  v224 = 0
+  set(f235)
+}
+l1655:
+if (v128 == 7) { //0677
+  if (said("examine", "enchanter")) { //067e
+    print("Manannan is asleep on his great bed. His snores are so loud they rumble off the walls. Be quiet; you wouldn't want to disturb him.")
+  }
+  if ((said("call", "enchanter") || said("wake", "up", "enchanter") || said("wake", "enchanter", "up") || said("wake", "enchanter"))) { //068a
+    if (!f229) { //06ac
+      set(f229)
+      print("You speak softly to the sleeping wizard. \"Hhrrummph!\" he grumbles sleepily, thumbing his nose as if at a fly. But, soon the snoring resumes again.")
+      goto(l1727)
+    }
+    v229 = 200
+    set(f236)
+  }
+}
+l1727:
+if (f235) { //06bf
+  reset(f235)
+  v224++
+  v69 = 1
+  program.control()
+  prevent.input()
+  if (v224 == 1) { //06ce
+    set(f46)
+    start.update(o2)
+    erase(o2)
+    ignore.objs(o13)
+    v222 = v40
+    v223 = v41
+    v37 = 82
+    move.obj(o0,v37,v41,69,f235)
+    if (v137 == 2) { //06ec
+      v137 = 0
+      v110 = 0
+      v109 = 0
+    }
+  }
+  if (v224 == 2) { //06fc
+    v38 = 122
+    move.obj(o0,v40,v38,69,f235)
+  }
+  if (v224 == 3) { //070c
+    print("Wrinkling your nose in disgust, you throw the smelly contents of the chamber pot out the open window. What a way to make a living!")
+    move.obj(o0,v40,v223,69,f235)
+  }
+  if (v224 == 4) { //071b
+    move.obj(o0,v222,v223,69,f235)
+  }
+  if (v224 == 5) { //0728
+    draw(o2)
+    observe.objs(o13)
+    player.control()
+    accept.input()
+    reset(f46)
+  }
+}
+if (f230) { //0737
+  reset(f230)
+  stop.update(o3)
+}
+v226--
+if (v226 == 43) { //0743
+  stop.motion(o0)
+  start.update(o5)
+  end.of.loop(o5,f41)
+}
+if (v226 == 22) { //0751
+  if (obj.in.room(i43,vCurrentRoom)) { //0758
+    get(i43)
+    vCurrentScore += 1
+    print("In the vanity drawer are many uninteresting items, although the wizard's hand mirror may come in handy. You grab it, then close the drawer.")
+    goto(l1899)
+  }
+  print("You find baubles and trinkets which do not interest you.")
+}
+l1899:
+if (v226 == 1) { //076b
+  reverse.loop(o5,f232)
+}
+if (f232) { //0775
+  reset(f232)
+  stop.update(o5)
+  start.motion(o0)
+}
+v227--
+if (v227 == 43) { //0783
+  stop.motion(o0)
+  start.update(o4)
+  end.of.loop(o4,f41)
+}
+if (v227 == 22) { //0791
+  if (obj.in.room(i12,vCurrentRoom)) { //0798
+    get(i12)
+    vCurrentScore += 1
+    print("%m34 Suddenly, your eye falls on something that does... a vial labeled \"Rose Petal Essence,\" which you eagerly take.")
+    goto(l1963)
+  }
+  print("You find baubles and trinkets which do not interest you.")
+}
+l1963:
+if (v227 == 1) { //07ab
+  reverse.loop(o4,f233)
+}
+if (f233) { //07b5
+  reset(f233)
+  stop.update(o4)
+  start.motion(o0)
+}
+if (f99 && !f109) { //07c1
+  if (v128 == 7) { //07ca
+    v220--
+    if (v220 == 1) { //07d3
+      start.cycling(o15)
+      end.of.loop(o15,f231)
+      v220 = 22
+      sound(3,f41)
+    }
+    if (f231) { //07e5
+      reset(f231)
+      stop.cycling(o15)
+      set.cel(o15,0)
+    }
+  }
+}
+if (f45) { //07f2
+  v130--
+  if (v130 == 1) { //07fa
+    set(f236)
+  }
+  if (!(v84 > 0) && v83 < 8) { //0803
+    v83 = 8
+  }
+}
+if (v229 == 204) { //0811
+  current.cel(o14,v36)
+  if (v36 == 3) { //081b
+    set(f236)
+  }
+}
+if (f236) { //0824
+  reset(f236)
+  v229++
+  if (v229 == 101) { //082e
+    prevent.input()
+    program.control()
+    stop.motion(o0)
+    set(f46)
+    v128 = 0
+    stop.cycling(o15)
+    set.view(o15,195)
+    set.cel(o15,0)
+    reposition.to(o15,38,117)
+    v130 = 4
+    v220 = 0
+  }
+  if (v229 == 102) { //0850
+    set.cel(o15,1)
+    print("You try to be quiet, but an unfortunate squeak wakes Manannan. He turns in his bed, then sits up, staring angrily at you. \"You know you're to stay out of my things,\" he growls. \"I've no choice but to punish you for this.\"")
+    v130 = 4
+  }
+  if (v229 == 103) { //085f
+    set.view(o15,190)
+    reposition.to(o15,37,133)
+    force.update(o15)
+    v36 = 2
+    cycle.time(o15,v36)
+    v127 = 1
+    v84 = 5
+    force.update(o0)
+    unanimate.all()
+    animate.obj(o0)
+    draw(o0)
+    force.update(o0)
+    animate.obj(o15)
+    draw(o15)
+    force.update(o15)
+    v123 = 15
+    set(f130)
+    v229 = 0
+  }
+  if (v229 == 201) { //0892
+    prevent.input()
+    program.control()
+    stop.motion(o0)
+    set(f46)
+    v128 = 103
+    stop.cycling(o15)
+    set.view(o15,195)
+    set.cel(o15,0)
+    reposition.to(o15,38,117)
+    v130 = 4
+    v220 = 0
+  }
+  if (v229 == 202) { //08b4
+    set.cel(o15,1)
+    print("This time your words awaken Manannan. A grumpy look comes to his face. \"Don't you have anything better to do, boy, than to come in MY bed chamber and wake me from my peaceful repose?\"")
+    v130 = 4
+  }
+  if (v229 == 203) { //08c3
+    set.view(o15,190)
+    reposition.to(o15,37,133)
+    v36 = 2
+    cycle.time(o15,v36)
+    v127 = 1
+    v84 = 5
+    v129 = 2
+    v130 = 4
+  }
+  if (v229 == 204) { //08e3
+    animate.obj(o14)
+    set.view(o14,199)
+    set.cel(o14,0)
+    v36 = 3
+    cycle.time(o14,v36)
+    ignore.objs(o14)
+    set.priority(o14,15)
+    position(o14,37,133)
+    stop.motion(o14)
+    start.cycling(o14)
+    draw(o14)
+    end.of.loop(o14,f236)
+    sound(2,f41)
+  }
+  if (v229 == 205) { //090d
+    erase(o15)
+  }
+  if (v229 == 206) { //0916
+    erase(o14)
+    reset(f99)
+    reset(f98)
+    v32 = 20
+    v31 = 150
+    accept.input()
+    player.control()
+    start.motion(o0)
+    reset(f46)
+    erase(o14)
+    v128 = 104
+    v229 = 0
+  }
+}
+if (f114) { //0937
+  erase(o1)
+  goto(l2460)
+}
+if (v41 > 105) { //0942
+  current.view(o0,v36)
+  set.view(o1,v36)
+  current.loop(o0,v36)
+  if (v36 == 3) { //0952
+    set.loop(o1,2)
+    goto(l2415)
+  }
+  if (v36 == 2) { //095f
+    set.loop(o1,3)
+    goto(l2415)
+  }
+  set.loop(o1,v36)
+l2415:
+  current.cel(o0,v36)
+  set.cel(o1,v36)
+  get.posn(o0,v40,v38)
+  v38 -= 132
+  v81 = 117
+  v81 -= v38
+  reposition.to(o1,v40,v81)
+  if (!f35 && (vEgoDir == 0 || vEgoDir == v82)) { //0986
+    stop.cycling(o1)
+    goto(l2460)
+  }
+  start.cycling(o1)
+}
+l2460:
+call(104)
+if (f98) { //099e
+  call(105)
+}
+if (vWhichEgoBorder == 3 && v44 != 125 && v40 > 36 && v40 < 52) { //09a6
+  new.room(3)
+}
+return()

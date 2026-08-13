@@ -1,4 +1,100 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(48)
+  v56 = 6
+  set(f60)
+  v57 = 99
+  v58 = 89
+  load.sound(1)
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //0026
+    if (vPrevRoom == 69) { //002c
+      position(o0,73,55)
+    }
+  }
+  if (f47) { //0037
+    draw(o0)
+  }
+  ignore.blocks(o0)
+  if (f182) { //0041
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (f182) { //004d
+  call(119)
+}
+if (f33) { //0055
+  ignore.blocks(o0)
+}
+if (!f46 && fTriggerLine && !f221) { //005d
+  set(f46)
+  prevent.input()
+  set(f221)
+  ignore.blocks(o0)
+  get.priority(o0,v36)
+  set.priority(o0,v36)
+  set.view(o0,11)
+  v36 = 4
+  cycle.time(o0,v36)
+  v37 = v40
+  v38 = 164
+  v36 = 4
+  move.obj(o0,v37,v38,36,f220)
+  sound(1,f238)
+}
+if (f220) { //0091
+  reset(f220)
+  erase(o0)
+  set(f44)
+  print("The treacherous chasm has claimed another victim.")
+  reset(f46)
+  return()
+}
+if ((said("examine", "area") || said("examine"))) { //00a2
+  print("The countryside of Daventry looks as if it had once been beautiful. But now, trees are charred, a chasm splits the earth, and wildflowers no longer grow. Nearby is an old, broken-down well that someone has filled with rocks. It's useless now.")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //00b4
+  print("Some plants and trees around Daventry have been burnt black and leafless.")
+}
+if ((said("examine", "flower") || said("capture", "flower"))) { //00c8
+  print("Wildflowers no longer grow here.")
+}
+if (said("examine", "deck")) { //00dc
+  print("There is nothing interesting on the ground but grass.")
+}
+if (said("examine", "sky")) { //00e8
+  print("The sky is blue and the sun is shining, but yet a feeling of sadness lingers here.")
+}
+if (said("climb", "forest")) { //00f4
+  print("There are no good climbing trees that you can see.")
+}
+if ((said("examine", "well") || said("look in", "well") || said("climb", "well"))) { //0100
+  print("The old well has been filled with rocks. It's useless. Like everything else in Daventry, the well gives a feeling of futileness.")
+}
+if ((said("look in", "canyon") || said("examine", "canyon") || said("examine", "above", "canyon"))) { //011a
+  print("A deep chasm splits the earth. Possibly, an earthquake ripped through Daventry at one time. Looking across the chasm, you see nothing but more charred countryside.")
+}
+if ((said("examine", "cage") || said("examine", "above", "cage"))) { //0136
+  print("A stone wall travels to the north and south. You see if you can climb it, but find it too high. There is nothing of any interest on the other side of the wall, anyway.")
+}
+if ((said("climb", "cage") || said("climb", "above", "cage") || said("jump", "cage") || said("jump", "above", "cage"))) { //014c
+  print("%m9")
+}
+if ((said("jump", "above", "canyon") || said("climb", "canyon") || said("climb", "down", "canyon") || said("jump", "down", "canyon") || said("board", "above", "canyon") || said("jump", "canyon"))) { //0170
+  print("The chasm is much too wide to jump across, and too treacherous to climb.")
+}
+if (vWhichEgoBorder == 1) { //01a4
+  new.room(69)
+}
+if (vWhichEgoBorder == 2) { //01ad
+  new.room(61)
+}
+return()

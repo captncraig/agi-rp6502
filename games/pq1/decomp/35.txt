@@ -1,4 +1,255 @@
-if (isSet(f5)) {
-  if (!(isSet(f39)
-!!!
-&{%!e(string=incomplete condition: 0xfc)}
+if (fNewRoom) { //0002
+  if (!f39 && (f63 || f64)) { //0008
+    v52 = 4
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(191)
+  load.view(91)
+  load.view(94)
+  load.sound(1)
+  load.sound(2)
+  load.logic(94)
+  if (!f178) { //002a
+    set(f178)
+    vCurrentScore += 3
+  }
+  if (v67 == 1) { //0036
+    if (v93 < 3 && v136 > 0) { //003d
+      v67 = 0
+      v93 = 0
+      goto(l88)
+    }
+    add.to.pic(94,0,0,12,159,14,0)
+  }
+l88:
+  if (v94 > 0 && v94 < 4 && v67 == 4) { //0058
+    v94 = 1
+    load.view(68)
+    if (f76) { //006a
+      v220 = 2
+      v152 = 2
+      goto(l124)
+    }
+    v152 = 0
+l124:
+    animate.obj(o3)
+    set.view(o3,68)
+    set.cel(o3,v152)
+    stop.cycling(o3)
+    position(o3,10,162)
+    draw(o3)
+    stop.update(o3)
+    v152 = 7
+    cycle.time(o3,v152)
+    goto(l163)
+  }
+  if (v94 > 3) { //0097
+    v94 = 255
+    reset(f47)
+  }
+l163:
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o4)
+  set.view(o1,191)
+  set.view(o2,191)
+  set.view(o4,91)
+  set.loop(o1,1)
+  set.loop(o2,2)
+  set.loop(o4,0)
+  position(o1,38,124)
+  position(o2,125,116)
+  position(o4,111,60)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.priority(o1,5)
+  set.priority(o2,5)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  v152 = 4
+  cycle.time(o2,v152)
+  cycle.time(o1,v152)
+  if (v134 > 0) { //00e0
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l276)
+  }
+  if (vPrevRoom == 37) { //00f4
+    position(o0,127,119)
+    goto(l276)
+  }
+  if (vPrevRoom == 36) { //0102
+    position(o0,40,127)
+    goto(l276)
+  }
+  position(o0,77,135)
+l276:
+  add.to.pic(91,1,0,10,58,15,0)
+  v152 = 18
+  cycle.time(o4,v152)
+  draw(o1)
+  draw(o2)
+  draw(o4)
+  stop.update(o1)
+  stop.update(o2)
+  call(94)
+  show.pic()
+  return()
+}
+if (!f221 && posn(o0,35,120,41,125)) { //0130
+  set(f221)
+  start.update(o1)
+  end.of.loop(o1,f223)
+  sound(1,f154)
+  set(f36)
+  stop.update(o0)
+  prevent.input()
+}
+if (f223) { //014c
+  reset(f36)
+  accept.input()
+  start.update(o0)
+  new.room(36)
+}
+if (!f222 && posn(o0,125,117,128,118)) { //0159
+  set(f222)
+  start.update(o2)
+  end.of.loop(o2,f224)
+  sound(1,f154)
+  set(f36)
+  stop.update(o0)
+  prevent.input()
+}
+if (f224) { //0175
+  reset(f36)
+  accept.input()
+  start.update(o0)
+  new.room(37)
+}
+if (v94 > 0 && v94 < 4) { //0182
+  if (posn(o0,7,155,55,161)) { //018c
+    set.priority(o0,13)
+    goto(l414)
+  }
+  release.priority(o0)
+l414:
+  if (!(v220 > 0) && posn(o0,0,158,55,164)) { //019e
+    start.update(o3)
+    end.of.loop(o3,f76)
+    v220++
+  }
+  if (v220 == 1 && f76) { //01b3
+    sound(2,f154)
+    shake.screen(1)
+    stop.update(o3)
+    print("Oooops!")
+    v220++
+  }
+}
+if (!fEnteredCommand) { //01c7
+  goto(l940)
+}
+if ((said("examine") || said("examine", "accident"))) { //01d1
+  print("This is the front entrance of Carol's Caffeine Castle, and the \"lovely\" Wino Willy's Cocktail Lounge.")
+}
+if ((said("examine", "up") || said("examine", "air"))) { //01e3
+  print("You see a beautiful, blue, cloudless sky.")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //01f7
+  print("You see an oil-stained asphalt street, bordered by a hot concrete sidewalk.")
+}
+if ((said("examine", "caffeine", "shop") || said("examine", "accident", "caffeine") || said("examine", "caffeine"))) { //020b
+  print("You wonder if Carol's designer once worked for a cab company!")
+}
+if (said("examine", "wino", "accident")) { //0229
+  print("The new, red, brick facade at Wino Willy's sure dresses up an otherwise depressing joint!")
+}
+if ((said("examine", "accident") || said("examine", "accident") || said("examine", "accident"))) { //0237
+  print("You wonder if Carol's designer once worked for a cab company!")
+  print("The new, red, brick facade at Wino Willy's sure dresses up an otherwise depressing joint!")
+}
+if ((said("examine", "pane") || said("look in", "pane"))) { //0253
+  if (posn(o0,54,130,99,135)) { //0265
+    print("As you peer in the window, you see a couple of Carol's patrons giggling and pointing out at you.")
+    goto(l675)
+  }
+  if (posn(o0,0,130,22,135)) { //0274
+    print("Looking in the window, you see Carol waiting on some customers.")
+    goto(l675)
+  }
+  if (posn(o0,135,118,153,123)) { //0283
+    print("You can't see through translucent glass.")
+    goto(l675)
+  }
+  if (posn(o0,31,126,50,133)) { //0292
+    print("Looking in the window, you see Carol waiting on some customers.")
+    goto(l675)
+  }
+  print("Get closer.")
+}
+l675:
+if (v67 == 1) { //02a3
+  if (posn(o0,0,142,81,167)) { //02aa
+    if (said("examine", "auto")) { //02b4
+      print("A quick scan of your partner's patrol car interior clearly shows he is not in it.")
+    }
+  }
+  if (posn(o0,25,142,51,167)) { //02c0
+    if (said("anyword", "d")) { //02ca
+      print("Your partner's car is locked.")
+    }
+  }
+}
+if (v67 == 1) { //02d6
+  if (said("call")) { //02dd
+    set.string(str3,"10-7")
+    if (v93 < 3) { //02e8
+      print("\"%m27 copies %s3 at Carol's Caffeine Castle.\"")
+      goto(l758)
+    }
+    print("\"%m23 %m27 copies 10-8.\"")
+  }
+}
+l758:
+if (v67 == 4) { //02f6
+  if (said("call")) { //02fd
+    set.string(str3,"10-97")
+    if (v94 < 255) { //0308
+      print("\"%m27 copies %s3 at Carol's Caffeine Castle.\"")
+      goto(l790)
+    }
+    print("You key your radio, \"%m27, %m23 complaint resolved.\"")
+  }
+}
+l790:
+if (v94 > 0 && v94 < 4) { //0316
+  if ((said("examine", "license plate", "rol") || said("examine", "bike", "license plate", "rol") || said("examine", "bike", "id", "rol") || said("examine", "id", "license plate", "rol"))) { //0320
+    print("The plates on these hogs appear to be currently registered.")
+  }
+  if ((said("call") || said("call", "bike", "rol"))) { //034e
+    print("You radio dispatch and request checks on the license plates.")
+    print("Your radio sings out, \"%m23 All plates are clear and currently registered.\"")
+  }
+  if ((said("get", "bike", "rol") || said("enter", "bike", "rol"))) { //0364
+    print("Forget it!")
+  }
+  if (said("examine", "bike")) { //037c
+    if (f76) { //0386
+      print("Somebody is gonna have to answer to four angry people!")
+      goto(l915)
+    }
+    print("Parked in front of Carol's are four bad-news motorcycles.")
+  }
+}
+l915:
+if (v44 == 99 && posn(o0,82,137,159,167)) { //0393
+  if (said("examine", "auto")) { //03a0
+    print("When the department bought these cars, they had a choice between comfort and power. They picked comfort.")
+  }
+}
+l940:
+call(94)
+return()

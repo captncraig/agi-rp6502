@@ -1,5 +1,210 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(31)
+  load.view(214)
+  load.view(216)
+  load.logic(74)
+  if (f94) { //0012
+    load.view(247)
+    load.sound(40)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,214)
+  set.priority(o1,4)
+  ignore.blocks(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  position(o1,129,93)
+  set.priority(o0,13)
+  draw(o1)
+  if (vPrevRoom == 66) { //0039
+    set.cel(o1,2)
+    stop.cycling(o1)
+    v220 = 18
+    position(o0,123,91)
+    v222 = 2
+    v221 = 2
+    goto(l90)
+  }
+  set.cel(o1,0)
+  stop.update(o1)
+l90:
+  if (f94) { //005a
+    animate.obj(o3)
+    set.view(o3,247)
+    set.loop(o3,1)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    position(o3,48,146)
+    set.priority(o3,12)
+    draw(o3)
+    move.obj(o3,106,88,0,f222)
+    v224 = 0
+    sound(40,f154)
+  }
+  if (vPrevRoom == 76) { //0081
+    position(o0,47,33)
+    v222 = 1
+    set.priority(o0,4)
+  }
+  if (vPrevRoom == 78) { //0092
+    position(o0,58,165)
+    v222 = 4
+    set.priority(o0,14)
+  }
+  draw(o0)
+  add.to.pic(216,0,1,105,73,4,4)
+  show.pic()
+  return()
+}
+distance(o0,o3,v223)
+if (v223 < v61) { //00b3
+  set(f109)
+}
+if (f222) { //00bc
+  reset(f222)
+  v224++
+  if (v224 == 1) { //00c6
+    move.obj(o3,111,88,0,f222)
+  }
+  if (v224 == 2) { //00d3
+    move.obj(o3,111,95,0,f222)
+  }
+  if (v224 == 3) { //00e0
+    move.obj(o3,106,95,0,f222)
+  }
+  if (v224 == 4) { //00ed
+    set.priority(o3,13)
+    move.obj(o3,47,36,0,f222)
+  }
+  if (v224 == 5) { //00fd
+    move.obj(o3,39,36,0,f222)
+  }
+  if (v224 == 6) { //010a
+    move.obj(o3,39,33,0,f222)
+  }
+  if (v224 == 7) { //0117
+    set.priority(o3,12)
+    move.obj(o3,47,33,0,f222)
+  }
+  if (v224 == 8) { //0127
+    move.obj(o3,48,32,0,f222)
+  }
+  if (v224 == 9) { //0134
+    erase(o3)
+  }
+}
+if (fEgoOnWater) { //013d
+  if ((vEgoDir == 1 || vEgoDir == 8 || vEgoDir == 2)) { //0143
+    if (v222 == 4) { //0152
+      v222 = 3
+      set.priority(o0,12)
+      goto(l383)
+    }
+    if (v222 == 3) { //0162
+      v222 = 2
+      set.priority(o0,13)
+      goto(l383)
+    }
+    if (v222 == 2) { //0172
+      v222 = 3
+      set.priority(o0,12)
+    }
+  }
+l383:
+  if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //017f
+    if (v222 == 1) { //018e
+      v222 = 2
+      set.priority(o0,13)
+      goto(l443)
+    }
+    if (v222 == 2) { //019e
+      v222 = 3
+      set.priority(o0,12)
+      goto(l443)
+    }
+    if (v222 == 3) { //01ae
+      v222 = 2
+      set.priority(o0,13)
+    }
+  }
+}
+l443:
+if (v222 == 3) { //01bb
+  if (!f221) { //01c2
+    set(f221)
+    ignore.blocks(o0)
+  }
+  goto(l468)
+}
+observe.blocks(o0)
+reset(f221)
+l468:
+if (f221) { //01d4
+  if (v142 > 118) { //01da
+    observe.blocks(o0)
+    goto(l488)
+  }
+  ignore.blocks(o0)
+}
+l488:
+if (v222 == 3 && fTriggerLine) { //01e8
+  vEgoDir = 0
+  start.motion(o0)
+  reposition.to(o0,v104,v105)
+}
+v220--
+if (v220 == 1) { //01fc
+  start.update(o1)
+  reverse.loop(o1,f220)
+}
+if (f220) { //0208
+  reset(f220)
+  if (v221 == 2) { //0210
+    stop.update(o1)
+    v221 = 0
+    goto(l563)
+  }
+  v100 = 3
+  if (f94) { //0222
+    reset(f94)
+    print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+    set(f140)
+    goto(l563)
+  }
+  new.room(66)
+}
+l563:
+if (!fEnteredCommand) { //0233
+  goto(l608)
+}
+if (said("o", "d")) { //023d
+  if (obj.in.box(o0,116,88,136,95)) { //0247
+    set(f36)
+    end.of.loop(o1,f220)
+    v221 = 1
+    goto(l606)
+  }
+  set(f113)
+}
+l606:
+call(74)
+l608:
+if (v143 < 33 && v142 > 47) { //0260
+  v100 = 4
+  new.room(76)
+}
+if ((vWhichEgoBorder == 3 || v143 == 167)) { //026f
+  v100 = 2
+  if (f94) { //027e
+    reset(f94)
+    print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+  }
+  new.room(78)
+}
+if (f154) { //028a
+  sound(40,f154)
+}
+return()

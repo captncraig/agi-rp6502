@@ -52,6 +52,10 @@ var functions = map[byte]fDef{
 		name: "reset",
 		args: []argType{argVar},
 	},
+	// 0x11: {
+	// 	name: "reset",
+	// 	args: []argType{argVar},
+	// },
 	0x12: {
 		name: "new.room",
 		args: []argType{argNum},
@@ -63,6 +67,10 @@ var functions = map[byte]fDef{
 	0x14: {
 		name: "load.logic",
 		args: []argType{argNum},
+	},
+	0x15: {
+		name: "load.logic",
+		args: []argType{argVar},
 	},
 	0x16: {
 		name: "call",
@@ -86,6 +94,10 @@ var functions = map[byte]fDef{
 	},
 	0x1b: {
 		name: "discard.pic",
+		args: []argType{argVar},
+	},
+	0x1c: {
+		name: "overlay.pic",
 		args: []argType{argVar},
 	},
 	0x1d: {
@@ -236,6 +248,10 @@ var functions = map[byte]fDef{
 		name: "object.on.land",
 		args: []argType{argObj},
 	},
+	0x42: {
+		name: "object.on.anything",
+		args: []argType{argObj},
+	},
 	0x43: {
 		name: "ignore.objs",
 		args: []argType{argObj},
@@ -254,6 +270,10 @@ var functions = map[byte]fDef{
 	},
 	0x47: {
 		name: "start.cycling",
+		args: []argType{argObj},
+	},
+	0x48: {
+		name: "normal.cycle",
 		args: []argType{argObj},
 	},
 	0x49: {
@@ -312,6 +332,10 @@ var functions = map[byte]fDef{
 		name: "set.dir",
 		args: []argType{argObj, argVar},
 	},
+	0x57: {
+		name: "	get.dir",
+		args: []argType{argObj, argVar},
+	},
 	0x58: {
 		name: "ignore.blocks",
 		args: []argType{argObj},
@@ -339,6 +363,18 @@ var functions = map[byte]fDef{
 	0x5e: {
 		name: "drop",
 		args: []argType{argItem},
+	},
+	0x5f: {
+		name: "put",
+		args: []argType{argItem, argNum},
+	},
+	0x60: {
+		name: "put",
+		args: []argType{argVar, argVar},
+	},
+	0x61: {
+		name: "get.room",
+		args: []argType{argVar, argVar},
 	},
 	0x62: {
 		name: "load.sound",
@@ -412,6 +448,10 @@ var functions = map[byte]fDef{
 		name: "get.string",
 		args: []argType{argString, argMsg, argNum, argNum, argNum},
 	},
+	// 0x74: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
 	0x75: {
 		name: "parse",
 		args: []argType{argString},
@@ -453,6 +493,10 @@ var functions = map[byte]fDef{
 		name: "restore.game",
 		args: []argType{},
 	},
+	// 0x7f: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
 	0x80: {
 		name: "restart.game",
 		args: []argType{},
@@ -481,6 +525,10 @@ var functions = map[byte]fDef{
 		name: "quit",
 		args: []argType{argNum},
 	},
+	0x87: {
+		name: "show.mem",
+		args: []argType{},
+	},
 	0x88: {
 		name: "pause",
 		args: []argType{},
@@ -497,9 +545,33 @@ var functions = map[byte]fDef{
 		name: "init.joy",
 		args: []argType{},
 	},
+	0x8c: {
+		name: "toggle.monitor",
+		args: []argType{},
+	},
+	0x8d: {
+		name: "version",
+		args: []argType{},
+	},
+	0x8e: {
+		name: "script.size",
+		args: []argType{argNum},
+	},
 	0x8f: {
 		name: "set.game.id",
 		args: []argType{argMsg},
+	},
+	0x90: {
+		name: "log",
+		args: []argType{argMsg},
+	},
+	0x91: {
+		name: "set.scan.start",
+		args: []argType{},
+	},
+	0x92: {
+		name: "reset.scan.start",
+		args: []argType{},
 	},
 	0x93: {
 		name: "reposition.to",
@@ -508,6 +580,50 @@ var functions = map[byte]fDef{
 	0x94: {
 		name: "reposition.to",
 		args: []argType{argObj, argVar, argVar},
+	},
+	// 0x95: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	0x96: {
+		name: "trace.info",
+		args: []argType{argNum, argNum, argNum},
+	},
+	0x97: {
+		name: "print.at",
+		args: []argType{argMsg, argNum, argNum, argNum},
+	},
+	0x98: {
+		name: "print.at",
+		args: []argType{argVar, argNum, argNum, argNum},
+	},
+	// 0x99: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	0x9a: {
+		name: "clear.text.rect",
+		args: []argType{argNum, argNum, argNum, argNum, argNum},
+	},
+	// 0x9b: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	0x9c: {
+		name: "set.menu",
+		args: []argType{argMsg},
+	},
+	0x9d: {
+		name: "set.menu.member",
+		args: []argType{argMsg, argCtrl},
+	},
+	0x9e: {
+		name: "submit.menu",
+		args: []argType{},
+	},
+	0x9f: {
+		name: "enable.member",
+		args: []argType{argCtrl},
 	},
 	0xa0: {
 		name: "disable.member",
@@ -529,42 +645,78 @@ var functions = map[byte]fDef{
 		name: "close.dialogue",
 		args: []argType{},
 	},
-	0x87: {
-		name: "show.mem",
+	0xa5: {
+		name: "mul",
+		args: []argType{argVar, argNum},
+	},
+	0xa6: {
+		name: "mul",
+		args: []argType{argVar, argVar},
+	},
+	// 0xa7: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xa8: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	0xa9: {
+		name: "close.window",
 		args: []argType{},
 	},
-	0x8c: {
-		name: "toggle.monitor",
+	0xaa: {
+		name: "set.simple",
+		args: []argType{argNum},
+	},
+	// 0xab: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xac: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	0xad: {
+		name: "hold.key",
 		args: []argType{},
 	},
-	0x8d: {
-		name: "version",
-		args: []argType{},
-	},
-	0x96: {
-		name: "trace.info",
-		args: []argType{argNum, argNum, argNum},
-	},
-	0x97: {
-		name: "print.at",
-		args: []argType{argMsg, argNum, argNum, argNum},
-	},
-	0x9c: {
-		name: "set.menu",
-		args: []argType{argMsg},
-	},
-	0x9d: {
-		name: "set.menu.member",
-		args: []argType{argMsg, argCtrl},
-	},
-	0x9e: {
-		name: "submit.menu",
-		args: []argType{},
-	},
-	0x9f: {
-		name: "enable.member",
-		args: []argType{argCtrl},
-	},
+	// 0xae: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xaf: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb0: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb1: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb2: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb3: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb4: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb5: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
+	// 0xb6: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
 }
 
 var testFunctions = map[byte]fDef{
@@ -588,9 +740,13 @@ var testFunctions = map[byte]fDef{
 		name: "have.key",
 		args: []argType{},
 	},
+	// 0x0e: {
+	// 	name: "",
+	// 	args: []argType{},
+	// },
 	0x0f: {
 		name: "compare.strings",
-		args: []argType{argItem},
+		args: []argType{argString, argString},
 	},
 	0x10: {
 		name: "obj.in.box",

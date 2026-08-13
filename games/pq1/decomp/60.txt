@@ -1,4 +1,283 @@
-if (isSet(f5)) {
-  if (!(isSet(f125)
-!!!
-&{%!e(string=incomplete condition: 0x06)}
+if (fNewRoom) { //0002
+  if (!f125) { //0008
+    set.string(str6,"Marvin Hoffman")
+    goto(l24)
+  }
+  set.string(str6,"Jason Taselli")
+l24:
+  load.logic(94)
+  load.view(184)
+  load.view(94)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f111) { //0024
+    v91 = 1
+    position(o0,80,144)
+  }
+  if (v91 == 1) { //0031
+    vCurrentScore += 2
+    load.view(23)
+    load.view(28)
+    load.view(111)
+    animate.obj(o1)
+    animate.obj(o2)
+    animate.obj(o3)
+    animate.obj(o4)
+    animate.obj(o5)
+    position(o1,81,105)
+    position(o2,72,104)
+    position(o3,92,104)
+    position(o4,30,142)
+    position(o5,38,129)
+    set.view(o1,184)
+    set.view(o2,23)
+    set.view(o3,28)
+    set.view(o4,111)
+    set.view(o5,111)
+    set.priority(o4,15)
+    set.priority(o5,13)
+    ignore.objs(o4)
+    ignore.objs(o5)
+    set.loop(o1,2)
+    set.loop(o2,0)
+    set.loop(o3,2)
+    stop.cycling(o1)
+    stop.cycling(o2)
+    stop.cycling(o3)
+    set(f102)
+    add.to.pic(94,0,0,1,167,15,0)
+    add.to.pic(94,0,0,9,154,13,0)
+    set.cel(o1,0)
+    draw(o1)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    cycle.time(o4,v123)
+    cycle.time(o5,v124)
+  }
+  animate.obj(o6)
+  set.view(o6,184)
+  set.priority(o6,4)
+  set.loop(o6,1)
+  cycle.time(o6,v124)
+  position(o6,141,74)
+  draw(o6)
+  ignore.objs(o6)
+  call(94)
+  show.pic()
+  return()
+}
+if (f220) { //00c6
+  reset(f220)
+  v220++
+}
+if (f221) { //00d0
+  reset(f221)
+  v221++
+}
+if (f30 && f39 && !f63 && v91 > 0 && v91 < 4) { //00da
+  if (v91 == 1) { //00eb
+    print("\"Go on, Sonny. Get up there and take a look.\"")
+    reset(f30)
+  }
+  if (v91 == 2) { //00f6
+    print("You'd better report your findings.")
+    reset(f30)
+  }
+}
+distance(o0,o3,v224)
+distance(o0,o2,v223)
+if ((v223 < v61 || v224 < v61)) { //0109
+  set(f109)
+}
+distance(o0,o1,v222)
+if (v222 < v61) { //011b
+  set(f225)
+  goto(l297)
+}
+reset(f225)
+l297:
+if (v91 > 0 && v91 < 21) { //0129
+  if (posn(o0,50,95,110,148)) { //0133
+    set(f224)
+    goto(l324)
+  }
+  reset(f224)
+l324:
+  if (f224 && !(v221 > 0)) { //0144
+    start.cycling(o2)
+    v221++
+  }
+  if (v221 > 0) { //0152
+    follow.ego(o2,10,f221)
+    get.posn(o2,v144,v145)
+    if ((v157 != v144 || v158 != v145)) { //0161
+      v157 = v144
+      v158 = v145
+      start.cycling(o2)
+      goto(l380)
+    }
+    stop.cycling(o2)
+  }
+l380:
+  if (v221 == 3) { //017c
+    print("\"Good to see you, Sonny,\" he says. \"We've got a ripe one here, with no ID! Is this the dude you arrested?\"")
+    print("\"Since you're the guy who booked him, we hope you can identify him.\"")
+    v221++
+  }
+}
+if ((posn(o0,139,78,159,87) || v143 < 79)) { //0189
+  if (v220 == 0) { //0198
+    set.view(o0,184)
+    set.loop(o0,0)
+    v143 -= 5
+    reposition.to(o0,v142,v143)
+    ignore.objs(o0)
+    ignore.blocks(o0)
+    set(f36)
+    prevent.input()
+    set(f157)
+    move.obj(o0,151,74,1,f220)
+    v220 = 1
+  }
+  if (v220 == 2) { //01be
+    erase(o0)
+    print("The water is nice this time of year, but swimming is deadly!")
+    set(f140)
+    v220++
+    stop.update(o2)
+    stop.update(o3)
+    force.update(o2)
+    force.update(o3)
+  }
+}
+if (!fEnteredCommand) { //01d5
+  goto(l1274)
+}
+if (v91 > 0 && v91 < 255) { //01df
+  if (said("examine", "art")) { //01e9
+    print("The policemen stand near a dead body.")
+  }
+  if ((said("answer", "art") || said("answer", "jack") || said("answer") || said("ask", "art", "rol"))) { //01f5
+    if (v91 == 1) { //0213
+      print("\"Well, Sonny,\" says Steve, \"is this %s6, or not?\"")
+      goto(l557)
+    }
+    if (v91 == 2) { //021f
+      print("\"Are you going to inform Dispatch?\" asks Steve.")
+      goto(l557)
+    }
+    print("\"Thanks for your help, Sonny,\" says Steve.")
+  }
+l557:
+  if ((said("examine", "bush") || said("examine", "curb"))) { //022d
+    print("You see nothing that would help you.")
+  }
+  if ((said("examine", "body", "rol") || said("examine", "taselli", "rol") || said("examine", "hoffman", "rol") || said("examine", "pierson", "rol") || said("examine", "tattoo", "rol") || said("get", "clothes", "rol") || said("examine", "breast") || said("drop", "clothes", "rol") || said("drop", "clothes", "rol") || said("administer", "clothes", "rol") || said("empty", "clothes", "rol") || said("get", "off", "clothes", "rol") || said("empty", "clothes", "rol") || said("move", "clothes") || said("o", "art", "clothes") || said("examine", "chest", "rol") || said("o", "clothes", "rol"))) { //0241
+    if (!f225) { //02cd
+      print("\"I know he reeks, Sonny, but you'll have to get closer to do that,\" says Steve.")
+      goto(l775)
+    }
+    if (!f222) { //02d9
+      print("The body is covered by a blanket.")
+      goto(l775)
+    }
+    if (!f223) { //02e5
+      set(f223)
+      set.cel(o1,2)
+      print("The soggy shirt peels slowly from his chest. Above his left nipple you spot the flower tattoo which confirms your identification.")
+      v91 = 2
+      if (!f134) { //02f6
+        set(f134)
+        vCurrentScore += 2
+      }
+      goto(l775)
+    }
+    print("You see as much as you care to!")
+  }
+l775:
+  if ((said("move", "blanket", "rol") || said("get", "blanket", "rol") || said("id", "body") || said("examine", "dead", "body") || said("examine", "dead", "art") || said("examine", "curb") || said("examine", "hoffman") || said("move", "back", "conceal") || said("empty", "conceal") || said("empty", "blanket", "rol") || said("elevator", "blanket", "rol") || said("change", "body", "rol"))) { //0307
+    if (!f225) { //0365
+      print("\"I know he reeks, Sonny, but you'll have to get closer to do that,\" says Steve.")
+      goto(l900)
+    }
+    if (!f222) { //0371
+      set(f222)
+      set.cel(o1,1)
+      print("You lift the white blanket and examine the swollen body. It resembles %s6, however, you can't be sure.")
+      goto(l900)
+    }
+    print("You don't need to uncover any more.")
+  }
+l900:
+  if ((said("dont move", "examine", "body", "rol") || said("dont move", "examine", "taselli", "rol") || said("dont move", "examine", "tattoo", "rol") || said("drop", "clothes", "rol") || said("dont move", "examine", "chest", "rol") || said("c", "clothes", "rol") || said("drop", "blanket", "rol") || said("empty", "blanket", "rol") || said("conceal", "body", "rol"))) { //0384
+    if (!f225) { //03da
+      print("\"I know he reeks, Sonny, but you'll have to get closer to do that,\" says Steve.")
+      goto(l1019)
+    }
+    if (!f222) { //03e6
+      print("The body is covered by a blanket.")
+      goto(l1019)
+    }
+    reset(f223)
+    reset(f222)
+    set.cel(o1,0)
+    print("Gladly.")
+  }
+l1019:
+  if (said("call")) { //03fb
+    if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //0403
+      print("With an extender, you could radio dispatch from here.")
+      goto(l1087)
+    }
+    if (v91 == 2) { //0419
+      vCurrentScore += 3
+      print("You key the radio, \"Dispatch, this is 83-Nora-10. Report positive ID on body of one %s6. 10-8, Cotton Cove.\"")
+      print("Your radio crackles, \"10-4, 83-Nora-10. Dispatch copies 10-22 APB %s6.\"")
+      print("\"Thanks, Sonny. Be advised Coroner is en route. 10-19, per Lt. Morgan.\"")
+      v91 = 20
+      goto(l1087)
+    }
+    if (v91 < 2) { //042f
+      print("You radio in, \"Dispatch, 83-Nora-10 10-97 Cotton Cove.\"")
+      print("Your radio crackles, \"10-4, 83-Nora-10. Dispatch copies 10-97 Cotton Cove.\"")
+      goto(l1087)
+    }
+    print("You radio, \"10-8 from scene.\"")
+  }
+}
+l1087:
+if ((said("examine", "auto") || said("examine", "art", "auto"))) { //043f
+  if (v142 < 75 && v91 > 0 && v91 < 255) { //0453
+    print("You observe two patrol units parked with emergency lights flashing. They both appear unoccupied.")
+    goto(l1127)
+  }
+  print("Thinking your car is one slick machine, you admire it one more time.")
+}
+l1127:
+if ((said("swim", "rol") || said("get", "creek", "rol") || said("enter", "creek", "rol") || said("enter", "creek", "rol"))) { //0467
+  print("Just walk right in, the water looks fine!")
+}
+if ((said("examine", "bush") || said("examine", "tree") || said("examine", "curb"))) { //048d
+  print("You've always thought this a lovely part of Lytton.")
+}
+if ((said("examine") || said("look in", "creek") || said("examine", "creek") || said("examine", "accident"))) { //04a7
+  if (v143 < 90) { //04c3
+    print("The Clearwater River looks refreshing.")
+    goto(l1274)
+  }
+  if ((!(v91 > 0) || v91 == 255)) { //04cf
+    print("You look around at a beautiful wooded area. The Clearwater River flows in the background.")
+    goto(l1274)
+  }
+  if ((posn(o0,1,90,34,108) || posn(o0,118,95,152,128))) { //04e1
+    print("You see nothing that would help you.")
+    goto(l1274)
+  }
+  print("The two marked patrol cars with emergency lights flashing, and the covered body in the clearing, clouds the natural beauty of Cotton Cove.")
+}
+l1274:
+call(94)
+return()

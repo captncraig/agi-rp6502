@@ -1,5 +1,338 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v58 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(116)
+  load.logic(112)
+  if (vPrevRoom != 40) { //0015
+    set(f204)
+    if (vPrevRoom == 43) { //001f
+      position(o0,8,130)
+      v30 = 38
+      v31 = 167
+      set(f37)
+    }
+    goto(l97)
+  }
+  load.sound(2)
+  load.sound(26)
+  load.view(180)
+  load.view(31)
+  if (!f59) { //003d
+    load.view(37)
+    load.view(58)
+    load.view(56)
+  }
+  load.view(30)
+  animate.obj(o6)
+  v58 = 30
+  position(o0,11,44)
+  set(f203)
+  if (f79) { //0057
+    load.view(61)
+    load.view(62)
+  }
+l97:
+  set(f34)
+  call(112)
+  call(116)
+  draw(o0)
+  if (f59) { //0069
+    set(f69)
+    set(f216)
+    load.view(63)
+    load.view(64)
+    load.view(44)
+    add.to.pic(44,0,0,95,93,4,4)
+    discard.view(44)
+    animate.obj(o10)
+    position(o10,80,125)
+    set.view(o10,63)
+    draw(o10)
+    animate.obj(o11)
+    position(o11,82,164)
+    set.view(o11,64)
+    draw(o11)
+    v61 = 2
+    cycle.time(o10,v61)
+    cycle.time(o11,v61)
+  }
+  show.pic()
+  if (f59) { //00a3
+    print("The Horned King's men are celebrating the capture of Hen Wen.")
+  }
+  return()
+}
+if (f130) { //00ac
+  print("This is the throne room of the evil Horned King.")
+}
+if (!f128 && !f129) { //00b4
+  goto(l407)
+}
+if (f129) { //00c1
+  goto(l372)
+}
+if (f222) { //00ca
+  reset(f128)
+  stop.motion(o0)
+  goto(l407)
+}
+if (f203) { //00d7
+  set(fSaidAccepted)
+  if ((v58 > 0 || f216)) { //00df
+    if (f59) { //00ea
+      print("Don't jump, Taran! The Horned King's henchman would catch you.")
+      goto(l247)
+    }
+    print("You start to jump, but stop because you hear someone coming.")
+l247:
+    goto(l294)
+  }
+  reset(f203)
+  set(f204)
+  program.control()
+  set(f133)
+  set.view(o0,180)
+  set.loop(o0,0)
+  set.priority(o0,15)
+  v62 = 10
+  v63 = 0
+  repositon(o0,v62,v63)
+  move.obj(o0,40,132,3,f219)
+  print("You leap from the balcony!")
+  if (!f124) { //011c
+    sound(2,f61)
+  }
+l294:
+  goto(l407)
+}
+if (f204 && (f124 || f59)) { //0129
+  distance(o0,o8,v61)
+  if (v61 < 20) { //0139
+    set(fSaidAccepted)
+    set(f108)
+    reset(f30)
+    reset(f59)
+    v93 = 0
+    v94 = 0
+    print("You grab Hen Wen away from Creeper. Run, Taran, run!")
+    start.update(o8)
+    if (f124) { //0152
+      set(f120)
+      if (f220) { //015a
+        reset(f220)
+        start.update(o7)
+      }
+      get.posn(o7,v30,v31)
+      erase(o7)
+      erase(o9)
+      stop.sound()
+      reset(f218)
+    }
+    reset(f124)
+  }
+}
+goto(l407)
+l372:
+if (v60 == 12 && !f102 && f203) { //0174
+  v55 = 11
+  v56 = 47
+}
+if (v60 == 12 && (f213 || f212)) { //0186
+  set(fSaidAccepted)
+  print("The powerful magic of the Horned King prevents you from swinging your sword!")
+}
+l407:
+if (f219) { //0197
+  reset(f219)
+  reset(f133)
+  release.priority(o0)
+  set.view(o0,0)
+  player.control()
+  if (f124) { //01a7
+    print("Everyone is so busy watching Hen Wen's vision, they don't notice you.")
+    goto(l494)
+  }
+  if (f212) { //01b2
+    print("Creeper sees you. Run, Taran!")
+    if (f220) { //01ba
+      reset(f220)
+      start.update(o7)
+    }
+    get.posn(o7,v30,v31)
+    set(f120)
+    erase(o7)
+    reset(f207)
+    goto(l494)
+  }
+  if (f213) { //01d1
+    print("The Horned King sees you. Run, Taran!")
+    get.posn(o6,v30,v31)
+    set(f31)
+    erase(o6)
+    goto(l494)
+  }
+  print("The henchmen see you! Run, Taran!")
+  v30 = 95
+  v31 = 127
+  set(f37)
+}
+l494:
+v58--
+if (v58 == 1) { //01f0
+  set(f213)
+  position(o6,11,132)
+  set.view(o6,30)
+  set.loop(o6,0)
+  set.cel(o6,0)
+  draw(o6)
+  sound(26,f61)
+  move.obj(o6,53,132,0,f200)
+  if (f216) { //0211
+    stop.update(o10)
+    stop.update(o11)
+  }
+}
+if (f200) { //021b
+  reset(f200)
+  if (f216) { //0223
+    print("\"Be gone, my henchmen! I have important business with the oracular pig!!\"")
+    start.update(o10)
+    start.update(o11)
+    erase(o10)
+    erase(o11)
+    reset(f216)
+    discard.view(64)
+    discard.view(63)
+    if (vPrevRoom == 40) { //0239
+      load.view(42)
+      load.sound(20)
+      load.view(40)
+      animate.obj(o9)
+    }
+  }
+  if (vPrevRoom == 40) { //0248
+    load.view(37)
+    load.view(58)
+    load.view(56)
+    animate.obj(o7)
+  }
+  move.obj(o6,53,108,0,f201)
+}
+if (f201) { //025d
+  reset(f201)
+  move.obj(o6,92,70,0,f202)
+  set(f212)
+  set.view(o7,56)
+  set.loop(o7,0)
+  position(o7,11,132)
+  draw(o7)
+  move.obj(o7,53,132,0,f205)
+  if (!(v57 > 0) && f59) { //027f
+    v201 = 12
+  }
+}
+if (f202) { //028c
+  reset(f202)
+  set(f217)
+  set.view(o6,31)
+  reposition.to(o6,90,73)
+  stop.update(o6)
+  force.update(o6)
+}
+if (f217 && !f124 && f204) { //02a1
+  if (posn(o0,50,75,137,91)) { //02ac
+    v62 = 0
+    v63 = 19
+    repositon(o0,v62,v63)
+    if (!f221) { //02c0
+      set(f221)
+      print("Ooomph! The Horned King's magic keeps you away from him.")
+    }
+  }
+}
+v201--
+if (v201 == 1) { //02cd
+  animate.obj(o8)
+  set(f116)
+  v93 = 59
+  v94 = 4
+  position(o8,11,132)
+  set.view(o8,40)
+  set.loop(o8,0)
+  draw(o8)
+  move.obj(o8,53,132,0,f208)
+}
+if (f208) { //02f0
+  reset(f208)
+  move.obj(o8,53,108,0,f209)
+}
+if (f209) { //02fe
+  reset(f209)
+  move.obj(o8,83,97,0,f210)
+}
+if (f210) { //030c
+  reset(f210)
+  stop.update(o8)
+}
+if (f205) { //0316
+  reset(f205)
+  move.obj(o7,53,108,0,f206)
+}
+if (f206) { //0324
+  reset(f206)
+  move.obj(o7,108,99,0,f207)
+}
+if (f207) { //0332
+  reset(f207)
+  set.loop(o7,1)
+  stop.update(o7)
+  force.update(o7)
+  set(f220)
+  if ((v57 > 0 || !f59)) { //0343
+    if (f79) { //034f
+      print("\"Oh, Sire,\" whines Creeper, \"isn't it about time to try out your new cauldron?\"")
+      v200 = 99
+      goto(l865)
+    }
+    print("Creeper bows before the Horned King, \"So sorry, Sire, but we cannot find the magic pig!\"")
+    print("The Horned King responds, \"Silence! You must find her.\"")
+l865:
+    goto(l894)
+  }
+  position(o9,87,85)
+  set.view(o9,42)
+  set.loop(o9,1)
+  v61 = 3
+  cycle.time(o9,v61)
+  set(f124)
+  set(f116)
+  draw(o9)
+  stop.sound()
+  sound(20,f218)
+}
+l894:
+v200--
+if (v200 == 1 && f203 && !f129 && !f128) { //0380
+  stop.motion(o0)
+  set(f37)
+  set(f222)
+  v30 = 10
+  v31 = 48
+}
+if (f218) { //039b
+  print("Oh, no!! Hen Wen has told the Horned King about the cauldron.")
+  v59 = 1
+}
+if (fTriggerLine) { //03a6
+  if (posn(o0,0,0,28,44)) { //03ac
+    new.room(40)
+    goto(l957)
+  }
+  new.room(43)
+}
+l957:
+call(112)
+call(116)
+return()

@@ -1,4 +1,628 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(44)
+  v81 = 18
+  load.pic(v81)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(67)
+  load.view(65)
+  load.view(66)
+  load.view(16)
+  load.view(2)
+  load.view(26)
+  load.view(68)
+  if (obj.in.room(i12,vCurrentRoom)) { //0021
+    animate.obj(o5)
+    set.view(o5,68)
+    position(o5,135,137)
+    draw(o5)
+    stop.update(o5)
+  }
+  animate.obj(o3)
+  set.view(o3,65)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  position(o3,56,86)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  set.view(o2,65)
+  set.loop(o2,1)
+  set.cel(o2,0)
+  position(o2,50,42)
+  cycle.time(o2,v86)
+  stop.cycling(o2)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,67)
+  if (!f63) { //0065
+    position(o1,23,131)
+    set.loop(o1,1)
+    goto(l125)
+  }
+  position(o1,14,131)
+  set.loop(o1,0)
+l125:
+  set.cel(o1,0)
+  draw(o1)
+  stop.cycling(o1)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.view(o4,66)
+  set.priority(o4,5)
+  if (f64) { //0090
+    last.cel(o4,v52)
+    set.cel(o4,v52)
+    goto(l162)
+  }
+  set.cel(o4,0)
+l162:
+  position(o4,129,100)
+  draw(o4)
+  cycle.time(o4,v86)
+  stop.update(o4)
+  if (vPrevRoom == 12) { //00ad
+    v38 = 123
+    v39 = 126
+    goto(l204)
+  }
+  set(f206)
+  set.priority(o0,9)
+  set(f36)
+  observe.blocks(o0)
+  v38 = 54
+  v39 = 116
+l204:
+  set.loop(o0,1)
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  random(44,111,v202)
+  return()
+}
+if (fEgoOnWater) { //00db
+  if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //00e1
+    reset(f206)
+    goto(l247)
+  }
+  set(f206)
+}
+l247:
+if (f206) { //00f7
+  set.priority(o0,9)
+  set(f36)
+  observe.blocks(o0)
+  goto(l276)
+}
+if (v30 == 0) { //0107
+  release.priority(o0)
+  ignore.blocks(o0)
+  reset(f36)
+}
+l276:
+if (fTriggerLine) { //0114
+  reset(fTriggerLine)
+  reposition.to(o0,v40,v41)
+  start.motion(o0)
+}
+reset(f215)
+if (posn(o0,11,144,48,151)) { //0124
+  set(f215)
+  set(f69)
+}
+reset(f202)
+if (posn(o0,11,127,48,151)) { //0134
+  set(f202)
+  set(f69)
+}
+reset(f203)
+if (posn(o0,116,118,137,139)) { //0144
+  set(f203)
+}
+reset(f205)
+if (posn(o0,124,138,139,155)) { //0152
+  set(f205)
+}
+if (!fEnteredCommand) { //015e
+  goto(l1770)
+}
+if ((said("examine") || said("examine", "brick") || said("examine", "area"))) { //0168
+  print("This is the hooker's seedy bedroom. The bed's a mess, ditto the hooker!")
+  print("A sign near the bed says: \"Substantial penalty for early withdrawals.\"")
+  print("There is a table near the window.")
+}
+if ((said("examine", "glass") || said("examine", "out", "glass"))) { //0184
+  print("There is a fire escape outside the window.")
+}
+if (said("examine", "radiator", "rol")) { //019a
+  print("It's getting old and rusty -- not unlike you, Larry.")
+}
+if (said("move", "on", "radiator")) { //01a8
+  print("It, too, is broken.")
+}
+if ((said("use", "hammer", "on", "radiator") || said("beat", "radiator", "use", "hammer") || said("beat", "radiator", "hammer") || said("hammer", "radiator"))) { //01b6
+  if (!(has(i18))) { //01de
+    set(f68)
+    goto(l492)
+  }
+  print("You slyly tap out a message in Morse code; unfortunately, only some rats hear it.")
+}
+l492:
+if ((said("ask", "blond") || said("ask", "clit"))) { //01ec
+  if (!f63) { //01fe
+    print("\"So,\" she snarls, \"you just gonna stand there, or what?\"")
+    goto(l526)
+  }
+  print("\"Was it good for you, baby?\" you ask her.")
+  print("\"Was what good?\" she replies.")
+}
+l526:
+if ((said("embrace", "blond") || said("anyword", "boob") || said("anyword", "ass") || said("anyword", "asshole") || said("asshole", "anyword") || said("cunnilingus", "rol"))) { //020e
+  if (!f202) { //0238
+    set(f54)
+    goto(l582)
+  }
+  print("\"Hey, what kind of girl do you think I am?\"")
+}
+l582:
+if (said("examine", "burn")) { //0246
+  print("It just hangs there.")
+}
+if (said("examine", "below", "rol")) { //0252
+  print("There's nothing (and no one) there.")
+}
+if (said("examine", "desk")) { //0260
+  if (obj.in.room(i12,vCurrentRoom)) { //026a
+    print("It looks like the hooker has a box of candy on her table.")
+    goto(l632)
+  }
+  print("It's a really ugly table.")
+}
+l632:
+if (said("move", "desk")) { //0278
+  if (!f205) { //0282
+    set(f54)
+    goto(l656)
+  }
+  print("You can't. She's nailed it to the floor.")
+}
+l656:
+if ((said("examine", "box of candy") || said("examine", "box", "box of candy") || said("examine", "box"))) { //0290
+  if (!(obj.in.room(i12,vCurrentRoom))) { //02aa
+    reset(fSaidAccepted)
+    goto(l709)
+  }
+  if (!f205) { //02b7
+    set(f54)
+    goto(l709)
+  }
+  print("It looks like the hooker has a box of candy on her table.")
+}
+l709:
+if ((said("catch", "box of candy") || said("catch", "box", "box of candy") || said("catch", "box") || said("catch", "piece", "box of candy") || said("catch", "piece", "box of candy", "from", "box") || said("catch", "piece", "box of candy", "box") || said("catch", "box") || said("catch", "box of candy", "desk"))) { //02c5
+  if (!f205) { //030b
+    set(f54)
+    goto(l807)
+  }
+  if (!(obj.in.room(i12,vCurrentRoom))) { //0317
+    set(f55)
+    goto(l807)
+  }
+  v206 = 1
+}
+l807:
+if (!(has(i12)) && (said("use", "box of candy", "rol") || said("increase", "box", "rol") || said("increase", "box of candy", "rol") || said("use", "anyword", "box of candy", "rol") || said("bite", "anyword", "box of candy", "rol") || said("bite", "box of candy", "rol"))) { //0327
+  set(f68)
+}
+if ((said("examine", "blond") || said("examine", "clit") || said("examine", "bed"))) { //0366
+  if (f63) { //037e
+    print("She seems more interested in that cigarette than she was in you.")
+    goto(l919)
+  }
+  if (v30 == 26) { //0389
+    print("NOW!? You've come this far, Larry; now's the time to do more than just look!")
+    goto(l919)
+  }
+  set(f213)
+}
+l919:
+if ((said("examine", "below", "pillow") || said("increase", "pillow"))) { //0397
+  print("There's nothing there.")
+}
+if (said("catch", "pillow")) { //03ad
+  print("You have no use for a stained pillow.")
+}
+if (said("attach", "rope", "rol")) { //03b9
+  if (!(has(i20))) { //03c5
+    set(f68)
+    goto(l979)
+  }
+  print("Your rope is not long enough to reach outside.")
+}
+l979:
+if (said("smell", "rol")) { //03d3
+  print("Sniffing the air, you're suddenly hungry for tuna.")
+}
+if ((said("bite", "clit") || said("bite", "blond"))) { //03df
+  if (!f202) { //03f1
+    print("\"Come on over here, Larry!\"")
+    goto(l1027)
+  }
+  print("She says, \"Me first!\" as she%m25")
+  erase(o0)
+  set(f50)
+}
+l1027:
+if ((said("blow", "i'm") || said("add", "head"))) { //0403
+  if (!f202) { //0415
+    print("\"Come on over here, Larry!\"")
+    goto(l1065)
+  }
+  print("She%m25")
+  set(f48)
+  erase(o0)
+  set(f50)
+}
+l1065:
+if ((said("increase", "glass") || said("increase", "glass"))) { //0429
+  if (!f203) { //043b
+    set(f54)
+    goto(l1109)
+  }
+  if (f64) { //0447
+    print("It's already open.")
+    goto(l1109)
+  }
+  v206 = 2
+}
+l1109:
+if ((said("close", "glass") || said("decrease", "glass"))) { //0455
+  if (!f203) { //0467
+    set(f54)
+    goto(l1141)
+  }
+  print("Nah. This room needs the fresh air!")
+}
+l1141:
+if ((said("board", "glass") || said("board", "back") || said("jump", "out", "glass") || said("jump", "out") || said("climb", "out", "glass") || said("board", "area") || said("climb", "glass") || said("climb", "out") || said("climb", "out", "on", "balcony") || said("climb", "out", "balcony") || said("climb", "on", "balcony") || said("climb", "balcony") || said("board", "out", "on", "balcony") || said("board", "out", "balcony") || said("board", "on", "balcony") || said("board", "balcony") || said("board", "out", "glass") || said("board", "glass"))) { //0475
+  if (!f203) { //04fd
+    set(f54)
+    goto(l1304)
+  }
+  if (!f64) { //0509
+    print("You repeatedly bang your head against the closed glass.")
+    goto(l1304)
+  }
+  v206 = 3
+}
+l1304:
+if ((said("catch", "naked") || said("add", "bra") || said("catch", "bra", "off") || said("drain", "bra") || said("naked") || said("naked", "naked") || said("drain", "bra", "climb", "bed"))) { //0518
+  if (!f202) { //054c
+    set(f54)
+    goto(l1406)
+  }
+  if (!f215) { //0558
+    print("You'd have a better view if you'd move to the front of the bed!")
+    goto(l1406)
+  }
+  if (f63) { //0564
+    print("Not again! A guy can only take so much!!")
+    goto(l1406)
+  }
+  if (v30 == 26) { //056f
+    print("You are as naked as you're going to get!")
+    goto(l1406)
+  }
+  v206 = 4
+}
+l1406:
+if ((said("catch", "dress") || said("put on", "bra") || said("put on", "bra") || said("add", "bra", "on") || said("put on", "bra") || said("dress") || said("dress", "bra"))) { //057e
+  if (v30 != 26) { //05ae
+    reset(fSaidAccepted)
+    goto(l1470)
+  }
+  v206 = 6
+}
+l1470:
+if ((said("catch", "bra") || said("put on", "bra") || said("put on", "bra", "from", "clothes line") || said("put on", "bra", "off", "clothes line") || said("catch", "bra", "from", "clothes line") || said("catch", "bra", "off", "clothes line"))) { //05be
+  print("Although you might look precious in that little white lace number, you're just not that kind of guy!")
+}
+if ((said("examine", "clothes line") || said("examine", "rope") || said("examine", "bra", "rol"))) { //05fa
+  print("The clothesline is barely strong enough to hold its present load. Poor girl, you'd think at these prices she could afford a laundromat.")
+}
+if ((said("catch", "clothes line") || said("cut", "clothes line", "rol") || said("move", "rope") || said("let go", "rope") || said("move", "clothes line") || said("let go", "clothes line") || said("cut", "rope", "rol") || said("catch", "rope"))) { //0616
+  print("It's barely strong enough to hold up its present load. Besides, if you take it, her underwear would fall down.")
+}
+if ((said("copulate", "blond") || said("copulate", "clit") || said("sleep", "blond") || said("copulate") || said("board", "bed") || said("catch", "on", "bed") || said("catch", "bed") || said("lie", "on", "bed") || said("lie", "bed") || said("climb", "on"))) { //0652
+  if (v30 != 26) { //0696
+    print("With all your clothes on?")
+    goto(l1702)
+  }
+  v206 = 7
+}
+l1702:
+if ((said("use", "condom") || said("put on", "condom"))) { //06a6
+  if (!(has(i10))) { //06b8
+    set(f68)
+    goto(l1770)
+  }
+  if (f62) { //06c4
+    print("You already are wearing it.")
+    goto(l1770)
+  }
+  if (f63) { //06cf
+    print("Now's a great time to think of that!")
+    goto(l1770)
+  }
+  if (v30 != 26) { //06da
+    print("With all your clothes on?")
+    goto(l1770)
+  }
+  v206 = 5
+}
+l1770:
+if (f213) { //06ea
+  reset(f213)
+  prevent.input()
+  set(f207)
+  set(f48)
+  unanimate.all()
+  draw.pic(v81)
+  animate.obj(o3)
+  set.priority(o3,4)
+  if (f66) { //06ff
+    set.cel(o3,1)
+    v204 = 22
+    v203 = 11
+    goto(l1812)
+  }
+  set.cel(o3,2)
+l1812:
+  draw(o3)
+  stop.cycling(o3)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  set.cel(o2,0)
+  set.priority(o2,5)
+  draw(o2)
+  cycle.time(o2,v85)
+  stop.cycling(o2)
+  show.pic()
+  v205 = 9
+}
+if (f214) { //072d
+  reset(f214)
+  reset(f207)
+  reset(f48)
+  accept.input()
+  unanimate.all()
+  v204 = 0
+  v203 = 0
+  v205 = 0
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  draw(o1)
+  stop.cycling(o1)
+  animate.obj(o0)
+  draw(o0)
+  if (obj.in.room(i12,vCurrentRoom)) { //0756
+    animate.obj(o5)
+    draw(o5)
+    stop.update(o5)
+  }
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.priority(o4,5)
+  draw(o4)
+  cycle.time(o4,v86)
+  stop.update(o4)
+  show.pic()
+}
+if (f211) { //0774
+  reset(f211)
+  v30 = 26
+  stop.motion(o0)
+  reset(f34)
+  set(f85)
+}
+if (f216) { //0785
+  reset(f216)
+  v30 = 0
+  start.motion(o0)
+  set.view(o0,0)
+  cycle.time(o0,v84)
+  reset(f34)
+  reset(f85)
+}
+v201--
+if (v201 == 1 && v30 == 11) { //079e
+  random(5,15,v201)
+  random(0,4,v52)
+  cycle.time(o0,v52)
+}
+if (f44) { //07b3
+  v205--
+  if (v205 == 1 && f207) { //07bb
+    set(f214)
+    if (f66) { //07c6
+      print("She certainly seems to enjoy that gum.")
+      goto(l2003)
+    }
+    print("\"Jeez, Mister! What've you been eating? Buffalo chips???\"")
+  }
+l2003:
+  v200--
+  if (v200 == 1) { //07d5
+    set.view(o0,2)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    reposition.to(o0,31,146)
+    release.priority(o0)
+    set(f34)
+    cycle.time(o0,v86)
+    reverse.loop(o0,f212)
+    position(o1,14,131)
+    set.loop(o1,0)
+    draw(o1)
+  }
+}
+if (f212) { //07fc
+  reset(f212)
+  set.view(o0,0)
+  reset(f34)
+  start.motion(o0)
+  reset(f85)
+  cycle.time(o0,v84)
+  set(f63)
+  vCurrentScore += 11
+  v30 = 0
+  vCycleTime = v44
+  random(11,22,v202)
+  print("Although successful, you feel less than satisfied. Technically speaking, you're no longer a virgin, but for some reason, the thrill just wasn't there. You vow to continue your quest until you please your heart, not just your other organs!")
+  accept.input()
+  if (f62) { //0822
+    print("It's a good thing you were wearing that rubber!")
+    goto(l2095)
+  }
+  set(f89)
+}
+l2095:
+v204--
+if (v204 == 1) { //0831
+  toggle(f209)
+  if (f209) { //083a
+    start.cycling(o2)
+    random(6,16,v204)
+    goto(l2132)
+  }
+  stop.cycling(o2)
+  set.cel(o2,0)
+  force.update(o2)
+  random(22,33,v204)
+}
+l2132:
+v203--
+if (v203 == 1) { //0856
+  toggle(f210)
+  if (f210) { //085f
+    start.cycling(o3)
+    random(26,56,v203)
+    goto(l2167)
+  }
+  stop.cycling(o3)
+  set.cel(o3,0)
+  random(7,17,v203)
+}
+l2167:
+v202--
+if (v202 == 1) { //0879
+  toggle(f200)
+  if (f200) { //0882
+    start.cycling(o1)
+    goto(l2191)
+  }
+  stop.cycling(o1)
+l2191:
+  if (f63) { //088f
+    random(44,66,v202)
+    end.of.loop(o1,f201)
+    goto(l2211)
+  }
+  random(11,22,v202)
+}
+l2211:
+if (f201) { //08a3
+  reset(f201)
+  reset(f200)
+  stop.cycling(o1)
+  set.cel(o1,0)
+}
+if (f208) { //08b2
+  reset(f208)
+  stop.cycling(o4)
+  stop.update(o4)
+  set(f64)
+}
+if (v206 > 0) { //08c0
+  if (v206 == 1) { //08c7
+    set(f67)
+    get(i12)
+    vCurrentScore += 2
+    start.update(o5)
+    erase(o5)
+  }
+  if (v206 == 2) { //08d9
+    set(f67)
+    start.update(o4)
+    end.of.loop(o4,f208)
+  }
+  if (v206 == 3) { //08e7
+    v30 = 12
+    set.view(o0,26)
+    set.cel(o0,0)
+    set.priority(o0,15)
+    reposition.to(o0,125,125)
+    cycle.time(o0,v86)
+    stop.motion(o0)
+    set(f85)
+    set(f34)
+    end.of.loop(o0,f204)
+  }
+  if (v206 == 4) { //090a
+    stop.motion(o0)
+    set.view(o0,2)
+    set.cel(o0,0)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f211)
+  }
+  if (v206 == 5) { //0921
+    print("Yep! This would be a perfect time! The Surgeon General would be proud.")
+    set(f62)
+    drop(i10)
+    get(i11)
+    if (!f91) { //0930
+      set(f91)
+      vCurrentScore += 10
+    }
+  }
+  if (v206 == 6) { //093c
+    set.view(o0,2)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    cycle.time(o0,v86)
+    set(f34)
+    reverse.loop(o0,f216)
+  }
+  if (v206 == 7) { //0954
+    v30 = 11
+    v200 = 20
+    random(25,45,v201)
+    v44 = vCycleTime
+    vCycleTime = 0
+    set.view(o0,16)
+    reposition.to(o0,15,130)
+    set.priority(o0,15)
+    set(f34)
+    prevent.input()
+    stop.motion(o0)
+    set(f85)
+    erase(o1)
+    set(f201)
+  }
+  v206 = 0
+}
+if (f206 && posn(o0,66,132,70,133)) { //0983
+  v76 = 16
+}
+if (f204) { //0992
+  v77 = 0
+  v76 = 12
+}
+return()

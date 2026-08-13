@@ -1,4 +1,630 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(72)
+  load.view(28)
+  load.view(20)
+  load.view(27)
+  load.view(10)
+  load.view(4)
+  load.view(6)
+  load.sound(1)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,72)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,18,73)
+  draw(o1)
+  v52 = 8
+  cycle.time(o1,v52)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,28)
+  set.cel(o2,0)
+  cycle.time(o2,v86)
+  position(o2,51,101)
+  draw(o2)
+  stop.update(o2)
+  if (!(obj.in.room(i19,vCurrentRoom)) && f65) { //0054
+    add.to.pic(72,3,0,112,51,4,4)
+    goto(l145)
+  }
+  animate.obj(o3)
+  ignore.horizon(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o3,72)
+  set.loop(o3,2)
+  if (f65) { //0077
+    last.cel(o3,v52)
+    set.cel(o3,v52)
+    goto(l137)
+  }
+  set.cel(o3,0)
+l137:
+  position(o3,112,51)
+  draw(o3)
+  stop.update(o3)
+l145:
+  if (f64) { //0091
+    add.to.pic(72,1,0,65,51,4,4)
+  }
+  v30 = 0
+  if (vPrevRoom == 11) { //00a2
+    v38 = 0
+    v39 = 148
+    reset(f200)
+    start.motion(o0)
+    set.loop(o0,0)
+    goto(l223)
+  }
+  if (vPrevRoom == 15) { //00b9
+    v38 = 58
+    v39 = 148
+    v30 = 14
+    goto(l223)
+  }
+  v38 = 70
+  v39 = 64
+  set.loop(o0,2)
+  set(f200)
+  reset(f34)
+  start.motion(o0)
+  reset(f85)
+  release.priority(o0)
+l223:
+  position(o0,38,v39)
+  if (vPrevRoom != 15) { //00e3
+    draw(o0)
+  }
+  show.pic()
+  if (v30 == 14) { //00ee
+    prevent.input()
+    set(f85)
+    set(f54)
+    goto(l256)
+  }
+  reset(f85)
+  accept.input()
+l256:
+  return()
+}
+reset(f200)
+if (posn(o0,53,60,94,64)) { //0103
+  set(f200)
+}
+reset(f202)
+if (obj.in.room(i19,vCurrentRoom) && f200 && posn(o0,82,60,99,64)) { //0111
+  set(f202)
+}
+if (v30 == 13 && obj.in.room(i19,vCurrentRoom)) { //0122
+  set(f202)
+}
+reset(f201)
+if (f200) { //0130
+  if (posn(o0,61,60,79,64)) { //0136
+    set(f201)
+  }
+}
+reset(f205)
+if (!f200 && posn(o0,42,148,58,152)) { //0144
+  set(f205)
+}
+if (f200 && v30 == 0 && f208 && f209) { //0153
+  stop.motion(o0)
+}
+if (v30 == 0 && posn(o0,53,60,54,64)) { //0162
+  reset(f200)
+  v65 = 0
+  set(f75)
+}
+if (!fEnteredCommand) { //0176
+  goto(l2534)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "alley"))) { //0180
+  if (!(obj.in.room(i19,vCurrentRoom))) { //0196
+    print("%m7 and a fence.")
+    goto(l421)
+  }
+  print("%m7, a fence, and something sitting in the east window.")
+}
+l421:
+if ((said("examine", "ladder") || said("examine", "balcony"))) { //01a5
+  print("A rickety fire escape, complete with safety ladder, is loosely attached to the building. A mild, reddish glow comes from the window behind it.")
+}
+if (v30 != 14) { //01b9
+  if ((said("find", "bin") || said("examine", "bin") || said("look in", "bin"))) { //01c1
+    if (!f205) { //01d9
+      print("Move to the front of the trash bin.")
+      goto(l487)
+    }
+    print("Unfortunately, you can't see much from out here.")
+  }
+l487:
+  if ((said("brush", "off", "bra") || said("brush", "bra") || said("brush", "i'm", "off"))) { //01e7
+    set(f67)
+  }
+  if ((said("board", "bin") || said("jump", "bin") || said("jump", "about", "bin") || said("climb", "bin") || said("climb", "about", "bin"))) { //0205
+    if (f200) { //022d
+      print("You reconsider after noticing the trash bin is behind where you would fall!")
+      goto(l585)
+    }
+    if (!f205) { //0238
+      print("Move to the front of the trash bin.")
+      goto(l585)
+    }
+    v65 = 100
+    set(f75)
+  }
+l585:
+  goto(l711)
+}
+if ((said("climb", "out", "bin") || said("jump", "out", "bin") || said("climb", "out") || said("catch", "out") || said("board", "out") || said("board") || said("board", "bin"))) { //024c
+  v65 = 200
+  set(f75)
+}
+if ((said("find", "bin") || said("look in", "bin") || said("examine", "bin"))) { //0283
+  if (obj.in.room(i18,vCurrentRoom)) { //029b
+    print("Amidst assorted, odoriferous refuse from Lefty's clientel, you discover Lefty's old, left-handed hammer.")
+    goto(l681)
+  }
+  print("There's nothing else here worth describing, let alone taking.")
+}
+l681:
+if (said("catch", "hammer")) { //02a9
+  if (!(obj.in.room(i18,vCurrentRoom))) { //02b3
+    set(f55)
+    goto(l711)
+  }
+  set(f67)
+  get(i18)
+  vCurrentScore += 3
+}
+l711:
+if (said("examine", "brick")) { //02c7
+  print("There is an old neon sign hanging on the wall that says \"Hotel\"...")
+  print("...approximately.")
+}
+if ((said("climb", "up") || said("climb", "balcony") || said("climb", "up", "balcony") || said("move", "down", "ladder", "balcony") || said("move", "ladder", "balcony") || said("move", "down", "ladder") || said("move", "ladder") || said("climb", "ladder") || said("get up", "on", "ladder") || said("catch", "ladder") || said("decrease", "ladder") || said("jump", "ladder") || said("jump", "up", "ladder") || said("jump", "on", "ladder") || said("jump") || said("jump", "up"))) { //02d5
+  if ((f200 || v30 == 13 || f201)) { //0349
+    print("Move closer to the ladder.")
+    goto(l872)
+  }
+  if (f205) { //035b
+    print("There's no way to reach the ladder from down here. It's only accessible from above.")
+    goto(l872)
+  }
+  print("Whee!")
+}
+l872:
+if ((said("close", "glass") || said("decrease", "glass"))) { //0368
+  if ((!f200 || !f201)) { //037a
+    set(f54)
+    goto(l909)
+  }
+  print("Nah. That room needs the fresh air!")
+}
+l909:
+if ((said("examine", "glass") || said("look in", "glass"))) { //038d
+  if (!f200) { //039f
+    print("There are two windows high above you. The west window by the fire escape has a dim, reddish glow; the east window is dark. There may be something on the sill of the east window, but you can't make it out from down here.")
+    goto(l964)
+  }
+  if (f201) { //03ab
+    print("Looking inside the west window, you see the room you just left.")
+    goto(l964)
+  }
+  if (obj.in.room(i19,vCurrentRoom)) { //03b6
+    print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
+    goto(l964)
+  }
+  print("You broke it, didn't you?")
+}
+l964:
+if ((said("examine", "west", "glass") || said("look in", "west", "glass"))) { //03c4
+  if (!f200) { //03da
+    print("There are two windows high above you. The west window by the fire escape has a dim, reddish glow; the east window is dark. There may be something on the sill of the east window, but you can't make it out from down here.")
+    goto(l1000)
+  }
+  print("Looking inside the west window, you see the room you just left.")
+}
+l1000:
+if ((said("examine", "east", "glass") || said("look in", "east", "glass"))) { //03e8
+  if (!f200) { //03fe
+    print("There are two windows high above you. The west window by the fire escape has a dim, reddish glow; the east window is dark. There may be something on the sill of the east window, but you can't make it out from down here.")
+    goto(l1048)
+  }
+  if (obj.in.room(i19,vCurrentRoom)) { //040a
+    print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
+    goto(l1048)
+  }
+  print("You broke it, didn't you?")
+}
+l1048:
+if (has(i20) && v30 != 13) { //0418
+  if ((said("attach", "rope", "bureau") || said("attach", "rope", "i'm"))) { //0422
+    if (!f208) { //0438
+      set(f67)
+      set(f208)
+      goto(l1096)
+    }
+    print("It already is.")
+  }
+l1096:
+  if (said("attach", "rope", "balcony")) { //0448
+    if (!f200) { //0454
+      print("It's not long enough to reach from here.")
+      goto(l1136)
+    }
+    if (!f209) { //0460
+      set(f67)
+      set(f209)
+      goto(l1136)
+    }
+    print("It already is.")
+  }
+}
+l1136:
+if ((said("catch", "aphrodisiac") || said("catch", "bottle") || said("catch", "bottle", "aphrodisiac") || said("carry", "above", "glass") || said("carry", "above", "balcony", "catch", "aphrodisiac") || said("carry", "about", "aphrodisiac") || said("carry", "above", "balcony", "about", "aphrodisiac") || said("carry", "above", "balcony") || said("carry", "glass") || said("jump", "glass") || said("get up", "balcony") || said("get up", "on", "balcony") || said("carry", "above", "balcony") || said("carry", "above") || said("carry", "out") || said("climb", "on", "balcony") || said("climb", "above") || said("climb", "above", "balcony", "catch", "aphrodisiac") || said("climb", "balcony", "catch", "aphrodisiac") || said("climb", "above", "balcony", "aphrodisiac") || said("climb", "balcony", "aphrodisiac") || said("climb", "above", "balcony") || said("climb", "balcony"))) { //0470
+  if (has(i19)) { //052c
+    set(f55)
+    goto(l1457)
+  }
+  if (obj.in.room(i19,vCurrentRoom) && !f202) { //0537
+    print("Try moving to the east end of the fire escape.")
+    goto(l1457)
+  }
+  if ((!f208 || !f209)) { //0546
+    v65 = 250
+    set(f75)
+    v58 = 16
+    goto(l1457)
+  }
+  if (v30 != 13) { //055d
+    v30 = 13
+    set(f85)
+    stop.motion(o0)
+    set.view(o0,6)
+    set.loop(o0,1)
+    reposition.to(o0,92,61)
+    set(f34)
+    cycle.time(o0,v86)
+    print("With the rope securely holding you to the railing, you can reach all the way over to the window. NOW, of all times, you notice the window's locked!")
+    goto(l1457)
+  }
+  if (!(obj.in.room(i19,vCurrentRoom))) { //0580
+    print("You already took them. Why do this again?")
+    goto(l1457)
+  }
+  if (!f65) { //058d
+    print("You consider sticking your hand through a solid glass window, but realize that if you did, you wouldn't be able to play the violin.")
+    print("(Of course, you can't play the violin now, but you get the idea.)")
+    goto(l1457)
+  }
+  set.loop(o0,1)
+  start.update(o3)
+  erase(o3)
+  add.to.pic(72,3,0,112,51,4,4)
+  get(i19)
+  vCurrentScore += 8
+  print("You got 'em! But what are they?")
+}
+l1457:
+if ((said("break", "glass", "hammer") || said("use", "hammer", "break", "glass") || said("break", "glass") || said("break", "glass", "use", "hammer") || said("beat", "glass", "hammer") || said("use", "hammer", "beat", "glass") || said("beat", "glass") || said("beat", "glass", "use", "hammer") || said("use", "hammer"))) { //05b1
+  if (!(has(i18))) { //0601
+    set(f68)
+    goto(l1591)
+  }
+  if ((!f202 || !f208 || !f209)) { //060d
+    set(f54)
+    goto(l1591)
+  }
+  if (v30 != 13) { //0621
+    print("You might try reaching over to the window first.")
+    goto(l1591)
+  }
+  set.loop(o0,0)
+  set.cel(o0,0)
+  end.of.loop(o0,f203)
+}
+l1591:
+if (v30 == 13) { //0637
+  if (said("unbolt", "glass")) { //063e
+    print("Unlock it? From the outside?")
+  }
+  if (said("increase", "glass")) { //064a
+    print("You can't. It's locked from the inside.")
+  }
+  if ((said("beat", "glass") || said("beat", "glass", "use", "fingers") || said("use", "fingers", "beat", "glass") || said("break", "glass"))) { //0656
+    print("You consider sticking your hand through a solid glass window, but realize that if you did, you wouldn't be able to play the violin.")
+    print("(Of course, you can't play the violin now, but you get the idea.)")
+  }
+  if ((said("board", "balcony") || said("board", "back", "on", "balcony") || said("board", "on", "balcony") || said("board", "back") || said("board", "back", "balcony") || said("catch", "on", "balcony") || said("catch", "back", "balcony") || said("catch", "back", "on", "balcony") || said("move", "on", "rope") || said("move", "rope") || said("catch", "balcony") || said("climb", "back") || said("climb", "back", "balcony") || said("climb", "back", "on", "balcony") || said("climb", "on", "balcony") || said("climb", "balcony") || said("add", "balcony") || said("add", "balcony") || said("done", "hanging", "rope"))) { //0680
+    set(f67)
+    v30 = 0
+    set.view(o0,0)
+    reposition.to(o0,86,64)
+    accept.input()
+    start.motion(o0)
+    reset(f85)
+    reset(f34)
+    cycle.time(o0,v84)
+  }
+  if (said("examine", "down")) { //072a
+    print("It's a long way to the ground!")
+  }
+}
+if ((said("cut", "rope", "rol") || said("use", "knife", "rol"))) { //0736
+  if (v30 == 13) { //074c
+    print("Using the dull pocket knife, you cut the rope free.")
+    v65 = 250
+    set(f75)
+    v58 = 23
+    goto(l1928)
+  }
+  if (!f208 && !f209) { //0760
+    print("How can you do that?")
+    goto(l1928)
+  }
+  print("Using the dull pocket knife, you cut the rope free.")
+  reset(f208)
+  reset(f209)
+  start.motion(o0)
+  reset(f85)
+  if (has(i19)) { //0779
+    print("%g176")
+    goto(l1928)
+  }
+  get(i20)
+  print("A rickety fire escape, complete with safety ladder, is loosely attached to the building. A mild, reddish glow comes from the window behind it.")
+}
+l1928:
+if ((said("catch", "rope", "rol") || said("let go", "rope", "rol"))) { //0788
+  if (v30 == 13) { //079e
+    v65 = 250
+    set(f75)
+    v58 = 23
+    goto(l1993)
+  }
+  if (!f208 && !f209) { //07b0
+    print("How can you do that?")
+    goto(l1993)
+  }
+  print("You untie the rope.")
+  reset(f209)
+  reset(f208)
+  start.motion(o0)
+  reset(f85)
+}
+l1993:
+if (f200) { //07c9
+  if (said("examine", "balcony")) { //07cf
+    print("You are on a fire escape. A rusty ladder is at one end. East of the fire escape is another window, just out of your reach.")
+  }
+  if ((said("board", "glass") || said("climb", "glass") || said("board", "back") || said("board", "area") || said("board", "glass"))) { //07db
+    if (!f201) { //07ff
+      print("Move closer to the window, if you want to go back in the hooker's room.")
+      goto(l2064)
+    }
+    set(f67)
+    v76 = 17
+  }
+l2064:
+  if ((said("climb", "down") || said("decrease", "ladder") || said("board", "ladder") || said("board", "down", "ladder") || said("climb", "down", "ladder") || said("climb", "ladder"))) { //0810
+    print("Try moving to the west end of the fire escape.")
+  }
+  if (said("examine", "down")) { //0840
+    print("It's a long way to the ground!")
+  }
+  if ((said("jump") || said("jump", "off") || said("jump", "down") || said("jump", "bin") || said("get up", "on", "balcony") || said("jump", "off", "balcony") || said("climb", "down", "balcony"))) { //084c
+    v65 = 250
+    set(f75)
+    v58 = 23
+  }
+}
+if (obj.in.room(i19,vCurrentRoom) && said("examine", "aphrodisiac")) { //0888
+  if (f202) { //0895
+    print("Looking at the east window, you notice a bottle of pills sitting on the window ledge.")
+    goto(l2210)
+  }
+  print("There may be something in the east window, but from here, you're not sure.")
+}
+l2210:
+if ((said("catch", "ladder") || said("drain", "ladder"))) { //08a2
+  print("You can't. Even its rusty bolts are too tough for you!")
+}
+if ((said("throw", "rope", "rol") || said("climb", "down", "rope", "rol") || said("climb", "rope", "rol"))) { //08b6
+  print("It's not long enough to reach anywhere, but you might want to use it for safety purposes.")
+}
+if ((said("attach", "rope") || said("use", "rope"))) { //08d8
+  print("Be more specific.")
+}
+if ((said("examine", "above", "fence") || said("examine", "fence"))) { //08ec
+  print("You see alleys stretching off to infinity.")
+}
+if ((said("climb", "fence") || said("jump", "fence") || said("jump", "above", "fence") || said("climb", "above", "fence"))) { //0902
+  print("The fence is much too tall for you to climb over.")
+}
+if ((said("close", "cap", "rol") || said("climb", "on", "bin", "rol") || said("climb", "bin", "rol") || said("climb", "on", "top", "bin", "rol") || said("decrease", "cap", "rol") || said("decrease", "bin", "rol") || said("get up", "on", "bin") || said("move", "cap", "rol") || said("close", "bin", "rol"))) { //0926
+  print("Unfortunately the lid on the trash bin just will not close.")
+}
+if ((said("examine", "back", "bin") || said("move", "bin", "rol"))) { //097c
+  print("Try as you might, it is impossible to move the trash bin.")
+}
+if (said("attach", "rope", "anyword")) { //0994
+  print("The solution is closer to you than that.")
+}
+if ((said("cut", "glass", "use", "diamond ring") || said("use", "diamond ring", "cut", "glass") || said("carry", "rope", "rol") || said("carry", "ladder", "rol") || said("beat", "fence", "rol") || said("beat", "ladder", "rol") || said("beat", "brick", "rol"))) { //09a2
+  print("%g176")
+}
+l2534:
+if (f203) { //09e6
+  reset(f203)
+  print("Subtly, you smash the window with your hammer. Your future as a second-story man seems quite plausible!")
+  prevent.input()
+  start.update(o3)
+  end.of.loop(o3,f207)
+}
+if (f207) { //09f6
+  reset(f207)
+  reset(f34)
+  stop.update(o3)
+  set(f65)
+  accept.input()
+}
+if (f44) { //0a05
+  v200--
+  if (v200 == 16) { //0a0d
+    print("Hey! Where are you?")
+  }
+  if (v200 == 11) { //0a16
+    print("After a careful analysis of your surroundings, you conclude you are at the bottom of a pile of garbage!")
+    accept.input()
+  }
+  if (v200 == 1 && v30 == 14) { //0a20
+    print("\"YUCK!!\"")
+  }
+}
+current.cel(o2,v52)
+if (v52 == 4) { //0a2f
+  set(f75)
+}
+if (f75) { //0a38
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0a42
+    v30 = 5
+    start.update(o2)
+    set.cel(o2,1)
+    set(f85)
+    prevent.input()
+    erase(o0)
+    end.of.loop(o2,f75)
+    sound(1,f40)
+  }
+  if (v65 == 2) { //0a5c
+    set.view(o0,20)
+    set.priority(o0,11)
+    position(o0,53,99)
+    draw(o0)
+    move.obj(o0,53,137,3,f75)
+  }
+  if (v65 == 3) { //0a75
+    set.cel(o2,0)
+    stop.update(o2)
+    force.update(o2)
+  }
+  if (v65 == 4) { //0a83
+    stop.motion(o0)
+    set(f85)
+    set.view(o0,27)
+    set.cel(o0,1)
+    set.priority(o0,15)
+    reposition.to(o0,40,126)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 5) { //0aa3
+    reset(f34)
+    stop.cycling(o0)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    accept.input()
+    v30 = 14
+    v200 = 5
+    v65 = 0
+  }
+  if (v65 == 101) { //0abe
+    set(f67)
+    stop.motion(o0)
+    set(f85)
+    accept.input()
+    v30 = 14
+    set.view(o0,10)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    set.priority(o0,15)
+    reposition.to(o0,45,145)
+    cycle.time(o0,v85)
+    set(f34)
+    reverse.loop(o0,f75)
+  }
+  if (v65 == 102) { //0ae7
+    reset(f34)
+    stop.cycling(o0)
+    set.view(o0,27)
+    reposition.to(o0,40,126)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    v200 = 5
+    v65 = 0
+  }
+  if (v65 == 201) { //0b05
+    set(f85)
+    set(f67)
+    set.view(o0,10)
+    set.cel(o0,0)
+    set.priority(o0,15)
+    position(o0,49,145)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 202) { //0b25
+    reset(f34)
+    set.view(o0,0)
+    reposition.to(o0,52,148)
+    start.motion(o0)
+    reset(f85)
+    release.priority(o0)
+    step.size(o0,v84)
+    cycle.time(o0,v84)
+    v30 = 0
+    v65 = 0
+  }
+  if (v65 == 251) { //0b47
+    set(f85)
+    prevent.input()
+    v30 = 5
+    set.view(o0,20)
+    set.cel(o0,3)
+    set.priority(o0,15)
+    reposition.to(o0,95,68)
+    force.update(o0)
+    print(v58)
+    v58 = 0
+    cycle.time(o0,v84)
+    move.obj(o0,95,157,4,f75)
+    sound(1,f40)
+  }
+  if (v65 == 252) { //0b74
+    reset(f34)
+    stop.cycling(o0)
+    set.view(o0,4)
+    set.cel(o0,0)
+    reposition.to(o0,83,157)
+    v67 = 5
+  }
+  if (v65 == 253) { //0b8c
+    set(f34)
+    cycle.time(o0,v86)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 254) { //0b9b
+    v76 = 8
+  }
+}
+if (posn(o0,0,135,3,136)) { //0ba5
+  vWhichEgoBorder = 4
+}
+if (vWhichEgoBorder == 4) { //0bb2
+  v76 = 11
+}
+return()

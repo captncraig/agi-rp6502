@@ -1,4 +1,109 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(71)
+  if (f108) { //000a
+    load.logic(116)
+    set(f201)
+    random(0,255,v61)
+    if (v61 < 125) { //0018
+      load.logic(114)
+      set(f204)
+    }
+  }
+  load.sound(28)
+  if (!f85) { //0025
+    load.sound(23)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  if (f204) { //0036
+    call(114)
+  }
+  if (f201) { //003e
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0048
+  if (posn(o0,74,149,93,162)) { //004e
+    if (f136) { //0058
+      print("This is the tree where you found the lute.")
+      goto(l103)
+    }
+    set(f200)
+    print("You discover a musical lute inside a hole in this tree. (You could always take the lute and run.)")
+l103:
+    goto(l123)
+  }
+  if (posn(o0,0,0,35,167)) { //006a
+    print("You are at the edge of the Dark Forest. Beware!")
+    goto(l123)
+  }
+  print("The forest is a beautiful sight.")
+}
+l123:
+if (!f128 && !f129) { //007b
+  goto(l223)
+}
+if (f129) { //0088
+  goto(l196)
+}
+if (posn(o0,74,149,93,162)) { //0091
+  set(fSaidAccepted)
+  if (!f200) { //009d
+    set(f200)
+    print("You discover a musical lute inside a hole in this tree. (You could always take the lute and run.)")
+    goto(l193)
+  }
+  if (!f136) { //00ab
+    set(f136)
+    get(i14)
+    print("You take the lute and realize that it is slightly out of tune.")
+    set(fSaidAccepted)
+    goto(l193)
+  }
+  print("This is the tree where you found the lute.")
+  set(fSaidAccepted)
+}
+l193:
+goto(l223)
+l196:
+if (v60 == 14) { //00c4
+  set(fSaidAccepted)
+  if (!f85) { //00cd
+    set(f85)
+    sound(23,f202)
+    goto(l223)
+  }
+  sound(28,f203)
+}
+l223:
+if (f202) { //00df
+  reset(f202)
+  print("After a brief tuning, the lute sounds better.")
+}
+if (f203) { //00e9
+  reset(f203)
+  print("For an Assistant Pig-Keeper, you make beautiful music.")
+}
+if (f204) { //00f3
+  call(114)
+}
+if (f201) { //00fb
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //0103
+  new.room(22)
+}
+if (vWhichEgoBorder == 2) { //010c
+  new.room(3)
+}
+if (vWhichEgoBorder == 4) { //0115
+  new.room(1)
+}
+if (vWhichEgoBorder == 3) { //011e
+  new.room(7)
+}
+return()

@@ -1,4 +1,149 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v57 = 57
+  v58 = 153
+  v56 = 6
+  set(f63)
+  animate.obj(o3)
+  load.view(97)
+  set.view(o3,97)
+  position(o3,104,120)
+  if (f182) { //0024
+    set.cel(o3,2)
+    goto(l51)
+  }
+  set.cel(o3,0)
+l51:
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o1)
+  load.view(186)
+  set.view(o1,186)
+  ignore.horizon(o1)
+  if (f182) { //0040
+    position(o1,130,16)
+    goto(l81)
+  }
+  position(o1,130,34)
+l81:
+  v36 = 3
+  cycle.time(o1,v36)
+  draw(o1)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //005e
+    if (vPrevRoom == 69) { //0064
+      position(o0,89,164)
+    }
+  }
+  if (f47) { //006f
+    draw(o0)
+  }
+  if (f182) { //0077
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  if (f182) { //0082
+    move.obj(o0,110,120,1,f220)
+    print("The castle doors are wide open to welcome home a long-missing son, and a much-loved daughter. Atop the castle, the banners proudly wave. The heavy feeling of oppression is gone; hope has at last returned to Daventry!")
+    prevent.input()
+  }
+  return()
+}
+v39 = 0
+if (posn(o0,102,119,121,126)) { //0095
+  v39 = 1
+}
+if (f182) { //00a2
+  call(119)
+}
+if ((said("examine") || said("examine", "castle"))) { //00aa
+  if (!f182) { //00ba
+    print("You gaze sadly at the deteriorated castle. It's obvious that it was once proud and beautiful. But now, its banners are torn, its stones and statue work crumbling, and the moat has been drained. It's as if no one cares anymore.")
+    goto(l200)
+  }
+  print("The castle doors are wide open to welcome home a long-missing son, and a much-loved daughter. Atop the castle, the banners proudly wave. The heavy feeling of oppression is gone; hope has at last returned to Daventry!")
+}
+l200:
+if ((said("examine", "door", "castle") || said("examine", "door"))) { //00c8
+  if (!f182) { //00dc
+    print("The massive wooden doors of the castle are closed.")
+    goto(l234)
+  }
+  print("%m2")
+}
+l234:
+if (said("call", "rol")) { //00ea
+  print("No one answers.")
+}
+if (said("lift", "door")) { //00f6
+  if (v39 == 1) { //0100
+    print("The huge doors of the castle are bolted shut. Try as you might, you cannot open them.")
+    goto(l270)
+  }
+  print("And just how do you intend to do that from where you're standing.")
+}
+l270:
+if (!f182 && (said("bang", "door") || said("bang", "on", "door"))) { //010e
+  if (v39 == 1) { //0125
+    print("You rap loudly upon the massive wooden doors of the castle. Hollowly, emptily, the sound reverberates within. No one answers.")
+    goto(l307)
+  }
+  print("And just how do you intend to do that from where you're standing.")
+}
+l307:
+if (said("unlock", "door") && !f182) { //0133
+  if (v39 == 1) { //0140
+    print("You obviously do not have the key to this castle.")
+    goto(l334)
+  }
+  print("And just how do you intend to do that from where you're standing.")
+}
+l334:
+if (said("break", "door") && !f182) { //014e
+  if (v39 == 1) { //015b
+    print("Your body is no match for these huge wooden doors.")
+    goto(l361)
+  }
+  print("And just how do you intend to do that from where you're standing.")
+}
+l361:
+if (said("examine", "banner")) { //0169
+  if (!f182) { //0173
+    print("Sadly, the torn banners of the shabby castle fly at half staff.")
+    goto(l385)
+  }
+  print("The worn banners atop the crumbling castle proudly wave.")
+}
+l385:
+if ((said("climb", "moat") || said("jump", "moat") || said("jump", "above", "moat") || said("climb", "down", "moat") || said("examine", "above", "moat") || said("examine", "moat"))) { //0181
+  print("The moat is too wide and too deep to cross. There is nothing of interest there, anyway.")
+}
+if (said("examine", "forest")) { //01b3
+  print("A once green woodland spreads out before you. Now, its many trees and bushes are cruelly charred.")
+}
+if (said("examine", "brush")) { //01bf
+  print("You see no flowers about.")
+}
+if ((said("climb", "up", "forest") || said("climb", "forest"))) { //01cb
+  print("There are no climbable trees around.")
+}
+if ((said("examine", "up", "sky") || said("examine", "sky"))) { //01e1
+  print("The sky is blue and the sun is shining, but yet a feeling of sadness lingers here.")
+}
+if ((said("examine", "on", "deck") || said("examine", "deck"))) { //01f7
+  print("There is nothing interesting on the ground but green grass.")
+}
+if (vWhichEgoBorder == 2) { //020d
+  new.room(72)
+}
+if (vWhichEgoBorder == 3) { //0216
+  new.room(69)
+}
+if (f182 && posn(o0,105,121,116,122)) { //021f
+  new.room(73)
+}
+return()

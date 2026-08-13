@@ -1,3 +1,29 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (v207 == 1) { //0002
+  v205 = v200
+  mul(v205,v204)
+  v52 = 250
+  v52 -= v205
+  if (v52 > v90) { //0015
+    v90 += v205
+    goto(l47)
+  }
+  v205 = 250
+  v205 -= v90
+  v90 = 250
+  print("Congratulations, you've broken the bank! This casino has a limit of $250.00 per person, and you've reached it. No more for you, Larry!")
+  set(f200)
+l47:
+  v207 = 2
+}
+if (v207 == 2) { //0032
+  if (vMonitorType == HERCULES) { //0039
+    clear.lines(24,24,c0)
+    display(24,0,"Bet is $%v200.00         You have $%v90.00")
+    goto(l83)
+  }
+  clear.lines(21,21,c0)
+  display(21,0,"Bet is $%v200.00         You have $%v90.00")
+}
+l83:
+v207 = 0
+return()

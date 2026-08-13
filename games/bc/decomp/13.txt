@@ -1,4 +1,127 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(48)
+  load.view(1)
+  if (f108) { //000c
+    load.logic(116)
+    set(f200)
+    random(0,255,v61)
+    if (v61 < 125) { //001a
+      load.logic(114)
+      set(f201)
+    }
+  }
+  load.logic(101)
+  if (f51) { //0027
+    load.view(105)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f51) { //0035
+    animate.obj(o2)
+    set.view(o2,105)
+    stop.motion(o2)
+    position(o2,66,89)
+    draw(o2)
+    ignore.blocks(o2)
+  }
+  if (vPrevRoom == 12) { //004a
+    if (v39 > 68 && v39 < 85) { //0051
+      v39 = 85
+      goto(l115)
+    }
+    if (v39 > 153 && v39 < 159) { //0061
+      v39 = 155
+      set(fEgoOnWater)
+      set.view(o0,1)
+    }
+l115:
+    goto(l156)
+  }
+  if (vPrevRoom == 14) { //0076
+    if (v39 > 123 && v39 < 141) { //007d
+      v39 = 155
+      set(fEgoOnWater)
+      set.view(o0,1)
+      goto(l156)
+    }
+    if (v39 > 140) { //0092
+      v39 = 166
+    }
+  }
+l156:
+  position(o0,38,v39)
+  draw(o0)
+  if (f200) { //00a2
+    call(116)
+  }
+  if (f201) { //00aa
+    call(114)
+  }
+  call(101)
+  show.pic()
+  return()
+}
+if (f130) { //00b6
+  if (posn(o0,53,70,90,106) && f51) { //00bc
+    print("Look! There's your missing water flask.")
+    goto(l230)
+  }
+  if ((posn(o0,0,67,81,167) || posn(o0,82,89,159,167))) { //00cd
+    print("The lake is calm and peaceful.")
+    goto(l230)
+  }
+  print("The trees sway gently in the breeze.")
+}
+l230:
+if (!f128 && !f129) { //00e6
+  goto(l274)
+}
+if (f129) { //00f3
+  goto(l274)
+}
+if (f51 && posn(o0,53,70,90,106)) { //00fc
+  set(fSaidAccepted)
+  get(i6)
+  erase(o2)
+  reset(f51)
+  print("You reach over and pick up your water flask.")
+}
+l274:
+if (!fEgoOnWater) { //0112
+  if ((posn(o0,40,145,66,152) || posn(o0,80,149,110,157) || posn(o0,0,127,27,152))) { //0119
+    set(fEgoOnWater)
+    set(f117)
+  }
+}
+if (posn(o0,121,118,159,139)) { //0135
+  set(f121)
+  v76 = 0
+  v77 = 251
+  goto(l332)
+}
+reset(f121)
+l332:
+if ((posn(o0,0,68,24,85) || posn(o0,120,120,159,135) || posn(o0,0,150,159,167))) { //014c
+  set(f88)
+}
+call(101)
+if (f201) { //0168
+  call(114)
+}
+if (f200) { //0170
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //0178
+  new.room(8)
+}
+if (vWhichEgoBorder == 3) { //0181
+  new.room(18)
+}
+if (vWhichEgoBorder == 2) { //018a
+  new.room(14)
+}
+if (vWhichEgoBorder == 4) { //0193
+  new.room(12)
+}
+return()

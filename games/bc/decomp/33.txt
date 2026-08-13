@@ -1,4 +1,342 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f86)
+  v65 = 0
+  v213 = 15
+  set.horizon(78)
+  set(f68)
+  set(f145)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v66 = 128
+  load.view(6)
+  load.view(2)
+  load.sound(12)
+  load.sound(2)
+  load.view(127)
+  animate.obj(o14)
+  set.view(o14,127)
+  ignore.objs(o14)
+  ignore.blocks(o14)
+  if (f33) { //0032
+    reset(f203)
+    v208 = 3
+    set.loop(o14,2)
+    set.priority(o14,8)
+    position(o14,65,93)
+    goto(l112)
+  }
+  set(f203)
+  set.priority(o14,15)
+  position(o14,104,94)
+  set.loop(o14,0)
+  v208 = 0
+  random(0,255,v61)
+  if (!(has(i12)) && v61 < 80 && vPrevRoom != 37 && !fEgoOnWater) { //005d
+    set(f212)
+  }
+l112:
+  if (f144) { //0070
+    set(f212)
+  }
+  if (f212) { //0078
+    set(f200)
+    load.view(62)
+    load.view(60)
+    load.view(67)
+    load.view(68)
+    load.sound(11)
+    animate.obj(o9)
+    set.view(o9,67)
+    v61 = 2
+    cycle.time(o9,v61)
+    position(o9,26,89)
+    ignore.blocks(o9)
+    draw(o9)
+    stop.update(o9)
+    animate.obj(o6)
+    set.view(o6,68)
+    ignore.objs(o6)
+    v210 = 250
+  }
+  draw(o14)
+  if (vPrevRoom == 37) { //00ab
+    position(o0,36,80)
+    goto(l226)
+  }
+  if (vPrevRoom == 47) { //00b9
+    position(o0,110,89)
+    move.obj(o0,108,89,0,f61)
+    goto(l226)
+  }
+  if (!(v75 > 0)) { //00cd
+    position(o0,149,164)
+    goto(l226)
+  }
+  position(o0,140,151)
+  set(fEgoOnWater)
+l226:
+  draw(o0)
+  if (!f200) { //00e4
+    stop.update(o14)
+    v213 = 15
+  }
+  show.pic()
+  if (f108) { //00f1
+    reset(f108)
+    v57 = 5
+    vCurrentScore += 20
+    print("Hen Wen scurries across the drawbridge to safety! You're sure she'll make it to the Fair Folk somehow.")
+  }
+  return()
+}
+if (f130) { //0102
+  print("You are in front of the dreadful castle of the Horned King. A slimy green moat filled with alligators surrounds it.")
+}
+if (!f128 && !f129) { //010a
+  goto(l435)
+}
+if (f129) { //0117
+  goto(l325)
+}
+if (f212 && !f86 && !f63) { //0120
+  distance(o0,o9,v61)
+  if (v61 < 20) { //0130
+    set(f86)
+    erase(o0)
+    print("Gathering your courage, you leap into the rear of the wagon. The henchman continues into the castle without noticing you.")
+    set(fSaidAccepted)
+    v210 = 2
+  }
+}
+goto(l435)
+l325:
+if (v60 == 12 && !f152 && !fEgoOnWater) { //0145
+  print("You swing the magic sword...")
+  if (!f212) { //0154
+    print("doesn't it sparkle!")
+    goto(l435)
+  }
+  distance(o0,o9,v61)
+  if (v61 > 50) { //0164
+    print("doesn't it sparkle!")
+    goto(l435)
+  }
+  if (v61 > 30) { //0170
+    print("and miss the henchman!")
+    goto(l435)
+  }
+  start.update(o9)
+  set.view(o9,60)
+  v61 = 3
+  cycle.time(o9,v61)
+  stop.motion(o9)
+  get.posn(o9,v62,v63)
+  position(o6,62,v63)
+  stop.motion(o6)
+  draw(o6)
+  v62 += 20
+  v63 += 1
+  position(o9,62,v63)
+  v80 = 99
+  sound(11,f106)
+  ignore.objs(o9)
+  set.priority(o9,4)
+  stop.motion(o9)
+  reset(f212)
+  v210 = 0
+  print("and strike!! The henchman slumps to the floor, stunned.")
+}
+l435:
+v210--
+if (v210 == 1) { //01b5
+  start.update(o9)
+  move.obj(o9,125,89,0,f204)
+}
+if (f204) { //01c4
+  reset(f204)
+  if (f86) { //01cc
+    if (!f48) { //01d2
+      set(f48)
+      vCurrentScore += 18
+    }
+    new.room(47)
+    goto(l489)
+  }
+  erase(o9)
+  reset(f212)
+  set(f201)
+}
+l489:
+if (f212 && !(v80 > 0) && !f63) { //01e9
+  get.posn(o0,v38,v39)
+  get.posn(o9,v62,v63)
+  v62 += 10
+  v61 = v63
+  v63 -= 6
+  v61 += 6
+  if (v38 > v62 && v39 > v63 && v39 < v61) { //020a
+    set(f216)
+  }
+}
+if (!f86 && f212 && posn(o0,73,88,82,93)) { //0219
+  set(f216)
+}
+if (f216 && !f63) { //022a
+  set(f63)
+  stop.motion(o0)
+  v210 = 0
+  program.control()
+  get.posn(o9,v62,v63)
+  start.update(o9)
+  position(o6,62,v63)
+  position(o9,38,v39)
+  set.view(o9,62)
+  stop.motion(o9)
+  v61 = 2
+  cycle.time(o9,v61)
+  set.cel(o9,0)
+  end.of.loop(o9,f205)
+  v215 = 7
+  draw(o6)
+}
+v215--
+if (v215 == 1) { //0261
+  erase(o0)
+}
+if (f205) { //026a
+  reset(f205)
+  if (has(i12)) { //0272
+    drop(i12)
+    v59 = 1
+    print("You've failed to react quickly enough. Now the henchman has your magic sword.")
+    goto(l660)
+  }
+  print("The henchman grabs you, and leads you off to the dungeon!")
+  set.view(o0,0)
+  v34 = 1
+  reset(f160)
+  observe.objs(o0)
+  observe.blocks(o0)
+  reset(f125)
+  new.room(52)
+}
+l660:
+if (!f203 && posn(o0,70,88,102,92)) { //0294
+  set(f160)
+  ignore.objs(o0)
+  ignore.blocks(o0)
+  set(f125)
+  goto(l692)
+}
+observe.objs(o0)
+observe.blocks(o0)
+reset(f125)
+reset(f160)
+l692:
+if (fTriggerLine && !f160 && !f152) { //02b4
+  set(f152)
+  set(f125)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  set.view(o0,6)
+  set(f133)
+  get.posn(o0,v62,v63)
+  if (v63 == 87) { //02d1
+    set.priority(o0,7)
+    goto(l737)
+  }
+  set.priority(o0,15)
+l737:
+  v63 = v66
+  if (v62 < 55) { //02e4
+    v62 = 55
+  }
+  sound(2,f61)
+  v67 = 3
+  move.obj(o0,v62,v63,67,f211)
+}
+if (f211) { //02fa
+  reset(f211)
+  reset(f125)
+  set(fEgoOnWater)
+}
+if (fEgoOnWater && !f125 && !f214) { //0306
+  set(f214)
+  set.view(o0,2)
+  stop.motion(o0)
+  force.update(o0)
+  set(f133)
+  program.control()
+  print("The alligators are merciless. Farewell, Assistant Pig-Keeper.")
+  v70 = 50
+}
+v70--
+if (v70 == 1) { //0325
+  erase(o0)
+  v59 = 1
+}
+v213--
+if (f200) { //0333
+  if (v208 == 0 && v213 == 1) { //0339
+    v208++
+    start.update(o14)
+    v62 = 229
+    v63 = 1
+    repositon(o14,v62,v63)
+    set.loop(o14,1)
+    v213 = 15
+  }
+  if (v208 == 1 && v213 == 1) { //0357
+    v208++
+    v62 = 248
+    v63 = 255
+    repositon(o14,v62,v63)
+    set.loop(o14,2)
+    v213 = 2
+  }
+  if (v208 == 2 && v213 == 1) { //0373
+    reset(f200)
+    reset(f203)
+    set.priority(o14,8)
+    stop.update(o14)
+  }
+}
+if (f201) { //0386
+  if (v208 == 2) { //038c
+    v208--
+    start.update(o14)
+    set(f203)
+    v62 = 8
+    v63 = 1
+    repositon(o14,v62,v63)
+    set.loop(o14,1)
+    v213 = 15
+  }
+  if (v208 == 1 && v213 == 1) { //03a9
+    v208--
+    set.priority(o14,15)
+    v62 = 27
+    v63 = 255
+    repositon(o14,v62,v63)
+    set.loop(o14,0)
+    v213 = 2
+  }
+  if (v208 == 0 && v213 == 1) { //03c8
+    reset(f201)
+    stop.update(o14)
+  }
+}
+if ((posn(o0,35,115,159,167) || posn(o0,62,86,159,114))) { //03d6
+  set(f88)
+}
+if (posn(o0,120,50,130,92)) { //03ea
+  new.room(47)
+}
+if (vWhichEgoBorder == 2) { //03f6
+  new.room(34)
+}
+if (vWhichEgoBorder == 1) { //03ff
+  new.room(37)
+}
+return()

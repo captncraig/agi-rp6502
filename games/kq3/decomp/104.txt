@@ -1,6 +1,221 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f34)
   v240 = 0
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+  if (vCurrentRoom == 8 && v137 == 3) { //000d
+    return()
+  }
+  random(1,3,v36)
+  if (v36 == 1 && v101 > 0 && !f116 && !f98) { //001c
+    load.view(203)
+    load.view(204)
+    load.view(19)
+    load.sound(13)
+    animate.obj(o13)
+    set.view(o13,204)
+    set.cel(o13,0)
+    position(o13,100,v101)
+    draw(o13)
+    stop.motion(o13)
+    v36 = 3
+    cycle.time(o13,v36)
+    set(f116)
+    if ((vCurrentRoom == 9 || vCurrentRoom == 5 || vCurrentRoom == 6)) { //004c
+      object.on.water(o13)
+      goto(l98)
+    }
+    object.on.anything(o13)
+l98:
+    v240 = 250
+    v241 = 2
+    goto(l109)
+  }
+  reset(f116)
+}
+l109:
+if ((said("break", "glass") || said("break", "lift", "glass"))) { //006d
+  print("You don't need to break windows. Use the front door.")
+}
+if ((said("examine", "out", "glass") || said("examine", "glass") || said("examine", "out") || said("look in", "glass"))) { //0083
+  if ((v76 > 0 || v75 > 0)) { //00a3
+    print("A horribly intense thunderstorm is raging outside.")
+    goto(l194)
+  }
+  if (vCurrentRoom < 9) { //00b4
+    print("You can see most of the countryside of Llewdor from this vantage point.")
+    goto(l194)
+  }
+  print("What window?")
+}
+l194:
+if (said("lift", "glass")) { //00c2
+  if (vCurrentRoom < 9) { //00cc
+    print("These windows do not open.")
+    goto(l218)
+  }
+  print("What window?")
+}
+l218:
+if (!f116) { //00da
+  goto(l662)
+}
+if (said("examine", "cat")) { //00e4
+  print("That detestable pet of Manannan's is a constant annoyance.")
+}
+if (said("call", "cat")) { //00f0
+  if (has(i8)) { //00fa
+    print("\"Get lost, Gwydion, you creep!\"")
+    goto(l267)
+  }
+  random(16,18,v36)
+  print(v36)
+}
+l267:
+if ((said("embrace", "cat") || said("pat", "cat"))) { //010b
+  print("The thought of doing anything nice to that obscene ball of fur makes you sick.")
+  set(f242)
+  v240 = 88
+}
+if (said("hit", "cat")) { //0124
+  distance(o0,o13,v36)
+  if (v36 > 11) { //0132
+    if (has(i8)) { //0139
+      print("\"Ha, ha! Missed me!!\"")
+      goto(l326)
+    }
+    print("You're too far away.")
+l326:
+    goto(l356)
+  }
+  sound(13,f41)
+  if (has(i8)) { //014c
+    random(24,26,v36)
+    print(v36)
+    goto(l349)
+  }
+  print("\"Screeeeeeeeeeeeech!!!!!!!!\"")
+l349:
+  print("(heh, heh, heh)")
+  set(f242)
+  v240 = 88
+}
+l356:
+if (said("kill", "cat")) { //0164
+  print("Good idea, but how? As much as you'd love to, you haven't the heart.")
+  set(f242)
+  v240 = 88
+}
+if (v44 != 0) { //0175
+  goto(l662)
+}
+if (!f46 && (said("capture", "cat") || said("carry", "cat") || said("capture", "cat"))) { //0180
+  distance(o0,o13,v36)
+  if (v36 > 8) { //019f
+    if (has(i8)) { //01a6
+      print("%m5 As he does so he snickers, \"Ha, ha! Missed me!\"")
+      goto(l435)
+    }
+    print("You're too far away.")
+l435:
+    goto(l483)
+  }
+  random(1,4,v36)
+  if (v36 > 1) { //01ba
+    print("The despicable cat slips away from your grasp with a fierce scratch to your arm.")
+    set(f242)
+    v240 = 88
+    goto(l483)
+  }
+  set(f46)
+  erase(o13)
+  v240 = 0
+  v241 = 0
+  set.view(o0,19)
+  start.motion(o0)
+  vEgoDir = 0
+  set(f240)
+  set(f35)
+  print("Nimbly, you grab the nasty cat by the scruff of its neck, avoiding its needle-sharp claws. Now that you have it, what are you going to do with it?")
+}
+l483:
+if (said("add", "cat")) { //01e3
+  if (!f240) { //01ed
+    print("You don't have it.")
+    goto(l507)
+  }
+  set(f241)
+}
+l507:
+if ((said("capture", "fur", "cat") || said("capture", "cat", "fur") || said("capture", "fur") || said("move", "fur") || said("move", "cat", "fur") || said("move", "fur", "cat") || said("capture", "cat", "fur", "from", "cat") || said("capture", "fur", "from", "cat") || said("move", "fur", "from", "cat") || said("move", "cat", "fur", "from", "cat") || said("move", "fur", "cat", "from", "cat"))) { //01fb
+  if (!f240) { //0265
+    print("You don't have the cat.")
+    goto(l662)
+  }
+  get(i2)
+  sound(13,f41)
+  print("\"Screeeeeeeeeeeeech!!!!!!!!\"")
+  print("(heh, heh, heh)")
+  if (has(i8)) { //027a
+    random(24,27,v36)
+    print(v36)
+  }
+  if (!f128) { //0286
+    set(f128)
+    vCurrentScore += 1
+    print("You manage to pluck some fur before he viciously scratches, and leaps from your arms. With grim satisfaction, you survey your wounds. \"Stupid cat,\" you scoff, \"whether you know it or not, you just helped me.\"")
+  }
+  set(f241)
+}
+l662:
+if (!f240 && f116) { //0296
+  v240--
+  if (!f243) { //02a1
+    v241--
+    if (v241 < 19) { //02aa
+      start.cycling(o13)
+    }
+    if (v241 == 1) { //02b3
+      v241 = 150
+      stop.cycling(o13)
+    }
+  }
+  if (v240 == 19) { //02bf
+    set(f242)
+  }
+  if (v240 == 1) { //02c8
+    reset(f243)
+    v240 = 250
+    normal.motion(o13)
+    stop.motion(o13)
+    stop.cycling(o13)
+    set.view(o13,204)
+    set.cel(o13,0)
+    v36 = 3
+    cycle.time(o13,v36)
+  }
+}
+if (f240 && vEgoDir > 0) { //02e6
+  set(f241)
+}
+if (f241) { //02f1
+  reset(f241)
+  reset(f240)
+  reset(f35)
+  reset(f46)
+  set.view(o0,0)
+  force.update(o0)
+  draw(o13)
+  set(f242)
+  v240 = 88
+  print("The detestable cat leaps from your arms, snarling and screeching!")
+}
+if (f242 && !f240 && f116) { //030d
+  reset(f242)
+  set(f243)
+  set.view(o13,203)
+  v36 = 1
+  cycle.time(o13,v36)
+  start.cycling(o13)
+  start.motion(o13)
+  wander(o13)
+}
+return()

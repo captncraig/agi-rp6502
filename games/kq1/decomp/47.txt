@@ -1,4 +1,202 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f75) { //000e
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0016
+    add.to.pic(62,0,0,14,144,0,0)
+  }
+  load.logic(101)
+  call(101)
+  if (!f121) { //0029
+    load.view(60)
+    load.view(84)
+    animate.obj(o1)
+    set.view(o1,84)
+    position(o1,84,80)
+    set(f20)
+  }
+  if (vPrevRoom == 34) { //003f
+    if (posn(o0,77,165,112,167)) { //0046
+      position(o0,71,164)
+    }
+    if (posn(o0,113,165,159,167)) { //0054
+      position(o0,142,164)
+    }
+  }
+  if (f20) { //0062
+    reset(f20)
+    draw(o1)
+  }
+  set(f68)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (fEgoOnWater && !f21) { //0073
+  set(f21)
+  print("This is sad.  You are not the first to fail your quest in the Raging River... I hope you may be the last.")
+}
+if (said("check", "water")) { //0080
+  print("This is the wild Raging River filled with boulders and rapids.")
+}
+if (said("check", "boulder")) { //008c
+  print("It would be dangerous to try and jump across the river on the boulders.")
+}
+if (said("check", "across")) { //0098
+  if ((posn(o0,0,0,36,111) || posn(o0,0,112,97,167))) { //00a2
+    print("The land across the river looks enchanting.  You wonder how you can get there.")
+    goto(l187)
+  }
+  print("You see the familiar side of the Raging River.")
+}
+l187:
+if (!f123 && f121) { //00bb
+  if (said("check", "mushroom")) { //00c4
+    print("There is no mushroom here.")
+  }
+}
+if (f121) { //00d0
+  if (said("check", "grass")) { //00d6
+    print("There is nothing of interest around you.")
+  }
+  if (said("acquire", "mushroom")) { //00e2
+    if (f123) { //00ec
+      print("You already have it.")
+      goto(l249)
+    }
+    print("There is no mushroom here.")
+  }
+}
+l249:
+if (!f121) { //00f9
+  if (said("check", "mushroom")) { //0100
+    if ((posn(o0,0,0,36,111) || posn(o0,0,112,97,167))) { //010a
+      print("The mushroom is on the far side of the river.")
+      goto(l306)
+    }
+    if (posn(o0,64,61,114,101)) { //0121
+      print("This mushroom is large and aromatic.")
+      goto(l306)
+    }
+    print("The colorful mushroom is in the distance.")
+  }
+l306:
+  if (said("check", "grass")) { //0132
+    if ((posn(o0,0,0,36,111) || posn(o0,0,112,97,167))) { //013c
+      print("There is nothing of interest around you.")
+      goto(l356)
+    }
+    if (posn(o0,64,61,114,101)) { //0153
+      print("There is a large mushroom growing in the ground close by.")
+      goto(l356)
+    }
+    print("There is nothing of interest around you.")
+  }
+l356:
+  if (said("acquire", "mushroom")) { //0164
+    if ((posn(o0,0,0,36,111) || posn(o0,0,112,97,167))) { //016e
+      print("The mushroom is on the far side of the river.")
+      goto(l417)
+    }
+    if (posn(o0,74,70,94,90)) { //0185
+      erase(o1)
+      print("You reach down and pick a fat mushroom.")
+      set(f121)
+      set(f123)
+      vCurrentScore += 1
+      get(i24)
+      goto(l417)
+    }
+    print("You need to get closer to do that.")
+  }
+}
+l417:
+if (said("check", "building")) { //01a1
+  print("You see King Edward's castle on the horizon.")
+}
+if (said("check", "room")) { //01ad
+  if (f121) { //01b7
+    print("This lovely meadow is split by the Raging River.")
+    goto(l452)
+  }
+  print("There is a large mushroom in the meadow next to the river.")
+}
+l452:
+if (!(v94 > 0) && fEgoOnWater) { //01c4
+  v76 = 255
+  if (posn(o0,7,40,62,81)) { //01d1
+    v76 = 23
+    v77 = 81
+  }
+  if (posn(o0,10,82,37,116)) { //01e1
+    v76 = 28
+    v77 = 95
+  }
+  if (posn(o0,37,82,74,90)) { //01f1
+    v76 = 60
+    v77 = 104
+  }
+  if (posn(o0,64,91,104,116)) { //0201
+    v76 = 74
+    v77 = 116
+  }
+  if (posn(o0,37,117,100,145)) { //0211
+    v76 = 70
+    v77 = 117
+  }
+  if ((posn(o0,68,146,111,167) || posn(o0,101,117,143,167))) { //0221
+    v76 = 102
+    v77 = 155
+  }
+  if (v76 == 255) { //0239
+    v76 = 0
+    goto(l594)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l594:
+if (!f88 && !fEgoOnWater && !f116) { //0252
+  if ((said("drink", "water") || said("acquire", "drink"))) { //025f
+    if ((posn(o0,0,40,32,111) || posn(o0,14,112,88,135) || posn(o0,39,136,99,167) || posn(o0,36,40,74,76) || posn(o0,46,77,101,88) || posn(o0,68,89,151,167))) { //0271
+      print("The water from this swift river is cold and sweet.")
+      goto(l674)
+    }
+    print("You need to get closer to do that.")
+  }
+}
+l674:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //02a2
+  if ((posn(o0,0,40,32,111) || posn(o0,14,112,88,135) || posn(o0,39,136,99,167) || posn(o0,36,40,74,76) || posn(o0,46,77,101,88) || posn(o0,68,89,151,167))) { //02b4
+    reset(f116)
+    print("The river is so swift it is a battle to fill the bucket.")
+    get(i26)
+    set(f88)
+    if (!f91) { //02e6
+      vCurrentScore += 2
+    }
+    set(f91)
+    goto(l759)
+  }
+  print("You need to get closer to do that.")
+}
+l759:
+if (vWhichEgoBorder == 2) { //02f7
+  new.room(48)
+}
+if (vWhichEgoBorder == 4) { //0300
+  new.room(46)
+}
+if (vWhichEgoBorder == 3) { //0309
+  new.room(34)
+}
+if (f75) { //0312
+  call(103)
+}
+call(101)
+return()

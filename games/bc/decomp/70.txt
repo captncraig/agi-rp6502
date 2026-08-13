@@ -1,4 +1,30 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(22)
+  load.sound(9)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o12)
+  set.view(o12,22)
+  v61 = 2
+  step.size(o12,v61)
+  cycle.time(o12,v61)
+  position(o12,0,160)
+  draw(o12)
+  move.obj(o12,125,45,0,f200)
+  set(f201)
+  show.pic()
+  return()
+}
+if (f130) { //0030
+  print("One of the Horned King's gwythaints is carrying you high above Prydain! You hold Hen Wen tightly in your arms, and can feel her heart beating in fear!!")
+  set(fSaidAccepted)
+}
+if (f201) { //003a
+  reset(f201)
+  sound(9,f201)
+}
+if (f200) { //0045
+  new.room(18)
+}
+return()

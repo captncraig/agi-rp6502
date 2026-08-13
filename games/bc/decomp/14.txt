@@ -1,4 +1,100 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(60)
+  if (f108) { //000a
+    load.logic(116)
+    set(f203)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //001a
+      load.logic(114)
+      set(f202)
+    }
+  }
+  if (vPrevRoom == 13) { //0025
+    set.view(o0,0)
+    reset(f133)
+    if (v39 > 128 && v39 < 164) { //0031
+      position(o0,2,133)
+      set(f204)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  if (f203) { //0049
+    call(116)
+  }
+  if (f202) { //0051
+    call(114)
+  }
+  show.pic()
+  if (f204) { //005a
+    reset(f204)
+    set(f200)
+    print("The water is too shallow to swim here.")
+  }
+  return()
+}
+if (f130) { //0067
+  if (!(posn(o0,53,125,68,141))) { //006d
+    print("The solid fence blocks your way east. The footbridge, over the shallow stream, will keep your feet dry.")
+    goto(l141)
+  }
+  if (!f76) { //007d
+    set(f201)
+    print("There is a wallet beneath the bridge.")
+    goto(l141)
+  }
+  print("This is the bridge where you found the food wallet.")
+}
+l141:
+if (!f128 && !f129) { //008d
+  goto(l200)
+}
+if (f129) { //009a
+  goto(l200)
+}
+if (posn(o0,53,125,68,141) && !f76) { //00a3
+  set(fSaidAccepted)
+  if (f201) { //00b2
+    set(f76)
+    get(i4)
+    print("Reaching under the foot- bridge, you take the wallet and look inside. It is filled with food.")
+    goto(l197)
+  }
+  set(f201)
+  print("There is a wallet beneath the bridge.")
+}
+l197:
+goto(l200)
+l200:
+if (!f170 && posn(o0,36,119,58,124)) { //00c8
+  set(f170)
+  print("This bridge marks the boundary of Caer Dallben. You wonder what the future holds.")
+}
+if (!f200) { //00d9
+  if ((posn(o0,0,123,13,141) || posn(o0,66,124,112,141) || posn(o0,113,122,141,139) || posn(o0,124,97,144,121) || posn(o0,104,83,135,96) || posn(o0,78,65,122,82))) { //00e0
+    set(f200)
+    print("Your feet are wet from walking through the shallow stream.")
+  }
+}
+if ((posn(o0,0,113,25,129) || posn(o0,0,130,112,150) || posn(o0,62,125,159,154) || posn(o0,75,115,116,128) || posn(o0,101,95,159,124) || posn(o0,65,0,159,94))) { //010e
+  set(f88)
+}
+if (f202) { //013a
+  call(114)
+}
+if (f203) { //0142
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //014a
+  new.room(9)
+}
+if (vWhichEgoBorder == 3) { //0153
+  new.room(19)
+}
+if (vWhichEgoBorder == 4) { //015c
+  new.room(13)
+}
+return()

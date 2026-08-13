@@ -1,4 +1,113 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(57)
+  if (f108) { //000a
+    load.logic(116)
+    set(f203)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //001a
+      load.logic(114)
+      set(f202)
+    }
+  }
+  load.view(73)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o7)
+  set.view(o7,73)
+  position(o7,68,120)
+  set.priority(o7,11)
+  if (!f137) { //0039
+    v61 = 3
+    cycle.time(o7,v61)
+    set.cel(o7,0)
+    goto(l84)
+  }
+  last.cel(o7,v61)
+  set.cel(o7,v61)
+  set(f200)
+l84:
+  draw(o7)
+  stop.update(o7)
+  if (vPrevRoom == 10) { //0058
+    position(o0,4,155)
+    goto(l113)
+  }
+  if (vPrevRoom == 6) { //0066
+    position(o0,144,56)
+  }
+l113:
+  draw(o0)
+  if (f203) { //0073
+    call(116)
+  }
+  if (f202) { //007b
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0085
+  if (posn(o0,53,103,84,134)) { //008b
+    set(f200)
+    if (f137) { //0097
+      print("The \"NO TRESPASSING\" sign is lying at the base of the tree.")
+      goto(l164)
+    }
+    print("You look at the tree and see a dagger holding up a \"NO TRESPASSING\" sign.")
+l164:
+    goto(l169)
+  }
+  print("This is a frightening forest, with wicked trees. The winds from the evil land of the Horned King blow strongly here.")
+}
+l169:
+if (!f128 && !f129) { //00a9
+  goto(l243)
+}
+if (f129) { //00b6
+  goto(l243)
+}
+if (posn(o0,53,103,84,134)) { //00bf
+  set(fSaidAccepted)
+  if (!f200) { //00cb
+    print("You look at the tree and see a dagger holding up a \"NO TRESPASSING\" sign.")
+    set(f200)
+    goto(l240)
+  }
+  if (!f137) { //00d9
+    set(f137)
+    start.update(o7)
+    print("You carefully remove the sharp dagger from the tree.")
+    get(i11)
+    end.of.loop(o7,f201)
+    goto(l240)
+  }
+  print("You have no use for a \"NO TRESPASSING\" sign, so you leave it.")
+}
+l240:
+goto(l243)
+l243:
+if (f201) { //00f3
+  reset(f201)
+  stop.update(o7)
+}
+if (f202) { //00fd
+  call(114)
+}
+if (f203) { //0105
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //010d
+  new.room(6)
+}
+if (vWhichEgoBorder == 3) { //0116
+  new.room(16)
+}
+if (vWhichEgoBorder == 2) { //011f
+  new.room(12)
+}
+if (vWhichEgoBorder == 4) { //0128
+  new.room(10)
+}
+return()

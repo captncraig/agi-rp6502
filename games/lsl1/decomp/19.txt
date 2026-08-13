@@ -1,4 +1,73 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x65)}
+if (fNewRoom) { //0002
+  print("Oh, no!\n\nStepping outside, you see the sun rising in the east. Glancing at your watch, you realize the terrible truth...")
+  print("...your night in Sierra World is over, and (technically speaking) you're still...")
+  print("a")
+  print("\n\nVIRGIN!!!\n\n")
+  set.horizon(4)
+  prevent.input()
+  v81 = 7
+  load.pic(v81)
+  load.pic(vCurrentRoom)
+  load.view(32)
+  load.view(31)
+  load.view(33)
+  load.sound(32)
+  load.sound(33)
+  load.sound(13)
+  draw.pic(vCurrentRoom)
+  add.to.pic(31,0,0,56,129,5,4)
+  animate.obj(o1)
+  set.priority(o1,4)
+  set.view(o1,32)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,23,91)
+  draw(o1)
+  move.obj(o1,81,33,1,f75)
+  show.pic()
+  sound(32,f40)
+  return()
+}
+prevent.input()
+if (f75) { //0050
+  reset(f75)
+  v65++
+  if (v65 == 1) { //005a
+    unanimate.all()
+    add.to.pic(31,0,1,32,161,14,4)
+    v67 = 4
+  }
+  if (v65 == 2) { //006d
+    add.to.pic(31,1,0,69,119,5,4)
+    sound(33,f40)
+    v67 = 4
+  }
+  if (v65 == 3) { //0082
+    add.to.pic(31,1,1,69,119,6,4)
+    v67 = 4
+  }
+  if (v65 == 4) { //0094
+    draw.pic(v81)
+    animate.obj(o2)
+    set.view(o2,33)
+    set.loop(o2,0)
+    position(o2,50,105)
+    start.cycling(o2)
+    draw(o2)
+    show.pic()
+    v200 = 14
+  }
+  if (v65 == 5) { //00b1
+    erase(o2)
+    set(f50)
+  }
+}
+v200--
+if ((v200 == 10 || v200 == 8 || v200 == 6 || v200 == 4 || v200 == 2)) { //00be
+  sound(13,f40)
+  shake.screen(1)
+}
+if (v200 == 1) { //00d8
+  set(f75)
+}
+return()

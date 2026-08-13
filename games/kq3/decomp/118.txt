@@ -1,4 +1,167 @@
-if (isSet(f5)) {
-  if (!(isSet(f111)
-!!!
-&{%!e(string=incomplete condition: 0x27)}
+if (fNewRoom) { //0002
+  if (!f111) { //0008
+    load.view(240)
+    load.view(241)
+    load.view(14)
+    load.sound(10)
+    load.sound(26)
+    animate.obj(o3)
+    set.view(o3,240)
+    v36 = 2
+    step.size(o3,v36)
+    v240 = 5
+    random(70,160,v241)
+    position(o3,240,v241)
+    set.loop(o3,0)
+    random(3,6,v244)
+  }
+  if (f111 && v97 == vCurrentRoom) { //0036
+    v67 = 241
+    load.view(v67)
+    v64 = 0
+    v65 = 8
+    v37 = v98
+    v38 = v99
+    v66 = 0
+    v36 = 0
+    add.to.pic(v67,v64,v65,v37,v38,v66,v36)
+  }
+  return()
+}
+if (!f111 && f242) { //005f
+  if (fEnteredCommand) { //0068
+    if (has(i43) && (said("try", "looking glass") || said("carry", "looking glass") || said("aim", "looking glass") || said("examine", "barmaid", "looking glass") || said("aim", "barmaid", "looking glass") || said("examine", "looking glass", "barmaid") || said("aim", "looking glass", "barmaid") || said("try", "fingers", "looking glass") || said("carry", "fingers", "looking glass") || said("aim", "fingers", "looking glass") || said("examine", "barmaid", "fingers", "looking glass") || said("aim", "barmaid", "fingers", "looking glass") || said("examine", "fingers", "looking glass", "barmaid") || said("aim", "fingers", "looking glass", "barmaid"))) { //006e
+      distance(o0,o3,v36)
+      if (v36 > 50) { //00ec
+        print("You are too far away for her to see it.")
+        goto(l282)
+      }
+      set(f111)
+      vCurrentScore += 5
+      normal.motion(o3)
+      stop.motion(o3)
+      get.posn(o3,v98,v99)
+      v97 = vCurrentRoom
+      set.view(o3,241)
+      set.cel(o3,0)
+      v36 = 4
+      cycle.time(o3,v36)
+      end.of.loop(o3,f243)
+      sound(10,f41)
+    }
+l282:
+    if (said("kill", "barmaid")) { //011a
+      print("Good idea! But, how can you do that?")
+    }
+    if (said("call", "barmaid")) { //0126
+      print("Apparently, Medusa doesn't speak. The only sounds that emit from her mouth are terrible grunts and groans.")
+    }
+    if (said("examine", "barmaid")) { //0132
+      set(f240)
+      set(f245)
+    }
+  }
+}
+if (!f242 && !f111) { //0140
+  if (f45) { //014a
+    v244--
+    if (v244 == 1) { //0152
+      print("The most hideous-looking being has made its appearance! It's Medusa!")
+      draw(o3)
+      set(f242)
+      sound(26,f41)
+      follow.ego(o3,6,f240)
+    }
+  }
+}
+if (f242 && !f111) { //0166
+  distance(o0,o3,v242)
+  if (v44 == 0 && !f111) { //0173
+    get.posn(o3,v240,v241)
+    v37 = v240
+    v38 = v241
+    v37 -= v40
+    v38 -= v41
+    if (v37 > 128) { //018d
+      v36 = 0
+      v36 -= v37
+      v37 = v36
+    }
+    if (v38 > 128) { //019d
+      v36 = 0
+      v36 -= v38
+      v38 = v36
+    }
+    current.loop(o0,v64)
+    if (v64 == 2 && v241 > v41 && v38 > v37) { //01b0
+      set(f240)
+    }
+    if (v64 == 0 && v240 > v40 && v38 < v37) { //01bf
+      set(f240)
+    }
+    if (v64 == 1 && v240 < v40 && v38 < v37) { //01ce
+      set(f240)
+    }
+    if (v64 == 3 && v241 < v41 && v38 > v37) { //01dd
+      set(f240)
+    }
+  }
+}
+if (f111 && v97 == vCurrentRoom) { //01ec
+  if (said("kill", "barmaid")) { //01f5
+    print("Medusa is now just a stone statue, perfectly harmless.")
+  }
+  if (said("capture", "barmaid")) { //0201
+    print("The statue is much too heavy to carry.")
+  }
+  if (said("examine", "barmaid")) { //020d
+    print("Even as a statue, Medusa is indescribably ugly.")
+  }
+}
+if (f240 && !f111) { //0219
+  reset(f240)
+  if (v44 != 0) { //0224
+    set(f244)
+    wander(o3)
+    goto(l609)
+  }
+  set(f46)
+  program.control()
+  prevent.input()
+  stop.motion(o0)
+  wander(o3)
+  set(f35)
+  set.view(o0,14)
+  v36 = 4
+  cycle.time(o0,v36)
+  end.of.loop(o0,f241)
+  v44 = 17
+  sound(10,f41)
+  if ((v242 > 15 || f245)) { //024f
+    print("Your eyes fall upon a face so hideous, so gruesome, that the horror of it is beyond description. People who look upon the face of Medusa, with her hair of writhing, live snakes, turn instantly to stone. Suddenly, your body feels cold and stiffens hard as a rock. You make a nice statue, Gwydion.")
+    goto(l609)
+  }
+  print("Oh no! Medusa's touch is like ice! A cold chill shivers down your spine, turning to a stiffness that soon hardens your body like a rock. You are now nothing but a statue.")
+}
+l609:
+if (vWhichObjBorder > 0 && vBorderObj == 3 && (v44 == 17 || f244)) { //0261
+  erase(o3)
+  reset(f242)
+}
+if (f241) { //0276
+  reset(f241)
+  reset(f35)
+  set(f44)
+  stop.cycling(o0)
+  erase(o3)
+  reset(f242)
+}
+if (f243) { //0288
+  reset(f243)
+  stop.cycling(o3)
+  print("Averting your eyes, you aim the wizard's hand mirror at Medusa's face. A scream pierces the air as she beholds her own hideous reflection... then... nothing. You dare to look. Medusa has turned herself to stone!")
+}
+if ((v44 == 18 || v44 == 17)) { //0294
+  vWhichEgoBorder = 0
+}
+return()

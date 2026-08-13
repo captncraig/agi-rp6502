@@ -1,4 +1,70 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //000e
+    load.logic(116)
+    set(f202)
+    load.view(24)
+  }
+  if (!f59) { //001a
+    load.logic(112)
+    set(f201)
+  }
+  load.logic(106)
+  v66 = 200
+  load.view(6)
+  load.sound(2)
+  load.view(124)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,114,32)
+  set.view(o2,124)
+  if (vPrevRoom == 42) { //003b
+    position(o0,50,122)
+  }
+  draw(o2)
+  draw(o0)
+  if (f202) { //004a
+    call(116)
+  }
+  if (f201) { //0052
+    call(112)
+    position(o9,137,155)
+  }
+  call(106)
+  show.pic()
+  return()
+}
+if (f130) { //0062
+  if (posn(o0,107,59,119,67)) { //0068
+    print("Your head feels warm!")
+    goto(l121)
+  }
+  print("Looking down, you see the staircase goes down at least two floors.")
+}
+l121:
+if (fTriggerLine) { //0079
+  get.priority(o0,v61)
+  set.priority(o0,v61)
+}
+if (!f122 && posn(o0,48,126,64,127)) { //0085
+  new.room(42)
+}
+if (vWhichEgoBorder == 4) { //0094
+  new.room(38)
+}
+if (vWhichEgoBorder == 2) { //009d
+  new.room(40)
+}
+if (vWhichEgoBorder == 3) { //00a6
+  new.room(42)
+}
+if (f201) { //00af
+  call(112)
+}
+if (f202) { //00b7
+  call(116)
+}
+call(106)
+return()

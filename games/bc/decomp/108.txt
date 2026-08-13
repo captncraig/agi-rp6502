@@ -1,5 +1,155 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f52)
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(39)
+  if (has(i15)) { //000c
+    load.view(28)
+  }
+  if (f103) { //0014
+    ignore.blocks(o0)
+    ignore.objs(o0)
+    set(f125)
+    set.view(o0,28)
+    step.size(o0,v108)
+    last.cel(o0,v61)
+    set.cel(o0,v61)
+    stop.cycling(o0)
+    reset(f133)
+    set.priority(o0,15)
+  }
+  return()
+}
+if (v59 > 0) { //0034
+  return()
+}
+if (f103) { //003c
+  set.priority(o0,15)
+}
+if (f129) { //0045
+  if (v60 == 15) { //004b
+    set(fSaidAccepted)
+    if (f103) { //0054
+      program.control()
+      print("You sprinkle the dust over your head.")
+      set(f105)
+      goto(l100)
+    }
+    set(f235)
+  }
+l100:
+  if (v60 == 6) { //0064
+    set(fSaidAccepted)
+    print("Morva Marsh is more like sand than water. You can't fill your water flask with it.")
+  }
+}
+if (f235) { //006f
+  reset(f235)
+  reset(f232)
+  reset(f231)
+  v69--
+  if (!(v69 > 0)) { //007d
+    drop(i15)
+  }
+  v96 = 0
+  v95 = 7
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  stop.motion(o0)
+  program.control()
+  set(f125)
+  set.priority(o0,15)
+  set.view(o0,28)
+  set.cel(o0,0)
+  cycle.time(o0,v108)
+  set(f133)
+  end.of.loop(o0,f230)
+}
+if (f230) { //00a7
+  reset(f230)
+  reset(f133)
+  set(f103)
+  step.size(o0,v108)
+  start.motion(o0)
+  player.control()
+  print("Sprinkling the fairy dust over your head makes you feel as light as a feather. Looking down, you see you're floating in mid-air, about a foot off the ground!")
+}
+if (f70 && f103) { //00bb
+  v95--
+  if (v96 > 0 && !(v95 > 0)) { //00c5
+    v96--
+    v95 = 60
+  }
+  if (!(v96 > 0)) { //00d5
+    if (v95 == 55) { //00dd
+      print("Flying is fun, although you feel slightly heavier now than when you began.")
+    }
+    if (v95 == 30) { //00e6
+      print("Flying is becoming more and more difficult.")
+    }
+    if (v95 == 1) { //00ef
+      set(f105)
+    }
+  }
+}
+if (f105) { //00f8
+  reset(f105)
+  v60 = 0
+  v42 = 0
+  print("As the spell wears off, you head for solid ground.")
+  if (vCurrentRoom == 15) { //0108
+    move.obj(o0,94,59,0,f234)
+  }
+  if (vCurrentRoom == 16) { //0115
+    move.obj(o0,88,158,0,f234)
+  }
+  if (vCurrentRoom == 20) { //0122
+    move.obj(o0,106,143,0,f234)
+  }
+  if (vCurrentRoom == 21) { //012f
+    move.obj(o0,140,111,0,f234)
+  }
+}
+if (f234) { //013c
+  reset(f234)
+  v95 = 0
+  v96 = 0
+  stop.motion(o0)
+  program.control()
+  start.cycling(o0)
+  last.cel(o0,v61)
+  set.cel(o0,v61)
+  set(f133)
+  reverse.loop(o0,f233)
+}
+if (f233) { //015a
+  reset(f233)
+  reset(f103)
+  reset(f125)
+  reset(f133)
+  release.priority(o0)
+  start.motion(o0)
+  player.control()
+  observe.blocks(o0)
+  observe.objs(o0)
+  set.view(o0,0)
+  cycle.time(o0,v105)
+  step.size(o0,v105)
+  print("You begin walking again.")
+}
+if (fEgoOnWater && !f125 && !f232) { //017c
+  set(f232)
+  program.control()
+  stop.motion(o0)
+  set(f133)
+  set.view(o0,39)
+  cycle.time(o0,v108)
+  set.cel(o0,0)
+  set(f133)
+  end.of.loop(o0,f231)
+  print("Oh, no! You're sinking in the mud of the slimy marsh.")
+}
+if (f231) { //019f
+  reset(f231)
+  erase(o0)
+  v59 = 1
+}
+return()

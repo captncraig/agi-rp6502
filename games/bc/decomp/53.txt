@@ -1,4 +1,217 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o6)
+  load.view(19)
+  set.view(o6,19)
+  position(o6,65,119)
+  set.priority(o6,12)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  stop.cycling(o6)
+  if (f39) { //0022
+    set.cel(o6,1)
+    goto(l53)
+  }
+  load.view(5)
+  load.sound(10)
+  set.cel(o6,0)
+l53:
+  if (f60) { //0035
+    set(f215)
+    animate.obj(o8)
+    load.view(40)
+    set.view(o8,40)
+    position(o8,70,166)
+    ignore.blocks(o8)
+    ignore.objs(o8)
+    stop.cycling(o8)
+  }
+  set(f97)
+  if (f83) { //0050
+    set(f214)
+    animate.obj(o2)
+    load.view(70)
+    position(o2,76,165)
+    ignore.blocks(o2)
+    set.view(o2,70)
+    set.loop(o2,3)
+    animate.obj(o4)
+    load.view(101)
+    v61 = 2
+    cycle.time(o4,v61)
+    step.size(o4,v61)
+    set.view(o4,101)
+    position(o4,78,164)
+    set.priority(o4,15)
+    ignore.objs(o4)
+    wander(o4)
+  }
+  position(o0,85,167)
+  draw(o0)
+  draw(o6)
+  if (f83) { //008b
+    set(f212)
+    draw(o2)
+    stop.cycling(o2)
+    draw(o4)
+    v212 = 27
+  }
+  if (f60) { //009c
+    set(f212)
+    set.loop(o8,3)
+    draw(o8)
+    if (!f83) { //00a9
+      v213 = 27
+    }
+  }
+  show.pic()
+  if (f83) { //00b4
+    print("\"A burial chamber!\" exclaims Eilonwy. \"This must be the tomb of the great king who built this castle long ago.\"")
+    goto(l193)
+  }
+  print("You are in the secret burial chamber of the great king who built this castle. He was very good and wise, with strong powers.")
+l193:
+  if (!f39) { //00c1
+    print("There is a metallic glint atop the coffin.")
+  }
+  return()
+}
+if (f130) { //00cb
+  if (posn(o0,52,114,116,152)) { //00d1
+    if (!f39) { //00db
+      print("Looking at the crypt, you see a magnificent sword in the grasp of a carved stone king. Examining the sword, you see the inscription \"Dyrnwyn.\"  Its magic electrifies the air around you.")
+      goto(l233)
+    }
+    print("You see a carved stone king atop the crypt.")
+l233:
+    goto(l265)
+  }
+  if (posn(o0,52,106,76,113)) { //00ec
+    print("There is a small hole in the back wall. Unfortunately, you are too big to fit through it.")
+    goto(l265)
+  }
+  if (!f39) { //00fb
+    print("There is a metallic glint atop the coffin.")
+    goto(l265)
+  }
+  print("You are in the secret burial chamber of the great king who built this castle. He was very good and wise, with strong powers.")
+}
+l265:
+if (!f128 && !f129) { //0109
+  goto(l341)
+}
+if (f129) { //0116
+  goto(l341)
+}
+if (!f39 && posn(o0,52,114,116,152)) { //011f
+  set(fSaidAccepted)
+  get(i12)
+  vCurrentScore += 8
+  set.cel(o6,1)
+  force.update(o6)
+  set(f39)
+  print("You struggle, but are finally able to free the sword from the grasp of the carved stone king.")
+}
+if (posn(o0,52,106,76,113)) { //013c
+  set(fSaidAccepted)
+  if (f214) { //0148
+    print("Eilonwy could fit through this hole, but you can not.")
+    goto(l341)
+  }
+  print("You are too big to fit through the tiny hole.")
+}
+l341:
+v212--
+if (v212 == 1) { //0157
+  move.obj(o4,60,104,0,f201)
+}
+if (f201) { //0164
+  reset(f201)
+  set(f165)
+  reset(f83)
+  erase(o4)
+  start.cycling(o2)
+  ignore.objs(o2)
+  move.obj(o2,54,140,0,f206)
+  print("\"Look, Taran!!!\" exclaims Eilonwy. \"My bauble seems to have found another hole in the wall. Maybe I can escape!\"")
+}
+if (f206) { //017e
+  reset(f206)
+  move.obj(o2,54,130,0,f207)
+}
+if (f207) { //018c
+  reset(f207)
+  move.obj(o2,65,108,0,f208)
+}
+if (f208) { //019a
+  reset(f208)
+  move.obj(o2,57,106,0,f209)
+  set.priority(o2,4)
+  print("\"Taran! It's an old tunnel! I'm leaving this horrible place.\"")
+  if (f215) { //01ad
+    v213 = 2
+    print("\"Come, Hen Wen. I will take you to a place safe from the Horned King's evil!\"")
+  }
+}
+if (f209) { //01b8
+  reset(f209)
+  erase(o2)
+  print("\"Good luck on your quest, Taran,\" says Eilonwy, squeezing through the crack in the rear wall.\"")
+  print("\"Don't wait for me, Princess Eilonwy,\" you say. \"I'll find another way out of here!\"")
+  if (f215) { //01c6
+    print("\"Take good care of Hen Wen,\" you tell Eilonwy.")
+    goto(l467)
+  }
+  reset(f212)
+}
+l467:
+v213--
+if (v213 == 1) { //01d5
+  reset(f60)
+  vCurrentScore += 20
+  start.cycling(o8)
+  move.obj(o8,55,155,0,f202)
+  if (f214) { //01e9
+    v57 = 3
+    goto(l506)
+  }
+  v57 = 4
+  print("Hen Wen has spotted a hole in the back wall.")
+}
+l506:
+if (f202) { //01fa
+  reset(f202)
+  move.obj(o8,55,130,0,f203)
+}
+if (f203) { //0208
+  reset(f203)
+  move.obj(o8,65,108,0,f204)
+}
+if (f204) { //0216
+  reset(f204)
+  set.priority(o8,4)
+  move.obj(o8,57,106,0,f205)
+  print("Hen Wen looks at you and smiles, as if to say \"Goodbye.\"")
+}
+if (f205) { //0229
+  reset(f205)
+  erase(o8)
+  reset(f212)
+  if (f214) { //0235
+    print("She follows Eilonwy into the tunnel, to safety.")
+  }
+}
+if (vWhichEgoBorder == 3) { //023d
+  if (f212) { //0244
+    if (!f210) { //024a
+      set(f210)
+      print("You can't bear to leave without discovering where she is going.")
+    }
+    goto(l602)
+  }
+  new.room(54)
+}
+l602:
+return()

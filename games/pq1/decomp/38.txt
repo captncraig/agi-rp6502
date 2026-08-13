@@ -1,4 +1,206 @@
-if (isSet(f5)) {
-  if (!(isSet(f172)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f172) { //0008
+    set(f172)
+    vCurrentScore += 1
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(82)
+  load.sound(11)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  set.view(o1,82)
+  set.view(o2,82)
+  set.view(o3,82)
+  set.cel(o3,0)
+  set.cel(o1,1)
+  set.cel(o2,2)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  position(o1,82,123)
+  position(o2,53,122)
+  position(o3,73,121)
+  if (obj.in.room(i10,vCurrentRoom)) { //0046
+    draw(o1)
+  }
+  if (obj.in.room(i8,vCurrentRoom)) { //004f
+    draw(o2)
+  }
+  if (obj.in.room(i9,vCurrentRoom)) { //0058
+    draw(o3)
+  }
+  show.pic()
+  status.line.off()
+  reset(f14)
+  return()
+}
+if (f220) { //0066
+  reset(f220)
+  status.line.on()
+  set(f14)
+  new.room(vPrevRoom)
+}
+if (!fEnteredCommand) { //0073
+  goto(l892)
+}
+if ((said("examine") || said("examine", "briefcase") || said("look in", "briefcase"))) { //007d
+  if (!(obj.in.room(i8,vCurrentRoom)) && !(obj.in.room(i9,vCurrentRoom)) && !(obj.in.room(i10,vCurrentRoom))) { //0093
+    print("There's nothing left of importance.")
+    goto(l213)
+  }
+  if (obj.in.room(i8,vCurrentRoom) && obj.in.room(i9,vCurrentRoom) && obj.in.room(i10,vCurrentRoom)) { //00a8
+    print("Your briefcase contains your pen, a notebook, and your Official LPD ticket book.")
+    goto(l213)
+  }
+  if (obj.in.room(i8,vCurrentRoom)) { //00ba
+    print("Your notebook remains in your briefcase.")
+  }
+  if (obj.in.room(i9,vCurrentRoom)) { //00c3
+    print("Your pen remains in your briefcase.")
+  }
+  if (obj.in.room(i10,vCurrentRoom)) { //00cc
+    print("Your ticket book remains in your briefcase.")
+  }
+}
+l213:
+if ((said("c", "briefcase") || said("examine", "accident") || said("dont move", "examine", "briefcase") || said("lock", "briefcase"))) { //00d5
+  sound(11,f220)
+}
+if ((said("look in", "briefcase") || said("o", "briefcase"))) { //00f8
+  print("You already are looking in the briefcase.")
+}
+if (said("get", "all", "rol")) { //010c
+  set(f222)
+  set(f221)
+  set(f223)
+}
+if (said("drop", "all", "rol")) { //011e
+  set(f225)
+  set(f224)
+  set(f226)
+}
+if ((said("get", "book", "rol") || said("look in", "book", "rol") || said("o", "book", "rol"))) { //0130
+  if (obj.in.room(i8,vCurrentRoom) && obj.in.room(i10,vCurrentRoom)) { //014e
+    print("Which book?")
+    goto(l380)
+  }
+  if (!(obj.in.room(i8,vCurrentRoom)) && !(obj.in.room(i10,vCurrentRoom))) { //015d
+    print("The case is fresh out of books.")
+    goto(l380)
+  }
+  if (obj.in.room(i8,vCurrentRoom)) { //016e
+    set(f222)
+    goto(l380)
+  }
+  set(f221)
+}
+l380:
+if ((f221 || said("get", "pinch book", "rol") || said("look in", "black", "pinch book", "rol") || said("look in", "black", "book", "rol") || said("look in", "pinch book", "rol") || said("get", "black", "pinch book", "rol") || said("get", "black", "book", "rol"))) { //017c
+  if (has(i10)) { //01bc
+    reset(fSaidAccepted)
+    goto(l493)
+  }
+  if (!(obj.in.room(i10,vCurrentRoom))) { //01c7
+    print("Where did you put it?")
+    goto(l493)
+  }
+  erase(o1)
+  get(i10)
+  if (!f173) { //01d8
+    set(f173)
+    vCurrentScore += 1
+  }
+  if (!f221) { //01e4
+    print("You take your pinch book from your briefcase.")
+  }
+l493:
+  reset(f221)
+}
+if ((f222 || said("get", "note", "rol") || said("look in", "blue", "book", "rol") || said("look in", "blue", "note", "rol") || said("look in", "note", "rol") || said("get", "blue", "note", "rol") || said("get", "blue", "book", "rol"))) { //01ef
+  if (has(i8)) { //022f
+    reset(fSaidAccepted)
+    goto(l608)
+  }
+  if (!(obj.in.room(i8,vCurrentRoom))) { //023a
+    print("Where did you put it?")
+    goto(l608)
+  }
+  erase(o2)
+  get(i8)
+  if (!f174) { //024b
+    set(f174)
+    vCurrentScore += 1
+  }
+  if (!f222) { //0257
+    print("You take the notebook from your briefcase.")
+  }
+l608:
+  reset(f222)
+}
+if ((f223 || said("get", "pen", "rol"))) { //0262
+  if (has(i9)) { //0272
+    reset(fSaidAccepted)
+    goto(l675)
+  }
+  if (!(obj.in.room(i9,vCurrentRoom))) { //027d
+    print("Where did you put it?")
+    goto(l675)
+  }
+  erase(o3)
+  get(i9)
+  if (!f175) { //028e
+    set(f175)
+    vCurrentScore += 1
+  }
+  if (!f223) { //029a
+    print("This pen was a high school graduation gift.")
+  }
+l675:
+  reset(f223)
+}
+if ((f224 || said("drop", "pinch book", "rol") || said("drop", "black", "pinch book", "rol") || said("drop", "black", "book", "rol"))) { //02a5
+  if (has(i10)) { //02c9
+    draw(o1)
+    put(i10,0)
+    print("You place your pinch book into your briefcase.")
+    goto(l738)
+  }
+  if (!f224) { //02d9
+    print("It IS in the briefcase.")
+  }
+l738:
+  reset(f224)
+}
+if ((f225 || said("drop", "note", "rol") || said("drop", "blue", "note", "rol") || said("drop", "blue", "book", "rol"))) { //02e4
+  if (has(i8)) { //0308
+    draw(o2)
+    put(i8,0)
+    print("You place the notebook back in the briefcase.")
+    goto(l801)
+  }
+  if (!f225) { //0318
+    print("It IS in the briefcase.")
+  }
+l801:
+  reset(f225)
+}
+if ((f226 || said("drop", "pen", "rol"))) { //0323
+  if (has(i9)) { //0333
+    draw(o3)
+    put(i9,0)
+    print("You put your pen back into the briefcase.")
+    goto(l844)
+  }
+  if (!f226) { //0343
+    print("It IS in the briefcase.")
+  }
+l844:
+  reset(f226)
+}
+if ((said("anyword", "lytton tribune") || said("examine", "file", "rol") || said("get", "file", "rol") || said("o", "file", "rol") || said("anyword", "anyword", "lytton tribune"))) { //034e
+  print("Nothing else in the briefcase would be use to you.")
+}
+l892:
+return()

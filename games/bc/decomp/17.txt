@@ -1,5 +1,67 @@
-if (isSet(f5)) {
-  if (isSet(f108)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  if (f108) { //0008
+    load.logic(116)
+    set(f200)
+    set(f95)
+  }
+  if (vPrevRoom == 65) { //0014
+    position(o0,88,101)
+  }
+  if (vPrevRoom == 12) { //001f
+    position(o0,38,101)
+  }
+  if (vPrevRoom == 18 && posn(o0,150,0,159,112)) { //002a
+    position(o0,143,103)
+  }
+  if (vPrevRoom == 16) { //003b
+    get.posn(o0,v62,v63)
+    if (v63 < 142) { //0046
+      position(o0,1,139)
+      goto(l88)
+    }
+    position(o0,1,157)
+  }
+l88:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  if (f200) { //0060
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //006a
+  print("There is a path leading deep into the forest, but it's overgrown with briar bushes. It seems to be impassable, but it might be worth exploring.")
+}
+if (!f128 && !f129) { //0072
+  goto(l136)
+}
+if (f129) { //007f
+  goto(l136)
+}
+l136:
+if (f200) { //0088
+  call(116)
+}
+if (posn(o0,32,97,42,99)) { //0090
+  new.room(12)
+}
+if (vWhichEgoBorder == 3) { //009c
+  new.room(22)
+}
+if (vWhichEgoBorder == 2) { //00a5
+  new.room(18)
+}
+if (vWhichEgoBorder == 4) { //00ae
+  new.room(16)
+}
+if (posn(o0,84,96,92,97)) { //00b7
+  if (!f40) { //00c1
+    set(f40)
+    vCurrentScore += 4
+  }
+  new.room(65)
+}
+return()

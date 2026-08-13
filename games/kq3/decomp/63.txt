@@ -1,9 +1,76 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 5
   set(f55)
   set(f34)
   v57 = 92
   v58 = 156
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  if (f48) { //0026
+    if (vPrevRoom == 62) { //002c
+      position(o0,92,165)
+    }
+    if (vPrevRoom == 64) { //0037
+      position(o0,45,39)
+    }
+  }
+  if (v44 == 30) { //0042
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //0054
+    draw(o0)
+  }
+  if (f182) { //005c
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (!f46 && fTriggerLine && !f220) { //0068
+  set(f46)
+  prevent.input()
+  set(f220)
+  ignore.blocks(o0)
+  set.view(o0,11)
+  sound(1,f238)
+  v36 = 4
+  cycle.time(o0,v36)
+  v37 = v40
+  v38 = 164
+  v36 = 3
+  set.priority(o0,15)
+  move.obj(o0,v37,v38,36,f221)
+}
+if (f221) { //0099
+  reset(f46)
+  reset(f221)
+  erase(o0)
+  set(f44)
+  print("Darn those steps!")
+}
+if (f182) { //00a9
+  call(119)
+}
+if ((said("examine", "up") || said("examine", "down") || said("examine") || said("examine", "cave"))) { //00b1
+  print("Crumbled stone steps go upward into the depths of this mountain. To your amazement, you see light coming down from above. Looking down, you see the stairs steeply descending below you.")
+}
+if ((said("examine", "up", "stair") || said("examine", "down", "stair") || said("examine", "stair"))) { //00cf
+  print("The stone steps go up into the very depths of this mountain. Not only are they crumbly, but they are also very steep!")
+}
+if (vWhichEgoBorder == 3) { //00ed
+  new.room(62)
+}
+if (vWhichEgoBorder == 1) { //00f6
+  new.room(64)
+}
+return()

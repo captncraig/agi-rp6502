@@ -1,4 +1,177 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(37)
+  set(f201)
+  set(f68)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f87)
+  v66 = 79
+  load.logic(117)
+  load.view(26)
+  load.view(6)
+  load.sound(12)
+  load.sound(2)
+  load.logic(101)
+  load.view(1)
+  load.view(97)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  set.view(o2,97)
+  set.view(o3,97)
+  set.view(o4,97)
+  set.view(o5,97)
+  set.cel(o2,0)
+  set.cel(o3,1)
+  set.cel(o4,2)
+  set.cel(o5,3)
+  random(40,100,v62)
+  random(71,137,v63)
+  position(o2,62,v63)
+  random(40,100,v62)
+  random(71,137,v63)
+  position(o3,62,v63)
+  v62 = 0
+  random(71,137,v63)
+  position(o4,62,v63)
+  v62 = 140
+  random(71,137,v63)
+  position(o5,62,v63)
+  if (vPrevRoom == 35) { //0077
+    v39 = 37
+    v39++
+    if (v38 < 24) { //0083
+      v38 = 24
+    }
+    if (v38 > 120) { //008d
+      v38 = 120
+    }
+    goto(l172)
+  }
+  if ((vPrevRoom == 30 || vPrevRoom == 32)) { //009a
+    v38 = 80
+    v39 = 166
+  }
+l172:
+  position(o0,38,v39)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  if (v65 != 3) { //00b8
+    draw(o0)
+  }
+  object.on.water(o2)
+  object.on.water(o3)
+  object.on.water(o4)
+  object.on.water(o5)
+  ignore.blocks(o0)
+  ignore.blocks(o2)
+  ignore.blocks(o3)
+  ignore.objs(o0)
+  call(117)
+  call(101)
+  show.pic()
+  return()
+}
+if (f130) { //00d8
+  print("The vines covering the castle wall trail down to a ledge on the far side of the moat. Alligators patrol the murky waters.")
+  set(fSaidAccepted)
+}
+if (v39 > 50 && v39 < 147) { //00e2
+  set(fEgoOnWater)
+  set(f202)
+}
+if (!f128 && !f129) { //00f0
+  goto(l292)
+}
+if (f129) { //00fd
+  goto(l282)
+}
+if (fEgoOnWater) { //0106
+  print("You'd better just keep swimming!!")
+  set(fSaidAccepted)
+  goto(l279)
+}
+print("That castle wall looks climable.")
+set(fSaidAccepted)
+l279:
+goto(l292)
+l282:
+if (fEgoOnWater) { //011a
+  print("You'd better just keep swimming!!")
+  set(fSaidAccepted)
+}
+l292:
+if (v39 > 41 && v39 < 45) { //0124
+  v62 = 0
+  v63 = 9
+  repositon(o0,v62,v63)
+}
+if (v39 > 44 && v39 < 51) { //0138
+  v62 = 0
+  v63 = 247
+  repositon(o0,v62,v63)
+}
+if (fEgoOnWater && !(v75 > 0)) { //014c
+  set(f201)
+  ignore.blocks(o0)
+  follow.ego(o2,5,f200)
+  follow.ego(o3,5,f200)
+  follow.ego(o4,5,f200)
+  follow.ego(o5,5,f200)
+}
+if (f200) { //016a
+  erase(o0)
+  print("Chomp, chomp. Ummm, good.")
+  set(fSaidAccepted)
+  v59 = 1
+}
+if (f202 && !fEgoOnWater) { //0179
+  reset(f202)
+  distance(o0,o3,v61)
+  if (v61 > 20) { //0188
+    distance(o0,o4,v61)
+    if (v61 > 20) { //0193
+      distance(o0,o2,v61)
+      if (v61 > 20) { //019e
+        distance(o0,o5,v61)
+      }
+    }
+  }
+  if (v61 < 20) { //01a9
+    print("Whew!! That was too close for comfort!")
+  }
+}
+if (!fEgoOnWater && f201) { //01b2
+  reset(f201)
+  wander(o2)
+  wander(o3)
+  wander(o4)
+  wander(o5)
+}
+if (posn(o0,0,0,159,153)) { //01c5
+  set(f88)
+}
+call(117)
+call(101)
+if (vWhichEgoBorder > 0) { //01d5
+  v65 = 0
+}
+if (vWhichEgoBorder == 4) { //01df
+  new.room(33)
+}
+if (vWhichEgoBorder == 1) { //01e8
+  new.room(35)
+}
+if (vWhichEgoBorder == 3) { //01f1
+  if (v38 < 76) { //01f8
+    new.room(30)
+    goto(l518)
+  }
+  new.room(32)
+}
+l518:
+return()

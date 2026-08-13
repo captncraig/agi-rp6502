@@ -1,4 +1,28 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(28)
+  position(o12,75,40)
+  draw(o0)
+  draw(o12)
+  add.to.pic(162,2,0,29,73,0,4)
+  add.to.pic(162,2,0,44,73,0,4)
+  add.to.pic(162,0,1,5,123,0,4)
+  add.to.pic(162,2,0,98,116,0,4)
+  add.to.pic(162,2,0,113,116,0,4)
+  add.to.pic(162,1,4,56,167,0,4)
+  add.to.pic(162,1,2,87,167,0,4)
+  add.to.pic(162,1,2,101,167,0,4)
+  add.to.pic(162,1,5,117,167,0,4)
+  show.pic()
+  return()
+}
+if (v143 < 33) { //005c
+  v46 = 93
+  goto(l108)
+}
+v46 = 92
+l108:
+call(28)
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //006e
+  print("The freeway leaves the City of Lytton here.")
+}
+return()

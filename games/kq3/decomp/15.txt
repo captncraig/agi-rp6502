@@ -1,4 +1,116 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 2
+  set(f58)
+  set.horizon(64)
+  v32 = 16
+  v31 = 161
+  v57 = 143
+  v58 = 102
+  load.logic(112)
+  load.logic(120)
+  load.logic(113)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //002e
+    if (vPrevRoom == 29) { //0034
+      v40 = 4
+    }
+    if (vPrevRoom == 30) { //003e
+      v40 = 89
+      if ((v138 == 7 || v44 == 224)) { //0048
+        v40 = 117
+      }
+      if (v138 == 2) { //0057
+        v40 = 125
+      }
+      if ((v138 == 3 || v44 == 11)) { //0061
+        v40 = 142
+      }
+    }
+    if (vPrevRoom == 20) { //0070
+      if (v40 > 49 && v40 < 68) { //0077
+        v40 = 49
+      }
+      if ((v138 == 7 || v44 == 224)) { //0084
+        v40 = 123
+      }
+      if (v138 == 2) { //0093
+        v40 = 136
+      }
+      if ((v138 == 3 || v44 == 11)) { //009d
+        v40 = 148
+      }
+    }
+    if (vPrevRoom == 14) { //00ac
+      if (v41 > 140 && v41 < 147) { //00b3
+        v41 = 147
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //00c4
+    draw(o0)
+  }
+  v36 = 1
+  call(112)
+  reposition.to(o12,99,19)
+  reposition.to(o13,111,11)
+  call(120)
+  call(113)
+  show.pic()
+  return()
+}
+v138 = 0
+if (fEgoOnWater) { //00e2
+  v138 = 7
+}
+if ((posn(o0,124,0,132,89) || posn(o0,133,90,141,143) || posn(o0,136,144,141,167))) { //00eb
+  v138 = 2
+}
+if ((posn(o0,133,0,159,89) || posn(o0,142,90,159,167))) { //0106
+  v138 = 3
+}
+if (fTriggerLine) { //011b
+  if (posn(o0,40,98,58,101)) { //0121
+    v37 = 0
+    v38 = 7
+    repositon(o0,v37,v38)
+  }
+  if (posn(o0,59,100,70,103)) { //0135
+    v37 = 0
+    v38 = 15
+    repositon(o0,v37,v38)
+  }
+  if (posn(o0,71,96,80,105)) { //0149
+    reposition.to(o0,78,116)
+  }
+  if (posn(o0,50,133,60,167)) { //0157
+    v37 = 72
+    reposition.to(o0,v37,v41)
+  }
+}
+call(112)
+call(120)
+call(113)
+if (vWhichEgoBorder == 3) { //016e
+  new.room(20)
+}
+if (vWhichEgoBorder == 4) { //0177
+  new.room(14)
+}
+if (vWhichEgoBorder == 2) { //0180
+  new.room(31)
+}
+if (vWhichEgoBorder == 1) { //0189
+  if (v40 > 25) { //0190
+    new.room(30)
+    goto(l414)
+  }
+  new.room(29)
+}
+l414:
+return()

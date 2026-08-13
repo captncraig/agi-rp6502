@@ -1,4 +1,31 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x83)}
+if (fNewRoom) { //0002
+  program.control()
+  load.logic(106)
+  v66 = 200
+  set(f122)
+  if (f108) { //0010
+    load.view(24)
+    set.view(o0,24)
+    goto(l35)
+  }
+  load.view(6)
+  set.view(o0,6)
+l35:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v38 = 72
+  v39 = 36
+  position(o0,38,v39)
+  draw(o0)
+  call(106)
+  set(f157)
+  show.pic()
+  return()
+}
+if (vWhichEgoBorder == 3) { //003b
+  erase(o0)
+  new.room(56)
+}
+call(106)
+return()

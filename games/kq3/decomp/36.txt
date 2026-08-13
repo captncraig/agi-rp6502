@@ -1,4 +1,221 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(43)
+  load.view(44)
+  load.view(45)
+  load.sound(37)
+  set(f238)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v220 = 1
+  v222 = 14
+  v32 = 107
+  v31 = 0
+  v57 = 70
+  v58 = 140
+  set(f34)
+  if (f48) { //0031
+    position(o0,72,160)
+  }
+  if (f47) { //003b
+    draw(o0)
+  }
+  animate.obj(o1)
+  set.view(o1,43)
+  set.loop(o1,0)
+  fix.loop(o1)
+  position(o1,64,82)
+  v36 = 4
+  cycle.time(o1,v36)
+  set.priority(o1,10)
+  if (f176) { //005a
+    v225 = 11
+    draw(o1)
+    set(f226)
+    goto(l116)
+  }
+  start.motion(o0)
+  set.loop(o0,3)
+  prevent.input()
+  program.control()
+  v224 = 6
+l116:
+  animate.obj(o2)
+  position(o2,67,102)
+  set.view(o2,44)
+  v36 = 2
+  cycle.time(o2,v36)
+  set.loop(o2,0)
+  set.priority(o2,11)
+  draw(o2)
+  show.pic()
+  return()
+}
+if (!f227) { //008d
+  set(f227)
+  print("You have entered the cave of the Oracle. You are almost afraid to speak.")
+}
+if (f238 && !f176) { //0098
+  sound(37,f238)
+}
+if (f45 && v224 > 0) { //00a4
+  if (!f46) { //00ad
+    v224--
+  }
+  if (v224 == 0) { //00b6
+    set(f226)
+  }
+}
+if (f226 && v225 == 0) { //00bf
+  v225++
+  set.cel(o1,0)
+  draw(o1)
+  set(f228)
+  end.of.loop(o1,f226)
+}
+if (f226 && v225 == 1) { //00d4
+  reset(f226)
+  v225++
+  v224 = 5
+  start.cycling(o2)
+  stop.cycling(o1)
+  set(f225)
+  set.loop(o1,1)
+}
+if (f226 && v225 == 2) { //00ed
+  v225++
+  reset(f226)
+  print.at("The Oracle remains silent for a long time. Finally, you hear a hollow voice that seems to come from far away, \"I've been waiting for you a long time, Gwydion. I have sorrowful news for you.\"",2,2,37)
+  v36 = 5
+  cycle.time(o2,v36)
+  set.loop(o2,1)
+  set(f226)
+  start.cycling(o1)
+}
+if (f226 && v225 == 3) { //010c
+  v225++
+  reset(f226)
+  print.at("\"Years ago, a terrible three-headed dragon invaded Daventry, and keeps the people in a state of terror. This monster requires, once a year, the sacrifice of a young maiden.\"",2,2,37)
+  set.view(o2,45)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  end.of.loop(o2,f226)
+}
+if (f226 && v225 == 4) { //012a
+  v225++
+  reset(f226)
+  set.loop(o2,1)
+  set.cel(o2,0)
+  end.of.loop(o2,f226)
+}
+if (f226 && v225 == 5) { //0140
+  v225++
+  print.at("\"Sadly, your own sister, Princess Rosella, is the chosen one this year. Time is running out for her, your parents, and Daventry.\"",2,2,37)
+  v223 = 0
+}
+if (f226 && v225 == 6) { //0153
+  v223++
+  if (v223 > 3) { //015e
+    v225++
+    goto(l371)
+  }
+  set.loop(o2,2)
+  set.cel(o2,0)
+  end.of.loop(o2,f226)
+}
+l371:
+if (f226 && v225 == 7) { //0173
+  v225++
+  reset(f226)
+  start.cycling(o2)
+  set.loop(o2,3)
+  set.cel(o2,0)
+  end.of.loop(o2,f226)
+}
+if (f226 && v225 == 8) { //018b
+  v225++
+  reset(f226)
+  set.view(o2,44)
+  start.cycling(o2)
+  v36 = 2
+  cycle.time(o2,v36)
+  set.loop(o2,0)
+  v224 = 5
+}
+if (f226 && v225 == 9) { //01a9
+  v225++
+  reset(f226)
+  print.at("\"You, Gwydion,\" the hollow voice continues, \"are the only one who can save them. But, you must hurry! I have something to give you...a small stone of amber. Use it wisely, my friend.\"",2,2,37)
+  v224 = 5
+}
+if (f226 && v225 == 10) { //01be
+  v62 = 1
+  v225++
+  reset(f226)
+  set.cel(o2,0)
+  print.at("The Oracle grows silent again, and seems to fall into a deep sleep. You attempt to thank the Oracle, but the Oracle does not respond.",2,2,37)
+  set(f176)
+  get(i14)
+  vCurrentScore += 3
+  v224 = 2
+}
+if (f226 && v225 == 11) { //01e0
+  v225++
+  set(f228)
+  stop.cycling(o1)
+  set.loop(o1,0)
+  last.cel(o1,v36)
+  set.cel(o1,v36)
+  set(f226)
+}
+if (f226 && v225 == 12) { //01fa
+  v225++
+  random(0,1,v36)
+  v36 = 0
+  set.loop(o2,v36)
+  accept.input()
+  player.control()
+}
+if (fEnteredCommand) { //0211
+  if ((said("call") || said("call", "bandit"))) { //0217
+    if (!f176 && !f228) { //0227
+      set(f226)
+      goto(l568)
+    }
+    print("The Oracle is in a deep state of meditation. You are not heard.")
+  }
+l568:
+  if (said("capture", "bandit")) { //0238
+    print("You can't get an oracle!")
+  }
+  if ((said("examine") || said("examine", "cave") || said("look in", "cave"))) { //0244
+    print("You have entered the cave of the Oracle, whose image shimmers indistinctly above a crystal ball.")
+  }
+  if (said("examine", "bandit")) { //025c
+    if (!f176) { //0266
+      print("The Oracle`s image is vague and indistinct, and seems to shimmer slightly as he (she, it?) hovers over a large crystal ball. The Oracle gazes intently into it.")
+      goto(l628)
+    }
+    print("The Oracle appears to be deep in meditation.")
+  }
+l628:
+  if ((said("look in", "crystal") || said("examine", "crystal") || said("look in", "ball") || said("examine", "ball"))) { //0274
+    print("The clear, polished ball of crystal rests upon a stone dais. Within it, you see a kaleidoscope of bright colors and flashing lights, occasionally blurred by dark, ominous shadows.")
+  }
+  if ((said("break", "ball") || said("break", "crystal") || said("capture", "ball") || said("capture", "crystal"))) { //0294
+    print("That is impossible. No mere mortal may touch the mystic ball.")
+  }
+  if ((said("examine", "out") || said("examine", "out", "cave"))) { //02b4
+    print("You see the green countryside of Llewdor out the opening of the cave.")
+  }
+  if (obj.in.room(i33,vCurrentRoom) && said("capture", "dagger")) { //02ca
+    get(i33)
+    print("You can't get an oracle!")
+  }
+}
+if (vWhichEgoBorder == 3) { //02db
+  new.room(14)
+}
+return()

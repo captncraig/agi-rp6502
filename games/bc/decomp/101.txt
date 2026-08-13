@@ -1,4 +1,60 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(2)
+  load.view(1)
+}
+if (f125) { //000c
+  goto(l155)
+}
+if (fEgoOnWater) { //0015
+  if (v75 == 0) { //001b
+    set(f133)
+    v72 = 250
+    if (!f132) { //0027
+      set.view(o0,1)
+      v75 = 2
+      object.on.water(o0)
+      goto(l97)
+    }
+    v36 = 50
+    v75 = 1
+    stop.motion(o0)
+    if (f117) { //0041
+      repositon(o0,v76,v77)
+      goto(l80)
+    }
+    object.on.water(o0)
+l80:
+    if (v38 > 139) { //0050
+      v38 = 139
+    }
+    reposition.to(o0,v38,v39)
+    set.view(o0,2)
+  }
+}
+l97:
+v72--
+if (!fEgoOnWater && v75 == 2) { //0063
+  reset(f133)
+  v75 = 0
+  set.view(o0,0)
+  if (f121) { //0075
+    repositon(o0,v76,v77)
+    goto(l132)
+  }
+  object.on.land(o0)
+}
+l132:
+v36--
+if (v36 == 11) { //0086
+  print("Oh, no! As the turbulent water pulls you under, your last thoughts are of your beautiful home, Caer Dallben.")
+}
+if (v36 == 1) { //008f
+  erase(o0)
+  v59 = 1
+}
+l155:
+reset(f117)
+reset(f121)
+v76 = 0
+v77 = 0
+return()

@@ -1,6 +1,684 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f35)
   v58 = 0
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+  if (v35 == 3 && v36 == 2) { //000d
+    v35 = 4
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(86)
+  load.view(73)
+  load.view(28)
+  load.sound(1)
+  load.sound(2)
+  animate.obj(o0)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o7)
+  animate.obj(o8)
+  set.view(o8,28)
+  set.view(o1,86)
+  set.view(o2,86)
+  set.view(o7,73)
+  set.loop(o7,0)
+  position(o1,75,81)
+  position(o2,33,85)
+  position(o7,21,144)
+  position(o8,75,85)
+  if (v32 > 0 && v32 < 255) { //005b
+    load.view(22)
+    load.view(25)
+    load.view(23)
+    load.view(26)
+    set.view(o3,22)
+    set.view(o4,25)
+    set.view(o5,23)
+    set.view(o6,26)
+    goto(l135)
+  }
+  load.view(21)
+  animate.obj(o9)
+  set.view(o9,21)
+  position(o9,36,99)
+l135:
+  position(o0,60,120)
+  if (v134 > 0) { //008b
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l204)
+  }
+  if ((fRestartGame || vPrevRoom == 1)) { //009f
+    set.text.attribute(15,0)
+    status.line.on()
+    set(f14)
+    disable.member(c27)
+    accept.input()
+    reset(f36)
+    player.control()
+    reset(f151)
+    accept.input()
+    load.view(0)
+    set.view(o0,0)
+    set.loop(o0,2)
+    if (!(v90 > 0)) { //00c1
+      vCycleTime = 2
+    }
+  }
+l204:
+  if (vPrevRoom == 42) { //00cc
+    position(o0,25,137)
+  }
+  if (vPrevRoom == 4) { //00d7
+    v166 = 1
+    position(o0,118,112)
+  }
+  if (vPrevRoom == 5) { //00e5
+    v166 = 1
+    position(o0,140,145)
+  }
+  if (vPrevRoom == 51) { //00f3
+    position(o0,46,93)
+  }
+  if (vPrevRoom == 52) { //00fe
+    position(o0,36,98)
+  }
+  ignore.objs(o7)
+  ignore.blocks(o7)
+  set.priority(o7,12)
+  stop.cycling(o7)
+  if (f238) { //0112
+    ignore.blocks(o0)
+    set.cel(o7,2)
+    goto(l293)
+  }
+  observe.blocks(o0)
+  set.cel(o7,0)
+l293:
+  draw(o7)
+  stop.update(o7)
+  v152 = 4
+  cycle.time(o7,v152)
+  set.cel(o1,1)
+  set.cel(o2,0)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.priority(o1,5)
+  set.priority(o2,10)
+  if (obj.in.room(i4,vCurrentRoom)) { //013f
+    draw(o1)
+  }
+  if (obj.in.room(i1,vCurrentRoom)) { //0148
+    draw(o2)
+  }
+  add.to.pic(86,0,0,35,83,10,10)
+  add.to.pic(86,0,0,33,93,10,10)
+  add.to.pic(86,0,0,35,91,10,10)
+  add.to.pic(86,0,1,65,81,5,5)
+  add.to.pic(86,0,1,70,81,5,5)
+  add.to.pic(86,0,1,63,83,5,5)
+  add.to.pic(86,0,1,68,83,5,5)
+  add.to.pic(86,0,1,72,83,5,5)
+  if (v32 == 1) { //0191
+    position(o3,40,141)
+    position(o4,105,148)
+    position(o5,87,160)
+    position(o6,60,140)
+    stop.cycling(o3)
+    stop.cycling(o4)
+    stop.cycling(o5)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+  }
+  if (v32 == 3) { //01b6
+    position(o3,60,141)
+    position(o4,65,148)
+    stop.cycling(o3)
+    stop.cycling(o4)
+    set.loop(o3,1)
+    set.loop(o4,1)
+    draw(o3)
+    draw(o4)
+  }
+  if ((vPrevRoom == 113 || vPrevRoom == 114)) { //01d3
+    v223 = 5
+    position(o8,90,89)
+    set.priority(o8,4)
+    stop.cycling(o8)
+    draw(o8)
+  }
+  draw(o0)
+  show.pic()
+  if ((vPrevRoom == 113 || vPrevRoom == 114)) { //01f0
+    status.line.on()
+    set(f14)
+  }
+}
+if (posn(o0,12,129,20,143)) { //01ff
+  v58 = 42
+}
+if (posn(o0,123,108,127,118)) { //020c
+  v58 = 4
+}
+if (posn(o0,143,136,145,154)) { //0219
+  v58 = 5
+}
+if (posn(o0,43,91,54,92)) { //0226
+  v58 = 51
+}
+if (posn(o0,30,93,32,107)) { //0233
+  v58 = 52
+}
+if (v58 > 0) { //0240
+  if (v32 == 3) { //0247
+    set(f102)
+    v32 = 255
+  }
+  new.room(v58)
+}
+reset(f224)
+if (posn(o0,21,129,30,143)) { //0257
+  set(f224)
+}
+reset(f225)
+if (posn(o0,32,109,43,120)) { //0265
+  set(f225)
+}
+reset(f226)
+if (posn(o0,43,92,54,100)) { //0273
+  set(f226)
+}
+reset(f227)
+if (posn(o0,55,92,85,100)) { //0281
+  set(f227)
+}
+reset(f228)
+if (posn(o0,84,92,110,100)) { //028f
+  set(f228)
+}
+reset(f229)
+if (posn(o0,110,107,125,120)) { //029d
+  set(f229)
+}
+reset(f230)
+if (posn(o0,125,135,145,155)) { //02ab
+  set(f230)
+}
+distance(o0,o3,v226)
+distance(o0,o4,v227)
+distance(o0,o5,v228)
+distance(o0,o6,v229)
+distance(o0,o8,v230)
+distance(o0,o9,v231)
+if ((v226 < v61 || v227 < v61 || v229 < v61 || v231 < v61 || v228 < v61 || v230 < v61)) { //02cf
+  set(f109)
+}
+if (f112) { //02e9
+  if (v166 > 0) { //02ef
+    v166++
+    if (v166 == 255) { //02f8
+      v166 = 1
+    }
+  }
+}
+if (f220) { //0302
+  v220++
+  reset(f220)
+}
+if (f222) { //030c
+  v222++
+  reset(f222)
+}
+if (f223) { //0316
+  v223++
+  reset(f223)
+}
+if (vPrevRoom == 4 && v117 > 0 && v166 == 2) { //0320
+  v166 = 0
+  if (v117 < 4) { //0330
+    print("Walking out on Sgt. Dooley's words of wisdom is unwise! You are hereby found guilty of \"Contempt of Dooley.\"")
+    v117 = 0
+    set(f140)
+    goto(l877)
+  }
+  if (v117 < 11) { //0341
+    print("It sure clears out quick around here.")
+    v117 = 11
+    goto(l877)
+  }
+  if (v98 == 4 && v31 < 3) { //0350
+    if (v39 == 0) { //035a
+      print("Walking out on Sgt. Dooley's words of wisdom is unwise! You are hereby found guilty of \"Contempt of Dooley.\"")
+      v117 = 0
+      set(f140)
+      goto(l877)
+    }
+    print("Whew! At least you have enough time to change clothes before briefing!")
+  }
+}
+l877:
+if (!(v222 > 0) && v166 == 2 && (v39 == 4 || v39 == 7)) { //036d
+  set(f36)
+  start.motion(o0)
+  set.loop(o0,1)
+  v222 = 1
+  v166 = 0
+}
+if (v222 == 1) { //038d
+  draw(o9)
+  move.obj(o9,65,110,1,f222)
+  v222++
+}
+if (v222 == 3) { //039e
+  move.obj(o9,75,120,1,f222)
+  v222++
+}
+if (v222 == 5) { //03ad
+  print("Detective Laura Watts wanders into the room, giggles, then compliments you on the handsome towel you're wearing. \"Boy, are YOU out of uniform,\" she laughs!")
+  v166 = 1
+  v222++
+}
+if (v222 == 6 && v166 == 2) { //03bb
+  move.obj(o9,65,110,1,f222)
+  v166 = 0
+  v222++
+}
+if (v222 == 8) { //03d0
+  move.obj(o9,36,99,1,f222)
+  v222++
+}
+if (v222 == 10) { //03df
+  erase(o9)
+  set(f140)
+  v222++
+}
+if (v32 > 0 && v32 < 255) { //03ec
+  follow.ego(o6,10,f220)
+  get.posn(o6,v144,v145)
+  if ((v155 != v144 || v156 != v145)) { //03fe
+    v155 = v144
+    v156 = v145
+    start.cycling(o6)
+    goto(l1049)
+  }
+  stop.cycling(o6)
+l1049:
+  if (!f231 && v220 > 0) { //0419
+    print("\"If that 'Gremlin' keeps messing with me,\" says Sgt. Dooley, \"I'm going to notify Internal Affairs to start an investigation!\"")
+    print("\"When I find out who the little weasel is,\" says Sgt. Dooley, \"you'd better believe that he or she will be walking a footbeat from the river all the way to Joe's Junkyard!\"")
+    v166 = 1
+    set(f231)
+  }
+  if ((f231 || v32 == 3)) { //042c
+    follow.ego(o3,17,f153)
+    get.posn(o3,v144,v145)
+    if ((v157 != v144 || v158 != v145)) { //043f
+      v157 = v144
+      v158 = v145
+      start.cycling(o3)
+      goto(l1114)
+    }
+    stop.cycling(o3)
+l1114:
+    follow.ego(o4,31,f153)
+    get.posn(o4,v144,v145)
+    if ((v159 != v144 || v160 != v145)) { //0462
+      v159 = v144
+      v160 = v145
+      start.cycling(o4)
+      goto(l1149)
+    }
+    stop.cycling(o4)
+l1149:
+    follow.ego(o5,24,f153)
+    get.posn(o5,v144,v145)
+    if ((v161 != v144 || v162 != v145)) { //0485
+      v161 = v144
+      v162 = v145
+      start.cycling(o5)
+      goto(l1184)
+    }
+    stop.cycling(o5)
+  }
+l1184:
+  if (f231) { //04a0
+    if (v226 < 10 && !f232) { //04a6
+      print("\"Hey, Sonny! Dooley says he's gonna start a big Internal Affairs investigation just because some fool put a stinkin', smelly bird on his desk.\"")
+      set(f232)
+    }
+    if (v227 < 10 && !f233) { //04b4
+      print("\"Look at Dooley! The man has gone berserk! I thought that new desk decoration was rather comical.\"")
+      set(f233)
+    }
+    if (v228 < 10 && !f234) { //04c2
+      print("\"Sonny, you should have seen Sgt. Dooley when he first discovered that chicken! He threw a screaming fit and wanted the Lieutenant to dust for prints.\"")
+      set(f234)
+    }
+  }
+  if (v32 == 3) { //04d0
+    if (v226 < 17 && !f232) { //04d7
+      print("\"Hey, Sonny! You're off duty, aren't you? Some of us are going by the Blue Room to throw Jack a little surprise party. After you change clothes, why don't you stop by?\"")
+      v98 = 1
+      set(f232)
+    }
+    if (v227 < 15 && !f233) { //04e8
+      print("\"The dancer we hired for Jack's party is something else!\"")
+      set(f233)
+    }
+  }
+  if (v166 == 30) { //04f6
+    print("\"Take a look in my office, Sonny. Maybe you can shed some light as to how that creature made his way to the top of my desk!\"")
+    v166 = 1
+  }
+}
+if (f228 && v223 == 0) { //0502
+  set.priority(o8,4)
+  draw(o8)
+  move.obj(o8,90,85,1,f223)
+  v223++
+}
+if (v223 == 2) { //0518
+  move.obj(o8,90,89,1,f223)
+  v223++
+}
+if (v223 == 4) { //0527
+  if (v96 > 1) { //052e
+    print("Russ says, \"What can I do for you, Fly Boy?\"")
+    goto(l1340)
+  }
+  print("Russ, the keeper of the evidence lockup, says, \"Howdy, Sonny! Haven't seen anything with your name on it come in lately.\"")
+l1340:
+  stop.cycling(o8)
+  v223++
+}
+if (!f228 && v223 == 5) { //0540
+  move.obj(o8,75,85,1,f223)
+  v223++
+}
+if (v223 == 7) { //0552
+  erase(o8)
+  v223 = 0
+}
+if (!fEnteredCommand) { //055e
+  goto(l2624)
+}
+if (v32 == 3 && (said("ok", "rol") || said("anyword", "ok", "rol"))) { //0568
+  print("\"See you there!\"")
+}
+if (v223 == 5) { //0581
+  if (said("get", "cocaine")) { //0588
+    print("\"We lock it up, not give it out.\"")
+  }
+}
+if (v223 == 5 && v96 > 1) { //0594
+  if ((said("get", "id", "rol") || said("get", "anyword", "id", "rol"))) { //059e
+    print("\"Why, Sonny!\" Russ says. \"You know I don't keep them here!\"")
+  }
+  if ((said("book", "rol") || said("check", "out", "black", "book") || said("examine", "black", "book") || said("get", "black", "book") || said("administer", "bonds", "black", "book") || said("black", "book", "rol") || said("get", "book", "rol") || said("get", "black", "book", "rol") || said("ask", "book", "rol") || said("ask", "black", "book", "rol") || said("examine", "black", "book", "rol") || said("note", "rol") || said("black", "note", "rol") || said("get", "note", "rol") || said("get", "black", "note", "rol") || said("ask", "note", "rol") || said("ask", "black", "note", "rol") || said("examine", "black", "note", "rol") || said("administer", "bonds", "note", "rol") || said("administer", "bonds", "black", "note", "rol"))) { //05b8
+    if (!f228) { //0670
+      print("Russ, the keeper of the evidence lockup, says, \"Howdy, Sonny! Haven't seen anything with your name on it come in lately.\"")
+      goto(l1669)
+    }
+    print("\"Now, Sonny, you know this is official evidence. Don't go running off with it!\"")
+    get.posn(o0,v134,v135)
+    status.line.off()
+    new.room(113)
+  }
+l1669:
+  if ((said("automatic", "rol") || said("get", "automatic", "rol") || said("ask", "automatic", "rol") || said("examine", "automatic", "rol") || said("administer", "bonds", "automatic", "rol"))) { //0685
+    if (!f228) { //06b3
+      print("Russ, the keeper of the evidence lockup, says, \"Howdy, Sonny! Haven't seen anything with your name on it come in lately.\"")
+      goto(l1736)
+    }
+    print("\"Now, Sonny, you know this is official evidence. Don't go running off with it!\"")
+    get.posn(o0,v134,v135)
+    status.line.off()
+    new.room(114)
+  }
+}
+l1736:
+if (said("o", "d")) { //06c8
+  if (f224) { //06d2
+    if (!f238) { //06d8
+      start.update(o7)
+      end.of.loop(o7,f235)
+      sound(1,f154)
+      goto(l1772)
+    }
+    print("It is open.")
+l1772:
+    goto(l1803)
+  }
+  if ((f226 || f229)) { //06ef
+    print("\"This door to remain open during business hours.\"")
+    goto(l1803)
+  }
+  if (f230) { //06fe
+    print("The locker room has a partition but no door!")
+    goto(l1803)
+  }
+  set(f113)
+}
+l1803:
+if (said("c", "d")) { //070b
+  if (f224) { //0715
+    if (fTriggerLine) { //071b
+      print("\"Move outta the way!\"")
+      goto(l1850)
+    }
+    if (!f238) { //0726
+      print("The door is closed.")
+      goto(l1850)
+    }
+    start.update(o7)
+    reverse.loop(o7,f235)
+    sound(2,f154)
+l1850:
+    goto(l1881)
+  }
+  if ((f226 || f229)) { //073d
+    print("\"This door to remain open during business hours.\"")
+    goto(l1881)
+  }
+  if (f230) { //074c
+    print("The locker room has a partition but no door!")
+    goto(l1881)
+  }
+  set(f113)
+}
+l1881:
+if ((said("get", "call") || said("get", "call", "call") || said("get", "call", "call", "from", "counter") || said("get", "call", "call", "off", "counter") || said("get", "call", "off", "counter") || said("get", "call", "from", "counter"))) { //0759
+  if (has(i4)) { //0799
+    print("Come on. You only need one!")
+    goto(l2025)
+  }
+  if (!f227) { //07a4
+    set(f113)
+    goto(l2025)
+  }
+  if (v39 == 17) { //07b0
+    print("Why would you need a radio extender when you're off duty?")
+    goto(l2025)
+  }
+  if (v39 == 13) { //07bc
+    print("A radio extender is too bulky to carry on an undercover assignment.")
+    goto(l2025)
+  }
+  if (!(obj.in.room(i4,vCurrentRoom))) { //07c8
+    print("You lost your radio extender and now you want another?")
+    print("Forget it!")
+    goto(l2025)
+  }
+  print("You pick up a squelchy, noisy, but workable extender.")
+  erase(o1)
+  get(i4)
+  if (!f61) { //07dd
+    set(f61)
+    vCurrentScore += 2
+  }
+}
+l2025:
+if (has(i4) && said("drop", "call", "rol")) { //07e9
+  if (!f227) { //07f7
+    set(f113)
+    goto(l2058)
+  }
+  print("You return your radio extender to the recharge stand.")
+  draw(o1)
+  put(i4,0)
+}
+l2058:
+if (said("get", "car keys", "rol")) { //080a
+  if (!f225) { //0816
+    set(f113)
+    goto(l2136)
+  }
+  if (v39 > 0) { //0822
+    print("Since you're not in uniform, you don't need keys to a patrol car.")
+    goto(l2136)
+  }
+  if (has(i1)) { //082e
+    print("You can't drive two cars at once.")
+    goto(l2136)
+  }
+  if (!(obj.in.room(i1,vCurrentRoom))) { //0839
+    print("You lost those keys, remember?")
+    goto(l2136)
+  }
+  print("You take the patrol car's keys from the key board.")
+  erase(o2)
+  get(i1)
+  if (!f67) { //084c
+    set(f67)
+    vCurrentScore += 1
+  }
+}
+l2136:
+if (has(i1) && (said("drop", "car keys", "rol") || said("hang", "car keys", "rol"))) { //0858
+  if (!f225) { //0870
+    set(f113)
+    goto(l2179)
+  }
+  print("You hang the keys on the key board.")
+  draw(o2)
+  put(i1,0)
+}
+l2179:
+if ((said("examine") || said("examine", "accident"))) { //0883
+  print("Around the hallway is a key board, a table holding radio extenders, a photograph on the far wall, and a barred window to the evidence room.")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //0895
+  print("You look down and note a very clean, gray-tiled floor.")
+}
+if (!(has(i4)) && (said("examine", "call") || said("examine", "call", "call") || said("examine", "call"))) { //08a9
+  if (f227) { //08c6
+    print("The table holds hand-held radio extenders that work in conjunction with your police car radio, when you are not near your patrol car.")
+    goto(l2259)
+  }
+  set(f113)
+}
+l2259:
+if ((said("examine", "counter") || said("examine", "inv", "counter") || said("examine", "inv", "on", "counter") || said("examine", "on", "counter") || said("examine", "on", "top", "counter") || said("examine", "top", "counter") || said("examine", "counter") || said("examine", "on", "counter"))) { //08d3
+  if (f227) { //0919
+    print("The table holds hand-held radio extenders that work in conjunction with your police car radio, when you are not near your patrol car.")
+    goto(l2342)
+  }
+  set(f113)
+}
+l2342:
+if (said("examine", "below", "counter")) { //0926
+  if (f227) { //0932
+    print("You look under the table just to satisfy your curiosity. You find nothing.")
+    goto(l2367)
+  }
+  set(f113)
+}
+l2367:
+if ((said("examine", "car keys") || said("examine", "board") || said("examine", "computer"))) { //093f
+  print("This key board holds the keys to the squad cars that are presently operable.")
+}
+if (said("examine", "painting")) { //0959
+  print("This the most recent photograph of Lytton's Chief of Police Randolph \"Brown Nose\" Whipplestick. Appointed to the department only ten years ago, \"Ol' B. N.\" rapidly manipulated his way to the top.")
+}
+if (said("examine", "fence")) { //0965
+  print("On the far wall is a photograph of Chief Whipplestick. On another wall, you see a key board.")
+}
+if (said("get", "painting")) { //0971
+  print("Good cops don't take city property without permission. Besides, what kind of nut would want the Chief's ugly face?")
+}
+if (said("move", "painting")) { //097d
+  print("That thing is screwed into the wall so tight, it would take you half a shift to remove it!")
+}
+if ((said("examine", "up") || said("examine", "ceiling"))) { //0989
+  print("Fluorescent lights illuminate the hallway.")
+}
+if ((said("examine", "pane") || said("look in", "pane"))) { //099d
+  if (!f228) { //09af
+    set(f113)
+    goto(l2493)
+  }
+  print("You see Russ looking back at you.")
+}
+l2493:
+if (said("examine", "pane")) { //09bd
+  print("The evidence lockup is operated by officer \"Russ Dinkle.\"")
+}
+if (said("answer", "art")) { //09c9
+  if (f228 && v223 == 5) { //09d3
+    if (v96 < 2) { //09dc
+      random(47,49,v152)
+      print(v152)
+      goto(l2544)
+    }
+    print("\"Detective Bonds, it appears you've been on a roll lately!\"")
+    print("\"Hi, Sonny,\" says Russ. \"What do you need?\"")
+l2544:
+    goto(l2587)
+  }
+  if (f109) { //09f3
+    if (v32 > 0 && v32 < 3) { //09f9
+      print("Dooley ain't fit to talk to now!")
+      goto(l2582)
+    }
+    if (v32 < 255) { //0a08
+      print("\"Hey, Sonny! You're off duty, aren't you? Some of us are going by the Blue Room to throw Jack a little surprise party. After you change clothes, why don't you stop by?\"")
+      goto(l2582)
+    }
+    reset(fSaidAccepted)
+l2582:
+    goto(l2587)
+  }
+  set(f113)
+}
+l2587:
+if (said("examine", "art")) { //0a1b
+  if (f228 && v223 == 5) { //0a25
+    print("You imagine that Russ must feel like a prisoner inside the tiny, evidence lockup.")
+    goto(l2624)
+  }
+  if (f109) { //0a33
+    reset(fSaidAccepted)
+    goto(l2624)
+  }
+  set(f113)
+}
+l2624:
+if (f235) { //0a40
+  stop.update(o7)
+  toggle(f238)
+  reset(f235)
+  if (f238) { //0a4c
+    ignore.blocks(o0)
+    goto(l2649)
+  }
+  observe.blocks(o0)
+}
+l2649:
+return()

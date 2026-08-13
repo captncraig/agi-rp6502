@@ -1,4 +1,263 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(107)
+  load.view(190)
+  load.view(199)
+  load.sound(2)
+  load.sound(27)
+  animate.obj(o14)
+  animate.obj(o15)
+  v129 = 0
+  v249 = 10
+  v128 = 101
+  if (f31 && vMonitorType != HERCULES) { //001f
+    set.text.attribute(2,0)
+    display(22,0,"Wiz in %v125.")
+    set.text.attribute(15,0)
+  }
+  return()
+}
+if (!f99) { //0034
+  goto(l222)
+}
+if ((said("examine", "enchanter") || said("examine", "abominable", "enchanter"))) { //003e
+  print("Manannan appears older than old. His long, white beard straggles thinly past his waist, his skin resembles old parchment paper, and his hands are gnarled and twisted. But, don't be fooled! The old wizard is smart and powerful, and his magic is formidable.")
+}
+if (said("kill", "enchanter")) { //0054
+  print("Your own death would result from that! He's too powerful for you.")
+}
+if ((said("embrace", "enchanter") || said("pat", "enchanter") || said("drink", "enchanter"))) { //0060
+  print("Ugh!! You don't want to do THAT, do you!?")
+}
+if ((said("capture", "enchanter") || said("capture", "enchanter"))) { //007a
+  print("Do you really think you can catch a wizard?")
+}
+if ((said("cast", "spell") || said("cast", "spell", "enchanter") || said("cast", "spell", "on", "enchanter") || said("cast", "magic") || said("cast", "magic", "spell") || said("cast", "magic", "spell", "on", "enchanter") || said("cast", "magic", "spell", "enchanter"))) { //008e
+  print("How can you without proper materials? Besides, you have to get up pretty early to out-spell this old wizard.")
+}
+if (said("call", "enchanter")) { //00d2
+  v129++
+}
+l222:
+if (f99 && (v127 == 1 || v127 == 3)) { //00de
+  get.posn(o15,v32,v31)
+  reset(f107)
+  call(107)
+  if ((v44 == 25 || f49 || v44 == 26 || v71 > 0)) { //00f4
+    v71 = 0
+    print("\"Attempt to use magic around me, will you?!\"")
+    v123 = 22
+  }
+  if (v123 > 0) { //010d
+    set(f130)
+    goto(l923)
+  }
+  if (f45) { //0119
+    v251--
+    if (v251 == 1 && v137 > 0) { //0121
+      v129 = 3
+    }
+  }
+  if (v129 == 4) { //012e
+    v129 = 2
+    v250 = 0
+    print("\"You aren't to be in this room without my express permission!\" Manannan says gruffly. \"Go find something to do.\"")
+  }
+  if (v129 != v250) { //013d
+    v250 = v129
+    if (v129 == 1) { //0148
+      random(13,15,v36)
+      print(v36)
+    }
+    if (v129 == 2) { //0155
+      if (v137 > 0) { //015c
+        print("\"Instead of fooling around in here, you should have finished that chore I assigned to you earlier!\"")
+        v110 = 3
+        v123 = 15
+        goto(l446)
+      }
+l366:
+      random(1,5,v137)
+      if ((v137 == v136 || v137 == 3)) { //0172
+        goto(l366)
+      }
+      if (v137 == 1 && vCurrentRoom == 6) { //0181
+        goto(l366)
+      }
+      if (v137 == 2 && vCurrentRoom == 2) { //018e
+        goto(l366)
+      }
+      if (v137 == 4 && vCurrentRoom == 5) { //019b
+        goto(l366)
+      }
+      v110 = 3
+      v84 = 3
+      v84++
+      v36 = v137
+      v136 = v137
+      v36 += 15
+      print(v36)
+      v251 = 25
+    }
+l446:
+    if (v123 > 0) { //01be
+      set(f130)
+      goto(l923)
+    }
+    if (v129 == 3) { //01ca
+      print("\"When I assign a chore, I want it done immediately!\"")
+      v123 = 15
+    }
+  }
+  if (v123 > 0) { //01d6
+    set(f130)
+    goto(l923)
+  }
+  v249--
+  if (!(v249 > 0)) { //01e4
+    distance(o15,o0,v36)
+    if (v36 < 10) { //01f0
+      v248++
+      v249 = 30
+      if (v248 == 1) { //01fc
+        print("\"Out of my way, Gwydion!\"")
+      }
+      if (v248 == 2) { //0205
+        print("\"I mean it, boy... stay away from me!\"")
+      }
+      if (v248 == 3) { //020e
+        print("\"Gwydion, let this be a lesson to you!\"")
+        v123 = 15
+      }
+    }
+  }
+}
+if (v123 > 0) { //021a
+  set(f130)
+  goto(l923)
+}
+if (f45) { //0226
+  if (f31 && v47 == 5 && vMonitorType != HERCULES) { //022c
+    clear.lines(22,22,c0)
+  }
+  if (v47 == v125 && (v127 == 1 || v127 == 3)) { //023d
+    if (!f46) { //024c
+      set(f246)
+      v246 = 0
+      goto(l613)
+    }
+    if (v125 < 200) { //025b
+      v125 += 8
+    }
+  }
+l613:
+  v247--
+  if (v247 == 1) { //0267
+    set(f246)
+  }
+}
+if ((v246 == 1 || v246 == 5)) { //0270
+  current.cel(o14,v36)
+  if (v36 == 3) { //027f
+    set(f246)
+  }
+}
+if (f246) { //0288
+  reset(f246)
+  v246++
+  if (v246 == 1) { //0292
+    prevent.input()
+    program.control()
+    stop.motion(o0)
+    set(f46)
+    v128 = 102
+    sound(27,f41)
+    set.view(o15,190)
+    position(o15,32,v31)
+    v36 = 2
+    step.time(o15,36)
+    cycle.time(o15,v36)
+    v36 = v40
+    if (v36 > 2) { //02b8
+      v36 -= 3
+    }
+    if (v36 < v32) { //02c2
+      set.loop(o15,1)
+      goto(l722)
+    }
+    set.loop(o15,0)
+l722:
+    set.view(o14,199)
+    set.cel(o14,0)
+    v36 = 3
+    cycle.time(o14,v36)
+    ignore.objs(o14)
+    set.priority(o14,15)
+    position(o14,32,v31)
+    stop.motion(o14)
+    start.cycling(o14)
+    end.of.loop(o14,f246)
+    draw(o14)
+  }
+  if (v246 == 2) { //02f0
+    set.cel(o15,0)
+    stop.cycling(o15)
+    draw(o15)
+  }
+  if (v246 == 3) { //02fe
+    set(f99)
+    accept.input()
+    player.control()
+    start.motion(o0)
+    reset(f46)
+    erase(o14)
+    random(3,8,v247)
+  }
+  if (v246 == 4) { //0313
+    random(3,8,v247)
+    if (!f129) { //031e
+      set(f129)
+      v129 = 2
+      goto(l854)
+    }
+    if ((vCurrentRoom == 1 || vCurrentRoom == 2 || vCurrentRoom == 5)) { //032d
+      v129 = 4
+      v247 = 0
+      goto(l854)
+    }
+    random(1,3,v36)
+    if (v36 == 1) { //0349
+      random(24,25,v36)
+      print(v36)
+    }
+  }
+l854:
+  if (v246 == 5) { //0356
+    prevent.input()
+    program.control()
+    stop.motion(o0)
+    set(f46)
+    reset(f99)
+    get.posn(o15,v32,v31)
+    position(o14,32,v31)
+    set.view(o14,199)
+    set.cel(o14,0)
+    draw(o14)
+    start.cycling(o14)
+    end.of.loop(o14,f246)
+    sound(2,f41)
+  }
+  if (v246 == 6) { //037d
+    erase(o15)
+  }
+  if (v246 == 7) { //0386
+    accept.input()
+    player.control()
+    start.motion(o0)
+    reset(f46)
+    erase(o14)
+    v128 = 104
+    v246 = 0
+  }
+}
+l923:
+return()

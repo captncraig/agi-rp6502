@@ -1,4 +1,306 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(26)
+  load.view(217)
+  animate.obj(o2)
+  v32 = 45
+  v31 = 149
+  v57 = 87
+  v58 = 147
+  set(f34)
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //002b
+    set.view(o0,0)
+    position(o0,89,167)
+    start.motion(o0)
+    vEgoDir = 1
+    v44 = 0
+  }
+  set.view(o2,217)
+  position(o2,75,108)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  v36 = 4
+  cycle.time(o2,v36)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o1)
+  load.view(211)
+  load.view(214)
+  if (v172 == 1 && v44 == 0) { //005d
+    v172 = 1
+    set.view(o1,211)
+    position(o1,89,140)
+    v36 = 1
+    cycle.time(o1,v36)
+    v222 = 1
+    prevent.input()
+    set(f230)
+    goto(l147)
+  }
+  set.view(o1,214)
+  v36 = 12
+  cycle.time(o1,v36)
+  set.priority(o1,13)
+  position(o1,48,137)
+  v222 = 0
+l147:
+  draw(o1)
+  if (obj.in.room(i48,vCurrentRoom)) { //0095
+    animate.obj(o3)
+    load.view(216)
+    set.view(o3,216)
+    set.priority(o3,15)
+    position(o3,60,106)
+    draw(o3)
+    stop.update(o3)
+  }
+  if (f47) { //00ae
+    draw(o0)
+  }
+  show.pic()
+  if (v44 != 30) { //00b7
+    sound(26,f238)
+    if (v172 == 1) { //00c2
+      print("You have entered the bandits' hideout; one of them is coming after you now!")
+      goto(l208)
+    }
+    print("You have entered the bandits' hideout; one of them is sleeping at a small table.")
+  }
+l208:
+  return()
+}
+v39 = 0
+if (posn(o0,70,106,101,124)) { //00d4
+  v39 = 1
+}
+if (posn(o0,55,117,69,139)) { //00e1
+  v39 = 2
+}
+if (!f46 && v172 == 0 && f45) { //00ee
+  random(1,255,v37)
+  if (v37 == 1 && v44 == 0) { //00fe
+    v172 = 1
+    set(f230)
+  }
+}
+if (v222 == 0 && f230) { //010d
+  v222++
+  prevent.input()
+  v36 = 1
+  cycle.time(o1,v36)
+  set.view(o1,211)
+  move.obj(o1,69,137,1,f230)
+  release.priority(o1)
+  v172 = 1
+  print("The bandit opens his eyes and sees you in his hideout. He jumps up from the chair and chases you.")
+}
+if (v222 == 1 && f230) { //012f
+  v222++
+  follow.ego(o1,8,f230)
+}
+if (v222 == 2 && f230 && v44 == 0) { //013e
+  if (f46) { //014a
+    normal.motion(o1)
+    stop.motion(o1)
+    stop.cycling(o1)
+    goto(l388)
+  }
+  v222++
+  set(f46)
+  start.cycling(o1)
+  ignore.blocks(o0)
+  ignore.blocks(o1)
+  program.control()
+  get.posn(o1,v37,v38)
+  v37 += 2
+  v38 += 6
+  reposition.to(o0,v37,v38)
+  set.loop(o0,2)
+  set.loop(o1,2)
+  move.obj(o1,86,163,1,f230)
+  move.obj(o0,86,163,1,f230)
+}
+l388:
+if (v222 == 3 && f230) { //0184
+  v222++
+  reset(f230)
+  set.view(o0,11)
+  v44 = 6
+  vWhichEgoBorder = 3
+  print("The heartless thug drags you out the door and pushes you off the porch.")
+  player.control()
+  vCurrentRoom = 37
+  new.room(22)
+}
+if (f227) { //01a2
+  reset(f227)
+  stop.update(o2)
+  print("You slowly lift the lid, and hope the squeaky hinges do not wake the bandit.")
+}
+if (f228) { //01ae
+  reset(f228)
+  stop.update(o2)
+}
+if (fEnteredCommand) { //01b8
+  if ((said("examine") || said("examine", "building"))) { //01be
+    print("The hideout is made of rough planks, sparsely furnished with a table, a chair, and a small, wooden bin in the corner.")
+  }
+  if (said("examine", "bandit")) { //01d0
+    if (v172 == 1) { //01da
+      print("The ugly bandit is dressed in dirty clothes. He looks, and smells, as if he hasn't had a bath in months. He has a very threatening look in his eyes!")
+      goto(l488)
+    }
+    print("The scoundrel is fast asleep at the table. He is dressed in dirty, ragged clothes, and emits a very unpleasant odor.")
+  }
+l488:
+  if ((said("examine", "counter") || said("examine", "above", "counter") || said("examine", "counter", "top"))) { //01e8
+    if (obj.in.room(i48,vCurrentRoom)) { //0204
+      print("There is a leather coin purse lying on top of a wobbly table.")
+      goto(l530)
+    }
+    print("The wobbly, wooden table is made out of rough planks.")
+  }
+l530:
+  if ((said("capture", "coin purse", "from", "counter") || said("capture", "coin purse", "counter") || said("capture", "coin") || said("capture", "coin purse"))) { //0212
+    if (obj.in.room(i48,vCurrentRoom) && v172 == 0) { //0236
+      if (v39 == 2) { //0240
+        start.update(o3)
+        erase(o3)
+        get(i48)
+        if (!f205) { //024d
+          vCurrentScore += 4
+          v63 = 8
+          set(f205)
+        }
+        print("You very carefully lift the coin purse off the table; practically out from under the sleeping bandit's nose!")
+        goto(l611)
+      }
+      print("You need to be closer.")
+l611:
+      goto(l616)
+    }
+    print("That is not possible!")
+  }
+l616:
+  if ((said("examine", "chest") || said("look in", "chest") || said("look in", "bin") || said("examine", "bin"))) { //0268
+    if (f224) { //0286
+      if (v39 == 1) { //028c
+        if (f78) { //0293
+          print("This must be where the bandits store their loot! You see all of your stolen possessions inside the bin.")
+          goto(l672)
+        }
+        print("There is nothing in the bin.")
+l672:
+        goto(l677)
+      }
+      print("You need to be closer.")
+l677:
+      goto(l682)
+    }
+    print("The shabby, wooden bin is built into a corner of the treehouse. It is covered by a hinged lid.")
+  }
+l682:
+  if ((said("lift", "chest") || said("lift", "cap", "chest") || said("lift", "bin") || said("lift", "cap", "bin") || said("lift", "cap"))) { //02aa
+    if (v172 == 1) { //02d2
+      print("That is not possible!")
+      goto(l764)
+    }
+    if (f224) { //02de
+      print("The bin is already open.")
+      goto(l764)
+    }
+    if (v39 == 1) { //02e9
+      start.update(o2)
+      end.of.loop(o2,f227)
+      set(f224)
+      goto(l764)
+    }
+    print("You need to be closer.")
+  }
+l764:
+  if ((said("close", "chest") || said("close", "cap", "chest") || said("close", "bin") || said("close", "cap", "bin") || said("close", "cap"))) { //02fc
+    if (v172 == 1) { //0324
+      print("That is not possible!")
+      goto(l847)
+    }
+    if (!f224) { //0330
+      print("The lid is closed.")
+      goto(l847)
+    }
+    if (v39 == 1) { //033c
+      start.update(o2)
+      reverse.loop(o2,f228)
+      reset(f224)
+      goto(l847)
+    }
+    print("You need to be closer.")
+  }
+l847:
+  if (said("kill", "bandit")) { //034f
+    if (v172 == 1) { //0359
+      print("He looks pretty big and mean. Perhaps you should run instead.")
+      goto(l871)
+    }
+    print("What kind of person would kill a sleeping man?!")
+  }
+l871:
+  if (v172 == 0 && (said("call", "bandit") || said("wake", "bandit") || said("aim", "bandit"))) { //0367
+    release.priority(o1)
+    v172 = 1
+    set.view(o1,211)
+    v36 = 1
+    cycle.time(o1,v36)
+    set(f230)
+  }
+  if ((said("examine", "deck") || said("examine", "deck") || said("examine", "below", "counter") || said("examine", "below", "bench"))) { //0392
+    print("You see the stained and dirty floor, and through the cracks, between the planks, you see the ground far below.")
+  }
+  if ((said("examine", "out", "door") || said("examine", "door") || said("examine", "out", "glass") || said("examine", "glass") || said("examine", "out"))) { //03b6
+    print("You see the limbs and leaves of the tree swaying in the breeze.")
+  }
+  if (said("capture", "all", "rol")) { //03e0
+    if (f224) { //03ec
+      reset(f225)
+      reset(f78)
+      v223 = 1
+l1017:
+      if (v223 < 55) { //03f9
+        if (v223 == 48) { //0400
+          v223++
+          goto(l1017)
+        }
+        get.room(v223,v221)
+        if (v221 == 38) { //040f
+          set(f225)
+          get(v223)
+        }
+        v223++
+        goto(l1017)
+      }
+      if (f225) { //041f
+        print("Ok.")
+        goto(l1068)
+      }
+      print("There is nothing in the bin.")
+l1068:
+      goto(l1073)
+    }
+    print("The lid is closed.")
+  }
+}
+l1073:
+if (v40 > 84 && v40 < 98 && vWhichEgoBorder == 3) { //0431
+  if (v44 == 6) { //043e
+    new.room(22)
+    goto(l1100)
+  }
+  new.room(37)
+}
+l1100:
+return()

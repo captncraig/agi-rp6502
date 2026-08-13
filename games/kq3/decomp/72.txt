@@ -1,4 +1,80 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v57 = 90
+  v58 = 153
+  v56 = 6
+  set(f64)
+  animate.obj(o1)
+  load.view(186)
+  set.view(o1,186)
+  ignore.horizon(o1)
+  if (f182) { //0022
+    position(o1,5,18)
+    goto(l51)
+  }
+  position(o1,5,34)
+l51:
+  draw(o1)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //003a
+    if (vPrevRoom == 71) { //0040
+      position(o0,0,153)
+    }
+  }
+  if (f47) { //004b
+    draw(o0)
+  }
+  if (f182) { //0053
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (f182) { //005f
+  call(119)
+}
+if ((said("examine") || said("examine", "castle"))) { //0067
+  if (!f182) { //0077
+    print("You gaze sadly at the shabby castle. It's obvious that it was once a proud and beautiful place. But now, its banners are torn, its stones and statue work are crumbling, and the moat has been drained. It's as if no one cares anymore.")
+    goto(l133)
+  }
+  print("Atop the castle, the banners are proudly waving. The heavy feeling of oppression is gone; hope has at last returned to Daventry!")
+}
+l133:
+if (said("examine", "banner")) { //0085
+  if (!f182) { //008f
+    print("Sadly, the torn banners of the shabby castle are flying at half-mast.")
+    goto(l157)
+  }
+  print("The worn banners atop the crumbling castle proudly wave.")
+}
+l157:
+if ((said("climb", "moat") || said("jump", "moat") || said("jump", "above", "moat") || said("climb", "down", "moat") || said("examine", "moat"))) { //009d
+  print("The moat is too wide to cross. There is nothing of interest there, anyway.")
+}
+if (said("examine", "forest")) { //00c7
+  print("A once green woodland spreads out before you. Now, its many trees and bushes are cruelly charred.")
+}
+if (said("examine", "brush")) { //00d3
+  print("You see no flowers about.")
+}
+if ((said("climb", "up", "forest") || said("climb", "forest"))) { //00df
+  print("There are no climbable trees around.")
+}
+if ((said("examine", "up", "sky") || said("examine", "sky"))) { //00f5
+  print("The sky is blue and the sun is shining, but yet a feeling of sadness lingers here.")
+}
+if ((said("examine", "on", "deck") || said("examine", "deck"))) { //010b
+  print("There is nothing interesting on the ground but green grass.")
+}
+if (vWhichEgoBorder == 4) { //0121
+  new.room(71)
+}
+if (vWhichEgoBorder == 3) { //012a
+  new.room(69)
+}
+return()

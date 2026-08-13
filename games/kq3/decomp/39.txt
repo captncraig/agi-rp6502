@@ -1,9 +1,380 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f34)
   v32 = 104
   v31 = 134
   v57 = 55
   v58 = 141
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(32)
+  reset(f238)
+  load.view(0)
+  load.view(24)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  animate.obj(o2)
+  load.view(79)
+  set.view(o2,79)
+  add.to.pic(79,0,0,51,136,1,1)
+  position(o2,51,136)
+  v36 = 3
+  cycle.time(o2,v36)
+  stop.cycling(o2)
+  ignore.blocks(o2)
+  draw(o2)
+  animate.obj(o1)
+  load.view(78)
+  set.view(o1,78)
+  position(o1,61,109)
+  v36 = 2
+  step.time(o1,36)
+  cycle.time(o1,v36)
+  draw(o1)
+  if ((f48 || v44 == 25)) { //005e
+    position(o0,117,136)
+    if (v44 == 0) { //006d
+      set(f221)
+      move.obj(o0,92,136,1,f223)
+      goto(l132)
+    }
+    v222 = 4
+    set(f221)
+  }
+l132:
+  if (v44 == 30) { //0084
+    set(f48)
+    set(f47)
+    set(f221)
+    position(o0,92,136)
+  }
+  if (f47) { //0095
+    draw(o0)
+  }
+  show.pic()
+  sound(32,f238)
+  return()
+}
+if (f223) { //00a2
+  reset(f223)
+  start.motion(o0)
+}
+if (f33) { //00ac
+  set(f221)
+  if (v44 != 0) { //00b4
+    v222 = 4
+    v223 = 0
+  }
+}
+v39 = 0
+if (posn(o0,58,131,108,133)) { //00c5
+  v39 = 1
+}
+if (posn(o0,48,131,67,140)) { //00d2
+  v225 = 6
+  v39 = 2
+}
+if (f45 && v225 > 0) { //00e2
+  start.cycling(o2)
+  if (!f46) { //00ed
+    v225--
+  }
+  if (v225 == 0) { //00f6
+    set.cel(o2,0)
+    stop.cycling(o2)
+  }
+}
+if (f45 && v223 > 0) { //0102
+  if (!f46) { //010b
+    v223--
+  }
+  if (v223 == 0) { //0114
+    set(f221)
+  }
+}
+if (f221 && v222 == 0) { //011d
+  v222++
+  v223 = 0
+  v37 = 92
+  v38 = 109
+  v36 = 1
+  start.cycling(o1)
+  move.obj(o1,v37,v38,36,f221)
+}
+if (f221 && v222 == 1) { //013c
+  v222++
+  v223 = 0
+  set.loop(o1,2)
+  stop.cycling(o1)
+  reset(f221)
+  v223 = 1
+}
+if (f221 && v222 == 2) { //0154
+  v222++
+  v223 = 0
+  if (v224 == 0) { //0162
+    print("\"Good day to you, young man,\" greets the store keeper. \"What can I do for you?\"")
+    v224++
+    goto(l370)
+  }
+  print("The storekeeper asks \"Now, what can I do for you?\"")
+l370:
+  reset(f221)
+  v223 = 30
+}
+if (f221 && v222 == 3) { //0177
+  v222++
+  reset(f222)
+  v223 = 0
+  print("\"I've got some dusting to do,\" the shopkeeper says, turning around. \"Just let me know when you need something.\"")
+  set(f221)
+}
+if (f221 && v222 == 4) { //018b
+  v222++
+  v223 = 0
+  start.cycling(o1)
+  v38 = 109
+  random(56,92,v37)
+  v36 = 1
+  move.obj(o1,v37,v38,36,f221)
+}
+if (f221 && v222 == 5) { //01ab
+  v223 = 0
+  v222 = 4
+  reset(f221)
+  set.loop(o1,3)
+  start.cycling(o1)
+  random(2,3,v223)
+}
+if (f221 && v222 == 6) { //01c5
+  v222++
+  v223 = 0
+  v38 = 109
+  v226 = v40
+  random(56,92,v37)
+  v36 = 1
+  start.cycling(o1)
+  move.obj(o1,v37,v38,36,f221)
+  prevent.input()
+  program.control()
+}
+if (f221 && v222 == 7) { //01ea
+  v223 = 0
+  v222++
+  set.loop(o1,3)
+  set.cel(o1,0)
+  start.cycling(o1)
+  prevent.input()
+  program.control()
+  reset(f221)
+}
+if (v222 == 8) { //0204
+  current.cel(o1,v36)
+  if (v36 == 6) { //020e
+    set(f221)
+  }
+}
+if (f221 && v222 == 8) { //0217
+  v223 = 0
+  v222++
+  v38 = 109
+  start.cycling(o1)
+  v36 = 1
+  move.obj(o1,v226,v38,36,f221)
+  prevent.input()
+  program.control()
+}
+if (f221 && v222 == 9) { //0235
+  reset(f221)
+  print(v227)
+  set.loop(o1,2)
+  print("\"What else can I get for you?\" asks the amiable storekeeper.")
+  set(f222)
+  stop.cycling(o1)
+  v222 = 3
+  v223 = 10
+  accept.input()
+  player.control()
+}
+if (v221 != v63) { //0253
+  v221 = v63
+  if (v63 == 0) { //025e
+    if (has(i48)) { //0265
+      drop(i48)
+    }
+    get(i47)
+  }
+}
+if (fEnteredCommand) { //026f
+  if (said("dog", "last")) { //0275
+    print("Why, \"Ration\", of course!")
+  }
+  if ((said("examine") || said("examine", "area") || said("examine", "shop"))) { //0281
+    print("The store is full of general merchandise and supplies to meet the needs of the village. A friendly storekeeper bustles busily behind the counter.")
+  }
+  if ((said("examine", "goods") || said("examine", "bookcase"))) { //0299
+    print("The shelves are filled with all sorts of useful items. There are a few items of particular interest to you: leather pouches, salt, fish oil, and lard.")
+  }
+  if ((said("examine", "bandit") || said("examine", "shop", "bandit"))) { //02ad
+    print("The short, balding storekeeper seems to be an amiable fellow.")
+  }
+  if ((said("examine", "out", "glass") || said("examine", "out", "door") || said("examine", "out"))) { //02c3
+    print("Outside, you see the village and the ocean.")
+  }
+  if ((said("examine", "on", "deck") || said("examine", "deck"))) { //02e1
+    print("A brown-spotted dog lies on the floor.")
+  }
+  if (said("examine", "door")) { //02f7
+    print("The door is open fully to the sea breezes.")
+  }
+  if ((said("examine", "oven") || said("examine", "oven"))) { //0303
+    print("The woodstove is hard at work heating the little store. It is chilly here, so close to the ocean.")
+  }
+  if (said("pat", "dog")) { //0317
+    if (v39 != 2) { //0321
+      print("You need to be closer.")
+      goto(l837)
+    }
+    v225 = 5
+    if (!(obj.in.room(i3,vCurrentRoom))) { //0331
+      print("As you pet him, Kenny licks your hand and thumps his tail in appreciation.")
+      goto(l837)
+    }
+    get(i3)
+    vCurrentScore += 1
+    print("%m40 A small wad of dog fur collects in your hand, and you tuck it into your pocket for later use.")
+  }
+l837:
+  if ((said("capture", "fur") || said("capture", "dog", "fur") || said("capture", "fur", "dog"))) { //0345
+    if (!(obj.in.room(i3,vCurrentRoom))) { //0361
+      print("You already have some dog fur.")
+      goto(l901)
+    }
+    if (v39 != 2) { //036e
+      print("You need to be closer.")
+      goto(l901)
+    }
+    v225 = 6
+    get(i3)
+    vCurrentScore += 1
+    print("%m40 A small wad of dog fur collects in your hand, and you tuck it into your pocket for later use.")
+  }
+l901:
+  if (said("call", "dog")) { //0385
+    v225 = 6
+    print("You speak to the dog in a soothing voice, and his ears perk up. \"Go ahead and pet him,\" says the storekeeper. \"Kenny loves attention.\"")
+  }
+  if (said("examine", "dog")) { //0394
+    print("The dog lying on the floor is obviously a mutt. The name, \"Kenny\", is embossed on his leather collar.")
+  }
+  if ((said("hit", "dog") || said("drink", "dog"))) { //03a0
+    print("You must be kidding.")
+  }
+  if (said("capture", "dog")) { //03b4
+    print("Kenny belongs to the storekeeper.")
+  }
+  if (said("capture", "bandit")) { //03c0
+    print("He won't let you!")
+  }
+  if ((said("kill", "dog") || said("kill", "bandit"))) { //03cc
+    print("You're not that cruel!")
+  }
+  if (said("capture", "anyword")) { //03e0
+    print("This is a business, not a charity. You have to buy the things you want.")
+  }
+  if (said("jump")) { //03ec
+    print("How high? Are you a rabbit?")
+  }
+  if ((said("jump", "counter") || said("jump", "above", "counter"))) { //03f6
+    print("Don't jump the counter. The storekeeper would get mad.")
+  }
+  if (said("rob", "anyword")) { //040c
+    print("That is not a smart idea. The storekeeper is keeping an eye on you!")
+  }
+  if (said("buy")) { //0418
+    print("The storekeeper asks \"Now, what can I do for you?\"")
+  }
+  if (said("buy", "anyword")) { //0422
+    if (v39 != 1) { //042c
+      print("You need to move closer to the counter.")
+      goto(l1315)
+    }
+    if (v63 == 0) { //0439
+      print("You don't have any money.")
+      goto(l1315)
+    }
+    reset(fSaidAccepted)
+    if (said("buy", "grains of salt")) { //0447
+      if (!(obj.in.room(i13,vCurrentRoom))) { //0451
+        print("You already bought it. You don't need any more.")
+        goto(l1253)
+      }
+      get(i13)
+      vCurrentScore += 1
+    }
+    if (said("buy", "lard")) { //0463
+      if (!(obj.in.room(i32,vCurrentRoom))) { //046d
+        print("You already bought it. You don't need any more.")
+        goto(l1253)
+      }
+      get(i32)
+      vCurrentScore += 1
+    }
+    if ((said("buy", "fish", "fish oil") || said("buy", "fish oil") || said("buy", "fish oil"))) { //047f
+      if (!(obj.in.room(i22,vCurrentRoom))) { //0499
+        print("You already bought it. You don't need any more.")
+        goto(l1253)
+      }
+      get(i22)
+      vCurrentScore += 1
+    }
+    if ((said("buy", "pouch") || said("buy", "abominable", "pouch"))) { //04ab
+      if (!(obj.in.room(i19,vCurrentRoom))) { //04bf
+        print("You already bought it. You don't need any more.")
+        goto(l1253)
+      }
+      get(i19)
+      vCurrentScore += 1
+    }
+    if (fSaidAccepted) { //04d1
+      random(21,25,v227)
+      v63--
+      v223 = 0
+      v222 = 6
+      set(f221)
+    }
+l1253:
+    if (said("buy", "food")) { //04e5
+      print("\"Try the tavern across the street,\" the friendly storekeeper says.")
+    }
+    if (said("buy", "goods")) { //04f1
+      print("\"The store is full of supplies,\" the balding shopkeeper tells you. \"What would you like?\"")
+    }
+    if ((said("buy", "ale") || said("buy", "ale") || said("buy", "ale"))) { //04fd
+      print("\"Try the tavern across the street,\" the friendly storekeeper says.")
+    }
+    if (said("buy", "anyword")) { //0517
+      print("You have no use for %w2.")
+    }
+  }
+l1315:
+  if (said("call", "bandit")) { //0523
+    if (v39 != 1) { //052d
+      random(31,37,v36)
+      print(v36)
+      goto(l1347)
+    }
+    v222 = 0
+    set(f221)
+  }
+}
+l1347:
+if (fTriggerLine) { //0543
+  new.room(24)
+  goto(l1367)
+}
+if (v37 > 123) { //054e
+  new.room(24)
+}
+l1367:
+return()

@@ -1,4 +1,245 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(41)
+  load.view(67)
+  if (!f75 && !(v65 > 0) && !f130 && v111 != 11) { //0012
+    v111 = 10
+    load.sound(11)
+    load.view(14)
+    load.view(62)
+    set(f20)
+    animate.obj(o13)
+    set.view(o13,14)
+    position(o13,95,97)
+    draw(o13)
+    wander(o13)
+  }
+  if (v65 == vCurrentRoom) { //003c
+    add.to.pic(62,0,0,140,80,0,0)
+  }
+  if (vPrevRoom == 11 && f74) { //004b
+    get.posn(o0,v60,v61)
+    if (v61 > 125) { //0058
+      position(o0,150,128)
+    }
+  }
+  if (f75) { //0063
+    set.view(o0,67)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f20 && !f75) { //006f
+  if (!f22) { //0078
+    set(f22)
+    sound(11,f23)
+  }
+  if (f23) { //0084
+    reset(f22)
+    reset(f23)
+  }
+}
+if (!f20) { //008e
+  if (said("ANYWORD", "goat")) { //0095
+    print("There is no goat in the immediate area.")
+  }
+}
+if (f20 && !f75) { //00a1
+  if ((said("hello") || said("hello", "goat") || said("say", "hello") || said("say", "hello", "goat"))) { //00aa
+    print("You get no response from the goat.")
+  }
+  if (said("check", "goat")) { //00ca
+    print("The goat is wandering this way and that.")
+  }
+  if (said("speak", "goat")) { //00d6
+    print("The goat refuses to listen to your words.")
+  }
+  if (said("call", "goat")) { //00e2
+    print("The old goat refuses to listen to you.")
+  }
+  if (said("acquire", "goat")) { //00ee
+    if (f74) { //00f8
+      print("You can't carry a goat very far.")
+      goto(l261)
+    }
+    print("You cannot do that from outside the fence.")
+  }
+l261:
+  if (said("feed", "goat")) { //0105
+    print("What do you want to feed the old goat?")
+    set(fSaidAccepted)
+  }
+  if (!f67) { //0113
+    if (said("kill", "goat")) { //011a
+      print("You have no way to accomplish such a terrible deed.")
+    }
+  }
+  if (f67) { //0126
+    if (said("kill", "goat")) { //012c
+      if (!f74) { //0136
+        print("From here it will be difficult to do such a terrible  thing.")
+        goto(l349)
+      }
+      erase(o13)
+      set.view(o13,62)
+      draw(o13)
+      v98 = 0
+      step.size(o13,v98)
+      print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.")
+      drop(i1)
+      vCurrentScore -= 5
+      reset(f67)
+      set(f70)
+      v65 = vCurrentRoom
+    }
+  }
+l349:
+  if (said("pet", "goat")) { //015d
+    print("You can try, but be careful.")
+  }
+  if (said("get on", "goat")) { //0169
+    if (f74) { //0173
+      print("Are you kidding?  The goat would never let you!")
+      goto(l384)
+    }
+    print("You cannot do that from outside the fence.")
+  }
+l384:
+  if (said("capture", "goat")) { //0180
+    if (f74) { //018a
+      print("The goat will not let you catch him.")
+      goto(l407)
+    }
+    print("You cannot do that from outside the fence.")
+  }
+l407:
+  if (vWhichObjBorder == 2) { //0197
+    erase(o13)
+    reset(f20)
+    v111 = 11
+  }
+}
+if (v65 == vCurrentRoom) { //01a5
+  if (said("check", "goat")) { //01ac
+    print("Lying lifeless on the ground you see a useless dead  goat.")
+  }
+  if (said("acquire", "goat")) { //01b8
+    print("You do not want to carry around a dead goat.")
+  }
+}
+if (said("check", "fence")) { //01c4
+  if (f74) { //01ce
+    print("It is high enough to keep the old goat from jumping over it.")
+    goto(l475)
+  }
+  print("It is rather high.  Probably the only way to get in is through the gate.")
+}
+l475:
+if (said("look in", "fence")) { //01db
+  if (f20) { //01e5
+    print("You see a grey billy goat inside the pen.")
+    goto(l498)
+  }
+  print("This looks like an area in which to keep animals.")
+}
+l498:
+if (said("jump", "fence")) { //01f2
+  print("The fence is too high for you to jump over.")
+}
+if (said("ANYWORD", "gate")) { //01fe
+  print("There is no gate right here.")
+}
+if (said("climb", "fence")) { //020a
+  print("There should be a gate around here somewhere.")
+}
+distance(o0,o13,v70)
+if (f74 && f20) { //021a
+  if ((said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat"))) { //0222
+    if (f77) { //0254
+      if (v70 < 25) { //025a
+        print("Goats love carrots!  The old goat quickly devours yours.")
+        vCurrentScore -= 2
+        drop(i3)
+        reset(f77)
+        reset(f117)
+        goto(l625)
+      }
+      print("You are too far away.")
+l625:
+      goto(l632)
+    }
+    print("You do not have the carrot.")
+    set(fSaidAccepted)
+  }
+}
+l632:
+if (f74 && f20) { //0278
+  if (f77 && !f75 && !f79) { //0280
+    if ((said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot"))) { //028c
+      if (v70 < 50) { //02a8
+        if (!f151) { //02af
+          print("When you tempt the old goat with the carrot, he starts to follow you.")
+          set(f75)
+          erase(o13)
+          set.view(o0,67)
+          vCurrentScore += 5
+        }
+        if (f151) { //02c2
+          print("The old goat shows some interest in the carrot.")
+        }
+        goto(l719)
+      }
+      print("You are too far away.")
+    }
+  }
+}
+l719:
+if (!f74 && f20) { //02cf
+  if (!f77) { //02d8
+    if (said("ANYWORD", "carrot")) { //02df
+      print("You do not have the carrot.")
+    }
+  }
+  if (f77 && !f79) { //02eb
+    if ((said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat"))) { //02f4
+      if (v70 < 25) { //0326
+        print("Goats love carrots!  The old goat quickly devours yours.")
+        vCurrentScore -= 2
+        drop(i3)
+        reset(f77)
+        reset(f117)
+        goto(l829)
+      }
+      print("You are too far away.")
+    }
+l829:
+    if ((said("show", "carrot") || said("show", "goat", "carrot") || said("show", "carrot", "goat"))) { //033d
+      if (v70 < 50) { //0359
+        print("The old goat shows some interest in the carrot.")
+        goto(l871)
+      }
+      print("You are too far away.")
+    }
+  }
+}
+l871:
+if (f79) { //0367
+  if (f77 && said("ANYWORD", "carrot")) { //036d
+    print("Since you are invisible, everything you own is invisible. The goat cannot see the carrot.")
+  }
+}
+if (vWhichEgoBorder == 1) { //037b
+  new.room(23)
+}
+if (vWhichEgoBorder == 2) { //0384
+  new.room(11)
+}
+if (vWhichEgoBorder == 4) { //038d
+  new.room(9)
+}
+if (vWhichEgoBorder == 3) { //0396
+  new.room(7)
+}
+return()

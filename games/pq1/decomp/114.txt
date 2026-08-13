@@ -1,6 +1,54 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
   v56 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 6) { //0013
+    load.view(87)
+    add.to.pic(87,0,0,34,115,4,4)
+    discard.view(87)
+  }
+  show.pic()
+  reset(f14)
+  status.line.off()
+  return()
+}
+if (!fEnteredCommand) { //002b
+  goto(l284)
+}
+if (vPrevRoom == 8 && (said("call") || said("call", "number"))) { //0035
+  print("Your partner will take care of the details back at HQ.")
+}
+if ((said("examine", "number") || said("anyword", "number"))) { //004a
+  print("The serial number on the gun is SW9764912.")
+}
+if ((said("examine") || said("examine", "automatic"))) { //005e
+  print("It's a Smith and Weston .45-caliber, automatic handgun.")
+}
+if (vPrevRoom == 6) { //0070
+  if (said("examine", "label")) { //0077
+    print("The evidence label bears a box marked \"Fingerprints,\" with the initials of Det. Frank Williams, of the Lytton PD Crime Lab.")
+  }
+}
+if ((said("administer", "automatic", "rol") || said("dont move", "examine", "automatic") || said("examine", "accident", "rol") || said("examine", "away", "rol") || said("examine", "box", "rol") || said("administer", "automatic", "art", "rol") || said("administer", "art", "automatic", "rol") || said("drop", "automatic", "rol") || said("drop", "art", "automatic", "rol") || said("drop", "automatic", "rol") || said("c", "automatic", "rol") || said("drop", "automatic", "rol"))) { //0083
+  if (vPrevRoom == 8) { //00ef
+    print("You place the gun back in the car to be impounded by Officer Jack Cobb along with the car.")
+  }
+  if (vPrevRoom == 32) { //00f8
+    print("\"Hey, Jack,\" you shout, \"book this gun!!\"")
+  }
+  if (vPrevRoom == 6) { //0101
+    print("After careful examination of the weapon, you return it to evidence.")
+  }
+  v141 = 4
+}
+if (vPrevRoom == 8 && said("anyword", "automatic")) { //010d
+  print("Your partner will take care of the details back at HQ.")
+}
+l284:
+if (f138) { //011c
+  reset(f138)
+  new.room(vPrevRoom)
+}
+return()

@@ -1,4 +1,258 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(171)
+  add.to.pic(171,0,0,62,120,0,0)
+  add.to.pic(171,0,0,93,120,0,0)
+  animate.obj(o1)
+  ignore.objs(o1)
+  set.view(o1,171)
+  set.loop(o1,1)
+  set.cel(o1,0)
+  set.priority(o1,11)
+  position(o1,62,93)
+  draw(o1)
+  animate.obj(o2)
+  ignore.objs(o2)
+  position(o2,93,93)
+  set.view(o2,171)
+  set.loop(o2,1)
+  set.cel(o2,1)
+  set.priority(o2,11)
+  draw(o2)
+  if (!f82 && !f110 && f79) { //004c
+    set(f202)
+    set(f203)
+    set(f52)
+    load.view(98)
+    load.view(172)
+    load.sound(23)
+    animate.obj(o3)
+    set.view(o3,98)
+    position(o3,70,120)
+    set.loop(o3,2)
+    draw(o3)
+    stop.cycling(o3)
+    animate.obj(o4)
+    set.view(o4,172)
+    set.loop(o4,0)
+    position(o4,76,113)
+    draw(o4)
+    stop.cycling(o4)
+  }
+  position(o0,76,167)
+  draw(o0)
+  show.pic()
+  if (f83) { //008b
+    reset(f83)
+    print("\"So... shall we try again?\"")
+  }
+  return()
+}
+reset(f200)
+if (f202 && posn(o0,61,114,94,130)) { //0098
+  set(f200)
+  set(f69)
+}
+if (!fEnteredCommand) { //00a8
+  goto(l572)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "chapel"))) { //00b2
+  if (!f202) { //00c8
+    print("You are in a quickie marriage parlor. A flashing neon sign on the rear wall asks: \"Why wait? Marry the girl of your dreams, today! You provide the girl, we'll do the rest for only $100!!\"")
+    goto(l214)
+  }
+  print("Fawn is waiting for you at the altar. Go for it, Larry!")
+}
+l214:
+if ((said("examine", "glass") || said("examine", "heart") || said("examine", "art") || said("examine", "brick") || said("examine", "out", "glass"))) { //00d6
+  print("You can't see through the \"stained glass\" windows. They're fake, like everything else about this place.")
+}
+if ((said("examine", "altar") || said("examine", "bench"))) { //00fe
+  print("Seems like everything here is covered in plastic.")
+}
+if (said("examine", "ceiling")) { //0112
+  print("You wonder why Michelangelo didn't use dropped fluorescents on his big ceiling job.")
+}
+if ((said("rest", "bench") || said("rest") || said("rest", "down") || said("rest", "about", "bench") || said("rest", "on", "bench"))) { //011e
+  print("The plastic covers are so slick, you'd probably slide right off.")
+}
+if (said("examine", "burn")) { //0146
+  print("You can barely tell they're made from pressed sawdust.")
+}
+if (said("catch", "burn")) { //0152
+  print("Who'd want them?")
+}
+if ((said("blow", "out", "burn") || said("blow", "burn", "out") || said("add", "burn", "out") || said("add", "out", "burn"))) { //015e
+  print("It's not your birthday!")
+}
+if (f203 && said("examine", "bouncer")) { //0186
+  print("He looks a lot like his brother, the bad comedian in the Lizard Lounge.")
+}
+if (f203 && said("ask", "bouncer")) { //0194
+  print("\"Make up your mind, son. Time is money!\"")
+  print("What an old romantic!")
+}
+if (f202 && said("ask", "blond")) { //01a4
+  print("\"Don't stand around talking, Larry,\" says Fawn. \"Let's get married!!\"")
+}
+if (f202 && said("examine", "blond")) { //01b2
+  print("Fawn is waiting for you at the altar. Go for it, Larry!")
+}
+if (!(v65 > 0) && said("embrace", "blond")) { //01c0
+  print("\"Not now; that can wait,\" Fawn says with a smile. \"I'll meet you at the Casino Hotel's honeymoon suite, and give you a lot more than kisses, my big, strong, handsome sweetheart!!\"")
+}
+if (!(v65 > 0) && (said("married", "blond") || said("married") || said("ask", "vows") || said("add", "bucks", "bouncer") || said("ask", "bouncer", "married", "about") || said("married", "about") || said("add", "bouncer") || said("buy", "rol") || said("catch", "married") || said("catch", "married", "blond") || said("ask", "bouncer"))) { //01d0
+  if (!f202) { //0222
+    print("Perhaps you should find a mate, mate!")
+    goto(l572)
+  }
+  if (!f200) { //022e
+    print("It's customary to position yourself to the bride's right.")
+    goto(l572)
+  }
+  set(f75)
+}
+l572:
+if (f75) { //023c
+  reset(f75)
+  v65++
+  v56 = 1
+  if (v65 == 1) { //0249
+    ignore.objs(o0)
+    set(f85)
+    prevent.input()
+    if (v38 == 80) { //0255
+      v65 = 2
+      goto(l619)
+    }
+    v32 = 80
+    move.obj(o0,v32,v39,56,f75)
+  }
+l619:
+  if (v65 == 2) { //026b
+    prevent.input()
+    move.obj(o0,80,120,1,f75)
+  }
+  if (v65 == 3) { //0279
+    prevent.input()
+    set.loop(o3,3)
+    stop.update(o0)
+    set.loop(o0,3)
+    force.update(o0)
+    print("The minister intones in his basso voice...")
+    print("\"Dearly beloved, we are gathered together today in the sight of, er, ah, um... each other, to enter these two people into the eternal bonds of marriage.\"")
+    start.cycling(o4)
+    v67 = 3
+  }
+  if (v65 == 4) { //0294
+    print("\"But before we really get rollin', I'd like to say a few words.\n\nMany's the marriage that I've performed here, in this little chapel, wearing this cheap suit, before those shiny plastic-covered pews, with these electric candles, looking at those genuine plexiglas stained-glass windows, for these measly few bucks...\"")
+    v67 = 3
+  }
+  if (v65 == 5) { //02a0
+    print("(He pauses for another nip from his pocket flask.)")
+    v67 = 3
+  }
+  if (v65 == 6) { //02ac
+    print("\"Where was I?\" he hiccups.")
+    print("\"Digressing,\" you answer.")
+    v67 = 3
+  }
+  if (v65 == 7) { //02ba
+    print("\"Oh, well, have you got a ring?\" he asks.")
+    v67 = 3
+  }
+  if (v65 == 8) { //02c6
+    print("\"Yep,\" you reply. \"She's wearing it.\"")
+    print("\"Good enough for me! Have you got a hundred bucks?\"")
+    if (v90 < 100) { //02d1
+      v65 = 9
+      goto(l737)
+    }
+    v65 = 101
+  }
+l737:
+  if (v65 == 9) { //02e1
+    print("\"Not me,\" you reply. \"I thought this was a temple of love!\"")
+    print("\"Sorry, buddy, you two are SOL until you can come back here with 100 cold, hard ones!\" he says indignantly, as he pushes between you and heads for the door.")
+    ignore.objs(o4)
+    reposition.to(o4,76,121)
+    set.loop(o4,1)
+    move.obj(o4,76,167,2,f75)
+    v66 = 12
+  }
+  if (v65 == 10) { //02fe
+    print("Well, Larry, it looks like you're going to have to leave your new bride waiting at the altar, while you generate a little positive cash flow!")
+    set.loop(o3,2)
+    start.update(o0)
+    move.obj(o0,76,167,1,f75)
+    v66 = 12
+  }
+  if (v65 == 11) { //0315
+    erase(o4)
+    reset(f203)
+    print("As you leave, she says, \"Hurry back, Larry, I don't know how long I can wait before I have you!\"")
+    print("\"By the way, Larry,\" she asks. \"What does SOL stand for?\"")
+    print("\"Why, Sierra On-Line, I presume!\" you respond.")
+    print("(Drum fill)")
+  }
+  if (v65 == 12) { //0328
+    print("\"Wait here, Fawn baby! I'll be back in a flash!!\"")
+    erase(o0)
+    set(f83)
+    reset(f85)
+    accept.input()
+    v76 = 33
+  }
+  if (v65 == 101) { //033b
+    print("\"Of course,\" you reply, forking over your dough.")
+    print("\"Ok, close enough. I now pronounce you man and wife, till death do you part, or until you get tired of each other, per the currently acceptable social standards!\"")
+    v90 -= 100
+    set(f110)
+    ignore.objs(o4)
+    set.loop(o4,1)
+    reposition.to(o4,76,121)
+    start.cycling(o4)
+    move.obj(o4,76,167,2,f75)
+    v66 = 12
+  }
+  if (v65 == 102) { //035f
+    print("\"You may kiss the bride,\" he says, scurrying out the door to refill his flask.")
+  }
+  if (v65 == 103) { //0368
+    erase(o4)
+    print("\"Not now; that can wait,\" Fawn says with a smile. \"I'll meet you at the Casino Hotel's honeymoon suite, and give you a lot more than kisses, my big, strong, handsome sweetheart!!\"")
+    start.update(o3)
+    start.cycling(o3)
+    move.obj(o3,76,167,2,f75)
+    v66 = 12
+  }
+  if (v65 == 104) { //0380
+    print("\"Hey!\" you shout, \"Wait for me!!\"")
+    start.update(o0)
+    start.motion(o0)
+    reset(f85)
+    observe.objs(o0)
+  }
+  if (v65 == 105) { //0391
+    erase(o3)
+    set(f201)
+    vCurrentScore += 12
+    reset(f202)
+    stop.sound()
+    set(f82)
+    v65 = 0
+    accept.input()
+  }
+}
+if (f202 && f52) { //03a8
+  sound(23,f52)
+}
+if (vWhichEgoBorder == 3) { //03b3
+  v76 = 33
+  if (f201) { //03bd
+    print("Somehow this entire ceremony was less than you expected. The sacred bonds of marriage certainly get tied loosely in this joint!")
+  }
+}
+return()

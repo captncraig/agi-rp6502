@@ -1,4 +1,143 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(71)
+  load.sound(38)
+  load.view(36)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  add.to.pic(36,0,0,10,166,0,0)
+  animate.obj(o5)
+  set.view(o5,71)
+  set.loop(o5,4)
+  set.cel(o5,0)
+  ignore.objs(o5)
+  position(o5,128,120)
+  draw(o5)
+  v209 = 3
+  cycle.time(o5,v209)
+  add.to.pic(71,0,4,110,114,0,1)
+  if (!f56) { //003d
+    animate.obj(o4)
+    set.view(o4,71)
+    set.loop(o4,0)
+    set.cel(o4,7)
+    position(o4,117,129)
+    draw(o4)
+    stop.cycling(o4)
+    animate.obj(o6)
+    set.view(o6,71)
+    set.loop(o6,3)
+    set.cel(o6,0)
+    ignore.objs(o6)
+    position(o6,122,129)
+    draw(o6)
+    v209 = 3
+    cycle.time(o6,v209)
+    goto(l123)
+  }
+  add.to.pic(71,0,3,111,115,0,0)
+l123:
+  if (f35) { //007b
+    set(f100)
+    position(o13,29,121)
+  }
+  v34 = 14
+  v35 = 150
+  v37 = 4
+  position(o0,28,130)
+  draw(o0)
+  return()
+}
+if (f42) { //0097
+  call(93)
+}
+if (!f56 && !f42) { //009f
+  distance(o0,o4,v201)
+  get.posn(o0,v212,v213)
+  if (v201 < 20 && v213 < 139) { //00b1
+    if ((!f220 || v31 == 19)) { //00bb
+      set(f220)
+      if (v31 == 19) { //00c9
+        load.logic(93)
+        set(f42)
+        goto(l289)
+      }
+      set.loop(o4,0)
+      set.cel(o4,2)
+      reposition.to(o4,115,129)
+      force.update(o4)
+      erase(o6)
+      stop.cycling(o4)
+      animate.obj(o15)
+      load.view(39)
+      load.view(49)
+      set.view(o15,39)
+      set.loop(o15,0)
+      set.cel(o15,0)
+      position(o15,67,111)
+      set.priority(o15,14)
+      draw(o15)
+      stop.update(o15)
+      set.text.attribute(0,15)
+      display(8,19,"Boy, am I")
+      display(9,19,"hungry for")
+      display(10,19,"   pie!")
+      set(f117)
+      stop.motion(o0)
+      stop.cycling(o0)
+      v113 = 5
+      vTimeSeconds = 0
+      sound(38,f103)
+      set(f107)
+    }
+  }
+}
+l289:
+if (f107 && f105) { //0121
+  v113--
+}
+if (v113 == 1) { //012b
+  v113 = 0
+  clear.text.rect(8,19,10,29,15)
+  erase(o15)
+  set.cel(o15,1)
+  position(o15,77,105)
+  draw(o15)
+  stop.update(o15)
+  animate.obj(o16)
+  ignore.horizon(o16)
+  set.view(o16,49)
+  set.loop(o16,1)
+  position(o16,84,82)
+  set.priority(o16,15)
+  draw(o16)
+  stop.update(o16)
+  v114 = 6
+}
+if (f107 && f105) { //0160
+  v114--
+}
+if (v114 == 1) { //016a
+  v114 = 0
+  reset(f107)
+  reposition.to(o4,117,129)
+  set.loop(o4,0)
+  set.cel(o4,7)
+  draw(o6)
+  erase(o16)
+  erase(o15)
+  reset(f117)
+}
+if (f120 && !f121) { //0188
+  set(f121)
+  set(f117)
+  move.obj(o0,28,130,1,f127)
+}
+if (f127) { //019b
+  reset(f127)
+  set(fTriggerLine)
+}
+if (fTriggerLine) { //01a5
+  new.room(26)
+}
+return()

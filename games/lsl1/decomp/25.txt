@@ -1,4 +1,345 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(89)
+  set(f48)
+  animate.obj(o3)
+  set.view(o3,89)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  set.priority(o3,4)
+  position(o3,56,93)
+  stop.cycling(o3)
+  animate.obj(o4)
+  set.view(o4,89)
+  set.loop(o4,1)
+  set.cel(o4,0)
+  set.priority(o4,5)
+  position(o4,62,49)
+  stop.cycling(o4)
+  cycle.time(o4,v86)
+  if (!f66) { //003f
+    set.cel(o3,2)
+    v203 = 4
+    goto(l90)
+  }
+  set.cel(o3,0)
+  draw(o4)
+  random(6,19,v202)
+  reset(f206)
+l90:
+  draw(o3)
+  v207 = 255
+  stop.update(o3)
+  show.pic()
+  return()
+}
+set(f202)
+set(f69)
+if (!fEnteredCommand) { //0067
+  goto(l1690)
+}
+if ((said("buy", "bite") || said("buy", "shot") || said("buy", "champagne") || said("buy", "booze") || said("buy", "blond", "bite"))) { //0071
+  print("Funny, this is a dry club.")
+}
+if ((said("ask", "bouncer") || said("ask", "bouncer"))) { //0099
+  print("They seem to be staring at something they all want.")
+}
+if ((said("examine", "blond", "rol") || said("establish eye contact", "rol") || said("look in", "blond", "rol"))) { //00ad
+  v204++
+  if (v204 == 1) { //00cb
+    if (!f95) { //00d2
+      set(f95)
+      vCurrentScore += 1
+    }
+    print("What a knock-out! She has bright blue eyes, and a dazzling smile. Your eyes roam her body, and what you see, you like. She's sensational!!")
+    print("Larry, this MUST be love!")
+  }
+  if (v204 == 2) { //00e2
+    print("Those beautiful eyes tell you this doll requires more than your usual smooth talk.")
+  }
+  if (v204 > 2) { //00eb
+    print("\"Please,\" she says coyly, \"stop staring there.\"")
+    v207 = 1
+  }
+}
+if ((said("get up") || said("get up", "from", "bench") || said("catch", "off", "bench") || said("done", "examine", "blond") || said("examine", "i'm") || said("examine", "away") || said("examine", "away", "from", "blond") || said("board", "bench", "rol") || said("board") || said("board", "desk", "rol") || said("get up", "up", "rol"))) { //00f7
+  set(f124)
+  set(f200)
+  set(f67)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "desk") || said("examine", "disco"))) { //0151
+  print("The disco is filled with remarkably similar guys, all looking for girls.")
+}
+if ((said("examine", "dance", "curb") || said("examine", "curb"))) { //016f
+  print("The dance floor is lit from below with brightly colored lights. It is presently unused.")
+}
+if ((said("examine", "bouncer") || said("examine", "bouncer"))) { //0185
+  if (f70) { //0197
+    print("Perhaps they're waiting for Fawn to return.")
+    goto(l420)
+  }
+  print("Evidently every guy here has been turned down by the only girl in the place. Her beauty has them frozen in their tracks.")
+}
+l420:
+if (said("examine", "disc jockey")) { //01a4
+  print("There isn't one. This place is run by computer. (Besides, at this time of night DJ should be home with Chris.)")
+}
+if (said("use", "breath spray")) { //01b0
+  reset(fSaidAccepted)
+  v207 = 1
+  random(6,19,v202)
+  reset(f206)
+}
+if ((said("ask", "blond") || said("ask", "anyword", "blond"))) { //01c5
+  v100++
+  if (v100 == 1) { //01db
+    if (!f96) { //01e2
+      set(f96)
+      vCurrentScore += 1
+    }
+    print("\"Hi ya, Baby. What say you and me get it on?\"")
+    print("\"Get lost, creep.\"")
+    v207 = 2
+  }
+  if (v100 == 2) { //01f5
+    print("\"Hey, sweetheart. What's your sign?\" you ask her.")
+    print("\"Octagonal,\" she replies. \"Like in 'STOP!'\"")
+    v207 = 2
+  }
+  if (v100 == 3) { //0203
+    print("\"My name is Larry,\" you offer. \"Larry Laffer.\"")
+    print("\"Say, Larry,\" she chuckles, glancing downward, \"is that a pez dispenser in your pocket, or are you just lonely?\"")
+  }
+  if (v100 == 4) { //020e
+    print("\"What's your name, beautiful?\" you ask.")
+    print("\"Fawn,\" she replies.")
+    print("Somehow you knew that.")
+    v207 = 1
+  }
+  if (v100 > 4) { //021e
+    if (f97) { //0225
+      print("\"So, how about it, Larry?\" Fawn says in her petite voice. \"May I have a measly hundred bucks, or not?\"")
+      goto(l573)
+    }
+    print("\"I'd really like to get to know you better,\" you say. \"What kind of girl are you, anyway?\"")
+    print("She smiles and says, \"I'm just a girl who can't say no...")
+    print("(All right, Larry; this is what you've been waiting for!)")
+    print("\"...to nice presents,\" she concludes.")
+    print("(Oops.)")
+    v207 = 1
+  }
+}
+l573:
+if (said("come", "use", "i'm")) { //023d
+  print("\"Perhaps we shall,\" she replies, \"if you play your cards right!\"")
+  v207 = 1
+}
+if ((said("ask", "blond", "love") || said("love", "you") || said("catch", "blond", "fingers"))) { //024e
+  print("\"How nice,\" she says, \"I love me, too.\"")
+  v207 = 1
+}
+if ((said("examine", "lips") || said("examine", "blond", "lips"))) { //026f
+  print("Her lips are moist and inviting, but remember that you also thought that about old Mrs. Bradley, your homeroom teacher!")
+}
+if ((said("ask", "name") || said("ask", "blond", "name") || said("ask", "name", "blond"))) { //0285
+  print("\"Fawn,\" she replies.")
+  print("Somehow you knew that.")
+  v207 = 1
+}
+if ((said("i'm") || said("leisure suit", "i'm"))) { //02a8
+  print("\"So what?\"")
+}
+if ((said("examine", "blond", "hair") || said("examine", "hair") || said("aim", "hair") || said("caress", "hair") || said("caress", "hair") || said("caress", "blond", "hair"))) { //02ba
+  print("Her hair is beautiful, not thinning like some people we know.")
+  v207 = 1
+}
+if ((said("lips") || said("lips", "blond") || said("carry", "fingers") || said("catch", "blond", "fingers") || said("aim", "blond") || said("aim", "blond") || said("ask", "dance"))) { //02ed
+  print("\"You seem like a sweet, old-fashioned kind of guy,\" she says with a beautiful smile.")
+  v207 = 1
+}
+if ((said("examine", "eyes") || said("look in", "eyes") || said("flirt", "use", "blond") || said("flirt", "blond") || said("add", "blond", "embrace") || said("embrace", "blond"))) { //0322
+  v207 = 1
+}
+if ((said("dance") || said("dance", "blond") || said("dance", "i'm") || said("dance", "use", "i'm") || said("dance", "use", "blond") || said("you", "dance", "blond") || said("you", "dance", "i'm") || said("you", "enjoy", "dance", "rol") || said("you", "dance", "use", "i'm") || said("you", "dance", "use", "blond") || said("enjoy", "dance") || said("enjoy", "dance", "use", "i'm") || said("you", "enjoy", "dance") || said("you", "enjoy", "dance", "use", "i'm") || said("you", "enjoy", "dance", "use", "blond") || said("ask", "dance", "blond") || said("ask", "blond", "dance") || said("ask", "blond", "dance", "use", "i'm") || said("ask", "blond", "dance", "i'm") || said("begin", "dance"))) { //0353
+  if (f74) { //0403
+    print("\"Not again. That trip through the ceiling gave me a headache!\"")
+    goto(l1060)
+  }
+  if (v83 > 0) { //040e
+    print("\"What! At a time like this?!\"")
+    v83 = 17
+    goto(l1060)
+  }
+  set(f122)
+  set(f75)
+  v65 = 0
+}
+l1060:
+if ((said("add", "blond", "flower") || said("add", "flower") || said("add", "flower", "blond"))) { //0424
+  if (!(has(i9))) { //0440
+    set(f68)
+    goto(l1112)
+  }
+  vCurrentScore += 5
+  print("%m52roses.\"")
+  set(f71)
+  drop(i9)
+  v207 = 1
+}
+l1112:
+if ((said("add", "blond", "box of candy") || said("add", "box of candy") || said("add", "box of candy", "blond"))) { //0458
+  if (!(has(i12))) { //0474
+    set(f68)
+    goto(l1164)
+  }
+  vCurrentScore += 5
+  print("%m52candy.\"")
+  set(f72)
+  drop(i12)
+  v207 = 1
+}
+l1164:
+if ((said("add", "blond", "diamond ring") || said("add", "diamond ring") || said("add", "diamond ring", "blond"))) { //048c
+  if (!(has(i6))) { //04a8
+    set(f68)
+    goto(l1216)
+  }
+  vCurrentScore += 5
+  print("%m52diamonds.\"")
+  set(f73)
+  drop(i6)
+  v207 = 1
+}
+l1216:
+if ((said("add", "blond", "bucks") || said("add", "bucks") || said("buy", "blond", "bucks") || said("buy", "bucks") || said("buy", "blond", "one", "bucks") || said("buy", "blond") || said("add", "one", "bucks", "blond") || said("add", "blond", "one", "bucks") || said("add", "bucks", "blond"))) { //04c0
+  if (!f97) { //050e
+    print("\"Well, really. I'm not that kind of girl!!\"")
+    v207 = 2
+    goto(l1356)
+  }
+  if (v90 < 100) { //051d
+    print("\"Uh, gosh, Fawn,\" you mumble. \"I've only got %v90 bucks on me!\"")
+    print("\"I'm sorry, but I'll need at least a hundred dollars,\" she says with a coy smile.")
+    print("It appears Fawn has caught you a \"little short,\" Larry. Better try the casino, and hope for a run of good luck!")
+    print("You fervently hope she'll wait for your return.")
+    print("Conveniently, she offers, \"I'll wait right here until you return.\"")
+    print("Gee, Larry, this is working out swell.")
+    v83 = 0
+    goto(l1356)
+  }
+  vCurrentScore += 7
+  print("%m52money.\"")
+  print("\"Thanks, Larry. You won't regret this. Meet me at the Marriage Chapel near the Casino in a few minutes. I'll get us a room. Hurry, Larry, I can hardly wait!\"")
+  v207 = 1
+  v83 = 0
+  v90 -= 100
+  set(f125)
+  set(f79)
+  set(f200)
+}
+l1356:
+if ((said("blond", "married", "i'm") || said("married", "i'm") || said("married", "blond") || said("ask", "blond", "catch", "married") || said("ask", "blond", "married", "i'm") || said("ask", "about", "about") || said("married", "blond"))) { //054c
+  print("I AM the marrying type, but you must convince me.")
+  v207 = 1
+}
+if ((said("aim", "blond", "rol") || said("bite", "blond", "rol") || said("copulate", "blond", "rol") || said("embrace", "blond", "rol") || said("catch", "blond") || said("caress", "blond") || said("bite", "blond") || said("aim", "blond", "below", "desk") || said("caress", "below", "desk") || said("catch", "ankle") || said("aim", "ankle") || said("caress", "blond", "ankle") || said("caress", "blond", "ankle", "below", "desk") || said("catch", "blond", "ankle") || said("aim", "boob", "rol"))) { //058d
+  print("SLAP!")
+  v207 = 2
+}
+if ((said("naked", "blond") || said("ask", "blond", "about", "copulate") || said("about", "copulate", "use", "i'm") || said("copulate", "rol") || said("make", "blond") || said("anyword", "clit", "rol") || said("bite", "blond", "blond", "holler") || said("anyword", "boob", "rol") || said("play", "use", "blond", "boob") || said("catch", "boob") || said("caress", "boob"))) { //060c
+  print("SLAP!")
+  print("SLAP!\n\nSLAP!!")
+  v207 = 2
+}
+if ((said("examine", "blond", "boob") || said("examine", "boob", "rol") || said("examine", "body") || said("examine") || said("examine", "boob"))) { //066f
+  print("\"Please,\" she says coyly, \"stop staring there.\"")
+  v207 = 1
+}
+l1690:
+v202--
+if (v202 == 1) { //069c
+  toggle(f206)
+  if (f206) { //06a5
+    start.cycling(o4)
+    random(6,18,v202)
+    goto(l1725)
+  }
+  stop.cycling(o4)
+  set.cel(o4,0)
+  random(11,33,v202)
+}
+l1725:
+if (f44) { //06bd
+  v203--
+  if (v203 == 1) { //06c5
+    print("\"Bad breath's one thing, Larry, but you could knock a buzzard off a manure truck!!\"")
+  }
+  v206--
+  if (v206 == 1) { //06d0
+    v207 = 0
+  }
+  if (v207 != 255) { //06da
+    if (v207 == 0) { //06e2
+      v202 = 2
+    }
+    if (v207 == 1) { //06ec
+      v206 = 5
+      set(f206)
+      v202 = 22
+      start.cycling(o4)
+    }
+    if (v207 == 2) { //06fd
+      v206 = 7
+      reset(f206)
+      v202 = 0
+      stop.cycling(o4)
+      set.cel(o4,0)
+    }
+    set.cel(o3,v207)
+    force.update(o3)
+    v207 = 255
+  }
+}
+if (f71 && f72 && f73 && f74) { //0719
+  if (!f97) { //0725
+    set(f97)
+    print("\"Oooh, you're so sweet. I just LOVE you! Larry, I want you to make wild, passionate love to me!\"")
+    print("(All right, Larry. At last, you're gonna get lucky!!)")
+    print("She continues, \"But first, we must get married. I could never make love to a man not my husband. If you would loan me a hundred dollars, I'd rent the Honeymoon Suite at the Casino Hotel for us. Then, after we're married, we'll celebrate there.\"")
+    v83 = 30
+  }
+}
+if (f44) { //0737
+  v83--
+  if (v83 == 15) { //073f
+    print("\"Either give me some money, or I'll leave without you.\"")
+  }
+  if (v83 == 1) { //0748
+    print("\"That's it! See ya later, chump!\"")
+    set(f200)
+    set(f125)
+  }
+}
+if (f75) { //0755
+  reset(f75)
+  v65++
+  if (v65 == 1) { //075f
+    v207 = 1
+    print("%m52dancing. I thought you'd never ask! Come on!!\"")
+    v67 = 6
+  }
+  if (v65 == 2) { //076e
+    set(f200)
+  }
+}
+if (vWhichEgoBorder == 3) { //0777
+  v76 = 23
+}
+if (f200) { //0781
+  reset(f48)
+  v76 = 24
+}
+return()

@@ -1,3 +1,25 @@
-if (isSet(f3)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+if (fTriggerLine && !f244) { //0002
+  print("This is private property. You have no business here.")
+  set(f34)
+  set(f244)
+}
+if (!fTriggerLine && f244) { //0011
+  reset(f244)
+}
+if ((said("enter", "up", "stair") || said("enter", "stair"))) { //001c
+  print("Don't bother. You'd just be spinning your wheels!")
+}
+if (v143 < 144) { //0032
+  if (posn(o0,145,112,153,120)) { //0039
+    if (said("knock", "d")) { //0043
+      print("There is no answer.")
+    }
+    if (said("o", "d")) { //004f
+      print("The door is locked.")
+    }
+  }
+}
+if ((said("examine") || said("examine", "accident"))) { //005b
+  print("Someday you'd like to own a home in a neighboorhood like this.")
+}
+return()

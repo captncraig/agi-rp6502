@@ -1,7 +1,12 @@
 v152 = 0
+l5:
 v64 = 164
 call(81)
 v152++
-if (
-!!!
-&{%!e(string=unknown condition: 0x03)}
+if (v152 < 5) { //000c
+  v144 += 17
+  v205++
+  goto(l5)
+}
+v235++
+return()

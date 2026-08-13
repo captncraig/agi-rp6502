@@ -1,4 +1,77 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f64)
+  v57 = 150
+  v58 = 126
+  set.horizon(1)
+  load.logic(103)
+  v34 = 166
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0027
+    if (vPrevRoom == 58) { //002d
+      position(o0,0,49)
+    }
+  }
+  if (f47) { //0038
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0044
+  goto(l226)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine", "up") || said("examine") || said("examine", "area") || said("examine", "down"))) { //004e
+  print("You carefully make your way down the eastern side of these mountains. The path travels along the top of a narrow ridge. Looking back, you see the snowy peaks through which you so recently journeyed. Whew! You wipe your brow as you feel the worst is now behind you.")
+}
+if (said("examine", "path")) { //007a
+  print("You are trekking along a steep ridgetop on a treacherous path. One wrong step could mean instant death. Be careful!")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //0086
+  print("You see numerous evergreen trees and bushes. The forest is very tranquil.")
+}
+if (said("examine", "deck")) { //009a
+  print("The ground is covered with a crunchy carpet of pine needles.")
+}
+if (said("examine", "sky")) { //00a6
+  print("Looking back, you see snow-capped peaks thrusting their way upward toward an azure sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //00b2
+  print("There are no climbable trees here.")
+}
+if ((said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00c8
+  print("You see no flowers around here.")
+}
+l226:
+v39 = 0
+if (fTriggerLine) { //00e5
+  v33 = 6
+  if ((posn(o0,0,37,44,51) || posn(o0,39,51,108,64) || posn(o0,108,61,159,71))) { //00ee
+    v39 = 1
+    set.priority(o0,4)
+    goto(l300)
+  }
+  set.priority(o0,7)
+  if (posn(o0,90,79,130,94)) { //0112
+    v39 = 2
+    v40 = 90
+    reposition.to(o0,v40,v41)
+    goto(l300)
+  }
+  v39 = 3
+}
+l300:
+call(103)
+if (vWhichEgoBorder == 3) { //012e
+  new.room(61)
+}
+if (vWhichEgoBorder == 4) { //0137
+  new.room(58)
+}
+return()

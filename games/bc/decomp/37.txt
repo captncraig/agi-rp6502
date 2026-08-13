@@ -1,4 +1,152 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f106)
+  v87 = 0
+  v88 = 0
+  set(f132)
+  set(f68)
+  set(f34)
+  v30 = 115
+  v31 = 58
+  if (f108) { //001c
+    load.logic(116)
+    set(f204)
+  }
+  if (!f59) { //0026
+    load.logic(112)
+    set(f205)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(101)
+  load.sound(2)
+  load.sound(11)
+  load.view(180)
+  load.view(7)
+  load.view(43)
+  load.view(2)
+  if (vPrevRoom == 38) { //0045
+    set(f201)
+    position(o0,122,58)
+    v87 = 100
+  }
+  draw(o0)
+  if (f204) { //0057
+    call(116)
+  }
+  if (f205) { //005f
+    call(112)
+    position(o9,115,58)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //006d
+  if (f201) { //0073
+    print("You are on the parapet of the Horned King's castle. It extends out over the castle moat.")
+    goto(l128)
+  }
+  print("You are beside the moat outside the Horned King's castle. There is a parapet above you that extends out over the moat.")
+}
+l128:
+if (!f128 && !f129) { //0080
+  goto(l276)
+}
+if (f129) { //008d
+  goto(l244)
+}
+if (!f63 && posn(o0,95,43,113,80)) { //0096
+  set(fSaidAccepted)
+  if (f108) { //00a5
+    reset(f108)
+    v57 = 1
+    vCurrentScore += 20
+    print("You fling Hen Wen over the parapet wall!")
+    set(f30)
+    set.priority(o8,15)
+    ignore.objs(o8)
+    reposition.to(o8,72,59)
+    set.view(o8,43)
+    v61 = 2
+    cycle.time(o8,v61)
+    move.obj(o8,71,142,3,f200)
+    sound(2,f61)
+    goto(l241)
+  }
+  reset(f201)
+  print("You jump from the high parapet.")
+  set.priority(o0,15)
+  reposition.to(o0,72,59)
+  set.view(o0,180)
+  set.loop(o0,1)
+  set(f133)
+  move.obj(o0,71,142,3,f202)
+  sound(2,f61)
+}
+l241:
+goto(l276)
+l244:
+if (v60 == 12 && !f102 && f201) { //00f4
+  v55 = 109
+  v56 = 58
+  get.posn(o0,v62,v63)
+  v55 -= v62
+  v56 -= v63
+  repositon(o0,v55,v56)
+}
+l276:
+v87--
+if (v87 == 1) { //0116
+  set(f37)
+}
+if (f200) { //011f
+  reset(f200)
+  release.priority(o8)
+  set.view(o8,40)
+  start.cycling(o8)
+  print("Hen Wen runs away to safety.")
+  move.obj(o8,18,142,0,f203)
+}
+if (f203) { //0136
+  reset(f203)
+  erase(o8)
+  reset(f30)
+  print("She's safe at last from the Horned King's evil forces.")
+}
+if (f202) { //0144
+  reset(f202)
+  release.priority(o0)
+  sound(11,f106)
+  set.view(o0,7)
+  stop.motion(o0)
+  v88 = 40
+}
+v88--
+if (v88 == 1) { //015b
+  reset(f133)
+  set.view(o0,0)
+  start.motion(o0)
+}
+if (v88 > 0 && f106) { //0169
+  sound(11,f106)
+}
+if ((posn(o0,71,139,159,152) || posn(o0,62,53,159,167))) { //0175
+  set(f88)
+}
+call(101)
+if (f205) { //018b
+  call(112)
+}
+if (f204) { //0193
+  call(116)
+}
+if (vWhichEgoBorder == 3) { //019b
+  new.room(33)
+}
+if (vWhichEgoBorder == 4) { //01a4
+  new.room(33)
+}
+if (posn(o0,124,50,159,64)) { //01ad
+  new.room(38)
+}
+return()

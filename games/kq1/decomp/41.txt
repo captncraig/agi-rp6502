@@ -1,4 +1,360 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(42)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  load.logic(101)
+  call(101)
+  set(f68)
+  if (!f150 && !f151) { //001e
+    load.view(65)
+    animate.obj(o1)
+    set.view(o1,65)
+    position(o1,95,154)
+    observe.blocks(o1)
+    set(f20)
+    load.sound(1)
+    load.sound(10)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f21 && f159) { //003e
+  if (!f32) { //0046
+    set(f32)
+    sound(10,f33)
+  }
+  if (f33) { //0052
+    reset(f32)
+    reset(f33)
+  }
+}
+if (f21) { //005c
+  if (posn(o0,84,117,131,124)) { //0062
+    observe.blocks(o0)
+    goto(l115)
+  }
+  ignore.blocks(o0)
+}
+l115:
+if (!f21) { //0073
+  ignore.blocks(o0)
+}
+if (f21 && !f25) { //007c
+  set(f25)
+  follow.ego(o1,1,f22)
+}
+if (!f21) { //008b
+  if (said("ANYWORD", "troll")) { //0092
+    print("Good news: no troll.")
+  }
+  if ((said("cast", "dagger") || said("kill", "goat"))) { //009e
+    if (f67) { //00b0
+      print("You throw the dagger and it falls into the flowing stream.")
+      drop(i1)
+      reset(f67)
+      set(f70)
+      vCurrentScore -= 5
+    }
+  }
+  if (said("use", "dagger") && f67) { //00c1
+    print("How?")
+  }
+  if (said("give", "treasure")) { //00cf
+    print("To what?")
+  }
+  if (f106) { //00db
+    if (said("give", "diamond")) { //00e1
+      print("To what?")
+    }
+  }
+  if (f110) { //00ed
+    if (said("give", "egg")) { //00f3
+      print("To what?")
+    }
+  }
+  if ((f127 || f108)) { //00ff
+    if (said("give", "gold nut")) { //0109
+      print("To what?")
+    }
+  }
+}
+if (f20 && fTriggerLine) { //0115
+  reset(f20)
+  set(f21)
+  v30 = 2
+  step.size(o1,v30)
+  sound(1,f159)
+  draw(o1)
+  if (f79) { //012c
+    print("As you start to cross the bridge, a wretched troll appears.  Even though you are invisible, he will not let you cross his bridge.")
+    goto(l313)
+  }
+  print("As you approach the bridge, a mean, ugly troll appears.  He will not let you cross his bridge.")
+}
+l313:
+if (f21 && f75 && !f26) { //0139
+  distance(o0,o13,v31)
+  if (v31 > 25) { //0148
+    reposition.to(o13,98,90)
+  }
+  print("It is a well known fact that goats hate trolls intensely. You should move aside and let the goat take care of this nasty troll.")
+  set(f26)
+  set(f76)
+  move.obj(o13,98,95,0,f23)
+}
+if (f23) { //015f
+  ignore.objs(o13)
+  reset(f23)
+  move.obj(o1,100,124,0,f148)
+  move.obj(o13,100,124,1,f203)
+}
+distance(o1,o13,v62)
+if (v62 < 15 && !f150) { //0179
+  print("The old goat seeing the troll, the archenemy of all goats, charges the troll and butts him into oblivion!  The bridge is now yours.")
+  set(f150)
+  reset(f21)
+  reset(f75)
+  erase(o1)
+  set(f130)
+  get.posn(o13,v60,v61)
+  v61 = 80
+  move.obj(o13,v60,v61,96,f31)
+  vCurrentScore += 4
+}
+if (f31) { //019f
+  reset(f31)
+  move.obj(o13,135,80,1,f30)
+}
+if (f30) { //01ad
+  reset(f30)
+  erase(o13)
+}
+if (f21 && !f75) { //01b7
+  if (said("check", "troll")) { //01c0
+    if (posn(o0,78,90,148,166)) { //01ca
+      print("This troll is big, strong, and mean-looking.  Don't mess with this troll!")
+      goto(l475)
+    }
+    print("He isn't there!  Try the bridge.")
+  }
+l475:
+  if (said("kill", "troll")) { //01db
+    if (posn(o0,78,90,148,166) && f67) { //01e5
+      print("It's just about impossible to kill a troll.")
+    }
+    if (posn(o0,78,90,148,166) && !f67) { //01f3
+      print("It's lucky you don`t have any way to try that!")
+    }
+    if (!(posn(o0,78,90,148,166))) { //0202
+      print("He isn't there!  Try the bridge.")
+    }
+  }
+  if ((said("speak", "troll") || said("hello") || said("say", "hello"))) { //020f
+    if (posn(o0,78,90,148,166)) { //0225
+      print("He demands a treasure for passage across his bridge.")
+      goto(l566)
+    }
+    print("He isn't there!  Try the bridge.")
+  }
+l566:
+  if (said("cast", "dagger") && f67) { //0236
+    if (posn(o0,78,90,148,166)) { //0242
+      print("The dagger sings through the air... to a perfect catch by the troll.  \"Nice dagger, but it ain't no treasure!\" he growls.")
+      drop(i1)
+      reset(f67)
+      set(f70)
+      vCurrentScore -= 5
+      goto(l613)
+    }
+    print("You throw the dagger and it falls into the flowing stream.")
+    drop(i1)
+    reset(f67)
+    set(f70)
+    vCurrentScore -= 5
+  }
+l613:
+  if (said("use", "dagger") && f67) { //0265
+    print("How?")
+  }
+  if (said("move", "troll")) { //0273
+    if (posn(o0,78,90,148,166)) { //027d
+      print("You try very hard to push the ugly troll, but you can't budge him.")
+      goto(l654)
+    }
+    print("He isn't there!  Try the bridge.")
+  }
+l654:
+  if (said("beg", "troll")) { //028e
+    print("Trolls have no sympathy.")
+  }
+  if (said("attack", "troll")) { //029a
+    print("You could never win a fight with a troll.")
+  }
+  if ((said("give", "treasure") || said("give", "troll", "treasure") || said("give", "treasure", "troll"))) { //02a6
+    print("What priceless treasure are you giving the old troll?")
+  }
+  if (f106) { //02c4
+    if ((said("give", "diamond") || said("give", "troll", "diamond") || said("give", "diamond", "troll"))) { //02ca
+      if (posn(o0,78,90,148,166)) { //02e6
+        print("OK")
+        drop(i15)
+        reset(f106)
+        set(f151)
+        set(f107)
+        vCurrentScore -= 6
+        set(f27)
+        goto(l772)
+      }
+      print("You would have to throw it from here!")
+    }
+  }
+l772:
+  if (f113) { //0304
+    if ((said("give", "sceptre") || said("give", "troll", "sceptre") || said("give", "sceptre", "troll"))) { //030a
+      if (posn(o0,78,90,148,166)) { //0326
+        print("OK")
+        drop(i17)
+        reset(f113)
+        set(f151)
+        set(f114)
+        vCurrentScore -= 6
+        set(f27)
+        goto(l836)
+      }
+      print("You would have to throw it from here!")
+    }
+  }
+l836:
+  if (f110) { //0344
+    if ((said("give", "egg") || said("give", "troll", "egg") || said("give", "egg", "troll"))) { //034a
+      if (posn(o0,78,90,148,166)) { //0366
+        print("OK")
+        drop(i20)
+        reset(f110)
+        set(f151)
+        set(f111)
+        vCurrentScore -= 6
+        set(f27)
+        goto(l900)
+      }
+      print("You would have to throw it from here!")
+    }
+  }
+l900:
+  if (f127) { //0384
+    if ((said("give", "gold nut") || said("give", "troll", "gold nut") || said("give", "gold nut", "troll"))) { //038a
+      print("The troll doesn't want just a plain walnut.")
+    }
+  }
+  if (f108) { //03a8
+    if ((said("give", "gold nut") || said("give", "troll", "gold nut") || said("give", "gold nut", "troll"))) { //03ae
+      if (posn(o0,78,90,148,166)) { //03ca
+        print("OK")
+        drop(i4)
+        reset(f108)
+        set(f151)
+        set(f109)
+        vCurrentScore -= 6
+        set(f27)
+        goto(l1000)
+      }
+      print("You would have to throw it from here!")
+    }
+  }
+}
+l1000:
+if (f27) { //03e8
+  print("Grasping the precious treasure in a dirt-covered paw, the troll disappears under the bridge.")
+  reset(f27)
+  move.obj(o1,99,153,0,f28)
+}
+if (f28) { //03f8
+  reset(f28)
+  erase(o1)
+  reset(f21)
+}
+if (!(v94 > 0) && fEgoOnWater) { //0404
+  v76 = 255
+  if (posn(o0,124,102,159,152)) { //0411
+    v76 = 136
+    v77 = 146
+  }
+  if (posn(o0,0,69,48,167)) { //0421
+    v76 = 12
+    v77 = 163
+  }
+  if (posn(o0,49,99,91,167)) { //0431
+    v76 = 49
+    v77 = 145
+  }
+  if (v76 == 255) { //0441
+    v76 = 0
+    goto(l1114)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l1114:
+if (fEgoOnWater && !f29) { //045a
+  set(f29)
+  print("You have slipped down the muddy bank and lodged in the  river's bed.  Good knight.")
+}
+if (!f88 && !fEgoOnWater && !f116) { //0467
+  if ((said("drink", "water") || said("acquire", "drink"))) { //0474
+    if (posn(o0,1,84,158,166)) { //0486
+      print("Don't do it!  The bank is steep, muddy, and dangerous.")
+      goto(l1175)
+    }
+    print("You can't reach the river from here.")
+  }
+}
+l1175:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0497
+  if (posn(o0,1,84,158,166)) { //04a9
+    print("Don't do it!  The bank is steep, muddy, and dangerous.")
+    goto(l1210)
+  }
+  print("You can't reach the river from here.")
+}
+l1210:
+if (said("check", "bridge")) { //04ba
+  print("This bridge is the only way to cross the river here.")
+}
+if (said("look under", "bridge")) { //04c6
+  print("You glance under the old bridge, but see nothing unusual.")
+}
+if (said("check", "river")) { //04d2
+  print("The river runs swiftly between steep banks.")
+}
+if (vWhichEgoBorder != 0) { //04de
+  observe.blocks(o0)
+  reset(f68)
+  if (f21 && f75) { //04ea
+    reset(f75)
+    set(f150)
+    set(f130)
+  }
+}
+if (vWhichEgoBorder == 1) { //04f8
+  new.room(8)
+}
+if (vWhichEgoBorder == 2) { //0501
+  new.room(42)
+}
+if (vWhichEgoBorder == 4) { //050a
+  new.room(48)
+}
+if (vWhichEgoBorder == 3) { //0513
+  new.room(40)
+}
+call(101)
+if (f75) { //051e
+  call(103)
+}
+return()

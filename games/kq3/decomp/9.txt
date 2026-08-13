@@ -1,4 +1,108 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  set.horizon(33)
+  v57 = 140
+  v58 = 140
+  v32 = 130
+  v31 = 0
+  v100 = 122
+  v101 = 129
+  load.logic(104)
+  load.logic(103)
+  v34 = 200
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v44 == 25) { //0033
+    set(f48)
+  }
+  if (f48) { //003c
+    if (vPrevRoom == 5) { //0042
+      set.priority(o0,9)
+      position(o0,107,35)
+      start.motion(o0)
+      if (v44 != 25) { //0052
+        set.loop(o0,2)
+      }
+      goto(l114)
+    }
+    if (vPrevRoom == 10) { //0060
+      position(o0,89,166)
+      goto(l114)
+    }
+    position(o0,57,v58)
+  }
+l114:
+  if (f47) { //0072
+    draw(o0)
+  }
+  observe.blocks(o0)
+  call(103)
+  call(104)
+  if (f116) { //0080
+    object.on.water(o13)
+  }
+  show.pic()
+  return()
+}
+if ((posn(o0,92,31,122,97) || posn(o0,114,73,126,99))) { //008a
+  set.priority(o0,9)
+  goto(l164)
+}
+release.priority(o0)
+l164:
+if (!fEnteredCommand) { //00a4
+  goto(l322)
+}
+if ((said("examine", "area") || said("examine", "building") || said("examine") || said("examine", "passage"))) { //00ae
+  print("You are on a flight of steep underground stone steps. They curve downward toward a dim light. The open trapdoor is above you.")
+}
+if ((said("examine", "stair") || said("examine", "up", "stair") || said("examine", "down", "stair") || said("examine", "down") || said("examine", "up"))) { //00cc
+  print("The steps are made of narrow, rough stones, crudely constructed.")
+}
+if ((said("examine", "hatch") || said("examine", "out", "hatch"))) { //00f6
+  print("The trapdoor from the wizard's study is open.")
+}
+if (said("close", "hatch")) { //010c
+  print("You reach up and grab the trapdoor intending to close it. It won't move from this side. You'll just have to leave it open.")
+}
+if (said("lift", "hatch")) { //0118
+  print("The trapdoor is already open.")
+}
+if ((said("climb", "stair") || said("climb", "down", "stair") || said("climb", "up", "stair"))) { //0124
+  print("Climb them yourself.")
+}
+l322:
+if (posn(o0,90,100,150,150)) { //0142
+  v31 = 132
+}
+if (f116 && !f220 && v44 == 0) { //014f
+  distance(o0,o13,v36)
+  if (v36 < 12 && v36 != 0) { //015f
+    set(fTriggerLine)
+    set(f220)
+  }
+}
+if (f220 && v41 > 163) { //016e
+  reset(f220)
+  print("OH, OH!! That darn cat really did it to you this time! Tripping over the cat, you fall to your death.")
+  if (has(i8)) { //017b
+    print("\"You look mighty funny falling down those stairs, Gwydion,\" he snickers.")
+  }
+}
+if (v44 != 125) { //0183
+  if (vWhichEgoBorder == 3 && v40 > 74 && v40 < 146) { //018b
+    release.priority(o0)
+    new.room(10)
+  }
+  if (vWhichEgoBorder == 1 && v40 > 104 && v40 < 118) { //019c
+    release.priority(o0)
+    new.room(5)
+  }
+}
+call(104)
+call(103)
+return()

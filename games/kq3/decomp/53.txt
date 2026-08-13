@@ -1,4 +1,154 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f58)
+  v57 = 111
+  v58 = 45
+  set.horizon(35)
+  load.logic(103)
+  v34 = 166
+  load.view(225)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,225)
+  set.loop(o1,0)
+  position(o1,44,49)
+  set.priority(o1,5)
+  ignore.objs(o1)
+  v36 = 2
+  cycle.time(o1,v36)
+  draw(o1)
+  animate.obj(o2)
+  set.view(o2,225)
+  set.loop(o2,1)
+  position(o2,58,96)
+  set.priority(o2,5)
+  ignore.objs(o2)
+  draw(o2)
+  animate.obj(o3)
+  set.view(o3,225)
+  set.loop(o3,1)
+  set.cel(o3,2)
+  position(o3,65,117)
+  set.priority(o3,5)
+  ignore.objs(o3)
+  draw(o3)
+  animate.obj(o4)
+  set.view(o4,225)
+  set.loop(o4,2)
+  position(o4,60,87)
+  set.priority(o4,5)
+  ignore.objs(o4)
+  draw(o4)
+  animate.obj(o5)
+  set.view(o5,225)
+  set.loop(o5,3)
+  position(o5,68,160)
+  set.priority(o5,5)
+  ignore.objs(o5)
+  draw(o5)
+  call(103)
+  if (f48) { //0093
+    if (vPrevRoom == 52) { //0099
+      if (v41 < 71) { //00a0
+        v41 = 71
+      }
+      if (v41 > 82) { //00aa
+        v41 = 81
+      }
+      goto(l205)
+    }
+    if (vPrevRoom == 54) { //00b7
+      set.view(o0,0)
+      v40 = 48
+      goto(l205)
+    }
+    v40 = v57
+    v41 = v58
+l205:
+    position(o0,40,v41)
+    set.priority(o0,6)
+  }
+  if (f47) { //00d4
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //00de
+  goto(l583)
+}
+if ((said("examine", "bluff") || said("examine", "top", "bluff") || said("examine", "up", "bluff") || said("examine", "down") || said("examine") || said("examine", "area") || said("examine", "up"))) { //00e8
+  print("The mountains continue to march forever upward, as you trek higher and higher. It's getting cold, and there are traces of snow. Below you stretches a beautiful valley.")
+}
+if (said("examine", "canyon")) { //011c
+  print("Beautiful, isn't it? Too bad there is absolutely no way to get there.")
+}
+if ((said("examine", "path") || said("examine", "up", "path"))) { //0128
+  print("Here, the path is narrower, it seems, than before. It travels precariously along the side of a steep mountainside. Looking down, you almost lose your balance. Watch out!")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //013e
+  print("A forest surrounds you, with tall evergreen trees and low bushes.")
+}
+if (said("examine", "deck")) { //0152
+  print("The ground goes... way up, or way down. Better be careful.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //015e
+  print("You look upward and see the mountain range looming toward the beautiful blue sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //0174
+  print("There are no climbable trees here.")
+}
+if ((said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //018a
+  print("There are few flowers here.")
+}
+if ((said("examine", "creek") || said("examine", "liquid") || said("look in", "creek"))) { //01a4
+  print("Melting snow creates a myriad of tiny rainbows as it burbles through the rocks, forming tiny waterfalls on its way back to the sea.")
+}
+if (said("examine", "snow")) { //01be
+  print("Patches of white snow begin to appear. The air is definitely getting colder, and you begin to shiver.")
+}
+if ((said("drink", "liquid") || said("drink", "liquid", "creek") || said("capture", "liquid") || said("capture", "liquid", "creek") || said("capture", "drink") || said("capture", "drink", "creek") || said("capture", "drink", "liquid") || said("capture", "drink", "liquid", "creek") || said("drink", "liquid", "from", "creek") || said("capture", "liquid", "from", "creek") || said("capture", "drink", "from", "creek") || said("capture", "drink", "liquid", "from", "creek"))) { //01ca
+  if (posn(o0,41,50,66,70)) { //0236
+    print("Ahhh. It tastes like Sierra water!")
+    goto(l583)
+  }
+  print("Your arms are not that long.")
+}
+l583:
+if (v40 < 60) { //0247
+  set.horizon(44)
+  goto(l597)
+}
+set.horizon(35)
+l597:
+if (vEgoView == 0) { //0255
+  set.priority(o0,6)
+}
+if (fTriggerLine) { //025f
+  v39 = 1
+  v33 = 6
+  if (v41 < 45) { //026b
+    v39 = 2
+    set.priority(o0,4)
+    goto(l652)
+  }
+  if (v40 > 110) { //027b
+    v39 = 3
+    v40 += 4
+    reposition.to(o0,v40,v41)
+  }
+}
+l652:
+call(103)
+if (vWhichEgoBorder == 1) { //028e
+  new.room(54)
+}
+if (vWhichEgoBorder == 4) { //0297
+  new.room(52)
+}
+return()

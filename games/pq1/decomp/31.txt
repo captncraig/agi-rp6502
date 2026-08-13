@@ -1,5 +1,505 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-  if (!(isSet(f183)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+  if (!f183) { //000a
+    set(f183)
+    vCurrentScore += 3
+  }
+  load.pic(v46)
+  draw.pic(v46)
+  load.logic(v46)
+  load.logic(94)
+  load.logic(108)
+  load.view(v41)
+  load.view(94)
+  load.view(93)
+  load.view(74)
+  load.view(137)
+  load.view(139)
+  load.view(138)
+  load.view(140)
+  load.view(158)
+  load.sound(34)
+  animate.obj(o19)
+  set.view(o19,137)
+  position(o19,32,159)
+  stop.cycling(o19)
+  animate.obj(o12)
+  set.view(o12,74)
+  position(o12,28,157)
+  stop.cycling(o12)
+  set.priority(o12,14)
+  add.to.pic(93,0,0,11,158,14,0)
+  if (!(v86 > 0)) { //0055
+    set.cel(o12,0)
+    draw(o12)
+    reset(f100)
+    goto(l114)
+  }
+  if (f100) { //0067
+    set.cel(o12,2)
+    draw(o12)
+  }
+l114:
+  call(94)
+  call(108)
+  show.pic()
+  return()
+}
+distance(o0,o19,v222)
+distance(o0,o12,v223)
+if (v222 < v61) { //0080
+  set(f109)
+}
+if (v86 == 0 && v223 < v61) { //0089
+  set(f109)
+}
+if (v143 < 156) { //0095
+  reset(f109)
+  reset(f246)
+}
+if (v250 > 0) { //00a0
+  v250++
+  if (v250 == 255) { //00a9
+    v250 = 1
+  }
+}
+if (!f229 && posn(o0,80,1,81,167)) { //00b3
+  print("You cautiously approach the vehicle and observe one male seated behind the wheel. Rolling down his window appears to be quite a challenge to him!")
+  set(f229)
+}
+if (f221) { //00c4
+  reset(f221)
+  v221++
+}
+if (f233 && f34) { //00ce
+  reset(f34)
+  clear.text.rect(2,12,10,31,15)
+  if (f56) { //00de
+    add.to.pic(158,0,1,50,55,15,15)
+    goto(l247)
+  }
+  add.to.pic(158,0,1,50,45,15,15)
+l247:
+  set.text.attribute(0,15)
+  display(2,18,"Art Serabian")
+  display(3,18,"Male 5'8\" 199'")
+  display(4,18,"HAIR None")
+  display(5,18,"EYES Blue")
+  display(6,18,"DOB 12/14/47")
+  display(7,18,"2 MacIntosh St")
+  display(8,18,"Lytton, CA")
+  display(9,18,"RESTRICTIONS:")
+  display(10,18,"Programmer")
+  set.text.attribute(15,0)
+}
+if (v87 == 1) { //0121
+  set(f234)
+}
+if (!f46) { //012a
+  if (v250 > 0 && v86 == 0 && posn(o0,22,158,46,164)) { //0131
+    v250 = 1
+    if (v140 == 1) { //0144
+      print("The drunk reminds you, \"Es-cuse me, butt cher bloc'in' da door, Ociffer.\"")
+      set(f34)
+      v140 = 11
+    }
+    goto(l381)
+  }
+  if (v250 > 0) { //0155
+    set(f36)
+    stop.motion(o0)
+    if (v143 > 164) { //0160
+      set.loop(o0,3)
+      goto(l381)
+    }
+    if (v142 < 33) { //016d
+      set.loop(o0,0)
+      goto(l381)
+    }
+    set.loop(o0,1)
+  }
+l381:
+  if (v250 == 20) { //017d
+    v250++
+    set.cel(o12,1)
+    sound(3,f154)
+  }
+  if (v250 == 40) { //018c
+    v250++
+    set.cel(o12,2)
+    stop.cycling(o12)
+    draw(o19)
+  }
+  if (v250 == 60) { //019c
+    erase(o12)
+    sound(4,f154)
+    v86 = 5
+    reset(f36)
+    start.motion(o0)
+    v250 = 0
+    v140 = 10
+  }
+}
+if (v86 == 5 && !f228) { //01b5
+  if (v140 == 6) { //01bf
+    set.cel(o19,6)
+  }
+  if (v140 == 3) { //01c9
+    set.cel(o19,7)
+    v140 = 10
+  }
+}
+get.posn(o19,v253,v254)
+if (v253 < v142) { //01da
+  set.loop(o19,0)
+  goto(l490)
+}
+set.loop(o19,1)
+l490:
+if (v221 == 1) { //01ea
+  move.obj(o19,50,162,1,f221)
+  v221 = 2
+}
+if (v221 == 3) { //01fa
+  set(f46)
+  vCurrentScore += 3
+  move.obj(o19,135,162,1,f221)
+  v221++
+}
+if (f64 && v221 == 5) { //020e
+  if (v255 == 2) { //0217
+    stop.cycling(o19)
+    v86 = 5
+    goto(l589)
+  }
+  set(f36)
+  start.motion(o0)
+  ignore.objs(o19)
+  set.loop(o19,1)
+  fix.loop(o19)
+  v86 = 6
+  set.view(o19,140)
+  get.posn(o0,v107,v108)
+  v107 += 6
+  v108 += 1
+  v152 = 1
+  move.obj(o19,v107,v108,152,f221)
+  v221 = 100
+}
+l589:
+if (v221 == 101) { //024d
+  sound(34,f152)
+  set.cel(o19,0)
+  set(f122)
+  end.of.loop(o19,f221)
+  v221++
+}
+if (v221 == 103) { //0261
+  if (v255 == 1) { //0268
+    drop(i24)
+    set.view(o19,139)
+    goto(l637)
+  }
+  set.view(o19,137)
+  v86 = 5
+l637:
+  reset(f122)
+  set.view(o0,v41)
+  set.loop(o0,0)
+  set(f221)
+}
+if (v221 == 104) { //0287
+  v221++
+  print("You just fell victim to an old trick. There are two rules to remember: always follow procedures, and never trust a drunk!")
+  set(f140)
+}
+if (f233 && have.key()) { //0294
+  reset(f233)
+  draw.pic(v46)
+  add.to.pic(94,0,0,90,160,14,0)
+  add.to.pic(93,0,0,11,158,14,0)
+  show.pic()
+  print("Since the information on the driver's license matches the subject, you return his license to him.")
+}
+if ((said("administer", "id") || said("drop", "id"))) { //02b2
+  if (f109) { //02c4
+    print("Since the information on the driver's license matches the subject, you return his license to him.")
+    goto(l721)
+  }
+  set(f113)
+}
+l721:
+if (!fEnteredCommand) { //02d1
+  goto(l2700)
+}
+if ((said("lay", "down") || said("elevator", "hands") || said("o", "trunk") || said("find", "auto") || said("ask", "art", "elevator", "hands") || said("drop", "hands", "on", "auto") || said("drop", "hands", "on", "auto", "about") || said("use", "nightstick") || said("ask", "art", "lay", "rol") || said("examine", "bonds", "pink slip") || said("administer", "bonds", "pink slip") || said("examine", "about", "about", "box") || said("o", "about", "box"))) { //02db
+  if ((f245 || f109)) { //034b
+    print("That is unnecessary.")
+    goto(l860)
+  }
+  set(f113)
+}
+l860:
+if ((said("administer", "citation") || said("print", "citation"))) { //035c
+  if ((f245 || f109)) { //036e
+    print("You'd better do more than just write this one a ticket.")
+    goto(l895)
+  }
+  set(f113)
+}
+l895:
+if ((said("hit", "art") || said("fire", "art") || said("hit", "drunk") || said("fire", "drunk") || said("hit", "convict") || said("fire", "convict"))) { //037f
+  if ((f245 || f109)) { //03a9
+    print("Sonny! How could you?")
+    goto(l954)
+  }
+  set(f113)
+}
+l954:
+if (f245 && (said("o", "d") || said("c", "d"))) { //03ba
+  print("Proper police procedure indicates the suspect should do that!")
+}
+if (v142 < 80 && !f46 && (said("enter", "out") || said("get up") || said("enter", "auto") || said("art", "enter", "auto") || said("out", "auto") || said("enter", "rol") || said("get", "convict", "out", "auto") || said("art", "enter", "auto") || said("get", "art", "out", "auto") || said("enter", "auto"))) { //03d0
+  if (v86 != 0) { //0422
+    if (!f226) { //042a
+      print("\"Why, Occifer!\" lisps the drunk, \"I'm as ssssober assss a judge! HIC!\"")
+      goto(l1104)
+    }
+    if (!f227) { //0436
+      print("\"I am!\"")
+      goto(l1104)
+    }
+    print("Reluctantly he says, \"Uh, ok, wh-where we goin'?\"")
+    print("So as not to excite him, you say, \"Oh, we're just going to take a little ride to see some friends of yours. It's ok, buddy. Come on.\"")
+    start.cycling(o19)
+    v86 = 4
+    set(f227)
+    v221 = 1
+l1104:
+    goto(l1140)
+  }
+  if (f245) { //0453
+    print("The gentleman responds to your request, \"Da, yas ssshir.\"")
+    v250 = 1
+    v140 = 4
+    set(f224)
+    goto(l1140)
+  }
+  if (!f39) { //0466
+    print("He can't hear you from this distance.")
+    goto(l1140)
+  }
+  set(f113)
+}
+l1140:
+if ((said("administer", "fst") || said("administer", "check") || said("check", "fst") || said("administer", "fst", "check") || said("administer", "field", "fst", "check") || said("administer", "art", "fst") || said("administer", "art", "check") || said("administer", "art", "field", "fst", "check") || said("administer", "drunk", "fst") || said("administer", "drunk", "check") || said("administer", "drunk", "field", "fst", "check") || said("administer", "convict", "fst") || said("administer", "convict", "check") || said("administer", "convict", "field", "fst", "check"))) { //0474
+  if (!f109) { //04f2
+    print("He can't hear you from this distance.")
+    goto(l1307)
+  }
+  if (v86 != 5) { //04fe
+    print("You can't do that with the suspect inside his car.")
+    goto(l1307)
+  }
+  print("You correctly administer the Field Sobriety Test, and are amused as your subject gives his best imitation of a young swan attempting its first takeoff.")
+  set(f226)
+  if (!f182) { //050f
+    set(f182)
+    vCurrentScore += 3
+  }
+}
+l1307:
+if (!(v255 > 0) && f230) { //051b
+  if ((said("ok", "rol") || said("anyword", "ok", "rol") || said("cuff", "art") || said("cuff", "drunk") || said("cuff", "convict"))) { //0525
+    if (!f109) { //054b
+      print("He can't hear you from this distance.")
+      goto(l1395)
+    }
+    if (!(has(i24))) { //0557
+      set(f170)
+      goto(l1395)
+    }
+    drop(i24)
+    print("You think, \"He doesn't look dangerous. Sure, why not?\"")
+    print("You place your subject under arrest for the violation of Lytton City Vehicle Code VC23502, \"driving while under the influence.\"")
+    set.view(o19,139)
+    v255 = 1
+    reset(f230)
+    set(f228)
+  }
+l1395:
+  if ((said("no", "rol") || said("back", "rol") || said("hands", "back", "rol") || said("cuff", "back", "rol") || said("anyword", "no", "rol") || said("cuff", "art", "back", "rol") || said("cuff", "art", "back", "rol") || said("cuff", "art", "use", "hands", "back", "back", "rol") || said("cuff", "drunk", "back", "rol") || said("cuff", "drunk", "back", "rol") || said("cuff", "drunk", "use", "hands", "back", "back", "rol") || said("cuff", "convict", "back", "rol") || said("cuff", "convict", "back", "rol") || said("cuff", "convict", "use", "hands", "back", "back", "rol") || said("drop", "about", "hands", "back", "rol"))) { //0573
+    if (!f109) { //0615
+      print("He can't hear you from this distance.")
+      goto(l1597)
+    }
+    if (!(has(i24))) { //0621
+      set(f170)
+      goto(l1597)
+    }
+    drop(i24)
+    print("Not wanting to take a chance, you explain, \"I'm sorry, sir, but Departmental Policy dictates all custody arrests shall be restrained by proper handcuffing procedure, and that means 'behind your back.'\"")
+    print("You place your subject under arrest for the violation of Lytton City Vehicle Code VC23502, \"driving while under the influence.\"")
+    set.view(o19,138)
+    v255 = 2
+    reset(f230)
+    set(f228)
+  }
+}
+l1597:
+if ((said("cuff") || said("cuff", "hands") || said("use", "cuff", "rol") || said("drop", "cuff", "rol") || said("drop", "on", "cuff", "rol") || said("cuff", "back", "rol") || said("cuff", "art") || said("cuff", "art", "back", "rol") || said("use", "cuff", "on", "art") || said("cuff", "drunk") || said("cuff", "drunk", "back", "rol") || said("use", "cuff", "on", "drunk") || said("cuff", "convict") || said("cuff", "convict", "back", "rol") || said("use", "cuff", "on", "convict"))) { //063d
+  if (!f109) { //06bd
+    set(f113)
+    goto(l1768)
+  }
+  if (!f226) { //06c9
+    print("\"Why, Occifer!\" lisps the drunk, \"I'm as ssssober assss a judge! HIC!\"")
+    goto(l1768)
+  }
+  if (!(v255 > 0)) { //06d5
+    print("The drunk begs you, \"Could ja 'cuff me in front, please? I'm not feelin' sssho goods.\"")
+    set(f230)
+    set(f227)
+    goto(l1768)
+  }
+  print("He is handcuffed!")
+}
+l1768:
+if ((said("examine", "id", "rol") || said("examine", "drive", "id") || said("examine", "bonds", "id", "rol") || said("ask", "id") || said("get", "id", "rol") || said("administer", "bonds", "id", "rol") || said("administer", "bonds", "drive", "id", "rol") || said("get", "drive", "id") || said("examine", "drive", "id") || said("bonds", "id", "rol") || said("bonds", "examine", "id", "rol"))) { //06e8
+  if (!f109) { //074e
+    print("He can't hear you from this distance.")
+    goto(l1895)
+  }
+  if (!f233) { //075a
+    print("The man fumbles with his wallet, \"My license? Uh, yeah, uh, it's, uh, it's right... Here it is!\"")
+    set(f34)
+    set(f233)
+  }
+}
+l1895:
+if (v142 < 80 && (said("enter") || said("come") || said("come", "use", "bonds") || said("come", "bonds") || said("enter", "auto") || said("drop", "art", "auto") || said("get", "art", "auto") || said("come", "bonds") || said("come", "on") || said("enter", "use", "bonds") || said("apprehend", "art", "rol") || said("apprehend", "convict", "rol") || said("apprehend", "drunk", "rol") || said("drop", "art", "about", "back", "bench") || said("drop", "drunk", "about", "back", "bench") || said("drop", "convict", "about", "back", "bench") || said("get", "art", "auto") || said("art", "come", "bonds") || said("ask", "art", "about", "come") || said("get", "drunk", "auto") || said("drunk", "come", "bonds") || said("ask", "drunk", "about", "come") || said("get", "convict", "auto") || said("convict", "come", "bonds") || said("ask", "convict", "about", "come"))) { //0767
+  if (!f109) { //083a
+    print("He can't hear you from this distance.")
+    goto(l2156)
+  }
+  if (!f226) { //0846
+    print("\"Why, Occifer!\" lisps the drunk, \"I'm as ssssober assss a judge! HIC!\"")
+    goto(l2156)
+  }
+  if (v221 > 0) { //0852
+    print("Just put him in the car.")
+    goto(l2156)
+  }
+  print("Reluctantly he says, \"Uh, ok, wh-where we goin'?\"")
+  print("So as not to excite him, you say, \"Oh, we're just going to take a little ride to see some friends of yours. It's ok, buddy. Come on.\"")
+  start.cycling(o19)
+  v86 = 4
+  set(f227)
+  v221 = 1
+}
+l2156:
+if ((said("name", "rol") || said("anyword", "name", "rol") || said("answer", "art", "rol") || said("answer", "drunk", "rol") || said("answer", "convict", "rol") || said("hello", "rol"))) { //086c
+  if (!f109) { //089e
+    print("He can't hear you from this distance.")
+    goto(l2222)
+  }
+  print("You hear a voice that sounds like Tiny Tim singing through a mouthful of crackers...")
+  print("...\"I didn't do nossshin' wrong, Ociffer.\"")
+}
+l2222:
+if ((said("smell", "rol") || said("anyword", "smell", "rol"))) { //08ae
+  if (!f109) { //08c2
+    print("The fresh air smells good!")
+    goto(l2256)
+  }
+  print("You take a whiff and detect a strong odor of an alcoholic beverage.")
+}
+l2256:
+if ((said("examine") || said("examine", "art") || said("examine", "drunk") || said("examine", "drive") || said("examine", "convict") || said("look in", "auto") || said("examine", "auto"))) { //08d0
+  if (!f109) { //08fe
+    print("It looks like a possible DUI.")
+    goto(l2316)
+  }
+  print("You look into the glassy, watery eyes of a middle-aged man. He is certainly feeling no pain!")
+}
+l2316:
+if ((said("examine", "right", "rol") || said("examine", "anyword", "right", "rol") || said("administer", "right", "rol") || said("administer", "anyword", "right", "rol") || said("right", "rol") || said("anyword", "right", "rol"))) { //090c
+  if (f234) { //0944
+    print("It's too late to do that now.")
+    goto(l2397)
+  }
+  if (!f109) { //094f
+    print("He can't hear you from this distance.")
+    goto(l2397)
+  }
+  call(72)
+}
+l2397:
+if ((said("interrogate", "art") || said("interrogate", "convict") || said("interrogate", "drunk"))) { //095d
+  if (f234) { //0975
+    print("It's too late to do that now.")
+    goto(l2445)
+  }
+  if (f109) { //0980
+    print("There's no need to question him; his problem is obvious!")
+    goto(l2445)
+  }
+  print("He can't hear you from this distance.")
+}
+l2445:
+if ((said("find", "art") || said("find", "convict") || said("find", "drunk"))) { //098d
+  if (f234) { //09a5
+    print("It's too late to do that now.")
+    goto(l2493)
+  }
+  if (f109) { //09b0
+    print("You pat down the gentleman, and find no weapons.")
+    goto(l2493)
+  }
+  set(f113)
+}
+l2493:
+if (said("check", "pink slip")) { //09bd
+  if (f109) { //09c7
+    print("The car belongs to the driver.")
+    goto(l2516)
+  }
+  set(f113)
+}
+l2516:
+if ((f39 || has(i4))) { //09d4
+  if ((said("call", "tow truck") || said("accident", "auto"))) { //09de
+    print("You key the radio, \"Dispatch, this is 83-32. Request one 11-85 at my 10-20.\"")
+    print("83-32, 10-4. One tow truck in route.")
+  }
+}
+if (!f39 && said("anyword", "briefcase")) { //09f4
+  print("It's in your car.")
+}
+if ((said("call") || said("jog", "id") || said("call", "drive", "id") || said("jog", "id", "number") || said("check", "license plate") || said("jog", "make") || said("call", "license plate") || said("jog", "make"))) { //0a03
+  if ((f39 || has(i4))) { //0a3b
+    print("You radio Dispatch, \"Run check on personalized license plate 'PRGRMR1.' It appears to be currently registered.\"")
+    if (!f184) { //0a47
+      set(f184)
+      vCurrentScore += 1
+    }
+    print("Dispatch returns with, \"'PRGRMR1' is clear, with valid, local registration in the name of Art Serabian.\"")
+    print("\"Record check shows two prior DUI convictions.\"")
+    goto(l2655)
+  }
+  set.string(str3,"Just put him in the car.")
+  parse(str3)
+}
+l2655:
+if ((said("examine", "license plate") || said("examine", "id", "license plate"))) { //0a5f
+  if ((posn(o0,54,1,159,167) || posn(o0,0,1,4,167))) { //0a73
+    print("This vehicle has personalized plates, \"PRGRMR1.\"")
+    goto(l2700)
+  }
+  set(f113)
+}
+l2700:
+call(94)
+call(108)
+call(v46)
+return()

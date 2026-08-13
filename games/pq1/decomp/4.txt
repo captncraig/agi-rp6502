@@ -1,4 +1,298 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(0)
+  if (!f119 && v98 == 0) { //000a
+    v56 = 44
+    goto(l48)
+  }
+  if (v98 == 4 && v39 == 0 && v31 < 3) { //001a
+    v56 = 45
+    goto(l48)
+  }
+  v56 = 46
+l48:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(77)
+  load.logic(v56)
+  call(v56)
+  if (v134 > 0) { //003c
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l84)
+  }
+  position(o0,20,115)
+l84:
+  draw(o0)
+  show.pic()
+  if (vPrevRoom == 116) { //0057
+    status.line.on()
+    set(f14)
+  }
+  return()
+}
+if (!(posn(o0,0,108,18,120))) { //0062
+  reset(f247)
+  goto(l161)
+}
+if (v117 == 1) { //0072
+  if (!f247) { //0079
+    set(f247)
+    print("It is not wise to leave just as briefing is ready to start!")
+  }
+  goto(l161)
+}
+if (v117 > 0 && v117 < 5) { //0087
+  if (!f247) { //0091
+    set(f247)
+    print("Sgt. Dooley will play \"kick the can\" with yours if you leave when he's ready to begin his briefing. Get to your desk!")
+  }
+  goto(l161)
+}
+new.room(6)
+l161:
+if (f220) { //00a1
+  reset(f220)
+  v220++
+}
+if (f221) { //00ab
+  reset(f221)
+  v221++
+}
+if (f222) { //00b5
+  reset(f222)
+  v222++
+}
+if (f223) { //00bf
+  reset(f223)
+  v223++
+}
+if (f224) { //00c9
+  reset(f224)
+  v224++
+}
+if (f225) { //00d3
+  reset(f225)
+  v225++
+}
+if (f226) { //00dd
+  reset(f226)
+  v226++
+}
+distance(o0,o1,v228)
+distance(o0,o2,v229)
+distance(o0,o3,v230)
+distance(o0,o4,v231)
+distance(o0,o5,v232)
+distance(o0,o6,v233)
+distance(o0,o7,v234)
+if ((v228 < v61 || v229 < v61 || v230 < v61 || v231 < v61 || v232 < v61 || v233 < v61 || v234 < v61)) { //0103
+  set(f109)
+}
+reset(f241)
+if (posn(o0,116,105,155,111)) { //0122
+  set(f241)
+}
+reset(f242)
+if (posn(o0,120,112,155,118)) { //0130
+  set(f242)
+}
+reset(f243)
+if (posn(o0,123,119,155,126)) { //013e
+  set(f243)
+}
+reset(f244)
+if (posn(o0,128,127,155,134)) { //014c
+  set(f244)
+}
+reset(f245)
+if (posn(o0,32,110,126,160)) { //015a
+  set(f245)
+}
+reset(f246)
+if ((posn(o0,39,122,68,133) || posn(o0,83,126,111,131) || posn(o0,85,153,119,161) || posn(o0,29,148,63,162))) { //0168
+  set(f246)
+}
+reset(f240)
+if (posn(o0,89,127,105,135)) { //018a
+  set(f240)
+}
+if (!f110 && f112) { //0196
+  v166--
+  v167--
+}
+if (v56 != 46) { //01a3
+  get.posn(o1,v144,v145)
+  if ((v153 != v144 || v154 != v145)) { //01af
+    v153 = v144
+    v154 = v145
+    start.cycling(o1)
+    goto(l458)
+  }
+  stop.cycling(o1)
+l458:
+  get.posn(o2,v144,v145)
+  if ((v155 != v144 || v156 != v145)) { //01ce
+    v155 = v144
+    v156 = v145
+    start.cycling(o2)
+    goto(l489)
+  }
+  stop.cycling(o2)
+l489:
+  get.posn(o3,v144,v145)
+  if ((v157 != v144 || v158 != v145)) { //01ed
+    v157 = v144
+    v158 = v145
+    start.cycling(o3)
+    goto(l520)
+  }
+  stop.cycling(o3)
+l520:
+  get.posn(o4,v144,v145)
+  if ((v159 != v144 || v160 != v145)) { //020c
+    v159 = v144
+    v160 = v145
+    start.cycling(o4)
+    goto(l551)
+  }
+  stop.cycling(o4)
+l551:
+  get.posn(o5,v144,v145)
+  if ((v161 != v144 || v162 != v145)) { //022b
+    v161 = v144
+    v162 = v145
+    start.cycling(o5)
+    goto(l582)
+  }
+  stop.cycling(o5)
+l582:
+  get.posn(o6,v144,v145)
+  if ((v240 != v144 || v241 != v145)) { //024a
+    v240 = v144
+    v241 = v145
+    start.cycling(o6)
+    goto(l613)
+  }
+  stop.cycling(o6)
+l613:
+  get.posn(o7,v144,v145)
+  if ((v242 != v144 || v243 != v145)) { //0269
+    v242 = v144
+    v243 = v145
+    start.cycling(o7)
+    goto(l644)
+  }
+  stop.cycling(o7)
+}
+l644:
+if ((said("examine", "box") || said("get", "envelope") || said("examine", "envelope") || said("look in", "box") || said("get", "envelope") || said("get", "memo") || said("examine", "envelope") || said("reach", "box") || said("get", "inv", "box"))) { //0284
+  set(f238)
+}
+call(v56)
+if (f238) { //02c6
+  reset(f238)
+  if (v142 < 99) { //02ce
+    print("The pigeonhole is a police officer's mailbox. He can receive love letters, subpoenas, nasty messages, and even departmental memos. You ought to check yours.")
+    goto(l732)
+  }
+  set(f113)
+}
+l732:
+if (!fEnteredCommand) { //02dc
+  goto(l1148)
+}
+if (said("examine", "blackboard")) { //02e6
+  print("It's a regular blackboard, but Dooley keeps all his chalk and erasers locked up so you can't leave any cute messages.")
+}
+if ((said("print", "blackboard", "rol") || said("use", "blackboard") || said("print", "on", "blackboard", "rol"))) { //02f2
+  print("There is no chalk available.")
+}
+if ((said("bathe", "rol") || said("anyword", "anyword", "blackboard") || said("anyword", "blackboard"))) { //0312
+  print("If you mess with his blackboard, Sgt. Dooley may verbally assault you with his highly-acclaimed, personal collection of four-letter words.")
+}
+if (said("examine", "clock")) { //032e
+  print("Where!?")
+}
+if (said("examine", "podium")) { //033a
+  print("This is the pulpit from which Sgt. Dooley delivers his words of wisdom and inspiration to his troops. Listen and take careful notes during each briefing.")
+}
+if (said("examine", "counter")) { //0346
+  if (f245) { //0350
+    print("It's just an everyday, run-of-the-mill, rosewood, report-writing table with four legs, three drawers, and 243 pieces of gum stuck underneath.")
+    print("Don't get any ideas, Sonny!")
+    goto(l863)
+  }
+  set(f113)
+}
+l863:
+if ((said("examine", "drawer") || said("look in", "drawer"))) { //035f
+  if (f245) { //0371
+    print("You see nothing special about this drawer.")
+    goto(l894)
+  }
+  set(f113)
+}
+l894:
+if ((said("o", "podium") || said("find", "podium") || said("look in", "podium"))) { //037e
+  if (posn(o0,64,95,89,106)) { //0396
+    print("There's nothing on the podium that opens.")
+    goto(l935)
+  }
+  set(f113)
+}
+l935:
+if (said("o", "drawer")) { //03a7
+  if (f246) { //03b1
+    print("You open the drawer and observe various tools used in diagraming traffic collisions. Nothing here will aid you.")
+    goto(l958)
+  }
+  set(f113)
+}
+l958:
+if ((said("examine") || said("examine", "briefing", "accident") || said("examine", "accident"))) { //03be
+  print("The briefing room contains a single podium and four report writing tables. %m16")
+}
+if ((said("examine", "curb") || said("examine", "down"))) { //03d8
+  print("R. J. Jefferson, the Department's janitor, does good work. Don't mess it up!")
+}
+if ((said("examine", "ceiling") || said("examine", "up"))) { //03ec
+  print("You see a textured ceiling with florescent lighting.")
+}
+if (said("examine", "fence")) { //0400
+  print("On the far wall are eight pigeonholes. On the front wall there is a blackboard.")
+}
+if ((said("climb", "counter") || said("get", "on", "counter") || said("climb", "on", "counter"))) { //040c
+  if (f245) { //0428
+    print("Anyone caught climbing tables is automatically directed to the locally-contracted Departmental Psychologist.")
+    goto(l1077)
+  }
+  set(f113)
+}
+l1077:
+if (said("get", "tool")) { //0435
+  if (f246) { //043f
+    print("You don't need anything in the drawer.")
+    goto(l1100)
+  }
+  set(f113)
+}
+l1100:
+if (said("examine", "below", "counter")) { //044c
+  if (f245) { //0458
+    print("Under the table, 243 pieces of gum defy gravity.")
+    goto(l1125)
+  }
+  set(f113)
+}
+l1125:
+if (said("get", "gum")) { //0465
+  if (f245) { //046f
+    print("How nasty!")
+    goto(l1148)
+  }
+  set(f113)
+}
+l1148:
+return()

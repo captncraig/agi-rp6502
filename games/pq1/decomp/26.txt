@@ -1,5 +1,447 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(14)
+  load.view(26)
+  load.view(185)
+  load.view(189)
+  load.view(187)
+  load.view(188)
+  load.view(84)
+  load.view(94)
+  load.logic(94)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  set.view(o6,94)
+  position(o6,139,154)
+  set.loop(o6,1)
+  fix.loop(o6)
+  set.cel(o6,0)
+  stop.cycling(o6)
+  cycle.time(o6,v126)
+  set.view(o1,14)
+  set.view(o2,26)
+  set.view(o3,185)
+  set.view(o4,188)
+  set.view(o5,189)
+  if (v92 < 199) { //0051
+    v92 = 1
+    if (!f177) { //005b
+      set(f177)
+      vCurrentScore += 3
+    }
+  }
+  if (!f39) { //0067
+    position(o0,115,162)
+    draw(o0)
+  }
+  position(o1,115,135)
+  position(o4,55,121)
+  position(o5,96,133)
+  position(o2,159,155)
+  position(o3,153,143)
+  set.priority(o4,12)
+  v152 = 10
+  cycle.time(o5,v152)
+  set.loop(o1,1)
+  stop.cycling(o1)
+  add.to.pic(187,0,0,41,152,13,4)
+  add.to.pic(84,0,0,4,48,4,4)
+  add.to.pic(84,0,1,12,25,4,4)
+  add.to.pic(84,0,1,37,25,4,4)
+  add.to.pic(84,0,1,59,25,4,4)
+  draw(o4)
+  draw(o5)
+  draw(o1)
+  v224 = 2
+  call(94)
+  show.pic()
+  return()
+}
+reset(f221)
+if (posn(o0,41,140,51,149)) { //00cd
+  set(f221)
+}
+reset(f220)
+if (posn(o0,70,126,116,141)) { //00db
+  set(f220)
+}
+reset(f235)
+if (posn(o0,27,130,75,140)) { //00e9
+  set(f235)
+}
+reset(f236)
+if (posn(o0,60,145,116,167)) { //00f7
+  set(f236)
+}
+if (v92 < 199 && f222 && f223 && f225 && f224 && f226 && f227) { //0103
+  v92 = 199
+  vCurrentScore += 5
+}
+if (f112) { //011c
+  v224--
+  if (v224 == 1) { //0124
+    v225++
+    random(3,8,v224)
+  }
+  if (v225 > 9) { //0131
+    erase(o4)
+    goto(l320)
+  }
+  cycle.time(o4,v225)
+}
+l320:
+distance(o0,o1,v220)
+distance(o0,o2,v221)
+distance(o0,o3,v222)
+distance(o0,o5,v223)
+if ((v220 < v61 || v221 < v61 || v222 < v61 || v223 < v61)) { //0150
+  set(f109)
+}
+reset(f230)
+if (posn(o0,64,130,77,143)) { //0166
+  set(f230)
+}
+if (!f227 && f226 && f30) { //0172
+  reset(f30)
+  if (v139 < 102) { //017f
+    print("It would be more professional to wait until the homicide detectives arrive before leaving the scene.")
+    goto(l397)
+  }
+  print("Hold on, Sonny. It seems Sergeant Dooley has something to tell you.")
+}
+l397:
+if (f229) { //018d
+  stop.cycling(o3)
+}
+if (f227) { //0195
+  get.posn(o2,v157,v158)
+  if (v142 < v157) { //019f
+    set.loop(o2,1)
+    goto(l460)
+  }
+  v157 += 7
+  if (v142 > v157) { //01af
+    set.loop(o2,0)
+    goto(l460)
+  }
+  if (v143 < v158) { //01bc
+    set.loop(o2,3)
+    goto(l460)
+  }
+  set.loop(o2,2)
+}
+l460:
+if (f138) { //01cc
+  reset(f138)
+  v139++
+  if (v139 == 1) { //01d6
+    if (v142 < 105) { //01dd
+      start.cycling(o1)
+      add.to.pic(189,0,0,96,133,12,0)
+      erase(o5)
+      prevent.input()
+      set(f36)
+      get.posn(o0,v153,v154)
+      v153 += 10
+      v154 = 135
+      v155 = 1
+      move.obj(o1,v153,v154,155,f138)
+      goto(l523)
+    }
+    set(f138)
+  }
+l523:
+  if (v139 == 2) { //020b
+    set(f232)
+    set(f233)
+    stop.cycling(o1)
+    print("An excited young man approaches you.")
+    print("\"Officer,\" he says, \"I saw what happened! I saw everything!!\"")
+    print("\"I was buying a paper at the newsstand across the street when I heard the scream of tires,\" he tells you. \"I looked down the street, and here comes this car and a light blue, late-model Cadillac racing down the street side-by-side!\"")
+    print("\"When they got closer, I heard a 'bang.' I thought one of 'em had a blowout!\"")
+    print("\"But, right after that, this car here lost control and crashed. The light blue Caddie just kept on jammin'!\" he finishes breathlessly.")
+    reset(f36)
+    accept.input()
+    v139 = 0
+  }
+  if (v139 == 101) { //0228
+    if (posn(o0,129,140,159,155)) { //022f
+      v139 = 100
+      v140 = 4
+      if (!f231) { //023f
+        set(f231)
+        print("Sgt. Dooley honks his horn and yells out the window, \"Hey, Sonny! Move out of the way, I need to park there!\"")
+      }
+      goto(l596)
+    }
+    stop.motion(o0)
+    draw(o6)
+    end.of.loop(o6,f138)
+  }
+l596:
+  if (v139 == 102) { //0254
+    add.to.pic(94,1,2,139,154,13,0)
+    erase(o6)
+    start.motion(o0)
+    v140 = 4
+  }
+  if (v139 == 103) { //026a
+    get.posn(o1,v144,v145)
+    get.priority(o1,v151)
+    v146 = 14
+    v147 = 0
+    add.to.pic(v146,v147,v147,v144,v145,v151,v147)
+    erase(o1)
+    draw(o2)
+    move.obj(o2,120,155,1,f138)
+  }
+  if (v139 == 104) { //0290
+    draw(o3)
+    print("Homicide Detective Oscar Hamilton arrives with Sergeant Dooley.")
+    move.obj(o2,90,145,1,f138)
+    move.obj(o3,74,140,1,f229)
+  }
+  if (v139 == 105) { //02a7
+    stop.cycling(o2)
+    print("Dooley tells you, \"Bonds, Detective Hamilton will handle the investigation from here.\"")
+    v140 = 4
+  }
+  if (v139 == 106) { //02b5
+    set(f227)
+    print("\"Hit the streets and try to find the rat responsible,\" says Sgt. Dooley. \"I'll introduce the witness to Hamilton.\"")
+    random(33,44,v140)
+  }
+  if (v139 == 107) { //02c4
+    if (f39) { //02cb
+      v139 = 0
+      goto(l740)
+    }
+    v139 = 106
+    random(35,37,v152)
+    print(v152)
+    random(33,44,v140)
+  }
+}
+l740:
+if (!fEnteredCommand) { //02e4
+  goto(l2002)
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "break"))) { //02ee
+  print("Being a highly trained observer, you immediately notice a smashed coupe on the sidewalk, and a crowd of rubberneckers milling around nearby. The crowd includes one particularly anxious young man.")
+}
+if ((said("examine", "auto") || said("examine", "auto") || said("check", "auto") || said("check", "break") || said("examine", "break", "auto"))) { //0306
+  if (!(posn(o0,29,130,84,160))) { //032c
+    print("The green coupe will require a major front-end job!")
+    goto(l830)
+  }
+  print("There's a man slumped over the steering wheel.")
+}
+l830:
+if ((said("examine", "ammo", "box") || said("examine", "d") || said("examine", "pane") || said("examine", "auto", "pane"))) { //033e
+  if (!f221) { //0360
+    set(f113)
+    goto(l878)
+  }
+  print("The broken glass of the driver's window has a strange pattern for a car wreck. It appears to be a bullet hole!")
+}
+l878:
+if ((said("examine", "art") || said("examine", "body") || said("examine", "drive") || said("look in", "pane") || said("examine", "accident", "accident") || said("get", "art", "from", "auto") || said("look in", "auto") || said("backup", "art") || said("save", "art", "rol") || said("administer", "cpr") || said("backup", "drive"))) { //036e
+  if (!f221) { //03be
+    set(f113)
+    goto(l1004)
+  }
+  if (!f222) { //03ca
+    set(f222)
+    print("You take a deep breath, look in the car, and see a male slumped motionless over the steering wheel.")
+    print("A closer look reveals a bloody injury to the left side of his head, and a gaping hole in his lower-right jaw!")
+    goto(l1004)
+  }
+  if (!f223) { //03da
+    set(f223)
+    print("No pulse. No breathing. No vital signs.")
+    print("There is a bullet hole in the driver's window. This is not your normal, everyday traffic accident. In your opinion, this man was murdered!")
+    goto(l1004)
+  }
+  print("This man is beyond help.")
+}
+l1004:
+if (said("call")) { //03ec
+  if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //03f4
+    print("Without a radio extender, you can't use your car radio from here.")
+    goto(l1137)
+  }
+  if (!f223 && !f225) { //040a
+    print("You have nothing to report. Investigate the accident scene to see if you can discover something.")
+    goto(l1137)
+  }
+  if (f224 && f226) { //0419
+    print("\"10-4, 83-32. Hamilton and Dooley are in route. Estimated time of arrival is momentarily!\"")
+    goto(l1137)
+  }
+  reset(f228)
+  if (f223 && !f224) { //0428
+    set(f224)
+    set(f228)
+    print("You use your radio to advise Dispatch of the apparent homicide.")
+    print("The car radio crackles a response...")
+    print("\"10-4, 83-32. We copy 187pc homicide.\"")
+    print("\"Be advised, one homicide unit is en route, and the Coroner's Office has been notified. Continue investigation.\"")
+  }
+  if (f233 && !f234) { //043d
+    set(f234)
+    set(f228)
+    print("You notify dispatch of the vehicle information.")
+    print("\"10-4, 83-32. We copy 187pc homicide. Continue investigation.\"")
+  }
+  if (f225 && !f226) { //044e
+    set(f226)
+    set(f228)
+    print("You notify dispatch of the vehicle information.")
+    print("%m20 \"Dispatch, this is 83-32. Be advised description of suspect vehicle is late-model, light blue Cadillac.\"")
+    print("\"10-4, 83-32. We copy light blue Cadillac, partial license 'L964.'\"")
+    v139 = 100
+    random(11,33,v140)
+  }
+  if (!f228) { //0468
+    print("You have nothing further to report.")
+  }
+}
+l1137:
+if ((said("answer", "by standers", "rol") || said("ask", "cad") || said("ask", "blue", "cad") || said("ask", "lamp", "blue", "cad") || said("ask", "id", "number"))) { //0471
+  if (!f220) { //049f
+    print("If you were closer, they might notice you.")
+    goto(l1223)
+  }
+  if (!f223) { //04ab
+    print("The little old lady in the crowd cries out, \"Officer, do something. That man is hurt bad! Help him!!\"")
+    goto(l1223)
+  }
+  if (!f232) { //04b7
+    set(f138)
+    goto(l1223)
+  }
+  set(f225)
+  print("\"All I know is,\" says the witness, %m19")
+}
+l1223:
+if ((said("interrogate", "broad") || said("answer", "broad"))) { //04c7
+  if (f220) { //04d9
+    print("The little old lady in the crowd cries out, \"Officer, do something. That man is hurt bad! Help him!!\"")
+    goto(l1254)
+  }
+  set(f113)
+}
+l1254:
+if ((said("print", "report") || said("print", "accident", "report"))) { //04e6
+  print("%g79")
+}
+if ((said("get", "license plate", "rol") || said("get", "id", "license plate", "rol") || said("examine", "id", "license plate", "rol") || said("examine", "license plate", "rol") || said("examine", "license plate", "rol"))) { //04fc
+  if (f236) { //052e
+    print("The wreck victim's license plate appears to have been lost during the accident.")
+    goto(l1339)
+  }
+  set(f113)
+}
+l1339:
+if ((said("get", "id", "rol") || said("get", "anyword", "id", "rol") || said("ask", "id", "number") || said("ask", "id") || said("ask", "art", "id", "rol") || said("interrogate", "art") || said("interrogate", "by standers") || said("ask", "interrogate", "rol") || said("ask", "art", "interrogate", "rol") || said("answer") || said("answer", "art") || said("answer", "art") || said("examine", "anyword", "id", "rol") || said("examine", "id", "rol"))) { //053b
+  if (f221) { //05ab
+    print("This guy won't be doing anything soon!")
+    goto(l1505)
+  }
+  if (!f220) { //05b6
+    print("They can't hear you from here.")
+    goto(l1505)
+  }
+  if (!f223) { //05c2
+    print("The little old lady in the crowd cries out, \"Officer, do something. That man is hurt bad! Help him!!\"")
+    goto(l1505)
+  }
+  if (!f232) { //05ce
+    v139 = 0
+    set(f138)
+    goto(l1505)
+  }
+  set(f225)
+  print("\"All I know is,\" says the witness, %m19")
+}
+l1505:
+if ((said("examine", "sign") || said("examine", "move", "rol") || said("examine", "fence"))) { //05e1
+  print("The sign reads, \"Colonial Van and Storage.\"")
+}
+if ((said("get", "body", "out", "auto") || said("get", "body") || said("get", "dead", "body") || said("empty", "body", "from", "auto") || said("move", "body", "from", "auto") || said("move", "body") || said("move", "dead", "body") || said("move", "art") || said("move", "dead", "art") || said("get", "art", "out", "auto") || said("get", "art") || said("get", "dead", "art") || said("empty", "art", "from", "auto") || said("move", "art", "from", "auto"))) { //05fd
+  print("This man is beyond help.")
+}
+if ((said("call", "ambulance") || said("get", "backup") || said("report", "accident") || said("call", "backup"))) { //0679
+  print("Dispatch will not hear you unless you use the radio.")
+}
+if ((said("look in", "box") || said("look in", "accident") || said("examine", "box"))) { //0699
+  print("You assess the damage to the building.")
+}
+if (f221 && said("c", "d", "rol")) { //06b3
+  print("You can't. It's sprung.")
+}
+if ((said("enter", "box") || said("enter", "accident") || said("climb", "box"))) { //06c3
+  if (f235) { //06db
+    print("It's difficult to see though the smoke and debris, but you feel certain you can see programmers working on adventure games inside.")
+    goto(l1768)
+  }
+  set(f113)
+}
+l1768:
+if ((said("examine", "brick") || said("move", "brick") || said("get", "brick"))) { //06e8
+  print("The bricks won't do you any good.")
+}
+if ((said("examine", "smoke") || said("examine", "smoke"))) { //0702
+  print("It's obvious the radiator was damaged from impact.")
+}
+if (said("examine", "by standers", "rol")) { //0716
+  print("The crowd appears to be fixated on the wreck.")
+}
+if ((said("find", "art") || said("find", "trunk") || said("o", "trunk") || said("find", "auto") || said("look in", "trunk") || said("look in", "art", "clothes"))) { //0724
+  print("That's a job for the coroner.")
+}
+if ((said("smell", "rol") || said("anyword", "smell", "rol"))) { //0752
+  if (f221) { //0766
+    print("The wreck victim's license plate appears to have been lost during the accident.")
+    goto(l1940)
+  }
+  if (f220) { //0771
+    print("Someone in this crowd smells of musk and cheap perfume.")
+    goto(l1940)
+  }
+  if (f235) { //077c
+    print("The inside of this building smells of flatulence.")
+    goto(l1940)
+  }
+  if (f236) { //0787
+    print("Yes, the tailpipe smells of exhaust.")
+    goto(l1940)
+  }
+  print("Ah! The air of Lytton.")
+}
+l1940:
+if (f230) { //0794
+  if (said("o", "d")) { //079a
+    print("This door is jammed.")
+  }
+  if ((said("o", "pane") || said("break", "pane"))) { //07a6
+    print("Forget it! Just walk around to the other side.")
+  }
+  if (said("examine", "pane")) { //07ba
+    print("You see a man slumped over the wheel.")
+  }
+}
+if (f227) { //07c6
+  v139 = 106
+  v140 = 4
+}
+l2002:
+call(94)
+return()

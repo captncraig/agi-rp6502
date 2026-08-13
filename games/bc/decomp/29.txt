@@ -1,5 +1,140 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v200 = 34
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(157)
+  set(f203)
+  load.view(54)
+  load.view(144)
+  load.view(145)
+  load.view(146)
+  load.view(147)
+  load.sound(3)
+  load.sound(4)
+  load.sound(5)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o12)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o10)
+  animate.obj(o11)
+  set.view(o12,54)
+  set.view(o6,144)
+  set.view(o7,145)
+  set.view(o10,146)
+  set.view(o11,147)
+  position(o12,49,63)
+  position(o6,98,74)
+  position(o7,80,72)
+  position(o10,95,107)
+  position(o11,74,137)
+  ignore.objs(o12)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  ignore.objs(o10)
+  ignore.objs(o11)
+  v61 = 3
+  cycle.time(o12,v61)
+  v61 = 2
+  cycle.time(o6,v61)
+  cycle.time(o7,v61)
+  cycle.time(o10,v61)
+  cycle.time(o11,v61)
+  ignore.horizon(o12)
+  ignore.horizon(o6)
+  ignore.horizon(o7)
+  ignore.horizon(o10)
+  ignore.horizon(o11)
+  if (vPrevRoom == 30) { //007b
+    position(o0,50,158)
+    move.obj(o0,50,160,0,f61)
+    goto(l199)
+  }
+  if (vPrevRoom == 32) { //008f
+    position(o0,133,158)
+    move.obj(o0,133,160,0,f61)
+    goto(l199)
+  }
+  v65 = 99
+  set.view(o0,0)
+  if (vPrevRoom == 26) { //00a9
+    position(o0,50,167)
+    move.obj(o0,50,165,0,f61)
+    goto(l199)
+  }
+  position(o0,133,167)
+  move.obj(o0,133,165,0,f61)
+l199:
+  draw(o12)
+  draw(o0)
+  show.pic()
+  if (vPrevRoom < 29) { //00cc
+    if (f59) { //00d3
+      print("You worry about Hen Wen, and wonder if she is a prisoner in the Castle.")
+    }
+    if (f79) { //00db
+      print("You wonder if you will find the Black Cauldron inside the Horned King's castle.")
+    }
+  }
+  return()
+}
+if (f130) { //00e4
+  print("Far in the distance is the gloomy castle of the evil Horned King. Giant gwythaints circle its turrets.")
+}
+if (f200) { //00ec
+  reset(f200)
+  erase(o7)
+  erase(o10)
+  erase(o11)
+  random(14,77,v200)
+  if (!f204) { //00fe
+    set(f204)
+    print("The lightning frightens you, and makes you wish you were back in Caer Dallben.")
+  }
+}
+v200--
+if (v200 == 1) { //010b
+  reset(f203)
+  sound(4,f201)
+  set.cel(o6,0)
+  draw(o6)
+  end.of.loop(o6,f205)
+}
+if (f205) { //011f
+  reset(f205)
+  set(f200)
+  draw(o7)
+  draw(o10)
+  draw(o11)
+  erase(o6)
+}
+if (f201) { //0131
+  reset(f201)
+  sound(5,f202)
+}
+if (f202) { //013c
+  reset(f202)
+  set(f203)
+}
+if (f203) { //0146
+  reset(f203)
+  sound(3,f203)
+}
+get.posn(o0,v38,v39)
+if (vWhichEgoBorder == 1) { //0155
+  if (v38 < 80) { //015c
+    new.room(30)
+    goto(l362)
+  }
+  new.room(32)
+}
+l362:
+if (vWhichEgoBorder == 3) { //016a
+  if (v38 < 80) { //0171
+    new.room(26)
+    goto(l383)
+  }
+  new.room(28)
+}
+l383:
+return()

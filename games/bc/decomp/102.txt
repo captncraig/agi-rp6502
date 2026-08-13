@@ -1,3 +1,57 @@
-if (!(isSet(f144)
-!!!
-&{%!e(string=incomplete condition: 0x04)}
+if (!f144) { //0002
+  reset(f99)
+  reset(f10)
+}
+if (f99) { //000d
+  set(f10)
+}
+if (f102) { //0015
+  v110 = 0
+}
+animate.obj(o0)
+step.size(o0,v81)
+step.time(o0,82)
+cycle.time(o0,v83)
+get.posn(o0,v38,v39)
+observe.objs(o0)
+v43 = 255
+reset(f128)
+reset(f129)
+reset(f130)
+reset(f106)
+reset(f52)
+reset(f78)
+reset(fSaidAccepted)
+reset(f149)
+reset(f72)
+reset(f31)
+reset(f95)
+reset(f69)
+reset(f97)
+reset(f102)
+reset(f132)
+reset(f87)
+reset(f68)
+reset(f120)
+reset(f100)
+reset(f162)
+reset(f37)
+reset(f34)
+reset(f145)
+v87 = 0
+v88 = 0
+v70 = 0
+v71 = 0
+v74 = 0
+v84 = 0
+v80 = 0
+v85 = 0
+v61 = 255
+l123:
+reset(v61)
+lindirectn(v61,0)
+v61--
+if (v61 > 199) { //0082
+  goto(l123)
+}
+return()

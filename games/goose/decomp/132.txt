@@ -1,5 +1,11 @@
-if (isSet(f5)) {
-  if (isSet(f115)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  if (f115) { //0008
+    reset(f115)
+    set(f130)
+    save.game()
+    set(f115)
+    reset(f130)
+  }
+  new.room(32)
+}
+return()

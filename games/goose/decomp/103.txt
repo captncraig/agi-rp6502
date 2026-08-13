@@ -1,3 +1,3 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x7e)}
+restore.game()
+new.room(200)
+return()

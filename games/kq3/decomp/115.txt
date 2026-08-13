@@ -1,5 +1,256 @@
-if (isSet(f5)) {
-  if (isSet(f46)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+if (fNewRoom) { //0002
+  if (f46) { //0008
+    return()
+  }
+  if (vCurrentRoom != 17 && vCurrentRoom != 22 && vCurrentRoom != 23 && vCurrentRoom != 27) { //000f
+    return()
+  }
+  load.view(210)
+  load.view(211)
+  load.view(35)
+  load.sound(26)
+  load.sound(6)
+  animate.obj(o1)
+  animate.obj(o2)
+  set.view(o1,210)
+  set.view(o2,211)
+  if (vCurrentRoom == 17) { //0038
+    random(1,2,v36)
+    if (v36 == 1) { //0043
+      position(o1,113,128)
+      move.obj(o1,83,128,2,f244)
+      goto(l97)
+    }
+    position(o1,137,91)
+    move.obj(o1,115,91,2,f244)
+l97:
+    random(1,2,v36)
+    if (v36 == 1) { //0065
+      position(o2,54,166)
+      move.obj(o2,64,156,2,f244)
+      goto(l131)
+    }
+    position(o2,50,61)
+    move.obj(o2,62,73,2,f244)
+  }
+l131:
+  if (vCurrentRoom == 22) { //0083
+    random(1,2,v36)
+    if (v36 == 1) { //008e
+      position(o1,111,112)
+      move.obj(o1,94,112,2,f244)
+      goto(l172)
+    }
+    position(o1,129,68)
+    move.obj(o1,114,68,2,f244)
+l172:
+    random(1,2,v36)
+    if (v36 == 1) { //00b0
+      position(o2,42,68)
+      move.obj(o2,54,68,2,f244)
+      goto(l206)
+    }
+    position(o2,25,105)
+    move.obj(o2,55,105,2,f244)
+  }
+l206:
+  if (vCurrentRoom == 23) { //00ce
+    random(1,2,v36)
+    if (v36 == 1) { //00d9
+      position(o1,145,156)
+      move.obj(o1,133,145,2,f244)
+      goto(l247)
+    }
+    position(o1,34,92)
+    move.obj(o1,66,92,2,f244)
+l247:
+    random(1,2,v36)
+    if (v36 == 1) { //00fb
+      position(o2,121,97)
+      move.obj(o2,100,97,2,f244)
+      goto(l281)
+    }
+    position(o2,9,123)
+    move.obj(o2,48,123,2,f244)
+  }
+l281:
+  if (vCurrentRoom == 27) { //0119
+    random(1,2,v36)
+    if (v36 == 1) { //0124
+      position(o1,121,139)
+      move.obj(o1,97,139,2,f244)
+      goto(l322)
+    }
+    position(o1,60,166)
+    move.obj(o1,75,151,2,f244)
+l322:
+    random(1,2,v36)
+    if (v36 == 1) { //0146
+      position(o2,31,141)
+      set.loop(o2,0)
+      move.obj(o2,53,141,2,f244)
+      goto(l359)
+    }
+    position(o2,125,68)
+    move.obj(o2,108,68,2,f244)
+  }
+l359:
+  random(5,11,v240)
+  if (f31 && vMonitorType != HERCULES) { //016b
+    set.text.attribute(4,0)
+    display(22,0,"Bandits in %v240.")
+    set.text.attribute(15,0)
+  }
+  return()
+}
+if (!f241 && !f242) { //0180
+  goto(l461)
+}
+if (said("examine", "bandit")) { //018d
+  print("They are dirty and unkempt, their hair is wild and their clothes smell. Mean looks darken their faces. These are two to avoid!")
+}
+if (said("call", "bandit")) { //0199
+  print("This is no time for conversation! Get out of here!! ")
+}
+if ((said("capture", "bandit") || said("capture", "bandit"))) { //01a5
+  print("If you think you can capture these two you'd better think again.")
+}
+if ((said("kill", "bandit") || said("hit", "bandit"))) { //01b9
+  print("You think you can hurt two husky bandits!? Think again.")
+}
+l461:
+if (f45) { //01cd
+  if (f31 && v47 == 5 && vMonitorType != HERCULES) { //01d3
+    clear.lines(22,22,c0)
+  }
+  v240--
+  if (v240 == 1) { //01e6
+    set(f244)
+  }
+}
+if (f244 && !f245) { //01ef
+  reset(f244)
+  v241++
+  if (v241 == 1) { //01fc
+    if (f46) { //0203
+      v241 = 0
+      goto(l538)
+    }
+    set(f241)
+    set(f242)
+    draw(o1)
+    draw(o2)
+    sound(26,f41)
+  }
+l538:
+  if (v241 == 2) { //021a
+    v36 = 2
+    step.size(o1,v36)
+    step.size(o2,v36)
+    if ((f49 || f46 || v44 == 26 || v44 == 25)) { //022a
+      set(f245)
+      wander(o1)
+      wander(o2)
+      goto(l589)
+    }
+    follow.ego(o1,5,f244)
+    follow.ego(o2,5,f244)
+    print("These two are certainly unsavory rogues! They look like they'd rob you blind!!")
+  }
+l589:
+  if (v241 == 3) { //024d
+    if ((f49 || f46 || v44 == 26 || v44 == 25)) { //0254
+      set(f245)
+      wander(o1)
+      wander(o2)
+      goto(l646)
+    }
+    set(f246)
+    program.control()
+    stop.update(o1)
+    stop.update(o2)
+    prevent.input()
+    stop.motion(o0)
+    ignore.objs(o0)
+    set.view(o0,35)
+    set(f35)
+    v44 = 18
+    set(f243)
+    v240 = 4
+  }
+l646:
+  if (v241 == 4) { //0286
+    v240 = 15
+    start.update(o1)
+    start.update(o2)
+    wander(o1)
+    wander(o2)
+    v36 = 2
+    step.size(o1,v36)
+    step.size(o2,v36)
+    v36 = 1
+    v67 = 38
+    reset(f240)
+l681:
+    get.room(v36,v64)
+    if (v64 == 255) { //02ac
+      put(v36,v67)
+      set(f240)
+    }
+    v36++
+    if (v36 == 8) { //02ba
+      v36++
+    }
+    if (v36 < 55) { //02c3
+      goto(l681)
+    }
+  }
+  if (v241 == 5) { //02cd
+    erase(o1)
+    reset(f241)
+    erase(o2)
+    reset(f242)
+    player.control()
+    accept.input()
+    reset(f46)
+    reset(f35)
+    reset(f243)
+    release.priority(o0)
+    stop.sound()
+    start.motion(o0)
+    observe.objs(o0)
+    v44 = 0
+    set.view(o0,0)
+    if (f246) { //02f1
+      reset(f246)
+      if (f240) { //02f9
+        print("%m5Taking stock of your holdings, you discover that all of your possessions have been stolen.")
+        set(f78)
+        goto(l776)
+      }
+      print("%m5At least you had nothing for the two bandits to steal.")
+    }
+  }
+}
+l776:
+if (vBorderObj > 0) { //0308
+  if (vBorderObj == 1) { //030f
+    erase(o1)
+    reset(f241)
+  }
+  if (vBorderObj == 2) { //031a
+    erase(o2)
+    reset(f242)
+  }
+  if (!f241 && !f242 && !f245) { //0325
+    set(f244)
+    v241 = 4
+  }
+}
+if (f243 && v44 == 18) { //0337
+  sound(6,f243)
+}
+if (v44 == 18) { //0343
+  vWhichEgoBorder = 0
+}
+return()

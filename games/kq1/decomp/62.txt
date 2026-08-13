@@ -1,4 +1,98 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(45)
+  load.sound(5)
+  draw(o0)
+  show.pic()
+}
+if ((said("check", "room") || said("check", "clouds"))) { //0015
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.")
+}
+if (said("check", "tree")) { //0029
+  if (posn(o0,86,101,159,167)) { //0033
+    print("Its trunk has a large hole in the base.")
+    goto(l68)
+  }
+  print("These are strange looking trees.")
+}
+l68:
+if ((said("check", "doorway") || said("look in", "doorway"))) { //0044
+  if (posn(o0,117,100,144,117)) { //0056
+    if (!f96) { //0060
+      print("You notice a sling in the hole in the tree.")
+      goto(l110)
+    }
+    print("It is empty.")
+l110:
+    goto(l115)
+  }
+  print("You can't see into the hole from here.")
+}
+l115:
+if (said("check", "sling")) { //0073
+  if (f97) { //007d
+    print("This sling is made of very stretchy leather.")
+    goto(l138)
+  }
+  print("Why?  What sling?")
+}
+l138:
+if (f96) { //008a
+  if (said("acquire", "sling")) { //0090
+    if (posn(o0,117,100,144,117)) { //009a
+      print("Why?  What sling?")
+      goto(l171)
+    }
+    print("You need to be closer to try.")
+  }
+}
+l171:
+if (!f96) { //00ab
+  if (said("acquire", "sling")) { //00b2
+    if (posn(o0,117,100,144,117)) { //00bc
+      print("You reach into the hole and pull out the leather sling.")
+      set(f96)
+      set(f97)
+      vCurrentScore += 2
+      get(i14)
+      goto(l214)
+    }
+    print("You need to be closer to try.")
+  }
+}
+l214:
+if (fTriggerLine) { //00d6
+  set(f95)
+  program.control()
+  stop.cycling(o0)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  v61 += 6
+  v96 = 4
+  move.obj(o0,v60,v61,96,f21)
+  sound(5,f159)
+}
+if (f21) { //00fa
+  reset(f21)
+  erase(o0)
+}
+if (f159) { //0104
+  reset(f159)
+  set(f20)
+}
+if (f20) { //010e
+  reset(f20)
+  print("You've fallen through the clouds!  Cloud walking is for the birds.")
+  erase(o0)
+  set(f63)
+}
+if (vWhichEgoBorder == 1) { //011c
+  new.room(59)
+}
+if (vWhichEgoBorder == 4) { //0125
+  new.room(61)
+}
+return()

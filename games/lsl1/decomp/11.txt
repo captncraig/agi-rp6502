@@ -1,4 +1,272 @@
-if (isSet(f5)) {
-  if (v119 > 4
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v119 > 4 && v119 < 10) { //0008
+    new.room(19)
+  }
+  if (!f105) { //0014
+    load.sound(21)
+    if (!(v51 > 0)) { //001d
+      set(f14)
+      disable.member(c24)
+      status.line.on()
+      v115 = 0
+      v116 = 0
+      v117 = 0
+      v118 = 0
+      reset(f48)
+      reset(f85)
+      accept.input()
+      vCycleTime = 2
+      v30 = 0
+      load.view(0)
+      set.view(o0,0)
+      v77 = 0
+    }
+  }
+  set.horizon(130)
+  load.logic(57)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(50)
+  load.view(52)
+  if (v30 != 20 && f62) { //0057
+    load.view(77)
+    load.sound(29)
+    animate.obj(o12)
+    set.view(o12,77)
+    position(o12,0,145)
+    draw(o12)
+    follow.ego(o12,8,f205)
+    set(f207)
+  }
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  position(o1,60,131)
+  set.view(o1,52)
+  set.priority(o1,8)
+  set.cel(o1,0)
+  draw(o1)
+  v52 = 3
+  cycle.time(o1,v52)
+  stop.update(o1)
+  if (f118) { //0093
+    add.to.pic(50,1,0,36,83,4,4)
+    goto(l187)
+  }
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,36,83)
+  set.view(o2,50)
+  set.loop(o2,1)
+  draw(o2)
+  cycle.time(o2,v87)
+l187:
+  animate.obj(o3)
+  ignore.horizon(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  position(o3,83,84)
+  set.view(o3,50)
+  set.loop(o3,2)
+  draw(o3)
+  cycle.time(o3,v84)
+  animate.obj(o4)
+  ignore.horizon(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,134,67)
+  set.view(o4,50)
+  set.loop(o4,0)
+  draw(o4)
+  cycle.time(o4,v88)
+  if (f89) { //00e9
+    load.view(21)
+    load.view(4)
+    load.view(1)
+  }
+  if (vPrevRoom == 12) { //00f5
+    v38 = 134
+    v39 = 142
+    set.loop(o0,1)
+    start.motion(o0)
+    goto(l302)
+  }
+  if (vPrevRoom == 15) { //010a
+    v38 = 58
+    v39 = 134
+    set.loop(o0,2)
+    goto(l302)
+  }
+  if (vPrevRoom != 9) { //011d
+    v38 = 63
+    v39 = 156
+    set.loop(o0,3)
+  }
+l302:
+  position(o0,38,v39)
+  draw(o0)
+  call(57)
+  show.pic()
+  if (v30 != 20 && f62) { //0137
+    sound(29,f40)
+  }
+  if (!f105) { //0144
+    set(f105)
+    sound(21,f40)
+  }
+  return()
+}
+reset(f200)
+if (posn(o0,34,142,130,166)) { //0153
+  set(f200)
+}
+reset(f201)
+if (posn(o0,50,131,75,136)) { //0161
+  set(f201)
+}
+if (!fEnteredCommand) { //016d
+  goto(l621)
+}
+if ((said("examine") || said("examine", "building") || said("examine", "area") || said("examine", "bar"))) { //0177
+  print("You are outside Lefty's bar. Isn't it wonderful what can be done with a little neon?")
+  print("There is a sign on that utility pole.")
+}
+if (said("examine", "doormat")) { //0197
+  print("\"Welcome\"")
+}
+if ((said("increase", "doormat") || said("examine", "below", "doormat"))) { //01a3
+  print("Amazed by your own cleverness, you lift the door mat and discover...")
+  print("...absolutely nothing!")
+  print("(What did you expect? A key?)")
+}
+if (f207) { //01bd
+  if (said("examine", "bouncer")) { //01c3
+    print("He appears to be chasing someone!")
+  }
+  if (said("ask", "bouncer")) { //01cf
+    print("\"STOP, PERVERT!!!\" shouts the cop.\n\n\"I wonder who he's yelling at,\" you think.")
+  }
+}
+if (said("increase", "door")) { //01db
+  if (f61) { //01e5
+    reset(fSaidAccepted)
+    goto(l537)
+  }
+  if (!f201) { //01f0
+    set(f54)
+    goto(l537)
+  }
+  if (v119 > 2 && v119 < 10) { //01fc
+    print("You can't. The door is securely locked. ")
+    print("Lefty's closes at 3:00 a.m.")
+    goto(l537)
+  }
+  set(f67)
+  start.update(o1)
+  end.of.loop(o1,f202)
+  prevent.input()
+  stop.motion(o0)
+  set(f85)
+}
+l537:
+if (said("examine", "door")) { //0219
+  if (!f201) { //0223
+    set(f54)
+    goto(l561)
+  }
+  print("Nice tuck and roll job, eh?")
+}
+l561:
+if ((said("examine", "bar") || said("examine", "building"))) { //0231
+  print("Considering the looks of this place, you decide that next time you'd be better off to spend a little more money on your computer games!")
+}
+if ((said("examine", "glass") || said("look in", "glass"))) { //0245
+  print("The windows are too dirty to see through.")
+}
+if ((said("break", "glass") || said("beat", "glass"))) { //0259
+  print("Nah. Lefty would probably break both your legs!")
+}
+l621:
+if (!f48 && f89 && v63 > 5 && v77 == 0 && v30 == 0 && f200) { //026d
+  set(f75)
+  v65 = 0
+}
+if (v65 == 2 && f200) { //0286
+  set(f75)
+}
+if (f75) { //0291
+  reset(f75)
+  v65++
+  if (v65 == 1) { //029b
+    reset(f89)
+    v30 = 25
+    set(f48)
+    prevent.input()
+    set.view(o0,21)
+    force.update(o0)
+    print("It appears that the hooker gave you a little more than you bargained for!")
+    v67 = 10
+  }
+  if (v65 == 2) { //02b4
+  }
+  if (v65 == 3) { //02bb
+    print("While life may be possible, it is no longer worth living.")
+    stop.motion(o0)
+    set(f85)
+    set.view(o0,1)
+    set.cel(o0,0)
+    cycle.time(o0,v85)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 4) { //02d6
+    reset(f34)
+    stop.cycling(o0)
+    set.view(o0,4)
+    set.cel(o0,0)
+    v38 -= 3
+    if (v39 < 160) { //02ea
+      v39 += 7
+    }
+    reposition.to(o0,v38,v39)
+    v67 = 5
+  }
+  if (v65 == 5) { //02fb
+    set(f34)
+    cycle.time(o0,v86)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 6) { //030a
+    reset(f48)
+    v76 = 8
+  }
+}
+if (f44 && v63 == 5 && f62) { //0316
+  print("\"STOP, PERVERT!!!\" shouts the cop.\n\n\"I wonder who he's yelling at,\" you think.")
+}
+if (f205) { //0323
+  reset(f205)
+  set(f48)
+  erase(o0)
+  erase(o12)
+  set(f50)
+  print("\"Caught you, pervert!\" the cop shouts. \"We don't like people exposing themselves around this town, especially wearing one of those!\"")
+  print("Next time, if you insist on wearing your \"lubber\" in public, you should at least zip your fly.")
+}
+call(57)
+if ((vWhichEgoBorder == 2 || vWhichEgoBorder == 4)) { //0339
+  v76 = 9
+}
+if (posn(o0,132,120,159,138)) { //0348
+  v76 = 12
+}
+if (f202) { //0355
+  accept.input()
+  start.motion(o0)
+  reset(f85)
+  v76 = 15
+}
+return()

@@ -1,4 +1,163 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(4)
+  load.view(1)
+  load.view(12)
+  load.view(73)
+  load.view(74)
+  load.sound(26)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  set.view(o1,73)
+  set.loop(o1,1)
+  set.cel(o1,1)
+  position(o1,124,131)
+  draw(o1)
+  step.size(o1,v85)
+  set(f75)
+  set(f200)
+  if ((v78 == 4 || v78 == 2)) { //0034
+    if (v39 < 158) { //0040
+      v39 = 158
+    }
+  }
+  if ((v78 == 1 || v78 == 3)) { //004a
+    v38 = 77
+    v39 = 167
+  }
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  sound(26,f52)
+  return()
+}
+if (fEnteredCommand) { //0067
+  set(fSaidAccepted)
+  if (v65 > 5) { //006f
+    print("Since you're dead, why are you talking?? Just hang on for the ride.")
+    goto(l125)
+  }
+  print("It appears he wants something -- YOU! Get out of here!")
+}
+l125:
+if (f75) { //007d
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0087
+    move.obj(o1,112,131,2,f75)
+  }
+  if (v65 == 2) { //0094
+    follow.ego(o1,8,f75)
+  }
+  if (v65 == 3) { //009f
+    set(f48)
+    stop.motion(o0)
+    set(f85)
+    set.view(o1,74)
+    get.posn(o1,v32,v33)
+    if (v32 < v38) { //00b3
+      set.loop(o1,1)
+      if (v38 > 12) { //00bd
+        v32 = v38
+        v32 -= 13
+        goto(l208)
+      }
+      v32 = 0
+l208:
+      goto(l233)
+    }
+    set.loop(o1,0)
+    if (v38 < 140) { //00d6
+      v32 = v38
+      v32 += 5
+      goto(l233)
+    }
+    v32 = 145
+l233:
+    v33 = v39
+    set.cel(o1,0)
+    reposition.to(o1,v32,v33)
+    v66 = 7
+  }
+  if (v65 == 4) { //00f6
+    erase(o1)
+    reset(f200)
+    set(f34)
+    set.view(o0,12)
+    if (v38 > 5) { //0106
+      v38 -= 5
+      goto(l278)
+    }
+    v38 = 0
+l278:
+    if (v39 < 162) { //0116
+      v39 += 5
+      goto(l294)
+    }
+    v39 = 167
+l294:
+    reposition.to(o0,v38,v39)
+    v67 = 5
+  }
+  if (v65 == 5) { //012d
+    set.view(o1,73)
+    draw(o1)
+    wander(o1)
+    set(f201)
+    v67 = 3
+  }
+  if (v65 == 6) { //0140
+    set.view(o0,1)
+    v30 = 3
+    cycle.time(o0,v85)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 6) { //0153
+    print("Larry, when are you gonna learn to stay out of those dark alleys!!")
+    v67 = 3
+  }
+  if (v65 == 7) { //015f
+    reset(f34)
+    set.view(o0,4)
+    v30 = 27
+    set.cel(o0,0)
+    if (v38 > 2) { //0171
+      v38 -= 3
+    }
+    if (v39 < 160) { //017b
+      v39 += 7
+    }
+    reposition.to(o0,v38,v39)
+    v67 = 5
+  }
+  if (v65 == 8) { //018c
+    print("\"Hey guys!! He's screwed up again! Dump this one down the tubes, and get him another body!\"")
+    set(f34)
+    cycle.time(o0,v86)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 9) { //019d
+    reset(f48)
+    v76 = 8
+  }
+}
+if (f52 && f200) { //01a9
+  sound(26,f52)
+}
+if (f201 && vWhichObjBorder > 0 && vBorderObj == 1) { //01b4
+  reset(f201)
+  erase(o1)
+  stop.sound()
+}
+if (v78 == 2 && vWhichEgoBorder == 4) { //01c5
+  v76 = vPrevRoom
+}
+if (v78 == 4 && vWhichEgoBorder == 2) { //01d2
+  v76 = vPrevRoom
+}
+if (vWhichEgoBorder == 3 && (v78 == 1 || v78 == 3)) { //01df
+  v76 = vPrevRoom
+}
+return()

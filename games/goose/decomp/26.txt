@@ -1,4 +1,135 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.sound(51)
+  load.view(130)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 43) { //0016
+    set(f46)
+    position(o0,33,104)
+    if (f35) { //0023
+      position(o13,33,97)
+    }
+  }
+  if (vPrevRoom == 19) { //002d
+    if (v212 > 120) { //0034
+      position(o0,112,118)
+      if (f35) { //003f
+        position(o13,110,117)
+      }
+      goto(l90)
+    }
+    position(o0,21,89)
+    if (f35) { //0050
+      position(o13,13,88)
+    }
+  }
+l90:
+  if (vPrevRoom == 27) { //005a
+    if (v213 > 128) { //0061
+      position(o0,153,164)
+      if (f35) { //006c
+        position(o13,150,160)
+      }
+      goto(l143)
+    }
+    set.priority(o0,5)
+    position(o0,144,93)
+    if (f35) { //0080
+      position(o13,147,85)
+      set.priority(o13,4)
+      set(f100)
+    }
+  }
+l143:
+  if (vPrevRoom == 25) { //008f
+    if (v213 > 155) { //0096
+      position(o0,0,164)
+      if (f35) { //00a1
+        position(o13,0,160)
+      }
+      goto(l188)
+    }
+    position(o0,0,105)
+    if (f35) { //00b2
+      position(o13,0,100)
+    }
+  }
+l188:
+  animate.obj(o11)
+  set.view(o11,130)
+  set.loop(o11,0)
+  if (!f46) { //00c4
+    set.cel(o11,0)
+    goto(l212)
+  }
+  set.cel(o11,2)
+l212:
+  position(o11,43,106)
+  set.priority(o11,8)
+  draw(o11)
+  if (!f46) { //00dd
+    stop.update(o11)
+    goto(l235)
+  }
+  stop.cycling(o11)
+l235:
+  animate.obj(o4)
+  set.view(o4,130)
+  set.loop(o4,1)
+  set.cel(o4,0)
+  ignore.horizon(o4)
+  position(o4,97,13)
+  draw(o4)
+  v209 = 3
+  cycle.time(o4,v209)
+  draw(o0)
+  return()
+}
+if (f120 && !f121 && !f46) { //0107
+  set(f121)
+  set(f117)
+  move.obj(o0,0,104,1,f127)
+}
+get.posn(o0,v212,v213)
+if (v212 < 42 && v212 > 35 && v213 < 108 && v213 > 104) { //0121
+  ignore.objs(o0)
+  goto(l312)
+}
+observe.objs(o0)
+l312:
+if (f127) { //0138
+  reset(f127)
+  vWhichEgoBorder = 4
+}
+if (vWhichObjBorder == 1 && f124) { //0143
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //014f
+  new.room(19)
+}
+if (vWhichObjBorder == 3 && f124) { //0158
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //0164
+  new.room(33)
+}
+if (vWhichEgoBorder == 2) { //016d
+  new.room(27)
+}
+if (vWhichEgoBorder == 4) { //0176
+  new.room(25)
+}
+if (f49) { //017f
+  reset(f49)
+  new.room(43)
+}
+if (fTriggerLine && !f45) { //0189
+  start.update(o11)
+  stop.cycling(o11)
+  stop.motion(o0)
+  stop.cycling(o0)
+  set(f45)
+}
+return()

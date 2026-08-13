@@ -1,4 +1,186 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(58)
+  if (f108) { //000a
+    load.logic(116)
+    set(f206)
+    set(f95)
+  }
+  if ((f59 || v57 > 0)) { //0016
+    random(0,255,v61)
+    if (v61 < 88) { //0025
+      load.logic(104)
+      set(f207)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(101)
+  load.view(1)
+  load.view(2)
+  load.view(14)
+  load.view(120)
+  load.view(123)
+  load.view(175)
+  load.sound(1)
+  set(f159)
+  animate.obj(o10)
+  set.view(o10,120)
+  position(o10,94,130)
+  set.priority(o10,15)
+  draw(o10)
+  animate.obj(o9)
+  set.view(o9,123)
+  position(o9,87,150)
+  set.priority(o9,13)
+  draw(o9)
+  animate.obj(o6)
+  ignore.blocks(o6)
+  set.priority(o6,14)
+  set.view(o6,175)
+  set.cel(o6,0)
+  position(o6,105,167)
+  v61 = 4
+  cycle.time(o6,v61)
+  draw(o6)
+  stop.update(o6)
+  if (vPrevRoom == 62) { //007f
+    v38 = 132
+    v39 = 132
+    load.view(0)
+    set(f205)
+    set.view(o0,0)
+    move.obj(o0,127,137,0,f61)
+    vWhichEgoBorder = 0
+    goto(l218)
+  }
+  if (vPrevRoom == 19) { //009f
+    if (v38 > 78) { //00a6
+      v38 = 78
+    }
+    goto(l218)
+  }
+  if (vPrevRoom == 23) { //00b3
+    if (fEgoOnWater) { //00ba
+      if (v39 > 148) { //00c0
+        v39 = 148
+      }
+      goto(l218)
+    }
+    if (v39 < 77 && v39 > 65) { //00cd
+      v39 = 65
+    }
+  }
+l218:
+  position(o0,38,v39)
+  draw(o0)
+  if (f206) { //00e0
+    call(116)
+  }
+  if (f207) { //00e8
+    call(104)
+    position(o7,70,60)
+  }
+  call(101)
+  show.pic()
+  return()
+}
+if ((posn(o0,67,73,113,153) || posn(o0,67,120,83,153))) { //00f8
+  set(fEgoOnWater)
+}
+if (fEgoOnWater) { //010c
+  if (posn(o0,100,154,128,166) && f200) { //0112
+    reset(fEgoOnWater)
+    goto(l311)
+  }
+  if (posn(o0,84,119,113,153) && !f201) { //0123
+    v75 = 0
+    set(f132)
+    set(f201)
+  }
+}
+l311:
+if (posn(o0,0,69,84,76)) { //0137
+  ignore.blocks(o0)
+  goto(l362)
+}
+if (posn(o0,92,154,114,165) && f200) { //0146
+  ignore.blocks(o0)
+  goto(l362)
+}
+if (posn(o0,115,142,144,154) && f200) { //0157
+  ignore.blocks(o0)
+  goto(l362)
+}
+observe.blocks(o0)
+l362:
+if (f130) { //016a
+  if (!f78) { //0170
+    print("You bask in the beauty of the falling water, and enjoy its refreshing scent and soothing sound.")
+  }
+}
+if (!f128 && !f129) { //0179
+  goto(l457)
+}
+if (f129) { //0186
+  goto(l402)
+}
+goto(l457)
+l402:
+if (v60 == 18 && !fEgoOnWater) { //0192
+  if ((posn(o0,85,150,159,167) || posn(o0,114,122,144,154))) { //019c
+    set(fSaidAccepted)
+    print("\"BMMPXF!!\"")
+    start.update(o6)
+    stop.motion(o0)
+    if (f200) { //01b6
+      reverse.loop(o6,f204)
+      print("The rock returns to its normal appearance.")
+      goto(l457)
+    }
+    end.of.loop(o6,f203)
+    print("You say the word exactly as Gwystyl taught you. The rock beside the waterfall sinks into the stream, revealing a hidden cave.")
+  }
+}
+l457:
+if (fTriggerLine && !f205) { //01c9
+  set(f205)
+  print("You enter the cave. It's pitch black in here!")
+}
+if (f203) { //01d6
+  reset(f203)
+  set(f200)
+  stop.update(o6)
+  start.motion(o0)
+}
+if (f204) { //01e4
+  reset(f204)
+  reset(f200)
+  stop.update(o6)
+  start.motion(o0)
+}
+if (f159) { //01f2
+  sound(1,f159)
+}
+set(f88)
+call(101)
+if (f207) { //01ff
+  call(104)
+}
+if (f206) { //0207
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //020f
+  new.room(19)
+}
+if (vWhichEgoBorder == 3) { //0218
+  new.room(4)
+}
+if (vWhichEgoBorder == 4) { //0221
+  new.room(23)
+}
+if (vWhichEgoBorder == 2) { //022a
+  print("Oooooh, you're falling!!")
+  new.room(62)
+}
+return()

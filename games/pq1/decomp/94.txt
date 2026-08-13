@@ -1,4 +1,579 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (fNewRoom) { //0002
+  if (v51 == 2) { //0008
+    v51 = 3
+    goto(l24)
+  }
+  v51 = 4
+}
+l24:
+if (said("enter", "nightstick", "rol")) { //0018
+  goto(l1859)
+}
+if (said("enter", "billfold", "rol")) { //0027
+  goto(l2064)
+}
+if (vCurrentRoom == 7) { //0036
+  goto(l1610)
+}
+if (fNewRoom) { //0040
+  load.sound(3)
+  load.sound(4)
+  load.sound(9)
+  animate.obj(o10)
+  animate.obj(o11)
+  animate.obj(o12)
+  stop.cycling(o10)
+  stop.cycling(o11)
+  if (v44 == 99) { //0056
+    if (f56 && v55 == 3) { //005d
+      v55 = 1
+    }
+    if (v55 == 3) { //0069
+      load.view(111)
+      animate.obj(o13)
+      set.view(o13,111)
+      position(o13,119,135)
+      set.priority(o13,14)
+      ignore.objs(o13)
+      v152 = 5
+      cycle.time(o13,v152)
+      if (!(v52 > 0)) { //0086
+        draw(o13)
+      }
+    }
+    load.view(94)
+    load.view(15)
+    set.view(o10,15)
+    position(o10,109,159)
+    position(o11,122,159)
+    if (!(v52 > 0)) { //009f
+      add.to.pic(94,0,0,90,160,14,0)
+    }
+  }
+  if (v44 == 2) { //00af
+    if (!(v52 > 0)) { //00b6
+      load.view(150)
+      add.to.pic(150,0,0,90,160,14,0)
+      discard.view(150)
+    }
+    position(o10,112,159)
+    position(o11,124,157)
+    if (v39 == 13) { //00d2
+      load.view(69)
+      set.view(o10,69)
+      goto(l261)
+    }
+    load.view(40)
+    set.view(o10,40)
+    if (f39 && f101) { //00e6
+      set.loop(o10,1)
+      goto(l261)
+    }
+    if (f101) { //00f4
+      set.loop(o10,2)
+      draw(o10)
+      goto(l261)
+    }
+    set.loop(o10,0)
+  }
+l261:
+  if (v44 == 1) { //0105
+    reset(f63)
+    reset(f64)
+    reset(f66)
+    load.view(36)
+    set.view(o10,36)
+    position(o10,107,159)
+    if (!(v52 > 0)) { //011b
+      load.view(148)
+      add.to.pic(148,0,0,83,160,14,0)
+      discard.view(148)
+    }
+  }
+  set.priority(o10,14)
+  set.priority(o11,14)
+  ignore.objs(o11)
+  if (f39) { //0137
+    start.motion(o0)
+    if (!f63) { //013f
+      set.cel(o10,0)
+      goto(l335)
+    }
+    set.cel(o10,1)
+l335:
+    position(o0,115,162)
+    draw(o10)
+    goto(l371)
+  }
+  draw(o0)
+  if (f63) { //015a
+    set.cel(o10,2)
+    if (!(v52 > 0)) { //0163
+      draw(o10)
+    }
+    goto(l371)
+  }
+  set.cel(o10,0)
+l371:
+  if (v67 == 137) { //0173
+    load.view(70)
+    set.view(o11,70)
+    goto(l421)
+  }
+  if (v67 == 38) { //0182
+    load.view(113)
+    set.view(o11,113)
+    goto(l421)
+  }
+  if (v44 == 99) { //0191
+    load.view(70)
+    set.view(o11,70)
+    goto(l421)
+  }
+  load.view(115)
+  set.view(o11,115)
+l421:
+  if (f46) { //01a5
+    v87 = 0
+    set.cel(o11,0)
+    draw(o11)
+    goto(l456)
+  }
+  v87 = 4
+  set.cel(o11,2)
+  if (f64 && !(v52 > 0)) { //01bc
+    draw(o11)
+  }
+}
+l456:
+if (f112) { //01c8
+  v52--
+  if (v52 == 1) { //01d0
+    print("\"Oh, no! I left my door open!\"")
+    set(f140)
+  }
+}
+if (!f153 && (vWhichEgoBorder == 2 || vWhichEgoBorder == 4)) { //01db
+  random(9,10,v152)
+  print(v152)
+  set(f34)
+  set(f153)
+}
+if (!(vWhichEgoBorder > 0) && f153) { //01f4
+  reset(f153)
+}
+if (f240) { //0200
+  reset(f240)
+  v240++
+}
+if (!f110) { //020a
+  v242--
+  if (v242 == 1) { //0213
+    set(f241)
+  }
+}
+reset(f247)
+if (posn(o0,109,160,122,164)) { //021e
+  set(f247)
+}
+reset(f248)
+if (posn(o0,123,160,135,164)) { //022c
+  set(f248)
+}
+reset(f245)
+if (posn(o0,28,158,45,165)) { //023a
+  set(f245)
+}
+reset(f246)
+if (posn(o0,29,150,52,162)) { //0248
+  set(f246)
+}
+if ((said("enter", "rol") || said("sit") || said("sit", "auto") || said("get up") || said("enter") || said("enter", "auto") || said("climb", "auto"))) { //0254
+  set(f30)
+}
+if ((said("drive") || said("drive", "auto") || said("begin", "auto", "use", "car keys") || said("use", "auto", "car keys") || said("use", "car keys") || said("use", "car keys", "begin", "auto") || said("begin", "auto") || said("begin", "engine") || said("move", "car keys") || said("drive", "auto"))) { //0280
+  set(f30)
+}
+reset(f250)
+if (v44 == 99 && has(i1)) { //02ce
+  set(f250)
+}
+if (v44 == 1 && has(i2)) { //02d9
+  set(f250)
+}
+if (v44 == 2 && has(i3)) { //02e4
+  set(f250)
+}
+if (f30) { //02ef
+  set(f34)
+  reset(f30)
+  if (f39) { //02f9
+    if (!f63) { //02ff
+      if (vCurrentRoom == 32 && v119 < 18) { //0306
+        print("There's nowhere to run, and nowhere to hide. You've got to face this guy.")
+        goto(l828)
+      }
+      if (!f250) { //0315
+        print("You won't be going anywhere without keys!")
+        goto(l828)
+      }
+      if (f64) { //0321
+        if (f46) { //0327
+          print("The Department frowns on dumping suspects from cars at high speed. Try closing the rear door!")
+          goto(l820)
+        }
+        print("Close your back door.")
+l820:
+        goto(l828)
+      }
+      v55 = 1
+      new.room(v74)
+l828:
+      goto(l864)
+    }
+    if (f101) { //033f
+      set.loop(o10,1)
+      draw(o10)
+      goto(l848)
+    }
+    set.loop(o10,0)
+l848:
+    set.cel(o10,2)
+    position(o0,115,162)
+    set.loop(o0,1)
+    draw(o10)
+    draw(o0)
+    reset(f39)
+l864:
+    goto(l930)
+  }
+  if (!f247) { //0363
+    set(f113)
+    goto(l930)
+  }
+  if (!f63) { //036f
+    print("Do you plan to crawl through the window?")
+    goto(l930)
+  }
+  if (vCurrentRoom == 32 && v119 < 18) { //037b
+    print("There's nowhere to run, and nowhere to hide. You've got to face this guy.")
+    goto(l930)
+  }
+  if (f101) { //038a
+    set.loop(o10,1)
+    goto(l921)
+  }
+  set.loop(o10,0)
+l921:
+  set.cel(o10,1)
+  erase(o0)
+  draw(o10)
+  set(f39)
+}
+l930:
+if (v251 > 0) { //03a2
+  if (!(v240 > 0)) { //03a9
+    if (!f248) { //03b1
+      move.obj(o19,127,162,1,f240)
+      reset(f241)
+      v242 = 0
+      v240++
+      goto(l981)
+    }
+    if (f241) { //03c8
+      print("Since your suspect can't go through you, you might consider moving out of the way!")
+      reset(f241)
+      v242 = 20
+    }
+  }
+l981:
+  if (v240 == 2) { //03d5
+    v240++
+    v242 = 10
+  }
+  if (v240 == 3 && f241) { //03e1
+    erase(o19)
+    set.cel(o11,1)
+    v87 = 1
+    reset(f241)
+    v242 = 0
+    v240 = 0
+    v251 = 0
+  }
+}
+if (f46 && v250 > 0) { //03fd
+  if (!f248 && !(v240 > 0) && f241) { //0406
+    set.cel(o11,2)
+    position(o19,130,161)
+    draw(o19)
+    reset(f241)
+    v87 = 4
+    set(f240)
+    goto(l1075)
+  }
+  if (f241) { //0426
+    print("Since your suspect can't go through you, you might consider moving out of the way!")
+    reset(f241)
+    v242 = 20
+  }
+l1075:
+  if (v240 == 1) { //0433
+    move.obj(o19,135,161,1,f240)
+    v240++
+  }
+  if (v240 == 3) { //0442
+    set.loop(o19,1)
+    v87 = 4
+    v250 = 0
+    v251 = 0
+    v240 = 0
+  }
+}
+if (!fEnteredCommand) { //0458
+  goto(l2133)
+}
+if ((said("do", "check") || said("check") || said("make", "check") || said("make", "check", "auto") || said("check", "auto"))) { //0462
+  if (v142 < 80) { //0486
+    set(f113)
+    goto(l1172)
+  }
+  set(f116)
+}
+l1172:
+if ((said("o", "d") || said("o", "back", "d") || said("o", "auto", "d"))) { //0494
+  if (posn(o0,105,150,130,156)) { //04b0
+    print("You will never be a passenger in this car.")
+    goto(l1425)
+  }
+  if ((f247 || f39)) { //04bf
+    if (f63) { //04c9
+      set.string(str2," front ")
+      print("The%s2door is open.")
+      goto(l1283)
+    }
+    if (f39) { //04d7
+      set.cel(o10,1)
+      set(f63)
+      sound(3,f154)
+      goto(l1283)
+    }
+    if (f101) { //04e8
+      set.loop(o10,1)
+      draw(o10)
+      goto(l1273)
+    }
+    set.loop(o10,0)
+l1273:
+    set.cel(o10,2)
+    draw(o10)
+    sound(3,f154)
+    set(f63)
+l1283:
+    goto(l1425)
+  }
+  if (!f39 && f248) { //0506
+    if (!f46) { //050f
+      print("The back seat is reserved for prisoners and you have none!")
+      goto(l1409)
+    }
+    if (f64) { //051b
+      set.string(str2," back ")
+      print("The%s2door is open.")
+      goto(l1409)
+    }
+    if (v87 != 0) { //0529
+      if (vCurrentRoom == 41) { //0531
+        print("It's seems there's a job you've left unfinished here.")
+        goto(l2133)
+        goto(l1363)
+      }
+      set.cel(o11,2)
+      reset(f241)
+      v242 = 20
+      v251 = 1
+      v250 = 0
+      v240 = 0
+      draw(o11)
+    }
+l1363:
+    if (v87 == 0) { //0553
+      if (vCurrentRoom == 41) { //055a
+        set.cel(o11,1)
+        draw(o11)
+        reset(f241)
+        v242 = 20
+        v240 = 0
+        v250 = 1
+        v251 = 0
+        goto(l1404)
+      }
+      print("Are you planning to release this criminal? This is neither the time nor place to remove your prisoner from the car.")
+      goto(l2133)
+    }
+l1404:
+    sound(3,f154)
+    set(f64)
+l1409:
+    goto(l1425)
+  }
+  if (f246) { //0584
+    print("You don't need to do that.")
+    goto(l1425)
+  }
+  print("You arms are not that long.")
+}
+l1425:
+if ((said("c", "d") || said("c", "back", "d"))) { //0591
+  if (f247) { //05a5
+    if (!f63) { //05ab
+      set.string(str2," front ")
+      print("The%s2door is closed.")
+      goto(l1520)
+    }
+    if (f39 && f101) { //05ba
+      set.loop(o10,1)
+      goto(l1495)
+    }
+    if (f101) { //05c8
+      set.loop(o10,2)
+      goto(l1495)
+    }
+    set.loop(o10,0)
+l1495:
+    if ((f39 || f101)) { //05d7
+      set.cel(o10,0)
+      draw(o10)
+      goto(l1515)
+    }
+    erase(o10)
+l1515:
+    sound(4,f154)
+    reset(f63)
+l1520:
+    goto(l1610)
+  }
+  if (f248) { //05f3
+    if (!f64) { //05f9
+      set.string(str2," back ")
+      print("The%s2door is closed.")
+      goto(l1594)
+    }
+    if ((v251 > 0 || v250 > 0)) { //0608
+      random(18,19,v152)
+      print(v152)
+      goto(l1594)
+    }
+    if (v87 == 4) { //061d
+      erase(o11)
+    }
+    if (v87 == 1) { //0626
+      reset(f36)
+      set.cel(o11,0)
+      v87 = 0
+    }
+    sound(3,f154)
+    reset(f64)
+l1594:
+    goto(l1610)
+  }
+  if (f246) { //063d
+    print("You don't need to do that.")
+    goto(l1610)
+  }
+  print("You arms are not that long.")
+}
+l1610:
+if ((!f39 || fSaidAccepted || !fEnteredCommand)) { //064a
+  goto(l2133)
+}
+v130 = 94
+if ((said("examine") || said("examine", "auto") || said("look in", "auto") || said("find", "auto") || said("examine", "accident"))) { //065e
+  if (v44 == 99) { //0680
+    if (!(obj.in.room(i13,v130))) { //0687
+      print("Why do you always get the car that needs cleaning!?")
+      goto(l1686)
+    }
+    print("You notice a nightstick in a holder on the driver's door panel.")
+l1686:
+    goto(l1715)
+  }
+  if (v44 == 1) { //0699
+    if (obj.in.room(i12,v130)) { //06a0
+      print("Good move! Your wallet is on the seat.")
+      goto(l1710)
+    }
+    print("Why do you always get the car that needs cleaning!?")
+l1710:
+    goto(l1715)
+  }
+  reset(fSaidAccepted)
+}
+l1715:
+if (v44 == 99) { //06b3
+  if ((said("get", "nightstick") || said("get", "nightstick", "off", "d") || said("get", "nightstick", "from", "d") || said("empty", "nightstick", "from", "d") || said("get", "nightstick", "from", "auto"))) { //06ba
+    if (!(obj.in.room(i13,v130))) { //06ee
+      set(f114)
+      goto(l1803)
+    }
+    get(i13)
+    set(f116)
+    if (!f149) { //06ff
+      set(f149)
+      vCurrentScore += 3
+    }
+  }
+l1803:
+  if ((said("drop", "nightstick") || said("drop", "nightstick", "d") || said("drop", "nightstick", "on", "d") || said("drop", "nightstick", "d") || said("hang", "nightstick", "on", "d") || said("drop", "nightstick", "auto"))) { //070b
+l1859:
+    if (!(has(i13))) { //0743
+      set(f115)
+      goto(l1876)
+    }
+    put(i13,130)
+    set(f116)
+  }
+}
+l1876:
+if ((said("get", "billfold") || said("get", "billfold", "off", "bench") || said("get", "billfold", "from", "bench") || said("empty", "billfold", "from", "bench") || said("get", "billfold", "from", "auto"))) { //0754
+  if (v44 != 1) { //0788
+    print("It's not here.")
+    goto(l1979)
+  }
+  if (!(obj.in.room(i12,v130))) { //0795
+    set(f114)
+    goto(l1979)
+  }
+  get(i12)
+  set(f116)
+  if (!f59) { //07a6
+    set(f59)
+    v89 = 90
+    vCurrentScore += 3
+    goto(l1979)
+  }
+  v89 = v97
+}
+l1979:
+if ((said("drop", "billfold") || said("drop", "billfold", "bench") || said("drop", "billfold", "on", "bench") || said("drop", "billfold", "bench") || said("lay", "billfold", "on", "bench") || said("lay", "billfold", "bench") || said("lay", "billfold", "auto") || said("drop", "billfold", "auto"))) { //07bb
+  if (v44 != 1) { //0803
+    print("You wouldn't want to leave your wallet here!")
+    goto(l2087)
+  }
+l2064:
+  if (!(has(i12))) { //0810
+    set(f115)
+    goto(l2087)
+  }
+  v97 = v89
+  v89 = 0
+  put(i12,130)
+  set(f116)
+}
+l2087:
+if (f39) { //0827
+  if ((said("change", "seat belt") || said("change", "seat belt") || said("buckle", "seat belt") || said("empty", "seat belt") || said("get", "off", "seat belt"))) { //082d
+    set(f116)
+  }
+}
+l2133:
+return()

@@ -1,4 +1,245 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x21)}
+if (fNewRoom) { //0002
+  animate.obj(o6)
+  set.view(o6,65)
+  set.loop(o6,0)
+  position(o6,58,84)
+  set.priority(o6,4)
+  draw(o6)
+  animate.obj(o4)
+  ignore.objs(o4)
+  set.view(o4,7)
+  set.loop(o4,2)
+  position(o4,59,95)
+  draw(o4)
+  stop.update(o4)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  set.view(o1,23)
+  set.view(o3,28)
+  if (!(v48 > 0)) { //0037
+    set.view(o2,27)
+    goto(l72)
+  }
+  set.view(o2,22)
+l72:
+  set.loop(o1,1)
+  set.loop(o2,1)
+  set.loop(o3,0)
+  position(o1,68,114)
+  position(o2,67,144)
+  position(o3,81,114)
+  if (!f71) { //005d
+    draw(o1)
+    stop.update(o1)
+  }
+  if (!f72) { //0068
+    draw(o2)
+    stop.update(o2)
+  }
+  if (!f73) { //0073
+    draw(o3)
+    stop.update(o3)
+  }
+  return()
+}
+distance(o0,o1,v225)
+distance(o0,o2,v226)
+distance(o0,o3,v227)
+distance(o0,o4,v228)
+if ((v225 < v61 || v226 < v61 || v227 < v61 || v228 < v61)) { //008f
+  set(f109)
+}
+reset(f238)
+if (v228 > 0 && posn(o0,56,94,68,95)) { //00a5
+  set(f238)
+  v228 = 222
+}
+if (v225 < 10 && !f71) { //00b7
+  set(f71)
+  v220++
+}
+if (v226 < 10 && !f72) { //00c5
+  set(f72)
+  v221++
+}
+if (v227 < 10 && !f73) { //00d3
+  set(f73)
+  v222++
+}
+if (f238) { //00e1
+  if (!f239) { //00e7
+    print("\"Hey, man! What're you staring at?!\"")
+    set(f239)
+  }
+  if ((said("examine") || said("examine", "art"))) { //00f2
+    print("\"Hey, man! What're you staring at?!\"")
+  }
+  if ((said("answer") || said("answer", "art"))) { //0104
+    print("\"Isn't it nice how affirmative action has helped guys like you get on the force?\"")
+  }
+}
+if (!f238) { //0116
+  if (v228 < 10 && !f224) { //011d
+    set(f224)
+    if (!(v48 > 0)) { //0129
+      print("\"Do you know the best thing about this shower, Sonny?\"")
+      print("\"It's free.\"")
+      print("\"Too bad you have to work, Sonny,\" says Fudley. \"I'm 10-10. It's beer time for me.\"")
+      goto(l316)
+    }
+    print("\"I'm going to write a memo about this hot water situation. This place never has enough hot water! I, for one, think we should be able to take longer, more comfortable showers.\"")
+  }
+l316:
+  if (v228 < 10 && !f225 && f71 && f72 && f73) { //013c
+    set(f225)
+    if (!(v48 > 0)) { //014e
+      print("\"You'd better get on your beat before Sergeant Dooley catches you blowing off department time.\"")
+      v48 = 10
+      goto(l352)
+    }
+    print("\"You know as well as I do: Dooley doesn't like cops who waste time.\"")
+  }
+}
+l352:
+if (v228 < 20 && said("examine", "art")) { //0160
+  print("\"Hey, man! What're you staring at?!\"")
+}
+if (said("examine", "art", "creek")) { //016f
+  print("That's good, old \"Morris Fudley.\" He's so tight, when he walks, he squeaks!")
+}
+if (f71 && v220 > 0) { //017d
+  get.posn(o1,v144,v145)
+  if ((v153 != v144 || v154 != v145)) { //018a
+    v153 = v144
+    v154 = v145
+    start.cycling(o1)
+    goto(l421)
+  }
+  stop.cycling(o1)
+l421:
+  if (v220 == 1) { //01a5
+    start.update(o1)
+    set(f220)
+  }
+  if (v220 == 2) { //01b0
+    v220++
+    if (!(v48 > 0)) { //01b9
+      print("\"Say, Sonny, do you know how to tell the difference between an oral and rectal thermometer?\"")
+      print("\"By the taste.\"")
+      print("\"Well, see you later. I'm late for a date to raise my caffeine level.\"")
+      goto(l462)
+    }
+    print("\"Sonny, I heard a rumor that Sweet Cheeks Marie has the hots for you! You'd better watch your step 'cause those hookers will put their hooks in you before you know it!\"")
+    print("\"Speaking of girls, that 'Hoochie Coochie' Hannah is sure one spicy dancer! She drove the guys completely crazy!\"")
+  }
+l462:
+  if (v220 == 3) { //01ce
+    move.obj(o1,67,106,1,f220)
+  }
+  if (v220 == 4) { //01db
+    move.obj(o1,53,106,1,f220)
+  }
+  if (v220 == 5) { //01e8
+    move.obj(o1,30,129,1,f220)
+  }
+  if (v220 == 6) { //01f5
+    move.obj(o1,10,129,1,f220)
+  }
+  if (v220 == 7) { //0202
+    erase(o1)
+    v220 = 0
+  }
+}
+if (f72 && v221 > 0) { //020e
+  get.posn(o2,v144,v145)
+  if ((v155 != v144 || v156 != v145)) { //021b
+    v155 = v144
+    v156 = v145
+    start.cycling(o2)
+    goto(l566)
+  }
+  stop.cycling(o2)
+l566:
+  if (v221 == 1) { //0236
+    start.update(o2)
+    set(f221)
+  }
+  if (v221 == 2) { //0241
+    v221++
+    if (!(v48 > 0)) { //024a
+      print("\"Can you believe that Morris Fudley? Every day he showers here, 'cause he's too cheap to shower at home!\"")
+      goto(l601)
+    }
+    print("\"Can you believe that Morris Fudley? I hid all the soap and he's still in there showering. I wonder if his wife goes down to the river to bathe?\"")
+  }
+l601:
+  if (v221 == 3) { //0259
+    move.obj(o2,67,150,1,f221)
+  }
+  if (v221 == 4) { //0266
+    move.obj(o2,46,150,1,f221)
+  }
+  if (v221 == 5) { //0273
+    move.obj(o2,25,130,1,f221)
+  }
+  if (v221 == 6) { //0280
+    move.obj(o2,10,130,1,f221)
+  }
+  if (v221 == 7) { //028d
+    erase(o2)
+    v221 = 0
+  }
+}
+if (f73 && v222 > 0) { //0299
+  get.posn(o3,v144,v145)
+  if ((v157 != v144 || v158 != v145)) { //02a6
+    v157 = v144
+    v158 = v145
+    start.cycling(o3)
+    goto(l705)
+  }
+  stop.cycling(o3)
+l705:
+  if (v222 == 1) { //02c1
+    start.update(o3)
+    set(f222)
+  }
+  if (v222 == 2) { //02cc
+    v222++
+    if (!(v48 > 0)) { //02d5
+      print("\"Boy, what a hangover I have! I shoulda left the Blue Room earlier last night.\"")
+      goto(l742)
+    }
+    print("\"Boy, you can sure tell there's a full moon out! You should see the nut I arrested last night for being under the influence of drugs.")
+    print("\"This dude was so wired, he was nude break-dancing on loose gravel. His back looked like raw meat!\"")
+  }
+l742:
+  if (v222 == 3) { //02e6
+    move.obj(o3,82,105,1,f222)
+  }
+  if (v222 == 4) { //02f3
+    move.obj(o3,56,105,1,f222)
+  }
+  if (v222 == 5) { //0300
+    move.obj(o3,33,128,1,f222)
+  }
+  if (v222 == 6) { //030d
+    move.obj(o3,10,128,1,f222)
+  }
+  if (v222 == 7) { //031a
+    erase(o3)
+    v222 = 0
+  }
+}
+if (!fEnteredCommand) { //0326
+  goto(l838)
+}
+if (said("examine")) { //0330
+  print("This is the Lytton PD locker room.")
+}
+if (f109 && said("blow")) { //033a
+  print("\"You wouldn't enjoy it. I'd just lie there!\"")
+}
+l838:
+return()

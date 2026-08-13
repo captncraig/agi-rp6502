@@ -1,4 +1,260 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(fTriggerLine)
+  v66 = 167
+  observe.blocks(o0)
+  set(f72)
+  if (f108) { //0011
+    load.logic(116)
+    set(f200)
+  }
+  load.logic(117)
+  load.view(10)
+  load.view(29)
+  load.view(6)
+  load.view(7)
+  load.sound(2)
+  load.sound(11)
+  load.view(129)
+  load.view(128)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f146) { //0033
+    add.to.pic(129,0,0,57,110,4,4)
+    add.to.pic(129,0,0,38,91,4,4)
+    add.to.pic(129,0,0,19,72,4,4)
+    add.to.pic(129,0,0,0,53,4,4)
+  }
+  if (f147) { //0059
+    add.to.pic(128,0,0,86,109,4,4)
+    add.to.pic(128,0,0,101,94,4,4)
+    add.to.pic(128,0,0,120,75,4,4)
+    add.to.pic(128,0,0,139,56,4,4)
+  }
+  if (vPrevRoom == 26) { //007f
+    v64 = 4
+    set.priority(o0,15)
+    v62 = 1
+    v63 = 67
+    position(o0,62,v63)
+    v202 = v63
+    v202 -= v62
+    v203 = v202
+    v203 += 2
+    v202 -= 2
+    goto(l216)
+  }
+  if (vPrevRoom == 28) { //00a8
+    v64 = 5
+    set.priority(o0,15)
+    v62 = 140
+    v63 = 73
+    position(o0,62,v63)
+    v202 = v63
+    v202 += v62
+    v203 = v202
+    v203 += 2
+    v202 -= 2
+    goto(l216)
+  }
+  v64 = 1
+  position(o0,80,166)
+l216:
+  if (!f42) { //00d8
+    set(f42)
+    vCurrentScore += 5
+  }
+  call(117)
+  if (f200) { //00e6
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if ((v38 < 48 || v38 > 105)) { //00f0
+  reset(f87)
+  goto(l259)
+}
+set(f87)
+l259:
+if (f130) { //0103
+  print("You are in front of a vertical rock wall, too smooth to climb.")
+  set(fSaidAccepted)
+}
+if (!f128 && !f129) { //010d
+  goto(l616)
+}
+if (f129) { //011a
+  goto(l469)
+}
+set(fSaidAccepted)
+if (f146) { //0125
+  get.posn(o0,v62,v63)
+  if (v65 == 1 && posn(o0,65,130,75,150)) { //012f
+    print("You grab the rope and hang on tightly. Don't look down because the rocks are far below you!")
+    v64 = 4
+    erase(o0)
+    set.priority(o0,15)
+    v62 = 65
+    v63 = 131
+    position(o0,62,v63)
+    v202 = v63
+    v202 -= v62
+    v203 = v202
+    v203 += 2
+    v202 -= 2
+    goto(l762)
+    goto(l379)
+  }
+  if (v65 == 4) { //0165
+    print("You drop from the rope (hopefully onto the ledge).")
+    v64 = 2
+    erase(o0)
+    goto(l762)
+    goto(l379)
+  }
+  print("Your rope seems to be securely attached to the tree.")
+l379:
+  goto(l466)
+}
+if (f147) { //017e
+  if (v65 == 1 && posn(o0,80,130,97,150)) { //0184
+    print("You grab the rope and hang on tightly. Don't look down because the rocks are far below you!")
+    v64 = 5
+    erase(o0)
+    set.priority(o0,15)
+    v62 = 82
+    v63 = 131
+    position(o0,62,v63)
+    v202 = v63
+    v202 += v62
+    v203 = v202
+    v203 += 2
+    v202 -= 2
+    goto(l461)
+  }
+  if (v65 == 5) { //01b7
+    print("You drop from the rope (hopefully onto the ledge).")
+    v64 = 2
+    erase(o0)
+    goto(l762)
+    goto(l461)
+  }
+  print("Your rope seems to be securely attached to the tree.")
+l461:
+  goto(l466)
+}
+print("Looking far up the mountain, you see a dead tree protruding from the cliff face.")
+l466:
+goto(l616)
+l469:
+if ((v65 == 4 || v65 == 5)) { //01d5
+  set(fSaidAccepted)
+  print("To use it, you let go of the rope -- and fall...")
+  v64 = 3
+  erase(o0)
+  goto(l762)
+}
+if (v60 == 10) { //01ed
+  set(fSaidAccepted)
+  random(0,255,v200)
+  if (v200 < 64) { //01fa
+    set(f146)
+    drop(i10)
+    v60 = 0
+    v42 = 0
+    add.to.pic(129,0,0,57,110,4,4)
+    add.to.pic(129,0,0,38,91,4,4)
+    add.to.pic(129,0,0,19,72,4,4)
+    add.to.pic(129,0,0,0,53,4,4)
+    print("Throwing your rope high overhead, it catches on a dead branch. You tie your end securely to the limb in front of you.")
+    goto(l616)
+  }
+  if (v200 > 192) { //0230
+    set(f147)
+    drop(i10)
+    v60 = 0
+    v42 = 0
+    add.to.pic(128,0,0,86,109,4,4)
+    add.to.pic(128,0,0,101,94,4,4)
+    add.to.pic(128,0,0,120,75,4,4)
+    add.to.pic(128,0,0,139,56,4,4)
+    print("Throwing your rope high overhead, it catches on a dead branch. You tie your end securely to the limb in front of you.")
+    goto(l616)
+  }
+  print("You throw the rope as hard as you can. It fails to catch on anything.")
+}
+l616:
+if (fEgoOnWater && vEgoDir == 1) { //0268
+  v201--
+  if (!(v201 > 0)) { //0273
+    v201 = 70
+    print("Ouch! You just walked directly into a solid granite cliff.")
+    v76 = 0
+    v77 = 4
+    repositon(o0,v76,v77)
+  }
+}
+if (v65 == 4) { //028a
+  get.posn(o0,v62,v63)
+  if (v62 > 68) { //0295
+    v64 = 1
+    erase(o0)
+    v62 = 252
+    v63 = 2
+    repositon(o0,v62,v63)
+    goto(l762)
+  }
+  v204 = v63
+  v204 -= v62
+  if ((v204 < v202 || v204 > v203)) { //02b4
+    set(fTriggerLine)
+  }
+}
+if (v65 == 5) { //02c2
+  get.posn(o0,v62,v63)
+  if (v62 < 80) { //02cd
+    v64 = 1
+    erase(o0)
+    v62 = 254
+    v63 = 2
+    repositon(o0,v62,v63)
+    goto(l762)
+  }
+  v205 = v63
+  v205 += v62
+  if ((v205 < v202 || v205 > v203)) { //02ec
+    set(fTriggerLine)
+  }
+}
+l762:
+call(117)
+if (f200) { //02fc
+  call(116)
+}
+if (v206 > 0) { //0304
+  new.room(v206)
+}
+if (vWhichEgoBorder == 3) { //030d
+  v65 = 0
+  new.room(5)
+}
+if (vWhichEgoBorder == 4) { //0319
+  v65 = 0
+  print("You successfully climb the rope, and stand up on a narrow ledge.")
+  if (!f44) { //0325
+    vCurrentScore += 5
+    set(f44)
+  }
+  v206 = 26
+}
+if (vWhichEgoBorder == 2) { //0334
+  v65 = 0
+  print("You successfully climb the rope, and stand up on a narrow ledge.")
+  if (!f44) { //0340
+    vCurrentScore += 5
+    set(f44)
+  }
+  v206 = 28
+}
+return()

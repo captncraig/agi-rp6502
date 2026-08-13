@@ -1,4 +1,70 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(61)
+  if ((f59 || v57 > 0)) { //000a
+    random(0,255,v61)
+    if (v61 < 88) { //0019
+      load.logic(104)
+      set(f200)
+    }
+  }
+  if (f108) { //0024
+    load.logic(116)
+    set(f201)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //0034
+      load.logic(114)
+      set(f202)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  if (f200) { //0047
+    call(104)
+    position(o7,0,155)
+  }
+  if (f201) { //0053
+    call(116)
+  }
+  if (f202) { //005b
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0065
+  if (!f78) { //006b
+    print("What a beautiful spot. You can't remember seeing trees like this around Caer Dallben.")
+  }
+}
+if (!f128 && !f129) { //0074
+  goto(l138)
+}
+if (f129) { //0081
+  goto(l138)
+}
+l138:
+if (f202) { //008a
+  call(114)
+}
+if (f201) { //0092
+  call(116)
+}
+if (f200) { //009a
+  call(104)
+}
+if (vWhichEgoBorder == 1) { //00a2
+  new.room(17)
+}
+if (vWhichEgoBorder == 3) { //00ab
+  new.room(2)
+}
+if (vWhichEgoBorder == 2) { //00b4
+  new.room(23)
+}
+if (vWhichEgoBorder == 4) { //00bd
+  new.room(21)
+}
+return()

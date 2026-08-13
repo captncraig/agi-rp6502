@@ -1,4 +1,32 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x04)}
+if (fNewRoom) { //0002
+  v230 = vMaxScore
+  v230 -= 15
+  v91 = 0
+  v92 = 0
+  v89 = 0
+  v90 = 0
+  v95 = 0
+  v96 = 0
+  v93 = 0
+  v94 = 0
+  stop.motion(o0)
+  stop.cycling(o0)
+  v87 = 40
+  return()
+}
+v87--
+if (v87 == 1) { //0030
+  sound(22,f61)
+  if (v35 == 2) { //003a
+    print("You jumped in the cauldron causing it to explode. The Horned King's army of Cauldron-Born is now powerless.")
+  }
+  print("We hope you've enjoyed your visit to Prydain, and your success with \"The Black Cauldron.\"")
+  if (vCurrentScore < v230) { //0045
+    print("You probably think you could have earned a higher score. Of course, there's an easy way to find out: play the game again.")
+    print("Don't forget, if you make different decisions, the game will be different. We hope you'll try again and again.")
+    goto(l85)
+  }
+  print("Congratulations!! You've played a tremendous game!!")
+}
+l85:
+return()

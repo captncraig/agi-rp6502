@@ -1,4 +1,76 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,110,110,0,0)
+  }
+  load.logic(101)
+  call(101)
+  set(f68)
+  if (vPrevRoom == 23) { //002d
+    if (fEgoOnWater) { //0034
+      set.view(o0,0)
+      reset(f98)
+      v94 = 0
+    }
+  }
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if ((said("check", "doorway") || said("look in", "doorway") || said("look in", "stump"))) { //0047
+  if (posn(o0,66,134,159,167)) { //005f
+    print("It is just a hole in an empty, old stump.")
+    goto(l112)
+  }
+  print("You are not close enough.")
+}
+l112:
+if (said("check", "stump")) { //0070
+  print("It is old and rotted.")
+}
+if (said("check", "river")) { //007c
+  print("The stream appears placid enough, but appearances can be deceiving.")
+}
+if (said("check", "ANYWORD")) { //0088
+  print("There is an attractive meadow dotted with trees.")
+}
+if (f81 && !f88) { //0094
+  if ((said("acquire", "water") || said("drink", "water"))) { //009d
+    if (posn(o0,0,27,95,95)) { //00af
+      print("The bank is too steep to allow access to the river's edge.")
+      goto(l192)
+    }
+    print("You are not close enough to the river.")
+  }
+}
+l192:
+if (fEgoOnWater && !f20) { //00c0
+  set(f20)
+  print("This placid looking stream is actually quite dangerous.... the current is stronger than it looks.  You can't keep your head above water.")
+}
+if (vWhichEgoBorder != 0) { //00cd
+  reset(f68)
+}
+if (vWhichEgoBorder == 1) { //00d7
+  new.room(39)
+}
+if (vWhichEgoBorder == 2) { //00e0
+  new.room(27)
+}
+if (vWhichEgoBorder == 4) { //00e9
+  new.room(25)
+}
+if (vWhichEgoBorder == 3) { //00f2
+  new.room(23)
+}
+if (f75) { //00fb
+  call(103)
+}
+call(101)
+return()

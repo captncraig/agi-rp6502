@@ -1,3 +1,14 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x27)}
+get.posn(o19,v144,v145)
+if ((v107 != v144 || v108 != v145)) { //0006
+  v107 = v144
+  v108 = v145
+  start.cycling(o19)
+  goto(l44)
+}
+if (f122) { //001f
+  start.cycling(o19)
+  goto(l44)
+}
+stop.cycling(o19)
+l44:
+return()

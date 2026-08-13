@@ -1,3 +1,69 @@
-if (!(
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (vMonitorType != HERCULES) { //0002
+  clear.lines(22,22,c0)
+  clear.lines(24,24,c0)
+}
+if (!f30) { //0012
+  reset(f31)
+  reset(f10)
+}
+if (f42) { //001d
+  prevent.input()
+}
+animate.obj(o0)
+step.size(o0,v61)
+step.time(o0,60)
+cycle.time(o0,v59)
+get.posn(o0,v40,v41)
+v48 = 0
+v49 = 0
+v50 = 0
+v51 = 0
+v39 = 0
+v47 = 0
+reset(f43)
+reset(f33)
+reset(f32)
+reset(f34)
+reset(f122)
+reset(f81)
+v71 = 0
+reset(f100)
+reset(f114)
+reset(f101)
+reset(f99)
+reset(f98)
+reset(f109)
+reset(f130)
+v125 = 0
+v135 = 0
+v123 = 0
+v131 = 0
+v130 = 0
+v31 = 0
+v36 = 255
+l119:
+if (v36 > 219) { //0077
+  reset(v36)
+  lindirectn(v36,0)
+  v36--
+  goto(l119)
+}
+set(f47)
+set(f48)
+if (v44 == 14) { //008c
+  reset(f47)
+  reset(f48)
+  set(f46)
+  set(f114)
+}
+if (v44 == 30) { //009b
+  set(f47)
+  reset(f48)
+  position(o0,73,v74)
+}
+if ((v44 == 26 || v44 == 25)) { //00aa
+  reset(f47)
+  reset(f48)
+  set(f46)
+}
+return()

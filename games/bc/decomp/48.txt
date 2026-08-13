@@ -1,4 +1,100 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (!f81) { //000e
+    load.view(75)
+    load.view(76)
+    animate.obj(o6)
+    position(o6,72,95)
+    set.view(o6,76)
+    stop.motion(o6)
+    ignore.objs(o6)
+    draw(o6)
+  }
+  position(o0,74,167)
+  draw(o0)
+  show.pic()
+  return()
+}
+if (f130) { //0030
+  if (f81) { //0036
+    print("This is the cell where you freed Fflewddur Fflam.")
+    goto(l67)
+  }
+  print("You have found a friendly looking old prisoner!")
+}
+l67:
+if (!f128 && !f129) { //0043
+  goto(l170)
+}
+if (f129) { //0050
+  goto(l111)
+}
+if (!f81 && posn(o0,64,97,90,103)) { //0059
+  set(fSaidAccepted)
+  set(f203)
+  print("\"My name is Taran, Assistant Pig-Keeper of Caer Dallben,\" you say. \"May I assist you?\" You struggle with his ropes until you undo the knots.")
+}
+goto(l170)
+l111:
+if (f81) { //006f
+  goto(l170)
+}
+if (v60 == 19) { //0078
+  set(fSaidAccepted)
+  print("Fflewddur sees an artist who stretches the truth about his talents, but does not exaggerate his loyalty to his friends.")
+}
+if (v60 == 12 && posn(o0,64,97,90,103)) { //0083
+  set(f145)
+  set(f204)
+  goto(l283)
+}
+if (v60 == 16 && posn(o0,64,97,90,103)) { //0097
+  set(fSaidAccepted)
+  set(f203)
+  print("One of the keys fits the locks holding Fflewddur's ropes to the wall. He's free!")
+}
+l170:
+if (f204 && !f102) { //00aa
+  reset(f204)
+  set(f203)
+  print("Skillfully you slice through the ropes holding Fflewddur to the wall!")
+}
+if (f203) { //00b9
+  reset(f203)
+  set(f81)
+  set.view(o6,75)
+  reposition.to(o6,82,104)
+  stop.cycling(o6)
+  force.update(o6)
+  vCurrentScore += 9
+  v201 = 25
+  print("The prisoner speaks, \"Thank you, kind sir. I'm Fflewddur Fflam, storyteller, minstrel and bard to the greatest kings in all Prydain!\"")
+}
+v201--
+if (v201 == 1) { //00d8
+  start.cycling(o6)
+  start.motion(o6)
+  move.obj(o6,96,104,1,f202)
+  get(i13)
+  print("\"The Horned King has kept me imprisoned for years in this cell. In return for granting me my freedom, I'd like to present you with this special harp.\"")
+}
+if (f202) { //00ed
+  reset(f202)
+  print("\"Sir,\" FFlewddur says, \"you may choose to remain here, but I intend to make my escape. Farewell, Assistant Pig-Keeper Taran!\"")
+  move.obj(o6,78,167,1,f200)
+}
+if (f200) { //00fd
+  reset(f200)
+  erase(o6)
+}
+if (v38 == 119 && v39 == 107 && vEgoDir == 3 && !f101) { //0107
+  set(f101)
+  print("You peek through a crack in the wall, and see someone playing \"King's Quest III\" on the next disk. This puzzles you immensely!")
+}
+l283:
+if (vWhichEgoBorder == 3) { //011b
+  new.room(50)
+}
+return()

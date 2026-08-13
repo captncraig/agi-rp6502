@@ -1,4 +1,31 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(27)
+  position(o12,75,40)
+  draw(o0)
+  draw(o12)
+  add.to.pic(162,0,0,6,111,0,4)
+  add.to.pic(162,0,1,145,114,0,4)
+  add.to.pic(162,0,2,144,167,0,4)
+  add.to.pic(162,0,3,28,78,0,4)
+  add.to.pic(162,0,4,43,78,0,4)
+  add.to.pic(162,0,5,117,116,0,4)
+  add.to.pic(162,2,0,115,160,0,4)
+  add.to.pic(162,2,1,56,167,0,4)
+  add.to.pic(162,2,2,98,116,0,4)
+  add.to.pic(162,2,3,29,24,0,4)
+  add.to.pic(162,2,3,53,24,0,4)
+  add.to.pic(162,2,3,91,24,0,4)
+  show.pic()
+  return()
+}
+if (v143 < 33) { //0074
+  v46 = 80
+  goto(l132)
+}
+v46 = 92
+l132:
+call(27)
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //0086
+  print("The pollutants of this industrialized area give the air a pungent odor.")
+}
+return()

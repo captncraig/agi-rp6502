@@ -1,4 +1,240 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.pic(vCurrentRoom)
+  load.sound(40)
+  load.view(74)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 24) { //0016
+    if (v212 < 25) { //001d
+      position(o0,40,86)
+      goto(l68)
+    }
+    if (v212 < 40) { //002b
+      position(o0,65,86)
+      goto(l68)
+    }
+    if (v212 > 135) { //0039
+      position(o0,135,86)
+    }
+  }
+l68:
+  if (vPrevRoom == 30) { //0044
+    if (v213 > 116) { //004b
+      position(o0,0,140)
+      if (f35) { //0056
+        position(o13,0,138)
+      }
+      goto(l113)
+    }
+    position(o0,0,94)
+    if (f35) { //0067
+      position(o13,0,94)
+    }
+  }
+l113:
+  if (vPrevRoom == 32) { //0071
+    if (v213 < 100) { //0078
+      position(o0,135,86)
+      goto(l138)
+    }
+    position(o0,150,147)
+  }
+l138:
+  if (!f59) { //008a
+    animate.obj(o4)
+    set.view(o4,74)
+    position(o4,64,128)
+    set.loop(o4,3)
+    set.cel(o4,7)
+    draw(o4)
+    stop.cycling(o4)
+    animate.obj(o5)
+    ignore.objs(o5)
+    ignore.blocks(o5)
+    set.view(o5,74)
+    position(o5,59,128)
+    set.loop(o5,2)
+    set.cel(o5,0)
+    draw(o5)
+    v209 = 3
+    cycle.time(o5,v209)
+    animate.obj(o6)
+    set.view(o6,74)
+    set.loop(o6,4)
+    set.cel(o6,0)
+    position(o6,34,91)
+    set.priority(o6,9)
+    draw(o6)
+    animate.obj(o7)
+    set.view(o7,74)
+    set.loop(o7,4)
+    set.cel(o7,2)
+    position(o7,42,91)
+    set.priority(o7,9)
+    draw(o7)
+    animate.obj(o8)
+    set.view(o8,74)
+    set.loop(o8,4)
+    set.cel(o8,1)
+    position(o8,51,91)
+    set.priority(o8,9)
+    draw(o8)
+    animate.obj(o9)
+    set.view(o9,74)
+    set.loop(o9,4)
+    set.cel(o9,0)
+    position(o9,60,91)
+    set.priority(o9,9)
+    draw(o9)
+    animate.obj(o2)
+    set.view(o2,74)
+    set.loop(o2,4)
+    set.cel(o2,2)
+    position(o2,69,91)
+    set.priority(o2,9)
+    draw(o2)
+    v209 = 3
+    cycle.time(o6,v209)
+    cycle.time(o7,v209)
+    cycle.time(o8,v209)
+    cycle.time(o9,v209)
+    cycle.time(o2,v209)
+    ignore.objs(o6)
+    ignore.objs(o7)
+    ignore.objs(o8)
+    ignore.objs(o9)
+    ignore.objs(o2)
+    stop.update(o6)
+    stop.update(o7)
+    stop.update(o8)
+    stop.update(o9)
+    stop.update(o2)
+    goto(l444)
+  }
+  add.to.pic(74,3,2,64,128,0,0)
+  add.to.pic(74,3,3,69,101,14,4)
+  add.to.pic(74,5,1,15,124,0,0)
+  add.to.pic(74,5,1,24,124,0,0)
+  add.to.pic(74,5,1,33,124,0,0)
+  add.to.pic(74,5,1,42,124,0,0)
+  add.to.pic(74,5,1,51,124,0,0)
+  add.to.pic(74,5,1,60,124,0,0)
+  add.to.pic(74,3,1,75,132,0,0)
+  add.to.pic(74,4,0,34,91,9,4)
+  add.to.pic(74,4,2,42,91,9,4)
+  add.to.pic(74,4,1,51,91,9,4)
+  add.to.pic(74,4,0,60,91,9,4)
+  add.to.pic(74,4,2,69,91,9,4)
+l444:
+  add.to.pic(74,5,4,7,116,0,0)
+  add.to.pic(74,5,5,14,109,0,0)
+  add.to.pic(74,5,6,21,102,0,0)
+  add.to.pic(74,5,2,20,115,0,4)
+  add.to.pic(74,5,3,36,115,0,4)
+  add.to.pic(74,5,2,52,115,0,4)
+  add.to.pic(74,5,3,68,115,0,4)
+  draw(o0)
+  return()
+}
+if (f42) { //01f7
+  call(81)
+}
+if (!f59 && !f42) { //01ff
+  distance(o0,o4,v201)
+  get.posn(o0,v212,v213)
+  if (v201 < 20 && v213 > 104) { //0211
+    if (!f220) { //021b
+      set(f220)
+      if (v31 == 27) { //0224
+        load.logic(81)
+        set(f42)
+        goto(l632)
+      }
+      set.loop(o4,3)
+      set.cel(o4,0)
+      erase(o5)
+      animate.obj(o15)
+      load.view(39)
+      set.view(o15,39)
+      set.loop(o15,0)
+      set.cel(o15,0)
+      position(o15,18,88)
+      set.priority(o15,14)
+      draw(o15)
+      stop.update(o15)
+      set.text.attribute(0,15)
+      display(5,5,"   Kindly")
+      display(6,5,"  fetch me")
+      display(7,5,"my watering")
+      display(8,5,"    can.")
+      set(f117)
+      stop.motion(o0)
+      stop.cycling(o0)
+      v113 = 5
+      vTimeSeconds = 0
+      load.view(57)
+      sound(40,f103)
+      set(f107)
+    }
+  }
+}
+l632:
+if (f107 && f105) { //0278
+  v113--
+}
+if (v113 == 1) { //0282
+  v113 = 0
+  clear.text.rect(5,5,8,16,15)
+  erase(o15)
+  set.cel(o15,1)
+  position(o15,27,87)
+  draw(o15)
+  stop.update(o15)
+  animate.obj(o16)
+  ignore.horizon(o16)
+  set.view(o16,57)
+  set.loop(o16,1)
+  position(o16,40,60)
+  set.priority(o16,15)
+  draw(o16)
+  stop.update(o16)
+  v114 = 6
+}
+if (f107 && f105) { //02b7
+  v114--
+}
+if (v114 == 1) { //02c1
+  v114 = 0
+  reset(f107)
+  erase(o16)
+  erase(o15)
+  set.loop(o4,3)
+  set.cel(o4,7)
+  draw(o5)
+  start.cycling(o5)
+  reset(f117)
+}
+if (f120 && !f121) { //02dd
+  set(f121)
+  set(f117)
+  move.obj(o0,55,155,1,f127)
+}
+if (f127) { //02f0
+  reset(f127)
+  set(f118)
+  set.loop(o0,0)
+}
+if (vWhichObjBorder == 1 && f124) { //02fd
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //0309
+  new.room(24)
+}
+if (vWhichEgoBorder == 2) { //0312
+  new.room(32)
+}
+if (vWhichEgoBorder == 4) { //031b
+  new.room(30)
+}
+return()

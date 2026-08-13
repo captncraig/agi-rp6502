@@ -1,4 +1,156 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v57 = 14
+  v58 = 123
+  v56 = 5
+  load.view(35)
+  load.view(11)
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  load.sound(6)
+  if (f48) { //0026
+    get.posn(o0,v40,v41)
+    if (vPrevRoom == 59) { //0030
+      position(o0,103,40)
+    }
+    if (vPrevRoom == 62) { //003b
+      position(o0,108,79)
+    }
+    if (vPrevRoom == 68) { //0046
+      v40 = 2
+      position(o0,40,v41)
+    }
+  }
+  if (f47) { //0054
+    draw(o0)
+  }
+  if (f182) { //005c
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  if (!f53) { //0067
+    set(f53)
+    v36 = 73
+l115:
+    if (v36 > 53) { //0073
+      reset(v36)
+      v36--
+      goto(l115)
+    }
+  }
+  return()
+}
+if (!f46 && fTriggerLine && !f221) { //0082
+  set(f46)
+  v44 = 6
+  sound(1,f238)
+  set(f221)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  get.priority(o0,v36)
+  set.priority(o0,v36)
+  set.view(o0,11)
+  if (posn(o0,86,32,120,71)) { //00a5
+    v220 = 1
+    v38 = 94
+    v37 = 101
+    v36 = 3
+    set.priority(o0,15)
+    goto(l205)
+  }
+  v220 = 2
+  v37 = v40
+  v38 = 164
+  v36 = 4
+l205:
+  move.obj(o0,v37,v38,36,f220)
+}
+if (f220) { //00d3
+  stop.sound()
+  reset(f220)
+  reset(f221)
+  reset(f46)
+  if (v220 == 2) { //00e0
+    erase(o0)
+    set(f44)
+    print("You successfully fall for twenty meters before you hit the bottom. You get a 4.1 from the Russian judge.")
+    goto(l311)
+  }
+  print("Whoops, you slipped!")
+  program.control()
+  v44 = 18
+  sound(6,f238)
+  v221 = 5
+  set.view(o0,35)
+  set(f35)
+  set.scan.start()
+  if (f45) { //0102
+    v221--
+  }
+  if (!(v221 > 0)) { //010a
+    reset(f35)
+    player.control()
+    set.view(o0,0)
+    observe.blocks(o0)
+    observe.objs(o0)
+    release.priority(o0)
+    release.loop(o0)
+    v44 = 0
+    v36 = 1
+    cycle.time(o0,v36)
+    reset.scan.start()
+  }
+  if (v221 > 0 && f238) { //012a
+    sound(6,f238)
+  }
+  return()
+}
+l311:
+if (f182) { //0137
+  call(119)
+}
+if ((said("examine", "area") || said("examine", "bluff") || said("examine"))) { //013f
+  print("You look upward and view the mountain range you so arduously crossed. Well, you made it to Daventry! But, what is this? It looks like a cave leading deep into the mountain. You see evidence that a door once covered this cave entrance. Huge boulders lie scattered about, apparently from tumbling down the mountain.")
+}
+if ((said("look in", "cave") || said("examine", "cave"))) { //0157
+  print("You gaze into the cave-like entrance. You see nothing but crumbly stone steps leading upward.")
+}
+if ((said("look in", "canyon") || said("examine", "canyon") || said("examine", "above", "canyon"))) { //016b
+  print("A deep chasm has split the earth on this side of the mountain. You wonder if an earthquake had once struck Daventry and caused the destruction you see before you. You see nothing of interest across it.")
+}
+if ((said("jump", "above", "canyon") || said("climb", "canyon") || said("climb", "down", "canyon") || said("jump", "down", "canyon") || said("board", "above", "canyon") || said("jump", "canyon"))) { //0187
+  print("The chasm is much too wide to jump across, and too treacherous to climb.")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //01bb
+  print("A once green woodland spreads out before you. Now though, many trees and bushes have been cruelly charred.")
+}
+if (said("examine", "deck")) { //01cf
+  print("The ground is strewn with large boulders. A deep chasm cuts into it.")
+}
+if (said("examine", "sky")) { //01db
+  print("You see a mysterious cloud cover straight above you in the sky.")
+}
+if ((said("examine", "flower") || said("capture", "flower"))) { //01e7
+  print("You see no flowers about.")
+}
+if (said("examine", "stair")) { //01fb
+  print("The stone steps within the cave entrance look mighty crumbly. Curiously, they lead straight up into the mountain!")
+}
+if (said("climb", "forest")) { //0207
+  print("There are no climbable trees around.")
+}
+if ((said("jump", "above", "canyon") || said("climb", "down") || said("jump", "canyon"))) { //0213
+  print("The chasm is much too wide to jump across, and too treacherous to climb.")
+}
+if (v44 == 0 && obj.in.box(o0,118,59,133,68)) { //022f
+  new.room(62)
+}
+if (vWhichEgoBorder == 4) { //023e
+  new.room(68)
+}
+return()

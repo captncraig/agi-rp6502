@@ -1,6 +1,94 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
   v56 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  load.view(92)
+  load.view(112)
+  load.sound(11)
+  add.to.pic(112,0,0,50,105,4,4)
+  show.pic()
+  status.line.off()
+  reset(f14)
+  return()
+}
+if (f220 && f34) { //0024
+  reset(f34)
+  clear.text.rect(6,0,14,19,15)
+  clear.text.rect(8,20,16,39,15)
+  if (f56) { //003a
+    add.to.pic(92,0,0,2,87,15,15)
+    add.to.pic(92,0,1,82,103,15,15)
+    goto(l99)
+  }
+  add.to.pic(92,0,0,2,77,15,15)
+  add.to.pic(92,0,1,82,93,15,15)
+l99:
+  set.text.attribute(0,15)
+  display(6,6,"Marvin Hoffman")
+  display(7,6,"Male 6'0 194'")
+  display(8,6,"HAIR Black")
+  display(9,6,"EYES Blue")
+  display(10,6,"DOB 6/2/56")
+  display(11,6,"31 W 104th St")
+  display(12,6,"Chicago, IL")
+  display(13,6,"RESTRICTIONS")
+  display(14,6,"None.")
+  display(8,26,"Leroy Pierson")
+  display(9,26,"Male 5'10 187'")
+  display(10,26,"HAIR Black")
+  display(11,26,"EYES Blue")
+  display(12,26,"DOB 4/28/55")
+  display(13,26,"1134 Beach St")
+  display(14,26,"Newport, CA")
+  display(15,26,"RESTRICTIONS")
+  display(16,26,"None.")
+  set.text.attribute(15,0)
+}
+if (f220 && have.key()) { //00b1
+  reset(f220)
+  reset(f34)
+  draw.pic(vCurrentRoom)
+  add.to.pic(112,0,0,50,105,4,4)
+  show.pic()
+  print("Your partner will impound these items into evidence, along with the car.")
+  accept.input()
+}
+if (!fEnteredCommand) { //00ca
+  goto(l518)
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "box", "rol"))) { //00d4
+  print("You observe a black notebook, and two driver's licenses.")
+}
+if ((said("c", "box", "rol") || said("examine", "accident", "rol") || said("dont move", "examine", "rol") || said("examine", "away", "rol"))) { //00ee
+  print("Your partner will impound these items into evidence, along with the car.")
+  v56 = 32
+  sound(11,f154)
+  v141 = 5
+}
+if ((said("get", "book", "rol") || said("get", "note", "rol") || said("get", "black", "book", "rol") || said("get", "black", "note", "rol") || said("o", "book", "rol") || said("o", "note", "rol") || said("o", "black", "book", "rol") || said("o", "black", "note", "rol") || said("look in", "book", "rol") || said("look in", "note", "rol") || said("look in", "black", "book", "rol") || said("look in", "black", "note", "rol") || said("examine", "black", "note", "rol") || said("examine", "black", "book", "rol") || said("examine", "note", "rol") || said("examine", "book", "rol"))) { //011f
+  if (!f78) { //01b5
+    vCurrentScore += 2
+    set(f78)
+  }
+  print("You open the note book.")
+  set(f154)
+  v56 = 113
+  v141 = 4
+}
+if ((said("get", "id", "rol") || said("get", "drive", "id", "rol") || said("examine", "drive", "id", "rol") || said("examine", "id", "rol"))) { //01cb
+  if (!f80) { //01f5
+    set(f80)
+    vCurrentScore += 2
+  }
+  prevent.input()
+  set(f220)
+  set(f34)
+}
+l518:
+if (v56 > 0 && f154 && f138) { //0206
+  reset(f154)
+  reset(f138)
+  new.room(v56)
+}
+return()

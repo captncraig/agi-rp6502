@@ -1,4 +1,160 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(70)
+  load.view(101)
+  animate.obj(o5)
+  animate.obj(o1)
+  object.on.land(o5)
+  set.view(o5,70)
+  set.view(o1,101)
+  v61 = 2
+  step.size(o1,v61)
+  cycle.time(o1,v61)
+  get.posn(o0,v62,v63)
+  if (vCurrentRoom == 59 && vPrevRoom == 52) { //0025
+    position(o5,107,155)
+    position(o1,107,155)
+    goto(l115)
+  }
+  if (vCurrentRoom == 56 && vPrevRoom == 69) { //003a
+    position(o5,30,150)
+    position(o1,30,150)
+    set(f168)
+    goto(l115)
+  }
+  if (vCurrentRoom == 58 && vPrevRoom == 51) { //0051
+    position(o5,79,134)
+    position(o1,79,134)
+    set(f168)
+    goto(l115)
+  }
+  v63 += 1
+  position(o5,62,v63)
+  position(o1,62,v63)
+l115:
+  if (!f168) { //0073
+    set(f169)
+  }
+  wander(o1)
+  set.priority(o1,14)
+  if (vCurrentRoom == 54) { //0081
+    move.obj(o1,53,83,0,f241)
+  }
+  ignore.objs(o1)
+  ignore.objs(o5)
+  ignore.blocks(o1)
+  draw(o5)
+  draw(o1)
+  start.cycling(o5)
+  if (vCurrentRoom == 59 && vPrevRoom == 52) { //009a
+    set(f240)
+  }
+  if (vCurrentRoom == 56 && vPrevRoom == 69) { //00a6
+    set(f240)
+  }
+  return()
+}
+if (!f83) { //00b3
+  goto(l521)
+}
+if (v60 == 19 && !fSaidAccepted) { //00bd
+  v60 = 0
+  set(fSaidAccepted)
+  print("Eilonwy looks in the mirror and sees a crown on her head. She really DOES have royal ancestry.")
+}
+get.posn(o5,v62,v63)
+if (!f122) { //00d2
+  distance(o0,o5,v61)
+  if (v61 < 7) { //00dd
+    v62 = 0
+    if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 8)) { //00e7
+      if (!(v63 > v39)) { //00f6
+        v63 = 255
+        repositon(o5,v62,v63)
+      }
+      goto(l294)
+    }
+    if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //0108
+      if (!(v63 < v39)) { //0117
+        v63 = 1
+        repositon(o5,v62,v63)
+      }
+    }
+  }
+}
+l294:
+if (vEgoDir > 0 && !f168) { //0126
+  if (v78 == v38 && v79 == v39 && v62 == v251 && v63 == v252) { //0130
+    stop.cycling(o5)
+    goto(l329)
+  }
+  start.cycling(o5)
+  set(f169)
+l329:
+  goto(l356)
+}
+if (f239) { //014c
+  stop.cycling(o5)
+  stop.motion(o5)
+  reset(f239)
+}
+if (v62 == v251 && v63 == v252) { //0158
+  stop.cycling(o5)
+}
+l356:
+if ((f122 || f123 || f168)) { //0164
+  stop.cycling(o5)
+  stop.motion(o5)
+  goto(l407)
+}
+distance(o0,o5,v61)
+if (v61 > 20) { //017b
+  v63 = v39
+  if (v252 < v39) { //0185
+    v63--
+    goto(l403)
+  }
+  v63++
+l403:
+  reposition.to(o5,v38,v63)
+}
+l407:
+if (vCurrentRoom == 54) { //0197
+  v242--
+  if (v242 == 1) { //01a0
+    ignore.objs(o1)
+    move.obj(o1,53,83,0,f241)
+  }
+  if (f241) { //01af
+    reset(f241)
+    set(f38)
+    erase(o1)
+    v240 = 30
+  }
+  v240--
+  if (v240 == 1) { //01c0
+    draw(o1)
+    wander(o1)
+    set.priority(o1,14)
+    observe.objs(o1)
+    v242 = 99
+  }
+}
+if (f169) { //01d3
+  reset(f169)
+  follow.ego(o5,8,f239)
+}
+if (!f240 && f84) { //01df
+  random(0,100,v61)
+  if (v61 == 1) { //01ec
+    random(1,5,v61)
+    if (v61 == 1) { //01f7
+      v54++
+      if (v54 < 6) { //0200
+        print(v54)
+      }
+    }
+  }
+}
+l521:
+get.posn(o5,v251,v252)
+return()

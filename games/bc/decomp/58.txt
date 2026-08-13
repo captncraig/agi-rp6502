@@ -1,4 +1,172 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(118)
+  ignore.horizon(o0)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f97)
+  if (f83) { //0014
+    load.logic(118)
+    set(f203)
+  }
+  if (f60) { //001e
+    load.logic(116)
+    set(f204)
+  }
+  load.logic(106)
+  v66 = 127
+  load.view(11)
+  load.view(6)
+  load.view(7)
+  load.sound(2)
+  load.sound(11)
+  load.view(140)
+  load.view(116)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  set.view(o6,116)
+  position(o6,50,110)
+  v61 = 2
+  cycle.time(o6,v61)
+  animate.obj(o3)
+  ignore.horizon(o3)
+  set.view(o3,140)
+  v61 = 3
+  cycle.time(o3,v61)
+  set.priority(o3,4)
+  position(o3,71,84)
+  if (f166) { //0060
+    last.cel(o3,v61)
+    set.cel(o3,v61)
+    last.cel(o6,v61)
+    set.cel(o6,v61)
+    goto(l123)
+  }
+  set.cel(o6,0)
+  set.cel(o3,0)
+l123:
+  draw(o6)
+  stop.update(o6)
+  draw(o3)
+  stop.update(o3)
+  if (vPrevRoom == 51) { //0083
+    set.view(o0,11)
+    position(o0,76,94)
+    set.loop(o0,2)
+    set(f200)
+    set(f123)
+    move.obj(o0,76,96,2,f61)
+    if (!f47) { //009e
+      set(f47)
+      vCurrentScore += 10
+    }
+  }
+  draw(o0)
+  if (f203) { //00ac
+    call(118)
+  }
+  if (f204) { //00b4
+    call(116)
+  }
+  call(106)
+  show.pic()
+  return()
+}
+if (f130) { //00c0
+  print("There is a hideous gargoyle on the wall.")
+}
+if (!f128 && !f129) { //00c8
+  goto(l268)
+}
+if (f129) { //00d5
+  goto(l268)
+}
+if (posn(o0,51,118,68,127)) { //00de
+  set(fSaidAccepted)
+  start.update(o3)
+  start.update(o6)
+  if (!f166) { //00ee
+    set(f166)
+    end.of.loop(o3,f201)
+    end.of.loop(o6,f202)
+    print("You twist the gargoyle clockwise. It turns easily, opening the trapdoor in the ceiling above your head.")
+    goto(l268)
+  }
+  reset(f166)
+  reverse.loop(o3,f201)
+  reverse.loop(o6,f202)
+  print("You twist the gargoyle counterclockwise. It turns easily, closing the trapdoor in the ceiling above your head.")
+}
+l268:
+if (f122) { //010c
+  reset(f200)
+  goto(l439)
+}
+if (posn(o0,73,92,88,93) && f166) { //0117
+  if (f83) { //0123
+    print("Eilonwy bids you farewell as you leave. \"I dare not go with you,\" she says. \"I must remain in hiding down here. Good luck, Taran of Caer Dallben!\"")
+  }
+  reset(f123)
+  v65 = 0
+  v110 = 0
+  new.room(51)
+}
+if (posn(o0,73,92,88,110) && !f166 && f123) { //0135
+  reset(f123)
+  set(fTriggerLine)
+  print("You bump your head on the ceiling. Ow!")
+}
+if (fEgoOnWater && !f200) { //014a
+  reset(fTriggerLine)
+  reset(fEgoOnWater)
+  set(f200)
+  set(f123)
+  set.view(o0,11)
+  start.motion(o0)
+  step.size(o0,v106)
+  cycle.time(o0,v106)
+  v38 = 75
+  v39 = 114
+  reposition.to(o0,v38,v39)
+}
+if (f200 && v39 > 115) { //0170
+  reset(fTriggerLine)
+  reset(fEgoOnWater)
+  reset(f200)
+  reset(f123)
+  v65 = 0
+  set.view(o0,0)
+  start.motion(o0)
+  step.size(o0,v105)
+  cycle.time(o0,v105)
+  v38 = 78
+  v39 = 123
+  reposition.to(o0,v38,v39)
+  if (f168) { //0199
+    reset(f168)
+    set(f169)
+  }
+}
+if (f201) { //01a3
+  reset(f201)
+  stop.update(o3)
+}
+if (f202) { //01ad
+  reset(f202)
+  stop.update(o6)
+}
+l439:
+if (vWhichEgoBorder == 4) { //01b7
+  new.room(57)
+}
+if (vWhichEgoBorder == 2) { //01c0
+  new.room(59)
+}
+call(106)
+if (f204) { //01cb
+  call(116)
+}
+if (f203) { //01d3
+  call(118)
+}
+return()

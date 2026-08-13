@@ -1,5 +1,169 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 6
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(45)
+  v57 = 50
+  v58 = 100
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(64)
+  load.sound(31)
+  set(f238)
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //0026
+    if (vPrevRoom == 71) { //002c
+      position(o0,37,78)
+    }
+  }
+  if (f47) { //0037
+    draw(o0)
+  }
+  if (f182) { //003f
+    load.logic(119)
+    call(119)
+  }
+  if (!f189) { //0049
+    animate.obj(o1)
+    load.view(70)
+    set.view(o1,70)
+    ignore.objs(o1)
+    ignore.blocks(o1)
+    v36 = 3
+    cycle.time(o1,v36)
+    set.priority(o1,10)
+    set.loop(o1,0)
+    position(o1,81,104)
+    draw(o1)
+    if (f182) { //006d
+      start.motion(o0)
+      set.cel(o1,0)
+      end.of.loop(o1,f220)
+    }
+  }
+  show.pic()
+  return()
+}
+if (f182) { //007d
+  call(119)
+}
+set(f61)
+if (f220 && v220 == 0) { //0087
+  v220++
+  start.cycling(o1)
+  set.loop(o1,1)
+  fix.loop(o1)
+  reposition.to(o1,77,105)
+  add.to.pic(70,3,0,81,104,10,0)
+  v36 = 1
+  cycle.time(o1,v36)
+  move.obj(o1,40,124,1,f220)
+}
+if (f220 && v220 == 1) { //00b1
+  v220++
+  print("\"Oh YIPPEE! You did it, your majesty!! The gnome squeals in delight. \"I KNEW you could save us all. King Graham and Queen Valanice will be overjoyed to see you two.\" He claps his gnarled hands. \"I must run ahead to announce your arrival!\" The gnome spryly scampers toward the castle.")
+  set.loop(o1,2)
+  fix.loop(o1)
+  move.obj(o1,34,61,1,f220)
+}
+if (f220 && v220 == 2) { //00c9
+  v220++
+  reset(f220)
+  erase(o1)
+  set(f189)
+}
+if (!f189 && f238) { //00da
+  sound(31,f238)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "building"))) { //00e6
+  if (f189) { //00fc
+    print("You stare at the run-down shack. It leans heavily to one side. You wonder why it doesn't fall.")
+    goto(l265)
+  }
+  print("You stare at the run-down shack. Upon the porch, a withered gnome rocks in a creaky old rocking chair, whistling a merry tune. The shack leans heavily to one side and you wonder why it doesn't fall.")
+}
+l265:
+if ((said("examine", "cage") || said("examine", "above", "cage") || said("climb", "cage") || said("jump", "cage") || said("jump", "above", "cage") || said("climb", "above", "cage"))) { //0109
+  if (v40 < 80) { //0139
+    print("A stone wall travels to the north and south. You try to go over it, but find it too high. There is nothing of any interest on the other side of it, anyway.")
+    goto(l327)
+  }
+  print("The ramshackle wooden fence runs to the north and south. You try to go over it, but find it too high. There is nothing of any interest on the other side of it, anyway.")
+}
+l327:
+if ((said("examine", "glass") || said("look in", "glass"))) { //0147
+  print("You can't see anything through the window.")
+}
+if ((said("examine", "door") || said("look in", "door") || said("lift", "door"))) { //015b
+  print("The door is locked. The gnome is wary of thieves.")
+}
+if (said("examine", "castle")) { //0175
+  print("In the distance, you notice a castle. Your excitement mounts as you realize it is your home. Your parents, King Graham and Queen Valanice, whom you do not remember, reside there.")
+}
+if ((said("examine", "porch") || said("examine", "bandit", "porch"))) { //0181
+  if (f189) { //0195
+    print("There is nothing on the porch but the rocking chair (which isn't rocking).")
+    goto(l418)
+  }
+  print("A wizened old gnome rocks in a creaky rocking chair on the front porch of his rickety shack. He whistles a merry tune.")
+}
+l418:
+if (said("examine", "bandit")) { //01a2
+  if (f189) { //01ac
+    print("The last time you saw him he was headed north.")
+    goto(l441)
+  }
+  print("This gnome looks to be at least a hundred years old. He's stooped with age, and his face is as withered as an old prune. Grey, wispy hair tops his head, and gnarled hands clutch the chair. As old as he looks, however, his twinkling eyes suggest a youthful mischievousness as he whistles a merry tune.")
+}
+l441:
+if (said("call", "bandit")) { //01b9
+  if (f189) { //01c3
+    print("You'll have to talk extra loud because he's not here.")
+    goto(l497)
+  }
+  v181++
+  if (v181 == 1) { //01d0
+    print("You speak directly to the old gnome. He chuckles softly to himself, then replies, \"It's about time you got here, lad... I mean, Prince Alexander. Welcome home! Heaven knows, we need you. Daventry's been suffering for years now, since that despicable dragon came.\"")
+    print("The old gnome narrows his eyes to slits and leans forward in his chair. \"That monster demanded the sacrifice of your poor sister, Princess Rosella, and I'm afraid time is running out. Your parents, the King and Queen, are suffering such grief they have locked themselves in yon castle and refuse to see anyone.\"")
+    print("Staring intently at you, the gnome goes on, \"It's up to you, Alexander. Your country and family need you. It's written in the wind.\" The wizened gnome relaxes and settles back in his chair. He begins whistling again.")
+  }
+  if (v181 == 2) { //01dd
+    print("\"You must hurry, Prince Alexander,\" the old gnome urges. \"Time is a-wasting. Go save us.\"")
+  }
+  if (v181 == 3) { //01e6
+    print("The gnome now chooses to ignore you. He whistles and rocks in his creaky chair.")
+    v181--
+  }
+}
+l497:
+if ((said("climb", "up", "forest") || said("climb", "forest"))) { //01f1
+  print("There are no climbable trees around.")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //0207
+  print("Some plants and trees around Daventry have been burnt black and leafless.")
+}
+if ((said("examine", "flower") || said("capture", "flower"))) { //021b
+  print("Wildflowers no longer grow here.")
+}
+if (said("examine", "deck")) { //022f
+  print("There is nothing interesting on the ground but grass.")
+}
+if (said("examine", "sky")) { //023b
+  print("The sky is blue and the sun is shining, yet a feeling of sadness lingers here.")
+}
+if (said("capture", "bandit")) { //0247
+  if (f189) { //0251
+    print("The last time you saw him he was headed north.")
+    goto(l606)
+  }
+  print("He belongs to himself.")
+}
+l606:
+if (vWhichEgoBorder == 1) { //025e
+  new.room(71)
+}
+if (vWhichEgoBorder == 3) { //0267
+  new.room(68)
+}
+return()

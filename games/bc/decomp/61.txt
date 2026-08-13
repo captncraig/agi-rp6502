@@ -1,4 +1,336 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(115)
+  load.view(107)
+  load.view(182)
+  if (!f148) { //0014
+    v32 = 5
+  }
+  animate.obj(o6)
+  if (f58 && !f55) { //0020
+    set(f69)
+    load.view(44)
+    load.view(42)
+    load.view(89)
+    load.view(40)
+    load.sound(20)
+    add.to.pic(44,0,0,89,123,11,0)
+    animate.obj(o10)
+    set.view(o10,42)
+    v61 = 3
+    cycle.time(o10,v61)
+    position(o10,89,117)
+    set.loop(o10,0)
+    set.cel(o10,0)
+    set.view(o6,89)
+    position(o6,76,120)
+    set(f203)
+    set(f30)
+    animate.obj(o8)
+    set.view(o8,40)
+    position(o8,29,132)
+    set.loop(o8,0)
+    set.cel(o8,1)
+    v203 = 6
+    draw(o8)
+    stop.cycling(o8)
+    goto(l140)
+  }
+  set(f209)
+  load.view(90)
+  set.view(o6,90)
+  position(o6,40,148)
+  set.priority(o6,13)
+  if (f108) { //0084
+    set(f203)
+  }
+l140:
+  set.cel(o6,0)
+  ignore.blocks(o6)
+  draw(o6)
+  stop.update(o6)
+  if (!f153) { //0095
+    load.view(16)
+    animate.obj(o3)
+    set.view(o3,16)
+    position(o3,57,94)
+    set.priority(o3,4)
+    draw(o3)
+  }
+  animate.obj(o2)
+  set.view(o2,115)
+  position(o2,60,103)
+  set.priority(o2,4)
+  draw(o2)
+  animate.obj(o7)
+  set.view(o7,107)
+  position(o7,82,81)
+  set.cel(o7,0)
+  set.priority(o7,4)
+  draw(o7)
+  stop.update(o7)
+  animate.obj(o1)
+  set.view(o1,182)
+  position(o1,84,75)
+  set.priority(o1,5)
+  position(o0,139,130)
+  set.loop(o0,1)
+  draw(o0)
+  move.obj(o0,136,130,0,f61)
+  if (f203) { //00e8
+    load.logic(116)
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f124) { //00f4
+  goto(l735)
+}
+if (f130) { //00fd
+  set(fSaidAccepted)
+  if (posn(o0,81,106,97,111)) { //0105
+    if (!f202) { //010f
+      print("This is the cupboard where you and Dallben keep some things.")
+      goto(l328)
+    }
+    if (v32 == 0) { //011b
+      print("It appears that Dallben's cupboard is bare.")
+    }
+    if (v32 == 2) { //0124
+      print("An empty water flask is here.")
+    }
+    if (v32 == 3) { //012d
+      print("You notice some freshly baked bread that smells delicious.")
+    }
+    if (v32 == 4) { //0136
+      print("Caer Dallben is noted for its delicious apples! You love their sweet, crisp taste.")
+    }
+    if (v32 == 5) { //013f
+      print("Here's your good old knapsack. It might be useful.")
+    }
+l328:
+    goto(l417)
+  }
+  if (f209 && posn(o0,23,129,78,167)) { //014b
+    if (v57 > 0) { //0157
+      print("Dallben looks relieved, now that Hen Wen is safe from the Horned King.")
+      goto(l368)
+    }
+    if (f58) { //0163
+      print("Dallben, master of Caer Dallben, is a kind, wise old man. He has been like a father to you as long as you can remember.")
+      goto(l368)
+    }
+    print("Dallben is studying his \"Book of Three,\" a mysterious volume that no one else is allowed to read.")
+l368:
+    goto(l417)
+  }
+  if (posn(o0,46,116,70,122)) { //0173
+    if (f153) { //017d
+      print("Caer Dallben warms your heart, as the glow of this fire warms your body.")
+      goto(l394)
+    }
+    print("Hen Wen's gruel is warming over the fire.")
+l394:
+    goto(l417)
+  }
+  if (!f209 && posn(o0,74,113,105,123)) { //018d
+    print("Dallben looks very worried about what Hen Wen has revealed.")
+    goto(l417)
+  }
+  print("Ever since you were young, you have loved this cottage and its master, the wise old Dallben.")
+}
+l417:
+if (!f128 && !f129) { //01a1
+  goto(l735)
+}
+if (f129) { //01ae
+  goto(l714)
+}
+if (posn(o0,74,107,98,116)) { //01b7
+  set(fSaidAccepted)
+  if (!f202) { //01c3
+    set(f202)
+    print("You open the cupboard.")
+    start.update(o7)
+    end.of.loop(o7,f200)
+    goto(l574)
+  }
+  if (v32 == 0) { //01d6
+    reset(f202)
+    print("The cupboard is bare, so you close it.")
+    erase(o1)
+    start.update(o7)
+    reverse.loop(o7,f201)
+    goto(l735)
+  }
+  if (v32 == 2) { //01eb
+    v32--
+    v32--
+    get(i6)
+    set.cel(o1,0)
+    print("The water flask is made of soft leather.")
+    goto(l735)
+  }
+  if (v32 == 3) { //0200
+    v32--
+    get(i5)
+    v52 = 3
+    set.cel(o1,2)
+    print("This looks like enough bread for three meals!")
+    goto(l735)
+  }
+  if (v32 == 4) { //0216
+    v32--
+    get(i8)
+    set.cel(o1,3)
+    print("You take the apple. (It certainly looks delicious.)")
+    goto(l735)
+  }
+  if (v32 == 5) { //0229
+    set(f148)
+    v32--
+    get(i1)
+    set.cel(o1,4)
+    print("This knapsack will hold just about anything you may find.")
+    goto(l735)
+  }
+l574:
+  goto(l711)
+}
+if (f209 && posn(o0,23,129,78,167)) { //0241
+  set(fSaidAccepted)
+  v206 = 20
+  start.update(o6)
+  if (v57 > 0) { //0254
+    print("\"Thank you, Taran,\" says kindly old Dallben. \"You have gotten Hen Wen to safety, and kept her powers from the evil uses of the Horned King.\"")
+    goto(l622)
+  }
+  if (!f56) { //0260
+    print("\"Taran, it's time for you to feed our favorite pig, Hen Wen,\" says old Dallben. \"Take good care of her. She is a very special animal.\"")
+    goto(l622)
+  }
+  print("\"Goodbye, Taran,\" says Dallben. \"Hurry! Get Hen Wen to safety!\"")
+l622:
+  goto(l711)
+}
+if (posn(o0,46,116,73,128)) { //0271
+  set(fSaidAccepted)
+  if (f153) { //027d
+    print("Ouch! Don't stick your hand in the fire!!")
+    goto(l658)
+  }
+  set(f153)
+  print("You carefully reach over the fire, and take Hen Wen's pot of simmering gruel.")
+  get(i3)
+  start.update(o3)
+  erase(o3)
+l658:
+  goto(l711)
+}
+if (posn(o0,88,141,143,167)) { //0295
+  set(fSaidAccepted)
+  v206 = 20
+  start.update(o6)
+  print("\"Tired already, Taran?\" says Dallben. \"You must learn perseverance!\"")
+  goto(l711)
+}
+if (!f209 && posn(o0,74,113,105,123)) { //02ab
+  if (f55) { //02b8
+    set(fSaidAccepted)
+    v206 = 20
+    start.update(o6)
+    print("\"Goodbye, Taran,\" says Dallben. \"Hurry! Get Hen Wen to safety!\"")
+  }
+}
+l711:
+goto(l735)
+l714:
+if (v60 == 19) { //02ca
+  set(fSaidAccepted)
+  print("Dallben gazes into the mirror and smiles knowingly.")
+}
+if (v60 == 12) { //02d5
+  v212 = 18
+}
+l735:
+v212--
+if (v212 == 1) { //02e1
+  print("\"What a fine sword, Taran,\" says Dallben. \"You must be proud to own a weapon with such great magic that it need not hurt anyone!\"")
+}
+if (!f209 && posn(o0,30,140,45,150)) { //02ea
+  ignore.blocks(o0)
+  goto(l766)
+}
+observe.blocks(o0)
+l766:
+if (f70) { //02fe
+  v203--
+  if (v203 == 1) { //0306
+    print("\"Look, something's wrong with Hen Wen!\"")
+    start.cycling(o8)
+    move.obj(o8,80,124,1,f205)
+  }
+}
+if (f205) { //0317
+  reset(f205)
+  program.control()
+  stop.update(o0)
+  stop.cycling(o8)
+  print("As Hen Wen places her snout in the water, she enters a trance. A vision appears above the bowl.")
+  draw(o10)
+  stop.sound()
+  sound(20,f211)
+  set(f124)
+}
+if (f211) { //032e
+  reset(f211)
+  reset(f124)
+  erase(o10)
+  stop.sound()
+  print("\"Taran,\" says Dallben, \"you've never known about Hen Wen's magic powers, but unfortunately, the time has come for me to tell you.")
+  print("\"Hen Wen can show us things that happen in faraway places. Through her vision, she is now telling me a terrible tale.")
+  print("\"The Horned King, the most evil ruler in all Prydain, is searching for Hen Wen. He could force her to use her visions to reveal the location of the great, Black Cauldron.")
+  print("\"If he finds the Black Cauldron, he will have unspeakable power. Taran, you must take Hen Wen to the hidden cottage of the Fair Folk. They are our only hope to keep her from the Horned King.")
+  print("\"Good luck, Taran. Take this coil of rope, and hurry -- before the Horned King's power becomes unstoppable!\"")
+  set(f55)
+  set(f108)
+  get(i10)
+  start.cycling(o8)
+  follow.ego(o8,5,f174)
+  start.update(o0)
+  player.control()
+}
+if (f174) { //0354
+  reset(f30)
+}
+v206--
+if (v206 == 2) { //035e
+  set.cel(o6,0)
+}
+if (v206 == 1) { //0368
+  stop.update(o6)
+}
+if (f201) { //0371
+  reset(f201)
+  stop.update(o7)
+}
+if (f200) { //037b
+  reset(f200)
+  stop.update(o7)
+  set.cel(o1,v32)
+  draw(o1)
+  stop.cycling(o1)
+}
+if (f203) { //038c
+  call(116)
+}
+if ((posn(o0,134,110,159,121) || posn(o0,144,122,159,131))) { //0394
+  if (f58 && f108) { //03a6
+    reset(f58)
+  }
+  new.room(8)
+}
+return()

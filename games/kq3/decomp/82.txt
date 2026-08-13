@@ -1,4 +1,193 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v56 = 7
+  v57 = 84
+  v58 = 68
+  v32 = 0
+  v31 = 0
+  load.logic(112)
+  load.logic(116)
+  if (v62 < 4) { //0021
+    load.view(172)
+    animate.obj(o5)
+    set.view(o5,172)
+    set.loop(o5,0)
+    position(o5,58,156)
+    ignore.objs(o5)
+    v36 = 2
+    cycle.time(o5,v36)
+    draw(o5)
+    animate.obj(o6)
+    set.view(o6,172)
+    set.loop(o6,1)
+    position(o6,31,147)
+    v36 = 2
+    cycle.time(o6,v36)
+    ignore.objs(o6)
+    draw(o6)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (v183 > 0) { //005b
+    set(f46)
+    prevent.input()
+    program.control()
+    load.view(159)
+    add.to.pic(159,1,4,80,66,13,4)
+    discard.view(159)
+    load.view(156)
+    add.to.pic(156,1,0,87,70,13,4)
+    discard.view(156)
+    load.sound(7)
+    load.sound(1)
+    load.view(162)
+    load.view(16)
+    set.view(o0,16)
+    set.loop(o0,1)
+    set.priority(o0,15)
+    position(o0,78,68)
+    ignore.objs(o0)
+    ignore.blocks(o0)
+    draw(o0)
+    animate.obj(o3)
+    set.view(o3,16)
+    set.loop(o3,0)
+    set.priority(o3,15)
+    position(o3,64,72)
+    draw(o3)
+    block(0,130,36,167)
+    animate.obj(o4)
+    load.view(56)
+    set.view(o4,56)
+    position(o4,15,140)
+    set.loop(o4,0)
+    fix.loop(o4)
+    wander(o4)
+    draw(o4)
+    goto(l242)
+  }
+  load.view(0)
+  set.priority(o0,13)
+  if (f48) { //00cb
+    position(o0,87,68)
+  }
+  if (v44 == 30) { //00d5
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+    set.priority(o0,13)
+  }
+  if (f47) { //00ea
+    draw(o0)
+  }
+l242:
+  v36 = 0
+  if (v62 == 2) { //00f5
+    v36 = 1
+  }
+  call(112)
+  show.pic()
+  return()
+}
+if (f77 && v62 == 4) { //0103
+  erase(o5)
+  erase(o6)
+}
+call(116)
+if (f33 && v44 == 0) { //0112
+  set.priority(o0,13)
+}
+if (v183 == 1) { //011e
+  print("Now you've gone and done it!")
+  v183++
+  move.obj(o0,60,68,1,f220)
+}
+if (f220) { //012f
+  program.control()
+}
+if (v183 == 2 && f220) { //0136
+  v183++
+  set(f36)
+  sound(1,f238)
+  move.obj(o0,60,150,6,f220)
+}
+if (v183 == 3 && f220) { //014c
+  v183++
+  sound(7,f238)
+  v36 = 0
+  reset(f36)
+  set(f35)
+  set.cel(o0,0)
+  set.view(o0,162)
+  get.posn(o0,v37,v38)
+  v37 -= 6
+  v38 -= 4
+  reposition.to(o0,v37,v38)
+  end.of.loop(o0,f220)
+}
+if (v183 == 4 && f220) { //0178
+  v183++
+  get.posn(o0,v40,v41)
+  erase(o0)
+  unblock()
+  v36 = 1
+  move.obj(o4,v40,v41,36,f220)
+}
+if (v183 == 5 && f220) { //0193
+  v183++
+  erase(o4)
+  reset(f220)
+  print("As you sink beneath the waves you hear the crew rooting for the shark!")
+  stop.cycling(o0)
+  set(f44)
+}
+call(112)
+if ((said("examine") || said("examine", "ship"))) { //01aa
+  print("You are standing at the aft end of the ship.")
+}
+if ((said("examine", "up", "sky") || said("examine", "sky"))) { //01bc
+  if (v62 == 2) { //01d0
+    print("The sky is cloudless. Some sea birds can be seen in the far distance.")
+    goto(l478)
+  }
+  print("The sky is cloudless. Some shore birds are wheeling overhead. It appears that the ship is near land!")
+}
+l478:
+if ((said("examine", "desert") || said("examine", "above", "bay") || said("examine", "bay") || said("examine", "above", "liquid") || said("examine", "liquid"))) { //01de
+  if (v62 == 2) { //0206
+    print("The deep, blue ocean stretches out to the horizon. There is no land in sight.")
+  }
+  if (v62 == 3) { //020f
+    print("The ocean is calm and untroubled. Sea gulls wing nearby. To the east you see what might be land.")
+  }
+  if (v62 == 4) { //0218
+    print("The ocean is calm and untroubled. Sea gulls wing nearby. The ship is anchored in a small bay. Further north, a mountain range looms.")
+  }
+}
+if (v62 == 4 && (said("examine", "beach") || said("examine", "beach"))) { //0221
+  print("The ocean is calm and untroubled. Sea gulls wing nearby. The ship is anchored in a small bay. Further north, a mountain range looms.")
+}
+if ((said("dive", "bay") || said("board", "bay") || said("capture", "bay") || said("jump") || said("jump", "ship") || said("jump", "bay") || said("dive") || said("dive", "liquid") || said("board", "liquid") || said("capture", "liquid") || said("jump") || said("jump", "ship") || said("jump", "liquid") || said("dive"))) { //0238
+  print("You endeavor to climb over the railing, but change your mind as you feel it might be unsafe!")
+}
+if (vWhichEgoBorder > 0 && (v44 == 25 || v44 == 26)) { //028c
+  if (vWhichEgoBorder != 2) { //029b
+    if (v62 != 4) { //02a3
+      new.room(31)
+      goto(l690)
+    }
+    new.room(48)
+l690:
+    goto(l695)
+  }
+  new.room(80)
+}
+l695:
+if (fTriggerLine && v44 == 0) { //02b7
+  release.priority(o0)
+  new.room(83)
+}
+return()

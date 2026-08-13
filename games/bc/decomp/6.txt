@@ -1,4 +1,116 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(143)
+  load.sound(1)
+  observe.blocks(o0)
+  if (f126) { //000e
+    load.view(25)
+    goto(l33)
+  }
+  load.view(2)
+  load.logic(101)
+  set(f205)
+  set(f132)
+l33:
+  set.horizon(63)
+  if (f108) { //0023
+    load.logic(116)
+    set(f206)
+    random(0,255,v61)
+    if (v61 < 125) { //0031
+      load.logic(114)
+      set(f207)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o7)
+  set.view(o7,143)
+  position(o7,44,99)
+  set.priority(o7,8)
+  set(f159)
+  get.posn(o0,v62,v63)
+  if (vPrevRoom == 7 && v63 > 95) { //0054
+    v63 = 95
+    goto(l139)
+  }
+  if (vPrevRoom == 11 && v62 > 105) { //0064
+    v62 = 105
+    goto(l139)
+  }
+  if (f126) { //0074
+    v62 = 30
+    v63 = 74
+    set.view(o0,25)
+    ignore.objs(o0)
+    move.obj(o0,82,118,0,f201)
+  }
+l139:
+  position(o0,62,v63)
+  draw(o7)
+  draw(o0)
+  if (f205) { //0093
+    call(101)
+  }
+  if (f206) { //009b
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //00a5
+  print("The forest here is dense. The river is difficult to cross because it is filled with turbulent rapids.")
+}
+if (!f128 && !f129) { //00ad
+  goto(l195)
+}
+if (f129) { //00ba
+  goto(l195)
+}
+l195:
+if (!f204 && !f126 && (posn(o0,13,69,45,95) || posn(o0,37,96,81,131) || posn(o0,81,112,159,167) || posn(o0,22,53,79,96) || posn(o0,80,85,159,138))) { //00c3
+  set(f204)
+  print("The rapids are turbulent and treacherous. This is not a good place to dive in.")
+}
+if (f201) { //00f1
+  reset(f201)
+  move.obj(o0,115,119,0,f202)
+}
+if (f202) { //00ff
+  reset(f202)
+  move.obj(o0,130,167,0,f203)
+}
+if (f203) { //010d
+  new.room(7)
+}
+if (f159 && !f173) { //0115
+  sound(1,f159)
+}
+if (posn(o0,69,92,102,125)) { //0121
+  set(fEgoOnWater)
+}
+if ((posn(o0,0,0,79,82) || posn(o0,0,83,109,95) || posn(o0,60,125,115,132) || posn(o0,105,133,140,167))) { //012d
+  set(f88)
+}
+if (f207) { //014d
+  call(114)
+}
+if (f206) { //0155
+  call(116)
+}
+if (f205) { //015d
+  call(101)
+}
+if (vWhichEgoBorder == 1) { //0165
+  new.room(1)
+}
+if (vWhichEgoBorder == 2) { //016e
+  new.room(7)
+}
+if (vWhichEgoBorder == 4) { //0177
+  new.room(5)
+}
+if (vWhichEgoBorder == 3) { //0180
+  new.room(11)
+}
+return()

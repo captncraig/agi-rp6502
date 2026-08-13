@@ -1,4 +1,352 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(165)
+  load.view(174)
+  load.view(17)
+  load.view(0)
+  load.view(164)
+  animate.obj(o5)
+  ignore.blocks(o5)
+  set.view(o5,164)
+  if (obj.in.room(i14,vCurrentRoom)) { //0021
+    set.cel(o5,0)
+    goto(l49)
+  }
+  set.cel(o5,1)
+l49:
+  position(o5,77,159)
+  stop.cycling(o5)
+  draw(o5)
+  stop.update(o5)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.view(o4,174)
+  set.priority(o4,5)
+  position(o4,73,91)
+  set.cel(o4,1)
+  stop.cycling(o4)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,165)
+  set.loop(o2,2)
+  fix.loop(o2)
+  set.priority(o2,4)
+  position(o2,73,108)
+  v52 = 3
+  cycle.time(o2,v52)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o3,165)
+  set.loop(o3,1)
+  fix.loop(o3)
+  position(o3,73,118)
+  set.priority(o3,5)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,165)
+  set.priority(o1,11)
+  fix.loop(o1)
+  step.size(o1,v85)
+  if (v30 == 18) { //0091
+    set(f204)
+    v30 = 18
+    set.loop(o1,3)
+    last.cel(o1,v52)
+    set.cel(o1,v52)
+    stop.cycling(o1)
+    position(o1,73,36)
+    draw(o1)
+    move.obj(o1,73,118,2,f75)
+    v65 = 100
+    draw(o2)
+    stop.update(o2)
+    draw(o4)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.priority(o0,12)
+    v38 = 75
+    v39 = 119
+    goto(l272)
+  }
+  draw(o3)
+  stop.update(o3)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,73,118)
+  draw(o1)
+  stop.update(o1)
+  if (vPrevRoom == 36) { //00e1
+    v38 = 128
+    v39 = 104
+    set.loop(o0,1)
+    position(o0,38,v39)
+    draw(o0)
+    start.motion(o0)
+    goto(l272)
+  }
+  if (!(vPrevRoom > 0)) { //00fc
+    v38 = 75
+    v39 = 115
+  }
+  position(o0,38,v39)
+  draw(o0)
+l272:
+  ignore.objs(o0)
+  show.pic()
+  return()
+}
+reset(f200)
+if (posn(o0,70,110,83,120)) { //0116
+  set(f200)
+}
+reset(f205)
+if (posn(o0,96,101,111,106)) { //0124
+  set(f205)
+}
+reset(f201)
+if (posn(o0,62,155,87,163)) { //0132
+  set(f201)
+}
+if (v39 > 119 && v39 < 133) { //013e
+  set.priority(o0,12)
+  goto(l336)
+}
+release.priority(o0)
+l336:
+if (!fEnteredCommand) { //0150
+  goto(l1061)
+}
+if (f204 && !fSaidAccepted) { //015a
+  if ((said("hear") || said("sing") || said("sing", "along"))) { //0163
+    print("\"strangers in the night, da da da dee da...\"")
+    goto(l384)
+  }
+  set(fSaidAccepted)
+  print("Whee!")
+}
+l384:
+if ((said("up") || said("down"))) { //0180
+  print("Type a word, like \"one\" or \"two.\"")
+}
+if ((said("examine") || said("examine", "area") || said("examine", "brick") || said("examine", "elevator"))) { //0190
+  if (f200) { //01ac
+    print("You are inside the glass elevator. Your favorite kind of music is playing. You hum along, insipidly.")
+    print("There are buttons labeled \"one\" through \"eight.\"")
+    goto(l443)
+  }
+  print("The entrance to the Cabaret Lounge is to the right, by the telephone. A glass elevator awaits you. An ashtray is in front of the planter.")
+}
+l443:
+if (said("look in", "bush")) { //01bb
+  if (f200) { //01c5
+    set(f54)
+    goto(l466)
+  }
+  print("They're of your favorite species: polyvinyl chloride. There is an ashtray in front of the planter.")
+}
+l466:
+if (said("examine", "bush")) { //01d2
+  if (f200) { //01dc
+    print("You know, the people on those plants look like ants from up here.")
+    print("Those ARE ants, you fool; we haven't left the ground yet!")
+    goto(l491)
+  }
+  print("They're of your favorite species: polyvinyl chloride. There is an ashtray in front of the planter.")
+}
+l491:
+if (said("close", "door")) { //01eb
+  if (f200) { //01f5
+    print("The doors close whenever you choose a floor.")
+    goto(l514)
+  }
+  print("Go inside and push a button.")
+}
+l514:
+if ((said("examine", "ash tray") || said("look in", "ash tray"))) { //0202
+  if (v39 < 150) { //0214
+    print("Where?")
+    goto(l558)
+  }
+  if (obj.in.room(i14,vCurrentRoom)) { //0220
+    print("There's some kind of card in the ashtray.")
+    goto(l558)
+  }
+  print("Yuck!")
+}
+l558:
+if (said("anyword", "ash tray")) { //022e
+  if (v39 < 150) { //0238
+    print("Where?")
+    goto(l594)
+  }
+  if (obj.in.room(i14,vCurrentRoom)) { //0244
+    print("There's some kind of card in the ashtray.")
+    goto(l594)
+  }
+  print("The ashtray is of no further interest since you have the card.")
+}
+l594:
+if ((said("catch", "card") || said("catch", "card"))) { //0252
+  if (!f201) { //0264
+    set(f54)
+    goto(l649)
+  }
+  if (!(obj.in.room(i14,vCurrentRoom))) { //0270
+    set(f55)
+    goto(l649)
+  }
+  set.cel(o5,1)
+  force.update(o5)
+  get(i14)
+  vCurrentScore += 1
+  set(f67)
+}
+l649:
+if ((said("examine", "phone") || said("use", "phone") || said("make", "phone", "ask") || said("dial", "phone"))) { //0289
+  if (!f205) { //02a9
+    set(f54)
+    goto(l695)
+  }
+  print("Somebody filled the coin slot with chewing gum.")
+}
+l695:
+if ((said("catch", "food") || said("drain", "food"))) { //02b7
+  if (!f205) { //02c9
+    set(f54)
+    goto(l727)
+  }
+  print("You can't. It's so firmly embedded, nothing will get it out. You'll just have to find another telephone.")
+}
+l727:
+if ((said("examine", "phone", "book") || said("examine", "book"))) { //02d7
+  if (!f205) { //02eb
+    set(f54)
+    goto(l761)
+  }
+  print("All the pages are torn out.")
+}
+l761:
+if ((said("answer", "phone") || said("catch", "phone") || said("answer"))) { //02f9
+  if (!f205) { //030f
+    set(f54)
+    goto(l797)
+  }
+  print("It's not ringing.")
+}
+l797:
+if (!(v65 > 0) && f200) { //031d
+  if ((said("move", "one") || said("move", "button", "one") || said("one"))) { //0327
+    v79 = 1
+    set(f75)
+  }
+  if ((said("move", "two") || said("move", "button", "two") || said("two"))) { //0344
+    v79 = 2
+    set(f75)
+  }
+  if ((said("move", "three") || said("move", "button", "three") || said("three"))) { //0361
+    v79 = 3
+    set(f75)
+  }
+  if ((said("move", "four") || said("move", "button", "four") || said("four"))) { //037e
+    v79 = 4
+    set(f75)
+  }
+  if ((said("move", "five") || said("move", "button", "five") || said("five"))) { //039b
+    v79 = 5
+    set(f75)
+  }
+  if ((said("move", "six") || said("move", "button", "six") || said("six"))) { //03b8
+    v79 = 6
+    set(f75)
+  }
+  if ((said("move", "seven") || said("move", "button", "seven") || said("seven"))) { //03d5
+    v79 = 7
+    set(f75)
+  }
+  if ((said("move", "eight") || said("move", "button", "eight") || said("eight"))) { //03f2
+    v79 = 8
+    set(f75)
+  }
+  if ((said("move", "rol") || said("move", "button", "rol"))) { //040f
+    print("Type a word, like \"one\" or \"two.\"")
+  }
+}
+l1061:
+if (f75) { //0425
+  reset(f75)
+  v65++
+  if (v65 == 1) { //042f
+    set(f204)
+    v30 = 18
+    stop.motion(o0)
+    set(f85)
+    set.view(o0,17)
+    set.cel(o0,0)
+    reposition.to(o0,76,117)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 2) { //0451
+    erase(o0)
+    set.view(o0,0)
+    set.loop(o1,3)
+    set.cel(o1,0)
+    cycle.time(o1,v86)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 3) { //0469
+    erase(o3)
+    draw(o2)
+    draw(o4)
+    stop.cycling(o1)
+    if (v79 == 1) { //0478
+      print("Wasn't that a fast ride!")
+      v65 = 101
+      goto(l1165)
+    }
+    move.obj(o1,73,36,2,f75)
+  }
+l1165:
+  if (v65 == 4) { //048d
+    v76 = 40
+  }
+  if (v65 == 101) { //0497
+    erase(o2)
+    erase(o4)
+    cycle.time(o1,v85)
+    start.cycling(o1)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 102) { //04aa
+    reset(f204)
+    v30 = 0
+    v79 = 0
+    v65 = 0
+    set.loop(o1,0)
+    draw(o3)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.cel(o0,0)
+    position(o0,76,116)
+    draw(o0)
+    start.motion(o0)
+    reset(f85)
+    cycle.time(o0,v84)
+    reset(f34)
+  }
+}
+if (vWhichEgoBorder == 3) { //04d9
+  v76 = 31
+}
+if (posn(o0,131,101,132,106)) { //04e3
+  v76 = 36
+}
+return()

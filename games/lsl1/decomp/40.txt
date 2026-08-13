@@ -1,4 +1,390 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(165)
+  load.view(174)
+  load.view(175)
+  load.view(17)
+  load.view(0)
+  ignore.objs(o0)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.view(o4,175)
+  set.cel(o4,0)
+  set.priority(o4,10)
+  position(o4,6,134)
+  v52 = 3
+  cycle.time(o4,v52)
+  animate.obj(o6)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  set.view(o6,174)
+  set.priority(o6,5)
+  position(o6,73,100)
+  stop.cycling(o6)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,165)
+  set.loop(o2,2)
+  fix.loop(o2)
+  set.priority(o2,4)
+  position(o2,73,120)
+  v52 = 3
+  cycle.time(o2,v52)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o3,165)
+  set.loop(o3,1)
+  fix.loop(o3)
+  position(o3,73,128)
+  set.priority(o3,5)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,165)
+  set.priority(o1,12)
+  fix.loop(o1)
+  step.size(o1,v85)
+  if (v30 == 18) { //0088
+    if (vPrevRoom == 42) { //008f
+      set(f206)
+      v200 = 7
+      position(o1,73,36)
+      goto(l169)
+    }
+    v200 = 2
+    position(o1,73,167)
+l169:
+    set(f204)
+    v30 = 18
+    set.loop(o1,3)
+    last.cel(o1,v52)
+    set.cel(o1,v52)
+    stop.cycling(o1)
+    if (v79 > v200) { //00b9
+      move.obj(o1,73,36,2,f75)
+      v65 = 200
+      goto(l232)
+    }
+    if (v79 < v200) { //00cc
+      move.obj(o1,73,167,2,f75)
+      v65 = 200
+      goto(l232)
+    }
+    move.obj(o1,73,128,2,f75)
+    v65 = 100
+l232:
+    draw(o1)
+    draw(o2)
+    stop.update(o2)
+    set.cel(o6,v200)
+    draw(o6)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.priority(o0,12)
+    v38 = 76
+    v39 = 126
+    position(o0,38,v39)
+    goto(l307)
+  }
+  draw(o3)
+  stop.update(o3)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,73,128)
+  draw(o1)
+  stop.update(o1)
+  v200 = 4
+  draw(o4)
+  stop.update(o4)
+  set.loop(o0,0)
+  v38 = 9
+  v39 = 132
+  position(o0,38,v39)
+  draw(o0)
+  start.motion(o0)
+l307:
+  show.pic()
+  if (vPrevRoom == 41) { //0134
+    print("You close the door behind you, and jiggle the knob to confirm it is locked.")
+  }
+  return()
+}
+reset(f205)
+if (posn(o0,73,119,83,127)) { //0140
+  set(f205)
+}
+if (f205) { //014c
+  set.priority(o0,11)
+  goto(l346)
+}
+release.priority(o0)
+l346:
+reset(f200)
+if (v200 == 4 && posn(o0,6,126,15,135)) { //015c
+  set(f200)
+}
+if (!fEnteredCommand) { //016b
+  goto(l1030)
+}
+if (f204 && !fSaidAccepted) { //0175
+  if ((said("hear") || said("hear", "elevator") || said("hear", "music") || said("sing", "music") || said("sing") || said("sing", "along"))) { //017e
+    print("\"strangers in the night, da da da dee da...\"")
+    goto(l429)
+  }
+  set(fSaidAccepted)
+  print("Whee!")
+}
+l429:
+if ((said("examine") || said("examine", "area") || said("examine", "curb") || said("examine", "casino"))) { //01ad
+  print("You are in the Casino's hotel. Doors line each side, many with \"Do Not Disturb\" signs on their doorknobs.")
+  if (v200 == 4) { //01cb
+    print("There's a door with a heart on it to the west.")
+  }
+  if (f205) { //01d4
+    print("There are buttons labeled \"one\" through \"eight.\"")
+  }
+}
+if (said("examine", "elevator")) { //01dc
+  if (f205) { //01e6
+    print("There are buttons labeled \"one\" through \"eight.\"")
+    goto(l499)
+  }
+  print("Isn't it funny how the elevator is always waiting for you?")
+}
+l499:
+if (said("examine", "bush")) { //01f3
+  print("They almost look real, don't they?")
+}
+if (said("examine", "door")) { //01ff
+  if (f200) { //0209
+    print("It's a door not unlike all the others, except this one has a cute, trite, cracked, little, plastic heart stuck to it with a thumbtack.")
+    goto(l534)
+  }
+  print("It's a door just like all the others.")
+}
+l534:
+if (said("anyword", "heart", "rol")) { //0216
+  if (f200) { //0222
+    print("The cheap, plastic heart is not worth the bother.")
+    goto(l559)
+  }
+  print("Where?")
+}
+l559:
+if ((said("bang") || said("bang", "on", "door") || said("bang", "door"))) { //022f
+  if (!f200) { //0247
+    print("You rap your knuckles on the nearest door.")
+    random(34,50,v58)
+    print(v58)
+    print("This must not be the right door, Larry.")
+    goto(l646)
+  }
+  if (!f82) { //025b
+    print("You rap your knuckles on the door. There is no response, but now your knuckles hurt.")
+    goto(l646)
+  }
+  if (f80 && !f111) { //0267
+    print("Fawn's sexy voice oozes through the door, \"Oh, baby, it's you! You're back!!\"")
+    print("There's a click as she unlocks the door. \"Come on in, you wonderful hunk!\"")
+    goto(l635)
+  }
+  print("Fawn's delicate voice booms out across the hotel:\n\n\"Just a minute, Larry!\"")
+  print("There's a click as she unlocks the door, then a piercing \"Come on in. The door's open.\"")
+l635:
+  print("Subtly, you shout, \"Here I come, baby!\"")
+  start.update(o4)
+  end.of.loop(o4,f202)
+  stop.motion(o0)
+  set(f85)
+}
+l646:
+if (said("increase", "door")) { //0286
+  if (!f200) { //0290
+    print("You seem surprised that the door is locked.")
+    goto(l670)
+  }
+  print("You can't. This door is locked.")
+}
+l670:
+if ((said("increase", "door", "use", "rol") || said("break", "door", "rol"))) { //029e
+  print("It's no good. The door resists all of your efforts.")
+}
+if ((said("unbolt", "door", "rol") || said("use", "key", "rol"))) { //02b8
+  if (!f200) { //02ce
+    set(f54)
+    goto(l732)
+  }
+  print("You can't. There's no key in this game!")
+}
+l732:
+if (said("jump", "rol")) { //02dc
+  print("Suicide is illegal here.")
+}
+if ((said("examine", "down") || said("expectorate"))) { //02e8
+  print("You contemplate expec- toration, but remember that discretion is the better part of valium.")
+  print("...or helium,")
+  print("...or something.")
+}
+if (!(v65 > 0) && f205) { //02fe
+  if ((said("move", "one") || said("move", "button", "one") || said("one"))) { //0308
+    v79 = 1
+    set(f75)
+  }
+  if ((said("move", "two") || said("move", "button", "two") || said("two"))) { //0325
+    v79 = 2
+    set(f75)
+  }
+  if ((said("move", "three") || said("move", "button", "three") || said("three"))) { //0342
+    v79 = 3
+    set(f75)
+  }
+  if ((said("move", "four") || said("move", "button", "four") || said("four"))) { //035f
+    v79 = 4
+    set(f75)
+  }
+  if ((said("move", "five") || said("move", "button", "five") || said("five"))) { //037c
+    v79 = 5
+    set(f75)
+  }
+  if ((said("move", "six") || said("move", "button", "six") || said("six"))) { //0399
+    v79 = 6
+    set(f75)
+  }
+  if ((said("move", "seven") || said("move", "button", "seven") || said("seven"))) { //03b6
+    v79 = 7
+    set(f75)
+  }
+  if ((said("move", "eight") || said("move", "button", "eight") || said("eight"))) { //03d3
+    v79 = 8
+    set(f75)
+  }
+  if ((said("move", "rol") || said("move", "button", "rol"))) { //03f0
+    print("Type a word, like \"one\" or \"two.\"")
+  }
+}
+l1030:
+if (f202) { //0406
+  reset(f85)
+  v76 = 41
+}
+if (f75) { //0411
+  reset(f75)
+  v65++
+  if (v65 == 1) { //041b
+    set(f204)
+    v30 = 18
+    stop.motion(o0)
+    set(f85)
+    set.view(o0,17)
+    set.cel(o0,0)
+    reposition.to(o0,76,126)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 2) { //043d
+    erase(o0)
+    set.view(o0,0)
+    set.loop(o1,3)
+    set.cel(o1,0)
+    cycle.time(o1,v86)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 3) { //0455
+    erase(o3)
+    draw(o2)
+    set.cel(o6,v200)
+    draw(o6)
+    v65 = 200
+    stop.cycling(o1)
+    if (v79 > v200) { //046a
+      reset(f206)
+      move.obj(o1,73,36,2,f75)
+      v65 = 200
+      goto(l1177)
+    }
+    if (v79 < v200) { //047f
+      set(f206)
+      move.obj(o1,73,167,2,f75)
+      v65 = 200
+      goto(l1177)
+    }
+    print("Not one for those long elevator rides, eh, Larry?")
+    v65 = 101
+  }
+l1177:
+  if (v65 == 101) { //0499
+    erase(o2)
+    erase(o6)
+    cycle.time(o1,v85)
+    start.cycling(o1)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 102) { //04ac
+    reset(f204)
+    v30 = 0
+    v79 = 0
+    v65 = 0
+    set.loop(o1,0)
+    draw(o3)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.cel(o0,0)
+    position(o0,76,126)
+    draw(o0)
+    start.motion(o0)
+    cycle.time(o0,v84)
+    reset(f34)
+    reset(f85)
+  }
+  if (v65 == 201) { //04db
+    if (f206) { //04e2
+      v200--
+      if (v200 == 1) { //04ea
+        v76 = 35
+        return()
+      }
+      goto(l1285)
+    }
+    v200++
+    if (v200 == 8) { //04fa
+      v76 = 42
+      return()
+    }
+l1285:
+    if (f206) { //0505
+      reposition.to(o1,73,36)
+      goto(l1302)
+    }
+    reposition.to(o1,73,167)
+l1302:
+    if (v200 != 4) { //0516
+      erase(o4)
+      goto(l1319)
+    }
+    draw(o4)
+    stop.update(o4)
+l1319:
+    set.cel(o6,v200)
+    if (v79 > v200) { //052a
+      move.obj(o1,73,36,2,f75)
+      v65 = 200
+      goto(l1369)
+    }
+    if (v79 < v200) { //053d
+      move.obj(o1,73,167,2,f75)
+      v65 = 200
+      goto(l1369)
+    }
+    move.obj(o1,73,128,2,f75)
+    v65 = 100
+  }
+}
+l1369:
+return()

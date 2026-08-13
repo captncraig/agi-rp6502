@@ -1,7 +1,403 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v51 = 6
   v56 = 0
   v57 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v48 == 0 && f119) { //0017
+    v48 = 10
+    reset(f71)
+    reset(f72)
+    reset(f73)
+  }
+  if (v48 < 20 && f120) { //0029
+    v48 = 30
+  }
+  if (v48 < 40 && v36 > 0) { //0035
+    v48 = 40
+  }
+  set.string(str1,"Aaah... there's nothing like a nice, hot shower!")
+  set.string(str2,"Sorry, but your crime-stopping just can't wait!")
+  set.horizon(0)
+  load.view(7)
+  load.view(116)
+  load.view(65)
+  load.sound(1)
+  load.sound(2)
+  animate.obj(o9)
+  ignore.blocks(o9)
+  set.view(o9,116)
+  set.priority(o9,4)
+  position(o9,129,155)
+  draw(o9)
+  stop.update(o9)
+  if (v48 == 0) { //0066
+    v56 = 39
+    load.view(23)
+    load.view(27)
+    load.view(28)
+    goto(l145)
+  }
+  if (v48 == 20) { //0079
+    v56 = 39
+    load.view(23)
+    load.view(22)
+    load.view(28)
+    goto(l145)
+  }
+  v56 = 29
+  load.view(29)
+l145:
+  animate.obj(o8)
+  animate.obj(o5)
+  set.view(o8,65)
+  set.view(o5,65)
+  set.loop(o8,1)
+  set.loop(o5,2)
+  stop.cycling(o5)
+  if (has(i19)) { //00a3
+    set.cel(o5,1)
+    goto(l178)
+  }
+  set.cel(o5,0)
+l178:
+  position(o8,94,84)
+  position(o5,99,86)
+  set.priority(o8,4)
+  set.priority(o5,9)
+  if (v56 > 0) { //00c0
+    load.logic(v56)
+    call(v56)
+  }
+  if (v134 > 0) { //00cb
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l227)
+  }
+  position(o0,20,130)
+l227:
+  if (f70) { //00e3
+    draw(o8)
+    set(f229)
+  }
+  draw(o0)
+  show.pic()
+  return()
+}
+if (v56 > 0) { //00f1
+  call(v56)
+}
+if (posn(o0,0,122,19,132)) { //00fa
+  if (v48 == 10) { //0104
+    reset(f71)
+    reset(f72)
+    reset(f73)
+  }
+  if (v48 == 30) { //0111
+    reset(f71)
+    reset(f72)
+    reset(f73)
+  }
+  new.room(6)
+}
+if (!fTriggerLine) { //0120
+  release.priority(o0)
+  goto(l339)
+}
+if (posn(o0,62,115,95,131)) { //012c
+  set.priority(o0,12)
+}
+if (posn(o0,45,130,57,143)) { //0139
+  set.priority(o0,11)
+}
+if (posn(o0,100,130,106,143)) { //0146
+  set.priority(o0,11)
+}
+l339:
+if (f229 && posn(o0,40,100,50,167)) { //0153
+  reset(f229)
+  if (vCurrentScore > 0) { //0161
+    print("You've been docked one point for leaving the shower running.")
+    vCurrentScore -= 1
+    goto(l370)
+  }
+  print("If you had any points, you would have lost them for leaving the shower running. Remember, Sonny, \"waste not, want not!\"")
+}
+l370:
+set(f233)
+if ((v39 == 4 || v39 == 7)) { //0174
+  reset(f233)
+}
+reset(f232)
+if (posn(o0,90,90,106,96)) { //0184
+  set(f232)
+}
+reset(f230)
+if (posn(o0,109,111,144,166)) { //0192
+  set(f230)
+}
+if (f220) { //019e
+  reset(f220)
+  v220++
+}
+if (f221) { //01a8
+  reset(f221)
+  v221++
+}
+if (f222) { //01b2
+  reset(f222)
+  v222++
+}
+if (f223) { //01bc
+  reset(f223)
+  v223++
+}
+if (f33) { //01c6
+  reset(f33)
+  if (!f70) { //01ce
+    set(f236)
+    goto(l476)
+  }
+  set(f237)
+}
+l476:
+if ((f236 || f237)) { //01dc
+  if (posn(o0,55,90,68,96)) { //01e6
+    if (v56 == 39) { //01f0
+      print("This shower is already occupied. (And you're not that kind of boy!)")
+      goto(l510)
+    }
+    print("Morris Fudley has worn out this shower!")
+l510:
+    goto(l567)
+  }
+  if (!f232) { //0201
+    print("The spigot is out of reach.")
+    goto(l567)
+  }
+  if (f236) { //020d
+    if (f70) { //0213
+      print("The shower IS on!")
+      goto(l548)
+    }
+    draw(o8)
+    set(f70)
+    print("Aaah... there's nothing like a nice, hot shower!")
+l548:
+    goto(l567)
+  }
+  if (!f70) { //0227
+    print("The shower IS Off!")
+    goto(l567)
+  }
+  erase(o8)
+  reset(f70)
+l567:
+  reset(f236)
+  reset(f237)
+}
+if (f232) { //023b
+  if (!f231 && f70 && f233) { //0241
+    set(f231)
+    if (vCurrentScore > 0) { //024e
+      print("Congratulations. Most players don't enter a shower while fully-clothed. You've just lost a point.")
+      vCurrentScore -= 1
+      goto(l607)
+    }
+    print("Don't you feel foolish standing in the shower fully clothed? If you had any points, you'd have lost some for this!")
+  }
+l607:
+  goto(l612)
+}
+reset(f231)
+l612:
+if (f235 && f154) { //0264
+  if (!f171) { //026c
+    set(f171)
+    vCurrentScore += 1
+  }
+  get.posn(o0,v134,v135)
+  current.loop(o0,v147)
+  new.room(47)
+}
+if (f232) { //0281
+  if (!f234 && !f233) { //0287
+    draw(o5)
+    stop.update(o5)
+    set(f234)
+  }
+  goto(l678)
+}
+if (f234) { //029a
+  start.update(o5)
+  erase(o5)
+  reset(f234)
+}
+l678:
+if (!fEnteredCommand) { //02a6
+  goto(l1794)
+}
+if (f230) { //02b0
+  if ((said("o", "d", "stall", "rol") || said("o", "stall", "d", "rol") || said("o", "stall", "d", "rol") || said("use", "stall", "rol"))) { //02b6
+    random(22,25,v152)
+    print(v152)
+  }
+  if ((said("answer", "rol") || said("get", "leak", "rol") || said("get", "crap", "rol") || said("enter", "stall", "rol") || said("knock", "stall", "rol") || said("answer", "art", "rol") || said("hello", "rol") || said("answer", "occupant", "rol") || said("knock", "d", "rol"))) { //02e8
+    random(26,29,v152)
+    print(v152)
+  }
+  if ((said("examine", "below", "stall", "rol") || said("examine", "below", "d", "rol") || said("look in", "stall", "rol") || said("look in", "d", "rol"))) { //0338
+    print("You see uniform trousers crumpled on the floor around a pair of bare legs, and conclude the stall is occupied.")
+  }
+}
+if ((said("o", "locker", "rol") || said("o", "d", "rol") || said("look in", "locker", "rol") || said("unlock", "locker", "rol"))) { //0364
+  if (posn(o0,83,131,98,141)) { //038a
+    sound(1,f154)
+    set(f235)
+    goto(l926)
+  }
+  print("Your locker is too far away.")
+}
+l926:
+if ((said("on") || said("bathe") || said("bathe", "bonds") || said("bathe", "bonds", "off") || said("move", "on") || said("creek") || said("get", "creek") || said("move", "creek", "on") || said("move", "on", "creek"))) { //039e
+  set(f236)
+}
+if ((said("off") || said("move", "off") || said("move", "off", "creek") || said("move", "creek", "off") || said("c", "off") || said("c", "off", "creek"))) { //03dc
+  set(f237)
+}
+if (has(i19) && (said("use", "bleach") || said("use", "bleach", "hair") || said("use", "bleach", "on", "hair") || said("drop", "bleach", "hair") || said("drop", "bleach", "on", "hair") || said("bleach", "about", "hair") || said("bleach", "hair"))) { //040c
+  if (!f232) { //044c
+    print("That would be best done in the shower.")
+    goto(l1136)
+  }
+  if (!f70) { //0458
+    reset(fSaidAccepted)
+    goto(l1136)
+  }
+  if (v224 < 3) { //0464
+    v224 = 2
+    print("You carefully pour the bleach on your hair. Now what?")
+  }
+}
+l1136:
+if (has(i19) && (said("wet") || said("bathe", "hair") || said("bathe", "about", "hair") || said("bathe", "hair") || said("bathe", "about", "hair") || said("wet", "about", "hair") || said("wet", "hair"))) { //0470
+  if (!f232) { //04a6
+    print("That would be best done in the shower.")
+    goto(l1232)
+  }
+  if (!f70) { //04b2
+    reset(fSaidAccepted)
+    goto(l1232)
+  }
+  if (!(v224 > 0)) { //04be
+    print("Good idea!")
+    v224 = 1
+    goto(l1232)
+  }
+  print("Your hair is wet.")
+}
+l1232:
+if (has(i19) && (said("rinse") || said("rinse", "bleach", "off", "hair", "rol") || said("rinse", "bleach", "off", "about", "hair", "rol") || said("rinse", "off", "bleach", "rol") || said("rinse", "out", "bleach", "rol") || said("rinse", "bleach", "off", "rol") || said("rinse", "bleach", "out", "rol") || said("rinse", "off", "about", "hair", "rol") || said("rinse", "off", "hair", "rol") || said("rinse", "about", "hair", "rol") || said("rinse", "hair", "rol"))) { //04d0
+  if (!f232) { //0546
+    print("That would be best done in the shower.")
+    goto(l1400)
+  }
+  if (!f70) { //0552
+    reset(fSaidAccepted)
+    goto(l1400)
+  }
+  if (v224 == 2) { //055e
+    print("Good idea!")
+    print("With great anticipation, you carefully rinse the bleach from your hair.")
+    v140 = 4
+    set(f36)
+    stop.motion(o0)
+    v224 = 3
+    goto(l1400)
+  }
+  print("What are you going to rinse out?")
+}
+l1400:
+if (said("sing", "rol")) { //0578
+  if (!f70) { //0582
+    print("That would be best done in the shower.")
+    goto(l1424)
+  }
+  print("\"Strangers in the night, la da de dee dah...\"")
+}
+l1424:
+if (said("examine", "locker")) { //0590
+  print("One of these all-metal, double-stacked lockers is assigned to you. Finding it is up to you.")
+}
+if (said("c", "locker")) { //059c
+  print("Your locker is closed.")
+}
+if (said("lock", "locker")) { //05a8
+  set(f116)
+}
+if (said("examine", "bench")) { //05b4
+  print("You are looking at the latest in locker room benches. Don't slide after sitting or you'll spend the evening plucking wood chips out of your tail!")
+}
+if (said("get", "bench")) { //05c0
+  print("The wooden bench is securely attached to the floor.")
+}
+if (said("move", "bench")) { //05cc
+  print("You can't move something that's anchored to the floor.")
+}
+if (said("examine", "creek")) { //05d8
+  print("This shower is unique. It will give you all the hot water you want for two minutes, or all the ice water you want forever.")
+}
+if ((said("get", "off", "clothes") || said("change", "clothes"))) { //05e4
+  print("You'd better unlock your locker first!")
+}
+if ((v39 == 4 || v39 == 7)) { //05fa
+  if ((said("empty", "dispenser", "rol") || said("get", "off", "dispenser", "rol"))) { //0606
+    print("Pervert!")
+  }
+  if ((said("use", "dispenser", "rol") || said("dry", "rol"))) { //0620
+    print("Aaahhh! That feels good.")
+  }
+}
+if (said("climb", "locker")) { //0636
+  print("There's no doubt that somewhere in your life you fell off a high porch and landed hard on your head!")
+}
+if ((said("climb", "bench") || said("climb", "on", "bench") || said("hop", "on", "bench"))) { //0642
+  print("Grown policemen don't climb on benches, Sonny.")
+}
+if ((said("sit") || said("sit", "on", "bench") || said("sit", "bench") || said("lay", "on", "bench") || said("lay", "bench") || said("lay", "down", "on", "bench") || said("nap") || said("use", "bench") || said("sit", "down"))) { //0660
+  print("Sorry, but your crime-stopping just can't wait!")
+}
+if (said("examine", "below", "bench")) { //06a2
+  if (!(posn(o0,72,114,83,145))) { //06ae
+    set(f113)
+    goto(l1728)
+  }
+  print("Yuck!")
+}
+l1728:
+if ((said("examine", "up") || said("examine", "ceiling"))) { //06c0
+  print("You look at the ceiling and observe a lighting system that adequately illuminates the locker room. (Otherwise, it'd be dark in here!)")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //06d4
+  print("You look down and note a very clean, blue-tiled floor.")
+}
+if ((said("examine") || said("examine", "locker", "accident") || said("examine", "accident"))) { //06e8
+  print("The Lytton PD locker room has two rows of full-sized, double-stacked lockers with a bench between them, two showers, and three toilet stalls.")
+}
+l1794:
+if (f138) { //0702
+  reset(f138)
+  set.view(o0,7)
+  drop(i19)
+  vCurrentScore += 3
+  v39 = 7
+  v31 = 75
+  force.update(o0)
+  reset(f36)
+  start.motion(o0)
+  print.at("At last, you'll find out if blondes really have more fun!",2,3,36)
+  v35 = 8
+}
+return()

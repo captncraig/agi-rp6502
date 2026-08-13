@@ -1,4 +1,110 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(113)
+  load.sound(1)
+  if (f126) { //000c
+    load.view(25)
+    goto(l31)
+  }
+  load.view(2)
+  load.logic(101)
+  set(f200)
+  set(f132)
+l31:
+  set.horizon(72)
+  if (f108) { //0021
+    load.logic(116)
+    set(f205)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //0031
+      load.logic(114)
+      set(f206)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o7)
+  set.view(o7,113)
+  position(o7,34,157)
+  set.priority(o7,4)
+  set(f159)
+  if (f126) { //0050
+    position(o0,0,158)
+    set.view(o0,25)
+    ignore.objs(o0)
+    move.obj(o0,43,148,0,f202)
+    goto(l129)
+  }
+  if (vPrevRoom == 12) { //0068
+    get.posn(o0,v62,v63)
+    if (v62 < 113) { //0073
+      v62 = 113
+    }
+    position(o0,62,v63)
+  }
+l129:
+  draw(o7)
+  draw(o0)
+  if (f200) { //0085
+    call(101)
+  }
+  if (f205) { //008d
+    call(116)
+  }
+  if (f206) { //0095
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //009f
+  print("Here, all seems relatively peaceful. The forest to the west, however, is dark and frightening.")
+}
+if (!f128 && !f129) { //00a7
+  goto(l192)
+}
+if (f129) { //00b4
+  goto(l192)
+}
+goto(l192)
+l192:
+if (f202) { //00c0
+  reset(f202)
+  move.obj(o0,53,169,0,f203)
+}
+if (f203) { //00ce
+  new.room(12)
+}
+if (!f204 && !f126 && posn(o0,0,123,109,167)) { //00d6
+  print("The river rapids roar. There is a strong undercurrent. It would be difficult to keep your head above the water.")
+  set(f204)
+}
+if (f159 && !f173) { //00ea
+  sound(1,f159)
+}
+if ((posn(o0,0,125,54,144) || posn(o0,55,132,80,149) || posn(o0,81,140,99,167))) { //00f6
+  set(f88)
+}
+if (f206) { //0110
+  call(114)
+}
+if (f205) { //0118
+  call(116)
+}
+if (f200) { //0120
+  call(101)
+}
+if (vWhichEgoBorder == 1) { //0128
+  new.room(2)
+}
+if (vWhichEgoBorder == 2) { //0131
+  new.room(8)
+}
+if (vWhichEgoBorder == 4) { //013a
+  new.room(6)
+}
+if (vWhichEgoBorder == 3) { //0143
+  new.room(12)
+}
+return()

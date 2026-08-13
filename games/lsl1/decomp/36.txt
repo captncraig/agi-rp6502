@@ -1,4 +1,480 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(162)
+  load.view(30)
+  load.sound(9)
+  animate.obj(o3)
+  ignore.objs(o3)
+  set.view(o3,162)
+  set.cel(o3,0)
+  set.priority(o3,11)
+  position(o3,41,110)
+  draw(o3)
+  animate.obj(o4)
+  ignore.objs(o4)
+  set.view(o4,162)
+  set.cel(o4,1)
+  set.priority(o4,11)
+  position(o4,78,110)
+  draw(o4)
+  animate.obj(o5)
+  ignore.objs(o5)
+  set.view(o5,162)
+  set.cel(o5,2)
+  set.priority(o5,11)
+  position(o5,115,110)
+  draw(o5)
+  animate.obj(o6)
+  ignore.objs(o6)
+  set.view(o6,162)
+  set.cel(o6,0)
+  set.priority(o6,14)
+  position(o6,58,140)
+  draw(o6)
+  animate.obj(o7)
+  ignore.objs(o7)
+  set.view(o7,162)
+  set.cel(o7,1)
+  set.priority(o7,14)
+  position(o7,98,140)
+  draw(o7)
+  random(1,2,v52)
+  if (v52 == 1) { //0077
+    random(1,3,v52)
+    if (v52 == 1) { //0082
+      set(f210)
+      random(20,40,v202)
+    }
+    set(f200)
+    load.view(158)
+    load.view(163)
+    load.sound(8)
+    animate.obj(o1)
+    set.view(o1,158)
+    set.cel(o1,0)
+    position(o1,77,93)
+    draw(o1)
+    stop.update(o1)
+    v66 = 51
+    animate.obj(o8)
+    set.view(o8,163)
+    set.cel(o8,0)
+    position(o8,41,92)
+    draw(o8)
+    stop.update(o8)
+    goto(l210)
+  }
+  set(f201)
+  load.view(159)
+  load.sound(31)
+  animate.obj(o2)
+  set.view(o2,159)
+  position(o2,70,93)
+  draw(o2)
+  set(f202)
+  set(f52)
+l210:
+  v38 = 25
+  v39 = 167
+  set.loop(o0,3)
+  position(o0,38,v39)
+  draw(o0)
+  start.motion(o0)
+  show.pic()
+  return()
+}
+reset(f204)
+if (posn(o0,100,145,114,163)) { //00e7
+  set(f204)
+}
+if (f200 && v63 > 15) { //00f3
+  set(f69)
+}
+if (!fEnteredCommand) { //00fe
+  goto(l838)
+}
+if ((said("examine") || said("examine", "area"))) { //0108
+  print("This looks like a great place to be from.")
+  print("(You wonder where they keep the lizards.)")
+}
+if (f200 && (said("boo", "bouncer") || said("ask", "bouncer") || said("holler", "bouncer"))) { //011c
+  print("You shout to the comedian, \"This ain't funny!\"")
+  print("The comedian retorts, \"But you are!!\"")
+}
+if (said("applaud", "rol")) { //013a
+  if (f200) { //0144
+    print("\"Thank you, thank you!\"")
+    goto(l337)
+  }
+  print("The girls' smiles beam!")
+}
+l337:
+if ((said("name", "area") || said("name", "add"))) { //0151
+  print("The Lizard Lounge.")
+  print("(You wonder where they keep the lizards.)")
+}
+if ((said("examine", "top", "desk") || said("examine", "desk") || said("examine", "bench"))) { //0167
+  print("Looks like you won't have any trouble getting a seat tonight!")
+}
+if (said("examine", "ash tray")) { //0183
+  print("This must be a \"No Smoking\" lounge.")
+}
+if (said("examine", "burn")) { //018f
+  print("You wonder who invented that little plastic net surrounding the glass.")
+  print("And, how come it doesn't melt?")
+}
+if (said("examine", "stage")) { //019d
+  if (f200) { //01a7
+    print("Evidently, HE thinks he's funny!")
+    goto(l436)
+  }
+  print("Wouldn't you think they'd get tired of just going left and right?")
+}
+l436:
+if (said("examine", "bouncer")) { //01b4
+  if (f200) { //01be
+    print("Evidently, HE thinks he's funny!")
+    goto(l459)
+  }
+  print("You think they look like men?")
+}
+l459:
+if ((said("examine", "blond") || said("examine", "customers") || said("examine", "examine", "blond"))) { //01cb
+  if (f200) { //01e5
+    print("Do you know something about his sexual habits that the rest of us don't?")
+    goto(l498)
+  }
+  print("Wouldn't you think they'd get tired of just going left and right?")
+}
+l498:
+if (f200 && said("anyword", "drummer", "rol")) { //01f2
+  print("It's a living.")
+}
+if ((said("aim", "blond", "rol") || said("aim", "bouncer", "rol") || said("catch", "blond", "rol") || said("catch", "bouncer", "rol"))) { //0202
+  if (f200) { //0228
+    print("You whistle loudly at the comic.")
+    print("\"Hey, buddy, will ya hold it down?\" says the comic. \"I'm tryin' to earn a living up here!\"")
+    goto(l569)
+  }
+  print("You whistle loudly at the girls.")
+  print("You're not sure, but you suppose they enjoy it.")
+}
+l569:
+if ((said("buy", "bite") || said("ask", "waiter") || said("buy", "rol") || said("catch", "bite"))) { //0239
+  if (v30 != 17) { //0257
+    print("You're not seated.")
+    goto(l614)
+  }
+  print("There's no one to take your order.")
+}
+l614:
+if ((said("rest") || said("rest", "desk") || said("rest", "bench") || said("rest", "down"))) { //0266
+  if (v30 == 17) { //0282
+    print("You are sitting.")
+    goto(l695)
+  }
+  if (!f204) { //028e
+    print("You can't. The card on the table says \"Reserved.\"")
+    goto(l695)
+  }
+  v30 = 17
+  stop.motion(o0)
+  set(f85)
+  set.view(o0,30)
+  set.cel(o0,0)
+  set.priority(o0,15)
+  reposition.to(o0,107,152)
+  stop.sound()
+  sound(9,f52)
+  end.of.loop(o0,f209)
+  set(f34)
+}
+l695:
+if ((said("get up") || said("board", "desk") || said("get up") || said("get up", "up"))) { //02b7
+  if (v30 != 17) { //02d1
+    print("You are standing.")
+    goto(l754)
+  }
+  set(f67)
+  reset(f34)
+  set.view(o0,0)
+  release.priority(o0)
+  reposition.to(o0,107,151)
+  reset(f85)
+  start.motion(o0)
+  v30 = 0
+}
+l754:
+if ((said("climb", "stage") || said("climb", "on", "stage") || said("jump", "on", "stage") || said("rest", "on", "stage") || said("sing", "rol") || said("dance", "rol") || said("board", "stage"))) { //02f2
+  print("You're no star!")
+}
+if (said("throw", "flower", "rol")) { //032a
+  print("You toss the rose on the stage. It falls where you will not be able to retrieve it.")
+  drop(i9)
+}
+if (said("catch", "flower")) { //033a
+  print("Remember: you can't get it!")
+}
+l838:
+if (f209) { //0346
+  reset(f209)
+  print("At least the comic's whoopie cushion doesn't smell!")
+  stop.cycling(o0)
+  reset(f34)
+  if (!f117) { //0354
+    set(f117)
+    vCurrentScore += 1
+  }
+}
+if (f202) { //0360
+  reset(f202)
+  move.obj(o2,47,93,1,f203)
+}
+if (f203) { //036e
+  reset(f203)
+  move.obj(o2,93,93,1,f202)
+}
+if (f75) { //037c
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0386
+    random(12,22,v66)
+    if (f108) { //0391
+      v65--
+      goto(l926)
+    }
+    start.update(o1)
+  }
+l926:
+  if (v65 == 2) { //039e
+    random(8,14,v66)
+    if (f108) { //03a9
+      v65--
+      goto(l1525)
+    }
+    set.cel(o1,0)
+    stop.update(o1)
+    force.update(o1)
+    if ((!f211 || !f212 || !f213 || !f214 || !f215 || !f216 || !f217 || !f218 || !f219 || !f220 || !f221 || !f222 || !f223 || !f224 || !f225 || !f226 || !f227 || !f228 || !f229 || !f230 || !f231 || !f232 || !f233 || !f234 || !f235 || !f236 || !f237 || !f238 || !f239 || !f240 || !f241 || !f242 || !f243 || !f244 || !f245 || !f246 || !f247 || !f248)) { //03bb
+l1075:
+      random(1,38,v200)
+      v52 = v200
+      v52 += 210
+      if (v52) { //043d
+        goto(l1075)
+      }
+      set(v52)
+      if (v200 == 1) { //0448
+        print("\"I just flew in from Coarsegold...\"")
+        print("\"...and, boy, are my arms tired!\"")
+      }
+      if (v200 == 2) { //0453
+        print("\"I told my doctor my sex life was boring. He said 'You need to add the element of surprise. Go right home this afternoon, grab your wife, and immediately make love to her, no matter what she's doing.' So I did!\"")
+        print("\"It was still the same old boring stuff; but her bridge club got a tremendous kick out of it!!\"")
+      }
+      if (v200 == 3) { //045e
+        print("\"You know how I can tell when my wife has an orgasm?\"")
+        print("\"She drops her nail file!!\"")
+      }
+      if (v200 == 4) { //0469
+        print("\"My wife is so ugly...\"")
+        print("\"...the picture of her in my wallet is an X-ray!\"")
+      }
+      if (v200 == 5) { //0474
+        print("\"I told my psychiatrist 'Nobody pays any attention to me.'\"")
+        print("\"He looks at me and says, 'When did you get here?'\"")
+      }
+      if (v200 == 6) { //047f
+        print("\"Didja hear about the clumsy female lawyer?\"")
+        print("\"She dropped her briefs!\"")
+      }
+      if (v200 == 7) { //048a
+        print("\"A man walks into a doctor's office with a frog on his head. The doctor says, 'May I help you?'\"")
+        print("\"The frog says, 'Yeah, doc, take this wart off my ass!\"")
+      }
+      if (v200 == 8) { //0495
+        print("\"Did you hear about the new, chocolate-flavored, contraceptive, breakfast drink?\"")
+        print("\"It's called Ovumteen.\"")
+      }
+      if (v200 == 9) { //04a0
+        print("\"My secretary is both ambitious and horny. Today she asked me for a salary on next week's advance.\"")
+      }
+      if (v200 == 10) { //04a9
+        print("\"Down the street there's a new, live gay sex show.\"")
+        print("\"It's called 'Anus and Andy.'\"")
+      }
+      if (v200 == 11) { //04b4
+        print("\"Have ya seen that new R-rated movie about midgets. It features full runtal nudity.\"")
+      }
+      if (v200 == 12) { //04bd
+        print("\"My uncle is a hit man for the Mob. What a great job! He only goes to work when it's time to knock off.\"")
+      }
+      if (v200 == 13) { //04c6
+        print("\"My brother just moved to San Francisco. He was really lonely when he lived here, but now he's up to his ass in friends!\"")
+      }
+      if (v200 == 14) { //04cf
+        print("\"When I got married I asked my bride, 'Do you perform fellatio?'\"")
+        print("\"She says it depends on the fella.\"")
+      }
+      if (v200 == 15) { //04da
+        print("\"Have you been by the wedding chapel next door? They've got this impotent flasher out front. We just call him our 'public futility.'\"")
+      }
+      if (v200 == 16) { //04e3
+        print("\"I hear the pimp at Lefty's won't let his girls perform oral sex. They call him the 'Headless Whoresman.'\"")
+      }
+      if (v200 == 17) { //04ec
+        print("\"What do lesbians like most about their kind of sex?\"")
+        print("\"Tastes great.\"")
+        print("\"Less filling.\"")
+        print("\"Tastes great!\"")
+        print("\"Less filling!\"")
+      }
+      if (v200 == 18) { //04fd
+        print("\"Why don't sharks attack divorce lawyers?\"")
+        print("\"Professional courtesy.\"")
+      }
+      if (v200 == 19) { //0508
+        print("\"My wife and I have a new system: if she wants sex, she reaches over and strokes me once.\"")
+        print("\"If she doesn't, she reaches over and strokes me 300 times.\"")
+      }
+      if (v200 == 20) { //0513
+        print("\"My son just got kicked out of his co-ed college boarding house.")
+        print("\"He got caught spreading roomers.\"")
+      }
+      if (v200 == 21) { //051e
+        print("\"My daughter came home from school today and tells me, 'Eli Whitney invented the cotton gin.'\"")
+        print("\"I said, 'Who wants a fluffy martini?'\"")
+      }
+      if (v200 == 22) { //0529
+        print("\"The shop teacher asked the high school girl if she knew the difference between a screw, a nail and a bolt. She told him she'd never been bolted.\"")
+      }
+      if (v200 == 23) { //0532
+        print("\"Have you heard about the new urologist's training film?\"")
+        print("\"It's called, 'E.T., the Extra Testicle.'\"")
+      }
+      if (v200 == 24) { //053d
+        print("\"Have you heard about the new film for marching band musicians?\"")
+        print("\"It's called, 'Desperately Seeking Sousa.'\"")
+      }
+      if (v200 == 25) { //0548
+        print("\"My son has a problem with compulsive masturbation. His psychiatrist says he's gone completely whacky.\"")
+      }
+      if (v200 == 26) { //0551
+        print("\"My grandpa, the farmer, finally got himself one of those latex ladies. I heard him singing about it the other day: 'The farmer in the doll, the farmer in the doll...'\"")
+      }
+      if (v200 == 27) { //055a
+        print("\"Our local inventor just came up with a new, vibrating tampon.\"")
+        print("\"He says if women have to be miserable once a month, they might as well enjoy it.\"")
+      }
+      if (v200 == 28) { //0565
+        print("\"My wife just loves going to the movies to watch teenagers get laid for the first time.\"")
+        print("\"Sometimes, she even watches the screen!\"")
+      }
+      if (v200 == 29) { //0570
+        print("\"I asked my wife, 'How come you never tell me when you're having an orgasm?'\"")
+        print("\"She replied, 'Cause you're never around!\"")
+      }
+      if (v200 == 30) { //057b
+        print("\"My wife just loves to experiment. Last week she mixed speed with her Midol.\"")
+        print("\"She had her period six times in one day!\"")
+      }
+      if (v200 == 31) { //0586
+        print("\"My wife is a lot like Halley's Comet.\"")
+        print("\"They both come once every 76 years!\"")
+      }
+      if (v200 == 32) { //0591
+        print("\"My wife just loves to experiment. Last week she mixed speed with her Midol.\"")
+        print("\"She had her period six times in one day!\"")
+      }
+      if (v200 == 33) { //059c
+        print("\"My wife is a lot like Halley's Comet.\"")
+        print("\"They both come once every 76 years!\"")
+      }
+      if (v200 == 34) { //05a7
+        print("\"My son is becoming a real computer wiz!\"")
+        print("\"His teacher called him a 'master byter.'\"")
+      }
+      if (v200 == 35) { //05b2
+        print("\"My uncle, the inventor, crossed a cucumber with a Mexican jumping bean.\"")
+        print("\"He calls it the world's first organic vibrator!\"")
+      }
+      if (v200 == 36) { //05bd
+        print("\"Last week, I got arrested by a female cop. She asked me, 'Are you carrying a concealed weapon?'\"")
+        print("\"I replied, 'Keep frisking me, and I soon will be!'\"")
+      }
+      if (v200 == 37) { //05c8
+        print("\"My best sexual encounter was in the South Sea Islands...\"")
+        print("\"I pushed a volcano into a virgin!\"")
+      }
+      if (v200 == 38) { //05d3
+        print("\"Didja hear about the copier company that bought out a musical instrument maker?\"")
+        print("\"They're gonna market a new, reproductive organ!\"")
+      }
+      goto(l1525)
+    }
+    set(f208)
+    print("\"Well, that's all I know, folks,\" the comic says. \"Come back for the next show, and you can hear 'em all again!\"")
+    set.cel(o1,0)
+    stop.update(o1)
+    force.update(o1)
+    v65 = 0
+    v67 = 0
+    v66 = 0
+  }
+l1525:
+  if (v65 == 3) { //05f5
+    start.update(o8)
+    sound(8,f40)
+    end.of.loop(o8,f75)
+  }
+  if (v65 == 4) { //0604
+    set.cel(o8,0)
+    stop.update(o8)
+    force.update(o8)
+    start.update(o1)
+    random(11,22,v66)
+  }
+  if (v65 == 5) { //0618
+    random(4,7,v67)
+    if (f108) { //0623
+      v65--
+      goto(l1605)
+    }
+    v65 = 0
+    set.cel(o1,0)
+    stop.update(o1)
+    force.update(o1)
+    if (!f208) { //0638
+      random(21,26,v201)
+      print(v201)
+    }
+  }
+}
+l1605:
+if (f52 && f201) { //0645
+  sound(31,f52)
+}
+if (f44 && v202 > 0) { //0650
+  v202--
+  if (v202 == 1) { //065b
+    if (v65 > 0) { //0662
+      v202 = 2
+      goto(l1667)
+    }
+    v58 = 82
+l1650:
+    print(v58)
+    v58++
+    if (!(v58 > 92)) { //0676
+      goto(l1650)
+    }
+    show.obj(101)
+  }
+}
+l1667:
+if (vWhichEgoBorder == 3) { //0683
+  v76 = 35
+}
+return()

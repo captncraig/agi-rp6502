@@ -1,4 +1,237 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v56 = 2
+  set(f72)
+  set.horizon(55)
+  v32 = 88
+  v31 = 140
+  random(1,3,v36)
+  if (v36 == 1) { //001e
+    v57 = 23
+    v58 = 110
+    goto(l68)
+  }
+  if (v36 == 2) { //002e
+    v57 = 57
+    v58 = 66
+    goto(l68)
+  }
+  v57 = 106
+  v58 = 145
+l68:
+  load.view(11)
+  load.view(232)
+  load.logic(111)
+  load.logic(114)
+  load.logic(112)
+  load.logic(103)
+  v34 = 222
+  if (obj.in.room(i15,vCurrentRoom)) { //0053
+    load.view(63)
+  }
+  if (v62 == 1) { //005c
+    load.view(170)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v62 == 1) { //006b
+    add.to.pic(170,0,0,137,47,4,4)
+    discard.view(170)
+  }
+  if (obj.in.room(i15,vCurrentRoom)) { //007c
+    animate.obj(o4)
+    set.view(o4,63)
+    position(o4,23,92)
+    ignore.objs(o4)
+    set.priority(o4,11)
+    draw(o4)
+    stop.update(o4)
+  }
+  if (f48) { //0095
+    if (vPrevRoom == 15) { //009b
+      v40 = 118
+      v41 = 167
+    }
+    if (vPrevRoom == 14) { //00a8
+      if (v40 > 118) { //00af
+        v40 = 118
+      }
+    }
+    if (vPrevRoom == 24) { //00b9
+      if (v40 > 100) { //00c0
+        v40 = 100
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //00ce
+    draw(o0)
+  }
+  animate.obj(o2)
+  set.view(o2,232)
+  v36 = 4
+  cycle.time(o2,v36)
+  ignore.horizon(o2)
+  position(o2,108,27)
+  set.loop(o2,3)
+  set.cel(o2,3)
+  draw(o2)
+  animate.obj(o3)
+  set.view(o3,232)
+  cycle.time(o3,v36)
+  ignore.horizon(o3)
+  position(o3,122,27)
+  set.loop(o3,3)
+  draw(o3)
+  v36 = 1
+  call(112)
+  reposition.to(o12,99,19)
+  reposition.to(o13,111,11)
+  call(103)
+  call(114)
+  show.pic()
+  return()
+}
+reset(f222)
+if (posn(o0,10,109,27,122)) { //0117
+  set(f222)
+}
+call(114)
+if (!fEnteredCommand) { //0125
+  goto(l694)
+}
+if ((said("examine", "town") || said("examine", "building"))) { //012f
+  print("You see a small seaside village up the coast to the north. Smoke rises lazily from chimneys and mingles with the ocean air.")
+}
+if (said("examine", "forest")) { //0143
+  if (!(obj.in.room(i15,vCurrentRoom))) { //014d
+    print("The trees are not as large, being so near the coast.")
+    goto(l348)
+  }
+  print("One of the trees has a light-green colored plant growing upon it. On closer inspection, you see that it's mistletoe.")
+}
+l348:
+if ((said("examine", "mistletoe") || said("examine", "mistletoe", "forest"))) { //015c
+  if (!f222) { //0170
+    print("One of the trees has a light-green colored plant growing upon it. On closer inspection, you see that it's mistletoe.")
+    goto(l394)
+  }
+  if (obj.in.room(i15,vCurrentRoom)) { //017c
+    print("The mistletoe hangs from the branches of the tree. There are a few dried sprigs mingled with the green mistletoe.")
+    goto(l394)
+  }
+  print("You look through the remaining mistletoe, but find none that is dry.")
+}
+l394:
+if ((said("rise", "below", "mistletoe") || said("embrace", "below", "mistletoe") || said("embrace", "mistletoe"))) { //018a
+  if (!f222) { //01a6
+    print("You are not close enough.")
+    goto(l436)
+  }
+  print("You give yourself a big smack. (Is this fun?)")
+}
+l436:
+if ((said("capture", "mistletoe") || said("capture", "mistletoe", "forest") || said("climb", "forest", "capture", "mistletoe"))) { //01b4
+  if (!f222) { //01d2
+    print("You are not close enough.")
+    goto(l502)
+  }
+  if (!(obj.in.room(i15,vCurrentRoom))) { //01de
+    print("You look through the remaining mistletoe, but find none that is dry.")
+    goto(l502)
+  }
+  start.update(o4)
+  erase(o4)
+  get(i15)
+  vCurrentScore += 1
+  print("You search among the hanging mistletoe until you find a sprig that has dried. You break it off, and carry it with you.")
+}
+l502:
+if ((said("examine", "ship") || said("examine", "boat") || said("examine", "ship", "dock"))) { //01f6
+  if (v62 == 1) { //0210
+    print("There is a three-masted ship docked at the pier. By her sturdy lines and broad beam, you guess it to be a merchant vessel, trading goods in the town.")
+    goto(l542)
+  }
+  print("Where?")
+}
+l542:
+if (said("examine", "dock")) { //021e
+  if (v62 == 1) { //0228
+    print("%m9 You see a vessel tied up there now!")
+    goto(l566)
+  }
+  print("A pier extends from the village and out into the bay. It is built of heavy timbers to withstand winter storms.")
+}
+l566:
+if ((said("examine", "bay") || said("examine", "beach"))) { //0236
+  print("You look out over the vast, blue-gray ocean. You wonder what lands and people reside across it. If only you could know!")
+}
+if ((said("examine") || said("examine", "bluff"))) { //024a
+  print("You are standing atop a bluff overlooking the ocean, and see a village to the north. %m14 The trees here are stunted and twisted by strong ocean winds.")
+}
+if ((said("examine", "sky"))) { //025c
+  print("You see seagulls flying overhead.")
+}
+if ((said("examine", "deck") || said("examine", "deck") || said("examine", "down"))) { //026a
+  print("The soft grass of the forest has been replaced by the coarse grass of the seashore.")
+}
+if ((said("jump", "down") || said("climb", "down") || said("climb", "down", "bluff"))) { //0284
+  print("You are not close enough.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //02a0
+  print("There is no need to climb this tree.")
+}
+l694:
+if (fTriggerLine && v44 != 6) { //02b6
+  get.priority(o0,v39)
+  if ((v39 == 13 || v39 == 11 || v39 == 9)) { //02c3
+    v39--
+    goto(l737)
+  }
+  if (v39 < 9) { //02d7
+    v39 = 5
+  }
+l737:
+  set.priority(o0,v39)
+  v40 += 6
+  if (v40 > 145) { //02e7
+    v40 = 145
+  }
+  reposition.to(o0,v40,v41)
+  v33 = 6
+}
+if (f45 && v62 == 1 && !(v53 > 0) && v52 > 0 && v52 < 30) { //02f8
+  v52 = 30
+}
+call(112)
+if (vWhichEgoBorder == 1) { //0310
+  new.room(24)
+}
+if (vWhichEgoBorder == 4) { //0319
+  new.room(28)
+}
+if (vWhichEgoBorder == 2) { //0322
+  new.room(30)
+}
+if (vWhichEgoBorder == 3) { //032b
+  if (v44 == 6) { //0332
+    if (f31) { //0339
+      set(f40)
+      goto(l838)
+    }
+    new.room(30)
+l838:
+    goto(l855)
+  }
+  if (v40 > 110) { //0349
+    new.room(15)
+    goto(l855)
+  }
+  new.room(14)
+}
+l855:
+call(103)
+call(111)
+return()

@@ -1,4 +1,297 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x82)}
+if (fNewRoom) { //0002
+  random(1,4,v36)
+  if ((v36 > 2 || v44 == 26 || v44 == 25)) { //000c
+    return()
+  }
+  if (vCurrentRoom != 12 && vCurrentRoom != 13 && vCurrentRoom != 17 && vCurrentRoom != 27) { //001c
+    return()
+  }
+  if (v36 == 1) { //0031
+    set(f248)
+    load.view(52)
+    animate.obj(o12)
+    set.view(o12,52)
+    ignore.horizon(o12)
+    ignore.objs(o12)
+    set.priority(o12,15)
+    stop.cycling(o12)
+    animate.obj(o13)
+    set.view(o13,52)
+    ignore.horizon(o13)
+    ignore.objs(o13)
+    set.priority(o13,15)
+    stop.cycling(o13)
+    if (vCurrentRoom == 12) { //0058
+      set.loop(o12,3)
+      set.loop(o13,2)
+      position(o12,116,51)
+      position(o13,93,50)
+    }
+    if (vCurrentRoom == 13) { //006d
+      set.loop(o12,0)
+      set.loop(o13,1)
+      position(o12,5,113)
+      position(o13,34,114)
+    }
+    if (vCurrentRoom == 17) { //0082
+      set.loop(o12,0)
+      set.loop(o13,1)
+      position(o12,89,58)
+      position(o13,103,54)
+    }
+    if (vCurrentRoom == 27) { //0097
+      set.loop(o12,0)
+      set.loop(o13,1)
+      position(o12,58,65)
+      position(o13,71,89)
+    }
+    random(1,2,v36)
+    if (has(i8) && v36 == 1 && (!f131 || !f132 || !f133 || !f134)) { //00b0
+l199:
+      random(1,4,v36)
+      if (v36 == 1) { //00cb
+        if (f131) { //00d2
+          goto(l199)
+          goto(l231)
+        }
+        v253 = 131
+        v248 = 21
+        v249 = 23
+      }
+l231:
+      if (v36 == 2) { //00e7
+        if (f132) { //00ee
+          goto(l199)
+          goto(l259)
+        }
+        v253 = 132
+        v248 = 24
+        v249 = 26
+      }
+l259:
+      if (v36 == 3) { //0103
+        if (f133) { //010a
+          goto(l199)
+          goto(l287)
+        }
+        v253 = 133
+        v248 = 27
+        v249 = 29
+      }
+l287:
+      if (v36 == 4) { //011f
+        if (f134) { //0126
+          goto(l199)
+          goto(l315)
+        }
+        v253 = 134
+        v248 = 30
+        v249 = 31
+      }
+l315:
+      random(3,10,v250)
+    }
+    goto(l585)
+  }
+  set(f247)
+  load.view(51)
+  animate.obj(o12)
+  set.view(o12,51)
+  ignore.horizon(o12)
+  ignore.objs(o12)
+  set.priority(o12,15)
+  stop.cycling(o12)
+  animate.obj(o13)
+  set.view(o13,51)
+  ignore.horizon(o13)
+  ignore.objs(o13)
+  set.priority(o13,15)
+  stop.cycling(o13)
+  if (vCurrentRoom == 12) { //0162
+    set.loop(o12,2)
+    set.loop(o13,3)
+    position(o12,139,134)
+    position(o13,150,116)
+  }
+  if (vCurrentRoom == 13) { //0177
+    set.loop(o12,2)
+    set.loop(o13,3)
+    position(o12,0,118)
+    position(o13,31,122)
+  }
+  if (vCurrentRoom == 17) { //018c
+    set.loop(o12,0)
+    set.loop(o13,1)
+    position(o12,34,41)
+    position(o13,59,30)
+  }
+  if (vCurrentRoom == 27) { //01a1
+    set.loop(o12,0)
+    set.loop(o13,1)
+    position(o12,50,118)
+    position(o13,74,107)
+  }
+  random(1,2,v36)
+  if (has(i8) && v36 == 1 && (!f139 || !f140 || !f141 || !f142)) { //01ba
+l465:
+    random(1,4,v36)
+    if (v36 == 1) { //01d5
+      if (f139) { //01dc
+        goto(l465)
+        goto(l497)
+      }
+      v253 = 139
+      v248 = 32
+      v249 = 36
+    }
+l497:
+    if (v36 == 2) { //01f1
+      if (f140) { //01f8
+        goto(l465)
+        goto(l525)
+      }
+      v253 = 140
+      v248 = 37
+      v249 = 39
+    }
+l525:
+    if (v36 == 3) { //020d
+      if (f141) { //0214
+        goto(l465)
+        goto(l553)
+      }
+      v253 = 141
+      v248 = 40
+      v249 = 41
+    }
+l553:
+    if (v36 == 4) { //0229
+      if (f142) { //0230
+        goto(l465)
+        goto(l581)
+      }
+      v253 = 142
+      v248 = 42
+      v249 = 44
+    }
+l581:
+    random(3,10,v250)
+  }
+l585:
+  draw(o12)
+  draw(o13)
+  v251 = 2
+  v252 = 12
+}
+if (fEnteredCommand) { //0253
+  if ((said("examine", "brush") || said("examine", "deck"))) { //0259
+    print("The soft grass soothes your aching feet.")
+  }
+  if ((said("examine", "forest") || said("examine", "forest") || said("examine"))) { //026d
+    print("The many beautiful trees bring a sense of peace to this forest.")
+  }
+  if (said("examine", "desert")) { //0285
+    print("If you look way off to the west, you can see the desert.")
+  }
+  if (said("examine", "flower")) { //0291
+    print("This is the wrong time of the year for wildflowers.")
+  }
+  if (said("examine", "sky")) { //029d
+    print("The clear, blue sky is brilliant with an occasional white cloud.")
+  }
+  if ((said("capture", "flower") || said("capture", "flower"))) { //02a9
+    print("There are no flowers in this area.")
+  }
+  if ((said("climb", "forest") || said("climb", "forest"))) { //02bd
+    print("You see no suitable trees for climbing.")
+  }
+  if (said("examine", "rock")) { //02d1
+    print("If you've seen one rock, you've seen them all.")
+  }
+  if (said("examine", "bird")) { //02dd
+    if (f248) { //02e7
+      print("You see two pretty birds looking at you.")
+      goto(l756)
+    }
+    print("You don't see any right now.")
+  }
+l756:
+  if (said("examine", "animal")) { //02f4
+    if (f247) { //02fe
+      print("You see two squirrels chattering to each other.")
+      goto(l779)
+    }
+    print("You don't see any right now.")
+  }
+l779:
+  if (said("capture", "animal")) { //030b
+    if (f247) { //0315
+      print("They're too difficult to catch.")
+      goto(l802)
+    }
+    print("You don't see any right now.")
+  }
+l802:
+  if (said("capture", "bird")) { //0322
+    if (f248) { //032c
+      print("They're too difficult to catch.")
+      goto(l825)
+    }
+    print("You don't see any right now.")
+  }
+l825:
+  if (f248 && has(i8) && said("hear", "bird")) { //0339
+    print("Maybe if you're quiet, you'll hear them.")
+  }
+  if (f247 && has(i8) && said("hear", "animal")) { //0349
+    print("Maybe if you're quiet, you'll hear them.")
+  }
+  if (!f91) { //0359
+    if (said("anyword", "cactii")) { //0360
+      print("Where?")
+    }
+    goto(l903)
+  }
+  if (said("capture", "cactii")) { //036f
+    print("All of the cactus around here are too prickly to be touched. You could wind up with a handful of thorns.")
+  }
+  if (said("anyword", "cactii")) { //037b
+    print("It is a handsome example of the species, but not one you'd care to handle. Look at those thorns!")
+  }
+}
+l903:
+v251--
+if (v251 == 1) { //0389
+  toggle(f250)
+  if (f250) { //0392
+    start.cycling(o12)
+    random(9,22,v251)
+    goto(l935)
+  }
+  stop.cycling(o12)
+  random(9,44,v251)
+}
+l935:
+v252--
+if (v252 == 1) { //03a9
+  toggle(f251)
+  if (f251) { //03b2
+    start.cycling(o13)
+    random(9,22,v252)
+    goto(l967)
+  }
+  stop.cycling(o13)
+  random(9,44,v252)
+}
+l967:
+if (f45 && v248 > 0 && v44 == 0 && v47 == v250) { //03c7
+  v250 = 0
+  set(v253)
+l987:
+  print(v248)
+  if (v248 < v249) { //03dd
+    v248++
+    goto(l987)
+  }
+}
+return()

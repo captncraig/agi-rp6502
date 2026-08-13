@@ -1,3 +1,53 @@
-if (!(isSet(f2)
-!!!
-&{%!e(string=incomplete condition: 0x01)}
+if (!fEnteredCommand) { //0002
+  return()
+}
+if (said("examine", "brush")) { //000a
+  print("The lush foliage of the forest has given way to the hardy plants of the shore. Sawgrass, bracken, and gnarled trees are all that grow here.")
+}
+if (said("examine", "forest")) { //0016
+  print("The trees are bent and twisted by years of constant sea breezes.")
+}
+if (said("examine", "bay")) { //0022
+  print("Your eyes sweep the vast ocean before you. Blue water stretches as far as you can see. Way in the distance it melts with the sky.")
+}
+if (said("examine", "sky")) { //002e
+  print("You see seagulls flying overhead.")
+}
+if (said("examine", "liquid")) { //003a
+  print("Your eyes sweep the vast ocean before you. Blue water stretches as far as you can see. Way in the distance it melts with the sky.")
+}
+if (said("examine", "bird")) { //0046
+  print("The birds wheel and glide overhead.")
+}
+if ((said("examine") || said("examine", "bluff") || said("examine", "deck") || said("examine", "beach"))) { //0052
+  print("The sandy beach stretches north and south below steep, grassy cliffs.")
+}
+if ((said("dive") || said("dive", "bay") || said("dive", "liquid"))) { //0070
+  print("The water looks inviting, but be careful if you go out there.")
+}
+if ((said("drink", "liquid") || said("drink", "bay", "liquid") || said("drink", "liquid", "bay") || said("drink", "liquid", "cup") || said("drink", "bay", "liquid", "cup") || said("drink", "grains of salt", "liquid", "cup") || said("drink", "grains of salt", "liquid"))) { //0088
+  print("Drinking salt water will only make you sick.")
+}
+if ((said("capture", "liquid") || said("capture", "bay", "liquid") || said("capture", "liquid", "bay") || said("capture", "liquid", "cup") || said("capture", "bay", "liquid", "cup") || said("capture", "grains of salt", "liquid", "cup") || said("capture", "grains of salt", "liquid"))) { //00ca
+  if (has(i26)) { //010a
+    print("Your cup is already full of water.")
+    goto(l319)
+  }
+  if (!fEgoOnWater) { //0115
+    print("You need to move closer.")
+    goto(l319)
+  }
+  if (!(has(i42))) { //0121
+    print("You need a cup for the water.")
+    goto(l319)
+  }
+  print("You fill your cup with ocean water.")
+  get(i26)
+  drop(i42)
+  if (!f102) { //0133
+    set(f102)
+    vCurrentScore += 1
+  }
+}
+l319:
+return()

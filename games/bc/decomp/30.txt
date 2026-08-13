@@ -1,6 +1,158 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v87 = 0
   v66 = 167
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(6)
+  load.view(2)
+  load.sound(2)
+  set.priority(o0,14)
+  set.view(o0,0)
+  reset(f152)
+  reset(f122)
+  reset(f133)
+  if (vPrevRoom == 34) { //0020
+    position(o0,143,55)
+    goto(l64)
+  }
+  if (vPrevRoom == 29) { //002e
+    position(o0,117,166)
+    goto(l64)
+  }
+  position(o0,144,59)
+l64:
+  set.horizon(51)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  start.motion(o0)
+  show.pic()
+  return()
+}
+if (f152) { //004e
+  goto(l122)
+}
+if (f130) { //0057
+  print("This narrow roadway leads to the Horned King's castle. Beware! This is a dangerous path to travel.")
+  set(fSaidAccepted)
+}
+if (!f128 && !f129) { //0061
+  goto(l122)
+}
+if (f129) { //006e
+  goto(l122)
+}
+goto(l122)
+l122:
+get.posn(o0,v62,v63)
+if (v63 > 132) { //007e
+  v201 = 14
+  goto(l194)
+}
+if (v63 > 118) { //008b
+  v201 = 13
+  goto(l194)
+}
+if (v63 > 94) { //0098
+  v201 = 12
+  goto(l194)
+}
+if (v63 > 70) { //00a5
+  v201 = 11
+  goto(l194)
+}
+if (v63 > 57) { //00b2
+  v201 = 10
+  goto(l194)
+}
+v201 = 9
+l194:
+if (fTriggerLine && !f122) { //00c2
+  if ((posn(o0,86,59,92,71) || posn(o0,20,96,33,130) || posn(o0,93,132,113,167))) { //00cb
+    v201--
+    set(f203)
+    goto(l340)
+  }
+  if ((posn(o0,134,53,135,57) || posn(o0,121,94,133,95) || posn(o0,86,70,93,81) || posn(o0,124,83,129,94))) { //00ea
+    set(f203)
+    goto(l340)
+  }
+  if ((posn(o0,122,120,143,139) || posn(o0,128,72,143,93))) { //010d
+    set(f204)
+    v201--
+    goto(l340)
+  }
+  if ((posn(o0,101,65,105,70) || posn(o0,35,109,48,118) || posn(o0,134,94,143,107))) { //0126
+    set(f204)
+    goto(l340)
+  }
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 8)) { //0143
+    v201--
+  }
+l340:
+  if (f203) { //0154
+    if (v62 > 10) { //015a
+      v76 = 248
+      goto(l362)
+    }
+    v76 = 0
+l362:
+    v77 = 0
+    repositon(o0,v76,v77)
+  }
+  if (f204) { //0171
+    if (v62 < 136) { //0177
+      v76 = 8
+      goto(l391)
+    }
+    v76 = 0
+l391:
+    v77 = 0
+    repositon(o0,v76,v77)
+  }
+  set.priority(o0,v201)
+  get.posn(o0,v62,v63)
+  v63 += 50
+  if (v63 > v66) { //0198
+    v63 = v66
+  }
+  v67 = 4
+  move.obj(o0,v62,v63,67,f200)
+  set(f152)
+  set(f122)
+  set.view(o0,6)
+  ignore.blocks(o0)
+  sound(2,f61)
+}
+if (f200) { //01b7
+  if (f99) { //01bd
+    vCurrentRoom = 29
+    reset(f152)
+    reset(f122)
+    reset(f133)
+    set.view(o0,0)
+    v61 = 1
+    step.size(o0,v61)
+    new.room(30)
+    goto(l479)
+  }
+  erase(o0)
+  v59 = 1
+}
+l479:
+if (v205 > 0) { //01df
+  new.room(v205)
+}
+if (vWhichEgoBorder == 3) { //01e8
+  new.room(29)
+}
+if (vWhichEgoBorder == 1) { //01f1
+  if (!f46) { //01f8
+    vCurrentScore += 5
+    set(f46)
+  }
+  v205 = 34
+}
+if ((vWhichEgoBorder == 2 || posn(o0,146,52,159,63))) { //0207
+  new.room(32)
+}
+return()

@@ -1,4 +1,138 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  reset(f46)
+  set(f34)
+  v105 = 0
+  v106 = 0
+  v104 = 0
+  v103 = 0
+  reset(f120)
+  load.logic(v102)
+  load.sound(35)
+  v36 = 143
+  load.pic(v36)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  show.pic()
+  call(v102)
+  print("You know you must work with the utmost care. Every step is critical; each must be done in the proper way, in the proper sequence. You tremble in anticipation.")
+  set(f221)
+  return()
+}
+set(f46)
+if (!fEnteredCommand) { //0033
+  goto(l289)
+}
+if (said("try", "brazier")) { //003d
+  print("What would you do with the brazier?")
+}
+if ((said("burn", "brazier") || said("burn", "charcoal", "brazier") || said("burn", "charcoal"))) { //0049
+  if ((v107 > 0 || v108 > 0)) { //0063
+    print("It is already burning.")
+    goto(l121)
+  }
+  print("Making sure there is fresh charcoal in the brazier (there is a small supply here), you light it with the flint. Soon, the brazier is hot.")
+  v108 = 3
+}
+l121:
+if ((said("examine", "brazier") || said("examine", "brazier", "counter") || said("look in", "brazier"))) { //0079
+  print("The small brazier is made of metal shaped into a bowl, with four small legs. It is filled with charcoal and topped with a metal grill. It is used for heating or cooking things.")
+  if ((v107 > 0 || v108 > 0)) { //0095
+    print("%m17 You could heat things quickly with the brazier right now.")
+    goto(l168)
+  }
+  print("%m18stone cold.")
+}
+l168:
+if ((said("capture", "charcoal") || said("capture", "charcoal", "from", "brazier"))) { //00a8
+  print("The charcoal belongs in the brazier. You have no need for it anywhere else.")
+}
+if ((said("examine", "charcoal") || said("examine", "charcoal", "brazier"))) { //00c0
+  if ((v107 > 0 || v108 > 0)) { //00d4
+    print("%m18very hot!")
+    goto(l231)
+  }
+  print("%m18stone cold.")
+}
+l231:
+if ((said("board", "area") || said("quit", "anyword", "spell") || said("examine", "area") || said("add", "area") || said("examine", "lab") || said("add", "lab") || said("quit", "anyword") || said("quit", "anyword"))) { //00e7
+  set(f220)
+}
+l289:
+if (f45 && v107 == 1 && !(v108 > 0)) { //0121
+  print.at("The brazier has burned all the charcoal, and is now cool.",2,2,36)
+}
+if (f120) { //0133
+  stop.sound()
+  reset(f221)
+  set(f220)
+  if (!f9) { //013e
+    print("The mysterious music stops. What could this mean?")
+  }
+}
+if (f221) { //0147
+  sound(35,f221)
+  if (!f222) { //0150
+    set(f222)
+    if (!f9) { //0159
+      print("A mysterious music fills the laboratory!")
+    }
+  }
+}
+if (v103 == 255) { //0162
+  print("Successfully completing the spell, you again look at the wizard's laboratory.")
+  set(f220)
+  if (!f151 && v102 == 121) { //016d
+    set(f151)
+    vCurrentScore += 10
+  }
+  if (!f152 && v102 == 122) { //017c
+    set(f152)
+    vCurrentScore += 10
+  }
+  if (!f153 && v102 == 123) { //018b
+    set(f153)
+    vCurrentScore += 10
+  }
+  if (!f154 && v102 == 124) { //019a
+    set(f154)
+    vCurrentScore += 10
+  }
+  if (!f155 && v102 == 125) { //01a9
+    set(f155)
+    vCurrentScore += 10
+  }
+  if (!f156 && v102 == 126) { //01b8
+    set(f156)
+    vCurrentScore += 10
+  }
+  if (!f157 && v102 == 127) { //01c7
+    set(f157)
+    vCurrentScore += 10
+  }
+}
+if (f220) { //01d6
+  reset(f220)
+  if (!(v103 > 0)) { //01de
+    print("You scratch your head at the confusing old book, and turn away in puzzlement.")
+    goto(l507)
+  }
+  if (v103 != 255) { //01eb
+    set(fSaidAccepted)
+    set(f120)
+    call(v102)
+    print("A strange feeling comes over you. You wonder if you could have made a mistake!")
+  }
+l507:
+  v104 = 0
+  v103 = 0
+  v102 = 0
+  set.string(str0,"]")
+  reset(f46)
+  new.room(10)
+}
+call(v102)
+if ((said("add", "anyword", "on", "brazier") || said("add", "anyword", "on", "top", "brazier") || said("boil", "anyword", "on", "brazier") || said("boil", "anyword", "on", "top", "brazier") || said("add", "anyword", "on", "brazier", "boil") || said("add", "anyword", "on", "top", "brazier", "boil"))) { //020d
+  print("For a moment you consider doing that, but then realize it wouldn't work.")
+}
+return()

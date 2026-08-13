@@ -1,3 +1,98 @@
-if (!(isSet(f30)
-!!!
-&{%!e(string=incomplete condition: 0xfc)}
+if (!f30 && (f109 || v95 == 3)) { //0002
+  set(f109)
+  accept.input()
+  cancel.line()
+  prevent.input()
+  clear.lines(22,24,c0)
+  reset(f48)
+  reset(f85)
+  accept.input()
+  print("         Thank you.\n\nAnd now, slip into your leisure suit and prepare to enter the \"Land of the Lounge Lizards\" with \"Leisure Suit Larry!\"")
+  new.room(11)
+}
+if (fNewRoom) { //0022
+  vCycleTime = 0
+  set(f48)
+  prevent.input()
+  reset(f14)
+  stop.motion(o0)
+  set(f85)
+  load.sound(2)
+  v81 = 1
+  load.pic(v81)
+  draw.pic(v81)
+  discard.pic(v81)
+  load.view(42)
+  add.to.pic(42,0,0,4,18,4,4)
+  add.to.pic(42,0,1,4,36,4,4)
+  add.to.pic(42,0,2,46,36,4,4)
+  add.to.pic(42,0,3,11,87,4,4)
+  discard.view(42)
+  random(2,4,v220)
+  load.logic(v220)
+  clear.lines(22,24,c0)
+  show.pic()
+  v95 = 2
+  if (!f30) { //0071
+    print("Warning:\n\n\"Leisure Suit Larry in the Land of the Lounge Lizards\" contains some elements of plot which may not be  considered appropriate for some children.")
+    get.num(str2,v209)
+    prevent.input()
+    accept.input()
+    if (v209 < 18) { //007f
+      print("Sorry.\n\nThis game can only be played by adults, or with an adult.\n\nPlease find an adult, come back, and try again.")
+      quit(1)
+    }
+    if (v209 > 99) { //008a
+      print("No, you're not!")
+      quit(1)
+    }
+    if (v209 > 65) { //0095
+      print("         Warning!\n\nThis game may be hazardous to those with heart conditions!")
+    }
+    print("To verify you are really %v209, please answer five simple questions.")
+    v94 = 1
+  }
+}
+if (v95 == 2) { //00a3
+  call(v220)
+}
+if (v95 == 1) { //00ac
+  close.window()
+  if ((v92 == v93 || !(v93 > 0))) { //00b4
+    set(f15)
+    print("Correct.")
+    v95 = 5
+    v66 = 8
+    goto(l229)
+  }
+  if (!f200) { //00ce
+    v95 = 2
+    print("Oops. You blew that one!\n\nIf you miss another, you can't possibly be %v209.")
+    set(f200)
+    v94--
+    goto(l229)
+  }
+  print("You're a kid!!\n\nShame on you for trying to deceive a friendly game like this!\n\nPlease play again when you're older.")
+  quit(1)
+}
+l229:
+if (f75) { //00e5
+  reset(f75)
+  if ((f30 || v95 == 5)) { //00ed
+    v95 = 2
+    goto(l261)
+  }
+  clear.lines(23,23,c0)
+  v95 = 1
+}
+l261:
+if (f44 && v63 == 5) { //0105
+  vCycleTime = 2
+  if (v62 < 250) { //0111
+    set(f118)
+  }
+  if (f30) { //011a
+    print("%v62 cycles in %v63 seconds")
+  }
+}
+return()

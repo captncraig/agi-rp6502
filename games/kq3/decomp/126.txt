@@ -1,5 +1,173 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v240 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l777)
+}
+set(f120)
+v103++
+if ((said("add", "bay", "liquid", "basin") || said("add", "cup", "bay", "liquid", "basin") || said("add", "one", "cup", "bay", "liquid", "basin") || said("drain", "bay", "liquid", "basin") || said("drain", "cup", "bay", "liquid", "basin") || said("drain", "one", "cup", "bay", "liquid", "basin") || said("add", "liquid", "basin") || said("add", "cup", "liquid", "basin") || said("add", "one", "cup", "liquid", "basin") || said("drain", "liquid", "basin") || said("drain", "cup", "liquid", "basin") || said("drain", "one", "cup", "liquid", "basin"))) { //001e
+  if ((!(has(i40)) || !(has(i26)))) { //00a8
+    print("How can you use that which you do not have?")
+    goto(l200)
+  }
+  drop(i26)
+  get(i42)
+  print("Carefully, you pour the cup of ocean water into the mixing bowl.")
+  if (v103 == 1) { //00bf
+    reset(f120)
+  }
+}
+l200:
+if ((said("boil", "basin", "brazier") || said("boil", "bay", "liquid", "brazier") || said("boil", "basin", "bay", "liquid", "brazier") || said("boil", "basin", "bay", "liquid", "above", "brazier") || said("boil", "liquid", "brazier") || said("boil", "basin", "on", "brazier") || said("boil", "bay", "liquid", "on", "brazier") || said("boil", "basin", "bay", "liquid", "on", "brazier") || said("boil", "liquid", "on", "brazier") || said("boil", "basin", "liquid", "on", "brazier") || said("boil", "basin", "liquid", "brazier") || said("boil", "basin", "liquid", "above", "brazier"))) { //00c8
+  if (!(v107 > 0) && !(v108 > 0)) { //0152
+    print("You place the clay bowl of ocean water on top of the little charcoal brazier. To your consternation, you discover that the brazier is unlit, and stone cold.")
+    goto(l366)
+  }
+  print("Being cautious not to burn yourself, you gently place the bowl of ocean water on the hot charcoal brazier. You watch as the salt water slowly warms, then begins to steam. You remove it just before it boils.")
+  if (v103 == 2) { //0165
+    reset(f120)
+  }
+}
+l366:
+if ((said("add", "ladle", "mud", "basin", "liquid") || said("add", "mud", "basin", "liquid") || said("add", "mud", "basin") || said("knead", "ladle", "mud", "basin") || said("knead", "ladle", "mud", "basin", "liquid") || said("knead", "mud", "basin", "liquid") || said("add", "ladle", "mud", "basin", "bay", "liquid") || said("add", "mud", "basin", "bay", "liquid") || said("knead", "ladle", "mud", "basin", "bay", "liquid") || said("knead", "mud", "basin", "bay", "liquid") || said("knead", "ladle", "mud", "basin") || said("add", "ladle", "mud", "basin") || said("knead", "mud", "basin"))) { //016e
+  if (!(has(i27))) { //0202
+    print("How can you use that which you do not have?")
+    goto(l541)
+  }
+  print("Adding a spoonful of mud to the hot ocean water, you slowly stir the mixture. The mud turns the water a cloudy brown.")
+  drop(i27)
+  get(i41)
+  if (v103 == 3) { //0214
+    reset(f120)
+  }
+}
+l541:
+if ((said("add", "bit", "mushroom", "flour") || said("add", "bit", "mushroom", "flour", "basin") || said("add", "bit", "mushroom", "flour", "liquid"))) { //021d
+  if (!(has(i28))) { //0245
+    print("How can you use that which you do not have?")
+    goto(l606)
+  }
+  print("You put just a pinch of toadstool powder in the bowl of hot, brown liquid.")
+  drop(i28)
+  if (v103 == 4) { //0255
+    reset(f120)
+  }
+}
+l606:
+if ((said("blow", "liquid") || said("blow", "brew") || said("blow", "bay", "liquid") || said("blow", "basin"))) { //025e
+  if (v103 == 5) { //027e
+    print("Leaning over the hot brew, you forcefully blow your longest breath of air into the bowl, whirling the brew around and around.")
+    reset(f120)
+    v103++
+    goto(l656)
+  }
+  reset(fSaidAccepted)
+}
+l656:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0290
+  if (!(has(i37))) { //02a4
+    print("How can you use that which you do not have?")
+    goto(l699)
+  }
+  print("You wave the magic wand over the bowl of hot, brown liquid.")
+  if (v103 == 7) { //02b2
+    reset(f120)
+  }
+}
+l699:
+if ((said("drain", "brew", "from", "basin", "bottle") || said("drain", "brew", "bottle") || said("add", "brew", "from", "basin", "bottle") || said("add", "brew", "bottle"))) { //02bb
+  if (!(has(i29))) { //02e9
+    print("How can you use that which you do not have?")
+    goto(l777)
+  }
+  if (v103 == 8) { //02f5
+    print("Waiting until the liquid has cooled, you carefully pour the storm brew into an empty glass jar.")
+    reset(f120)
+    get(i30)
+    drop(i29)
+    goto(l777)
+  }
+  reset(fSaidAccepted)
+}
+l777:
+if (!f120 && v104 < 4 && v103 == 6) { //0309
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //031f
+    overlay.pic(v240)
+    show.pic()
+    set.string(str2,"elements from the earth and sea,")
+    if (vMonitorType == HERCULES) { //032c
+      open.dialogue()
+      get.string(str1," ",15,1,32)
+      goto(l835)
+    }
+    get.string(str1," ",13,1,32)
+l835:
+    if (compare.strings(str1,str2)) { //0343
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //034c
+    set.string(str2,"combine to set the heavens free.")
+    if (vMonitorType == HERCULES) { //0356
+      get.string(str1," ",16,1,32)
+      goto(l876)
+    }
+    get.string(str1," ",14,1,32)
+l876:
+    if (compare.strings(str1,str2)) { //036c
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //0375
+    set.string(str2,"when i stir this magic brew,")
+    if (vMonitorType == HERCULES) { //037f
+      get.string(str1," ",17,1,28)
+      goto(l917)
+    }
+    get.string(str1," ",15,1,28)
+l917:
+    if (compare.strings(str1,str2)) { //0395
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //039e
+    set.string(str2,"great god thor, i call on you.")
+    if (vMonitorType == HERCULES) { //03a8
+      get.string(str1," ",18,1,30)
+      goto(l958)
+    }
+    get.string(str1," ",16,1,30)
+l958:
+    if (compare.strings(str1,str2)) { //03be
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //03d2
+    if (vMonitorType == HERCULES) { //03dd
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+v36 = v103
+v36++
+if (v36 == 9 && !f120) { //03ee
+  v103 = 255
+}
+if (f120) { //03fb
+  v105 = 39
+  v106 = 1
+}
+return()

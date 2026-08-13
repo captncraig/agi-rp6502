@@ -1,4 +1,80 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(123)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 37) { //0014
+    position(o0,74,113)
+    set.loop(o0,2)
+    set(f46)
+    if (f35) { //0024
+      position(o13,85,112)
+    }
+  }
+  if (vPrevRoom == 3 && v213 < 115) { //002e
+    position(o0,0,115)
+  }
+  if (vPrevRoom == 5 && v213 < 115) { //003c
+    position(o0,150,115)
+  }
+  draw(o0)
+  load.sound(51)
+  animate.obj(o11)
+  set.view(o11,123)
+  set.loop(o11,1)
+  if (!f46) { //0056
+    set.cel(o11,0)
+    goto(l102)
+  }
+  set.cel(o11,2)
+l102:
+  position(o11,70,106)
+  set.priority(o11,9)
+  draw(o11)
+  if (!f46) { //006f
+    stop.update(o11)
+    goto(l125)
+  }
+  stop.cycling(o11)
+l125:
+  add.to.pic(123,0,0,74,52,11,4)
+  v34 = 40
+  v35 = 120
+  v37 = 4
+  return()
+}
+if (f120 && !f121 && !f46) { //008f
+  reset(f121)
+  set(f117)
+  move.obj(o0,50,120,1,f127)
+}
+if (f49) { //00a5
+  reset(f49)
+  new.room(37)
+}
+if (fTriggerLine && !f45) { //00af
+  start.update(o11)
+  stop.cycling(o11)
+  stop.motion(o0)
+  stop.cycling(o0)
+  set(f45)
+}
+if (vWhichObjBorder == 3 && f124) { //00c2
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //00ce
+  new.room(11)
+}
+if (vWhichEgoBorder == 2) { //00d7
+  new.room(5)
+}
+if (vWhichEgoBorder == 4) { //00e0
+  new.room(3)
+}
+if (f127) { //00e9
+  reset(f127)
+  set.loop(o0,2)
+  set(f118)
+}
+return()

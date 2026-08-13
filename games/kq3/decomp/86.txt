@@ -1,4 +1,144 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v56 = 7
+  set(f34)
+  v57 = 120
+  v58 = 145
+  v32 = 54
+  v31 = 151
+  load.logic(116)
+  load.logic(109)
+  call(109)
+  load.view(36)
+  load.view(0)
+  load.view(37)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //0030
+    v37 = 10
+    position(o0,37,v41)
+  }
+  if (f47) { //003d
+    draw(o0)
+  }
+  random(2,3,v36)
+  if (v36 == 3) { //0049
+    set(f221)
+    v220 = 5
+    load.view(171)
+    animate.obj(o2)
+    set.view(o2,171)
+    v36 = 2
+    step.size(o2,v36)
+    v38 = 145
+    random(1,130,v37)
+    position(o2,37,v38)
+    wander(o2)
+    draw(o2)
+    animate.obj(o3)
+    set.view(o3,171)
+    v36 = 2
+    step.size(o3,v36)
+    v38 = 145
+    random(1,130,v37)
+    position(o3,37,v38)
+    wander(o3)
+    draw(o3)
+  }
+  show.pic()
+  return()
+}
+call(116)
+call(109)
+if (f45 && v220 > 0) { //0091
+  v220--
+}
+distance(o2,o3,v36)
+if (f221 && !(v220 > 0) && has(i8) && v36 < 15) { //00a0
+  v220 = 5
+  random(1,5,v36)
+  v221 = 0
+  v222 = 0
+  if (v36 == 1 && !f193) { //00bc
+    set(f193)
+    v221 = 10
+    v222 = 13
+  }
+  if (v36 == 2 && !f194) { //00ce
+    set(f194)
+    v221 = 13
+    v222 = 17
+  }
+  if (v36 == 3 && !f195) { //00e0
+    set(f195)
+    v221 = 17
+    v222 = 21
+  }
+  if (v36 == 4 && !f196) { //00f2
+    set(f196)
+    v221 = 21
+    v222 = 24
+  }
+  if (v36 == 5 && !f197) { //0104
+    set(f197)
+    v221 = 24
+    v222 = 27
+  }
+l278:
+  if (v221 < v222) { //0116
+    v220 = 120
+    print.at(v221,2,2,37)
+    v221++
+    goto(l278)
+  }
+}
+if ((said("examine", "area") || said("examine") || said("examine", "carry"))) { //012a
+  print("You look warily around the dark, dank cargo hold. There seems to be nothing but stacks of wooden crates piled around.")
+}
+if ((said("examine", "up", "ceiling") || said("examine", "ceiling"))) { //0142
+  print("You see an open grating far above you. Too bad you can't reach it.")
+}
+if (said("examine", "mice")) { //0158
+  if (f221) { //0162
+    print("A couple of little gray mice scurry to and fro on the floor of the hold.")
+    goto(l367)
+  }
+  print("What mice?")
+}
+l367:
+if (said("hear", "mice")) { //016f
+  print("Shhhh. If you're quiet, maybe you can hear them.")
+}
+if (said("call", "mice")) { //017b
+  if (f221) { //0185
+    print("The little mice totally ignore your attempted conversation.")
+    goto(l402)
+  }
+  print("What mice?")
+}
+l402:
+if (said("capture", "mice")) { //0192
+  if (f221) { //019c
+    print("The mice move much too quickly for you to ever catch.")
+    goto(l425)
+  }
+  print("What mice?")
+}
+l425:
+if (said("kill", "mice")) { //01a9
+  if (f221) { //01b3
+    print("How cruel!! You wouldn't want to do that!")
+    goto(l448)
+  }
+  print("What mice?")
+}
+l448:
+if ((said("board", "carry") || said("climb", "out", "carry"))) { //01c0
+  print("Good idea! How?")
+}
+if (vWhichEgoBorder == 4) { //01d6
+  new.room(85)
+}
+return()

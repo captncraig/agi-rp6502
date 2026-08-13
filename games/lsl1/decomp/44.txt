@@ -1,4 +1,234 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(179)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,179)
+  set.cel(o1,0)
+  set.priority(o1,10)
+  position(o1,130,129)
+  v52 = 3
+  cycle.time(o1,v52)
+  draw(o1)
+  stop.update(o1)
+  if (v30 == 22) { //002d
+    prevent.input()
+    set(f48)
+    set(f85)
+    load.view(184)
+    load.sound(15)
+    animate.obj(o3)
+    ignore.horizon(o3)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    set.view(o3,184)
+    position(o3,55,95)
+    draw(o3)
+    move.obj(o3,27,123,2,f204)
+    set(f209)
+    set(f206)
+  }
+  if (v30 == 23) { //0058
+    set(f85)
+    v65 = 250
+    set(f75)
+    load.view(182)
+    load.view(8)
+    animate.obj(o2)
+    set.view(o2,8)
+    position(o2,0,125)
+    draw(o2)
+  }
+  if (vPrevRoom == 43) { //0075
+    v38 = 8
+    v39 = 125
+    goto(l167)
+  }
+  if (vPrevRoom == 45) { //0085
+    v38 = 98
+    v39 = 100
+    goto(l167)
+  }
+  v38 = 138
+  v39 = 127
+  set.loop(o0,1)
+  stop.update(o0)
+  start.motion(o0)
+  v65 = 0
+  set(f75)
+l167:
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  if (v30 == 22) { //00ae
+    v65 = 150
+    move.obj(o0,60,100,1,f75)
+  }
+  return()
+}
+if (f203) { //00bf
+  ignore.blocks(o0)
+  goto(l204)
+}
+observe.blocks(o0)
+l204:
+reset(f200)
+if (posn(o0,120,113,135,143)) { //00ce
+  set(f200)
+}
+reset(f202)
+if (posn(o0,123,119,138,131)) { //00dc
+  set(f202)
+}
+reset(f201)
+if (posn(o0,139,119,155,131)) { //00ea
+  set(f201)
+}
+if (f203 && !f201 && !f202) { //00f6
+  set(f75)
+}
+if (f203 && f201) { //0104
+  v65 = 100
+  set(f75)
+}
+if (!fEnteredCommand) { //0111
+  goto(l591)
+}
+if ((said("examine") || said("examine", "penthouse") || said("examine", "area"))) { //011b
+  print("This is the living room of the hotel's penthouse suite. Obviously, the hotel spared no expense here. There's a fireplace on the wall to the south. No one is here, but you hear a gurgling noise coming from somewhere.")
+}
+if ((said("examine", "elevator") || said("examine", "door") || said("examine", "button") || said("examine", "brick"))) { //0133
+  print("There is a button on either side of the elevator.")
+}
+if (said("examine", "fireplace")) { //0153
+  print("You wonder how they can make those gas logs look so real!")
+}
+if ((said("examine", "curb") || said("examine", "bear"))) { //015f
+  print("The bear looks back at you with a glassy-eyed stare, possibly because his eyes are made of glass!")
+}
+if ((said("increase", "bear") || said("move", "bear") || said("move", "bear") || said("examine", "below", "bear"))) { //0173
+  print("You find nothing but dust.")
+}
+if (said("examine", "art")) { //0195
+  print("It's another one of those boring works of modern art; this one is signed \"Mark Crowe.\"")
+}
+if (said("examine", "back", "art")) { //01a1
+  print("You can't. It's screwed to the wall.")
+}
+if (said("examine", "bench")) { //01af
+  print("Yep. It's a sofa!")
+}
+if ((said("rest") || said("rest", "down") || said("use", "bench"))) { //01bb
+  print("Instead of sitting, you should investigate that gurgling sound you hear.")
+}
+if ((said("lie", "down") || said("sleep"))) { //01d3
+  print("Tired already?")
+}
+if (said("hear", "rol")) { //01e5
+  print("There's a sound coming from outside.")
+}
+if (said("increase", "door")) { //01f1
+  print("The door to the terrace is already open.")
+}
+if ((said("examine", "out") || said("examine", "garden") || said("examine", "glass") || said("examine", "out", "glass"))) { //01fd
+  print("From this height, the view of the city is spectacular.")
+}
+if ((said("increase", "elevator") || said("move", "button"))) { //021f
+  if (!f200) { //0231
+    set(f54)
+    goto(l591)
+  }
+  if (f203) { //023d
+    print("The elevator doors are already open. Just walk inside.")
+    goto(l591)
+  }
+  set(f67)
+  v65 = 0
+  set(f75)
+}
+l591:
+if (f75) { //024f
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0259
+    start.update(o1)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 2) { //0265
+    stop.update(o1)
+    set(f203)
+  }
+  if (v65 == 3) { //0270
+    reset(f203)
+    start.update(o1)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 4) { //027e
+    v65 = 0
+  }
+  if (v65 == 101) { //0288
+    reset(f203)
+    stop.update(o0)
+    start.update(o1)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 102) { //0298
+    v76 = 42
+  }
+  if (v65 == 151) { //02a2
+    move.obj(o0,40,120,1,f75)
+  }
+  if (v65 == 152) { //02af
+    move.obj(o0,1,120,1,f75)
+  }
+  if (v65 == 153) { //02bc
+    reset(f48)
+    v76 = 43
+  }
+  if (v65 == 251) { //02c8
+    move.obj(o0,35,125,1,f75)
+  }
+  if (v65 == 252) { //02d5
+    move.obj(o0,60,103,1,f75)
+  }
+  if (v65 == 253) { //02e2
+    move.obj(o0,114,103,1,f75)
+  }
+  if (v65 == 254) { //02ef
+  }
+  if (!(v65 > 0)) { //02f6
+    stop.update(o1)
+  }
+}
+if (v65 > 250) { //0300
+  distance(o0,o2,v52)
+  if (v52 > 10) { //030b
+    follow.ego(o2,2,f40)
+  }
+}
+if (f204) { //0316
+  reset(f204)
+  v200++
+  if (v200 == 1) { //0320
+    move.obj(o3,0,123,2,f204)
+  }
+  if (v200 == 2) { //032d
+    move.obj(o3,0,97,2,f204)
+  }
+  if (v200 == 3) { //033a
+    erase(o3)
+  }
+}
+if (f206 && f209) { //0343
+  sound(15,f206)
+}
+if (vWhichEgoBorder == 4) { //034e
+  v76 = 43
+}
+if (posn(o0,113,93,114,106)) { //0358
+  v76 = 45
+}
+return()

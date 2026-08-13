@@ -1,4 +1,234 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(113)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //0010
+    load.logic(116)
+    set(f201)
+  }
+  if (!f59) { //001a
+    load.logic(112)
+    set(f204)
+  }
+  load.view(124)
+  load.view(119)
+  load.view(52)
+  load.view(48)
+  load.view(23)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,73,86)
+  set.view(o2,124)
+  draw(o2)
+  animate.obj(o6)
+  ignore.blocks(o6)
+  ignore.horizon(o6)
+  set.view(o6,119)
+  set.cel(o6,0)
+  position(o6,21,122)
+  draw(o6)
+  stop.update(o6)
+  animate.obj(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  ignore.horizon(o7)
+  set.view(o7,52)
+  cycle.time(o7,v107)
+  stop.motion(o7)
+  position(o7,108,113)
+  draw(o7)
+  if (vPrevRoom == 45) { //0066
+    position(o0,132,145)
+    set.loop(o0,1)
+    goto(l158)
+  }
+  if (vPrevRoom == 46) { //0077
+    position(o0,61,165)
+    goto(l158)
+  }
+  if (vPrevRoom == 41) { //0085
+    position(o0,50,127)
+    goto(l158)
+  }
+  if (vPrevRoom == 42) { //0093
+    position(o0,1,140)
+  }
+l158:
+  draw(o0)
+  v34 = 1
+  v209 = 2
+  if (f201) { //00a6
+    call(116)
+  }
+  if (f204) { //00ae
+    call(112)
+    position(o9,130,164)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //00bc
+  if (posn(o0,70,100,159,150)) { //00c2
+    print("The gwythaint appears to be hungry for Assistant Pig-Keeper!")
+    goto(l251)
+  }
+  distance(o0,o6,v61)
+  if (v61 < 30) { //00d5
+    if (!f200) { //00dc
+      print("There is a closed door here.")
+      goto(l246)
+    }
+    if (!f212) { //00e8
+      print("The closet is empty.")
+      goto(l246)
+    }
+    print("Ah ha! You've found your knapsack and all your missing belongings.")
+l246:
+    goto(l251)
+  }
+  print("This is the main hallway of the Horned King's castle.")
+}
+l251:
+if (!f128 && !f129) { //00fb
+  goto(l368)
+}
+if (f129) { //0108
+  goto(l368)
+}
+if (posn(o0,15,124,31,130)) { //0111
+  set(fSaidAccepted)
+  if (!f200) { //011d
+    start.update(o6)
+    print("Carefully watching over your shoulder, you open the closet door.")
+    end.of.loop(o6,f203)
+    goto(l368)
+  }
+  if (!f212) { //012e
+    start.update(o6)
+    reverse.loop(o6,f202)
+    goto(l368)
+  }
+  reset(f212)
+  if (v60 != 12) { //013f
+    v42 = 0
+    v60 = 0
+  }
+  v61 = 255
+  v97 = 25
+l339:
+  get.room(v97,v98)
+  if (v98 == vCurrentRoom) { //0156
+    put(v97,v61)
+  }
+  v97--
+  if (v97 > 0) { //0162
+    goto(l339)
+  }
+  print("Reaching into the closet, you reclaim your possessions.")
+  reset(f94)
+}
+l368:
+if (f202) { //0170
+  reset(f202)
+  reset(f200)
+  stop.update(o6)
+}
+if (f203) { //017c
+  reset(f203)
+  set(f200)
+  stop.update(o6)
+  if (f94) { //0188
+    set(f212)
+  }
+}
+v209--
+if (v209 == 1) { //0192
+  start.cycling(o7)
+  random(4,22,v210)
+}
+v210--
+if (v210 == 1) { //01a1
+  stop.cycling(o7)
+  random(11,33,v210)
+}
+v208--
+if (!(v208 > 0) && !f63) { //01b0
+  start.cycling(o7)
+  v208 = 22
+  if (posn(o0,92,126,106,138)) { //01c0
+    set(f63)
+    v209 = 0
+    v210 = 0
+    set.view(o7,23)
+    set.cel(o7,0)
+    v62 = 247
+    v63 = 5
+    repositon(o7,v62,v63)
+    v211 = 11
+    program.control()
+    end.of.loop(o7,f207)
+    goto(l527)
+  }
+  if (posn(o0,80,120,109,140)) { //01ec
+    v209 = 0
+    v210 = 0
+    v62 = 247
+    v63 = 0
+    repositon(o7,v62,v63)
+    set.view(o7,48)
+    set.cel(o7,0)
+    end.of.loop(o7,f206)
+  }
+}
+l527:
+v211--
+if (v211 == 1) { //0211
+  erase(o0)
+}
+if (f207) { //021a
+  reset(f207)
+  if (f108) { //0222
+    print("By allowing the pig and yourself to be captured, the Horned King has won!")
+    v59 = 1
+    goto(l583)
+  }
+  if (has(i12)) { //0230
+    print("Oh, no! You've allowed the Horned King to capture your Magic Sword.")
+    drop(i12)
+    v59 = 1
+    goto(l583)
+  }
+  print("Oh, no! The gwythaint got you! He holds you until a henchman appears and marches you off to the dungeon.")
+  v34 = 1
+  new.room(52)
+}
+l583:
+if (f206) { //0247
+  reset(f206)
+  set.view(o7,52)
+  v62 = 9
+  v63 = 0
+  repositon(o7,v62,v63)
+  start.cycling(o7)
+  v209 = 2
+}
+if (fTriggerLine) { //0261
+  new.room(45)
+}
+if (vWhichEgoBorder == 3) { //0269
+  new.room(46)
+}
+if (vWhichEgoBorder == 1) { //0272
+  new.room(41)
+}
+if (vWhichEgoBorder == 4) { //027b
+  new.room(42)
+}
+if (f204) { //0284
+  call(112)
+}
+if (f201) { //028c
+  call(116)
+}
+return()

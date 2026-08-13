@@ -1,5 +1,160 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f10)
-  if (isSet(f81)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+  if (f81 && f164) { //000a
+    log("%v8/4K memory left.")
+  }
+}
+if (fNewRoom && f150 && !f56) { //0014
+  clear.lines(24,24,c0)
+  set.text.attribute(6,0)
+  display(24,30,"Rm %v0")
+  set.text.attribute(15,0)
+}
+if (!f56) { //002d
+  if (f36) { //0034
+    display(23,38,"H")
+    goto(l69)
+  }
+  display(23,38," ")
+}
+l69:
+if ((controller(c24) || said("inv", "number"))) { //0045
+  vKeyPressed = 0
+  set.text.attribute(4,15)
+  text.screen()
+  display(0,6,"Number  Name of Object")
+  v164 = 1
+  v144 = 10
+  v145 = 2
+  v131 = 16
+l106:
+  display(v145,v144,v131)
+  v164++
+  v145++
+  if (!(v164 > 24)) { //0072
+    goto(l106)
+  }
+l125:
+  if (!(have.key())) { //007d
+    goto(l125)
+  }
+  set.text.attribute(15,0)
+  graphics()
+}
+if (said("inv", "accident")) { //008a
+  get.num(str4,v165)
+  get.room(v165,v164)
+  print("Object %v165 is in room %v164.")
+}
+if (controller(c21)) { //009c
+  v164 = 0
+  obj.status.v(v164)
+  set(f34)
+}
+if (!f56 && (controller(c11) || said("examine", "location") || said("accident", "number") || said("accident"))) { //00a9
+  toggle(f150)
+  clear.lines(24,24,c0)
+  if (f150) { //00ca
+    set.text.attribute(6,0)
+    display(24,30,"Rm %v0")
+    set.text.attribute(15,0)
+  }
+}
+if (controller(c13)) { //00da
+  show.mem()
+  set(f34)
+  toggle(f164)
+  if (f81) { //00e5
+    log("%v8/4K memory left.")
+  }
+}
+if ((controller(c19) || said("examine", "priority"))) { //00ed
+  show.pri.screen()
+}
+if (said("set", "priority")) { //00fc
+  get.num(str23,v165)
+  set.priority(o0,v165)
+  set(f34)
+}
+if (said("release", "priority")) { //010e
+  release.priority(o0)
+  set(f34)
+}
+if (said("tp")) { //011c
+  get.num(str1,v164)
+  new.room(v164)
+}
+if (said("location")) { //0129
+  get.num(str2,v164)
+  get.num(str3,v165)
+  erase(o0)
+  position(o0,164,v165)
+  draw(o0)
+}
+if (said("inv")) { //013f
+  get.num(str4,v164)
+  obj.status.v(v164)
+  set(f34)
+}
+if (said("get", "inv")) { //014e
+  get.num(str4,v164)
+  get(v164)
+}
+if ((said("examine", "flag") || said("flag"))) { //015d
+  get.num(str5,v164)
+  set(f34)
+  if (v164) { //0172
+    print("Flag %v164 set")
+    goto(l383)
+  }
+  print("Flag %v164 not set")
+}
+l383:
+if (said("set", "flag")) { //017f
+  get.num(str5,v164)
+  set(v164)
+}
+if (said("reset", "flag")) { //018e
+  get.num(str5,v164)
+  reset(v164)
+}
+if ((said("examine", "var") || said("var"))) { //019d
+  get.num(str8,v164)
+  rindirect(v165,v164)
+  print("Variable %v164 = %v165")
+}
+if (said("set", "var")) { //01b5
+  get.num(str8,v164)
+  get.num(str6,v165)
+  lindirectv(v164,v165)
+}
+if (said("accident")) { //01c8
+  print("Current room = %v0")
+  set(f34)
+}
+if (!f56 && f150) { //01d4
+  v164 = v142
+  v165 = v143
+  set.text.attribute(6,0)
+  display(24,21,"%v164|3/%v165|3")
+  set.text.attribute(15,0)
+}
+if ((said("gimme", "gimme") || controller(c23))) { //01ed
+  display(0,0,"You gottum, Sonny!")
+  v164 = 0
+  v165 = 255
+l517:
+  v164++
+  if (!(v164 > 24)) { //0207
+    put(v164,v165)
+    goto(l517)
+  }
+}
+if (controller(c37)) { //0215
+  get.num(str4,v164)
+  if (v164 > 21) { //021e
+    v164 = 15
+  }
+  obj.status.v(v164)
+}
+return()

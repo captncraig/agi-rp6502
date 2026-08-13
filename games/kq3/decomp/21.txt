@@ -1,4 +1,103 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 2
+  set(f64)
+  set.horizon(56)
+  v32 = 34
+  if (f111) { //0019
+    v31 = 123
+  }
+  random(1,3,v36)
+  if (v36 == 1) { //0026
+    v57 = 95
+    v58 = 76
+    goto(l76)
+  }
+  if (v36 == 2) { //0036
+    v57 = 132
+    v58 = 110
+    goto(l76)
+  }
+  v57 = 24
+  v58 = 122
+l76:
+  if (obj.in.room(i34,vCurrentRoom)) { //004c
+    load.view(243)
+  }
+  load.logic(128)
+  load.logic(118)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //005f
+    if (vPrevRoom == 31) { //0065
+      if (v41 > 80 && v41 < 85) { //006c
+        v41 = 85
+      }
+    }
+    if (vPrevRoom == 22) { //0079
+      if (v41 > 91 && v41 < 99) { //0080
+        v41 = 99
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //0091
+    draw(o0)
+  }
+  if (obj.in.room(i34,vCurrentRoom)) { //0099
+    animate.obj(o2)
+    position(o2,40,86)
+    set.view(o2,243)
+    set.cel(o2,0)
+    draw(o2)
+    stop.update(o2)
+  }
+  call(128)
+  call(118)
+  show.pic()
+  return()
+}
+if (fEnteredCommand) { //00b6
+  if (said("examine", "rock")) { //00bc
+    print("If you've seen one rock, you've seen them all.")
+    if (obj.in.room(i34,vCurrentRoom)) { //00c8
+      print("You notice an unusual little cactus beside that large rock.")
+    }
+  }
+  if (obj.in.room(i34,vCurrentRoom)) { //00d1
+    if ((said("examine") || said("examine", "brush") || said("examine", "cactii") || said("examine", "deck"))) { //00d8
+      print("You notice an unusual little cactus beside that large rock.")
+    }
+    if ((said("capture", "cactii") || said("capture", "cactii", "from", "deck") || said("capture", "cactii") || said("capture", "cactii", "from", "deck"))) { //00f6
+      distance(o0,o2,v36)
+      if (v36 > 20) { //0120
+        print("You are not close enough.")
+        goto(l311)
+      }
+      print("Ok.")
+      get(i34)
+      vCurrentScore += 1
+      start.update(o2)
+      erase(o2)
+    }
+  }
+}
+l311:
+call(128)
+call(118)
+if (vWhichEgoBorder == 3) { //013b
+  new.room(26)
+}
+if (vWhichEgoBorder == 1) { //0144
+  new.room(16)
+}
+if (vWhichEgoBorder == 4) { //014d
+  new.room(32)
+}
+if (vWhichEgoBorder == 2) { //0156
+  new.room(22)
+}
+return()

@@ -1,3 +1,60 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x67)}
+display(0,0,"Sailing, sailing.")
+v36 = 0
+put(i1,36)
+put(i2,36)
+put(i3,36)
+put(i4,36)
+put(i5,36)
+get(i6)
+put(i7,36)
+get(i8)
+get(i9)
+get(i10)
+put(i11,36)
+get(i12)
+put(i13,36)
+put(i14,36)
+put(i15,36)
+get(i16)
+put(i17,36)
+put(i18,36)
+put(i19,36)
+get(i20)
+put(i21,36)
+put(i22,36)
+put(i23,36)
+put(i24,36)
+put(i25,36)
+put(i26,36)
+put(i27,36)
+put(i28,36)
+put(i29,36)
+get(i30)
+put(i31,36)
+put(i32,36)
+get(i33)
+put(i34,36)
+put(i35,36)
+get(i36)
+get(i37)
+get(i38)
+get(i40)
+get(i41)
+get(i42)
+get(i43)
+put(i47,36)
+put(i48,36)
+get(i49)
+get(i50)
+get(i51)
+get(i54)
+v63 = 0
+v128 = 20
+v84 = 0
+v83 = 0
+v62 = 1
+v53 = 0
+v52 = 6
+set(f79)
+new.room(75)
+return()

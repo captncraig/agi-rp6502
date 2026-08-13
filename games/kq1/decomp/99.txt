@@ -1,3 +1,69 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0x0e)}
+if (said("quit")) { //0002
+  stop.sound()
+  quit(0)
+}
+if (said("tp")) { //000d
+  get.num(str1,v78)
+  new.room(v78)
+}
+if (said("pos")) { //001a
+  get.num(str2,v78)
+  get.num(str3,v79)
+  erase(o0)
+  position(o0,78,v79)
+  draw(o0)
+}
+if (said("acquire", "object")) { //0030
+  get.num(str4,v78)
+  get(v78)
+}
+if (said("set", "var")) { //003f
+  get.num(str5,v78)
+  get.num(str6,v79)
+  lindirectv(v78,v79)
+}
+if (said("object")) { //0052
+  get.num(str7,v78)
+  obj.status.v(v78)
+}
+if (controller(c16)) { //005f
+  show.pri.screen()
+}
+if (said("show", "var")) { //0066
+  get.num(str5,v73)
+  rindirect(v72,v73)
+  print("var %v73: %v72")
+}
+if (said("show", "banner")) { //0078
+  get.num(str9,v73)
+  if (v73) { //0085
+    print("flag %v73 is set")
+    goto(l146)
+  }
+  print("flag %v73 is not set")
+}
+l146:
+if (said("reset", "banner")) { //0092
+  get.num(str9,v73)
+  reset(v73)
+}
+if (said("set", "banner")) { //00a1
+  get.num(str9,v73)
+  set(v73)
+}
+if (controller(c9)) { //00b0
+  show.mem()
+}
+if (vUnknownWord == 1) { //00b7
+  log("%m12%w1")
+}
+if (vUnknownWord == 2) { //00c0
+  log("%m12%w2")
+}
+if (vUnknownWord == 3) { //00c9
+  log("%m12%w3")
+}
+if (vUnknownWord == 0 && fEnteredCommand && !fSaidAccepted) { //00d2
+  log("No response to input.")
+}
+return()

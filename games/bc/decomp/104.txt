@@ -1,4 +1,224 @@
-if (isSet(f5)) {
-  if (isSet(f99)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (fNewRoom) { //0002
+  if (f99 && f144) { //0008
+    print("Gurg's comin'!")
+  }
+  v235 = 255
+  v236 = 1
+  reset(f82)
+  random(55,123,v238)
+  load.view(45)
+  load.view(46)
+  load.view(7)
+  load.sound(11)
+  load.sound(25)
+  animate.obj(o7)
+  set.view(o7,45)
+  v61 = 2
+  step.size(o7,v61)
+  object.on.land(o7)
+  return()
+}
+distance(o0,o7,v230)
+v238--
+if (v238 == 2) { //003c
+  stop.sound()
+}
+if (v238 == 1) { //0044
+  set(f78)
+  draw(o7)
+  wander(o7)
+  stop.sound()
+  reset(f159)
+  sound(25,f82)
+  print("What manner of creature is this wandering nearby?!")
+}
+if ((!f78 || fSaidAccepted)) { //0059
+  goto(l601)
+}
+if (f130) { //0067
+  print("Gurgi is not too clean, and could use a bath, but he is friendly and pleasant.")
+}
+if (f128 && f53) { //006f
+  print("\"Hello, Gurgi. How's my old friend?\"")
+  set(fSaidAccepted)
+}
+if (!f129) { //007b
+  goto(l393)
+}
+if (v234 > 0) { //0085
+  set(fSaidAccepted)
+  print("You're too dizzy to use it.")
+  reset(f129)
+  v60 = 0
+  goto(l393)
+}
+if ((v60 == 0 || fSaidAccepted)) { //0098
+  goto(l393)
+}
+if (v60 == 18) { //00a6
+  set(fSaidAccepted)
+  print("\"Gurgi not understand funny word.\"")
+  goto(l393)
+}
+if (v232 > 0) { //00b4
+  set(fSaidAccepted)
+  print("\"Gurgi too busy for presents right now.\"")
+  goto(l393)
+}
+if (v60 == 19) { //00c2
+  set(fSaidAccepted)
+  print("Gurgi looks into the mirror and sees a happy and good-natured creature.")
+  goto(l393)
+}
+if (v230 > 33) { //00d0
+  set(fSaidAccepted)
+  print("Gurgi isn't close enough to see it.")
+  goto(l393)
+}
+if (f53) { //00de
+  set(fSaidAccepted)
+  print("\"Oh, kind Master. Gurgi not need any more presents.\"")
+  goto(l393)
+}
+if (!fEgoOnWater) { //00eb
+  if (v60 == 12) { //00f2
+    set(fSaidAccepted)
+    set(f145)
+    print("\"Gurgi has no use for silly sword.\"")
+  }
+  if (v60 == 8) { //00ff
+    set(f233)
+    set(f53)
+    vCurrentScore += 10
+    drop(i8)
+    v60 = 0
+    v42 = 0
+    print("\"Thank you for tasty apple, kind Master. Gurgi now Taran's friend for life.\"")
+  }
+  if (v60 == 9) { //0117
+    set(f233)
+    set(f53)
+    vCurrentScore += 10
+    drop(i9)
+    v60 = 0
+    v42 = 0
+    print("\"Gurgi loves cookies. Gurgi now Taran's friend for life.\"")
+  }
+  if (v60 == 5) { //012f
+    set(f233)
+    print("\"Gurgi eat bread, but not like it much.\"")
+    v52--
+    v52--
+    if (!(v52 > 0)) { //013e
+      drop(i5)
+      v60 = 0
+      v42 = 0
+    }
+  }
+  if (v60 == 3) { //014e
+    set(f233)
+    drop(i3)
+    v60 = 0
+    v42 = 0
+    print("\"Gurgi eat gruel, but it tastes like piggy food.\"")
+  }
+  if (v60 == 2) { //0161
+    set(f233)
+    drop(i2)
+    v60 = 0
+    v42 = 0
+    print("\"Gurgi eat corn, but not like it much. Too dry.\"")
+  }
+  if (f233) { //0174
+    reset(f233)
+    set(fSaidAccepted)
+    v232 = 44
+    set.view(o7,46)
+    stop.motion(o7)
+    goto(l601)
+  }
+}
+l393:
+if (v230 > 66 && !f239) { //0189
+  if (!f53) { //0193
+    follow.ego(o7,4,f237)
+    goto(l429)
+  }
+  if (!(v231 > 0)) { //01a1
+    follow.ego(o7,4,f237)
+  }
+}
+l429:
+if (f237 && !(v232 > 0) && !f102) { //01ad
+  reset(f237)
+  v231++
+  wander(o7)
+  if (v231 == 1) { //01c0
+    if (f53) { //01c7
+      print("\"Hello, brave Master. Gurgi still Taran's friend for life!\"")
+      goto(l468)
+    }
+    print("\"Hi! I'm Gurgi. Do you have any munchings and crunchings for me?\"")
+l468:
+    set(f104)
+    set.view(o0,7)
+    stop.motion(o0)
+    set(f106)
+    set(f133)
+    v234 = 33
+    goto(l503)
+  }
+  if (!f53) { //01e5
+    print("\"Are you sure you don't have some munchings and crunchings for Gurgi?\"")
+  }
+  if (v231 == 3) { //01ee
+    set(f239)
+  }
+}
+l503:
+v234--
+if (v234 == 1) { //01f9
+  reset(f104)
+  set.view(o0,0)
+  v61 = 1
+  step.size(o0,v61)
+  start.motion(o0)
+  reset(f133)
+  set(f82)
+}
+v232--
+if (v232 == 1) { //0213
+  set.view(o7,45)
+  v61 = 2
+  step.size(o7,v61)
+  start.motion(o7)
+  wander(o7)
+}
+v235--
+if (v235 == 1) { //0229
+  if (v236 > 0) { //0230
+    v236--
+    v235 = 255
+    goto(l579)
+  }
+  set(f239)
+  wander(o7)
+}
+l579:
+if (v234 > 0 && f106) { //0243
+  sound(11,f106)
+}
+if (f82) { //024f
+  reset(f82)
+  set(f159)
+}
+l601:
+if (f239 && vWhichObjBorder > 0) { //0259
+  reset(f145)
+  erase(o7)
+  reset(f78)
+}
+if (f99 && f144) { //0268
+  display(24,0,"%v230 ")
+}
+return()

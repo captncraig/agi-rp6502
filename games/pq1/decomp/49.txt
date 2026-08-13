@@ -1,5 +1,577 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+  load.sound(6)
+  load.sound(7)
+  load.view(21)
+  load.view(90)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(109)
+  call(109)
+  animate.obj(o0)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o1,21)
+  set.view(o2,90)
+  set.view(o3,90)
+  set.view(o4,90)
+  set.loop(o2,0)
+  set.loop(o3,1)
+  set.loop(o4,1)
+  set.cel(o3,0)
+  set.cel(o4,1)
+  set.cel(o2,0)
+  position(o2,73,104)
+  position(o3,23,98)
+  position(o4,18,131)
+  stop.cycling(o3)
+  set.priority(o3,13)
+  set.priority(o4,4)
+  if (v134 > 0) { //0059
+    status.line.on()
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    position(o1,144,v145)
+    v134 = 0
+    goto(l118)
+  }
+  position(o0,62,167)
+l118:
+  if (obj.in.room(i3,vCurrentRoom)) { //0076
+    draw(o3)
+  }
+  add.to.pic(90,1,0,20,100,4,4)
+  add.to.pic(90,1,0,26,96,4,4)
+  add.to.pic(90,1,2,98,112,12,12)
+  draw(o0)
+  draw(o2)
+  draw(o4)
+  position(o1,45,116)
+  set.loop(o1,2)
+  if (!(v36 > 0)) { //00a4
+    set(f139)
+    draw(o1)
+    v140 = 5
+    if (v35 == 1) { //00b3
+      v139 = 0
+      goto(l208)
+    }
+    if (v31 == 4) { //00c0
+      v139 = 50
+      goto(l208)
+    }
+    v139 = 150
+  }
+l208:
+  if (v36 == 1) { //00d0
+    v139 = 100
+    if (vPrevRoom == 52) { //00da
+      v140 = 120
+      goto(l234)
+    }
+    v140 = 10
+  }
+l234:
+  if (v36 == 3 && v63 == 255) { //00ea
+    set(f139)
+    draw(o1)
+    v140 = 5
+    v139 = 200
+  }
+  if (v36 == 4 && v31 > 4) { //00fe
+    set(f139)
+    draw(o1)
+    v140 = 10
+    v139 = 60
+  }
+  if (v36 == 5) { //0112
+    set(f139)
+    draw(o1)
+    v140 = 10
+    v139 = 70
+  }
+  stop.update(o2)
+  stop.update(o4)
+  show.pic()
+  return()
+}
+if (vWhichEgoBorder == 3) { //0129
+  reset(f139)
+  new.room(52)
+}
+v223--
+if (v223 == 1) { //0136
+  v56 = 110
+}
+v222--
+if (v222 == 1) { //0142
+  v56 = 50
+}
+if (v56 > 0) { //014c
+  get.posn(o0,v134,v135)
+  current.loop(o0,v147)
+  get.posn(o1,v144,v145)
+  new.room(v56)
+}
+distance(o0,o1,v221)
+if (v221 < v61) { //0164
+  set(f109)
+}
+reset(f225)
+if (posn(o0,81,121,91,140)) { //016f
+  set(f225)
+}
+reset(f226)
+if (posn(o0,43,116,59,127)) { //017d
+  set(f226)
+}
+reset(f227)
+if (posn(o0,68,110,80,115)) { //018b
+  set(f227)
+}
+reset(f228)
+if (posn(o0,81,109,107,119)) { //0199
+  set(f228)
+}
+reset(f229)
+if (posn(o0,101,109,117,124)) { //01a7
+  set(f229)
+}
+reset(f230)
+if (posn(o0,18,136,26,148)) { //01b5
+  set(f230)
+}
+reset(f232)
+if (posn(o0,26,127,32,135)) { //01c3
+  set(f232)
+}
+reset(f231)
+if (posn(o0,41,109,66,114)) { //01d1
+  set(f231)
+}
+reset(f57)
+if (posn(o0,92,121,105,141)) { //01df
+  set(f57)
+}
+if (!f119 && v120 == 9 && f112 && f139) { //01eb
+  print("\"Sonny! Are you going to be late for briefing again?\"")
+}
+if (f69) { //01fb
+  start.update(o2)
+  reverse.loop(o2,f224)
+  sound(7,f154)
+  reset(f69)
+}
+if (f154 && f224) { //020b
+  stop.update(o2)
+  reset(f154)
+  reset(f224)
+}
+if (f139 && f220) { //0219
+  get.posn(o1,v144,v145)
+  if ((v153 != v144 || v154 != v145)) { //0225
+    v153 = v144
+    v154 = v145
+    start.cycling(o1)
+    goto(l576)
+  }
+  stop.cycling(o1)
+l576:
+  v157 = v144
+  v144 -= 7
+  v157 += 13
+  if (v142 < v144) { //0249
+    set.loop(o1,1)
+    goto(l627)
+  }
+  if (v142 > v157) { //0256
+    set.loop(o1,0)
+    goto(l627)
+  }
+  if (v143 < v145) { //0263
+    set.loop(o1,3)
+    goto(l627)
+  }
+  set.loop(o1,2)
+}
+l627:
+if (f138) { //0273
+  reset(f138)
+  v139++
+  if (v139 == 1) { //027d
+    prevent.input()
+    print("\"Welcome to the Narcotics Division, Sonny,\" says Laura. \"I'm pleased you were selected for the position.\"")
+    v140 = 4
+  }
+  if (v139 == 2) { //028a
+    print("\"Allow me to show you around.\"")
+    set(f220)
+    move.obj(o1,67,112,1,f138)
+  }
+  if (v139 == 3) { //029b
+    v140 = 4
+  }
+  if (v139 == 4) { //02a5
+    print("\"This file cabinet contains all our active narcotic cases, including Hoffman's file.\"")
+    v140 = 4
+  }
+  if (v139 == 5) { //02b1
+    print("\"Walk this way.\"")
+    move.obj(o1,44,135,1,f138)
+  }
+  if (v139 == 6) { //02c0
+    move.obj(o1,27,135,1,f138)
+  }
+  if (v139 == 7) { //02cd
+    v140 = 4
+  }
+  if (v139 == 8) { //02d7
+    print("\"This key board contains keys to the unmarked cars that are assigned to the Narcotics Division. I've been meaning to update that clipboard hanging there.\"")
+    v140 = 4
+  }
+  if (v139 == 9) { //02e3
+    move.obj(o1,70,135,1,f138)
+  }
+  if (v139 == 10) { //02f0
+    print("\"By the way, our radio call number is 83-Nora-10.\"")
+    move.obj(o1,81,124,1,f138)
+  }
+  if (v139 == 11) { //02ff
+    v140 = 4
+  }
+  if (v139 == 12) { //0309
+    print("\"This will be your desk,\" Laura continues. \"Since you have your own desk now, your pigeonhole will be assigned to someone else.\"")
+    v140 = 4
+  }
+  if (v139 == 13) { //0315
+    move.obj(o1,73,116,1,f138)
+  }
+  if (v139 == 14) { //0322
+    move.obj(o1,45,116,1,f138)
+  }
+  if (v139 == 15) { //032f
+    v141 = 7
+  }
+  if (v139 == 16) { //0339
+    print("\"Sonny,\" Laura says earnestly, \"I attended Hoffman's arraignment early this morning. He's being represented by some out-of-town, hotshot lawyer.\"")
+    v140 = 4
+  }
+  if (v139 == 17) { //0345
+    print("\"The jerk has convinced Judge Palmer that Hoffman is who he says he is. And, that's not the worst of it...\"")
+    v140 = 4
+  }
+  if (v139 == 18) { //0351
+    print("\"Judge Palmer set Hoffman's bail at only $500,000.00!\" Laura exclaims. \"We've got to show cause to justify a No Bail Warrant. If Hoffman gets out on bail, we'll never see his ugly face again!\"")
+    v140 = 4
+  }
+  if (v139 == 19) { //035d
+    print("\"Sonny, I have a meeting right now, and can't stay. Hoffman's your baby now and time is running out! I hope you can discover some information that will convince Judge Palmer to hold him without bail!\"")
+    move.obj(o1,62,116,1,f138)
+  }
+  if (v139 == 20) { //036c
+    move.obj(o1,62,167,1,f138)
+  }
+  if (v139 == 21) { //0379
+    accept.input()
+    reset(f139)
+    erase(o1)
+    v36 = 1
+    v96 = 3
+    v139 = 100
+    v140 = 120
+  }
+  if (v139 == 51) { //0391
+    v140 = 30
+    v139 = 50
+    if (v39 == 8) { //039e
+      set.string(str9,"You'd better get over there!")
+      goto(l942)
+    }
+    set.string(str9,"You'd better change and get over there.")
+l942:
+    print("\"Hello, Sonny!\" Laura Watts greets you. \"Lieutenant Morgan is waiting for you. %s9\"")
+  }
+  if (v139 == 61) { //03b0
+    v140 = 30
+    v139 = 60
+    if (v39 == 8) { //03bd
+      set.string(str9,"You'd better change and get over there.")
+      goto(l973)
+    }
+    set.string(str9,"You'd better get over there!")
+l973:
+    print("\"Hello, Sonny!\" Laura Watts greets you. \"Lieutenant Morgan is waiting for you. %s9\"")
+  }
+  if (v139 == 71) { //03cf
+    v140 = 30
+    v139 = 70
+    print("\"Hey! I thought you were supposed to go to the Hotel Delphoria!\"")
+  }
+  if (v139 == 101) { //03de
+    set(f139)
+    position(o1,62,167)
+    set.loop(o1,3)
+    draw(o1)
+    set(f220)
+    move.obj(o1,38,143,1,f138)
+  }
+  if (v139 == 102) { //03f8
+    set.loop(o1,0)
+    v141 = 3
+  }
+  if (v139 == 103) { //0405
+    print("\"Sonny, I just got a call from the jail. Hoffman's attorney is on his way over there with a half-million dollars to bail him out.\"")
+    v140 = 4
+  }
+  if (v139 == 104) { //0411
+    print("\"If you've found anything at all that we can use to hold this sucker, now is the time to use it.\"")
+    v140 = 4
+  }
+  if (v139 == 105) { //041d
+    print("\"Take whatever you have, get over to the courthouse and see if you can get a No Bail Warrant out of Judge Palmer.\"")
+    v140 = 4
+  }
+  if (v139 == 106) { //0429
+    move.obj(o1,62,167,1,f138)
+  }
+  if (v139 == 107) { //0436
+    reset(f139)
+    erase(o1)
+    v36 = 2
+  }
+  if (v139 == 151) { //0444
+    v140 = 30
+    v139 = 150
+    if (f130 && v31 < 4) { //0451
+      print("\"Hey, Sonny,\" Laura Watts says, \"Sergeant Dooley is expecting you in his office, pronto!\"")
+      goto(l1125)
+    }
+    random(2,4,v152)
+    print(v152)
+  }
+l1125:
+  if (v139 == 201) { //0465
+    print("\"Sonny,\" says Laura, \"Just after you left, a hooker by the name of Sweet Cheeks Marie (who called you 'Precious'), called from the jail and said she needs to see you as soon as possible.\"")
+    v140 = 4
+  }
+  if (v139 == 202) { //0471
+    print("\"But, before you go to the jail, Morgan wants to see you.\"")
+    v36 = 4
+    v35 = 4
+    v96 = 6
+  }
+}
+if (!fEnteredCommand) { //0483
+  goto(l2101)
+}
+if (said("examine", "counter")) { //048d
+  if (v142 < 77) { //0497
+    print("The desk on the left has \"In\" and \"Out\" baskets, and a nameplate that says \"Laura Watts, Narcotics Detective.\"")
+    goto(l1189)
+  }
+  print("The desk on the right has \"In\" and \"Out\" baskets, a telephone, but no nameplate.")
+}
+l1189:
+if ((said("examine", "left", "counter") || said("examine", "counter", "on", "left") || said("examine", "counter", "left"))) { //04a5
+  print("The desk on the left has \"In\" and \"Out\" baskets, and a nameplate that says \"Laura Watts, Narcotics Detective.\"")
+}
+if ((said("examine", "right", "counter") || said("examine", "counter", "on", "right") || said("examine", "counter", "right"))) { //04c7
+  print("The desk on the right has \"In\" and \"Out\" baskets, a telephone, but no nameplate.")
+}
+if ((said("examine", "basket") || said("look in", "basket") || said("check", "basket"))) { //04e9
+  if (f226) { //0501
+    print("Nothing in Laura's basket pertains to you.")
+    goto(l1321)
+  }
+  if (!f225) { //050c
+    set(f113)
+    goto(l1321)
+  }
+  if (v98 > 10 && v36 < 3) { //0518
+    print("Ah, hah! A note from Laura.")
+    goto(l1321)
+  }
+  print("Hey! It's empty!")
+}
+l1321:
+if ((said("examine", "note") || said("examine", "note"))) { //0529
+  if (!f225) { //053b
+    set(f113)
+    goto(l1395)
+  }
+  if (v98 > 10 && v36 < 3) { //0547
+    v36 = 3
+    if (!f62) { //0554
+      set(f62)
+      vCurrentScore += 2
+    }
+    print("\"Bonds,\n\nWe just received a fax from Chicago PD Detective Joe Taber. He says our man Jason Taselli, (alias Hoffman, alias Pierson), is linked to a big time drug dealer by the name of Jessie Bains. Taber included a mug shot of Bains, a high stakes gambler who recently dropped out of sight in the Chicago area.\"")
+    print("\"And,\" concludes the note, our Lab has matched the fingerprints on the .45-caliber automatic found in the stolen Cadillac to Taselli's prints.\n\nLaura\"")
+    print("You study the mug shot of Bains, and vow to remember it.")
+    if (f161) { //0566
+      print("You remember the anonymous letter about big-stakes gambling at the Hotel Delphoria and realize you are onto something hot.")
+    }
+    goto(l1395)
+  }
+  print("Hey! It's empty!")
+}
+l1395:
+if (said("examine", "map")) { //0573
+  print("This is a map of the City of Lytton.")
+}
+if (said("examine", "bookcase")) { //057f
+  print("The bookcase contains Official Departmental Manuals.")
+}
+if (!(has(i3)) && said("examine", "car keys")) { //058b
+  print("The keys hanging on the key board are for the Narcotics Department's unmarked cars. Below the key board hangs a clipboard.")
+}
+if (said("examine", "book")) { //059a
+  print("The Department manuals won't help you.")
+}
+if ((said("examine", "drawer") || said("examine", "cabinet") || said("examine", "file"))) { //05a6
+  print("This file cabinet contains the files on the current Lytton PD active narcotics cases.")
+}
+if (f139 && (said("examine", "friend") || said("examine", "broad"))) { //05c0
+  print("Narcotics Detective Laura Watts is a veteran narcotics cop and all business.")
+}
+if ((said("examine", "accident") || said("examine", "cocaine", "accident") || said("examine", "accident") || said("examine"))) { //05d6
+  print("Ah, the Narcotics Office -- where undercover cops roam!")
+  print("There are two desks, a filing cabinet against the rear wall, and a bookcase in the far right corner.")
+}
+if (said("examine", "fence")) { //05f8
+  print("The left wall holds a key board and a clipboard. On the rear wall is a bulletin board. A bookcase and large map of the City of Lytton are on the right wall.")
+}
+if (said("get", "flyer")) { //0604
+  print("Good idea!")
+}
+if ((said("examine", "board") || said("examine", "bulletin", "board") || said("examine", "car keys", "board"))) { //0610
+  if (f232) { //062c
+    print("The keys hanging on the key board are for the Narcotics Department's unmarked cars. Below the key board hangs a clipboard.")
+    goto(l1604)
+  }
+  if (f228) { //0637
+    print("The bulletin board is filled with terminally boring stuff!")
+    goto(l1604)
+  }
+  set(f113)
+}
+l1604:
+if ((said("examine", "pane") || said("examine", "out", "pane"))) { //0644
+  if (!f231) { //0658
+    set(f113)
+    goto(l1638)
+  }
+  print("You see blue sky and green bushes.")
+}
+l1638:
+if (said("o", "pane")) { //0666
+  if (!f231) { //0670
+    set(f113)
+    goto(l1662)
+  }
+  print("What? And spoil this wonderful air-conditioning?")
+}
+l1662:
+if ((said("o", "drawer") || said("o", "cabinet") || said("o", "file", "rol") || said("look in", "drawer") || said("look in", "cabinet") || said("look in", "file", "rol"))) { //067e
+  if (!f227) { //06ac
+    set(f113)
+    goto(l1742)
+  }
+  if (!(v36 > 0)) { //06b8
+    print("You have no business in the Narcotics Division files.")
+    goto(l1742)
+  }
+  end.of.loop(o2,f224)
+  sound(6,f152)
+  v223 = 11
+}
+l1742:
+if ((said("get", "clipboard") || said("examine", "clipboard"))) { //06ce
+  if (f230) { //06e0
+    start.update(o4)
+    erase(o4)
+    v222 = 11
+    goto(l1778)
+  }
+  set(f113)
+}
+l1778:
+if (said("get", "car keys", "rol")) { //06f2
+  if (!f232) { //06fe
+    set(f113)
+    goto(l1845)
+  }
+  if (!(obj.in.room(i3,vCurrentRoom))) { //070a
+    set(f114)
+    goto(l1845)
+  }
+  if (v31 < 4) { //0717
+    print("Someday (if you ever move up to Narcotics) you may need keys to an unmarked car. But today is not that day.")
+    goto(l1845)
+  }
+  print("You take the keys to the undercover car.")
+  erase(o3)
+  get(i3)
+  if (!f160) { //0729
+    set(f160)
+    vCurrentScore += 3
+  }
+}
+l1845:
+if (said("drop", "car keys", "rol")) { //0735
+  if (!f232) { //0741
+    set(f113)
+    goto(l1888)
+  }
+  if (!(has(i3))) { //074d
+    print("What keys?")
+    goto(l1888)
+  }
+  print("You hang the keys on the key board.")
+  draw(o3)
+  put(i3,0)
+}
+l1888:
+if (said("get", "note", "rol")) { //0760
+  if (!f225) { //076c
+    set(f113)
+    goto(l1929)
+  }
+  if (v98 > 10 && v36 < 3) { //0778
+    print("The message is important, but not the paper!")
+    goto(l1929)
+  }
+  print("Hey! It's empty!")
+}
+l1929:
+if (said("get", "book", "rol")) { //0789
+  print("Reading a Departmental Manual is about as much fun as reading the fine print on a life insurance policy. You'd rather read the back of a cereal box!")
+}
+if (said("o", "counter", "rol")) { //0797
+  print("There's no need to open the desk.")
+}
+if (f139 && (said("blow", "broad", "rol") || said("hug", "broad", "rol") || said("anyword", "blow", "broad", "rol") || said("anyword", "hug", "broad", "rol") || said("anyword", "hug", "friend", "rol") || said("anyword", "blow", "friend", "rol") || said("hug", "friend", "rol") || said("blow", "friend", "rol"))) { //07a5
+  print("That's an entertaining idea, but you have work to do!")
+}
+if (f139 && (said("answer", "friend") || said("answer", "broad"))) { //07f7
+  if (v31 < 4) { //080b
+    random(2,4,v152)
+    print(v152)
+    goto(l2077)
+  }
+  print("\"How's it hangin', Big Boy?\" cracks Laura.")
+}
+l2077:
+if (said("examine", "phone")) { //081d
+  if (!f57) { //0827
+    print("Yes, there is a phone in the room.")
+    goto(l2101)
+  }
+  print("It's a genuine, LT&T black telephone.")
+}
+l2101:
+call(109)
+return()

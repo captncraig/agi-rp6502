@@ -1,4 +1,173 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(40)
+  load.view(41)
+  load.view(42)
+  animate.obj(o15)
+  ignore.blocks(o15)
+  ignore.objs(o15)
+  set.view(o15,40)
+  v36 = 2
+  step.size(o15,v36)
+  observe.horizon(o15)
+  random(12,25,v240)
+  if (v191 == 2) { //0023
+    goto(l144)
+  }
+  return()
+}
+if (f172 && fEnteredCommand) { //002e
+  if (said("examine", "dragon")) { //0036
+    print("The hairy creature is huge and monstrous!! It advances toward you menacingly. Don't just stand there, RUN!!!")
+  }
+  if (said("call", "dragon")) { //0042
+    print("You attempt to speak to the hairy monster, but are cut off by a ferocious ROOAAARRRRR!!")
+  }
+  if ((said("capture", "dragon") || said("capture", "dragon"))) { //004e
+    print("Now THAT'S the most ridiculous thing I've EVER hoid!!")
+  }
+  if ((said("kill", "dragon") || said("hit", "dragon"))) { //0062
+    print("Get serious!!")
+  }
+  if ((said("embrace", "dragon") || said("pat", "dragon") || said("pat", "dragon"))) { //0076
+    print("Sure. Right. Uh huh.")
+  }
+}
+l144:
+if (f45) { //0090
+  v240--
+  if (v240 == 1) { //0098
+    v191 = 2
+  }
+}
+if (v191 == 2) { //00a2
+  v240 = 0
+  set(f172)
+  reset(f173)
+  draw(o15)
+  if (!fNewRoom && vCurrentRoom != 60) { //00b2
+    print("What is this thing? OH, NO! It's the abominable snowman!!")
+  }
+  v191++
+}
+if (v191 == 4 && v44 == 0 && f33) { //00c1
+  start.motion(o15)
+  start.cycling(o15)
+  follow.ego(o15,11,f173)
+  observe.blocks(o15)
+}
+if (f172) { //00d7
+  if (f173) { //00dd
+    reset(f173)
+    v191++
+    if (v191 == 5 && !(v241 > 0)) { //00e7
+      v36 = 1
+      cycle.time(o15,v36)
+      step.size(o15,v36)
+      if (!f46 && !f49) { //00fb
+        stop.motion(o15)
+        normal.motion(o15)
+        stop.cycling(o15)
+        v241 = 1
+        goto(l276)
+      }
+      v191 = 101
+    }
+l276:
+    if (v191 == 6) { //0114
+      set.view(o15,42)
+      start.motion(o15)
+      start.cycling(o15)
+      v44 = 29
+      print("The terrible, hairy creature grabs you with bone-crushing force! You resist, but it is no use.")
+      ignore.blocks(o15)
+      if (vCurrentRoom == 60) { //0129
+        erase(o15)
+        print("The despicable creature grabs you roughly around the neck and... and... it's too horrible to describe! Suffice it to say, you are quite dead.")
+        set(f44)
+        goto(l319)
+      }
+      move.obj(o15,v170,v171,36,f173)
+    }
+l319:
+    if (v191 == 7) { //013f
+      erase(o15)
+      print("He carries you away to his cave, where you meet an early (and unspeakable) demise.")
+      set(f44)
+    }
+    if (v191 == 101) { //014c
+      print("The abominable snowman seems quite confused by this! He stares in amazement, then heads back to his cave.")
+      ignore.blocks(o15)
+      set.priority(o15,15)
+      normal.motion(o15)
+      move.obj(o15,v170,v171,36,f173)
+    }
+    if (v191 == 102) { //0162
+      erase(o15)
+    }
+  }
+}
+if (v191 == 6) { //016b
+  set.priority(o15,15)
+}
+if (v241 > 0) { //0175
+  v241++
+  if (v241 == 2) { //017e
+    set(f46)
+    program.control()
+    prevent.input()
+    ignore.blocks(o15)
+    set.view(o15,41)
+    set.cel(o15,0)
+    stop.motion(o0)
+    reset(f35)
+    set(f36)
+    current.loop(o15,v36)
+    if (v36 == 0) { //019a
+      set.loop(o0,1)
+      set.loop(o15,0)
+      if (v40 > 16) { //01a7
+        v37 = v40
+        v37 -= 17
+        goto(l442)
+      }
+      v37 = 0
+l442:
+      reposition.to(o15,v37,v41)
+      goto(l459)
+    }
+    set.loop(o0,0)
+    set.loop(o15,1)
+    reposition.to(o15,v40,v41)
+  }
+l459:
+  if (v241 == 7) { //01cb
+    set.cel(o15,1)
+  }
+  if (v241 == 12) { //01d5
+    set.cel(o15,2)
+  }
+  if (v241 == 17) { //01df
+    set.cel(o15,3)
+    erase(o0)
+  }
+  if (v241 > 22) { //01eb
+    toggle(f240)
+    if (f240) { //01f4
+      set.cel(o15,4)
+      goto(l515)
+    }
+    set.cel(o15,5)
+  }
+l515:
+  if (v241 > 66) { //0203
+    set(f173)
+    v241 = 0
+  }
+}
+if (v191 > 4 && v191 < 101) { //020f
+  vWhichEgoBorder = 0
+}
+if (v241 > 0) { //021c
+  vWhichEgoBorder = 0
+}
+return()

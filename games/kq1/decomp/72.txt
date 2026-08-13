@@ -1,4 +1,144 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(105)
+  load.view(74)
+  load.sound(5)
+  if (vPrevRoom == 56) { //0014
+    position(o0,145,109)
+  }
+  if (vPrevRoom == 71) { //001f
+    set.view(o0,74)
+    position(o0,66,165)
+    move.obj(o0,66,165,0,f148)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f158 && !f22 && !f23) { //0036
+  sound(5,f159)
+  set(f23)
+}
+if (!(posn(o0,65,100,84,120)) && !f157 && !f79) { //0047
+  if (said("climb", "beanstalk")) { //0058
+    print("You need to be closer to do that.")
+  }
+}
+if (f79) { //0064
+  if (said("climb", "beanstalk")) { //006a
+    print("You can't do that when you are invisible!")
+  }
+}
+if (f157) { //0076
+  if (said("check", "beanstalk")) { //007c
+    get.posn(o0,v60,v61)
+    if (v61 > 140) { //008a
+      print("Your heart thuds.  Dare you climb into the clouds?")
+    }
+    if (v61 < 141) { //0093
+      print("It is amazing that you actually climbed up this high!")
+    }
+  }
+}
+if (!f157) { //009c
+  if (said("check", "beanstalk")) { //00a3
+    get.posn(o0,v60,v61)
+    if (v60 > 89) { //00b1
+      print("It is hard to believe those seeds you planted grew this high.")
+    }
+    if (v60 < 90) { //00ba
+      print("It is a long, long way down....")
+    }
+  }
+}
+if ((said("check", "clouds") || said("check", "room"))) { //00c3
+  print("You are in the Land of the Clouds.  It is rumored a giant lives up here.")
+}
+if (fTriggerLine && !f21 && !(posn(o0,65,100,82,120)) && !f157) { //00d7
+  set(f21)
+  if (!f79) { //00ec
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  v61 = 165
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+  sound(5,f198)
+}
+if (fTriggerLine && !f21 && posn(o0,65,100,82,120) && f79) { //0113
+  set(f21)
+  if (!f79) { //0126
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  v61 = 165
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+  sound(5,f198)
+}
+if (f20) { //014d
+  reset(f20)
+  erase(o0)
+  print("Whoops!  You fall toward a distant earth.")
+  set(f63)
+}
+if (fTriggerLine && posn(o0,65,100,82,120) && !f79) { //015b
+  if (f157) { //016a
+    reset(f157)
+    erase(o0)
+    set.view(o0,0)
+    position(o0,85,112)
+    draw(o0)
+    move.obj(o0,85,112,0,f148)
+    goto(l488)
+  }
+  if (!f157) { //0186
+    set(f157)
+    erase(o0)
+    set.view(o0,74)
+    position(o0,70,123)
+    draw(o0)
+    move.obj(o0,70,123,0,f148)
+  }
+}
+if (fTriggerLine && f157) { //01a0
+  program.control()
+  print("Whoops!  You fall toward a distant earth.")
+  get.posn(o0,v60,v61)
+  reset(f157)
+  set(f158)
+  erase(o0)
+  set.view(o0,105)
+  if (v60 > 75) { //01b8
+    v60 = 80
+    position(o0,60,v61)
+    draw(o0)
+  }
+  if (v60 < 76) { //01c8
+    v60 = 65
+    position(o0,60,v61)
+    draw(o0)
+  }
+  start.cycling(o0)
+  set(f98)
+  v61 = 166
+  v96 = 4
+  move.obj(o0,v60,v61,96,f22)
+}
+l488:
+if ((f22 || posn(o0,0,166,159,167))) { //01e8
+  new.room(71)
+}
+if (vWhichEgoBorder == 2) { //01f8
+  new.room(56)
+}
+return()

@@ -1,3 +1,133 @@
-if (isSet(f5)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (fNewRoom && f33 && vMonitorType != HERCULES) { //0002
+  set.text.attribute(6,0)
+  clear.text.rect(24,26,24,34,0)
+  display(24,26,"Room %v0|3")
+  set.text.attribute(15,0)
+}
+if (controller(c19)) { //001e
+  get.num(str4,v45)
+  if (v45 > 15) { //0027
+    v45 = 15
+  }
+  obj.status.v(v45)
+}
+if ((controller(c16) || said("find"))) { //0033
+  v45 = 0
+  obj.status.v(v45)
+}
+if (controller(c18)) { //0044
+  show.mem()
+}
+if ((controller(c20) || said("examine", "priority"))) { //004b
+  show.pri.screen()
+}
+if (vMonitorType != HERCULES) { //005a
+  if (f48) { //0062
+    set.text.attribute(6,0)
+    display(24,35,"H")
+    set.text.attribute(15,0)
+    goto(l121)
+  }
+  display(24,35," ")
+}
+l121:
+if ((controller(c35) || said("all", "number"))) { //0079
+  vKeyPressed = 0
+  set.text.attribute(6,7)
+  text.screen()
+  display(2,6,"Number  Name of Object")
+  v45 = 1
+  v32 = 10
+  v33 = 4
+  v58 = 16
+l158:
+  display(v33,v32,v58)
+  v45++
+  v33++
+  if (!(v45 > 20)) { //00a6
+    goto(l158)
+  }
+l177:
+  if (!(have.key())) { //00b1
+    goto(l177)
+  }
+  set.text.attribute(15,0)
+  graphics()
+}
+if (said("all", "area")) { //00be
+  get.num(str4,v46)
+  get.room(v46,v45)
+  print("Object %v46 is in room %v45.")
+}
+if (said("add", "priority")) { //00d0
+  get.num(str12,v46)
+  set.priority(o0,v46)
+}
+if (said("let go", "priority")) { //00e0
+  release.priority(o0)
+}
+if (said("tp")) { //00ec
+  get.num(str1,v45)
+  new.room(v45)
+}
+if (said("position")) { //00f9
+  get.num(str2,v45)
+  get.num(str3,v46)
+  reposition.to(o0,v45,v46)
+}
+if (vMonitorType != HERCULES && (said("examine", "position") || said("area", "number") || said("area") || controller(c36) || said("sp"))) { //010b
+  toggle(f33)
+  set.text.attribute(6,0)
+  display(24,26,"Room %v0|3")
+  set.text.attribute(15,0)
+}
+if (vMonitorType != HERCULES && f33) { //0137
+  v45 = v38
+  v46 = v39
+  set.text.attribute(6,0)
+  display(24,16,"%v45|3/%v46|3")
+  set.text.attribute(15,0)
+}
+if ((said("gimme", "gimme") || controller(c37))) { //0151
+  display(0,0,"You gottum, Larry.")
+  v45 = 0
+  v46 = 255
+l361:
+  v45++
+  if (!(v45 > 20)) { //016b
+    put(v45,v46)
+    goto(l361)
+  }
+}
+if (said("catch", "all")) { //0179
+  get.num(str4,v45)
+  get(v45)
+}
+if (said("examine", "flag")) { //0188
+  get.num(str5,v45)
+  if (v45) { //0195
+    print("Flag %v45 set")
+    goto(l418)
+  }
+  print("Flag %v45 not set")
+}
+l418:
+if (said("add", "flag")) { //01a2
+  get.num(str5,v45)
+  set(v45)
+}
+if (said("reset", "flag")) { //01b1
+  get.num(str5,v45)
+  reset(v45)
+}
+if (said("examine", "var")) { //01c0
+  get.num(str8,v45)
+  rindirect(v46,v45)
+  print("Variable %v45 = %v46")
+}
+if (said("add", "var")) { //01d2
+  get.num(str8,v45)
+  get.num(str6,v46)
+  lindirectv(v45,v46)
+}
+return()

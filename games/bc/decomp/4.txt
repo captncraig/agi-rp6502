@@ -1,4 +1,66 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(47)
+  if ((f59 || v57 > 0)) { //000a
+    random(0,255,v61)
+    if (v61 < 88) { //0019
+      load.logic(104)
+      set(f202)
+    }
+  }
+  if (f108) { //0024
+    load.logic(116)
+    set(f201)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //0034
+      load.logic(114)
+      set(f200)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 24) { //0045
+    position(o0,64,51)
+  }
+  draw(o0)
+  if (f202) { //0052
+    call(104)
+    position(o7,0,98)
+  }
+  if (f201) { //005e
+    call(116)
+  }
+  if (f200) { //0066
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130 && !f78) { //0070
+  if (posn(o0,0,0,110,167)) { //0079
+    print("Caer Dallben is certainly an enchanting place.")
+    goto(l138)
+  }
+  print("You are at the fence, but you can't go over, under or through it.")
+}
+l138:
+if (f200) { //008a
+  call(114)
+}
+if (f201) { //0092
+  call(116)
+}
+if (f202) { //009a
+  call(104)
+}
+if (vWhichEgoBorder == 1) { //00a2
+  new.room(24)
+}
+if (vWhichEgoBorder == 3) { //00ab
+  new.room(9)
+}
+if (vWhichEgoBorder == 4) { //00b4
+  new.room(3)
+}
+return()

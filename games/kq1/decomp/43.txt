@@ -1,4 +1,92 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,105,58,0,0)
+  }
+  if (vPrevRoom == 6) { //002b
+    position(o0,121,47)
+  }
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (f213) { //003b
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+if (said("check", "lake")) { //0045
+  print("The clear blue lake is surrounded by a pretty meadow.")
+}
+if (!fEgoOnWater) { //0051
+  if ((posn(o0,96,82,115,99) || posn(o0,100,108,115,120) || posn(o0,30,113,67,134) || posn(o0,90,121,112,130) || posn(o0,30,135,67,139) || posn(o0,90,131,107,142))) { //0058
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fEgoOnWater) { //0086
+  v76 = 255
+  if ((posn(o0,115,104,125,111) || posn(o0,113,112,124,119) || posn(o0,100,120,122,126) || posn(o0,100,127,118,136) || posn(o0,100,137,115,142))) { //0093
+    v76 = 100
+    v77 = 121
+  }
+  if (posn(o0,30,131,55,146)) { //00bd
+    v76 = 25
+    v77 = 123
+  }
+  if (v76 == 255) { //00cd
+    v76 = 0
+    goto(l230)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l230:
+if (!f88) { //00e6
+  if ((said("drink", "water") || said("acquire", "drink"))) { //00ed
+    print("It tastes very refreshing to a thirsty wanderer.")
+  }
+}
+if (!f88 && f81 && said("acquire", "water")) { //0101
+  print("The crystal clear water fills up the bucket.")
+  get(i26)
+  set(f88)
+  if (!f91) { //0116
+    vCurrentScore += 2
+  }
+  set(f91)
+}
+if (vWhichEgoBorder != 0) { //0122
+  if (f66) { //012a
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //0138
+  new.room(6)
+}
+if (vWhichEgoBorder == 2) { //0141
+  new.room(44)
+}
+if (vWhichEgoBorder == 4) { //014a
+  new.room(42)
+}
+if (vWhichEgoBorder == 3) { //0153
+  new.room(38)
+}
+if (f75) { //015c
+  call(103)
+}
+call(101)
+return()

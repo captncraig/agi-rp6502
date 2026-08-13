@@ -1,4 +1,240 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(105)
+  load.view(223)
+  if (f91) { //000c
+    load.view(230)
+    load.view(246)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f91) { //001c
+    animate.obj(o2)
+    set.view(o2,230)
+    set.loop(o2,1)
+    position(o2,126,136)
+    start.cycling(o2)
+    draw(o2)
+    move.obj(o2,82,128,0,f138)
+    v139 = 0
+  }
+  animate.obj(o1)
+  set.view(o1,223)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  position(o1,75,106)
+  if (vPrevRoom == 70) { //0048
+    set.cel(o1,3)
+    v220 = 4
+    v221 = 9
+    goto(l94)
+  }
+  set.cel(o1,0)
+l94:
+  draw(o1)
+  stop.update(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  if (vPrevRoom == 68) { //0068
+    position(o0,137,138)
+    goto(l122)
+  }
+  position(o0,77,108)
+l122:
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f222)
+if (posn(o0,72,107,85,111)) { //0080
+  set(f222)
+}
+distance(o0,o2,v222)
+if (v222 < v61) { //0090
+  set(f109)
+}
+reset(f223)
+if ((posn(o0,35,72,70,115) || posn(o0,80,107,110,124) || posn(o0,80,107,118,116) || posn(o0,75,150,125,167) || posn(o0,50,138,75,167) || posn(o0,20,108,42,135) || posn(o0,12,152,70,167))) { //009b
+  set(f223)
+}
+if (f221 && posn(o0,77,107,86,112)) { //00cd
+  reset(f221)
+  set(f138)
+}
+v221--
+if (v221 == 1) { //00df
+  if (v220 == 4) { //00e6
+    start.update(o1)
+    reverse.loop(o1,f220)
+  }
+}
+if (f220) { //00f2
+  reset(f220)
+  if (v220 == 4) { //00fa
+    stop.update(o1)
+    v220 = 0
+  }
+  if (v220 == 3) { //0106
+    stop.update(o1)
+    v220 = 4
+  }
+}
+if (f138) { //0112
+  reset(f138)
+  v139++
+  if (v139 == 1) { //011c
+    move.obj(o2,72,109,0,f138)
+  }
+  if (v139 == 2) { //0129
+    set.cel(o2,2)
+    stop.cycling(o2)
+    print("Woody raps a staccato rhythm on the door.")
+    v140 = 4
+  }
+  if (v139 == 3) { //013a
+    start.update(o1)
+    set.loop(o1,1)
+    set.cel(o1,0)
+    end.of.loop(o1,f138)
+  }
+  if (v139 == 4) { //014c
+    v140 = 4
+  }
+  if (v139 == 5) { //0156
+    if (v31 > 170) { //015d
+      print("The panel opens once again. Woody explains to the mysterious person behind the door, \"I've brought a player for the big game in the back room.\"")
+      goto(l363)
+    }
+    print("A panel in the door slides open. Woody whispers through the opening, \"I've got a new player for you.\"")
+l363:
+    v140 = 4
+  }
+  if (v139 == 6) { //016e
+    reverse.loop(o1,f138)
+  }
+  if (v139 == 7) { //0178
+    set.loop(o2,2)
+    set.cel(o2,2)
+    v140 = 3
+  }
+  if (v139 == 8) { //0188
+    if (v31 > 170) { //018f
+      print("\"Come over here, please, Whitey,\" says Woody. \"I have to frisk you again. It's just a formality, you understand, sir.\"")
+      goto(l413)
+    }
+    print("\"Come over here,\" says Woody. \"I have to frisk you before you can get in. We don't want no trouble around here.\"")
+l413:
+    v140 = 4
+  }
+  if (v139 == 9) { //01a0
+    set.loop(o1,0)
+    set.cel(o1,0)
+    set(f221)
+  }
+  if (v139 == 10) { //01af
+    set(f36)
+    stop.motion(o0)
+    prevent.input()
+    set.view(o2,246)
+    start.cycling(o2)
+    cycle.time(o2,v123)
+    erase(o0)
+    v140 = 4
+  }
+  if (v139 == 11) { //01c8
+    set.view(o2,230)
+    set.loop(o2,0)
+    stop.cycling(o2)
+    get.posn(o2,v144,v143)
+    v142 = 79
+    v143 -= 1
+    position(o0,142,v143)
+    set.loop(o0,1)
+    draw(o0)
+    if (v31 > 170) { //01ea
+      set.loop(o0,3)
+      print("This time Woody says he'll escort you to the card room.")
+      goto(l509)
+    }
+    print("Woody tells you, \"Ok, Whitey. Have a good time!\"")
+    reset(f91)
+l509:
+    v140 = 4
+  }
+  if (v139 == 12) { //0200
+    end.of.loop(o1,f138)
+  }
+  if (v139 == 13) { //020a
+    v140 = 4
+    new.room(70)
+  }
+}
+if (said("examine", "d")) { //0216
+  if (!f222) { //0220
+    set(f113)
+    goto(l558)
+  }
+  print("The door appears to have a sliding window.")
+}
+l558:
+if ((said("find", "box") || said("find", "briefcase", "beer") || said("find", "beer", "briefcase") || said("o", "box") || said("o", "briefcase", "beer") || said("o", "beer", "briefcase"))) { //022e
+  if (f223) { //0260
+    print("Sure enough, the boxes are full of booze.")
+    goto(l621)
+  }
+  set(f113)
+}
+l621:
+if (said("get", "beer")) { //026d
+  if (f223) { //0277
+    print("You're on a wild goose chase. Further investigation here is a waste of time!")
+    goto(l644)
+  }
+  set(f113)
+}
+l644:
+if (said("o", "pane")) { //0284
+  if (!f222) { //028e
+    set(f113)
+    goto(l668)
+  }
+  print("You try, but the window is locked from the inside.")
+}
+l668:
+if ((said("examine", "down") || said("examine", "curb"))) { //029c
+  print("You look down and see a gray-tiled floor.")
+}
+if ((said("examine", "up") || said("examine", "ceiling") || said("examine", "lamp"))) { //02b0
+  print("This room is lit by a shaded lamp hanging from the ceiling.")
+}
+if ((said("get", "lamp") || said("get", "box"))) { //02ca
+  print("You don't need it.")
+}
+if ((said("examine") || said("examine", "accident"))) { //02de
+  print("You surmise by the stacked boxes that this is a storage room.")
+}
+if (said("examine", "box")) { //02f0
+  print("They appear to be boxes for shipping booze.")
+}
+if ((said("o", "d") || said("unlock", "d"))) { //02fc
+  if (f222) { //030e
+    print("The door is securely locked.")
+    goto(l795)
+  }
+  set(f113)
+}
+l795:
+if (said("knock", "d")) { //031b
+  if (f222) { //0325
+    if (v31 < 160) { //032b
+      print("\"Go away!\" yells a voice from inside the door.")
+    }
+    goto(l825)
+  }
+  set(f113)
+}
+l825:
+if (!f91 && posn(o0,142,131,149,143)) { //0339
+  new.room(68)
+}
+return()

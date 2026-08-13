@@ -1,4 +1,203 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f152)
+  reset(f122)
+  reset(f133)
+  set.horizon(51)
+  load.view(121)
+  load.view(6)
+  load.view(2)
+  load.sound(2)
+  load.sound(1)
+  v66 = 167
+  set.priority(o0,14)
+  set.view(o0,0)
+  if (vPrevRoom == 60) { //0023
+    set(f126)
+    ignore.horizon(o0)
+    ignore.objs(o0)
+    set.priority(o0,15)
+    load.view(2)
+    load.view(179)
+    position(o0,89,34)
+    set.view(o0,179)
+    print("The force of the exploding cauldron throws you out of the Horned King's secret chamber and into the moat. You grab a piece of floating wood and hang on for dear life!")
+    v61 = 31
+    load.pic(v61)
+    draw.pic(v61)
+    move.obj(o0,108,44,1,f206)
+    program.control()
+    goto(l121)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  start.motion(o0)
+  if (vPrevRoom == 34) { //0059
+    position(o0,10,54)
+    goto(l121)
+  }
+  if (vPrevRoom == 30) { //0067
+    position(o0,8,59)
+    goto(l121)
+  }
+  position(o0,19,166)
+l121:
+  draw(o0)
+  animate.obj(o12)
+  ignore.objs(o12)
+  set.view(o12,121)
+  position(o12,111,109)
+  draw(o12)
+  set(f159)
+  show.pic()
+  return()
+}
+if (f152) { //008c
+  goto(l159)
+}
+if (f130) { //0095
+  print("This narrow roadway leads to the Horned King's castle. Beware! This is a dangerous path to travel.")
+  set(fSaidAccepted)
+}
+l159:
+if (f126) { //009f
+  if (f206) { //00a5
+    reset(f206)
+    move.obj(o0,112,52,1,f207)
+  }
+  if (f207) { //00b3
+    reset(f207)
+    print("Hold on tight, Taran!")
+    set.view(o0,2)
+    move.obj(o0,115,92,4,f208)
+  }
+  if (f208) { //00c6
+    reset(f208)
+    move.obj(o0,132,119,4,f209)
+  }
+  if (f209) { //00d4
+    reset(f209)
+    set.view(o0,179)
+    move.obj(o0,132,153,1,f210)
+  }
+  if (f210) { //00e5
+    reset(f210)
+    move.obj(o0,143,153,1,f211)
+  }
+  if (f211) { //00f3
+    new.room(1)
+  }
+  goto(l612)
+}
+get.posn(o0,v62,v63)
+if (v63 > 131) { //0102
+  v201 = 14
+  goto(l326)
+}
+if (v63 > 118) { //010f
+  v201 = 13
+  goto(l326)
+}
+if (v63 > 92) { //011c
+  v201 = 12
+  goto(l326)
+}
+if (v63 > 69) { //0129
+  v201 = 11
+  goto(l326)
+}
+if (v63 > 56) { //0136
+  v201 = 10
+  goto(l326)
+}
+v201 = 9
+l326:
+if (fTriggerLine && !f152) { //0146
+  if ((posn(o0,3,120,26,141) || posn(o0,64,65,66,69) || posn(o0,9,71,19,90))) { //014f
+    v201--
+    set(f203)
+    goto(l484)
+  }
+  if ((posn(o0,9,91,16,107) || posn(o0,85,118,97,119) || posn(o0,54,69,66,70) || posn(o0,92,109,97,118))) { //016e
+    set(f203)
+    goto(l484)
+  }
+  if ((posn(o0,44,151,52,160) || posn(o0,100,94,114,131) || posn(o0,72,58,79,68))) { //0191
+    set(f204)
+    v201--
+    goto(l484)
+  }
+  if ((posn(o0,21,52,24,56) || posn(o0,71,69,79,81) || posn(o0,43,133,50,150) || posn(o0,21,83,28,92))) { //01b0
+    set(f204)
+    goto(l484)
+  }
+  if ((vEgoDir == 1 || vEgoDir == 8 || vEgoDir == 2)) { //01d3
+    v201--
+  }
+l484:
+  if (f203) { //01e4
+    if (v62 > 10) { //01ea
+      v76 = 248
+      goto(l506)
+    }
+    v76 = 0
+l506:
+    repositon(o0,v76,v104)
+  }
+  if (f204) { //01fe
+    if (v62 < 136) { //0204
+      v76 = 8
+      goto(l532)
+    }
+    v76 = 0
+l532:
+    repositon(o0,v76,v104)
+  }
+  set.priority(o0,v201)
+  get.posn(o0,v62,v63)
+  v63 += 50
+  if (v63 > v66) { //0222
+    v63 = v66
+  }
+  move.obj(o0,v62,v63,108,f200)
+  set(f152)
+  set(f122)
+  set.view(o0,6)
+  ignore.blocks(o0)
+  sound(2,f61)
+}
+if (f200) { //023e
+  if (!f99) { //0244
+    erase(o0)
+    v59 = 1
+    goto(l612)
+  }
+  vCurrentRoom = 29
+  reset(f152)
+  reset(f122)
+  reset(f133)
+  set.view(o0,0)
+  step.size(o0,v105)
+  new.room(32)
+}
+l612:
+if (f159 && !f152) { //0264
+  sound(1,f159)
+}
+if (v212 > 0) { //0270
+  new.room(v212)
+}
+if (vWhichEgoBorder == 3) { //0279
+  new.room(29)
+}
+if (vWhichEgoBorder == 1) { //0282
+  if (!f46) { //0289
+    vCurrentScore += 5
+    set(f46)
+  }
+  v212 = 34
+}
+if ((vWhichEgoBorder == 4 || posn(o0,0,53,6,64))) { //0298
+  new.room(30)
+}
+return()

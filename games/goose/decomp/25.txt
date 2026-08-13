@@ -1,4 +1,120 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  if (vPrevRoom == 19) { //000a
+    position(o0,122,87)
+    if (f35) { //0015
+      position(o13,115,86)
+    }
+  }
+  if (vPrevRoom == 18) { //001f
+    get.posn(o0,v212,v213)
+    if (v212 < 53) { //002a
+      position(o0,52,86)
+      goto(l74)
+    }
+    if (v212 > 104) { //0038
+      position(o0,102,86)
+      goto(l74)
+    }
+    position(o0,77,86)
+  }
+l74:
+  if (vPrevRoom == 17) { //004a
+    position(o0,35,87)
+    if (f35) { //0055
+      position(o13,41,86)
+    }
+  }
+  if (vPrevRoom == 24) { //005f
+    if (v213 > 152) { //0066
+      position(o0,0,164)
+      if (f35) { //0071
+        position(o13,0,160)
+      }
+      goto(l130)
+    }
+    position(o0,0,100)
+  }
+l130:
+  if (vPrevRoom == 26) { //0082
+    if (v213 > 152) { //0089
+      position(o0,153,164)
+      if (f35) { //0094
+        position(o13,150,160)
+      }
+      goto(l165)
+    }
+    position(o0,150,100)
+  }
+l165:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  v34 = 40
+  v35 = 120
+  v37 = 4
+  draw(o0)
+  return()
+}
+if (f120 && !f121) { //00b5
+  set(f121)
+  set(f117)
+  move.obj(o0,70,105,1,f127)
+}
+if (f35) { //00c8
+  get.posn(o0,v212,v213)
+  get.posn(o13,v38,v39)
+  if (v213 > 158 && v39 < 143 && !f221) { //00d6
+    set(f221)
+    move.obj(o13,76,142,1,f220)
+  }
+  if (f220) { //00eb
+    reset(f220)
+    if (v38 == 76 && v39 == 142) { //00f3
+      if ((v212 < 74 || v212 > 82)) { //00fd
+        move.obj(o13,76,159,1,f220)
+        goto(l280)
+      }
+      reset(f221)
+      follow.ego(o13,10,f36)
+l280:
+      goto(l289)
+    }
+    reset(f221)
+    follow.ego(o13,14,f36)
+  }
+}
+l289:
+get.posn(o0,v212,v213)
+if (vWhichObjBorder == 1 && f124) { //0125
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //0131
+  if (v212 > 118) { //0138
+    new.room(19)
+    goto(l338)
+  }
+  if (v212 < 40) { //0144
+    new.room(17)
+    goto(l338)
+  }
+  new.room(18)
+}
+l338:
+if (vWhichObjBorder == 3 && f124) { //0152
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //015e
+  new.room(32)
+}
+if (vWhichEgoBorder == 2) { //0167
+  new.room(26)
+}
+if (vWhichEgoBorder == 4) { //0170
+  new.room(24)
+}
+if (f127) { //0179
+  reset(f127)
+  set(f118)
+  set.loop(o0,2)
+}
+return()

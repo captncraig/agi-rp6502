@@ -1,4 +1,385 @@
-if (isSet(f5)) {
-  if (!(v138 == v0
-!!!
-&{%!e(string=incomplete condition: 0x04)}
+if (fNewRoom) { //0002
+  if (v138 != vCurrentRoom) { //0008
+    v136--
+    v137--
+  }
+  v138 = vPrevRoom
+  if (vPrevRoom != 106 && (vPrevRoom < 10 || vPrevRoom > 25)) { //0017
+    v137 = 1
+    random(3,6,v136)
+  }
+  if (vPrevRoom == 41 && v91 == 1) { //002e
+    v136 = 1
+  }
+  if (v91 == 20) { //003b
+    v91 = 21
+    goto(l82)
+  }
+  if (v91 == 21) { //0048
+    v91 = 100
+  }
+l82:
+  return()
+}
+if (v120 > 15 && v138 > 0) { //0053
+  v138 = 0
+}
+if (v67 == 255) { //0060
+  if (!(v136 > 0) && !(v137 > 0) && posn(o0,17,25,143,131)) { //0067
+    random(4,6,v137)
+    if (v91 == 1) { //007d
+      print("%m4%m68 respond to Cotton Cove. Officers on scene need ID of 187 victim.\"")
+    }
+  }
+}
+v253 = 0
+v254 = 0
+if (posn(o0,1,19,159,45)) { //008c
+  v254 = 1
+}
+if (posn(o0,1,111,159,137)) { //0099
+  v254 = 2
+}
+if (posn(o0,11,1,33,167)) { //00a6
+  v253 = 3
+}
+if (posn(o0,69,1,91,167)) { //00b3
+  v253 = 4
+}
+if (posn(o0,127,1,149,167)) { //00c0
+  v253 = 5
+}
+if ((!fEnteredCommand || v31 == 255)) { //00cd
+  goto(l1406)
+}
+if ((said("call") || said("ask", "location") || said("about", "curb", "rol") || said("find", "rol") || said("curb", "rol") || said("request", "location"))) { //00dc
+  if (!(v39 > 0)) { //0106
+    set.string(str2,"83-32,")
+    goto(l279)
+  }
+  set.string(str2,"83-Nora-10,")
+l279:
+  set.string(str8,"call")
+  parse(str8)
+}
+if (v39 == 17 && said("call")) { //011c
+  print("Your 'Vette doesn't have a police radio.")
+}
+if (v39 == 13 && said("call")) { //0129
+  reset(fSaidAccepted)
+  goto(l1406)
+}
+if (f44 && said("call")) { //0139
+  if (!(v67 > 0)) { //0143
+    if (v92 < 199) { //014b
+      print("%m5%s2 %m53 traffic accident.")
+      print("%m4%s2 dispatch copies 10-97.\"")
+      goto(l347)
+    }
+    print("%m5%s2 Dispatch, %s2 is 10-98 from the scene.\"")
+  }
+l347:
+  if (v67 == 3) { //015b
+    print("%m5%s2 %m51\"OHMYMG.\"")
+    print("%m5%s2 %m52\"OHMYMG.\"")
+    print("%m4Currently registered, no wants.\"")
+  }
+  if (v67 == 38) { //0168
+    print("%m5%s2 %m51\"UL6942.\"")
+    print("%m4%s2 %m52\"UL6942.\"")
+    print("%m4Registered to 1979 Cadillac, junked in 1983.\"")
+    print("\"%s2 approach with caution.\"")
+  }
+  if (v67 == 137) { //0177
+    print("%m5%s2 %m51\"PRGRMR1.\"")
+    print("%s2 %m52\"PRGRMR1.\"")
+    print("%m4%s2 personalized plate 'PRGRMR1' appears to be currently registered.\"")
+  }
+}
+if (f46 && said("call")) { //0184
+  if ((v67 == 38 || v67 == 137)) { //018e
+    print("%m5%s2 one%m64")
+  }
+  if (v67 == 175) { //019c
+    print("%m5%m68 two%m64")
+    if (f165) { //01a5
+      if (!f166) { //01ab
+        vCurrentScore += 1
+        set(f166)
+        set(f34)
+      }
+      print("%m5%m68 two%m64")
+      print("\"%s2 request subject check on Don Colby, Charles, Ocean, Lincoln, Boy, Yellow.\"")
+      print("%m70%s2, possible hit, Paul D. Colby, DOB 12/8/61, 5'8\", 155 pounds. Served 18 months State Penitentiary '85-'87 for assault on a police officer and possession and sale of a controlled substance. Three year probation, still active.\"")
+    }
+  }
+}
+if (f47 && v240 < 80 && said("call")) { //01bf
+  if (v67 == 3) { //01cc
+    if ((f118 || f117)) { //01d3
+      reset(fSaidAccepted)
+      goto(l484)
+    }
+    print("%m5%s2%m80 bright red sports car.")
+l484:
+    goto(l537)
+  }
+  if (v67 == 4) { //01e7
+    if (v94 < 4) { //01ee
+      print("%m5%s2 responding to Carol's Caffeine Castle.\"")
+      goto(l508)
+    }
+    print("%m5%s2 Dispatch, %s2 is 10-98 from the scene.\"")
+l508:
+    goto(l537)
+  }
+  if (v67 == 38) { //01ff
+    print("%m5%s2%m80 attempting to overtake light blue Cadillac, suspect vehicle.")
+    goto(l537)
+  }
+  if (v67 == 137) { //020b
+    print("%m5%s2%m80  attempting to overtake and stop light colored sedan, possible DUI.\"")
+    goto(l537)
+  }
+  reset(fSaidAccepted)
+}
+l537:
+if (!(v136 > 0) && said("call")) { //0219
+  if (!(v67 > 0)) { //0225
+    if (v92 == 199) { //022d
+      print("Your radio crackles, \"83-32, repeating 10-20 of 11-83 is southwest corner of Fig and 4th.\"")
+      print("%m5%s2 Dispatch, 83-32 en route to traffic collision.\"")
+      reset(fSaidAccepted)
+      goto(l575)
+    }
+    print("%m5%s2 Dispatch, %s2 is 10-98 from the scene.\"")
+l575:
+    goto(l596)
+  }
+  if (v67 == 1 && vCurrentRoom != 12) { //0242
+    print("Dispatch copies your car-to-car radio traffic, \"%s2 be advised that 83-31 is off the air at Carol's.\"")
+    goto(l596)
+  }
+  reset(fSaidAccepted)
+}
+l596:
+if (said("call")) { //0254
+  reset(f153)
+  if (vCurrentRoom == 11 && posn(o0,32,66,38,87)) { //025e
+    set.string(str3,"Hotel Delphoria")
+    set(f153)
+  }
+  if (vCurrentRoom == 12 && posn(o0,37,113,65,117)) { //0270
+    set.string(str3,"Carol's Caffeine Castle")
+    set(f153)
+  }
+  if (vCurrentRoom == 14 && posn(o0,8,26,26,133)) { //0282
+    set.string(str3,"Lytton City Park")
+    set(f153)
+  }
+  if (vCurrentRoom == 17 && posn(o0,27,48,30,72)) { //0294
+    set.string(str3,"Blue Room")
+    set(f153)
+  }
+  if (vCurrentRoom == 20 && posn(o0,27,39,39,63)) { //02a6
+    set.string(str3,"LPD Headquarters")
+    set(f153)
+  }
+  if (vCurrentRoom == 25 && posn(o0,130,131,149,150)) { //02b8
+    set.string(str3,"Cotton Cove Picnic Area")
+    set(f153)
+  }
+  if (vCurrentRoom == 24) { //02ca
+    if (posn(o0,72,62,75,92)) { //02d1
+      set.string(str3,"Lytton Municipal Court Building")
+      set(f153)
+      goto(l754)
+    }
+    if (posn(o0,85,91,105,107)) { //02e3
+      set.string(str3,"Lytton City Jail")
+      set(f153)
+    }
+  }
+l754:
+  if (f153) { //02f2
+    print("%m5%s2 10-20 at %s3.\"")
+    goto(l1221)
+  }
+  	get.dir(o0,v152)
+  if (!(v152 > 0)) { //0300
+    set.string(str3,"parked")
+    goto(l876)
+  }
+  if (v152 == 1) { //030e
+    set.string(str3,"%m19north")
+    goto(l876)
+  }
+  if (v152 == 2) { //031b
+    set.string(str3,"%m19northeast")
+    goto(l876)
+  }
+  if (v152 == 3) { //0328
+    set.string(str3,"%m19east")
+    goto(l876)
+  }
+  if (v152 == 4) { //0335
+    set.string(str3,"%m19southeast")
+    goto(l876)
+  }
+  if (v152 == 5) { //0342
+    set.string(str3,"%m19south")
+    goto(l876)
+  }
+  if (v152 == 6) { //034f
+    set.string(str3,"%m19southwest")
+    goto(l876)
+  }
+  if (v152 == 7) { //035c
+    set.string(str3,"%m19west")
+    goto(l876)
+  }
+  set.string(str3,"%m19northwest")
+l876:
+  if (v151 == 14) { //036c
+    print("%m5%s2 %s3 on Freeway 41.\"")
+    goto(l1221)
+  }
+  if (fEgoObscured) { //0378
+    print("%m5%s2 %s3 under Freeway 41.\"")
+    goto(l1221)
+  }
+  if (vCurrentRoom < 14) { //0383
+    if (v254 == 1) { //038a
+      set.string(str4,"Palm")
+    }
+    if (v254 == 2) { //0394
+      set.string(str4,"Oak")
+    }
+    goto(l1009)
+  }
+  if (vCurrentRoom < 18) { //03a1
+    if (v254 == 1) { //03a8
+      set.string(str4,"Fig")
+    }
+    if (v254 == 2) { //03b2
+      set.string(str4,"Peach")
+    }
+    goto(l1009)
+  }
+  if (vCurrentRoom < 22) { //03bf
+    if (v254 == 1) { //03c6
+      set.string(str4,"Rose")
+    }
+    if (v254 == 2) { //03d0
+      set.string(str4,"Lilly")
+    }
+    goto(l1009)
+  }
+  if (v254 == 1) { //03dd
+    set.string(str4,"Poppy")
+  }
+  if (v254 == 2) { //03e7
+    set.string(str4,"River Road")
+  }
+l1009:
+  if ((vCurrentRoom == 10 || vCurrentRoom == 14 || vCurrentRoom == 18 || vCurrentRoom == 22)) { //03f1
+    if (v253 == 3) { //0403
+      set.string(str5,"Parkway Drive")
+    }
+    if (v253 == 4) { //040d
+      set.string(str5,"1st Street")
+    }
+    if (v253 == 5) { //0417
+      set.string(str5,"2nd Street")
+    }
+    goto(l1192)
+  }
+  if ((vCurrentRoom == 11 || vCurrentRoom == 15 || vCurrentRoom == 19 || vCurrentRoom == 23)) { //0424
+    if (v253 == 3) { //0436
+      set.string(str5,"3rd Street")
+    }
+    if (v253 == 4) { //0440
+      set.string(str5,"4th Street")
+    }
+    if (v253 == 5) { //044a
+      set.string(str5,"5th Street")
+    }
+    goto(l1192)
+  }
+  if ((vCurrentRoom == 12 || vCurrentRoom == 16 || vCurrentRoom == 20 || vCurrentRoom == 24)) { //0457
+    if (v253 == 3) { //0469
+      set.string(str5,"6th Street")
+    }
+    if (v253 == 4) { //0473
+      set.string(str5,"7th Street")
+    }
+    if (v253 == 5) { //047d
+      set.string(str5,"8th Street")
+    }
+    goto(l1192)
+  }
+  if (v253 == 3) { //048a
+    set.string(str5,"9th Street")
+  }
+  if (v253 == 4) { //0494
+    set.string(str5,"10th Street")
+  }
+  if (v253 == 5) { //049e
+    set.string(str5,"Clearwater Drive")
+  }
+l1192:
+  if (v253 > 0 && v254 > 0) { //04a8
+    print("%m5%s2 %s3 at intersection of %s4 and %s5.\"")
+    goto(l1221)
+  }
+  if (v254 > 0) { //04b7
+    print("%m5%s2 %s3 on %s4.\"")
+    goto(l1221)
+  }
+  print("%m5%s2 %s3 on %s5.\"")
+}
+l1221:
+if ((said("move", "above", "auto") || said("move", "auto", "above") || said("dont move", "auto") || said("make", "dont move"))) { //04c5
+  if (f47) { //04e7
+    print("You need to observe a violation first.")
+    goto(l1268)
+  }
+  print("Get closer to the suspect vehicle.")
+}
+l1268:
+if (has(i7) && said("anyword", "briefcase")) { //04f4
+  print("That would be unsafe while driving!")
+}
+if ((said("get", "nightstick") || said("get", "nightstick", "off", "d") || said("get", "nightstick", "from", "d") || said("empty", "nightstick", "from", "d") || said("get", "nightstick", "from", "auto"))) { //0502
+  print("That would be unsafe while driving!")
+}
+if ((said("dont move") || said("dont move", "auto") || said("accident") || said("accident", "auto") || said("drive") || said("drive", "auto") || said("drive", "auto", "away") || said("begin", "auto") || said("move", "car keys") || said("move", "off", "rol") || said("enter"))) { //0538
+  set(f30)
+}
+l1406:
+if (f30 && v31 != 255) { //057e
+  reset(f30)
+  if (v31 > 70 && vCurrentRoom != 11) { //058a
+    print("You are on a difficult mission. You must save the City of Lytton from the \"Death Angel.\"")
+    print("You have no time for sightseeing now!")
+    goto(l1489)
+  }
+  if (v91 == 21 && vCurrentRoom == 25) { //059c
+    print("\"10-19 the office, per Lieutenant Morgan.\"")
+    print("%m4%m68, the Coroner has been dispatched.\"")
+    goto(l1489)
+  }
+  if (vCurrentRoom != 25 && v91 > 0 && v91 < 20) { //05ad
+    if (v136 > 0) { //05bb
+      v136 = 0
+      print("%m4%m68 respond to Cotton Cove. Officers on scene need ID of 187 victim.\"")
+      goto(l1484)
+    }
+    print("The officers standing by at Cotton Cove request, \"Respond Code-2.\"")
+l1484:
+    goto(l1489)
+  }
+  set(f30)
+}
+l1489:
+return()

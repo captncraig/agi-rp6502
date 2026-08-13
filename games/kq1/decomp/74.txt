@@ -1,4 +1,25 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 75) { //000e
+    get.posn(o0,v60,v61)
+    v60 += 2
+    position(o0,60,v61)
+  }
+  if (vPrevRoom == 73) { //0020
+    position(o0,80,70)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "cave")) { //002e
+  print("The further you get from the light, the darker and mustier it becomes.")
+}
+if (posn(o0,65,51,100,52)) { //003a
+  new.room(73)
+}
+if (posn(o0,0,0,1,167)) { //0046
+  new.room(75)
+}
+return()

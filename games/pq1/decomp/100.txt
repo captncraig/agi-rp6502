@@ -1,3 +1,43 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x6d)}
+set.text.attribute(15,0)
+if (!f56) { //0005
+  clear.lines(22,22,c0)
+  clear.lines(24,24,c0)
+}
+if (!f111) { //0014
+  reset(f155)
+  reset(f10)
+}
+if (f151) { //001f
+  prevent.input()
+}
+animate.obj(o0)
+get.posn(o0,v142,v143)
+v120 = 0
+v121 = 0
+v139 = 0
+v140 = 0
+v141 = 0
+reset(f138)
+v166 = 0
+v167 = 0
+v168 = 0
+v169 = 0
+reset(f34)
+reset(f36)
+reset(f108)
+reset(f7)
+reset(f102)
+reset(f157)
+reset(f156)
+reset(f159)
+reset(f154)
+reset(f138)
+v152 = 255
+l96:
+reset(v152)
+lindirectn(v152,0)
+v152--
+if (v152 > 219) { //0067
+  goto(l96)
+}
+return()

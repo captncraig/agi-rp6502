@@ -1,9 +1,79 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 5
   set(f54)
   set(f34)
   v57 = 2
   v58 = 156
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  load.sound(6)
+  if (f48) { //0028
+    if (vPrevRoom == 61) { //002e
+      start.motion(o0)
+      position(o0,2,156)
+    }
+    if (vPrevRoom == 63) { //003b
+      position(o0,117,43)
+    }
+  }
+  if (f47) { //0046
+    draw(o0)
+  }
+  if (f182) { //004e
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (!f46 && fTriggerLine && !f220) { //005a
+  set(f46)
+  prevent.input()
+  set(f220)
+  ignore.blocks(o0)
+  get.priority(o0,v36)
+  set.priority(o0,v36)
+  set.view(o0,11)
+  sound(1,f238)
+  v36 = 4
+  cycle.time(o0,v36)
+  v37 = v40
+  v38 = 164
+  v36 = 3
+  move.obj(o0,v37,v38,36,f221)
+}
+if (f221) { //008e
+  reset(f221)
+  reset(f46)
+  erase(o0)
+  set(f44)
+  print("Watch out for that first step. It's a dilly.")
+}
+if (f182) { //009e
+  call(119)
+}
+if ((said("examine", "up") || said("examine", "down") || said("examine") || said("examine", "cave"))) { //00a6
+  print("This cave is merely the entrance to crumbly stone steps that lead upward into the depths of the mountain. Pebbles and little rocks lie scattered upon the cave floor.")
+}
+if ((said("examine", "up", "stair") || said("examine", "down", "stair") || said("examine", "stair"))) { //00c4
+  print("The stone steps go up into the very depths of this mountain. Not only are they crumbly, but they are also very steep!")
+}
+if (said("examine", "deck")) { //00e2
+  print("Little stones and pebbles from the steps have fallen and lie scattered around the cave floor.")
+}
+if ((said("examine", "out") || said("examine", "out", "cave"))) { //00ee
+  print("You see the charred trees of Daventry outside the cave.")
+}
+if (v41 < 40) { //0104
+  new.room(63)
+}
+if (vWhichEgoBorder == 4) { //010d
+  new.room(61)
+}
+return()

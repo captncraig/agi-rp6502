@@ -1,4 +1,119 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(53)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,123,64,0,0)
+  }
+  if (vPrevRoom == 29) { //002b
+    get.posn(o0,v60,v61)
+    if (v60 < 50) { //0036
+      position(o0,12,54)
+      goto(l72)
+    }
+    position(o0,122,54)
+  }
+l72:
+  if (vPrevRoom == 13) { //0048
+    if (posn(o0,0,164,75,167)) { //004f
+      position(o0,37,165)
+      goto(l100)
+    }
+    position(o0,120,165)
+  }
+l100:
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (f213) { //0069
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+if (said("check", "lake")) { //0073
+  print("This is a small alpine lake.")
+}
+if (said("check", "stump")) { //007f
+  print("It looks as though there were beavers around here at one time.")
+}
+if (said("ANYWORD", "beaver")) { //008b
+  print("There are no beavers here now.")
+}
+if (!fEgoOnWater) { //0097
+  if (posn(o0,100,109,115,135)) { //009e
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!f88 && !fEgoOnWater && !f116) { //00ac
+  if ((said("drink", "water") || said("acquire", "drink"))) { //00b9
+    if (posn(o0,15,40,138,167)) { //00cb
+      print("The clear water quenches your thirst.")
+      goto(l220)
+    }
+    print("You are not close enough to the water.")
+  }
+}
+l220:
+if (!(v94 > 0) && fEgoOnWater) { //00dc
+  v76 = 255
+  if (posn(o0,100,100,115,135)) { //00e9
+    v76 = 100
+    v77 = 130
+  }
+  if (v76 == 255) { //00f9
+    v76 = 0
+    goto(l274)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l274:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0112
+  if (posn(o0,15,40,138,167)) { //0124
+    reset(f116)
+    print("You fill up your bucket with sparkling water.")
+    get(i26)
+    set(f88)
+    if (!f91) { //0136
+      vCurrentScore += 2
+    }
+    set(f91)
+    goto(l327)
+  }
+  print("You are not close enough to the water.")
+}
+l327:
+if (vWhichEgoBorder != 0) { //0147
+  if (f66) { //014f
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //015d
+  new.room(29)
+}
+if (vWhichEgoBorder == 2) { //0166
+  new.room(19)
+}
+if (vWhichEgoBorder == 4) { //016f
+  new.room(21)
+}
+if (vWhichEgoBorder == 3) { //0178
+  new.room(13)
+}
+if (f75) { //0181
+  call(103)
+}
+call(101)
+return()

@@ -1,3 +1,43 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if ((vCurrentRoom == 64 || vCurrentRoom == 66)) { //0002
+  if ((said("examine", "down") || said("examine", "curb"))) { //000e
+    print("You admire the plush carpet.")
+  }
+  if (said("examine", "elevator")) { //0022
+    print("It looks like something from an old French movie. Don't you just love rococo ironwork?")
+  }
+}
+if ((vCurrentRoom == 76 || vCurrentRoom == 77 || vCurrentRoom == 78)) { //002e
+  if ((said("examine", "down") || said("examine", "curb"))) { //003d
+    print("You admire the plush carpet.")
+  }
+  if (has(i21) && f94 && (said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("answer", "pen") || said("answer", "bug", "pen") || said("answer", "bug") || said("use", "pen") || said("use", "bug", "pen") || said("use", "bug") || said("number") || said("accident", "number") || said("call", "number") || said("call", "accident", "number") || said("call"))) { //0051
+    print("In a soft voice, you whisper into your \"pen,\" \"be advised, in stairwell with Bains.\"")
+  }
+  if (said("examine", "stair")) { //00bb
+    random(2,5,v152)
+    print(v152)
+  }
+  if (said("examine", "below", "stair")) { //00cb
+    random(6,8,v152)
+    print(v152)
+  }
+  if ((said("hop") || said("hop", "off") || said("hop", "down"))) { //00dd
+    print("You can't! (It just looks like you could.)")
+  }
+  if (said("examine", "banister")) { //00f5
+    print("It's an steel banister welded at the joints.")
+  }
+  if ((said("examine", "carpet") || said("examine", "down") || said("examine", "curb"))) { //0101
+    print("This is heavy-duty, royal blue, short-pile, all-nylon, commercial-type carpet.")
+  }
+  if ((said("slide", "down", "banister") || said("slide", "banister"))) { //011b
+    print("Sonny! Are you a cop or a kid? If you're looking for a thrill ride, seek out your nearest amusement park!")
+  }
+  if (said("examine", "fence")) { //0131
+    print("They ARE boring, aren't they!?")
+  }
+  if ((said("examine", "up") || said("examine", "ceiling"))) { //013d
+    print("You see ceiling.")
+  }
+}
+return()

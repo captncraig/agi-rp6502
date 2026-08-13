@@ -1,5 +1,453 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  v224 = 111
+  load.pic(v224)
+  load.view(97)
+  load.view(105)
+  load.view(92)
+  status.line.off()
+  set(f220)
+  goto(l802)
+}
+if (!fEnteredCommand) { //001d
+  goto(l802)
+}
+set(f34)
+if ((said("examine", "file") || said("o", "file") || said("look in", "file") || said("look in", "file", "file") || said("get", "file"))) { //0029
+  if (v221 > 0) { //004f
+    if (v221 == 1) { //0056
+      set(f221)
+      goto(l100)
+    }
+    print("You ARE looking at a file!")
+l100:
+    goto(l105)
+  }
+  print("Which file?")
+}
+l105:
+if ((said("get", "all", "file") || said("get", "all") || said("o", "all", "file"))) { //0069
+  print("You can only read one file at a time.")
+}
+if ((said("examine", "drawer") || said("examine") || said("examine", "file", "cabinet") || said("examine", "file", "drawer"))) { //0087
+  if (v221 > 0) { //00a7
+    set(f220)
+    goto(l181)
+  }
+  print("The file drawer contains five folders, each labeled with the name of the case.")
+}
+l181:
+if (v221 > 0 && (said("preceding", "page", "rol") || said("move", "preceding", "page", "rol") || said("examine", "preceding", "page", "rol"))) { //00b5
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33--
+  if (!(v33 > 0)) { //00e0
+    v33 = v223
+  }
+}
+if (v221 > 0 && (said("move", "page", "rol") || said("examine", "anyword", "page", "rol"))) { //00eb
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33++
+  if (v33 > v223) { //010c
+    v33 = 1
+  }
+}
+if ((said("c", "file") || said("c", "file") || said("drop", "file", "drawer") || said("drop", "file", "back", "drawer") || said("drop", "file", "back") || said("drop", "file", "drawer") || said("drop", "file") || said("drop", "file", "away") || said("dont move", "examine", "file") || said("c", "anyword", "file") || said("c", "anyword", "file") || said("c", "anyword", "file") || said("drop", "anyword", "file", "drawer") || said("drop", "anyword", "file", "back", "drawer") || said("drop", "anyword", "file", "back") || said("drop", "anyword", "file", "drawer") || said("drop", "anyword", "file") || said("drop", "anyword", "file", "away") || said("dont move", "examine", "anyword", "file") || said("c", "anyword", "file"))) { //0116
+  if (!(v221 > 0)) { //01c6
+    print("You're not looking at a folder.")
+    goto(l469)
+  }
+  set(f220)
+}
+l469:
+if ((said("c", "file", "cabinet") || said("c", "cabinet") || said("c", "file", "drawer") || said("c", "drawer"))) { //01d5
+  if (!(v221 > 0)) { //01f7
+    reset(f108)
+    reset(f7)
+    new.room(vPrevRoom)
+    goto(l539)
+  }
+  if (v221 == 1) { //0208
+    set(f221)
+    goto(l539)
+  }
+  set(f222)
+  v141 = 4
+  print("You return the folder to the file drawer.")
+}
+l539:
+if (obj.in.room(i15,vCurrentRoom) && (said("continue", "hoffman", "file") || said("empty", "hoffman", "file") || said("empty", "hoffman", "file") || said("get", "hoffman", "file"))) { //021b
+  if (f223) { //0244
+    set(f221)
+    goto(l594)
+  }
+  v220 = 1
+}
+l594:
+if (obj.in.room(i15,vCurrentRoom) && (said("examine", "hoffman", "rol") || said("o", "hoffman", "rol") || said("look in", "hoffman", "rol") || said("get", "hoffman", "rol"))) { //0252
+  v220 = 1
+}
+if ((said("examine", "justinfletch", "rol") || said("o", "justinfletch", "rol") || said("look in", "justinfletch", "rol") || said("get", "justinfletch", "rol"))) { //027e
+  v220 = 2
+}
+if ((said("examine", "jenkins", "rol") || said("o", "jenkins", "rol") || said("look in", "jenkins", "rol") || said("get", "jenkins", "rol"))) { //02a7
+  v220 = 3
+}
+if ((said("examine", "malone", "rol") || said("o", "malone", "rol") || said("look in", "malone", "rol") || said("get", "malone", "rol"))) { //02d0
+  v220 = 4
+}
+if ((said("examine", "watson", "rol") || said("o", "watson", "rol") || said("look in", "watson", "rol") || said("get", "watson", "rol"))) { //02f9
+  v220 = 5
+}
+l802:
+if (f220) { //0322
+  reset(f220)
+  v221 = 0
+  draw.pic(vCurrentRoom)
+  add.to.pic(97,0,1,66,110,4,4)
+  add.to.pic(97,0,2,81,98,4,4)
+  add.to.pic(97,0,3,93,86,4,4)
+  add.to.pic(97,0,4,36,75,4,4)
+  if (obj.in.room(i15,vCurrentRoom)) { //034f
+    add.to.pic(97,0,0,43,122,4,4)
+  }
+  show.pic()
+  set(f108)
+  set(f7)
+}
+if (v220 > 0) { //0363
+  if (v221 > 0) { //036a
+    v220 = 0
+    v221 = 0
+    set(f220)
+    print("You return the folder to the file drawer.")
+    goto(l960)
+  }
+  v221 = v220
+  v220 = 0
+  start.motion(o0)
+  v33 = 1
+  if (v221 == 1) { //0389
+    v223 = 7
+  }
+  if (v221 == 2) { //0393
+    v223 = 3
+  }
+  if (v221 == 3) { //039d
+    v223 = 3
+  }
+  if (v221 == 4) { //03a7
+    v223 = 3
+  }
+  if (v221 == 5) { //03b1
+    v223 = 2
+  }
+  draw.pic(v224)
+  show.pic()
+  set(f34)
+}
+l960:
+if (v221 > 0 && (vEgoDir > 0 || f34)) { //03c0
+  reset(f34)
+  if ((vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 5)) { //03d0
+    v33++
+    if (v33 > v223) { //03e1
+      v33 = 1
+    }
+  }
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 7)) { //03eb
+    v33--
+    if (!(v33 > 0)) { //03fc
+      v33 = v223
+    }
+  }
+  if (vEgoDir == 8) { //0407
+    v33 = 1
+  }
+  if (vEgoDir == 6) { //0411
+    v33 = v223
+  }
+  start.motion(o0)
+  set.text.attribute(0,15)
+  if (v221 == 1) { //0420
+    if (v33 == 1) { //0427
+      set(f223)
+      clear.text.rect(2,10,20,30,15)
+      add.to.pic(105,0,4,55,69,4,4)
+      display(11,10,"NAME")
+      display(12,10,"Marvin Hoffman")
+      display(14,10,"ALIAS")
+      display(15,10,"Leroy Pierson")
+      display(17,10,"PHYSICAL")
+      display(18,10,"5'11 195' black/brown")
+      display(19,10,"Caucasian")
+    }
+    if (v33 == 2) { //045a
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"IDENTIFYING MARKS,")
+      display(4,10,"SCARS, TATTOOS, ETC")
+      display(5,10,"Tattoo small flower")
+      display(6,10,"above left nipple")
+      display(8,10,"DOB 3/1/49")
+      display(10,10,"LAST KNOWN ADDRESS")
+      display(11,10,"31 W 104th St")
+      display(12,10,"Chicago, IL")
+      display(15,10,"BAIL $500,000.00")
+      display(16,10,"DATE OF ARREST 9/7/83")
+      display(17,10,"TIME OF ARREST  15:45")
+    }
+    if (v33 == 3) { //0493
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"CHARGES")
+      display(4,10,"Suspicion of murder,")
+      display(5,10,"auto theft,")
+      display(6,10,"narcotics possession,")
+      display(7,10,"evading arrest,")
+      display(8,10,"concealed weapon")
+      display(9,10,"reckless driving")
+      display(12,10,"Expired ILL. driver's")
+      display(13,10,"License #A472457, in")
+      display(14,10,"name of \"M. Hoffman\"")
+      display(17,10,"Temporary CA driver's")
+      display(18,10,"License #C84776356,")
+      display(19,10,"name of \"L. Pierson\"")
+    }
+    if (v33 == 4) { //04d4
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"ARREST SUMMARY")
+      display(5,10,"1 Observed w/o front")
+      display(6,10,"  license plate")
+      display(7,10,"2 Rear plate near")
+      display(8,10,"  match w/suspicious")
+      display(9,10,"  187vc vehicle")
+      display(10,10,"3 Suspect attempted")
+      display(11,10,"  to evade arrest")
+      display(12,10,"4 Initiated pursuit")
+      display(13,10,"5 Felony stop")
+      display(14,10,"6 Suspect in custody")
+      display(15,10,"7 Narcotics seized")
+      display(16,10,"8 Stolen vehicle")
+      display(17,10,"  recovered")
+      display(18,10,"9 Veh. turned over to")
+      display(19,10,"  narcotics division")
+    }
+    if (v33 == 5) { //0521
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"EVIDENCE FORM")
+      display(5,10,"5 lbs. marijuana,")
+      display(6,10,"est. value, $4,000.00")
+      display(8,10,"1 lb. cocaine, est.")
+      display(9,10,"value, $250,000.00")
+      display(11,10,"1 S&W .45 automatic")
+      display(12,10,"handgun SN SW9764912")
+      display(14,10,"1 black notebook")
+    }
+    if (v33 == 6) { //054e
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"VEHICLE INFORMATION")
+      display(5,10,"'83 Cadillac deVille,")
+      display(6,10,"blue (orig. blue)")
+      display(8,10,"LICENSE #LOP1238")
+      display(10,10,"VIN C03456218")
+      display(12,10,"Stolen from")
+      display(13,10,"Lytton, CA")
+      display(15,10,"Registered to:")
+      display(16,10,"Malcolm Washington")
+      display(17,10,"234 W Center St")
+      display(18,10,"Lytton, CA")
+    }
+    if (v33 == 7) { //0587
+      draw.pic(v224)
+      show.pic()
+      clear.text.rect(2,10,10,30,15)
+      clear.text.rect(12,10,20,30,15)
+      add.to.pic(92,0,0,42,45,4,4)
+      add.to.pic(92,0,1,42,125,4,4)
+      display(2,17,"Marvin Hoffman")
+      display(3,17,"Male 6'0 194'")
+      display(4,17,"HAIR Black")
+      display(5,17,"EYES Blue")
+      display(6,17,"DOB 6/2/56")
+      display(7,17,"31 W 104th St")
+      display(8,17,"Chicago, IL")
+      display(9,17,"RESTRICTIONS")
+      display(10,17,"None.")
+      display(12,17,"Leroy Pierson")
+      display(13,17,"Male 5'11 197'")
+      display(14,17,"HAIR Black")
+      display(15,17,"EYES Blue")
+      display(16,17,"DOB 4/28/55")
+      display(17,17,"1134 Beach St")
+      display(18,17,"Newport, CA")
+      display(19,17,"RESTRICTIONS")
+      display(20,17,"None.")
+    }
+  }
+  if (v221 == 2) { //05f5
+    if (v33 == 1) { //05fc
+      clear.text.rect(2,10,20,30,15)
+      add.to.pic(105,0,3,55,69,4,4)
+      display(11,10,"NAME")
+      display(12,10,"Fred Justinfletch")
+      display(14,10,"ALIAS")
+      display(15,10,"\"Freddie the Freak\"")
+      display(17,10,"PHYSICAL")
+      display(18,10,"5'3 219' black/green")
+      display(19,10,"Caucasian")
+    }
+    if (v33 == 2) { //062d
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"WANTS")
+      display(4,10,"purse snatching")
+      display(5,10,"assault and battery")
+      display(6,10,"narcotics violations")
+      display(9,10,"METHOD OF OPERATION")
+      display(10,10,"grabs victim, bites")
+      display(11,10,"neck, snatches")
+      display(12,10,"purse, runs away")
+    }
+    if (v33 == 3) { //065a
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"UPDATE")
+      display(5,10,"Last seen by several")
+      display(6,10,"witnesses early Wed.")
+      display(7,10,"morning. Statements")
+      display(8,10,"indicate Freddie")
+      display(9,10,"Justinfletch was at")
+      display(10,10,"intersection of")
+      display(11,10,"Center and 3rd Sts")
+      display(12,10,"directing traffic")
+      display(13,10,"while totally nude.")
+      display(14,10,"When officers arrived")
+      display(15,10,"\"the Freak\" could")
+      display(16,10,"not be found.")
+    }
+  }
+  if (v221 == 3) { //069b
+    if (v33 == 1) { //06a2
+      clear.text.rect(2,10,20,30,15)
+      add.to.pic(105,0,2,55,69,4,4)
+      display(11,10,"NAME")
+      display(12,10,"James Jenkins")
+      display(14,10,"ALIAS")
+      display(15,10,"\"Jimmy the Junky\"")
+      display(17,10,"PHYSICAL")
+      display(18,10,"6'4 160' black/brown")
+      display(19,10,"Negro")
+    }
+    if (v33 == 2) { //06d3
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"WANTS")
+      display(5,10,"Illegal flight to")
+      display(6,10,"avoid prosecution on")
+      display(7,10,"narcotic violations.")
+      display(9,10,"Last seen heading")
+      display(10,10,"south like an out-of-")
+      display(11,10,"control rocket.")
+    }
+    if (v33 == 3) { //06fc
+      clear.text.rect(2,10,20,30,15)
+      display(4,10,"ADDITIONAL")
+      display(5,10,"Jenkins also wanted")
+      display(6,10,"for questioning in")
+      display(7,10,"several West Side")
+      display(8,10,"daylight burglaries.")
+      display(9,10,"If arrested, notify")
+      display(10,10,"Officer James Lucas,")
+      display(11,10,"Lytton Probation")
+      display(12,10,"Department.")
+    }
+  }
+  if (v221 == 4) { //072d
+    if (v33 == 1) { //0734
+      clear.text.rect(2,10,20,30,15)
+      add.to.pic(105,0,1,55,69,4,4)
+      display(11,10,"NAME")
+      display(12,10,"Francis Malone")
+      display(14,10,"ALIAS")
+      display(15,10,"\"Short Fat Fanny\"")
+      display(17,10,"PHYSICAL")
+      display(18,10,"4'9 160' black/blue")
+      display(19,10,"Caucasian")
+    }
+    if (v33 == 2) { //0765
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"WANTS")
+      display(4,10,"Warrant #Q372")
+      display(5,10,"petty theft")
+      display(8,10,"METHOD OF OPERATION")
+      display(9,10,"steals anything she")
+      display(10,10,"can fit on her body")
+      display(13,10,"UNUSUAL TRAITS")
+      display(14,10,"Halitosis to the")
+      display(15,10,"magnitude equal to")
+      display(16,10,"the breath of")
+      display(17,10,"eight mules!")
+    }
+    if (v33 == 3) { //079e
+      clear.text.rect(2,10,20,30,15)
+      display(3,10,"APPROACH WITH CAUTION")
+      display(4,10,"will not hesitate to")
+      display(5,10,"knock you down and")
+      display(6,10,"spit in your eyes")
+      display(7,10,"while she breaths")
+      display(8,10,"heavily into your")
+      display(9,10,"your face, thereby")
+      display(10,10,"nauseating you to")
+      display(11,10,"the point of")
+      display(12,10,"unconsciousness.")
+    }
+  }
+  if (v221 == 5) { //07d3
+    if (v33 == 1) { //07da
+      clear.text.rect(2,10,20,30,15)
+      add.to.pic(105,0,0,55,69,4,4)
+      display(11,10,"NAME")
+      display(12,10,"Winford W. Watson")
+      display(14,10,"ALIAS")
+      display(15,10,"\"Winnie the Weasel\"")
+      display(17,10,"PHYSICAL")
+      display(18,10,"5'8 180' bald/brown")
+      display(19,10,"numerous tattoos")
+    }
+    if (v33 == 2) { //080b
+      clear.text.rect(2,10,20,30,15)
+      display(4,10,"WANTS")
+      display(5,10,"narcotics, weapons,")
+      display(6,10,"and armed robbery")
+      display(7,10,"violations")
+      display(10,10,"LOCATION OF SUBJECT")
+      display(11,10,"has been seen with a")
+      display(12,10,"junkie hooker known")
+      display(13,10,"as \"Big Bonnie\"")
+      display(16,10,"NOTE")
+      display(17,10,"has large red & blue")
+      display(18,10,"tattoo of sinking")
+      display(19,10,"ship on top of head")
+    }
+  }
+  set.text.attribute(15,0)
+}
+if (f221) { //084b
+  reset(f221)
+  reset(f108)
+  reset(f7)
+  get(i15)
+  if (!f143) { //0859
+    set(f143)
+    vCurrentScore += 2
+  }
+  print("You remove the Hoffman file from the drawer.")
+  new.room(vPrevRoom)
+}
+if (f222 && f138) { //0869
+  reset(f108)
+  reset(f7)
+  new.room(vPrevRoom)
+}
+if (controller(c32)) { //0877
+  set(f34)
+}
+return()

@@ -1,4 +1,62 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+if (fNewRoom) { //0002
+  prevent.input()
+  load.view(0)
+  animate.obj(o1)
+  load.view(170)
+  set.view(o1,170)
+  set.loop(o1,2)
+  v36 = 2
+  step.time(o1,36)
+  fix.loop(o1)
+  position(o1,0,60)
+  load.sound(30)
+  load.sound(39)
+  set(f220)
+  v36 = 31
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  draw(o1)
+  move.obj(o1,160,60,1,f41)
+  v56 = 7
+  if (!f51) { //003b
+    set(f51)
+    v36 = 73
+l71:
+    if (v36 > 51) { //0047
+      reset(v36)
+      v36--
+      goto(l71)
+    }
+  }
+  sound(30,f238)
+  show.pic()
+  v62 = 1
+  v52 = 2
+  v53 = 0
+  return()
+}
+get.posn(o1,v37,v38)
+if (f238) { //0067
+  if (f220) { //006d
+    if (v37 < 30) { //0073
+      sound(30,f238)
+      goto(l132)
+    }
+    reset(f220)
+    print("Nothing like a little salt air to perk up a boy's spirits. All things being equal, you might have enjoyed this ocean voyage...")
+l132:
+    goto(l144)
+  }
+  print("...however, you have found your accommodations to be slightly less than satisfactory.")
+  reset(f220)
+  reset(f238)
+  sound(39,f220)
+}
+l144:
+if (vBorderObj > 0) { //0090
+  accept.input()
+  player.control()
+  new.room(85)
+}
+return()

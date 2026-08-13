@@ -1,4 +1,293 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f144) { //000e
+    set(f75)
+  }
+  if (f75) { //0016
+    reset(f75)
+    set(f200)
+    start.motion(o0)
+  }
+  load.view(138)
+  animate.obj(o6)
+  set.view(o6,138)
+  set.priority(o6,10)
+  position(o6,40,115)
+  cycle.time(o6,v106)
+  load.logic(108)
+  load.view(39)
+  if (has(i15)) { //0037
+    load.view(28)
+  }
+  if (f200) { //003f
+    set(f69)
+    set(f201)
+    set(f204)
+    load.view(178)
+    load.view(80)
+    load.view(86)
+    load.view(21)
+    load.view(53)
+    load.sound(9)
+    animate.obj(o7)
+    set.view(o7,86)
+    stop.motion(o7)
+    position(o7,120,120)
+    draw(o7)
+    stop.update(o7)
+    block(60,114,101,120)
+    animate.obj(o12)
+    set.view(o12,80)
+    set.cel(o12,0)
+    ignore.blocks(o12)
+    position(o12,64,120)
+    draw(o12)
+    stop.update(o12)
+    cycle.time(o12,v107)
+    stop.motion(o12)
+    animate.obj(o10)
+    ignore.objs(o10)
+    ignore.blocks(o10)
+    ignore.horizon(o10)
+    set.view(o10,21)
+    set.priority(o10,14)
+    position(o10,0,42)
+    cycle.time(o10,v106)
+    step.size(o10,v106)
+  }
+  if (vPrevRoom == 64) { //009a
+    last.cel(o6,v61)
+    set.cel(o6,v61)
+    draw(o6)
+    reverse.loop(o6,f213)
+    goto(l182)
+  }
+  set.cel(o6,0)
+  draw(o6)
+  stop.update(o6)
+l182:
+  if (vPrevRoom == 64) { //00b6
+    position(o0,45,122)
+    set.loop(o0,0)
+    goto(l216)
+  }
+  if (f103) { //00c7
+    position(o0,148,71)
+    goto(l216)
+  }
+  position(o0,133,99)
+l216:
+  draw(o0)
+  if (!f43) { //00da
+    vCurrentScore += 15
+    set(f43)
+  }
+  call(108)
+  show.pic()
+  return()
+}
+if (f130) { //00ea
+  if (f204 && posn(o0,112,103,148,127)) { //00f0
+    if (v214 > 0) { //00fc
+      print("As you stare at the cauldron, you consider the witches' warning. Leaping into the cauldron will mean certain death.")
+      goto(l266)
+    }
+    print("The cauldron is squat and black and large enough to hold a human body. Its rim is crooked and battered, its sides dented and scarred.\n\n%m10")
+l266:
+    goto(l354)
+  }
+  if (posn(o0,40,111,55,128) && !f200) { //010d
+    print("The door seems to be unlocked and the house deserted.")
+    goto(l354)
+  }
+  if (f219) { //011f
+    print("The gwythaint is taking the Cauldron!")
+    goto(l354)
+  }
+  if (f210) { //012a
+    print("The gwythaint has taken your Cauldron, and carried it off over the Eagle Mountains in the direction of the Horned King's castle.")
+    goto(l354)
+  }
+  if (f173) { //0135
+    print("The vicious winged gwythaint is after the Black Cauldron!!")
+    goto(l354)
+  }
+  if (posn(o0,78,85,90,90)) { //0140
+    print("\"Al loves Marg\"")
+    goto(l354)
+  }
+  if (posn(o0,54,110,94,130) && f201) { //014f
+    print("The witches are extremely ugly.")
+    goto(l354)
+  }
+  print("You are in a hidden area of Morva Marsh. The ground is wet and mushy, so be careful where you walk.")
+}
+l354:
+if (!f128 && !f129) { //0162
+  goto(l500)
+}
+if (f129) { //016f
+  goto(l500)
+}
+if (posn(o0,38,110,50,120)) { //0178
+  if (!f103) { //0182
+    set(fSaidAccepted)
+    print("You cautiously open the door to this strange house.")
+    start.update(o6)
+    end.of.loop(o6,f212)
+    goto(l698)
+    goto(l412)
+  }
+  print("It is difficult to open the door while flying.")
+  set(fSaidAccepted)
+}
+l412:
+if (f200 && !f205) { //019c
+  set(f205)
+  set(fSaidAccepted)
+  print("Orwen laughs, \"Now you have the Black Cauldron you have been seeking. But, it won't do you any good. Ha, ha!!\"")
+  print("\"There's only one way to stop the evil power of the Black Cauldron, Duckling,\" croaks Orgoch! \"A living being must jump into the cauldron of its own free will. Unfortunately, anyone who does will never emerge alive again!\"")
+  print("\"Hee, hee,\" Orddu cackles. \"Now you've lost your magic sword and have the cauldron. But there's nothing you can do to destroy it!\"")
+  v214 = 55
+  v206 = 40
+  start.cycling(o12)
+  goto(l500)
+}
+if (f204 && posn(o0,112,103,148,127)) { //01ba
+  set(fSaidAccepted)
+  if (!f218) { //01c8
+    if (v214 > 0) { //01cf
+      set(f218)
+      program.control()
+      if (v39 < 120) { //01d9
+        move.obj(o0,130,118,1,f215)
+        goto(l495)
+      }
+      move.obj(o0,130,121,1,f215)
+l495:
+      goto(l500)
+    }
+    print("Even though you attack the Black Cauldron with great force, your efforts fail. It seems totally immune to your efforts. You can't even make a dent in its harsh black shell.")
+  }
+}
+l500:
+if (f212) { //01f4
+  if (f139) { //01fa
+    set(f79)
+  }
+  new.room(64)
+}
+if (f213) { //0204
+  reset(f213)
+  stop.update(o6)
+}
+if (f215) { //020e
+  reset(f215)
+  print("Sacrificing your own life, you bravely leap into the evil Black Cauldron!! It shakes violently, trembling the ground. You've saved Prydain from the evil of the Horned King, and have made the cauldron powerless.")
+  stop.motion(o0)
+  program.control()
+  set.view(o0,178)
+  if (v39 > 120) { //021e
+    set.loop(o0,0)
+    set.priority(o0,15)
+    goto(l561)
+  }
+  set.loop(o0,1)
+l561:
+  set.cel(o0,0)
+  cycle.time(o0,v107)
+  end.of.loop(o0,f216)
+  set(f133)
+}
+if (f216) { //023c
+  reset(f216)
+  erase(o0)
+  shake.screen(4)
+  print("For generations to come, the bards sing of your bravery!\n\nCongratulations, you have solved the mystery of the Black Cauldron. Too bad you didn't live to enjoy it.")
+  v35 = 1
+  goto(l698)
+}
+v214--
+if (!f218 && v214 == 1) { //0252
+  set(f173)
+  set(f79)
+  draw(o10)
+  print("\"Farewell, Taran,\" screech the witches. \"There's nothing you can do, now that the gwythaint has seen the Black Cauldron!\"")
+  start.cycling(o12)
+  move.obj(o10,109,93,2,f208)
+  erase(o12)
+  unblock()
+  set(f211)
+}
+if (f208) { //0271
+  reset(f208)
+  reset(f204)
+  set(f219)
+  start.update(o7)
+  erase(o7)
+  set.view(o10,53)
+  move.obj(o10,6,55,2,f209)
+}
+if (f209) { //028a
+  reset(f209)
+  reset(f173)
+  reset(f219)
+  set(f210)
+  erase(o10)
+  stop.sound()
+  reset(f211)
+}
+if (f173 && f211) { //029d
+  reset(f211)
+  sound(9,f211)
+}
+v206--
+if (v206 == 1) { //02ac
+  stop.update(o12)
+  set.cel(o12,0)
+  force.update(o12)
+}
+l698:
+call(108)
+if (!(vWhichEgoBorder > 0)) { //02bc
+  reset(f202)
+}
+if (vWhichEgoBorder == 2) { //02c6
+  if (f139) { //02cd
+    set(f79)
+  }
+  new.room(21)
+}
+if (f103) { //02d7
+  if (vWhichEgoBorder == 1) { //02dd
+    if (f139) { //02e4
+      set(f79)
+    }
+    new.room(15)
+  }
+  goto(l773)
+}
+if (posn(o0,129,94,145,97)) { //02f1
+  if (f139) { //02fb
+    set(f79)
+  }
+  new.room(15)
+}
+l773:
+if (vWhichEgoBorder == 4) { //0305
+  if (f103 && !f202) { //030c
+    set(f202)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+if (vWhichEgoBorder == 3) { //0319
+  if (f103) { //0320
+    if (!f202) { //0326
+      set(f202)
+      print("There is no need for you to fly away in that direction.")
+    }
+  }
+}
+return()

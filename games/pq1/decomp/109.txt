@@ -1,4 +1,570 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(16)
+  load.sound(12)
+  load.sound(17)
+  return()
+}
+if (v255 == 1) { //000f
+  print("\"Hello, Sierra On-Line Customer Support, Larry Weissenborne speaking. How may I help you? But hurry up, 'cause I'm leaving soon!\"")
+  accept.input()
+  v255++
+}
+if (v255 == 3) { //001b
+  print("\"Thank you for calling. Goodbye%m41")
+  set(f251)
+}
+if (v255 == 10) { //0026
+  print("For emergencies, dial 911. For information, dial 411.")
+  print("\"This is a recording.\"")
+  set(f251)
+}
+if (v255 == 20) { //0033
+  prevent.input()
+  if (!f56) { //003b
+    clear.lines(23,23,c0)
+  }
+  print("\"You have reached Directory Assistance. Thank you for using LT&T.\"")
+  get.string(str3,"Enter party's last name: ",23,0,13)
+  if (!f56) { //004e
+    clear.lines(23,23,c0)
+  }
+  random(20,40,v252)
+  v255++
+}
+v252--
+if (v252 == 1) { //0061
+  if (v255 == 21) { //0068
+    set.string(str8,"Sierra, Inc")
+    if (compare.strings(str8,str3)) { //0072
+      set.string(str8,"(209) 683-6858")
+      v255++
+    }
+  }
+  if (v255 == 21) { //007e
+    set.string(str8,"Sierra OnLine")
+    if (compare.strings(str8,str3)) { //0088
+      set.string(str8,"(209) 683-6858")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0094
+    set.string(str8,"Sierra")
+    if (compare.strings(str8,str3)) { //009e
+      set.string(str8,"(209) 683-6858")
+      v255++
+    }
+  }
+  if (v255 == 21) { //00aa
+    set.string(str8,"Pierson")
+    if (compare.strings(str8,str3)) { //00b4
+      set.string(str8,"555-6537")
+      v255++
+    }
+  }
+  if (v255 == 21) { //00c0
+    set.string(str8,"Williams")
+    if (compare.strings(str8,str3)) { //00ca
+      set.string(str8,"555-4522")
+      v255++
+    }
+  }
+  if (v255 == 21) { //00d6
+    set.string(str8,"Cobb")
+    if (compare.strings(str8,str3)) { //00e0
+      set.string(str8,"555-2622")
+      v255++
+    }
+  }
+  if (v255 == 21) { //00ec
+    set.string(str8,"Morgan")
+    if (compare.strings(str8,str3)) { //00f6
+      set.string(str8,"555-7764")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0102
+    set.string(str8,"Taber")
+    if (compare.strings(str8,str3)) { //010c
+      set.string(str8,"(312) 555-3382")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0118
+    set.string(str8,"cab")
+    if (compare.strings(str8,str3)) { //0122
+      set.string(str8,"555-9222")
+      v255++
+    }
+  }
+  if (v255 == 21) { //012e
+    set.string(str8,"cab company")
+    if (compare.strings(str8,str3)) { //0138
+      set.string(str8,"555-9222")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0144
+    set.string(str8,"taxi")
+    if (compare.strings(str8,str3)) { //014e
+      set.string(str8,"555-9222")
+      v255++
+    }
+  }
+  if (v255 == 21) { //015a
+    set.string(str8,"taxicab")
+    if (compare.strings(str8,str3)) { //0164
+      set.string(str8,"555-9222")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0170
+    set.string(str8,"Lytton Cab")
+    if (compare.strings(str8,str3)) { //017a
+      set.string(str8,"555-9222")
+      v255++
+    }
+  }
+  if (v255 == 21) { //0186
+    set.string(str8,"")
+    if (compare.strings(str8,str3)) { //0190
+      print("\"Changed your mind, eh?\"")
+      v255 = 23
+      set(f250)
+    }
+  }
+  if (v255 == 21) { //019e
+    print("\"I'm sorry. There is no one listed by that name%m41")
+    print("\"This is a recording.\"")
+    v255 = 23
+    set(f251)
+  }
+}
+if (v255 == 22) { //01ae
+  print("\"The number is:\n\n%s8.\"")
+  reset(f36)
+  accept.input()
+  set(f251)
+}
+if (v255 == 30) { //01bc
+  if (f117) { //01c3
+    print("\"Hello.\"")
+    accept.input()
+    v255++
+    goto(l469)
+  }
+  print("Hmmm. No answer%m41")
+  set(f250)
+}
+l469:
+if (v255 == 40) { //01d5
+  print("Hmmm. No answer%m41")
+  set(f250)
+}
+if (v255 == 50) { //01e0
+  if ((!f125 || v31 < 4)) { //01e7
+    print("Hmmm. No answer%m41")
+    set(f250)
+    goto(l511)
+  }
+  print("\"Crime Lab, Detective Williams%m81")
+  accept.input()
+  v255++
+}
+l511:
+if (v255 == 60) { //01ff
+  set(f251)
+  if (v35 > 6) { //0208
+    print("\"Cobb residence.\"")
+    print("You offer your condolences to the Cobb family.")
+    print("\"Thank you so much, Sonny.\"")
+    if (!f192) { //0215
+      set(f192)
+      vCurrentScore += 3
+    }
+    goto(l550)
+  }
+  print("\"Cobb residence. If you are looking for Jack, he is probably drinking at the Blue Room%m41")
+}
+l550:
+if (v255 == 70) { //0226
+  if (vCurrentRoom == 67 && v31 == 103) { //022d
+    print("\"Lieutenant Morgan%m81")
+    accept.input()
+    v255++
+    goto(l579)
+  }
+  print("Hmmm. No answer%m41")
+  set(f250)
+}
+l579:
+if (v255 == 80) { //0243
+  print("\"Cops don't call 911!\"")
+  v255 = 0
+  set(f250)
+}
+if (v255 == 90) { //0251
+  if (v96 < 2) { //0258
+    print("Hmmm. No answer%m41")
+    set(f250)
+    goto(l629)
+  }
+  if (v36 < 3) { //0266
+    v36 = 3
+  }
+  print("\"Chicago PD, Detective Taber speaking. How may I help you?\"")
+  accept.input()
+  v255++
+}
+l629:
+if (v255 == 92) { //0275
+  print("\"He is linked to a big time card shark and drug runner named Jessie Bains.\"")
+  print("\"Both have dropped from sight in our area.\"")
+  print("\"I'll send you a mug shot of this guy Bains.\"")
+  print("\"Good Luck!%m41")
+  set(f251)
+  v255 = 99
+}
+if (v255 == 93) { //0289
+  print("\"That weapon was reported stolen by a local nightclub owner.\"")
+  print("\"I guess it's your problem now!\"")
+  print("\"Good Luck!%m41")
+  set(f251)
+}
+if (v255 == 100) { //0298
+  if ((vCurrentRoom != 67 || !f84)) { //029f
+    print("Hmmm. No answer%m41")
+    set(f250)
+    goto(l696)
+  }
+  print("\"Lytton Cab Co. Where's the pickup?\"")
+  accept.input()
+  v255++
+}
+l696:
+if (f253 && !(v253 > 0)) { //02b8
+  reset(f253)
+  stop.sound()
+  v255 = 0
+  set.string(str8,"(209) 683-6858")
+  if (compare.strings(str8,str3)) { //02cb
+    v255 = 1
+  }
+  set.string(str8,"2096836858")
+  if (compare.strings(str8,str3)) { //02d8
+    v255 = 1
+  }
+  set.string(str8,"12096836858")
+  if (compare.strings(str8,str3)) { //02e5
+    v255 = 1
+  }
+  set.string(str8,"1-209 683-6858")
+  if (compare.strings(str8,str3)) { //02f2
+    v255 = 1
+  }
+  set.string(str8,"1 209 683-6858")
+  if (compare.strings(str8,str3)) { //02ff
+    v255 = 1
+  }
+  set.string(str8,"1-(209) 683-6858")
+  if (compare.strings(str8,str3)) { //030c
+    v255 = 1
+  }
+  set.string(str8,"1 (209) 683-6858")
+  if (compare.strings(str8,str3)) { //0319
+    v255 = 1
+  }
+  set.string(str8,"0")
+  if (compare.strings(str8,str3)) { //0326
+    v255 = 10
+  }
+  set.string(str8,"411")
+  if (compare.strings(str8,str3)) { //0333
+    v255 = 20
+  }
+  set.string(str8,"555-1212")
+  if (compare.strings(str8,str3)) { //0340
+    v255 = 20
+  }
+  set.string(str8,"1555-1212")
+  if (compare.strings(str8,str3)) { //034d
+    v255 = 20
+  }
+  set.string(str8,"555-4369")
+  if (compare.strings(str8,str3)) { //035a
+    v255 = 30
+  }
+  set.string(str8,"555-6537")
+  if (compare.strings(str8,str3)) { //0367
+    v255 = 40
+  }
+  set.string(str8,"555-4522")
+  if (compare.strings(str8,str3)) { //0374
+    v255 = 50
+  }
+  set.string(str8,"555-2622")
+  if (compare.strings(str8,str3)) { //0381
+    v255 = 60
+  }
+  set.string(str8,"555-7764")
+  if (compare.strings(str8,str3)) { //038e
+    v255 = 40
+  }
+  set.string(str8,"555-6674")
+  if (compare.strings(str8,str3)) { //039b
+    v255 = 70
+  }
+  set.string(str8,"3125553382")
+  if (compare.strings(str8,str3)) { //03a8
+    v255 = 90
+  }
+  set.string(str8,"312 5553382")
+  if (compare.strings(str8,str3)) { //03b5
+    v255 = 90
+  }
+  set.string(str8,"312 555-3382")
+  if (compare.strings(str8,str3)) { //03c2
+    v255 = 90
+  }
+  set.string(str8,"13125553382")
+  if (compare.strings(str8,str3)) { //03cf
+    v255 = 90
+  }
+  set.string(str8,"1 3125553382")
+  if (compare.strings(str8,str3)) { //03dc
+    v255 = 90
+  }
+  set.string(str8,"1 312 5553382")
+  if (compare.strings(str8,str3)) { //03e9
+    v255 = 90
+  }
+  set.string(str8,"1 312 555-3382")
+  if (compare.strings(str8,str3)) { //03f6
+    v255 = 90
+  }
+  set.string(str8,"1(312)555-3382")
+  if (compare.strings(str8,str3)) { //0403
+    v255 = 90
+  }
+  set.string(str8,"1 (312) 555-3382")
+  if (compare.strings(str8,str3)) { //0410
+    v255 = 90
+  }
+  set.string(str8,"1-312 555-3382")
+  if (compare.strings(str8,str3)) { //041d
+    v255 = 90
+  }
+  set.string(str8,"1-312-555-3382")
+  if (compare.strings(str8,str3)) { //042a
+    v255 = 90
+  }
+  set.string(str8,"555-9222")
+  if (compare.strings(str8,str3)) { //0437
+    v255 = 100
+  }
+  set.string(str8,"911")
+  if (compare.strings(str8,str3)) { //0444
+    v255 = 80
+  }
+  if (!(v255 > 0)) { //044e
+    print("\"The number you have reached is disconnected or no longer in service. Please check the number and dial again.\"")
+    set(f251)
+  }
+}
+if (f112 && f154 && v253 > 0) { //045a
+  v253--
+  sound(16,f154)
+}
+if (f250) { //046a
+  reset(f250)
+  stop.sound()
+  start.motion(o0)
+  reset(f36)
+  accept.input()
+  v255 = 0
+}
+if (f251) { //047b
+  reset(f251)
+  sound(12,f152)
+  reset(f36)
+  accept.input()
+  v255 = 0
+}
+if (f252) { //048c
+  reset(f252)
+  sound(17,f152)
+  print("Hum! Busy%m41")
+  stop.sound()
+  reset(f36)
+  accept.input()
+}
+if (!fEnteredCommand) { //049d
+  goto(l1845)
+}
+if ((said("use", "phone") || said("make", "phone", "call") || said("dial", "phone"))) { //04a7
+  if (!f57) { //04c1
+    set(f113)
+    goto(l1303)
+  }
+  if (v255 > 0) { //04cd
+    print("You haven't finished your last call, yet!")
+    goto(l1303)
+  }
+  set(f36)
+  prevent.input()
+  stop.motion(o0)
+  if (!f56) { //04de
+    clear.lines(23,23,c0)
+  }
+  set.string(str3," ")
+  get.string(str3,"Number to dial: ",23,0,14)
+  if (!f56) { //04f2
+    clear.lines(23,23,c0)
+  }
+  set.string(str8,"")
+  if (compare.strings(str8,str3)) { //0500
+    print("\"Changed your mind, eh?\"")
+    set(f250)
+    goto(l1303)
+  }
+  set(f253)
+  random(1,4,v253)
+  sound(16,f154)
+}
+l1303:
+if ((said("hang", "up", "rol") || said("drop", "phone", "down") || said("drop", "phone", "rol"))) { //0517
+  if (!f57) { //0535
+    set(f115)
+    goto(l1367)
+  }
+  if (v255 > 0) { //0541
+    v255 = 0
+    set(f250)
+    sound(12,f152)
+    print("...\n\nClick!")
+    goto(l1367)
+  }
+  set(f116)
+}
+l1367:
+if (v255 > 0 && (said("bye", "rol") || said("anyword", "bye", "rol"))) { //0557
+  set(f250)
+  sound(12,f152)
+  print("...\n\nClick!")
+}
+if (v255 == 2) { //0575
+  v255++
+  if ((said("bug") || said("anyword", "bug"))) { //057e
+    print("\"You know those crazy programmers; they can't do anything right the first time!!\"")
+    goto(l1454)
+  }
+  if ((said("game") || said("anyword", "game"))) { //0593
+    print("\"King's Quest I, II and III, The Black Cauldron, Leisure Suit Larry in the Land of the Lounge Lizards, and Space Quest I and II.\"")
+    print("\"Police Quest II and others are now in development!\"")
+    goto(l1454)
+  }
+  print("\"Hint books are available for $7.95. Try calling this number to place your order, but next time use a REAL phone, not this game!\"")
+  set(fSaidAccepted)
+}
+l1454:
+if (v255 == 32) { //05ae
+  v255++
+  print("\"I don't know who you're trying to call, Sonny Bonds, but I recognize your voice! This is Helen Hacker, you pervert!\"")
+  print("\"...you're in big trouble!!!\"")
+  print("Oh, my gawd! It's Police Commissioner Hacker's wife!")
+  print("...and you are knee-deep in whale do-do!!")
+  set(f140)
+  set(fSaidAccepted)
+}
+if (v255 == 31) { //05c3
+  v255++
+  print("\"Yes, Helen speaking.\"")
+  set(fSaidAccepted)
+}
+if (v255 == 51) { //05d0
+  if (said("bonds")) { //05d7
+    print("\"Hello, Sonny! What can I do for you?\"")
+    v255++
+  }
+}
+if (v255 == 52) { //05e3
+  if ((said("print") || said("hoffman") || said("taselli") || said("anyword", "print") || said("anyword", "hoffman") || said("anyword", "taselli"))) { //05ea
+    print("\"Yes, the prints on the gun matched that Hoffman/Taselli fellow.\"")
+    if (f125) { //0610
+      set.string(str7,"escaped!")
+      goto(l1567)
+    }
+    set.string(str7,"got released.")
+l1567:
+    print("\"I heard he %s7! Bye now%m41")
+    set(f251)
+    if (!f137) { //0623
+      set(f137)
+      vCurrentScore += 5
+    }
+  }
+}
+if (v255 == 71) { //062f
+  if (said("bonds")) { //0636
+    v255++
+    if (!f58) { //0640
+      set(f58)
+      vCurrentScore += 3
+    }
+    print("\"Hello, Mr. Banksten.\"")
+    if (v31 < 170) { //064e
+      print("\"Why don't you send Sweet Cheeks Marie back to the station by cab?\"")
+    }
+    print("\"Try to get behind the scenes in the Hotel.\"")
+    print("\"Your backup personnel will be arriving later this evening.\"")
+    print("\"Good luck%m41")
+    set(f251)
+    goto(l1638)
+  }
+  print("\"Lieutenant Morgan%m81")
+  set(fSaidAccepted)
+}
+l1638:
+if (v255 == 91) { //0666
+  if ((said("hoffman") || said("anyword", "hoffman") || said("anyword", "anyword", "hoffman") || said("taselli") || said("anyword", "taselli") || said("anyword", "anyword", "taselli"))) { //066d
+    prevent.input()
+    if (!f103) { //0698
+      set(f103)
+      vCurrentScore += 5
+    }
+    print("Detective Taber says, \"Oh, yes, we know your man, Jason Taselli, alias Hoffman, alias Pierson.\"")
+    v255 = 92
+  }
+  if ((said("automatic", "rol") || said("anyword", "automatic", "rol") || said("sw9764912", "rol") || said("anyword", "sw9764912", "rol") || said("anyword", "anyword", "sw9764912", "rol"))) { //06a9
+    prevent.input()
+    print("\"Boy, it's amazing how these guns get around.\"")
+    v255 = 93
+  }
+}
+if (v255 == 101) { //06db
+  if (said("hotel")) { //06e2
+    set(f82)
+    print("\"Ok. We have a car on the way. Thank you%m41")
+    goto(l1779)
+  }
+  print("\"Call back when you find out where you are%m41")
+l1779:
+  set(f251)
+  set(fSaidAccepted)
+}
+if ((said("answer") || said("answer", "on", "phone") || said("answer", "rol"))) { //06f7
+  if (f57) { //070f
+    print("The phone is not ringing.")
+    goto(l1820)
+  }
+  set(f113)
+}
+l1820:
+if (said("examine", "phone", "number")) { //071c
+  if (f57) { //0728
+    print("There is no number on this telephone.")
+    goto(l1845)
+  }
+  set(f113)
+}
+l1845:
+return()

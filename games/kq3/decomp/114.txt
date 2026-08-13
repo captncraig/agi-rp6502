@@ -1,4 +1,123 @@
 v36 = 114
-if (!(isSet(f200)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+if (!f200 && !(obj.in.room(i9,v36))) { //0005
+  return()
+}
+if (fNewRoom) { //0011
+  reset(f190)
+  reset(f191)
+  v184 = 0
+  random(1,4,v36)
+  if (f31) { //0022
+    v36 = 1
+  }
+  if (v36 == 1) { //002b
+    random(3,15,v184)
+    animate.obj(o10)
+    load.view(26)
+    set.view(o10,26)
+    ignore.blocks(o10)
+    ignore.horizon(o10)
+    set.priority(o10,15)
+    position(o10,1,30)
+    animate.obj(o11)
+    load.view(57)
+    set.view(o11,57)
+    ignore.blocks(o11)
+    ignore.horizon(o11)
+    ignore.objs(o11)
+    set.priority(o11,15)
+  }
+  return()
+}
+if (f45 && v184 > 0) { //0059
+  if (v184 == 1) { //0062
+    set(f200)
+    draw(o10)
+    move.obj(o10,140,30,1,f180)
+    random(1,2,v36)
+    if (f31) { //0077
+      v36 = 2
+    }
+    if (v36 == 2) { //0080
+      set(f190)
+    }
+  }
+  v184--
+}
+if (f180) { //008b
+  reset(f200)
+  reset(f180)
+  erase(o10)
+}
+get.posn(o10,v37,v38)
+if (v37 == v57 && f190) { //009b
+  reset(f190)
+  position(o11,37,v38)
+  draw(o11)
+  v36 = 2
+  move.obj(o11,v57,v58,36,f191)
+}
+if (f191) { //00b5
+  release.priority(o11)
+  set.cel(o11,1)
+  stop.cycling(o11)
+}
+if ((said("examine", "bird", "feather") || said("examine", "eagle", "feather") || said("examine", "feather"))) { //00c2
+  if (f191) { //00de
+    print("Ok, it's a feather.")
+    goto(l235)
+  }
+  print("What feather?")
+}
+l235:
+if ((said("capture", "bird", "feather") || said("capture", "eagle", "feather") || said("capture", "feather"))) { //00eb
+  if (f191) { //0107
+    distance(o0,o11,v36)
+    if (v36 > 25) { //0111
+      print("You can't reach it.")
+      goto(l296)
+    }
+    print("Ok.")
+    reset(f191)
+    erase(o11)
+    get(i9)
+    vCurrentScore += 2
+l296:
+    goto(l301)
+  }
+  print("What feather?")
+}
+l301:
+if ((said("examine", "up", "eagle") || said("examine", "up", "bird") || said("examine", "bird") || said("examine", "eagle"))) { //012d
+  if (f200) { //014f
+    print("You see a majestic eagle.")
+    goto(l348)
+  }
+  reset(fSaidAccepted)
+}
+l348:
+if ((said("capture", "bird") || said("capture", "eagle"))) { //015c
+  if (f200) { //016e
+    print("You can't reach it.")
+    goto(l379)
+  }
+  print("I don't see a bird. Do you?")
+}
+l379:
+if ((said("call", "bird") || said("call", "eagle"))) { //017b
+  if (f200) { //018d
+    print("You can't reach it.")
+    goto(l410)
+  }
+  print("I don't see a bird. Do you?")
+}
+l410:
+if ((said("examine", "on", "deck") || said("examine", "deck"))) { //019a
+  if (!f191) { //01ae
+    reset(fSaidAccepted)
+    goto(l444)
+  }
+  print("There is a feather on the ground.")
+}
+l444:
+return()

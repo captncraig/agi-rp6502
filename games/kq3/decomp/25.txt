@@ -1,6 +1,305 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 2
   set(f68)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(70)
+  v57 = 55
+  v58 = 105
+  v32 = 1
+  v31 = 73
+  load.logic(112)
+  load.logic(120)
+  load.view(0)
+  load.view(30)
+  load.view(11)
+  load.view(3)
+  load.view(7)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  load.sound(11)
+  v36 = 25
+  if (v62 == 1) { //0035
+    v36 = 125
+  }
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  v36 = 0
+  call(112)
+  call(120)
+  load.view(229)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,103,145)
+  set.view(o1,229)
+  set.loop(o1,0)
+  set.cel(o1,2)
+  set.priority(o1,13)
+  draw(o1)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,134,145)
+  set.view(o2,229)
+  set.loop(o2,0)
+  set.cel(o2,4)
+  set.priority(o2,13)
+  draw(o2)
+  v36 = 2
+  cycle.time(o1,v36)
+  v36 = 3
+  cycle.time(o2,v36)
+  set(f220)
+  if (v44 == 14) { //0090
+    set.priority(o0,13)
+  }
+  if (f48) { //009a
+    get.posn(o0,v40,v41)
+    if (vPrevRoom == 20) { //00a4
+      reset(f220)
+      v44 = 0
+      position(o0,56,77)
+      ignore.blocks(o0)
+    }
+    if (vPrevRoom == 31) { //00b6
+      reset(f220)
+      v40 = 130
+      position(o0,40,v41)
+    }
+    if (vPrevRoom == 30) { //00c6
+      reset(f220)
+      if (v44 == 11) { //00cf
+        set.view(o0,3)
+        position(o0,140,164)
+      }
+      if (v44 == 224) { //00dd
+        set.view(o0,7)
+        position(o0,61,164)
+      }
+      if (v44 == 0) { //00eb
+        if (v40 > 54) { //00f2
+          v40 = 54
+        }
+        position(o0,40,v41)
+      }
+    }
+    if (vPrevRoom == 24) { //0100
+      if (v44 == 0) { //0107
+        if (v41 > 114) { //010e
+          v41 = 114
+        }
+        if (v41 < 92) { //0118
+          v41 = 92
+        }
+        position(o0,40,v41)
+        set(f220)
+        set.priority(o0,13)
+      }
+    }
+    if (vPrevRoom == 75) { //012b
+      if (v44 == 0) { //0132
+        if (v41 > 114) { //0139
+          v41 = 114
+        }
+        if (v41 < 92) { //0143
+          v41 = 92
+        }
+        position(o0,40,v41)
+        set(f220)
+        set.priority(o0,13)
+      }
+      if (v44 == 11) { //0156
+        reset(f220)
+      }
+    }
+  }
+  if (v44 == 30) { //015f
+    set.view(o0,0)
+    set(f220)
+    set.priority(o0,13)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //0176
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (f33 && v44 == 0) { //0180
+  set.view(o0,0)
+  v44 = 0
+  set(f220)
+  set.priority(o0,13)
+}
+if (v44 == 0 && f220) { //0194
+  if (posn(o0,13,89,36,113)) { //019d
+    ignore.blocks(o0)
+    goto(l430)
+  }
+  observe.blocks(o0)
+}
+l430:
+if (v62 == 1 && !(v53 > 0) && v52 < 30 && v52 > 0) { //01ae
+  v52 = 30
+}
+if (v62 > 1) { //01c2
+  print("With a sinking feeling, you notice that the large ship is no longer tied to the pier. It looks like you missed the boat!")
+  stop.cycling(o0)
+  set(f44)
+}
+if (v44 == 0) { //01cf
+  if (fTriggerLine && !f46) { //01d6
+    set(f46)
+    v44 = 6
+    sound(1,f238)
+    ignore.blocks(o0)
+    set.view(o0,11)
+    start.motion(o0)
+    if (v41 < 100) { //01ee
+      set.priority(o0,4)
+      v36 = 3
+      v38 = 135
+      move.obj(o0,v40,v38,36,f221)
+    }
+    if (v41 > 115) { //0204
+      set.priority(o0,15)
+      v36 = 3
+      v38 = 167
+      move.obj(o0,v40,v38,36,f221)
+    }
+  }
+}
+if (v44 == 6 && f221) { //021a
+  reset(f220)
+  reset(f46)
+  reset(f221)
+  release.priority(o0)
+  release.priority(o0)
+  set(f35)
+  set.view(o0,3)
+  v44 = 11
+  sound(11,f238)
+}
+if (v44 == 0 && posn(o0,8,119,11,156)) { //0238
+  set(f220)
+  ignore.blocks(o0)
+  set.priority(o0,14)
+  set.view(o0,30)
+  set.loop(o0,0)
+  fix.loop(o0)
+  v36 = 2
+  step.size(o0,v36)
+  v44 = 15
+  reset(f35)
+}
+if (v44 == 15) { //025f
+  if (v41 < 119) { //0266
+    release.loop(o0)
+    set.priority(o0,13)
+    v44 = 0
+    set.view(o0,0)
+    set.loop(o0,3)
+    v36 = 1
+    step.size(o0,v36)
+    observe.blocks(o0)
+  }
+  if (v41 > 156) { //0283
+    release.loop(o0)
+    release.priority(o0)
+    v44 = 0
+    set.view(o0,0)
+    v36 = 1
+    step.size(o0,v36)
+    set.loop(o0,3)
+    reset(f220)
+  }
+}
+if (!f220 && !f46) { //029f
+  if (posn(o0,61,0,68,166)) { //02a9
+    reset(f35)
+    set.view(o0,7)
+    ignore.blocks(o0)
+    v44 = 224
+    set.priority(o0,11)
+    set(fEgoOnWater)
+  }
+  if (v40 > 68) { //02c2
+    set(f35)
+    ignore.blocks(o0)
+    set(fEgoOnWater)
+    set.view(o0,3)
+    v44 = 11
+    if (v41 < 140) { //02d5
+      set.priority(o0,10)
+      goto(l740)
+    }
+    release.priority(o0)
+  }
+l740:
+  if (v40 < 61) { //02e4
+    reset(f35)
+    set.view(o0,0)
+    v44 = 0
+    observe.blocks(o0)
+    release.priority(o0)
+    reset(fEgoOnWater)
+  }
+}
+if (v44 == 0 && !f220) { //02f9
+  if (posn(o0,40,86,65,88)) { //0303
+    ignore.blocks(o0)
+    goto(l788)
+  }
+  observe.blocks(o0)
+}
+l788:
+if (fEnteredCommand) { //0314
+  if ((said("examine", "boat") || said("examine", "ship") || said("examine", "bandit", "ship"))) { //031a
+    if (v62 == 1) { //0334
+      print("A large ship is tied to the dock.")
+      goto(l834)
+    }
+    print("What ship?")
+  }
+l834:
+  if ((said("jump", "on", "boat") || said("jump", "on", "ship") || said("board", "boat") || said("board", "ship") || said("jump", "ship"))) { //0342
+    if (v62 == 1) { //036a
+      print("There does not seem to be any way to do that.")
+      goto(l888)
+    }
+    print("What ship?")
+  }
+l888:
+  if (said("examine", "town")) { //0378
+    print("A charming village sits atop a bluff overlooking the ocean.")
+  }
+}
+if (said("examine", "dock")) { //0384
+  print("A weathered dock leads into the ocean.")
+}
+call(112)
+call(120)
+if (vWhichEgoBorder == 3) { //0394
+  new.room(30)
+}
+if (vWhichEgoBorder == 4) { //039d
+  new.room(24)
+}
+if (vWhichEgoBorder == 2) { //03a6
+  new.room(75)
+}
+if (vWhichEgoBorder == 1) { //03af
+  if (v44 == 11) { //03b6
+    v176 = vWhichEgoBorder
+    new.room(31)
+    goto(l967)
+  }
+  new.room(20)
+}
+l967:
+return()

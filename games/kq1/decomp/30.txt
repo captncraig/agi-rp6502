@@ -1,4 +1,80 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(14)
+  set.horizon(50)
+  if (f75) { //0012
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001a
+    add.to.pic(62,0,0,79,68,0,0)
+  }
+  draw(o0)
+  show.pic()
+}
+if ((f127 || f108)) { //002c
+  if (said("acquire", "gold nut")) { //0036
+    print("You already have one walnut, let's not be greedy.")
+  }
+}
+if (posn(o0,9,112,98,167) && (said("check", "grass") || said("look around"))) { //0042
+  print("These are some of the finest walnuts you have ever seen.")
+}
+if (!f127 && !f108) { //005a
+  if (said("check", "gold nut")) { //0064
+    if (posn(o0,9,112,98,167)) { //006e
+      print("These are some of the finest walnuts you have ever seen.")
+      goto(l127)
+    }
+    print("They are very small and hard to see from here.")
+  }
+l127:
+  if (said("acquire", "gold nut")) { //007f
+    if (f129) { //0089
+      print("You look around and decide these plain walnuts won't do. You want a gold walnut!")
+    }
+    if (!f129) { //0091
+      if (posn(o0,9,112,98,167)) { //0098
+        print("You pluck a nice walnut from the tree.")
+        set(f127)
+        set(f129)
+        vCurrentScore += 3
+        get(i23)
+        goto(l178)
+      }
+      print("The walnuts are over by the walnut tree.")
+    }
+  }
+}
+l178:
+if ((said("check", "tree") || said("check", "walnut tree"))) { //00b2
+  if (posn(o0,0,75,159,167)) { //00c4
+    print("The tree is loaded with walnuts.")
+    goto(l213)
+  }
+  print("There is a large walnut tree surrounded by several pine trees.")
+}
+l213:
+if (said("check", "room")) { //00d5
+  print("There is a large walnut tree surrounded by several pine trees.")
+}
+if (said("check", "pine tree")) { //00e1
+  print("If you've seen one pine tree, you've seen them all.")
+}
+if (vWhichEgoBorder == 1) { //00ed
+  new.room(35)
+}
+if (vWhichEgoBorder == 2) { //00f6
+  new.room(31)
+}
+if (vWhichEgoBorder == 4) { //00ff
+  new.room(29)
+}
+if (vWhichEgoBorder == 3) { //0108
+  new.room(19)
+}
+if (f75) { //0111
+  call(103)
+}
+return()

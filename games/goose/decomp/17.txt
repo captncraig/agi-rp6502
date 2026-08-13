@@ -1,4 +1,84 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 16) { //0012
+    position(o0,0,111)
+    if (f35) { //001d
+      position(o13,0,109)
+    }
+  }
+  if (vPrevRoom == 10) { //0027
+    if (v212 > 30 && v212 < 90) { //002e
+      position(o0,59,111)
+      if (f35) { //003c
+        position(o13,70,109)
+      }
+      goto(l87)
+    }
+    position(o0,4,86)
+    if (f35) { //004d
+      position(o13,0,85)
+    }
+  }
+l87:
+  if (vPrevRoom == 24) { //0057
+    if (v212 > 128) { //005e
+      position(o0,99,166)
+      goto(l150)
+    }
+    if (v212 > 100) { //006c
+      position(o0,85,166)
+      goto(l150)
+    }
+    if (v212 > 30) { //007a
+      position(o0,40,166)
+      goto(l150)
+    }
+    position(o0,0,108)
+    if (f35) { //008c
+      position(o13,0,106)
+    }
+  }
+l150:
+  if (vPrevRoom == 25) { //0096
+    position(o0,146,166)
+  }
+  if (vPrevRoom == 18 && v213 < 132) { //00a1
+    position(o0,153,118)
+  }
+  v34 = 60
+  v35 = 144
+  v37 = 3
+  draw(o0)
+  return()
+}
+get.posn(o0,v212,v213)
+if (v213 == 104 && v212 > 52 && v212 < 66) { //00bf
+  new.room(10)
+}
+if (vWhichObjBorder == 1 && f124) { //00ce
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //00da
+  new.room(10)
+}
+if (vWhichObjBorder == 3 && f124) { //00e3
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //00ef
+  if (v212 > 135) { //00f6
+    new.room(25)
+    goto(l260)
+  }
+  new.room(24)
+}
+l260:
+if (vWhichEgoBorder == 2) { //0104
+  new.room(18)
+}
+if (vWhichEgoBorder == 4) { //010d
+  new.room(16)
+}
+return()

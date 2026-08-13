@@ -1,4 +1,369 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(15)
+  load.view(59)
+  load.view(60)
+  load.view(58)
+  load.view(69)
+  load.view(3)
+  load.sound(12)
+  load.sound(14)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,52,137)
+  set.view(o1,58)
+  last.cel(o1,v52)
+  set.cel(o1,v52)
+  set.priority(o1,10)
+  v52 = 3
+  cycle.time(o1,v52)
+  draw(o1)
+  reverse.loop(o1,f207)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,71,123)
+  set.view(o2,60)
+  set.priority(o2,6)
+  if (obj.in.room(i6,vCurrentRoom)) { //0053
+    animate.obj(o3)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    set.view(o3,69)
+    set.priority(o3,12)
+    position(o3,101,116)
+    draw(o3)
+    stop.update(o3)
+  }
+  set(f85)
+  stop.motion(o0)
+  position(o0,56,136)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f208)
+if (posn(o0,50,132,60,140)) { //007c
+  set(f208)
+}
+reset(f209)
+if (posn(o0,89,129,110,160)) { //008a
+  set(f209)
+}
+reset(f200)
+if (posn(o0,65,125,84,131)) { //0098
+  set(f200)
+}
+if (!fEnteredCommand) { //00a4
+  goto(l1287)
+}
+if ((said("examine") || said("examine", "area"))) { //00ae
+  print("You are in Lefty's one and only restroom. The stench is overpowering, there is graffiti on the walls, and you doubt that the sink was clean even when it was installed. Even roaches can't survive in this place!")
+}
+if (said("smell", "rol")) { //00c0
+  print("Lefty must be running low on air freshener.")
+}
+if ((said("catch", "up") || said("board") || said("done", "crap") || said("catch", "newspaper") || said("use", "newspaper") || said("catch", "bathroom", "newspaper") || said("use", "bathroom", "newspaper") || said("dry") || said("dry", "ass") || said("get up", "up") || said("get up"))) { //00cc
+  if (v30 != 9) { //0112
+    print("NOW??")
+    goto(l315)
+  }
+  print("Carefully finishing your duties, you wipe and toss the newspaper behind the toilet for the next user.")
+  set(f59)
+  v30 = 0
+  set.view(o0,0)
+  cycle.time(o0,v84)
+  force.update(o0)
+  start.motion(o0)
+  reset(f85)
+  reset(f34)
+  v202 = 0
+  v205 = 0
+  return()
+}
+l315:
+if (v30 == 9 && !fSaidAccepted) { //013b
+  set(fSaidAccepted)
+  print("NOW??")
+}
+if ((said("catch", "newspaper") || said("examine", "newspaper"))) { //0149
+  print("You only read while \"enthroned.\"")
+}
+if (has(i17) && said("examine", "centerfold", "rol")) { //015d
+  print("No wonder your eyesight is so bad!")
+}
+if (said("dry", "fingers", "on", "bra")) { //016d
+  set(f67)
+}
+if ((said("catch", "crap") || said("rest", "bathroom") || said("rest", "bench") || said("rest", "on", "bathroom") || said("rest", "on", "bench") || said("board", "bathroom") || said("use", "bathroom") || said("rest") || said("crap"))) { //017d
+  if (v30 != 0) { //01b9
+    print("NOW??")
+    goto(l505)
+  }
+  if (!f200) { //01c6
+    set(f54)
+    goto(l505)
+  }
+  v30 = 9
+  set.view(o0,15)
+  reposition.to(o0,72,126)
+  set(f85)
+  set(f34)
+  stop.motion(o0)
+  force.update(o0)
+  print("You grab an ancient copy of the \"Ball Street Journal,\" and settle in to \"sit and think!\"")
+  v202 = 14
+  v205 = 3
+  if (!f116) { //01ec
+    set(f116)
+    vCurrentScore += 1
+  }
+  return()
+}
+l505:
+if ((said("look in", "bathroom") || said("examine", "bathroom"))) { //01f9
+  if (!f200) { //020b
+    set(f54)
+    goto(l537)
+  }
+  print("It's not a pretty sight!")
+}
+l537:
+if ((said("examine", "bathroom", "newspaper") || said("catch", "bathroom", "newspaper") || said("use", "bathroom", "newspaper"))) { //0219
+  if (!f200) { //0237
+    set(f54)
+    goto(l581)
+  }
+  print("The toilet paper is only there for official purposes.")
+}
+l581:
+if ((said("bite", "liquid", "rol") || said("catch", "bite", "rol"))) { //0245
+  print("No one would drink from ANY fixture in here!")
+}
+if ((said("move", "on", "liquid") || said("move", "liquid", "on", "basin") || said("move", "on", "basin") || said("move", "on", "liquid", "basin") || said("brush", "fingers", "rol"))) { //025d
+  if (!f209) { //028f
+    set(f54)
+    goto(l675)
+  }
+  print("Ok.")
+  print("Say, there's no soap.")
+  print("There's no towels.")
+  print("Your hands are still dirty, but now they're wet!")
+}
+l675:
+if (said("brush", "face", "rol")) { //02a3
+  if (!f209) { //02af
+    set(f54)
+    goto(l707)
+  }
+  print("Ok.")
+  print("Say, there's no soap.")
+  print("There's no towels.")
+  print("Your face is still dirty, but at least it's now dripping with water.")
+}
+l707:
+if ((said("leak", "rol") || said("board", "bathroom", "rol") || said("catch", "leak", "rol"))) { //02c3
+  if (v30 != 0) { //02df
+    print("NOW??")
+    goto(l784)
+  }
+  if (!f200) { //02ec
+    set(f54)
+    goto(l784)
+  }
+  set(f67)
+  v30 = 21
+  set.loop(o0,3)
+  reposition.to(o0,74,127)
+  force.update(o0)
+  set(f85)
+  stop.motion(o0)
+  v203 = 5
+  sound(12,f40)
+}
+l784:
+if (said("throw", "up")) { //0310
+  print("Been drinking Lefty's liquor again, eh?")
+}
+if ((said("bang", "anyword", "door") || said("bang", "door", "anyword") || said("bang", "door") || said("bang"))) { //031c
+  if (!f208) { //033c
+    set(f54)
+    goto(l842)
+  }
+  print("Funny. No one knocks back.")
+}
+l842:
+if (said("increase", "door")) { //034a
+  if (!f208) { //0354
+    print("Move closer to the handle.")
+    goto(l873)
+  }
+  stop.motion(o0)
+  set(f85)
+  start.update(o1)
+  end.of.loop(o1,f204)
+}
+l873:
+if (said("examine", "brick")) { //0369
+  v204++
+  if (v204 == 1) { //0375
+    print("%m8Scott me up, Beamie!\"")
+  }
+  if (v204 == 2) { //037e
+    print("%m8Attention arcade game players: please don't eat the urinal cakes!\"")
+  }
+  if (v204 == 3) { //0387
+    print("%m8It takes leather balls to play rugby!\"")
+  }
+  if (v204 > 3) { //0390
+    print("Say, here's an interesting one:\n\n\"The password is: 'Ken sent me.'\"")
+    if (!f57) { //0399
+      set(f57)
+      vCurrentScore += 2
+    }
+  }
+}
+if ((said("look in", "basin") || said("examine", "basin"))) { //03a5
+  if (!f209) { //03b7
+    set(f54)
+    goto(l980)
+  }
+  if (!(obj.in.room(i6,vCurrentRoom))) { //03c3
+    print("A small, neatly lettered sign reminds you:\n\n\"Since we can't clean up after every customer, please rinse out this sink when you are finished.\"")
+    print("Evidently, you are the first customer who can read.")
+    goto(l980)
+  }
+  print("Why, look! Some woman removed her diamond ring to wash her hands, and forgot to take it with her.")
+}
+l980:
+if ((said("brush", "basin") || said("brush", "out", "basin"))) { //03d4
+  print("It's nice of you to try, but this sink is too far gone to save!")
+}
+if ((said("examine", "mirror") || said("look in", "mirror"))) { //03ea
+  if (!f209) { //03fc
+    set(f54)
+    goto(l1034)
+  }
+  print("You see a handsome, dashing, macho, sexy, young man. (Obviously, this mirror has quite a bit of distortion!)")
+}
+l1034:
+if ((said("examine", "back", "mirror") || said("increase", "mirror") || said("move", "mirror") || said("increase", "cabinet"))) { //040a
+  if (!f209) { //042a
+    set(f54)
+    goto(l1080)
+  }
+  print("Nice idea, but the mirror is firmly attached to the wall.")
+}
+l1080:
+if ((said("increase", "bathroom", "rol") || said("look in", "bathroom", "tank"))) { //0438
+  print("Yuck!")
+}
+if ((said("catch", "diamond ring") || said("catch", "diamond ring", "from", "basin") || said("catch", "diamond ring", "basin"))) { //0450
+  if (!f209) { //046e
+    set(f54)
+    goto(l1170)
+  }
+  if (!(obj.in.room(i6,vCurrentRoom))) { //047a
+    set(f55)
+    goto(l1170)
+  }
+  start.update(o3)
+  erase(o3)
+  get(i6)
+  vCurrentScore += 3
+  print("Got it!\n\nYou briefly consider an attempt to find the ring's owner, but return to your normal self and pocket it instead.")
+}
+l1170:
+if ((said("flush", "bathroom") || said("flush"))) { //0492
+  if (!f200) { //04a2
+    set(f54)
+    goto(l1217)
+  }
+  prevent.input()
+  set(f85)
+  stop.motion(o0)
+  set(f202)
+  v200 = 148
+  draw(o2)
+  v201 = 8
+  print("Realizing your mistake, you quickly jiggle the handle, attempting to stem the onrushing tide of water.")
+  print("It doesn't work.")
+}
+l1217:
+if (said("anyword", "bathroom", "rol")) { //04c1
+  print("My, my. Aren't we the little sick-o!")
+}
+if ((said("dry", "rol") || said("aim", "rol") || said("dry", "face", "rol") || said("dry", "fingers", "rol") || said("dry", "about", "face", "rol") || said("dry", "about", "fingers", "rol"))) { //04cf
+  print("Ok. You're dry (but your keyboard is still damp)!")
+}
+l1287:
+if (f44) { //0507
+  v202--
+  if (v202 == 6) { //050f
+    print("You feel a great relief!")
+  }
+  if (v202 == 1) { //0518
+    sound(14,f40)
+    print("What's that aroma?")
+  }
+  v203--
+  if (v203 == 1) { //0526
+    print("Ahhhhhhh.")
+    v30 = 0
+    start.motion(o0)
+    reset(f85)
+  }
+}
+v205--
+if (v205 == 1) { //0538
+  toggle(f210)
+  if (f210) { //0541
+    set.loop(o0,1)
+    cycle.time(o0,v84)
+    random(7,12,v205)
+    goto(l1374)
+  }
+  set.loop(o0,0)
+  cycle.time(o0,v88)
+  random(19,33,v205)
+}
+l1374:
+if (f207) { //055e
+  reset(f207)
+  stop.update(o1)
+  reset(f85)
+  start.motion(o0)
+}
+v201--
+if (v201 == 1) { //056e
+  if (f202 && v200 == 100) { //0575
+    print("Your life passes before your eyes.")
+    print("You doze briefly.")
+    set.view(o0,3)
+    set(f34)
+  }
+  if (f202 && v200 == 40) { //0587
+    print("Bad idea, eh Larry?")
+    set(f50)
+  }
+  if (f202 && v200 > 36) { //0594
+    v53 = 59
+    v54 = 0
+    v55 = 0
+    v32 = 47
+    v57 = 15
+    add.to.pic(v53,v54,v55,v32,v200,v57,v87)
+    v200 -= 4
+    v201 = 8
+  }
+}
+if (f204) { //05ba
+  reset(f85)
+  v76 = 14
+}
+return()

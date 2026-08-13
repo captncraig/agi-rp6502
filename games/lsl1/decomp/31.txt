@@ -1,4 +1,160 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(91)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(141)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,141)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  set.priority(o1,12)
+  position(o1,39,121)
+  draw(o1)
+  stop.update(o1)
+  v200 = 21
+  animate.obj(o2)
+  set.view(o2,141)
+  set.loop(o2,3)
+  set.cel(o2,0)
+  position(o2,113,128)
+  draw(o2)
+  stop.update(o2)
+  v201 = 0
+  load.view(139)
+  add.to.pic(139,0,0,92,116,11,4)
+  add.to.pic(139,0,0,111,140,13,4)
+  discard.view(139)
+  add.to.pic(141,2,0,101,128,11,0)
+  add.to.pic(141,2,1,138,153,13,0)
+  add.to.pic(141,2,2,125,153,13,0)
+  add.to.pic(141,2,3,107,104,11,4)
+  add.to.pic(141,2,4,123,126,13,4)
+  add.to.pic(141,2,5,114,105,11,4)
+  add.to.pic(141,1,0,35,127,13,4)
+  if (vPrevRoom == 35) { //0091
+    v38 = 75
+    v39 = 93
+    goto(l188)
+  }
+  if ((vPrevRoom == 37 || vPrevRoom == 38)) { //00a1
+    v38 = v34
+    v39 = v35
+    goto(l188)
+  }
+  v38 = 77
+  v39 = 167
+l188:
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f202)
+if ((posn(o0,106,137,140,143) || posn(o0,108,153,120,157) || posn(o0,89,128,98,133) || posn(o0,88,116,98,119))) { //00c6
+  set(f202)
+  set(f69)
+}
+reset(f201)
+if (posn(o0,18,133,47,154)) { //00ea
+  set(f201)
+  set(f69)
+}
+reset(f200)
+if (posn(o0,31,121,60,136)) { //00fa
+  set(f200)
+  set(f69)
+}
+if (!fEnteredCommand) { //0108
+  goto(l631)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "casino") || said("examine", "hall"))) { //0112
+  print("You are in the casino. There are slot machines to the right, and blackjack tables to the left. This place is a gambler's paradise!")
+}
+if ((said("ask", "bouncer") || said("ask", "blond") || said("ask", "customers"))) { //0130
+  if (f201) { //0148
+    print("Casino dealers are notoriously silent.")
+    goto(l341)
+  }
+  print("Don't interrupt them; they're trying to win.")
+}
+l341:
+if ((said("examine", "bouncer") || said("examine", "blond") || said("examine", "customers"))) { //0155
+  print("They appear to be having a great time. Perhaps you'd like to join them?")
+}
+if ((said("ask", "black jack", "bouncer") || said("ask", "black jack", "blond") || said("ask", "black jack", "customers") || said("examine", "black jack", "desk") || said("examine", "black jack", "bouncer") || said("examine", "black jack", "blond") || said("examine", "black jack", "customers"))) { //016f
+  print("You could, if you'd sit down first.")
+}
+if ((said("examine", "desk") || said("examine", "black jack") || said("examine", "black jack", "desk"))) { //01af
+  if (f200) { //01c9
+    print("The rear blackjack table is rather busy now. Try the front table.")
+    goto(l470)
+  }
+  print("The front blackjack table is presently unoccupied.")
+}
+l470:
+if (said("examine", "slot")) { //01d6
+  print("At least one person appears to be winning at the slot machines. Perhaps you could too.")
+}
+if ((said("bet", "bucks") || said("play") || said("bet", "rol"))) { //01e2
+  print("Move to a slot machine and put in some money. Or, find an empty blackjack table and sit down.")
+}
+if ((said("play", "black jack") || said("rest") || said("rest", "bench") || said("rest", "down"))) { //01fa
+  if (f200) { //0216
+    print("The rear blackjack table is rather busy now. Try the front table.")
+    goto(l568)
+  }
+  if (!f201) { //0221
+    set(f54)
+    goto(l568)
+  }
+  set(f67)
+  v34 = v38
+  v35 = v39
+  v76 = 38
+}
+l568:
+if ((said("use", "slot") || said("move", "handle") || said("add", "bucks", "slot") || said("add", "bucks", "machine") || said("play", "slot"))) { //0238
+  if (!f202) { //0260
+    set(f54)
+    goto(l631)
+  }
+  set(f67)
+  v34 = v38
+  v35 = v39
+  v76 = 37
+}
+l631:
+v201--
+if (v201 == 1) { //0279
+  set.cel(o2,0)
+  stop.update(o2)
+  force.update(o2)
+  random(33,77,v200)
+}
+if (v201 == 21) { //028b
+  start.update(o2)
+}
+v200--
+if (v200 == 1) { //0296
+  toggle(f203)
+  if (!f203) { //029f
+    set.cel(o1,0)
+    stop.update(o1)
+    force.update(o1)
+    random(55,222,v201)
+    goto(l698)
+  }
+  start.update(o1)
+  random(11,33,v200)
+}
+l698:
+if (vWhichEgoBorder == 3) { //02ba
+  v76 = 32
+}
+if (vWhichEgoBorder == 1) { //02c4
+  v76 = 35
+}
+return()

@@ -1,3 +1,130 @@
-if (isSet(f5)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (fNewRoom && f131 && vMonitorType != HERCULES) { //0002
+  set.text.attribute(6,0)
+  display(24,26,"Room %v0|3")
+  set.text.attribute(15,0)
+}
+if (controller(c36)) { //0018
+  get.num(str4,v45)
+  if (v45 > 15) { //0021
+    v45 = 15
+  }
+  obj.status.v(v45)
+}
+if (controller(c29)) { //002d
+  set.text.attribute(0,15)
+  text.screen()
+  v62 = 1
+  v63 = 4
+  v73 = 16
+  v45 = 1
+l67:
+  display(v63,v62,v73)
+  v45++
+  v63++
+  if (v45 == 13) { //004b
+    v62 = 19
+    v63 = 4
+  }
+  if (!(v45 > 25)) { //0058
+    goto(l67)
+  }
+l99:
+  if (!(have.key())) { //0063
+    goto(l99)
+  }
+  set.text.attribute(15,0)
+  graphics()
+}
+if (said("object", "room")) { //0070
+  get.num(str4,v46)
+  get.room(v46,v45)
+  print("Object %v46 is in room %v45.")
+}
+if (controller(c13)) { //0082
+  show.mem()
+}
+if ((controller(c19) || said("show", "priority"))) { //0089
+  show.pri.screen()
+}
+if (said("set", "priority")) { //0098
+  get.num(str12,v46)
+  set.priority(o0,v46)
+}
+if (said("release", "priority")) { //00a8
+  release.priority(o0)
+}
+if (said("position")) { //00b4
+  get.num(str2,v45)
+  get.num(str3,v46)
+  erase(o0)
+  position(o0,45,v46)
+  draw(o0)
+}
+if ((said("show", "position") || said("sp") || said("room") || controller(c28) || said("xy"))) { //00ca
+  toggle(f131)
+  if (vMonitorType != HERCULES) { //00e6
+    clear.lines(24,24,c0)
+  }
+}
+if (controller(c21)) { //00f2
+  v45 = 0
+  obj.status.v(v45)
+}
+if (said("show", "object")) { //00fd
+  get.num(str4,v45)
+  obj.status.v(v45)
+}
+if (said("get", "object")) { //010c
+  get.num(str4,v45)
+  get(v45)
+}
+if (said("show", "flag")) { //011b
+  get.num(str5,v45)
+  if (v45) { //0128
+    print("Flag %v45 set")
+    goto(l309)
+  }
+  print("Flag %v45 not set")
+}
+l309:
+if (said("set", "flag")) { //0135
+  get.num(str5,v45)
+  set(v45)
+}
+if (said("reset", "flag")) { //0144
+  get.num(str5,v45)
+  reset(v45)
+}
+if (said("show", "var")) { //0153
+  get.num(str8,v45)
+  rindirect(v46,v45)
+  print("Variable %v45 = %v46")
+}
+if (said("set", "var")) { //0165
+  get.num(str8,v45)
+  get.num(str6,v46)
+  lindirectv(v45,v46)
+}
+if (f131 && vMonitorType != HERCULES) { //0178
+  v45 = v38
+  v46 = v39
+  set.text.attribute(6,0)
+  display(24,16,"%v45|3/%v46|3")
+  set.text.attribute(15,0)
+}
+if ((said("gimme", "gimme") || controller(c30))) { //0192
+  display(0,0,"You gottum, Taran.")
+  v45 = 0
+  v46 = 255
+l426:
+  v45++
+  if (!(v45 > 25)) { //01ac
+    put(v45,v46)
+    goto(l426)
+  }
+}
+if (said("tp")) { //01ba
+  get.num(str1,v45)
+  new.room(v45)
+}
+return()

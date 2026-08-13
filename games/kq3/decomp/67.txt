@@ -1,5 +1,91 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 5
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(55)
+  v57 = 30
+  v58 = 90
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //0020
+    if (vPrevRoom == 64) { //0026
+      position(o0,123,102)
+    }
+  }
+  if (f47) { //0031
+    draw(o0)
+  }
+  if (f182) { //0039
+    position(o0,0,105)
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (f230 && v230 == 0) { //0049
+  v230++
+  program.control()
+  move.obj(o0,160,105,1,f230)
+}
+if (!f59) { //005b
+  set(f59)
+  print("It feels strangely hot up here.")
+}
+if (f182) { //0066
+  call(119)
+}
+if (v71 == 1) { //006e
+  v71 = 0
+  drop(i54)
+  print("As you unroll the delicate map, it crumbles in the intense heat!")
+}
+if (v44 == 0 && (v41 > 162 || vWhichEgoBorder == 2 || vWhichEgoBorder == 1)) { //007c
+  print("This mystical cloud land may never cease to amaze you, but...")
+  sound(1,f238)
+  erase(o0)
+  v220 = 2
+  set.scan.start()
+  if (f45) { //0099
+    v220--
+  }
+  if (!(v220 > 0)) { //00a1
+    print("...it has ceased to support you!  Enjoy the trip.")
+    reset.scan.start()
+    set(f44)
+  }
+  return()
+}
+if ((said("examine") || said("examine", "cloud"))) { //00af
+  print("Looking around, you see clouds surrounding this small bit of land like a white, cottony sea. Charred stumps of trees spoil the scene.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("examine", "flower") || said("capture", "flower") || said("climb", "forest"))) { //00c1
+  print("All of the trees and plants in this area have been burnt to stumps by the evil three-headed dragon!")
+}
+if (said("examine", "deck")) { //00e7
+  print("The ground is moist from the constant presence of clouds, but yet the trees are burnt and blackened.")
+}
+if (said("examine", "sky")) { //00f3
+  print("The sky is blue and cloudless above this strange cloud land.")
+}
+if (said("examine", "deck")) { //00ff
+  print("This is a very strange cloud land. There is just a bit of land dotted with charred trees encircled by a sea of white, fluffy clouds. This gives you the odd feeling of floating upon a cottony ocean. A cave entrance leads into a steep mountainside.")
+}
+if (said("examine", "bluff")) { //010b
+  print("The mountain rises steeply from this bizarre cloud land.  A cave goes into its depths.")
+}
+if (said("climb", "bluff")) { //0117
+  print("The mountain is unclimbable as it is much too steep and rocky.")
+}
+if ((said("examine", "cave") || said("look in", "cave"))) { //0123
+  print("The cave leads deep into the steep mountainside. Within, crumbly stone steps lead downward to murky depths.")
+}
+if (fTriggerLine) { //0137
+  new.room(64)
+}
+if (vWhichEgoBorder == 4) { //013f
+  new.room(66)
+}
+return()

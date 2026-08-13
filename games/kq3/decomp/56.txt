@@ -1,4 +1,156 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f61)
+  v57 = 44
+  v58 = 154
+  set.horizon(114)
+  load.logic(103)
+  v34 = 166
+  if (vPrevRoom == 55) { //0021
+    load.logic(117)
+    v191 = 1
+    reset(f172)
+    goto(l53)
+  }
+  v191 = 0
+l53:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //003b
+    if (vPrevRoom == 57) { //0041
+      position(o0,40,167)
+      if (v44 == 15) { //004c
+        v44 = 0
+        set.view(o0,0)
+      }
+      goto(l103)
+    }
+    if (vPrevRoom == 55) { //005c
+      position(o0,0,139)
+    }
+  }
+l103:
+  observe.blocks(o0)
+  if (f47) { //0069
+    draw(o0)
+  }
+  call(103)
+  if (v191 == 1) { //0073
+    call(117)
+    set.priority(o15,10)
+    set.loop(o15,0)
+    position(o15,0,135)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0088
+  goto(l326)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine", "up") || said("examine") || said("examine", "area") || said("examine", "down"))) { //0092
+  print("You have made the very top of the snowy mountain range. The snow path ends here at a cliff. Far in the distance, you can see a vast green valley. \"Could it be Daventry?\" you wonder. Your excitement mounts.")
+}
+if (said("examine", "path")) { //00be
+  print("The snow path leads to the edge of a very steep precipice. You look about, but see that there is no place to go but straight down.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00ca
+  print("Plants and trees are scarce in the snowy reaches of these mountains.")
+}
+if (said("examine", "deck")) { //00f0
+  print("The ground is completely covered with cold, white snow.")
+}
+if (said("examine", "sky")) { //00fc
+  print("The deep-blue sky contrasts sharply with the brilliant white mountain peaks. You must admit, even while shivering, it is a beautiful sight.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //0108
+  print("There are no trees here.")
+}
+if (said("examine", "snow")) { //011e
+  print("White snow blankets everything here in the upper reaches of the great mountains. It's beautiful, but it is VERY cold.")
+}
+if (said("play", "snow")) { //012a
+  print("Wheee!")
+}
+if (said("examine", "canyon")) { //0136
+  print("That must be Daventry!")
+  print("\"But why is Half Dome here?\" you wonder.")
+  print("\"But, of course,\" you think, \"it's a Sierra game!\"")
+}
+l326:
+if (f33) { //0146
+  if (v44 == 0) { //014c
+    reset(f220)
+  }
+}
+v39 = 0
+if (fTriggerLine) { //0158
+  if (v40 < 114) { //015e
+    v39 = 1
+    v40 = 114
+    reposition.to(o0,v40,v41)
+    goto(l439)
+  }
+  if (v41 < 128) { //0172
+    v39 = 2
+    set.priority(o0,4)
+    goto(l439)
+  }
+  if (posn(o0,105,130,169,160)) { //0182
+    v39 = 3
+    set.priority(o0,11)
+    goto(l439)
+  }
+  set.priority(o0,14)
+  v39 = 4
+  if (v40 > 140 && (vEgoDir == 3 || vEgoDir == 2 || vEgoDir == 4)) { //019b
+    v39 = 5
+    v40 += 4
+    reposition.to(o0,v40,v41)
+  }
+}
+l439:
+if (v40 > 30 && !f172 && v191 == 1) { //01b7
+  v191++
+}
+if (f172) { //01c6
+  if (v191 < 6) { //01cc
+    get.posn(o15,v37,v38)
+    if (v38 > 111) { //01d7
+      release.priority(o15)
+      goto(l486)
+    }
+    set.priority(o15,10)
+  }
+l486:
+  if (v191 == 3) { //01e6
+    v191++
+    follow.ego(o15,11,f173)
+    observe.blocks(o15)
+    v170 = 1
+    v171 = 135
+  }
+}
+call(103)
+if (v191 > 0) { //01fd
+  call(117)
+}
+if (vWhichEgoBorder == 3 && (v44 == 26 || v44 == 25)) { //0206
+  vWhichEgoBorder = 0
+  v71 = 5
+}
+if (vWhichEgoBorder == 4) { //021b
+  new.room(55)
+}
+if (vWhichEgoBorder == 3) { //0224
+  if (!f62) { //022b
+    print("Bravely, you grasp the ice laden rocks, and attempt to scale the nearly vertical wall. Be careful, Gwydion!")
+  }
+  set.view(o0,0)
+  vEgoView = 0
+  new.room(57)
+}
+return()

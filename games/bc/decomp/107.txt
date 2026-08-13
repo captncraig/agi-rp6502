@@ -1,3 +1,98 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x6c)}
+set.cursor.char("_")
+set.string(str0,"]")
+set.game.id("BC")
+trace.info(96,1,6)
+set.text.attribute(15,0)
+vMaxScore = 230
+configure.screen(1,23,0)
+set(f14)
+disable.member(c37)
+set(f9)
+prevent.input()
+vCycleTime = 2
+v81 = 1
+v82 = 1
+v83 = 1
+v38 = 77
+v39 = 160
+position(o0,38,v39)
+if ((vComputerType == IBM_PC || vComputerType == 1 || vComputerType == 2 || vComputerType == 3)) { //0034
+  set(f158)
+  set(f8)
+  vJoystickSensitivity = 5
+  goto(l82)
+}
+set(f142)
+l82:
+v90 = 240
+v92 = 140
+v105 = 1
+v106 = 2
+v107 = 3
+v108 = 4
+v109 = 5
+if (fRestartGame) { //0067
+  reset(f140)
+  status.line.on()
+  goto(l118)
+}
+reset(f14)
+status.line.off()
+l118:
+if (fRestartGame) { //0076
+  return()
+}
+set.key(0,59,2)
+set.key(0,60,16)
+set.key(0,61,11)
+set.key(0,62,26)
+set.key(0,63,3)
+set.key(0,64,6)
+set.key(0,65,5)
+set.key(0,66,8)
+set.key(0,67,7)
+set.key(0,68,4)
+if (vComputerType == 2) { //00a5
+  set.key(43,0,38)
+  set.key(61,0,38)
+  set.key(45,0,39)
+}
+set.key(9,0,10)
+if (vComputerType == AMIGA) { //00bc
+  set.key(27,0,18)
+  goto(l206)
+}
+set.key(27,0,23)
+l206:
+set.key(3,0,17)
+set.key(5,0,9)
+set.key(10,0,15)
+set.key(18,0,12)
+set.key(19,0,16)
+set.key(24,0,17)
+set.key(0,32,14)
+set.key(0,18,21)
+set.key(0,23,36)
+set.key(0,50,13)
+set.key(0,25,19)
+set.key(0,47,20)
+set.key(0,44,1)
+if (vComputerType == 1) { //0102
+  set.key(49,0,2)
+  set.key(50,0,16)
+  set.key(51,0,11)
+  set.key(52,0,26)
+  set.key(53,0,3)
+  set.key(54,0,6)
+  set.key(54,0,5)
+  set.key(56,0,8)
+  set.key(57,0,7)
+  set.key(48,0,4)
+}
+set.key(1,1,23)
+if (f158) { //0135
+  set.key(1,2,6)
+  set.key(1,3,8)
+  set.key(1,4,26)
+}
+return()

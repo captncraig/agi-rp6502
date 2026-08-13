@@ -1,4 +1,274 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+if (fNewRoom) { //0002
+  prevent.input()
+  load.pic(vCurrentRoom)
+  load.view(81)
+  load.sound(10)
+  load.sound(23)
+  v152 = 81
+l20:
+  load.logic(v152)
+  if (v152 < 91) { //0016
+    v152++
+    goto(l20)
+  }
+  draw.pic(vCurrentRoom)
+  clear.lines(0,1,c0)
+  if (!f56) { //0028
+    clear.lines(23,23,c0)
+  }
+  show.pic()
+  reset(f14)
+  status.line.off()
+  v239 = 8
+}
+if ((fNewRoom || f30 || f31 || f32 || f33 || said("ante") || said("ante", "up") || said("ante"))) { //003a
+  reset(f30)
+  reset(f31)
+  reset(f32)
+  reset(f33)
+  if (v239 != 8) { //0060
+    print("\"What's your hurry,\nWhitey?\"")
+    goto(l383)
+  }
+  set(f108)
+  set(f7)
+  if (!fNewRoom) { //0071
+    draw.pic(vCurrentRoom)
+    clear.lines(0,1,c0)
+    if (!f56) { //007e
+      clear.lines(23,23,c0)
+    }
+    show.pic()
+  }
+  v172++
+  display(4,32,"Gene")
+  display(8,32,"Otto")
+  display(12,32,"Frank")
+  display(16,32,"Whitey")
+  v152 = 239
+l159:
+  if (v152 != 203) { //009f
+    lindirectn(v152,0)
+  }
+  if (v152 > 175) { //00aa
+    v152--
+    goto(l159)
+  }
+  v152 = 255
+l185:
+  lindirectn(v152,0)
+  reset(v152)
+  if (v152 > 240) { //00be
+    v152--
+    goto(l185)
+  }
+  v228 = 0
+  v229 = 0
+  v230 = 0
+  v231 = 0
+  v252 = 0
+  v234 = 1
+  v233 = 0
+  v170 -= 1
+  display(1,0,"You have $%v170%v171.     Pot is %v234 chips.  ")
+  v203++
+  if (v203 > 3) { //00e8
+    v203 = 0
+  }
+  v191 = 208
+l245:
+  random(1,52,v152)
+  if (v191 != 208) { //00f9
+    v64 = 161
+    call(81)
+    if (f240) { //0106
+      goto(l245)
+    }
+  }
+  lindirectv(v191,v152)
+  if (v191 != 227) { //0112
+    v191++
+    goto(l245)
+  }
+  if (v203 == 1) { //011f
+    display(5,32,"Shuffles")
+  }
+  if (v203 == 2) { //012a
+    display(9,32,"Shuffles")
+  }
+  if (v203 == 3) { //0135
+    display(13,32,"Shuffles")
+  }
+  if (v203 == 0) { //0140
+    display(17,32,"Shuffles")
+  }
+  v64 = 176
+  call(81)
+  if (v203 == 1) { //0150
+    display(5,32,"Deals   ")
+  }
+  if (v203 == 2) { //015b
+    display(9,32,"Deals   ")
+  }
+  if (v203 == 3) { //0166
+    display(13,32,"Deals   ")
+  }
+  if (v203 == 0) { //0171
+    display(17,32,"Deals   ")
+  }
+  v239 = 1
+}
+l383:
+if (v239 == 1) { //017f
+  prevent.input()
+  clear.lines(0,0,c0)
+  display(0,0,"All antes are in.")
+  v234 = 4
+  display(1,0,"You have $%v170%v171.     Pot is %v234 chips.  ")
+  v64 = 176
+  call(81)
+  set(f244)
+  call(83)
+  set(f249)
+  call(86)
+  if (v203 == 1) { //01a3
+    display(5,32,"        ")
+  }
+  if (v203 == 2) { //01ae
+    display(9,32,"        ")
+  }
+  if (v203 == 3) { //01b9
+    display(13,32,"        ")
+  }
+  if (v203 == 0) { //01c4
+    display(17,32,"        ")
+  }
+  v64 = 176
+  call(81)
+  v235 = v203
+  v202 = 0
+  v239 = 2
+}
+if (v239 == 2) { //01dd
+  v155 = 228
+  v155 += v235
+  rindirect(v232,v155)
+  call(88)
+  if (f248) { //01ef
+    v235 = v203
+    v239 = 3
+    goto(l515)
+  }
+  v64 = 176
+  call(81)
+l515:
+  goto(l753)
+}
+if (v239 == 3) { //0206
+  if (v233 == 3) { //020d
+    v64 = 176
+    call(81)
+    v239 = 6
+    goto(l753)
+  }
+  v155 = 228
+  v155 += v235
+  rindirect(v232,v155)
+  if (v232 != 255) { //0228
+    call(89)
+    v64 = 176
+    call(81)
+  }
+  v235++
+  if (v235 == 4) { //0239
+    v235 = 0
+  }
+  if (v235 == v203) { //0243
+    call(87)
+    v64 = 176
+    call(81)
+    v239 = 4
+    goto(l753)
+  }
+}
+if (v239 == 4) { //0257
+  call(83)
+  set(f249)
+  call(86)
+  set(f246)
+  reset(f248)
+  v235 = v203
+  v202 = 0
+  v64 = 176
+  call(81)
+  v239 = 5
+}
+if (v239 == 5) { //0276
+  v155 = 228
+  v155 += v235
+  rindirect(v232,v155)
+  call(88)
+  if (f248) { //0288
+    v235 = v203
+    v239 = 6
+    goto(l668)
+  }
+  v64 = 176
+  call(81)
+l668:
+  goto(l753)
+}
+if (v239 == 6) { //029f
+  reset(f244)
+  call(83)
+  reset(f249)
+  call(86)
+  v64 = 173
+  call(81)
+  v239 = 7
+}
+if (v239 == 7) { //02b6
+  v239 = 8
+  reset(f108)
+  reset(f7)
+  if (v170 < v111) { //02c4
+    v31 += 5
+    v239 = 255
+    goto(l753)
+  }
+  if (v170 > v112) { //02d4
+    v31 += 10
+    v239 = 255
+    goto(l753)
+  }
+  if (v172 > 30) { //02e4
+    v31 += 10
+    v239 = 255
+  }
+}
+l753:
+if ((controller(c1) || v239 == 255 || said("quit") || said("examine", "accident") || said("dont move", "play", "card") || said("dont move", "play", "card") || said("dont move", "play") || said("drop", "out"))) { //02f1
+  new.room(vPrevRoom)
+}
+if (f34) { //0324
+  reset(f34)
+  clear.lines(0,1,c0)
+  display(1,0,"You have $%v170%v171.     Pot is %v234 chips.  ")
+  display(4,32,"Gene")
+  display(8,32,"Otto")
+  display(12,32,"Frank")
+  display(16,32,"Whitey")
+  display(5,32,"        ")
+  display(9,32,"        ")
+  display(13,32,"        ")
+  display(17,32,"        ")
+  display(5,0,"        ")
+  display(9,0,"        ")
+  display(13,0,"        ")
+  display(17,0,"        ")
+  display(4,0,"        ")
+  display(8,0,"        ")
+  display(12,0,"        ")
+  display(16,0,"        ")
+}
+return()

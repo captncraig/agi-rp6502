@@ -1,4 +1,39 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v31 = 0
+  v57 = 66
+  v58 = 158
+  set(f48)
+  position(o0,68,145)
+  set(f35)
+  if (f47) { //0026
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (!f221) { //0030
+  set(f221)
+  print("You have flown through the hole at the base of the tree and are now inside the hollow trunk. You see a rope leading up into a small hole above you.  This area is cramped and confining, even for a fly.")
+}
+if (v71 == 5) { //003b
+  print("You hope you'll be able to fit inside the tree in your normal form.")
+  shake.screen(4)
+  print("Obviously, your hopes were ill-founded. Too late, you realize you are inside a tree, and... the results are too gruesome to discuss.")
+  v71 = 0
+  erase(o0)
+  set(f44)
+  return()
+}
+if (vEgoDir == 5) { //0050
+  new.room(22)
+  goto(l95)
+}
+vEgoDir = 0
+l95:
+return()

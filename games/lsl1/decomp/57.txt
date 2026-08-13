@@ -1,4 +1,373 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(85)
+  load.view(22)
+  load.view(75)
+  load.view(76)
+  load.view(79)
+  load.view(80)
+  load.sound(10)
+  load.sound(11)
+  load.sound(22)
+  animate.obj(o15)
+  ignore.objs(o15)
+  set.view(o15,85)
+  set.loop(o15,0)
+  fix.loop(o15)
+  set.priority(o15,15)
+  animate.obj(o14)
+  set.view(o14,75)
+  position(o14,0,166)
+  animate.obj(o13)
+  set.view(o13,80)
+  set.cel(o13,0)
+  stop.cycling(o13)
+  if (vCurrentRoom == 11) { //003c
+    v235 = 166
+    goto(l76)
+  }
+  v235 = 160
+l76:
+  if (vPrevRoom != 10) { //004c
+    v64 = 0
+    goto(l145)
+  }
+  v234 = 60
+  position(o13,234,v235)
+  draw(o13)
+  v38 = v234
+  v38 += 4
+  v39 = v235
+  v39 -= 4
+  reposition.to(o0,v38,v39)
+  force.update(o0)
+  v233 = 2
+  if (v30 == 20) { //0078
+    load.view(12)
+    prevent.input()
+    stop.motion(o0)
+    set(f85)
+    v64 = 200
+    goto(l145)
+  }
+  start.motion(o0)
+  v64 = 101
+l145:
+  return()
+}
+reset(f61)
+if (v64 == 4) { //0094
+  if (vCurrentRoom == 11) { //009b
+    if (posn(o0,70,155,90,167)) { //00a2
+      set(f61)
+    }
+    goto(l189)
+  }
+  if (posn(o0,70,140,90,166)) { //00b1
+    set(f61)
+  }
+}
+l189:
+if (!fEnteredCommand) { //00bd
+  goto(l687)
+}
+if (said("examine", "street")) { //00c7
+  print("Isn't it funny how there's so little traffic?")
+}
+if ((said("examine", "sky") || said("examine", "up"))) { //00d3
+  print("The glow of the city lights obliterate the stars.")
+}
+if (said("climb", "anyword")) { //00e7
+  print("You shinny up the pole, read the sign, and come right back down.")
+}
+if (said("examine", "dog")) { //00f3
+  if (!f236) { //00fd
+    print("Where?")
+    goto(l292)
+  }
+  if (v231 == 1) { //0109
+    print("Look out! Here he comes again!")
+  }
+  if (v231 == 2) { //0112
+    print("Obviously, he thinks you're a fire plug.")
+  }
+  if (v231 == 3) { //011b
+    print("Dogs like that make you want to keep moving.")
+  }
+}
+l292:
+if (f236) { //0124
+  if ((said("copulate", "dog", "rol") || said("anyword", "copulate", "rol") || said("leak", "on", "dog", "rol") || said("anyword", "leak", "on", "dog", "rol") || said("ass", "copulate", "dog", "rol"))) { //012a
+    print("Sick-o!")
+  }
+  if ((said("beat", "dog", "rol") || said("beat", "dog", "rol") || said("fight", "dog", "rol"))) { //0162
+    print("After all he's done for you?")
+  }
+  if (said("smell", "dog", "rol")) { //0182
+    print("He presently smells quite bad, although still better than you.")
+  }
+  if (said("caress", "dog")) { //0190
+    print("As you bend over to do so, his bare teeth convince you otherwise.")
+  }
+  if (said("catch", "dog")) { //019c
+    print("Who'd want him?")
+  }
+}
+if (said("examine", "light pole")) { //01a8
+  print("There is a sign on the pole.")
+}
+if ((said("examine", "brick", "light pole") || said("examine", "brick", "on", "light pole") || said("examine", "brick"))) { //01b4
+  print("\"TAXI\nSTAND\"")
+}
+if (said("examine", "street")) { //01d4
+  print("Thousands of cars stream past, just below the edge of your screen.")
+}
+if ((said("catch", "cab") || said("cab") || said("ask", "cab") || said("holler", "cab"))) { //01e0
+  if (!(v39 < v235)) { //01fc
+    print("You'd better get out of the street first.")
+    goto(l539)
+  }
+  print("\"YO!!\n\nTAXI!!!\"")
+  if (!(v64 > 0)) { //020b
+    stop.motion(o0)
+    set(f85)
+    random(3,7,v233)
+  }
+}
+l539:
+if (v64 == 4) { //021b
+  if ((said("examine", "cab") || said("look in", "cab"))) { //0222
+    print("It's not very clean.")
+    print("It's not very new.")
+    print("(And those are its good points!)")
+  }
+  if (said("smell", "cab")) { //023a
+    print("It smells like an old cab.")
+  }
+  if ((said("board", "cab") || said("board") || said("increase", "door", "rol") || said("increase", "cab", "door", "rol") || said("increase", "door"))) { //0246
+    if (!f61) { //026e
+      set(f54)
+      goto(l663)
+    }
+    if (!f100) { //027a
+      print("Vowing to hold your breath forever, you enter this miserable excuse for public transportation.")
+      goto(l648)
+    }
+    set(f67)
+l648:
+    erase(o0)
+    set(f231)
+    set(f85)
+    prevent.input()
+    set(f232)
+    v64 = 101
+    v233 = 0
+  }
+}
+l663:
+if (said("examine", "alley")) { //0297
+  print("It's dark. Real dark.")
+}
+if (said("examine", "cab")) { //02a3
+  print("Trust me, they're there!")
+}
+l687:
+if (v38 == v40 && v39 == v41 && !(v64 > 0) && !(v65 > 0) && v30 == 0) { //02af
+  v230++
+  if (v230 == 200) { //02c6
+    draw(o14)
+    sound(22,f40)
+    set(f236)
+    follow.ego(o14,5,f230)
+    v231 = 1
+  }
+  goto(l749)
+}
+v230 = 0
+if (v231 == 1) { //02e1
+  reset(f230)
+  v232 = 2
+}
+l749:
+if (f230 && v231 == 1) { //02ed
+  reset(f230)
+  set(f58)
+  v231 = 2
+  v232 = 35
+  stop.motion(o0)
+  set(f85)
+  stop.motion(o14)
+  get.posn(o14,v52,v33)
+  v32 = v38
+  if (v38 > 3) { //030d
+    v32 -= 4
+    goto(l797)
+  }
+  v32 = 0
+l797:
+  reposition.to(o14,v32,v33)
+  if (v33 > v39) { //0321
+    set.view(o14,76)
+    goto(l817)
+  }
+  set.view(o14,79)
+}
+l817:
+v232--
+if (v232 == 1) { //0333
+  v231 = 3
+  start.motion(o0)
+  reset(f85)
+  start.motion(o14)
+  set.view(o14,75)
+  wander(o14)
+}
+if (vWhichObjBorder > 0 && vBorderObj == 14 && v231 == 3) { //0348
+  erase(o14)
+  reset(f236)
+  v231 = 4
+}
+distance(o0,o13,v52)
+if (vWhichEgoBorder == 3 && v52 == 255 && v30 != 15) { //0360
+  stop.motion(o0)
+  set(f85)
+  prevent.input()
+  v30 = 15
+  position(o15,119,167)
+  draw(o15)
+  sound(11,f40)
+  v56 = 10
+  if (v38 > 116) { //0382
+    v38 = 116
+  }
+  move.obj(o15,v38,v39,56,f234)
+}
+if (v30 == 15) { //0392
+  if (vWhichEgoBorder > 0) { //0399
+    vWhichEgoBorder = 0
+  }
+  if (f234) { //03a3
+    reset(f234)
+    set(f231)
+    erase(o0)
+    set.view(o0,22)
+    if (v38 > 33) { //03b2
+      v38 -= 33
+      goto(l962)
+    }
+    v38 = 0
+l962:
+    position(o0,38,v39)
+    move.obj(o15,0,167,10,f233)
+  }
+  if (f231) { //03cc
+    get.posn(o15,v32,v33)
+    if ((v32 < v38 || v32 < 10)) { //03d6
+      reset(f231)
+      draw(o0)
+    }
+  }
+  if (f233) { //03e6
+    reset(f233)
+    erase(o15)
+    print("You know, the traffic here is really a killer! You should forget about crossing these streets!")
+    set(f50)
+  }
+}
+if (f44) { //03f4
+  v233--
+  if (v233 == 1) { //03fc
+    set(f232)
+  }
+}
+if (v64 > 0) { //0405
+  get.posn(o13,v32,v33)
+  if ((v32 == 103 || v32 == 88 || v32 == 36)) { //0410
+    set(f232)
+  }
+}
+if (f232) { //0421
+  reset(f232)
+  v64++
+  if (v64 == 1) { //042b
+    v234 = 119
+    position(o13,234,v235)
+    draw(o13)
+    v234 = 60
+    v56 = 0
+    move.obj(o13,v234,v235,56,f232)
+    step.size(o13,v87)
+  }
+  if (v64 == 2) { //044a
+    step.size(o13,v86)
+  }
+  if (v64 == 3) { //0454
+    step.size(o13,v85)
+    set.cel(o13,1)
+    sound(10,f40)
+  }
+  if (v64 == 4) { //0464
+    set.cel(o13,0)
+    start.motion(o0)
+    reset(f85)
+    v233 = 14
+  }
+  if (v64 == 5) { //0475
+    print("\"I can't wait all day, bub!\"")
+    v64 = 101
+  }
+  if (v64 == 101) { //0481
+    get.posn(o13,v234,v235)
+    if (v38 < v234 && !(v39 < v235)) { //048c
+      print("\"BEEP\nBEEP!\"")
+      v233 = 5
+      v64--
+      goto(l1188)
+    }
+    v64 = 102
+  }
+l1188:
+  if (v64 == 102) { //04a4
+    step.size(o13,v85)
+    v234 = 0
+    v56 = 0
+    move.obj(o13,v234,v235,56,f232)
+  }
+  if (v64 == 103) { //04ba
+    step.size(o13,v87)
+    if (v30 == 20) { //04c4
+      ignore.objs(o0)
+      set.view(o0,22)
+      get.posn(o13,v38,v39)
+      v39--
+      position(o0,38,v39)
+      draw(o0)
+    }
+  }
+  if (v64 == 104) { //04dc
+    v64 = 0
+    erase(o13)
+    if (v30 == 20) { //04e8
+      reset(f231)
+      set(f50)
+    }
+    if (f231) { //04f3
+      v76 = 10
+    }
+  }
+  if (v64 == 201) { //04fc
+    set.view(o0,12)
+    set(f34)
+    v233 = 5
+  }
+  if (v64 == 202) { //050b
+    erase(o0)
+    print("\"You'll not ride with me again!\"")
+    v64 = 101
+    v233 = 3
+  }
+}
+if ((f231 || v30 == 15)) { //051c
+  stop.motion(o0)
+  set(f85)
+}
+return()

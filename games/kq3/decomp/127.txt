@@ -1,5 +1,174 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v240 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l603)
+}
+set(f120)
+v103++
+if ((said("carve", "cactii", "try", "dagger") || said("carve", "lift", "cactii", "try", "dagger"))) { //001e
+  if ((!(has(i34)) || !(has(i33)))) { //003a
+    print("How can you use that which you do not have?")
+    goto(l86)
+  }
+  print("Using your kitchen carving knife, you cut a gash in the small cactus. Juice begins to drip.")
+  if (v103 == 1) { //004d
+    reset(f120)
+  }
+}
+l86:
+if ((said("flatten", "cactii", "juice", "on", "ladle") || said("flatten", "cactii", "on", "ladle") || said("flatten", "cactii", "juice", "ladle") || said("flatten", "cactii", "ladle"))) { //0056
+  if (!(has(i34))) { //0084
+    print("How can you use that which you do not have?")
+    goto(l157)
+  }
+  print("Grabbing one of the measuring spoons from the oaken table, you grasp the slit cactus in your hand, and squeeze it until you have a spoonful of cactus juice. The small cactus is quite devoid of liquid now, so you toss it away.")
+  drop(i34)
+  if (v103 == 2) { //0094
+    reset(f120)
+  }
+}
+l157:
+if ((said("add", "one", "ladle", "cactii", "juice", "basin") || said("add", "ladle", "cactii", "juice", "basin") || said("add", "cactii", "juice", "basin") || said("drain", "one", "ladle", "cactii", "juice", "basin") || said("drain", "ladle", "cactii", "juice", "basin") || said("drain", "cactii", "juice", "basin"))) { //009d
+  if (!(has(i40))) { //00eb
+    print("How can you use that which you do not have?")
+    goto(l258)
+  }
+  print("You carefully add the spoonful of cactus juice to the bowl.")
+  if (v103 == 3) { //00f9
+    reset(f120)
+  }
+}
+l258:
+if ((said("add", "one", "cup", "lard", "basin") || said("add", "cup", "lard", "basin") || said("add", "lard", "basin") || said("add", "one", "cup", "lard", "basin"))) { //0102
+  if (!(has(i32))) { //0132
+    print("How can you use that which you do not have?")
+    goto(l333)
+  }
+  print("You scrape the lard into the mixing bowl, and keep the now-empty jar nearby to store your finished formula.")
+  drop(i32)
+  get(i35)
+  if (v103 == 4) { //0144
+    reset(f120)
+  }
+}
+l333:
+if ((said("add", "two", "add", "frog", "spit", "basin") || said("add", "two", "add", "frog", "spit") || said("add", "frog", "spit", "basin") || said("add", "frog", "spit", "basin") || said("add", "frog", "spit"))) { //014d
+  if (!(has(i31))) { //0189
+    print("How can you use that which you do not have?")
+    goto(l418)
+  }
+  print("You cautiously pour the two drops of toad spittle into the bowl.")
+  drop(i31)
+  if (v103 == 5) { //0199
+    reset(f120)
+  }
+}
+l418:
+if ((said("knead", "compound", "ladle") || said("knead", "compound", "try", "ladle") || said("knead", "basin", "try", "ladle") || said("knead", "ladle") || said("try", "ladle", "knead", "compound") || said("try", "ladle", "knead") || said("try", "ladle", "knead", "basin"))) { //01a2
+  print("Using one of the stirrers lying on the table, you mix the lard, cactus juice, and toad spittle until it is smooth and blended.")
+  if (v103 == 6) { //01e8
+    reset(f120)
+    v103++
+  }
+}
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //01f3
+  if (!(has(i37))) { //0207
+    print("How can you use that which you do not have?")
+    goto(l542)
+  }
+  print("You wave the magic wand.")
+  if (v103 == 8) { //0215
+    reset(f120)
+  }
+}
+l542:
+if ((said("add", "ointment", "bottle") || said("add", "ointment", "drain", "bottle") || said("add", "ointment", "back", "bottle") || said("add", "ointment", "drain", "lard", "bottle"))) { //021e
+  if (v103 == 9) { //024c
+    print("You scoop the invisibility ointment out of the clay bowl and return it to the lard jar.")
+    drop(i35)
+    get(i36)
+    reset(f120)
+  }
+}
+l603:
+if (!f120 && v104 < 4 && v103 == 7) { //025b
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //0271
+    overlay.pic(v240)
+    show.pic()
+    set.string(str2,"cactus plant and horny toad,")
+    if (vMonitorType == HERCULES) { //027e
+      open.dialogue()
+      get.string(str1," ",15,1,28)
+      goto(l661)
+    }
+    get.string(str1," ",13,1,28)
+l661:
+    if (compare.strings(str1,str2)) { //0295
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //029e
+    set.string(str2,"i now start down a dangerous road.")
+    if (vMonitorType == HERCULES) { //02a8
+      get.string(str1," ",16,1,34)
+      goto(l702)
+    }
+    get.string(str1," ",14,1,34)
+l702:
+    if (compare.strings(str1,str2)) { //02be
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //02c7
+    set.string(str2,"combine with fire and mist to make")
+    if (vMonitorType == HERCULES) { //02d1
+      get.string(str1," ",17,1,34)
+      goto(l743)
+    }
+    get.string(str1," ",15,1,34)
+l743:
+    if (compare.strings(str1,str2)) { //02e7
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //02f0
+    set.string(str2,"me disappear without a trace.")
+    if (vMonitorType == HERCULES) { //02fa
+      get.string(str1," ",18,1,29)
+      goto(l784)
+    }
+    get.string(str1," ",16,1,29)
+l784:
+    if (compare.strings(str1,str2)) { //0310
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //0324
+    if (vMonitorType == HERCULES) { //032f
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+v36 = v103
+v36++
+if (v36 == 10 && !f120) { //0340
+  v103 = 255
+}
+if (f120) { //034d
+  v105 = 39
+  v106 = 2
+}
+return()

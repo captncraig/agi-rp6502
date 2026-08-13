@@ -1,4 +1,248 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(38)
+  reset(f238)
+  load.logic(112)
+  load.logic(120)
+  load.logic(108)
+  set.horizon(70)
+  v56 = 4
+  set(f54)
+  v57 = 20
+  v58 = 74
+  load.view(0)
+  load.view(24)
+  load.view(2)
+  load.view(3)
+  load.view(4)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //0034
+    if (vPrevRoom == 31) { //003a
+    }
+    if (vPrevRoom == 48) { //0041
+    }
+    if (vPrevRoom == 51) { //0048
+      v40 = 114
+      position(o0,40,v41)
+    }
+    if (vPrevRoom == 50) { //0056
+      v40 = 24
+      position(o0,40,v41)
+    }
+  }
+  if (f47) { //0064
+    draw(o0)
+  }
+  animate.obj(o4)
+  load.view(56)
+  set.view(o4,56)
+  position(o4,150,150)
+  object.on.water(o4)
+  draw(o4)
+  wander(o4)
+  if (v62 == 4) { //007d
+    set(f81)
+    set(f226)
+    animate.obj(o1)
+    load.view(163)
+    load.view(165)
+    set.view(o1,163)
+    position(o1,80,120)
+    object.on.land(o1)
+    if ((f49 || v44 != 0)) { //0097
+      wander(o1)
+      goto(l172)
+    }
+    follow.ego(o1,5,f224)
+l172:
+    draw(o1)
+    object.on.land(o1)
+  }
+  v36 = 0
+  call(112)
+  call(120)
+  call(108)
+  show.pic()
+  sound(38,f238)
+  return()
+}
+if (said("examine", "shark")) { //00be
+  print("A prowling shark waits offshore.")
+}
+if (said("capture", "shark")) { //00ca
+  print("You've got to be kidding.")
+}
+if (said("kill", "shark")) { //00d6
+  print("You have no way of killing a shark.")
+}
+if (said("call", "shark")) { //00e2
+  print("He can't understand you.")
+}
+if (f226 && (said("capture", "bandit") || said("kill", "bandit"))) { //00ee
+  print("You're no match for him!")
+}
+if (f226 && said("examine", "bandit")) { //0104
+  print("A nasty pirate is here!")
+}
+if (f226 && said("call", "bandit")) { //0112
+  print("\"Arrr! I'm gonna git ya laddie!\"")
+}
+if (said("climb", "forest")) { //0120
+  print("You have better things to do than to try to climb this tree.")
+}
+if ((said("examine") || said("examine", "beach"))) { //012c
+  print("You are on a small beach to the south of a looming mountain range.")
+}
+if (said("examine", "bluff")) { //013e
+  print("To the north, a mountain range beckons.")
+}
+if (said("examine", "forest")) { //014a
+  print("A lone palm tree graces this beach.")
+}
+if (said("examine", "deck")) { //0156
+  print("Yep. It's sandy here.")
+}
+if (f33 && f226) { //0162
+  if (v44 != 0) { //016a
+    start.cycling(o1)
+    wander(o1)
+    goto(l383)
+  }
+  start.cycling(o1)
+  follow.ego(o1,5,f224)
+}
+l383:
+if (f226 && !f227) { //017f
+  set(f227)
+  print("Not again! One of the nasty pirates is here on the beach, and he would like to capture you. You'd better run!")
+}
+if (f224) { //018c
+  reset(f224)
+  if (!f46) { //0194
+    print("How could you! You let yourself get caught again! Well, it's curtains for you this time.")
+    set(f46)
+    program.control()
+    set.view(o1,165)
+    set.cel(o1,0)
+    end.of.loop(o1,f225)
+    goto(l430)
+  }
+  stop.cycling(o1)
+}
+l430:
+if (f225) { //01ae
+  reset(f225)
+  set.view(o0,24)
+  set(f44)
+  reset(f46)
+}
+if (f220 && (v44 == 11 || v44 == 224)) { //01bd
+  reset(f220)
+  if (!f46) { //01cd
+    set(f46)
+    erase(o4)
+    stop.motion(o0)
+    set(f35)
+    v44 = 13
+    set.view(o0,4)
+    set.cel(o0,0)
+    v36 = 4
+    cycle.time(o0,v36)
+    end.of.loop(o0,f222)
+  }
+}
+if (f222) { //01ee
+  reset(f222)
+  erase(o0)
+  set(f44)
+  print("Gosh! You barely made a mouthful for that hungry shark!")
+}
+if ((v44 == 224 || v44 == 11)) { //01fc
+  if (!f223) { //0208
+    set(f223)
+    follow.ego(o4,8,f220)
+  }
+  goto(l548)
+}
+reset(f220)
+if (f223) { //021a
+  reset(f223)
+  wander(o4)
+}
+l548:
+if (vBorderObj == 4) { //0224
+  	get.dir(o4,v36)
+  if (vWhichObjBorder == 2) { //022e
+    if (v36 == 2) { //0235
+      v36 = 1
+    }
+    if (v36 == 4) { //023f
+      v36 = 5
+    }
+    set.dir(o4,v36)
+  }
+  if (vWhichObjBorder == 4) { //024c
+    if (v36 == 8) { //0253
+      v36 = 1
+    }
+    if (v36 == 6) { //025d
+      v36 = 5
+    }
+    set.dir(o4,v36)
+  }
+}
+if (fTriggerLine) { //026a
+  set(fEgoOnWater)
+  if (v44 == 11) { //0272
+    v44 = 224
+    set.view(o0,2)
+    reset(f35)
+  }
+  if (v44 == 0) { //0281
+    v44 = 224
+    set.view(o0,2)
+  }
+}
+if (v44 == 224 && !fEgoOnWater && !fTriggerLine) { //028e
+  v44 = 0
+  set.view(o0,0)
+}
+if (fEgoOnWater && v44 == 224 && (posn(o0,118,140,160,167) || posn(o0,138,84,160,167))) { //02a1
+  v44 = 11
+  set.view(o0,3)
+  set(f35)
+}
+call(112)
+call(120)
+call(108)
+if (vWhichEgoBorder == 1) { //02c6
+  if ((v44 == 11 || v44 == 224)) { //02cd
+    set.view(o0,0)
+    current.view(o0,vEgoView)
+    reset(f35)
+    v44 = 0
+  }
+  v62 = 5
+  set(f181)
+  if (v40 > 76) { //02e9
+    new.room(51)
+    goto(l759)
+  }
+  new.room(50)
+}
+l759:
+if (vWhichEgoBorder == 4) { //02f7
+  new.room(48)
+}
+if ((vWhichEgoBorder == 3 || vWhichEgoBorder == 2)) { //0300
+  if ((v44 == 11 || v44 == 224)) { //030c
+    set.view(o0,3)
+    current.view(o0,vEgoView)
+  }
+  v176 = vWhichEgoBorder
+  new.room(31)
+}
+return()

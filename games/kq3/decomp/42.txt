@@ -1,4 +1,348 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v32 = 58
+  v31 = 115
+  v57 = 68
+  v58 = 122
+  set(f34)
+  load.sound(3)
+  load.sound(1)
+  load.view(18)
+  load.view(0)
+  load.view(12)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //002d
+    position(o0,51,116)
+    set.loop(o0,3)
+  }
+  if (v44 == 30) { //003a
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //004c
+    draw(o0)
+  }
+  animate.obj(o2)
+  load.view(182)
+  set.view(o2,182)
+  position(o2,96,96)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  v36 = 2
+  cycle.time(o2,v36)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o1)
+  load.view(80)
+  set.view(o1,80)
+  position(o1,49,116)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  show.pic()
+  return()
+}
+if (v44 == 0) { //0082
+  v39 = 0
+  if (posn(o0,94,109,101,110)) { //008c
+    set(f225)
+    goto(l157)
+  }
+  reset(f225)
+l157:
+  if (posn(o0,86,129,124,165)) { //009d
+    v39 = 1
+  }
+  if (posn(o0,34,143,54,165)) { //00aa
+    v39 = 2
+  }
+  if (posn(o0,85,108,111,128)) { //00b7
+    v39 = 3
+  }
+}
+if (f45 && v225 > 0) { //00c4
+  v225--
+}
+if (v44 == 17) { //00cf
+  if (fEnteredCommand) { //00d6
+    print("Shhhh! You'll wake yourself up.")
+  }
+}
+if (v44 == 7) { //00de
+  if (fEnteredCommand && (said("wake", "up") || said("board", "bed") || said("capture", "up", "bed") || said("capture", "up", "from", "bed") || said("capture", "up"))) { //00e5
+    print("Good idea. You've got too much to do to be lying around in a strange bed.")
+    v225 = 2
+    v39 = 1
+  }
+}
+if (v44 == 0 && (said("board", "bed") || said("lay", "on", "bed") || said("lay", "bed") || said("try", "out", "bed") || said("board", "sleep") || said("sleep", "on", "bed") || said("sleep", "bed") || said("get in", "bed") || said("capture", "on", "bed"))) { //0119
+  if (v39 == 0) { //0160
+    print("You need to move closer.")
+    goto(l445)
+  }
+  set(f46)
+  get.posn(o0,v226,v227)
+  set.view(o0,12)
+  set.cel(o0,0)
+  set.priority(o0,15)
+  v44 = 7
+  start.motion(o0)
+  program.control()
+  if (v39 == 1) { //0181
+    reposition.to(o0,100,132)
+    print("You flop onto the biggest (and hardest) bed!")
+    set.cel(o0,2)
+    set.loop(o0,0)
+    v225 = 10
+  }
+  if (v39 == 2) { //0197
+    reposition.to(o0,32,143)
+    print("You jump onto the medium-sized bed and sink deep into its fluffy depths.")
+    set.loop(o0,1)
+    v225 = 10
+  }
+  if (v39 == 3) { //01aa
+    reposition.to(o0,87,107)
+    print("You lie upon the smallest bed, and snuggle down into the pillow.")
+    set.loop(o0,0)
+    v225 = 10
+  }
+}
+l445:
+if (f45 && v44 == 7) { //01bd
+  if (v225 == 5) { //01c6
+    if (v39 == 1) { //01cd
+      print("This bed is MUCH too hard!")
+    }
+    if (v39 == 2) { //01d6
+      print("This bed is MUCH too soft!")
+    }
+    if (v39 == 3) { //01df
+      v36 = 3
+      cycle.time(o0,v36)
+      print("Ahhhh! This bed is just right. You've fallen asleep.")
+      v230 = 2
+      prevent.input()
+    }
+  }
+  if (v225 == 1) { //01f2
+    if ((v39 == 1 || v39 == 2)) { //01f9
+      set.view(o0,0)
+      reposition.to(o0,v226,v227)
+      release.priority(o0)
+      v44 = 0
+      reset(f46)
+      player.control()
+      reset(f35)
+      goto(l546)
+    }
+    v44 = 17
+    v220 = 0
+    v228 = 10
+  }
+}
+l546:
+v230--
+if (v230 == 1) { //0224
+  sound(3,f238)
+  set(f35)
+  set.cel(o0,0)
+  end.of.loop(o0,f221)
+}
+if (f221) { //0236
+  reset(f221)
+  v230 = 22
+  reset(f35)
+}
+if (f45 && v228 > 0) { //0243
+  v228--
+  if (v228 == 0) { //024e
+    set(f220)
+  }
+}
+if (f220) { //0257
+  program.control()
+  prevent.input()
+}
+if (f220 && v220 == 0) { //025f
+  reset(f220)
+  set(f46)
+  v220++
+  draw(o1)
+  move.obj(o1,55,110,1,f220)
+}
+if (f220 && v220 == 1) { //0276
+  reset(f220)
+  v220++
+  move.obj(o1,95,110,1,f220)
+}
+if (f220 && v220 == 2) { //0289
+  reset(f220)
+  v220++
+  set.loop(o1,2)
+  v228 = 1
+}
+if (f220 && v220 == 3) { //029c
+  reset(f220)
+  v220++
+  print.at("Oh No! Papa Bear has found you sleeping in Baby Bear's bed! You are in for it now!",2,2,37)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  set.view(o0,18)
+  reset(f35)
+  v230 = 0
+  move.obj(o1,55,110,1,f220)
+  v44 = 0
+}
+if (v220 == 4) { //02c3
+  get.posn(o1,v37,v38)
+  v37 -= 7
+  v38 += 1
+  reposition.to(o0,v37,v38)
+  get.priority(o1,v36)
+  set.priority(o0,v36)
+}
+if (f220 && v220 == 4) { //02de
+  reset(f220)
+  v220++
+  set.loop(o1,2)
+  stop.cycling(o1)
+  set.view(o0,11)
+  sound(1,f238)
+  set.priority(o0,6)
+  v36 = 1
+  cycle.time(o0,v36)
+  move.obj(o0,48,167,4,f220)
+}
+if (f220 && v220 == 5) { //0305
+  player.control()
+  v220++
+  reset(f220)
+  v44 = 0
+  reset(f46)
+  player.control()
+  accept.input()
+  new.room(28)
+}
+v224--
+if (v224 == 1) { //031e
+  stop.update(o2)
+  if (v223 == 1) { //0327
+    if (obj.in.room(i6,vCurrentRoom)) { //032e
+      print("You open the drawer, and among the clothes, you see a pretty silver thimble.")
+      goto(l828)
+    }
+    print("You open the drawer and see some bear-sized clothes.")
+  }
+}
+l828:
+if (fEnteredCommand) { //033c
+  if (said("examine", "bed")) { //0342
+    if (v39 == 0) { //034c
+      print("You are in the Bear family's cozy bedroom. You see three beds and a chest of drawers.")
+    }
+    if (v39 == 1) { //0355
+      print("This is a big, old bed. It must be Papa Bear's.")
+    }
+    if (v39 == 2) { //035e
+      print("This looks like a nice, soft bed. Maybe it's Mama Bear's.")
+    }
+    if (v39 == 3) { //0367
+      print("This bed looks just the right size for you.")
+    }
+  }
+  if ((said("lift", "drawer") || said("lift", "chest") || said("lift", "bureau", "drawer"))) { //0370
+    if (f225) { //038a
+      if (v223 == 1) { //0390
+        print("It is already open.")
+        goto(l935)
+      }
+      start.update(o2)
+      end.of.loop(o2,f224)
+      v223 = 1
+      v224 = 30
+l935:
+      goto(l940)
+    }
+    print("You need to move closer.")
+  }
+l940:
+  if ((said("close", "drawer") || said("close", "chest") || said("close", "bureau", "drawer"))) { //03ac
+    if (f225) { //03c6
+      if (v223 == 0) { //03cc
+        print("The drawer is already closed.")
+        goto(l995)
+      }
+      start.update(o2)
+      reverse.loop(o2,f224)
+      v223 = 0
+      v224 = 30
+l995:
+      goto(l1000)
+    }
+    print("A dresser sits in the corner of the room.")
+  }
+l1000:
+  if (said("examine", "below", "bed")) { //03e8
+    if (v39 == 0) { //03f4
+      print("You need to move closer.")
+      goto(l1026)
+    }
+    print("There is nothing of interest under the bed.")
+  }
+l1026:
+  if (said("capture", "thimble")) { //0402
+    if (!(obj.in.room(i6,vCurrentRoom))) { //040c
+      print("You have already taken it!")
+      goto(l1080)
+    }
+    if (!f225) { //0419
+      print("You need to move closer.")
+      goto(l1080)
+    }
+    if (v223 == 0) { //0425
+      print("You open the drawer, take the thimble, and close the drawer in one fluid movement.")
+      goto(l1075)
+    }
+    print("You pick up the thimble and carry it with you.")
+l1075:
+    get(i6)
+    vCurrentScore += 1
+  }
+l1080:
+  if (said("capture", "clothes")) { //0438
+    print("They wouldn't fit you.")
+  }
+  if ((said("look in", "drawer") || said("examine", "drawer"))) { //0444
+    if (f225) { //0456
+      if (v223 == 0) { //045c
+        print("The drawers are shut.")
+        goto(l1143)
+      }
+      if (!(obj.in.room(i6,vCurrentRoom))) { //0468
+        print("You see a few bear-sized clothes.")
+        goto(l1143)
+      }
+      print("You see a few bear-sized clothes and a silver thimble.")
+l1143:
+      goto(l1148)
+    }
+    print("You need to move closer.")
+  }
+l1148:
+  if ((said("examine") || said("examine", "area") || said("examine", "bedroom") || said("examine", "building"))) { //047c
+    print("You are in the Bear family's cozy bedroom. You see three beds and a chest of drawers.")
+  }
+  if ((said("examine", "chest") || said("examine", "bureau"))) { //049a
+    print("A dresser sits in the corner of the room.")
+  }
+}
+if (fTriggerLine && v44 == 0) { //04ae
+  new.room(41)
+}
+return()

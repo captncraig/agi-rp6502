@@ -1,4 +1,86 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,20,65,0,0)
+  }
+  if (vPrevRoom == 18) { //0027
+    if (fEgoOnWater) { //002e
+      set.view(o0,0)
+      reset(f98)
+      v94 = 0
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //003f
+  print("You see an old stone wall surrounding a well kept garden.")
+}
+if ((said("check", "carrot patch") || said("check", "grass") || said("check", "bury") || said("check", "bush"))) { //004b
+  print("This is a well-tended carrot patch.  The carrots look tempting to a hungry traveler.")
+}
+if ((said("check", "fence") || said("check", "rock wall"))) { //006b
+  print("This is a relatively low, rustic stone fence which runs along the left and rear sides of the garden.")
+}
+if ((said("climb", "fence") || said("climb", "rock wall"))) { //007f
+  print("There is no reason to climb the fence.")
+}
+if ((said("jump", "fence") || said("jump", "rock wall"))) { //0093
+  print("You can go around the fence.")
+}
+if ((posn(o0,87,54,159,65) || posn(o0,79,66,159,76) || posn(o0,66,77,159,91) || posn(o0,46,92,159,116) || posn(o0,32,117,159,147))) { //00a7
+  set(f20)
+  goto(l210)
+}
+reset(f20)
+l210:
+if (f20) { //00d2
+  if (!f77 && said("check", "carrot")) { //00d8
+    print("There are many large, plump carrots in the garden.")
+  }
+  if (!f77 && said("acquire", "carrot")) { //00e7
+    print("You pluck a plump, orange carrot from the ground.")
+    set(f77)
+    reset(f118)
+    get(i3)
+    if (!f117) { //00fc
+      vCurrentScore += 2
+      set(f117)
+    }
+  }
+}
+if (!f20) { //0108
+  if (!f77 && said("check", "carrot")) { //010f
+    print("The carrots are buried in the ground.  You must get  closer to see them.")
+  }
+  if (!f77 && said("acquire", "carrot")) { //011e
+    print("You must be in the carrot patch to pick a carrot.")
+  }
+}
+if (!f77) { //012d
+  if (said("consume", "carrot")) { //0134
+    print("You do not have a carrot to eat.")
+  }
+}
+if (vWhichEgoBorder == 1) { //0140
+  new.room(18)
+}
+if (vWhichEgoBorder == 2) { //0149
+  new.room(16)
+}
+if (vWhichEgoBorder == 4) { //0152
+  new.room(14)
+}
+if (vWhichEgoBorder == 3) { //015b
+  new.room(2)
+}
+if (f75) { //0164
+  call(103)
+}
+return()

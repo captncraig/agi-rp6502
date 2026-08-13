@@ -1,4 +1,163 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(122)
+  load.view(86)
+  load.pic(vCurrentRoom)
+  load.sound(31)
+  load.sound(57)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 14 && v212 > 115) { //001a
+    position(o0,115,166)
+  }
+  animate.obj(o4)
+  set.view(o4,122)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  ignore.horizon(o4)
+  position(o4,85,67)
+  draw(o4)
+  stop.cycling(o4)
+  stop.update(o4)
+  if (!f66) { //003f
+    animate.obj(o5)
+    set.view(o5,86)
+    set.loop(o5,0)
+    set.cel(o5,0)
+    ignore.horizon(o5)
+    ignore.objs(o5)
+    position(o5,120,72)
+    draw(o5)
+    stop.cycling(o5)
+    stop.update(o5)
+    animate.obj(o6)
+    set.view(o6,86)
+    set.loop(o6,3)
+    set.cel(o6,2)
+    position(o6,40,115)
+    draw(o6)
+    stop.cycling(o6)
+    if (v31 == 18) { //0072
+      load.logic(57)
+      set(f42)
+      animate.obj(o7)
+      set.view(o7,86)
+      set.loop(o7,1)
+      set.cel(o7,0)
+      position(o7,116,120)
+      draw(o7)
+      v209 = 4
+      cycle.time(o7,v209)
+    }
+    goto(l183)
+  }
+  add.to.pic(86,2,0,114,120,0,0)
+  add.to.pic(86,3,2,40,115,0,0)
+  add.to.pic(86,3,1,39,116,0,0)
+  add.to.pic(86,0,0,51,65,0,0)
+l183:
+  draw(o0)
+  return()
+}
+if (f42) { //00ba
+  call(57)
+}
+if (!f66) { //00c2
+  distance(o0,o6,v201)
+  if (v201 < 20) { //00cd
+    if (!f220) { //00d4
+      set(f220)
+      set(f117)
+      stop.motion(o0)
+      stop.cycling(o0)
+      start.cycling(o6)
+      end.of.loop(o6,f221)
+      v209 = 6
+      cycle.time(o6,v209)
+      vTimeSeconds = 0
+      load.view(39)
+      load.view(48)
+      sound(31,f103)
+    }
+  }
+}
+if (f221) { //00f8
+  reset(f221)
+  v209 = 1
+  cycle.time(o6,v209)
+  set.cel(o6,2)
+  stop.cycling(o6)
+  animate.obj(o15)
+  set.view(o15,39)
+  set.loop(o15,0)
+  set.cel(o15,0)
+  ignore.objs(o15)
+  ignore.blocks(o15)
+  position(o15,0,95)
+  set.priority(o15,14)
+  draw(o15)
+  stop.update(o15)
+  set.text.attribute(0,15)
+  display(6,3,"Fiddle")
+  display(7,3,"dee dee!")
+  display(8,3,"A fiddle")
+  display(9,3,"for me!")
+  set(f107)
+  v113 = 5
+}
+if (f107 && f105) { //013d
+  v113--
+}
+if (v113 == 1) { //0147
+  v113 = 0
+  clear.text.rect(6,3,9,11,15)
+  erase(o15)
+  set.cel(o15,1)
+  position(o15,4,90)
+  draw(o15)
+  stop.update(o15)
+  animate.obj(o16)
+  ignore.horizon(o16)
+  set.view(o16,48)
+  set.loop(o16,1)
+  position(o16,9,68)
+  set.priority(o16,15)
+  draw(o16)
+  stop.update(o16)
+  v114 = 6
+}
+if (f107 && f105) { //017c
+  v114--
+}
+if (v114 == 1) { //0186
+  v114 = 0
+  reset(f107)
+  erase(o16)
+  erase(o15)
+  reset(f117)
+  start.motion(o0)
+  start.cycling(o0)
+}
+if (!f66) { //019c
+  if (posn(o0,80,110,125,140)) { //01a3
+    if (!f222) { //01ad
+      set(f222)
+      sound(57,f103)
+    }
+    goto(l452)
+  }
+  if (f103) { //01bc
+    reset(f222)
+  }
+}
+l452:
+if (vWhichObjBorder == 3 && f124) { //01c4
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //01d0
+  new.room(14)
+}
+if (vWhichEgoBorder == 4) { //01d9
+  new.room(6)
+}
+return()

@@ -1,4 +1,141 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,96,137,0,0)
+  }
+  if (vPrevRoom == 8) { //002b
+    get.posn(o0,v60,v61)
+    if (fEgoOnWater && v61 < 70) { //0036
+      position(o0,2,75)
+    }
+    if (!fEgoOnWater && v61 < 70) { //0043
+      position(o0,2,47)
+      move.obj(o0,2,47,1,f148)
+    }
+  }
+  if (vPrevRoom == 10) { //0057
+    get.posn(o0,v60,v61)
+    if (v60 > 19) { //0062
+      position(o0,34,47)
+    }
+    if (v60 < 20) { //006d
+      position(o0,2,47)
+      move.obj(o0,2,47,1,f148)
+    }
+  }
+  if (vPrevRoom == 42 && fEgoOnWater) { //007e
+    set.view(o0,0)
+    reset(f98)
+    v94 = 0
+  }
+  block(0,126,69,147)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //0099
+  print("A rapidly flowing stream is pouring into this lake.")
+}
+if (f213) { //00a5
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+if (posn(o0,0,45,31,78)) { //00af
+  set(f68)
+  goto(l192)
+}
+reset(f68)
+l192:
+if (said("check", "lake")) { //00c0
+  print("This is a beautiful little lake.")
+}
+if (said("check", "waterfall")) { //00cc
+  print("There is a small waterfall splashing nearby.")
+}
+if (!f88 && !fEgoOnWater && !f116) { //00d8
+  if ((said("drink", "water") || said("acquire", "drink"))) { //00e5
+    if (posn(o0,0,36,84,167)) { //00f7
+      print("The clear water quenches your thirst.")
+      goto(l264)
+    }
+    print("You might try that at the lake.")
+  }
+}
+l264:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0108
+  if (posn(o0,0,36,84,167)) { //011a
+    reset(f116)
+    print("The lake's waters pour into the bucket.")
+    get(i26)
+    set(f88)
+    if (!f91) { //012c
+      vCurrentScore += 2
+    }
+    set(f91)
+    goto(l317)
+  }
+  print("You are not close enough to the lake.")
+}
+l317:
+if (fEgoOnWater && posn(o0,0,60,31,76) && !f20) { //013d
+  set(f20)
+  v94 = 0
+  set.view(o0,93)
+  print("The swift water pulls you down to your untimely demise.")
+}
+if (!fEgoOnWater) { //0156
+  if ((posn(o0,9,45,19,52) || posn(o0,4,53,19,59))) { //015d
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fEgoOnWater) { //0173
+  v76 = 255
+  if (posn(o0,0,45,31,68)) { //0180
+    v76 = 10
+    v77 = 63
+  }
+  if (v76 == 255) { //0190
+    v76 = 0
+    goto(l425)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l425:
+if (vWhichEgoBorder != 0) { //01a9
+  reset(f68)
+  if (f66) { //01b3
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //01c1
+  new.room(10)
+}
+if (vWhichEgoBorder == 2) { //01ca
+  new.room(6)
+}
+if (vWhichEgoBorder == 4) { //01d3
+  new.room(8)
+}
+if (vWhichEgoBorder == 3) { //01dc
+  new.room(42)
+}
+if (f75) { //01e5
+  call(103)
+}
+call(101)
+return()

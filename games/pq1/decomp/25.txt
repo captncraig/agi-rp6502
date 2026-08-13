@@ -1,4 +1,128 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(110)
+  add.to.pic(110,0,0,119,148,6,4)
+  add.to.pic(160,1,0,53,114,0,4)
+  add.to.pic(160,0,0,28,114,0,4)
+  add.to.pic(160,2,0,0,24,0,4)
+  add.to.pic(160,2,0,30,24,0,4)
+  add.to.pic(160,2,0,45,24,0,4)
+  add.to.pic(160,2,0,60,24,0,4)
+  add.to.pic(160,2,0,88,24,0,4)
+  add.to.pic(160,2,0,103,24,0,4)
+  add.to.pic(160,2,0,118,24,0,4)
+  add.to.pic(160,1,2,1,114,0,4)
+  add.to.pic(160,1,2,1,76,0,4)
+  add.to.pic(160,1,4,41,62,0,4)
+  add.to.pic(160,1,6,54,112,0,4)
+  if (v91 > 0 && v91 < 100) { //007a
+    set.view(o4,99)
+    set.view(o5,99)
+    set.loop(o4,0)
+    set.loop(o5,0)
+    position(o4,143,146)
+    position(o5,144,143)
+    set.priority(o4,5)
+    set.priority(o5,5)
+    start.cycling(o4)
+    start.cycling(o5)
+    draw(o4)
+    draw(o5)
+  }
+  draw(o0)
+  show.pic()
+  return()
+}
+if ((v143 > 124 || v142 > 138)) { //00aa
+  v46 = 93
+  goto(l191)
+}
+v46 = 80
+l191:
+if (!f241) { //00bf
+  if (!(posn(o0,0,117,17,131)) && !(posn(o19,0,117,17,131))) { //00c6
+    if (v221 == 0) { //00d8
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //00e3
+        v152++
+      }
+      set.cel(o1,v152)
+      position(o1,0,128)
+      ignore.blocks(o1)
+      set.priority(o1,5)
+      set(f221)
+    }
+    if (v221 == 1) { //00fc
+      move.obj(o1,141,128,1,f221)
+      draw(o1)
+    }
+  }
+  if (v221 == 2) { //010b
+    move.obj(o1,141,0,1,f221)
+  }
+  if (v221 == 3) { //0118
+    erase(o1)
+    v221 = 0
+  }
+}
+if (!f242) { //0124
+  if (!(posn(o0,0,25,17,39)) && !(posn(o19,0,25,17,39))) { //012b
+    if (v222 == 0) { //013d
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //0148
+        v152++
+      }
+      set.cel(o2,v152)
+      position(o2,0,36)
+      ignore.blocks(o2)
+      set.priority(o2,5)
+      set(f222)
+    }
+    if (v222 == 1) { //0161
+      move.obj(o2,19,36,1,f222)
+      draw(o2)
+    }
+  }
+  if (v222 == 2) { //0170
+    move.obj(o2,19,121,1,f222)
+  }
+  if (v222 == 3) { //017d
+    move.obj(o2,0,121,1,f222)
+  }
+  if (v222 == 4) { //018a
+    erase(o2)
+    v222 = 0
+  }
+}
+if (!f243) { //0196
+  if (!(posn(o0,133,0,143,25)) && !(posn(o19,133,0,143,25))) { //019d
+    if (v223 == 0) { //01af
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //01ba
+        v152++
+      }
+      set.cel(o3,v152)
+      position(o3,135,5)
+      ignore.blocks(o3)
+      set.priority(o3,5)
+      set(f223)
+    }
+    if (v223 == 1) { //01d3
+      move.obj(o3,135,29,1,f223)
+      draw(o3)
+    }
+  }
+  if (v223 == 2) { //01e2
+    move.obj(o3,25,29,1,f223)
+  }
+  if (v223 == 3) { //01ef
+    move.obj(o3,25,0,1,f223)
+  }
+  if (v223 == 4) { //01fc
+    erase(o3)
+    v223 = 0
+  }
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //0208
+  print("Cotton Cove is located here, near the lovely Clearwater River.")
+}
+return()

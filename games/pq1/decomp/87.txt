@@ -1,4 +1,17 @@
 v191 = 208
-
-!!!
-&{%!e(string=unknown opcode: 0x82)}
+l5:
+random(1,52,v152)
+rindirect(v154,v191)
+if (v154 == 0) { //000c
+  v64 = 161
+  call(81)
+  if (f240) { //0018
+    goto(l5)
+  }
+  lindirectv(v191,v152)
+}
+if (v191 != 227) { //0024
+  v191++
+  goto(l5)
+}
+return()

@@ -1,3 +1,38 @@
-if (!(
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (vMonitorType != HERCULES) { //0002
+  clear.lines(22,22,c0)
+  clear.lines(24,24,c0)
+}
+if (f38) { //0012
+  prevent.input()
+}
+animate.obj(o0)
+step.size(o0,v61)
+step.time(o0,60)
+cycle.time(o0,v59)
+get.posn(o0,v38,v39)
+observe.blocks(o0)
+observe.objs(o0)
+observe.horizon(o0)
+v31 = 0
+v63 = 0
+v62 = 0
+v76 = 0
+v65 = 0
+v66 = 0
+v67 = 0
+reset(f46)
+reset(f47)
+reset(f41)
+reset(f75)
+reset(f52)
+reset(f53)
+reset(f7)
+v52 = 255
+l84:
+reset(v52)
+lindirectn(v52,0)
+v52--
+if (v52 > 199) { //005b
+  goto(l84)
+}
+return()

@@ -1,4 +1,218 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //000e
+    load.logic(116)
+    set(f207)
+  }
+  if ((!f59 || f86)) { //0018
+    load.logic(112)
+    set(f206)
+  }
+  load.view(124)
+  load.view(100)
+  load.view(126)
+  if (f33) { //002d
+    set(f204)
+    goto(l58)
+  }
+  load.view(55)
+l58:
+  if ((has(i12) || f33)) { //003a
+    load.view(65)
+  }
+  if (f86) { //0046
+    set(f205)
+    set(f204)
+    load.view(68)
+    goto(l91)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+l91:
+  animate.obj(o1)
+  set.view(o1,124)
+  position(o1,62,46)
+  animate.obj(o3)
+  set.view(o3,124)
+  position(o3,112,56)
+  animate.obj(o2)
+  position(o2,17,133)
+  v61 = 2
+  cycle.time(o2,v61)
+  set.priority(o2,12)
+  if (f33) { //007c
+    set.view(o2,65)
+    last.cel(o2,v61)
+    set.cel(o2,v61)
+    goto(l148)
+  }
+  set.view(o2,55)
+  set.cel(o2,0)
+l148:
+  animate.obj(o10)
+  set.view(o10,100)
+  position(o10,36,76)
+  set.priority(o10,4)
+  ignore.objs(o10)
+  ignore.blocks(o10)
+  animate.obj(o11)
+  set.view(o11,126)
+  position(o11,36,123)
+  set.priority(o11,4)
+  ignore.objs(o11)
+  ignore.blocks(o11)
+  if (f204) { //00b4
+    last.cel(o10,v61)
+    set.cel(o10,v61)
+    last.cel(o11,v61)
+    set.cel(o11,v61)
+    goto(l216)
+  }
+  set.cel(o10,0)
+  set.cel(o11,0)
+  v61 = 2
+  cycle.time(o11,v61)
+  cycle.time(o10,v61)
+l216:
+  draw(o1)
+  draw(o3)
+  draw(o10)
+  draw(o11)
+  draw(o2)
+  if (f205) { //00e2
+    add.to.pic(68,0,0,54,132,12,0)
+    v30 = 92
+    v31 = 128
+    set(f34)
+    set(f37)
+    last.cel(o10,v61)
+    set.cel(o10,v61)
+    reverse.loop(o10,f61)
+    last.cel(o11,v61)
+    set.cel(o11,v61)
+    reverse.loop(o11,f201)
+    goto(l303)
+  }
+  stop.update(o10)
+  stop.update(o11)
+  stop.update(o2)
+  if (vPrevRoom == 33) { //0115
+    position(o0,46,120)
+    set.loop(o0,0)
+    goto(l301)
+  }
+  position(o0,80,95)
+  set.loop(o0,2)
+l301:
+  draw(o0)
+l303:
+  if (f207) { //012f
+    call(116)
+  }
+  if (f206) { //0137
+    call(112)
+    position(o9,92,167)
+  }
+  show.pic()
+  return()
+}
+if (f86) { //0145
+  set(fEgoObscured)
+}
+if (f130) { //014d
+  print("You are in the central courtyard of the castle. The great chains of the drawbridge stretch over your head.")
+}
+if (!f128 && !f129) { //0155
+  goto(l463)
+}
+if (f129) { //0162
+  goto(l413)
+}
+if (f86) { //016b
+  reset(f86)
+  set(fSaidAccepted)
+  set.loop(o0,2)
+  position(o0,49,129)
+  print("You leap from the wagon.")
+  draw(o0)
+  goto(l463)
+  goto(l410)
+}
+if (f205 && posn(o0,46,120,70,138)) { //0186
+  set(fSaidAccepted)
+  set(f86)
+  print("You leap into the wagon.")
+  erase(o0)
+}
+l410:
+goto(l463)
+l413:
+if (v60 == 12 && !f33) { //019d
+  distance(o0,o2,v61)
+  if (v61 < 30) { //01ab
+    set(f33)
+    set(f145)
+    print("You swing the magic sword over your head with a tremendous force. It easily slices the chain, causing the drawbridge to come crashing down.")
+    start.update(o10)
+    end.of.loop(o10,f61)
+    start.update(o11)
+    end.of.loop(o11,f202)
+    start.update(o2)
+    end.of.loop(o2,f203)
+    set.view(o2,65)
+  }
+  goto(l463)
+}
+reset(f145)
+l463:
+if (f201) { //01cf
+  reset(f201)
+  reset(f204)
+  stop.update(o10)
+  stop.update(o11)
+  stop.update(o2)
+}
+if (f202) { //01df
+  reset(f202)
+  set(f204)
+  stop.update(o10)
+  stop.update(o11)
+}
+if (f203) { //01ed
+  reset(f203)
+  stop.update(o2)
+}
+if (!(posn(o9,114,103,156,163))) { //01f7
+  if (posn(o0,114,103,144,139)) { //0202
+    set(fEgoObscured)
+  }
+}
+if (f204 && posn(o0,27,112,52,130)) { //020e
+  ignore.blocks(o0)
+  goto(l545)
+}
+observe.blocks(o0)
+l545:
+if (posn(o0,80,83,91,84)) { //0221
+  new.room(46)
+}
+if (fTriggerLine) { //022d
+  if (!f49 && has(i12)) { //0233
+    set(f49)
+    vCurrentScore += 13
+  }
+  if (f108) { //0241
+    print("\"Quick, Hen Wen,\" you shout, \"run!!\"")
+  }
+  new.room(33)
+}
+if (f206) { //024b
+  call(112)
+}
+if (f207) { //0253
+  call(116)
+}
+return()

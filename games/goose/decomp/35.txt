@@ -1,4 +1,89 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  if (f11) { //000a
+    load.sound(56)
+    random(50,100,v220)
+  }
+  load.view(137)
+  load.view(136)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 28) { //0024
+    if (v212 > 65) { //002b
+      position(o0,65,87)
+      if (f35) { //0036
+        position(o13,70,86)
+      }
+      goto(l81)
+    }
+    position(o0,25,87)
+    if (f35) { //0047
+      position(o13,30,86)
+    }
+  }
+l81:
+  if (vPrevRoom == 34 && v213 > 128) { //0051
+    position(o0,0,128)
+    if (f35) { //005f
+      position(o13,0,124)
+    }
+  }
+  animate.obj(o4)
+  set.view(o4,137)
+  set.loop(o4,0)
+  position(o4,96,155)
+  draw(o4)
+  v209 = 2
+  cycle.time(o4,v209)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o8)
+  set.view(o5,136)
+  set.view(o6,136)
+  set.view(o7,136)
+  set.view(o8,136)
+  set.loop(o5,0)
+  set.loop(o6,0)
+  set.loop(o7,1)
+  set.loop(o8,0)
+  position(o5,44,141)
+  position(o6,142,128)
+  position(o7,20,139)
+  position(o8,76,145)
+  draw(o5)
+  draw(o6)
+  draw(o7)
+  draw(o8)
+  v209 = 2
+  cycle.time(o5,v209)
+  cycle.time(o6,v209)
+  cycle.time(o7,v209)
+  cycle.time(o8,v209)
+  v34 = 30
+  v35 = 96
+  v37 = 4
+  draw(o0)
+  return()
+}
+v220--
+if (v220 == 1 && f11) { //00d2
+  sound(56,f220)
+  set(f220)
+}
+if (f220) { //00e0
+  reset(f220)
+  random(40,100,v220)
+}
+if (vWhichObjBorder == 1 && f124) { //00ec
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //00f8
+  new.room(28)
+}
+if (vWhichEgoBorder == 4) { //0101
+  new.room(34)
+}
+return()

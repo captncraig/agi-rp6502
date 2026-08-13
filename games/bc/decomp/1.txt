@@ -1,4 +1,129 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(142)
+  load.sound(1)
+  if (f126) { //000c
+    load.view(25)
+    goto(l33)
+  }
+  load.view(7)
+  load.view(2)
+  load.logic(101)
+  set(f205)
+  set(f132)
+l33:
+  if (f108) { //0021
+    load.logic(116)
+    set(f204)
+    random(0,255,v61)
+    if (v61 < 125) { //002f
+      load.logic(114)
+      set(f203)
+    }
+  }
+  set.horizon(88)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o7)
+  set.view(o7,142)
+  position(o7,21,148)
+  set.priority(o7,4)
+  set(f159)
+  if (f126) { //0050
+    position(o0,17,103)
+    set.view(o0,25)
+    ignore.objs(o0)
+    move.obj(o0,21,167,0,f201)
+    goto(l120)
+  }
+  if ((vPrevRoom == 20 || vPrevRoom == 21)) { //0068
+    position(o0,76,91)
+  }
+l120:
+  draw(o7)
+  draw(o0)
+  if (f205) { //007c
+    call(101)
+  }
+  if (f204) { //0084
+    call(116)
+  }
+  if (f203) { //008c
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0096
+  if (posn(o0,0,0,79,167)) { //009c
+    print("Chills run down your spine as you wonder what those mountains hold. There's nothing like this around Caer Dallben.")
+    goto(l173)
+  }
+  print("The trees seem to be alive. In their own evil way, they seem to be watching you.")
+}
+l173:
+if (!f128 && !f129) { //00ad
+  goto(l198)
+}
+if (f129) { //00ba
+  goto(l198)
+}
+goto(l198)
+l198:
+if (!f202 && posn(o0,31,99,61,167)) { //00c6
+  set(f202)
+  print("The river is far too treacherous to swim.")
+}
+if (!(v203 > 0) && posn(o0,67,107,80,113)) { //00d7
+  reset(f159)
+  set.view(o0,7)
+  stop.motion(o0)
+  force.update(o0)
+  set(f133)
+  v203 = 33
+  print("Ouch! Watch out for those low-hanging branches.")
+}
+v203--
+if (v203 == 1) { //00f7
+  reset(f133)
+  set.view(o0,0)
+  start.motion(o0)
+  v62 = 0
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 8)) { //0108
+    v63 = 249
+    repositon(o0,v62,v63)
+    goto(l296)
+  }
+  v63 = 7
+  repositon(o0,v62,v63)
+l296:
+  set(f159)
+}
+if (f159 && !f173) { //012a
+  sound(1,f159)
+}
+if ((posn(o0,0,95,46,117) || posn(o0,0,118,51,143) || posn(o0,0,144,65,167))) { //0136
+  set(f88)
+}
+if (f203) { //0150
+  call(114)
+}
+if (f205) { //0158
+  call(101)
+}
+if (f204) { //0160
+  call(116)
+}
+if (f201 && posn(o0,0,167,159,167)) { //0168
+  new.room(6)
+}
+if (vWhichEgoBorder == 1) { //0176
+  new.room(21)
+}
+if (vWhichEgoBorder == 2) { //017f
+  new.room(2)
+}
+if (vWhichEgoBorder == 3) { //0188
+  new.room(6)
+}
+return()

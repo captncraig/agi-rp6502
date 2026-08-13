@@ -1,7 +1,204 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v200 = 60
   v201 = 35
   v66 = 200
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+  load.logic(117)
+  load.sound(2)
+  load.view(11)
+  load.view(6)
+  load.view(148)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.priority(o2,15)
+  set.view(o2,148)
+  position(o2,30,30)
+  v61 = 4
+  step.size(o2,v61)
+  animate.obj(o3)
+  ignore.horizon(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.priority(o3,15)
+  set.view(o3,148)
+  position(o3,50,30)
+  v61 = 4
+  step.size(o3,v61)
+  if (v38 < 20) { //0051
+    v38 = 20
+    goto(l104)
+  }
+  if (v38 > 128) { //005e
+    v38 = 128
+  }
+l104:
+  if (vPrevRoom == 34) { //0068
+    v39 = 157
+    v64 = 1
+    goto(l123)
+  }
+  v64 = 7
+l123:
+  position(o0,38,v39)
+  call(117)
+  show.pic()
+  return()
+}
+if (f152) { //0083
+  ignore.blocks(o0)
+  goto(l500)
+  goto(l147)
+}
+observe.blocks(o0)
+l147:
+if (f130) { //0093
+  print("There are small crevices between the stones of the wall.")
+}
+if (!f128 && !f129) { //009b
+  goto(l272)
+}
+if (f129) { //00a8
+  goto(l272)
+}
+if (v65 == 1) { //00b1
+  set(fSaidAccepted)
+  v38 -= 3
+  if (v38 < 20) { //00bd
+    v38 = 20
+  }
+  if (v38 > 128) { //00c7
+    v38 = 128
+  }
+  v39 = 146
+  print("You carefully place your fingertips and toes into the crevices as you scale the castle wall.")
+  erase(o0)
+  position(o0,38,v39)
+  v64 = 7
+}
+if (v65 == 7 && v39 > 125) { //00df
+  set(fSaidAccepted)
+  v38 += 3
+  if (v38 < 20) { //00ee
+    v38 = 20
+  }
+  if (v38 > 128) { //00f8
+    v38 = 128
+  }
+  v39 = 150
+  print("Gladly, you drop from the wall.")
+  erase(o0)
+  position(o0,38,v39)
+  v64 = 1
+}
+l272:
+if (v65 == 7 && fTriggerLine && !f152) { //0110
+  print("You cannot hold onto the smooth stones!")
+}
+if (v39 > 66) { //011e
+  v200--
+  if (v200 == 1) { //0127
+    random(20,128,v62)
+    v63 = 20
+    position(o2,62,v63)
+    draw(o2)
+    v63 = 166
+    v67 = 4
+    move.obj(o2,v62,v63,67,f200)
+    set(f206)
+    v211 = v62
+    v211 -= 8
+    v212 = v62
+    v212 += 9
+    v210 = 20
+    v209 = 20
+    v209 += 32
+  }
+  v201--
+  if (v201 == 1) { //0160
+    random(20,128,v62)
+    v63 = 20
+    position(o3,62,v63)
+    draw(o3)
+    v63 = 166
+    v67 = 4
+    move.obj(o3,v62,v63,67,f201)
+    set(f207)
+    v213 = v62
+    v213 -= 8
+    v214 = v62
+    v214 += 9
+    v216 = 20
+    v215 = 20
+    v215 += 32
+    if (!f208) { //0197
+      set(f208)
+      print("The castle guards are dropping stones! Watch out!!")
+    }
+  }
+}
+if (f206) { //01a2
+  if (v38 > v211 && v38 < v212) { //01a8
+    if (v209 > v39 && v210 < v39) { //01b2
+      set(f202)
+      set(f203)
+      print("Ouch! The rock crashes into you! You push backwards off the wall, attempting a swan dive into the moat.")
+      v64 = 3
+    }
+  }
+  v209 += 4
+  v210 += 4
+}
+if (f207) { //01cb
+  if (v38 > v213 && v38 < v214) { //01d1
+    if (v215 > v39 && v216 < v39) { //01db
+      set(f202)
+      set(f203)
+      print("Ouch! The rock crashes into you! You push backwards off the wall, attempting a swan dive into the moat.")
+      v64 = 3
+    }
+  }
+  v215 += 4
+  v216 += 4
+}
+l500:
+if (f200) { //01f4
+  reset(f200)
+  set(f202)
+  random(20,100,v200)
+}
+if (f201) { //0202
+  reset(f201)
+  set(f203)
+  random(20,100,v200)
+}
+if (f202) { //0210
+  reset(f202)
+  erase(o2)
+  reset(f200)
+  reset(f206)
+  v210 = 0
+  v209 = 0
+}
+if (f203) { //0224
+  reset(f203)
+  erase(o3)
+  reset(f201)
+  reset(f207)
+  v216 = 0
+  v215 = 0
+}
+call(117)
+if (v65 == 1 && v39 > 157) { //023a
+  new.room(34)
+}
+if (vWhichEgoBorder == 3) { //0246
+  new.room(34)
+}
+if (vWhichEgoBorder == 1) { //024f
+  new.room(36)
+}
+return()

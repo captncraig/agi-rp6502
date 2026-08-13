@@ -1,10 +1,994 @@
-if (isSet(f5)) {
-  if (isSet(f56)) {
+if (fNewRoom) { //0002
+  if (f56) { //0008
     set(f159)
-}
+  }
   v51 = 2
   set(f102)
   v56 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(197)
+  add.to.pic(197,1,0,53,85,4,4)
+  add.to.pic(197,1,0,53,99,4,4)
+  add.to.pic(197,1,1,80,86,4,4)
+  add.to.pic(197,1,1,80,100,4,4)
+  add.to.pic(197,1,2,55,66,4,4)
+  add.to.pic(197,1,3,29,105,12,12)
+  if (v94 == 1 && !(v39 > 0)) { //0050
+    add.to.pic(197,0,0,96,114,11,11)
+    add.to.pic(197,0,0,90,115,11,11)
+    add.to.pic(197,0,1,81,114,11,11)
+    add.to.pic(197,0,1,42,151,14,14)
+    add.to.pic(197,0,0,47,154,14,14)
+    add.to.pic(197,0,3,42,153,14,14)
+    add.to.pic(197,0,2,107,114,11,11)
+    add.to.pic(197,0,2,105,115,11,11)
+    add.to.pic(197,0,3,79,114,11,11)
+    add.to.pic(197,0,2,74,115,11,11)
+    add.to.pic(197,0,3,87,114,11,11)
+    add.to.pic(197,0,3,61,114,11,11)
+    add.to.pic(197,0,2,49,115,11,11)
+  }
+  discard.view(197)
+  load.sound(38)
+  load.view(198)
+  load.view(20)
+  animate.obj(o6)
+  set.view(o6,198)
+  set.loop(o6,0)
+  fix.loop(o6)
+  set.cel(o6,0)
+  stop.cycling(o6)
+  position(o6,30,135)
+  draw(o6)
+  if (v94 != 1) { //00e0
+    set(f229)
+    stop.update(o6)
+    v56 = 48
+    load.logic(v56)
+    call(v56)
+    goto(l377)
+  }
+  if (!(v39 > 0)) { //00f6
+    v233 = 1
+    load.view(199)
+    load.view(30)
+    load.view(193)
+    load.view(194)
+    load.view(195)
+    load.view(196)
+    load.view(1)
+    load.sound(22)
+    load.sound(34)
+    animate.obj(o15)
+    animate.obj(o2)
+    animate.obj(o3)
+    animate.obj(o4)
+    animate.obj(o5)
+    animate.obj(o7)
+    ignore.blocks(o15)
+    ignore.objs(o15)
+    set.view(o15,199)
+    set.view(o2,193)
+    set.view(o3,194)
+    set.view(o4,195)
+    set.view(o5,196)
+    set.view(o7,198)
+    set.loop(o15,0)
+    set.loop(o2,3)
+    set.loop(o3,3)
+    set.loop(o4,1)
+    set.loop(o5,2)
+    set.loop(o7,1)
+    set.cel(o15,1)
+    set.cel(o7,0)
+    stop.cycling(o15)
+    stop.cycling(o7)
+    position(o15,87,136)
+    position(o2,80,134)
+    position(o3,96,134)
+    position(o4,63,147)
+    position(o5,53,141)
+    draw(o15)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    stop.update(o15)
+    stop.update(o2)
+    stop.update(o3)
+    stop.update(o4)
+    stop.update(o5)
+  }
+l377:
+  if (v134 > 0) { //0179
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l401)
+  }
+  position(o0,74,166)
+l401:
+  draw(o0)
+  show.pic()
+  return()
+}
+if (vWhichEgoBorder == 3) { //0195
+  if (!f237 && v94 < 255 && v94 > 3) { //019c
+    print("\"So long, Sweetie!%m62")
+  }
+  new.room(35)
+}
+if (posn(o0,46,132,65,140)) { //01ad
+  set.priority(o0,11)
+  goto(l447)
+}
+release.priority(o0)
+l447:
+reset(f230)
+if (posn(o0,36,154,56,167)) { //01c1
+  set(f230)
+}
+if (f220) { //01cd
+  reset(f220)
+  v220++
+}
+if (f221) { //01d7
+  reset(f221)
+  v221++
+}
+if (f222) { //01e1
+  reset(f222)
+  v222++
+}
+if (f223) { //01eb
+  reset(f223)
+  v223++
+}
+if (f224) { //01f5
+  reset(f224)
+  v224++
+}
+if (f225) { //01ff
+  reset(f225)
+  v225++
+}
+if (f226) { //0209
+  reset(f226)
+  v226++
+}
+if (f227) { //0213
+  reset(f227)
+  v227++
+}
+distance(o0,o15,v228)
+distance(o0,o2,v229)
+distance(o0,o3,v230)
+distance(o0,o4,v231)
+distance(o0,o5,v232)
+if ((v228 < v61 || v229 < v61 || v230 < v61 || v231 < v61 || v232 < v61)) { //0231
+  set(f109)
+}
+if (f112) { //0248
+  v236--
+  if (v236 == 1) { //0250
+    set(f220)
+  }
+  if (!f110) { //0259
+    v235--
+  }
+  if (v166 > 0) { //0262
+    v166--
+  }
+  if (v168 > 0 && !f110) { //026b
+    v168--
+  }
+}
+if (v94 > 0 && v94 < 6) { //0277
+  if (v225 == 0 && v94 == 1) { //0281
+    print("As he heads for the back room, the bartender mumbles under his breath, \"Here comes trouble!\"")
+    v225 = 50
+  }
+  if (v225 == 51) { //0290
+    v225++
+  }
+  if (!(v221 > 0) && v94 < 2 && posn(o0,0,0,159,155)) { //0299
+    v221 = 1
+  }
+  if (v221 == 1) { //02ad
+    start.update(o2)
+    move.obj(o2,80,138,1,f221)
+    v234 = 1
+    v221++
+  }
+  if (v221 == 3) { //02c1
+    stop.update(o2)
+    start.update(o3)
+    move.obj(o3,94,136,1,f221)
+    v234 = 1
+    v221++
+  }
+  if (v221 == 5) { //02d7
+    stop.update(o3)
+    print("The leader of this bunch, comes over to you and says, \"Well, well! If it ain't the Tidy Bowl Man!\"")
+    set.cel(o15,1)
+    force.update(o15)
+    v234 = 0
+    v140 = 4
+    v222 = 252
+    set(f221)
+  }
+  if (v221 == 6 && v140 == 1) { //02f2
+    print("\"What the (*&^$(# do you want, PIG?\"")
+    v221++
+    v94 = 2
+    v140 = 10
+  }
+  if (v221 == 7 && v140 == 1 && v94 < 3) { //0306
+    random(9,10,v152)
+    print(v152)
+    v140 = 20
+  }
+  if (v222 != 255 && v94 < 3) { //031c
+    if (f112) { //0327
+      v222++
+      v152 = 255
+      if (v222 == 5) { //0332
+        v152 = 0
+        goto(l870)
+      }
+      if (v222 == 10) { //033f
+        v152 = 1
+        goto(l870)
+      }
+      if (v222 == 15) { //034c
+        v152 = 2
+        v222 = 0
+        goto(l870)
+      }
+      if (v222 == 253) { //035c
+        v152 = 3
+      }
+l870:
+      if (v152 != 255) { //0366
+        set.cel(o15,v152)
+        start.update(o15)
+        goto(l888)
+      }
+      stop.update(o15)
+    }
+  }
+l888:
+  if (v94 == 4) { //0378
+    if (!(v222 > 0) && v143 != 138) { //037f
+      start.update(o15)
+      sound(38,f236)
+      set.view(o15,30)
+      reposition.to(o15,83,138)
+      observe.objs(o15)
+      set(f222)
+    }
+    if (v222 > 0 && v222 < 20) { //039b
+      get.posn(o15,v153,v154)
+      v157 = v153
+      v153 -= 7
+      v157 += 13
+      if (v142 < v153) { //03b2
+        set.loop(o15,1)
+        goto(l988)
+      }
+      if (v142 > v157) { //03bf
+        set.loop(o15,0)
+        goto(l988)
+      }
+      if (v143 < v154) { //03cc
+        set.loop(o15,3)
+        goto(l988)
+      }
+      set.loop(o15,2)
+    }
+l988:
+    if (v222 == 1) { //03dc
+      v222++
+      print("The local working girl seated at the bar seems to know you! She hops from the stool and shouts...")
+      print("\"SONNY BONDS! 'Zat you?\"")
+      print("\"My hero! Boy, am I glad you showed up. Those guys had some pretty strange ideas!\"")
+      accept.input()
+    }
+    if (v222 == 20 && v143 > 138) { //03ec
+      set.cel(o15,1)
+      force.update(o15)
+      set(f222)
+    }
+    if (v222 == 21) { //03fd
+      set.priority(o15,11)
+      ignore.blocks(o15)
+      set.view(o15,199)
+      set.loop(o15,0)
+      set.cel(o15,1)
+      reposition.to(o15,87,136)
+      stop.sound()
+      reset(f236)
+      set(f222)
+    }
+    if (v222 == 22) { //041b
+      stop.update(o15)
+      set(f222)
+    }
+    if (v222 == 23) { //0426
+      print("Sweet Cheeks steps back into her office and says, \"See ya later, Sonny!\"")
+      v222++
+      v94 = 5
+    }
+  }
+  if (v233 > 0) { //0434
+    if (v226 == 0) { //043b
+      stop.update(o5)
+      set.priority(o7,13)
+      ignore.objs(o7)
+      set.cel(o7,0)
+      set.loop(o4,3)
+      start.update(o4)
+      v226++
+    }
+    if (v226 == 1) { //0453
+      set.cel(o4,0)
+      end.of.loop(o4,f226)
+      v234 = 0
+      v226++
+    }
+    if (v226 == 3) { //0465
+      position(o7,61,127)
+      draw(o7)
+      move.obj(o7,34,127,4,f226)
+      v226++
+    }
+    if (v226 == 5) { //047a
+      set.cel(o6,v233)
+      erase(o7)
+      position(o7,0,0)
+      v233++
+      v226++
+      random(2,3,v166)
+    }
+    if (v226 == 6 && v166 == 1) { //0492
+      v166--
+      if (v233 == 4) { //049e
+        start.cycling(o4)
+        set.loop(o4,1)
+        v227 = 1
+        v226++
+        goto(l1205)
+      }
+      v226 = 1
+    }
+l1205:
+    if (v227 == 1) { //04b5
+      stop.update(o4)
+      start.update(o5)
+      move.obj(o5,53,147,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 3) { //04cb
+      stop.update(o5)
+      start.update(o4)
+      move.obj(o4,53,141,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 5) { //04e1
+      set.loop(o4,2)
+      set(f227)
+    }
+    if (v227 == 6) { //04ed
+      stop.update(o4)
+      start.update(o5)
+      move.obj(o5,53,147,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 8) { //0503
+      stop.update(o4)
+      start.update(o5)
+      move.obj(o5,63,147,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 10) { //0519
+      v226 = 10
+      v227++
+    }
+    if (v226 == 10) { //0525
+      set.loop(o5,3)
+      set.priority(o7,13)
+      ignore.objs(o7)
+      set.cel(o7,1)
+      v226++
+    }
+    if (v226 == 11) { //0539
+      set.cel(o5,0)
+      end.of.loop(o5,f226)
+      v234 = 0
+      v226++
+    }
+    if (v226 == 13) { //054b
+      position(o7,61,127)
+      draw(o7)
+      move.obj(o7,34,127,4,f226)
+      v226++
+    }
+    if (v226 == 15) { //0560
+      set.cel(o6,v233)
+      erase(o7)
+      position(o7,0,0)
+      v233++
+      v226++
+      random(2,3,v166)
+    }
+    if (v226 == 16 && v166 == 1) { //0578
+      v166--
+      if (v233 == 7) { //0584
+        start.cycling(o5)
+        set.loop(o5,1)
+        v227 = 20
+        v226++
+        goto(l1435)
+      }
+      v226 = 11
+    }
+l1435:
+    if (v227 == 20) { //059b
+      move.obj(o5,34,147,1,f227)
+      v234 = 1
+    }
+    if (v227 == 21) { //05ab
+      set.loop(o5,3)
+      set.cel(o5,0)
+      end.of.loop(o5,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 23) { //05c0
+      v233--
+      set.cel(o6,v233)
+      if (v233 > 0) { //05cc
+        v227 = 21
+        goto(l1502)
+      }
+      v233 = 1
+      v227++
+    }
+l1502:
+    if (v227 == 24) { //05de
+      start.cycling(o5)
+      set.loop(o5,0)
+      move.obj(o5,45,141,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 26) { //05f5
+      stop.update(o5)
+      start.update(o4)
+      set.loop(o4,1)
+      set(f227)
+    }
+    if (v227 == 27) { //0605
+      set.loop(o4,2)
+      move.obj(o4,63,147,1,f227)
+      v234 = 1
+    }
+    if (v227 == 28) { //0618
+      set.loop(o4,3)
+      set(f227)
+    }
+    if (v227 == 29) { //0624
+      stop.update(o4)
+      start.update(o5)
+      move.obj(o5,53,141,1,f227)
+      v234 = 1
+      v227++
+    }
+    if (v227 == 31) { //063a
+      set.loop(o5,2)
+      set(f227)
+    }
+    if (v227 == 32) { //0646
+      stop.cycling(o4)
+      set.loop(o4,3)
+      set.cel(o4,0)
+      stop.update(o5)
+      start.update(o4)
+      set(f227)
+    }
+    if (v227 == 33) { //065b
+      set.cel(o7,0)
+      v226 = 1
+      v227++
+    }
+    if (v226 < 100 && posn(o0,0,145,54,150)) { //066a
+      get.posn(o7,v152,v145)
+      v152 -= 5
+      v144 = v142
+      v144 += 10
+      if (v152 > v142 && v152 < v144) { //0684
+        start.motion(o0)
+        stop.motion(o7)
+        erase(o7)
+        set(f36)
+        set(f156)
+        v226 = 100
+        v227 = 100
+        set(f226)
+      }
+    }
+    if (v226 == 101) { //06a0
+      set.view(o0,v41)
+      set.loop(o0,0)
+      set.cel(o0,0)
+      if (v142 > 40) { //06b0
+        v142 -= 5
+        reposition.to(o0,v142,v143)
+      }
+      if (v233 < 4) { //06be
+        set.cel(o7,2)
+        goto(l1742)
+      }
+      set.cel(o7,3)
+l1742:
+      set(f226)
+    }
+    if (v226 == 102) { //06d0
+      stop.update(o0)
+      set(f226)
+    }
+    if (v226 == 103) { //06db
+      v144 = v142
+      v145 = v143
+      v145 -= 3
+      v144 += 1
+      position(o7,144,v145)
+      draw(o7)
+      set(f226)
+    }
+    if (v226 == 104) { //06f6
+      print("BULLSEYE!")
+      print("You've been nailed by a 4-gram dart, tossed by a 250-pound biker. Good job!")
+      print("Next time, watch where you're walking!")
+      set(f140)
+      v234 = 0
+      v226++
+    }
+  }
+  if (v94 == 3) { //070a
+    if (!(v220 > 0)) { //0711
+      v220 = 2
+      start.motion(o0)
+      set(f36)
+      move.obj(o0,90,143,1,f220)
+      erase(o7)
+      v140 = 0
+      v234 = 0
+      v233 = 0
+      normal.cycle(o4)
+      normal.cycle(o5)
+      stop.motion(o4)
+      stop.motion(o5)
+      release.loop(o4)
+      release.loop(o5)
+      set.loop(o4,0)
+      set.loop(o5,0)
+      v226 = 200
+      v227 = 200
+      set(f226)
+    }
+  }
+  if (v226 == 201) { //074b
+    stop.update(o4)
+    stop.update(o5)
+    set(f226)
+  }
+  if (v220 == 3) { //0758
+    set.loop(o0,1)
+    start.update(o2)
+    move.obj(o2,80,142,1,f220)
+  }
+  if (v220 == 4) { //076a
+    set.loop(o2,0)
+    stop.update(o2)
+    start.update(o3)
+    move.obj(o3,94,140,1,f220)
+  }
+  if (v220 == 5) { //077e
+    set.loop(o3,1)
+    set(f220)
+  }
+  if (v220 == 6) { //078a
+    stop.update(o3)
+    print("\"Say goodnight, Pig! We're gonna kick the S!@#$^&* out of you!!\"")
+    start.update(o2)
+    stop.cycling(o2)
+    v220 = 50
+    v235 = 5
+  }
+  if (v220 == 50 && v235 == 1) { //079f
+    v235 = 0
+    start.update(o2)
+    start.cycling(o2)
+    prevent.input()
+    set(f156)
+    move.obj(o2,88,142,1,f220)
+    v220 = 100
+  }
+  if (v220 == 101) { //07bc
+    start.update(o3)
+    start.cycling(o3)
+    set.loop(o3,2)
+    move.obj(o3,92,143,1,f152)
+    set.view(o0,v41)
+    set.loop(o0,0)
+    set.cel(o0,0)
+    reposition.to(o0,84,143)
+    set.priority(o2,15)
+    set.view(o2,199)
+    set.loop(o2,1)
+    reposition.to(o2,81,145)
+    v234 = 0
+    v236 = 4
+    set(f220)
+  }
+  if (v220 == 103) { //07f2
+    v236 = 4
+    set(f220)
+    print("It appears you are just what these low-lifes wanted...")
+  }
+  if (v220 == 105) { //0800
+    print("...a cop to pound on!")
+    v94 = 255
+    set(f140)
+  }
+}
+if (f231) { //080e
+  reset(f231)
+  v237++
+  if (v237 == 1) { //0818
+    prevent.input()
+    v234 = 0
+    v233 = 0
+    print("You remove your PR-24 and take a defensive stance. The head biker quickly backs down, saying, \"Excuse us, Sir! If you're going to be rough with us, we'll just leave quietly!\"")
+    start.cycling(o2)
+    move.obj(o2,74,141,1,f231)
+  }
+  if (v237 == 2) { //0830
+    move.obj(o2,74,154,1,f231)
+  }
+  if (v237 == 3) { //083d
+    print("\"Com' on, guys. Let's blow this joint!\"")
+    move.obj(o2,74,167,1,f231)
+    set(f232)
+  }
+  if (v237 == 4) { //084e
+    erase(o2)
+    v237 = 255
+    get.posn(o4,v144,v145)
+    get.posn(o5,v152,v145)
+    if (v144 > v152) { //0862
+      set(f235)
+      set(f233)
+      goto(l2162)
+    }
+    set(f234)
+  }
+}
+l2162:
+if (f232) { //0872
+  reset(f232)
+  v238++
+  if (v238 == 1) { //087c
+    start.update(o3)
+    start.cycling(o3)
+    move.obj(o3,101,140,1,f232)
+  }
+  if (v238 == 2) { //088d
+    move.obj(o3,74,167,1,f232)
+  }
+  if (v238 == 3) { //089a
+    erase(o3)
+    v238 = 255
+  }
+}
+if (f233) { //08a6
+  reset(f233)
+  v239++
+  if (v239 == 1) { //08b0
+    start.update(o4)
+    start.cycling(o4)
+    start.motion(o4)
+    get.posn(o4,v144,v145)
+    v144 = 72
+    move.obj(o4,v144,v145,122,f233)
+  }
+  if (v239 == 2) { //08ca
+    move.obj(o4,72,167,1,f233)
+  }
+  if (v239 == 3) { //08d7
+    erase(o4)
+    v239 = 255
+    if (f235) { //08e3
+      set(f234)
+    }
+  }
+}
+if (f234) { //08eb
+  reset(f234)
+  v240++
+  if (v240 == 1) { //08f5
+    start.update(o5)
+    start.motion(o5)
+    start.cycling(o5)
+    get.posn(o5,v144,v145)
+    v144 = 72
+    move.obj(o5,v144,v145,122,f234)
+  }
+  if (v240 == 2) { //090f
+    move.obj(o5,72,167,1,f234)
+  }
+  if (v240 == 3) { //091c
+    erase(o5)
+    v240 = 255
+    if (!f235) { //0928
+      set(f233)
+    }
+  }
+}
+if (v237 == 255 && v238 == 255 && v239 == 255 && v240 == 255 && v94 < 4) { //0931
+  vCurrentScore += 5
+  v94 = 4
+  v222 = 0
+  set(f220)
+  reset(f36)
+  accept.input()
+}
+if ((said("use", "nightstick") || said("swing", "nightstick", "rol") || said("hit", "art", "use", "nightstick") || said("use", "nightstick", "hit", "art"))) { //0952
+  set(f33)
+}
+if ((f31 || said("load", "automatic") || said("drop", "ammo", "automatic") || said("load", "automatic", "use", "ammo") || f32 || said("draw", "automatic") || said("drop", "automatic", "belt") || said("drop", "automatic", "away") || said("dont move", "use", "automatic") || said("aim", "automatic", "rol") || said("empty", "automatic", "from", "belt"))) { //097c
+  reset(f31)
+  reset(f32)
+  print("You can't use your gun here, with all%m63around.")
+}
+if (f33) { //09d4
+  reset(f33)
+  set(fSaidAccepted)
+  if (!(has(i13))) { //09de
+    print("%m53 If only you had your PR-24!")
+    goto(l2597)
+  }
+  if (v220 == 50) { //09ea
+    v220++
+    cycle.time(o0,v123)
+    start.motion(o0)
+    set.view(o0,20)
+    set.cel(o0,0)
+    v142 -= 5
+    reposition.to(o0,v142,v143)
+    end.of.loop(o0,f228)
+    set(f157)
+    v235 = 0
+    goto(l2597)
+  }
+  if (v220 < 50) { //0a10
+    print("Why hurt%m63?")
+    goto(l2597)
+  }
+  if (v220 == 255) { //0a1c
+    print("Once was enough; they're on their way.")
+  }
+}
+l2597:
+if (f228) { //0a25
+  reset(f228)
+  cycle.time(o0,v122)
+  set.view(o0,v39)
+  set.loop(o0,2)
+  v142 += 5
+  reposition.to(o0,v142,v143)
+  reset(f157)
+  v220 = 255
+  set(f231)
+}
+if (f112) { //0a44
+  if (v234 != 0) { //0a4a
+    v234++
+    if (v234 == 255) { //0a54
+      v234 = 1
+    }
+  }
+  if (v234 == 50) { //0a5e
+    v234 = 1
+    random(1,2,v152)
+    print(v152)
+  }
+}
+if (!fEnteredCommand) { //0a6e
+  goto(l3788)
+}
+if (v94 > 0 && v94 < 5) { //0a78
+  if ((said("hit", "art", "rol") || said("print", "citation", "rol") || said("examine", "id", "rol") || said("examine", "drive", "id", "rol") || said("examine", "bonds", "id", "rol") || said("examine", "bonds", "drive", "id", "rol") || said("ask", "art", "examine", "id", "rol") || said("ask", "art", "id", "rol") || said("examine", "id", "rol") || said("interrogate", "art", "rol"))) { //0a82
+    print("\"What for, Man? We ain't done nothin' wrong!\"")
+  }
+  if ((said("answer", "art") || said("ask", "art"))) { //0ae8
+    if (f109) { //0afa
+      print("%m12\"We don't talk to no pigs.\"")
+      goto(l2823)
+    }
+    print("%m12\"Hey, Pal! I'm da leader 'round here! Ya wanna talk? Come over here and talk to me!!\"")
+  }
+l2823:
+  if ((said("apprehend", "art", "rol") || said("apprehend", "convict", "rol"))) { //0b07
+    print("All they've done is hog Carol's parking.")
+  }
+  if (said("examine", "art")) { //0b1f
+    print("These are some pretty rough-looking dudes!")
+  }
+}
+if (has(i4) && said("call")) { //0b2b
+  set.string(str3,"10-20%m71")
+  if (!(v39 > 0)) { //0b38
+    set.string(str2,"\"83-32, %s3")
+    goto(l2889)
+  }
+  set.string(str2,"\"83-Nora-10, %s3")
+l2889:
+  if (v67 == 4) { //0b49
+    if (v94 < 4) { //0b50
+      set.string(str3,"10-97%m71")
+      goto(l2912)
+    }
+    set.string(str3,"10-8%m72")
+  }
+l2912:
+  print("You radio in, %s2")
+}
+if (v94 > 0 && v94 < 4) { //0b62
+  if ((said("empty", "bike", "rol") || said("move", "bike", "rol"))) { //0b6c
+    if (posn(o0,70,130,130,156)) { //0b82
+      v94 = 3
+      sound(34,f152)
+      print("\"How do ya plan to make us move our %w2, wimp?\"")
+      goto(l2969)
+    }
+    print("%m12\"Hey, Pal! I'm da leader 'round here! Ya wanna talk? Come over here and talk to me!!\"")
+  }
+}
+l2969:
+if (v94 > 3 && v94 < 255) { //0b99
+  if ((said("ask", "broad", "rol") || said("ask", "broad", "rol") || said("interrogate", "broad", "rol") || said("interrogate", "broad", "rol") || said("hello", "rol") || said("answer", "broad", "rol"))) { //0ba3
+    if (!f128) { //0bd7
+      print("\"What's cookin', good lookin'?\" asks your old friend, Sweet Cheeks Marie. \"It's been too long, Sonny. I haven't seen ya around lately; I just know you want something!\"")
+      goto(l3045)
+    }
+    print("\"That's the only real news in town, Sweet Thing!\"")
+  }
+l3045:
+  if ((said("examine", "broad", "rol") || said("examine", "broad", "rol"))) { //0be5
+    print("You recognize Sweet Cheeks Marie as an old chum from high school. She obviously failed stewardess school!")
+  }
+  if (said("bonds")) { //0bfd
+    print("\"Well, you know, Sonny, I'm yours any time you're ready!\"")
+  }
+  if ((said("ok") || said("hug", "bonds", "rol") || said("hug", "broad", "rol") || said("anyword", "hug", "broad", "rol") || said("hug", "broad", "rol") || said("pay", "broad", "rol") || said("pay", "broad", "rol") || said("administer", "broad", "bills", "rol") || said("administer", "broad", "bills", "rol") || said("administer", "bills", "broad", "rol") || said("administer", "bills", "broad", "rol") || said("anyword", "hug", "broad", "rol") || said("blow", "rol") || said("anyword", "blow", "rol") || said("ask", "blow", "rol") || said("ask", "broad", "blow", "rol") || said("administer", "blow", "rol") || said("get", "cunt", "rol") || said("blow", "breast", "rol") || said("enter"))) { //0c07
+    print("Sweet Cheeks' eyes brighten, \"Oh, Sonny! You know I'd just love that, but I'm meeting someone in a few minutes.\"")
+  }
+  if ((said("information", "rol") || said("cocaine", "rol") || said("anyword", "cocaine", "rol") || said("anyword", "anyword", "cocaine", "rol") || said("anyword", "information", "rol") || said("anyword", "anyword", "information", "rol"))) { //0cb3
+    print("Obviously, you have come to the right place. Sweet Cheeks Marie spills her guts to you...")
+    if (f236) { //0ceb
+      sound(38,f236)
+    }
+    print("\"You know what I heard the other day?\" says Marie, \"there's a big dope man tryin' to take over Lytton. He likes to call himself 'The Death Angel!' I don't know no more about him, but this john was sure a peculiar duck.\"")
+    if (f236) { //0cf6
+      sound(38,f236)
+    }
+    print("\"I only seen him once, and I'm not sure about his name. I think it was Coffman, or Hoffman, or something like that. He's a real spiffy dresser, but the funniest thing: the guy has a sweet, little, flower tattoo above his left nipple. It was kinda cute, really.\"")
+    if (!f128) { //0d01
+      set(f128)
+      vCurrentScore += 3
+    }
+    if (f236) { //0d0d
+      sound(38,f236)
+    }
+    print("\"That's the only real news in town, Sweet Thing!\"")
+    if (f236) { //0d18
+      sound(38,f236)
+    }
+    print("In return for the information on the Death Angel, you tell Sweet Cheeks of the upcoming undercover crack down on prostitution called \"Operation Trick Trap.\"")
+  }
+  if ((said("thank", "rol") || said("thank", "broad", "rol") || said("anyword", "thank", "rol") || said("thank", "broad", "rol"))) { //0d23
+    print("\"Any time, Sonny.%m62")
+    set(f237)
+    v222 = 20
+  }
+  if ((said("apprehend", "broad", "rol") || said("apprehend", "anyword", "broad", "rol"))) { //0d4e
+    print("\"Why, Sweet Thing!\" says the hooker. \"You'd arrest your old sweetie, Sweet Cheeks Marie?\"")
+  }
+  if (said("bye", "rol")) { //0d68
+    print("\"So long, Sweetie!%m62")
+    set(f237)
+    v222 = 20
+  }
+}
+if (v143 < 142 && said("answer", "art")) { //0d79
+  random(50,51,v152)
+  print(v152)
+}
+if (said("examine", "art")) { //0d8c
+  print("It's Willy Wily, in the flesh.")
+}
+if ((said("examine", "right", "painting") || said("examine", "painting", "on", "right", "rol"))) { //0d98
+  print("%m64June '86%m65Sweet Cheryl%m66")
+}
+if ((said("examine", "left", "painting") || said("examine", "painting", "on", "left", "rol"))) { //0db4
+  print("%m64July, '65%m65Donna Lovely%m66")
+}
+if ((said("examine", "back", "painting") || said("examine", "painting", "on", "back", "rol"))) { //0dd0
+  print("A boss plaque on the back wall reads, \"Give Me Harley or Give Me Death!\"")
+}
+if (said("examine", "painting", "rol")) { //0dec
+  current.loop(o0,v152)
+  if (v152 == 2) { //0dfb
+    print("Where are you looking?")
+    goto(l3617)
+  }
+  if (v152 == 1) { //0e07
+    print("%m64July, '65%m65Donna Lovely%m66")
+    goto(l3617)
+  }
+  if (v152 == 0) { //0e13
+    print("%m64June '86%m65Sweet Cheryl%m66")
+    goto(l3617)
+  }
+  print("A boss plaque on the back wall reads, \"Give Me Harley or Give Me Death!\"")
+}
+l3617:
+if (said("examine", "speaker")) { //0e21
+  print("The bar's speakers sound like they've been \"rode hard and put up wet!\"")
+}
+if (said("examine", "crack")) { //0e2d
+  print("The only thing in the cracks of these walls is an occasional cockroach.")
+}
+if (said("examine", "dart")) { //0e39
+  print("You see a well-used dartboard, and, being a trained observer, you conclude by the pattern of holes around the bulls-eye that local competition isn't that tough.")
+}
+if (said("examine", "bench")) { //0e45
+  print("These rickety old stools have seen better days.")
+}
+if (f230 && said("examine", "bottle")) { //0e51
+  print("Probably the lips of those ugly bikers  have been wrapped around these bottles.")
+}
+if ((said("play", "dart") || said("get", "dart") || said("throw", "dart"))) { //0e5f
+  print("The best way to play darts is to save your game, turn off your computer, and buy a dart board! (Maybe you'll get to play darts in \"Police Quest II!\")")
+}
+if (said("examine", "counter")) { //0e79
+  if ((posn(o0,33,150,58,167) || posn(o0,93,148,128,166))) { //0e83
+    print("The table is covered with scratches, dents and cracks. It looks like it was salvaged from Joe's Junk Yard.")
+    goto(l3740)
+  }
+  set(f113)
+}
+l3740:
+if ((said("sit") || said("sit", "on", "bench") || said("sit", "bench"))) { //0e9c
+  print("Keep moving, you don't need to sit here.")
+}
+if ((said("examine") || said("examine", "accident"))) { //0eb6
+  random(45,46,v152)
+  print(v152)
+}
+l3788:
+if (v56 > 0) { //0ecc
+  call(v56)
+}
+if (f236) { //0ed5
+  sound(38,f236)
+}
+return()

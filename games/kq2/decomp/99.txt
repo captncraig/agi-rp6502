@@ -1,0 +1,67 @@
+if (said("tp")) { //0002
+  get.num(str1,v77)
+  new.room(v77)
+}
+if ((said("position") || said("pos"))) { //000f
+  get.num(str2,v77)
+  get.num(str3,v78)
+  erase(o0)
+  position(o0,77,v78)
+  draw(o0)
+}
+if (said("acquire", "object")) { //002b
+  get.num(str4,v77)
+  get(v77)
+}
+if (said("drop", "var")) { //003a
+  get.num(str5,v77)
+  get.num(str6,v78)
+  lindirectv(v77,v78)
+}
+if ((said("object") || said("object"))) { //004d
+  get.num(str7,v77)
+  obj.status.v(v77)
+}
+if (controller(c5)) { //0060
+  show.pri.screen()
+}
+if ((said("show", "var") || said("sv"))) { //0067
+  get.num(str5,v111)
+  rindirect(vKeyPressed,v111)
+  print("var %v20: %v19")
+}
+if ((said("show", "flag") || said("sf"))) { //007f
+  get.num(str9,v111)
+  if (v111) { //0092
+    print("flag %v20 is set")
+    goto(l159)
+  }
+  print("flag %v20 is not set")
+}
+l159:
+if (said("reset", "flag")) { //009f
+  get.num(str9,v111)
+  reset(v111)
+}
+if (said("drop", "flag")) { //00ae
+  get.num(str9,v111)
+  set(v111)
+}
+if (controller(c4)) { //00bd
+  show.mem()
+}
+if (f163) { //00c4
+  if (vUnknownWord == 1) { //00ca
+    log("%m12%w1")
+  }
+  if (vUnknownWord == 2) { //00d3
+    log("%m12%w2")
+  }
+  if (vUnknownWord == 3) { //00dc
+    log("%m12%w3")
+  }
+  if (vUnknownWord == 0 && fEnteredCommand && !fSaidAccepted) { //00e5
+    log("No response to input.")
+  }
+}
+return()

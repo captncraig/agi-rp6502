@@ -1,4 +1,176 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(74)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 2
+  set(f73)
+  v32 = 20
+  v31 = 110
+  random(2,3,v36)
+  if (v36 == 2) { //0020
+    v57 = 56
+    v58 = 130
+    goto(l54)
+  }
+  v57 = 142
+  v58 = 119
+l54:
+  load.logic(112)
+  load.logic(120)
+  load.logic(113)
+  load.view(232)
+  load.view(11)
+  load.view(3)
+  load.view(7)
+  load.view(2)
+  if (v44 == 6) { //0046
+    load.view(24)
+    load.sound(1)
+  }
+  if (v62 == 1) { //0051
+    load.view(170)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v62 == 1) { //0060
+    add.to.pic(170,1,0,104,46,4,4)
+    discard.view(170)
+  }
+  animate.obj(o2)
+  set.view(o2,232)
+  set.loop(o2,2)
+  set.cel(o2,2)
+  set.priority(o2,4)
+  ignore.horizon(o2)
+  position(o2,76,27)
+  v36 = 6
+  cycle.time(o2,v36)
+  draw(o2)
+  animate.obj(o3)
+  set.view(o3,232)
+  set.loop(o3,2)
+  set.priority(o3,4)
+  ignore.horizon(o3)
+  position(o3,89,27)
+  v36 = 6
+  cycle.time(o3,v36)
+  draw(o3)
+  if ((vPrevRoom == 29 || vPrevRoom == 24 || v44 == 6)) { //00a6
+    set(f48)
+    set(f47)
+  }
+  if (f48) { //00b9
+    if ((vPrevRoom == 29 || vPrevRoom == 24 || v44 == 6)) { //00bf
+      prevent.input()
+      program.control()
+      set(f46)
+      set(f35)
+      ignore.blocks(o0)
+      ignore.horizon(o0)
+      v40 = 43
+      v41 = 33
+      move.obj(o0,43,121,3,f220)
+      sound(1,f41)
+      goto(l352)
+    }
+    if (vPrevRoom == 15) { //00ea
+      v40 = 60
+      if (v138 == 7) { //00f4
+        v40 = 122
+        set.view(o0,7)
+      }
+      if (v138 == 2) { //0101
+        v40 = 140
+        set.view(o0,2)
+      }
+      if (v138 == 3) { //010e
+        v40 = 153
+        v41 = 130
+        set.view(o0,3)
+      }
+      goto(l352)
+    }
+    if (vPrevRoom == 25) { //0121
+      v40 = 77
+      if (v44 == 224) { //012b
+        v40 = 112
+        set.view(o0,7)
+      }
+      if (v44 == 11) { //0138
+        v40 = 144
+        set.view(o0,3)
+      }
+      goto(l352)
+    }
+    if ((vPrevRoom == 31 || vPrevRoom == 75 || vPrevRoom == 76)) { //0148
+      v40 = 150
+      v41 = 74
+      set.view(o0,3)
+    }
+l352:
+    position(o0,40,v41)
+  }
+  if (f47) { //0164
+    draw(o0)
+  }
+  v36 = 1
+  call(112)
+  reposition.to(o12,99,19)
+  reposition.to(o13,111,11)
+  call(120)
+  call(113)
+  show.pic()
+  return()
+}
+v138 = 0
+if (fEgoOnWater) { //0182
+  v138 = 7
+}
+if ((posn(o0,119,0,126,94) || posn(o0,124,95,135,112) || posn(o0,125,113,140,130) || posn(o0,129,131,159,167))) { //018b
+  v138 = 2
+}
+if ((posn(o0,127,0,159,94) || posn(o0,136,95,159,112) || posn(o0,141,113,159,130))) { //01ac
+  v138 = 3
+}
+if (fEnteredCommand) { //01c7
+  if (v62 == 1 && (said("examine", "dock") || said("examine", "ship"))) { //01cd
+    print("There is a ship docked at the pier.")
+  }
+  if (said("examine", "town")) { //01e4
+    print("A charming village sits atop a bluff overlooking the ocean.")
+  }
+  if (said("examine", "bluff")) { //01f0
+    print("The cliffs are very steep.")
+  }
+  if (said("examine", "dock")) { //01fc
+    print("A weathered dock leads into the ocean.")
+  }
+}
+if (f220) { //0208
+  reset(f220)
+  set.view(o0,24)
+  v38 = 247
+  v37 = 0
+  repositon(o0,v37,v38)
+  v44 = 20
+  set(f44)
+  stop.cycling(o0)
+}
+if (f45 && v62 == 1 && !(v53 > 0) && v52 > 0 && v52 < 30) { //0224
+  v52 = 30
+}
+call(112)
+call(120)
+call(113)
+if (vWhichEgoBorder == 3) { //0240
+  new.room(15)
+}
+if (vWhichEgoBorder == 1) { //0249
+  new.room(25)
+}
+if (vWhichEgoBorder == 2) { //0252
+  new.room(31)
+}
+return()

@@ -1,4 +1,56 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+if (fNewRoom) { //0002
+  return()
+}
+if (!f46) { //0009
+  if (fEgoOnWater && !f38 && v138 != 224) { //0010
+    set.view(o0,7)
+    v138 = 7
+  }
+  if (!fEgoOnWater && v138 != 0) { //0023
+    set.view(o0,0)
+    v138 = 0
+  }
+}
+if (!fEnteredCommand) { //0034
+  goto(l300)
+}
+if ((said("examine") || said("examine", "deck"))) { //003e
+  print("There is a rushing stream flowing through the forest floor.")
+}
+if ((said("examine", "creek") || said("examine", "liquid"))) { //0050
+  print("Clear water flows over and around the rocks of the stream. Wet mud lines its banks.")
+}
+if ((said("capture", "mud") || said("capture", "mud", "creek") || said("capture", "mud", "from", "creek") || said("capture", "mud", "from", "creek", "try", "ladle") || said("capture", "mud", "try", "ladle"))) { //0064
+  if (has(i27)) { //009a
+    print("You are already carrying it.")
+    goto(l207)
+  }
+  if (!f90) { //00a5
+    print("There is no mud around here.")
+    goto(l207)
+  }
+  if (!(has(i41))) { //00b1
+    print("The thought of carrying around a handful of mud doesn't appeal to you.")
+    goto(l207)
+  }
+  print("With the wooden spoon you kneel and scoop a spoonful of wet mud from the stream's bank. You carry it with you.")
+  get(i27)
+  drop(i41)
+  if (!f110) { //00c3
+    set(f110)
+    vCurrentScore += 1
+  }
+}
+l207:
+if ((said("capture", "liquid", "creek") || said("capture", "liquid") || said("capture", "liquid", "cup"))) { //00cf
+  print("You have no need to carry around the stream water. If you are thirsty then just get a drink.")
+}
+if ((said("capture", "drink", "liquid", "creek") || said("creek", "capture", "drink", "liquid") || said("capture", "drink", "liquid") || said("capture", "drink") || said("drink", "liquid") || said("drink"))) { //00ed
+  if (f75) { //011f
+    print("Cupping your hands, you bring the refreshing water to your lips and drink deeply. Aaahhhh!!")
+    goto(l300)
+  }
+  print("You need to move closer.")
+}
+l300:
+return()

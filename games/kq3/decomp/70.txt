@@ -1,4 +1,86 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(9)
+  load.sound(15)
+  v36 = 70
+  load.pic(v36)
+  draw.pic(v36)
+  set.horizon(80)
+  set(f46)
+  v57 = 76
+  v58 = 100
+  prevent.input()
+  program.control()
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  animate.obj(o1)
+  load.view(98)
+  set.view(o1,98)
+  ignore.horizon(o1)
+  set.cel(o1,0)
+  v36 = 7
+  cycle.time(o1,v36)
+  position(o1,63,99)
+  draw(o1)
+  animate.obj(o2)
+  load.view(251)
+  set.view(o2,251)
+  ignore.horizon(o2)
+  ignore.objs(o2)
+  set.cel(o2,0)
+  position(o2,80,98)
+  set.priority(o2,14)
+  draw(o2)
+  end.of.loop(o2,f221)
+  animate.obj(o13)
+  load.view(236)
+  set.view(o13,236)
+  ignore.horizon(o13)
+  set.cel(o13,1)
+  position(o13,30,35)
+  draw(o13)
+  set(f220)
+  show.pic()
+  return()
+}
+if (f221) { //006c
+  start.cycling(o2)
+  reset(f221)
+  v38 = 4
+  v37 = 0
+  repositon(o1,v37,v38)
+  get.posn(o1,v37,v38)
+  if (v38 > 130) { //0084
+    erase(o1)
+    print.at("It seems that your storm has backfired.",2,2,37)
+    set(f44)
+    erase(o2)
+    erase(o13)
+    goto(l161)
+  }
+  set.cel(o2,0)
+  end.of.loop(o2,f221)
+}
+l161:
+if (v220 > 8) { //00a1
+  stop.cycling(o13)
+  goto(l185)
+}
+if (v220 == 8) { //00ad
+  sound(15,f238)
+}
+start.cycling(o13)
+l185:
+if (!(v220 > 0)) { //00b9
+  random(15,40,v220)
+  random(1,144,v37)
+  v38 = 35
+  reposition.to(o13,v37,v38)
+  random(0,1,v64)
+  set.loop(o13,v64)
+  set.cel(o13,1)
+  stop.cycling(o13)
+  sound(9,f238)
+  shake.screen(1)
+}
+v220--
+return()

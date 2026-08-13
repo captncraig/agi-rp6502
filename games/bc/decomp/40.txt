@@ -1,4 +1,56 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //000e
+    load.logic(116)
+    set(f200)
+  }
+  if (!f59) { //0018
+    load.logic(112)
+    set(f201)
+  }
+  load.view(124)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,73,25)
+  set.view(o2,124)
+  if (vPrevRoom == 45) { //0030
+    position(o0,123,95)
+  }
+  draw(o0)
+  draw(o2)
+  if (f200) { //003f
+    call(116)
+  }
+  if (f201) { //0047
+    call(112)
+    position(o9,121,151)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0055
+  print("You are on the second floor of the Horned King's castle. Your heart is racing.")
+}
+if (posn(o0,17,59,37,71)) { //005d
+  set(fEgoObscured)
+}
+if (vWhichEgoBorder == 4) { //0069
+  new.room(39)
+}
+if (posn(o0,127,71,159,131)) { //0072
+  if (f116 && f59) { //007c
+    v59 = 4
+    goto(l140)
+  }
+  new.room(45)
+}
+l140:
+if (f201) { //008c
+  call(112)
+}
+if (f200) { //0094
+  call(116)
+}
+return()

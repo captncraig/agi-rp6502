@@ -1,6 +1,189 @@
 v253 = 0
 v254 = 0
 v255 = 0
-if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (v235 == 0) { //000b
+  v145 = 43
+}
+if (v235 == 1) { //0015
+  v145 = 78
+}
+if (v235 == 2) { //001f
+  v145 = 113
+}
+if (v235 == 3) { //0029
+  v145 = 148
+}
+if (v235 == 0) { //0033
+  set.string(str2,"Gene")
+}
+if (v235 == 1) { //003d
+  set.string(str2,"Otto")
+}
+if (v235 == 2) { //0047
+  set.string(str2,"Frank")
+}
+if (v235 == 3) { //0051
+  set.string(str2,"Whitey")
+}
+v152 = 192
+v152 += v235
+v154 = v152
+v154 += 4
+rindirect(v201,v154)
+rindirect(v200,v152)
+if (v235 != 3) { //006d
+  call(91)
+  v158 = 0
+  if (v253 > 0) { //007a
+    v158++
+  }
+  if (v254 > 0) { //0083
+    v158++
+  }
+  if (v255 > 0) { //008c
+    v158++
+  }
+  clear.lines(0,0,c0)
+  if (v158 == 0) { //0099
+    display(0,0,"%s2 stands.")
+    goto(l171)
+  }
+  display(0,0,"%s2 takes %v158 cards.")
+l171:
+  if (!(v253 > 0) && !(v254 > 0) && !(v255 > 0)) { //00ab
+    goto(l605)
+    goto(l196)
+  }
+  goto(l400)
+}
+l196:
+if (!f56) { //00c4
+  clear.lines(23,23,c0)
+  goto(l212)
+}
+set(f34)
+l212:
+get.num(str36,v237)
+if (v237 > 3) { //00d7
+  sound(23,f152)
+  goto(l196)
+}
+l228:
+if (!f56) { //00e4
+  clear.lines(23,23,c0)
+  goto(l244)
+}
+set(f34)
+l244:
+if (v237 == 0) { //00f4
+  goto(l605)
+}
+if (v237 == 1) { //00fe
+  get.num(str37,v152)
+  goto(l270)
+}
+get.num(str38,v152)
+l270:
+if ((v152 > 5 || v152 < 1)) { //010e
+  sound(23,f152)
+  goto(l228)
+}
+v253 = v152
+if (v237 == 1) { //0123
+  goto(l400)
+}
+l301:
+if (!f56) { //012d
+  clear.lines(23,23,c0)
+  goto(l317)
+}
+set(f34)
+l317:
+get.num(str39,v152)
+if ((v152 > 5 || v152 < 1 || v152 == v253)) { //0140
+  sound(23,f152)
+  goto(l301)
+}
+v254 = v152
+if (v237 == 2) { //0158
+  goto(l400)
+}
+l354:
+if (!f56) { //0162
+  clear.lines(23,23,c0)
+  goto(l370)
+}
+set(f34)
+l370:
+get.num(str40,v152)
+if ((v152 > 5 || v152 < 1 || v152 == v253 || v152 == v254)) { //0175
+  sound(23,f152)
+  goto(l354)
+}
+v255 = v152
+l400:
+if (!f56) { //0190
+  clear.lines(23,23,c0)
+}
+v146 = 81
+v147 = 2
+v148 = 2
+v144 = 40
+v149 = 4
+v150 = 4
+v154 = 1
+l432:
+if ((v154 == v253 || v154 == v254 || v154 == v255)) { //01b0
+  add.to.pic(v146,v147,v148,v144,v145,v149,v150)
+}
+v144 += 17
+v154++
+if (v154 < 6) { //01cc
+  goto(l432)
+}
+v159 = 240
+v152 = 208
+if (v235 == 1) { //01dc
+  v152 += 5
+}
+if (v235 == 2) { //01e6
+  v152 += 10
+}
+if (v235 == 3) { //01f0
+  v152 += 15
+}
+v158 = v152
+if (v253 != 0) { //01fd
+  v253--
+  v158 += v253
+  v160 = v159
+  v160 += v252
+  rindirect(v161,v158)
+  lindirectv(v160,v161)
+  v252++
+  lindirectn(v158,0)
+}
+v158 = v152
+if (v254 != 0) { //021e
+  v254--
+  v158 += v254
+  v160 = v159
+  v160 += v252
+  rindirect(v161,v158)
+  lindirectv(v160,v161)
+  v252++
+  lindirectn(v158,0)
+}
+v158 = v152
+if (v255 != 0) { //023f
+  v255--
+  v158 += v255
+  v160 = v159
+  v160 += v252
+  rindirect(v161,v158)
+  lindirectv(v160,v161)
+  v252++
+  lindirectn(v158,0)
+}
+l605:
+return()

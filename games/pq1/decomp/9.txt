@@ -1,4 +1,31 @@
-if (isSet(f5)) {
-  if (!(isSet(f79)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f79) { //0008
+    set(f79)
+    vCurrentScore += 2
+  }
+  set(f102)
+  load.view(85)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  add.to.pic(85,0,0,52,120,4,4)
+  add.to.pic(85,0,1,66,124,4,4)
+  show.pic()
+  status.line.off()
+  reset(f14)
+  return()
+}
+if ((said("examine") || said("examine", "accident") || said("look in", "trunk") || said("examine", "trunk", "rol") || said("examine", "cocaine", "rol"))) { //0031
+  print("You open the trunk and discover a clear plastic bag containing a white powdery substance resembling cocaine and another clear plastic bag containing a green leafy substance resembling marijuana.")
+}
+if (said("get", "rol")) { //0059
+  print("As you start to examine the evidence, you hear Jack's voice behind you, \"Just leave that stuff in the trunk, Sonny. I'll impound it along with the car.\"")
+  set(f220)
+}
+if ((said("c", "trunk", "rol") || said("dont move", "examine", "trunk", "rol") || said("examine", "auto") || said("look in", "auto") || said("examine", "away"))) { //0067
+  if (!f220) { //0091
+    print("As you start to examine the evidence, you hear Jack's voice behind you, \"Just leave that stuff in the trunk, Sonny. I'll impound it along with the car.\"")
+  }
+  print("\"Ok, Jack,\" you say, \"See you back at the station.\"")
+  new.room(vPrevRoom)
+}
+return()

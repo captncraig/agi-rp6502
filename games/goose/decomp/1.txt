@@ -1,4 +1,181 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(67)
+  load.view(120)
+  load.sound(34)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 2) { //0018
+    if (v213 < 114) { //001f
+      position(o0,153,114)
+      if (f35) { //002a
+        position(o13,153,112)
+      }
+      goto(l76)
+    }
+    if (v213 < 128) { //0037
+      position(o0,153,128)
+      if (f35) { //0042
+        position(o13,153,126)
+      }
+    }
+  }
+l76:
+  if (vPrevRoom == 8) { //004c
+    if (v212 < 40) { //0053
+      position(o0,41,165)
+    }
+    if (v212 > 115) { //005e
+      position(o0,146,165)
+    }
+  }
+  set.view(o6,120)
+  add.to.pic(120,2,0,33,66,4,4)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  set.loop(o6,0)
+  set.cel(o6,0)
+  position(o6,100,26)
+  draw(o6)
+  v209 = 3
+  cycle.time(o6,v209)
+  if (f53) { //008a
+    load.view(56)
+    add.to.pic(56,0,0,54,128,0,0)
+    add.to.pic(67,0,0,49,126,0,0)
+    add.to.pic(67,1,0,59,126,0,0)
+    goto(l211)
+  }
+  animate.obj(o4)
+  set.view(o4,67)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  position(o4,62,122)
+  draw(o4)
+  stop.cycling(o4)
+  animate.obj(o5)
+  set.view(o5,67)
+  set.loop(o5,1)
+  set.cel(o5,0)
+  position(o5,73,122)
+  draw(o5)
+  stop.cycling(o5)
+l211:
+  v221 = 0
+  draw(o0)
+  return()
+}
+if (!f53 && !f42 && !(v220 > 0)) { //00d9
+  if (posn(o0,50,114,85,138)) { //00e7
+    if (!f220) { //00f1
+      set(f220)
+      if (v31 == 26) { //00fa
+        load.sound(64)
+        load.logic(51)
+        set(f42)
+        goto(l287)
+      }
+      set(f117)
+      stop.motion(o0)
+      stop.cycling(o0)
+      v220 = 0
+      set(f221)
+      vTimeSeconds = 0
+      load.view(39)
+      load.view(56)
+      sound(34,f103)
+    }
+  }
+}
+l287:
+if (f42) { //011f
+  call(51)
+}
+v221--
+if (v221 == 1) { //0129
+  set(f221)
+}
+if (f221) { //0132
+  reset(f221)
+  v220++
+  if (v220 == 1) { //013c
+    set.cel(o4,2)
+    reposition.to(o4,62,122)
+    v221 = 10
+  }
+  if (v220 == 2) { //014d
+    stop.motion(o0)
+    set.cel(o4,1)
+    reposition.to(o4,61,122)
+    v221 = 5
+  }
+  if (v220 == 3) { //0160
+    animate.obj(o15)
+    set.view(o15,39)
+    set.loop(o15,1)
+    set.cel(o15,0)
+    position(o15,66,99)
+    set.priority(o15,14)
+    draw(o15)
+    stop.update(o15)
+    set.text.attribute(0,15)
+    display(7,20,"Alas!")
+    display(8,19,"We need")
+    display(9,19,"a pail!")
+    v220 = 0
+    set(f107)
+    v113 = 5
+  }
+}
+if (f107 && f105) { //0194
+  v113--
+}
+if (v113 == 1) { //019e
+  v113 = 0
+  clear.text.rect(6,19,8,24,15)
+  erase(o15)
+  set.cel(o15,1)
+  stop.cycling(o15)
+  draw(o15)
+  animate.obj(o16)
+  ignore.horizon(o16)
+  set.view(o16,56)
+  set.loop(o16,1)
+  position(o16,80,76)
+  set.priority(o16,15)
+  draw(o16)
+  stop.update(o16)
+  v114 = 6
+}
+if (f107 && f105) { //01cf
+  v114--
+}
+if (v114 == 1) { //01d9
+  v114 = 0
+  reset(f107)
+  set.cel(o4,0)
+  erase(o16)
+  erase(o15)
+  reset(f117)
+  start.motion(o0)
+}
+if (vWhichObjBorder == 3 && f124) { //01f0
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //01fc
+  new.room(8)
+}
+if (vWhichEgoBorder == 2) { //0205
+  new.room(2)
+}
+if (f53 && f44 && !f223) { //020e
+  set(f223)
+  v222 = 0
+  set(f222)
+}
+if (v222 < 5 && f223 && f222 && !f118) { //0220
+  v222++
+  sound(64,f222)
+}
+return()

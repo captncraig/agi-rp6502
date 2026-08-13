@@ -1,4 +1,201 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(90)
+  set(f69)
+  set(f72)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(66)
+  load.view(139)
+  load.view(136)
+  load.view(132)
+  if (!f59 && !f79) { //001c
+    load.logic(112)
+    set(f203)
+  }
+  animate.obj(o6)
+  ignore.blocks(o6)
+  ignore.horizon(o6)
+  ignore.objs(o6)
+  set.view(o6,136)
+  set.cel(o6,0)
+  position(o6,130,81)
+  set.priority(o6,4)
+  draw(o6)
+  stop.update(o6)
+  animate.obj(o10)
+  ignore.blocks(o10)
+  ignore.objs(o10)
+  set.view(o10,132)
+  set.cel(o10,0)
+  position(o10,130,125)
+  set.priority(o10,4)
+  draw(o10)
+  stop.update(o10)
+  animate.obj(o11)
+  set.view(o11,66)
+  position(o11,28,91)
+  v61 = 2
+  cycle.time(o11,v61)
+  if (f166) { //0069
+    last.cel(o11,v61)
+    set.cel(o11,v61)
+    goto(l123)
+  }
+  set.cel(o11,0)
+l123:
+  draw(o11)
+  stop.update(o11)
+  animate.obj(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  set.view(o7,139)
+  position(o7,97,132)
+  set.priority(o7,4)
+  v61 = 2
+  cycle.time(o7,v61)
+  if (f166) { //0095
+    last.cel(o7,v61)
+    set.cel(o7,v61)
+    goto(l167)
+  }
+  set.cel(o7,0)
+l167:
+  draw(o7)
+  stop.update(o7)
+  v110 = 0
+  if (vPrevRoom == 52) { //00ae
+    v38 = 126
+    v39 = 112
+    goto(l236)
+  }
+  if (vPrevRoom == 58) { //00be
+    v38 = 103
+    v39 = 102
+    goto(l236)
+  }
+  if (vPrevRoom == 50) { //00ce
+    v39 = 91
+    if (v38 < 49) { //00d8
+      v38 = 49
+    }
+    if (v38 > 121) { //00e2
+      v38 = 121
+    }
+  }
+l236:
+  position(o0,38,v39)
+  draw(o0)
+  if (f203) { //00f2
+    call(112)
+    position(o9,139,167)
+  }
+  show.pic()
+  return()
+}
+if ((posn(o0,86,101,121,113) || posn(o0,88,114,128,134))) { //0100
+  ignore.blocks(o0)
+  goto(l281)
+}
+observe.blocks(o0)
+l281:
+if ((posn(o9,78,102,122,114) || posn(o9,80,115,128,133))) { //0119
+  if (f166) { //012b
+    observe.blocks(o9)
+    goto(l312)
+  }
+  ignore.blocks(o9)
+l312:
+  goto(l317)
+}
+observe.blocks(o9)
+l317:
+if (f130) { //013d
+  if (posn(o0,23,72,47,132)) { //0143
+    distance(o0,o11,v61)
+    if (v61 < 40) { //0151
+      print("You examine the gargoyle intently. There is a small space between it and the wall.")
+      goto(l351)
+    }
+    print("You are in the dungeon of the Horned King. There is a gargoyle on the wall.")
+l351:
+    goto(l373)
+  }
+  if (posn(o0,86,89,132,141) && f166) { //0162
+    print("There appears to be a ladder leading into the darkness below.")
+    goto(l373)
+  }
+  print("You are in the dungeon of the Horned King. There is a gargoyle on the wall.")
+}
+l373:
+if (!f128 && !f129) { //0175
+  goto(l493)
+}
+if (f129) { //0182
+  goto(l456)
+}
+if (f84 && posn(o0,23,72,47,132)) { //018b
+  distance(o0,o11,v61)
+  if (v61 < 40) { //019b
+    set(fSaidAccepted)
+    start.update(o7)
+    start.update(o11)
+    if (f166) { //01a8
+      reset(f166)
+      print("You twist the gargoyle's head counterclockwise.")
+      reverse.loop(o7,f200)
+      reverse.loop(o11,f201)
+      goto(l453)
+    }
+    set(f166)
+    print("You twist the gargoyle's head clockwise.")
+    end.of.loop(o7,f200)
+    end.of.loop(o11,f201)
+  }
+}
+l453:
+goto(l493)
+l456:
+if (v60 == 16) { //01c8
+  distance(o0,o10,v61)
+  set(fSaidAccepted)
+  if (v61 > 30) { //01d5
+    print("You aren't standing near a keyhole!")
+    goto(l493)
+  }
+  start.update(o6)
+  end.of.loop(o6,f202)
+  start.update(o10)
+  end.of.loop(o10,f202)
+  print("You unlock the door and enter the cell.")
+}
+l493:
+if (f166) { //01ed
+  if ((posn(o0,94,107,112,115) || posn(o0,102,116,119,125))) { //01f3
+    print("You use the ladder to descend to the floor below.")
+    new.room(58)
+  }
+}
+if (f202) { //0209
+  v34 = 0
+  new.room(52)
+}
+if (f200) { //0214
+  reset(f200)
+  stop.update(o7)
+  if (!f57) { //021e
+    set(f57)
+    vCurrentScore += 6
+  }
+}
+if (f201) { //022a
+  reset(f201)
+  stop.update(o11)
+}
+if (vWhichEgoBorder == 1) { //0234
+  new.room(50)
+}
+if (f203) { //023d
+  call(112)
+}
+return()

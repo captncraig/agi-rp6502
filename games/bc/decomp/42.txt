@@ -1,5 +1,104 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f72)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //0010
+    load.logic(116)
+    set(f200)
+    load.view(24)
+  }
+  if (!f59) { //001c
+    load.logic(112)
+    set(f201)
+  }
+  load.logic(106)
+  v66 = 200
+  load.view(6)
+  load.view(7)
+  load.sound(2)
+  if (!(has(i12))) { //0032
+    load.sound(11)
+  }
+  load.view(124)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,103,39)
+  set.view(o2,124)
+  if (vPrevRoom == 39) { //0048
+    if (f122) { //004f
+      set.priority(o0,4)
+      position(o0,60,38)
+      goto(l99)
+    }
+    position(o0,40,38)
+l99:
+    goto(l113)
+  }
+  if (vPrevRoom == 49) { //0066
+    position(o0,70,106)
+  }
+l113:
+  draw(o2)
+  draw(o0)
+  if (f200) { //0075
+    call(116)
+  }
+  if (f201) { //007d
+    call(112)
+    position(o9,141,150)
+  }
+  call(106)
+  show.pic()
+  return()
+}
+if (posn(o0,81,114,85,120)) { //008d
+  set(f160)
+  goto(l158)
+}
+reset(f160)
+l158:
+if (f130) { //009e
+  print("There are spiral staircases going both up and down here.")
+}
+if (posn(o0,0,78,36,167)) { //00a6
+  v66 = 167
+  goto(l244)
+}
+v66 = 200
+if (!f122 && fTriggerLine) { //00b9
+  if (f202 && posn(o0,62,104,81,116) && (vEgoDir == 5 || vEgoDir == 4 || vEgoDir == 6)) { //00c2
+    new.room(49)
+  }
+  if (posn(o0,69,104,87,128)) { //00db
+    v38 = 68
+    v39 = 120
+    reposition.to(o0,v38,v39)
+    set(fTriggerLine)
+  }
+  set.priority(o0,4)
+}
+l244:
+call(106)
+if (f201) { //00f6
+  call(112)
+}
+if (f200) { //00fe
+  call(116)
+}
+if (vWhichEgoBorder == 3 && f122) { //0106
+  new.room(49)
+}
+if (vWhichEgoBorder == 2) { //0111
+  new.room(43)
+}
+if (vWhichEgoBorder == 1) { //011a
+  new.room(39)
+}
+if (fEgoOnWater) { //0123
+  set(f202)
+  goto(l304)
+}
+reset(f202)
+l304:
+return()

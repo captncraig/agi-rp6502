@@ -1,3 +1,205 @@
-if (isSet(f5)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+if (fNewRoom && vMonitorType != HERCULES) { //0002
+  display(24,26,"%v0|3")
+}
+if (controller(c11)) { //0010
+  set.text.attribute(0,15)
+  text.screen()
+  v37 = 0
+  v38 = 3
+  v68 = 32
+  v45 = 1
+l38:
+  display(v38,v37,v68)
+  v45++
+  v38++
+  if (v45 == 19) { //002e
+    v37 = 12
+    v38 = 3
+  }
+  if (v45 == 37) { //003b
+    v37 = 26
+    v38 = 3
+  }
+  if (v45 < 55) { //0048
+    goto(l38)
+  }
+  display(23,1,"(Sorry. Do the best you can!)")
+l86:
+  if (!(have.key())) { //0056
+    goto(l86)
+  }
+  set.text.attribute(15,0)
+  graphics()
+}
+if (vMonitorType != HERCULES) { //0063
+  if (f46) { //006b
+    display(24,35,"H")
+    goto(l124)
+  }
+  display(24,35," ")
+}
+l124:
+if (said("all", "area")) { //007c
+  get.num(str4,v46)
+  get.room(v46,v45)
+  print("Object %v46 is in room %v45.")
+}
+if (controller(c13)) { //008e
+  show.mem()
+}
+if ((controller(c19) || said("examine", "priority"))) { //0095
+  show.pri.screen()
+}
+if (said("add", "priority")) { //00a4
+  get.num(str12,v46)
+  set.priority(o0,v46)
+}
+if (said("let go", "priority")) { //00b4
+  release.priority(o0)
+}
+if (said("tp")) { //00c0
+  get.num(str1,v45)
+  v44 = 14
+  new.room(v45)
+}
+if (said("position")) { //00d0
+  get.num(str2,v45)
+  get.num(str3,v46)
+  erase(o0)
+  position(o0,45,v46)
+  draw(o0)
+}
+if ((controller(c28) || said("examine", "position") || said("sp"))) { //00e6
+  toggle(f50)
+  clear.lines(24,24,c0)
+}
+if ((controller(c21) || said("find"))) { //00fe
+  v45 = 0
+  obj.status.v(v45)
+}
+if ((controller(c36) || said("examine", "all") || said("all"))) { //010f
+  get.num(str4,v45)
+  if (v45 > 15) { //0124
+    v45 = 15
+  }
+  obj.status.v(v45)
+}
+if (said("capture", "all")) { //0130
+  get.num(str4,v45)
+  get(v45)
+}
+if (said("examine", "banner")) { //013f
+  get.num(str5,v45)
+  if (v45) { //014c
+    print("Flag %v45 set")
+    goto(l345)
+  }
+  print("Flag %v45 not set")
+}
+l345:
+if (said("add", "banner")) { //0159
+  get.num(str5,v45)
+  set(v45)
+}
+if (said("reset", "banner")) { //0168
+  get.num(str5,v45)
+  reset(v45)
+}
+if (said("examine", "var")) { //0177
+  get.num(str8,v45)
+  rindirect(v46,v45)
+  print("Variable %v45 = %v46")
+}
+if (said("add", "var")) { //0189
+  get.num(str8,v45)
+  get.num(str6,v46)
+  lindirectv(v45,v46)
+}
+if ((said("area", "number") || said("area"))) { //019c
+  print("Current room = %v0")
+}
+if (vUnknownWord > 0) { //01ae
+  if (vUnknownWord == 1) { //01b5
+    log("%m20%w1\"")
+  }
+  if (vUnknownWord == 2) { //01be
+    log("%m20%w2\"")
+  }
+  if (vUnknownWord == 3) { //01c7
+    log("%m20%w3\"")
+  }
+  if (vUnknownWord == 4) { //01d0
+    log("%m20%w4\"")
+  }
+  if (vUnknownWord == 5) { //01d9
+    log("%m20%w5\"")
+  }
+  if (vUnknownWord == 6) { //01e2
+    log("%m20%w6\"")
+  }
+  if (vUnknownWord == 7) { //01eb
+    log("%m20%w7\"")
+  }
+  if (vUnknownWord > 7) { //01f4
+    log("%m20%w8\"")
+  }
+}
+if (f50 && vMonitorType != HERCULES) { //01fd
+  v45 = v40
+  v46 = v41
+  set.text.attribute(6,0)
+  display(24,16,"%v45|3/%v46|3")
+  set.text.attribute(15,0)
+}
+if (said("sleep", "enchanter")) { //0217
+  if (vMonitorType != HERCULES) { //0221
+    display(0,0,"He's sleeping.")
+  }
+  v128 = 7
+  v127 = 4
+  v84 = 20
+  v83 = 0
+}
+if (said("here", "enchanter")) { //0239
+  if (vMonitorType != HERCULES) { //0243
+    display(0,0,"Coming, Dear!")
+  }
+  v128 = 0
+  v84 = 0
+  v83 = 0
+  if (v137 > 0) { //0258
+    print("He won't show up until you \"do chore.\"")
+  }
+}
+if (said("cast", "chore")) { //0261
+  if (vMonitorType != HERCULES) { //026b
+    display(0,0,"Done.")
+  }
+  v137 = 0
+  v110 = 0
+  v109 = 0
+}
+if (said("bye", "bye", "enchanter")) { //0280
+  if (vMonitorType != HERCULES) { //028c
+    display(0,0,"He's dead.")
+  }
+  v128 = 20
+  v84 = 0
+  v83 = 0
+}
+if ((controller(c30) || said("gimme", "gimme") || said("add", "up", "spell"))) { //02a1
+  call(97)
+}
+if (said("add", "up", "bluff")) { //02b9
+  call(95)
+}
+if (said("add", "up", "boat")) { //02c7
+  call(94)
+}
+if (said("gimme", "spell")) { //02d5
+  call(93)
+}
+if (said("enchanter", "status")) { //02e1
+  call(92)
+}
+return()

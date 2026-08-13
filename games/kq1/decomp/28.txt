@@ -1,4 +1,175 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (v81 != 3) { //0010
+    random(0,250,v62)
+    if (v62 > 125) { //001c
+      v81 = 1
+      goto(l44)
+    }
+    v81 = 2
+  }
+l44:
+  if (f75) { //002c
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0034
+    add.to.pic(62,0,0,102,142,0,0)
+  }
+  load.view(23)
+  animate.obj(o1)
+  set.view(o1,23)
+  set.cel(o1,0)
+  ignore.blocks(o1)
+  position(o1,45,128)
+  load.sound(19)
+  observe.blocks(o0)
+  if (vPrevRoom == 65) { //0057
+    position(o0,48,132)
+  }
+  if (vPrevRoom == 27) { //0062
+    get.posn(o0,v60,v61)
+    if (v61 > 94) { //006d
+      position(o0,1,155)
+    }
+  }
+  if (vPrevRoom == 37 && fEgoOnWater) { //0078
+    set.view(o0,0)
+    reset(f98)
+    v94 = 0
+  }
+  draw(o1)
+  stop.update(o1)
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //0090
+  print("You are near a little gingerbread house in a forest clearing.")
+}
+if (said("check", "witch")) { //009c
+  print("You must be getting nervous!  I see no witch here!")
+}
+if ((said("check", "window") || said("look in", "window"))) { //00a8
+  if (posn(o0,66,120,92,134)) { //00ba
+    print("The windows are made from translucent, hardened sugar.  It's difficult to see through them.")
+    goto(l203)
+  }
+  print("You can't see much from here.")
+}
+l203:
+if (said("break", "window")) { //00cb
+  if (posn(o0,66,120,92,134)) { //00d5
+    print("The windows are hard to break.")
+    goto(l230)
+  }
+  print("You would have to get closer to the windows.")
+}
+l230:
+if (said("check", "building")) { //00e6
+  if (posn(o0,1,105,158,166)) { //00f0
+    print("This is the sweetest little gingerbread house you ever saw.  The walls are cake, the roof is frosting, the chimney looks delicious, and the candy path and cookie fence are unbearably tempting!")
+    goto(l257)
+  }
+  print("You can't see much from here.")
+}
+l257:
+if (!(posn(o0,20,120,110,135))) { //0101
+  if ((said("consume", "building") || said("consume", "candy"))) { //010c
+    print("The house looks tempting, but you need to get closer.")
+  }
+}
+if (posn(o0,20,120,110,135)) { //0120
+  if ((v81 == 2 || v81 == 3)) { //012a
+    if (said("consume", "building")) { //0136
+      print("Yum!  The house tastes even better than it looks!")
+      if (!f160) { //0142
+        vCurrentScore += 2
+        set(f160)
+      }
+    }
+    if (said("consume", "candy")) { //014e
+      print("Yum!  The house tastes even better than it looks!")
+    }
+  }
+  if (v81 == 1) { //015a
+    if (said("consume", "building")) { //0161
+      print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"")
+      if (!f160) { //016d
+        vCurrentScore += 2
+        set(f160)
+      }
+    }
+    if (said("consume", "candy")) { //0179
+      print("As you begin to eat the house, a squeaky voice from somewhere says, \"Nibble, nibble, little mouse.  Who is nibbling at my house?\"")
+    }
+  }
+}
+if (posn(o0,40,127,70,135)) { //0185
+  if (said("close", "door")) { //018f
+    print("The door is already closed.")
+  }
+  if (said("knock", "door")) { //019b
+    print("There is no answer from inside the house.")
+  }
+  if (said("open", "door")) { //01a7
+    start.update(o1)
+    sound(19,f148)
+    end.of.loop(o1,f20)
+  }
+}
+if (!(posn(o0,40,127,70,135))) { //01b9
+  if ((said("open", "door") || said("close", "door") || said("knock", "door"))) { //01c4
+    print("You will have to move closer to do that.")
+  }
+}
+if (f20) { //01de
+  new.room(65)
+}
+if (said("check", "path")) { //01e6
+  print("The path leads to the door.")
+}
+if (said("check", "door")) { //01f2
+  if (posn(o0,1,106,158,166)) { //01fc
+    print("The door is made from graham crackers held together  with chocolate drop nails.")
+    goto(l525)
+  }
+  print("The door is around the corner.")
+}
+l525:
+if (said("break", "door")) { //020d
+  if (posn(o0,1,106,158,166)) { //0217
+    print("You don't need to do that; opening the door would suffice.")
+    goto(l552)
+  }
+  print("The door is around the corner.")
+}
+l552:
+if (said("check", "fence")) { //0228
+  print("It is made of delicious chocolate chip cookies!")
+}
+if (said("consume", "fence")) { //0234
+  if (posn(o0,1,95,134,159)) { //023e
+    print("Yummy!")
+    goto(l591)
+  }
+  print("You will have to move closer to do that.")
+}
+l591:
+if (vWhichEgoBorder == 1) { //024f
+  new.room(37)
+}
+if (vWhichEgoBorder == 2) { //0258
+  new.room(29)
+}
+if (vWhichEgoBorder == 4) { //0261
+  new.room(27)
+}
+if (vWhichEgoBorder == 3) { //026a
+  new.room(21)
+}
+if (f75) { //0273
+  call(103)
+}
+return()

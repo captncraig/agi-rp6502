@@ -1,5 +1,506 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(125)
+  load.view(136)
+  load.view(132)
+  load.view(130)
+  load.view(131)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o1,125)
+  set.view(o2,136)
+  set.view(o3,132)
+  set.view(o4,130)
+  set.loop(o1,0)
+  set.loop(o2,1)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  position(o0,76,165)
+  position(o1,74,80)
+  position(o2,120,108)
+  position(o3,99,113)
+  position(o4,73,155)
+  set.priority(o1,10)
+  set.priority(o3,10)
+  set.priority(o4,13)
+  ignore.objs(o4)
+  ignore.blocks(o2)
+  ignore.blocks(o4)
+  add.to.pic(131,0,0,5,125,11,0)
+  add.to.pic(131,0,1,46,140,13,13)
+  add.to.pic(131,0,2,98,140,13,13)
+  add.to.pic(131,0,3,54,85,9,0)
+  cycle.time(o3,v124)
+  cycle.time(o1,v124)
+  draw(o0)
+  draw(o1)
+  draw(o2)
+  draw(o4)
+  draw(o3)
+  stop.update(o1)
+  stop.update(o2)
+  stop.update(o4)
+  show.pic()
+  return()
+}
+if (posn(o0,65,166,88,167)) { //0095
+  if (v95 == 50) { //009f
+    v95 = 200
+  }
+  accept.input()
+  new.room(54)
+}
+if (posn(o0,70,157,85,160)) { //00ac
+  if (!f221) { //00b6
+    set(f221)
+    start.update(o4)
+    set.loop(o4,0)
+    reposition.to(o4,73,155)
+    end.of.loop(o4,f222)
+  }
+}
+if (posn(o0,70,154,85,155)) { //00cb
+  if (!f221) { //00d5
+    set(f221)
+    start.update(o4)
+    set.loop(o4,1)
+    reposition.to(o4,73,162)
+    end.of.loop(o4,f222)
+  }
+}
+if (f221 && !(posn(o0,70,150,85,160))) { //00ea
+  start.update(o4)
+  reverse.loop(o4,f222)
+  reset(f221)
+}
+if (v143 < 156) { //00fe
+  set.priority(o4,14)
+  goto(l270)
+}
+set.priority(o4,13)
+l270:
+if (f222) { //010e
+  stop.update(o4)
+  reset(f222)
+}
+distance(o0,o1,v221)
+distance(o0,o2,v222)
+distance(o0,o3,v223)
+if ((v221 < v61 || v222 < v61 || v223 < v61)) { //0124
+  set(f109)
+}
+if (f220) { //0135
+  reset(f220)
+  v220++
+}
+if ((!(v95 > 0) || v95 > 50)) { //013f
+  if (!(v220 > 0)) { //014c
+    set(f36)
+    start.motion(o0)
+    prevent.input()
+    v220 = 1
+  }
+  if (v220 == 1) { //015c
+    move.obj(o0,76,161,1,f220)
+  }
+  if (v220 == 2) { //0169
+    start.update(o1)
+    print("Judge Kim Palmer addresses her courtroom...")
+    v140 = 5
+    v220++
+  }
+  if (v220 == 3 && f138) { //0179
+    print("\"Silence in the court!\"")
+    stop.update(o3)
+    start.update(o2)
+    set.cel(o1,2)
+    reset(f138)
+    set(f220)
+  }
+  if (v220 == 4) { //018f
+    stop.update(o1)
+    move.obj(o2,121,151,1,f220)
+    v220++
+  }
+  if (v220 == 6) { //01a0
+    move.obj(o2,91,153,1,f220)
+  }
+  if (v220 == 7) { //01ad
+    print("In a firm voice the bailiff speaks to you, \"Well? The judge is waiting for you.\"")
+    v220++
+  }
+  if (v220 == 8) { //01b8
+    move.obj(o0,76,115,1,f220)
+    follow.ego(o2,5,f153)
+  }
+  if (v220 == 9) { //01c9
+    stop.update(o2)
+    print("\"For your information, Sir, this court is in session!\"")
+    v140 = 10
+    v220++
+  }
+  if (v220 == 10) { //01d9
+    if (v140 == 8) { //01e0
+      print("\"You are most fortunate that I do not hold you in contempt!\"")
+      v140--
+    }
+    if (v140 == 5) { //01eb
+      print("\"Bailiff! Show this gentleman out of my courtroom!\"")
+      ignore.objs(o0)
+      start.update(o2)
+      v140 = 0
+      v220++
+    }
+  }
+  if (v220 == 11) { //01fd
+    move.obj(o0,73,153,1,f220)
+    follow.ego(o2,7,f153)
+  }
+  if (v220 == 12) { //020e
+    stop.update(o2)
+    print("As you are launched from Judge Palmer's court, the bailiff bids you farewell, \"Boy, is your face red!\"")
+    move.obj(o0,76,167,1,f220)
+    v220++
+  }
+}
+if (v95 == 20) { //0221
+  if (!(v220 > 0)) { //0228
+    set(f36)
+    start.motion(o0)
+    prevent.input()
+    v220 = 1
+  }
+  if (v220 == 1) { //0238
+    start.update(o1)
+    stop.cycling(o1)
+    move.obj(o0,76,161,1,f220)
+    v220++
+  }
+  if (v220 == 3) { //024b
+    set.cel(o1,0)
+    end.of.loop(o1,f220)
+    v220++
+  }
+  if (v220 == 5) { //025a
+    set.cel(o1,0)
+    end.of.loop(o1,f220)
+    v220++
+  }
+  if (v220 == 7) { //0269
+    set.cel(o1,0)
+    stop.cycling(o1)
+    print("Judge Palmer strikes the gavel, \"Silence. I will consider Mr. Bonds' request.\"")
+    stop.update(o3)
+    v140 = 4
+    v220++
+  }
+  if (v220 == 8 && f138) { //027e
+    print("\"Mr. Bonds, you may approach the bench.\"")
+    stop.update(o1)
+    start.cycling(o1)
+    start.update(o2)
+    follow.ego(o2,7,f153)
+    move.obj(o0,76,115,1,f220)
+    reset(f138)
+    v220++
+  }
+  if (v220 == 10) { //029d
+    move.obj(o2,85,115,1,f220)
+  }
+  if (v220 == 11) { //02aa
+    print("\"Mr. Bonds, who, or what, is this warrant for?\" says the judge.")
+    stop.update(o2)
+    v140 = 10
+    accept.input()
+    v220++
+  }
+  if ((v220 == 12 || v220 == 13)) { //02bb
+    if (v140 == 1) { //02c7
+      if (v224 < 3) { //02ce
+        print("\"Mr. Bonds, you are keeping this entire courtroom waiting, while you attempt to establish your case!\"")
+        v224++
+        v140 = 15
+        goto(l744)
+      }
+      v95 = 0
+      v220 = 10
+      v140 = 10
+    }
+  }
+}
+l744:
+if (v95 == 30) { //02e8
+  if (!(v220 > 0)) { //02ef
+    prevent.input()
+    print("Judge Palmer motions the bailiff to retrieve the evidence.")
+    start.update(o2)
+    move.obj(o2,84,115,1,f220)
+    v220++
+  }
+  if (v220 == 2) { //0304
+    set.loop(o0,0)
+    set(f220)
+  }
+  if (v220 == 3) { //0310
+    print("You hand the evidence to the bailiff.")
+    move.obj(o2,118,115,1,f220)
+    v220++
+  }
+  if (v220 == 5) { //0321
+    set.loop(o0,3)
+    move.obj(o2,113,103,1,f220)
+  }
+  if (v220 == 6) { //0331
+    move.obj(o2,109,100,1,f220)
+  }
+  if (v220 == 7) { //033e
+    move.obj(o2,99,100,1,f220)
+    start.update(o1)
+    stop.cycling(o1)
+    set.cel(o1,0)
+    set.loop(o1,2)
+    v220++
+  }
+  if (v220 == 9) { //0357
+    move.obj(o2,97,99,1,f220)
+    end.of.loop(o1,f153)
+  }
+  if (v220 == 10) { //0367
+    print("Your heart races as Judge Palmer evaluates your evidence. You think to yourself, \"This punk can not go free!\"")
+    set.cel(o1,0)
+    move.obj(o2,109,100,1,f220)
+    v220++
+  }
+  if (v220 == 12) { //037b
+    set.loop(o1,1)
+    start.cycling(o1)
+    move.obj(o2,114,115,1,f220)
+  }
+  if (v220 == 13) { //038d
+    move.obj(o2,85,115,1,f220)
+  }
+  if (v220 == 14) { //039a
+    set.loop(o2,3)
+    set(f220)
+  }
+  if (v220 == 15) { //03a6
+    stop.update(o2)
+    v95 = 40
+    v220 = 0
+  }
+}
+if (v95 == 40) { //03b5
+  if (!(v220 > 0)) { //03bc
+    v224 = 0
+    v140 = 8
+    v220++
+  }
+  if (v220 == 1 && f138) { //03cc
+    stop.update(o1)
+    print("Judge Palmer scans the items presented and questions, \"What makes you think these two men are the same person, Mr. Bonds?\"")
+    accept.input()
+    v140 = 10
+    reset(f138)
+    v220++
+  }
+  if (v220 == 2) { //03e1
+    if (v140 == 1) { //03e8
+      if (v224 < 3) { //03ef
+        print("\"Mr. Bonds, you are keeping this entire courtroom waiting, while you attempt to establish your case!\"")
+        v224++
+        v140 = 15
+        goto(l1033)
+      }
+      v95 = 0
+      v220 = 10
+      v140 = 10
+    }
+  }
+l1033:
+  if (v220 == 3) { //0409
+    prevent.input()
+    if (v140 == 38) { //0411
+      print("The Judge attempts to stifle her giggles, but fails.")
+      v140--
+    }
+    if (v140 == 35) { //041c
+      print("Judge Palmer whispers softly to you, \"Well, Mr. Bonds, it appears your friend 'has his tit caught in the wringer!'\"")
+      v140--
+    }
+    if (v140 == 32) { //0427
+      print("Stifling her laughter, Judge Palmer says, \"Congratulations, Mr. Bonds! Your request is granted!\"")
+      v140--
+    }
+    if (v140 == 29) { //0432
+      print("\"Here is a No Bail Warrant, issued in the name of Jason Taselli, alias Marvin Hoffman.\"")
+      v140--
+    }
+    if (v140 == 26) { //043d
+      print("\"Bailiff, deliver this to Mr. Bonds, and escort him out.\"")
+      v95 = 50
+      v220 = 0
+      v140 = 0
+    }
+  }
+}
+if (v95 == 50) { //044f
+  if (v220 == 0) { //0456
+    start.update(o2)
+    move.obj(o2,118,115,1,f220)
+    v220++
+  }
+  if (v220 == 2) { //0467
+    move.obj(o2,113,103,1,f220)
+  }
+  if (v220 == 3) { //0474
+    move.obj(o2,109,100,1,f220)
+    start.update(o1)
+    stop.cycling(o1)
+    set.cel(o1,0)
+  }
+  if (v220 == 4) { //0488
+    move.obj(o2,99,100,1,f220)
+    set.loop(o1,2)
+  }
+  if (v220 == 5) { //0498
+    move.obj(o2,97,99,1,f220)
+    end.of.loop(o1,f153)
+  }
+  if (v220 == 6) { //04a8
+    move.obj(o2,109,100,1,f220)
+    v220++
+  }
+  if (v220 == 8) { //04b7
+    set.loop(o1,0)
+    set.cel(o1,0)
+    move.obj(o2,114,115,1,f220)
+  }
+  if (v220 == 9) { //04ca
+    stop.update(o1)
+    move.obj(o2,85,115,1,f220)
+  }
+  if (v220 == 10) { //04d9
+    print("\"Here you are, Mr. Bonds. I hope you are not too late. Taselli's attorney is at the jail at this very moment, attempting his release.\"")
+    if (obj.in.room(i23,vCurrentRoom)) { //04e2
+      get(i23)
+      vCurrentScore += 7
+    }
+    move.obj(o0,72,150,1,f220)
+    v220++
+  }
+  if (v220 > 10) { //04f6
+    follow.ego(o2,15,f153)
+  }
+  if (v220 == 12) { //0501
+    move.obj(o0,76,167,1,f220)
+  }
+}
+get.posn(o2,v144,v145)
+if ((v107 != v144 || v108 != v145)) { //0512
+  v107 = v144
+  v108 = v145
+  start.cycling(o2)
+  goto(l1336)
+}
+if (f122) { //052b
+  start.cycling(o2)
+  goto(l1336)
+}
+stop.cycling(o2)
+l1336:
+if (!fEnteredCommand) { //0538
+  goto(l1802)
+}
+if ((said("hoffman") || said("anyword", "hoffman"))) { //0542
+  print("\"And, what information do you have to substantiate the validity of a warrant?\"")
+  if (v220 == 11) { //0554
+    v220 = 13
+    v140 = 10
+  }
+}
+if ((said("pierson") || said("taselli"))) { //0561
+  print("Who is that?")
+}
+if ((said("flyer", "rol") || said("anyword", "flyer", "rol") || said("anyword", "anyword", "flyer", "rol"))) { //0571
+  if (f224) { //058f
+    print("\"All right. Do you have any other information?\"")
+    goto(l1470)
+  }
+  if (!(has(i16))) { //059a
+    print("\"For attempting to present evidence you do not have,\" Judge Palmer says, \"I hereby find you in comtempt of court!\"")
+    set(f140)
+    goto(l1470)
+  }
+  drop(i16)
+  set(f224)
+  if (!f223) { //05ac
+    print("\"All right. Do you have any other information?\"")
+    goto(l1470)
+  }
+  v95 = 30
+  v220 = 0
+}
+l1470:
+if ((said("file", "rol") || said("examine", "file") || said("examine", "file", "broad") || said("administer", "file") || said("administer", "file", "broad") || said("anyword", "hoffman", "file", "rol") || said("hoffman", "file", "rol") || said("anyword", "file", "hoffman", "rol") || said("file", "hoffman", "rol") || said("anyword", "anyword", "file", "rol"))) { //05be
+  if (f223) { //0614
+    print("\"All right. Do you have any other information?\"")
+    goto(l1603)
+  }
+  if (!(has(i15))) { //061f
+    print("\"For attempting to present evidence you do not have,\" Judge Palmer says, \"I hereby find you in comtempt of court!\"")
+    set(f140)
+    goto(l1603)
+  }
+  drop(i15)
+  set(f223)
+  if (!f224) { //0631
+    print("\"All right. Do you have any other information?\"")
+    goto(l1603)
+  }
+  v95 = 30
+  v220 = 0
+}
+l1603:
+if ((said("ok", "rol") || said("anyword", "ok", "rol"))) { //0643
+  print("\"Well?\"")
+}
+if ((said("no", "rol") || said("anyword", "no", "rol"))) { //0659
+  if (!f224 && !f223) { //066d
+    print("\"Mr. Bonds, I've a good mind to let you cool your heels in the City Jail for the next three days! But, since this court tries to go out of its way to help the Department, I'll suspend sentence. Just be sure you never interrupt my court without evidence again!\"")
+    v95 = 0
+    v220 = 10
+    v140 = 10
+    goto(l1697)
+  }
+  if (f224) { //0685
+    print("\"The FBI wanted poster does arouse suspicion%m35")
+    goto(l1688)
+  }
+  if (f223) { //0690
+    print("\"I remind you, Mr. Bonds, I have reviewed the file%m35")
+  }
+l1688:
+  v95 = 0
+  v220 = 10
+  v140 = 10
+}
+l1697:
+if (v95 == 40) { //06a1
+  if ((said("tattoo", "rol") || said("hoffman", "taselli") || said("taselli", "hoffman") || said("anyword", "tattoo", "rol") || said("anyword", "anyword", "tattoo", "rol") || said("tattoo", "above", "left", "breast", "rol"))) { //06a8
+    print("The bailiff and court reporter squirm and choke, trying to conceal their laughter, while you quietly tell the judge your tale of tattoos and nipples!")
+    if (v220 == 2) { //06e0
+      v220++
+      v140 = 40
+    }
+  }
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "broad") || said("examine", "accident"))) { //06ec
+  print("This court is in session. The bailiff proceeds toward you.")
+}
+l1802:
+return()

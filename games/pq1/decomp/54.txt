@@ -1,5 +1,226 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+  load.sound(1)
+  load.sound(2)
+  load.view(128)
+  load.view(124)
+  load.view(72)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(124,0,0,68,115,5,5)
+  add.to.pic(72,0,0,72,59,4,4)
+  animate.obj(o2)
+  set.priority(o2,4)
+  set.view(o2,128)
+  set.loop(o2,1)
+  position(o2,151,128)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.priority(o1,5)
+  set.view(o1,124)
+  set.loop(o1,1)
+  set.cel(o1,0)
+  position(o1,81,115)
+  draw(o1)
+  stop.cycling(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  stop.update(o1)
+  if (vPrevRoom == 55) { //005b
+    position(o0,83,120)
+    goto(l109)
+  }
+  position(o0,75,167)
+l109:
+  draw(o0)
+  show.pic()
+  return()
+}
+if (posn(o0,79,116,95,117)) { //0071
+  new.room(55)
+}
+if (vWhichEgoBorder == 3) { //007d
+  if (v95 == 200) { //0084
+    v95 = 255
+  }
+  new.room(53)
+}
+distance(o0,o2,v221)
+if (v221 < v61) { //0094
+  set(f109)
+}
+reset(f225)
+if (posn(o0,77,118,90,123)) { //009f
+  set(f225)
+}
+reset(f226)
+if (posn(o0,63,118,76,123)) { //00ad
+  set(f226)
+}
+if (f220) { //00b9
+  reset(f220)
+  v220++
+}
+reset(f222)
+if (posn(o0,128,124,143,143)) { //00c5
+  set(f222)
+  goto(l224)
+}
+set(f221)
+if (v220 == 4) { //00d6
+  v220 = 5
+}
+l224:
+if (!(v220 > 0) && f222) { //00e0
+  set(f220)
+}
+if (v220 == 8) { //00ec
+  if (!(v140 > 0)) { //00f3
+    v220 = 0
+    goto(l281)
+  }
+  if (f138) { //0101
+    reset(f138)
+    if (v95 < 20) { //0109
+      v95 = 20
+    }
+    v220 = 1
+    v140 = 0
+  }
+}
+l281:
+if (v220 == 1) { //0119
+  draw(o2)
+  move.obj(o2,143,128,1,f220)
+  v220++
+}
+if (v220 == 3) { //012a
+  v220++
+  stop.cycling(o2)
+  if (v95 < 10) { //0135
+    print("\"How do you do, Sir. May I help you?\"")
+    if (v95 == 1) { //013e
+      v95 = 10
+    }
+    goto(l357)
+  }
+  if (v95 == 20) { //014b
+    print("\"The bailiff says Judge Palmer will see you, if you can make it quick! Go on into the courtroom.\"")
+    goto(l357)
+  }
+  if (v95 == 200) { //0157
+    print("The Court Clerk asks, \"Did you get what you needed?\"")
+    goto(l357)
+  }
+  print("\"It seems obvious you have no business here, Sir. You're just wasting my time!\"")
+}
+l357:
+if (v220 == 5) { //0165
+  v220++
+  start.cycling(o2)
+  move.obj(o2,151,128,1,f220)
+}
+if (v220 == 7) { //0176
+  v220++
+  erase(o2)
+}
+if (!fEnteredCommand) { //0181
+  goto(l865)
+}
+if (f222) { //018b
+  if ((said("answer", "art") || said("answer", "art"))) { //0191
+    print("\"Good day, Sir. How may I help you?\"")
+  }
+  if ((said("administer", "art", "flyer") || said("administer", "about", "art") || said("administer", "hoffman", "file") || said("administer", "hoffman", "file", "art") || said("administer", "art", "hoffman", "file") || said("examine", "flyer", "art") || said("examine", "art", "flyer") || said("examine", "art", "about", "flyer") || said("examine", "file", "art") || said("examine", "hoffman", "file") || said("examine", "hoffman", "file", "art"))) { //01a5
+    print("\"That's very nice, sir,\" responds the Clerk, \"but I have no authority in matters such as this.\"")
+  }
+  if ((said("anyword", "broad", "rol") || said("anyword", "anyword", "broad", "rol") || said("anyword", "anyword", "anyword", "broad", "rol"))) { //020d
+    print("\"I'm sorry, but Judge Kim Palmer's court is presently in session.\"")
+  }
+  if ((said("about", "broad") || said("warrant", "rol") || said("anyword", "warrant", "rol") || said("anyword", "anyword", "warrant", "rol") || said("anyword", "anyword", "anyword", "warrant", "rol"))) { //0233
+    print("\"I can only interrupt a court in session for an extreme emergency!\"")
+  }
+  if ((said("emergencies", "rol") || said("anyword", "emergencies", "rol") || said("anyword", "anyword", "emergencies", "rol") || said("no", "clock", "rol"))) { //0265
+    if (!(has(i23)) && v36 > 0) { //028b
+      print("\"Please wait a moment. I'll send a message with the bailiff.\"")
+      v220 = 5
+      v140 = 22
+      if (!f190) { //029d
+        set(f190)
+        vCurrentScore += 3
+      }
+      goto(l686)
+    }
+    print("For emergencies, dial \"911.\"")
+  }
+}
+l686:
+if (said("o", "d")) { //02ae
+  if (f226) { //02b8
+    print("This door doesn't open.")
+    goto(l752)
+  }
+  if (!f225) { //02c3
+    set(f113)
+    goto(l752)
+  }
+  if (!f221) { //02cf
+    print("You can't enter while court is in session. See the Court Clerk first!")
+    set(f221)
+    goto(l752)
+  }
+  if (f224) { //02dd
+    print("The door IS open.")
+    goto(l752)
+  }
+  start.update(o1)
+  end.of.loop(o1,f223)
+  sound(1,f154)
+}
+l752:
+if (said("c", "d")) { //02f0
+  if (f226) { //02fa
+    print("This door doesn't open.")
+    goto(l807)
+  }
+  if (!f225) { //0305
+    set(f113)
+    goto(l807)
+  }
+  if (!f224) { //0311
+    print("The door IS closed.")
+    goto(l807)
+  }
+  start.update(o1)
+  reverse.loop(o1,f223)
+  sound(2,f154)
+  reset(f224)
+}
+l807:
+if (v220 == 4 && v95 == 200 && said("ok")) { //0327
+  print("The Court Clerk responds, \"Very good, Officer. Go get 'em.\"")
+}
+if ((said("examine") || said("examine", "accident"))) { //0337
+  print("This is the outer reception room of the courthouse. The Court Clerk's office is behind the glass window to the right. The courtroom is through the double doors.")
+}
+if (said("examine", "fence")) { //0349
+  print("There's nothing of interest,  except that statue of Justice above the double doors leading to the courtroom.")
+}
+if (said("examine", "d")) { //0355
+  print("These doors lead to Judge Kim Palmer's courtroom.")
+}
+l865:
+if (f223) { //0361
+  reset(f223)
+  stop.update(o1)
+  toggle(f224)
+  if (f224) { //036d
+    ignore.blocks(o0)
+    goto(l890)
+  }
+  observe.blocks(o0)
+}
+l890:
+return()

@@ -1,5 +1,278 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v240 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l782)
+}
+set(f120)
+v103++
+if ((said("add", "bird", "feather", "basin") || said("add", "one", "bird", "feather", "basin"))) { //001e
+  set(f242)
+}
+if ((said("add", "eagle", "feather", "basin") || said("add", "one", "eagle", "feather", "basin"))) { //003c
+  set(f241)
+}
+if (said("add", "feather", "basin")) { //005a
+  if ((!(has(i1)) || !(has(i40)))) { //0066
+    print("It is difficult to use that which you do not have.")
+    goto(l138)
+  }
+  if (has(i1)) { //0077
+    set(f242)
+    goto(l138)
+  }
+  if (has(i9)) { //0082
+    set(f241)
+  }
+}
+l138:
+if (f243) { //008a
+  reset(f243)
+  if ((said("cat") || said("cat", "fur"))) { //0092
+    set(f244)
+  }
+  if ((said("dog") || said("dog", "fur"))) { //00a4
+    set(f245)
+  }
+}
+if (said("add", "fur", "basin")) { //00b6
+  if (!(has(i2)) && !(has(i3))) { //00c2
+    print("It is difficult to use that which you do not have.")
+    goto(l248)
+  }
+  if (has(i2) && has(i3)) { //00d1
+    set(f243)
+    reset(f120)
+    v103--
+    print("Which tuft of fur?")
+  }
+  if (!f243) { //00e1
+    if (has(i3)) { //00e8
+      set(f245)
+    }
+    if (has(i2)) { //00f0
+      set(f244)
+    }
+  }
+}
+l248:
+if (said("add", "cat", "fur", "basin")) { //00f8
+  set(f244)
+}
+if (said("add", "dog", "fur", "basin")) { //0108
+  set(f245)
+}
+if ((said("add", "reptile", "reptile skin", "basin") || said("add", "reptile", "basin") || said("add", "reptile skin", "basin"))) { //0118
+  if (!(has(i4))) { //0138
+    print("What snake skin?")
+    goto(l349)
+  }
+  if (!(has(i40))) { //0144
+    print("It is difficult to use that which you do not have.")
+    goto(l349)
+  }
+  drop(i4)
+  print("You put the dried snake skin in the clay bowl.")
+  if (v103 == 3) { //0154
+    reset(f120)
+  }
+}
+l349:
+if ((said("add", "ladle", "bone") || said("add", "bone", "basin") || said("add", "ladle", "bone") || said("add", "ladle", "bone", "basin") || said("add", "ladle", "bone", "basin"))) { //015d
+  if ((!(has(i5)) || !(has(i40)))) { //018f
+    print("It is difficult to use that which you do not have.")
+    goto(l429)
+  }
+  print("You pour a spoonful of fish bone powder into the clay bowl.")
+  drop(i5)
+  if (v103 == 4) { //01a4
+    reset(f120)
+  }
+}
+l429:
+if ((said("add", "one", "thimble", "dew", "basin") || said("add", "thimble", "dew", "basin") || said("add", "dew", "basin"))) { //01ad
+  if (!(has(i7))) { //01d1
+    print("It is difficult to use that which you do not have.")
+    goto(l492)
+  }
+  drop(i7)
+  get(i6)
+  print("You pour the thimbleful of dew into the clay bowl.")
+  if (v103 == 5) { //01e3
+    reset(f120)
+  }
+}
+l492:
+if ((said("knead", "fingers") || said("knead", "compound", "fingers") || said("knead", "compound", "basin", "fingers") || said("knead", "try", "fingers") || said("knead", "compound", "try", "fingers") || said("knead", "compound", "basin", "try", "fingers"))) { //01ec
+  if (v103 == 6) { //0228
+    print("You knead the ingredients in the clay bowl with your hands. It turns into a stiff, dough-like substance.")
+    reset(f120)
+    goto(l568)
+  }
+  reset(fSaidAccepted)
+}
+l568:
+if ((said("divide", "compound", "two", "ball") || said("divide", "two", "ball") || said("form", "two", "ball") || said("form", "two", "ball", "from", "compound") || said("form", "compound", "two", "ball") || said("move", "compound", "two", "ball"))) { //0238
+  if (v103 == 7) { //0278
+    print("You grasp the doughy mixture in the bowl and divide it into two pieces.")
+    reset(f120)
+    goto(l648)
+  }
+  reset(fSaidAccepted)
+}
+l648:
+if ((said("add", "two", "ball", "compound", "ears") || said("add", "two", "compound", "ball", "ears") || said("add", "compound", "ball", "ears") || said("add", "compound", "ears") || said("add", "ball", "ears") || said("add", "ball", "compound", "ears"))) { //0288
+  if (v103 == 8) { //02ca
+    print("You VERY gently place the two pieces of dough in your ears and pull your hair down over them. You prepare to recite the magical incantation.")
+    reset(f120)
+    v103++
+    goto(l732)
+  }
+  reset(fSaidAccepted)
+}
+l732:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //02dc
+  if (!(has(i37))) { //02f0
+    print("It is difficult to use that which you do not have.")
+    goto(l782)
+  }
+  if (v103 == 10) { //02fc
+    print("You wave the magic wand over your dough-filled ears.")
+    reset(f120)
+    get(i8)
+    goto(l782)
+  }
+  reset(fSaidAccepted)
+}
+l782:
+if (!f120 && v104 < 4 && v103 == 9) { //030e
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //0324
+    overlay.pic(v240)
+    show.pic()
+    set.string(str2,"feather of fowl and bone of fish,")
+    if (vMonitorType == HERCULES) { //0331
+      open.dialogue()
+      get.string(str1," ",15,1,33)
+      goto(l840)
+    }
+    get.string(str1," ",13,1,33)
+l840:
+    if (compare.strings(str1,str2)) { //0348
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //0351
+    set.string(str2,"molded together in this dish,")
+    if (vMonitorType == HERCULES) { //035b
+      open.dialogue()
+      get.string(str1," ",16,1,29)
+      goto(l882)
+    }
+    get.string(str1," ",14,1,29)
+l882:
+    if (compare.strings(str1,str2)) { //0372
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //037b
+    set.string(str2,"give me wisdom to understand")
+    if (vMonitorType == HERCULES) { //0385
+      open.dialogue()
+      get.string(str1," ",17,1,28)
+      goto(l924)
+    }
+    get.string(str1," ",15,1,28)
+l924:
+    if (compare.strings(str1,str2)) { //039c
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //03a5
+    set.string(str2,"creatures of air, sea and land.")
+    if (vMonitorType == HERCULES) { //03af
+      open.dialogue()
+      get.string(str1," ",18,1,31)
+      goto(l966)
+    }
+    get.string(str1," ",16,1,31)
+l966:
+    if (compare.strings(str1,str2)) { //03c6
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //03da
+    if (vMonitorType == HERCULES) { //03e5
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+if (f242) { //03f1
+  reset(f242)
+  if ((!(has(i1)) || !(has(i40)))) { //03f9
+    print("It is difficult to use that which you do not have.")
+    goto(l1047)
+  }
+  drop(i1)
+  print("You place the soft, downy chicken feather in your clay mixing bowl.")
+  if (v103 == 1) { //040e
+    reset(f120)
+  }
+}
+l1047:
+if (f241) { //0417
+  reset(f241)
+  if (!(has(i9))) { //041f
+    print("It is difficult to use that which you do not have.")
+    goto(l1069)
+  }
+  print("The eagle feather is too big for this particular recipe. It won't work.")
+}
+l1069:
+if (f244) { //042d
+  reset(f244)
+  if (!(has(i2))) { //0435
+    print("It is difficult to use that which you do not have.")
+    goto(l1102)
+  }
+  drop(i2)
+  print("You put the tuft of cat hair in the clay bowl.")
+  if (v103 == 2) { //0445
+    reset(f120)
+  }
+}
+l1102:
+if (f245) { //044e
+  reset(f245)
+  if (!(has(i3))) { //0456
+    print("It is difficult to use that which you do not have.")
+    goto(l1135)
+  }
+  drop(i3)
+  print("You put the tuft of dog hair in the clay bowl.")
+  if (v103 == 2) { //0466
+    reset(f120)
+  }
+}
+l1135:
+v36 = v103
+v36++
+if (v36 == 11 && !f120) { //0474
+  v103 = 255
+}
+if (f120) { //0481
+  v105 = 38
+  v106 = 0
+}
+return()

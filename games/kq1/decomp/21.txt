@@ -1,4 +1,199 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,110,103,0,0)
+  }
+  random(0,250,v62)
+  if (v62 < 185 && v81 != 3) { //002b
+    v30 = 6
+    step.size(o1,v30)
+    set(f20)
+    load.view(3)
+    load.view(91)
+    load.sound(1)
+    animate.obj(o1)
+    set.view(o1,3)
+    ignore.horizon(o1)
+    ignore.blocks(o1)
+    set.priority(o1,15)
+    set.loop(o1,1)
+  }
+  if (f20) { //0053
+l89:
+    random(0,250,v70)
+    if (v70 > 90) { //005d
+      goto(l89)
+    }
+  }
+  observe.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+v70--
+if (v70 == 1) { //006e
+  v70 = 0
+  set(f21)
+  position(o1,80,48)
+  draw(o1)
+  set(f135)
+  sound(1,f159)
+  if (!f75) { //0085
+    print("It's a witch swooping through the sky... She's trying to catch you!  Look out!")
+    follow.ego(o1,20,f24)
+  }
+  if (f75) { //0092
+    wander(o1)
+    set(f22)
+    print("There is a witch in the area, but since you have that menacing goat with you, she will keep her distance.")
+  }
+  if (f79) { //009e
+    wander(o1)
+    set(f22)
+    print("Lucky for you that you are invisible, the witch can't find you.")
+  }
+}
+if (f159) { //00aa
+  reset(f159)
+  reset(f135)
+}
+if (f24) { //00b4
+  reset(f24)
+  reset(f135)
+  if (f73) { //00be
+    print("The witch can feel your protective spell and bids a hasty retreat.")
+    wander(o1)
+    set(f22)
+    goto(l292)
+  }
+  if (f79) { //00cd
+    print("Lucky for you that you are invisible, the witch can't find you.")
+    wander(o1)
+    set(f22)
+    goto(l292)
+  }
+  if (f102) { //00dc
+    print("There is a witch in the area, but with the shield no harm will come to you.")
+    wander(o1)
+    set(f22)
+    goto(l292)
+  }
+  if (f200) { //00eb
+    print("The witch missed you, this time.")
+    random(1,2,v31)
+    goto(l292)
+  }
+  print("The witch swoops down, grabs you by the neck, and carries you off to a fate worse than death.")
+  program.control()
+  set(f142)
+  erase(o1)
+  set.view(o0,91)
+  ignore.blocks(o0)
+  ignore.horizon(o0)
+  get.posn(o0,v60,v61)
+  if (v61 > 120) { //010c
+    v61 -= 50
+  }
+  v60 = 130
+  set.priority(o0,15)
+  move.obj(o0,v60,v61,30,f23)
+  set(f98)
+}
+l292:
+if (v31 == 1) { //0124
+  move.obj(o1,1,24,6,f28)
+  v31 = 0
+}
+if (v31 == 2) { //0134
+  move.obj(o1,130,24,6,f28)
+  v31 = 0
+}
+if (f28) { //0144
+  reset(f28)
+  follow.ego(o1,20,f24)
+}
+if (f22) { //0150
+  if ((vWhichObjBorder == 2 || vWhichObjBorder == 4 || vWhichObjBorder == 1)) { //0156
+    get.posn(o1,v32,v33)
+    if (v33 < 80) { //0169
+      normal.cycle(o1)
+      reset(f22)
+      reset(f21)
+      erase(o1)
+    }
+  }
+}
+if (!f21) { //0178
+  if (said("ANYWORD", "witch")) { //017f
+    print("There's no witch here.")
+  }
+}
+if (f21) { //018b
+  if (said("check", "witch")) { //0191
+    print("This is not your friendly-type witch.")
+  }
+  if (said("kill", "witch")) { //019d
+    print("There is no way to kill a flying witch!")
+  }
+  if ((said("speak", "witch") || said("hello") || said("say", "hello"))) { //01a9
+    print("The wicked witch is not interested in chitchat.")
+  }
+  if (said("acquire", "witch")) { //01c1
+    print("Are you kidding?")
+  }
+}
+if ((said("jump") || controller(c7))) { //01cd
+  if (f79) { //01d9
+    print("There is no reason to jump now.")
+  }
+  if (f21 && !f79) { //01e1
+    if (!f142) { //01ea
+      print("Jumping here would put you in even greater danger from that witch!")
+      goto(l504)
+    }
+    print("There is no way you can now.")
+  }
+l504:
+  if (!f21 && !f79) { //01f8
+    set(f143)
+    stop.motion(o0)
+    v102 = 3
+    cycle.time(o0,v102)
+    set.view(o0,75)
+    set(f98)
+    end.of.loop(o0,f144)
+  }
+}
+if (f144) { //0214
+  reset(f143)
+  reset(f144)
+  reset(f98)
+  start.motion(o0)
+  v103 = 1
+  cycle.time(o0,v103)
+  set.view(o0,0)
+}
+if (f23) { //022b
+  new.room(80)
+}
+if (vWhichEgoBorder == 1 && !f142) { //0233
+  new.room(28)
+}
+if (vWhichEgoBorder == 2 && !f142) { //023f
+  new.room(20)
+}
+if (vWhichEgoBorder == 4 && !f142) { //024b
+  new.room(22)
+}
+if (vWhichEgoBorder == 3 && !f142) { //0257
+  new.room(12)
+}
+if (f75) { //0263
+  call(103)
+}
+return()

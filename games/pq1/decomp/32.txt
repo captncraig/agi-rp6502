@@ -1,4 +1,965 @@
-if (isSet(f5)) {
-  if (!(isSet(f187)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f187) { //0008
+    set(f187)
+    vCurrentScore += 5
+  }
+  if (f56) { //0014
+    set(f159)
+  }
+  set(f102)
+  v56 = 0
+  load.pic(v46)
+  draw.pic(v46)
+  discard.pic(v46)
+  load.view(109)
+  add.to.pic(109,0,0,11,158,14,0)
+  discard.view(109)
+  load.view(32)
+  load.view(33)
+  load.view(114)
+  load.view(94)
+  load.sound(11)
+  load.sound(40)
+  load.sound(34)
+  load.logic(2)
+  load.logic(94)
+  load.logic(118)
+  load.logic(108)
+  load.logic(v46)
+  if (v134 > 0) { //004b
+    load.view(0)
+    set.view(o0,0)
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    draw(o0)
+    goto(l106)
+  }
+  position(o0,20,130)
+l106:
+  animate.obj(o1)
+  animate.obj(o3)
+  animate.obj(o12)
+  animate.obj(o2)
+  load.view(3)
+  load.view(114)
+  load.view(114)
+  set.view(o1,v39)
+  set.view(o3,3)
+  set.view(o12,114)
+  set.view(o2,114)
+  set.loop(o2,1)
+  position(o19,32,161)
+  position(o1,151,155)
+  position(o2,55,145)
+  position(o12,29,157)
+  set.priority(o2,14)
+  ignore.objs(o2)
+  stop.cycling(o12)
+  stop.cycling(o2)
+  if (!f56) { //00a0
+    animate.obj(o14)
+    set.view(o14,94)
+    set.loop(o14,1)
+    fix.loop(o14)
+    position(o14,139,154)
+    stop.cycling(o14)
+  }
+  if (vPrevRoom == 9) { //00b7
+    draw(o2)
+    set(f228)
+  }
+  if ((vPrevRoom == 114 || vPrevRoom == 8 || vPrevRoom == 9)) { //00c2
+    set(f14)
+    status.line.on()
+  }
+  if (f46) { //00d4
+    if (f56) { //00da
+      add.to.pic(94,1,2,139,154,0,0)
+      goto(l245)
+    }
+    last.cel(o14,v152)
+    set.cel(o14,v152)
+    draw(o14)
+    stop.update(o14)
+l245:
+    if (f100) { //00f5
+      set.cel(o12,2)
+      draw(o12)
+    }
+    goto(l268)
+  }
+  set(f226)
+  set.cel(o12,0)
+  draw(o12)
+  reset(f100)
+l268:
+  call(2)
+  call(94)
+  call(118)
+  call(108)
+  show.pic()
+  set(f162)
+}
+distance(o0,o1,v224)
+distance(o0,o19,v225)
+if ((v224 < v61 || v225 < v61)) { //011f
+  set(f109)
+}
+reset(f229)
+if (posn(o0,100,160,120,164)) { //012f
+  set(f229)
+}
+reset(f231)
+if ((posn(o0,42,159,52,162) || posn(o0,29,150,41,155) || posn(o0,42,150,52,155))) { //013d
+  set(f231)
+}
+reset(f230)
+if (posn(o0,29,159,41,162)) { //0159
+  set(f230)
+}
+if (posn(o0,85,143,106,154)) { //0165
+  set.priority(o0,12)
+  goto(l375)
+}
+release.priority(o0)
+l375:
+if (!fEnteredCommand) { //0177
+  goto(l2602)
+}
+if ((said("get", "id") || said("answer", "art") || said("ask", "about", "id") || said("drop", "automatic") || said("drop", "about", "automatic") || said("examine", "id"))) { //0181
+  print("\"Shove it, Pig!\"")
+}
+if (said("call")) { //01b1
+  if (v119 < 2) { //01b9
+    print("You nervously key your radio, \"Dispatch, this is 83-32. Request backup Code-3!\"")
+    print("Dispatch responds, \"Be advised, 83-31 is responding Code-3 to your location.\"")
+    v119 = 1
+    random(10,20,v140)
+    v139 = 0
+    goto(l479)
+  }
+  if (v119 < 4) { //01d1
+    print("You key your radio, \"83-32, backup has arrived.\"")
+    goto(l479)
+  }
+  print("\"Dispatch, be advised. Hold all radio traffic until Code-4 confirmed.\"")
+}
+l479:
+if (f226 && !f39 && (said("continue", "hands", "up", "enter", "auto") || said("elevator", "hands", "enter", "auto") || said("enter", "auto", "elevator", "hands") || said("enter", "auto", "continue", "hands", "up") || said("enter", "auto", "hands", "up") || said("enter", "auto", "hands", "up") || said("drop", "hands", "up", "enter", "auto") || said("enter", "auto", "use", "hands", "up"))) { //01df
+  if (f39) { //0242
+    print("He can't hear you when you're inside your car.")
+    goto(l612)
+  }
+  if (v119 == 4) { //024d
+    set(f225)
+    v119 = 5
+    v222 = 9
+    v220 = 0
+    goto(l612)
+  }
+  print("He IS!")
+}
+l612:
+if (f226 && !f39 && (said("enter", "out", "auto") || said("enter", "out") || said("enter", "auto") || said("enter", "rol"))) { //0264
+  if (f39) { //0289
+    print("He can't hear you when you're inside your car.")
+    goto(l681)
+  }
+  if (v119 == 4) { //0294
+    v119 = 5
+    v222 = 9
+    v220 = 0
+    goto(l681)
+  }
+  print("He IS!")
+}
+l681:
+if ((said("dont move", "rol") || said("anyword", "dont move", "rol"))) { //02a9
+  if (f39) { //02bd
+    print("He can't hear you when you're inside your car.")
+    goto(l753)
+  }
+  if (f226) { //02c8
+    print("He's still inside his car.")
+    goto(l753)
+  }
+  if (v119 == 6) { //02d3
+    reset(f225)
+    set(f221)
+    v220 = 6
+    goto(l753)
+  }
+  if (f222) { //02e4
+    print("He IS!")
+    goto(l753)
+  }
+  reset(fSaidAccepted)
+}
+l753:
+if ((said("drop", "hands", "up") || said("get", "hands", "above", "hair") || said("hands", "up") || said("elevator", "hands") || said("carry", "hands", "up") || said("elevator", "hands") || said("elevator", "hands", "rol") || said("drop", "up", "about", "hands") || said("get", "hands", "up"))) { //02f1
+  if (f39) { //033d
+    print("He can't hear you when you're inside your car.")
+    goto(l868)
+  }
+  if (f226) { //0348
+    print("He's still inside his car.")
+    goto(l868)
+  }
+  if (v119 == 6) { //0353
+    set(f221)
+    v220 = 10
+    goto(l868)
+  }
+  print("He IS!")
+}
+l868:
+if ((said("lay", "down", "rol") || said("hit", "curb", "rol") || said("down", "on", "curb") || said("get", "on", "curb") || said("lay", "eye", "down", "on", "curb") || said("lay", "eye", "down") || said("get", "down", "rol") || said("eye", "curb", "rol"))) { //0364
+  if (f39) { //03ae
+    print("He can't hear you when you're inside your car.")
+    goto(l993)
+  }
+  if (f226) { //03b9
+    print("He's still inside his car.")
+    goto(l993)
+  }
+  if (v119 < 9) { //03c4
+    print("He doesn't have his hands raised yet!")
+    goto(l993)
+  }
+  if (v119 == 9) { //03d0
+    v220 = 12
+    set(f221)
+    goto(l993)
+  }
+  reset(fSaidAccepted)
+}
+l993:
+if ((said("cuff") || said("cuff", "art", "rol") || said("cuff", "convict", "rol"))) { //03e1
+  get.posn(o19,v144,v145)
+  if ((v225 > 15 || v142 < v144 || v143 < 161)) { //03ff
+    set(f113)
+    goto(l1112)
+  }
+  if (vEgoView == v42) { //0413
+    print("Attempting to handcuff the suspect while holding your weapon could be hazardous to your health!")
+    goto(l1112)
+  }
+  if (v119 < 12) { //041f
+    print("You'd better get him under your control, first!")
+    goto(l1112)
+  }
+  if (!(v119 < 15)) { //042b
+    print("He IS!")
+    goto(l1112)
+  }
+  if (!(has(i24))) { //0438
+    set(f170)
+    goto(l1112)
+  }
+  drop(i24)
+  start.motion(o0)
+  set.loop(o19,1)
+  set.cel(o19,0)
+  force.update(o19)
+  print("You feel relief as you close the handcuffs around his wrists.")
+  v119 = 15
+  stop.sound()
+  reset(f234)
+}
+l1112:
+if (!f226 && (said("get up") || said("convict", "get up") || said("art", "get up") || said("get up") || said("get", "off", "curb") || said("off", "curb"))) { //0458
+  if (v119 < 15) { //0483
+    print("You'd better handcuff him first!")
+    goto(l1184)
+  }
+  if (v119 > 15) { //048f
+    print("He IS!")
+    goto(l1184)
+  }
+  v220 = 15
+  set(f221)
+}
+l1184:
+if (!f226 && (said("enter", "rol") || said("get", "art", "rol") || said("get", "convict", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "bonds", "rol") || said("move", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "use", "bonds", "rol"))) { //04a0
+  if (v119 < 15) { //04fb
+    print("You'd better handcuff him first!")
+    goto(l1327)
+  }
+  if (v119 < 16) { //0507
+    print("Stand him up, first.")
+    goto(l1327)
+  }
+  if (v119 > 16) { //0513
+    if (f248) { //051a
+      print("He IS!")
+      goto(l1319)
+    }
+    reset(fSaidAccepted)
+l1319:
+    goto(l1327)
+  }
+  v220 = 17
+  set(f221)
+}
+l1327:
+if ((said("examine", "right", "rol") || said("examine", "anyword", "right", "rol") || said("administer", "right", "rol") || said("administer", "anyword", "right", "rol") || said("right", "rol") || said("anyword", "right", "rol"))) { //052f
+  if (v225 > v61) { //0567
+    set(f113)
+    goto(l1442)
+  }
+  if (v119 < 15) { //0573
+    print("You'd better handcuff him first!")
+    goto(l1442)
+  }
+  if (v119 > 18) { //057f
+    print("The suspect is already in the car. You'd better take him to jail!")
+    goto(l1442)
+  }
+  if (!f220) { //058b
+    set(f220)
+    vCurrentScore += 1
+    print("The suspect cuts you off short as he says, \"I know my rights, you jackass!\"")
+    print("To be safe, you read his rights to him anyway.")
+    call(72)
+    goto(l1442)
+  }
+  print("Once is enough.")
+}
+l1442:
+if ((said("apprehend", "art") || said("apprehend", "convict"))) { //05a2
+  if (!f109) { //05b4
+    set(f113)
+    goto(l1474)
+  }
+  print("\"I place you under arrest!\"")
+}
+l1474:
+if ((said("find") || said("find", "art") || said("find", "convict") || said("examine", "art") || said("examine", "convict"))) { //05c2
+  if (v119 < 15) { //05e4
+    print("You'd better handcuff him first!")
+    goto(l1554)
+  }
+  if (v225 > 15) { //05f0
+    set(f113)
+    goto(l1554)
+  }
+  print("You search the suspect and find only pocket change.")
+  if (!f77) { //05fe
+    vCurrentScore += 2
+    set(f77)
+    print("Plus, a loaded, Smith & Weston .45-caliber, semi-automatic handgun.")
+    print("The suspect pipes up, \"Honest, Officer. I only carry that for self-defense on the freeways!!\"")
+    print("\"Quiet down,\" you order him. \"Hey, Jack,\" you yell to your backup, \"how's about booking this evidence?\"")
+    print("\"Ok,\" Jack replies.")
+  }
+}
+l1554:
+if (f77 && (said("get", "automatic", "rol") || said("examine", "automatic", "rol"))) { //0612
+  if (v119 < 19) { //062a
+    print("You'd better get him in the car, first.")
+    goto(l1636)
+  }
+  if (!f224) { //0636
+    print("Jack took it with him.")
+    goto(l1636)
+  }
+  if (v224 > 20) { //0642
+    print("You're not close enough to Jack to obtain the gun.")
+    goto(l1636)
+  }
+  if (!f188) { //064e
+    set(f188)
+    vCurrentScore += 4
+  }
+  print("You carefully handle the gun so as not to smudge any possible fingerprints.")
+  v134 = v142
+  v135 = v143
+  new.room(114)
+}
+l1636:
+if ((said("interrogate", "art", "rol") || said("ask", "art", "rol") || said("ask", "convict", "rol") || said("interrogate", "convict", "rol"))) { //0664
+  if (v119 < 15) { //068a
+    print("You'd better handcuff him first!")
+    goto(l1714)
+  }
+  if (v119 < 19) { //0696
+    if (!f220) { //069d
+      set(f140)
+      call(72)
+      goto(l1712)
+    }
+    print("\"This is harassment. You'll hear from my attorney!\"")
+    goto(l1714)
+l1712:
+    print("The suspect is already in the car. You'd better take him to jail!")
+  }
+}
+l1714:
+if ((said("o", "trunk") || said("look in", "trunk") || said("o", "trunk", "auto") || said("o", "auto", "trunk") || said("look in", "convict", "trunk") || said("o", "trunk", "convict", "auto") || said("find", "trunk", "auto") || said("find", "auto", "trunk") || said("find", "convict", "trunk") || said("o", "convict", "auto", "trunk"))) { //06b2
+  if (posn(o0,67,152,72,160)) { //0708
+    if (v119 < 19) { //0712
+      print("Place him in physical custody before entering his car.")
+      goto(l1832)
+    }
+    set.cel(o2,0)
+    draw(o2)
+    set(f228)
+    v56 = 9
+l1832:
+    goto(l1852)
+  }
+  if (posn(o0,146,155,151,162)) { //072b
+    print("You do not need anything from the trunk.")
+    goto(l1852)
+  }
+  set(f113)
+}
+l1852:
+if ((said("o", "box") || said("look in", "auto", "box") || said("o", "auto", "box") || said("find", "box") || said("find", "auto", "box") || said("look in", "box"))) { //073c
+  if (v119 < 19) { //076c
+    print("Place him in physical custody before entering his car.")
+    goto(l1941)
+  }
+  if (f230) { //0778
+    if (!f100) { //077e
+      print("The door IS closed.")
+      goto(l1936)
+    }
+    sound(11,f154)
+    v56 = 8
+l1936:
+    goto(l1941)
+  }
+  print("What are you talking about?")
+}
+l1941:
+if (said("anyword", "briefcase")) { //0795
+  print("This guy may be armed!")
+}
+if ((said("examine", "auto") || said("look in", "convict", "auto") || said("look in", "auto") || said("find", "auto") || said("find", "convict", "auto") || said("examine", "convict", "auto"))) { //07a1
+  if (f231) { //07d1
+    print("Something about the interior of this car just doesn't feel right.")
+    goto(l2050)
+  }
+  if (f230) { //07dc
+    if (!f46) { //07e2
+      print("This guy may be armed!")
+      goto(l2045)
+    }
+    if (f100) { //07ee
+      print("You look at the floorboard, the seats, and even under the seats, but you find nothing.")
+      print("Then, you remember the glove compartment.")
+      goto(l2045)
+    }
+    print("Something about the interior of this car just doesn't feel right.")
+l2045:
+    goto(l2050)
+  }
+  print("This vehicle almost matches the description of the vehicle mentioned by the witness to the fatal car crash.")
+}
+l2050:
+if ((said("examine", "id", "rol") || said("convict", "administer", "id", "rol") || said("administer", "id", "rol"))) { //0802
+  if (v119 < 15) { //0822
+    print("You'd better handcuff him first!")
+    goto(l2108)
+  }
+  if (v119 < 19) { //082e
+    print("\"Oops, I must have forgotten it!\" says the suspect.")
+    goto(l2108)
+  }
+  print("The suspect is already in the car. You'd better take him to jail!")
+}
+l2108:
+if ((said("examine", "license plate") || said("examine", "convict", "auto", "license plate") || said("examine", "convict", "license plate"))) { //083c
+  if ((posn(o0,67,150,159,167) || posn(o0,0,150,4,167))) { //085a
+    set(f233)
+    print("The license plate is \"UL6942.\" Hmmm. You remember the partial plate seen by the witness to the Lonnie West murder was \"L964.\" You may have found your man.")
+    goto(l2165)
+  }
+  print("You can't see it from here.")
+}
+l2165:
+if ((said("jog", "license plate") || said("call", "dispatch", "license plate") || said("call", "license plate") || said("jog", "make"))) { //0875
+  if (!f39 && !(has(i4)) && !(posn(o0,111,161,118,162))) { //0895
+    print("You must be in your car or have a radio extender.")
+    goto(l2235)
+  }
+  if (!f233) { //08ab
+    print("You don't know the license plate number yet.")
+    goto(l2235)
+  }
+  print("You radio, \"Dispatch, this is 83-32. Request wants on license plate 'UL6942.'\"")
+  print("Your radio crackles to life with a message from Dispatch, \"83-32, license plate 'UL6942' not listed as stolen. Registered to a '79 Cadillac junked in 1983.\"")
+}
+l2235:
+if (said("anyword", "pink slip")) { //08bb
+  print("You think, \"The odds of finding a legit registration for this car are slim to none.\"")
+}
+if ((said("examine", "d") || said("examine", "convict", "auto", "d") || said("examine", "auto", "d"))) { //08c7
+  if (f231) { //08e5
+    print("There's nothing special about the door.")
+    goto(l2339)
+  }
+  if (f230) { //08f0
+    if (!f46) { //08f6
+      print("This guy may be armed!")
+      goto(l2334)
+    }
+    if (!f100) { //0902
+      print("It IS closed.")
+      goto(l2334)
+    }
+    print("Say! The doorjamb of the suspect's vehicle is black instead of light blue!")
+    print("A closer examination of the doorjamb reveals the vehicle's VIN plate. A quick rub with your thumb uncovers its number: C03456218!")
+    if (!f123) { //0912
+      set(f123)
+      vCurrentScore += 2
+    }
+l2334:
+    goto(l2339)
+  }
+  reset(fSaidAccepted)
+}
+l2339:
+if ((said("o", "d") || said("o", "auto", "d") || said("o", "convict", "auto", "d"))) { //0923
+  if (f231) { //0941
+    print("This door is locked.")
+    goto(l2424)
+  }
+  if (f230) { //094c
+    if (!f46) { //0952
+      print("This guy may be armed!")
+      goto(l2419)
+    }
+    if (f100) { //095e
+      print("It IS open.")
+      goto(l2419)
+    }
+    sound(3,f154)
+    set.cel(o12,2)
+    draw(o12)
+    set(f100)
+l2419:
+    goto(l2424)
+  }
+  reset(fSaidAccepted)
+}
+l2424:
+if ((said("c", "d") || said("c", "auto", "d") || said("c", "convict", "auto", "d"))) { //0978
+  if (f231) { //0996
+    print("This door is locked.")
+    goto(l2507)
+  }
+  if (f230) { //09a1
+    if (!f46) { //09a7
+      print("This guy may be armed!")
+      goto(l2502)
+    }
+    if (!f100) { //09b3
+      print("It IS closed.")
+      goto(l2502)
+    }
+    sound(4,f154)
+    erase(o12)
+    reset(f100)
+l2502:
+    goto(l2507)
+  }
+  reset(fSaidAccepted)
+}
+l2507:
+if ((said("jog", "number") || said("call", "number") || said("dispatch", "number") || said("call", "dispatch", "administer", "number") || said("call", "dispatch", "use", "number") || said("make", "number") || said("call", "number"))) { //09cb
+  if (!f39 && !(has(i4)) && !f229) { //0a03
+    print("You must be in your car or have a radio extender.")
+    goto(l2602)
+  }
+  if (f123) { //0a15
+    print("\"Dispatch, this is 83-32,\" you radio. \"Run VIN C03456218 through the computer.\"")
+    print("Shortly, Dispatch returns with...")
+    print("\"Suspect vehicle is confirmed 10851! Lytton PD holds a signed stolen report on this vehicle.\"")
+    print("\"Vehicle information, 1983 black Cadillac deVille.\"")
+    print("\"Registered owner, Malcolm Washington, 234 W Center St, Lytton, CA.\"")
+    goto(l2602)
+  }
+  print("You must first locate its VIN.")
+}
+l2602:
+if (v56 > 0 && f227) { //0a2a
+  v134 = v142
+  v135 = v143
+  new.room(v56)
+  goto(l2639)
+}
+if (v56 > 0 && f154) { //0a3e
+  v134 = v142
+  v135 = v143
+  new.room(v56)
+}
+l2639:
+get.posn(o1,v144,v145)
+if ((v226 != v144 || v227 != v145)) { //0a53
+  v226 = v144
+  v227 = v145
+  start.cycling(o1)
+  goto(l2670)
+}
+stop.cycling(o1)
+l2670:
+if (posn(o0,132,142,159,154)) { //0a6e
+  set.priority(o0,12)
+  goto(l2688)
+}
+release.priority(o0)
+l2688:
+if (!f39 && !fEnteredCommand && v119 < 4) { //0a80
+  reset(f229)
+}
+if (!f39 && !f63) { //0a8f
+  reset(f229)
+}
+if (!f39 && !fEnteredCommand && !f229 && v220 < 100) { //0a9b
+  if ((f226 || v119 < 6)) { //0aab
+    v220 = 100
+    set(f221)
+    goto(l2762)
+  }
+  if (v119 < 12) { //0abe
+    v220 = 103
+    set(f221)
+  }
+}
+l2762:
+if (f162 && has(i14) && vEgoView == v42 && (f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //0aca
+  reset(f33)
+  print("Cranking off a few live rounds at this particular time is not recommended.")
+}
+if (f55 && f53) { //0b25
+  prevent.input()
+  if (!f224) { //0b2e
+    print("If it's a tie, you lose!")
+    goto(l2880)
+  }
+  erase(o3)
+  print("Your partner just punched that punk's ticket.")
+  print("But, a little too late for you, pal. Remember, proper procedure promotes police preservation.")
+l2880:
+  set(f140)
+}
+if (f55 && !f52) { //0b42
+  prevent.input()
+  print("Attempting to apprehend the suspect single-handedly was brave but fatal. Review the \"Felony Stop Procedures\" section of your \"LPD Policeman's Indoctrination Guide.\"")
+  set(f140)
+}
+if (f53 && v31 < 254) { //0b50
+  prevent.input()
+  print("Well, that's certainly one way to save the taxpayers' money: mow 'em down instead of taking 'em to court.")
+  print("While some may applaud your exercise in street justice, democratic societies have no place for \"trigger happy\" cops. Sorry, Sonny.")
+  print("Review the \"Levels of Force\" section of your \"LPD Policeman's Indoctrination Guide.\"")
+  erase(o3)
+  set(f140)
+}
+if (v142 < 84 && v119 == 12) { //0b64
+  v119 = 13
+  print("Jack says, \"I've got him covered, Sonny. Go ahead and 'cuff him.\"")
+}
+if (v225 < 30 && v119 == 13) { //0b73
+  v119 = 14
+  print("You apprehensively approach the suspect, sensing his desperation.")
+}
+if (!f52 && v31 == 254 && f224) { //0b82
+  set(f138)
+  v139 = 100
+  v140 = 0
+  v141 = 0
+}
+if (v119 == 17) { //0b99
+  get.posn(o19,v144,v145)
+  if (v144 == 73) { //0ba4
+    set(f138)
+  }
+}
+if (v139 == 30 && v87 == 0) { //0bad
+  set(f138)
+  v139 = 50
+}
+if (f138) { //0bbc
+  reset(f138)
+  v139++
+  if (v139 == 1) { //0bc6
+    if (v220 > 0) { //0bcd
+      v139 = 0
+      goto(l3069)
+    }
+    v119 = 2
+    prevent.input()
+    if (f56) { //0bde
+      add.to.pic(94,1,2,139,154,0,0)
+      v139 = 2
+      goto(l3069)
+    }
+    sound(9,f154)
+    set.cel(o14,0)
+    draw(o14)
+    end.of.loop(o14,f138)
+  }
+l3069:
+  if (v139 == 2) { //0bfd
+    if (!f56) { //0c04
+      stop.update(o14)
+    }
+    print("Officer Jack Cobb arrives on the scene. Cobb radios Dispatch, %m5")
+    sound(40,f234)
+    v140 = 3
+  }
+  if (v139 == 3) { //0c15
+    print("Dispatch responds, \"Affirmative.\"")
+    v140 = 3
+  }
+  if (v139 == 4) { //0c21
+    print("\"83-32, this is 83-31. Sonny! I'll cover you from the passenger side of your patrol car while you make contact with the suspect.\"")
+    print("\"83-31, out.\"")
+    v119 = 3
+    accept.input()
+    v140 = 3
+  }
+  if (v139 == 5) { //0c33
+    draw(o1)
+    set(f224)
+    move.obj(o1,135,155,1,f138)
+  }
+  if (v139 == 6) { //0c44
+    set.view(o1,v42)
+    v144 = 252
+    repositon(o1,v144,v127)
+    move.obj(o1,95,155,1,f138)
+  }
+  if (v139 == 7) { //0c5b
+    stop.update(o1)
+    v119 = 4
+    stop.sound()
+    reset(f234)
+  }
+  if (v139 == 8) { //0c6a
+    start.update(o1)
+    move.obj(o1,72,155,1,f138)
+  }
+  if (v139 == 9) { //0c79
+    set.loop(o1,0)
+    move.obj(o1,72,167,1,f138)
+  }
+  if (v139 == 10) { //0c89
+    move.obj(o1,90,167,1,f138)
+  }
+  if (v139 == 11) { //0c96
+    v139 = 30
+  }
+  if (v139 == 51) { //0ca0
+    v119 = 19
+    set.view(o1,v39)
+    follow.ego(o1,10,f138)
+  }
+  if (v139 == 52) { //0cb1
+    print("\"Good job, Sonny!\" says Jack. \"I'll call Dispatch and put out a Code-4.\"")
+    move.obj(o1,152,167,1,f138)
+  }
+  if (v139 == 53) { //0cc0
+    erase(o1)
+    reset(f224)
+  }
+  if (v139 == 101) { //0ccb
+    stop.motion(o1)
+    current.view(o1,v146)
+    if (v146 != v42) { //0cd7
+      set.view(o1,v42)
+      v144 = 252
+      repositon(o1,v144,v127)
+    }
+    set.priority(o3,10)
+    set.loop(o3,1)
+    set.cel(o3,0)
+    get.posn(o1,v144,v145)
+    v144 -= 2
+    v145 -= 15
+    position(o3,144,v145)
+    draw(o3)
+    end.of.loop(o3,f138)
+    sound(5,f154)
+    set(f40)
+  }
+  if (v139 == 102) { //0d0a
+    erase(o3)
+  }
+}
+if (f112) { //0d13
+  v221--
+  if (v221 == 1) { //0d1b
+    set(f221)
+  }
+}
+v222--
+if (v222 == 1) { //0d26
+  set(f221)
+}
+if (f221) { //0d2f
+  reset(f221)
+  v220++
+  if (v220 == 1) { //0d39
+    set.cel(o12,1)
+    sound(34,f152)
+    set(f100)
+    v222 = 11
+  }
+  if (v220 == 2) { //0d4b
+    set.cel(o12,2)
+    set.view(o19,v67)
+    set.loop(o19,0)
+    draw(o19)
+    move.obj(o19,34,163,1,f221)
+    reset(f226)
+    reset(f162)
+  }
+  if (v220 == 3) { //0d67
+    if (f225) { //0d6e
+      v220 = 7
+      v119 = 7
+      goto(l3462)
+    }
+    print("Be careful! This dude's dangerous.")
+    v119 = 6
+    follow.ego(o19,40,f221)
+  }
+l3462:
+  if (v220 == 4) { //0d86
+    v220 = 104
+  }
+  if (v220 == 7) { //0d90
+    set(f222)
+    stop.motion(o19)
+    normal.motion(o19)
+    vCurrentScore += 2
+    if (f225) { //0da0
+      reset(f225)
+      v220 = 11
+      v119 = 8
+    }
+  }
+  if (v220 == 11) { //0dae
+    set(f222)
+    stop.motion(o19)
+    normal.motion(o19)
+    reset(f122)
+    set.view(o19,32)
+    set.cel(o19,0)
+    force.update(o19)
+    print("The suspect falters for a moment, then slowly raises his hands. He realizes he does not have a chance and follows your order.")
+    v222 = 11
+    v119 = 8
+  }
+  if (v220 == 12) { //0dcd
+    vCurrentScore += 2
+    set.cel(o19,1)
+    v119 = 9
+  }
+  if (v220 == 13) { //0ddd
+    print("\"Ok, ok. I'm lying down!\"")
+    normal.motion(o19)
+    start.motion(o19)
+    reset(f122)
+    v119 = 10
+    set(f162)
+    v222 = 11
+  }
+  if (v220 == 14) { //0df4
+    v119 = 11
+    set(f122)
+    cycle.time(o19,v123)
+    end.of.loop(o19,f221)
+  }
+  if (v220 == 15) { //0e06
+    v119 = 12
+    reset(f122)
+    cycle.time(o19,v122)
+    sound(40,f234)
+    vCurrentScore += 2
+  }
+  if (v220 == 16) { //0e1b
+    set(f122)
+    end.of.loop(o19,f221)
+    v119 = 16
+  }
+  if (v220 == 17) { //0e2a
+    reset(f122)
+    set.view(o19,33)
+    set.loop(o19,0)
+  }
+  if (v220 == 18) { //0e39
+    v119 = 17
+    print("You order the suspect into your patrol car. He submits with a sarcastic, \"All right, &!#$%&.\"")
+    set(f46)
+    reset(f222)
+    move.obj(o19,135,162,1,f221)
+  }
+  if (v220 == 19) { //0e4f
+    set.loop(o19,1)
+  }
+  if (v220 == 101) { //0e59
+    prevent.input()
+    set(f36)
+    sound(34,f152)
+    v222 = 11
+  }
+  if (v220 == 102) { //0e69
+    set.cel(o12,0)
+    v222 = 11
+  }
+  if (v220 == 103) { //0e76
+    set.cel(o12,2)
+    set.view(o19,v68)
+    v144 = 32
+    v145 = v143
+    position(o19,144,v145)
+    set.loop(o19,0)
+    draw(o19)
+    reset(f226)
+    v220 = 104
+  }
+  if (v220 == 104) { //0e97
+    set.view(o19,v68)
+    v222 = 6
+    v119 = 6
+    reset(f162)
+  }
+  if (v220 == 105) { //0ea9
+    set(f132)
+    v49 = 111
+    v119 = 200
+    set(f36)
+    prevent.input()
+  }
+}
+call(2)
+call(94)
+call(118)
+call(108)
+call(v46)
+if (f228) { //0ec5
+  reset(f228)
+  if (v56 == 9) { //0ecd
+    end.of.loop(o2,f227)
+    sound(3,f154)
+    goto(l3814)
+  }
+  set.cel(o2,2)
+  reverse.loop(o2,f227)
+  sound(4,f154)
+}
+l3814:
+if (f227) { //0ee6
+  reset(f227)
+  erase(o2)
+}
+if (f234) { //0ef0
+  sound(40,f234)
+}
+return()

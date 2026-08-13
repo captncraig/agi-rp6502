@@ -1,4 +1,287 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(140)
+  load.view(137)
+  load.view(138)
+  load.view(21)
+  load.view(v41)
+  animate.obj(o4)
+  set.view(o19,138)
+  set.view(o4,21)
+  position(o19,144,118)
+  position(o4,140,119)
+  set.priority(o4,9)
+  ignore.objs(o19)
+  ignore.blocks(o4)
+  if (f129) { //0029
+    position(o19,57,98)
+    set.loop(o19,2)
+    stop.cycling(o19)
+    v220 = 255
+  }
+  draw(o19)
+  return()
+}
+distance(o4,o0,v152)
+reset(f231)
+if (v152 < v61) { //0044
+  set(f231)
+}
+if (f46) { //004d
+  if (v220 == 0) { //0053
+    set(f36)
+    move.obj(o19,106,116,1,f220)
+    move.obj(o0,119,115,1,f153)
+    v220++
+  }
+  if (v220 == 2) { //006a
+    move.obj(o19,108,108,1,f220)
+    move.obj(o0,116,109,1,f153)
+    v220++
+  }
+  if (v220 == 4) { //007f
+    stop.cycling(o19)
+    print("The jailer says, \"What can I do for you, Hot Pencil?\"")
+    v220++
+  }
+  if (v220 == 5) { //008c
+    if (v166 == 250) { //0093
+      print("\"Are you deaf?\" prompts the jailer. \"I said, 'what can I do for you?'\"")
+      v166 = 255
+    }
+  }
+  if (v220 == 6) { //009f
+    if (v166 == 250) { //00a6
+      print("\"Are you going to book this dude or not?\"")
+      v166 = 255
+    }
+  }
+  if (v220 == 7) { //00b2
+    if (v166 == 248) { //00b9
+      print("The jailer takes the prisoner's property, then says, \"Ok, Monty, remove this gentleman's 'cuffs and place him behind 'door number one.'\"")
+      v166--
+    }
+    if (v166 == 240) { //00c4
+      print("\"Well, are you going to remove his 'cuffs or not?\" asks the jailer.")
+      v166 = 255
+    }
+  }
+  if (v220 == 20) { //00d0
+    start.cycling(o19)
+    move.obj(o19,112,125,1,f220)
+    move.obj(o0,120,124,1,f153)
+    v220++
+  }
+  if (v220 == 22) { //00e7
+    print("\"Whew! Boy, that feels good,\" says the drunk. \"Those 'cuffs were so tight I thought my hands had fallen off.\"")
+    move.obj(o19,83,125,1,f220)
+    move.obj(o0,89,125,1,f153)
+    v220++
+  }
+  if (v220 == 24) { //00fe
+    print("\"If he throws up on the floor,\" the jailer laughs, \"you're gonna clean it up, Bonds!\"")
+    stop.update(o19)
+    start.update(o8)
+    move.obj(o8,67,104,1,f220)
+    v220++
+  }
+  if (v220 == 26) { //0113
+    start.update(o19)
+    move.obj(o19,55,125,1,f220)
+    move.obj(o0,61,132,1,f153)
+    v220++
+  }
+  if (v220 == 28) { //012a
+    move.obj(o19,57,98,1,f220)
+    move.obj(o0,53,110,1,f153)
+    v220++
+  }
+  if (v220 == 30) { //013f
+    set.priority(o19,4)
+    set.loop(o19,2)
+    observe.blocks(o19)
+    set(f220)
+  }
+  if (v220 == 31) { //0150
+    stop.update(o19)
+    move.obj(o8,53,104,1,f220)
+    v220++
+  }
+  if (v220 == 33) { //0161
+    print("\"Gee, thankssh a lot, Ociffer,\" says the drunk. \"I'm so happy, I could just s^%$!\"")
+    stop.update(o8)
+    reset(f36)
+    v220 = 40
+  }
+  if (v220 == 40 && f235) { //0171
+    draw(o4)
+    move.obj(o4,125,116,1,f220)
+    set(f242)
+    set(f240)
+    v220++
+  }
+  if (v220 == 42) { //0188
+    set(f240)
+    release.priority(o4)
+    move.obj(o4,115,116,1,f220)
+    v220++
+  }
+  if (v220 == 44) { //019b
+    prevent.input()
+    print("Laura enters the jail and says, \"Hey, Sonny! I need to speak with you for a moment.\"")
+    stop.cycling(o4)
+    v220++
+  }
+  if (v220 == 45 && f231) { //01a9
+    set(f36)
+    start.motion(o0)
+    set.loop(o0,0)
+    print("\"A position has opened in the Narcotics Division, and according to Lieutenant Morgan, it will be filled by a veteran street cop.\"")
+    v166 = 5
+    v220++
+  }
+  if (v220 == 46 && v166 == 3) { //01c0
+    print("\"If you're interested, submit a memo to Lieutenant Morgan as soon as possible. It would be a great chance for you to get out of that uniform for awhile.\"")
+    start.cycling(o4)
+    move.obj(o4,125,116,1,f220)
+    v166--
+    v220++
+  }
+  if (v220 == 48) { //01d8
+    accept.input()
+    reset(f36)
+    move.obj(o4,145,116,1,f220)
+    set(f240)
+    v220++
+  }
+  if (v220 == 50) { //01ec
+    erase(o4)
+    print("Just as Laura leaves, the jailer yells at you...")
+    set(f240)
+    v166 = 2
+    v220++
+  }
+  if (v220 == 51 && v166 == 1) { //01fe
+    print("The jailer yells, \"Hey, Hot Pencil! Come over here.\"")
+    v220 = 60
+    v166--
+  }
+  if (v220 == 60 && f232) { //020f
+    v220++
+    v166 = 10
+  }
+  if (v220 == 61) { //021d
+    if (v166 == 9) { //0224
+      print("\"I just hung up from talking to Dooley, and is he hot!\"")
+      v166--
+    }
+    if (v166 == 7) { //022f
+      print("The jailer continues, \"He wants you back at the office on the double!\"")
+      v96 = 1
+      v32 = 1
+      reset(f242)
+      reset(f46)
+      v220++
+      v166 = 0
+    }
+  }
+}
+if (!fEnteredCommand) { //0247
+  goto(l869)
+}
+if (f46) { //0251
+  if ((said("book", "art") || said("drop", "art", "cell") || said("drop", "convict", "cell") || said("book", "convict"))) { //0257
+    if (!f232) { //0279
+      print("The jailer has difficulty hearing you at this distance.")
+      goto(l665)
+    }
+    if (v220 < 7) { //0285
+      print("\"What are you charging him with?\" the jailer asks.")
+      v220 = 6
+      v166 = 255
+      goto(l665)
+    }
+    print("\"Ok, ok!\" says the jailer, \"I heard you.\"")
+  }
+l665:
+  if ((said("drunk", "drive") || said("dui") || said("drive", "below", "dui") || said("anyword", "dui") || said("anyword", "anyword", "dui") || said("anyword", "anyword", "drunk", "drive") || said("anyword", "drunk", "drive"))) { //0299
+    if (!f232) { //02d1
+      print("The jailer has difficulty hearing you at this distance.")
+      goto(l753)
+    }
+    if (v220 < 7) { //02dd
+      print("You remove and inventory the prisoner's personal property, then hand it to the jailer with the booking slip.")
+      v220 = 7
+      v166 = 250
+      goto(l753)
+    }
+    print("\"Ok, ok!\" says the jailer, \"I heard you.\"")
+  }
+l753:
+  if ((said("empty", "cuff", "rol") || said("uncuff", "rol") || said("get", "off", "cuff", "rol") || said("get", "cuff", "rol"))) { //02f1
+    if (v220 < 20) { //0317
+      get(i24)
+      if (!f129) { //0320
+        set(f129)
+        vCurrentScore += 2
+      }
+      if (!f42 && (has(i5) || has(i14))) { //032c
+        drop(i5)
+        drop(i14)
+        v220 = 100
+        goto(l846)
+      }
+      set.view(o19,137)
+      print("You remove the 'cuffs and place them in your handcuff case.")
+      v220 = 20
+      v166 = 0
+l846:
+      goto(l851)
+    }
+    print("\"Any time now, you can remove the 'cuffs.\"")
+  }
+}
+l851:
+if (v220 > 50 && v220 < 61 && said("o", "d")) { //0353
+  print("\"Listen, bud, I need to talk to you before you leave. Just drag 'em on over here.\"")
+}
+l869:
+if (v220 == 100) { //0365
+  sound(34,f152)
+  start.cycling(o19)
+  set.loop(o0,1)
+  set.loop(o19,0)
+  fix.loop(o0)
+  fix.loop(o19)
+  set.view(o19,140)
+  move.obj(o19,109,108,1,f220)
+  v220++
+}
+if (v220 == 102) { //0386
+  set.cel(o19,0)
+  set(f122)
+  end.of.loop(o19,f220)
+  v220++
+}
+if (v220 == 104) { //0397
+  set(f122)
+  reverse.loop(o19,f220)
+  v220++
+}
+if (v220 == 106) { //03a5
+  reset(f122)
+  set.view(o0,v41)
+  last.cel(o0,v152)
+  set.cel(o0,v152)
+  set(f220)
+  v141 = 10
+}
+if (v220 == 107) { //03bc
+  if (f138) { //03c3
+    reset(f138)
+    print("Thinking about grabbing your gun, the drunk delivers a blow to the top of your head. You fall to the floor, unconscious.")
+    print("Suddenly he realizes what a bad decision he's made, but by then it's too late for you. You're a pile on the floor. Next time, lock up your gun before you enter a jail!")
+    set(f140)
+    v220++
+  }
+}
+return()

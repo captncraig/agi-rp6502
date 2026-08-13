@@ -1,4 +1,284 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(42)
+  load.logic(101)
+  call(101)
+  ignore.blocks(o0)
+  if (!(v83 > 0)) { //0016
+    load.view(27)
+    animate.obj(o1)
+    set.view(o1,27)
+    position(o1,34,104)
+    observe.blocks(o1)
+    wander(o1)
+    load.view(29)
+    animate.obj(o2)
+    set.view(o2,29)
+    position(o2,39,118)
+    ignore.objs(o2)
+    load.view(28)
+    animate.obj(o3)
+    set.view(o3,28)
+    position(o3,39,118)
+    ignore.objs(o3)
+  }
+  if (v83 == 1 && v85 != 2) { //0047
+    set(f20)
+    load.view(29)
+    animate.obj(o2)
+    set.view(o2,29)
+    position(o2,39,118)
+  }
+  if (v83 == 2 && v85 != 1) { //005f
+    set(f21)
+    load.view(28)
+    animate.obj(o3)
+    set.view(o3,28)
+    position(o3,39,118)
+  }
+  if (!(v83 > 0)) { //0077
+    draw(o1)
+    set(f23)
+  }
+  if (f21) { //0083
+    draw(o3)
+    stop.update(o3)
+  }
+  if (f20) { //008d
+    draw(o2)
+    stop.update(o2)
+  }
+  set(f68)
+  draw(o0)
+  show.pic()
+}
+if (said("check", "building")) { //009c
+  print("The gnome's lean-to doesn't look very sturdy.")
+}
+if (f23 && !f24) { //00a8
+  print("You see a crotchety old gnome pacing around his lean-to.")
+  set(f24)
+}
+if (f23) { //00b5
+  distance(o0,o1,v62)
+  if (f22) { //00bf
+    if ((said("speak", "dwarf") || said("hello") || said("say", "hello"))) { //00c5
+      if (v62 < 50) { //00db
+        print("You still haven't guessed my name!")
+        goto(l900)
+        goto(l239)
+      }
+      print("The gnome can't hear you from there.")
+      goto(l900)
+    }
+  }
+l239:
+  if (!f22) { //00ef
+    if ((said("speak", "dwarf") || said("hello") || said("say", "hello"))) { //00f6
+      if (v62 < 50) { //010c
+        set(f22)
+        print("The old gnome tells you he has something that may be very useful to you.  Your task is to guess his name in three guesses and his gift will be yours.  Good luck!  What is your first guess?")
+        goto(l900)
+        goto(l290)
+      }
+      print("The gnome can't hear you from there.")
+      goto(l900)
+    }
+  }
+l290:
+  if (said("check", "dwarf")) { //0122
+    if (v62 < 80) { //012c
+      print("The gnome is old and bent under the weight of years, but a playful wisdom still brightens his eyes.")
+      goto(l900)
+      goto(l320)
+    }
+    print("You should get a little closer.")
+    goto(l900)
+  }
+l320:
+  if (said("kill", "dwarf")) { //0140
+    print("It would be unwise to kill a gnome.")
+    goto(l900)
+  }
+}
+if (f22) { //014f
+  if (said("rumpelstiltskin") && v84 != 2) { //0155
+    print("That is very close but not quite right!")
+    v84++
+    goto(l900)
+  }
+  if (said("nikstlitselpmur") && v84 != 2) { //0168
+    print("You have the right idea, but your thinking is just a little bit off.")
+    v84++
+    goto(l900)
+  }
+  if (said("mikel") && v84 != 2) { //017b
+    print("What do you think I am, a car?  This also won't get you a raise.  Nice try.")
+    v84++
+    goto(l900)
+  }
+  if (said("ifnkovhgroghprm")) { //018e
+    erase(o1)
+    reset(f22)
+    reset(f23)
+    draw(o2)
+    set(f20)
+    stop.update(o2)
+    v83 = 1
+    print("That's right!!!  You've guessed it!!  Here are some magic beans for your outstanding accomplishment!")
+    if (!(v84 > 0)) { //01a7
+      vCurrentScore += 5
+    }
+    if (v84 == 1) { //01b2
+      vCurrentScore += 4
+    }
+    if (v84 == 2) { //01bc
+      vCurrentScore += 3
+    }
+    goto(l900)
+  }
+  if (!(v84 > 0)) { //01c9
+    if ((said("ANYWORD") || said("ANYWORD", "ANYWORD"))) { //01d1
+      accept.input()
+      print("Where did you get that idea?  That's not even close!")
+      v84++
+      goto(l900)
+    }
+  }
+  if (v84 == 1) { //01e9
+    if ((said("ANYWORD") || said("ANYWORD", "ANYWORD"))) { //01f0
+      accept.input()
+      print("You know that's not right!")
+      print("What is your next guess?")
+      v84++
+      goto(l900)
+    }
+  }
+  if (v84 == 2) { //020a
+    if ((said("ANYWORD") || said("ANYWORD", "ANYWORD"))) { //0211
+      accept.input()
+      erase(o1)
+      reset(f22)
+      reset(f23)
+      draw(o3)
+      set(f21)
+      stop.update(o3)
+      v83 = 2
+      print("You didn't guess the gnome's name, but he left you a gold key anyway.  Better luck next time!")
+      v84 = 3
+      goto(l900)
+    }
+  }
+}
+if (!f23) { //0239
+  if (said("ANYWORD", "dwarf")) { //0240
+    print("There is no gnome here.")
+  }
+  if (f20) { //024c
+    distance(o0,o2,v70)
+    if (said("check", "bean")) { //0256
+      if (v70 > 40) { //0260
+        print("That's too far away.")
+        goto(l622)
+      }
+      print("They look like beans.  Interesting.")
+    }
+l622:
+    if (said("acquire", "bean")) { //026e
+      if (v70 > 20) { //0278
+        print("That's too far away.")
+        goto(l662)
+      }
+      print("Being careful that you get every one of them, you place the beans in your pocket.")
+      reset(f20)
+      start.update(o2)
+      erase(o2)
+      set(f154)
+      get(i25)
+      v85 = 2
+      vCurrentScore += 4
+    }
+  }
+l662:
+  if (f21) { //0296
+    distance(o0,o3,v71)
+    if (said("check", "gold key")) { //02a0
+      if (v71 > 40) { //02aa
+        print("That's too far away.")
+        goto(l696)
+      }
+      print("It is a heavy, gold, skeleton key.")
+    }
+l696:
+    if (said("acquire", "gold key")) { //02b8
+      if (v71 > 20) { //02c2
+        print("That's too far away.")
+        goto(l736)
+      }
+      print("It is heavy and cold.")
+      reset(f21)
+      start.update(o3)
+      erase(o3)
+      set(f84)
+      get(i5)
+      v85 = 1
+      vCurrentScore += 3
+    }
+  }
+}
+l736:
+if (!f20 && !f154) { //02e0
+  if (said("ANYWORD", "bean")) { //02ea
+    print("There are no beans here.")
+  }
+}
+if (!f21 && !f84) { //02f6
+  if (said("ANYWORD", "gold key")) { //0300
+    print("The key to your problems is elsewhere.")
+  }
+}
+if (fEgoOnWater && !f25) { //030c
+  set(f25)
+  print("You slip down the bank into the river far below.  Your cries for help are not heard.")
+}
+if (!(v94 > 0) && fEgoOnWater) { //0319
+  v76 = 255
+  if (posn(o0,0,34,34,67)) { //0326
+    v76 = 6
+    v77 = 54
+  }
+  if (v76 == 255) { //0336
+    v76 = 0
+    goto(l847)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l847:
+if (!f88 && !fEgoOnWater && !f116) { //034f
+  if ((said("drink", "water") || said("acquire", "drink"))) { //035c
+    print("There is no place to safely get a drink.")
+  }
+}
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //0370
+  print("There is no place to safely get water.")
+}
+l900:
+if (vWhichEgoBorder == 1) { //0384
+  new.room(41)
+}
+if (vWhichEgoBorder == 2) { //038d
+  new.room(39)
+}
+if (vWhichEgoBorder == 4) { //0396
+  new.room(33)
+}
+if (vWhichEgoBorder == 3) { //039f
+  new.room(25)
+}
+call(101)
+return()

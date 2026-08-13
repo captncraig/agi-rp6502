@@ -1,4 +1,104 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(249)
+  animate.obj(o12)
+  set.view(o12,249)
+  position(o12,20,6)
+  ignore.objs(o12)
+  ignore.horizon(o12)
+  wander(o12)
+  set(f202)
+  if (v36 > 0) { //001b
+    set.loop(o12,1)
+    goto(l43)
+  }
+  set.loop(o12,0)
+l43:
+  fix.loop(o12)
+  set.cel(o12,2)
+  set.priority(o12,4)
+  draw(o12)
+  animate.obj(o13)
+  set.view(o13,249)
+  if (v36 > 0) { //003a
+    set.loop(o13,1)
+    goto(l74)
+  }
+  set.loop(o13,0)
+l74:
+  fix.loop(o13)
+  position(o13,20,4)
+  ignore.horizon(o13)
+  ignore.objs(o13)
+  wander(o13)
+  set(f203)
+  set.priority(o13,4)
+  draw(o13)
+}
+get.posn(o12,v37,v38)
+if (v38 > 35) { //0061
+  normal.motion(o12)
+  v38 = 1
+  set.dir(o12,v38)
+  reset(f202)
+  goto(l128)
+}
+if (!f202) { //0075
+  wander(o12)
+  set(f202)
+}
+l128:
+get.posn(o13,v37,v38)
+if (v38 > 35) { //0084
+  normal.motion(o13)
+  v38 = 1
+  set.dir(o13,v38)
+  reset(f203)
+  goto(l163)
+}
+if (!f203) { //0098
+  set(f203)
+  wander(o13)
+}
+l163:
+	get.dir(o12,v38)
+if (v38 > 3 && v38 < 7) { //00a6
+  current.loop(o12,v36)
+  if (!(v36 > 0)) { //00b3
+    set.cel(o12,4)
+    goto(l196)
+  }
+  set.cel(o12,0)
+l196:
+  stop.cycling(o12)
+  goto(l203)
+}
+start.cycling(o12)
+l203:
+	get.dir(o13,v38)
+if (v38 > 3 && v38 < 7) { //00ce
+  current.loop(o13,v36)
+  if (!(v36 > 0)) { //00db
+    set.cel(o13,4)
+    goto(l236)
+  }
+  set.cel(o13,0)
+l236:
+  stop.cycling(o13)
+  goto(l243)
+}
+start.cycling(o13)
+l243:
+if (f44) { //00f3
+  block(0,0,159,40)
+  start.cycling(o12)
+  wander(o12)
+  start.cycling(o13)
+  wander(o13)
+}
+if (said("examine", "bird")) { //0106
+  print("The gulls soar gracefully on the sea breezes.")
+}
+if (said("capture", "bird")) { //0112
+  print("The gulls are too wary of humans for them to be easily caught.")
+}
+return()

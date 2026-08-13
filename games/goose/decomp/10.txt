@@ -1,4 +1,121 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(88)
+  load.sound(51)
+  load.view(124)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 9) { //0016
+    position(o0,2,105)
+    set.priority(o0,5)
+    if (f35) { //0024
+      position(o13,0,88)
+      set.loop(o13,1)
+      set.priority(o13,4)
+      set(f100)
+    }
+  }
+  if (vPrevRoom == 17) { //0036
+    if (v212 < 50) { //003d
+      set.priority(o0,5)
+      position(o0,0,109)
+      if (f35) { //004b
+        position(o13,0,88)
+        set.loop(o13,1)
+        set.priority(o13,4)
+        set(f100)
+      }
+      goto(l110)
+    }
+    position(o0,45,166)
+    if (f35) { //0064
+      position(o13,48,167)
+    }
+  }
+l110:
+  if (vPrevRoom == 36) { //006e
+    set(f46)
+    position(o0,43,127)
+    if (f35) { //007b
+      position(o13,51,126)
+    }
+  }
+  if (vPrevRoom == 3) { //0085
+    set.priority(o0,5)
+    position(o0,8,90)
+    if (f35) { //0093
+      position(o13,2,88)
+      set.loop(o13,1)
+      set.priority(o13,4)
+      set(f100)
+    }
+  }
+  animate.obj(o11)
+  set.view(o11,124)
+  set.loop(o11,0)
+  if (!f46) { //00ad
+    set.cel(o11,0)
+    goto(l189)
+  }
+  set.cel(o11,2)
+l189:
+  position(o11,45,119)
+  draw(o11)
+  if (!f46) { //00c3
+    stop.update(o11)
+    goto(l209)
+  }
+  stop.cycling(o11)
+l209:
+  animate.obj(o4)
+  set.view(o4,124)
+  set.loop(o4,1)
+  ignore.objs(o4)
+  position(o4,101,106)
+  set.priority(o4,11)
+  draw(o4)
+  v209 = 3
+  cycle.time(o4,v209)
+  draw(o0)
+  return()
+}
+if (f49) { //00ed
+  reset(f49)
+  new.room(36)
+}
+if (fTriggerLine && !f45) { //00f7
+  start.update(o11)
+  stop.cycling(o11)
+  stop.motion(o0)
+  stop.cycling(o0)
+  set(f45)
+}
+if (vWhichObjBorder == 1 && f124) { //010a
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //0116
+  new.room(3)
+}
+if (vWhichObjBorder == 3 && f124) { //011f
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //012b
+  new.room(17)
+}
+if (vWhichEgoBorder == 2) { //0134
+  new.room(11)
+}
+if (vWhichEgoBorder == 4) { //013d
+  get.posn(o0,v212,v213)
+  if (v213 > 112) { //0148
+    new.room(17)
+    goto(l342)
+  }
+  new.room(9)
+}
+l342:
+if (f120) { //0156
+  set.loop(o0,2)
+  set(f118)
+}
+return()

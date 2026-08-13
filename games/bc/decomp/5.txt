@@ -1,4 +1,71 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(40)
+  if (f108) { //000a
+    load.logic(116)
+    set(f218)
+    set(f95)
+  }
+  if (vPrevRoom == 6 && v39 < 157) { //0016
+    v39 = 157
+    goto(l81)
+  }
+  if (vPrevRoom == 25) { //0026
+    v38 = 71
+    goto(l81)
+  }
+  if (vPrevRoom == 10) { //0033
+    if (v38 < 42) { //003a
+      v38 = 42
+      goto(l81)
+    }
+    if (v38 > 83) { //0047
+      v38 = 83
+    }
+  }
+l81:
+  position(o0,38,v39)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  draw(o0)
+  ignore.blocks(o0)
+  if (f218) { //005f
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0069
+  print("You are at the base of the Eagle Mountains. Climbing them looks like quite a challenge.")
+}
+if (f108 && !f219) { //0071
+  if (v39 < 110) { //007a
+    set(f219)
+    print("Hen Wen may be an oracular pig, but she can't climb rocks like these!")
+  }
+}
+if (f218) { //0085
+  call(116)
+}
+if (vWhichEgoBorder == 2) { //008d
+  if (v39 > 160) { //0094
+    new.room(6)
+  }
+}
+if (vWhichEgoBorder == 3) { //009d
+  new.room(10)
+}
+if (vWhichEgoBorder == 1) { //00a6
+  if (f108) { //00ad
+    print("You made it up the rocks, but without Hen Wen. She's sure to be caught by the gwythaints now!")
+    reset(f108)
+    reset(f98)
+    set(f59)
+    new.room(25)
+    goto(l196)
+  }
+  print("You made it!")
+  new.room(25)
+}
+l196:
+return()

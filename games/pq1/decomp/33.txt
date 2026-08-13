@@ -1,4 +1,112 @@
-if (isSet(f5)) {
-  if (!(isSet(f186)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f186) { //0008
+    set(f186)
+    vCurrentScore += 2
+  }
+  if (!f39 && (f63 || f64)) { //0014
+    v52 = 4
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(94)
+  load.view(67)
+  load.view(106)
+  load.view(94)
+  load.sound(1)
+  load.sound(2)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  set.view(o1,67)
+  set.view(o2,106)
+  set.view(o3,106)
+  set.loop(o2,0)
+  set.loop(o3,1)
+  observe.objs(o1)
+  set.cel(o1,0)
+  position(o1,54,120)
+  position(o2,40,72)
+  position(o3,98,95)
+  set.priority(o1,5)
+  draw(o2)
+  draw(o3)
+  draw(o1)
+  stop.update(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  v152 = 8
+  cycle.time(o2,v152)
+  cycle.time(o3,v126)
+  if (v134 > 0) { //0076
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l153)
+  }
+  position(o0,60,140)
+  if (vPrevRoom == 34) { //008e
+    position(o0,60,123)
+  }
+l153:
+  call(94)
+  show.pic()
+  return()
+}
+if (!f220 && posn(o0,54,122,61,122)) { //009d
+  set(f36)
+  stop.update(o0)
+  prevent.input()
+  set(f220)
+  start.update(o1)
+  end.of.loop(o1,f224)
+  sound(1,f154)
+}
+if (f224) { //00b9
+  reset(f36)
+  accept.input()
+  start.update(o0)
+  new.room(34)
+}
+if (!fEnteredCommand) { //00c6
+  goto(l384)
+}
+if (v143 < 144 && (said("c", "d") || said("o", "d"))) { //00d0
+  print("The door swings; just push on it.")
+}
+if ((said("examine", "cad") || said("examine", "about") || said("examine", "auto"))) { //00e7
+  if (v44 == 99) { //00ff
+    print("You look at the patrol car, and wish that it ran as well as your 'Vette.")
+  }
+  if (v44 == 1) { //0108
+    print("You love your cherry 'Vette.")
+  }
+  if (v44 == 2) { //0111
+    print("This Caddie is just not your style.")
+  }
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "accident"))) { //011a
+  print("\"The Blue Room\" is the local, police officers' watering hole. It is owned and operated by retired traffic officer, \"Big Bobby\" Lopez.")
+  print("Whew. Have you had some good times here over the years!")
+}
+if (said("examine", "d")) { //0134
+  print("It's a real swinger.")
+}
+if (said("examine", "pane")) { //0140
+  if (posn(o0,145,130,153,137)) { //014a
+    print("You peer through the department store window, but see nothing of interest.")
+    goto(l362)
+  }
+  if (posn(o0,85,130,120,137)) { //0159
+    print("The mini-blinds prevent you from seeing inside.")
+    goto(l362)
+  }
+  set(f113)
+}
+l362:
+if ((said("examine", "sign") || said("examine", "anyword", "sign"))) { //016a
+  print("\"Bud\" who?")
+}
+l384:
+call(94)
+return()

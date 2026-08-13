@@ -1,4 +1,75 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 36) { //000e
+    set.view(o0,60)
+    position(o0,3,81)
+  }
+  if (vPrevRoom == 77) { //001c
+    position(o0,146,131)
+    move.obj(o0,145,130,0,f148)
+  }
+  if (!f123) { //002d
+    v30 = 250
+    v31 = 4
+  }
+  draw(o0)
+  show.pic()
+}
+if (!f123) { //003d
+  v30--
+  if (v30 == 0) { //0046
+    if (v31 > 0) { //004d
+      v31--
+      v30 = 250
+    }
+  }
+}
+if (v30 == 1 && v31 == 0) { //0059
+  stop.cycling(o0)
+  print("You seem to be stuck in these underground caverns.  As you have no way of leaving, it looks like you'll spend the rest of your life here.")
+  set(f63)
+}
+if (f120) { //0069
+  ignore.blocks(o0)
+  goto(l118)
+}
+observe.blocks(o0)
+l118:
+if (v82 == 1 && f120) { //0076
+  if (posn(o0,1,75,12,82)) { //007f
+    reset(f120)
+    print("You feel a stretching sensation... Oh, you're back to your original size.  You can't get out of the small cave!")
+    set(f63)
+    goto(l153)
+  }
+  set.view(o0,0)
+  print("You feel a stretching sensation... Oh, you're back to your original size.")
+  reset(f120)
+}
+l153:
+if (said("check", "stairs")) { //0099
+  print("The stairs are very steep and narrow.")
+}
+if ((said("check", "doorway") || said("look in", "doorway"))) { //00a5
+  print("The small hole leads to the outside world.")
+}
+if ((said("enter", "doorway") || said("enter", "doorway"))) { //00b9
+  if (f120) { //00cb
+    print("Go ahead.  Walk right in.")
+    goto(l216)
+  }
+  print("You are much too big to fit through that small hole.")
+}
+l216:
+if ((said("check", "cave") || said("check", "room"))) { //00d8
+  print("This is a small cave with stairs on one side and a very small hole on the other side.")
+}
+if (vWhichEgoBorder == 2) { //00ec
+  new.room(77)
+}
+if (posn(o0,0,0,1,167)) { //00f5
+  new.room(36)
+}
+return()

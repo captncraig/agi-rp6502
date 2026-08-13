@@ -1,6 +1,478 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f58)
   v56 = 5
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(55)
+  v57 = 18
+  v58 = 101
+  load.sound(1)
+  load.sound(8)
+  load.sound(15)
+  load.sound(9)
+  animate.obj(o13)
+  load.view(236)
+  set.view(o13,236)
+  set.priority(o13,9)
+  ignore.horizon(o13)
+  ignore.objs(o13)
+  set.cel(o13,1)
+  position(o13,30,35)
+  stop.cycling(o13)
+  draw(o13)
+  if (!f183) { //0036
+    load.pic(vCurrentRoom)
+    draw.pic(vCurrentRoom)
+    discard.pic(vCurrentRoom)
+    load.view(46)
+    animate.obj(o1)
+    set.priority(o1,8)
+    ignore.horizon(o1)
+    ignore.blocks(o1)
+    ignore.objs(o1)
+    set.view(o1,46)
+    set.loop(o1,0)
+    v36 = 3
+    cycle.time(o1,v36)
+    position(o1,52,64)
+    set.cel(o1,3)
+    draw(o1)
+    animate.obj(o2)
+    set.priority(o2,8)
+    ignore.horizon(o2)
+    ignore.blocks(o2)
+    ignore.objs(o2)
+    set.view(o2,46)
+    set.loop(o2,1)
+    v36 = 2
+    cycle.time(o2,v36)
+    position(o2,67,30)
+    draw(o2)
+    animate.obj(o3)
+    set.priority(o3,8)
+    ignore.horizon(o3)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    set.view(o3,46)
+    set.loop(o3,2)
+    v36 = 3
+    cycle.time(o3,v36)
+    position(o3,107,52)
+    draw(o3)
+    set(f226)
+    load.view(47)
+    animate.obj(o11)
+    set.view(o11,47)
+    set.loop(o11,1)
+    fix.loop(o11)
+    set.priority(o11,11)
+    ignore.objs(o11)
+    ignore.horizon(o11)
+    ignore.blocks(o11)
+    v36 = 2
+    cycle.time(o11,v36)
+    animate.obj(o12)
+    set.view(o12,47)
+    set.loop(o12,0)
+    fix.loop(o12)
+    set.priority(o12,11)
+    ignore.objs(o12)
+    ignore.horizon(o12)
+    ignore.blocks(o12)
+    v36 = 2
+    cycle.time(o12,v36)
+    goto(l225)
+  }
+  v36 = 166
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+l225:
+  load.logic(119)
+  call(119)
+  load.view(0)
+  load.view(11)
+  load.view(8)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  get.posn(o0,v40,v41)
+  if (f48) { //00f4
+    v41 = 106
+    if (vPrevRoom == 67) { //00fd
+      v40 = 152
+      v224 = 246
+    }
+    if (vPrevRoom == 65) { //010a
+      v40 = 0
+      v224 = 18
+    }
+    position(o0,40,v41)
+    if (!f183 && v44 == 0 && !f49) { //011b
+      prevent.input()
+      v40 += v224
+      move.obj(o0,v40,v41,141,f225)
+      set(f232)
+    }
+  }
+  if (f47) { //0134
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (!f183 && v71 == 6) { //013e
+  v71 = 0
+  v55 = 0
+  v54 = 30
+}
+if (!f183 && f49) { //0151
+  if (v55 == 0 && v54 < 40) { //015a
+    v54 = 40
+  }
+}
+if (!f183 && f33 && v44 == 0) { //0167
+  set(f225)
+  reset(f232)
+}
+if (f182 && !f183) { //0177
+  reset(f182)
+  set(f229)
+  set(f225)
+  reset(f232)
+}
+if (f225) { //0188
+  reset(f232)
+  stop.motion(o0)
+  program.control()
+  if (f226 && !f221 && !f222) { //0193
+    reset(f225)
+    v222 = 0
+    if (v40 > 80) { //01a4
+      v223 = 3
+      goto(l436)
+    }
+    v223 = 1
+l436:
+    if (f229) { //01b4
+      print.at("The dragon notices Princess Rosella being untied, and blasts you both with a long, licking tongue of flame.",14,2,37)
+      goto(l455)
+    }
+    print.at("A huge, fire-breathing dragon is here and it has SEEN you! Hypnotized by its baleful glare, you stand frozen in your tracks!! What a way to go; ending up as a dragon's barbeque!",14,2,37)
+l455:
+    set(f227)
+    goto(l481)
+  }
+}
+if (!f183) { //01cc
+  if (f226 && !(v222 > 0)) { //01d3
+    random(1,3,v223)
+l481:
+    reset(f226)
+    if (v223 == 1) { //01e3
+      stop.update(o2)
+      stop.update(o3)
+      start.update(o1)
+      set.cel(o1,0)
+      end.of.loop(o1,f226)
+    }
+    if (v223 == 2) { //01f6
+      stop.update(o1)
+      stop.update(o3)
+      start.update(o2)
+      current.cel(o2,v36)
+      last.cel(o2,v65)
+      start.cycling(o2)
+      if (v36 == v65) { //020b
+        reverse.loop(o2,f226)
+        goto(l539)
+      }
+      end.of.loop(o2,f226)
+    }
+l539:
+    if (v223 == 3) { //021b
+      stop.update(o1)
+      stop.update(o2)
+      start.update(o3)
+      set.cel(o3,0)
+      end.of.loop(o3,f226)
+    }
+  }
+  if (v222 > 0) { //022e
+    v222--
+  }
+  current.cel(o1,v36)
+  if (!f232 && v36 == 2 && !f221 && !f183) { //023a
+    v36++
+    set.cel(o1,v36)
+    set(f221)
+    position(o11,22,83)
+    set.cel(o11,0)
+    draw(o11)
+    if (f238) { //025a
+      sound(8,f238)
+    }
+    start.cycling(o11)
+    if (f229) { //0265
+      move.obj(o11,0,166,1,f223)
+    }
+    stop.update(o1)
+  }
+  current.cel(o3,v36)
+  if (!f232 && v36 == 2 && !f222 && !f183) { //0276
+    v36++
+    set.cel(o3,v36)
+    set(f222)
+    position(o12,118,80)
+    set.cel(o12,0)
+    draw(o12)
+    start.cycling(o12)
+    if (f238) { //0298
+      sound(8,f238)
+    }
+    start.update(o3)
+  }
+  current.cel(o11,v36)
+  if (f221 && v36 == 5) { //02a6
+    erase(o11)
+    reset(f221)
+    normal.motion(o11)
+    start.update(o1)
+    goto(l718)
+  }
+  current.cel(o12,v36)
+  if (f222 && v36 == 5) { //02bd
+    erase(o12)
+    reset(f222)
+    normal.motion(o12)
+    start.update(o3)
+l718:
+    if (f227) { //02ce
+      reset(f227)
+      set(f46)
+      set.view(o0,8)
+      set.cel(o0,0)
+      set(f35)
+      v36 = 4
+      cycle.time(o0,v36)
+      end.of.loop(o0,f228)
+      v44 = 0
+      if (f229) { //02ec
+        reset(f229)
+        set.view(o15,75)
+        set.cel(o15,0)
+        start.cycling(o15)
+        end.of.loop(o15,f230)
+      }
+    }
+  }
+  if (f230) { //02ff
+    reset(f230)
+    stop.motion(o15)
+    stop.cycling(o15)
+  }
+  if (f228) { //030b
+    reset(f228)
+    reset(f35)
+    program.control()
+    stop.cycling(o0)
+    erase(o11)
+    erase(o12)
+    start.update(o2)
+    start.update(o1)
+    start.update(o3)
+    stop.cycling(o0)
+    set(f44)
+    stop.cycling(o0)
+  }
+}
+call(119)
+if (v71 == 1) { //032a
+  v71 = 0
+  drop(i54)
+  print("As you unroll the delicate map, it crumbles in the intense heat!")
+}
+if (v71 == 9) { //0338
+  stop.motion(o0)
+  program.control()
+  prevent.input()
+  set(f46)
+  v71 = 0
+  erase(o11)
+  erase(o12)
+  vCurrentScore += 7
+  v36 = 88
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  load.view(48)
+  set.view(o1,48)
+  set.loop(o1,0)
+  set.view(o2,48)
+  set.loop(o2,1)
+  set.view(o3,48)
+  set.loop(o3,2)
+  show.pic()
+  force.update(o1)
+  force.update(o2)
+  force.update(o3)
+  stop.update(o0)
+  stop.update(o15)
+  v221 = 10
+  set.scan.start()
+  if (v220 > 8) { //037b
+    stop.cycling(o13)
+    goto(l921)
+  }
+  if (v220 == 8) { //0387
+    stop.update(o1)
+    stop.update(o2)
+    stop.update(o3)
+  }
+  start.cycling(o13)
+  sound(15,f238)
+l921:
+  if (!(v220 > 0)) { //0399
+    sound(9,f238)
+    shake.screen(1)
+    random(10,15,v220)
+    random(47,115,v37)
+    random(32,40,v38)
+    reposition.to(o13,v37,v38)
+    random(0,1,v64)
+    set.loop(o13,v64)
+    set.cel(o13,1)
+    stop.cycling(o13)
+    start.update(o1)
+    start.update(o2)
+    start.update(o3)
+  }
+  v220--
+  if (f45) { //03ca
+    v221--
+    if (v221 == 1) { //03d2
+      print("Bolts of lightning strike the huge dragon. He howls in pain and falls to the ground... dead.")
+    }
+  }
+  if (v221 > 0) { //03db
+    return()
+    goto(l1054)
+  }
+  reset(f46)
+  erase(o13)
+  set(f183)
+  stop.update(o1)
+  stop.update(o2)
+  stop.update(o3)
+  set.priority(o1,0)
+  set.priority(o2,0)
+  set.priority(o3,0)
+  set.view(o1,46)
+  set.view(o2,46)
+  set.view(o3,46)
+  discard.view(48)
+  v36 = 166
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  show.pic()
+  v55 = 0
+  v54 = 5
+  start.update(o0)
+  start.update(o15)
+  player.control()
+  start.motion(o0)
+  reset.scan.start()
+}
+l1054:
+if (said("kill", "dragon")) { //041e
+  if (!f183) { //0428
+    print("And just how do you propose to do that?")
+    goto(l1078)
+  }
+  print("That would be overkill.")
+}
+l1078:
+if ((said("throw", "dagger") || said("throw", "dagger", "dragon") || said("kill", "dragon", "try", "dagger"))) { //0436
+  if (!(has(i33))) { //0454
+    print("You don't have a knife.")
+    goto(l1133)
+  }
+  if (f183) { //0460
+    print("Do you really think that is necessary?")
+    goto(l1133)
+  }
+  print("Your little knife would barely nick that big dragon!")
+}
+l1133:
+if ((said("examine") || said("examine", "cloud"))) { //046d
+  print("The dragon has laid waste to this area. The earth is scorched and all the trees and plants are charred.")
+}
+if (said("examine", "dragon")) { //047f
+  if (!f183) { //0489
+    print("The dragon's green scaly body is huge! Its three ugly heads blow flame and smoke, while its necks twist and writhe. Ugh!! The sight of it makes you shiver.")
+    goto(l1175)
+  }
+  print("The dragon lies dead upon the ground. He was no match for the fury of your magical storm!")
+}
+l1175:
+if (said("call", "dragon")) { //0497
+  if (!f183) { //04a1
+    print("Shhh!!! The dragon will hear you!")
+    goto(l1199)
+  }
+  print("This dragon is dead.")
+}
+l1199:
+if (said("examine", "forest")) { //04af
+  print("All of the trees and plants in this area have been burnt to stumps by the evil three-headed dragon!")
+}
+if (said("examine", "brush")) { //04bb
+  print("%m14")
+}
+if ((said("climb", "up", "forest") || said("climb", "forest"))) { //04c7
+  print("There are no climbable trees around.")
+}
+if ((said("examine", "up", "sky") || said("examine", "sky"))) { //04dd
+  print("The sky is blue and cloudless above this strange cloud land.")
+}
+if ((said("examine", "on", "deck") || said("examine", "deck"))) { //04f3
+  print("The ground is moist from the constant presence of clouds, but yet the trees are burnt and blackened.")
+}
+if (v44 == 0 && (v41 > 162 || vWhichEgoBorder == 1)) { //0509
+  if (f49) { //0518
+    print("It seems that you have confused being invisible...")
+    goto(l1317)
+  }
+  print("While you have regained visibility...")
+l1317:
+  sound(1,f238)
+  erase(o0)
+  v225 = 2
+  set.scan.start()
+  if (f45) { //052e
+    v225--
+  }
+  if (!(v225 > 0)) { //0536
+    if (f49) { //053e
+      print("...with being weightless.")
+      goto(l1355)
+    }
+    print("...you'll never regain conciousness.")
+l1355:
+    reset.scan.start()
+    erase(o11)
+    erase(o12)
+    start.update(o1)
+    start.update(o2)
+    start.update(o3)
+    erase(o13)
+    stop.cycling(o0)
+    set(f44)
+  }
+  return()
+}
+if (vWhichEgoBorder == 2) { //055d
+  new.room(67)
+}
+if (vWhichEgoBorder == 4) { //0566
+  new.room(65)
+}
+return()

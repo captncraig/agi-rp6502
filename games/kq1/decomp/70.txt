@@ -1,4 +1,92 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(105)
+  load.view(74)
+  load.sound(5)
+  if (vPrevRoom == 71 && f157) { //0014
+    set.view(o0,74)
+    position(o0,69,40)
+    move.obj(o0,69,40,0,f148)
+  }
+  if (vPrevRoom == 71 && f158) { //002a
+    program.control()
+    set.view(o0,105)
+    get.posn(o0,v60,v61)
+    if (v60 > 75) { //003b
+      position(o0,90,29)
+      goto(l77)
+    }
+    position(o0,55,29)
+l77:
+    v61 = 166
+    v96 = 4
+    set.priority(o0,15)
+    move.obj(o0,v60,v61,96,f20)
+  }
+  if (vPrevRoom < 50) { //005c
+    set.view(o0,74)
+    position(o0,69,160)
+    move.obj(o0,69,160,0,f148)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f158 && !f20 && !f21) { //0073
+  sound(5,f159)
+  set(f21)
+}
+if (f75) { //0084
+  print("The goat was quite hesitant about climbing that huge beanstalk!  You may have lost the goat.")
+  reset(f75)
+  set(f130)
+  vCurrentScore -= 5
+}
+if (said("check", "beanstalk")) { //0093
+  print("The beanstalk disappears up into the clouds.")
+}
+if (fTriggerLine && !f158) { //009f
+  program.control()
+  print("With a wrong move, you fall dizzyingly to the ground.")
+  get.posn(o0,v60,v61)
+  set(f158)
+  erase(o0)
+  set.view(o0,105)
+  if (v60 > 75) { //00b6
+    v60 = 80
+    position(o0,60,v61)
+    draw(o0)
+  }
+  if (v60 < 76) { //00c6
+    v60 = 65
+    position(o0,60,v61)
+    draw(o0)
+  }
+  start.cycling(o0)
+  set(f98)
+  v61 = 166
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+}
+if (vWhichEgoBorder == 1) { //00e6
+  new.room(71)
+}
+if ((f20 || posn(o0,0,166,159,167))) { //00ef
+  if (v80 == 6) { //00fd
+    new.room(6)
+  }
+  if (v80 == 22) { //0106
+    new.room(22)
+  }
+  if (v80 == 31) { //010f
+    new.room(31)
+  }
+  if (v80 == 35) { //0118
+    new.room(35)
+  }
+  if (v80 == 38) { //0121
+    new.room(38)
+  }
+}
+return()

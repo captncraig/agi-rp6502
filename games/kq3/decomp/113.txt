@@ -1,4 +1,33 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(7)
+  load.view(2)
+  load.view(3)
+}
+if ((f46 || f49)) { //000e
+  return()
+}
+if (!fEgoOnWater) { //0019
+  reset(f35)
+  v138 = 0
+  goto(l53)
+}
+reset(f35)
+if (!(v138 > 0)) { //002a
+  v138 = 3
+}
+l53:
+set.view(o0,v138)
+if (v138 == 0) { //0038
+  v44 = 0
+}
+if ((v138 == 2 || v138 == 7)) { //0042
+  v44 = 224
+}
+if (v138 == 3) { //0051
+  v44 = 11
+  set(f35)
+}
+if (v44 != 11 && said("dive")) { //005d
+  print("The water looks inviting, but be careful if you go out there.")
+}
+return()

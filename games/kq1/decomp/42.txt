@@ -1,4 +1,163 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(50)
+  load.logic(101)
+  call(101)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,20,87,0,0)
+  }
+  if (vPrevRoom == 7) { //002b
+    get.posn(o0,v60,v61)
+    if (v60 > 99) { //0036
+      position(o0,99,52)
+    }
+  }
+  if (vPrevRoom == 39) { //0041
+    get.posn(o0,v60,v61)
+    if (v60 < 56) { //004c
+      position(o0,6,165)
+    }
+    if (v60 > 74) { //0057
+      position(o0,109,165)
+    }
+  }
+  if (vPrevRoom == 43) { //0062
+    get.posn(o0,v60,v61)
+    if (v61 < 123) { //006d
+      position(o0,140,58)
+    }
+    if (v61 > 122) { //0078
+      position(o0,147,150)
+    }
+  }
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (posn(o0,0,83,159,167)) { //0088
+  set(f68)
+  goto(l153)
+}
+reset(f68)
+l153:
+if (fEgoOnWater && f68 && !f20) { //0099
+  set(f20)
+  print("You have fallen in the raging current and are swept under.  I'm afraid your end has come.")
+}
+if (said("check", "water")) { //00a8
+  if (posn(o0,93,40,159,82)) { //00b2
+    print("The clear blue lake is surrounded by a pretty meadow.")
+    goto(l195)
+  }
+  print("The river gets to be rather rough around these parts.")
+}
+l195:
+if (said("check", "bridge")) { //00c3
+  print("It is an old stone bridge dating to ancient times.")
+}
+if (said("look under", "bridge")) { //00cf
+  print("You glance under the old bridge, but see nothing unusual.")
+}
+if (!(v94 > 0) && fEgoOnWater) { //00db
+  v76 = 255
+  if (posn(o0,126,84,159,99)) { //00e8
+    v76 = 135
+    v77 = 99
+  }
+  if (posn(o0,144,118,159,131)) { //00f8
+    v76 = 139
+    v77 = 113
+  }
+  if (posn(o0,0,145,16,157)) { //0108
+    v76 = 2
+    v77 = 139
+  }
+  if ((posn(o0,18,143,54,167) || posn(o0,66,143,83,167))) { //0118
+    v76 = 45
+    v77 = 163
+  }
+  if ((posn(o0,70,129,102,142) || posn(o0,57,97,83,116))) { //0130
+    v76 = 72
+    v77 = 126
+  }
+  if (posn(o0,34,103,56,116)) { //0148
+    v76 = 38
+    v77 = 127
+  }
+  if (posn(o0,0,103,33,126)) { //0158
+    v76 = 5
+    v77 = 133
+  }
+  if (v76 == 255) { //0168
+    v76 = 0
+    goto(l385)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l385:
+if (!f88 && (said("drink", "water") || said("acquire", "drink"))) { //0181
+  if (posn(o0,121,40,159,81)) { //0196
+    print("It tastes very refreshing to a thirsty wanderer.")
+    goto(l464)
+  }
+  if ((posn(o0,127,79,159,92) || posn(o0,145,125,159,140) || posn(o0,73,130,103,167) || posn(o0,0,136,49,167) || posn(o0,0,88,84,112))) { //01a5
+    print("Being careful not to slip in, you drink deeply of the cool water.")
+    goto(l464)
+  }
+  print("You are too far from the water.")
+}
+l464:
+if (!f88 && f81) { //01d0
+  if ((said("acquire", "water") || said("fill", "bucket"))) { //01d9
+    if (posn(o0,121,40,159,78)) { //01eb
+      print("The crystal clear water fills up the bucket.")
+      get(i26)
+      set(f88)
+      if (!f91) { //01fb
+        vCurrentScore += 2
+      }
+      set(f91)
+      goto(l581)
+    }
+    if ((posn(o0,127,79,159,92) || posn(o0,145,125,159,140) || posn(o0,73,130,103,167) || posn(o0,0,136,49,167) || posn(o0,0,88,84,112))) { //020a
+      print("Very carefully, the bucket fills with water from the  rapid river.")
+      get(i26)
+      set(f88)
+      if (!f91) { //0234
+        vCurrentScore += 2
+      }
+      set(f91)
+      goto(l581)
+    }
+    print("You are too far from the water.")
+  }
+}
+l581:
+if (vWhichEgoBorder != 0) { //0245
+  reset(f68)
+}
+if (vWhichEgoBorder == 1) { //024f
+  new.room(7)
+}
+if (vWhichEgoBorder == 2) { //0258
+  new.room(43)
+}
+if (vWhichEgoBorder == 4) { //0261
+  new.room(41)
+}
+if (vWhichEgoBorder == 3) { //026a
+  new.room(39)
+}
+if (f75) { //0273
+  call(103)
+}
+call(101)
+return()

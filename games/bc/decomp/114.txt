@@ -1,4 +1,85 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(50)
+  load.view(22)
+  load.view(51)
+  load.sound(9)
+  animate.obj(o12)
+  set.view(o12,50)
+  v61 = 2
+  step.size(o12,v61)
+  cycle.time(o12,v61)
+  set.priority(o12,15)
+  ignore.objs(o12)
+  ignore.horizon(o12)
+  reset(f173)
+  random(77,166,v243)
+  return()
+}
+if (f108) { //002c
+  v243--
+}
+if (!f173 && v243 == 1) { //0034
+  if (vCurrentRoom < 11) { //003e
+    position(o12,0,40)
+    set.loop(o12,0)
+    goto(l86)
+  }
+  position(o12,125,40)
+  set.loop(o12,1)
+l86:
+  draw(o12)
+  print("Oh no! It's one of the Horned King's evil gwythaints.")
+  set(f173)
+  set(f249)
+}
+if (f173 && !f247) { //005e
+  distance(o12,o8,v61)
+  if (v61 < 10) { //006b
+    set(f245)
+    goto(l139)
+  }
+  if (v61 > v244) { //0077
+    get.posn(o8,v62,v63)
+    v67 = 2
+    move.obj(o12,v62,v63,67,f245)
+  }
+l139:
+  v244 = v61
+}
+if (!f247 && f245) { //008e
+  reset(f245)
+  set(f247)
+  reset(f108)
+  set(f59)
+  distance(o0,o8,v61)
+  erase(o8)
+  if (v61 < 20 && v75 != 1) { //00a5
+    set(f248)
+    erase(o0)
+    set.view(o12,22)
+    v61 = 2
+    cycle.time(o12,v61)
+    move.obj(o12,125,50,0,f246)
+    print("The gwythaint grabs you and Hen Wen and flies away! Where is it taking you?")
+    goto(l211)
+  }
+  set.view(o12,51)
+  move.obj(o12,5,50,0,f246)
+  print("Oh no! The gwythaint has captured Hen Wen.")
+}
+l211:
+if (f246) { //00d3
+  reset(f246)
+  if (f248) { //00db
+    new.room(70)
+    goto(l236)
+  }
+  reset(f173)
+  erase(o12)
+  print("Where is that vile creature taking your beloved Hen Wen?")
+}
+l236:
+if (f173 && f249) { //00ec
+  sound(9,f249)
+}
+return()

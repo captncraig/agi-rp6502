@@ -1,4 +1,112 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (fNewRoom) { //0002
+  if (v51 == 4) { //0008
+    v51 = 3
+    goto(l24)
+  }
+  v51 = 2
+l24:
+  reset(f162)
+  load.sound(5)
+  load.view(3)
+  load.view(v40)
+  load.view(v42)
+  animate.obj(o17)
+  ignore.horizon(o17)
+  cycle.time(o17,v124)
+  set.view(o0,v39)
+  set.view(o17,3)
+  return()
+}
+if ((f31 || said("load", "automatic") || said("drop", "ammo", "automatic") || said("load", "automatic", "use", "ammo"))) { //0030
+  reset(f31)
+  set.string(str3,"load gun")
+  parse(str3)
+}
+if ((f32 || said("draw", "automatic") || said("drop", "automatic", "belt") || said("drop", "automatic", "away") || said("drop", "away", "automatic", "rol") || said("dont move", "use", "automatic") || said("aim", "automatic", "rol") || said("empty", "automatic", "from", "belt"))) { //0057
+  reset(f32)
+  set.string(str3,"draw gun")
+  parse(str3)
+}
+if ((f33 || said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //00a0
+  reset(f33)
+  set.string(str3,"fire gun")
+  parse(str3)
+}
+get.posn(o19,v81,v82)
+current.view(o0,vEgoView)
+current.loop(o0,v147)
+if (!f39 && (has(i5) || has(i14)) && said("draw", "automatic")) { //0101
+  reset(f32)
+  if (vEgoView == v39) { //0116
+    if (v147 == 1 && v142 > 4) { //011d
+      v142 -= 4
+    }
+    reposition.to(o0,v142,v143)
+    set.view(o0,v42)
+    goto(l325)
+  }
+  if (v147 == 1) { //0134
+    v142 += 4
+  }
+  reposition.to(o0,v142,v143)
+  set.view(o0,v39)
+}
+l325:
+if (!f39 && has(i14) && vEgoView == v42 && said("fire", "automatic")) { //0145
+  reset(f33)
+  if (!f43 && !f162) { //0159
+    set(f43)
+    v34--
+    if (!(v34 > 0)) { //0167
+      drop(i14)
+      get(i5)
+    }
+    if (!(v49 > 0)) { //0173
+      v49 = 1
+    }
+    v71 = v82
+    v71 += 5
+    v72 = v82
+    v72 -= 5
+    if (v143 < v71 && v143 > v72 && !f52 && v31 < 254) { //018a
+      if (v81 < v142 && v147 == 1) { //019a
+        set(f40)
+      }
+      if (v81 > v142 && v147 == 0) { //01a6
+        set(f40)
+      }
+      if (v81 == v142) { //01b2
+        set(f40)
+      }
+    }
+    get.posn(o0,v144,v145)
+    get.priority(o0,v151)
+    if (v147 == 1) { //01c2
+      set.loop(o17,v147)
+      v144 -= 2
+      goto(l472)
+    }
+    set.loop(o17,0)
+    v144 += 7
+l472:
+    v145 -= 15
+    position(o17,144,v145)
+    set.cel(o17,0)
+    set.priority(o17,v151)
+    draw(o17)
+    end.of.loop(o17,f54)
+    sound(5,f154)
+    set(f45)
+    stop.motion(o0)
+  }
+}
+if (f54) { //01f1
+  reset(f54)
+  reset(f43)
+  start.motion(o0)
+  if (v49 == 1) { //01fd
+    v49 = 0
+  }
+  erase(o17)
+}
+return()

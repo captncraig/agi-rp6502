@@ -1,4 +1,21 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  position(o0,127,125)
+  draw(o0)
+  show.pic()
+  return()
+}
+if (f130) { //0016
+  print("You are inside an unusual house in Morva Marsh. This room is filled with pots, kettles, and cauldrons of all sizes.")
+  set(fSaidAccepted)
+}
+if (f128) { //0020
+  print("None of these cauldrons is the Black Cauldron you seek.")
+  set(fSaidAccepted)
+}
+if (posn(o0,133,107,134,128)) { //002a
+  new.room(64)
+}
+return()

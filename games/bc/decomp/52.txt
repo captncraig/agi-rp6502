@@ -1,4 +1,364 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f63)
+  reset(f133)
+  v202 = 0
+  reset(f106)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(78)
+  load.view(71)
+  load.view(0)
+  if ((has(i17) || !f35)) { //001d
+    load.sound(14)
+  }
+  if (!f35) { //002a
+    load.view(38)
+  }
+  if (!f84) { //0033
+    load.view(70)
+    load.view(101)
+  }
+  animate.obj(o4)
+  ignore.objs(o4)
+  set.view(o4,71)
+  set.cel(o4,0)
+  position(o4,74,135)
+  set.priority(o4,4)
+  v61 = 3
+  cycle.time(o4,v61)
+  draw(o4)
+  stop.update(o4)
+  animate.obj(o10)
+  set.priority(o10,4)
+  ignore.blocks(o10)
+  ignore.objs(o10)
+  set.view(o10,78)
+  position(o10,40,117)
+  if (!(v34 > 0)) { //0069
+    set.cel(o10,0)
+    goto(l125)
+  }
+  last.cel(o10,v61)
+  set.cel(o10,v61)
+l125:
+  v61 = 2
+  cycle.time(o10,v61)
+  draw(o10)
+  stop.update(o10)
+  if (v34 > 0) { //0087
+    animate.obj(o7)
+    set.priority(o7,10)
+    position(o7,5,110)
+    ignore.blocks(o7)
+    ignore.objs(o7)
+    if (v34 == 2) { //009b
+      load.view(56)
+      set.view(o7,56)
+      goto(l175)
+    }
+    load.view(61)
+    set.view(o7,61)
+l175:
+    draw(o7)
+    move.obj(o7,65,110,0,f200)
+  }
+  if (!f84) { //00b7
+    animate.obj(o2)
+    set.view(o2,70)
+    ignore.objs(o2)
+    position(o2,80,160)
+    animate.obj(o3)
+    set.view(o3,101)
+    v61 = 2
+    step.size(o3,v61)
+    cycle.time(o3,v61)
+    ignore.objs(o3)
+    set.priority(o3,14)
+    position(o3,80,135)
+  }
+  if (!f35) { //00e0
+    animate.obj(o1)
+    set.priority(o1,11)
+    ignore.blocks(o1)
+    position(o1,122,107)
+    set.view(o1,38)
+    draw(o1)
+  }
+  set.view(o0,0)
+  if (!(v34 > 0)) { //00fa
+    position(o0,50,110)
+    goto(l280)
+  }
+  ignore.blocks(o0)
+  position(o0,20,110)
+  set.priority(o0,10)
+  move.obj(o0,80,110,0,f201)
+l280:
+  ignore.objs(o0)
+  draw(o0)
+  show.pic()
+  if (!(v34 > 0)) { //011d
+    print("As you enter, the door snaps shut behind you, locking you in.")
+    goto(l362)
+  }
+  v34 = 0
+  v60 = 0
+  v42 = 0
+  print("You are taken to a cell in the Horned King's dungeon.")
+  v61 = 43
+  v97 = 25
+l315:
+  get.room(v97,v98)
+  if (v98 == 255) { //013e
+    put(v97,v61)
+    set(f94)
+    set(f218)
+  }
+  v97--
+  if (v97 == 17) { //014e
+    v97--
+  }
+  if (v97 == 18) { //0157
+    v97--
+  }
+  if (v97 > 0) { //0160
+    goto(l315)
+  }
+l362:
+  return()
+}
+if (f130) { //016b
+  if (!f35 && posn(o0,108,106,137,137)) { //0171
+    print("There is a battered tin cup lying on the bench.")
+    goto(l405)
+  }
+  if (f84 && !f205) { //0183
+    print("You notice a flagstone loose in the middle of the floor. You might be able to move it!")
+    set(f217)
+    goto(l405)
+  }
+  print("You are in a cell in the Horned King's dungeon.")
+}
+l405:
+if (!f128 && !f129) { //0195
+  goto(l653)
+}
+if (f129) { //01a2
+  goto(l557)
+}
+if (v206 == 1 && f205) { //01ab
+  print("\"I'm Taran, Assistant Pig-Keeper of Caer Dallben,\" you respond.")
+  v200 = 27
+  set(fSaidAccepted)
+  v206++
+  goto(l653)
+}
+if (v206 == 3 && f205) { //01c0
+  print("\"What is down there? Could there be a way to escape?\"")
+  v200 = 27
+  set(fSaidAccepted)
+  v206++
+  goto(l653)
+}
+if (posn(o0,75,112,92,132)) { //01d5
+  if ((f84 || f217)) { //01df
+    set(fSaidAccepted)
+    start.update(o4)
+    end.of.loop(o4,f204)
+  }
+  goto(l653)
+}
+if (!f35 && posn(o0,108,106,137,137)) { //01f3
+  set(fSaidAccepted)
+  set(f35)
+  print("You pick up the tin cup and carry it with you.")
+  erase(o1)
+  get(i17)
+  if (f94) { //020a
+    v42 = 17
+    v60 = 17
+  }
+  goto(l653)
+}
+distance(o0,o10,v61)
+if (v61 < 20 && f203) { //021d
+  set(fSaidAccepted)
+  print("You push and push on the locked door, but it does no good. You are locked in.")
+}
+goto(l653)
+l557:
+if (v60 == 12) { //022d
+  print("It's too late to swing your sword, now that you've been captured.")
+  set(fSaidAccepted)
+}
+if (v60 == 16) { //0238
+  distance(o0,o10,v61)
+  if (v61 < 20) { //0243
+    set(fSaidAccepted)
+    print("Using your keys, you unlock the door and leave this gloomy place.")
+    start.update(o10)
+    end.of.loop(o10,f214)
+  }
+}
+if (v60 == 17) { //0253
+  set(fSaidAccepted)
+  distance(o0,o10,v61)
+  if (v61 > 20) { //0260
+    print("You rattle the cup against the stones, but nothing happens.")
+    goto(l653)
+  }
+  v204 = 22
+  set(f106)
+  v202 = 99
+  if (!f57) { //0274
+    set(f57)
+    vCurrentScore += 6
+    print("You rattle the cup against the door, but nothing happens.")
+    goto(l653)
+  }
+  if (f84) { //0285
+    print("While banging the cup against the door, you notice a flagstone loose in the middle of the floor. You might be able to move it!")
+  }
+}
+l653:
+if (f218 && v38 > 50) { //028d
+  reset(f218)
+  print("On top of everything else, they took all your belongings!")
+}
+if (f201) { //029a
+  reset(f201)
+  release.priority(o0)
+  observe.blocks(o0)
+}
+if (f200) { //02a6
+  reset(f200)
+  print("\"You'll stay in this dungeon until you rot, Pig Boy!\"")
+  move.obj(o7,20,110,0,f202)
+}
+if (f202) { //02b6
+  reset(f202)
+  erase(o7)
+  start.update(o10)
+  reverse.loop(o10,f203)
+}
+if (f203) { //02c5
+  stop.update(o10)
+  reset(f203)
+}
+v202--
+if (!(posn(o0,71,116,88,133))) { //02d1
+  if (!f84 && v202 == 1) { //02dc
+    start.update(o4)
+    end.of.loop(o4,f206)
+  }
+  goto(l794)
+}
+if (f204) { //02ee
+  set(f216)
+  goto(l794)
+}
+if (v202 == 1) { //02f9
+  v202++
+  if (!f213) { //0302
+    set(f213)
+    print("The rock at your feet feels loose, you had better get off it!")
+  }
+  goto(l794)
+}
+if (f205) { //0310
+  print("You follow Eilonwy through the hole in the floor.")
+  new.room(59)
+}
+l794:
+if (f206) { //031a
+  reset(f206)
+  set(f204)
+  set(f83)
+  draw(o3)
+  move.obj(o3,98,108,2,f215)
+}
+if (f215) { //032e
+  reset(f215)
+  v61 = 2
+  step.size(o3,v61)
+  wander(o3)
+  set(f208)
+  stop.update(o4)
+  v203 = 77
+  print("Suddenly, a flagstone slides back, and a hole appears in the floor. A strange, glowing sphere pops into your cell.")
+}
+v203--
+if (v203 == 1) { //0349
+  set(f205)
+  set(f84)
+  move.obj(o2,80,150,0,f207)
+  set.priority(o2,4)
+  set.loop(o2,3)
+  draw(o2)
+  print("A beautiful young girl appears, scolding \"What's all the noise up here?! Oh, hello! You must be a prince or a great warrior. I'm Princess Eilonwy, and this is my magic bauble.\"")
+  v205 = 250
+  v206 = 1
+}
+v200--
+if (v200 == 1 && f205) { //036c
+  if (v206 == 2) { //0375
+    print("\"That's too bad. I was hoping for a great hero to get me out of this dismal place. Oh, well.\"")
+  }
+  if (v206 == 4) { //037e
+    print("\"No,\" Eilonwy replies, \"but there are many tunnels. Perhaps we could find one together!\"")
+  }
+  v206++
+}
+v205--
+if (v205 == 1) { //038b
+  move.obj(o2,80,165,0,f211)
+  move.obj(o3,81,120,2,f210)
+}
+if (f210) { //039e
+  reset(f210)
+  erase(o3)
+}
+if (f211) { //03a8
+  reset(f211)
+  v201 = 99
+}
+v201--
+if (v201 == 1) { //03b5
+  start.update(o4)
+  reverse.loop(o4,f212)
+  erase(o2)
+  erase(o3)
+}
+if (f212) { //03c5
+  reset(f212)
+  reset(f204)
+  stop.update(o4)
+  reset(f205)
+}
+if (f208) { //03d3
+  distance(o3,o2,v61)
+  if (v61 > 30) { //03dd
+    get.posn(o2,v62,v63)
+    v67 = 1
+    move.obj(o3,v62,v63,67,f209)
+    reset(f208)
+  }
+}
+if (f209) { //03f3
+  reset(f209)
+  set(f208)
+  wander(o3)
+}
+v204--
+if (v204 > 0 && f106) { //0401
+  reset(f106)
+  sound(14,f106)
+}
+if (f214) { //040f
+  new.room(51)
+}
+if (f216) { //0417
+  new.room(59)
+}
+return()

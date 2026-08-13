@@ -1,4 +1,112 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f30)
+  set.horizon(71)
+  if (f108) { //000c
+    set(f209)
+    load.logic(116)
+    set(f95)
+  }
+  load.view(91)
+  load.view(110)
+  load.view(131)
+  load.sound(15)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  position(o2,3,100)
+  set.view(o2,91)
+  draw(o2)
+  wander(o2)
+  animate.obj(o7)
+  ignore.horizon(o7)
+  position(o7,137,14)
+  set.priority(o7,15)
+  set.view(o7,110)
+  draw(o7)
+  animate.obj(o6)
+  position(o6,131,119)
+  set.view(o6,131)
+  ignore.blocks(o6)
+  set.cel(o6,0)
+  draw(o6)
+  stop.update(o6)
+  if ((vPrevRoom == 0 || vPrevRoom == 67)) { //0055
+    status.line.on()
+    v38 = 17
+    v39 = 154
+  }
+  if (vPrevRoom == 61) { //0068
+    v38 = 137
+    v39 = 121
+    move.obj(o0,137,124,0,f61)
+  }
+  if (vPrevRoom == 9) { //007b
+    if (v39 < 84) { //0082
+      v39 = 75
+    }
+    if (v39 < 120 && v39 > 84) { //008c
+      v39 = 120
+    }
+  }
+  position(o0,38,v39)
+  draw(o0)
+  if (!f74) { //009f
+    load.sound(22)
+    sound(22,f74)
+  }
+  if (f209) { //00ab
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //00b5
+  print("This is the cottage of Dallben, the ancient wizard of Prydain. You have lived here as long as you can remember, serving as Assistant Pig-Keeper of Caer Dallben.")
+}
+if (!f128 && !f129) { //00bd
+  goto(l237)
+}
+if (f129) { //00ca
+  goto(l237)
+}
+if (posn(o0,131,115,150,125)) { //00d3
+  if (!f205) { //00dd
+    start.update(o6)
+    print("You open the door.")
+    end.of.loop(o6,f206)
+    set(fSaidAccepted)
+  }
+}
+l237:
+v87--
+distance(o0,o2,v61)
+if (!(v87 > 0) && v61 < 10) { //00f3
+  v87 = 50
+  if (f74) { //0101
+    sound(15,f61)
+  }
+  print("Honk.\n\nHonk! Honk!!")
+}
+if (posn(o0,106,120,137,153)) { //010c
+  set(f88)
+}
+if (f209) { //0118
+  call(116)
+}
+if (f206) { //0120
+  new.room(61)
+}
+if (vWhichEgoBorder == 1) { //0128
+  new.room(3)
+}
+if (vWhichEgoBorder == 2) { //0131
+  new.room(9)
+}
+if (vWhichEgoBorder == 4) { //013a
+  new.room(7)
+}
+if (vWhichEgoBorder == 3) { //0143
+  new.room(13)
+}
+return()

@@ -1,4 +1,72 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(138)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o4)
+  set.view(o4,138)
+  ignore.horizon(o4)
+  set.loop(o4,0)
+  set.cel(o4,2)
+  position(o4,62,7)
+  draw(o4)
+  animate.obj(o5)
+  set.view(o5,138)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  ignore.horizon(o5)
+  position(o5,102,7)
+  draw(o5)
+  v209 = 3
+  cycle.time(o4,v209)
+  cycle.time(o5,v209)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 5) { //0043
+    position(o0,123,88)
+    if (f35) { //004e
+      position(o13,116,87)
+    }
+  }
+  if (vPrevRoom == 3) { //0058
+    position(o0,35,88)
+    if (f35) { //0063
+      position(o13,44,87)
+    }
+  }
+  if (vPrevRoom == 4) { //006d
+    if (v212 > 110) { //0074
+      position(o0,110,88)
+    }
+    if (v212 < 50) { //007f
+      position(o0,50,88)
+    }
+  }
+  v34 = 105
+  v35 = 108
+  v37 = 3
+  draw(o0)
+  return()
+}
+get.posn(o0,v212,v213)
+if (vWhichObjBorder == 3 && f124) { //009a
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //00a6
+  new.room(18)
+}
+if (vWhichObjBorder == 1 && f124) { //00af
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //00bb
+  if (v212 > 118) { //00c2
+    new.room(5)
+    goto(l220)
+  }
+  if (v212 < 40) { //00ce
+    new.room(3)
+    goto(l220)
+  }
+  new.room(4)
+}
+l220:
+return()

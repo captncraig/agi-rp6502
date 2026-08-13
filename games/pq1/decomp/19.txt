@@ -1,4 +1,32 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(28)
+  position(o12,75,40)
+  draw(o0)
+  draw(o12)
+  add.to.pic(161,2,0,29,24,0,4)
+  add.to.pic(161,2,0,54,24,0,4)
+  add.to.pic(161,2,3,87,24,0,4)
+  add.to.pic(161,2,1,88,161,0,4)
+  add.to.pic(161,2,1,113,161,0,4)
+  add.to.pic(161,2,1,29,69,0,4)
+  add.to.pic(161,2,2,49,69,0,4)
+  add.to.pic(161,1,2,117,115,0,4)
+  add.to.pic(161,0,4,1,77,0,4)
+  add.to.pic(161,1,5,1,115,0,4)
+  add.to.pic(161,0,5,144,79,0,4)
+  add.to.pic(161,0,3,144,116,0,4)
+  add.to.pic(161,1,4,144,167,0,4)
+  show.pic()
+  return()
+}
+if ((posn(o0,47,25,75,32) || posn(o0,85,124,113,131))) { //007c
+  v46 = 80
+  goto(l151)
+}
+v46 = 92
+l151:
+call(28)
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //0099
+  print("Freeway traffic passes over this sparsely industrialized area of Lytton.")
+}
+return()

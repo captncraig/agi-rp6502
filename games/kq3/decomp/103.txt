@@ -1,4 +1,139 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f37)
+  if (f32) { //000a
+    load.view(35)
+    load.sound(6)
+  }
+  load.view(1)
+  load.view(11)
+  load.sound(1)
+  if (v44 == 6) { //001a
+    v33 = 6
+    goto(l40)
+  }
+  return()
+}
+l40:
+if (f45) { //0028
+  v249--
+  if (v249 == 1) { //0030
+    reset(f238)
+    print("Ouch!")
+    stop.sound()
+    v249 = 0
+    v33 = 2
+    if (vMonitorType != HERCULES) { //0042
+      clear.lines(22,22,c0)
+    }
+  }
+  v253--
+  if (v253 == 1) { //0050
+    if (vMonitorType != HERCULES) { //0057
+      clear.lines(24,24,c0)
+    }
+  }
+}
+if (v249 > 0 && f238) { //0063
+  sound(6,f238)
+}
+if (v44 != 6 && !fNewRoom && !(v252 > 0) && fTriggerLine) { //006f
+  v33 = 6
+}
+if (v33 == 2) { //0083
+  v33 = 0
+  v44 = 0
+  set.view(o0,0)
+  release.priority(o0)
+  observe.blocks(o0)
+  observe.objs(o0)
+  v61 = 1
+  v60 = 1
+  v59 = 1
+  step.size(o0,v61)
+  step.time(o0,60)
+  cycle.time(o0,v59)
+  start.motion(o0)
+  reset(f35)
+  reset(f38)
+  reset(f37)
+  reset(f46)
+}
+if (v33 == 6) { //00b5
+  vWhichEgoBorder = 0
+  v33 = 0
+  v44 = 6
+  v250 = v40
+  v251 = v41
+  set.view(o0,11)
+  set(f35)
+  set(f38)
+  set(f37)
+  set(f46)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  if (v40 > 145) { //00da
+    v40 = 145
+    reposition.to(o0,v40,v41)
+  }
+  v69 = 3
+  move.obj(o0,v40,v34,69,f248)
+  sound(1,f41)
+  if (vMonitorType != HERCULES) { //00f4
+    clear.lines(22,22,c0)
+    clear.lines(24,24,c0)
+  }
+  set.text.attribute(14,0)
+  v253 = 5
+  if (f31 && vMonitorType != HERCULES) { //010a
+    if (v39 > 0) { //0114
+      display(24,0,"Fell from %v250/%v251, area %v39")
+      goto(l294)
+    }
+    display(24,0,"ERROR!! Fell from %v250/%v251.")
+  }
+l294:
+  set.text.attribute(15,0)
+}
+if (f248) { //0129
+  reset(f248)
+  stop.motion(o0)
+  if (vMonitorType != HERCULES) { //0133
+    clear.lines(22,22,c0)
+  }
+  if (!f32) { //013f
+    if (f31) { //0146
+      set(f40)
+      goto(l355)
+    }
+    erase(o0)
+    if (vMonitorType != HERCULES) { //0153
+      clear.lines(22,22,c0)
+    }
+    stop.cycling(o0)
+    set(f44)
+l355:
+    goto(l373)
+  }
+  v253 = 10
+  v44 = 18
+  sound(6,f238)
+  set.view(o0,35)
+  v249 = 5
+}
+l373:
+if (f31 && f40) { //0175
+  reset(f40)
+  v33 = 2
+  v249 = 0
+  v252 = 33
+  normal.motion(o0)
+  reposition.to(o0,v250,v251)
+}
+v252--
+if (v252 > 0) { //0190
+  set(f37)
+  if (v252 == 1) { //0199
+    reset(f37)
+  }
+}
+return()

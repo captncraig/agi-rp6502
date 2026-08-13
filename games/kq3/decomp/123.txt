@@ -1,5 +1,160 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v240 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l313)
+}
+set(f120)
+v103++
+if ((said("add", "grains of salt", "ladle") || said("add", "grains of salt", "mortar") || said("drain", "grains of salt", "mortar") || said("crumble", "grains of salt", "mortar") || said("add", "ladle", "grains of salt", "mortar") || said("drain", "ladle", "grains of salt", "mortar") || said("add", "ladle", "grains of salt", "mortar") || said("crumble", "ladle", "grains of salt", "mortar"))) { //001e
+  if (v103 == 1) { //006c
+    set(f240)
+    goto(l122)
+  }
+  reset(fSaidAccepted)
+}
+l122:
+if (said("crumble", "mistletoe", "mortar")) { //007a
+  if (!(has(i15))) { //0086
+    print("You cannot use that which you do not have.")
+    goto(l161)
+  }
+  drop(i15)
+  print("Placing the dried sprig of mistletoe in the stone mortar, you crush it with the pestle.")
+  if (v103 == 2) { //0096
+    reset(f120)
+    print("Soon, you have a crushed mixture of salt and mistletoe in the mortar. You remove the pestle and lay it aside.")
+  }
+}
+l161:
+if ((said("pat", "amber", "rock", "compound") || said("pat", "amber", "rock", "mortar") || said("pat", "rock", "compound") || said("pat", "rock", "mortar"))) { //00a1
+  if (!(has(i14))) { //00cb
+    print("You cannot use that which you do not have.")
+    goto(l228)
+  }
+  print("You place the beautiful amber stone in the stone mortar.")
+  if (v103 == 3) { //00d9
+    reset(f120)
+    print("Very carefully, so as not to miss a single spot, you rub the amber stone around in the mixture of ground salt and mistletoe. When you have finished, you remove the amber stone and discard the remaining powder.")
+  }
+}
+l228:
+if ((said("embrace", "amber", "rock") || said("embrace", "rock"))) { //00e4
+  if (v103 == 4) { //00f8
+    print("Smack!")
+    reset(f120)
+    v103++
+    goto(l266)
+  }
+  reset(fSaidAccepted)
+}
+l266:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //010a
+  if (!(has(i37))) { //011e
+    print("You cannot use that which you do not have.")
+    goto(l313)
+  }
+  print("You wave the magic wand over the encrusted amber stone.")
+  if (v103 == 6) { //012c
+    reset(f120)
+    drop(i14)
+    get(i16)
+  }
+}
+l313:
+if (!f120 && v104 < 4 && v103 == 5) { //0139
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //014f
+    overlay.pic(v240)
+    show.pic()
+    set.string(str2,"with this kiss, I thee impart,")
+    if (vMonitorType == HERCULES) { //015c
+      open.dialogue()
+      get.string(str1," ",15,1,30)
+      goto(l371)
+    }
+    get.string(str1," ",13,1,30)
+l371:
+    if (compare.strings(str1,str2)) { //0173
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //017c
+    set.string(str2,"power most dear to my heart.")
+    if (vMonitorType == HERCULES) { //0186
+      open.dialogue()
+      get.string(str1," ",16,1,28)
+      goto(l413)
+    }
+    get.string(str1," ",14,1,28)
+l413:
+    if (compare.strings(str1,str2)) { //019d
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //01a6
+    set.string(str2,"take me now from this place hither,")
+    if (vMonitorType == HERCULES) { //01b0
+      open.dialogue()
+      get.string(str1," ",17,1,35)
+      goto(l455)
+    }
+    get.string(str1," ",15,1,35)
+l455:
+    if (compare.strings(str1,str2)) { //01c7
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //01d0
+    set.string(str2,"to another place far thither.")
+    if (vMonitorType == HERCULES) { //01da
+      open.dialogue()
+      get.string(str1," ",18,1,29)
+      goto(l497)
+    }
+    get.string(str1," ",16,1,29)
+l497:
+    if (compare.strings(str1,str2)) { //01f1
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //0205
+    if (vMonitorType == HERCULES) { //0210
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+if (f240) { //021c
+  reset(f240)
+  if (!(has(i13))) { //0224
+    print("You cannot use that which you do not have.")
+    goto(l573)
+  }
+  drop(i13)
+  print("You place a spoonful of coarse salt grains in the mortar. Then, using the stone pestle, you grind the salt until it is very fine.")
+  if (v103 == 1) { //0234
+    reset(f120)
+  }
+}
+l573:
+v36 = v103
+v36++
+if (v36 == 7 && !f120) { //0242
+  v103 = 255
+}
+if (f120) { //024f
+  v105 = 38
+  v106 = 2
+}
+return()

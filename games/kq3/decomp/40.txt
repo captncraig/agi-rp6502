@@ -1,9 +1,502 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v32 = 89
   v31 = 154
   v57 = 91
   v58 = 153
   set(f34)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if ((f48 || v44 == 25)) { //0023
+    position(o0,72,165)
+  }
+  if (v44 == 25) { //0032
+    v230 = 7
+  }
+  block(59,128,62,131)
+  animate.obj(o4)
+  load.view(76)
+  set.view(o4,76)
+  position(o4,78,121)
+  draw(o4)
+  stop.cycling(o4)
+  set.loop(o4,2)
+  v229 = 5
+  if (v62 == 1) { //0056
+    v221 = 1
+    load.view(164)
+    animate.obj(o3)
+    set.view(o3,164)
+    position(o3,58,149)
+    set.loop(o3,2)
+    set.cel(o3,3)
+    stop.cycling(o3)
+    draw(o3)
+    animate.obj(o1)
+    set.view(o1,164)
+    position(o1,43,154)
+    set.loop(o1,0)
+    set.cel(o1,0)
+    stop.cycling(o1)
+    draw(o1)
+    animate.obj(o2)
+    set.view(o2,164)
+    position(o2,52,152)
+    set.loop(o2,1)
+    set.cel(o2,2)
+    stop.cycling(o2)
+    draw(o2)
+    goto(l226)
+  }
+  random(1,3,v36)
+  if (v36 < 2) { //00a2
+    v221 = 0
+    goto(l226)
+  }
+  v221 = 2
+  load.view(209)
+  animate.obj(o1)
+  set.view(o1,209)
+  position(o1,41,143)
+  set.loop(o1,1)
+  set.cel(o1,0)
+  set.priority(o1,13)
+  stop.cycling(o1)
+  ignore.objs(o1)
+  draw(o1)
+  animate.obj(o2)
+  set.view(o2,209)
+  position(o2,52,152)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  set.priority(o2,14)
+  stop.cycling(o2)
+  draw(o2)
+l226:
+  if (f47) { //00e2
+    draw(o0)
+  }
+  v225 = 1
+  if (v221 != 0) { //00ed
+    random(3,7,v226)
+  }
+  if (v221 == 1) { //00f9
+    load.sound(29)
+    sound(29,f238)
+  }
+  if (v221 == 2) { //0105
+    load.sound(26)
+    sound(26,f238)
+  }
+  if (v221 == 0) { //0111
+    load.sound(28)
+    sound(28,f238)
+  }
+  show.pic()
+  return()
+}
+if (v62 == 1 && !(v53 > 0) && v52 < 30 && v52 > 0) { //011f
+  v52 = 30
+}
+v39 = 0
+if (posn(o0,40,134,73,162)) { //0136
+  v39 = 1
+}
+if (posn(o0,56,124,114,133)) { //0143
+  v39 = 2
+}
+if (f45 && v226 > 0) { //0150
+  if (!f46) { //0159
+    v226--
+  }
+  if (v226 == 0) { //0162
+    set(f225)
+  }
+}
+if (f225 && v225 == 0) { //016b
+  v225++
+  stop.cycling(o4)
+  set.loop(o4,2)
+  reset(f225)
+}
+if (f225 && v225 == 1) { //017d
+  if (!f228) { //0186
+    if (v221 == 1) { //018d
+      print("One of the rowdy seamen yells to the barmaid, \"Wench! Come o'er here with more rum!\"")
+      goto(l411)
+    }
+    print("One of the surly-looking characters yells to the barmaid, \"Wench! Come o'er here with more ale!\"")
+  }
+l411:
+  reset(f228)
+  v225++
+  start.cycling(o4)
+  move.obj(o4,49,125,1,f225)
+}
+if (f225 && v225 == 2) { //01a7
+  v225++
+  start.cycling(o4)
+  move.obj(o4,49,140,1,f225)
+}
+if (f225 && v225 == 3) { //01ba
+  v225++
+  stop.cycling(o4)
+  reset(f225)
+  v226 = 3
+}
+if (f225 && v225 == 4) { //01cc
+  v225++
+  start.cycling(o4)
+  move.obj(o4,49,125,1,f225)
+}
+if (f225 && v225 == 5) { //01df
+  v225++
+  start.cycling(o4)
+  move.obj(o4,77,125,1,f225)
+}
+if (f225 && v225 == 6) { //01f2
+  v225 = 0
+  stop.cycling(o4)
+  move.obj(o4,77,121,1,f225)
+  random(30,120,v226)
+}
+random(1,20,v36)
+if (v221 == 1) { //020e
+  if (v36 == 1) { //0215
+    last.cel(o3,v37)
+    current.cel(o3,v38)
+    v38++
+    if (v38 > v37) { //0224
+      v38 = 0
+    }
+    if (f222) { //022e
+      v38 = 0
+    }
+    set.cel(o3,v38)
+  }
+  if (v36 == 2) { //023a
+    last.cel(o1,v37)
+    current.cel(o1,v38)
+    v38++
+    if (v38 > v37) { //0249
+      v38 = 0
+    }
+    set.cel(o1,v38)
+  }
+  if (v36 == 3) { //0256
+    last.cel(o2,v37)
+    current.cel(o2,v38)
+    v38++
+    if (v38 > v37) { //0265
+      v38 = 0
+    }
+    set.cel(o2,v38)
+  }
+}
+if (v221 == 2) { //0272
+  if (v36 == 1) { //0279
+    last.cel(o1,v37)
+    current.cel(o1,v38)
+    v38++
+    if (v38 > v37) { //0288
+      v38 = 0
+    }
+    set.cel(o1,v38)
+  }
+  if (v36 == 2) { //0295
+    last.cel(o2,v37)
+    current.cel(o2,v38)
+    v38++
+    if (v38 > v37) { //02a4
+      v38 = 0
+    }
+    set.cel(o2,v38)
+  }
+}
+if (v221 != 0 && posn(o0,33,138,70,154) && (v44 == 0 || v44 == 19)) { //02b1
+  start.motion(o0)
+  reposition.to(o0,v42,v43)
+}
+if (f45 && v227 > 0) { //02cd
+  v227--
+  if (v227 == 0) { //02d8
+    reset(f227)
+    player.control()
+    release.loop(o0)
+    v44 = 0
+  }
+}
+if (v44 == 19 && vEgoDir != 0) { //02e7
+  v228--
+  if (v228 == 1) { //02f4
+    if (f227) { //02fb
+      reset(f227)
+      player.control()
+      release.loop(o0)
+      v228 = 6
+      goto(l805)
+    }
+    set(f227)
+    program.control()
+    fix.loop(o0)
+l785:
+    random(1,8,v36)
+    if (v36 == vEgoDir) { //0315
+      goto(l785)
+    }
+    vEgoDir = v36
+    v228 = 5
+  }
+}
+l805:
+if (f33 && v44 == 25) { //0325
+  v230 = 7
+}
+if (f45) { //0331
+  v230--
+  if (v230 == 1 && v44 == 25 && posn(o0,0,0,160,160) && v221 == 2 && !f221) { //0339
+    print("You overhear snatches of the two bandits' conversation, \"...squirmed jist like a pig. An' that rope ya rigged inside o' that big oak tree works great! Now nobody'll 'ere find ar' hideout. Why, I'll bet even that wizard...\"")
+    set(f221)
+    vCurrentScore += 3
+  }
+}
+if (f222 && !f224) { //0356
+  v51--
+  if (v51 == 0) { //0361
+    print(v222)
+    v222++
+    v51 = 200
+    if (v222 == 31) { //036f
+      set(f224)
+    }
+  }
+}
+if (v223 != v63) { //0378
+  v223 = v63
+  if (v63 == 0) { //0383
+    if (has(i48)) { //038a
+      drop(i48)
+    }
+    get(i47)
+  }
+}
+if (has(i48) && v63 > 0) { //0394
+  set(f220)
+  goto(l932)
+}
+reset(f220)
+l932:
+if (fEnteredCommand) { //03a4
+  if ((said("get in", "counter") || said("get in", "down", "counter"))) { //03aa
+    if (v221 == 0) { //03be
+      print("You don't have time to be sitting around in taverns.")
+      goto(l972)
+    }
+    print("Your presence would not be appreciated.")
+  }
+l972:
+  v36 = v221
+  if ((said("examine") || said("examine", "area") || said("examine", "bar") || said("look in", "bar"))) { //03cf
+    v36 += 3
+    print(v36)
+  }
+  if ((said("examine", "barrel") || said("look in", "barrel"))) { //03f0
+    print("Kegs of ale line the wall.")
+  }
+  if (said("examine", "counter")) { //0404
+    if (v221 == 0) { //040e
+      print("A table, devoid of customers, rests against the wall.")
+      goto(l1055)
+    }
+    v36 += 7
+    print(v36)
+  }
+l1055:
+  if ((said("examine", "bandit") || said("examine", "bandit"))) { //041f
+    v36 += 7
+    print(v36)
+  }
+  if (said("examine", "barmaid")) { //0436
+    print("The buxom barmaid has an air of hardened determination. You get the feeling that she doesn't take any guff from anybody.")
+  }
+  if ((said("examine", "out", "glass") || said("examine", "glass") || said("examine", "door") || said("examine", "out"))) { //0442
+    print("You see the buildings of the village, and the ocean beyond.")
+  }
+  if (said("lift", "glass")) { //0464
+    print("The window does not open.")
+  }
+  if ((said("capture", "bandit") || said("aim", "oven") || said("capture", "oven") || said("kill", "anyword"))) { //0470
+    print("Surely, you jest!")
+  }
+  if (said("examine", "oven")) { //0490
+    print("It is a little pot-bellied woodstove.")
+  }
+  if (said("examine", "bar")) { //049c
+    print("The bar is a rough-hewn slab of oak.")
+  }
+  if ((said("examine", "sword") || said("examine", "drapery") || said("examine", "cage"))) { //04a8
+    print("A tattered, faded tapestry hangs next to a pair of rusty swords.")
+  }
+  if ((said("capture", "sword") || said("capture", "drapery"))) { //04c2
+    print("The decorations are firmly attached to the wall, and will not come off.")
+  }
+  if (said("examine", "below", "drapery")) { //04d6
+    print("You lift a corner of the tapestry, and see the dirty wall behind it.")
+  }
+  if (said("capture", "ale")) { //04e4
+    print("You need to buy it first.")
+  }
+  if ((said("examine", "bookcase") || said("examine", "bottle"))) { //04f0
+    print("Bottles of rum and wine sit atop shelves behind the bar.")
+  }
+  if (said("examine", "ale")) { //0504
+    print("Bottles of rum and wine sit atop shelves behind the bar. Kegs of ale line the wall.")
+  }
+  if ((said("capture", "barmaid") || said("embrace", "barmaid"))) { //0510
+    print("\"Watch it, fella!\"")
+  }
+  if (v221 == 0) { //0524
+    if ((said("call") || said("call", "barmaid"))) { //052b
+      print("She tosses her head, and replies, \"What'll it be fer ya, sir? A good pull o' ale, or'd ya rather a dram o' rum? My, aren't ye the han'some one!\"")
+    }
+    if ((said("call", "bandit") || said("examine", "bandit"))) { //053d
+      print("There is nobody here except the pretty barmaid.")
+    }
+  }
+  if ((said("buy", "drinks") || said("buy", "drinks", "bandit"))) { //0551
+    if (v221 == 0) { //0565
+      print("There is nobody here except you and the barmaid.")
+      goto(l1426)
+    }
+    if (!f220) { //0571
+      print("The barmaid retorts, \"Go on, ya deadbeat. Drinks cost money, ya know!\"")
+      goto(l1426)
+    }
+    v63--
+    if (v225 == 1) { //057f
+      print("\"Right ya go, sir.\" says the pretty barmaid. \"This round's on you!\" \"It'll be one gold coin.\"")
+      v226 = 2
+      set(f228)
+      goto(l1426)
+    }
+    print("\"Right ya go, sir.\" says the pretty barmaid. \"The next round's on you!\" \"That'll be one gold coin.\"")
+  }
+l1426:
+  if ((said("buy", "drink") || said("buy", "ale") || said("buy", "ale"))) { //0592
+    if (v225 != 1) { //05aa
+      print("\"I'll be right with ya sir,\" the barmaid says, winking.")
+      goto(l1523)
+    }
+    if (v39 == 2) { //05b7
+      if (!f220) { //05be
+        print("The barmaid retorts, \"Go on, ya deadbeat. Drinks cost money, ya know!\"")
+        goto(l1518)
+      }
+      v63--
+      if (v229 < 120) { //05cc
+        v229 += v229
+      }
+      v227 = v229
+      v228 = 10
+      if (v44 != 19) { //05dc
+        v44 = 19
+        print("The barmaid hands you a glass, and the potent liquid burns as it slides down your parched throat. It hits bottom, and you suddenly feel a bit woozy.")
+        goto(l1518)
+      }
+      print("That one tasted even better than the last. Just one more sounds like a good idea.")
+l1518:
+      goto(l1523)
+    }
+    print("You are too far away.")
+  }
+l1523:
+  if (v221 == 1) { //05f3
+    if ((said("call") || said("call", "barmaid"))) { //05fa
+      print("%m36 \"What can I do fer ya sir? Can I get ya somethin'? I can't spend much time with ya, 'cause I gotta handle these seafarin' scoundrels that come inta town t'day.\"")
+    }
+    if (said("call")) { //060c
+      print("Talk to whom?")
+    }
+    if (said("call", "bandit")) { //0616
+      if (!f222) { //0620
+        if (!(v53 > 0) && !(v52 > 0)) { //0627
+          v53 = 15
+          goto(l1603)
+        }
+        if (v53 < 5) { //0639
+          v53 = 5
+        }
+l1603:
+        v222 = 28
+        set(f222)
+        v226 = 0
+        goto(l1617)
+      }
+      v51 = 2
+l1617:
+      if (f224) { //0651
+        print("The sailors just ignore you.")
+      }
+    }
+    if (f222 && (said("feed", "coin", "rol") || said("feed", "coin purse", "rol"))) { //0659
+      if (f224) { //0671
+        print("The sailors just ignore you.")
+        goto(l1709)
+      }
+      reset(f222)
+      if (f220) { //067e
+        vCurrentScore += 3
+        drop(i48)
+        v63 = 0
+        v221 = 0
+        erase(o1)
+        erase(o2)
+        erase(o3)
+        set(f79)
+        print("%m31 \"Aye lad, I sees ya do have a wee bit 'o gold. It's less'n me reg'lar  fare, but I'll gives ya passage anyways. We'll be waitin' fer ya at the wharf, but not fer long.\" The captain and his men down their rum in one long draught, then leave the tavern.")
+        goto(l1709)
+      }
+      set(f224)
+      if (has(i47)) { //069e
+        drop(i47)
+        print("%m31 %m33")
+        goto(l1709)
+      }
+      print("\"Ya little cheat! Ya've got not a farthing! Ya was tryin' t' weasel aboard me ship!! Go on with ya, git outta me sight!\"")
+    }
+  }
+l1709:
+  if (v221 == 2) { //06ad
+    if ((said("call") || said("call", "barmaid"))) { //06b4
+      print("%m36 Without taking her eyes off the two men, she says, \"I'll be happy to take yer order, but be quick 'bout it 'cause those two are keepin' me hoppin'.\"")
+    }
+    if (said("call")) { //06c6
+      print("Talk to whom?")
+    }
+    if (said("call", "bandit")) { //06d0
+      if (!f226) { //06da
+        set(f226)
+        print("One of the ugly rogues scowls at you as he says, \"Beat it, kid!\"")
+        goto(l1770)
+      }
+      print("The bandits are pointedly ignoring you. Don't press your luck.")
+    }
+l1770:
+    if (said("examine", "bandit")) { //06ea
+      print("The two scroungy thieves are dirty and unkempt, and their clothes are smelly. Cruelty darkens their faces. These look like good people to avoid.")
+    }
+    if ((said("kill", "bandit") || said("rob", "bandit"))) { //06f6
+      print("Surely, you jest!")
+    }
+  }
+}
+if (vWhichEgoBorder == 3 && v40 > 63 && v40 < 75) { //070a
+  if (v44 == 19) { //0717
+    v44 = 0
+  }
+  new.room(24)
+}
+return()

@@ -1,4 +1,201 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(108)
+  load.view(18)
+  load.view(115)
+  load.view(96)
+  animate.obj(o5)
+  set.view(o5,108)
+  cycle.time(o5,v107)
+  position(o5,80,108)
+  set.cel(o5,0)
+  set.priority(o5,7)
+  ignore.blocks(o5)
+  draw(o5)
+  stop.update(o5)
+  animate.obj(o3)
+  set.view(o3,18)
+  position(o3,87,103)
+  set.priority(o3,8)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  animate.obj(o2)
+  set.view(o2,115)
+  position(o2,34,132)
+  set.priority(o2,13)
+  ignore.blocks(o2)
+  draw(o2)
+  position(o0,81,165)
+  draw(o0)
+  observe.blocks(o0)
+  if (f108) { //0056
+    set(f205)
+    v200 = 99
+    animate.obj(o4)
+    set.view(o4,96)
+    step.size(o4,v106)
+    position(o4,77,55)
+    set.priority(o4,14)
+    ignore.blocks(o4)
+    draw(o4)
+    wander(o4)
+    animate.obj(o8)
+    load.view(40)
+    set.view(o8,40)
+    position(o8,66,166)
+    draw(o8)
+    stop.cycling(o8)
+  }
+  show.pic()
+  if (f205) { //0086
+    print("Hen Wen recognizes Gwystyl as one of the Fair Folk, and a long-ago visitor to Caer Dallben. She is happy to see her old friend.")
+  }
+  return()
+}
+if (f130) { //008f
+  set(fSaidAccepted)
+  if (posn(o0,70,118,99,125)) { //0097
+    if (!f204) { //00a1
+      print("The cupboard is closed.")
+      goto(l187)
+    }
+    if (!f155) { //00ad
+      print("You see some cookies.")
+      goto(l187)
+    }
+    print("The cupboard appears to be bare.")
+l187:
+    goto(l260)
+  }
+  if (posn(o0,40,119,60,150)) { //00be
+    print("The glow of the fire makes you think of the fires you used to tend at Caer Dallben. You feel a twinge of homesickness.")
+    goto(l260)
+  }
+  if (f205) { //00cd
+    distance(o0,o4,v61)
+    if (v61 < 50) { //00d7
+      print("Gwystyl is very small for such an old person.")
+      goto(l229)
+    }
+    print("You are inside a Fair Folk way station with Gwystyl, a great hero of the Fair Folk. Dallben spoke of him many times, and you know he can be trusted.")
+l229:
+    goto(l260)
+  }
+  if (posn(o0,56,116,70,122)) { //00e8
+    print("You are too big to fit through this door.")
+    goto(l260)
+  }
+  if (f50) { //00f7
+    print("You are in Gwystyl's way station. He is not here.")
+    goto(l260)
+  }
+  print("You are in a strange little underground house, hidden deep in the forest. It appears to be inhabited, although there is no one home at the moment.")
+}
+l260:
+if (!f128 && !f129) { //0104
+  goto(l387)
+}
+if (f129) { //0111
+  goto(l387)
+}
+if (posn(o0,70,118,99,125)) { //011a
+  set(fSaidAccepted)
+  if (!f204) { //0126
+    print("You carefully open the cupboard.")
+    start.update(o5)
+    end.of.loop(o5,f202)
+    goto(l341)
+  }
+  if (f155) { //0137
+    start.update(o5)
+    reverse.loop(o5,f203)
+    goto(l387)
+    goto(l341)
+  }
+  set(f155)
+  get(i9)
+  start.update(o3)
+  erase(o3)
+  print("You have some cookies.")
+  goto(l387)
+l341:
+  goto(l387)
+}
+if (posn(o0,25,119,60,150)) { //0158
+  set(fSaidAccepted)
+  print("The glow of the fire makes you think of the fires you used to tend at Caer Dallben. You feel a twinge of homesickness.")
+  goto(l387)
+}
+if (f205) { //0169
+  distance(o0,o4,v61)
+  if (!f207 && v61 < 50) { //0173
+    set(fSaidAccepted)
+    set(f207)
+    print("\"Good luck, Taran of Caer Dallben,\" says Gwystyl. \"Do not worry about Hen Wen; the Horned King will never find her!")
+  }
+}
+l387:
+v200--
+if (v200 == 1) { //0185
+  reset(f108)
+  v57 = 2
+  vCurrentScore += 20
+  set(f50)
+  print("\"Welcome, Taran,\" says the fairy. \"I am Gwystyl, one of the Fair Folk, and a friend of Dallben. He told us to expect you, and asked us to hide Hen Wen from the Horned King.")
+  print("\"Congratulations! You have delivered Hen Wen to safety, and successfully fulfilled Dallben's request.")
+  print("\"But, since you left Caer Dallben, the Horned King behaves even more fiendishly. My king, Eiddileg, contacted Dallben, seeking his help. Dallben now wants you to locate King Eiddileg, and help him in whatever way you can.")
+  print("\"Since the Fair Folk are continually moving, I can't tell you where they are; but, I can tell you their magic password -- bmmpxf. Use it wisely.")
+  print("\"Good luck, Taran of Caer Dallben.\"")
+  get(i18)
+  ignore.objs(o4)
+  print("Gwystyl flies to the little door.")
+  move.obj(o4,65,117,0,f208)
+}
+if (f208) { //01ac
+  reset(f208)
+  set.priority(o4,5)
+  print("\"Come, Hen Wen, I'll keep you safe from the Horned King!\"")
+  move.obj(o4,75,110,0,f209)
+  start.cycling(o8)
+  ignore.blocks(o8)
+  ignore.objs(o8)
+  move.obj(o8,65,117,0,f200)
+}
+if (f209) { //01cb
+  reset(f209)
+  reset(f205)
+  erase(o4)
+}
+if (f200) { //01d7
+  reset(f200)
+  set.priority(o8,5)
+  set.loop(o8,0)
+  force.update(o8)
+  print("Hen Wen smiles goodbye as Gwystyl takes her through his secret passage.")
+  move.obj(o8,75,110,0,f201)
+}
+if (f201) { //01ef
+  reset(f201)
+  erase(o8)
+}
+if (f202) { //01f9
+  reset(f202)
+  stop.update(o5)
+  set(f204)
+  if (!f155) { //0205
+    draw(o3)
+    stop.update(o3)
+  }
+}
+if (f203) { //0210
+  reset(f203)
+  reset(f204)
+  stop.update(o5)
+  print("Since the cupboard is bare, you close it.")
+}
+if (posn(o0,51,166,88,167)) { //021e
+  new.room(65)
+}
+return()

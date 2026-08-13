@@ -1,3 +1,184 @@
-if (!(isSet(f62)
-!!!
-&{%!e(string=incomplete condition: 0x22)}
+if (!f62) { //0002
+  set(f62)
+  load.view(37)
+  load.sound(13)
+  erase(o12)
+  stop.motion(o0)
+  stop.cycling(o0)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  ignore.blocks(o13)
+  normal.motion(o13)
+  stop.cycling(o13)
+  set.loop(o13,3)
+  set.cel(o13,0)
+  move.obj(o0,65,166,1,f43)
+}
+if (f240) { //002b
+  reset(f240)
+  stop.cycling(o4)
+}
+if (f104 && !f108) { //0035
+  set(f108)
+  reset(f104)
+  sound(13,f103)
+  vTimeSeconds = 0
+  set(f15)
+  print.at("                                  \n\n\n",1,2,37)
+  display(2,3,"Peter, Peter, Pumpkin-Eater")
+}
+if (vTimeSeconds > 2 && f108 && !f109) { //0053
+  set(f109)
+  display(3,3,"Had a wife and couldn't keep her;")
+}
+if (vTimeSeconds > 5 && f109 && !f110) { //0065
+  set(f110)
+  display(4,3,"He put her in a pumpkin shell,")
+}
+if (vTimeSeconds > 8 && f110 && !f111) { //0077
+  set(f111)
+  display(5,3,"And there he kept her very well.")
+}
+v47--
+if (v47 == 1) { //008b
+  set(f43)
+}
+if (f43) { //0094
+  reset(f43)
+  v48++
+  if (v48 == 1) { //009e
+    set(f104)
+    set.loop(o0,3)
+    ignore.objs(o13)
+    start.cycling(o13)
+    move.obj(o13,100,160,1,f43)
+  }
+  if (v48 == 2) { //00b4
+    move.obj(o13,119,141,1,f43)
+    set.loop(o4,0)
+    set.cel(o4,0)
+    reposition.to(o4,49,131)
+  }
+  if (v48 == 3) { //00cb
+    move.obj(o13,100,133,1,f43)
+    start.cycling(o4)
+    move.obj(o4,80,160,1,f240)
+  }
+  if (v48 == 4) { //00e0
+    move.obj(o13,108,149,1,f43)
+  }
+  if (v48 == 5) { //00ed
+    move.obj(o13,86,158,1,f43)
+  }
+  if (v48 == 6) { //00fa
+    stop.cycling(o13)
+    set.loop(o13,1)
+    set.loop(o4,4)
+    v47 = 4
+  }
+  if (v48 == 7) { //010c
+    set.loop(o4,2)
+    set.cel(o4,0)
+    stop.cycling(o4)
+    v47 = 2
+  }
+  if (v48 == 8) { //011e
+    erase(o13)
+    animate.obj(o6)
+    set.view(o6,37)
+    set.loop(o6,2)
+    set.cel(o6,0)
+    ignore.objs(o6)
+    set.priority(o6,13)
+    position(o6,50,126)
+    draw(o6)
+    stop.update(o6)
+    animate.obj(o5)
+    set.view(o5,77)
+    set.loop(o5,3)
+    set.cel(o5,0)
+    ignore.objs(o5)
+    set.priority(o5,14)
+    position(o5,53,116)
+    draw(o5)
+    stop.update(o5)
+    v47 = 15
+  }
+  if (v48 == 9) { //015a
+    erase(o6)
+    erase(o5)
+    start.cycling(o4)
+    set.loop(o4,4)
+    fix.loop(o4)
+    set.cel(o4,0)
+    move.obj(o4,80,152,1,f43)
+    animate.obj(o13)
+    set.view(o13,41)
+    set.loop(o13,1)
+    set.cel(o13,0)
+    position(o13,86,160)
+    draw(o13)
+    stop.cycling(o13)
+  }
+  if (v48 == 10) { //0188
+    move.obj(o4,80,135,1,f43)
+    start.cycling(o13)
+    move.obj(o13,88,140,1,f47)
+  }
+  if (v48 == 11) { //019d
+    move.obj(o13,83,132,1,f43)
+    set.loop(o4,1)
+    move.obj(o4,70,123,1,f240)
+  }
+  if (v48 == 12) { //01b3
+    stop.cycling(o4)
+    set.loop(o4,4)
+    fix.loop(o4)
+    set.cel(o4,0)
+    move.obj(o13,83,124,1,f43)
+  }
+  if (v48 == 13) { //01ca
+    stop.cycling(o13)
+    set.loop(o4,2)
+    set.cel(o4,3)
+    start.update(o11)
+    stop.cycling(o11)
+    set.cel(o11,1)
+    v47 = 3
+  }
+  if (v48 == 14) { //01e3
+    set.cel(o11,2)
+    v47 = 3
+  }
+  if (v48 == 15) { //01f0
+    start.cycling(o13)
+    move.obj(o13,83,115,1,f43)
+  }
+  if (v48 == 16) { //01ff
+    stop.cycling(o13)
+    set.cel(o11,1)
+    v47 = 3
+  }
+  if (v48 == 17) { //020e
+    set.cel(o11,0)
+    v47 = 3
+  }
+  if (v48 == 18) { //021b
+    start.cycling(o13)
+    move.obj(o13,83,115,1,f43)
+  }
+  if (v48 == 19) { //022a
+    add.to.pic(125,0,1,82,96,0,4)
+    erase(o13)
+    add.to.pic(125,1,0,77,121,0,4)
+    erase(o11)
+    set.cel(o4,4)
+    v47 = 30
+  }
+  if (v48 == 20) { //024b
+    add.to.pic(77,2,4,70,123,0,0)
+    erase(o4)
+    set(f114)
+  }
+}
+return()

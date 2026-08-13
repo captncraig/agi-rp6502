@@ -1,3 +1,29 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+set.text.attribute(1,7)
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(2,12,"KING'S QUEST III")
+display(3,18,"Help")
+display(6,3,"F1 displays this message.")
+display(7,3,"F2 turns the sound off and on.")
+display(8,3,"F3 retypes the last line typed.")
+display(9,3,"F4 shows objects you are carrying.")
+display(10,3,"F5 saves your current game.")
+display(12,3,"F7 restores a saved game.")
+display(14,3,"F9 restarts the game.")
+display(15,2,"F10 changes speed")
+display(18,2,"TAB shows the status screen.")
+display(19,2,"ESC displays the menus.")
+display(23,1,"For a Hint Book, call (209) 683-6858.")
+l65:
+if (!(have.key())) { //0041
+  goto(l65)
+}
+accept.input()
+status.line.on()
+set.text.attribute(15,0)
+graphics()
+set(fSaidAccepted)
+return()

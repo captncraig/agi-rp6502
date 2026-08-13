@@ -1,4 +1,141 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((v76 > 0 || v75 > 0) && vPrevRoom == 60) { //0008
+    v72 = vPrevRoom
+    new.room(87)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f60)
+  v57 = 30
+  v58 = 95
+  set.horizon(76)
+  random(1,2,v36)
+  if (vPrevRoom == 60) { //0034
+    v36 = 0
+  }
+  if (f46) { //003e
+    v36 = 0
+  }
+  if (v36 == 1) { //0047
+    load.logic(117)
+    v191 = 1
+    reset(f172)
+    goto(l91)
+  }
+  v191 = 0
+l91:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0061
+    if (vPrevRoom == 60) { //0067
+      release.priority(o0)
+      position(o0,118,112)
+      goto(l142)
+    }
+    if (vPrevRoom == 56) { //0077
+      release.priority(o0)
+      position(o0,152,142)
+      goto(l142)
+    }
+    position(o0,0,99)
+    set.priority(o0,14)
+  }
+l142:
+  observe.blocks(o0)
+  if (f47) { //0090
+    draw(o0)
+  }
+  if (v191 == 1) { //0098
+    call(117)
+    release.priority(o15)
+    set.loop(o15,1)
+    position(o15,130,106)
+    ignore.blocks(o15)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //00ae
+  goto(l354)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine", "up") || said("examine") || said("examine", "area") || said("examine", "down"))) { //00b8
+  print("You have reached the summit, but still the snowy mountains continue relentlessly forward. What is this? A cave with a snowy path leading to it! Hmmmmm. What could it all mean?")
+}
+if (said("examine", "path")) { //00e4
+  print("A narrow path forges its way through the snowdrifts, and another leads into a large cave! Nervously, you look around.")
+}
+if ((said("examine", "cave") || said("look in", "cave") || said("examine", "inside", "cave"))) { //00f0
+  print("The snowy cave is very large with thick icicles hanging from its entrance. It's very dark inside.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //010c
+  print("Plants and trees are scarce in the snowy reaches of these mountains.")
+}
+if (said("examine", "deck")) { //0132
+  print("The ground is completely covered with cold, white snow.")
+}
+if (said("examine", "sky")) { //013e
+  print("The deep-blue sky contrasts sharply with the brilliant white mountain peaks. You must admit, even while shivering, it is a beautiful sight.")
+}
+if (said("examine", "snow")) { //014a
+  print("White snow blankets everything here in the upper reaches of the great mountains. It's beautiful, but it is VERY cold.")
+}
+if (said("play", "snow")) { //0156
+  print("Wheee!")
+}
+l354:
+if (v44 == 0) { //0162
+  if (v40 > 113) { //0169
+    release.priority(o0)
+    goto(l376)
+  }
+  set.priority(o0,13)
+}
+l376:
+if (v40 > 62 && !f172 && v191 == 1) { //0178
+  v191++
+}
+if (f172) { //0187
+  if (v191 == 3) { //018d
+    v191++
+    v220 = 0
+    move.obj(o15,100,106,2,f220)
+    ignore.blocks(o15)
+  }
+  if (v191 == 4 && f220) { //01a1
+    reset(f220)
+    v220++
+    if (v220 == 1) { //01ae
+      set.priority(o15,10)
+      move.obj(o15,100,85,2,f220)
+    }
+    if (v220 == 2) { //01be
+      set.priority(o15,13)
+      move.obj(o15,74,96,2,f220)
+      if (v40 > 84) { //01ce
+        v220 = 3
+      }
+    }
+    if (v220 == 3) { //01d8
+      follow.ego(o15,11,f173)
+      v220 = 0
+      v170 = 106
+      v171 = 96
+    }
+  }
+}
+if (v191 > 0) { //01ec
+  call(117)
+}
+if (!f46 && vEgoView == 0 && posn(o0,112,110,120,111)) { //01f5
+  new.room(60)
+}
+if (vWhichEgoBorder == 4) { //0207
+  new.room(54)
+}
+if (vWhichEgoBorder == 2) { //0210
+  new.room(56)
+}
+return()

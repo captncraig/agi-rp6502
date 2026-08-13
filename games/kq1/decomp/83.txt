@@ -1,4 +1,104 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(0)
+  configure.screen(0,21,0)
+  draw.pic(vCurrentRoom)
+  prevent.input()
+  v30 = 250
+  v31 = 245
+  v33 = 1
+  v35 = 1
+  v37 = 12
+  set(f9)
+  if (vMonitorType == HERCULES) { //0024
+    display(24,1,"(c) copyright SIERRA On-Line Inc.  1987")
+    goto(l58)
+  }
+  display(22,1,"(c) copyright SIERRA On-Line Inc.  1987")
+  display(24,5,"Press any key to continue.")
+l58:
+  set.key(0,59,18)
+  set.key(0,60,17)
+  set.key(19,0,17)
+  set.key(0,61,13)
+  set.key(5,0,13)
+  set.key(0,62,21)
+  set.key(0,63,1)
+  set.key(0,64,16)
+  set.key(0,65,2)
+  set.key(0,67,3)
+  set.key(0,68,9)
+  set.key(9,0,4)
+  set.key(0,32,10)
+  set.key(10,0,11)
+  set.key(3,0,12)
+  set.key(24,0,12)
+  set.key(18,0,15)
+  set.key(0,44,6)
+  set.key(61,0,5)
+  set.key(45,0,8)
+  set.key(48,0,7)
+  if (vComputerType == 1) { //008e
+    set.key(49,0,18)
+    set.key(50,0,17)
+    set.key(51,0,13)
+    set.key(53,0,1)
+    set.key(55,0,2)
+    set.key(57,0,3)
+  }
+  show.pic()
+}
+if (!f21) { //00ae
+  set(f21)
+  sound(0,f20)
+}
+v30--
+if (v30 == v31) { //00bc
+  v32 = v33
+  v34 = v35
+  if (vMonitorType == HERCULES) { //00c9
+    v36 = 19
+    goto(l217)
+  }
+  v36 = 18
+l217:
+  display(v36,v37,v32)
+  v34--
+  if (v34 > 0) { //00df
+    v36--
+    v32--
+    goto(l217)
+  }
+  v31 -= 5
+  v33++
+  if (v35 < 13) { //00f2
+    v35++
+  }
+}
+if (v30 == 135) { //00fb
+  v31 = 255
+  if (vMonitorType == HERCULES) { //0105
+    clear.lines(24,24,c0)
+    display(24,5,"Press any key to continue.")
+  }
+}
+if (have.key()) { //0114
+  if (vMonitorType != HERCULES) { //0119
+    clear.lines(21,24,c0)
+  }
+  stop.sound()
+  v30 = 0
+  set.key(27,0,25)
+  if (vComputerType == ATARI_ST) { //012d
+    set.key(1,1,25)
+    set.key(1,3,5)
+    goto(l335)
+  }
+  set.key(1,1,0)
+  set.key(1,3,25)
+  set.key(1,2,5)
+  set.key(1,4,4)
+l335:
+  new.room(1)
+}
+return()

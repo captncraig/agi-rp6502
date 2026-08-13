@@ -1,4 +1,341 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f152)
+  v66 = 167
+  v65 = 1
+  load.sound(2)
+  load.view(10)
+  load.view(11)
+  load.view(6)
+  load.view(129)
+  set.horizon(40)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f146) { //0022
+    add.to.pic(129,0,0,141,118,4,4)
+  }
+  set.view(o0,0)
+  set.priority(o0,14)
+  start.motion(o0)
+  if (vPrevRoom == 29) { //0038
+    position(o0,150,53)
+    move.obj(o0,148,53,0,f61)
+    goto(l80)
+  }
+  position(o0,140,142)
+l80:
+  draw(o0)
+  show.pic()
+  if (f99) { //0053
+    print("Since you have debugging set, when you get tired of falling, do a \"Set Flag\" 144, and you'll get a \"oops\" message instead.  (This offer only valid on non-Hercules monitors.) (Your mileage may vary.)")
+  }
+  if (vPrevRoom == 25) { //005b
+    print("You are on a narrow ledge, with a sheer drop beside you.")
+  }
+  return()
+}
+if (f152) { //0065
+  if ((v39 > 120 || v38 > 120)) { //006b
+    set.priority(o0,15)
+  }
+  goto(l1004)
+}
+if (f130) { //007d
+  set(fSaidAccepted)
+  if (v65 == 1) { //0085
+    print("You are on a narrow ledge, with a sheer drop beside you.")
+    goto(l159)
+  }
+  if (v65 == 4) { //0091
+    print("You are hanging on the rope.")
+    goto(l159)
+  }
+  print("Your fingers and toes are dug into the tiny crevices in the sheer rock face. Hang on, Taran!")
+}
+l159:
+if (!f128 && !f129) { //009f
+  goto(l277)
+}
+if (f129) { //00ac
+  goto(l266)
+}
+if (f146) { //00b5
+  if (posn(o0,135,131,159,159)) { //00bb
+    set(fSaidAccepted)
+    if (v65 == 1) { //00c7
+      v65 = 4
+      print("You grab the rope, and begin your descent.")
+      set.view(o0,10)
+      start.motion(o0)
+      erase(o0)
+      ignore.blocks(o0)
+      set(f160)
+      position(o0,140,133)
+      draw(o0)
+      move.obj(o0,141,134,0,f201)
+      goto(l263)
+    }
+    v65 = 1
+    set.view(o0,0)
+    start.motion(o0)
+    v61 = 1
+    step.size(o0,v61)
+    erase(o0)
+    observe.blocks(o0)
+    reset(f160)
+    draw(o0)
+    position(o0,140,142)
+  }
+}
+l263:
+goto(l277)
+l266:
+if (v60 == 11) { //010a
+  print("You scrape your dagger on the rocks and dull the blade.")
+  set(fSaidAccepted)
+}
+l277:
+if (posn(o0,133,131,159,167) && vPrevRoom == 29 && !f203) { //0115
+  set(f203)
+  print("Whew! Made it.")
+}
+if (posn(o0,140,0,159,47) && vPrevRoom == 25 && !f203) { //0129
+  set(f203)
+  print("Whew! Made it.")
+}
+if (posn(o0,142,0,159,52)) { //013d
+  position(o0,150,50)
+  set.view(o0,0)
+}
+if (fEgoOnWater) { //014e
+  if (posn(o0,88,126,111,128)) { //0154
+    if (v65 == 1) { //015e
+      v64 = 1
+      v38 = 96
+      v39 = 125
+      goto(l378)
+    }
+    v200 = 1
+    v38 = 99
+    v39 = 129
+  }
+l378:
+  if (posn(o0,74,147,90,149)) { //017a
+    if (v65 == 1) { //0184
+      v64 = 2
+      v38 = 74
+      v39 = 146
+      goto(l416)
+    }
+    v200 = 2
+    v38 = 76
+    v39 = 150
+  }
+l416:
+  if (posn(o0,38,144,60,146)) { //01a0
+    if (v65 == 1) { //01aa
+      v64 = 3
+      v38 = 46
+      v39 = 143
+      goto(l454)
+    }
+    v200 = 3
+    v38 = 49
+    v39 = 147
+  }
+l454:
+  if (posn(o0,50,73,64,75)) { //01c6
+    if (v65 == 1) { //01d0
+      v64 = 4
+      v38 = 56
+      v39 = 72
+      goto(l492)
+    }
+    v200 = 4
+    v38 = 59
+    v39 = 76
+  }
+l492:
+  if (posn(o0,113,72,130,74)) { //01ec
+    if (v65 == 1) { //01f6
+      v64 = 5
+      v38 = 117
+      v39 = 71
+      goto(l530)
+    }
+    v200 = 5
+    v38 = 120
+    v39 = 75
+  }
+l530:
+  if (posn(o0,127,49,145,51)) { //0212
+    if (v65 == 1) { //021c
+      v64 = 6
+      v38 = 132
+      v39 = 48
+      goto(l568)
+    }
+    v200 = 6
+    v38 = 135
+    v39 = 52
+  }
+}
+l568:
+if (v64 > 0) { //0238
+  v64 = 0
+  v65 = 7
+  set.priority(o0,12)
+  start.motion(o0)
+  observe.blocks(o0)
+  set.view(o0,11)
+  reposition.to(o0,v38,v39)
+  if (!f205) { //0253
+    set(f205)
+    print("Your fingertips clutch the tiny crevices in the rock face.")
+  }
+}
+if (v200 > 0) { //025e
+  v200 = 0
+  v65 = 1
+  set.priority(o0,14)
+  step.size(o0,v105)
+  start.motion(o0)
+  observe.blocks(o0)
+  set.view(o0,0)
+  reposition.to(o0,v38,v39)
+  if (!f206) { //027c
+    set(f206)
+    print("Gratefully, you drop to the ledge.")
+  }
+}
+if ((posn(o0,86,81,99,86) || posn(o0,54,76,58,86) || posn(o0,80,80,83,89) || posn(o0,70,80,79,88))) { //0287
+  if (v65 == 1) { //02a5
+    reset(f160)
+    ignore.blocks(o0)
+    goto(l695)
+  }
+  set(f160)
+  observe.blocks(o0)
+l695:
+  goto(l709)
+}
+if (!f152) { //02ba
+  reset(f160)
+  observe.blocks(o0)
+}
+l709:
+if (v65 == 7) { //02c5
+  if ((posn(o0,74,124,80,147) || posn(o0,78,79,98,89) || posn(o0,34,72,53,86) || posn(o0,112,45,131,57))) { //02cc
+    set(f160)
+    goto(l753)
+  }
+  reset(f160)
+}
+l753:
+if ((posn(o0,85,128,93,148) || posn(o0,48,72,58,87))) { //02f1
+  if (v65 == 1) { //0303
+    ignore.blocks(o0)
+    goto(l785)
+  }
+  observe.blocks(o0)
+}
+l785:
+if (posn(o0,135,131,159,167)) { //0311
+  if (v65 == 4) { //031b
+    set(f160)
+    ignore.blocks(o0)
+    goto(l813)
+  }
+  reset(f160)
+  observe.blocks(o0)
+}
+l813:
+if (fTriggerLine && !f160 && !f152) { //032d
+  if (f144 && vMonitorType != HERCULES) { //0339
+    toggle(f207)
+    if (f207) { //0345
+      display(22,30," oops ")
+      goto(l854)
+    }
+    display(22,31," oops ")
+l854:
+    goto(l969)
+  }
+  set(f152)
+  set.view(o0,6)
+  sound(2,f61)
+  set(f133)
+  ignore.blocks(o0)
+  if (posn(o0,79,77,85,79)) { //0365
+    v62 = 6
+    v63 = 1
+    repositon(o0,v62,v63)
+    set.priority(o0,11)
+    goto(l956)
+  }
+  if (posn(o0,86,79,100,80)) { //037f
+    set.priority(o0,11)
+    goto(l956)
+  }
+  if (posn(o0,101,74,108,80)) { //038f
+    v62 = 250
+    v63 = 1
+    repositon(o0,v62,v63)
+    set.priority(o0,11)
+    goto(l956)
+  }
+  if (posn(o0,79,56,98,73)) { //03a9
+    set.priority(o0,11)
+    goto(l956)
+  }
+  set.priority(o0,15)
+l956:
+  get.posn(o0,v62,v63)
+  v67 = 4
+  move.obj(o0,v62,v66,67,f204)
+l969:
+  goto(l986)
+}
+if (f144 && vMonitorType != HERCULES) { //03cc
+  display(22,30,"      ")
+}
+l986:
+if (!f45 && posn(o0,139,50,155,59)) { //03da
+  vCurrentScore += 6
+  set(f45)
+}
+l1004:
+if (f204) { //03ec
+  if (f99) { //03f2
+    reset(f152)
+    reset(f133)
+    v110 = 0
+    vCurrentRoom = 25
+    new.room(26)
+    goto(l1036)
+  }
+  erase(o0)
+  v59 = 1
+}
+l1036:
+if (f201) { //040c
+  reset(f160)
+  new.room(25)
+}
+if (posn(o0,142,0,159,52)) { //0416
+  set.view(o0,0)
+  start.motion(o0)
+  new.room(29)
+}
+if (vWhichEgoBorder == 2 && !f152) { //0427
+  start.motion(o0)
+  get.posn(o0,v62,v63)
+  if (v63 < 80) { //0437
+    set.view(o0,0)
+    new.room(29)
+    goto(l1096)
+  }
+  new.room(25)
+}
+l1096:
+return()

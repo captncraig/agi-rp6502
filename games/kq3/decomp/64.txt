@@ -1,7 +1,85 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f56)
   v56 = 5
   set(f34)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v57 = 153
+  v58 = 165
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  if (f48) { //0026
+    if (vPrevRoom == 67) { //002c
+      position(o0,14,91)
+    }
+    if (vPrevRoom == 63) { //0037
+      position(o0,153,165)
+    }
+  }
+  if (f47) { //0042
+    draw(o0)
+  }
+  if (f182) { //004a
+    position(o0,0,88)
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  return()
+}
+if (f230 && v230 == 0) { //005a
+  v230++
+  program.control()
+  move.obj(o0,78,88,1,f230)
+}
+if (f230 && v230 == 1) { //006c
+  v230++
+  program.control()
+  move.obj(o0,154,168,1,f230)
+}
+if (!f46 && fTriggerLine && !f220) { //007e
+  set(f46)
+  prevent.input()
+  set(f220)
+  ignore.blocks(o0)
+  get.priority(o0,v36)
+  set.priority(o0,v36)
+  set.view(o0,11)
+  sound(1,f238)
+  v36 = 4
+  cycle.time(o0,v36)
+  v37 = v40
+  v38 = 164
+  v36 = 3
+  move.obj(o0,v37,v38,36,f221)
+}
+if (f221) { //00b2
+  reset(f221)
+  erase(o0)
+  set(f44)
+  print("No fair taking short cuts!")
+  reset(f46)
+}
+if (f182) { //00c2
+  call(119)
+}
+if ((said("examine", "up") || said("examine", "down") || said("examine") || said("examine", "cave") || said("look in", "cave"))) { //00ca
+  print("Finally, the top of the cave! You notice bright light streaming in from outside the cave. Looking down, you see the crumbly stone steps precariously descending into the bowels of the mountain.")
+}
+if ((said("examine", "up", "stair") || said("examine", "down", "stair") || said("examine", "stair"))) { //00ee
+  print("You gaze nervously down the steep stone steps leading into the pit of the mountain. Swallowing hard, you realize how dangerous they are.")
+}
+if ((said("examine", "out") || said("examine", "out", "cave"))) { //010c
+  print("It's very bright outside.  You think you see clouds.")
+}
+if ((vWhichEgoBorder == 2 || vWhichEgoBorder == 3)) { //0122
+  new.room(63)
+}
+if (vWhichEgoBorder == 4) { //0130
+  new.room(67)
+}
+return()

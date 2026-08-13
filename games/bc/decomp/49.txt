@@ -1,5 +1,81 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f72)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f108) { //0010
+    load.logic(116)
+    set(f202)
+    load.view(24)
+  }
+  if (!f59) { //001c
+    load.logic(112)
+    set(f201)
+  }
+  load.logic(106)
+  load.view(6)
+  load.view(7)
+  v66 = 155
+  load.sound(2)
+  if (!(has(i12))) { //0032
+    load.sound(11)
+  }
+  load.view(124)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,111,61)
+  set.view(o2,124)
+  draw(o2)
+  if (vPrevRoom == 42) { //004a
+    if (f122) { //0051
+      set.priority(o0,4)
+      position(o0,64,38)
+      goto(l101)
+    }
+    position(o0,40,38)
+l101:
+    goto(l108)
+  }
+  position(o0,132,126)
+l108:
+  draw(o0)
+  if (f202) { //006e
+    call(116)
+  }
+  if (f201) { //0076
+    call(112)
+    position(o9,11,165)
+  }
+  call(106)
+  show.pic()
+  return()
+}
+if (f130) { //0086
+  print("You are in the castle dungeon.")
+}
+if (v38 > 39) { //008e
+  set(f162)
+  v50 = 66
+  v51 = 100
+  goto(l162)
+}
+reset(f162)
+l162:
+if (fTriggerLine) { //00a2
+  if (posn(o0,126,108,150,144)) { //00a8
+    reset(fTriggerLine)
+    new.room(50)
+  }
+}
+if (vWhichEgoBorder == 1) { //00b6
+  reset(f162)
+  new.room(42)
+}
+call(106)
+if (f201) { //00c3
+  call(112)
+}
+if (f202) { //00cb
+  call(116)
+}
+return()

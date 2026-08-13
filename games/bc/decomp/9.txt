@@ -1,4 +1,316 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(71)
+  if (f108) { //000a
+    load.view(40)
+    load.logic(116)
+    set(f215)
+    goto(l34)
+  }
+  if (!f56) { //0019
+    load.view(40)
+  }
+l34:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(15)
+  load.view(130)
+  load.view(141)
+  load.view(91)
+  load.view(92)
+  load.view(7)
+  load.view(93)
+  load.view(41)
+  load.view(99)
+  load.sound(11)
+  load.sound(15)
+  animate.obj(o3)
+  animate.obj(o7)
+  animate.obj(o10)
+  animate.obj(o2)
+  animate.obj(o6)
+  set.view(o7,130)
+  set.view(o10,141)
+  set.view(o3,15)
+  set.view(o2,91)
+  set.view(o6,92)
+  set.cel(o7,0)
+  set.cel(o10,0)
+  position(o7,4,96)
+  position(o10,89,153)
+  position(o3,7,90)
+  position(o2,30,140)
+  position(o6,60,99)
+  ignore.blocks(o10)
+  ignore.blocks(o7)
+  set.priority(o3,9)
+  set.priority(o7,8)
+  if (!f56) { //007b
+    animate.obj(o8)
+    set.priority(o8,10)
+    set.view(o8,40)
+    position(o8,116,125)
+    wander(o8)
+    draw(o8)
+  }
+  if (f164) { //0092
+    last.cel(o10,v61)
+    set.cel(o10,v61)
+  }
+  draw(o10)
+  draw(o7)
+  draw(o2)
+  draw(o6)
+  draw(o0)
+  wander(o2)
+  wander(o6)
+  stop.update(o7)
+  stop.cycling(o10)
+  if (f215) { //00b0
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //00ba
+  if (!f205 && (posn(o0,62,99,95,165) || posn(o0,91,143,139,165))) { //00c0
+    set(f205)
+    print("\"Hello, Hen Wen,\" you say, \"how's my favorite pig?\"")
+    goto(l266)
+  }
+  if (posn(o0,97,119,149,142)) { //00dc
+    if (!f56) { //00e6
+      print("This is Hen Wen's house. She looks hungry.")
+      goto(l244)
+    }
+    print("You're beside Hen Wen's house, but she is not home.")
+l244:
+    goto(l266)
+  }
+  if (posn(o0,0,92,27,109)) { //00f7
+    print("This shed is attached to Dallben's cottage.")
+    goto(l266)
+  }
+  print("You enjoy tending the animals of Caer Dallben, but in your dreams you long to be more than just an Assistant Pig-Keeper. You know you would be a Great Hero, if only given the chance.")
+  set(fSaidAccepted)
+}
+l266:
+if (!f128 && !f129) { //010a
+  goto(l517)
+}
+if (f129) { //0117
+  goto(l412)
+}
+if (f128 && posn(o0,7,95,17,108)) { //0120
+  if (!f204) { //012c
+    set(f204)
+    start.update(o7)
+    end.of.loop(o7,f201)
+    if (!f127) { //013a
+      print("You open the door of the shed and discover some dried corn.")
+      goto(l328)
+    }
+    print("You open the door to Dallben's shed.")
+l328:
+    set(fSaidAccepted)
+    goto(l362)
+  }
+  if (!f127) { //014d
+    set(f127)
+    get(i2)
+    print("You reach into the shed and pick up the corn.")
+    erase(o3)
+    set(fSaidAccepted)
+    goto(l362)
+  }
+  reset(f204)
+  start.update(o7)
+  reverse.loop(o7,f212)
+  set(fSaidAccepted)
+}
+l362:
+if (posn(o0,87,144,97,165)) { //016a
+  set(fSaidAccepted)
+  if (!f164) { //0176
+    end.of.loop(o10,f214)
+    goto(l389)
+  }
+  print("You don't have time to fix the broken gate right now.")
+}
+l389:
+distance(o0,o8,v61)
+if (!f207 && v61 < 30) { //0189
+  set(f207)
+  print("\"Hi, Hen Wen,\" you say. \"You are my favorite pig.\"")
+  set(fSaidAccepted)
+}
+goto(l517)
+l412:
+if (!f56) { //019c
+  if (posn(o0,99,125,135,146)) { //01a3
+    if (v60 == 3) { //01ad
+      set(fSaidAccepted)
+      v60 = 0
+      v42 = 0
+      print("You feed the gruel to your hungry pig, Hen Wen.")
+      drop(i3)
+      set.view(o8,99)
+      vCurrentScore += 5
+      set(f202)
+      goto(l488)
+    }
+    if (v60 == 2) { //01cb
+      set(fSaidAccepted)
+      v60 = 0
+      v42 = 0
+      print("You feed the corn to your hungry pig, Hen Wen.")
+      drop(i2)
+      set.view(o8,41)
+      stop.motion(o8)
+      vCurrentScore += 5
+      set(f202)
+    }
+l488:
+    if (f202) { //01e8
+      reset(f202)
+      set(f56)
+      set(f58)
+      release.priority(o8)
+      ignore.objs(o8)
+      reposition.to(o8,113,139)
+      force.update(o8)
+      observe.objs(o8)
+      v206 = 50
+      stop.motion(o8)
+    }
+  }
+}
+l517:
+if (f214) { //0205
+  reset(f214)
+  print("You open the gate and notice it has fallen off its hinges. You'll have to fix it someday when you have time.")
+  set(f164)
+}
+if (posn(o0,87,144,97,160)) { //0211
+  ignore.objs(o10)
+  if (f164) { //021d
+    ignore.blocks(o0)
+    goto(l554)
+  }
+  observe.blocks(o0)
+l554:
+  goto(l559)
+}
+observe.blocks(o0)
+l559:
+if (!f211 && posn(o0,151,0,152,100)) { //022f
+  print("You seem to have run into a fence you can't go through, over or under. Your way to the east is blocked.")
+  set(f211)
+}
+v200--
+distance(o0,o2,v61)
+if (!(v200 > 0) && !fSaidAccepted && v61 < 10 && !f102) { //0246
+  sound(15,f61)
+  print("Honk.\n\nHonk! Honk!!")
+  v200 = 50
+}
+v201--
+distance(o0,o6,v61)
+if (!(v201 > 0) && v61 < 13 && !(posn(o0,71,116,114,157)) && !f102) { //0265
+  set(f104)
+  set(f89)
+  set.view(o6,93)
+  stop.motion(o0)
+  follow.ego(o6,4,f200)
+  set(f216)
+  v201 = 60
+}
+if (v201 == 22 && f216) { //028c
+  v201 = 0
+  reset(f216)
+  reset(f104)
+  reset(f89)
+  start.motion(o0)
+  set.view(o6,92)
+  wander(o6)
+}
+if (f200) { //02a5
+  reset(f200)
+  set.view(o0,7)
+  stop.motion(o0)
+  print("Ooooow! The goat thinks you want to play tag.")
+  set(f106)
+  set(f133)
+  set.view(o6,92)
+  wander(o6)
+  v202 = 33
+}
+v202--
+if (v202 == 1) { //02c2
+  v202 = 0
+  reset(f104)
+  reset(f89)
+  reset(f106)
+  set.view(o0,0)
+  step.size(o0,v105)
+  start.motion(o0)
+  reset(f133)
+}
+if (f106 && v202 > 0) { //02dc
+  sound(11,f106)
+}
+if (f201) { //02e8
+  reset(f201)
+  stop.update(o7)
+  if (!f127) { //02f2
+    draw(o3)
+  }
+}
+if (f212) { //02fb
+  reset(f212)
+  stop.update(o7)
+}
+v206--
+if (v206 == 20) { //0307
+  print("Hen Wen certainly enjoys eating.")
+}
+if (v206 == 1) { //0310
+  set.view(o8,40)
+  start.motion(o8)
+  set(f58)
+  ignore.objs(o8)
+  ignore.blocks(o8)
+  move.obj(o8,94,139,1,f203)
+  v61 = 1
+  step.size(o8,v61)
+}
+if (f203) { //032e
+  reset(f203)
+  print("Oh! Hen Wen is trotting away.")
+  move.obj(o8,90,153,1,f210)
+}
+if (f210) { //033e
+  reset(f210)
+  print("(Perhaps she's going to Dallben's cottage.)")
+  move.obj(o8,1,160,1,f209)
+  v62 = 254
+  v63 = 6
+  repositon(o8,v62,v63)
+}
+if (f209) { //0358
+  reset(f209)
+  erase(o8)
+}
+if (f215) { //0362
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //036a
+  new.room(4)
+}
+if (vWhichEgoBorder == 3) { //0373
+  new.room(14)
+}
+if (vWhichEgoBorder == 4) { //037c
+  new.room(8)
+}
+return()

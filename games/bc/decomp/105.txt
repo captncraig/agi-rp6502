@@ -1,3 +1,69 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x6d)}
+set.text.attribute(0,15)
+text.screen()
+display(1,18,"HELP")
+display(3,11,"KEYBOARD COMMANDS")
+display(6,1,"Use arrows or number keys to move")
+display(7,1,"Taran.")
+display(10,1,"Press ESC to see the menus.")
+display(11,1,"Press ENTER to choose from a menu, or")
+display(12,1,"ESC to return to the game.")
+display(15,1,"Some menu choices list a function key")
+display(16,1,"\"shortcut\" beside their name.")
+if (vComputerType == 2) { //002a
+  display(19,1,"Press + to make sound louder.")
+  display(20,1,"Press - to make sound softer.")
+}
+display(23,13,"Press any key to continue.")
+l61:
+if (!(have.key())) { //003d
+  goto(l61)
+}
+vKeyPressed = 0
+set.text.attribute(15,0)
+text.screen()
+display(2,11,"JOYSTICK COMMANDS")
+display(5,1,"Point joystick in desired direction")
+display(6,1,"to move Taran.")
+display(8,1,"Press top button to see the menus.")
+display(9,1,"Press other button to DO things.")
+display(11,1,"Press top button twice to LOOK.")
+display(12,1,"Press other button twice to USE the")
+display(13,1,"object you made active earlier.")
+display(15,1,"Press the top button to choose from a")
+display(16,1,"menu, or the other button to return")
+display(17,1,"to the game.")
+display(19,1,"Some menu choices list a function key")
+display(20,1,"\"shortcut\" beside their name.")
+if (f142) { //0081
+  display(23,13,"Press any key to continue.")
+l139:
+  if (!(have.key())) { //008b
+    goto(l139)
+  }
+  vKeyPressed = 0
+  set.text.attribute(15,0)
+  text.screen()
+  display(2,13,"MOUSE COMMANDS")
+  display(7,1,"Put cursor where you want Taran to")
+  display(8,1,"go, then press button.")
+  if (vComputerType == ATARI_ST) { //00a7
+    display(11,1,"Press right button to use menus.")
+    goto(l195)
+  }
+  if (f142) { //00b5
+    display(11,1,"Press mouse button in the window bar")
+    display(12,1,"to use menus.")
+  }
+l195:
+  display(15,1,"Some menu choices list a function key")
+  display(16,1,"\"shortcut\" beside their name.")
+}
+display(23,7,"Press any key to return to game.")
+l207:
+if (!(have.key())) { //00cf
+  goto(l207)
+}
+vKeyPressed = 0
+set.text.attribute(15,0)
+graphics()
+return()

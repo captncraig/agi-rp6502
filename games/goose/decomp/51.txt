@@ -1,3 +1,202 @@
-if (!(isSet(f53)
-!!!
-&{%!e(string=incomplete condition: 0x2c)}
+if (!f53) { //0002
+  set(f53)
+  ignore.blocks(o4)
+  ignore.blocks(o5)
+  ignore.horizon(o4)
+  ignore.horizon(o5)
+  load.sound(4)
+  get.posn(o0,v212,v213)
+  if (v213 < 120) { //0019
+    v213 = 130
+    v209 = 1
+    move.obj(o0,v212,v213,209,f122)
+    goto(l53)
+  }
+  move.obj(o0,68,133,1,f122)
+}
+l53:
+if (f122) { //0035
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v213 == 130) { //0041
+    move.obj(o0,68,133,1,f122)
+    goto(l127)
+  }
+  if (v212 == 85) { //0051
+    stop.cycling(o0)
+    set.loop(o0,3)
+    set(f104)
+    goto(l127)
+  }
+  set.loop(o0,3)
+  erase(o12)
+  animate.obj(o13)
+  set.view(o13,v30)
+  set.loop(o13,0)
+  ignore.horizon(o13)
+  ignore.objs(o13)
+  position(o13,68,122)
+  draw(o13)
+  move.obj(o0,85,160,1,f122)
+}
+l127:
+if (!f108 && f104) { //007f
+  set(f108)
+  set(f43)
+  reset(f104)
+  sound(4,f103)
+  vTimeSeconds = 0
+  set(f15)
+  if (vMonitorType != HERCULES) { //0096
+    print.at("                                    \n\n\n",17,2,37)
+    display(18,2,"Jack and Jill went up the hill,")
+    goto(l179)
+  }
+  print.at("                                    \n\n\n",19,2,37)
+  display(20,2,"Jack and Jill went up the hill,")
+}
+l179:
+if (vTimeSeconds > 4 && f108 && !f109) { //00b3
+  set(f109)
+  if (vMonitorType != HERCULES) { //00c1
+    display(19,2,"   To fetch a pail of water;")
+    goto(l212)
+  }
+  display(21,2,"   To fetch a pail of water;")
+}
+l212:
+if (vTimeSeconds > 10 && f109 && !f110) { //00d4
+  set(f110)
+  if (vMonitorType != HERCULES) { //00e2
+    display(20,2,"Jack fell down, and broke his crown,")
+    goto(l245)
+  }
+  display(22,2,"Jack fell down, and broke his crown,")
+}
+l245:
+if (vTimeSeconds > 15 && f110 && !f111) { //00f5
+  set(f111)
+  if (vMonitorType != HERCULES) { //0103
+    display(21,2,"   And Jill came tumbling after.")
+    goto(l278)
+  }
+  display(23,2,"   And Jill came tumbling after.")
+}
+l278:
+if (v48 == 5 && vTimeSeconds > 9) { //0116
+  set(f43)
+}
+if (f240) { //0122
+  reset(f240)
+  stop.cycling(o4)
+}
+v47--
+if (v47 == 1) { //012e
+  set(f43)
+}
+if (f43) { //0137
+  reset(f43)
+  v48++
+  if (v48 == 1) { //0141
+    stop.update(o0)
+    set.cel(o4,2)
+    set.cel(o5,1)
+    v47 = 15
+  }
+  if (v48 == 2) { //0153
+    set.cel(o4,3)
+    set.cel(o5,2)
+    v47 = 8
+  }
+  if (v48 == 3) { //0163
+    set.cel(o4,4)
+    set.cel(o5,3)
+    v47 = 8
+  }
+  if (v48 == 4) { //0173
+    set.loop(o4,2)
+    set.cel(o4,0)
+    erase(o5)
+    erase(o13)
+    v47 = 5
+  }
+  if (v48 == 5) { //0187
+    start.cycling(o4)
+    move.obj(o4,50,77,1,f240)
+  }
+  if (v48 == 6) { //0196
+    stop.cycling(o4)
+    reposition.to(o4,49,75)
+    set.loop(o4,0)
+    set.cel(o4,5)
+    set.loop(o5,1)
+    set.cel(o5,2)
+    reposition.to(o5,62,75)
+    draw(o5)
+    stop.cycling(o5)
+    position(o13,56,76)
+    draw(o13)
+    v47 = 10
+  }
+  if (v48 == 7) { //01c0
+    set.cel(o5,4)
+    reposition.to(o13,68,77)
+    reposition.to(o4,49,76)
+    set.cel(o4,6)
+    v47 = 4
+  }
+  if (v48 == 8) { //01d8
+    set.cel(o4,7)
+    v47 = 4
+  }
+  if (v48 == 9) { //01e5
+    set.cel(o4,6)
+    v47 = 4
+  }
+  if (v48 == 10) { //01f2
+    set.cel(o4,7)
+    v47 = 4
+  }
+  if (v48 == 11) { //01ff
+    set.loop(o4,3)
+    set.cel(o4,0)
+    start.cycling(o4)
+    move.obj(o4,49,126,2,f43)
+  }
+  if (v48 == 12) { //0214
+    set.loop(o4,0)
+    set.cel(o4,0)
+    reposition.to(o4,49,126)
+    stop.cycling(o4)
+    v47 = 2
+  }
+  if (v48 == 13) { //022a
+    stop.update(o4)
+    animate.obj(o7)
+    set.view(o7,67)
+    set.priority(o7,11)
+    position(o7,49,113)
+    set.loop(o7,5)
+    set.cel(o7,0)
+    draw(o7)
+    v47 = 16
+  }
+  if (v48 == 14) { //024a
+    erase(o13)
+    set.loop(o5,4)
+    set.cel(o5,0)
+    start.cycling(o5)
+    move.obj(o5,59,126,1,f43)
+  }
+  if (v48 == 15) { //0261
+    set.loop(o5,4)
+    set.cel(o5,0)
+    stop.cycling(o5)
+    v47 = 15
+  }
+  if (v48 == 16) { //0273
+    block(42,120,66,130)
+    set(f114)
+  }
+}
+return()

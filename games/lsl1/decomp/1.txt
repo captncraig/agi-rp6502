@@ -1,4 +1,150 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  status.line.off()
+  set(f38)
+  set(f48)
+  set(f85)
+  prevent.input()
+  vKeyPressed = 0
+  vCycleTime = 2
+  load.sound(21)
+  load.view(42)
+  load.view(43)
+  load.view(44)
+  load.view(39)
+  load.view(40)
+  load.view(41)
+  load.view(38)
+  v202 = 2
+  v203 = 3
+  v204 = 4
+  load.pic(v202)
+  load.pic(v203)
+  load.pic(v204)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  set.view(o1,43)
+  set.loop(o1,0)
+  position(o1,0,130)
+  animate.obj(o2)
+  set.view(o2,39)
+  set.cel(o2,0)
+  set.priority(o2,4)
+  stop.cycling(o2)
+  step.size(o0,v86)
+  position(o0,0,160)
+  set.view(o0,44)
+  set.loop(o0,0)
+  sound(21,f52)
+  v65 = 0
+  add.to.pic(42,0,0,4,18,4,4)
+  add.to.pic(42,0,1,4,36,4,4)
+  add.to.pic(42,0,2,46,36,4,4)
+  add.to.pic(42,0,3,11,87,4,4)
+  v67 = 8
+  show.pic()
+  return()
+}
+if (f75) { //0090
+  reset(f75)
+  v65++
+  if (v65 == 1) { //009a
+    draw(o1)
+    move.obj(o1,36,94,2,f75)
+  }
+  if (v65 == 2) { //00a9
+    move.obj(o1,136,94,2,f75)
+    draw(o0)
+    move.obj(o0,80,160,3,f75)
+  }
+  if (v65 == 3) { //00be
+    if (vMonitorType != HERCULES) { //00c5
+      display(23,3,"Adventure Game Development System")
+      display(24,4,"(C) 1987 by Sierra On-Line, Inc.")
+    }
+    set.loop(o0,2)
+    fix.loop(o0)
+    move.obj(o0,149,160,2,f75)
+  }
+  if (v65 == 4) { //00e0
+    erase(o1)
+  }
+  if (v65 == 5) { //00e9
+    erase(o0)
+    if (vMonitorType != HERCULES) { //00f2
+      clear.lines(23,24,c0)
+    }
+    draw.pic(v202)
+    position(o2,41,94)
+    draw(o2)
+    show.pic()
+    v67 = 8
+  }
+  if (v65 == 6) { //010a
+    set.cel(o2,1)
+    reposition.to(o2,41,114)
+    set.loop(o1,1)
+    draw(o1)
+    move.obj(o1,100,94,2,f75)
+  }
+  if (v65 == 7) { //0123
+    move.obj(o1,0,94,2,f75)
+    set.loop(o0,1)
+    draw(o0)
+    move.obj(o0,50,160,3,f75)
+  }
+  if (v65 == 8) { //013b
+    set.loop(o0,3)
+    fix.loop(o0)
+    move.obj(o0,0,160,2,f75)
+  }
+  if (v65 == 9) { //014d
+    erase(o1)
+  }
+  if (v65 == 10) { //0156
+    erase(o0)
+    set.view(o0,0)
+    erase(o2)
+    draw.pic(v203)
+    set.view(o2,40)
+    set.cel(o2,0)
+    position(o2,53,80)
+    draw(o2)
+    show.pic()
+    v67 = 9
+  }
+  if (v65 == 11) { //0176
+    set.cel(o2,1)
+    reposition.to(o2,65,84)
+    v67 = 8
+  }
+  if (v65 == 12) { //0187
+    erase(o2)
+    draw.pic(v204)
+    add.to.pic(41,0,0,68,59,4,4)
+    add.to.pic(41,0,1,25,155,4,4)
+    show.pic()
+    v67 = 8
+  }
+  if (v65 == 13) { //01a6
+    draw.pic(v203)
+    add.to.pic(38,0,0,64,84,4,4)
+    show.pic()
+    v67 = 3
+  }
+  if (v65 == 14 && !f9) { //01bb
+    new.room(1)
+  }
+}
+if (f52) { //01c7
+  if (v65 > 13) { //01cd
+    new.room(1)
+    goto(l476)
+  }
+  sound(21,f52)
+}
+l476:
+return()

@@ -1,4 +1,172 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(105)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if ((!(v36 > 0) || !(obj.in.room(i16,vCurrentRoom)))) { //000e
+    v221 = 4
+    goto(l37)
+  }
+  v221 = 6
+l37:
+  show.pic()
+  status.line.off()
+  v33 = 1
+  start.motion(o0)
+  set(f34)
+}
+if ((vEgoDir > 0 || f34)) { //002e
+  reset(f34)
+  if ((vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 5)) { //003b
+    v33++
+    if (v33 > v221) { //004c
+      v33 = 1
+    }
+  }
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 7)) { //0056
+    v33--
+    if (!(v33 > 0)) { //0067
+      v33 = v221
+    }
+  }
+  if (vEgoDir == 8) { //0072
+    v33 = 1
+  }
+  if (vEgoDir == 6) { //007c
+    v33 = v221
+  }
+  start.motion(o0)
+  set.text.attribute(0,15)
+  if (v33 == 1) { //008b
+    clear.text.rect(3,10,19,29,15)
+    display(3,10,"10851vc")
+    display(4,10,"GRAND THEFT, AUTO")
+    display(7,10,"1983 Cadillac Coupe")
+    display(8,10,"deVille, black")
+    display(9,10,"CA License  LOP1238")
+    display(10,10,"VIN C03456218")
+    display(11,10,"Stolen in Lytton, CA")
+    display(14,10,"1985 Yamamama 750cc")
+    display(15,10,"motorcycle, cherry")
+    display(16,10,"red, w/saddlebags.")
+    display(17,10,"CA License  M65789")
+    display(18,10,"VIN  M09876543")
+    display(19,10,"Stolen in Lytton, CA")
+  }
+  if (v33 == 2) { //00cc
+    clear.text.rect(3,10,19,29,15)
+    display(3,10,"459pc BURGLARY")
+    display(6,10,"Ramington rifle,")
+    display(7,10,".22-caliber, lever-")
+    display(8,10,"action, oak stock,")
+    display(9,10,"gold-plated trigger.")
+    display(10,10,"SERIAL #R12345678")
+    display(13,10,"Ladies silk panties,")
+    display(14,10,"57 pair, size 46-50,")
+    display(15,10,"blue, with zippered")
+    display(16,10,"crotch. Stolen from")
+    display(17,10,"\"Fancy Pants")
+    display(18,10,"Lingerie Emporium.\"")
+  }
+  if (v33 == 3) { //0109
+    clear.text.rect(3,10,19,29,15)
+    display(3,10,"459pc BURGLARY")
+    display(5,10,"Hog and dog food,")
+    display(6,10,"2400 lbs. Taken from")
+    display(7,10,"Fat Fred's \"Fat and")
+    display(8,10,"Feed\" Farm, Lytton")
+    display(10,10,"9 large-mouthed,")
+    display(11,10,"belly-bustin' stink")
+    display(12,10,"baits. Stolen from")
+    display(13,10,"\"Chink's Cast 'N'")
+    display(14,10,"Catchit\" Bait Store")
+    display(16,10,"Wedding rings, 8,")
+    display(17,10,"24-carat, w/diamond")
+    display(18,10,"stones. Taken from")
+    display(19,10,"\"Jessie the Jeweler\"")
+  }
+  if (v33 == 4) { //014e
+    clear.text.rect(3,10,19,29,15)
+    display(3,10,"BE ON THE LOOKOUT:")
+    display(6,10,"Dog, 3', 145 lbs,")
+    display(7,10,"black & white spots")
+    display(8,10,"Name: \"Buffie\"")
+    display(9,10,"AKA \"The Consumer\"")
+  }
+  if (v33 == 5) { //016f
+    clear.text.rect(3,10,19,29,15)
+    display(3,10,"FBI MOST-WANTED LIST")
+    display(5,10,"WANTED FOR MURDER")
+    display(6,10,"187pc, Federal")
+    display(7,10,"Warrant #219293-1985")
+    if (f56) { //018c
+      add.to.pic(105,0,5,56,99,4,4)
+      goto(l421)
+    }
+    add.to.pic(105,0,5,56,106,4,4)
+l421:
+    display(15,10,"Jason Taselli")
+    display(16,10,"ALIAS: known to use")
+    display(17,10,"the last names")
+    display(18,10,"Harris and Hoffman.")
+  }
+  if (v33 == 6) { //01b5
+    clear.text.rect(3,10,19,29,15)
+    display(4,10,"PHYSICAL DESCRIPTION")
+    display(5,10,"5'11, 195 lbs, black")
+    display(6,10,"hair, brown eyes.")
+    display(7,10,"Has tattoo of a")
+    display(8,10,"flower above left")
+    display(9,10,"nipple.")
+    display(12,10,"Wanted for the")
+    display(13,10,"murder of a Columbia")
+    display(14,10,"national, suspected")
+    display(15,10,"narcotics runner.")
+  }
+  set.text.attribute(15,0)
+}
+if ((fEnteredCommand || controller(c32))) { //01ed
+  set(f34)
+  goto(l511)
+}
+goto(l798)
+l511:
+if ((said("preceding", "page", "rol") || said("move", "preceding", "page", "rol") || said("examine", "preceding", "page", "rol"))) { //01ff
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33--
+  if (!(v33 > 0)) { //0227
+    v33 = v221
+  }
+}
+if ((said("move", "page") || said("examine") || said("examine", "following", "page") || said("examine", "clipboard"))) { //0232
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33++
+  if (v33 > v221) { //0256
+    v33 = 1
+  }
+}
+if ((said("get", "clipboard") || said("continue", "clipboard") || said("get"))) { //0260
+  print("The clipboard must remain here in the office.")
+}
+if ((said("empty", "flyer", "rol") || said("empty", "anyword", "flyer", "rol") || said("empty", "hoffman", "flyer", "rol") || said("get", "flyer", "rol") || said("get", "anyword", "flyer", "rol") || said("get", "hoffman", "flyer", "rol"))) { //0278
+  if (!(obj.in.room(i16,vCurrentRoom))) { //02b6
+    set(f114)
+    goto(l732)
+  }
+  if (v33 < 5) { //02c3
+    print("Do you see a poster here?")
+    goto(l732)
+  }
+  get(i16)
+  vCurrentScore += 2
+  print("Ah, ha!! \"Tattoo of flower above left nipple...\" You take the FBI Wanted Poster, knowing Judge Palmer will find it very interesting!")
+  v221 = 4
+  v33 = 1
+}
+l732:
+if ((said("drop", "clipboard", "away") || said("dont move", "examine", "clipboard") || said("drop", "back", "clipboard") || said("drop", "clipboard", "rol") || said("hang", "up", "clipboard", "rol") || said("hang", "clipboard", "rol") || said("drop", "clipboard", "back"))) { //02dc
+  new.room(49)
+}
+l798:
+return()

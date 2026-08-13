@@ -1,3 +1,251 @@
-if (!(isSet(f58)
-!!!
-&{%!e(string=incomplete condition: 0x94)}
+if (!f58) { //0002
+  set(f58)
+  erase(o12)
+  load.view(97)
+  load.view(37)
+  load.sound(16)
+  ignore.blocks(o13)
+  ignore.objs(o13)
+  if (posn(o13,0,85,19,100)) { //0017
+    v45 = 0
+    v46 = 97
+    goto(l125)
+  }
+  if (posn(o13,19,85,75,100)) { //002a
+    v45 = 36
+    v46 = 98
+    goto(l125)
+  }
+  if (posn(o13,135,85,150,100)) { //003d
+    v45 = 149
+    v46 = 100
+    goto(l125)
+  }
+  if (posn(o13,74,85,136,100)) { //0050
+    v45 = 122
+    v46 = 100
+    goto(l125)
+  }
+  get.posn(o13,v38,v39)
+  if (v38 < 75) { //0067
+    v45 = 3
+    v46 = 147
+    goto(l125)
+  }
+  v45 = 143
+  v46 = 147
+l125:
+  v209 = 1
+  move.obj(o13,v45,v46,209,f240)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 34 && v212 > 52 && v212 < 90) { //008a
+    move.obj(o0,90,167,1,f122)
+  }
+}
+if (f122) { //009d
+  reset(f122)
+  set.loop(o0,3)
+  stop.motion(o0)
+  stop.cycling(o0)
+}
+if (f240) { //00ac
+  reset(f240)
+  get.posn(o13,v38,v39)
+  if (v38 == 3) { //00b8
+    stop.cycling(o13)
+    set.loop(o13,0)
+    set(f104)
+    set(f241)
+    goto(l253)
+  }
+  if (v38 == 143) { //00cb
+    stop.cycling(o13)
+    set.loop(o13,1)
+    set(f104)
+    reset(f241)
+    goto(l253)
+  }
+  if (v38 < 75) { //00de
+    v45 = 3
+    v46 = 147
+    goto(l244)
+  }
+  v45 = 143
+  v46 = 147
+l244:
+  v209 = 1
+  move.obj(o13,v45,v46,209,f240)
+}
+l253:
+if (!f108) { //00fd
+  set(f108)
+  sound(16,f103)
+  vTimeSeconds = 0
+  set(f15)
+  print.at("                                  \n\n\n\n\n",1,2,37)
+  display(2,3,"Oh where, oh where has my")
+  display(3,3,"    little dog gone?")
+}
+if (vTimeSeconds > 5 && f108 && f104) { //011b
+  set(f109)
+  reset(f104)
+  set(f43)
+  display(4,3,"Oh where, oh where can he be?")
+}
+if (vTimeSeconds > 12 && f109 && !f110) { //0130
+  set(f110)
+  display(5,3,"With his ears cut short, ")
+  display(6,3,"    And his tail cut long,")
+}
+if (vTimeSeconds > 16 && f110 && !f111) { //0146
+  set(f111)
+  display(7,3,"Oh where, oh where can he be?")
+}
+if (v48 == 8 && f111 && !f114) { //0158
+  set(f43)
+}
+v47--
+if (v47 == 1) { //0168
+  set(f43)
+}
+if (f43) { //0171
+  reset(f43)
+  v48++
+  if (v48 == 1) { //017b
+    stop.update(o0)
+    stop.cycling(o13)
+    if (f241) { //0186
+      set.loop(o4,0)
+      goto(l405)
+    }
+    set.loop(o4,1)
+l405:
+    set.cel(o4,0)
+    erase(o5)
+    v47 = 15
+  }
+  if (v48 == 2) { //019d
+    if (f241) { //01a4
+      set.loop(o4,1)
+      goto(l435)
+    }
+    set.loop(o4,0)
+l435:
+    set.cel(o4,0)
+    v47 = 15
+  }
+  if (v48 == 3) { //01b9
+    if (f241) { //01c0
+      set.loop(o4,1)
+      goto(l463)
+    }
+    set.loop(o4,0)
+l463:
+    set.cel(o4,1)
+    reposition.to(o4,67,147)
+    v47 = 8
+  }
+  if (v48 == 4) { //01d9
+    set.cel(o4,2)
+    animate.obj(o7)
+    set.view(o7,37)
+    if (f241) { //01e8
+      set.loop(o7,2)
+      position(o7,33,124)
+      goto(l511)
+    }
+    set.loop(o7,3)
+    position(o7,72,124)
+l511:
+    draw(o7)
+    stop.cycling(o7)
+    animate.obj(o6)
+    set.view(o6,73)
+    set.loop(o6,7)
+    set.cel(o6,0)
+    if (f241) { //020e
+      position(o6,37,116)
+      goto(l543)
+    }
+    position(o6,78,116)
+l543:
+    set.priority(o6,14)
+    draw(o6)
+    stop.cycling(o6)
+    v47 = 25
+  }
+  if (v48 == 5) { //0229
+    set.cel(o4,1)
+    erase(o7)
+    erase(o6)
+    start.cycling(o13)
+    set.view(o13,73)
+    set.cel(o13,0)
+    if (f241) { //023f
+      set.loop(o13,3)
+      move.obj(o13,56,147,2,f43)
+      goto(l602)
+    }
+    set.loop(o13,2)
+    move.obj(o13,76,147,2,f43)
+  }
+l602:
+  if (v48 == 6) { //025a
+    stop.cycling(o13)
+    set.cel(o13,0)
+    if (f241) { //0266
+      reposition.to(o13,59,141)
+      goto(l631)
+    }
+    reposition.to(o13,72,141)
+l631:
+    v47 = 3
+  }
+  if (v48 == 7) { //027a
+    set.cel(o4,3)
+    if (f241) { //0284
+      set.loop(o4,1)
+      reposition.to(o13,61,138)
+      reposition.to(o4,64,147)
+      goto(l675)
+    }
+    set.loop(o4,0)
+    reposition.to(o13,70,138)
+    reposition.to(o4,63,147)
+l675:
+    v47 = 3
+  }
+  if (v48 == 8) { //02a6
+    set.view(o4,97)
+    start.cycling(o4)
+    v209 = 2
+    cycle.time(o4,v209)
+    if (f241) { //02b8
+      set.loop(o13,5)
+      reposition.to(o13,69,143)
+      set.loop(o4,1)
+      reposition.to(o4,67,147)
+      goto(l733)
+    }
+    set.loop(o13,4)
+    reposition.to(o13,63,143)
+    set.loop(o4,0)
+    reposition.to(o4,60,147)
+l733:
+    set.priority(o13,13)
+    set.cel(o13,0)
+    start.cycling(o13)
+    v209 = 2
+    cycle.time(o13,v209)
+  }
+  if (v48 == 9) { //02eb
+    if (f241) { //02f2
+      block(60,142,82,148)
+      goto(l773)
+    }
+    block(52,142,75,148)
+l773:
+    set(f114)
+  }
+}
+return()

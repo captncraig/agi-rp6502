@@ -1,4 +1,101 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(55)
+  load.logic(108)
+  load.view(39)
+  if (has(i15)) { //0014
+    load.view(28)
+  }
+  if (f108) { //001c
+    load.logic(116)
+    set(f201)
+    random(0,255,v61)
+    if (v61 < 125) { //002a
+      load.logic(114)
+      set(f202)
+    }
+  }
+  if (vPrevRoom == 1) { //0035
+    position(o0,136,157)
+  }
+  if (vPrevRoom == 20 && !f103) { //0040
+    position(o0,1,122)
+  }
+  if (f103) { //004e
+    set.priority(o0,15)
+  }
+  draw(o0)
+  call(108)
+  if (f201) { //005b
+    call(116)
+  }
+  if (f202) { //0063
+    call(114)
+  }
+  show.pic()
+  if (vPrevRoom != 20 && !f103) { //006c
+    print("The swamp to the west is impenetrable. The land is unstable and soggy.")
+  }
+  return()
+}
+if (!(vWhichEgoBorder > 0)) { //007a
+  reset(f200)
+}
+if (f130) { //0084
+  print("The swamp to the west is impenetrable. The land is unstable and soggy.")
+}
+if (f103) { //008c
+  goto(l192)
+}
+if (!f128 && !f129) { //0095
+  goto(l171)
+}
+if (f129) { //00a2
+  goto(l171)
+}
+l171:
+if (!fEgoOnWater) { //00ab
+  if (posn(o0,19,81,37,138)) { //00b2
+    set(fEgoOnWater)
+    set(f117)
+  }
+}
+l192:
+if (f202) { //00c0
+  call(114)
+}
+if (f201) { //00c8
+  call(116)
+}
+call(108)
+if (vWhichEgoBorder == 1) { //00d2
+  new.room(16)
+}
+if (vWhichEgoBorder == 4) { //00db
+  new.room(20)
+}
+if (vWhichEgoBorder == 3) { //00e4
+  if (!f103) { //00eb
+    new.room(1)
+    goto(l258)
+  }
+  if (!f200) { //00f7
+    set(f200)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+l258:
+if (vWhichEgoBorder == 2) { //0102
+  if (!f103) { //0109
+    new.room(22)
+    goto(l288)
+  }
+  if (!f200) { //0115
+    set(f200)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+l288:
+return()

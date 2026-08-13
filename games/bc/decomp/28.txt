@@ -1,4 +1,332 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f152)
+  v66 = 167
+  v65 = 1
+  load.sound(2)
+  load.view(29)
+  load.view(11)
+  load.view(6)
+  load.view(128)
+  set.horizon(40)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f147) { //0022
+    add.to.pic(128,0,0,0,118,4,4)
+  }
+  set.view(o0,0)
+  set.priority(o0,14)
+  start.motion(o0)
+  if (vPrevRoom == 29) { //0038
+    position(o0,8,57)
+    move.obj(o0,10,57,0,f61)
+    goto(l80)
+  }
+  position(o0,4,142)
+l80:
+  draw(o0)
+  show.pic()
+  if (f99) { //0053
+    print("Since you have debugging set, when you get tired of falling, do a \"Set Flag\" 144, and you'll get a \"oops\" message instead.  (This offer only valid on non-Hercules monitors.) (Your mileage may vary.)")
+  }
+  if (vPrevRoom == 25) { //005b
+    print("You are on a narrow ledge, with a sheer drop beside you.")
+  }
+  return()
+}
+if (f152) { //0065
+  if ((v39 > 130 || v38 < 40)) { //006b
+    set.priority(o0,15)
+  }
+  goto(l993)
+}
+if (f130) { //007d
+  set(fSaidAccepted)
+  if (v65 == 1) { //0085
+    print("You are on a narrow ledge, with a sheer drop beside you.")
+    goto(l159)
+  }
+  if (v65 == 5) { //0091
+    print("You are hanging on the rope.")
+    goto(l159)
+  }
+  print("Your fingers and toes are dug into the tiny crevices in the sheer rock face. Hang on, Taran!")
+}
+l159:
+if (!f128 && !f129) { //009f
+  goto(l292)
+}
+if (f129) { //00ac
+  goto(l281)
+}
+if (f147) { //00b5
+  if (posn(o0,0,129,23,149)) { //00bb
+    set(fSaidAccepted)
+    if (v65 == 1) { //00c7
+      v65 = 5
+      print("You grab the rope, and begin your descent.")
+      set.view(o0,29)
+      start.motion(o0)
+      get.posn(o0,v62,v63)
+      v61 = 4
+      v61 -= v62
+      v62 = v61
+      v61 = 131
+      v61 -= v63
+      repositon(o0,v62,v61)
+      ignore.blocks(o0)
+      set(f160)
+      move.obj(o0,3,132,2,f201)
+      goto(l278)
+    }
+    v65 = 1
+    set.view(o0,0)
+    v61 = 1
+    step.size(o0,v61)
+    start.motion(o0)
+    erase(o0)
+    observe.blocks(o0)
+    reset(f160)
+    draw(o0)
+    position(o0,140,142)
+  }
+}
+l278:
+goto(l292)
+l281:
+if (v60 == 11) { //0119
+  print("You scrape your dagger on the rocks and dull the blade.")
+  set(fSaidAccepted)
+}
+l292:
+if (posn(o0,0,167,33,31) && vPrevRoom == 29 && !f203) { //0124
+  set(f203)
+  print("Whew! Made it.")
+}
+if (posn(o0,0,0,40,47) && vPrevRoom == 25 && !f203) { //0138
+  set(f203)
+  print("Whew! Made it.")
+}
+if (fEgoOnWater) { //014c
+  if (posn(o0,51,136,63,138)) { //0152
+    if (v65 == 1) { //015c
+      v64 = 1
+      v38 = 52
+      v39 = 135
+      goto(l376)
+    }
+    v200 = 1
+    v38 = 55
+    v39 = 139
+  }
+l376:
+  if (posn(o0,72,147,81,149)) { //0178
+    if (v65 == 1) { //0182
+      v64 = 2
+      v38 = 74
+      v39 = 146
+      goto(l414)
+    }
+    v200 = 2
+    v38 = 78
+    v39 = 150
+  }
+l414:
+  if (posn(o0,101,145,115,147)) { //019e
+    if (v65 == 1) { //01a8
+      v64 = 3
+      v38 = 103
+      v39 = 144
+      goto(l452)
+    }
+    v200 = 3
+    v38 = 106
+    v39 = 148
+  }
+l452:
+  if (posn(o0,91,76,103,78)) { //01c4
+    if (v65 == 1) { //01ce
+      v64 = 4
+      v38 = 92
+      v39 = 75
+      goto(l490)
+    }
+    v200 = 4
+    v38 = 95
+    v39 = 79
+  }
+l490:
+  if (posn(o0,26,72,44,74)) { //01ea
+    if (v65 == 1) { //01f4
+      v64 = 5
+      v38 = 30
+      v39 = 71
+      goto(l528)
+    }
+    v200 = 5
+    v38 = 33
+    v39 = 75
+  }
+l528:
+  if (posn(o0,14,53,26,55)) { //0210
+    if (v65 == 1) { //021a
+      v64 = 6
+      v38 = 15
+      v39 = 52
+      goto(l566)
+    }
+    v200 = 6
+    v38 = 18
+    v39 = 56
+  }
+}
+l566:
+if (v64 > 0) { //0236
+  v64 = 0
+  v65 = 7
+  set.priority(o0,12)
+  start.motion(o0)
+  observe.blocks(o0)
+  set.view(o0,11)
+  reposition.to(o0,v38,v39)
+  if (!f205) { //0251
+    set(f205)
+    print("Your fingertips clutch the tiny crevices in the rock face.")
+  }
+}
+if (v200 > 0) { //025c
+  v200 = 0
+  v65 = 1
+  set.priority(o0,14)
+  step.size(o0,v105)
+  start.motion(o0)
+  observe.blocks(o0)
+  set.view(o0,0)
+  reposition.to(o0,v38,v39)
+  if (!f206) { //027a
+    set(f206)
+    print("Gratefully, you drop to the ledge.")
+  }
+}
+if ((posn(o0,40,80,50,88) || posn(o0,73,81,83,89) || posn(o0,95,77,105,87) || posn(o0,57,138,66,148) || posn(o0,17,55,26,60))) { //0285
+  if (v65 == 1) { //02a9
+    reset(f160)
+    ignore.blocks(o0)
+    goto(l699)
+  }
+  set(f160)
+  observe.blocks(o0)
+l699:
+  goto(l713)
+}
+if (!f152) { //02be
+  reset(f160)
+  observe.blocks(o0)
+}
+l713:
+if (v65 == 7) { //02c9
+  if ((posn(o0,27,54,32,61) || posn(o0,95,76,111,87) || posn(o0,49,78,82,91) || posn(o0,66,138,70,148))) { //02d0
+    set(f160)
+    goto(l757)
+  }
+  reset(f160)
+}
+l757:
+if (posn(o0,0,167,35,31)) { //02f5
+  if (v65 == 5) { //02ff
+    set(f160)
+    ignore.blocks(o0)
+    goto(l785)
+  }
+  reset(f160)
+  observe.blocks(o0)
+}
+l785:
+if (fTriggerLine && !f160 && !f152) { //0311
+  if (f144 && vMonitorType != HERCULES) { //031d
+    toggle(f207)
+    if (f207) { //0329
+      display(22,30," oops ")
+      goto(l826)
+    }
+    display(22,31," oops ")
+l826:
+    goto(l941)
+  }
+  set(f152)
+  set.view(o0,6)
+  sound(2,f61)
+  set(f133)
+  ignore.blocks(o0)
+  if (posn(o0,50,78,60,79)) { //0349
+    v62 = 6
+    v63 = 1
+    repositon(o0,v62,v63)
+    set.priority(o0,11)
+    goto(l928)
+  }
+  if (posn(o0,61,79,72,80)) { //0363
+    set.priority(o0,11)
+    goto(l928)
+  }
+  if (posn(o0,73,79,84,80)) { //0373
+    v62 = 250
+    v63 = 1
+    repositon(o0,v62,v63)
+    set.priority(o0,11)
+    goto(l928)
+  }
+  if (posn(o0,49,56,82,67)) { //038d
+    set.priority(o0,11)
+    goto(l928)
+  }
+  set.priority(o0,15)
+l928:
+  get.posn(o0,v62,v63)
+  v67 = 4
+  move.obj(o0,v62,v66,67,f204)
+l941:
+  goto(l958)
+}
+if (f144 && vMonitorType != HERCULES) { //03b0
+  display(22,30,"      ")
+}
+l958:
+if (!f45 && posn(o0,0,54,16,63)) { //03be
+  vCurrentScore += 6
+  set(f45)
+}
+if (posn(o0,0,0,6,55)) { //03d0
+  set.view(o0,0)
+  reposition.to(o0,4,57)
+}
+l993:
+if (f204) { //03e1
+  if (f99) { //03e7
+    reset(f152)
+    reset(f133)
+    v110 = 0
+    vCurrentRoom = 25
+    new.room(28)
+    goto(l1025)
+  }
+  erase(o0)
+  v59 = 1
+}
+l1025:
+if (f201) { //0401
+  reset(f160)
+  new.room(25)
+}
+if (vWhichEgoBorder == 4 && !f152) { //040b
+  start.motion(o0)
+  get.posn(o0,v62,v63)
+  if (v63 < 80) { //041b
+    set.view(o0,0)
+    new.room(29)
+    goto(l1068)
+  }
+  new.room(25)
+}
+l1068:
+return()

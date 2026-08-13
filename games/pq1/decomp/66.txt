@@ -1,5 +1,464 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(10)
+  load.view(253)
+  load.view(211)
+  load.view(212)
+  if (f94) { //0012
+    load.view(247)
+  }
+  if (f84) { //001a
+    load.logic(73)
+    load.view(228)
+    goto(l41)
+  }
+  load.view(229)
+l41:
+  load.logic(74)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o2)
+  set.view(o2,253)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.priority(o2,11)
+  position(o2,18,141)
+  v152 = 4
+  cycle.time(o2,v152)
+  draw(o2)
+  if ((vPrevRoom == 76 || vPrevRoom == 77 || vPrevRoom == 78)) { //0047
+    set.cel(o2,3)
+    stop.update(o2)
+    v221 = 4
+    ignore.blocks(o0)
+    goto(l104)
+  }
+  set.cel(o2,0)
+  stop.update(o2)
+l104:
+  if (f94) { //0068
+    animate.obj(o3)
+    set.view(o3,247)
+    set.loop(o3,1)
+    ignore.blocks(o3)
+    position(o3,52,136)
+    draw(o3)
+    move.obj(o3,153,136,0,f231)
+    v223 = 0
+  }
+  animate.obj(o1)
+  if (f84) { //0089
+    set.view(o1,228)
+    goto(l152)
+  }
+  set.view(o1,229)
+l152:
+  ignore.objs(o1)
+  ignore.blocks(o1)
+  set.priority(o1,4)
+  if ((vPrevRoom == 65 || vPrevRoom == 76 || vPrevRoom == 77 || vPrevRoom == 78)) { //009f
+    position(o1,85,125)
+    set.loop(o1,0)
+    set.cel(o1,0)
+    draw(o1)
+    stop.update(o1)
+    goto(l256)
+  }
+  if (v101 < v100) { //00c2
+    set.loop(o1,0)
+    set.cel(o1,5)
+    position(o1,85,167)
+    draw(o1)
+    stop.cycling(o1)
+    move.obj(o1,85,125,0,f220)
+    v220 = 4
+  }
+  if (v101 > v100) { //00e0
+    set.loop(o1,1)
+    set.cel(o1,3)
+    position(o1,85,31)
+    draw(o1)
+    stop.cycling(o1)
+    move.obj(o1,85,125,0,f220)
+    v220 = 5
+    set(f221)
+  }
+l256:
+  if ((!(v100 > 0) || v100 == 2)) { //0100
+    add.to.pic(211,0,0,92,59,15,4)
+    add.to.pic(212,0,0,53,73,4,4)
+    add.to.pic(212,0,1,126,73,4,4)
+  }
+  if (v100 == 3) { //0125
+    add.to.pic(211,0,1,92,59,15,4)
+    add.to.pic(212,1,0,53,73,4,4)
+    add.to.pic(212,1,1,126,73,4,4)
+  }
+  if (v100 == 4) { //0144
+    add.to.pic(211,0,2,92,59,15,4)
+    add.to.pic(212,2,0,53,73,4,4)
+    add.to.pic(212,2,1,126,73,4,4)
+  }
+  if (vPrevRoom != 64 && vPrevRoom != 65 && vPrevRoom != 66 && vPrevRoom != 76 && vPrevRoom != 77 && vPrevRoom != 78) { //0163
+    position(o0,75,130)
+    v100 = 2
+  }
+  if ((vPrevRoom == 76 || vPrevRoom == 77 || vPrevRoom == 78)) { //0186
+    position(o0,19,137)
+  }
+  if (vPrevRoom != 66 && vPrevRoom != 64) { //0199
+    draw(o0)
+  }
+  if (f84) { //01a7
+    call(73)
+  }
+  show.pic()
+  return()
+}
+reset(f89)
+if (posn(o0,80,119,108,126)) { //01b3
+  set(f89)
+}
+reset(f230)
+reset(f226)
+if (posn(o0,50,121,65,126)) { //01c3
+  set(f230)
+  set(f226)
+}
+reset(f227)
+if (posn(o0,124,121,139,126)) { //01d3
+  set(f230)
+  set(f227)
+}
+reset(f229)
+if (posn(o0,16,134,24,145)) { //01e3
+  set(f229)
+}
+distance(o0,o3,v222)
+if (v222 < v61) { //01f3
+  set(f109)
+}
+if (f231) { //01fc
+  reset(f231)
+  erase(o3)
+}
+if ((v221 == 4 || v221 == 2)) { //0206
+  if (posn(o0,5,131,32,145)) { //0212
+    ignore.blocks(o0)
+    goto(l547)
+  }
+  observe.blocks(o0)
+l547:
+  if (!(posn(o0,11,128,32,145))) { //0223
+    start.update(o2)
+    reverse.loop(o2,f225)
+    v221 = 3
+    observe.blocks(o0)
+  }
+  goto(l588)
+}
+if (posn(o0,26,128,32,130)) { //023b
+  ignore.blocks(o0)
+  goto(l588)
+}
+observe.blocks(o0)
+l588:
+if (f225) { //024c
+  if (v221 == 1) { //0252
+    stop.update(o2)
+    v221 = 2
+  }
+  if (v221 == 3) { //025e
+    stop.update(o2)
+    v221 = 0
+    reset(f36)
+    observe.blocks(o0)
+  }
+}
+if (!fEnteredCommand) { //026e
+  goto(l1167)
+}
+if (said("examine", "d")) { //0278
+  if ((f230 || f229)) { //0282
+    print("The door appears to be made of a heavy wood.")
+    goto(l659)
+  }
+  set(f113)
+}
+l659:
+if (said("o", "d")) { //0293
+  if (f229) { //029d
+    if (f84) { //02a3
+      print("\"Hey, come on, Darlin',\" Sweet Cheeks whines. \"I may do a lot of things, but stairs ain't one of them! When you been walking streets as long as I have, you'll use the elevator, too.\"")
+      start.motion(o0)
+      goto(l715)
+    }
+    if ((v221 != 1 || v221 != 2)) { //02b0
+      start.update(o2)
+      end.of.loop(o2,f225)
+      v221 = 1
+      goto(l715)
+    }
+    print("It is already open.")
+l715:
+    goto(l731)
+  }
+  if (f230) { //02ce
+    print("You try, but the door is locked.")
+    goto(l731)
+  }
+  set(f113)
+}
+l731:
+if (said("c", "d")) { //02db
+  if (f229) { //02e5
+    print("This door closes automatically.")
+    goto(l765)
+  }
+  if (f230) { //02f0
+    print("It is already closed.")
+    goto(l765)
+  }
+  set(f113)
+}
+l765:
+if ((said("car keys") || said("unlock", "d") || said("use", "car keys", "unlock", "d") || said("unlock", "d", "use", "car keys") || said("use", "car keys") || said("o", "use", "car keys") || said("o", "d", "use", "car keys"))) { //02fd
+  if (f230) { //0339
+    print("You do not have a key for this room.")
+    goto(l849)
+  }
+  if (f229) { //0344
+    print("It's not locked.")
+    goto(l849)
+  }
+  set(f113)
+}
+l849:
+if ((said("knock") || said("knock", "d") || said("knock", "on", "d"))) { //0351
+  if (f229) { //0369
+    print("You hear a hollow, ringing sound.")
+    goto(l901)
+  }
+  if (f230) { //0374
+    random(24,33,v152)
+    print(v152)
+    goto(l901)
+  }
+  set(f113)
+}
+l901:
+if (f89) { //0385
+  if ((said("examine") || said("examine", "accident") || said("examine", "fence") || said("examine", "button") || said("examine", "elevator"))) { //038b
+    print("The front wall of the elevator has four buttons marked \"One,\" \"Two,\" \"Three,\" and \"Four.\" What could they possibly do?")
+  }
+  if ((said("move", "one") || said("one"))) { //03af
+    v101 = v100
+    v100 = 1
+    set(f222)
+  }
+  if ((said("move", "two") || said("two"))) { //03c7
+    if (v100 != 2) { //03d7
+      v101 = v100
+      v100 = 2
+      set(f222)
+      goto(l1004)
+    }
+    print("You are already on that floor.")
+  }
+l1004:
+  if ((said("move", "three") || said("three"))) { //03ec
+    if (v100 != 3) { //03fc
+      v101 = v100
+      v100 = 3
+      set(f222)
+      goto(l1041)
+    }
+    print("You are already on that floor.")
+  }
+l1041:
+  if ((said("move", "four") || said("four"))) { //0411
+    if (v100 != 4) { //0421
+      v101 = v100
+      v100 = 4
+      set(f222)
+      goto(l1078)
+    }
+    print("You are already on that floor.")
+  }
+l1078:
+  if (said("move", "button", "rol")) { //0436
+    print("Which floor number?")
+  }
+  if (f222 && f84) { //0444
+    set(f87)
+    erase(o15)
+    reset(f85)
+    reset(f86)
+  }
+  goto(l1123)
+}
+if (said("examine", "elevator")) { //0457
+  print("It looks like something from an old, French movie. Don't you just love rococo ironwork?")
+}
+l1123:
+if ((said("examine") || said("examine", "accident"))) { //0463
+  if (v100 == 2) { //0473
+    print("%m18 second %m19 201 to 204 %m20")
+    goto(l1165)
+  }
+  if (v100 == 3) { //047f
+    print("%m18 third %m19 301 to 304 %m20")
+    goto(l1165)
+  }
+  print("%m18 fourth %m19 401 to 404 %m20")
+}
+l1165:
+call(74)
+l1167:
+if (f222) { //048f
+  reset(f222)
+  if (v31 < 100) { //0497
+    print("You have no business here. Get back to the business of crime stopping.")
+    goto(l1203)
+  }
+  set(f36)
+  prevent.input()
+  start.update(o1)
+  set.cel(o1,1)
+  end.of.loop(o1,f220)
+  erase(o0)
+  v220 = 1
+}
+l1203:
+if (f223) { //04b3
+  reset(f223)
+  stop.update(o1)
+  reset(f36)
+  accept.input()
+  v220 = 0
+  reset(f221)
+}
+if (f220) { //04c5
+  reset(f220)
+  if ((v220 == 4 || v220 == 5)) { //04cd
+    reverse.loop(o1,f223)
+    set(f224)
+  }
+  if (v220 == 2) { //04de
+    if (f94) { //04e5
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+      set(f140)
+      goto(l1270)
+    }
+    new.room(66)
+  }
+l1270:
+  if (v220 == 3) { //04f6
+    if (v100 == 1) { //04fd
+      erase(o1)
+      if (f94) { //0506
+        reset(f94)
+        print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+        set(f140)
+        goto(l1303)
+      }
+      new.room(64)
+l1303:
+      goto(l1325)
+    }
+    erase(o1)
+    if (f94) { //051c
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+      set(f140)
+      goto(l1325)
+    }
+    new.room(66)
+  }
+l1325:
+  if (v220 == 1) { //052d
+    if (v100 > v101) { //0534
+      set.loop(o1,1)
+      set.cel(o1,0)
+      stop.cycling(o1)
+      move.obj(o1,85,31,0,f220)
+      v220 = 2
+      set(f221)
+      goto(l1370)
+    }
+    move.obj(o1,85,167,0,f220)
+    v220 = 3
+  }
+}
+l1370:
+if (f224) { //055a
+  current.cel(o1,v152)
+  if (v152 == 1) { //0563
+    reset(f224)
+    start.motion(o0)
+    set.loop(o0,2)
+    set.cel(o0,0)
+    if (f87) { //0574
+      set(f88)
+      position(o0,95,123)
+      goto(l1415)
+    }
+    position(o0,91,123)
+l1415:
+    draw(o0)
+  }
+}
+if (f221) { //0589
+  get.posn(o1,v144,v145)
+  if (v220 == 2) { //0593
+    if (v145 == 46) { //059a
+      set.cel(o1,4)
+    }
+  }
+  if (v220 == 5) { //05a4
+    if (v145 == 45) { //05ab
+      set.loop(o1,0)
+      set.cel(o1,5)
+    }
+  }
+}
+if (vWhichEgoBorder == 2) { //05b8
+  new.room(65)
+}
+if (posn(o0,1,131,11,145)) { //05c1
+  if (v100 == 2) { //05cb
+    if (f94) { //05d2
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+      set(f140)
+      goto(l1507)
+    }
+    new.room(78)
+  }
+l1507:
+  if (v100 == 3) { //05e3
+    if (f94) { //05ea
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+      set(f140)
+      goto(l1531)
+    }
+    new.room(77)
+  }
+l1531:
+  if (v100 == 4) { //05fb
+    if (f94) { //0602
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+      set(f140)
+      goto(l1555)
+    }
+    new.room(76)
+  }
+}
+l1555:
+if (f84) { //0613
+  call(73)
+}
+return()

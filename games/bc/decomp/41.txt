@@ -1,4 +1,55 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f34)
+  v30 = 77
+  v31 = 160
+  v200 = 44
+  load.logic(112)
+  if (f108) { //001b
+    load.logic(116)
+    set(f200)
+  }
+  load.view(124)
+  animate.obj(o2)
+  set.view(o2,124)
+  position(o2,135,64)
+  load.view(125)
+  animate.obj(o10)
+  position(o10,70,127)
+  set.view(o10,125)
+  draw(o2)
+  draw(o10)
+  wander(o10)
+  position(o0,75,166)
+  set.loop(o0,3)
+  draw(o0)
+  call(112)
+  position(o9,77,147)
+  if (f200) { //0050
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //005a
+  if (f108) { //0060
+    print("Judging by the way the cook is looking at Hen Wen, you should probably leave.")
+    goto(l109)
+  }
+  print("That looks like a real cleaver! Perhaps you shouldn't find out!")
+}
+l109:
+v200--
+if (v200 == 1) { //006f
+  set(f37)
+}
+if (vWhichEgoBorder == 3) { //0078
+  new.room(43)
+}
+call(112)
+if (f200) { //0083
+  call(116)
+}
+return()

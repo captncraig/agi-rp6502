@@ -1,4 +1,272 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  v56 = 7
+  reset(f34)
+  v57 = 105
+  v58 = 124
+  v32 = 87
+  v31 = 116
+  load.logic(112)
+  load.logic(116)
+  load.view(0)
+  load.view(11)
+  load.view(30)
+  load.view(24)
+  load.view(35)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  load.sound(6)
+  if (v44 == 15) { //0036
+    ignore.horizon(o0)
+    ignore.blocks(o0)
+    if (vPrevRoom == 78) { //0041
+      position(o0,113,31)
+      goto(l83)
+    }
+    position(o0,113,158)
+l83:
+    set.priority(o0,4)
+    set.view(o0,30)
+    set.loop(o0,1)
+    fix.loop(o0)
+  }
+  if (v44 == 0) { //005e
+    set.view(o0,0)
+    if (vPrevRoom == 0) { //0068
+      position(o0,57,v58)
+    }
+    if (vPrevRoom == 81) { //0073
+      position(o0,151,167)
+    }
+    if (vPrevRoom == 79) { //007e
+      start.motion(o0)
+      vEgoDir = 4
+      if (v41 > 130) { //008a
+        position(o0,48,127)
+        goto(l156)
+      }
+      position(o0,73,117)
+    }
+  }
+l156:
+  if (v44 == 30) { //009c
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //00ae
+    draw(o0)
+  }
+  v36 = 0
+  if (v62 == 2) { //00b9
+    v36 = 1
+  }
+  call(112)
+  show.pic()
+  return()
+}
+call(112)
+call(116)
+if (v44 == 0) { //00cb
+  if (posn(o0,139,128,140,157)) { //00d2
+    set.loop(o0,1)
+    fix.loop(o0)
+    set(f221)
+    goto(l240)
+  }
+  if (f221) { //00e6
+    release.loop(o0)
+    reset(f221)
+  }
+}
+l240:
+if (v44 == 15 && !(posn(o0,113,0,115,167))) { //00f0
+  v44 = 6
+  set.view(o0,11)
+  release.loop(o0)
+  sound(1,f238)
+  if (v41 > 149) { //0109
+    goto(l525)
+  }
+  if (v41 > 40) { //0113
+    reset(f223)
+    v221 = v40
+    v222 = 134
+    goto(l301)
+  }
+  set(f223)
+  v221 = v40
+  v222 = 134
+l301:
+  v36 = 3
+  move.obj(o0,v221,v222,36,f222)
+  set.scan.start()
+  if (f222) { //0137
+    program.control()
+    reset(f222)
+    observe.blocks(o0)
+    stop.sound()
+    if (f223) { //0143
+      set.view(o0,24)
+      v44 = 20
+      reposition.to(o0,102,126)
+      reset.scan.start()
+      goto(l411)
+    }
+    set.view(o0,35)
+    reposition.to(o0,105,128)
+    sound(6,f238)
+    v220 = 5
+    v44 = 18
+    set(f35)
+    set.scan.start()
+    if (f45) { //016a
+      v220--
+    }
+    if (v220 > 0 && f238) { //0172
+      sound(6,f238)
+    }
+    if (!(v220 > 0)) { //017e
+      stop.sound()
+      reset(f35)
+      player.control()
+      reposition.to(o0,109,126)
+      set.view(o0,0)
+      observe.blocks(o0)
+      release.priority(o0)
+      release.loop(o0)
+      v44 = 0
+      reset.scan.start()
+    }
+  }
+l411:
+  return()
+}
+if (posn(o0,113,136,115,150)) { //019c
+  if (v44 == 15) { //01a6
+    if (vEgoDir != 1 && vEgoDir != 5 && vEgoDir != 0) { //01ad
+      v44 = 0
+      release.loop(o0)
+      observe.blocks(o0)
+      observe.horizon(o0)
+      release.priority(o0)
+      set.view(o0,0)
+      if (vEgoDir > 5) { //01cb
+        reposition.to(o0,110,146)
+        goto(l477)
+      }
+      reposition.to(o0,117,138)
+    }
+l477:
+    goto(l511)
+  }
+  if (v44 == 0) { //01e0
+    v44 = 15
+    start.motion(o0)
+    ignore.horizon(o0)
+    ignore.blocks(o0)
+    set.priority(o0,4)
+    set.view(o0,30)
+    set.loop(o0,1)
+    fix.loop(o0)
+    reposition.to(o0,113,142)
+  }
+}
+l511:
+if ((fTriggerLine || fEgoOnWater) && v44 != 6) { //01ff
+l525:
+  sound(1,f238)
+  v44 = 6
+  set.view(o0,11)
+  ignore.blocks(o0)
+  set.priority(o0,4)
+  v38 = 166
+  v37 = 3
+  move.obj(o0,v40,v38,37,f220)
+  goto(l981)
+}
+if ((said("examine") || said("examine", "ship"))) { //022a
+  print("This is the upper deck of the pirate ship. A ladder leads to the lower deck.")
+}
+if ((said("examine", "up", "mast") || said("examine", "mast"))) { //023c
+  print("The solid mast is swaying slightly. A rope ladder leads up into the rigging.")
+}
+if ((said("examine", "up", "ladder") || said("examine", "ladder"))) { //0252
+  print("The rope ladder looks flimsy. A careless step might be fatal!")
+}
+if ((said("examine", "carry") || said("look in", "carry") || said("look in", "hole") || said("examine", "hole"))) { //0268
+  print("The hatchway leads below decks. The bright sun affords little illumination of what may lie below.")
+}
+if ((said("look in", "door") || said("examine", "door"))) { //0288
+  print("The doorways at the stern give way to darkness.")
+}
+if ((said("dive", "bay") || said("board", "bay") || said("capture", "bay") || said("jump") || said("jump", "ship") || said("jump", "bay") || said("dive") || said("dive", "liquid") || said("board", "liquid") || said("capture", "liquid") || said("jump") || said("jump", "ship") || said("jump", "liquid") || said("dive"))) { //029c
+  print("The railing is too high for you to get over.")
+}
+if (said("examine", "sky")) { //02f0
+  if (v62 == 2) { //02fa
+    print("The sky is a deep, cloudless blue. You see sea birds high above you.")
+    goto(l776)
+  }
+  print("Shore birds can be seen in the cloudless sky.")
+}
+l776:
+if ((said("examine", "desert") || said("examine", "liquid") || said("examine", "bay"))) { //0308
+  if (v62 == 3) { //0320
+    print("You scan the horizon. You see land to the east.")
+  }
+  if (v62 == 2) { //0329
+    print("The ocean seems to be endless. In every direction, you see nothing but deep, blue water.")
+  }
+  if (v62 == 4) { //0332
+    print("The ship has anchored just offshore of a small beach. Further north, in the distance, looms a mountain range.")
+  }
+}
+if (v62 == 4 && (said("examine", "beach") || said("examine", "beach"))) { //033b
+  print("The ship has anchored just offshore of a small beach. Further north, in the distance, looms a mountain range.")
+}
+if (said("examine", "bandit")) { //0352
+  print("At the moment, you see no pirates.")
+}
+call(112)
+if (vWhichEgoBorder > 0 && (v44 == 25 || v44 == 26)) { //0360
+  if ((vWhichEgoBorder == 1 || vWhichEgoBorder == 3)) { //036f
+    if (v62 != 4) { //037b
+      new.room(31)
+      goto(l906)
+    }
+    new.room(48)
+  }
+l906:
+  if (vWhichEgoBorder == 4) { //038a
+    new.room(82)
+  }
+  if (vWhichEgoBorder == 2) { //0393
+    new.room(81)
+  }
+}
+if (v44 == 15 && vWhichEgoBorder == 1) { //039c
+  new.room(78)
+}
+if (v44 == 15 && vWhichEgoBorder == 3) { //03a8
+  new.room(83)
+}
+if (vWhichEgoBorder == 2) { //03b4
+  new.room(81)
+}
+if (v44 == 0 && (posn(o0,68,103,73,115) || posn(o0,37,122,45,131))) { //03bd
+  new.room(79)
+}
+return()
+l981:
+set.scan.start()
+if (f220) { //03d6
+  reset.scan.start()
+  erase(o0)
+  new.room(83)
+}
+return()

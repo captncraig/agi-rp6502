@@ -1,4 +1,934 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  reset(f33)
+  load.logic(56)
+  load.view(150)
+  load.view(152)
+  load.view(153)
+  load.view(154)
+  load.view(155)
+  load.view(156)
+  load.view(157)
+  load.sound(6)
+  load.sound(7)
+  load.sound(5)
+  if (vMonitorType != HERCULES) { //0022
+    load.view(151)
+    goto(l49)
+  }
+  load.view(146)
+l49:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o15)
+  ignore.objs(o15)
+  position(o15,61,55)
+  if (vMonitorType != HERCULES) { //003d
+    set.view(o15,151)
+    goto(l78)
+  }
+  set.view(o15,146)
+l78:
+  animate.obj(o13)
+  ignore.objs(o13)
+  set.view(o13,150)
+  position(o13,54,82)
+  v255 = 2
+  v227 = 1
+  v219 = 45
+  show.pic()
+  v229 = 6
+  call(56)
+  print("\nPress F4 when ready to play.\n\nPress F6 for another card.\n\nPress F8 to stand.\n\nTo change the amount of your bet, type \"change bet.\"\n")
+  set(f48)
+  set(f7)
+  return()
+}
+set(f69)
+if ((controller(c1) || said("help"))) { //0071
+  set(f245)
+}
+if ((said("tip", "blond") || said("add", "blond", "bucks") || said("add", "bucks", "blond"))) { //007f
+  print("\"I'm sorry, Sir. We're not permitted to accept gratuities!\"")
+}
+if ((controller(c4) || said("bargain", "fingers") || said("bargain", "card") || said("bargain"))) { //009d
+  v219 = 45
+  if (v236 > 0) { //00b8
+    print("Don't be in such a hurry. Finish this hand first!")
+    goto(l231)
+  }
+  if (!(v255 > 0)) { //00c4
+    print("You bet zero dollars, receive zero cards, and win zero dollars and zero cents.")
+    print("You can play all night like this!")
+    goto(l231)
+  }
+  if (v255 > v90) { //00d3
+    v65 = 0
+    print("You can't bet more than you have.")
+    goto(l231)
+  }
+  set(f75)
+  v65 = 0
+}
+l231:
+if ((controller(c8) || said("get up"))) { //00e7
+  v219 = 45
+  if (!f253) { //00f6
+    print("Please wait until it's your turn.")
+    goto(l290)
+  }
+  if (v236 == 1) { //0102
+    v65 = 100
+    set(f75)
+    goto(l290)
+  }
+  if (v236 == 2) { //0111
+    v65 = 200
+    set(f75)
+    goto(l290)
+  }
+  print("Please wait until it's your turn.")
+}
+l290:
+if ((controller(c6) || said("beat") || said("beat", "i'm") || said("card") || said("add", "i'm", "card"))) { //0122
+  v219 = 45
+  if (!f253) { //0143
+    print("Please wait until it's your turn.")
+    goto(l393)
+  }
+  if (v236 == 1) { //014f
+    v233++
+    v235 = 243
+    v235 += v233
+    v235--
+    v229 = 1
+    call(56)
+    v223 += v231
+    goto(l393)
+  }
+  if (v236 == 2) { //016b
+    v233++
+    v235 = 249
+    v235 += v233
+    v235--
+    v229 = 1
+    call(56)
+    v224 += v231
+    goto(l393)
+  }
+  print("Please wait until it's your turn.")
+}
+l393:
+if (!fEnteredCommand) { //0189
+  goto(l1018)
+}
+if ((said("double") || said("double", "up") || said("double", "down"))) { //0193
+  v219 = 45
+  if (!f253) { //01ac
+    print("Please wait until it's your turn.")
+    goto(l531)
+  }
+  if (v236 == 1) { //01b8
+    if ((v223 < 10 || v223 > 11)) { //01bf
+      print("%m19double when you have 10 or 11 points.")
+      goto(l481)
+    }
+    if (v90 < v226) { //01d0
+      print("You don't have enough money!")
+      goto(l481)
+    }
+    set(f75)
+    v65 = 20
+l481:
+    goto(l531)
+  }
+  if (v236 != 2) { //01e4
+    print("Please wait until it's your turn.")
+    goto(l531)
+  }
+  if ((v224 < 10 || v224 > 11)) { //01f1
+    print("%m19double when you have 10 or 11 points.")
+    goto(l531)
+  }
+  if (v90 < v225) { //0202
+    print("You don't have enough money!")
+    goto(l531)
+  }
+  set(f75)
+  v65 = 120
+}
+l531:
+if ((said("split") || said("split", "card") || said("split", "fingers"))) { //0213
+  v219 = 45
+  if (!f253) { //022c
+    print("Please wait until it's your turn.")
+    goto(l648)
+  }
+  if (v236 != 1) { //0238
+    print("Please wait until it's your turn.")
+    goto(l648)
+  }
+  if (v233 != 2) { //0245
+    print("%m19split%m20")
+    goto(l648)
+  }
+  v235 = 243
+  rindirect(v232,v235)
+  v229 = 4
+  call(56)
+  v52 = v55
+  v235++
+  rindirect(v232,v235)
+  v229 = 4
+  call(56)
+  if (v55 != v52) { //026a
+    print("That's not a pair.")
+    goto(l648)
+  }
+  if (v226 > v90) { //0277
+    print("You don't have enough money!")
+    goto(l648)
+  }
+  set(f75)
+  v65 = 10
+}
+l648:
+if ((said("surrender") || said("surrender", "card") || said("surrender", "fingers"))) { //0288
+  v219 = 45
+  if (!f253) { //02a1
+    print("Please wait until it's your turn.")
+    goto(l724)
+  }
+  if (v236 != 1) { //02ad
+    print("Please wait until it's your turn.")
+    goto(l724)
+  }
+  if (v233 != 2) { //02ba
+    print("%m19surrender%m20")
+    goto(l724)
+  }
+  print("Surrendering your cards, you are refunded half of your bet.")
+  v228 = v227
+  v229 = 5
+  call(56)
+  v236 = 255
+}
+l724:
+if ((said("alter", "bet", "rol") || said("new", "bet", "rol") || said("increase", "bet", "rol") || said("decrease", "bet", "rol") || said("bet", "rol"))) { //02d4
+  v219 = 45
+  if (v236 > 0) { //0303
+    print("It's too late now. This hand is already being played.")
+    goto(l848)
+  }
+l783:
+  get.num(str3,v255)
+  v52 = v255
+  v227 = 0
+  if (v52 > 20) { //0318
+    print("$20.00 is the maximum bet at this table.")
+    goto(l783)
+  }
+l804:
+  if (v52 > 1) { //0324
+    v52 -= 2
+    v227++
+    goto(l804)
+  }
+  if (v52 == 1) { //0333
+    print("Please bet an even number of dollars (2, 4, 6, etc.). The house does not keep half-dollars.")
+    goto(l783)
+  }
+  if (v255 > v90) { //033f
+    print("You don't have enough money!")
+    goto(l783)
+  }
+  v229 = 6
+  call(56)
+}
+l848:
+if (f32 && said("examine", "all")) { //0350
+  v235 = 237
+l863:
+  v229 = 1
+  call(56)
+  v235++
+  if (!(v235 > 254)) { //0366
+    goto(l863)
+  }
+}
+if ((said("board", "rol") || said("done", "rol") || said("board", "casino") || said("examine", "area") || said("examine", "casino") || said("get up", "up"))) { //0371
+  print("\"Thanks for playing,\" says the dealer, finally cracking a smile. \"Come back anytime.\"")
+  set(f255)
+}
+if ((said("house rules") || said("examine", "desk") || said("examine", "brick") || said("examine", "house rules"))) { //039f
+  set(f245)
+}
+if ((said("examine") || said("examine", "desk"))) { //03bd
+  v219 = 45
+  print("You are sitting at a blackjack table in the casino. There is a sign on the table titled \"House Rules.\"")
+}
+if ((said("examine", "blond") || said("examine", "blond"))) { //03d2
+  print("She's a beautiful young lady, but you vow to keep your thoughts on the game.")
+}
+if ((said("ask", "blond") || said("ask", "blond"))) { //03e6
+  print("\"Please, no talking at the tables.\"")
+}
+l1018:
+if (f44) { //03fa
+  v219--
+  if (v219 == 1) { //0402
+    set(f245)
+  }
+}
+if (f245) { //040b
+  reset(f245)
+  print("\n        HOUSE RULES\n\nThis table has a $20.00 limit. Bets must be a multiple of $2.00.\n\nDealer must hit 16, and must stand on 17.\n\nBlackjack pays 1-1/2 to 1 odds.\n\nAny six cards under 22 wins.\n")
+  print("\nInsurance bets are offered whenever the dealer shows an ace. They are half your bet, and pay 2 to 1 odds.\n\nYou may split a pair or surrender whenever you have only two cards.\n\nYou may double down if your cards total 10 or 11 points.\n")
+  print("\nPress F4 when ready to play.\n\nPress F6 for another card.\n\nPress F8 to stand.\n\nTo change the amount of your bet, type \"change bet.\"\n")
+  v219 = 45
+}
+if (f75) { //041c
+  reset(f75)
+  v65++
+  v219 = 45
+  if (v65 == 1) { //0429
+    reset(f246)
+    reset(f247)
+    reset(f248)
+    reset(f249)
+    reset(f250)
+    reset(f251)
+    reset(f252)
+    reset(f254)
+    v222 = 0
+    v223 = 0
+    v224 = 0
+    v225 = 0
+    v226 = 0
+    v233 = 0
+    v226 = v255
+    v90 -= v226
+    v236 = 1
+    set(f87)
+    v235 = 237
+l1120:
+    random(0,51,v52)
+    if (v235 != 237) { //0464
+      v234 = 237
+l1135:
+      rindirect(v232,v234)
+      if (v232 == v52) { //0472
+        goto(l1120)
+      }
+      v234++
+      if (v234 < v235) { //047e
+        goto(l1135)
+      }
+    }
+    if (v235 == 249) { //0488
+      v232 = v52
+      v229 = 4
+      call(56)
+      v220 = v231
+      v221 = 243
+      rindirect(v232,v221)
+      v229 = 4
+      call(56)
+      if (v220 == v231) { //04a5
+        goto(l1120)
+      }
+    }
+    lindirectv(v235,v52)
+    v235++
+    if (!(v235 > 254)) { //04b4
+      goto(l1120)
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    v229 = 6
+    call(56)
+    set.cel(o15,0)
+    draw(o15)
+    v66 = 28
+    sound(5,f53)
+  }
+  if (v65 == 2) { //04d2
+    erase(o15)
+    v66 = 9
+  }
+  if (v65 == 3) { //04de
+    v235 = 243
+    v229 = 1
+    call(56)
+    v223 = v231
+    v66 = 9
+  }
+  if (v65 == 4) { //04f3
+    v235 = 237
+    v229 = 1
+    call(56)
+    v66 = 9
+    v222 = v231
+  }
+  if (v65 == 5) { //0508
+    v235 = 243
+    v235++
+    v229 = 1
+    call(56)
+    v223 += v231
+    v66 = 9
+  }
+  if (v65 == 6) { //051f
+    v235 = 237
+    v235++
+    v229 = 3
+    call(56)
+    v222 += v231
+    v233 = 2
+    v235 = 243
+    rindirect(v232,v235)
+    v229 = 4
+    call(56)
+    if ((v231 == 1 || v231 == 10)) { //0541
+      v52 = v231
+      v235++
+      rindirect(v232,v235)
+      v229 = 4
+      call(56)
+      if (v52 == 1 && v231 == 10) { //055a
+        set(f246)
+      }
+      if (v52 == 10 && v231 == 1) { //0566
+        set(f246)
+      }
+    }
+    v235 = 237
+    rindirect(v232,v235)
+    v229 = 4
+    call(56)
+    if (v231 == 1) { //057d
+      cancel.line()
+      prevent.input()
+      if (vMonitorType == HERCULES) { //0586
+        clear.lines(24,24,c0)
+        display(24,0,"Do you want insurance? ")
+        goto(l1440)
+      }
+      clear.lines(23,23,c0)
+      display(23,0,"Do you want insurance? ")
+l1440:
+      vKeyPressed = 0
+      set.scan.start()
+      if (!(vKeyPressed > 0)) { //05a4
+        return()
+      }
+      if ((vKeyPressed == 89 || vKeyPressed == 121)) { //05ad
+        if (v227 > v90) { //05b9
+          print("You don't have enough money!")
+          goto(l1487)
+        }
+        set(f254)
+        v90 -= v227
+        v229 = 6
+        call(56)
+l1487:
+        goto(l1508)
+      }
+      if (vKeyPressed != 78 && vKeyPressed != 110) { //05d2
+        print("Please answer \"y\" or \"n\".")
+        vKeyPressed = 0
+        return()
+      }
+l1508:
+      reset.scan.start()
+      vKeyPressed = 0
+      if (vMonitorType == HERCULES) { //05e8
+        clear.lines(24,24,c0)
+        goto(l1530)
+      }
+      clear.lines(23,23,c0)
+l1530:
+      accept.input()
+    }
+    v235 = 237
+    rindirect(v232,v235)
+    v229 = 4
+    call(56)
+    if ((v231 == 1 || v231 == 10)) { //0606
+      v52 = v231
+      v235++
+      rindirect(v232,v235)
+      v229 = 4
+      call(56)
+      if (v52 == 1 && v231 == 10) { //061f
+        set(f247)
+      }
+      if (v52 == 10 && v231 == 1) { //062b
+        set(f247)
+      }
+    }
+    if (f246) { //0637
+      print("You have blackjack.")
+      if (f247) { //063f
+        v236 = 255
+        v235 = 237
+        v235++
+        v229 = 1
+        call(56)
+        print("The dealer has blackjack!")
+        print("It's a push!")
+        v228 = v226
+        v229 = 5
+        call(56)
+        if (f254) { //065e
+          print("Your insurance bet pays 2 to 1.")
+          v228 = v227
+          v228 += v227
+          v229 = 5
+          call(56)
+        }
+        goto(l1673)
+      }
+      v228 = v226
+      v228 += v226
+      v228 += v227
+      v229 = 5
+      call(56)
+      v66 = 55
+      draw(o13)
+      set(f53)
+l1673:
+      goto(l1730)
+    }
+    if (!f247) { //068c
+      set(f253)
+      v65 = 8
+      goto(l1730)
+    }
+    v236 = 255
+    v235 = 237
+    v235++
+    v229 = 1
+    call(56)
+    v229 = 6
+    call(56)
+    print("The dealer has blackjack!")
+    if (f254) { //06af
+      print("Your insurance bet pays 2 to 1.")
+      v228 = v227
+      v228 += v227
+      v229 = 5
+      call(56)
+    }
+  }
+l1730:
+  if (v65 == 7) { //06c2
+    erase(o13)
+    v236 = 255
+  }
+  if (v65 == 11) { //06ce
+    reset(f253)
+    v225 = v255
+    v90 -= v225
+    v229 = 6
+    call(56)
+    v235 = 249
+    rindirect(v52,v235)
+    v220 = 243
+    v220++
+    rindirect(v221,v220)
+    lindirectv(v235,v221)
+    lindirectv(v220,v52)
+    v235 = 243
+    v235++
+    v229 = 2
+    call(56)
+    v66 = 9
+  }
+  if (v65 == 12) { //0703
+    v235 = 249
+    v229 = 1
+    call(56)
+    v223 -= v231
+    v66 = 9
+  }
+  if (v65 == 13) { //0718
+    set(f253)
+    v235 = 243
+    v235++
+    v229 = 1
+    call(56)
+    v223 += v231
+  }
+  if (v65 == 21) { //072e
+    reset(f253)
+    v90 -= v226
+    v226 += v226
+    v229 = 6
+    call(56)
+    v66 = 9
+  }
+  if (v65 == 22) { //0745
+    set(f253)
+    set(f248)
+    v233++
+    v235 = 243
+    v235 += v233
+    v235--
+    v229 = 1
+    call(56)
+    v223 += v231
+    v65 = 101
+  }
+  if (v65 == 31) { //0765
+    print("Six cards make a winner.")
+    v65 = 101
+    set(f250)
+  }
+  if (v65 == 101) { //0773
+    v236 = 2
+    reset(f253)
+    if (f252 && v223 < 12) { //077f
+      reset(f252)
+      v223 += 10
+    }
+    if (v223 > 21) { //078d
+      if (!(v225 > 0)) { //0794
+        print("You are busted.")
+        goto(l1955)
+      }
+      print("%m34busted!")
+    }
+l1955:
+    if (!(v225 > 0)) { //07a3
+      v65 = 201
+      goto(l2003)
+    }
+    set(f253)
+    reset(f252)
+    v233 = 2
+    v235 = 249
+    rindirect(v232,v235)
+    v229 = 4
+    call(56)
+    v224 = v231
+    v235 = 249
+    v235++
+    v229 = 1
+    call(56)
+    v224 += v231
+  }
+l2003:
+  if (v65 == 121) { //07d3
+    reset(f253)
+    v90 -= v225
+    v225 += v225
+    v229 = 6
+    call(56)
+    v66 = 9
+  }
+  if (v65 == 122) { //07ea
+    set(f253)
+    set(f249)
+    v233++
+    v235 = 249
+    v235 += v233
+    v235--
+    v229 = 3
+    call(56)
+    v224 += v231
+    v65 = 201
+  }
+  if (v65 == 131) { //080a
+    print("Six cards make a winner.")
+    v65 = 201
+    set(f251)
+  }
+  if (v65 == 201) { //0818
+    reset(f253)
+    v236 = 3
+    v66 = 9
+    if (v225 > 0 && f252 && v224 < 12) { //0827
+      reset(f252)
+      v224 += 10
+    }
+    if (v224 > 21) { //0838
+      print("%m43busted!")
+    }
+    if (v223 < 22) { //0841
+      if (f250) { //0848
+        v65 = 230
+      }
+      goto(l2168)
+    }
+    if (!(v225 > 0)) { //0854
+      v65 = 220
+      goto(l2168)
+    }
+    if (v224 > 21) { //0862
+      v65 = 220
+      goto(l2168)
+    }
+    if (f251) { //086f
+      v65 = 230
+    }
+  }
+l2168:
+  if (v65 == 202) { //0878
+    reset(f252)
+    v66 = 9
+    v233 = 2
+    v235 = 237
+    v235++
+    v229 = 1
+    call(56)
+  }
+  if (v65 == 203) { //0891
+    v66 = 9
+    if (f252 && v222 > 6 && v222 < 12) { //089b
+      reset(f252)
+      v222 += 10
+    }
+    if (v222 < 17) { //08ac
+      v233++
+      v235 = 237
+      v235 += v233
+      v235--
+      v229 = 1
+      call(56)
+      v222 += v231
+      if (v233 < 6) { //08c5
+        v65 -= 1
+      }
+    }
+  }
+  if (v65 == 204) { //08cf
+    if (f248) { //08d6
+      v235 = 243
+      v235++
+      v235++
+      v229 = 1
+      call(56)
+    }
+    if (v222 > 21) { //08e8
+      print("The dealer busted.")
+      if (v223 > 21) { //08f1
+        v65++
+        goto(l2319)
+      }
+      v228 = v226
+      v228 += v226
+      v229 = 5
+      call(56)
+      v66 = 22
+      draw(o13)
+      set(f53)
+l2319:
+      goto(l2422)
+    }
+    if (v223 > 21) { //0912
+      v65++
+      goto(l2422)
+    }
+    if (v223 > v222) { //091e
+      if (v225 > 0) { //0925
+        print("%m34wins!")
+      }
+      v228 = v226
+      v228 += v226
+      v229 = 5
+      call(56)
+      v66 = 33
+      draw(o13)
+      set(f53)
+    }
+    if (v223 == v222) { //0940
+      if (v225 > 0) { //0947
+        print("%m34is a push!")
+        goto(l2389)
+      }
+      print("It's a push!")
+l2389:
+      v228 = v226
+      v229 = 5
+      call(56)
+      v65++
+    }
+    if (v223 < v222) { //095f
+      v65++
+      if (v225 > 0) { //0968
+        print("%m34loses!")
+        goto(l2422)
+      }
+      print("You lose!")
+    }
+  }
+l2422:
+  if (v65 == 205) { //0976
+    if (!(v225 > 0)) { //097d
+      v65++
+      goto(l2592)
+    }
+    if (f249) { //098a
+      v235 = 249
+      v235++
+      v235++
+      v229 = 1
+      call(56)
+    }
+    if (v222 > 21) { //099c
+      if (v223 > 21) { //09a3
+        print("The dealer busted.")
+      }
+      if (v224 > 21) { //09ac
+        v65++
+        goto(l2513)
+      }
+      v228 = v225
+      v228 += v225
+      v229 = 5
+      call(56)
+      v66 = 22
+      if (v223 > 21) { //09c6
+        draw(o13)
+      }
+      set(f53)
+l2513:
+      goto(l2592)
+    }
+    if (v224 > 21) { //09d4
+      v65++
+      goto(l2592)
+    }
+    if (v224 > v222) { //09e0
+      print("%m43wins!")
+      v228 = v225
+      v228 += v225
+      v229 = 5
+      call(56)
+      v66 = 33
+      if (v223 > 21) { //09f7
+        draw(o13)
+      }
+      set(f53)
+    }
+    if (v224 == v222) { //0a02
+      print("%m43is a push!")
+      v228 = v225
+      v229 = 5
+      call(56)
+      v65++
+    }
+    if (v224 < v222) { //0a15
+      print("%m43loses!")
+      v65++
+    }
+  }
+l2592:
+  if (v65 == 206) { //0a20
+    erase(o13)
+    v236 = 255
+  }
+  if (v65 == 221) { //0a2c
+    v235 = 237
+    v235++
+    v229 = 1
+    call(56)
+    v236 = 255
+  }
+  if (v65 == 231) { //0a40
+    if (!f250) { //0a47
+      v65++
+      goto(l2661)
+    }
+    v228 = v226
+    v228 += v226
+    v229 = 5
+    call(56)
+    v66 = 44
+    draw(o13)
+    set(f53)
+  }
+l2661:
+  if (v65 == 232) { //0a65
+    if (!f251) { //0a6c
+      v65++
+      goto(l2698)
+    }
+    v228 = v225
+    v228 += v225
+    v229 = 5
+    call(56)
+    v66 = 44
+    draw(o13)
+    set(f53)
+  }
+l2698:
+  if (v65 == 233) { //0a8a
+    erase(o13)
+    v236 = 255
+  }
+}
+if (v236 == 255) { //0a96
+  v236 = 0
+  reset(f253)
+  reset(f87)
+  v65 = 0
+  v66 = 0
+  v219 = 45
+  if (!(v90 > 0)) { //0aad
+    v65 = 0
+    v229 = 6
+    call(56)
+  }
+}
+if (v236 == 1) { //0abd
+  if (v223 > 21) { //0ac4
+    set(f75)
+    v65 = 100
+    goto(l2783)
+  }
+  if (v233 > 5) { //0ad3
+    set(f75)
+    v65 = 30
+  }
+}
+l2783:
+if (v236 == 2) { //0adf
+  if (v224 > 21) { //0ae6
+    set(f75)
+    v65 = 200
+    goto(l2817)
+  }
+  if (v233 > 5) { //0af5
+    set(f75)
+    v65 = 130
+  }
+}
+l2817:
+if (f53) { //0b01
+  reset(f53)
+  if (v65 == 1) { //0b09
+    sound(5,f53)
+  }
+  if ((v65 == 6 || v65 == 204 || v65 == 205 || v65 == 231 || v65 == 232)) { //0b13
+    sound(7,f53)
+  }
+}
+if (f12) { //0b2b
+  v229 = 6
+  call(56)
+}
+if (f255) { //0b36
+  reset(f48)
+  reset(f7)
+  reset(f87)
+  v76 = 31
+}
+if (f32 && f30) { //0b45
+  if ((v223 != v217 || v224 != v218 || v222 != v216)) { //0b4d
+    v229 = 7
+    call(56)
+  }
+}
+return()

@@ -1,4 +1,130 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f56)
+  v57 = 132
+  v58 = 110
+  set.horizon(34)
+  set(f32)
+  load.logic(103)
+  v34 = 105
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0029
+    if (vPrevRoom == 49) { //002f
+      if (v40 > 144) { //0036
+        v40 = 144
+      }
+      goto(l109)
+    }
+    if (vPrevRoom == 50) { //0043
+      if (v41 < 48) { //004a
+        v41 = 48
+      }
+      goto(l109)
+    }
+    if (vPrevRoom == 52) { //0057
+      v40 = 69
+      v41 = 36
+      goto(l109)
+    }
+    v40 = v57
+    v41 = v58
+l109:
+    position(o0,40,v41)
+  }
+  if (f47) { //0071
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //007d
+  goto(l337)
+}
+if ((said("examine", "bluff") || said("examine", "top", "bluff") || said("examine", "up", "bluff") || said("examine") || said("examine", "area") || said("examine", "up"))) { //0087
+  print("You are at the foot of a high, snowy mountain range. A cliff looms before you with a tricky path winding its way up the steep face.")
+}
+if ((said("examine", "path") || said("examine", "up", "path"))) { //00b5
+  print("There is a narrow path winding up the steep cliff.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00cb
+  print("The shrubbery is scant here.")
+}
+if (said("examine", "deck")) { //00f1
+  print("The ground is strewn with large boulders.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //00fd
+  print("You look upward and see the mountain range looming toward the beautiful blue sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //0113
+  print("There are no climbable trees here.")
+}
+if (has(i52)) { //0129
+  if ((said("dig", "hole") || said("dig") || said("dig", "hole", "deck") || said("dig", "try", "shovel"))) { //012f
+    print("Not here.")
+  }
+}
+l337:
+if (fTriggerLine) { //0151
+  v39 = 0
+  v34 = 102
+  set(f32)
+  if (posn(o0,0,94,65,114)) { //015f
+    v39 = 2
+    v34 = 134
+  }
+  if (posn(o0,0,38,71,62)) { //016f
+    v39 = 3
+    v34 = 96
+  }
+  if (posn(o0,72,38,89,50)) { //017f
+    v39 = 4
+    v34 = 71
+  }
+  if (posn(o0,32,75,70,88)) { //018f
+    v39 = 5
+    v34 = 99
+  }
+  if (posn(o0,71,71,110,87)) { //019f
+    v39 = 6
+    v34 = 106
+  }
+  if (posn(o0,111,66,119,75)) { //01af
+    v39 = 7
+    v34 = 115
+    v40 = 119
+    reposition.to(o0,v40,v41)
+    v33 = 6
+  }
+  if (posn(o0,120,66,159,75)) { //01c9
+    v39 = 8
+    v34 = 117
+  }
+  if ((posn(o0,0,0,90,37) || posn(o0,86,0,122,53))) { //01d9
+    reset(f32)
+    v39 = 1
+    v34 = 106
+    if (v40 < 97) { //01f3
+      v40 = 97
+    }
+    reposition.to(o0,v40,v41)
+    set.priority(o0,4)
+    v33 = 6
+  }
+}
+call(103)
+if (vWhichEgoBorder == 3) { //0209
+  new.room(49)
+}
+if (vWhichEgoBorder == 1) { //0212
+  new.room(52)
+}
+if (vWhichEgoBorder == 4) { //021b
+  new.room(50)
+}
+return()

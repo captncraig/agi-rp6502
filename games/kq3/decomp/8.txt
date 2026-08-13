@@ -1,4 +1,715 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 120
+  v58 = 143
+  v32 = 29
+  v31 = 140
+  v100 = 131
+  v101 = 144
+  load.logic(104)
+  if ((v127 == 1 || v127 == 3) && v128 != 20) { //0026
+    if (v137 == 3) { //0036
+      set(f220)
+      set(f98)
+      set(f221)
+      load.logic(105)
+      v125 = 0
+      load.view(197)
+      goto(l100)
+    }
+    random(1,2,v36)
+    if (!(v137 > 0) && v36 == 1) { //0051
+      set(f98)
+      load.logic(105)
+      random(6,12,v125)
+    }
+  }
+l100:
+  load.view(208)
+  load.view(34)
+  load.view(230)
+  load.view(177)
+  load.sound(2)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o5)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  position(o5,90,121)
+  set.view(o5,208)
+  set.priority(o5,12)
+  stop.cycling(o5)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  position(o1,75,81)
+  set.priority(o1,13)
+  set.view(o1,230)
+  set.cel(o1,0)
+  draw(o1)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  position(o2,91,81)
+  set.priority(o2,13)
+  set.view(o2,230)
+  set.cel(o2,1)
+  draw(o2)
+  animate.obj(o3)
+  ignore.horizon(o3)
+  position(o3,92,75)
+  set.priority(o3,12)
+  set.view(o3,230)
+  set.cel(o3,1)
+  draw(o3)
+  animate.obj(o4)
+  ignore.horizon(o4)
+  position(o4,78,75)
+  set.priority(o4,12)
+  set.view(o4,230)
+  set.cel(o4,0)
+  draw(o4)
+  if (obj.in.room(i42,vCurrentRoom)) { //00d2
+    animate.obj(o6)
+    ignore.blocks(o6)
+    ignore.objs(o6)
+    position(o6,72,123)
+    set.view(o6,177)
+    set.priority(o6,12)
+    draw(o6)
+    stop.update(o6)
+  }
+  if ((f48 || v44 == 25)) { //00ed
+    if (vPrevRoom == 7) { //00f8
+      position(o0,26,138)
+      goto(l280)
+    }
+    if (vPrevRoom == 6) { //0106
+      position(o0,104,121)
+      goto(l280)
+    }
+    position(o0,57,v58)
+  }
+l280:
+  if (f47) { //0118
+    draw(o0)
+  }
+  call(104)
+  if (f98) { //0122
+    call(105)
+    if (f220) { //012a
+      v128 = 106
+      ignore.objs(o15)
+      set.view(o15,197)
+      position(o15,90,119)
+      v32 = 91
+      v31 = 129
+      set.cel(o15,0)
+      stop.cycling(o15)
+      draw(o15)
+      set(f99)
+    }
+  }
+  show.pic()
+  if (f220) { //014c
+    sound(27,f41)
+    print.at("Manannan is impatiently waiting for his food! His stomach rumbles as he drums his gnarled fingers on the table. You'd better feed him quickly, or dire consequences may result.",2,2,37)
+  }
+  return()
+}
+if (f220) { //015b
+  block(80,119,101,131)
+  goto(l362)
+}
+unblock()
+l362:
+if (!fEnteredCommand) { //016a
+  goto(l2086)
+}
+if ((said("examine", "area") || said("examine", "building") || said("examine"))) { //0174
+  print("This is where Manannan eats his meals. You, of course, are not supposed to eat here. YOU eat in the kitchen. There is a pine table and benches large enough to seat at least ten people; but the wizard has never HAD any guests for dinner.")
+}
+if (said("examine", "counter")) { //018c
+  print("The large dining table is made of pine planking. Matching benches run its length on both sides. The table is big enough to seat at least ten people.")
+  if (obj.in.room(i42,vCurrentRoom)) { //0198
+    print("There is a little metal cup on the table.")
+  }
+}
+if (obj.in.room(i42,vCurrentRoom) && said("examine", "cup")) { //01a1
+  print("There is a little metal cup on the table.")
+}
+if ((said("examine", "top", "counter") || said("examine", "above", "counter") || said("examine", "counter", "top"))) { //01b0
+  if (obj.in.room(i42,vCurrentRoom)) { //01ce
+    print("There is a little metal cup on the table.")
+    goto(l476)
+  }
+  print("There is nothing on the dining table. You keep it very clean as Manannan will not eat on a dirty table.")
+}
+l476:
+if (said("examine", "below", "counter")) { //01dc
+  print("You bend over and peer under the table. You see nothing but a few crumbs left over from one of Manannan's meals.")
+}
+if ((said("examine", "moose") || said("examine", "cage") || said("examine", "moose", "cage"))) { //01ea
+  print("You scrutinize the moosehead very carefully. But, you see it is nothing but an old head. You do feel sorry for the poor thing, though.")
+}
+if ((said("capture", "moose") || said("capture", "moose", "cage") || said("capture", "moose", "off", "cage") || said("drain", "moose") || said("drain", "moose", "cage"))) { //0206
+  print("The moosehead is securely fastened to the wall. You cannot remove it.")
+}
+if ((said("examine", "burn") || said("examine", "fire"))) { //0234
+  print("Flickering candles from the wrought iron lamp light the room.")
+}
+if (said("examine", "door")) { //0248
+  print("There are two doorways here. One leads to the kitchen, the other to the entry hall.")
+}
+if ((said("capture", "cup") || said("capture", "cup", "counter") || said("capture", "cup", "from", "counter"))) { //0254
+  if (!(obj.in.room(i42,vCurrentRoom))) { //0272
+    print("You already took it.")
+    goto(l666)
+  }
+  if (!(posn(o0,62,126,80,150))) { //027f
+    print("You're too far away.")
+    goto(l666)
+  }
+  get(i42)
+  vCurrentScore += 1
+  start.update(o6)
+  erase(o6)
+  print("You pick up the little tin cup and carry it with you.")
+}
+l666:
+if (f227) { //029a
+  if (said("examine", "cat")) { //02a0
+    print("Manannan will never annoy anyone again.")
+  }
+  if (said("call", "cat")) { //02ac
+    print("Manannan seems unusually quiet, don't you think!")
+  }
+  if (said("anyword", "cat")) { //02b8
+    print("You'd better get on with your quest. Manannan is no longer a bother to anyone!")
+  }
+}
+if ((said("get in", "counter") || said("get in") || said("get in", "down") || said("get in", "down", "counter") || said("get in", "on", "bench") || said("get in", "bench"))) { //02c4
+  if (f220) { //02f0
+    print("Manannan wouldn't like that.")
+    goto(l803)
+  }
+  if ((v41 < 124 || v41 > 152 || v40 < 41 || v40 > 152)) { //02fb
+    print("You're too far from the table.")
+    goto(l803)
+  }
+  if (!f46) { //0312
+    set(f122)
+    v39 = 0
+    goto(l803)
+  }
+  reset(fSaidAccepted)
+}
+l803:
+if ((said("board", "counter") || said("rise") || said("capture", "up") || said("capture", "up", "from", "counter") || said("board", "bench") || said("rise", "up"))) { //0323
+  if (v44 == 10) { //034f
+    set(f228)
+    goto(l873)
+  }
+  if (v44 == 9) { //035b
+    print("Finish chewing first.")
+    goto(l873)
+  }
+  print("You are standing.")
+}
+l873:
+if (has(i49) && (said("drink", "bread") || said("drink", "food") || said("drink", "food", "counter"))) { //0369
+  v224 = 49
+}
+if (has(i50) && (said("drink", "apple") || said("drink", "food") || said("drink", "food", "counter"))) { //0388
+  v224 = 50
+}
+if (has(i51) && (said("drink", "chop") || said("drink", "food") || said("drink", "food", "counter"))) { //03a7
+  v224 = 51
+}
+if (!f220) { //03c6
+  if (f99 && !f109 && (said("feed", "enchanter") || said("feed", "anyword", "enchanter") || said("feed", "anyword", "anyword", "enchanter") || said("feed", "anyword", "enchanter", "anyword") || said("anyword", "apple", "enchanter") || said("anyword", "bread", "enchanter") || said("anyword", "chop", "enchanter") || said("apple", "anyword", "enchanter") || said("bread", "anyword", "enchanter") || said("chop", "anyword", "enchanter"))) { //03cd
+    print("He doesn't seem to be hungry right now.")
+  }
+  goto(l2076)
+}
+if (said("examine", "enchanter")) { //042f
+  if (v128 == 106) { //0439
+    print("Manannan is impatiently waiting for his food! His stomach rumbles as he drums his gnarled fingers on the table. You'd better feed him quickly, or dire consequences may result.")
+    goto(l1107)
+  }
+  if (v128 == 9) { //0445
+    print("He seems to be quite hungry.")
+    goto(l1107)
+  }
+  reset(fSaidAccepted)
+}
+l1107:
+if ((said("call", "enchanter") || said("call", "abominable", "enchanter"))) { //0453
+  if (v128 == 9) { //0467
+    print("He's too busy to reply.")
+    goto(l1179)
+  }
+  if (v128 == 106) { //0473
+    if (!f222) { //047a
+      set(f222)
+      print("Manannan is out of sorts right now. \"Don't jabber at me, boy! Bring me my food, NOW!\" he bellows.")
+      goto(l1174)
+    }
+    print("After speaking to the grouchy wizard again, he narrows his bushy-white eyebrows and looks at you with ill-temper. \"You're awfully thick-headed, aren't you?\" he snarls. \"It seems you need to be taught a lesson or two about OBEYING!\"")
+    set.view(o15,190)
+    reposition.to(o15,91,129)
+    v123 = 15
+    set(f130)
+l1174:
+    goto(l1179)
+  }
+  reset(fSaidAccepted)
+}
+l1179:
+if ((said("feed", "enchanter") || said("feed", "food", "enchanter") || said("feed", "enchanter", "food") || said("add", "food", "counter") || said("add", "food", "on", "counter") || said("add", "food", "counter", "enchanter") || said("add", "food", "on", "counter", "enchanter") || said("feed", "food", "enchanter") || said("feed", "enchanter", "food"))) { //049b
+  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //04ef
+    print("You have no food to give the wizard.")
+    goto(l1411)
+  }
+  v225 = 0
+  if (has(i49) && !(has(i50)) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //050a
+    v225 = 49
+  }
+  if (!(has(i49)) && has(i50) && !(has(i51)) && !(has(i24)) && !(has(i25))) { //051f
+    v225 = 50
+  }
+  if (!(has(i49)) && !(has(i50)) && has(i51) && !(has(i24)) && !(has(i25))) { //0534
+    v225 = 51
+  }
+  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && has(i24) && !(has(i25))) { //0549
+    v225 = 24
+  }
+  if (!(has(i49)) && !(has(i50)) && !(has(i51)) && !(has(i24)) && has(i25)) { //055e
+    v225 = 25
+  }
+  if (!(v225 > 0)) { //0573
+    print("You are carrying more than one type of food. Which would you like to give the wizard?")
+    v225 = 255
+    goto(l2086)
+  }
+}
+l1411:
+if (has(i49)) { //0583
+  if ((said("feed", "bread", "enchanter") || said("feed", "enchanter", "bread") || said("add", "bread", "counter") || said("add", "bread", "counter", "enchanter") || said("feed", "bread", "enchanter") || said("feed", "enchanter", "bread"))) { //0589
+    v225 = 49
+  }
+  if (v225 == 255 && said("bread")) { //05c4
+    v225 = 49
+  }
+}
+if (has(i50)) { //05d2
+  if ((said("feed", "apple", "enchanter") || said("feed", "enchanter", "apple") || said("add", "apple", "counter") || said("add", "apple", "counter", "enchanter") || said("feed", "apple", "enchanter") || said("feed", "enchanter", "apple"))) { //05d8
+    v225 = 50
+  }
+  if (v225 == 255 && said("apple")) { //0613
+    v225 = 50
+  }
+}
+if (has(i51)) { //0621
+  if ((said("feed", "chop", "enchanter") || said("feed", "enchanter", "chop") || said("add", "chop", "counter") || said("add", "chop", "counter", "enchanter") || said("feed", "chop", "enchanter") || said("feed", "enchanter", "chop"))) { //0627
+    v225 = 51
+  }
+  if (v225 == 255 && said("chop")) { //0662
+    v225 = 51
+  }
+}
+if ((has(i24) || has(i25))) { //0670
+  if ((said("feed", "porridge", "enchanter") || said("feed", "enchanter", "porridge") || said("add", "porridge", "counter") || said("add", "porridge", "on", "counter") || said("add", "porridge", "counter", "enchanter") || said("add", "porridge", "on", "counter", "enchanter") || said("feed", "porridge", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge") || said("add", "poison", "porridge", "counter") || said("add", "poison", "porridge", "on", "counter") || said("add", "poison", "porridge", "counter", "enchanter") || said("add", "poison", "porridge", "on", "counter", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge"))) { //067a
+    v225 = 24
+  }
+  if (v225 == 255 && said("porridge")) { //071b
+    v225 = 24
+  }
+}
+if (has(i25)) { //0729
+  if (v225 == 24) { //072f
+    v225 = 25
+  }
+  if ((said("feed", "porridge", "enchanter") || said("feed", "enchanter", "porridge") || said("add", "porridge", "counter") || said("add", "porridge", "on", "counter") || said("add", "porridge", "counter", "enchanter") || said("add", "porridge", "on", "counter", "enchanter") || said("feed", "porridge", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge") || said("add", "poison", "porridge", "counter") || said("add", "poison", "porridge", "on", "counter") || said("add", "poison", "porridge", "counter", "enchanter") || said("add", "poison", "porridge", "on", "counter", "enchanter") || said("feed", "poison", "porridge", "enchanter") || said("feed", "enchanter", "poison", "porridge") || said("feed", "porridge", "enchanter") || said("feed", "enchanter", "porridge") || said("add", "porridge", "counter") || said("add", "porridge", "counter", "enchanter") || said("feed", "porridge", "enchanter") || said("feed", "enchanter", "porridge"))) { //0739
+    v225 = 25
+  }
+  if (v225 == 255 && said("poison", "porridge")) { //080c
+    v225 = 25
+  }
+}
+l2076:
+if (v225 == 255) { //081c
+  v225 = 0
+}
+l2086:
+if (f99 && !f109) { //0826
+  if (v225 > 0 && v225 != 255) { //082f
+    if (!(posn(o0,75,126,105,153))) { //083a
+      v225 = 0
+      print("You're too far away.")
+      goto(l2245)
+    }
+    if (v128 != 106) { //084d
+      v225 = 0
+      print("He doesn't seem to be hungry right now.")
+      goto(l2086)
+    }
+    if (v225 == 49) { //085d
+      drop(i49)
+      set.cel(o5,4)
+    }
+    if (v225 == 50) { //0869
+      drop(i50)
+      set.cel(o5,5)
+    }
+    if (v225 == 51) { //0875
+      drop(i51)
+      set.cel(o5,3)
+    }
+    if (v225 == 24) { //0881
+      drop(i24)
+      set.cel(o5,7)
+    }
+    if (v225 == 25) { //088d
+      drop(i25)
+      set.cel(o5,7)
+      set(f226)
+    }
+    v225 = 0
+    draw(o5)
+    set(f46)
+    stop.motion(o0)
+    v220 = 23
+    v128 = 9
+    v221 = 2
+    print("You place the food on the dining table before the hungry wizard. Ravenously, he devours every bit of it.")
+    v36 = 3
+    cycle.time(o15,v36)
+    if (v137 == 3) { //08b5
+      v137 = 0
+      v110 = 0
+      v109 = 0
+    }
+  }
+l2245:
+  v221--
+  if (v221 == 1) { //08c7
+    end.of.loop(o15,f224)
+  }
+  if (f224) { //08d1
+    reset(f224)
+    set.cel(o15,0)
+    stop.cycling(o15)
+    v221 = 15
+  }
+  if (f45) { //08e1
+    v226--
+    if (v226 == 1) { //08e9
+      set(f101)
+    }
+    v220--
+    if (v220 == 1) { //08f4
+      if (f226) { //08fb
+        reset(f226)
+        reset(f46)
+        set(f101)
+        v124 = 50
+        print("You fooled him! Manannan didn't realize the porridge was tainted, and ate the whole bowl!")
+        goto(l2334)
+      }
+      print("It's obvious the wizard enjoyed his meal as he lets out a satisfied belch. He rises and leaves without so much as a \"Thank you!\"")
+      erase(o5)
+      v128 = 103
+      stop.cycling(o15)
+      v124 = 100
+      v226 = 5
+    }
+  }
+l2334:
+  if ((v124 == 51 || v124 == 101)) { //091e
+    current.cel(o14,v36)
+    if (v36 == 3) { //092d
+      set(f101)
+    }
+  }
+  if (f101) { //0936
+    reset(f101)
+    v124++
+    prevent.input()
+    program.control()
+    stop.motion(o0)
+    if (v124 == 51) { //0944
+      load.view(203)
+      load.sound(21)
+      sound(21,f41)
+      erase(o5)
+      animate.obj(o14)
+      set.view(o14,199)
+      set.priority(o14,15)
+      set.cel(o14,0)
+      v36 = 3
+      cycle.time(o14,v36)
+      ignore.objs(o14)
+      stop.motion(o14)
+      position(o14,87,126)
+      draw(o14)
+      end.of.loop(o14,f101)
+    }
+    if (v124 == 52) { //0972
+      erase(o15)
+      vCurrentScore += 12
+      v128 = 20
+      v127 = 2
+      reset(f220)
+      v84 = 0
+      v83 = 0
+      unblock()
+      animate.obj(o13)
+      set.view(o13,203)
+      set(f116)
+      position(o13,90,130)
+      draw(o13)
+      move.obj(o13,115,130,1,f41)
+    }
+    if (v124 == 53) { //09a0
+      erase(o14)
+      v226 = 3
+    }
+    if (v124 == 54) { //09ac
+      print("Congratulations! Manannan will never again enslave you or the people of Llewdor!! At last, you are free!")
+      wander(o13)
+      observe.objs(o13)
+      set(f227)
+      set(f116)
+      reset(f99)
+      reset(f46)
+      v124 = 0
+    }
+    if (v124 == 101) { //09c4
+      stop.cycling(o15)
+      erase(o5)
+      animate.obj(o14)
+      set.view(o14,199)
+      set.priority(o14,15)
+      set.cel(o14,0)
+      v36 = 3
+      cycle.time(o14,v36)
+      ignore.objs(o14)
+      stop.motion(o14)
+      position(o14,87,126)
+      draw(o14)
+      end.of.loop(o14,f101)
+      sound(2,f41)
+    }
+    if (v124 == 102) { //09f0
+      erase(o15)
+    }
+    if (v124 == 103) { //09f9
+      erase(o14)
+      reset(f99)
+      reset(f220)
+      unblock()
+      v128 = 104
+      reset(f46)
+      v124 = 0
+      v32 = 29
+      v31 = 140
+    }
+    if (v124 == 0) { //0a15
+      start.motion(o0)
+      accept.input()
+      player.control()
+    }
+  }
+}
+if (f45) { //0a20
+  v227--
+  if (v227 == 1) { //0a28
+    set(f122)
+  }
+}
+if (f122) { //0a31
+  reset(f122)
+  v39++
+  get.posn(o0,v37,v38)
+  v69 = 1
+  if (v39 == 1) { //0a42
+    set(f46)
+    program.control()
+    v44 = 2
+    if (v41 > 141 && v41 < 144 && v40 > 50 && v40 < 115) { //0a4f
+      v37 = 115
+      goto(l2706)
+    }
+    if (v41 < 131) { //0a65
+      v39 = 3
+      goto(l2690)
+    }
+    if (v41 < 148) { //0a72
+      v39 = 2
+      goto(l2690)
+    }
+    v38 = 148
+l2690:
+    if (v40 < 81) { //0a82
+      v37 = 42
+      goto(l2706)
+    }
+    v37 = 115
+l2706:
+    move.obj(o0,v37,v38,69,f122)
+  }
+  if (v39 == 2) { //0a98
+    v38 = 129
+    move.obj(o0,v37,v38,69,f122)
+  }
+  if (v39 == 3) { //0aa8
+    move.obj(o0,90,129,0,f122)
+  }
+  if (v39 == 4) { //0ab5
+    v44 = 10
+    reposition.to(o0,90,118)
+    set.view(o0,34)
+    set.cel(o0,0)
+    reset(f35)
+    start.motion(o0)
+    v227 = 4
+  }
+  if (v39 == 5) { //0ad0
+    print("You take a well deserved moment's rest. But, you wonder if you have time to be sitting here?")
+    v39 = 0
+  }
+}
+if (v224 > 0) { //0adc
+  if (f220) { //0ae3
+    print("Manannan wouldn't like that.")
+    v224 = 0
+    goto(l2934)
+  }
+  if (!f46) { //0af1
+    if ((v41 < 124 || v41 > 152 || v40 < 41 || v40 > 152)) { //0af8
+      print("You're too far from the table.")
+      v224 = 0
+      goto(l2839)
+    }
+    set(f122)
+    v39 = 0
+  }
+l2839:
+  if (v44 == 10) { //0b17
+    if (v224 == 50) { //0b1e
+      drop(i50)
+      set.cel(o5,5)
+    }
+    if (v224 == 49) { //0b2a
+      drop(i49)
+      set.cel(o5,4)
+    }
+    if (v224 == 51) { //0b36
+      drop(i51)
+      set.cel(o5,3)
+    }
+    if (v224 == 24) { //0b42
+      drop(i24)
+      set.cel(o5,7)
+    }
+    if (v224 == 25) { //0b4e
+      set(f225)
+      drop(i25)
+      set.cel(o5,7)
+    }
+    v224 = 0
+    draw(o5)
+    set(f46)
+    set(f35)
+    stop.motion(o0)
+    v36 = 3
+    cycle.time(o0,v36)
+    v44 = 9
+    v222 = 22
+    v223 = 2
+  }
+}
+l2934:
+if (f45) { //0b76
+  v222--
+  if (v222 == 1) { //0b7e
+    erase(o5)
+    if (f225) { //0b87
+      reset(f225)
+      print("You purr contentedly. You will enjoy your new life as a cat!")
+      load.view(39)
+      set.view(o0,39)
+      set.loop(o0,0)
+      set.priority(o0,15)
+      reposition.to(o0,91,123)
+      start.cycling(o0)
+      v36 = 2
+      cycle.time(o0,v36)
+      set(f44)
+      goto(l3013)
+    }
+    set.cel(o0,0)
+    stop.cycling(o0)
+    start.motion(o0)
+    reset(f35)
+    v222 = 0
+    v223 = 0
+    reset(f223)
+    v44 = 10
+    set(f46)
+    print("Mmmmmm! You needed that.")
+  }
+}
+l3013:
+if (v44 == 9) { //0bc5
+  v223--
+  if (v223 == 1) { //0bce
+    set(f35)
+    end.of.loop(o0,f223)
+  }
+  if (f223) { //0bda
+    reset(f223)
+    set.cel(o0,0)
+    reset(f35)
+    v223 = 15
+  }
+}
+if (v44 == 10 && vEgoDir > 0) { //0bea
+  set(f228)
+}
+if (f228) { //0bf6
+  reset(f228)
+  set.view(o0,0)
+  reset(f35)
+  reset(f36)
+  reposition.to(o0,90,130)
+  player.control()
+  v59 = 1
+  cycle.time(o0,v59)
+  v44 = 0
+  v227 = 0
+  reset(f46)
+}
+if (v44 != 125) { //0c18
+  if (posn(o0,101,110,115,120)) { //0c20
+    new.room(6)
+  }
+  if (posn(o0,21,132,25,144)) { //0c2c
+    new.room(7)
+  }
+}
+call(104)
+if (f98) { //0c3a
+  call(105)
+}
+if (f99 && f220) { //0c42
+  v32 = 91
+  v31 = 129
+}
+if (!f99 && v137 == 3) { //0c50
+  v109 = 55
+}
+return()

@@ -1,4 +1,154 @@
 v152 = 228
-
-!!!
-&{%!e(string=unknown opcode: 0x06)}
+v152 += v235
+rindirect(v154,v152)
+if (v154 == 255) { //000b
+  goto(l398)
+}
+reset(f248)
+if (v235 == 0) { //0017
+  set.string(str2,"Gene")
+}
+if (v235 == 1) { //0021
+  set.string(str2,"Otto")
+}
+if (v235 == 2) { //002b
+  set.string(str2,"Frank")
+}
+if (v235 == 3) { //0035
+  set.string(str2,"Whitey")
+}
+v152 = 192
+v152 += v235
+v154 = v152
+v154 += 4
+rindirect(v201,v154)
+rindirect(v200,v152)
+v152 = 228
+v154 = 0
+l87:
+rindirect(v155,v152)
+if (v155 > v154 && v155 != 255) { //005a
+  v154 = v155
+}
+v152++
+if (!(v152 > 231)) { //006a
+  goto(l87)
+}
+display(1,0,"You have $%v170%v171.     Pot is %v234 chips.  ")
+v154 -= v232
+v207 = v154
+if (v235 != 3) { //007f
+  call(90)
+  goto(l209)
+}
+v152 = 3
+v152 += v207
+l146:
+if (!f56) { //0092
+  clear.lines(23,23,c0)
+  goto(l162)
+}
+set(f34)
+l162:
+get.num(str32,v236)
+if (v236 > v152) { //00a5
+  sound(23,f152)
+  goto(l146)
+}
+if (v236 != 0 && v236 < v207) { //00b2
+  sound(23,f152)
+  goto(l146)
+}
+if (v236 != 0) { //00c3
+  v206 = v236
+  v206 -= v207
+}
+l209:
+clear.lines(0,0,c0)
+if (!f56) { //00d5
+  clear.lines(23,23,c0)
+}
+if (v236 == 0) { //00e0
+  if (v202 == 0) { //00e7
+    display(0,0,"%s2 passes.")
+    goto(l304)
+  }
+  display(0,0,"%s2 folds.")
+  v152 = 228
+  v152 += v235
+  lindirectn(v152,255)
+  if (v235 == 0) { //0102
+    display(5,32,"Folds   ")
+  }
+  if (v235 == 1) { //010d
+    display(9,32,"Folds   ")
+  }
+  if (v235 == 2) { //0118
+    display(13,32,"Folds   ")
+  }
+  if (v235 == 3) { //0123
+    display(17,32,"Folds   ")
+  }
+  v233++
+l304:
+  goto(l398)
+}
+v234 += v236
+v152 = 228
+v152 += v235
+rindirect(v154,v152)
+v154 += v236
+lindirectv(v152,v154)
+if (v235 == 3) { //0145
+  v170 -= v236
+}
+display(1,0,"You have $%v170%v171.     Pot is %v234 chips.  ")
+if (v206 != 0) { //0153
+  clear.lines(0,0,c0)
+  display(0,0,"%s2 raises %v206.")
+  v202 = 2
+  goto(l398)
+}
+if (v202 == 0) { //0169
+  clear.lines(0,0,c0)
+  display(0,0,"%s2 bets %v236.")
+  if (v202 != 2) { //0178
+    v202 = 1
+  }
+  goto(l398)
+}
+clear.lines(0,0,c0)
+display(0,0,"%s2 calls.")
+l398:
+v235++
+if (v235 == 4) { //0190
+  v235 = 0
+}
+if (v235 == v203 && v202 == 0) { //019a
+  set(f248)
+  goto(l491)
+}
+if (v202 != 0) { //01a9
+  v152 = 228
+  v154 = 255
+l439:
+  rindirect(v155,v152)
+  if (v155 != 255) { //01ba
+    if (v155 != v154) { //01c2
+      if (v154 == 255) { //01ca
+        v154 = v155
+        goto(l474)
+      }
+      goto(l491)
+    }
+  }
+l474:
+  v152++
+  if (v152 > 231) { //01dc
+    set(f248)
+    goto(l491)
+  }
+  goto(l439)
+}
+l491:
+return()

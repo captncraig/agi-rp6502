@@ -1,5 +1,547 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+  load.logic(109)
+  call(109)
+  load.view(251)
+  load.sound(40)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(251,0,0,33,109,10,4)
+  if (!f84) { //0020
+    position(o0,77,167)
+    goto(l54)
+  }
+  load.logic(73)
+  call(73)
+  position(o0,82,167)
+l54:
+  draw(o0)
+  if ((v31 == 170 || v31 == 175)) { //0038
+    load.view(248)
+    load.view(250)
+    load.view(249)
+    animate.obj(o4)
+    animate.obj(o5)
+    animate.obj(o6)
+    set.view(o4,250)
+    set.view(o5,248)
+    set.view(o6,249)
+    if (v31 == 175) { //0059
+      position(o4,60,150)
+      position(o5,109,134)
+      position(o6,104,138)
+      set.loop(o4,0)
+      set.loop(o5,1)
+      set.loop(o6,1)
+      stop.cycling(o4)
+      stop.cycling(o5)
+      stop.cycling(o6)
+      draw(o4)
+      draw(o5)
+      draw(o6)
+      goto(l157)
+    }
+    random(33,55,v140)
+    set.loop(o4,1)
+    set.loop(o5,0)
+    set.loop(o6,0)
+    position(o4,77,167)
+    position(o5,77,166)
+    position(o6,77,165)
+  }
+l157:
+  show.pic()
+  return()
+}
+reset(f226)
+if (posn(o0,140,127,159,155)) { //00a1
+  set(f226)
+}
+reset(f227)
+if (posn(o0,59,108,85,120)) { //00af
+  set(f227)
+}
+reset(f228)
+if (posn(o0,13,133,30,157)) { //00bd
+  set(f228)
+}
+reset(f57)
+if (posn(o0,41,109,46,119)) { //00cb
+  set(f57)
+}
+reset(f229)
+if (posn(o0,100,158,119,166)) { //00d9
+  set(f229)
+}
+reset(f232)
+if (posn(o0,27,42,65,145)) { //00e7
+  set(f232)
+}
+reset(f230)
+if ((f57 || f228)) { //00f5
+  set(f230)
+}
+reset(f231)
+if (posn(o0,97,109,122,133)) { //0103
+  set(f231)
+}
+distance(o0,o4,v227)
+distance(o0,o5,v228)
+distance(o0,o6,v229)
+if ((v227 < v61 || v228 < v61 || v229 < v61)) { //011b
+  set(f109)
+}
+if (f225) { //012c
+  get.posn(o4,v153,v154)
+  v157 = v153
+  v153 -= 7
+  v157 += 13
+  if (v142 < v153) { //013f
+    v147 = 1
+    goto(l361)
+  }
+  if (v142 > v157) { //014c
+    v147 = 0
+    goto(l361)
+  }
+  if (v143 < v154) { //0159
+    v147 = 3
+    goto(l361)
+  }
+  v147 = 2
+l361:
+  set.loop(o4,v147)
+}
+if (f82 && f84) { //016c
+  reset(f82)
+  v139 = 200
+  set(f138)
+}
+if (f138) { //017b
+  reset(f138)
+  v139++
+  if (v139 == 1) { //0185
+    print("You hear a knock on the door, followed by the turn of the doorknob. Three men enter, two of them familiar.")
+    v140 = 3
+  }
+  if (v139 == 2) { //0191
+    draw(o5)
+    move.obj(o5,109,134,0,f222)
+    v141 = 11
+  }
+  if (v139 == 3) { //01a3
+    draw(o6)
+    move.obj(o6,104,138,0,f223)
+    v141 = 11
+  }
+  if (v139 == 4) { //01b5
+    draw(o4)
+    move.obj(o4,60,150,0,f138)
+  }
+  if (v139 == 5) { //01c4
+    stop.cycling(o4)
+    if (f226) { //01cd
+      print("\"Hey, Sonny! Sorry if we interrupted you in the bathroom, there. Everything come out ok?\"")
+    }
+    print("\"Hey, Sonny! How's it going?\" says the lead detective. \"I'm sure glad we found your room! I'd hate to have someone call the cops on us for breaking and entering!\"")
+    print("\"We're ready whenever you are, 'Whitey'!\" he concludes.")
+    v31 = 175
+    set(f225)
+    set(f224)
+  }
+  if (v139 == 101) { //01e0
+    stop.cycling(o15)
+    set.loop(o15,0)
+    v140 = 4
+  }
+  if (v139 == 102) { //01ef
+    stop.update(o15)
+    set(f220)
+    v220 = 1
+    print("\"Did you get anywhere with the bartender, Precious?\"")
+  }
+  if (v139 == 201) { //01ff
+    v140 = 3
+  }
+  if (v139 == 202) { //0209
+    print("You instruct Sweet Cheeks to catch a cab and go to the police station.")
+    v140 = 3
+  }
+  if (v139 == 203) { //0215
+    start.update(o15)
+    start.cycling(o15)
+    move.obj(o15,77,167,0,f138)
+  }
+  if (v139 == 204) { //0226
+    reset(f84)
+    vCurrentScore += 3
+    erase(o15)
+    v31 = 104
+  }
+}
+if (f222) { //0237
+  reset(f222)
+  set.loop(o5,1)
+  set.cel(o5,7)
+  stop.cycling(o5)
+}
+if (f223) { //0247
+  reset(f223)
+  set.loop(o6,1)
+  set.cel(o6,7)
+  stop.cycling(o6)
+}
+if (!fEnteredCommand) { //0257
+  goto(l2059)
+}
+if (f220) { //0261
+  if (said("ok")) { //0267
+    if (v220 == 1) { //026f
+      print("\"Do you have enough money to carry you through a gambling session, Big Boy?\"")
+    }
+    if (v220 == 2) { //0278
+      print("\"Good luck, Sonny!\"")
+      reset(f220)
+    }
+    v220++
+  }
+  if (said("no")) { //0285
+    if (v220 == 1) { //028d
+      print("\"In all my endeavors, I have found that only money makes the world go 'round.\"")
+      print("\"Maybe you should go back and try again.\"")
+    }
+    if (v220 == 2) { //0298
+      print("\"Oh, gawd, Sonny! What will you do!?\"")
+    }
+    reset(f220)
+    v220++
+  }
+}
+if ((said("check", "cane") || said("check", "automatic"))) { //02a5
+  if (v31 == 100) { //02b7
+    print("You detach the handle of your cane to expose the .22-magnum derringer. You double-check it, just to make certain it is loaded.")
+    goto(l709)
+  }
+  print("Everything seems to be in order.")
+}
+l709:
+if ((said("get", "bug", "rol") || said("ask", "art", "bug", "rol") || said("ask", "bug", "rol") || said("do", "bonds", "bug", "rol") || said("do", "bonds", "call", "rol") || said("administer", "bonds", "bug", "rol") || said("administer", "bonds", "call", "rol") || said("ask", "art", "call", "rol") || said("ask", "call", "rol") || said("get", "call", "rol"))) { //02c5
+  if (!(obj.in.room(i21,vCurrentRoom))) { //0327
+    set(f114)
+    goto(l881)
+  }
+  if (v31 < 175) { //0334
+    print("Your backups will arrive with your voice transmitter soon.")
+    goto(l881)
+  }
+  if (v227 < 15) { //0340
+    print("Detective Angland hands you the transmitter and a new supply of marked hundred-dollar bills. You carefully clip the transmitter to your pocket.")
+    print("\"We'll monitor your voice transmitter at all times. We're anxiously waiting to assist you in any arrests.\"")
+    get(i21)
+    vCurrentScore += 5
+    if (!f62) { //0350
+      print("\"Take a look at this,\" says Angland. \"We just received a fax from Chicago that includes the mug shots of one Jessie Bains.\"")
+      print("Although the fax is rather fuzzy, you have the feeling that you've seen this face before.")
+    }
+    goto(l881)
+  }
+  if ((v228 < 15 || v229 < 15)) { //035e
+    print("\"I don't have the transmitter; Detective Angland does.\"")
+    goto(l881)
+  }
+  set(f113)
+}
+l881:
+if (f224) { //0371
+  if ((said("ask", "art") || said("answer", "art"))) { //0377
+    print("The men aren't interested in conversation. There is much tension here due to the seriousness of the operation.")
+  }
+  if ((said("examine", "art") || said("examine", "art"))) { //038b
+    print("They're as ugly as a computer programmer!")
+  }
+}
+if ((said("examine", "accident") || said("examine") || said("examine", "hotel", "accident"))) { //039f
+  if (!f226) { //03b7
+    print("You observe a spacious, nicely-furnished, one-room apartment.")
+    goto(l965)
+  }
+  print("The bathroom is very basic. It contains a shower, a small sink and a toilet.")
+}
+l965:
+if ((said("lay", "down") || said("lay", "bed") || said("get", "bed") || said("get", "nap") || said("get", "on", "bed") || said("lay", "on", "bed") || said("lay", "down", "bed") || said("nap"))) { //03c5
+  if (!f226) { //03ff
+    print("You consider spreading out on the comfortable looking bed, but the case keeps running through your mind. You'd never be able to rest at a time like this!")
+    goto(l1048)
+  }
+  if (f84) { //040b
+    print("\"Oh, you!\" giggles Sweet Cheeks, \"that's all you ever think about!\"")
+    goto(l1048)
+  }
+  set(f113)
+}
+l1048:
+if (said("examine", "below", "bed")) { //0418
+  if (!f232) { //0424
+    set(f113)
+    goto(l1074)
+  }
+  print("You see lots of lint, but nothing you'd consider touching.")
+}
+l1074:
+if (said("examine", "bed")) { //0432
+  if (!f226) { //043c
+    print("The bed looks like it's been heavily used. There is a large sag in the middle that's about the size of your boss.")
+    goto(l1098)
+  }
+  set(f113)
+}
+l1098:
+if ((said("o", "pane") || said("elevator", "pane") || said("move", "pane") || said("c", "pane"))) { //044a
+  if (f227) { //0468
+    print("The window is sealed shut for your protection.")
+    goto(l1141)
+  }
+  set(f113)
+}
+l1141:
+if ((said("move", "on", "lamp") || said("move", "lamp", "on"))) { //0475
+  if (f228) { //048b
+    print("It is already on.")
+    goto(l1176)
+  }
+  set(f113)
+}
+l1176:
+if ((said("move", "off", "lamp") || said("move", "lamp", "off"))) { //0498
+  if (f228) { //04ae
+    print("There's nothing you should do here that can't be done in the light.")
+    goto(l1211)
+  }
+  set(f113)
+}
+l1211:
+if (said("get", "lamp")) { //04bb
+  if (f228) { //04c5
+    print("The lamp is bolted to the nightstand, which is bolted to the floor.")
+    goto(l1234)
+  }
+  set(f113)
+}
+l1234:
+if (said("get", "night stand")) { //04d2
+  if (f230) { //04dc
+    print("The nightstand is bolted to the floor.")
+    goto(l1257)
+  }
+  set(f113)
+}
+l1257:
+if ((said("anyword", "nail") || said("anyword", "anyword", "nail"))) { //04e9
+  print("Forget about that nail and start concentrating on nailing Bains.")
+}
+if ((said("examine", "pane") || said("examine", "out", "pane"))) { //04ff
+  if (!f226) { //0513
+    print("Through the window you see the pulsating metropolis of Lytton.")
+    goto(l1313)
+  }
+  set(f113)
+}
+l1313:
+if ((said("o", "drawer") || said("examine", "drawer") || said("look in", "drawer") || said("o", "chest", "drawer") || said("o", "chest"))) { //0521
+  if (f231) { //0547
+    print("You open the drawers to the dresser and (as expected) find nothing.")
+    goto(l1364)
+  }
+  set(f113)
+}
+l1364:
+if ((said("examine", "chest") || said("examine", "on", "chest") || said("look in", "chest"))) { //0554
+  if (!f231) { //056e
+    set(f113)
+    goto(l1404)
+  }
+  print("It's the kind of dresser you'd expect to find in a room like this.")
+}
+l1404:
+if (said("examine", "lamp")) { //057c
+  if (!f226) { //0586
+    print("The lamp is bolted to the nightstand.")
+    goto(l1428)
+  }
+  set(f113)
+}
+l1428:
+if ((said("examine", "television", "rol") || said("clock", "television", "rol"))) { //0594
+  if (!f226) { //05aa
+    print("It's hardly state-of-the-art. The first program it showed was a live broadcast of Uncle Miltie. It's got more tubes than an emergency room patient.")
+    goto(l1464)
+  }
+  set(f113)
+}
+l1464:
+if ((said("examine", "night stand") || said("examine", "counter") || said("examine", "get up"))) { //05b8
+  if (!f226) { //05d0
+    print("The nightstand is very plain looking, with no drawers. If they didn't need something to bolt the lamp to, it probably wouldn't be here.")
+    goto(l1502)
+  }
+  set(f113)
+}
+l1502:
+if (said("examine", "painting")) { //05de
+  if (!f226) { //05e8
+    print("It's not something you'd want to look at for an extended period of time!")
+    goto(l1526)
+  }
+  set(f113)
+}
+l1526:
+if (said("examine", "blind")) { //05f6
+  if (!f226) { //0600
+    print("The curtains are of no interest.")
+    goto(l1550)
+  }
+  set(f113)
+}
+l1550:
+if (said("examine", "city")) { //060e
+  if (!f226) { //0618
+    print("You feel a sense of pride when you see the city you protect.")
+    goto(l1574)
+  }
+  set(f113)
+}
+l1574:
+if ((said("examine", "down") || said("examine", "curb"))) { //0626
+  print("You see a well-worn carpet.")
+}
+if (said("examine", "fence")) { //063a
+  print("An abstract painting decorates the west wall.")
+}
+if ((said("call", "accident", "service") || said("buy", "food") || said("buy", "accident", "service"))) { //0646
+  print("This hotel has no room service!")
+}
+if (said("examine", "phone")) { //0664
+  if (f226) { //066e
+    print("This may be a nice hotel, but they don't furnish bathroom telephones.")
+    goto(l1671)
+  }
+  if (!f57) { //0679
+    print("Why, that looks like a phone over there!")
+    goto(l1671)
+  }
+  print("It's a genuine, LT&T touchtone model.")
+}
+l1671:
+if ((said("move", "on", "television") || said("move", "television", "on"))) { //0687
+  if (f229) { //069d
+    print("As much as you'd love to catch some old \"Dragnet\" reruns, you realize you must keep your mind on the case.")
+    goto(l1706)
+  }
+  set(f113)
+}
+l1706:
+if ((said("move", "off", "television") || said("move", "television", "off"))) { //06aa
+  if (f229) { //06c0
+    print("It is already off.")
+    goto(l1741)
+  }
+  set(f113)
+}
+l1741:
+if ((said("get", "leak") || said("use", "bath") || said("use", "stall") || said("enter", "bath") || said("leak"))) { //06cd
+  if (f226) { //06ef
+    sound(40,f152)
+    print("You utter a sigh of relief as you expel the eighteen cups of coffee that have been wreaking havoc on your bladder. You think more clearly now.")
+    stop.sound()
+    goto(l1792)
+  }
+  print("You start to unzip your trousers, but decide this isn't a good location to initiate such an action.")
+}
+l1792:
+if ((said("get", "crap") || said("crap"))) { //0700
+  if (f226) { //0710
+    sound(40,f152)
+    print("You ease down on the cool seat and meditate for a short time. Soon, everything works itself out. As you pull up your trousers, you feel noticeably lighter on your feet.")
+    stop.sound()
+    goto(l1825)
+  }
+  print("You start to unzip your trousers, but decide this isn't a good location to initiate such an action.")
+}
+l1825:
+if ((said("get", "creek") || said("climb", "creek") || said("enter", "creek") || said("creek"))) { //0721
+  if (f226) { //073d
+    print("A shower would be relaxing, but you have work to do.")
+    goto(l1866)
+  }
+  set(f113)
+}
+l1866:
+if (said("examine", "bath")) { //074a
+  if (f226) { //0754
+    print("The bathroom is very basic. It contains a shower, a small sink and a toilet.")
+    goto(l1889)
+  }
+  set(f113)
+}
+l1889:
+if ((said("bathe", "hands") || said("bathe", "up"))) { //0761
+  if (f226) { //0773
+    print("Your hands are now clean.")
+    goto(l1920)
+  }
+  set(f113)
+}
+l1920:
+if (said("examine", "basin")) { //0780
+  if (f226) { //078a
+    print("The small sink is made of porcelain.")
+    goto(l1943)
+  }
+  set(f113)
+}
+l1943:
+if (said("examine", "creek")) { //0797
+  if (f226) { //07a1
+    print("The shower is lined with brightly colored, imported tile.")
+    goto(l1966)
+  }
+  set(f113)
+}
+l1966:
+if (said("examine", "stall")) { //07ae
+  if (f226) { //07b8
+    print("If you insist. The toilet is quite a sight indeed. There isn't much doubt as to its function all these years.")
+    goto(l1989)
+  }
+  set(f113)
+}
+l1989:
+if (said("flush", "stall")) { //07c5
+  if (f226) { //07cf
+    print("You nervously flush the toilet. Much to your relief, all goes well.")
+    goto(l2012)
+  }
+  set(f113)
+}
+l2012:
+if (said("get", "bath")) { //07dc
+  if (f226) { //07e6
+    print("You're clean enough for this job!")
+    goto(l2035)
+  }
+  set(f113)
+}
+l2035:
+if (f84 && (said("remain", "bonds", "here") || said("remain", "here"))) { //07f3
+  print("\"Oh, honey,\" says Sweet Cheeks, \"I'd be afraid to stay here all alone!\"")
+}
+l2059:
+call(109)
+if (vWhichEgoBorder == 3) { //080d
+  new.room(65)
+}
+if (f84) { //0816
+  call(73)
+}
+return()

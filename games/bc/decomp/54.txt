@@ -1,4 +1,105 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f97)
+  if (f83) { //0010
+    load.logic(118)
+    set(f202)
+  }
+  if (f60) { //001a
+    load.logic(116)
+    set(f203)
+  }
+  load.view(118)
+  animate.obj(o10)
+  set.view(o10,118)
+  v61 = 3
+  cycle.time(o10,v61)
+  position(o10,47,105)
+  set.cel(o10,v37)
+  ignore.blocks(o10)
+  ignore.objs(o10)
+  draw(o10)
+  stop.update(o10)
+  if (vPrevRoom == 53) { //0040
+    position(o0,58,109)
+    goto(l96)
+  }
+  if (vPrevRoom == 55) { //004e
+    position(o0,126,132)
+    goto(l96)
+  }
+  position(o0,71,166)
+l96:
+  draw(o0)
+  if (f202) { //0062
+    call(118)
+  }
+  if (f203) { //006a
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0074
+  if (posn(o0,47,103,64,113)) { //007a
+    if (v37 != 4) { //0084
+      set(f200)
+      print("There is a hole in the wall here.")
+      goto(l149)
+    }
+    print("There is an opening here leading to a dark room.")
+l149:
+    goto(l154)
+  }
+  print("You are roaming around below the Horned King's dungeon. It is dark and cold down here.")
+}
+l154:
+if (!f128 && !f129) { //009a
+  goto(l220)
+}
+if (f129) { //00a7
+  goto(l220)
+}
+if (posn(o0,47,103,64,113) && v37 < 4) { //00b0
+  set(fSaidAccepted)
+  if (!f200) { //00bf
+    set(f200)
+    print("You look through the hole in the wall. It's very dark, but you think you see light. There might be another passage through there.")
+    goto(l220)
+  }
+  v37++
+  set.cel(o10,v37)
+  force.update(o10)
+  v73 = v37
+  v73 += 4
+  print(v73)
+}
+l220:
+if (v37 == 4 && posn(o0,48,105,61,107)) { //00dc
+  ignore.blocks(o0)
+  goto(l240)
+}
+observe.blocks(o0)
+l240:
+if (vWhichEgoBorder == 3) { //00f0
+  new.room(57)
+}
+if (vWhichEgoBorder == 2) { //00f9
+  new.room(55)
+}
+if (posn(o0,56,104,60,105)) { //0102
+  if (!f62) { //010c
+    set(f62)
+    vCurrentScore += 10
+  }
+  new.room(53)
+}
+if (f203) { //011a
+  call(116)
+}
+if (f202) { //0122
+  call(118)
+}
+return()

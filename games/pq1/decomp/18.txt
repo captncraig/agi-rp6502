@@ -1,4 +1,127 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x25)}
+if (fNewRoom) { //0002
+  position(o12,75,40)
+  draw(o0)
+  draw(o12)
+  show.pic()
+  return()
+}
+if (v142 < 22) { //0012
+  v46 = 93
+  goto(l34)
+}
+v46 = 80
+l34:
+if (posn(o2,75,21,80,25) && v234 == 4) { //0022
+  observe.blocks(o2)
+  goto(l54)
+}
+ignore.blocks(o2)
+l54:
+if (!f241) { //0036
+  if (!(posn(o0,17,0,27,25)) && !(posn(o19,17,0,27,25))) { //003d
+    if (v221 == 0) { //004f
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //005a
+        v152++
+      }
+      set.cel(o1,v152)
+      position(o1,19,0)
+      ignore.blocks(o1)
+      set.priority(o1,5)
+      set(f221)
+    }
+  }
+  if (v221 == 1) { //0073
+    move.obj(o1,19,167,1,f221)
+    draw(o1)
+  }
+  if (v221 == 2) { //0082
+    erase(o1)
+    v221 = 0
+  }
+}
+if (!f242) { //008e
+  if (!(posn(o0,75,0,85,25)) && !(posn(o19,75,0,85,25))) { //0095
+    if (v222 == 0) { //00a7
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //00b2
+        v152++
+      }
+      set.cel(o2,v152)
+      position(o2,77,0)
+      ignore.blocks(o2)
+      set.priority(o2,5)
+      set(f222)
+    }
+  }
+  if (v222 == 1) { //00cb
+    move.obj(o2,77,29,1,f222)
+    draw(o2)
+  }
+  if (v222 == 2) { //00da
+    move.obj(o2,135,36,1,f222)
+  }
+  if (v222 == 3) { //00e7
+    move.obj(o2,135,167,1,f222)
+  }
+  if (v222 == 4) { //00f4
+    erase(o2)
+    v222 = 0
+  }
+}
+if (!f243) { //0100
+  if (!(posn(o0,17,131,27,167)) && !(posn(o19,17,131,27,167))) { //0107
+    if (v223 == 0) { //0119
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //0124
+        v152++
+      }
+      set.cel(o3,v152)
+      position(o3,25,167)
+      ignore.blocks(o3)
+      set.priority(o3,5)
+      set(f223)
+    }
+  }
+  if (v223 == 1) { //013d
+    move.obj(o3,25,128,1,f223)
+    draw(o3)
+  }
+  if (v223 == 2) { //014c
+    move.obj(o3,77,128,1,f223)
+  }
+  if (v223 == 3) { //0159
+    move.obj(o3,77,167,1,f223)
+  }
+  if (v223 == 4) { //0166
+    erase(o3)
+    v223 = 0
+  }
+}
+if (!f244) { //0172
+  if (!(posn(o0,133,131,143,167)) && !(posn(o19,133,131,143,167))) { //0179
+    if (v224 == 0) { //018b
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //0196
+        v152++
+      }
+      set.cel(o4,v152)
+      position(o4,141,167)
+      ignore.blocks(o4)
+      set.priority(o4,5)
+      set(f224)
+    }
+  }
+  if (v224 == 1) { //01af
+    move.obj(o4,141,0,1,f224)
+    draw(o4)
+  }
+  if (v224 == 2) { //01be
+    erase(o4)
+    v224 = 0
+  }
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //01ca
+  print("This is a quiet, residential area of Lytton.")
+}
+return()

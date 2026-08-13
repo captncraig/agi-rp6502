@@ -1,4 +1,115 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(42)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,56,83,0,0)
+  }
+  if (vPrevRoom == 78) { //0027
+    v82 = 0
+    vCurrentScore += 1
+    set.view(o0,60)
+    position(o0,110,131)
+    move.obj(o0,88,131,0,f20)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f120) { //0044
+  ignore.blocks(o0)
+  goto(l81)
+}
+observe.blocks(o0)
+l81:
+if (f20) { //0051
+  set.view(o0,0)
+  print("You feel a stretching sensation... Oh, you're back to your original size.")
+  reset(f120)
+  reset(f20)
+}
+if ((said("check", "doorway") || said("look in", "doorway"))) { //0060
+  if (posn(o0,90,124,106,140)) { //0072
+    print("When looking in this small hole, you see a faint green glow.")
+    goto(l334)
+  }
+  if (posn(o0,75,125,109,158)) { //0081
+    print("One rock has a small hole in its base.")
+    goto(l146)
+  }
+  print("You'll have to move closer.")
+}
+l146:
+if (said("reach", "doorway")) { //0092
+  if (posn(o0,90,124,106,140)) { //009c
+    print("Very cautiously, you reach into the hole, and to your dismay, find nothing.")
+    goto(l173)
+  }
+  print("You'll have to move closer.")
+}
+l173:
+if (!f120) { //00ad
+  if ((said("enter", "doorway") || said("enter", "doorway"))) { //00b4
+    if (posn(o0,75,125,109,158)) { //00c6
+      print("You would need to be much smaller to fit through that hole.")
+      goto(l215)
+    }
+    print("You'll have to move closer.")
+  }
+}
+l215:
+if (f120) { //00d7
+  if ((said("enter", "doorway") || said("enter", "doorway"))) { //00dd
+    print("Go ahead.  Walk right in.")
+  }
+}
+if (said("acquire", "boulder")) { //00f1
+  if (posn(o0,75,125,109,158)) { //00fb
+    print("This rock is firmly stuck in the ground.")
+    goto(l268)
+  }
+  print("You'll have to move closer.")
+}
+l268:
+if (said("move", "boulder")) { //010c
+  if (posn(o0,75,125,109,158)) { //0116
+    print("Although you are very strong and healthy, this rock is too much even for you.")
+    goto(l295)
+  }
+  print("You'll have to move closer.")
+}
+l295:
+if (said("check", "boulder")) { //0127
+  if (posn(o0,50,80,158,166)) { //0131
+    print("The ancient, mossy rock has seen many winters.  There is a small hole at its base.")
+    goto(l322)
+  }
+  print("From here it looks like a typical, large rock.")
+}
+l322:
+if (said("check", "room")) { //0142
+  print("You notice a hole in the base of a large moss covered rock.")
+}
+l334:
+if (posn(o0,111,127,119,132)) { //014e
+  new.room(78)
+}
+if (vWhichEgoBorder == 1) { //015a
+  new.room(45)
+}
+if (vWhichEgoBorder == 2) { //0163
+  new.room(35)
+}
+if (vWhichEgoBorder == 4) { //016c
+  new.room(37)
+}
+if (vWhichEgoBorder == 3) { //0175
+  new.room(29)
+}
+if (f75) { //017e
+  call(103)
+}
+return()

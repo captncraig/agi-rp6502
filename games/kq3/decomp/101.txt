@@ -1,3 +1,83 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x6c)}
+set.cursor.char("_")
+set.string(str0,"]")
+set.game.id("KQ3")
+trace.info(96,1,6)
+set.text.attribute(15,0)
+vMaxScore = 210
+if (vMonitorType != HERCULES) { //0013
+  clear.lines(22,24,c0)
+}
+configure.screen(1,23,0)
+set(f14)
+disable.member(c29)
+set(f9)
+set(f126)
+v61 = 1
+v60 = 1
+v59 = 1
+v141 = 1
+v142 = 2
+v143 = 3
+v144 = 4
+v145 = 5
+if (!(v70 > 0)) { //0043
+  if (!fRestartGame) { //004b
+    set(f42)
+    program.control()
+    prevent.input()
+    vCycleTime = 2
+    reset(f126)
+    reset(f14)
+    status.line.off()
+    goto(l103)
+  }
+  enable.member(c3)
+  set(f42)
+  status.line.on()
+  return()
+}
+l103:
+set.key(0,59,2)
+set.key(0,60,16)
+set.key(0,61,9)
+set.key(0,62,26)
+set.key(0,63,3)
+set.key(0,64,24)
+set.key(0,65,5)
+set.key(0,66,23)
+set.key(0,67,7)
+set.key(0,68,4)
+set.key(9,0,10)
+set.key(27,0,35)
+set.key(3,0,17)
+set.key(5,0,9)
+set.key(10,0,15)
+set.key(18,0,12)
+set.key(19,0,16)
+set.key(0,46,6)
+set.key(0,32,14)
+set.key(0,18,21)
+set.key(0,23,36)
+set.key(0,50,13)
+set.key(0,25,19)
+set.key(0,47,20)
+set.key(0,45,22)
+set.key(0,44,1)
+if (vComputerType == 2) { //00cf
+  set.key(43,0,38)
+  set.key(42,0,39)
+}
+if (vComputerType == 1) { //00de
+  set.key(49,0,2)
+  set.key(50,0,16)
+  set.key(51,0,9)
+  set.key(53,0,3)
+  set.key(54,0,24)
+  set.key(55,0,5)
+  set.key(56,0,23)
+  set.key(57,0,7)
+  set.key(48,0,4)
+}
+set.key(1,1,35)
+set.key(1,2,10)
+return()

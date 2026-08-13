@@ -1,4 +1,68 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  set.horizon(80)
+  load.sound(9)
+  load.sound(15)
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,0)
+  set(f46)
+  v57 = 76
+  v58 = 100
+  position(o0,57,v58)
+  draw(o0)
+  animate.obj(o13)
+  load.view(236)
+  set.view(o13,236)
+  ignore.horizon(o13)
+  set.cel(o13,1)
+  position(o13,30,35)
+  draw(o13)
+  set(f220)
+  show.pic()
+  return()
+}
+if (!f221) { //003d
+  set(f221)
+  print("Dark storm clouds begin to gather around until you are enveloped by them. You hear loud reports of thunderclaps and lightning flashes frighteningly close.")
+}
+if (v220 > 8) { //0048
+  stop.cycling(o13)
+}
+if (v220 == 8) { //0051
+  sound(15,f238)
+  start.cycling(o13)
+}
+if (!(v220 > 0)) { //005d
+  sound(9,f238)
+  shake.screen(1)
+  random(15,40,v220)
+  random(1,144,v37)
+  v38 = 35
+  reposition.to(o13,v37,v38)
+  random(0,1,v64)
+  set.loop(o13,v64)
+  set.cel(o13,1)
+  stop.cycling(o13)
+}
+v220--
+if (v71 == 10) { //0087
+  set(f222)
+}
+if (!(v76 > 0) && !(v75 > 0)) { //0090
+  set(f222)
+}
+if (f222) { //009e
+  v44 = 30
+  if (v72 > 0) { //00a7
+    vCurrentRoom = v72
+    v44 = 0
+  }
+  v76 = 0
+  v75 = 0
+  v72 = 0
+  reset(f46)
+  new.room(vPrevRoom)
+}
+return()

@@ -1,4 +1,16 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  position(o0,81,152)
+  draw(o0)
+  if (f35) { //0014
+    position(o13,96,153)
+    set(f100)
+  }
+  return()
+}
+if (fTriggerLine) { //0021
+  new.room(12)
+}
+return()

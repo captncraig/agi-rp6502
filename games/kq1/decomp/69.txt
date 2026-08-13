@@ -1,4 +1,53 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(105)
+  load.sound(5)
+  if (vPrevRoom == 59) { //0012
+    position(o0,18,97)
+  }
+  if (vPrevRoom == 68) { //001d
+    position(o0,144,155)
+    set.loop(o0,1)
+    move.obj(o0,143,154,0,f148)
+  }
+  draw(o0)
+  show.pic()
+}
+if ((said("check", "stairs") || said("check", "room"))) { //0034
+  print("The stairs descend into the lower reaches of the mountain.")
+}
+if (said("check", "doorway")) { //0048
+  print("You can see sky, light, and smell clouds through the opening.")
+}
+if (fTriggerLine && !f21) { //0054
+  set(f145)
+  set(f146)
+  set(f21)
+  if (!f79) { //0063
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  print("Oh dear!  With a slip of the foot, you fall head over heels down the long stairway.")
+  v61 = 165
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+  sound(5,f159)
+}
+if (f20) { //008c
+  reset(f20)
+  erase(o0)
+  set(f63)
+}
+if (posn(o0,0,0,1,167)) { //0098
+  new.room(59)
+}
+if (posn(o0,138,156,155,157)) { //00a4
+  new.room(68)
+}
+return()

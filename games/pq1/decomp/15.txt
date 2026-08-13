@@ -1,4 +1,201 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x25)}
+if (fNewRoom) { //0002
+  position(o12,17,132)
+  draw(o0)
+  draw(o12)
+  add.to.pic(161,2,3,33,24,0,4)
+  add.to.pic(161,2,3,52,24,0,4)
+  add.to.pic(161,2,0,100,24,0,4)
+  add.to.pic(161,0,4,0,167,0,4)
+  add.to.pic(161,1,3,0,77,0,4)
+  add.to.pic(161,1,5,0,115,0,4)
+  add.to.pic(161,2,1,31,161,0,4)
+  add.to.pic(161,2,1,53,161,0,4)
+  add.to.pic(161,2,2,87,161,0,4)
+  add.to.pic(161,2,2,113,161,0,4)
+  add.to.pic(161,0,2,144,76,0,4)
+  add.to.pic(161,1,0,112,113,0,4)
+  add.to.pic(161,0,0,29,113,0,4)
+  add.to.pic(161,0,1,53,113,0,4)
+  show.pic()
+  return()
+}
+if ((v143 < 33 || v143 > 124)) { //0082
+  v46 = 80
+  goto(l151)
+}
+v46 = 92
+l151:
+if (posn(o1,16,110,23,115) && v234 != 1) { //0097
+  observe.blocks(o1)
+  goto(l172)
+}
+ignore.blocks(o1)
+l172:
+if (posn(o2,27,118,31,123) && v234 != 4) { //00ac
+  observe.blocks(o2)
+  goto(l193)
+}
+ignore.blocks(o2)
+l193:
+if (posn(o4,23,137,27,138) && v234 != 1) { //00c1
+  observe.blocks(o4)
+  goto(l214)
+}
+ignore.blocks(o4)
+l214:
+if (!f241) { //00d6
+  if (!(posn(o0,0,25,17,39)) && !(posn(o19,0,25,17,39))) { //00dd
+    if (v221 == 0) { //00ef
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //00fa
+        v152++
+      }
+      set.cel(o1,v152)
+      position(o1,0,36)
+      ignore.blocks(o1)
+      set.priority(o1,5)
+      set(f221)
+    }
+    if (v221 == 1) { //0113
+      move.obj(o1,19,36,1,f221)
+      draw(o1)
+    }
+  }
+  if (v221 == 2) { //0122
+    move.obj(o1,19,167,1,f221)
+  }
+  if (v221 == 3) { //012f
+    erase(o1)
+    v221 = 0
+  }
+}
+if (!f242) { //013b
+  if (!(posn(o0,143,25,159,39)) && !(posn(o19,143,25,159,39))) { //0142
+    if (v222 == 0) { //0154
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //015f
+        v152++
+      }
+      set.cel(o2,v152)
+      position(o2,159,29)
+      observe.objs(o2)
+      ignore.blocks(o2)
+      set.priority(o2,5)
+      set(f222)
+    }
+    if (v222 == 1) { //017a
+      move.obj(o2,141,29,1,f222)
+      draw(o2)
+    }
+  }
+  if (v222 == 2) { //0189
+    move.obj(o2,135,36,1,f222)
+  }
+  if (v222 == 3) { //0196
+    move.obj(o2,135,121,1,f222)
+  }
+  if (v222 == 4) { //01a3
+    move.obj(o2,0,121,1,f222)
+  }
+  if (v222 == 5) { //01b0
+    erase(o2)
+    v222 = 0
+  }
+}
+if (!f243) { //01bc
+  if (!(posn(o0,143,25,159,39)) && !(posn(o19,143,25,159,39))) { //01c3
+    if (v223 == 0) { //01d5
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //01e0
+        v152++
+      }
+      set.cel(o3,v152)
+      position(o3,159,29)
+      ignore.blocks(o3)
+      set.priority(o3,5)
+      set(f223)
+    }
+    if (v223 == 1) { //01f9
+      move.obj(o3,25,29,1,f223)
+      draw(o3)
+    }
+  }
+  if (v223 == 2) { //0208
+    move.obj(o3,25,0,1,f223)
+  }
+  if (v223 == 3) { //0215
+    erase(o3)
+    v223 = 0
+  }
+}
+if (!f244) { //0221
+  if (!(posn(o0,17,131,27,167)) && !(posn(o19,17,131,27,167))) { //0228
+    if (v224 == 0) { //023a
+      random(0,9,v152)
+      if (f56 && v152 < 4) { //0245
+        v152++
+      }
+      set.cel(o4,v152)
+      position(o4,25,167)
+      ignore.blocks(o4)
+      set.priority(o4,5)
+      set(f224)
+    }
+    if (v224 == 1) { //025e
+      move.obj(o4,25,128,1,f224)
+      draw(o4)
+    }
+  }
+  if (v224 == 2) { //026d
+    move.obj(o4,135,128,1,f224)
+  }
+  if (v224 == 3) { //027a
+    move.obj(o4,141,36,1,f224)
+  }
+  if (v224 == 4) { //0287
+    move.obj(o4,159,36,1,f224)
+  }
+  if (v224 == 5) { //0294
+    erase(o4)
+    v224 = 0
+  }
+}
+distance(o0,o19,v240)
+if (v240 < 50 && !(v67 > 0) && v92 < 255) { //02a4
+  current.view(o0,v146)
+  if ((v146 == 99 || v146 == 101)) { //02b5
+    current.loop(o0,v147)
+    if (v147 > 1) { //02c4
+      if (posn(o0,76,64,77,69)) { //02cb
+        v227 = 50
+      }
+      goto(l744)
+    }
+    if (posn(o0,76,64,77,67)) { //02db
+      v227 = 50
+    }
+l744:
+    if (v92 > 190) { //02e8
+      position(o14,76,47)
+      if (v147 > 1) { //02f3
+        if (posn(o0,76,42,76,52)) { //02fa
+          v227 = 50
+        }
+        goto(l791)
+      }
+      if (posn(o0,73,42,76,48)) { //030a
+        v227 = 50
+      }
+    }
+  }
+}
+l791:
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //0317
+  if (v92 < 255 && v136 == 0) { //032d
+    print("In the battle of building vs vehicle, the vehicle has lost!")
+    goto(l830)
+  }
+  print("This is a commercialized area of Lytton.")
+}
+l830:
+return()

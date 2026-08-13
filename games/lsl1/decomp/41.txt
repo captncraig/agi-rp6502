@@ -1,4 +1,426 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(178)
+  load.view(176)
+  load.view(98)
+  load.view(18)
+  load.view(24)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,176)
+  set.loop(o1,1)
+  set.cel(o1,0)
+  set.priority(o1,10)
+  position(o1,113,131)
+  v52 = 3
+  cycle.time(o1,v52)
+  draw(o1)
+  stop.update(o1)
+  set(f82)
+  if (f82) { //003a
+    animate.obj(o2)
+    ignore.blocks(o2)
+    position(o2,91,120)
+    set.view(o2,176)
+    set.loop(o2,2)
+    draw(o2)
+    stop.cycling(o2)
+    random(22,44,v202)
+  }
+  if (f80) { //0056
+    animate.obj(o3)
+    set.view(o3,176)
+    set.loop(o3,0)
+    position(o3,89,95)
+    draw(o3)
+    stop.update(o3)
+  }
+  animate.obj(o4)
+  set.view(o4,176)
+  set.loop(o4,3)
+  position(o4,74,124)
+  if (f81) { //0078
+    draw(o4)
+    stop.update(o4)
+  }
+  v38 = 124
+  v39 = 129
+  position(o0,38,v39)
+  draw(o0)
+  start.motion(o0)
+  show.pic()
+  if (f80 && !f111) { //0091
+    set(f111)
+    print("\"Oh, Larry, it's you!\" Fawn says. \"I thought it was that cute, young delivery boy again.\"")
+  }
+  return()
+}
+reset(f202)
+if (posn(o0,50,117,60,125)) { //00a1
+  set(f202)
+}
+reset(f203)
+if (posn(o0,116,129,125,136)) { //00af
+  set(f203)
+}
+reset(f200)
+if (posn(o0,54,117,98,140)) { //00bd
+  set(f200)
+}
+if (f200 && f82) { //00c9
+  set(f69)
+}
+reset(f208)
+if (posn(o0,92,117,103,126)) { //00d5
+  set(f208)
+}
+if (!fEnteredCommand) { //00e1
+  goto(l1502)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "casino", "area") || said("examine", "casino", "casino", "area") || said("examine", "honeymoon suite") || said("examine", "casino", "honeymoon suite") || said("examine", "casino", "casino", "honeymoon suite") || said("examine", "bedroom"))) { //00eb
+  if (f82) { //012b
+    print("Your are in the casino hotel's honeymoon suite. The heart-shaped bed is just waiting for you and Fawn. The dim lighting provides the perfect atmosphere. You've always appreciated the \"Early American Gaudy\" look. There is a radio on the shelf behind the bed.")
+    goto(l312)
+  }
+  print("This is the honeymoon suite. The heart-shaped bed would have been perfect for you and Fawn. Too bad things worked out like this!")
+}
+l312:
+if (said("examine", "bed")) { //0138
+  print("Don't you think a heart-shaped bed is trite?")
+}
+if (said("catch", "bucket")) { //0144
+  print("You can't. The delivery boy glued it to the table.")
+}
+if ((said("rest") || said("rest", "down") || said("rest", "on", "bed") || said("rest", "bed"))) { //0150
+  print("You have more important things on your mind than sitting.")
+}
+if (said("increase", "glass")) { //0170
+  print("This window doesn't open.")
+}
+if ((said("examine", "glass") || said("examine", "out", "glass"))) { //017c
+  print("You see the lights of Lost Wages spread out before you.")
+}
+if ((said("break", "glass") || said("beat", "glass"))) { //0192
+  print("You are unable to break the window.")
+}
+if ((said("ask", "room service") || said("dial", "phone") || said("use", "phone") || said("ask", "phone") || said("ask", "booze") || said("ask", "booze", "building") || said("room service") || said("buy", "room service") || said("dial", "room service"))) { //01a6
+  print("This room doesn't even have a telephone!")
+}
+if ((said("examine", "champagne", "rol") || said("examine", "bucket", "rol"))) { //01e4
+  if (!f80) { //01fa
+    print("There's no wine here.")
+    goto(l520)
+  }
+  print("Hmmm. Was \"Tuesday\" a good year?")
+}
+l520:
+if ((said("add", "champagne") || said("catch", "champagne", "rol") || said("increase", "champagne", "rol") || said("fill", "glass") || said("drain", "champagne", "about", "glass") || said("increase", "bottle", "rol") || said("drain", "champagne", "glass") || said("add", "blond", "champagne") || said("add", "champagne", "blond") || said("bite", "champagne", "rol") || said("drain", "champagne"))) { //0208
+  if (!f80) { //0262
+    print("There's no wine here.")
+    goto(l662)
+  }
+  if (v30 == 19) { //026e
+    print("Right. Sure. Pour another for her while you're at it!")
+    goto(l662)
+  }
+  if (!f208) { //027a
+    set(f54)
+    goto(l662)
+  }
+  if (!f82) { //0286
+    print("You grab the bottle, and fortify your courage with a long, hard belt!")
+    goto(l662)
+  }
+  print("You carefully remove the bottle from the wine bucket, unscrew the cap, and pour two glasses. She downs her glass immediately, you refill it, and she does it again. Her eyes meet yours, and you're sure luck is with you this time!")
+  set(f201)
+}
+l662:
+if (f82) { //0296
+  if (said("examine", "blond")) { //029c
+    if (f201) { //02a6
+      print("She looks ready, Larry.")
+      goto(l702)
+    }
+    if (f80) { //02b1
+      print("She looks like she could use some of that wine.")
+      goto(l702)
+    }
+    print("She is so beautiful you want to do wonderful things to, er, ah, FOR her.")
+  }
+l702:
+  if ((said("ask", "blond") || said("aim", "blond") || said("bite", "blond") || said("bite", "blond") || said("embrace", "blond"))) { //02be
+    if (!f80) { //02e2
+      random(18,19,v58)
+      print(v58)
+      goto(l768)
+    }
+    if (!f201) { //02f2
+      print("\"Aren't you going to pour the wine?\" she says, her eyes flashing.")
+      goto(l768)
+    }
+    print("\"I'm ready when you are, honey!\"\n\nCome on, Larry; what are you waiting for?")
+  }
+l768:
+  if ((said("copulate", "rol") || said("catch", "naked") || said("copulate", "clit") || said("sleep", "blond") || said("board", "sleep") || said("sleep", "use", "blond") || said("drain", "bra", "rol") || said("naked", "rol") || said("board", "bed") || said("climb", "bed") || said("naked", "rol") || said("drain", "bra", "rol") || said("drain", "blond", "bra", "rol") || said("catch", "on", "bed") || said("catch", "bed") || said("lie", "on", "bed") || said("lie", "bed") || said("lie", "down") || said("climb", "on", "rol"))) { //0300
+    if (!f80) { //0388
+      print("She doesn't appear to be in the mood yet, Larry.")
+      goto(l945)
+    }
+    if (!f201) { //0394
+      print("\"Aren't you going to pour the wine?\" she says, her eyes flashing.")
+      goto(l945)
+    }
+    if (!f200) { //03a0
+      set(f54)
+      goto(l945)
+    }
+    v65 = 0
+    set(f75)
+  }
+}
+l945:
+if (said("examine", "radio")) { //03b1
+  print("It's pretty complicated. There's a knob that says \"On.\"")
+}
+if (said("catch", "radio")) { //03bd
+  print("It's a table model, not a portable.")
+  print("Besides, the hotel bolted it to the table.")
+}
+if ((said("move", "channel", "rol") || said("move", "dial", "rol") || said("alter", "channel", "rol"))) { //03cb
+  if (f204) { //03e9
+    print("The tuning knob on the radio is stuck. Looks like you're stuck with the Easy Listening station.")
+    goto(l1014)
+  }
+  print("You can't move the knob, but it doesn't matter since the radio isn't on anyway!")
+}
+l1014:
+if ((said("move", "on", "radio") || said("hear", "radio") || said("move", "button", "on", "radio") || said("move", "button", "on", "radio", "on") || said("move", "button", "radio") || said("move", "button") || said("move", "on", "button") || said("move", "button", "on") || said("move", "radio", "button") || said("move", "radio", "button", "on") || said("move", "radio", "on"))) { //03f6
+  if (!f202) { //0458
+    set(f54)
+    goto(l1150)
+  }
+  if (f204) { //0464
+    print("The radio IS on.")
+    goto(l1150)
+  }
+  set(f204)
+  print("Sounds like a nice mellow station...")
+  if (!f80) { //0473
+    random(5,15,v200)
+  }
+}
+l1150:
+if ((said("move", "off", "radio") || said("move", "button", "on", "radio", "off") || said("move", "radio", "button", "off") || said("done", "hear", "radio") || said("move", "radio", "off"))) { //047e
+  if (!f202) { //04b2
+    set(f54)
+    goto(l1233)
+  }
+  if (!f204) { //04be
+    print("The radio IS off.")
+    goto(l1233)
+  }
+  reset(f204)
+  print("Click.")
+  v200 = 0
+}
+l1233:
+if (v30 == 19) { //04d1
+  if ((said("let go", "rope") || said("loosen", "rope"))) { //04d8
+    print("You can't. She fastened them quite securely!")
+  }
+  if ((said("use", "knife") || said("use", "knife", "cut", "rope") || said("increase", "knife", "rol") || said("catch", "knife", "rol") || said("cut", "rope", "use", "knife") || said("cut", "rope", "knife"))) { //04ec
+    if (!(has(i15))) { //0524
+      print("Good idea. Unfortunately, you have nothing with which to cut a rope, Larry.")
+      goto(l1367)
+    }
+    print("Right!\n\nUsing the pocket knife you got from the old bum by the convenience store, you saw through the ropes holding you to the bed.")
+    release.priority(o0)
+    reset(f48)
+    reset(f85)
+    start.motion(o0)
+    set.view(o0,0)
+    set.loop(o0,0)
+    reposition.to(o0,89,130)
+    reset(f34)
+    v30 = 0
+    vCurrentScore += 10
+    v203 = 0
+    draw(o4)
+    stop.update(o4)
+    set(f81)
+    print("You grab your wallet and look inside.\n\nOh, well. At least she didn't find the %v90 bucks you hid in that secret compartment. With your consummate gambling skills, you should be back on your feet in no time!")
+  }
+l1367:
+  if (said("holler")) { //0557
+    print("\"FAWN!! You scum-sucking gutter slug, get back in here!\"")
+    print("Unfortunately, your pleas go unheeded.")
+  }
+  if (!fSaidAccepted) { //0563
+    print("You can't. You're tied to a bed!")
+    set(fSaidAccepted)
+  }
+}
+if (f81 && (said("catch", "rope") || said("catch", "rope", "from", "bed") || said("catch", "rope", "off", "bed") || said("catch", "rope", "bed"))) { //056e
+  if (!f200) { //0598
+    set(f54)
+    goto(l1455)
+  }
+  vCurrentScore += 3
+  get(i20)
+  start.update(o4)
+  erase(o4)
+  print("You never know when a nice piece of rope will come in handy.")
+}
+l1455:
+if (said("increase", "door")) { //05af
+  if (!f203) { //05b9
+    print("Move closer to the handle.")
+    goto(l1488)
+  }
+  set(f67)
+  start.update(o1)
+  end.of.loop(o1,f205)
+  stop.motion(o0)
+  set(f85)
+}
+l1488:
+if (said("break", "bottle", "rol")) { //05d0
+  print("You can't. It's the same brand that people can't break when they want to christen a ship!")
+}
+l1502:
+if (f44) { //05de
+  v200--
+  if (v200 == 1) { //05e6
+    print("The radio interrupts the Frank Sinatra medley with an obnoxious singing commercial...")
+    print("\"We're Ajax Liquor,\nand we're proud to say,\nwe deliver all across\nthe U.S.A.\"")
+    print("\"You're out of luck\nif you want to dine,\nbut if you just need booze,\ndial 555-8039!\"")
+    print("\"And now, back to our music.\"")
+    random(60,120,v200)
+    if (!f104) { //05f9
+      set(f104)
+      vCurrentScore += 1
+    }
+  }
+  v201--
+  if (v201 == 1) { //0607
+    print("Since you have no way of cutting the ropes, and they're far too tightly tied for you to loosen, it looks like this is the end for you, Larry.")
+    set(f50)
+  }
+}
+if (f75) { //0612
+  reset(f75)
+  v65++
+  if (v65 == 1) { //061c
+    print("She says, \"Lie down, Larry. I have a special surprise for you!\"")
+    print("Then she says, \"Close your eyes,\" and you do because you're sure that, finally, success is at hand.")
+    erase(o2)
+    set.view(o2,98)
+    set.loop(o2,0)
+    position(o2,89,129)
+    ignore.objs(o2)
+    v202 = 0
+    stop.motion(o0)
+    set.priority(o0,15)
+    set.view(o0,18)
+    set.cel(o0,0)
+    set(f48)
+    reposition.to(o0,62,125)
+    set(f85)
+    reset(f34)
+    prevent.input()
+    v30 = 19
+    v67 = 7
+  }
+  if (v65 == 2) { //0654
+    print("\"Oh, Fawn!\" you moan.")
+    v67 = 5
+  }
+  if (v65 == 3) { //0660
+    print("\"Ooh, Baby!\n\nThat feels so good!\n\nOoooooooooh!!\"")
+    print("\"Say, Fawn, when are you going to get undressed?\"")
+    v67 = 5
+  }
+  if (v65 == 4) { //066e
+    print("\"Hey, what's the deal with the rope?\"")
+    v67 = 4
+  }
+  if (v65 == 5) { //067a
+    print("\"Why are you tying me to the bed?\"")
+    set.cel(o0,2)
+    v67 = 6
+  }
+  if (v65 == 6) { //0689
+    print("When Fawn has you securely tied to the bed, she grabs your wallet, saying, \"You forgot to pay me for the wine,\" then heads out the door.")
+    if (v90 > 10) { //0692
+      v90 = 10
+      goto(l1698)
+    }
+    v90 = 1
+l1698:
+    set.view(o0,24)
+    set(f48)
+    reposition.to(o0,64,133)
+    v203 = 2
+    draw(o2)
+    start.cycling(o2)
+    move.obj(o2,118,129,1,f75)
+  }
+  if (v65 == 7) { //06b8
+    stop.cycling(o2)
+    start.update(o1)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 8) { //06c6
+    print("\"FAWN! Come back!\" you shout. \"This isn't funny!!\"")
+    start.cycling(o2)
+    move.obj(o2,129,129,1,f75)
+  }
+  if (v65 == 9) { //06d7
+    erase(o2)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 10) { //06e3
+    v65 = 0
+    print("Hmmm. You wonder if there's any way a guy can \"consummate\" by himself?")
+    print("Larry, it looks like \"the honeymoon's over.\"")
+    accept.input()
+    reset(f82)
+    stop.update(o1)
+    if (!(has(i15))) { //06f6
+      v201 = 30
+    }
+  }
+}
+v203--
+if (v203 == 1) { //0702
+  toggle(f207)
+  if (f207) { //070b
+    set(f34)
+    random(5,22,v203)
+    goto(l1824)
+  }
+  reset(f34)
+  random(22,44,v203)
+}
+l1824:
+v202--
+if (v202 == 1) { //0722
+  toggle(f206)
+  if (f206) { //072b
+    start.cycling(o2)
+    random(5,22,v202)
+    goto(l1856)
+  }
+  stop.cycling(o2)
+  random(22,44,v202)
+}
+l1856:
+if (f205) { //0740
+  reset(f85)
+  reset(f48)
+  v76 = 40
+}
+return()

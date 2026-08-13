@@ -1,4 +1,755 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(183)
+  if (!f84) { //000a
+    set(f203)
+    set(f208)
+    load.view(182)
+    load.view(180)
+    load.view(181)
+    load.view(177)
+    load.view(7)
+    load.view(8)
+    load.view(2)
+    v81 = 27
+    load.pic(v81)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (f203) { //002c
+    animate.obj(o2)
+    ignore.blocks(o2)
+    ignore.objs(o2)
+    set.view(o2,181)
+    set.priority(o2,9)
+    position(o2,72,89)
+    draw(o2)
+    stop.update(o2)
+    animate.obj(o4)
+    set.view(o4,7)
+    set.loop(o4,2)
+    position(o4,58,92)
+    draw(o4)
+    animate.obj(o3)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    set.view(o3,7)
+    set.loop(o3,2)
+    set.priority(o3,15)
+    position(o3,95,105)
+  }
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,59,106)
+  set.view(o1,183)
+  set.priority(o1,9)
+  draw(o1)
+  if (v30 == 22) { //0079
+    prevent.input()
+    set(f48)
+    load.view(184)
+    load.sound(15)
+    animate.obj(o7)
+    ignore.horizon(o7)
+    ignore.blocks(o7)
+    ignore.objs(o7)
+    set.view(o7,184)
+    set.priority(o7,15)
+    position(o7,77,118)
+    draw(o7)
+    move.obj(o7,0,118,4,f207)
+    set(f209)
+    set(f210)
+  }
+  v38 = 150
+  if (v39 < 97) { //00a8
+    v39 = 97
+  }
+  if (v39 > 156) { //00b2
+    v39 = 156
+  }
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f205)
+if ((posn(o0,47,90,111,123) || f200)) { //00c6
+  set(f205)
+}
+if (f203) { //00d6
+  if ((posn(o0,59,90,86,92) || f200)) { //00dc
+    set(f69)
+  }
+}
+if (!fEnteredCommand) { //00ec
+  goto(l2027)
+}
+if (f203) { //00f6
+  if (f204) { //00fc
+    if ((said("move", "on", "bubbles") || said("move", "bubbles", "on") || said("move", "hot tub", "on") || said("move", "on", "hot tub"))) { //0102
+      if (f208) { //0128
+        print("They ARE on.")
+        goto(l317)
+      }
+      set(f208)
+      draw(o11)
+      draw(o12)
+      draw(o13)
+      draw(o14)
+    }
+l317:
+    if ((said("move", "off", "bubbles") || said("move", "bubbles", "off") || said("move", "hot tub", "off") || said("move", "off", "hot tub"))) { //013d
+      if (!f208) { //0163
+        print("They ARE off.")
+        goto(l377)
+      }
+      reset(f208)
+      erase(o11)
+      erase(o12)
+      erase(o13)
+      erase(o14)
+    }
+l377:
+    if (said("use", "breath spray", "rol")) { //0179
+      reset(fSaidAccepted)
+      v207 = 1
+      random(6,19,v200)
+      reset(f206)
+    }
+    if (said("examine", "bracelet")) { //0190
+      print("Her gold bracelet is engraved with the word \"Eve.\"")
+    }
+    if ((said("done", "examine", "blond") || said("examine", "away") || said("examine", "area") || said("examine", "garden") || said("get up", "rol") || said("examine", "city") || said("examine", "away", "from", "blond"))) { //019c
+      set(f211)
+      set(f67)
+    }
+  }
+  if ((said("examine", "face", "rol") || said("establish eye contact", "rol") || said("examine", "blond", "rol"))) { //01d6
+    if (!f200) { //01f2
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l560)
+    }
+    if (!f204) { //01fe
+      set(f212)
+      goto(l560)
+    }
+    v204++
+    if (v204 == 1) { //020c
+      print("Wow! Just the way you like your women: nearby and naked! She has a beautiful tan, and a gorgeous body. You've waited a lifetime for this moment.")
+      v207 = 1
+    }
+    if (v204 == 2) { //0218
+      print("What a beautiful face! She's leaning back, relaxing in the spa with the water bubbling up around her. It's even possible you could become sexually aroused by this!")
+      v207 = 1
+    }
+    if (v204 > 2) { //0224
+      print("Her hand is resting near a fluffy, white, expensive bath towel, embroidered in florid script with the name: \"Eve.\"")
+      v207 = 0
+    }
+  }
+l560:
+  if ((said("ask", "rol") || said("ask", "anyword", "blond", "rol"))) { //0230
+    if (!f200) { //0246
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l676)
+    }
+    if (!f204) { //0252
+      print("Perhaps if you establish eye contact first...")
+      goto(l676)
+    }
+    v205++
+    if (v205 == 1) { //0260
+      print("\"Who loves ya, baby?\"")
+      print("She says nothing, but that smile tells you a lot.")
+      v207 = 1
+    }
+    if (v205 == 2) { //026e
+      print("\"Have you ever tried it underwater?\" you coyly ask.")
+      print("She doesn't say.")
+      v207 = 2
+    }
+    if (v205 == 3) { //027c
+      print("\"What's your name, gorgeous?\" you ask.")
+      print("She says nothing, but that smile tells you a lot.")
+      v207 = 1
+    }
+    if (v205 == 4) { //028a
+      print("\"What's your sign, dollface?\" you ask.")
+      print("At last she speaks. \"Yield,\" she says simply.")
+      v207 = 1
+    }
+    if (v205 > 4) { //0298
+      print("Although she smiles, it appears she's a woman of few words. She's waiting for you to determine what it is she wants!")
+      v207 = 1
+    }
+  }
+l676:
+  if ((said("add", "blond", "apple", "rol") || said("add", "apple", "rol"))) { //02a4
+    if (!(has(i5))) { //02bc
+      print("You have no apple.")
+      goto(l741)
+    }
+    if (!f200) { //02c8
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l741)
+    }
+    if (!f204) { //02d4
+      print("Perhaps if you establish eye contact first...")
+      goto(l741)
+    }
+    v65 = 200
+    set(f75)
+  }
+l741:
+  if ((said("add", "blond", "bucks", "rol") || said("add", "bucks", "blond", "rol"))) { //02e5
+    if (!f200) { //02ff
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l794)
+    }
+    if (!f204) { //030b
+      print("Perhaps if you establish eye contact first...")
+      goto(l794)
+    }
+    v207 = 2
+  }
+l794:
+  if ((said("examine", "eyes", "rol") || said("examine", "eyes") || said("look in", "eyes") || said("flirt", "use", "blond") || said("flirt", "blond") || said("examine", "lips", "rol"))) { //031a
+    if (!f200) { //034a
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l868)
+    }
+    if (!f204) { //0356
+      print("Perhaps if you establish eye contact first...")
+      goto(l868)
+    }
+    print("What a beautiful face! She's leaning back, relaxing in the spa with the water bubbling up around her. It's even possible you could become sexually aroused by this!")
+  }
+l868:
+  if ((said("bite", "champagne", "rol") || said("drain", "champagne", "rol") || said("drain", "champagne", "rol") || said("drain", "blond", "champagne", "rol") || said("ask", "blond", "bite", "champagne", "rol"))) { //0364
+    if (!f200) { //0398
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l951)
+    }
+    if (!f204) { //03a4
+      print("Perhaps if you establish eye contact first...")
+      goto(l951)
+    }
+    print("\"Share your wine with me?\" you ask.")
+    print("She hands you the glass, and you take an uncustomarily small sip. She replenishes it from the bottle, so it appears no different than before.")
+    v207 = 1
+  }
+l951:
+  if ((said("catch", "champagne", "rol") || said("catch", "bottle", "champagne", "rol") || said("catch", "glass", "rol"))) { //03b7
+    if (!f200) { //03d7
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l1009)
+    }
+    if (!f204) { //03e3
+      print("Perhaps if you establish eye contact first...")
+      goto(l1009)
+    }
+    print("Why take it, when you can drink it?")
+  }
+l1009:
+  if ((said("examine", "champagne", "rol") || said("examine", "bottle", "champagne", "rol") || said("examine", "glass", "rol"))) { //03f1
+    if (!f200) { //0411
+      print("\"Hey, handsome, why don't you slip into the water with me, so we can REALLY get to know each other!\"")
+      goto(l1067)
+    }
+    if (!f204) { //041d
+      print("Perhaps if you establish eye contact first...")
+      goto(l1067)
+    }
+    print("It looks like a bottle of fine champagne, suitable for two.")
+  }
+l1067:
+  if (said("use", "bikini", "rol")) { //042b
+    if (!f205) { //0437
+      set(f54)
+      goto(l1096)
+    }
+    print("It appears she doesn't like that!")
+    v207 = 1
+  }
+}
+l1096:
+if ((said("catch", "bikini") || said("catch", "bra"))) { //0448
+  print("She wouldn't like that.")
+}
+if ((said("examine", "bikini") || said("examine", "bra"))) { //045c
+  print("Her hand is resting near a fluffy, white, expensive bath towel, embroidered in florid script with the name: \"Eve.\"")
+}
+if (f204) { //0470
+  if ((said("examine", "blond", "hair") || said("examine", "hair") || said("aim", "hair") || said("caress", "hair") || said("caress", "hair") || said("caress", "blond", "hair"))) { //0476
+    v207 = 1
+  }
+  if ((said("lips") || said("lips", "blond") || said("carry", "fingers") || said("catch", "blond", "fingers") || said("aim", "blond") || said("aim", "blond") || said("ask", "dance"))) { //04a7
+    v207 = 1
+  }
+  if ((said("ask", "name") || said("blond", "married", "i'm") || said("married", "i'm") || said("married", "blond") || said("ask", "blond", "catch", "married") || said("ask", "blond", "married", "i'm") || said("ask", "about", "about") || said("add", "diamond ring", "on", "blond", "finger") || said("married", "blond") || said("ask", "blond", "love") || said("love", "you") || said("catch", "blond", "fingers") || said("examine", "lips") || said("examine", "blond", "lips") || said("ask", "blond", "name") || said("ask", "name", "blond"))) { //04da
+    v207 = 1
+  }
+  if ((said("bite", "blond", "rol") || said("catch", "blond") || said("caress", "blond") || said("bite", "blond") || said("aim", "blond", "below", "desk") || said("caress", "below", "desk") || said("catch", "ankle") || said("aim", "ankle") || said("caress", "blond", "ankle") || said("caress", "blond", "ankle", "below", "desk") || said("catch", "blond", "ankle") || said("examine", "blond", "boob") || said("examine", "boob", "rol") || said("examine", "body") || said("examine") || said("examine", "boob") || said("bite", "blond", "clit", "rol") || said("drain", "hot tub", "rol") || said("board", "under water", "rol") || said("examine", "under water", "rol") || said("caress", "under water", "rol") || said("aim", "boob", "rol"))) { //055f
+    print("SLAP!")
+    v207 = 2
+  }
+  if ((said("naked", "blond") || said("ask", "blond", "about", "copulate") || said("about", "copulate", "use", "i'm") || said("copulate", "rol") || said("make", "blond") || said("anyword", "clit", "rol") || said("bite", "blond", "blond", "holler") || said("anyword", "boob", "rol") || said("play", "use", "blond", "boob") || said("catch", "boob") || said("caress", "boob"))) { //0610
+    print("SLAP!")
+    print("SLAP!\n\nSLAP!!")
+    v207 = 2
+  }
+  if ((said("aim", "blond", "rol") || said("dive", "rol") || said("add", "blond", "embrace") || said("embrace", "blond") || said("embrace", "blond", "rol"))) { //0673
+    print("Something tells you that's the wrong approach with this one, Larry.")
+    v207 = 2
+  }
+  if ((said("i'm") || said("leisure suit", "i'm"))) { //06a2
+    print("\"Oooh, I like that name!\"")
+    v207 = 1
+  }
+}
+if ((said("board", "hot tub", "rol") || said("catch", "hot tub", "rol") || said("catch", "about", "rol") || said("catch", "out", "rol") || said("board", "rol") || said("climb", "about", "hot tub", "rol") || said("climb", "out", "hot tub", "rol") || said("jump", "about", "hot tub", "rol") || said("jump", "hot tub", "rol") || said("catch", "naked", "rol") || said("catch", "dress", "rol") || said("naked", "rol") || said("drain", "bra", "rol") || said("put on", "bra", "rol") || said("dress", "rol"))) { //06b7
+  if (!f203) { //0735
+    print("Nah. Who wants to go hot-tubbing alone?")
+    goto(l1926)
+  }
+  if (f200) { //0741
+    print("\"So long, baby!\" you shout!")
+    set(f75)
+    v65 = 100
+    goto(l1926)
+  }
+  set(f67)
+  set(f75)
+  if (posn(o0,47,108,59,113)) { //0755
+    v65 = 0
+    goto(l1926)
+  }
+  if ((posn(o0,59,90,93,100) || posn(o0,77,101,93,113) || posn(o0,30,114,93,167))) { //0765
+    v65 = 1
+    goto(l1926)
+  }
+  v65 = 2
+}
+l1926:
+if (said("examine", "hot tub")) { //0786
+  print("The moon lights an expansive rooftop garden with a spa in one corner. You've found the source of the gurgling noise!")
+  if (f203) { //0792
+    print("In the hot tub is the most beautiful girl you've ever seen! Beside her is her towel, and swim suit. You can't believe she doesn't mind your presence here.")
+  }
+}
+if ((said("examine") || said("examine", "area") || said("examine", "garden"))) { //079a
+  print("The moon lights an expansive rooftop garden with a spa in one corner. You've found the source of the gurgling noise!")
+  if (f203) { //07b2
+    print("In the hot tub is the most beautiful girl you've ever seen! Beside her is her towel, and swim suit. You can't believe she doesn't mind your presence here.")
+  }
+}
+if ((said("examine", "city") || said("examine", "building") || said("examine", "casino"))) { //07ba
+  if (f200) { //07d2
+    print("It's difficult to take your eyes off the beautiful woman with whom you share the hot tub.")
+    goto(l2027)
+  }
+  print("Looking over at the next hotel, you notice an ugly girl getting undressed.")
+  print("She's not really that pretty.")
+  print("Well, she's looking better.")
+  print("You know, she's not that bad.")
+  print("You could ignore some of her faults.")
+  print("Perhaps you're in love!")
+  print("Pant, pant, pant, pant, pant.")
+}
+l2027:
+if (f212) { //07eb
+  reset(f212)
+  set(f204)
+  set(f48)
+  unanimate.all()
+  draw.pic(v81)
+  animate.obj(o11)
+  set.view(o11,177)
+  set.loop(o11,0)
+  set.cel(o11,1)
+  position(o11,0,167)
+  animate.obj(o12)
+  set.view(o12,177)
+  set.loop(o12,1)
+  set.cel(o12,2)
+  position(o12,40,167)
+  animate.obj(o13)
+  set.view(o13,177)
+  set.loop(o13,0)
+  set.cel(o13,3)
+  position(o13,80,167)
+  animate.obj(o14)
+  set.view(o14,177)
+  set.loop(o14,1)
+  set.cel(o14,0)
+  position(o14,120,167)
+  if (f208) { //0836
+    draw(o11)
+    draw(o12)
+    draw(o13)
+    draw(o14)
+  }
+  animate.obj(o5)
+  set.view(o5,180)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  position(o5,64,79)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  set.view(o6,180)
+  set.loop(o6,1)
+  set.cel(o6,0)
+  position(o6,64,44)
+  cycle.time(o6,v86)
+  if (!f66) { //0867
+    set.cel(o5,2)
+    v201 = 6
+    goto(l2178)
+  }
+  set.cel(o5,0)
+  draw(o6)
+  random(6,19,v200)
+  reset(f206)
+l2178:
+  draw(o5)
+  v207 = 255
+  stop.update(o5)
+  show.pic()
+}
+if (f211) { //088a
+  reset(f211)
+  reset(f204)
+  reset(f48)
+  v200 = 0
+  v201 = 0
+  unanimate.all()
+  draw.pic(vCurrentRoom)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.priority(o2,9)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.priority(o1,9)
+  if (f208) { //08b5
+    draw(o1)
+  }
+  animate.obj(o4)
+  draw(o4)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.priority(o3,15)
+  draw(o3)
+  animate.obj(o0)
+  ignore.blocks(o0)
+  set.priority(o0,15)
+  set.view(o0,7)
+  set.loop(o0,1)
+  last.cel(o0,v52)
+  set.cel(o0,v52)
+  stop.cycling(o0)
+  draw(o0)
+  show.pic()
+}
+if (f204) { //08e4
+  v200--
+  if (v200 == 1) { //08ec
+    toggle(f206)
+    if (f206) { //08f5
+      start.cycling(o6)
+      random(6,16,v200)
+      goto(l2319)
+    }
+    stop.cycling(o6)
+    set.cel(o6,0)
+    force.update(o6)
+    random(22,33,v200)
+  }
+l2319:
+  if (f44) { //090f
+    v201--
+    if (v201 == 1) { //0917
+      if (f66) { //091e
+        print("\"This water feels SO good!\"")
+        goto(l2347)
+      }
+      print("\"Bad breath's one thing, Mister; but you could knock a buzzard off a manure truck!\"")
+    }
+l2347:
+    v206--
+    if (v206 == 1) { //092d
+      v207 = 0
+    }
+    if (v207 != 255) { //0937
+      if (v207 == 0) { //093f
+        v200 = 2
+      }
+      if (v207 == 1) { //0949
+        v206 = 5
+        set(f206)
+        v200 = 22
+        start.cycling(o6)
+      }
+      if (v207 == 2) { //095a
+        v206 = 7
+        reset(f206)
+        v200 = 0
+        stop.cycling(o6)
+        set.cel(o6,0)
+      }
+      set.cel(o5,v207)
+      force.update(o5)
+      v207 = 255
+    }
+  }
+}
+if (f75) { //0976
+  reset(f75)
+  v65++
+  set(f85)
+  set(f48)
+  prevent.input()
+  if (v65 == 1) { //0985
+    v56 = 1
+    v33 = 114
+    move.obj(o0,v38,v33,56,f75)
+  }
+  if (v65 == 2) { //0998
+    v56 = 1
+    v32 = 94
+    move.obj(o0,v32,v39,56,f75)
+  }
+  if (v65 == 3) { //09ab
+    move.obj(o0,94,102,1,f75)
+  }
+  if (v65 == 4) { //09b8
+    set.view(o0,2)
+    set.loop(o0,1)
+    set.cel(o0,0)
+    set.priority(o0,15)
+    v52 = 4
+    cycle.time(o0,v52)
+    set(f34)
+    end.of.loop(o0,f75)
+    v66 = 3
+    mul(v66,4)
+    v66++
+  }
+  if (v65 == 5) { //09de
+    draw(o3)
+  }
+  if (v65 == 6) { //09e7
+    set.view(o0,7)
+    set.loop(o0,1)
+    set.cel(o0,0)
+    cycle.time(o0,v85)
+    move.obj(o0,85,102,3,f75)
+  }
+  if (v65 == 7) { //0a00
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    stop.cycling(o0)
+    reset(f34)
+    set(f35)
+    stop.motion(o0)
+    reposition.to(o0,86,102)
+    v67 = 4
+  }
+  if (v65 == 8) { //0a1c
+    set(f200)
+    accept.input()
+    print("Wasting no time, you hop into the water. Oooh, does it feel good! The warm water swirls about you, the bubbles stimulating you nearly as much as the beautiful woman across from you. With the warmth of the water soaking into your body, you become quite relaxed.")
+    v65 = 0
+  }
+  if (v65 == 101) { //0a2b
+    v67 = 0
+    if (f204) { //0a35
+      set(f211)
+      v65--
+      set(f75)
+      goto(l2631)
+    }
+    v65 = 102
+  }
+l2631:
+  if (v65 == 102) { //0a47
+    set.loop(o0,0)
+    set.cel(o0,0)
+    v66 = 4
+    cycle.time(o0,v66)
+    mul(v66,9)
+    set(f34)
+    reset(f35)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 103) { //0a64
+    set.view(o0,2)
+    set.loop(o0,0)
+    last.cel(o0,v52)
+    set.cel(o0,v52)
+    reposition.to(o0,90,103)
+    set(f34)
+    reverse.loop(o0,f75)
+    v66 = 4
+    cycle.time(o0,v66)
+    mul(v66,9)
+  }
+  if (v65 == 104) { //0a89
+    erase(o3)
+  }
+  if (v65 == 105) { //0a92
+    reset(f85)
+    reset(f34)
+    reset(f200)
+    reset(f48)
+    v65 = 0
+    accept.input()
+    release.priority(o0)
+    observe.blocks(o0)
+    set.view(o0,0)
+    cycle.time(o0,v84)
+    step.size(o0,v84)
+    start.motion(o0)
+  }
+  if (v65 == 201) { //0ab4
+    set(f88)
+    set(f84)
+    drop(i5)
+    vCurrentScore += 15
+    set.cel(o5,1)
+    force.update(o5)
+    v206 = 0
+    v67 = 3
+  }
+  if (v65 == 202) { //0acf
+    print("Eve takes your apple, and with a sweet, innocent look, raises it to her mouth. She takes a small bite out of it, while a sexy smile comes across her face. She winks, and lies back in the water, chewing delicately.")
+    v67 = 5
+  }
+  if (v65 == 203) { //0adb
+    print("Eve gently moves her sensuous tongue around the apple, tiny drops of the apple's juice glistening on her lips.")
+    v67 = 5
+  }
+  if (v65 == 204) { //0ae7
+    print("She's really turning you on! You had no idea fruit could be so exciting.")
+    v67 = 5
+  }
+  if (v65 == 205) { //0af3
+    print("After finishing the apple, Eve slowly slides out of the hot tub, her steamy, naked body glistening in the moonlight. Barely covering her tremendous assets with the towel, she smiles and motions for you to follow her.")
+    v67 = 3
+  }
+  if (v65 == 206) { //0aff
+    if (f204) { //0b06
+      set(f211)
+      v65--
+      set(f75)
+      goto(l2840)
+    }
+    v65 = 207
+  }
+l2840:
+  if (v65 == 207) { //0b18
+    start.update(o2)
+    v52 = 4
+    cycle.time(o2,v52)
+    end.of.loop(o2,f75)
+    v66 = 3
+    mul(v66,4)
+    v66++
+  }
+  if (v65 == 208) { //0b32
+    start.update(o4)
+    erase(o4)
+  }
+  if (v65 == 209) { //0b3d
+    set.view(o2,182)
+    set.loop(o2,0)
+    release.priority(o2)
+    reposition.to(o2,78,90)
+    cycle.time(o2,v84)
+    start.cycling(o2)
+    move.obj(o2,90,90,1,f75)
+    print("You can take a hint. \"Let's go, baby!\" you whisper!")
+    set.loop(o0,0)
+    set.cel(o0,0)
+    fix.loop(o0)
+    v52 = 4
+    cycle.time(o0,v52)
+    set(f34)
+    reset(f35)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 210) { //0b72
+    move.obj(o2,105,105,1,f75)
+  }
+  if (v65 == 211) { //0b7f
+    print("As you leave the hot tub, Eve speaks at last, \"Say, Larry. You really ARE glad to see ME!!\"")
+    stop.cycling(o2)
+  }
+  if (v65 == 212) { //0b8a
+    get.posn(o2,v34,v35)
+    set.view(o2,8)
+    stop.cycling(o2)
+    normal.motion(o2)
+    v30 = 23
+    reset(f35)
+    reset(f34)
+    set.view(o0,182)
+    set.loop(o0,0)
+    release.priority(o0)
+    fix.loop(o0)
+    reposition.to(o2,96,104)
+    reposition.to(o0,v34,v35)
+    cycle.time(o0,v84)
+    step.size(o0,v84)
+    move.obj(o0,151,122,1,f75)
+  }
+  if (v65 == 213) { //0bc1
+    erase(o0)
+    v30 = 255
+    cycle.time(o2,v84)
+    step.size(o2,v84)
+    move.obj(o2,152,122,1,f75)
+  }
+  if (v65 == 214) { //0bd9
+    reset(f48)
+    v30 = 23
+    v76 = 44
+  }
+}
+if (v30 == 23) { //0be8
+  distance(o0,o2,v52)
+  if (v52 > 10) { //0bf3
+    start.cycling(o2)
+    follow.ego(o2,2,f40)
+  }
+}
+if (f207) { //0c00
+  reset(f207)
+  reset(f48)
+  reset(f85)
+  reset(f209)
+  start.motion(o0)
+  v30 = 0
+  erase(o7)
+  accept.input()
+  print("\"So long, baby!\" you shout!")
+  v63 = 3
+}
+if (!f209 && !f77 && v63 > 4) { //0c1b
+  set(f77)
+  print("Say; what's this? A beautiful woman all alone in a hot tub! And, she's smiling at you? And, and...")
+  print("...and, she speaks, \"Hi, handsome. Where have you been all my life?\"")
+  print("(Larry, this one seems to LIKE you!)")
+}
+if (f210 && f209) { //0c30
+  sound(15,f210)
+}
+if (vWhichEgoBorder == 2) { //0c3b
+  v76 = 44
+}
+return()

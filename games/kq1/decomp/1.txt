@@ -1,4 +1,201 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(101)
+  set.horizon(50)
+  if (f75) { //0012
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001a
+    add.to.pic(62,0,0,95,72,0,0)
+  }
+  load.view(107)
+  load.view(97)
+  animate.obj(o11)
+  animate.obj(o12)
+  animate.obj(o1)
+  set.view(o11,107)
+  set.view(o12,107)
+  set.view(o1,97)
+  position(o11,121,161)
+  position(o12,73,166)
+  ignore.horizon(o1)
+  position(o1,5,17)
+  set.priority(o1,15)
+  set(f68)
+  object.on.water(o11)
+  object.on.water(o12)
+  ignore.blocks(o0)
+  draw(o11)
+  draw(o12)
+  draw(o1)
+  if ((vPrevRoom == 0 || vPrevRoom == 83)) { //005b
+    position(o0,110,100)
+  }
+  wander(o11)
+  wander(o12)
+  if (vPrevRoom == 8) { //006f
+    get.posn(o0,v60,v61)
+    if (v61 > 150) { //007a
+      position(o0,148,150)
+    }
+  }
+  draw(o0)
+  call(101)
+  show.pic()
+  status.line.on()
+  accept.input()
+}
+if (said("check", "room")) { //008c
+  print("You are standing outside a castle surrounded by an alligator filled moat.")
+}
+if (said("pet", "alligator")) { //0098
+  print("What!  Are you crazy?")
+}
+if (said("check", "bridge")) { //00a4
+  print("It is a very small,  wooden barrel bridge.")
+}
+if (said("check", "banner")) { //00b0
+  print("King Edward's banners are waving in the strong breeze.")
+}
+if (said("check", "building")) { //00bc
+  print("This is the castle of King Edward the Benevolent.")
+}
+if (said("check", "moat")) { //00c8
+  print("It looks deep and dangerous.  You can see alligators  floating in the water.")
+}
+if (said("check", "water")) { //00d4
+  print("The water in the moat is not conducive to swimming.")
+}
+if (said("check", "blossom")) { //00e0
+  print("They are absolutely gorgeous!")
+}
+if ((said("acquire", "blossom") || said("steal", "blossom"))) { //00ec
+  print("King Edward does not allow anyone to take his flowers.")
+}
+if (said("check", "alligator")) { //0100
+  print("The alligators are swimming in the moat.")
+}
+if (said("drink", "water") && !f88 && !f116) { //010c
+  if ((posn(o0,0,146,159,167) || posn(o0,87,110,117,145))) { //011c
+    print("There are alligators in this water.  I don't think you want to try drinking it.")
+    goto(l309)
+  }
+  print("There is water nearby.")
+}
+l309:
+if (f81 && !f88) { //0135
+  if (said("acquire", "water")) { //013e
+    if ((posn(o0,0,146,159,167) || posn(o0,87,110,117,145))) { //0148
+      reset(f116)
+      print("You fill the bucket with the murky water from the moat.")
+      get(i26)
+      set(f88)
+      if (!f91) { //0162
+        set(f91)
+        vCurrentScore += 2
+      }
+      goto(l371)
+    }
+    print("You need to get closer to the water.")
+  }
+}
+l371:
+if (fTriggerLine) { //0173
+  set(fEgoOnWater)
+}
+if (!(v94 > 0) && fEgoOnWater) { //017b
+  v76 = 255
+  ignore.objs(o0)
+  if (posn(o0,0,158,28,166)) { //018a
+    v76 = 2
+    v77 = 166
+  }
+  if (posn(o0,29,158,56,166)) { //019a
+    v76 = 30
+    v77 = 166
+  }
+  if (posn(o0,57,158,84,166)) { //01aa
+    v76 = 58
+    v77 = 166
+  }
+  if (posn(o0,85,158,111,166)) { //01ba
+    v76 = 86
+    v77 = 166
+  }
+  if (posn(o0,89,117,108,146)) { //01ca
+    set.priority(o0,5)
+    v76 = 90
+    v77 = 133
+  }
+  if (posn(o0,112,136,159,167)) { //01dd
+    v76 = 122
+    v77 = 166
+  }
+  if (v76 == 255) { //01ed
+    v76 = 0
+    goto(l518)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l518:
+if (fEgoOnWater) { //0206
+  if ((said("get out", "moat") || said("exit", "moat"))) { //020c
+    print("The moats slippery sides prevent you from getting out.")
+  }
+}
+if (fEgoOnWater && !f23) { //0220
+  program.control()
+  stop.motion(o0)
+  follow.ego(o11,18,f20)
+  follow.ego(o12,18,f21)
+  set(f23)
+}
+if (posn(o0,89,132,91,134) && !f22) { //0236
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v34 = 45
+}
+if (f20 && !f22) { //024a
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v34 = 45
+}
+if (f21 && !f22) { //025a
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v34 = 45
+}
+if (f22 && v34 == 1) { //026a
+  v34 = 0
+  erase(o0)
+  if (f20) { //0278
+    erase(o11)
+  }
+  if (f21) { //0280
+    erase(o12)
+  }
+  set(f63)
+}
+v34--
+if (vWhichEgoBorder != 0) { //028c
+  reset(f68)
+}
+if (vWhichEgoBorder == 1) { //0296
+  new.room(16)
+}
+if (vWhichEgoBorder == 2) { //029f
+  new.room(8)
+}
+if (vWhichEgoBorder == 4) { //02a8
+  new.room(2)
+}
+if (f75) { //02b1
+  call(103)
+}
+call(101)
+return()

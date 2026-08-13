@@ -1,4 +1,97 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 2
+  set(f54)
+  set.horizon(52)
+  v32 = 50
+  if (f111) { //0019
+    v31 = 112
+  }
+  v57 = 21
+  v58 = 69
+  load.logic(128)
+  load.logic(118)
+  if (obj.in.room(i4,vCurrentRoom)) { //002c
+    load.view(242)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //003b
+  }
+  if (f47) { //0041
+    draw(o0)
+  }
+  if (obj.in.room(i4,vCurrentRoom)) { //0049
+    animate.obj(o1)
+    position(o1,88,99)
+    set.view(o1,242)
+    draw(o1)
+    stop.update(o1)
+  }
+  call(128)
+  call(118)
+  show.pic()
+  return()
+}
+reset(f222)
+if ((posn(o0,45,100,75,110) || posn(o0,15,125,40,140) || posn(o0,15,60,40,65))) { //0065
+  set(f222)
+}
+reset(f221)
+if (obj.in.room(i4,vCurrentRoom)) { //0081
+  distance(o0,o1,v36)
+  if (v36 < 20) { //008c
+    set(f221)
+  }
+  if ((said("examine", "reptile skin") || said("examine", "deck"))) { //0095
+    print("The parched sands of the desert seem to reach forever westward. You notice a dried snake skin lying on the hot ground.")
+  }
+  if ((said("capture", "reptile skin") || said("capture", "reptile"))) { //00a9
+    if (f221) { //00bb
+      erase(o1)
+      get(i4)
+      vCurrentScore += 1
+      print("You retrieve the dried snake skin from the hot desert sand. It is delicate and could easily crumble.")
+      goto(l207)
+    }
+    print("You're not close enough.")
+  }
+}
+l207:
+if ((said("examine", "desert") || said("examine"))) { //00cf
+  print("The parched sands of the desert seem to reach forever westward.")
+}
+if (said("examine", "brush")) { //00e1
+  if (f222) { //00eb
+    print("The flora in this hot, dry desert is scant. The only plants that grow are cactus, thorny shrubs, and an occasional stunted tree.")
+    goto(l248)
+  }
+  print("All of the cactus around here are too prickly to be touched. You could wind up with a handful of thorns.")
+}
+l248:
+if ((said("capture", "brush") || said("capture", "brush"))) { //00f8
+  if (f222) { //010a
+    print("All of the cactus around here are too prickly to be touched. You could wind up with a handful of thorns.")
+    goto(l279)
+  }
+  print("You're not close enough.")
+}
+l279:
+call(128)
+call(118)
+if (vWhichEgoBorder == 3) { //011b
+  new.room(16)
+}
+if (vWhichEgoBorder == 1) { //0124
+  new.room(26)
+}
+if (vWhichEgoBorder == 4) { //012d
+  new.room(32)
+}
+if (vWhichEgoBorder == 2) { //0136
+  new.room(12)
+}
+return()

@@ -1,4 +1,64 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(64)
+  observe.blocks(o0)
+  if (f108) { //000c
+    load.logic(116)
+    set(f200)
+    random(0,255,v61)
+    if (v61 < 125) { //001a
+      load.logic(114)
+      set(f201)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 5) { //002b
+    position(o0,87,65)
+    goto(l68)
+  }
+  if (vPrevRoom == 11) { //0039
+    position(o0,149,162)
+  }
+l68:
+  draw(o0)
+  if (f200) { //0046
+    call(116)
+  }
+  if (f201) { //004e
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //0058
+  if (posn(o0,0,0,159,85)) { //005e
+    print("To the north you see the treacherous Eagle Mountains. You worry about the evil Horned King who lives there.")
+    goto(l111)
+  }
+  print("Even the trees snarl and cast evil shadows at you.")
+}
+l111:
+if (!f128 && !f129) { //006f
+  goto(l133)
+}
+if (f129) { //007c
+  goto(l133)
+}
+l133:
+if (f201) { //0085
+  call(114)
+}
+if (f200) { //008d
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //0095
+  new.room(5)
+}
+if (vWhichEgoBorder == 3) { //009e
+  new.room(15)
+}
+if (vWhichEgoBorder == 2) { //00a7
+  new.room(11)
+}
+return()

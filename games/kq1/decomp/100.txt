@@ -1,3 +1,32 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x02)}
+v97--
+if (v97 == 1) { //0004
+  v97 = 0
+  sound(2,f148)
+  if (vCurrentScore < 50) { //0011
+    print("We, at Sierra, wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.")
+    goto(l43)
+  }
+  if (vCurrentScore < 100) { //001d
+    print("We, at Sierra, wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving.")
+    goto(l43)
+  }
+  print("We, at Sierra, wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game.")
+}
+l43:
+if (f75) { //002b
+  normal.motion(o13)
+  stop.motion(o13)
+  stop.cycling(o13)
+}
+if (!fSaidAccepted) { //0037
+  if ((said("ANYWORD", "ANYWORD") || said("ANYWORD") || said("ANYWORD", "ANYWORD", "ANYWORD"))) { //003e
+    stop.sound()
+    if (vCurrentRoom == 65) { //0057
+      print("As you will never get out of this cage alive, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.")
+      goto(l101)
+    }
+    print("As you can no longer continue, I can only permit you to: Restore Game,  Restart Game or Take Inventory. Sorry.")
+  }
+}
+l101:
+return()

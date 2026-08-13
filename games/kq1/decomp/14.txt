@@ -1,4 +1,120 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(40)
+  load.sound(4)
+  load.sound(5)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,21,90,0,0)
+  }
+  if (vPrevRoom == 63) { //002b
+    if (f131) { //0032
+      load.view(105)
+      load.view(103)
+      load.view(104)
+      set.view(o0,105)
+      ignore.blocks(o0)
+      position(o0,84,41)
+      set.priority(o0,12)
+      program.control()
+      move.obj(o0,84,132,4,f20)
+      set(f209)
+      goto(l90)
+    }
+    position(o0,84,132)
+  }
+l90:
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //005d
+  print("There is a very large oak tree here with branches stretching to the sky.")
+}
+if (f131 && !f22) { //0069
+  set(f22)
+  set(f135)
+  sound(5,f198)
+}
+v30--
+if (f20) { //007b
+  reset(f20)
+  reset(f131)
+  observe.blocks(o0)
+  release.priority(o0)
+  stop.motion(o0)
+  set.view(o0,103)
+  v30 = 20
+  set(f98)
+  shake.screen(2)
+  print("OUCH!")
+  sound(4,f159)
+}
+if (f159) { //009a
+  if (v30 > 0) { //00a0
+    reset(f159)
+    sound(4,f159)
+  }
+}
+if (v30 == 1) { //00ac
+  v30 = 0
+  reset(f135)
+  set.view(o0,104)
+  end.of.loop(o0,f21)
+}
+if (f21) { //00be
+  reset(f21)
+  reset(f98)
+  set.view(o0,0)
+  start.motion(o0)
+  reset(f209)
+  player.control()
+}
+if (said("check", "tree")) { //00d0
+  if (posn(o0,45,125,159,167)) { //00da
+    print("This is a very large oak tree with branches stretching to the sky.")
+    goto(l235)
+  }
+  print("This is a very pretty maple tree.")
+}
+l235:
+if ((said("climb", "tree") || said("climb", "oak", "tree") || said("climb", "oak"))) { //00eb
+  if (f79) { //0105
+    print("You can't do that when you're invisible.")
+    goto(l317)
+  }
+  if (f75) { //0110
+    print("The old goat is afraid of heights and refuses to climb the tree.")
+    goto(l317)
+  }
+  if (posn(o0,85,131,140,167)) { //011b
+    print("OK")
+    new.room(63)
+    goto(l317)
+  }
+  if (posn(o0,36,56,73,90)) { //012c
+    print("This tree is too hard to climb.")
+    goto(l317)
+  }
+  print("You can't climb a tree here!")
+}
+l317:
+if (vWhichEgoBorder == 1) { //013d
+  new.room(19)
+}
+if (vWhichEgoBorder == 2) { //0146
+  new.room(15)
+}
+if (vWhichEgoBorder == 4) { //014f
+  new.room(13)
+}
+if (vWhichEgoBorder == 3) { //0158
+  new.room(3)
+}
+if (f75) { //0161
+  call(103)
+}
+return()

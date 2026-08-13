@@ -1,4 +1,542 @@
-if (isSet(f5)) {
-  if (v119 > 4
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v119 > 4 && v119 < 10) { //0008
+    new.room(19)
+  }
+  set.horizon(112)
+  load.logic(57)
+  load.sound(28)
+  load.view(130)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(130,0,0,44,54,12,4)
+  discard.view(130)
+  if (v30 != 20 && !(has(i15))) { //002c
+    load.view(93)
+    animate.obj(o1)
+    set.view(o1,93)
+    position(o1,0,135)
+    random(5,15,v201)
+    cycle.time(o1,v86)
+    step.time(o1,86)
+  }
+  if (f78) { //004c
+    v67 = 5
+    v65 = 210
+  }
+  if (vPrevRoom == 21) { //0058
+    v38 = 36
+    v39 = 115
+    set.loop(o0,2)
+    goto(l137)
+  }
+  if (vPrevRoom == 9) { //006b
+    v38 = 0
+    v39 = 114
+    goto(l137)
+  }
+  if (vPrevRoom != 23) { //007b
+    v38 = 77
+    v39 = 146
+  }
+l137:
+  position(o0,38,v39)
+  ignore.blocks(o0)
+  draw(o0)
+  reset(f70)
+  call(57)
+  show.pic()
+  return()
+}
+reset(f203)
+if (posn(o0,52,126,69,150)) { //0099
+  set(f203)
+}
+reset(f201)
+if (posn(o0,50,125,77,142)) { //00a7
+  set(f201)
+}
+reset(f200)
+if (posn(o0,50,143,77,167)) { //00b5
+  set(f200)
+}
+reset(f202)
+if (v203 > 0) { //00c3
+  distance(o1,o0,v52)
+  if (v52 < 25) { //00ce
+    set(f202)
+    set(f69)
+  }
+}
+if (!fEnteredCommand) { //00d9
+  goto(l885)
+}
+if ((said("examine") || said("examine", "area"))) { //00e3
+  print("You are outside an all-night convenience store. There is a telephone on the pole. The portion of the telephone book that wasn't illegible from being water-soaked has been torn out.")
+}
+if (said("examine", "building")) { //00f5
+  print("The store is open all night for your convenience. That's why they call it an \"all-night convenience store,\" Larry!")
+}
+if (said("increase", "door")) { //0101
+  if (f61) { //010b
+    reset(fSaidAccepted)
+    goto(l280)
+  }
+  print("It IS open.")
+}
+l280:
+if ((said("use", "phone") || said("make", "phone", "ask") || said("dial", "phone"))) { //0118
+  if (!f203) { //0132
+    set(f54)
+    goto(l323)
+  }
+  v65 = 0
+  set(f75)
+}
+l323:
+if ((said("examine", "phone") || said("examine", "side", "phone") || said("examine", "phone", "book"))) { //0143
+  if (!f203) { //015f
+    set(f54)
+    goto(l377)
+  }
+  print("There are some numbers scribbled on the side of the telephone. The only thing legible (and printable) is: \"555-6969.\"")
+  if (!f112) { //016d
+    set(f112)
+    vCurrentScore += 1
+  }
+}
+l377:
+if (said("examine", "light pole")) { //0179
+  if (f201) { //0183
+    print("There are some numbers scribbled on the side of the telephone. The only thing legible (and printable) is: \"555-6969.\"")
+    goto(l411)
+  }
+  if (f200) { //018e
+    print("There's nothing to see on this side of the pole.")
+    goto(l411)
+  }
+  reset(fSaidAccepted)
+}
+l411:
+if ((said("answer", "phone") || said("answer", "phone", "ask") || said("answer", "phone") || said("answer") || said("catch", "phone"))) { //019b
+  if (!f203) { //01bf
+    set(f54)
+    goto(l478)
+  }
+  if (v65 < 210) { //01cb
+    print("It's not ringing.")
+    goto(l478)
+  }
+  print("\"Hello.\"")
+  v65 = 215
+  set(f75)
+}
+l478:
+if (v203 > 0) { //01de
+  if (said("examine", "bouncer")) { //01e5
+    if (!f202) { //01ef
+      set(f54)
+      goto(l509)
+    }
+    print("He looks like a man that could (ab)use a drink.")
+  }
+l509:
+  if ((said("ask", "bouncer") || said("ask"))) { //01fd
+    if (!f202) { //020d
+      set(f54)
+      goto(l539)
+    }
+    print("\"Howsha 'bout a drink, Shonney?\"")
+  }
+l539:
+  if (said("n", "rol")) { //021b
+    print("\"Al'right. Be that way!\"")
+    set(f204)
+    v203 = 4
+    v201 = 0
+  }
+  if ((said("add", "champagne", "bouncer") || said("add", "champagne") || said("add", "bouncer", "champagne"))) { //022f
+    if (!(has(i16))) { //024b
+      set(f68)
+      goto(l645)
+    }
+    if (!f202) { //0257
+      set(f54)
+      goto(l645)
+    }
+    drop(i16)
+    if (!(obj.in.room(i15,vCurrentRoom))) { //0265
+      print("\"Why, thanshk, Shonney! Glug, glug.\"")
+      goto(l645)
+    }
+    get(i15)
+    vCurrentScore += 5
+    print("\"Why, thanshk, Shonney!\" (Glug, glug.)")
+    print("\"I ain't got no remote control, but, sssshay, I'll tell ya what: here'ssh my trussshty ol' pocket knife. Ya never know! There are sssshome kinky girlssh in this town. Sssshexy hunkssh like ussh might have to defend oursshelves sometime!\"")
+    print("With that, he \"sssshtumbles\" off into the darkness.")
+    set(f204)
+    v203 = 4
+    v201 = 0
+  }
+l645:
+  if ((said("add", "shot", "bouncer") || said("add", "shot") || said("add", "bouncer", "shot"))) { //0285
+    if (!(has(i7))) { //02a1
+      set(f68)
+      goto(l709)
+    }
+    if (!f202) { //02ad
+      set(f54)
+      goto(l709)
+    }
+    print("\"Slurp. Thanks, I needed that! See ya 'round!!\"")
+    drop(i7)
+    set(f204)
+    v203 = 4
+    v201 = 0
+  }
+l709:
+  if ((said("add", "bucks", "bouncer") || said("add", "bucks") || said("buy", "bouncer") || said("buy", "bouncer", "bucks") || said("add", "bouncer", "bucks"))) { //02c5
+    if (!f202) { //02ef
+      set(f54)
+      goto(l773)
+    }
+    print("You fish a dollar out of your wallet, and hand it to the bum. \"Gossshhh thanssskks, buddy,\" he says sarcastically. \"Maybe now I'll be able to afford that tsshhhousand sssshhares of Broderbund ssstock!\"")
+    set(f204)
+    v203 = 4
+    v201 = 0
+  }
+l773:
+  if ((said("smell", "bouncer") || said("smell"))) { //0305
+    print("Cheezzzz! He makes that dog smell refreshing!")
+  }
+  if (said("find", "bouncer")) { //0317
+    print("You find a strong aroma, which you allow him to keep!")
+  }
+  if ((said("add", "bouncer", "bottle") || said("add", "bottle", "bouncer"))) { //0323
+    print("Give him the bottle of what?")
+  }
+}
+if (said("dial", "rol")) { //033b
+  print("Try dialing the telephone.")
+}
+if (said("answer", "rol")) { //0347
+  print("Try answering the telephone.")
+}
+if (said("anyword", "phone", "book")) { //0353
+  print("What's left is illegible.")
+}
+if ((said("examine", "glass") || said("look in", "glass"))) { //0361
+  print("You could see better if you'd walk inside.")
+}
+l885:
+if (f44) { //0375
+  if (v67 == 1) { //037b
+    if ((v65 == 101 || v65 == 102)) { //0382
+      v65 = 110
+    }
+  }
+  v201--
+  if (v201 == 1) { //0393
+    set(f204)
+  }
+}
+if (v203 > 4 && vWhichObjBorder > 0 && vBorderObj == 1) { //039c
+  set(f204)
+}
+if (f204) { //03ab
+  reset(f204)
+  v203++
+  if (v203 == 1) { //03b5
+    draw(o1)
+    sound(28,f40)
+    follow.ego(o1,8,f204)
+  }
+  if (v203 == 2) { //03c5
+    stop.motion(o1)
+    stop.cycling(o1)
+    print("\"Got any sshhpare change, buddy?\"")
+    v201 = 9
+  }
+  if (v203 == 3) { //03d5
+    print("\"Well, ok. Have ya got any spare wine, then?\"")
+    v201 = 9
+  }
+  if (v203 == 4) { //03e1
+    print("\"Al'right. Be that way!\"")
+    v203 = 5
+  }
+  if (v203 == 5) { //03ed
+    start.cycling(o1)
+    wander(o1)
+  }
+  if (v203 == 6) { //03f8
+    erase(o1)
+    v203 = 0
+  }
+}
+if (f75) { //0404
+  reset(f75)
+  v65++
+  if (v65 == 1) { //040e
+    set(f48)
+    prevent.input()
+    stop.motion(o0)
+    set(f85)
+    if (vMonitorType != HERCULES) { //041c
+      clear.lines(23,23,c0)
+    }
+    set.string(str1," ")
+    get.string(str1,"Please enter number: ",23,0,14)
+    v67 = 3
+  }
+  if (v65 == 2) { //0434
+    set.string(str2,"555-8039")
+    set.string(str3,"5558039")
+    if ((compare.strings(str1,str2) || compare.strings(str1,str3))) { //0441
+      v65 = 100
+    }
+    set.string(str2,"555-6969")
+    set.string(str3,"5556969")
+    if ((compare.strings(str1,str2) || compare.strings(str1,str3))) { //0456
+      v65 = 200
+    }
+    set.string(str2,"(209) 683-6858")
+    set.string(str3,"209 683-6858")
+    set.string(str4,"209 683-6858")
+    set.string(str5,"2096836858")
+    set.string(str11,"209683-6858")
+    set.string(str12,"209 6836858")
+    if ((compare.strings(str1,str2) || compare.strings(str1,str3) || compare.strings(str1,str4) || compare.strings(str1,str5) || compare.strings(str1,str11) || compare.strings(str1,str12))) { //0477
+      v65 = 150
+    }
+    if (vMonitorType != HERCULES) { //0492
+      clear.lines(23,23,c0)
+    }
+    v67 = 5
+    set(f53)
+  }
+  if (v65 == 3) { //04a3
+    print("\"I'm sorry, but you have reached a number that is disconnected, or no longer in service. Please hang up and dial again.\"")
+    print("\"This is a computer.\"")
+    v65 = 255
+  }
+  if (v65 == 101) { //04b1
+    if (!f82) { //04b8
+      print("All you get is a busy signal.")
+      v65 = 255
+      goto(l1295)
+    }
+    print("\"Hello. Ajax Liquor Store. We deliver!\"")
+    print("\"So, what do you want to buy?\"")
+    set.string(str11," ")
+    if (vMonitorType != HERCULES) { //04ce
+      clear.lines(23,23,c0)
+      get.string(str11,"]",23,0,38)
+      goto(l1257)
+    }
+    get.string(str11," ",23,0,28)
+l1257:
+    prevent.input()
+    accept.input()
+    parse(str11)
+    if ((said("champagne") || said("buy", "champagne") || said("deliver", "champagne"))) { //04ed
+      v65++
+      goto(l1295)
+    }
+    set(fSaidAccepted)
+    print("\"Sorry, by law all we can deliver is wine. Ok, talk to ya again sometime. Bye!\"")
+    v65 = 255
+  }
+l1295:
+  if (v65 == 102) { //050f
+    print("\"Fine. Where do you want it delivered?\"")
+    set.string(str11," ")
+    if (vMonitorType != HERCULES) { //051b
+      clear.lines(23,23,c0)
+      get.string(str11,"]",23,0,38)
+      goto(l1334)
+    }
+    get.string(str11," ",23,0,28)
+l1334:
+    prevent.input()
+    accept.input()
+    parse(str11)
+    if ((said("anyword", "honeymoon suite") || said("anyword", "anyword", "honeymoon suite") || said("honeymoon suite", "rol"))) { //053a
+      v65++
+      goto(l1376)
+    }
+    set(fSaidAccepted)
+    print("\"Ok, I'll take it there, but I doubt if you ever see it! Bye!\"")
+    v65 = 255
+  }
+l1376:
+  if (v65 == 103) { //0560
+    print("\"Ok. We'll get it right there. Consider it done, and thanks for calling!\"")
+    set(f80)
+    if (!f115) { //056b
+      set(f115)
+      vCurrentScore += 5
+    }
+    v65 = 255
+  }
+  if (v65 == 151) { //057a
+    print("\"Hello,\" a pleasant voice responds. \"Sierra On-Line.\"")
+    print("\"We're not open right now, but if you'd call during business hours (and stop using this pretend telephone), we would be happy to sell you a 'Leisure Suit Larry Hint Book.'\"")
+    print("\"Written by Al Lowe, the author of Leisure Suit Larry, you know it at least tries to be humorous. The answers are invisible, until you mark them with the special pen provided, so you never have to worry about inadvertently learning something you didn't want to know.\"")
+    print("\"Thank you for calling Sierra On-Line, and for your purchase of 'Leisure Suit Larry in the Land of the Lounge Lizards.' Good bye.\"")
+    print("Such blatant commercialism turns you on. You make a mental note to purchase one of those great, Al Lowe Hint Books!")
+    if (!f121) { //058b
+      set(f121)
+      vCurrentScore += 5
+    }
+    v65 = 255
+  }
+  if (v65 == 201) { //059a
+    print("\"Hello, you have reached the National Hot Line Sex Survey. Please answer the following questions. There may be a wonderful prize waiting for you!!\"")
+    set.string(str6," ")
+    set.string(str7," ")
+    set.string(str8," ")
+    set.string(str9," ")
+    set.string(str10," ")
+    print("\"What is the name of your favorite sex partner?\"")
+    if (vMonitorType != HERCULES) { //05b4
+      clear.lines(23,23,c0)
+      get.string(str6,"]",23,0,38)
+      goto(l1487)
+    }
+    get.string(str6," ",23,0,28)
+l1487:
+    print("\"What's the best part of your partner's anatomy?\"")
+    if (vMonitorType != HERCULES) { //05d1
+      clear.lines(23,23,c0)
+      get.string(str7,"]",23,0,38)
+      goto(l1516)
+    }
+    get.string(str7," ",23,0,28)
+l1516:
+    print("\"What do the two of you like to do together?\"")
+    if (vMonitorType != HERCULES) { //05ee
+      clear.lines(23,23,c0)
+      get.string(str8,"]",23,0,38)
+      goto(l1545)
+    }
+    get.string(str8," ",23,0,28)
+l1545:
+    print("\"What is the best part of your body?\"")
+    if (vMonitorType != HERCULES) { //060b
+      clear.lines(23,23,c0)
+      get.string(str9,"]",23,0,38)
+      goto(l1574)
+    }
+    get.string(str9," ",23,0,28)
+l1574:
+    print("\"And, finally, name your partner's favorite object.\"")
+    if (vMonitorType != HERCULES) { //0628
+      clear.lines(23,23,c0)
+      get.string(str10,"]",23,0,38)
+      goto(l1603)
+    }
+    get.string(str10," ",23,0,28)
+l1603:
+    print("\"Thanks for participating. Your prize is...\"")
+    print("            \n\n\n")
+    print("Hum. Looks like they hung up on you. Oh, well. It was probably a bummer prize anyway!")
+    set(f78)
+    if (!f113) { //064b
+      set(f113)
+      vCurrentScore += 2
+    }
+    v65 = 255
+  }
+  if (v65 == 211) { //065a
+    v67 = 5
+    if (f108) { //0664
+      v65--
+      goto(l1649)
+    }
+    print("\"Ring.\"")
+  }
+l1649:
+  if (v65 == 212) { //0671
+    v67 = 5
+    if (f108) { //067b
+      v65--
+      goto(l1672)
+    }
+    print("\"Ring ring.\"")
+  }
+l1672:
+  if (v65 == 213) { //0688
+    v67 = 5
+    if (f108) { //0692
+      v65--
+      goto(l1695)
+    }
+    print("\"Ring ring ring.\"")
+  }
+l1695:
+  if (v65 == 214) { //069f
+    v67 = 5
+    if (f108) { //06a9
+      v65--
+      goto(l1718)
+    }
+    print("\"Ring ring ring ring.\"")
+  }
+l1718:
+  if (v65 == 215) { //06b6
+    v67 = 5
+    if (f108) { //06c0
+      v65--
+      goto(l1744)
+    }
+    v65 = 210
+    print("How long are we going to do this before you type in \"answer phone?!\"")
+  }
+l1744:
+  if (v65 == 216) { //06d0
+    reset(f78)
+    if (!f114) { //06d9
+      set(f114)
+      vCurrentScore += 5
+    }
+    print("You pick up the telephone, and hear a woman's voice.")
+    print("\"Hello, Larry! This is %s6. Why don't you forget this silly game, and come over to my place so we can %s8?\"")
+    print("\"After all, your %s9 has always turned me on! So bring along a %s10 and come play with my %s7! Bye, now.\"")
+    print("You hang up the telephone and wipe the sweat from your hands!")
+  }
+  if (v65 == 255) { //06ed
+    v65 = 0
+    reset(f48)
+    if (vMonitorType != HERCULES) { //06f9
+      clear.lines(23,23,c0)
+    }
+    start.motion(o0)
+    reset(f85)
+    prevent.input()
+    accept.input()
+    reset(f53)
+  }
+}
+call(57)
+if (said("ask", "directory assistance")) { //070f
+  print("It's not that easy; you'll have to find the correct telephone number yourself!")
+}
+if ((said("make", "ask") || said("use", "phone") || said("make", "phone", "ask") || said("ask", "anyword"))) { //071b
+  print("Try dialing the telephone.")
+}
+if (vWhichEgoBorder == 2) { //073d
+  v76 = 23
+}
+if (vWhichEgoBorder == 4) { //0747
+  v76 = 9
+}
+if (vWhichEgoBorder == 1) { //0751
+  if (v38 > 30) { //0758
+    v76 = 21
+    goto(l1896)
+  }
+  v76 = 9
+}
+l1896:
+return()

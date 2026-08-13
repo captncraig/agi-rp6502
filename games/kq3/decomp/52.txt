@@ -1,4 +1,109 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f57)
+  v57 = 50
+  v58 = 93
+  set.horizon(35)
+  load.logic(103)
+  v34 = 166
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0027
+    if (vPrevRoom == 53) { //002d
+      if (v41 < 82) { //0034
+        v41 = 82
+      }
+      if (v41 > 90) { //003e
+        v41 = 90
+      }
+      goto(l97)
+    }
+    if (vPrevRoom == 51) { //004b
+      v40 = 42
+      v41 = 167
+      goto(l97)
+    }
+    v40 = v57
+    v41 = v58
+l97:
+    position(o0,40,v41)
+  }
+  if (f47) { //0065
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0071
+  goto(l299)
+}
+if ((said("examine", "bluff") || said("examine", "top", "bluff") || said("examine", "up", "bluff") || said("examine") || said("examine", "down") || said("examine", "area") || said("examine", "up"))) { //007b
+  print("The snow-capped mountains advance forever upward. A narrow path skims along the top of a precipitous ridge. As you look down, you see the steep cliff below you.")
+}
+if ((said("examine", "path") || said("examine", "up", "path"))) { //00af
+  print("The thin path runs along the top of a steep ridge. You must be very careful as one wrong step will mean death!")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //00c5
+  print("A forest begins, with tall evergreen trees and low bushes.")
+}
+if (said("examine", "deck")) { //00d9
+  print("The ground goes... way up, or way down. Better be careful.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //00e5
+  print("You look upward and see the mountain range looming toward the beautiful blue sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //00fb
+  print("There are no climbable trees here.")
+}
+if ((said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //0111
+  print("There are few flowers among the tall evergreens.")
+}
+l299:
+v39 = 1
+v34 = 166
+if (posn(o0,0,0,48,106)) { //0131
+  v39 = 2
+  v34 = 156
+  if (fTriggerLine) { //0141
+    set.priority(o0,4)
+    v33 = 6
+  }
+  goto(l413)
+}
+if (posn(o0,55,0,84,90)) { //0150
+  v39 = 3
+  if (fTriggerLine) { //015d
+    set.priority(o0,4)
+    v33 = 6
+    if (v40 > 76) { //0169
+      v39 = 4
+      v40 = 76
+      reposition.to(o0,v40,v41)
+    }
+  }
+  goto(l413)
+}
+v39 = 5
+if (fTriggerLine) { //0180
+  set.priority(o0,11)
+  v33 = 6
+  if (v40 < 33) { //018c
+    v40 = 33
+    reposition.to(o0,v40,v41)
+    v34 = 163
+  }
+}
+l413:
+call(103)
+if (vWhichEgoBorder == 3) { //019f
+  new.room(51)
+}
+if (vWhichEgoBorder == 2) { //01a8
+  new.room(53)
+}
+return()

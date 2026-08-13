@@ -1,4 +1,148 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.sound(51)
+  load.view(129)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 41) { //0016
+    set(f46)
+    position(o0,94,106)
+    if (f35) { //0023
+      position(o13,89,115)
+    }
+  }
+  if (vPrevRoom == 23) { //002d
+    if (v213 > 135) { //0034
+      position(o0,0,164)
+      if (f35) { //003f
+        position(o13,0,160)
+      }
+      goto(l98)
+    }
+    position(o0,11,90)
+    set.priority(o0,5)
+    if (f35) { //0053
+      position(o13,3,86)
+      set.priority(o13,4)
+      set(f100)
+    }
+  }
+l98:
+  if (vPrevRoom == 17) { //0062
+    if (v212 < 50) { //0069
+      position(o0,20,118)
+      if (f35) { //0074
+        position(o13,23,116)
+      }
+      goto(l143)
+    }
+    position(o0,116,86)
+    if (f35) { //0085
+      position(o13,124,85)
+    }
+  }
+l143:
+  if (vPrevRoom == 25) { //008f
+    if (v213 > 155) { //0096
+      position(o0,153,163)
+      if (f35) { //00a1
+        position(o13,150,160)
+      }
+      goto(l188)
+    }
+    position(o0,153,105)
+    if (f35) { //00b2
+      position(o13,150,100)
+    }
+  }
+l188:
+  if (vPrevRoom == 31) { //00bc
+    if (v212 < 45) { //00c3
+      position(o0,20,165)
+      goto(l220)
+    }
+    if (v212 < 65) { //00d1
+      position(o0,40,165)
+    }
+  }
+l220:
+  draw(o0)
+  animate.obj(o11)
+  load.view(129)
+  set.view(o11,129)
+  set.loop(o11,0)
+  if (!f46) { //00e8
+    set.cel(o11,0)
+    goto(l248)
+  }
+  set.cel(o11,2)
+l248:
+  position(o11,83,116)
+  set.priority(o11,8)
+  draw(o11)
+  if (!f46) { //0101
+    stop.update(o11)
+    goto(l271)
+  }
+  stop.cycling(o11)
+l271:
+  add.to.pic(129,1,0,99,102,0,0)
+  add.to.pic(129,1,1,90,58,15,4)
+  return()
+}
+if (f120 && !f121 && !f46) { //0120
+  set(f121)
+  set(f117)
+  move.obj(o0,153,105,1,f127)
+}
+get.posn(o0,v212,v213)
+if (v212 < 97 && v212 > 86 && v213 < 118 && v213 > 114) { //013a
+  ignore.objs(o0)
+  goto(l337)
+}
+observe.objs(o0)
+l337:
+if (v213 < 98 && v212 > 28 && v212 < 39) { //0151
+  new.room(17)
+}
+if (f127) { //0160
+  reset(f127)
+  vWhichEgoBorder = 2
+}
+if (vWhichObjBorder == 1 && f124) { //016b
+  vWhichEgoBorder = 1
+}
+if (vWhichEgoBorder == 1) { //0177
+  get.priority(o0,v201)
+  if (v201 == 4) { //0181
+    new.room(16)
+    goto(l399)
+  }
+  new.room(17)
+}
+l399:
+if (vWhichObjBorder == 3 && f124) { //018f
+  vWhichEgoBorder = 3
+}
+if (vWhichEgoBorder == 3) { //019b
+  new.room(31)
+}
+if (vWhichEgoBorder == 2) { //01a4
+  new.room(25)
+}
+if (vWhichEgoBorder == 4) { //01ad
+  new.room(23)
+}
+if (f49) { //01b6
+  reset(f49)
+  new.room(41)
+}
+if (fTriggerLine && !f45) { //01c0
+  start.update(o11)
+  stop.cycling(o11)
+  stop.motion(o0)
+  stop.cycling(o0)
+  set(f45)
+}
+return()

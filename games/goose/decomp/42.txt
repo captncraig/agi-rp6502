@@ -1,4 +1,69 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(84)
+  load.view(91)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o5)
+  set.view(o5,91)
+  set.loop(o5,1)
+  position(o5,78,114)
+  draw(o5)
+  v209 = 2
+  cycle.time(o5,v209)
+  add.to.pic(91,2,0,120,132,14,4)
+  animate.obj(o4)
+  set.view(o4,91)
+  set.loop(o4,0)
+  position(o4,120,121)
+  set.priority(o4,14)
+  draw(o4)
+  v209 = 6
+  cycle.time(o4,v209)
+  position(o0,63,167)
+  draw(o0)
+  if (f35) { //0049
+    set(f100)
+    position(o13,44,167)
+  }
+  return()
+}
+get.posn(o0,v212,v213)
+if (v212 > 75) { //005a
+  if (!f220) { //0061
+    set(f220)
+    set(f117)
+    stop.motion(o0)
+    stop.cycling(o0)
+    v113 = 6
+    set(f107)
+    animate.obj(o15)
+    load.view(39)
+    set.view(o15,39)
+    set.loop(o15,0)
+    set.cel(o15,0)
+    position(o15,70,105)
+    set.priority(o15,14)
+    draw(o15)
+    stop.update(o15)
+    set.text.attribute(0,15)
+    display(8,18,"   Hello")
+    display(10,18," %s6!")
+    stop.cycling(o4)
+  }
+}
+if (f107 && f105) { //009a
+  v113--
+}
+if (v113 == 1) { //00a4
+  v113 = 0
+  start.cycling(o4)
+  reset(f107)
+  erase(o15)
+  start.motion(o0)
+  start.cycling(o0)
+  reset(f117)
+}
+if (vWhichEgoBorder == 3) { //00ba
+  new.room(32)
+}
+return()

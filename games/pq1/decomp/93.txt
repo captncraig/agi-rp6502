@@ -1,3 +1,4 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if ((said("examine") || said("examine", "accident"))) { //0002
+  print("Looking out over the ocean, you see perfect ten- to twelve-foot \"peelers\" sliding out of mirror glass, and realize this is a rotten day to be working.")
+}
+return()

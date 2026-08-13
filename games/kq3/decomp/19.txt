@@ -1,4 +1,93 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v56 = 2
+  set(f62)
+  set.horizon(52)
+  v32 = 65
+  v31 = 101
+  random(1,3,v36)
+  if (v36 == 1) { //001e
+    v57 = 80
+    v58 = 75
+    goto(l68)
+  }
+  if (v36 == 2) { //002e
+    v57 = 140
+    v58 = 75
+    goto(l68)
+  }
+  v57 = 35
+  v58 = 155
+l68:
+  load.logic(111)
+  load.logic(110)
+  load.logic(114)
+  load.view(223)
+  load.view(0)
+  load.view(7)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  position(o1,53,82)
+  set.view(o1,223)
+  set.priority(o1,4)
+  draw(o1)
+  if (f48) { //0066
+    if (vPrevRoom == 18) { //006c
+      if (v41 > 150 && v41 < 162) { //0073
+        v41 = 162
+      }
+      if (v41 < 139) { //0080
+        v41 = 139
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //008e
+    draw(o0)
+  }
+  call(110)
+  call(111)
+  call(114)
+  show.pic()
+  return()
+}
+v39 = 0
+reset(f75)
+if ((posn(o0,41,40,88,78) || posn(o0,41,78,102,107) || posn(o0,102,88,159,142))) { //00a3
+  set(f90)
+  set(f75)
+}
+if ((posn(o0,57,61,62,80) || posn(o0,63,50,70,63) || posn(o0,101,104,107,105) || posn(o0,119,113,159,126))) { //00bf
+  set(fEgoOnWater)
+}
+call(114)
+if (fEnteredCommand) { //00e1
+  if (said("examine", "brush")) { //00e7
+    print("The soft grass soothes your aching feet.")
+  }
+  if ((said("examine") || said("examine", "forest"))) { //00f3
+    print("A beautiful stream ripples through these stately trees.")
+  }
+  if ((said("examine", "cave") || said("examine", "hole"))) { //0105
+    print("There seems to be a cave in a hill to the north, but you are too far away to see it clearly.")
+  }
+}
+call(110)
+call(111)
+if (vWhichEgoBorder == 1) { //011d
+  new.room(14)
+}
+if (vWhichEgoBorder == 4) { //0126
+  new.room(18)
+}
+if (vWhichEgoBorder == 2) { //012f
+  new.room(20)
+}
+if (vWhichEgoBorder == 3) { //0138
+  new.room(24)
+}
+return()

@@ -1,5 +1,206 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v241 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l693)
+}
+set(f120)
+v103++
+if ((said("crumble", "acorn", "mortar") || said("crumble", "three", "acorn", "mortar"))) { //001e
+  if (!(has(i18))) { //0036
+    print("How can you use that which you do not have?")
+    goto(l84)
+  }
+  if (v103 == 1) { //0042
+    print("Putting the dried acorns into the stone mortar, you use the pestle to grind them into a rough acorn powder.")
+    drop(i18)
+    reset(f120)
+    goto(l84)
+  }
+  reset(fSaidAccepted)
+}
+l84:
+if ((said("add", "acorn", "flour", "basin") || said("drain", "acorn", "flour", "basin"))) { //0054
+  if (!(has(i40))) { //006e
+    print("You don't have a bowl.")
+    goto(l138)
+  }
+  if (v103 == 2) { //007a
+    print("Turning the heavy stone mortar upside down, you carefully pour the acorn powder into the bowl, then return the mortar to the table.")
+    reset(f120)
+    goto(l138)
+  }
+  reset(fSaidAccepted)
+}
+l138:
+if ((said("add", "cup", "night shade", "basin") || said("add", "cup", "night shade", "juice", "basin") || said("add", "one", "cup", "night shade", "juice", "basin") || said("add", "one", "cup", "night shade", "basin") || said("add", "night shade", "basin") || said("add", "night shade", "juice", "basin") || said("drain", "cup", "juice", "basin") || said("drain", "cup", "night shade", "basin") || said("drain", "cup", "night shade", "juice", "basin") || said("drain", "one", "cup", "night shade", "juice", "basin") || said("drain", "one", "cup", "night shade", "basin") || said("drain", "night shade", "juice", "basin"))) { //008a
+  if (!(has(i17))) { //0116
+    print("How can you use that which you do not have?")
+    goto(l310)
+  }
+  if (v103 == 3) { //0122
+    print("You very carefully pour a cupful of nightshade juice into the clay bowl so as to not to spill a single drop.")
+    print("There is now an ugly, brown, mealy, liquid mixture in the bowl.")
+    drop(i17)
+    reset(f120)
+    goto(l310)
+  }
+  reset(fSaidAccepted)
+}
+l310:
+if ((said("knead", "compound", "ladle") || said("knead", "try", "ladle") || said("knead", "compound", "try", "ladle") || said("knead", "compound"))) { //0136
+  if (v103 == 4) { //015c
+    print("You gently stir the unappetizing liquid.")
+    reset(f120)
+    goto(l364)
+  }
+  reset(fSaidAccepted)
+}
+l364:
+if ((said("boil", "compound", "brazier") || said("boil", "compound", "above", "brazier") || said("boil", "compound", "on", "brazier") || said("boil", "basin", "on", "brazier") || said("boil", "basin", "brazier") || said("boil", "basin", "above", "brazier") || said("add", "basin", "brazier") || said("add", "basin", "above", "brazier") || said("add", "basin", "on", "brazier") || said("add", "basin", "on", "brazier", "boil"))) { //016c
+  if (!(has(i40))) { //01d2
+    print("How can you use that which you do not have?")
+    goto(l515)
+  }
+  print("You gingerly place the clay bowl of ugly brown liquid on the charcoal brazier.")
+  if (!(v107 > 0) && !(v108 > 0)) { //01e0
+    print("How you wish you had lit the burner!")
+    goto(l515)
+  }
+  if (v103 == 5) { //01f1
+    print("Soon, the hot brazier brings the mixture to a bubble, then a boil, releasing a bitter smelling steam.")
+    print("You let it boil until the nightshade juice is nearly gone, then remove it from the brazier.")
+    reset(f120)
+    goto(l515)
+  }
+  reset(fSaidAccepted)
+}
+l515:
+if ((said("flatten", "compound", "counter") || said("flatten", "compound", "on", "counter"))) { //0203
+  if (v103 == 6) { //021b
+    print("You pour the bowl's contents onto the oaken table, then spread the hot sticky mixture over the table top. In a few minutes, it has dried to a very crumbly, coarse sleeping powder.")
+    reset(f120)
+    v103++
+    goto(l557)
+  }
+  reset(fSaidAccepted)
+}
+l557:
+if (said("capture", "sleep", "flour")) { //022d
+  if (v103 == 9) { //0239
+    print("You try to pick up the sleep powder and drop it all over the laboratory floor, where it mixes into the dirt. How you wish you had brought a pouch in which to carry it!")
+    goto(l583)
+  }
+  reset(fSaidAccepted)
+}
+l583:
+if ((said("add", "sleep", "flour", "pouch") || said("drain", "sleep", "flour", "pouch"))) { //0247
+  if (!(has(i19))) { //0261
+    print("How can you use that which you do not have?")
+    goto(l641)
+  }
+  if (v103 == 9) { //026d
+    print("You untie the small leather pouch, scoop the powder from the table, and place it within. You now have a pouch full of sleep powder.")
+    reset(f120)
+    drop(i19)
+    get(i20)
+    goto(l641)
+  }
+  reset(fSaidAccepted)
+}
+l641:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //0281
+  if (!(has(i37))) { //0295
+    print("How can you use that which you do not have?")
+    drop(i20)
+    goto(l693)
+  }
+  if (v103 == 8) { //02a3
+    print("You pass the magic wand over the table.")
+    reset(f120)
+    goto(l693)
+  }
+  drop(i20)
+  reset(fSaidAccepted)
+}
+l693:
+if (!f120 && v104 < 4 && v103 == 7) { //02b5
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //02cb
+    overlay.pic(v241)
+    show.pic()
+    set.string(str2,"acorn powder ground so fine,")
+    if (vMonitorType == HERCULES) { //02d8
+      open.dialogue()
+      get.string(str1," ",15,1,28)
+      goto(l751)
+    }
+    get.string(str1," ",13,1,28)
+l751:
+    if (compare.strings(str1,str2)) { //02ef
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //02f8
+    set.string(str2,"nightshade juice, like bitter wine,")
+    if (vMonitorType == HERCULES) { //0302
+      get.string(str1," ",16,1,35)
+      goto(l792)
+    }
+    get.string(str1," ",14,1,35)
+l792:
+    if (compare.strings(str1,str2)) { //0318
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //0321
+    set.string(str2,"silently in darkness you creep,")
+    if (vMonitorType == HERCULES) { //032b
+      get.string(str1," ",17,1,31)
+      goto(l833)
+    }
+    get.string(str1," ",15,1,31)
+l833:
+    if (compare.strings(str1,str2)) { //0341
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //034a
+    set.string(str2,"to bring a soporific sleep.")
+    if (vMonitorType == HERCULES) { //0354
+      get.string(str1," ",18,1,27)
+      goto(l874)
+    }
+    get.string(str1," ",16,1,27)
+l874:
+    if (compare.strings(str1,str2)) { //036a
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //037e
+    if (vMonitorType == HERCULES) { //0389
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+v36 = v103
+v36++
+if (v36 == 10 && !f120) { //039a
+  v103 = 255
+}
+if (f120) { //03a7
+  v105 = 38
+  v106 = 3
+}
+return()

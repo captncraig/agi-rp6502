@@ -1,4 +1,150 @@
-if (isSet(f5)) {
-  if (v119 > 4
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v119 > 4 && v119 < 10) { //0008
+    new.room(19)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(57)
+  load.view(170)
+  load.view(78)
+  animate.obj(o3)
+  set.view(o3,78)
+  set.cel(o3,0)
+  position(o3,129,145)
+  draw(o3)
+  stop.cycling(o3)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,170)
+  set.loop(o1,2)
+  set.cel(o1,0)
+  position(o1,83,114)
+  draw(o1)
+  v52 = 3
+  cycle.time(o1,v52)
+  stop.update(o1)
+  add.to.pic(170,1,0,63,60,4,4)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,170)
+  set.loop(o2,0)
+  position(o2,86,42)
+  cycle.time(o2,v85)
+  draw(o2)
+  if (vPrevRoom == 34) { //006e
+    v38 = 93
+    v39 = 116
+    set.loop(o0,2)
+    reset(f85)
+    goto(l144)
+  }
+  if (vPrevRoom == 9) { //0083
+    v38 = 153
+    v39 = 138
+  }
+l144:
+  position(o0,38,v39)
+  draw(o0)
+  call(57)
+  show.pic()
+  return()
+}
+reset(f200)
+if (posn(o0,80,115,105,120)) { //009c
+  set(f200)
+}
+reset(f202)
+if (posn(o0,120,129,142,144)) { //00aa
+  set(f202)
+  set(f69)
+}
+if (!fEnteredCommand) { //00b8
+  goto(l429)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "building") || said("examine", "chapel"))) { //00c2
+  print("You are outside a romantic, quickie marriage parlor.")
+}
+if (said("examine", "bouncer")) { //00e0
+  if (!f203) { //00ea
+    print("It's a guy wearing a trench coat.")
+    goto(l248)
+  }
+  print("It's obvious he doesn't have much to hide!")
+}
+l248:
+if (said("ask", "bouncer", "anyword", "rol")) { //00f8
+  print("He doesn't reply.")
+}
+if (said("ask", "bouncer")) { //0108
+  if (!f203) { //0112
+    print("You greet the stranger in the trench coat.")
+    print("\"Hey, sonny! Come over here!!\" he replies.")
+    goto(l302)
+  }
+  print("\"Say,\" you ask him. \"By any chance, is your name Shorty?\"")
+  if (!f103) { //0122
+    set(f103)
+    vCurrentScore += 1
+  }
+}
+l302:
+if ((said("catch", "bra", "rol") || said("anyword", "bouncer", "rol"))) { //012e
+  print("You have better things to do than mess around with this pervert.")
+}
+if (said("examine", "door")) { //0146
+  if (f61) { //0150
+    reset(fSaidAccepted)
+    goto(l349)
+  }
+  print("It's a door. Try opening it.")
+}
+l349:
+if (said("increase", "door")) { //015d
+  if (f61) { //0167
+    reset(fSaidAccepted)
+    goto(l393)
+  }
+  if (!f200) { //0172
+    set(f54)
+    goto(l393)
+  }
+  set(f67)
+  stop.motion(o0)
+  set(f85)
+  start.update(o1)
+  end.of.loop(o1,f201)
+}
+l393:
+if ((said("examine", "fence") || said("climb", "fence") || said("climb", "above", "fence") || said("examine", "above", "fence"))) { //0189
+  print("It's there to keep you from going that way!")
+}
+l429:
+if (f202) { //01ad
+  if (!f203) { //01b3
+    set(f203)
+    end.of.loop(o3,f40)
+  }
+  goto(l461)
+}
+if (f203) { //01c2
+  reset(f203)
+  reverse.loop(o3,f40)
+}
+l461:
+call(57)
+if (f201) { //01cf
+  reset(f85)
+  v76 = 34
+}
+if (vWhichEgoBorder == 4) { //01da
+  v76 = 32
+}
+if (vWhichEgoBorder == 2) { //01e4
+  v76 = 9
+}
+return()

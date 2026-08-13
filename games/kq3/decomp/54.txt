@@ -1,4 +1,146 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f59)
+  v57 = 95
+  v58 = 83
+  set.horizon(75)
+  load.view(1)
+  load.view(226)
+  random(1,2,v36)
+  if (f46) { //0024
+    v36 = 2
+  }
+  if (v36 == 1) { //002d
+    load.logic(117)
+    v191 = 1
+    reset(f172)
+    v170 = 144
+    v171 = 95
+    goto(l71)
+  }
+  v191 = 0
+l71:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,226)
+  position(o1,38,167)
+  ignore.objs(o1)
+  set.priority(o1,4)
+  draw(o1)
+  if (f48) { //005d
+    if (vPrevRoom == 55) { //0063
+      position(o0,153,95)
+      goto(l127)
+    }
+    if (vPrevRoom == 53) { //0071
+      position(o0,39,167)
+      set.view(o0,1)
+    }
+  }
+l127:
+  observe.blocks(o0)
+  if (f47) { //0081
+    draw(o0)
+  }
+  if (v191 == 1) { //0089
+    call(117)
+    set.priority(o15,4)
+    position(o15,142,77)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //009b
+  goto(l477)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine", "up") || said("examine") || said("examine", "area") || said("examine", "down"))) { //00a5
+  print("You've reached the heights of the mountain range and snow and ice surround you. You still see no end to the mountains. It's bitterly cold, and you shiver in your thin rags. A path, through the snow, leads onward.")
+}
+if (said("examine", "path")) { //00d1
+  print("A path has been forged through the heavy snow. You wonder who made the path as you see no sign of life.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00dd
+  print("Plants and trees are scarce in the snowy reaches of these mountains.")
+}
+if (said("examine", "deck")) { //0103
+  print("The ground is completely covered with cold, white snow.")
+}
+if (said("examine", "sky")) { //010f
+  print("The deep-blue sky contrasts sharply with the brilliant white mountain peaks. You must admit, even while shivering, it is a beautiful sight.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //011b
+  print("There are no trees here.")
+}
+if (said("examine", "snow")) { //0131
+  print("White snow blankets everything here in the upper reaches of the great mountains. It's beautiful, but it is VERY cold.")
+}
+if (said("play", "snow")) { //013d
+  print("Wheee!")
+}
+if ((said("examine", "creek") || said("examine", "liquid") || said("look in", "creek"))) { //0149
+  print("The runoff from melting snows feeds a tiny stream cascading down through the jumble of stones.")
+}
+if ((said("drink", "liquid") || said("drink", "liquid", "creek") || said("capture", "liquid") || said("capture", "liquid", "creek") || said("capture", "drink") || said("capture", "drink", "creek") || said("capture", "drink", "liquid") || said("capture", "drink", "liquid", "creek") || said("drink", "liquid", "from", "creek") || said("capture", "liquid", "from", "creek") || said("capture", "drink", "from", "creek") || said("capture", "drink", "liquid", "from", "creek"))) { //0163
+  if (v41 > 107) { //01cf
+    print("Ahhh. It tastes like Sierra water!")
+    goto(l477)
+  }
+  print("Your arms are not that long.")
+}
+l477:
+if (v44 == 0) { //01dd
+  if (v41 > 121) { //01e4
+    set.view(o0,1)
+    goto(l500)
+  }
+  set.view(o0,0)
+}
+l500:
+if (v40 > 70 && !f172 && v191 == 1) { //01f4
+  v191++
+}
+if (f172) { //0203
+  get.posn(o15,v37,v38)
+  if (v38 > 101) { //020d
+    set.priority(o15,15)
+    goto(l540)
+  }
+  release.priority(o15)
+l540:
+  if (v191 == 3) { //021c
+    v191++
+    v220 = 0
+    move.obj(o15,95,77,2,f220)
+    ignore.blocks(o15)
+  }
+  if (v191 == 4 && f220) { //0230
+    reset(f220)
+    v220++
+    if (v220 == 1) { //023d
+      move.obj(o15,95,95,2,f220)
+    }
+    if (v220 == 2) { //024a
+      ignore.blocks(o15)
+      release.priority(o15)
+      follow.ego(o15,11,f173)
+      v220 = 0
+      v170 = 144
+      v171 = 95
+    }
+  }
+}
+if (v191 > 0) { //0262
+  call(117)
+}
+if (vWhichEgoBorder == 3) { //026b
+  new.room(53)
+}
+if (vWhichEgoBorder == 2) { //0274
+  new.room(55)
+}
+return()

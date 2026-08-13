@@ -1,4 +1,387 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  current.view(o0,v223)
+  v58 = 0
+  v31 = 0
+  set(f46)
+  set.horizon(1)
+  load.view(5)
+  load.view(200)
+  v220 = 131
+  if (f51 && !f52) { //001e
+    v220 = 132
+    load.view(201)
+  }
+  if (f52 && !f53) { //002c
+    v220 = 133
+  }
+  if (f53) { //0038
+    v220 = 134
+  }
+  load.pic(v220)
+  draw.pic(v220)
+  discard.pic(v220)
+  if (v220 == 131) { //0047
+    if (!f54) { //004e
+      add.to.pic(200,0,0,3,48,4,4)
+    }
+    if (!f55) { //005d
+      add.to.pic(200,0,0,34,48,4,4)
+    }
+    if (!f56) { //006c
+      add.to.pic(200,0,0,65,48,4,4)
+    }
+    if (!f57) { //007b
+      add.to.pic(200,0,0,96,48,4,4)
+    }
+    if (!f58) { //008a
+      add.to.pic(200,0,0,127,48,4,4)
+    }
+    if (!f59) { //0099
+      add.to.pic(200,0,0,3,81,4,4)
+    }
+    if (!f60) { //00a8
+      add.to.pic(200,0,0,34,81,4,4)
+    }
+    if (!f61) { //00b7
+      add.to.pic(200,0,0,65,81,4,4)
+    }
+    if (!f62) { //00c6
+      add.to.pic(200,0,0,96,81,4,4)
+    }
+    if (!f63) { //00d5
+      add.to.pic(200,0,0,127,81,4,4)
+    }
+    if (!f64) { //00e4
+      add.to.pic(200,0,0,3,114,4,4)
+    }
+    if (!f65) { //00f3
+      add.to.pic(200,0,0,34,114,4,4)
+    }
+    if (!f66) { //0102
+      add.to.pic(200,0,0,65,114,4,4)
+    }
+    if (!f67) { //0111
+      add.to.pic(200,0,0,96,114,4,4)
+    }
+    if (!f68) { //0120
+      add.to.pic(200,0,0,127,114,4,4)
+    }
+    if (!f69) { //012f
+      add.to.pic(200,0,0,3,147,4,4)
+    }
+    if (!f70) { //013e
+      add.to.pic(200,0,0,34,147,4,4)
+    }
+    if (!f71) { //014d
+      add.to.pic(200,0,0,65,147,4,4)
+    }
+    if (!f72) { //015c
+      add.to.pic(200,0,0,96,147,4,4)
+    }
+    if (!f73) { //016b
+      add.to.pic(200,0,0,127,147,4,4)
+    }
+  }
+  if (v220 == 132) { //017a
+    v36 = v53
+    v36 += v53
+    v36 += v53
+    v36 += v53
+    if (v62 == 2) { //018d
+      v36 += 12
+    }
+    v38 = 125
+    v38 -= v36
+    v37 = 143
+    v36 += v36
+    v37 -= v36
+    if ((v37 > 143 || v62 == 4)) { //01a6
+      v37 = 143
+      v38 = 125
+    }
+    animate.obj(o1)
+    set.view(o1,201)
+    position(o1,37,v38)
+    set.priority(o1,4)
+    ignore.objs(o1)
+    draw(o1)
+  }
+  if (v220 == 133) { //01c8
+    if (!f59) { //01cf
+      add.to.pic(200,0,0,34,48,4,4)
+    }
+    if (!f60) { //01de
+      add.to.pic(200,0,0,65,48,4,4)
+    }
+    if (!f61) { //01ed
+      add.to.pic(200,0,0,96,48,4,4)
+    }
+    if (!f57) { //01fc
+      add.to.pic(200,0,0,3,81,4,4)
+    }
+    if (!f58) { //020b
+      add.to.pic(200,0,0,34,81,4,4)
+    }
+    if (!f62) { //021a
+      add.to.pic(200,0,0,96,81,4,4)
+    }
+    if (!f63) { //0229
+      add.to.pic(200,0,0,127,81,4,4)
+    }
+    if (!f56) { //0238
+      add.to.pic(200,0,0,3,114,4,4)
+    }
+    if (!f64) { //0247
+      add.to.pic(200,0,0,127,114,4,4)
+    }
+    if (!f54) { //0256
+      add.to.pic(200,0,0,3,147,4,4)
+    }
+    if (!f53) { //0265
+      add.to.pic(200,0,0,127,147,4,4)
+    }
+  }
+  if (v220 == 134) { //0274
+    if (!f57) { //027b
+      add.to.pic(200,0,0,3,48,4,4)
+    }
+    if (!f58) { //028a
+      add.to.pic(200,0,0,34,48,4,4)
+    }
+    if (!f59) { //0299
+      add.to.pic(200,0,0,65,48,4,4)
+    }
+    if (!f56) { //02a8
+      add.to.pic(200,0,0,96,48,4,4)
+    }
+    if (!f63) { //02b7
+      add.to.pic(200,0,0,34,81,4,4)
+    }
+    if (!f64) { //02c6
+      add.to.pic(200,0,0,65,81,4,4)
+    }
+    if (!f55) { //02d5
+      add.to.pic(200,0,0,127,81,4,4)
+    }
+    if (!f61) { //02e4
+      add.to.pic(200,0,0,34,114,4,4)
+    }
+    if (!f54) { //02f3
+      add.to.pic(200,0,0,96,114,4,4)
+    }
+    if (!f60) { //0302
+      add.to.pic(200,0,0,34,147,4,4)
+    }
+    if (!f53) { //0311
+      add.to.pic(200,0,0,65,147,4,4)
+    }
+  }
+  set.view(o0,5)
+  release.priority(o0)
+  position(o0,77,77)
+  start.motion(o0)
+  v59 = 1
+  cycle.time(o0,v59)
+  v60 = 1
+  step.time(o0,60)
+  v61 = 1
+  step.size(o0,v61)
+  draw(o0)
+  show.pic()
+  if (v220 == 131) { //0340
+    if (f61) { //0347
+      print("The magic map's faded ink has brightened, but only in those places where you have been!")
+      goto(l852)
+    }
+    print("The magic map's ink has faded away. So far, it isn't much help.")
+  }
+l852:
+  print("Press F6 to teleport.\n\nPress F8 to put the map away.")
+  return()
+}
+v221 = 0
+if (v220 == 131) { //035a
+  if (f54 && posn(o0,3,23,33,54)) { //0361
+    v221 = 11
+  }
+  if (f55 && posn(o0,34,23,64,54)) { //0370
+    v221 = 12
+  }
+  if (f56 && posn(o0,65,23,95,54)) { //037f
+    v221 = 13
+  }
+  if (f57 && posn(o0,96,23,126,54)) { //038e
+    v221 = 14
+  }
+  if (f58 && posn(o0,127,23,155,54)) { //039d
+    v221 = 15
+  }
+  if (f59 && posn(o0,3,55,33,87)) { //03ac
+    v221 = 16
+  }
+  if (f60 && posn(o0,34,55,64,87)) { //03bb
+    v221 = 17
+  }
+  if (f61 && posn(o0,65,55,95,87)) { //03ca
+    v221 = 18
+  }
+  if (f62 && posn(o0,96,55,126,87)) { //03d9
+    v221 = 19
+  }
+  if (f63 && posn(o0,127,55,155,87)) { //03e8
+    v221 = 20
+  }
+  if (f64 && posn(o0,3,88,33,120)) { //03f7
+    v221 = 21
+  }
+  if (f65 && posn(o0,34,88,64,120)) { //0406
+    v221 = 22
+  }
+  if (f66 && posn(o0,65,88,95,120)) { //0415
+    v221 = 23
+  }
+  if (f67 && posn(o0,96,88,126,120)) { //0424
+    v221 = 24
+  }
+  if (f68 && posn(o0,127,88,155,120)) { //0433
+    v221 = 25
+  }
+  if (f69 && posn(o0,3,121,33,153)) { //0442
+    v221 = 26
+  }
+  if (f70 && posn(o0,34,121,64,153)) { //0451
+    v221 = 27
+  }
+  if (f71 && posn(o0,65,121,95,153)) { //0460
+    v221 = 28
+  }
+  if (f72 && posn(o0,96,121,126,153)) { //046f
+    v221 = 29
+  }
+  if (f73 && posn(o0,127,121,155,153)) { //047e
+    v221 = 30
+  }
+}
+if (v220 == 132) { //048d
+  distance(o0,o1,v36)
+  get.posn(o1,v37,v38)
+  v37--
+  if (v36 < 14 && v40 > v37) { //049e
+    random(79,86,v221)
+    goto(l1202)
+  }
+  v221 = 31
+}
+l1202:
+if (v220 == 133) { //04b2
+  if (f59 && posn(o0,34,23,64,54)) { //04b9
+    v221 = 54
+  }
+  if (f60 && posn(o0,65,23,95,54)) { //04c8
+    v221 = 55
+  }
+  if (f61 && posn(o0,96,23,126,54)) { //04d7
+    v221 = 56
+  }
+  if (f57 && posn(o0,3,55,33,87)) { //04e6
+    v221 = 52
+  }
+  if (f58 && posn(o0,34,55,64,87)) { //04f5
+    v221 = 53
+  }
+  if (f62 && posn(o0,96,55,126,87)) { //0504
+    v221 = 57
+  }
+  if (f63 && posn(o0,127,55,155,87)) { //0513
+    v221 = 58
+  }
+  if (f56 && posn(o0,3,88,33,120)) { //0522
+    v221 = 51
+  }
+  if (f64 && posn(o0,127,88,155,120)) { //0531
+    v221 = 59
+  }
+  if (f54 && posn(o0,3,121,33,153)) { //0540
+    v221 = 49
+  }
+  if (f53 && posn(o0,127,121,155,153)) { //054f
+    v221 = 61
+  }
+}
+if (v220 == 134) { //055e
+  if (f57 && posn(o0,3,23,33,54)) { //0565
+    v221 = 65
+  }
+  if (f58 && posn(o0,34,23,64,54)) { //0574
+    v221 = 66
+  }
+  if (f59 && posn(o0,65,23,95,54)) { //0583
+    v221 = 67
+  }
+  if (f56 && posn(o0,96,23,126,54)) { //0592
+    v221 = 64
+  }
+  if (f63 && posn(o0,34,55,64,87)) { //05a1
+    v221 = 71
+  }
+  if (f64 && posn(o0,65,55,95,87)) { //05b0
+    v221 = 72
+  }
+  if (f55 && posn(o0,127,55,155,87)) { //05bf
+    v221 = 63
+  }
+  if (f61 && posn(o0,34,88,64,120)) { //05ce
+    v221 = 69
+  }
+  if (f54 && posn(o0,96,88,126,120)) { //05dd
+    v221 = 62
+  }
+  if (f60 && posn(o0,34,121,64,153)) { //05ec
+    v221 = 68
+  }
+  if (f53 && posn(o0,65,121,95,153)) { //05fb
+    v221 = 61
+  }
+}
+if ((said("capture", "alexander", "here") || said("capture", "alexander", "here") || said("magic", "map", "bug", "alexander", "here") || said("magic", "map", "bug", "alexander", "here") || said("bug", "alexander", "here") || said("bug", "alexander", "here") || said("magic", "map", "capture", "alexander", "here") || said("magic", "map", "capture", "alexander", "here") || said("board", "here") || said("board", "here"))) { //060a
+  set(f220)
+}
+if ((said("examine", "area") || said("examine", "back", "area") || said("examine") || said("examine", "away") || said("examine", "up") || said("examine", "away", "from", "map") || said("quit", "examine", "map") || said("quit", "examine", "magic", "map") || said("quit", "magic", "map") || said("add", "area") || said("board", "back", "area"))) { //066e
+  set(f220)
+  v221 = vPrevRoom
+}
+if ((controller(c19) || controller(c24))) { //06c9
+  set(f220)
+}
+if ((controller(c13) || controller(c23))) { //06d5
+  set(f220)
+  v221 = vPrevRoom
+}
+if (controller(c2)) { //06e4
+  print("Press F6 to teleport.\n\nPress F8 to put the map away.")
+}
+if (f220) { //06ec
+  reset(f220)
+  if (!(v221 > 0)) { //06f4
+    print("The map looks blank there!")
+    goto(l1835)
+  }
+  print("And so it shall be!")
+  erase(o0)
+  set.view(o0,v223)
+  vEgoView = v223
+  reset(f46)
+  if (v221 == vPrevRoom) { //070d
+    v44 = 30
+    goto(l1821)
+  }
+  v44 = 14
+l1821:
+  if (vMonitorType != HERCULES) { //071d
+    clear.lines(22,22,c0)
+  }
+  new.room(v221)
+}
+l1835:
+return()

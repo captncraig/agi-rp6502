@@ -1,4 +1,104 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(4)
+  load.sound(5)
+  load.view(8)
+  load.view(89)
+  load.view(105)
+  load.view(103)
+  load.view(104)
+  if (vPrevRoom == 80) { //001c
+    set.view(o0,89)
+    animate.obj(o1)
+    set.view(o1,8)
+    position(o0,2,50)
+    move.obj(o0,100,50,0,f20)
+    set.priority(o1,14)
+    set.priority(o0,15)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f20) { //003e
+  reset(f20)
+  erase(o0)
+  position(o0,108,53)
+  set.view(o0,105)
+  set(f98)
+  position(o1,100,48)
+  draw(o1)
+  draw(o0)
+  move.obj(o1,130,48,2,f21)
+  move.obj(o0,108,107,4,f22)
+  set(f135)
+  sound(5,f198)
+}
+if (f21) { //006a
+  reset(f21)
+  erase(o1)
+}
+if (f22) { //0074
+  stop.sound()
+  set(f27)
+  reset(f22)
+  program.control()
+  release.priority(o0)
+  set.view(o0,103)
+  shake.screen(1)
+  print("OUCH")
+  sound(4,f159)
+  v30 = 18
+}
+v30--
+if (f159) { //0091
+  if (v30 > 0) { //0097
+    reset(f159)
+    sound(4,f159)
+  }
+}
+if (v30 == 1) { //00a3
+  set.view(o0,104)
+  end.of.loop(o0,f25)
+}
+if (f25) { //00b0
+  reset(f25)
+  set.view(o0,0)
+  reset(f98)
+  player.control()
+  reset(f145)
+  reset(f209)
+}
+if ((said("check", "doorway") || said("look in", "doorway"))) { //00c2
+  if (posn(o0,55,105,100,142)) { //00d4
+    print("In the depths of the large hole you seem to sense a faint, green glow.")
+    goto(l229)
+  }
+  print("Don't be afraid... get closer.")
+}
+l229:
+if (fEgoOnWater && !f199) { //00e5
+  set(f95)
+  stop.cycling(o0)
+  set(f199)
+  set.priority(o0,5)
+  get.posn(o0,v60,v61)
+  v61 += 35
+  v96 = 8
+  move.obj(o0,v60,v61,96,f23)
+  sound(5,f148)
+}
+if (f23) { //010a
+  reset(f23)
+  reset(f95)
+  erase(o0)
+  new.room(73)
+}
+if (vWhichEgoBorder == 4) { //0118
+  new.room(47)
+}
+if (vWhichEgoBorder == 3) { //0121
+  new.room(33)
+}
+return()

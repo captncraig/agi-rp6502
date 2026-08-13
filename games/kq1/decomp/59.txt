@@ -1,4 +1,80 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3d)}
+if (fNewRoom) { //0002
+  ignore.horizon(o0)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(5)
+  load.view(105)
+  if (vPrevRoom == 62) { //0014
+    get.posn(o0,v60,v61)
+    if (v60 > 152) { //001f
+      position(o0,150,164)
+    }
+  }
+  if (vPrevRoom == 69) { //002a
+    position(o0,116,110)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "cave")) { //0038
+  print("The dark cave burrows its way into a steep mountain.")
+}
+if (said("climb", "mountain")) { //0044
+  print("The mountain is too steep to climb.")
+}
+if (said("check", "mountain")) { //0050
+  print("You are near the top of a very high mountain.  It steeply descends toward a valley floor.")
+}
+if ((said("check", "clouds") || said("check", "room"))) { //005c
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives here.")
+}
+if (said("check", "tree")) { //0070
+  print("These are the most unusual looking trees.")
+}
+if (said("check", "blossom")) { //007c
+  print("These are unusual looking flowers.")
+}
+if (fTriggerLine && !f95 && posn(o0,0,84,159,167)) { //0088
+  set(f95)
+  stop.cycling(o0)
+  sound(5,f159)
+  move.obj(o0,153,166,5,f21)
+}
+if (fTriggerLine && posn(o0,0,0,159,83)) { //00a4
+  reset(fTriggerLine)
+  program.control()
+  if (!f79) { //00b3
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  sound(5,f159)
+  erase(o0)
+}
+if (f21) { //00c6
+  reset(f21)
+  erase(o0)
+}
+if (f159) { //00d0
+  reset(f159)
+  set(f20)
+}
+if (f20) { //00da
+  reset(f20)
+  print("Oops, you've missed the edge and fallen through the  clouds.")
+  set(f63)
+}
+if (posn(o0,135,94,136,120)) { //00e6
+  new.room(69)
+}
+if (vWhichEgoBorder == 4) { //00f2
+  new.room(58)
+}
+if (vWhichEgoBorder == 3) { //00fb
+  get.posn(o0,v60,v61)
+  if (v60 < 153) { //0106
+    new.room(62)
+  }
+}
+return()

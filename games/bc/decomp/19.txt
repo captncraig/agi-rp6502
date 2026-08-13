@@ -1,4 +1,77 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(50)
+  if ((f59 || v57 > 0)) { //0010
+    random(0,255,v61)
+    if (v61 < 88) { //001f
+      load.logic(104)
+      set(f200)
+    }
+  }
+  if (f108) { //002a
+    load.logic(116)
+    set(f201)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //003a
+      load.logic(114)
+      set(f202)
+    }
+  }
+  if (vPrevRoom == 14 && posn(o0,119,0,159,53)) { //0045
+    position(o0,110,51)
+  }
+  if (vPrevRoom == 24) { //0056
+    get.posn(o0,v62,v63)
+    if (v62 > 94) { //0061
+      position(o0,84,163)
+    }
+  }
+  draw(o0)
+  if (f200) { //006e
+    call(104)
+    position(o7,50,50)
+  }
+  if (f201) { //007a
+    call(116)
+  }
+  if (f202) { //0082
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //008c
+  if (!f78) { //0092
+    print("Listening to the south, you are sure you hear a roaring sound.")
+  }
+}
+if (!f128 && !f129) { //009b
+  goto(l180)
+}
+if (f129) { //00a8
+  goto(l180)
+}
+goto(l180)
+l180:
+if (f202) { //00b4
+  call(114)
+}
+if (f201) { //00bc
+  call(116)
+}
+if (f200) { //00c4
+  call(104)
+}
+if (vWhichEgoBorder == 1) { //00cc
+  new.room(14)
+}
+if (vWhichEgoBorder == 3) { //00d5
+  new.room(24)
+}
+if (vWhichEgoBorder == 4) { //00de
+  new.room(18)
+}
+return()

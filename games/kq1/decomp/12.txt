@@ -1,4 +1,537 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  load.sound(5)
+  load.sound(20)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,107,81,0,0)
+  }
+  load.view(74)
+  load.view(143)
+  load.view(18)
+  animate.obj(o1)
+  set.view(o1,18)
+  position(o1,66,96)
+  ignore.objs(o1)
+  set.priority(o1,11)
+  set.cel(o1,4)
+  if (!f176) { //0042
+    load.view(72)
+    load.view(16)
+    animate.obj(o2)
+    set.view(o2,16)
+    ignore.blocks(o2)
+    position(o2,37,120)
+    set.priority(o2,11)
+    if (!f177) { //005b
+      set.cel(o2,0)
+    }
+    if (f177) { //0065
+      set.cel(o2,7)
+    }
+  }
+  if (!f178) { //006e
+    load.view(17)
+    animate.obj(o3)
+    set.view(o3,17)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    position(o3,43,147)
+    set.priority(o3,11)
+    if (!f179) { //0087
+      set.cel(o3,0)
+    }
+    if (f179) { //0091
+      set.cel(o3,2)
+    }
+  }
+  if (vPrevRoom == 49) { //009a
+    if (f176) { //00a1
+      set.view(o0,143)
+      goto(l176)
+    }
+    set.view(o0,74)
+l176:
+    set(f180)
+    position(o0,38,140)
+    set.priority(o0,11)
+    ignore.blocks(o0)
+    move.obj(o0,38,140,0,f148)
+  }
+  if (vPrevRoom == 5) { //00c1
+    if (fEgoOnWater) { //00c8
+      set.view(o0,0)
+      reset(f98)
+      v94 = 0
+    }
+  }
+  draw(o1)
+  stop.update(o1)
+  if (!f176) { //00da
+    draw(o2)
+    stop.update(o2)
+  }
+  if (f176 && !f178) { //00e5
+    draw(o3)
+    stop.cycling(o3)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "blossom")) { //00f5
+  print("They raise their colorful faces to the sun.")
+}
+if (!f81) { //0101
+  if (said("acquire", "water")) { //0108
+    print("All the water is at the bottom of the well.")
+  }
+}
+if (f81 && !f88) { //0114
+  if (said("acquire", "water")) { //011d
+    print("Somebody has cut the rope;  there's no way for you to get the bucket to the well's bottom.")
+  }
+}
+if (!f75 && !f79) { //0129
+  if (posn(o0,10,100,75,150)) { //0133
+    if ((f177 || f179)) { //013d
+      if ((said("climb", "rope") || said("climb", "well") || said("enter", "well") || said("go down", "well") || said("slide", "rope"))) { //0147
+        erase(o0)
+        if (f176) { //016d
+          set.view(o0,143)
+          goto(l380)
+        }
+        set.view(o0,74)
+l380:
+        vEgoDir = 0
+        position(o0,39,131)
+        draw(o0)
+        set(f180)
+        set.priority(o0,11)
+        ignore.blocks(o0)
+        move.obj(o0,39,132,0,f148)
+      }
+    }
+    if (!f177 && !f179) { //0192
+      if (said("climb", "well")) { //019c
+        print("The sides of this well are too slippery to climb down.")
+      }
+      if ((said("climb", "rope") || said("slide", "rope"))) { //01a8
+        print("The rope does not go down the well very far.")
+      }
+    }
+    if (!f176 && !f177) { //01bc
+      if ((said("climb", "bucket") || said("enter", "bucket") || said("enter", "well") || said("go down", "well") || said("get in", "bucket"))) { //01c6
+        erase(o0)
+        set.view(o2,72)
+        position(o2,38,145)
+        set.priority(o2,11)
+        ignore.blocks(o2)
+        set.cel(o2,0)
+        start.update(o2)
+        erase(o2)
+        stop.cycling(o2)
+        draw(o2)
+        set(f181)
+        sound(20,f30)
+        end.of.loop(o2,f25)
+        start.update(o1)
+        start.cycling(o1)
+        print("After you are in the old bucket, your weight causes it to slowly descend.")
+      }
+    }
+    if (f177 && !f176) { //0211
+      if ((said("climb", "bucket") || said("enter", "bucket") || said("get in", "bucket"))) { //021a
+        print("The old bucket is at the bottom of the well.")
+      }
+    }
+    if (f176) { //0234
+      if ((said("climb", "bucket") || said("enter", "bucket") || said("get in", "bucket"))) { //023a
+        print("There is no bucket here.")
+      }
+    }
+    if (f176 && !f179) { //0254
+      if ((said("enter", "well") || said("go down", "well"))) { //025d
+        set(f26)
+        set(f28)
+      }
+    }
+    if (said("jump", "well")) { //0273
+      set(f27)
+      set(f28)
+    }
+    if (said("untie", "rope")) { //0281
+      print("The knots on the rope are too tight to untie.")
+    }
+  }
+}
+if (!(posn(o0,10,100,75,150))) { //028d
+  if ((said("climb", "rope") || said("enter", "well") || said("go down", "well") || said("jump", "well") || said("slide", "rope") || said("enter", "bucket") || said("get in", "bucket"))) { //0298
+    print("You need to be closer to do that.")
+  }
+}
+if (f75 && !f79) { //02ca
+  if (posn(o0,10,100,75,150)) { //02d3
+    if (said("climb", "rope")) { //02dd
+      print("The goat sure doesn't want to climb the rope.")
+    }
+    if (said("climb", "well")) { //02e9
+      print("The goat sure doesn`t want to climb down the well with you.")
+    }
+    if (said("climb", "bucket")) { //02f5
+      print("The goat refuses to do down the well.")
+    }
+    if ((said("enter", "bucket") || said("get in", "bucket"))) { //0301
+      print("That bucket isn't big enough for you and that big goat!")
+    }
+    if (said("enter", "well")) { //0315
+      print("The goat refuses to enter the dark well.")
+    }
+    if (said("go down", "well")) { //0321
+      print("The goat refuses to go down into the dark well.")
+    }
+    if (said("slide", "rope")) { //032d
+      print("The goat doesn`t want to slide down the rope.")
+    }
+    if (said("jump", "well")) { //0339
+      print("The goat is afraid of heights and refuses to jump down the well.")
+    }
+  }
+}
+if (f79) { //0345
+  if (posn(o0,10,100,75,150)) { //034b
+    if ((said("climb", "rope") || said("enter", "bucket") || said("enter", "well") || said("go down", "well") || said("slide", "rope") || said("jump", "well") || said("get in", "bucket"))) { //0355
+      print("You can't do that when you are invisible!")
+    }
+  }
+}
+if (f180) { //0387
+  get.posn(o0,v60,v61)
+  if (v61 < 131) { //0391
+    erase(o0)
+    set.view(o0,0)
+    position(o0,48,111)
+    draw(o0)
+    release.priority(o0)
+    observe.blocks(o0)
+    reset(f180)
+  }
+  if (v61 > 145) { //03a9
+    new.room(49)
+  }
+  if ((v60 < 35 || v60 > 44)) { //03b2
+    get.posn(o0,v60,v61)
+    v61 = 145
+    v96 = 3
+    move.obj(o0,v60,v61,96,f29)
+    print("You should be more careful the next time you try  climbing ropes.")
+    set(f135)
+    sound(5,f159)
+    reset(f180)
+  }
+}
+if ((f29 || f20)) { //03d7
+  reset(f29)
+  reset(f20)
+  erase(o0)
+  set(f182)
+  new.room(49)
+}
+if (f28) { //03eb
+  reset(f28)
+  erase(o0)
+  position(o0,38,125)
+  set.priority(o0,11)
+  ignore.blocks(o0)
+  draw(o0)
+  move.obj(o0,38,145,3,f20)
+  if (f26) { //0406
+    print("Carefully... Oh no!  The sides were too slippery... you've fallen into the well!")
+  }
+  if (f27) { //040e
+    print("What a mistake you made!  This well is too deep to jump into.")
+  }
+  set(f135)
+  sound(5,f159)
+}
+if ((f176 || f177)) { //041b
+  if (!f81 && (said("acquire", "bucket") || said("check", "bucket"))) { //0425
+    print("There is no bucket here.")
+  }
+}
+if (f176) { //043c
+  if ((said("lower", "bucket") || said("raise", "bucket"))) { //0442
+    print("The bucket is not here.")
+  }
+}
+if (!f176 && !f177) { //0456
+  if (!f81 && (said("acquire", "bucket") || said("untie", "bucket"))) { //0460
+    if (posn(o0,10,109,71,153)) { //0475
+      print("The old bucket is securely fastened to a strong rope.")
+      goto(l1158)
+    }
+    print("You need to be closer to do that.")
+  }
+l1158:
+  if (!f81 && said("check", "bucket")) { //0486
+    if (posn(o0,10,109,71,153)) { //0493
+      if (f163) { //049d
+        print("The old bucket holds a full load of water.")
+        goto(l1194)
+      }
+      print("It is large, old and weathered.  It has served the kingdom for many years.")
+l1194:
+      goto(l1199)
+    }
+    print("From this distance it is difficult to see.")
+  }
+}
+l1199:
+if (!f176 && f177) { //04af
+  if ((said("lower", "bucket") || said("lower", "bucket", "well"))) { //04b8
+    if (posn(o0,10,109,71,153)) { //04cc
+      print("The old bucket is already at the bottom of the well.")
+      goto(l1245)
+    }
+    print("You will find that very difficult to do from here.")
+  }
+}
+l1245:
+if (!f176 && !f177) { //04dd
+  if ((said("raise", "bucket") || said("raise", "rope"))) { //04e7
+    if (posn(o0,10,109,71,153)) { //04f9
+      print("The bucket is already at the top of the well.")
+      goto(l1290)
+    }
+    print("You will find that very difficult to do from here.")
+  }
+}
+l1290:
+if (f21) { //050a
+  reset(f21)
+  stop.update(o2)
+  stop.update(o1)
+}
+if (f22) { //0516
+  reset(f22)
+  stop.update(o2)
+  stop.update(o1)
+}
+if (!f176 && !f177) { //0522
+  if ((said("lower", "bucket") || said("lower", "rope") || said("lower", "bucket", "well") || said("lower", "rope", "well"))) { //052c
+    if (posn(o0,60,108,77,140)) { //054e
+      print("The old bucket disappears into the darkness.")
+      start.update(o2)
+      start.update(o1)
+      end.of.loop(o2,f21)
+      sound(20,f30)
+      start.cycling(o1)
+      set(f177)
+      goto(l1389)
+    }
+    print("You will find that very difficult to do from here.")
+  }
+}
+l1389:
+if (!f176 && f177 && f180) { //056d
+  if (said("raise", "bucket")) { //0578
+    print("You will find that very difficult to do from here.")
+  }
+}
+if (!f176 && f177 && !f180) { //0584
+  if ((said("raise", "bucket") || said("raise", "rope"))) { //0590
+    if (posn(o0,60,108,77,140)) { //05a2
+      print("The old bucket emerges from the depths of the well.")
+      start.update(o2)
+      start.update(o1)
+      random(0,250,v62)
+      if (v62 < 30) { //05b6
+        set(f163)
+      }
+      reverse.loop(o2,f22)
+      start.cycling(o1)
+      sound(20,f30)
+      reset(f177)
+      goto(l1486)
+    }
+    print("You will find that very difficult to do from here.")
+  }
+}
+l1486:
+if (posn(o0,10,109,71,153)) { //05ce
+  if ((said("check", "well") || said("look in", "well"))) { //05d8
+    print("The well is deep and dark. But you can see the sky's reflection on the water.")
+  }
+}
+if (!(posn(o0,10,109,71,153))) { //05ec
+  if (said("check", "well")) { //05f7
+    print("This well is one of the most ancient sites in the entire kingdom.  History and mystery seem to echo from its  every stone.")
+  }
+}
+if (!f178) { //0603
+  if (said("check", "rope")) { //060a
+    if (posn(o0,10,109,71,153)) { //0614
+      print("It is thick and firmly attached.  It could easily carry heavy weights.")
+      goto(l1573)
+    }
+    print("From this distance it is difficult to see.")
+  }
+}
+l1573:
+if (said("acquire", "rope") && !f178) { //0625
+  if (posn(o0,10,109,71,153)) { //0632
+    print("The rope is securely fastened to the well.")
+    goto(l1603)
+  }
+  print("You are not close enough to even try.")
+}
+l1603:
+if (said("acquire", "rope") && f178) { //0643
+  print("There is no useful rope to get.")
+}
+if ((said("cut", "rope") || said("cut", "rope", "dagger"))) { //0651
+  if (!f67) { //0665
+    print("You have no way to cut the rope.")
+  }
+  if (f67 && !(posn(o0,10,109,71,153))) { //066e
+    print("You will need longer arms to cut that rope from here.")
+  }
+  if (f67 && posn(o0,10,109,71,153)) { //067d
+    if (f176 && !f179) { //0689
+      print("You cut a piece of rope and it falls into the well.")
+    }
+    if (f178) { //0694
+      print("There is no useful rope left to cut.")
+    }
+    if (f176 && f179) { //069c
+      erase(o3)
+      print("The long piece of rope falls to the bottom of the well.")
+      set(f178)
+      reset(f179)
+    }
+    if (!f176 && !f177) { //06ac
+      start.update(o2)
+      erase(o2)
+      draw(o3)
+      stop.cycling(o3)
+      set(f81)
+      if (f163) { //06c0
+        get(i26)
+        set(f88)
+        if (!f91) { //06ca
+          vCurrentScore += 2
+          set(f91)
+        }
+      }
+      set(f176)
+      get(i11)
+      print("With the rope cut, you are able to take the bucket.")
+      vCurrentScore += 2
+    }
+    if (!f176 && f177) { //06df
+      start.update(o2)
+      erase(o2)
+      reset(f177)
+      set(f176)
+      set(f178)
+      print("The bucket and rope are now at the bottom of the well.")
+    }
+  }
+}
+if (f178) { //06f4
+  if ((said("lower", "rope") || said("lower", "bucket") || said("lower", "rope", "well") || said("lower", "bucket", "well"))) { //06fa
+    print("There is not enough rope left to lower.")
+  }
+}
+if (f176 && f179) { //071e
+  if ((said("lower", "rope") || said("lower", "rope", "well"))) { //0726
+    if (posn(o0,60,108,77,129)) { //073a
+      print("The rope has already been lowered.")
+      goto(l1867)
+    }
+    print("You are not close enough to do that.")
+  }
+}
+l1867:
+if (f176 && !f179) { //074b
+  if ((said("lower", "rope") || said("lower", "rope", "well"))) { //0754
+    if (posn(o0,60,108,77,129)) { //0768
+      start.cycling(o3)
+      start.update(o1)
+      print("The rope descends into the darkness.")
+      sound(20,f30)
+      end.of.loop(o3,f24)
+      start.cycling(o1)
+      set(f179)
+      goto(l1927)
+    }
+    print("You are not close enough to do that.")
+  }
+}
+l1927:
+if (f24) { //0787
+  reset(f24)
+  stop.update(o1)
+  stop.cycling(o3)
+}
+if (f176 && !f179) { //0793
+  if (said("raise", "rope")) { //079c
+    if (posn(o0,10,109,71,153)) { //07a6
+      print("The rope is already at the top of the well.")
+      goto(l1975)
+    }
+    print("You are not close enough to do that.")
+  }
+}
+l1975:
+if (f176 && f179 && !f180) { //07b7
+  if (said("raise", "rope")) { //07c2
+    if (posn(o0,10,109,71,153)) { //07cc
+      start.cycling(o3)
+      start.update(o1)
+      print("The rope emerges from the well.")
+      reverse.loop(o3,f23)
+      sound(20,f30)
+      start.cycling(o1)
+      reset(f179)
+      goto(l2027)
+    }
+    print("You are not close enough to do that.")
+  }
+}
+l2027:
+if (f23) { //07eb
+  reset(f23)
+  stop.update(o1)
+  stop.cycling(o3)
+}
+if (f176 && f179 && f180) { //07f7
+  if (said("raise", "rope")) { //0801
+    print("You can't raise the rope from here!")
+  }
+}
+if (f25) { //080d
+  reset(f25)
+  set(f177)
+  new.room(49)
+}
+if (vWhichEgoBorder == 1) { //0819
+  new.room(21)
+}
+if (vWhichEgoBorder == 2) { //0822
+  new.room(13)
+}
+if (vWhichEgoBorder == 4) { //082b
+  new.room(11)
+}
+if (vWhichEgoBorder == 3) { //0834
+  new.room(5)
+}
+if (f75) { //083d
+  call(103)
+}
+return()

@@ -1,4 +1,79 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,30,75,0,0)
+  }
+  if (!f86) { //0027
+    load.view(21)
+    animate.obj(o1)
+    set.view(o1,21)
+    position(o1,53,134)
+    set(f20)
+  }
+  if (f20) { //003b
+    draw(o1)
+    stop.update(o1)
+  }
+  draw(o0)
+  show.pic()
+}
+if (!f87) { //0048
+  if ((said("check", "clover") || said("check", "grass") || said("check", "bush"))) { //004f
+    if (posn(o0,0,77,118,167)) { //0067
+      print("There is a small patch of clover under the tree.")
+      goto(l120)
+    }
+    print("Off in the distance you see a patch of clover.")
+  }
+}
+l120:
+if (said("check", "room")) { //0078
+  print("There is a clover patch in this meadow.")
+}
+distance(o0,o1,v62)
+if (said("acquire", "clover")) { //0088
+  if (f86) { //0092
+    if (f87) { //0098
+      print("You already have the only four-leaf clover here.")
+      goto(l165)
+    }
+    print("You had, and lost, the only four-leaf clover  around.  You really don't want a three-leaf clover.")
+  }
+l165:
+  if (!f86) { //00a5
+    if (v62 < 25) { //00ac
+      print("The clover is soft, yet you sense a strange strength in it.")
+      get(i8)
+      vCurrentScore += 2
+      set(f86)
+      set(f87)
+      start.update(o1)
+      erase(o1)
+      goto(l199)
+    }
+    print("You really don't want any of the three-leaf clovers.")
+  }
+}
+l199:
+if (vWhichEgoBorder == 1) { //00c7
+  new.room(25)
+}
+if (vWhichEgoBorder == 2) { //00d0
+  new.room(23)
+}
+if (vWhichEgoBorder == 4) { //00d9
+  new.room(17)
+}
+if (vWhichEgoBorder == 3) { //00e2
+  new.room(9)
+}
+if (f75) { //00eb
+  call(103)
+}
+return()

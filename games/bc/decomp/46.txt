@@ -1,4 +1,81 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f200)
+  if (f108) { //000a
+    load.logic(116)
+    set(f202)
+    load.view(24)
+    goto(l27)
+  }
+  load.view(6)
+l27:
+  if (!f59) { //001b
+    load.logic(112)
+    set(f201)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 43) { //002c
+    set.loop(o0,2)
+    position(o0,75,107)
+    goto(l68)
+  }
+  position(o0,74,166)
+  set.loop(o0,3)
+l68:
+  draw(o0)
+  if (f202) { //0046
+    call(116)
+  }
+  if (f201) { //004e
+    call(112)
+    position(o9,54,159)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //005c
+  print("You are in the Horned King's wine cellar.")
+}
+if (fTriggerLine) { //0064
+  if (posn(o0,60,95,91,106)) { //006a
+    new.room(43)
+    goto(l197)
+  }
+  if (posn(o0,116,126,130,131)) { //0079
+    if (!f200) { //0083
+      set(f200)
+      if (!f57) { //008c
+        set(f57)
+        vCurrentScore += 6
+      }
+      print("There is an opening in the floor here. You can't tell where it goes.")
+    }
+    goto(l197)
+  }
+  if (posn(o0,131,126,144,131)) { //009d
+    print("Oooooh, you fell into the opening. It smells like it must be a garbage chute!")
+    set(f122)
+    if (f108) { //00ab
+      set.view(o0,24)
+      goto(l186)
+    }
+    set.view(o0,6)
+l186:
+    if (!f165) { //00ba
+      set(f83)
+    }
+    new.room(69)
+  }
+}
+l197:
+if (vWhichEgoBorder == 3) { //00c5
+  new.room(47)
+}
+if (f201) { //00ce
+  call(112)
+}
+if (f202) { //00d6
+  call(116)
+}
+return()

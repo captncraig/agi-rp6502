@@ -1,0 +1,676 @@
+if (vErrorCode > 0) { //0002
+  call(98)
+}
+if (f12) { //000b
+  set(f14)
+  disable.member(c37)
+  v43 = 255
+}
+if (!(vCurrentRoom > 0)) { //0018
+  if (!fRestartGame) { //0020
+    script.size(127)
+    set.menu("Sierra ")
+    set.menu.member("About Black Cauldron",c27)
+    set.menu.member("Help            <F1>",c2)
+    set.menu("File ")
+    set.menu.member("Save     <F5>",c3)
+    set.menu.member("Restore  <F7>",c5)
+    set.menu.member("-------------",c37)
+    set.menu.member("Restart  <F9>",c7)
+    set.menu.member("-------------",c37)
+    set.menu.member("Quit  <Alt-Z>",c1)
+    set.menu("Action ")
+    set.menu.member("Inventory  <TAB>",c10)
+    set.menu.member("See Object      ",c24)
+    set.menu.member("----------------",c37)
+    set.menu.member("New Object  <F3>",c11)
+    set.menu.member("Use Object  <F4>",c26)
+    set.menu.member("Do          <F6>",c6)
+    set.menu.member("Look        <F8>",c8)
+    set.menu("Special ")
+    set.menu.member("Sound On/Off      <F2>",c16)
+    if (vComputerType == IBM_PC && vMonitorType != HERCULES && vMonitorType != EGA) { //0061
+      set.menu.member("Graphics Mode <Ctrl-R>",c12)
+    }
+    set.menu.member("Joystick      <Ctrl-J>",c15)
+    set.menu.member("Pause Game            ",c18)
+    if (vComputerType != AMIGA) { //0079
+      set.menu("Speed ")
+      set.menu.member("Normal       ",c32)
+      set.menu.member("Slow         ",c31)
+      set.menu.member("Fast         ",c33)
+      set.menu.member("Fastest      ",c34)
+      set.menu.member("-------------",c37)
+      set.menu.member("Change  <F10>",c4)
+    }
+    submit.menu()
+  }
+  call(107)
+  if (v47 > 0) { //0098
+    new.room(v47)
+  }
+  if (fRestartGame) { //00a1
+    new.room(8)
+  }
+  new.room(67)
+}
+if (fNewRoom) { //00ab
+  call(102)
+  load.view(0)
+  load.view(v110)
+  set.view(o0,v110)
+  if (has(i12) && vCurrentRoom != 71) { //00ba
+    load.sound(10)
+    load.view(5)
+    if (vCurrentRoom == 60 && f79) { //00c8
+      discard.view(5)
+    }
+  }
+  if (f99) { //00d3
+    load.logic(99)
+    load.logic(96)
+    set(f10)
+  }
+  call(vCurrentRoom)
+}
+get.posn(o0,v38,v39)
+current.view(o0,v110)
+reset(f128)
+reset(f129)
+reset(f130)
+reset(fSaidAccepted)
+reset(f88)
+if (fEgoOnWater) { //00f2
+  set(f88)
+}
+if (f160) { //00fa
+  reset(fTriggerLine)
+}
+if (f125) { //0102
+  reset(fEgoOnWater)
+}
+if (controller(c23)) { //010a
+  menu.input()
+}
+if (controller(c6)) { //0111
+  set(f128)
+}
+if (controller(c22)) { //0119
+  set(f128)
+}
+if (controller(c26)) { //0121
+  set(f129)
+}
+if (controller(c18)) { //0129
+  pause()
+}
+if (controller(c8)) { //0130
+  set(f130)
+}
+if (controller(c7)) { //0138
+  restart.game()
+}
+if (controller(c15)) { //013f
+  init.joy()
+}
+if (controller(c9)) { //0146
+  echo.line()
+}
+if (controller(c17)) { //014d
+  cancel.line()
+}
+if (controller(c12)) { //0154
+  toggle.monitor()
+}
+if (vComputerType == 2) { //015b
+  if (vSoundVolume < 15 && controller(c39)) { //0162
+    vSoundVolume++
+  }
+  if (controller(c38)) { //016d
+    vSoundVolume--
+  }
+}
+if (controller(c5)) { //0175
+  restore.game()
+}
+if (controller(c1)) { //017c
+  stop.sound()
+  if (f99) { //0183
+    quit(1)
+    goto(l400)
+  }
+  quit(0)
+}
+l400:
+if (controller(c27)) { //0190
+  if (v118 > 0) { //0196
+    print("%m52%v118 days, %v117 hours, %v116 minutes and %v115 seconds.\n")
+    goto(l432)
+  }
+  if (v117 > 0) { //01a2
+    print("%m52%v117 hours, %v116 minutes and %v115 seconds.\n")
+    goto(l432)
+  }
+  print("%m52%v116 minutes and %v115 seconds.\n")
+}
+l432:
+if (controller(c3) && v102 != 13) { //01b0
+  save.game()
+}
+if (controller(c11)) { //01bb
+  set(f13)
+  status()
+  if (vStatusItem != 255) { //01c4
+    v42 = vStatusItem
+  }
+  reset(f13)
+  v43 = 255
+}
+if (controller(c24)) { //01d4
+  set(f13)
+  status()
+  if (vStatusItem > 0 && vStatusItem != 255) { //01dd
+    v61 = vStatusItem
+    v61 += 149
+    show.obj(v61)
+  }
+  reset(f13)
+  v43 = 255
+}
+if (controller(c16)) { //01f5
+  toggle(f9)
+}
+if (controller(c10)) { //01fd
+  status()
+  v43 = 255
+}
+if (controller(c14)) { //0207
+  toggle(f99)
+  if (!f99) { //020f
+    reset(f10)
+    prevent.input()
+    goto(l553)
+  }
+  load.logic(99)
+  load.logic(96)
+  set(f10)
+  set(f131)
+  print("\n    The Black Cauldron\n\n        by Al Lowe\n\n  Version 2.00   6/14/87  \n")
+  version()
+  accept.input()
+  player.control()
+}
+l553:
+if (controller(c20)) { //0229
+  print("\n    The Black Cauldron\n\n        by Al Lowe\n\n  Version 2.00   6/14/87  \n")
+  version()
+}
+if (controller(c2)) { //0232
+  if (f69) { //0238
+    print("Sorry. You can't see the Help screen here. Please try again elsewhere.")
+    goto(l584)
+  }
+  call(105)
+  v43 = 255
+}
+l584:
+reset(f90)
+if (controller(c4)) { //024a
+  set(f90)
+  vCycleTime++
+  if (vCycleTime > 3) { //0254
+    vCycleTime = 0
+  }
+}
+if (controller(c31)) { //025e
+  set(f90)
+  vCycleTime = 3
+}
+if (controller(c32)) { //0269
+  set(f90)
+  vCycleTime = 2
+}
+if (controller(c33)) { //0274
+  set(f90)
+  vCycleTime = 1
+}
+if (controller(c34)) { //027f
+  set(f90)
+  vCycleTime = 0
+}
+if (f90) { //028a
+  reset(f90)
+  v73 = 34
+  v73 += vCycleTime
+  v49 = 6
+  if (vMonitorType != HERCULES) { //029b
+    clear.text.rect(24,0,24,15,0)
+    v63 = 24
+    v62 = 0
+    display(v63,v62,v73)
+  }
+}
+if (v59 > 0) { //02b3
+  load.sound(24)
+  call(100)
+  v59 = 0
+  v102 = 13
+  disable.member(c3)
+}
+if (v102 == 13) { //02c6
+  v87--
+  if (v87 == 1) { //02cf
+    stop.sound()
+    sound(24,f61)
+    print("Sorry, Taran, you have failed in your quest. The Horned King now has the Black Cauldron, and evil rules Prydain.")
+  }
+  if (fEnteredCommand && !fSaidAccepted) { //02dc
+    print("Since the game is over, you can't do that.")
+  }
+  if (f99) { //02e7
+    call(99)
+  }
+  return()
+}
+if (v35 > 0) { //02f0
+  if (v35 > 12) { //02f7
+    new.room(71)
+    goto(l787)
+  }
+  set(fNewRoom)
+  load.logic(103)
+  call(103)
+  reset(fNewRoom)
+  load.sound(22)
+  v35 = 0
+  v102 = 69
+}
+l787:
+if (v102 == 69) { //0313
+  call(103)
+  if (fEnteredCommand && !fSaidAccepted) { //031c
+    print("Since the game is over, you can't do that.")
+  }
+  if (f99) { //0327
+    call(99)
+  }
+  return()
+}
+if ((f103 || f71)) { //0330
+  set(f156)
+  goto(l833)
+}
+reset(f156)
+l833:
+if (vEgoDir == v86 && v38 == v78 && v39 == v79) { //0341
+  stop.cycling(o0)
+  goto(l853)
+}
+start.cycling(o0)
+l853:
+if ((!(vEgoDir > 0) || f156)) { //0355
+  stop.cycling(o0)
+}
+if (f133) { //0363
+  start.cycling(o0)
+}
+if (vTimeSeconds != v101) { //036b
+  v101 = vTimeSeconds
+  set(f70)
+}
+if (f143 && (f128 || f129 || f130 || fSaidAccepted)) { //0378
+  reset(f128)
+  reset(f129)
+  reset(f130)
+  reset(fSaidAccepted)
+  print("Since the game is over, you can't do that.")
+}
+if (f129) { //0392
+  get.room(v42,v61)
+  if (v61 != 255) { //039b
+    v42 = 0
+  }
+  if (v42 == 0) { //03a6
+    print("You need to pick an object to use.")
+    reset(f129)
+  }
+  v60 = v42
+}
+if (!fNewRoom) { //03b4
+  call(vCurrentRoom)
+}
+if (f99) { //03bd
+  call(99)
+}
+if (f143) { //03c5
+  goto(l1972)
+}
+if (f70) { //03ce
+  v85++
+  v115++
+  v49--
+  if (v115 == 60) { //03da
+    v115 = 0
+    v116++
+    if (v116 == 60) { //03e6
+      v116 = 0
+      v117++
+      if (v117 == 25) { //03f2
+        v117 = 0
+        v118++
+      }
+    }
+  }
+  if (v49 == 1) { //03fe
+    if (vMonitorType != HERCULES) { //0405
+      clear.text.rect(24,0,24,15,0)
+    }
+  }
+}
+if (f119) { //0413
+  observe.objs(o0)
+}
+if (vCurrentRoom != 62) { //041b
+  v89--
+}
+if (v90 > 0 && !(v89 > 0)) { //0425
+  v90--
+  v89 = 60
+  if (v90 == 96) { //0435
+    print("You begin to feel a little hungry.")
+  }
+  if (v90 == 28) { //043e
+    print("You're starving. You must eat something soon!")
+  }
+}
+if (v89 == 1 && !(v90 > 0)) { //0447
+  v59 = 2
+}
+if (!fEgoOnWater && vCurrentRoom != 62) { //0455
+  v91--
+}
+if (v92 > 0 && !(v91 > 0)) { //0462
+  v92--
+  v91 = 60
+  if (v92 == 56) { //0472
+    print("Your throat is dry.")
+  }
+  if (v92 == 16) { //047b
+    print("Your thirst is intense; you'd better get some water soon!")
+  }
+}
+if (v91 == 1 && !(v92 > 0)) { //0484
+  v59 = 3
+}
+if (vCurrentRoom != 45) { //0492
+  v93--
+}
+if (v94 > 0 && !(v93 > 0)) { //049c
+  v94--
+  v93 = 60
+  if (v94 == 116) { //04ac
+    print("You wonder how long Hen Wen can survive against the Horned King's cruelty.")
+  }
+  if (v94 == 36) { //04b5
+    print("You wonder how long Hen Wen can survive against the Horned King's cruelty.")
+  }
+}
+if (v93 == 1 && !(v94 > 0)) { //04be
+  v59 = 4
+}
+if ((fSaidAccepted || f126 || f152 || f122 || v65 == 8)) { //04cc
+  goto(l1972)
+}
+if (f129) { //04e0
+  if (v60 == 0) { //04e6
+    set(fSaidAccepted)
+    print("You need to pick an object to use.")
+  }
+  if (v60 == 12 && f102) { //04f1
+    print("You ARE swinging the sword already!")
+    set(fSaidAccepted)
+  }
+  if (v60 == 12 && (!fEgoOnWater || f72) && (v65 == 1 || !(v65 > 0)) && !f102 && !f104 && !f89 && !f122 && !f123 && !f152) { //04fe
+    set(fSaidAccepted)
+    if (f63) { //0529
+      print("You've been captured. It's too late to swing your sword.")
+      goto(l1397)
+    }
+    if (v80 > 0) { //0534
+      print("The henchman is stunned. Leave him alone.")
+      goto(l1397)
+    }
+    set(f102)
+    if (f96) { //0542
+      reset(f118)
+      distance(o0,o9,v61)
+      if (v61 < 30) { //054e
+        set(f118)
+        if (!f31 && !f120) { //0557
+          wander(o9)
+        }
+      }
+    }
+    load.sound(10)
+    load.view(5)
+    set.view(o0,5)
+    set.cel(o0,0)
+    end.of.loop(o0,f73)
+    set(f133)
+    sound(10,f61)
+  }
+l1397:
+  if (v60 == 1) { //0575
+    set(fSaidAccepted)
+    print("Your roomy knapsack can hold many things.")
+  }
+  if (v60 == 2) { //0580
+    set(fSaidAccepted)
+    print("The dried corn is inedible... to you.")
+  }
+  if (v60 == 3) { //058b
+    set(fSaidAccepted)
+    print("You eat some of the gruel... and find it disgusting!")
+  }
+  if (v60 == 4) { //0596
+    set(fSaidAccepted)
+    print("The magic food wallet produces enough food to satisfy you.")
+    v90 = 240
+  }
+  if (v60 == 5) { //05a4
+    set(fSaidAccepted)
+    print("Dallben's bread tastes delicious.")
+    get(i24)
+    drop(i5)
+    v60 = 0
+    v42 = 24
+    v90 = 240
+  }
+  if (!fSaidAccepted && v60 == 24) { //05bc
+    set(fSaidAccepted)
+    print("You eat a little more bread, and feel better.")
+    get(i25)
+    drop(i24)
+    v60 = 0
+    v42 = 25
+    v90 = 240
+  }
+  if (!fSaidAccepted && v60 == 25) { //05d7
+    set(fSaidAccepted)
+    print("You eat every last morsel of the bread.")
+    drop(i25)
+    v60 = 0
+    v42 = 0
+    v90 = 240
+  }
+  if (v60 == 6) { //05f0
+    set(fSaidAccepted)
+    if (v68 == 4) { //05f9
+      print("Your water flask is already full.")
+      goto(l1613)
+    }
+    if (f72) { //0605
+      print("You can't get water from where you are standing.")
+      goto(l1613)
+    }
+    if (!f88) { //0610
+      print("You can't get water from where you are standing.")
+      goto(l1613)
+    }
+    if (f132 && vCurrentRoom != 24) { //061c
+      print("The strong pull of the rapids rips the water flask from your grasp. It quickly floats downstream, and out of sight.")
+      drop(i6)
+      drop(i7)
+      v60 = 0
+      v42 = 0
+      set(f51)
+      goto(l1613)
+    }
+    if (f68) { //0637
+      set(f66)
+    }
+    v68 = 4
+    if (!(has(i7))) { //0642
+      get(i7)
+    }
+    print("You fill your water flask with water.")
+  }
+l1613:
+  if (v60 == 7) { //064d
+    set(fSaidAccepted)
+    v60 = 0
+    v42 = 0
+    if (f66) { //065c
+      v59 = 5
+      goto(l1659)
+    }
+    v68--
+    print("The water from your flask tastes delicious.")
+    v92 = 140
+    if (!(v68 > 0)) { //066f
+      drop(i7)
+      print("But now, you're out of water!")
+    }
+  }
+l1659:
+  if (v60 == 8) { //067b
+    set(fSaidAccepted)
+    print("The apple is crisp and juicy!")
+    drop(i8)
+    v60 = 0
+    v42 = 0
+    v90 = 240
+  }
+  if (v60 == 9) { //0691
+    set(fSaidAccepted)
+    print("You promise to eat just one cookie... and quickly break your promise!")
+    drop(i9)
+    v60 = 0
+    v42 = 0
+    v90 = 240
+  }
+  if (v60 == 13) { //06a7
+    set(fSaidAccepted)
+    if (!f69 && !f124) { //06b0
+      load.sound(13)
+      sound(13,f61)
+    }
+    print("Fflewddur Fflam's harp probably sounded beautiful in his hands... but not in yours!")
+  }
+  if (v60 == 14) { //06c1
+    set(fSaidAccepted)
+    if (!f69 && !f124) { //06ca
+      load.sound(28)
+      sound(28,f61)
+    }
+    print("The lute sounds lovely.")
+  }
+  if (v60 == 15) { //06db
+    set(fSaidAccepted)
+    print("The fairy dust rushes out between your fingers, as if telling you not to use it here.")
+  }
+  if (v60 == 18) { //06e6
+    set(fSaidAccepted)
+    print("\"Bmmpxf,\" you say firmly...")
+    print("...but nothing happens.")
+  }
+  if (v60 == 19) { //06f3
+    set(fSaidAccepted)
+    print("Gazing into the magic mirror you see your true self, and realize you are not a great hero... yet.")
+    if (!f161) { //06fe
+      set(f161)
+    }
+  }
+  if (!fSaidAccepted) { //0707
+    toggle(f151)
+    if (f151) { //0710
+      print("That doesn't help now.")
+      goto(l1821)
+    }
+    print("There's no reason to use it now.")
+l1821:
+    goto(l1972)
+  }
+}
+if (f128) { //0720
+  toggle(f150)
+  if (f150) { //0728
+    print("There's nothing to do here.")
+    goto(l1845)
+  }
+  print("You can't do anything here.")
+l1845:
+  goto(l1972)
+}
+if (f73) { //0738
+  reset(f73)
+  reset(f133)
+  reset(f102)
+  if (f100) { //0744
+    if (!f118) { //074a
+      print("You swing and miss.")
+      goto(l1922)
+    }
+    if (f120) { //0756
+      print("Creeper is too nimble for even a magic sword.")
+      goto(l1922)
+    }
+    if (f31) { //0761
+      print("The Horned King laughs. His evil is too powerful for your magic sword.")
+      goto(l1922)
+    }
+    print("The henchman falls to the ground momentarily stunned by your sword. Run, Taran!")
+    v80 = 99
+    set.view(o9,60)
+    stop.motion(o9)
+    v61 = 3
+    cycle.time(o9,v61)
+    stop.sound()
+    sound(11,f106)
+    reset(f100)
+l1922:
+    goto(l1934)
+  }
+  if (!f145) { //0785
+    print("You swing your magic sword.")
+  }
+l1934:
+  set.view(o0,0)
+}
+if (v80 > 40 && f106) { //0791
+  sound(11,f106)
+}
+v80--
+if (v80 == 1) { //079f
+  v80 = 0
+  set.view(o9,61)
+  start.motion(o9)
+  set(f100)
+  follow.ego(o9,8,f112)
+}
+l1972:
+get.posn(o0,v78,v79)
+v86 = vEgoDir
+reset(f70)
+v60 = 0
+return()

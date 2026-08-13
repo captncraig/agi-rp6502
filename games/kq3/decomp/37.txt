@@ -1,4 +1,180 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f46)
+  set(f34)
+  if (!f197) { //000c
+    set(f197)
+    vCurrentScore += 2
+  }
+  v57 = 93
+  v58 = 136
+  ignore.blocks(o0)
+  load.view(0)
+  load.view(11)
+  load.view(30)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(1)
+  load.sound(6)
+  if (v44 == 25) { //0035
+    set(f48)
+    set(f47)
+  }
+  if (f48) { //0040
+    if (vPrevRoom == 38) { //0046
+      start.motion(o0)
+      vEgoDir = 3
+      position(o0,83,110)
+      if (v172 == 1) { //0056
+        animate.obj(o1)
+        load.view(210)
+        set.view(o1,210)
+        ignore.blocks(o1)
+        ignore.objs(o1)
+        position(o1,70,113)
+        v36 = 2
+        cycle.time(o1,v36)
+        draw(o1)
+        follow.ego(o1,5,f221)
+        start.motion(o0)
+        program.control()
+      }
+    }
+    if (vPrevRoom == 22) { //007b
+      v44 = 15
+      position(o0,93,165)
+      set.view(o0,30)
+      set.loop(o0,0)
+      fix.loop(o0)
+    }
+  }
+  if (vPrevRoom != 89 && vPrevRoom != 38) { //0091
+    random(1,255,v36)
+    if (v36 > 64) { //00a1
+      v172 = 1
+      goto(l177)
+    }
+    v172 = 0
+  }
+l177:
+  if (v44 == 30) { //00b1
+    set(f48)
+    set(f47)
+    v44 = 15
+    position(o0,93,165)
+    set.view(o0,30)
+    set.loop(o0,0)
+    fix.loop(o0)
+  }
+  if (f47) { //00cb
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (f33 && v44 == 0) { //00d5
+  ignore.blocks(o0)
+  v44 = 15
+  set.view(o0,30)
+  set.loop(o0,0)
+  fix.loop(o0)
+}
+v39 = 0
+if (posn(o0,89,110,91,116)) { //00ee
+  v39 = 2
+}
+if (posn(o0,70,98,73,114)) { //00fb
+  v39 = 1
+}
+if (v44 == 0 && v39 == 2 && (vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 2)) { //0108
+  set.view(o0,30)
+  set.loop(o0,0)
+  fix.loop(o0)
+  v40 = 92
+  reposition.to(o0,v40,v41)
+  start.motion(o0)
+  v44 = 15
+}
+if (v44 == 15 && v39 == 2 && vEgoDir == 7) { //0131
+  release.loop(o0)
+  set.view(o0,0)
+  v40 = 86
+  reposition.to(o0,v40,v41)
+  v44 = 0
+}
+if (v44 == 6) { //014d
+  set(f221)
+}
+if (f221) { //0156
+  reset(f221)
+  stop.motion(o1)
+  normal.motion(o1)
+  stop.cycling(o1)
+  set(fTriggerLine)
+}
+if (v44 != 6 && fTriggerLine) { //0166
+  sound(1,f238)
+  set.view(o0,11)
+  set.priority(o0,15)
+  v38 = 167
+  v36 = 6
+  move.obj(o0,v40,v38,36,f220)
+  v44 = 6
+}
+if (f220) { //0188
+  reset(f220)
+  vWhichEgoBorder = 3
+  erase(o0)
+}
+if (has(i30) && v71 == 8) { //0195
+  v71 = 0
+  print("On second thought, you decide not to make a storm. You remember how dangerous it is to be in a tree during a storm.")
+}
+if (fEnteredCommand) { //01a3
+  if ((said("examine") || said("examine", "building") || said("examine", "forest"))) { //01a9
+    print("You are standing outside a shack that has been built in the branches of the spreading oak tree. A rope ladder leads down toward the ground.")
+  }
+  if ((said("look in", "building") || said("look in") || said("look in", "door", "building") || said("examine", "inside", "area") || said("look in", "door"))) { //01c1
+    if (v172 == 1) { //01e7
+      print("There seems to be somebody moving around inside the treehouse.")
+      goto(l501)
+    }
+    print("You can see very little of the interior from out here. But there seems to be a figure sleeping in a chair.")
+  }
+l501:
+  if (said("examine", "door")) { //01f5
+    print("The doorway of the treehouse is only a rough opening in the planks.")
+  }
+  if (said("anyword", "glass")) { //0201
+    print("There is no window, only a hole cut in the side.")
+  }
+  if ((said("examine", "rope", "ladder") || said("examine", "ladder"))) { //020d
+    print("The rope ladder drops down through the leaves of the huge tree toward the ground below.")
+  }
+  if ((said("climb", "forest") || said("climb", "up", "forest") || said("climb", "down", "forest"))) { //0223
+    print("The tree looks very difficult to climb around on, but you can try if you wish.")
+  }
+  if ((said("examine", "sky") || said("examine", "up"))) { //0241
+    print("The thick leaves of the oak tree allow only rare glimpses of the sky above.")
+  }
+  if ((said("examine", "deck") || said("examine", "down"))) { //0255
+    print("The thick leaves and massive branches obscure the ground below.")
+  }
+  if (said("examine", "bandit")) { //0269
+    if (v172 == 1) { //0273
+      print("You can see someone moving about, but can not make out details from here.")
+      goto(l641)
+    }
+    print("You see no one else around.")
+  }
+}
+l641:
+if (vWhichEgoBorder == 3) { //0281
+  new.room(22)
+}
+if (v39 == 1 && v44 == 0) { //028a
+  new.room(38)
+}
+return()

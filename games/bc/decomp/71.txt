@@ -1,5 +1,171 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v35 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x04)}
+  v211 = vMaxScore
+  v211 -= 15
+  v91 = 0
+  v92 = 0
+  v89 = 0
+  v90 = 0
+  v95 = 0
+  v96 = 0
+  v93 = 0
+  v94 = 0
+  program.control()
+  set(f69)
+  set(f143)
+  set.horizon(1)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(22)
+  load.view(12)
+  load.view(72)
+  load.view(35)
+  load.view(77)
+  load.view(112)
+  load.view(134)
+  load.view(69)
+  load.view(177)
+  load.view(13)
+  load.view(17)
+  load.view(82)
+  load.view(83)
+  animate.obj(o8)
+  set.view(o8,134)
+  position(o8,38,146)
+  draw(o8)
+  animate.obj(o10)
+  set.view(o10,112)
+  position(o10,26,143)
+  draw(o10)
+  set.view(o0,12)
+  position(o0,69,163)
+  set.priority(o0,14)
+  draw(o0)
+  animate.obj(o2)
+  set.view(o2,72)
+  position(o2,81,163)
+  set.priority(o2,14)
+  draw(o2)
+  animate.obj(o7)
+  set.view(o7,35)
+  position(o7,103,163)
+  set.priority(o7,14)
+  draw(o7)
+  animate.obj(o6)
+  set.view(o6,77)
+  position(o6,93,163)
+  set.priority(o6,14)
+  draw(o6)
+  animate.obj(o11)
+  set.view(o11,69)
+  position(o11,30,20)
+  v61 = 3
+  step.time(o11,61)
+  draw(o11)
+  animate.obj(o12)
+  set.view(o12,177)
+  position(o12,0,40)
+  v61 = 2
+  step.size(o12,v61)
+  v61 = 2
+  step.time(o12,61)
+  draw(o12)
+  move.obj(o11,130,20,0,f206)
+  move.obj(o12,130,40,0,f207)
+  move.obj(o0,69,127,0,f200)
+  move.obj(o2,81,127,0,f61)
+  move.obj(o6,93,127,0,f61)
+  move.obj(o7,105,127,0,f61)
+  show.pic()
+  if (vMonitorType != HERCULES) { //00e9
+    clear.lines(22,24,c0)
+  }
+  sound(22,f208)
+  return()
+}
+program.control()
+if (f200) { //00fa
+  reset(f200)
+  set.priority(o0,13)
+  set.priority(o2,13)
+  set.priority(o6,13)
+  set.priority(o7,13)
+  move.obj(o0,69,166,0,f201)
+  move.obj(o2,81,166,0,f61)
+  move.obj(o6,93,166,0,f61)
+  move.obj(o7,105,166,0,f61)
+}
+if (f201) { //0126
+  reset(f201)
+  erase(o0)
+  erase(o2)
+  erase(o6)
+  erase(o7)
+  set.view(o0,13)
+  v61 = 2
+  step.time(o0,61)
+  position(o0,77,151)
+  draw(o0)
+  move.obj(o0,77,112,0,f202)
+  print("We hope you've enjoyed your visit to Prydain, and your success with \"The Black Cauldron.\"")
+}
+if (f202) { //014d
+  reset(f202)
+  set.priority(o0,12)
+  move.obj(o0,77,140,0,f203)
+}
+if (f203) { //015e
+  reset(f203)
+  erase(o0)
+  set.view(o0,17)
+  v61 = 3
+  step.time(o0,61)
+  position(o0,83,128)
+  draw(o0)
+  move.obj(o0,83,88,0,f204)
+  if (vCurrentScore < v211) { //017d
+    print("You probably think you could have earned a higher score. Of course, there's an easy way to find out:  play the game again.")
+    print("Don't forget, if you make different decisions, the game will be different. We hope you'll try again and again.")
+    goto(l397)
+  }
+  print("Congratulations!! You've played a tremendous game!!")
+}
+l397:
+if (f204) { //018d
+  reset(f204)
+  set.priority(o0,11)
+  move.obj(o0,83,100,0,f205)
+}
+if (f205) { //019e
+  reset(f205)
+  set(f211)
+  prevent.input()
+  erase(o0)
+  erase(o8)
+  erase(o10)
+  add.to.pic(82,0,0,60,45,4,15)
+  add.to.pic(83,0,0,58,80,4,15)
+}
+if (f206) { //01bf
+  reset(f206)
+  erase(o11)
+}
+if (f207) { //01c9
+  reset(f207)
+  erase(o12)
+}
+if (f208) { //01d3
+  reset(f208)
+  sound(22,f209)
+}
+if (f209) { //01de
+  reset(f209)
+  sound(22,f61)
+}
+if (!fSaidAccepted) { //01e9
+  if ((said("anyword", "anyword") || said("anyword") || said("anyword", "anyword", "anyword"))) { //01f0
+    print("Since the game is over, you can only see the Status Screen.")
+  }
+}
+return()

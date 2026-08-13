@@ -1,4 +1,406 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(53)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(114)
+  load.sound(1)
+  animate.obj(o6)
+  set.view(o6,114)
+  position(o6,6,92)
+  set.priority(o6,8)
+  stop.motion(o6)
+  set(f159)
+  draw(o6)
+  if (vPrevRoom == 13) { //0026
+    if (v39 < 82) { //002d
+      v39 = 64
+      goto(l68)
+    }
+    if (v39 > 152) { //003a
+      v39 = 160
+    }
+l68:
+    goto(l100)
+  }
+  if (vPrevRoom == 11 && v39 < 111) { //0047
+    v38 = 0
+    v39 = 111
+    goto(l100)
+  }
+  if (vPrevRoom == 17) { //005a
+    v39 = 167
+  }
+l100:
+  if (!f126) { //0064
+    if (f108) { //006b
+      load.logic(116)
+      set(f204)
+      set(f95)
+    }
+    load.logic(101)
+    set(f203)
+    load.view(2)
+    load.view(1)
+    goto(l226)
+  }
+  set(f69)
+  set(f220)
+  load.view(25)
+  load.view(84)
+  load.view(79)
+  load.view(181)
+  load.sound(6)
+  animate.obj(o9)
+  position(o9,61,118)
+  set.view(o9,79)
+  stop.motion(o9)
+  v61 = 4
+  cycle.time(o9,v61)
+  draw(o9)
+  animate.obj(o13)
+  position(o13,30,80)
+  set.view(o13,84)
+  set.cel(o13,0)
+  v61 = 2
+  cycle.time(o13,v61)
+  set.priority(o13,15)
+  animate.obj(o7)
+  set.view(o7,181)
+  stop.motion(o7)
+  stop.cycling(o7)
+  position(o7,46,160)
+  if (f54) { //00c5
+    load.view(49)
+    load.view(45)
+    load.sound(25)
+  }
+  v38 = 6
+  v39 = 83
+  set.view(o0,25)
+  ignore.objs(o0)
+  move.obj(o0,74,154,0,f201)
+l226:
+  position(o0,38,v39)
+  draw(o0)
+  if (f204) { //00e8
+    call(116)
+  }
+  if (f203) { //00f0
+    call(101)
+  }
+  show.pic()
+  return()
+}
+if (v203 == 31) { //00fa
+  stop.update(o0)
+}
+if (!f126) { //0103
+  if ((posn(o0,0,52,29,110) || posn(o0,29,76,37,92))) { //010a
+    if (!f132) { //011c
+      ignore.objs(o0)
+      v75 = 0
+      set(f132)
+    }
+    goto(l309)
+  }
+  if (f132) { //012d
+    reset(f132)
+  }
+}
+l309:
+if (!fEgoOnWater) { //0135
+  if ((posn(o0,112,135,159,158) || posn(o0,23,146,44,154) || posn(o0,132,71,159,86))) { //013c
+    set(fEgoOnWater)
+    set(f117)
+  }
+}
+if (f130) { //0158
+  if (!(v205 > 0)) { //015e
+    if (f220) { //0166
+      print("The evil Black Cauldron is floating in the middle of the formerly peaceful lake.")
+      goto(l371)
+    }
+    print("This lake makes a beautiful setting for a pleasant afternoon. But, can you afford to spend an afternoon here?")
+l371:
+    goto(l428)
+  }
+  if (v205 == 11) { //0176
+    print("The book looks as if it could hold all the knowledge in the world.")
+  }
+  if (v205 == 12) { //017f
+    print("The pot of gold is tempting indeed.")
+  }
+  if (v205 == 13) { //0188
+    print("Your dear friend is back.")
+  }
+  if (v205 == 21) { //0191
+    print("The shield would protect you forever.")
+  }
+  if (v205 == 22) { //019a
+    print("The suit of armor does look impenetrable.")
+  }
+  if (v205 == 23) { //01a3
+    print("Your old friend Dyrnwyn is back at last.")
+  }
+}
+l428:
+if (!f128 && !f129) { //01ac
+  goto(l581)
+}
+if (f129) { //01b9
+  goto(l581)
+}
+if (f54) { //01c2
+  if (v205 == 11 && v200 > 0) { //01c8
+    print("You take the book of knowledge, and become the wisest man in all Prydain. For the rest of your life, you wonder if you made the right choice.")
+    print("You always miss your friend, Gurgi, and wonder if you could have done better in your quest.")
+    get(i20)
+    set(f209)
+    set(f205)
+  }
+  if (v205 == 12 && v200 > 0) { //01dc
+    print("You take the pot of gold, and become the richest man in all Prydain. You live out the rest of your life in luxury, but discover that money is not the ultimate answer to happiness.")
+    print("You always miss your friend, Gurgi, and wonder if you could have done better in your quest.")
+    get(i21)
+    set(f209)
+    set(f205)
+  }
+  goto(l556)
+}
+if (v205 == 21 && v200 > 0) { //01f3
+  print("You take the warrior's shield, and become the bravest warrior in all Prydain. But you wonder if you might have done better with your life.")
+  set(f209)
+  get(i22)
+  set(f205)
+  v202 = 54
+}
+if (v205 == 22 && v200 > 0) { //0208
+  print("You take the magical suit of armor, and live to be an old, old man. But you wonder if you might have accomplished more with your empty life.")
+  set(f209)
+  get(i23)
+  set(f205)
+  v202 = 54
+}
+if (v205 == 23) { //021d
+  set(f208)
+  goto(l581)
+  v202 = 54
+}
+l556:
+if (f205) { //022c
+  reset(f205)
+  reset(f214)
+  reset(f215)
+  reset(f220)
+  set(fSaidAccepted)
+  erase(o7)
+  erase(o9)
+  set(f217)
+}
+goto(l581)
+l581:
+if (f217) { //0245
+  reset(f217)
+  sound(6,f61)
+  start.cycling(o13)
+  reverse.loop(o13,f211)
+}
+if (posn(o0,133,89,142,102)) { //0255
+  set(fEgoOnWater)
+}
+if (f201) { //0261
+  reset(f201)
+  set.view(o0,0)
+  move.obj(o0,76,159,0,f212)
+}
+if (f212) { //0272
+  reset(f212)
+  set.loop(o0,1)
+  stop.motion(o0)
+  stop.cycling(o0)
+  v203 = 33
+}
+v203--
+if (v203 == 1) { //0286
+  stop.sound()
+  sound(6,f61)
+  reset(f159)
+  draw(o13)
+  end.of.loop(o13,f210)
+  stop.update(o0)
+}
+if (f210) { //029a
+  reset(f210)
+  set(f202)
+  stop.cycling(o13)
+  v204 = 22
+}
+v204--
+if (v204 == 1) { //02ab
+  print("\"Well, young Taran, things are not working out as you expected, are they?\" cackle the witches. \"Being a Great Hero is not all it's cracked up to be! Since you won't be using it, we've decided we want our cauldron back.\"")
+  move.obj(o13,100,80,2,f215)
+  v200 = 22
+}
+if (f211) { //02bd
+  reset(f211)
+  reset(f202)
+  reset(f214)
+  reset(f215)
+  wander(o13)
+  stop.motion(o13)
+  erase(o13)
+  if (f209) { //02d1
+    v35 = v205
+  }
+}
+v200--
+if (f202 && f54) { //02dc
+  if (v205 == 0 && v200 == 1) { //02e4
+    set.cel(o7,0)
+    draw(o7)
+    print("\"Of course, we'll not steal it; we'll trade for it. Taran, we offer you this wonderous book, containing all the knowledge in the universe. Trade the cauldron for this and you'll be the wisest man in all Prydain.\"")
+    v200 = 77
+    v205 = 11
+  }
+  if (v205 == 11 && v200 == 1) { //02fb
+    print("\"It's your choice, Assistant Pig-Keeper. We won't wait all day, though.\"")
+    set.cel(o7,1)
+    force.update(o7)
+    print("\"If you don't want that, how about this: the pot of gold from the end of the rainbow. If you take this treasure, you will be the richest person in all Prydain!\"")
+    v200 = 77
+    v205 = 12
+  }
+  if (v205 == 12 && v200 == 1) { //0314
+    set.cel(o7,2)
+    force.update(o7)
+    print("\"You drive a hard bargain, Pig Boy. Here is our final offer. Give us the cauldron and we'll give you back your friend, Gurgi.\"")
+    erase(o9)
+    set(f217)
+    start.update(o0)
+    observe.objs(o0)
+    v205 = 13
+    move.obj(o0,58,159,0,f218)
+  }
+}
+if (f219) { //0336
+  reset(f219)
+  stop.update(o0)
+}
+if (f218) { //0340
+  reset(f218)
+  erase(o7)
+  stop.motion(o0)
+  stop.cycling(o0)
+  reset(f133)
+  set.view(o0,49)
+  v201 = 44
+}
+if (f202 && !f54) { //0356
+  if (v205 == 0 && v200 == 1) { //035f
+    set.cel(o7,3)
+    draw(o7)
+    print("\"Of course, we'll not just take it -- we'll trade for it. Taran, we offer you this magnificent warrior's shield. With it you could be the most courageous fighter in all Prydain.\"")
+    v200 = 77
+    v205 = 21
+  }
+  if (v205 == 21 && v200 == 1) { //0376
+    print("\"It's your choice, Assistant Pig-Keeper. We won't wait all day, though.\"")
+    set.cel(o7,4)
+    force.update(o7)
+    print("\"If you don't want that, how about this: a magic suit of impenetrable armor. It will protect you from all mortal weapons and you'll live to a ripe old age!\"")
+    v200 = 77
+    v205 = 22
+  }
+  if (v205 == 22 && v200 == 1) { //038f
+    set.cel(o7,5)
+    force.update(o7)
+    print("\"You drive a hard bargain, Pig Boy. Here is our final offer. Give us the cauldron and you'll have your magic sword back.\"")
+    erase(o9)
+    set(f217)
+    v205 = 23
+    start.update(o0)
+    move.obj(o0,62,159,0,f206)
+  }
+}
+if (f206) { //03af
+  reset(f206)
+  set(f208)
+  stop.update(o0)
+}
+if (f208) { //03bb
+  reset(f208)
+  get(i12)
+  erase(o7)
+  vCurrentScore += 15
+  print("You once again hold your special sword in your hand. Now immortal, you live to a ripe old age, fight many battles, and, thanks to the sword, always emerge victorious.")
+  v35 = v205
+}
+v201--
+v61 = 44
+v61 -= 2
+if (v61 == v201) { //03d7
+  vCurrentScore += 15
+  print("You lift the lifeless body of your friend into your arms.")
+}
+if (v201 == 2) { //03e3
+  print("You hold Gurgi in your arms, and long for the simpler days as an Assistant Pig-Keeper. You miss Gurgi, and as the tears well up in your eyes...")
+  print("Wait! What's this?!")
+  start.update(o0)
+  set.view(o0,0)
+  set.view(o7,45)
+  v61 = 2
+  step.size(o7,v61)
+  position(o7,55,160)
+  draw(o7)
+  release.priority(o7)
+  start.cycling(o7)
+  start.update(o7)
+  start.motion(o7)
+  object.on.land(o7)
+  wander(o7)
+  sound(25,f61)
+}
+if (v201 == 1) { //0411
+  print("\"Gurgi! You're alive!!\" you exclaim.")
+  print("Gurgi says, \"Hello, Master. Surely you have some munchings and crunchings for an old friend?\"")
+  stop.update(o0)
+  v202 = 54
+}
+v202--
+if (v202 == 1) { //0423
+  v35 = v205
+}
+if (f159 && !f173 && !f202) { //042d
+  sound(1,f159)
+}
+if (f215) { //043c
+  reset(f215)
+  move.obj(o13,30,80,2,f214)
+}
+if (f214) { //044a
+  reset(f214)
+  move.obj(o13,100,80,2,f215)
+}
+if ((posn(o0,0,56,21,167) || posn(o0,88,78,129,87) || posn(o0,122,58,159,100) || posn(o0,0,147,159,167))) { //0458
+  set(f88)
+}
+if (f203) { //0478
+  call(101)
+}
+if (f204) { //0480
+  call(116)
+}
+if (vWhichEgoBorder == 1) { //0488
+  new.room(7)
+}
+if (vWhichEgoBorder == 3) { //0491
+  new.room(17)
+}
+if (vWhichEgoBorder == 2) { //049a
+  new.room(13)
+}
+if (vWhichEgoBorder == 4 && v39 > 80) { //04a3
+  new.room(11)
+}
+return()

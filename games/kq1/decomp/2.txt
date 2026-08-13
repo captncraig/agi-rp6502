@@ -1,4 +1,312 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(101)
+  set.horizon(50)
+  load.sound(15)
+  if (f75) { //0014
+    load.logic(103)
+    load.view(9)
+    add.to.pic(9,0,0,105,120,0,0)
+  }
+  if (v65 == vCurrentRoom) { //0026
+    add.to.pic(62,0,0,36,86,0,0)
+  }
+  if (!f75) { //0035
+    load.view(9)
+    animate.obj(o2)
+    set.view(o2,9)
+    position(o2,105,120)
+    if (vPrevRoom == 55) { //0047
+      set.cel(o2,2)
+      goto(l87)
+    }
+    set.cel(o2,0)
+l87:
+    draw(o2)
+    stop.update(o2)
+  }
+  load.view(107)
+  load.view(97)
+  animate.obj(o11)
+  animate.obj(o12)
+  animate.obj(o1)
+  set.view(o11,107)
+  set.view(o12,107)
+  set.view(o1,97)
+  position(o11,121,161)
+  position(o12,73,166)
+  ignore.horizon(o1)
+  position(o1,115,17)
+  set.priority(o1,15)
+  set(f68)
+  object.on.water(o11)
+  object.on.water(o12)
+  ignore.blocks(o0)
+  draw(o11)
+  draw(o12)
+  draw(o1)
+  if (vPrevRoom == 55) { //008d
+    position(o0,110,122)
+    set(f26)
+  }
+  if (vPrevRoom == 3) { //009a
+    get.posn(o0,v60,v61)
+    if (v61 > 150) { //00a5
+      position(o0,2,150)
+    }
+  }
+  draw(o0)
+  call(101)
+  wander(o11)
+  wander(o12)
+  show.pic()
+}
+if (said("check", "room")) { //00b9
+  print("You are standing outside a castle surrounded by an alligator filled moat.")
+}
+if (f26) { //00c5
+  reset(f26)
+  start.update(o2)
+  reverse.loop(o2,f25)
+}
+if (f25 && !f27) { //00d2
+  stop.update(o2)
+}
+if (said("pet", "alligator")) { //00dd
+  print("What!  Are you crazy?")
+}
+if (said("check", "bridge")) { //00e9
+  print("It is a rather small, wooden bridge.")
+}
+if (said("check", "banner")) { //00f5
+  print("High above the castle, the flags are waving in the wind.")
+}
+if (said("check", "building")) { //0101
+  print("King Edward the Benevolent, the mighty ruler of Daventry, lives in this castle.")
+}
+if (said("check", "moat")) { //010d
+  print("You never know what might be in there!")
+}
+if (said("check", "water")) { //0119
+  print("It's your typical moat water: murky and smelly.")
+}
+if (said("check", "blossom")) { //0125
+  print("They are absolutely gorgeous!")
+}
+if ((said("acquire", "blossom") || said("steal", "blossom"))) { //0131
+  print("King Edward does not allow anyone to take his flowers.")
+}
+if (said("check", "alligator")) { //0145
+  print("These alligators have protected the castle from many a trespasser.")
+}
+if (said("enter", "building")) { //0151
+  if (f25) { //015b
+    print("You must enter the castle through the door, and the  door is closed.")
+  }
+}
+if (said("close", "door")) { //0163
+  print("The door is already closed.")
+}
+if (said("check", "door")) { //016f
+  if (posn(o0,0,120,159,167)) { //0179
+    print("These doors are strongly built to keep out unwanted visitors.")
+    goto(l394)
+  }
+  print("You can't see them from here.")
+}
+l394:
+if (said("ANYWORD", "lion")) { //018a
+  if (posn(o0,0,128,159,167)) { //0194
+    print("They pose as immovable guards for King Edward's castle, and have frightened off numerous intruders.")
+    goto(l421)
+  }
+  print("You can't see them from here.")
+}
+l421:
+if (f75) { //01a5
+  if (said("open", "door")) { //01ab
+    if (posn(o0,105,120,121,128)) { //01b5
+      print("Since the goat is with you, permission to enter the  castle is denied.")
+      goto(l454)
+    }
+    print("You cannot reach the door from here.")
+l454:
+    goto(l1002)
+  }
+}
+if (f125) { //01c9
+  if (said("open", "door")) { //01cf
+    if (posn(o0,105,120,121,128)) { //01d9
+      if (v74 == 3) { //01e3
+        print("You have been to the castle once since your quest and  are not allowed to return again.")
+        goto(l497)
+      }
+      print("You have been to the castle once and you may not return until your quest is complete.")
+l497:
+      goto(l502)
+    }
+    print("You cannot reach the door from here.")
+l502:
+    goto(l1002)
+  }
+}
+if (said("knock", "door")) { //01f9
+  if (posn(o0,105,120,121,128)) { //0203
+    print("Your knock echos within the castle.  Unfortunately, no one answers.")
+    goto(l532)
+  }
+  print("You cannot reach the door from here.")
+}
+l532:
+if (!f75 && !f125) { //0214
+  if (said("open", "door")) { //021e
+    if (posn(o0,105,120,121,128)) { //0228
+      set(f27)
+      start.update(o2)
+      sound(15,f28)
+      end.of.loop(o2,f24)
+      stop.motion(o0)
+      set.priority(o0,15)
+      print("The huge doors swing open slowly.")
+      if (!f193) { //0243
+        set(f193)
+        vCurrentScore += 1
+        goto(l1002)
+      }
+      if (!f206) { //0252
+        set(f206)
+        vCurrentScore += 1
+      }
+      goto(l611)
+    }
+    print("You cannot reach the door from here.")
+  }
+}
+l611:
+if (f24 && f28) { //0263
+  new.room(55)
+}
+if (said("drink", "water") && !f88 && !f116) { //026d
+  if ((posn(o0,0,143,159,167) || posn(o0,40,108,74,142))) { //027d
+    print("As you kneel by the edge of the moat and see just how filthy the water is, your thirst strangely leaves you.")
+    goto(l662)
+  }
+  print("You are not close enough to any water.")
+}
+l662:
+if (f81 && !f88) { //0296
+  if (said("acquire", "water")) { //029f
+    if ((posn(o0,0,143,159,167) || posn(o0,40,108,74,142))) { //02a9
+      reset(f116)
+      print("Although you notice the water is unclean, you fill the bucket.")
+      get(i26)
+      set(f88)
+      if (!f91) { //02c3
+        set(f91)
+        vCurrentScore += 2
+      }
+      goto(l724)
+    }
+    print("You are not close enough to any water.")
+  }
+}
+l724:
+if (fTriggerLine) { //02d4
+  set(fEgoOnWater)
+}
+if (!(v94 > 0) && fEgoOnWater) { //02dc
+  v76 = 255
+  ignore.objs(o0)
+  if (posn(o0,9,145,44,167)) { //02eb
+    v76 = 27
+    v77 = 166
+  }
+  if (posn(o0,45,159,69,167)) { //02fb
+    v76 = 50
+    v77 = 166
+  }
+  if (posn(o0,70,159,94,167)) { //030b
+    v76 = 75
+    v77 = 166
+  }
+  if (posn(o0,95,159,122,167)) { //031b
+    v76 = 103
+    v77 = 166
+  }
+  if (posn(o0,123,159,159,167)) { //032b
+    v76 = 133
+    v77 = 166
+  }
+  if (posn(o0,50,110,70,144)) { //033b
+    set.priority(o0,5)
+    v76 = 56
+    v77 = 130
+  }
+  if (v76 == 255) { //034e
+    v76 = 0
+    goto(l871)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l871:
+if (fEgoOnWater) { //0367
+  if ((said("get out", "moat") || said("exit", "moat"))) { //036d
+    print("The moats slippery sides prevent you from getting out.")
+  }
+}
+if (fEgoOnWater && !f23) { //0381
+  program.control()
+  stop.motion(o0)
+  follow.ego(o11,18,f20)
+  follow.ego(o12,18,f21)
+  set(f23)
+}
+if (posn(o0,61,135,63,137) && !f22) { //0397
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v31 = 45
+}
+if (f20 && !f22) { //03ab
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v31 = 45
+}
+if (f21 && !f22) { //03bb
+  print("Misfortune strikes and you have fallen into the moat. Your struggles and cries have attracted hungry alligators.  They do not want to let you go.")
+  set(f22)
+  v31 = 45
+}
+if (f22 && v31 < 1) { //03cb
+  erase(o0)
+  if (f20) { //03d6
+    erase(o11)
+  }
+  if (f21) { //03de
+    erase(o12)
+  }
+  set(f63)
+}
+v31--
+l1002:
+if (vWhichEgoBorder != 0) { //03ea
+  reset(f68)
+}
+if (vWhichEgoBorder == 1) { //03f4
+  new.room(15)
+}
+if (vWhichEgoBorder == 2) { //03fd
+  new.room(1)
+}
+if (vWhichEgoBorder == 4) { //0406
+  new.room(3)
+}
+if (f75) { //040f
+  call(103)
+}
+call(101)
+return()

@@ -1,4 +1,223 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(50)
+  if (f108) { //000a
+    load.logic(116)
+    set(f204)
+    goto(l27)
+  }
+  load.view(14)
+  load.view(32)
+l27:
+  load.logic(108)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 20 && !f103) { //0023
+    position(o0,38,165)
+  }
+  if (vPrevRoom == 10) { //0031
+    get.posn(o0,v62,v63)
+    if (v62 < 50) { //003c
+      position(o0,49,51)
+    }
+  }
+  if (f103) { //0047
+    set.priority(o0,15)
+  }
+  draw(o0)
+  if (f204) { //0052
+    call(116)
+  }
+  call(108)
+  show.pic()
+  if (vPrevRoom != 20 && !f103) { //005d
+    print("The swamp to the southwest seems impossible to cross. The land is unstable and soggy. The trees here are old, gnarled, and bewildering.")
+  }
+  return()
+}
+reset(f208)
+reset(f207)
+if (!(vWhichEgoBorder > 0)) { //006f
+  reset(f206)
+}
+if (f130) { //0079
+  if (posn(o0,31,61,94,73)) { //007f
+    print("Trekking through this mud is difficult. You might be able to jump to one of those rocks.")
+    goto(l144)
+  }
+  print("The swamp to the southwest seems impossible to cross. The land is unstable and soggy. The trees here are old, gnarled, and bewildering.")
+}
+l144:
+if (f103) { //0090
+  goto(l651)
+}
+if (vEgoDir > 0 && !f128) { //0099
+  v200 = vEgoDir
+  if ((v200 == 2 || v200 == 4)) { //00a6
+    v200 = 3
+  }
+  if ((v200 == 8 || v200 == 6)) { //00b5
+    v200 = 7
+  }
+}
+if (!f128 && !f129) { //00c4
+  goto(l498)
+}
+if (f129) { //00d1
+  goto(l498)
+}
+if ((f71 || fEgoOnWater)) { //00da
+  set(f207)
+}
+if (!f205) { //00e6
+  if (posn(o0,69,61,84,75) && v200 == 5) { //00ed
+    if (f108) { //00fa
+      print("You can not try to cross the swamp with Hen Wen. She would surely be caught by an evil gwythaint.")
+      set(fSaidAccepted)
+      set(f207)
+    }
+    set(f208)
+  }
+  if (posn(o0,26,60,42,76) && v200 == 7) { //0108
+    if (f108) { //0115
+      print("You can not try to cross the swamp with Hen Wen. She would surely be caught by an evil gwythaint.")
+      set(fSaidAccepted)
+      set(f207)
+    }
+    set(f208)
+  }
+  if (posn(o0,56,152,74,167) && v200 == 3) { //0123
+    set(f208)
+  }
+  goto(l386)
+}
+set(f208)
+if (posn(o0,0,68,19,102) && v200 == 7) { //0137
+  set(f207)
+}
+if (posn(o0,4,115,23,125) && v200 == 7) { //0146
+  set(f207)
+}
+if (posn(o0,79,153,99,163) && v200 == 5) { //0155
+  set(f207)
+}
+if (posn(o0,0,68,15,76) && v200 == 1) { //0164
+  set(f207)
+}
+if (posn(o0,73,128,118,144) && v200 == 3) { //0173
+  set(f207)
+}
+l386:
+if (!f207 && f208) { //0182
+  set(fSaidAccepted)
+  if (posn(o0,6,66,15,77) && v200 == 3) { //018d
+    reset(f205)
+    goto(l435)
+  }
+  if (posn(o0,85,153,98,164) && v200 == 7) { //019f
+    reset(f205)
+    goto(l435)
+  }
+  set(f205)
+l435:
+  if (v200 == 7) { //01b3
+    v62 = 236
+    v63 = 0
+    repositon(o0,v62,v63)
+    goto(l472)
+  }
+  if (v200 == 5) { //01c7
+    v62 = 0
+    v63 = 18
+    repositon(o0,v62,v63)
+  }
+l472:
+  set(f71)
+  set(f133)
+  set(f125)
+  ignore.blocks(o0)
+  program.control()
+  set.view(o0,14)
+  stop.motion(o0)
+  set.cel(o0,0)
+  end.of.loop(o0,f202)
+  cycle.time(o0,v107)
+  vEgoDir = 0
+}
+l498:
+if (f202) { //01f2
+  reset(f202)
+  reset(f71)
+  reset(f125)
+  reset(f133)
+  start.motion(o0)
+  player.control()
+  set.view(o0,0)
+  cycle.time(o0,v105)
+  if (v200 == 1) { //0209
+    v62 = 0
+    v63 = 238
+    repositon(o0,v62,v63)
+  }
+  if (v200 == 3) { //021a
+    v62 = 20
+    v63 = 0
+    repositon(o0,v62,v63)
+  }
+}
+if (!f201 && !f103 && !f89 && !f71 && posn(o0,64,75,81,84)) { //022b
+  set(f89)
+  set.view(o0,32)
+  set.cel(o0,0)
+  reposition.to(o0,64,85)
+  cycle.time(o0,v108)
+  end.of.loop(o0,f201)
+  stop.motion(o0)
+  program.control()
+  set(f133)
+  set(f125)
+  print("Oh, no!! The log sank from your weight and you're stuck in the bog. Your quest has ended.")
+}
+if (f201) { //025c
+  reset(f201)
+  erase(o0)
+  v59 = 1
+  goto(l651)
+}
+if (vPrevRoom != 20 && !f200 && !f71 && !f103) { //026c
+  if (posn(o0,18,161,68,167)) { //027d
+    set(f200)
+    print("Great. You made it!!")
+  }
+}
+l651:
+call(108)
+if (f204) { //028d
+  call(116)
+}
+if (vWhichEgoBorder == 2) { //0295
+  new.room(16)
+}
+if (vWhichEgoBorder == 3) { //029e
+  new.room(20)
+}
+if (vWhichEgoBorder == 1) { //02a7
+  if (!f103) { //02ae
+    new.room(10)
+    goto(l709)
+  }
+  if (!f206) { //02ba
+    set(f206)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+l709:
+if (vWhichEgoBorder == 4) { //02c5
+  if (f103) { //02cc
+    if (!f206) { //02d2
+      set(f206)
+      print("There is no need for you to fly away in that direction.")
+    }
+  }
+}
+return()

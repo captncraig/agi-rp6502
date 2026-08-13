@@ -1,4 +1,379 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(5)
+  load.logic(101)
+  call(101)
+  load.view(72)
+  load.view(16)
+  load.view(74)
+  load.view(105)
+  load.view(99)
+  if (f182) { //001e
+    set.view(o0,105)
+    position(o0,81,48)
+    ignore.objs(o0)
+    ignore.blocks(o0)
+    set.priority(o0,15)
+    set(f98)
+    set(f20)
+    move.obj(o0,81,164,3,f21)
+  }
+  if (vPrevRoom == 12 && !f182) { //003c
+    if (!f162) { //0046
+      set(f162)
+      vCurrentScore += 1
+    }
+    if (f180) { //0052
+      set.view(o0,74)
+      position(o0,81,48)
+      set.priority(o0,15)
+    }
+  }
+  if (vPrevRoom == 52) { //0062
+    v94 = 2
+    set.view(o0,70)
+    set(f23)
+    v30 = 250
+    position(o0,75,163)
+  }
+  if (f179) { //0078
+    add.to.pic(99,0,0,84,119,4,4)
+    discard.view(99)
+  }
+  if (f177) { //0088
+    if (f181) { //008e
+      animate.obj(o1)
+      set.view(o1,72)
+      position(o1,79,150)
+      set.cel(o1,0)
+      draw(o1)
+      add.to.pic(99,0,0,84,119,4,4)
+      end.of.loop(o1,f148)
+      goto(l205)
+      goto(l203)
+    }
+    add.to.pic(99,0,0,84,119,4,4)
+    animate.obj(o1)
+    set.view(o1,16)
+    position(o1,79,150)
+    set.cel(o1,0)
+    draw(o1)
+    stop.update(o1)
+  }
+l203:
+  draw(o0)
+l205:
+  show.pic()
+}
+if ((f179 || f177)) { //00ce
+  if (said("check", "rope")) { //00d8
+    print("It is a very long, sturdy rope.")
+  }
+}
+if (fEgoOnWater) { //00e4
+  observe.blocks(o0)
+  goto(l241)
+}
+ignore.blocks(o0)
+l241:
+if (f182 && !f21 && !f22 && !f24) { //00f1
+  sound(5,f159)
+  set(f24)
+}
+if (f180) { //0105
+  get.posn(o0,v60,v61)
+  if (v61 > 115 && f177) { //010f
+    reset(f180)
+    set(f182)
+    set.view(o0,105)
+    v61 = 164
+    ignore.objs(o0)
+    set.priority(o0,15)
+    set(f98)
+    set(f20)
+    v96 = 3
+    move.obj(o0,v60,v61,96,f22)
+  }
+  if (v61 > 115 && f179) { //0134
+    reset(f180)
+    set(f182)
+    set.view(o0,105)
+    v61 = 164
+    ignore.objs(o0)
+    set.priority(o0,15)
+    set(f98)
+    set(f20)
+    v96 = 3
+    move.obj(o0,v60,v61,96,f22)
+  }
+  if ((v60 < 79 || v60 > 83)) { //0159
+    if (v61 > 70) { //0165
+      reset(f180)
+      set(f182)
+      set.view(o0,105)
+      v61 = 164
+      ignore.objs(o0)
+      set.priority(o0,15)
+      set(f98)
+      set(f20)
+      v96 = 3
+      move.obj(o0,v60,v61,96,f22)
+      goto(l425)
+    }
+    reset(f180)
+    set(f182)
+    set(f25)
+    set.view(o0,105)
+    v61 = 164
+    ignore.objs(o0)
+    set.priority(o0,15)
+    set(f98)
+    set(f20)
+    v96 = 3
+    move.obj(o0,v60,v61,96,f21)
+  }
+}
+l425:
+if (f21) { //01a9
+  reset(f21)
+  stop.sound()
+  erase(o0)
+  if (f182 && !f25) { //01b4
+    print("You should be more careful before trying that next time!")
+    goto(l452)
+  }
+  print("I can see you need a little practice climbing rope!")
+l452:
+  set(f63)
+}
+if (f22) { //01c6
+  reset(f20)
+  reset(f22)
+  reset(f98)
+  reset(f182)
+  release.priority(o0)
+  stop.sound()
+  set.view(o0,93)
+}
+if (v94 == 2 && !f23) { //01da
+  set(f23)
+  v30 = 250
+}
+v30--
+if (v30 == 1 && f23) { //01eb
+  erase(o0)
+  print("Your arms are like lead... from swimming.  You find it impossible... to swim any longer.  You sink to the bottom... of the well....")
+  set(f63)
+}
+if (!f180 && !f20) { //01fa
+  if ((said("climb", "rope") || said("a", "rope"))) { //0204
+    if (!f179 && !f177) { //0216
+      print("The rope is out of reach.")
+    }
+    if (f179) { //0222
+      erase(o0)
+      v94 = 0
+      reset(f98)
+      set.view(o0,74)
+      position(o0,81,113)
+      set.priority(o0,15)
+      draw(o0)
+      move.obj(o0,81,113,0,f148)
+      set(f180)
+      reset(f23)
+    }
+    if (f177 && !f181) { //0245
+      erase(o0)
+      v94 = 0
+      reset(f98)
+      set.view(o0,74)
+      position(o0,81,113)
+      set.priority(o0,15)
+      draw(o0)
+      move.obj(o0,81,113,0,f148)
+      set(f180)
+      reset(f23)
+    }
+    if (f181) { //026b
+      start.update(o1)
+      erase(o1)
+      set.view(o1,16)
+      set.view(o0,74)
+      position(o1,78,150)
+      position(o0,81,113)
+      set.cel(o1,0)
+      draw(o1)
+      stop.update(o1)
+      set.priority(o0,15)
+      draw(o0)
+      move.obj(o0,81,113,0,f148)
+      set(f180)
+      reset(f181)
+    }
+  }
+  if (f181) { //0299
+    if ((said("enter", "water") || said("exit", "bucket") || said("enter", "water") || said("jump", "water") || said("get out", "bucket"))) { //029f
+      start.update(o1)
+      erase(o1)
+      set.view(o1,16)
+      set.view(o0,105)
+      position(o1,79,150)
+      position(o0,81,124)
+      set(f98)
+      move.obj(o0,81,164,3,f22)
+      set.cel(o1,0)
+      draw(o1)
+      stop.update(o1)
+      set.priority(o0,15)
+      draw(o0)
+      set(f180)
+      reset(f181)
+    }
+  }
+}
+if ((said("climb", "well") || said("a", "well"))) { //02ed
+  print("You cannot climb the sides of the well.  They are too steep and slippery.")
+}
+if (said("check", "well")) { //0301
+  print("When you look upwards, you see the top of the well far, far above.")
+}
+if (!f81) { //030d
+  if (said("check", "bucket")) { //0314
+    if (f177) { //031e
+      print("Although you can only see the bottom of the bucket, it looks like a very nice bucket.")
+      goto(l811)
+    }
+    print("The bucket is not here.")
+  }
+l811:
+  if (said("acquire", "bucket")) { //032b
+    if (f177) { //0335
+      print("How are you going to get the bucket?")
+      goto(l834)
+    }
+    print("The bucket is not here.")
+  }
+l834:
+  if ((said("enter", "bucket") || said("get in", "bucket"))) { //0342
+    if (f177 && !f181) { //0354
+      print("I don't think that getting in the bucket right now will do you very much good.")
+    }
+  }
+}
+if ((said("untie", "rope") || said("untie", "bucket"))) { //035f
+  if ((f180 || f181)) { //0371
+    print("The knot is tied very tightly.")
+    goto(l898)
+  }
+  print("The rope is out of reach.")
+}
+l898:
+if (said("acquire", "rope")) { //0382
+  if ((f180 || f181)) { //038c
+    print("The rope is secured to the well with a very tight knot.")
+    goto(l925)
+  }
+  print("The rope is out of reach.")
+}
+l925:
+if (said("break", "rope")) { //039d
+  if ((f180 || f181)) { //03a7
+    print("The thick rope resists your efforts.")
+    goto(l952)
+  }
+  print("The rope is out of reach.")
+}
+l952:
+if ((said("lower", "bucket") || said("raise", "bucket") || said("lower", "rope") || said("raise", "rope"))) { //03b8
+  print("A person in your position is in no position to raise or lower anything.")
+}
+if (!f67) { //03d8
+  if (said("cut", "rope")) { //03df
+    print("You have nothing to cut the rope with.")
+  }
+}
+if (f67) { //03eb
+  if (said("cut", "rope")) { //03f1
+    if (f180 && f177) { //03fb
+      print("Just before slitting the rope, you realize that it is not a very wise move at this time.")
+    }
+    if (f181) { //0405
+      print("Just before slitting the rope, you realize that it is not a very wise move at this time.")
+    }
+    if (!f177) { //040d
+      print("There is no reason to cut the rope.")
+    }
+    if (v94 == 2 && f177) { //0416
+      print("You reach up out of the well water and cut the thick rope that holds the bucket.")
+      start.update(o1)
+      erase(o1)
+      set(f81)
+      set(f176)
+      reset(f177)
+      set(f179)
+      vCurrentScore += 2
+      get(i11)
+      if (f163) { //0432
+        set(f88)
+        get(i26)
+        if (!f91) { //043c
+          set(f91)
+          vCurrentScore += 2
+        }
+      }
+    }
+    if (v94 == 1) { //0448
+      print("You have other things to think about right now.")
+    }
+    if (!f177 && !f179) { //0451
+      print("The rope is out of reach.")
+    }
+  }
+}
+if (!f88) { //045d
+  if (said("check", "water")) { //0464
+    print("This is murky well water.")
+  }
+  if (said("drink", "water")) { //0470
+    if ((v94 == 1 || v94 == 2)) { //047a
+      print("The water does not taste as good as you expected.")
+      goto(l1165)
+    }
+    print("You need to be closer to the water to drink.")
+  }
+l1165:
+  if (said("acquire", "water")) { //048d
+    if (f81 && (v94 == 1 || v94 == 2)) { //0497
+      print("In the midst of your activities, you fill the bucket with well water.")
+      set(f88)
+      if (!f91) { //04a9
+        vCurrentScore += 2
+        set(f91)
+      }
+      goto(l1210)
+    }
+    print("There is no way for you to get water now.")
+  }
+}
+l1210:
+if (v94 != 1 && v94 != 2) { //04ba
+  if ((said("dive", "water") || said("dive", "a") || said("dive"))) { //04c6
+    print("Now is not the time to try diving.")
+  }
+}
+if ((v94 == 1 || v94 == 2)) { //04de
+  if ((said("dive", "water") || said("dive", "a") || said("dive"))) { //04ea
+    if (!f164) { //0500
+      set(f164)
+      vCurrentScore += 2
+    }
+    new.room(52)
+  }
+}
+if (vWhichEgoBorder == 1) { //050e
+  new.room(12)
+}
+call(101)
+return()

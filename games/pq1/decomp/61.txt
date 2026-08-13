@@ -1,4 +1,292 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(175)
+  load.view(179)
+  load.view(176)
+  load.view(180)
+  load.view(21)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o19,176)
+  set.view(o3,180)
+  set.view(o4,21)
+  set.loop(o19,1)
+  set.loop(o3,3)
+  set.loop(o4,3)
+  position(o4,127,119)
+  v81 = 108
+  v82 = 120
+  position(o19,81,v82)
+  v225 = 100
+  v226 = 120
+  position(o3,225,v226)
+  ignore.blocks(o0)
+  ignore.blocks(o4)
+  ignore.blocks(o19)
+  ignore.blocks(o3)
+  stop.cycling(o4)
+  stop.cycling(o3)
+  stop.cycling(o19)
+  draw(o19)
+  draw(o3)
+  draw(o4)
+  return()
+}
+get.posn(o19,v144,v145)
+if ((v81 != v144 || v82 != v145)) { //0059
+  v81 = v144
+  v82 = v145
+  start.cycling(o19)
+  goto(l127)
+}
+if (f122) { //0072
+  start.cycling(o19)
+  goto(l127)
+}
+stop.cycling(o19)
+l127:
+get.posn(o3,v144,v145)
+if ((v225 != v144 || v226 != v145)) { //0083
+  v225 = v144
+  v226 = v145
+  start.cycling(o3)
+  goto(l158)
+}
+stop.cycling(o3)
+l158:
+if (!(v220 > 0)) { //009e
+  v220++
+  set(f36)
+  stop.update(o19)
+  stop.update(o3)
+  move.obj(o0,116,115,1,f220)
+}
+if (v220 == 2) { //00b4
+  start.cycling(o4)
+  move.obj(o4,129,112,1,f220)
+  v220++
+}
+if (v220 == 4) { //00c5
+  set.loop(o4,1)
+  set(f220)
+}
+if (v220 == 5) { //00d1
+  v220++
+  stop.update(o4)
+  start.update(o19)
+  start.update(o3)
+  move.obj(o19,108,108,1,f220)
+  move.obj(o3,100,108,1,f152)
+  print("\"Sonny,\" says Laura, \"I'll wait here while you complete the booking.\"")
+}
+if (v220 == 7) { //00ee
+  move.obj(o0,116,110,1,f220)
+}
+if (v220 == 8) { //00fb
+  v220++
+  print("The jailer says, \"This is certainly a fine-looking group ya got this time, Sonny!\"")
+  stop.update(o19)
+  stop.update(o3)
+  v166 = 25
+}
+if (v220 == 20) { //010d
+  prevent.input()
+  print("\"I'm gonna sue you for makin' them 'cuffs so tight, Flatfoot!\" threatens your prisoner.")
+  start.update(o3)
+  start.update(o19)
+  move.obj(o3,100,122,1,f152)
+  move.obj(o19,108,123,1,f152)
+  move.obj(o0,118,124,1,f220)
+  v220 = 23
+}
+if (v220 == 24) { //0130
+  v220++
+  move.obj(o3,83,122,1,f152)
+  move.obj(o19,87,123,1,f152)
+  move.obj(o0,97,124,1,f220)
+}
+if (v220 == 26) { //014b
+  v220++
+  move.obj(o3,55,120,1,f152)
+  move.obj(o19,56,123,1,f152)
+  move.obj(o0,60,124,1,f220)
+}
+if (v220 == 28) { //0166
+  v220++
+  set.loop(o3,3)
+  set.loop(o19,3)
+  start.update(o8)
+  move.obj(o8,67,104,1,f220)
+}
+if (v220 == 30) { //017d
+  v220++
+  stop.update(o8)
+  set.priority(o3,4)
+  print("\"I think you boys know where to go!\" you tell them.")
+  move.obj(o3,55,100,1,f220)
+  move.obj(o19,56,101,1,f152)
+}
+if (v220 == 32) { //0199
+  v220++
+  move.obj(o0,57,110,1,f220)
+}
+if (v220 == 34) { //01a8
+  v220++
+  set.loop(o19,2)
+  set.priority(o19,5)
+  start.update(o8)
+  move.obj(o8,53,104,1,f220)
+}
+if (v220 == 36) { //01bf
+  v220++
+  stop.update(o8)
+  move.obj(o3,68,100,1,f220)
+}
+if (v220 == 38) { //01d0
+  set.loop(o3,2)
+  print("\"Up your's, Dick Tracy! You'll never make this stick!\"")
+  reset(f36)
+  reset(f46)
+  v63 = 221
+  accept.input()
+  v220 = 50
+}
+if (v220 == 50) { //01e7
+  v220++
+  stop.update(o3)
+  stop.update(o19)
+  start.update(o4)
+  move.obj(o4,127,119,1,f220)
+}
+if (v220 == 52) { //01fc
+  v220++
+  print("\"Hey, Bonds,\" yells Laura. \"I'll wait for you in the car.\"")
+  set.priority(o4,9)
+  set(f242)
+  set(f240)
+  move.obj(o4,140,119,1,f220)
+}
+if (v220 == 54) { //0214
+  v220 = 200
+  erase(o4)
+  set(f240)
+  reset(f242)
+  reset(f64)
+  reset(f63)
+  set(f101)
+}
+if (v220 == 100) { //022a
+  v220 = 102
+  stop.cycling(o4)
+  start.update(o4)
+  start.update(o19)
+  start.update(o3)
+  sound(34,f152)
+  set.loop(o3,0)
+  fix.loop(o3)
+  move.obj(o3,95,107,1,f152)
+  set.loop(o0,1)
+  fix.loop(o0)
+  set.loop(o19,0)
+  fix.loop(o19)
+  set.view(o19,v68)
+  move.obj(o19,100,109,1,f220)
+}
+if (v220 == 103) { //025d
+  v220++
+  stop.cycling(o3)
+  stop.cycling(o19)
+  set(f132)
+  v140 = 4
+}
+if (!f140 && f55 && f138) { //026f
+  print("As you die...\n\nthe last thing you hear...\n\nis the suspect mumbling something about...\n\nwhat he does to pigs...")
+  set(f140)
+}
+if (v220 < 12 && v166 == 1) { //027e
+  print("\"I'm still waiting, Bonds,\" says the jailer. \"What are you going to do with them?\"")
+  v166 = 15
+}
+if (v220 == 12) { //028d
+  if (v166 == 1) { //0294
+    print("\"Come on, Bonds,\" says the jailer impatiently. \"Take the 'cuffs off this pair!\"")
+    v166 = 20
+  }
+  if (v166 == 65) { //02a0
+    print("You remove, inventory, and deliver the prisoner's personal property to the jailer along with the booking slip.")
+    v166--
+  }
+  if (v166 == 62) { //02ab
+    print("The jailer says, \"Ok, Sonny, remove their 'cuffs and put the little pushers into cell number one.\"")
+    v166 = 15
+  }
+}
+if (!fEnteredCommand) { //02b7
+  goto(l1018)
+}
+if ((said("book", "rol") || said("lock", "up", "rol") || said("drop", "cell") || said("drop", "anyword", "cell"))) { //02c1
+  if (v220 < 9) { //02e3
+    print("Move to the counter before making a case.")
+    goto(l771)
+  }
+  if (v220 < 11) { //02ef
+    print("\"What are you charging these dudes with?\" asks the jailer.")
+    v220 = 11
+    v166 = 20
+    goto(l771)
+  }
+  print("The jailer heard you the first time!")
+}
+l771:
+if ((said("cocaine") || said("ante", "cocaine") || said("cocaine", "ante") || said("ante", "cocaine"))) { //0303
+  if (v220 < 9) { //031f
+    print("Move to the counter before making a case.")
+    goto(l831)
+  }
+  if (v220 < 12) { //032b
+    print("\"Ok, %w1 it will be,\" the jailer says. \"Fill out a booking slip and give me his property!\"")
+    v220 = 12
+    v166 = 70
+    goto(l831)
+  }
+  print("The jailer heard you the first time!")
+}
+l831:
+if ((said("empty", "cuff") || said("empty", "cuff", "from", "convict") || said("empty", "cuff", "from", "art") || said("uncuff", "convict", "rol") || said("uncuff", "art", "rol") || said("get", "off", "cuff") || said("get", "cuff", "rol"))) { //033f
+  if (v220 < 12) { //037f
+    print("The suspects should be booked first.")
+    goto(l970)
+  }
+  if (v220 < 20) { //038b
+    get(i24)
+    if (!f135) { //0394
+      set(f135)
+      vCurrentScore += 2
+    }
+    if (!f42 && has(i14)) { //03a0
+      drop(i14)
+      v220 = 100
+      v166 = 0
+      goto(l965)
+    }
+    set.loop(o0,1)
+    set.view(o19,175)
+    set.view(o3,179)
+    print("You remove the 'cuffs and place them in your handcuff case.")
+    v220 = 20
+    v166 = 0
+l965:
+    goto(l970)
+  }
+  print("The cuffs are removed.")
+}
+l970:
+if (f233) { //03ca
+  if (said("answer", "colby")) { //03d0
+    print("\"Up your's, Dick Tracy! You'll never make this stick!\"")
+  }
+  if ((said("answer", "art", "rol") || said("answer", "convict", "rol") || said("answer", "simms"))) { //03dc
+    print("\"My Mommy's gonna be bummin' when she finds out where I am!\" whines Victor Simms.")
+  }
+}
+l1018:
+return()

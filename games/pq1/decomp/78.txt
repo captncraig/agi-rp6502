@@ -1,5 +1,306 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(32)
+  load.view(213)
+  load.view(218)
+  load.view(216)
+  load.logic(74)
+  if (f111) { //0014
+    set(f94)
+  }
+  if (f94) { //001c
+    load.view(247)
+    load.sound(40)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o2)
+  set.view(o2,218)
+  set.priority(o2,4)
+  ignore.blocks(o2)
+  v152 = 4
+  cycle.time(o2,v152)
+  position(o2,24,160)
+  draw(o2)
+  if (vPrevRoom == 71) { //0040
+    set.cel(o2,3)
+    stop.cycling(o2)
+    v222 = 18
+    set(f222)
+    v221 = 2
+    goto(l92)
+  }
+  set.cel(o2,0)
+  stop.update(o2)
+l92:
+  animate.obj(o1)
+  set.view(o1,213)
+  set.priority(o1,4)
+  ignore.blocks(o1)
+  v152 = 2
+  cycle.time(o1,v152)
+  position(o1,129,44)
+  draw(o1)
+  if (vPrevRoom == 66) { //0072
+    set.cel(o1,2)
+    stop.cycling(o1)
+    v222 = 18
+    position(o0,122,42)
+    v221 = 2
+    v220 = 2
+    set.priority(o0,8)
+    goto(l150)
+  }
+  set.cel(o1,0)
+  stop.update(o1)
+l150:
+  if (f94) { //0096
+    animate.obj(o3)
+    set.view(o3,247)
+    set.loop(o3,0)
+    ignore.blocks(o3)
+    ignore.objs(o3)
+    position(o3,55,154)
+    set.priority(o3,13)
+    draw(o3)
+    move.obj(o3,110,154,0,f223)
+    sound(40,f154)
+  }
+  if (vPrevRoom == 77) { //00ba
+    position(o0,92,34)
+    v220 = 1
+    set.priority(o0,9)
+    goto(l256)
+  }
+  if (vPrevRoom == 66) { //00ce
+    v220 = 2
+    set.priority(o0,8)
+    position(o0,122,42)
+    goto(l256)
+  }
+  if (vPrevRoom == 68) { //00e2
+    v220 = 3
+    set.priority(o0,14)
+    position(o0,119,167)
+    goto(l256)
+  }
+  v220 = 4
+  set.priority(o0,8)
+  position(o0,27,155)
+l256:
+  draw(o0)
+  add.to.pic(216,0,0,104,26,4,4)
+  show.pic()
+  return()
+}
+distance(o0,o3,v223)
+if (v223 < v61) { //0110
+  set(f109)
+}
+if (f223) { //0119
+  reset(f223)
+  v224++
+  if (v224 == 1) { //0123
+    move.obj(o3,110,163,0,f223)
+  }
+  if (v224 == 2) { //0130
+    set.priority(o3,14)
+    move.obj(o3,107,163,0,f223)
+  }
+  if (v224 == 3) { //0140
+    move.obj(o3,48,104,0,f223)
+  }
+  if (v224 == 4) { //014d
+    move.obj(o3,38,104,0,f223)
+  }
+  if (v224 == 5) { //015a
+    move.obj(o3,38,95,0,f223)
+  }
+  if (v224 == 6) { //0167
+    move.obj(o3,46,95,0,f223)
+  }
+  if (v224 == 7) { //0174
+    set.priority(o3,8)
+    move.obj(o3,100,41,0,f223)
+  }
+  if (v224 == 8) { //0184
+    move.obj(o3,111,41,0,f223)
+  }
+  if (v224 == 9) { //0191
+    move.obj(o3,111,45,0,f223)
+  }
+  if (v224 == 10) { //019e
+    move.obj(o3,103,45,0,f223)
+  }
+  if (v224 == 11) { //01ab
+    set.priority(o3,9)
+    move.obj(o3,91,32,0,f223)
+  }
+  if (v224 == 12) { //01bb
+    erase(o3)
+  }
+}
+if (fEgoOnWater) { //01c4
+  if ((vEgoDir == 1 || vEgoDir == 8 || vEgoDir == 2)) { //01ca
+    if (v220 == 1) { //01d9
+      v220 = 2
+      set.priority(o0,8)
+      goto(l534)
+    }
+    if (v220 == 3) { //01e9
+      if (v143 < 100) { //01f0
+        v220 = 2
+        set.priority(o0,8)
+        goto(l518)
+      }
+      v220 = 4
+      set.priority(o0,13)
+l518:
+      goto(l534)
+    }
+    if (v220 == 2) { //0209
+      v220 = 3
+      set.priority(o0,12)
+    }
+  }
+l534:
+  if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //0216
+    if (v220 == 2) { //0225
+      if (v143 < 76) { //022c
+        v220 = 1
+        set.priority(o0,9)
+        goto(l578)
+      }
+      v220 = 3
+      set.priority(o0,14)
+l578:
+      goto(l594)
+    }
+    if (v220 == 4) { //0245
+      v220 = 3
+      set.priority(o0,14)
+    }
+  }
+}
+l594:
+if ((v220 == 3 || v220 == 1)) { //0252
+  observe.blocks(o0)
+  reset(f221)
+  goto(l648)
+}
+if (v220 == 4) { //0265
+  if (v142 < 29) { //026c
+    observe.blocks(o0)
+    goto(l634)
+  }
+  ignore.blocks(o0)
+l634:
+  goto(l648)
+}
+ignore.blocks(o0)
+if (!f221) { //027f
+  set(f221)
+}
+l648:
+if (v220 != 4 && f221) { //0288
+  if ((v142 > 120 || v143 < 29)) { //0292
+    observe.blocks(o0)
+    goto(l677)
+  }
+  ignore.blocks(o0)
+}
+l677:
+if (fTriggerLine && (v220 == 4 || v220 == 2)) { //02a5
+  vEgoDir = 0
+  start.motion(o0)
+  reposition.to(o0,v104,v105)
+}
+v222--
+if (v222 == 1) { //02be
+  if (f222) { //02c5
+    start.update(o2)
+    reverse.loop(o2,f220)
+    goto(l728)
+  }
+  start.update(o1)
+  reverse.loop(o1,f220)
+}
+l728:
+if (f220) { //02d8
+  reset(f220)
+  if (v221 == 2) { //02e0
+    if (f222) { //02e7
+      stop.update(o2)
+      v221 = 0
+      reset(f222)
+      goto(l764)
+    }
+    stop.update(o1)
+    v221 = 0
+l764:
+    goto(l790)
+  }
+  accept.input()
+  reset(f36)
+  v100 = 2
+  if (f94) { //0305
+    reset(f94)
+    print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+    set(f140)
+    goto(l790)
+  }
+  new.room(66)
+}
+l790:
+if (!fEnteredCommand) { //0316
+  goto(l905)
+}
+if (said("o", "d")) { //0320
+  if (obj.in.box(o0,118,40,136,47)) { //032a
+    set(f36)
+    prevent.input()
+    end.of.loop(o1,f220)
+    v221 = 1
+    goto(l849)
+  }
+  if (posn(o0,20,148,43,167)) { //0340
+    print("The door is locked.")
+    goto(l849)
+  }
+  set(f113)
+}
+l849:
+if (said("examine", "d")) { //0351
+  if (v220 == 4) { //035b
+    print("This door is labeled \"Basement.\"")
+    goto(l885)
+  }
+  if (v220 == 3) { //0367
+    print("This door is labeled \"Cocktail Lounge.\"")
+    goto(l885)
+  }
+  print("This door is labeled \"Second Floor.\"")
+}
+l885:
+if (posn(o0,20,148,43,167) && said("unlock", "d")) { //0375
+  print("You have no key to fit this door.")
+}
+call(74)
+l905:
+if ((vWhichEgoBorder == 1 || v143 < 34)) { //0389
+  v100 = 3
+  new.room(77)
+}
+if (vWhichEgoBorder == 3) { //039a
+  if (v142 > 114 && v142 < 124) { //03a1
+    if (f94) { //03ab
+      reset(f94)
+      print("An interesting manuever on your part has separated you from your suspect. Now what will you do?")
+    }
+    new.room(68)
+  }
+}
+if (f154) { //03b7
+  sound(40,f154)
+}
+return()

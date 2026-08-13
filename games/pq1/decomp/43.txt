@@ -1,5 +1,760 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(97)
+  load.view(24)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  set.view(o1,24)
+  if (v134 > 0) { //001b
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l62)
+  }
+  position(o0,100,155)
+  if (vPrevRoom == 52) { //0033
+    position(o0,61,167)
+  }
+l62:
+  if (v31 < 4) { //003e
+    position(o1,61,167)
+    set.loop(o1,3)
+    v139 = 0
+    v140 = 5
+    goto(l101)
+  }
+  if (!(v35 > 0)) { //0055
+    v139 = 50
+    v141 = 33
+    set(f226)
+  }
+l101:
+  if (v35 == 2) { //0065
+    v139 = 100
+    v141 = 33
+    set(f226)
+  }
+  if (v35 == 4) { //0074
+    v139 = 150
+    v141 = 33
+    set(f226)
+  }
+  if (v35 == 6) { //0083
+    v139 = 200
+    v141 = 33
+    load.view(30)
+    load.view(21)
+    load.view(26)
+    animate.obj(o15)
+    set.view(o15,30)
+    set.loop(o15,0)
+    position(o15,54,126)
+    draw(o15)
+    stop.cycling(o15)
+    animate.obj(o2)
+    set.view(o2,21)
+    set.loop(o2,1)
+    position(o2,98,126)
+    draw(o2)
+    stop.cycling(o2)
+    animate.obj(o3)
+    set.view(o3,26)
+    set.loop(o3,3)
+    position(o3,61,167)
+    set(f226)
+  }
+  if (v35 == 8) { //00c4
+    v139 = 240
+    v141 = 33
+    set(f226)
+  }
+  if (f226) { //00d3
+    set.loop(o1,2)
+    set.cel(o1,0)
+    position(o1,76,114)
+    draw(o1)
+    stop.update(o1)
+  }
+  draw(o0)
+  show.pic()
+  return()
+}
+if (vWhichEgoBorder == 3) { //00eb
+  new.room(52)
+}
+if (posn(o1,66,106,84,115)) { //00f4
+  if (posn(o0,66,106,84,115)) { //00fe
+    if (!f227) { //0108
+      print("%m84 barks, \"Sonny, get out from behind my desk!\"")
+      set(f227)
+    }
+    goto(l283)
+  }
+  block(66,106,84,115)
+l283:
+  goto(l287)
+}
+unblock()
+l287:
+reset(f221)
+if (posn(o0,11,121,37,156)) { //0121
+  set(f221)
+}
+reset(f223)
+if (posn(o0,108,114,146,163)) { //012f
+  set(f223)
+}
+reset(f224)
+if (posn(o0,54,109,99,114)) { //013d
+  set(f224)
+}
+reset(f225)
+if (posn(o0,62,109,91,126)) { //014b
+  set(f225)
+}
+reset(f57)
+if (posn(o0,56,109,70,121)) { //0159
+  set(f57)
+}
+reset(f222)
+if (posn(o0,32,115,45,120)) { //0167
+  set(f222)
+}
+distance(o0,o15,v224)
+distance(o0,o2,v221)
+distance(o0,o1,v222)
+distance(o0,o3,v223)
+if ((v222 < v61 || v224 < v61 || v221 < v61 || v223 < v61)) { //0183
+  set(f109)
+}
+get.posn(o1,v144,v145)
+if ((v153 != v144 || v154 != v145)) { //019b
+  v153 = v144
+  v154 = v145
+  start.cycling(o1)
+  goto(l438)
+}
+stop.cycling(o1)
+l438:
+if (f220 && f225) { //01b6
+  reset(f220)
+  set(f138)
+  v140 = 0
+  v141 = 0
+}
+if (f138) { //01c8
+  reset(f138)
+  v139++
+  if (v139 == 1) { //01d2
+    set(f226)
+    draw(o1)
+    move.obj(o1,52,157,1,f138)
+  }
+  if (v139 == 2) { //01e3
+    move.obj(o1,52,114,1,f138)
+  }
+  if (v139 == 3) { //01f0
+    move.obj(o1,65,114,1,f138)
+  }
+  if (v139 == 4) { //01fd
+    v131 = 2
+    call(97)
+    v139++
+  }
+  if (v139 == 5) { //020b
+    move.obj(o1,75,114,1,f138)
+  }
+  if (v139 == 6) { //0218
+    stop.cycling(o1)
+    set.loop(o1,2)
+    v140 = 10
+  }
+  if (v139 == 7) { //0227
+    random(64,65,v152)
+    print(v152)
+    v140 = 10
+    v139--
+  }
+  if (v139 == 51) { //0239
+    if (v39 == 8) { //0240
+      if (f225) { //0247
+        v139++
+        goto(l606)
+      }
+      v131 = 6
+      call(97)
+      set(f220)
+      v139--
+      v140 = 10
+l606:
+      goto(l619)
+    }
+    v131 = 62
+    call(97)
+    v139--
+    v140 = 10
+  }
+l619:
+  if (v139 == 52) { //026b
+    set(f228)
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+    v131 = 3
+    call(97)
+    v140 = 4
+  }
+  if (v139 == 53) { //0281
+    v131 = 4
+    call(97)
+    v140 = 4
+  }
+  if (v139 == 54) { //0290
+    vCurrentScore += 1
+    v131 = 5
+    call(97)
+    v35 = 1
+    v139 = 255
+  }
+  if (v139 == 101) { //02a5
+    if (f225) { //02ac
+      v139++
+      goto(l707)
+    }
+    v131 = 34
+    call(97)
+    set(f220)
+    v139--
+    v140 = 10
+  }
+l707:
+  if (v139 == 102) { //02c3
+    v131 = 35
+    call(97)
+    v140 = 4
+    set(f228)
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+  }
+  if (v139 == 103) { //02d9
+    v140 = 4
+    if (f125) { //02e3
+      v131 = 36
+      call(97)
+      goto(l758)
+    }
+    v131 = 82
+    call(97)
+  }
+l758:
+  if (v139 == 104) { //02f6
+    v140 = 4
+    if (f125) { //0300
+      v139++
+      goto(l784)
+    }
+    v131 = 87
+    call(97)
+  }
+l784:
+  if (v139 == 105) { //0310
+    v140 = 4
+    v131 = 37
+    call(97)
+  }
+  if (v139 == 106) { //031f
+    vCurrentScore += 1
+    v140 = 4
+    v131 = 38
+    call(97)
+    v35 = 3
+    v139 = 255
+  }
+  if (v139 == 151) { //0337
+    if (f225) { //033e
+      v139++
+      goto(l853)
+    }
+    v131 = 34
+    call(97)
+    set(f220)
+    v139--
+    v140 = 10
+  }
+l853:
+  if (v139 == 152) { //0355
+    v131 = 75
+    call(97)
+    v140 = 4
+    set(f228)
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+  }
+  if (v139 == 153) { //036b
+    v140 = 4
+    v131 = 76
+    call(97)
+  }
+  if (v139 == 154) { //037a
+    v140 = 4
+    v131 = 77
+    call(97)
+  }
+  if (v139 == 155) { //0389
+    v140 = 4
+    v131 = 78
+    call(97)
+  }
+  if (v139 == 156) { //0398
+    v140 = 4
+    v131 = 79
+    call(97)
+  }
+  if (v139 == 157) { //03a7
+    v140 = 4
+    v131 = 80
+    call(97)
+  }
+  if (v139 == 158) { //03b6
+    v131 = 81
+    call(97)
+    v139 = 255
+    v35 = 5
+    v96 = 6
+    if (v36 < 4) { //03cb
+      v36 = 4
+    }
+  }
+  if (v139 == 201) { //03d5
+    if (f225) { //03dc
+      v139++
+      goto(l1011)
+    }
+    v131 = 13
+    call(97)
+    set(f220)
+    v139--
+    v140 = 10
+  }
+l1011:
+  if (v139 == 202) { //03f3
+    set(f228)
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+    v140 = 4
+    v131 = 14
+    call(97)
+  }
+  if (v139 == 203) { //0409
+    v140 = 4
+    v131 = 15
+    call(97)
+  }
+  if (v139 == 204) { //0418
+    v140 = 4
+    v131 = 16
+    call(97)
+  }
+  if (v139 == 205) { //0427
+    v140 = 4
+    v131 = 17
+    call(97)
+  }
+  if (v139 == 206) { //0436
+    v140 = 4
+    v131 = 18
+    call(97)
+    set.loop(o0,0)
+  }
+  if (v139 == 207) { //0448
+    v140 = 4
+    v131 = 19
+    call(97)
+    get(i17)
+    get(i18)
+  }
+  if (v139 == 208) { //045b
+    v140 = 4
+    v131 = 20
+    call(97)
+  }
+  if (v139 == 209) { //046a
+    v140 = 4
+    get(i19)
+    v131 = 31
+    call(97)
+  }
+  if (v139 == 210) { //047b
+    v140 = 4
+    v131 = 21
+    call(97)
+    set.loop(o0,1)
+  }
+  if (v139 == 211) { //048d
+    v140 = 4
+    v131 = 22
+    call(97)
+  }
+  if (v139 == 212) { //049c
+    v131 = 88
+    call(97)
+    v140 = 3
+  }
+  if (v139 == 213) { //04ab
+    start.cycling(o15)
+    move.obj(o15,61,167,1,f138)
+    set.loop(o0,2)
+  }
+  if (v139 == 214) { //04bd
+    erase(o15)
+    set.loop(o0,3)
+    v140 = 4
+  }
+  if (v139 == 215) { //04cc
+    v140 = 3
+    v131 = 89
+    call(97)
+  }
+  if (v139 == 216) { //04db
+    start.cycling(o2)
+    move.obj(o2,61,167,1,f138)
+  }
+  if (v139 == 217) { //04ea
+    erase(o2)
+    v140 = 4
+  }
+  if (v139 == 218) { //04f6
+    v131 = 33
+    call(97)
+    v140 = 7
+  }
+  if (v139 == 219) { //0505
+    draw(o3)
+    move.obj(o3,51,157,1,f138)
+  }
+  if (v139 == 220) { //0514
+    move.obj(o3,51,119,1,f138)
+    set.loop(o0,1)
+  }
+  if (v139 == 221) { //0524
+    set.loop(o3,0)
+    stop.cycling(o3)
+    v140 = 4
+  }
+  if (v139 == 222) { //0533
+    v140 = 4
+    v131 = 26
+    call(97)
+  }
+  if (v139 == 223) { //0542
+    v140 = 4
+    v131 = 27
+    call(97)
+  }
+  if (v139 == 224) { //0551
+    v140 = 4
+    v131 = 28
+    call(97)
+  }
+  if (v139 == 225) { //0560
+    start.cycling(o3)
+    move.obj(o3,51,157,1,f138)
+  }
+  if (v139 == 226) { //056f
+    move.obj(o3,61,167,1,f138)
+    set.loop(o0,2)
+  }
+  if (v139 == 227) { //057f
+    v140 = 4
+    erase(o3)
+    v131 = 29
+    call(97)
+    set.loop(o0,3)
+  }
+  if (v139 == 228) { //0593
+    vCurrentScore += 2
+    v131 = 30
+    call(97)
+    v35 = 7
+    v91 = 100
+    v31 = 70
+    v139 = 255
+  }
+  if (v139 == 241) { //05ae
+    if (f225) { //05b5
+      v139++
+      goto(l1484)
+    }
+    v131 = 42
+    call(97)
+    set(f220)
+    v139--
+    v140 = 10
+  }
+l1484:
+  if (v139 == 242) { //05cc
+    v140 = 4
+    v131 = 44
+    call(97)
+    set(f228)
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+  }
+  if (v139 == 243) { //05e2
+    v140 = 4
+    v131 = 45
+    call(97)
+    if (obj.in.room(i20,vCurrentRoom)) { //05f1
+      get(i20)
+      v170 = 100
+      v171 = 0
+    }
+  }
+  if (v139 == 244) { //0600
+    v140 = 4
+    v131 = 46
+    call(97)
+  }
+  if (v139 == 245) { //060f
+    v140 = 4
+    v131 = 47
+    call(97)
+  }
+  if (v139 == 246) { //061e
+    v140 = 4
+    v131 = 48
+    call(97)
+  }
+  if (v139 == 247) { //062d
+    v140 = 4
+    v131 = 49
+    call(97)
+  }
+  if (v139 == 248) { //063c
+    v140 = 4
+    v131 = 50
+    call(97)
+  }
+  if (v139 == 249) { //064b
+    v140 = 4
+    v131 = 51
+    call(97)
+  }
+  if (v139 == 250) { //065a
+    vCurrentScore += 1
+    v131 = 52
+    call(97)
+    v139 = 255
+    v31 = 100
+    v35 = 9
+    v36 = 5
+  }
+  if (v139 == 255) { //0675
+    reset(f228)
+    reset(f36)
+    accept.input()
+    start.motion(o0)
+  }
+}
+if (!fEnteredCommand) { //0683
+  goto(l2475)
+}
+if (said("examine", "phone", "rol")) { //068d
+  if (f57) { //0699
+    print("\"555-6674\"")
+    if (!f169) { //06a1
+      set(f169)
+      vCurrentScore += 2
+    }
+    goto(l1714)
+  }
+  set(f113)
+}
+l1714:
+if (f226) { //06b2
+  if ((said("ask", "phone", "number", "rol") || said("phone", "number", "rol") || said("ask", "art", "number", "rol"))) { //06b8
+    print("\"555-6674\"")
+    if (!f169) { //06dc
+      set(f169)
+      vCurrentScore += 2
+    }
+  }
+  if (v35 == 7 && fEnteredCommand) { //06e8
+    set(fSaidAccepted)
+    v131 = 30
+    call(97)
+  }
+  if (v35 == 9 && fEnteredCommand) { //06f8
+    set(fSaidAccepted)
+    v131 = 52
+    call(97)
+  }
+}
+if ((said("o", "d") || said("c", "d"))) { //0708
+  print("This door opens out, so you must leave in order to close it.")
+}
+if ((said("examine") || said("examine", "anyword", "accident") || said("examine", "accident"))) { //071c
+  print("This is %m85's office.")
+}
+if (said("examine", "below", "counter")) { //0736
+  if (f225) { //0742
+    print("You look under the desk and surmise that %m85 picks his nose.")
+    goto(l1871)
+  }
+  set(f113)
+}
+l1871:
+if ((said("examine", "counter") || said("examine", "anyword", "counter"))) { //074f
+  if (f225) { //0763
+    print("%m85 keeps his desk neat and clean, with a place for everything, and everything in its place. There is a telephone on his desk.")
+    goto(l1904)
+  }
+  set(f113)
+}
+l1904:
+if (said("climb", "counter")) { //0770
+  if (f225) { //077a
+    print("You are talented, but there is no need to climb the desk!")
+    goto(l1927)
+  }
+  set(f113)
+}
+l1927:
+if ((said("sit", "counter") || said("sit", "on", "counter"))) { //0787
+  if (f225) { //079b
+    print("You don't have time to sit on the desk!")
+    goto(l1960)
+  }
+  set(f113)
+}
+l1960:
+if (said("sit", "rol")) { //07a8
+  if (posn(o0,70,109,81,114)) { //07b2
+    print("Warming the chair would be all you accomplished.")
+    goto(l1987)
+  }
+  set(f113)
+}
+l1987:
+if ((said("examine", "up") || said("examine", "ceiling"))) { //07c3
+  print("It's a ceiling.")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //07d7
+  print("It's a tile floor.")
+}
+if ((said("examine", "pane") || said("examine", "out", "pane"))) { //07eb
+  if (f224) { //07ff
+    print("It's a window with mini-blinds.")
+    goto(l2060)
+  }
+  set(f113)
+}
+l2060:
+if (said("o", "pane")) { //080c
+  if (f224) { //0816
+    print("%m85 keeps his window nailed shut!")
+    goto(l2083)
+  }
+  set(f113)
+}
+l2083:
+if ((said("o", "blind") || said("move", "blind") || said("draw", "blind"))) { //0823
+  if (f224) { //083b
+    print("That would anger %m83, as he likes his office dark.")
+    goto(l2120)
+  }
+  set(f113)
+}
+l2120:
+if (said("examine", "map", "rol")) { //0848
+  if (f223) { //0854
+    print("\"Lytton City Map\"")
+    goto(l2145)
+  }
+  set(f113)
+}
+l2145:
+if (said("get", "map", "rol")) { //0861
+  if (f223) { //086d
+    print("You do not need it.")
+    goto(l2170)
+  }
+  set(f113)
+}
+l2170:
+if (said("examine", "map", "rol")) { //087a
+  if (f223) { //0886
+    print("Make your own map!")
+    goto(l2195)
+  }
+  set(f113)
+}
+l2195:
+if ((said("o", "file") || said("o", "cabinet") || said("o", "file", "cabinet"))) { //0893
+  if (f222) { //08ad
+    print("This file is locked!")
+    goto(l2234)
+  }
+  set(f113)
+}
+l2234:
+if ((said("look in", "file") || said("look in", "cabinet") || said("look in", "file", "cabinet") || said("examine", "file") || said("examine", "cabinet") || said("examine", "file", "cabinet"))) { //08ba
+  if (f222) { //08e8
+    print("Only %m85 has access to this file.")
+    goto(l2293)
+  }
+  set(f113)
+}
+l2293:
+if ((said("use", "phone") || said("dial", "phone"))) { //08f5
+  print("%m84's phone is not for your use.")
+}
+if ((said("examine", "basket") || said("examine", "about", "basket"))) { //0909
+  print("There is nothing on %m84's desk that concerns you.")
+}
+if ((said("examine", "bookcase") || said("examine", "book"))) { //091f
+  if (f221) { //0931
+    print("The books on the shelves belong to the Lieutenant.")
+    goto(l2366)
+  }
+  set(f113)
+}
+l2366:
+if (said("get", "book")) { //093e
+  if (f221) { //0948
+    print("You don't need them.")
+    goto(l2389)
+  }
+  set(f113)
+}
+l2389:
+if (f226) { //0955
+  if ((said("answer", "art") || said("answer", "art"))) { //095b
+    if (v35 == 3) { //096d
+      print("\"I'm waiting for a return telephone call, Sonny,\" says %m84. \"Keep working and see what you can discover.\"")
+      goto(l2427)
+    }
+    print("\"I have a lot of paperwork and no time to talk!\"")
+  }
+l2427:
+  if ((said("administer", "memo", "art") || said("administer", "art", "memo"))) { //097b
+    if (v222 < v61) { //0991
+      print("Warming the chair would be all you accomplished.")
+      goto(l2463)
+    }
+    set(f113)
+  }
+l2463:
+  if (said("examine", "art")) { //099f
+    print("Lt. Morgan is a handsome, middle-aged man, with a winsome touch of gray to his hair.")
+  }
+}
+l2475:
+return()

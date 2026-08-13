@@ -1,4 +1,819 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(1)
+  load.view(165)
+  load.view(168)
+  load.view(174)
+  load.view(17)
+  load.view(0)
+  if (!f76) { //0014
+    load.view(166)
+    load.view(167)
+    v81 = 26
+    load.pic(v81)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  set.priority(o7,10)
+  set.view(o7,168)
+  set.cel(o7,0)
+  position(o7,137,120)
+  draw(o7)
+  stop.update(o7)
+  v52 = 3
+  cycle.time(o7,v52)
+  if (!f76) { //0045
+    animate.obj(o2)
+    ignore.horizon(o2)
+    ignore.blocks(o2)
+    ignore.objs(o2)
+    set.view(o2,166)
+    set.loop(o2,0)
+    set.priority(o2,13)
+    step.size(o2,v85)
+    position(o2,128,132)
+    draw(o2)
+    stop.update(o2)
+  }
+  animate.obj(o8)
+  ignore.blocks(o8)
+  ignore.objs(o8)
+  set.view(o8,174)
+  set.priority(o8,5)
+  position(o8,73,100)
+  set.cel(o8,8)
+  stop.cycling(o8)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o3,165)
+  set.loop(o3,2)
+  fix.loop(o3)
+  set.priority(o3,4)
+  position(o3,73,120)
+  v52 = 3
+  cycle.time(o3,v52)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.view(o4,165)
+  set.loop(o4,1)
+  fix.loop(o4)
+  position(o4,73,129)
+  set.priority(o4,5)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,165)
+  set.priority(o1,12)
+  fix.loop(o1)
+  step.size(o1,v85)
+  if (vPrevRoom == 40) { //00be
+    set(f205)
+    set.loop(o1,3)
+    last.cel(o1,v52)
+    set.cel(o1,v52)
+    stop.cycling(o1)
+    position(o1,73,167)
+    draw(o1)
+    move.obj(o1,73,129,2,f75)
+    v65 = 100
+    draw(o3)
+    stop.update(o3)
+    draw(o8)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.priority(o0,11)
+    v38 = 76
+    v39 = 127
+    position(o0,38,v39)
+    goto(l299)
+  }
+  draw(o4)
+  stop.update(o4)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,73,129)
+  draw(o1)
+  stop.update(o1)
+  stop.motion(o0)
+  set(f85)
+  set(f210)
+  set.loop(o0,1)
+  ignore.blocks(o0)
+  v38 = 145
+  v39 = 117
+  position(o0,38,v39)
+  draw(o0)
+  v65 = 240
+  set(f75)
+l299:
+  ignore.objs(o0)
+  show.pic()
+  return()
+}
+reset(f201)
+if (posn(o0,0,140,20,167)) { //0131
+  set(f201)
+}
+reset(f200)
+if (posn(o0,117,133,141,156)) { //013f
+  set(f200)
+}
+if (f200 && !f76) { //014b
+  set(f69)
+}
+reset(f204)
+if (posn(o0,73,121,83,127)) { //0158
+  set(f204)
+}
+if (f204) { //0164
+  set.priority(o0,11)
+  goto(l370)
+}
+release.priority(o0)
+l370:
+reset(f208)
+if (posn(o0,126,112,150,127)) { //0174
+  set(f208)
+}
+reset(f209)
+if (posn(o0,146,111,149,120)) { //0182
+  set(f209)
+  set(f210)
+}
+if (f202) { //0190
+  if (f208) { //0196
+    ignore.blocks(o0)
+    goto(l432)
+  }
+  observe.blocks(o0)
+  if (f210) { //01a3
+    reset(f210)
+    set(f75)
+    v65 = 242
+  }
+l432:
+  if (f209) { //01b0
+    set(f75)
+    v65 = 250
+  }
+}
+if (!fEnteredCommand) { //01bb
+  goto(l2631)
+}
+if (f208 && (said("move", "button") || said("use", "elevator") || said("board", "elevator") || said("increase", "elevator"))) { //01c5
+  print("The doors are securely closed. %m16 There is no button nearby.")
+}
+if (f76 && (said("examine", "back", "counter") || said("examine", "back", "desk") || said("examine", "counter") || said("examine", "desk") || said("examine", "button"))) { //01e7
+  if (!f200) { //0211
+    set(f54)
+    goto(l543)
+  }
+  print("Since you're no longer staring at Faith's ample weapons, you notice an unlabeled button on her desk.")
+}
+l543:
+if (said("examine", "elevator")) { //021f
+  if (f204) { //0229
+    print("There are buttons labeled \"one\" through \"eight.\"")
+    goto(l566)
+  }
+  print("The glass elevator only goes down from here. How about you?")
+}
+l566:
+if ((said("examine", "counter") || said("examine", "back", "counter") || said("examine", "back", "desk") || said("examine", "desk"))) { //0236
+  if (!f200) { //0258
+    set(f54)
+    goto(l626)
+  }
+  if (!f76) { //0264
+    print("The beautiful security guard is sitting at the desk. A pair of large pistols are in a holster around her slim waist. She looks friendly, but quick on the trigger.")
+    goto(l626)
+  }
+  print("Since you're no longer staring at Faith's ample weapons, you notice an unlabeled button on her desk.")
+}
+l626:
+if (!f204 && (said("move", "button") || said("increase", "elevator", "door") || said("increase", "elevator"))) { //0272
+  if (!f200) { //028f
+    set(f54)
+    goto(l688)
+  }
+  if (!f76) { //029b
+    print("\"Touch that button, and you're dead meat, White-Suit!\"")
+    goto(l688)
+  }
+  print("The penthouse elevator doors glide open.")
+  start.update(o7)
+  end.of.loop(o7,f203)
+  set(f202)
+}
+l688:
+if (!f76) { //02b0
+  if (f206) { //02b7
+    if (said("use", "breath spray", "rol")) { //02bd
+      reset(fSaidAccepted)
+      v207 = 1
+      v200 = 3
+      reset(f207)
+    }
+    if ((said("done", "examine", "blond") || said("examine", "away") || said("examine", "area") || said("examine", "away", "from", "blond") || said("board", "rol"))) { //02d3
+      set(f211)
+      set(f67)
+    }
+  }
+  if ((said("examine", "blond", "rol") || said("establish eye contact", "rol") || said("look in", "blond", "rol"))) { //0301
+    if (v65 > 0) { //031d
+      print("Not now, you're busy.")
+      goto(l865)
+    }
+    if (!f200) { //0329
+      set(f54)
+      goto(l865)
+    }
+    if (!f206) { //0335
+      set(f212)
+      goto(l865)
+    }
+    v204++
+    if (v204 == 1) { //0343
+      print("She is a knockout! But that pair of pistols slung around her hips brings a sense of foreboding to your gut.")
+    }
+    if (v204 == 2) { //034c
+      print("Her sweater reveals she's built like a brick shipyard.")
+    }
+    if (v204 > 2) { //0355
+      print("\"Stop staring there,\" she says softly.")
+      v207 = 1
+    }
+  }
+l865:
+  if ((said("ask", "blond", "rol") || said("ask", "blond", "rol") || said("ask", "anyword", "blond", "rol"))) { //0361
+    if (!f200) { //0381
+      set(f54)
+      goto(l1006)
+    }
+    if (!f206) { //038d
+      print("She might listen to you, if you can establish eye contact.")
+      goto(l1006)
+    }
+    v205++
+    if (v205 == 1) { //039b
+      print("\"Hi ya, Baby. I think I loves ya!!\"")
+      print("\"May I help you in some way, Sir?\" she responds in a pleasant, but businesslike voice.")
+      v207 = 1
+    }
+    if (v205 == 2) { //03a9
+      print("\"My name is Larry,\" you offer. \"Larry Laffer.\"")
+      print("\"Say, Larry,\" she says with a smile, \"Is that a roll of dimes in your pocket, or are you just glad to see me?\"")
+      v207 = 1
+    }
+    if (v205 == 3) { //03b7
+      print("\"Hey, sweetheart. What's your sign?\" you ask her.")
+      print("\"'EXIT,\" she replies. \"Try using it!\"")
+      v207 = 1
+    }
+    if (v205 == 4) { //03c5
+      print("\"What's your name, beautiful?\" you ask.")
+      print("\"Faith,\" she replies.")
+      print("Hmmm. Unusual name.")
+      v207 = 0
+    }
+    if (v205 == 5) { //03d5
+      print("\"I'm only in town for one night,\" you try again. \"How about we get together when you get off duty?\"")
+      print("She smiles and says, \"Oh, I could never be unfaithful to my boyfriend.\"")
+      print("(Larry, it seems this one's gonna require outside assistance.)")
+      v207 = 1
+    }
+    if (v205 > 5) { //03e5
+      print("You're a man of the world, Larry. Perhaps some sort of medical stimulant would help.")
+    }
+  }
+l1006:
+  if ((said("add", "blond", "aphrodisiac", "rol") || said("increase", "aphrodisiac", "rol") || said("add", "aphrodisiac", "blond", "rol"))) { //03ee
+    if (!(has(i19))) { //0410
+      set(f68)
+      goto(l1081)
+    }
+    if (!f200) { //041c
+      set(f54)
+      goto(l1081)
+    }
+    if (!f206) { //0428
+      print("She might listen to you, if you can establish eye contact.")
+      goto(l1081)
+    }
+    set(f75)
+    v65 = 200
+  }
+l1081:
+  if ((said("add", "blond", "bucks", "rol") || said("add", "bucks", "blond", "rol"))) { //0439
+    if (!f200) { //0453
+      set(f54)
+      goto(l1136)
+    }
+    if (!f206) { //045f
+      print("She might listen to you, if you can establish eye contact.")
+      goto(l1136)
+    }
+    print("\"Really? I'm not that kind of girl.\"")
+    v207 = 2
+  }
+l1136:
+  if ((said("increase", "door", "i'm") || said("unbolt", "door", "i'm"))) { //0470
+    if (!f200) { //0486
+      set(f54)
+      goto(l1172)
+    }
+    print("\"I'm sorry, but I can't.\"")
+  }
+l1172:
+  if ((said("examine", "gun", "rol") || said("examine", "blond", "boob") || said("examine", "boob", "rol") || said("examine", "body") || said("examine") || said("examine", "boob") || said("examine", "boob", "rol"))) { //0494
+    if (!f200) { //04ca
+      set(f54)
+      goto(l1252)
+    }
+    if (!f206) { //04d6
+      print("Try looking at the girl first.")
+      goto(l1252)
+    }
+    print("They are a beautiful pair, aren't they?")
+  }
+l1252:
+  if ((said("examine", "eyes", "rol") || said("examine", "lips", "rol"))) { //04e4
+    if (!f200) { //04fa
+      set(f54)
+      goto(l1300)
+    }
+    if (!f206) { //0506
+      print("Try looking at the girl first.")
+      goto(l1300)
+    }
+    print("Her eyes are as sensuous as her lips.")
+  }
+l1300:
+  if (f206) { //0514
+    if ((said("lips") || said("lips", "blond") || said("carry", "fingers") || said("catch", "blond", "fingers") || said("aim", "blond") || said("aim", "blond") || said("ask", "dance"))) { //051a
+      print("\"You know, I'm supposed to be working!\"")
+      v207 = 1
+    }
+    if ((said("examine", "eyes") || said("look in", "eyes") || said("flirt", "use", "blond") || said("flirt", "blond") || said("add", "blond", "embrace") || said("embrace", "blond"))) { //054f
+      v207 = 1
+    }
+    if ((said("examine", "blond", "hair") || said("examine", "hair") || said("caress", "hair") || said("caress", "hair") || said("caress", "blond", "hair"))) { //0580
+      print("Her hair is thick and beautiful, falling in cascades around her delicate shoulders.")
+    }
+    if ((said("ask", "name") || said("ask", "blond", "name") || said("ask", "name", "blond"))) { //05aa
+      print("\"Faith,\" she replies.")
+      print("Hmmm. Unusual name.")
+      v207 = 1
+    }
+    if ((said("i'm") || said("leisure suit", "i'm"))) { //05cd
+      print("\"So what?\"")
+    }
+    if ((said("examine", "lips") || said("examine", "blond", "lips"))) { //05df
+      print("Her lips are moist and inviting, but then, you also felt that way about old Mr. Weissenborn, your high school shop teacher!")
+    }
+    if ((said("blond", "married", "i'm") || said("married", "i'm") || said("married", "blond") || said("ask", "blond", "catch", "married") || said("ask", "blond", "married", "i'm") || said("ask", "about", "about") || said("add", "diamond ring", "on", "blond", "finger") || said("married", "blond"))) { //05f5
+      print("I'm sorry,\" Faith replies, \"but you don't know me that well!\"")
+      v207 = 2
+    }
+    if ((said("ask", "blond", "love") || said("love", "you") || said("catch", "blond", "fingers"))) { //0642
+      print("\"Well, now. Isn't THAT special!\"")
+    }
+    if ((said("aim", "blond", "rol") || said("naked", "blond") || said("ask", "blond", "about", "copulate") || said("about", "copulate", "use", "i'm") || said("copulate", "rol") || said("make", "blond") || said("anyword", "clit", "rol") || said("bite", "blond", "blond", "holler") || said("anyword", "boob", "rol") || said("play", "use", "blond", "boob") || said("catch", "boob") || said("caress", "boob") || said("catch", "blond") || said("caress", "blond") || said("bite", "blond") || said("aim", "blond", "below", "desk") || said("caress", "below", "desk") || said("catch", "ankle") || said("aim", "ankle") || said("catch", "blond", "ankle") || said("bite", "blond", "rol") || said("copulate", "blond", "rol") || said("embrace", "blond", "rol") || said("anyword", "gun", "rol") || said("caress", "blond", "rol") || said("aim", "boob", "rol"))) { //0660
+      print("\"Try it, and I'll blow your head off.\"")
+      print("(She is, of course, referring to the use of her gun, Larry.)")
+      v207 = 2
+    }
+    if (said("do", "you", "catch", "off")) { //0733
+      print("\"Usually when I'm with someone romantic!\" she replies.")
+    }
+    if ((said("time", "do", "you", "catch", "off") || said("time", "do", "you", "catch", "off", "duty") || said("time", "off", "duty") || said("time", "off") || said("done", "time"))) { //0743
+      print("\"I'll be here all night.\"")
+    }
+    if (said("come", "use", "i'm")) { //0779
+      print("\"Perhaps,\" she says, \"but right now, I'm working.\"")
+    }
+  }
+}
+if ((said("climb", "above", "desk") || said("jump", "above", "desk"))) { //0787
+  print("There's no need to do that.")
+}
+if ((said("examine") || said("examine", "area") || said("examine", "curb") || said("examine", "casino"))) { //079f
+  if (f201 && f76) { //07bb
+    print("Evidently, this exit is for employees only. You'd better use the elevator.")
+    goto(l2052)
+  }
+  if (f208) { //07c8
+    if (!f202) { //07ce
+      print("The doors are securely closed. %m16 There is no button nearby.")
+      goto(l2012)
+    }
+    print("The doors are open. Go on in.")
+l2012:
+    goto(l2052)
+  }
+  if (!f200) { //07df
+    if (f76) { //07e6
+      print("%m14 That desk is where you lost your Faith, remember? (So glad there was a chance to use THAT line!)")
+      goto(l2035)
+    }
+    print("%m14 A beautiful security guard sits behind a desk.")
+l2035:
+    goto(l2052)
+  }
+  if (!f76) { //07f6
+    print("The beautiful security guard is sitting at the desk. A pair of large pistols are in a holster around her slim waist. She looks friendly, but quick on the trigger.")
+    goto(l2052)
+  }
+  print("Since you're no longer staring at Faith's ample weapons, you notice an unlabeled button on her desk.")
+}
+l2052:
+if (!f76 && said("aim", "blond")) { //0804
+  print("She waves back.")
+}
+if ((said("examine", "door") || said("examine", "elevator"))) { //0813
+  if (f201 && f76) { //0825
+    print("Evidently, this exit is for employees only. You'd better use the elevator.")
+    goto(l2135)
+  }
+  if (f204) { //0832
+    print("There are buttons labeled \"one\" through \"eight.\"")
+    goto(l2135)
+  }
+  if (!f208) { //083d
+    print("It's a door just like all the others.")
+    goto(l2135)
+  }
+  if (!f202) { //0849
+    print("The doors are securely closed. %m16 There is no button nearby.")
+    goto(l2135)
+  }
+  print("The doors are open. Go on in.")
+}
+l2135:
+if ((said("examine", "down") || said("expectorate", "down") || said("expectorate", "above", "balcony") || said("examine", "above", "balcony") || said("expectorate"))) { //0857
+  print("You contemplate expec- toration, but remember that discretion is the better part of valium.")
+  print("...or helium,")
+  print("...or something.")
+}
+if (said("jump", "rol")) { //0883
+  print("Suicide is illegal here.")
+}
+if ((said("examine", "bush") || said("look in", "bush"))) { //088f
+  print("They almost look real, don't they?")
+}
+if ((said("bang") || said("bang", "on", "door") || said("bang", "door"))) { //08a3
+  print("You run to the nearest door, and rap your knuckles loudly. You run right back to where you were.")
+  print("Evidently the rooms on this floor are all unoccupied.")
+}
+if ((said("use", "stair") || said("board", "down") || said("board", "down", "stair"))) { //08bf
+  print("Evidently, this exit is for employees only. You'd better use the elevator.")
+}
+if ((said("unbolt", "door", "rol") || said("use", "key", "rol"))) { //08db
+  print("You can't. There's no key in this game!")
+}
+if (said("increase", "door")) { //08f3
+  print("You seem surprised that the door is locked.")
+}
+if ((said("increase", "door", "use", "rol") || said("break", "door", "rol"))) { //08ff
+  print("It's no good. The door resists all of your efforts.")
+}
+if (f205 && !fSaidAccepted) { //0919
+  if ((said("hear") || said("sing") || said("sing", "along"))) { //0922
+    print("\"strangers in the night, da da da dee da...\"")
+    goto(l2367)
+  }
+  set(fSaidAccepted)
+  print("Whee!")
+}
+l2367:
+if (!(v65 > 0) && f204) { //093f
+  if ((said("move", "one") || said("move", "button", "one") || said("one"))) { //0949
+    v79 = 1
+    set(f75)
+  }
+  if ((said("move", "two") || said("move", "button", "two") || said("two"))) { //0966
+    v79 = 2
+    set(f75)
+  }
+  if ((said("move", "three") || said("move", "button", "three") || said("three"))) { //0983
+    v79 = 3
+    set(f75)
+  }
+  if ((said("move", "four") || said("move", "button", "four") || said("four"))) { //09a0
+    v79 = 4
+    set(f75)
+  }
+  if ((said("move", "five") || said("move", "button", "five") || said("five"))) { //09bd
+    v79 = 5
+    set(f75)
+  }
+  if ((said("move", "six") || said("move", "button", "six") || said("six"))) { //09da
+    v79 = 6
+    set(f75)
+  }
+  if ((said("move", "seven") || said("move", "button", "seven") || said("seven"))) { //09f7
+    v79 = 7
+    set(f75)
+  }
+  if ((said("move", "eight") || said("move", "button", "eight") || said("eight"))) { //0a14
+    v79 = 8
+    set(f75)
+  }
+  if ((said("move", "rol") || said("move", "button", "rol"))) { //0a31
+    print("Type a word, like \"one\" or \"two.\"")
+  }
+}
+l2631:
+if (f212) { //0a47
+  reset(f212)
+  set(f206)
+  set(f48)
+  unanimate.all()
+  draw.pic(v81)
+  animate.obj(o5)
+  set.view(o5,167)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  set.priority(o5,4)
+  position(o5,49,77)
+  stop.cycling(o5)
+  animate.obj(o6)
+  set.view(o6,167)
+  set.loop(o6,1)
+  set.cel(o6,0)
+  set.priority(o6,5)
+  position(o6,48,45)
+  cycle.time(o6,v86)
+  stop.cycling(o6)
+  if (!f66) { //0a81
+    set.cel(o5,2)
+    v201 = 6
+    goto(l2716)
+  }
+  set.cel(o5,0)
+  draw(o6)
+  random(6,19,v200)
+  reset(f207)
+l2716:
+  draw(o5)
+  v207 = 255
+  stop.update(o5)
+  show.pic()
+}
+if (f211) { //0aa4
+  reset(f211)
+  reset(f206)
+  reset(f48)
+  v200 = 0
+  v201 = 0
+  unanimate.all()
+  draw.pic(vCurrentRoom)
+  animate.obj(o0)
+  draw(o0)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.priority(o2,13)
+  step.size(o2,v85)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  set.priority(o7,10)
+  draw(o7)
+  v52 = 3
+  cycle.time(o7,v52)
+  stop.update(o7)
+  animate.obj(o8)
+  ignore.blocks(o8)
+  ignore.objs(o8)
+  set.priority(o8,5)
+  stop.cycling(o8)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.priority(o1,12)
+  fix.loop(o1)
+  step.size(o1,v85)
+  draw(o1)
+  stop.update(o1)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  fix.loop(o3)
+  set.priority(o3,4)
+  v52 = 3
+  cycle.time(o3,v52)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  fix.loop(o4)
+  set.priority(o4,5)
+  draw(o4)
+  stop.update(o4)
+  show.pic()
+}
+if (f206) { //0b20
+  v200--
+  if (v200 == 1) { //0b28
+    toggle(f207)
+    if (f207) { //0b31
+      start.cycling(o6)
+      random(6,18,v200)
+      goto(l2889)
+    }
+    stop.cycling(o6)
+    set.cel(o6,0)
+    random(11,33,v200)
+  }
+l2889:
+  if (f44) { //0b49
+    v201--
+    if (v201 == 1) { //0b51
+      print("\"Bad breath's one thing, Mister; but, you could knock a buzzard off a manure truck!\"")
+    }
+    v206--
+    if (v206 == 1) { //0b5c
+      v207 = 0
+    }
+    if (v207 != 255) { //0b66
+      if (v207 == 0) { //0b6e
+        v200 = 2
+      }
+      if (v207 == 1) { //0b78
+        v206 = 5
+        set(f207)
+        v200 = 22
+        start.cycling(o6)
+      }
+      if (v207 == 2) { //0b89
+        v206 = 7
+        reset(f207)
+        v200 = 0
+        stop.cycling(o6)
+        set.cel(o6,0)
+      }
+      set.cel(o5,v207)
+      force.update(o5)
+      v207 = 255
+    }
+  }
+}
+if (f75) { //0ba5
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0baf
+    set(f205)
+    v30 = 18
+    stop.motion(o0)
+    set(f85)
+    set.view(o0,17)
+    set.cel(o0,0)
+    reposition.to(o0,76,127)
+    cycle.time(o0,v86)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 2) { //0bd1
+    erase(o0)
+    set.view(o0,0)
+    set.loop(o1,3)
+    set.cel(o1,0)
+    cycle.time(o1,v86)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 3) { //0be9
+    erase(o4)
+    draw(o3)
+    draw(o8)
+    stop.cycling(o1)
+    if (v79 == 8) { //0bf8
+      print("The rumors were right. You are quick on the trigger, Larry!")
+      v65 = 101
+      goto(l3085)
+    }
+    move.obj(o1,73,167,2,f75)
+  }
+l3085:
+  if (v65 == 4) { //0c0d
+    v76 = 40
+  }
+  if (v65 == 101) { //0c17
+    erase(o3)
+    erase(o8)
+    cycle.time(o1,v85)
+    start.cycling(o1)
+    reverse.loop(o1,f75)
+  }
+  if (v65 == 102) { //0c2a
+    reset(f205)
+    v30 = 0
+    v79 = 0
+    v65 = 0
+    set.loop(o1,0)
+    draw(o4)
+    set.view(o0,0)
+    set.loop(o0,2)
+    set.cel(o0,0)
+    position(o0,76,127)
+    draw(o0)
+    start.motion(o0)
+    reset(f85)
+    reset(f34)
+    reset(f35)
+    cycle.time(o0,v84)
+  }
+  if (v65 == 201) { //0c5b
+    set.cel(o5,1)
+    force.update(o5)
+    v206 = 0
+    start.cycling(o6)
+    v200 = 0
+    drop(i19)
+    vCurrentScore += 5
+    print("She takes one look at the bottle of Spanish Fly and says, \"Boy, thanks! How did you know that I love this stuff?!\" She tosses down a couple of pills, then a few more, and finally gulps the whole bottle! Her breathing becomes faster and faster until she begins to pant.")
+    v67 = 6
+  }
+  if (v65 == 202) { //0c79
+    if (f206) { //0c80
+      set(f211)
+      v65--
+      set(f75)
+      goto(l3218)
+    }
+    v65 = 203
+  }
+l3218:
+  if (v65 == 203) { //0c92
+    set(f76)
+    print("(Looks like tonight's your lucky night, Larry.)")
+    start.update(o2)
+    set.loop(o2,1)
+    cycle.time(o2,v85)
+    end.of.loop(o2,f75)
+  }
+  if (v65 == 204) { //0ca8
+    cycle.time(o2,v84)
+    start.cycling(o2)
+    reposition.to(o2,139,146)
+    set.loop(o2,2)
+    fix.loop(o2)
+    move.obj(o2,129,156,2,f75)
+    release.priority(o2)
+    ignore.objs(o2)
+    force.update(o2)
+    print("\"So long!\" Faith says. \"I've got to find my boy friend before this stuff wears off!\"")
+  }
+  if (v65 == 205) { //0ccb
+    move.obj(o2,0,156,2,f75)
+  }
+  if (v65 == 206) { //0cd8
+    print("It appears Faith IS true to her name. Twisting her key in the lock, she disappears down the employee stairs.")
+    erase(o2)
+    v65 = 0
+  }
+  if (v65 == 241) { //0ce6
+    start.update(o7)
+    end.of.loop(o7,f75)
+  }
+  if (v65 == 242) { //0cf2
+    stop.update(o7)
+    set(f202)
+    start.motion(o0)
+    reset(f85)
+  }
+  if (v65 == 243) { //0d01
+    reset(f202)
+    start.update(o7)
+    reverse.loop(o7,f75)
+  }
+  if (v65 == 244) { //0d0f
+    v65 = 0
+    stop.update(o7)
+  }
+  if (v65 == 251) { //0d1b
+    reset(f202)
+    stop.update(o0)
+    start.update(o7)
+    reverse.loop(o7,f75)
+  }
+  if (v65 == 252) { //0d2b
+    if (!f77) { //0d32
+      set(f77)
+      print("Oh, oh. Where are we goin' now, Larry?")
+      vCurrentScore += 5
+    }
+    v76 = 44
+  }
+}
+if (f203) { //0d43
+  reset(f203)
+  stop.update(o7)
+}
+return()

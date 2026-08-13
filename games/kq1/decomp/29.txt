@@ -1,4 +1,164 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f75) { //000e
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0016
+    add.to.pic(62,0,0,80,66,0,0)
+  }
+  if (vPrevRoom == 20) { //0025
+    if (!f79) { //002c
+      set.view(o0,0)
+      reset(f98)
+    }
+  }
+  random(0,250,v62)
+  if (v62 < 185) { //003c
+    v32 = 2
+    step.size(o1,v32)
+    load.view(5)
+    load.view(116)
+    load.sound(1)
+    load.sound(17)
+    animate.obj(o1)
+    set.view(o1,5)
+    set(f20)
+  }
+  if (f20) { //0058
+l94:
+    random(0,250,v70)
+    if (v70 > 90) { //0062
+      goto(l94)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (f21 && f159) { //006f
+  if (!f25) { //0077
+    set(f25)
+    sound(17,f26)
+  }
+  if (f26) { //0083
+    reset(f25)
+    reset(f26)
+  }
+}
+v70--
+if (v70 == 1) { //008f
+  position(o1,40,140)
+  set(f21)
+  sound(1,f159)
+  draw(o1)
+  if (!f75) { //00a1
+    print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!")
+    follow.ego(o1,7,f156)
+  }
+  if (f75) { //00ae
+    wander(o1)
+    set(f22)
+    print("Be careful!  Nearby is a sorcerer.  His mystical powers can leave you immobilized and helpless!")
+    print("The sorcerer sees the goat and decides to leave.")
+  }
+}
+if (!f21) { //00bc
+  if (said("ANYWORD", "dwarf")) { //00c3
+    print("There's no sorcerer here.")
+  }
+  if (said("cast", "dagger") && f67 && !f75) { //00cf
+    print("OK.  But you just lost your dagger.")
+    reset(f67)
+    set(f70)
+    drop(i1)
+    vCurrentScore -= 5
+  }
+}
+if (f21) { //00e9
+  if (said("check", "dwarf")) { //00ef
+    print("This sorcerer exudes mystery and danger.")
+  }
+  if ((said("speak", "dwarf") || said("hello") || said("say", "hello"))) { //00fb
+    print("The sorcerer only speaks in the language of the Mystics.")
+  }
+}
+if (f156) { //0113
+  reset(f156)
+  if (f73) { //011b
+    print("This sorcerer's magic is no match for your fairy godmother's.")
+    wander(o1)
+    set(f22)
+    goto(l349)
+  }
+  if (f79) { //012a
+    print("Being invisible has protected you from this sorcerer.")
+    set(f27)
+    goto(l349)
+  }
+  if (f102) { //0137
+    print("The magic shield will protect you from this dangerous  sorcerer.")
+    wander(o1)
+    set(f22)
+    goto(l349)
+  }
+  set(f24)
+  v30 = 250
+  v31 = 2
+  program.control()
+  stop.motion(o0)
+  set.view(o1,116)
+  end.of.loop(o1,f23)
+  print("The sorcerer casts a spell, freezing you to the spot. I hope no dangerous creatures drop by!")
+  set(f145)
+  set(f146)
+}
+l349:
+if (f23) { //015d
+  reset(f23)
+  set.view(o1,5)
+  start.cycling(o1)
+  wander(o1)
+  set(f22)
+}
+if (f22 && vWhichObjBorder != 0) { //016e
+  erase(o1)
+  reset(f22)
+  reset(f21)
+}
+if (f27) { //017e
+  erase(o1)
+  reset(f27)
+  reset(f21)
+}
+v30--
+if (v30 == 0 && v31 > 0) { //018c
+  v31--
+  v30 = 250
+}
+if (v30 == 1 && v31 == 0) { //019b
+  reset(f24)
+  print("The sorcerer's spell has expired; now you can move  again.  Whew!")
+  start.motion(o0)
+  player.control()
+}
+if (f24) { //01ac
+  goto(l481)
+}
+if (vWhichEgoBorder == 1) { //01b5
+  new.room(36)
+}
+if (vWhichEgoBorder == 2) { //01be
+  new.room(30)
+}
+if (vWhichEgoBorder == 4) { //01c7
+  new.room(28)
+}
+if (vWhichEgoBorder == 3) { //01d0
+  new.room(20)
+}
+if (f75) { //01d9
+  call(103)
+}
+l481:
+return()

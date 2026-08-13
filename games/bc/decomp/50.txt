@@ -1,4 +1,205 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (!f79) { //000e
+    load.logic(112)
+    set(f201)
+    set(f34)
+    if (vPrevRoom == 49) { //001b
+      v30 = 60
+      v31 = 133
+      set(f37)
+      goto(l60)
+    }
+    v30 = 106
+    v31 = 150
+    if (vPrevRoom == 51) { //0033
+      set(f37)
+    }
+  }
+l60:
+  load.view(135)
+  load.view(109)
+  load.view(59)
+  load.view(27)
+  animate.obj(o2)
+  set.priority(o2,4)
+  set.view(o2,59)
+  position(o2,130,150)
+  if (f32) { //0050
+    set.cel(o2,1)
+    goto(l95)
+  }
+  set.cel(o2,0)
+l95:
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o10)
+  ignore.blocks(o10)
+  position(o10,70,98)
+  set.view(o10,135)
+  v61 = 2
+  cycle.time(o10,v61)
+  set.cel(o10,0)
+  draw(o10)
+  stop.update(o10)
+  animate.obj(o6)
+  ignore.objs(o6)
+  set.priority(o6,4)
+  position(o6,104,132)
+  set.view(o6,109)
+  if (f204) { //0089
+    last.cel(o6,v61)
+    set.cel(o6,v61)
+    goto(l155)
+  }
+  set.cel(o6,0)
+l155:
+  draw(o6)
+  stop.update(o6)
+  animate.obj(o1)
+  position(o1,2,62)
+  set.view(o1,27)
+  set.cel(o1,1)
+  draw(o1)
+  animate.obj(o3)
+  position(o3,33,61)
+  set.view(o3,27)
+  draw(o3)
+  if (vPrevRoom == 48) { //00b8
+    v38 = 80
+    v39 = 100
+    v103 = 2
+    goto(l267)
+  }
+  if (vPrevRoom == 49) { //00cb
+    v38 = 37
+    v39 = 126
+    v103 = 0
+    goto(l267)
+  }
+  if (vPrevRoom == 51) { //00de
+    v39 = 167
+    if (v38 < 27) { //00e8
+      v38 = 27
+    }
+    if (v38 > 121) { //00f2
+      v38 = 121
+    }
+    v103 = 3
+    goto(l267)
+  }
+  v38 = 95
+  v39 = 120
+  v103 = 1
+l267:
+  position(o0,38,v39)
+  set.loop(o0,v103)
+  draw(o0)
+  if (f201) { //0114
+    call(112)
+  }
+  show.pic()
+  if (f108 && vPrevRoom == 49) { //011d
+    print("Hen Wen is afraid of the dungeon and remains outside.")
+  }
+  return()
+}
+if (f130) { //0129
+  distance(o0,o6,v61)
+  if (v61 < 30) { //0133
+    print("You examine the grate. It is merely resting against the wall.")
+    set(f200)
+    goto(l350)
+  }
+  distance(o2,o0,v61)
+  if (v61 < 30) { //0145
+    if (f32) { //014c
+      print("You stare at the hook where the key ring used to hang.")
+      goto(l345)
+    }
+    print("There is a key ring full of keys hanging on the wall.")
+l345:
+    goto(l350)
+  }
+  print("You are in the dungeon of the Horned King. Be very careful!")
+}
+l350:
+if (!f128 && !f129) { //015e
+  goto(l518)
+}
+if (f129) { //016b
+  goto(l457)
+}
+distance(o0,o6,v61)
+if (v61 < 30) { //0178
+  set(fSaidAccepted)
+  if (!f200) { //0181
+    set(f200)
+    print("You examine the grate. It is merely resting against the wall.")
+    goto(l416)
+  }
+  start.update(o6)
+  end.of.loop(o6,f204)
+  if (!f57) { //0194
+    set(f57)
+    vCurrentScore += 6
+  }
+l416:
+  goto(l518)
+}
+distance(o2,o0,v61)
+if (v61 < 30) { //01a7
+  set(fSaidAccepted)
+  if (f32) { //01b0
+    print("You stare at the hook where the key ring used to hang.")
+    goto(l454)
+  }
+  set(f32)
+  get(i16)
+  set.cel(o2,1)
+  force.update(o2)
+  print("You take the key ring and its keys off the wall.")
+}
+l454:
+goto(l518)
+l457:
+if (v60 == 16) { //01c9
+  set(fSaidAccepted)
+  distance(o10,o0,v61)
+  if (v61 < 30) { //01d6
+    start.update(o10)
+    end.of.loop(o10,f202)
+    goto(l518)
+  }
+  distance(o2,o0,v61)
+  if (v61 > 30) { //01e9
+    print("There's no door nearby.")
+    goto(l518)
+  }
+  reset(f32)
+  drop(i16)
+  v60 = 0
+  v42 = 0
+  set.cel(o2,0)
+  force.update(o2)
+  print("You carefully replace the keys on the hook.")
+}
+l518:
+if (vWhichEgoBorder == 3) { //0206
+  new.room(51)
+}
+if (f202) { //020f
+  new.room(48)
+}
+if (f204) { //0217
+  new.room(60)
+}
+if (fTriggerLine) { //021f
+  new.room(49)
+}
+if (f201) { //0227
+  call(112)
+}
+return()

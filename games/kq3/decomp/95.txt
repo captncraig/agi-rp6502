@@ -1,3 +1,30 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x67)}
+display(0,0,"We be goin' mountain!")
+v36 = 0
+v128 = 20
+v83 = 0
+v84 = 0
+get(i6)
+get(i8)
+get(i9)
+get(i10)
+get(i39)
+get(i16)
+get(i20)
+get(i30)
+get(i33)
+get(i36)
+get(i37)
+get(i38)
+get(i40)
+get(i41)
+get(i42)
+get(i43)
+get(i49)
+get(i50)
+get(i51)
+get(i54)
+v63 = 0
+v62 = 5
+set(f51)
+new.room(51)
+return()

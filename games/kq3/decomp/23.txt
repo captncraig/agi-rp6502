@@ -1,4 +1,88 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v56 = 2
+  set(f66)
+  set.horizon(56)
+  v32 = 124
+  v31 = 129
+  random(1,3,v36)
+  if (v36 == 1) { //001e
+    v57 = 18
+    v58 = 76
+    goto(l68)
+  }
+  if (v36 == 2) { //002e
+    v57 = 74
+    v58 = 56
+    goto(l68)
+  }
+  v57 = 135
+  v58 = 131
+l68:
+  load.logic(111)
+  if (!f78) { //0046
+    random(1,3,v36)
+    if (v36 == 1) { //0051
+      set(f220)
+      load.logic(115)
+      v31 = 0
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0065
+    if (vPrevRoom == 18) { //006b
+      if (v40 > 24 && v40 < 70) { //0072
+        v40 = 62
+      }
+    }
+    if (vPrevRoom == 22) { //007f
+      if (v41 > 139 && v41 < 147) { //0086
+        v41 = 139
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //0097
+    draw(o0)
+  }
+  call(111)
+  if (f220) { //00a1
+    call(115)
+  }
+  show.pic()
+  return()
+}
+if (fEnteredCommand) { //00ab
+  if ((said("examine", "brush") || said("examine", "deck"))) { //00b1
+    print("The soft grass soothes your aching feet.")
+  }
+  if ((said("examine", "bluff") || said("examine", "top", "bluff"))) { //00c5
+    print("A lone mountain rises sharply from the forest floor, its jagged peak encircled by dark clouds. A treacherous path winds its way up the steep mountainside. You, and the wizard Manannan, live at the top of the peak.")
+  }
+  if ((said("examine", "path") || said("examine", "path", "bluff") || said("examine", "bluff", "path"))) { //00db
+    print("The dangerous, winding path leads up the side of the dark mountain.")
+  }
+  if ((said("climb") || said("climb", "bluff"))) { //00f9
+    print("You need to be closer to the mountain for that.")
+  }
+}
+call(111)
+if (f220) { //010d
+  call(115)
+}
+if (vWhichEgoBorder == 3) { //0115
+  new.room(28)
+}
+if (vWhichEgoBorder == 1) { //011e
+  new.room(18)
+}
+if (vWhichEgoBorder == 4) { //0127
+  new.room(22)
+}
+if (vWhichEgoBorder == 2) { //0130
+  new.room(24)
+}
+return()

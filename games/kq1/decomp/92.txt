@@ -1,3 +1,41 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(1,1,"              KING'S QUEST")
+display(2,1,"                 Help")
+if (vComputerType == ATARI_ST) { //0012
+  display(4,1,"    F1 or HELP displays this message.")
+  display(11,1,"   ESC activates the menus. (see below)")
+  display(14,1,"     = for swimming (see below)")
+  display(15,1,"Ctrl-J toggles joystick/mouse.")
+  display(17,1,"Clicking the joystick button or the\n right mouse button also activates\n the menus.")
+  display(21,1,"Double-clicking the joystick button\n or the right mouse button also\n initiates swimming.")
+  goto(l68)
+}
+display(4,1,"    F1 displays this message.")
+display(11,1,"   ESC activates the menus.")
+display(14,1,"     = for swimming")
+display(15,1,"Ctrl-J sets up your joystick.")
+l68:
+display(5,1,"    F2 turns the sound off and on.")
+display(6,1,"    F3 retypes the last line typed.")
+display(7,1,"    F5 saves your current game.")
+display(8,1,"    F7 restores a saved game.")
+display(9,1,"    F9 restarts the game.")
+display(10,1,"   TAB shows the status screen.")
+display(12,1,"     0 for jumping")
+display(13,1,"     - for ducking")
+if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //0064
+  display(16,1,"Ctrl-R toggles graphics mode.")
+}
+l119:
+if (!(have.key())) { //0077
+  goto(l119)
+}
+accept.input()
+status.line.on()
+graphics()
+set(fSaidAccepted)
+return()

@@ -1,4 +1,515 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((v76 > 0 || v75 > 0) && vPrevRoom == 7) { //0008
+    v72 = vPrevRoom
+    new.room(87)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 108
+  v58 = 121
+  v31 = 0
+  v101 = 0
+  load.logic(104)
+  load.logic(103)
+  v34 = 166
+  set.horizon(93)
+  random(1,2,v36)
+  if (has(i8) && v36 == 1 && (!f135 || !f136 || !f137 || !f138)) { //003f
+l86:
+    random(1,4,v36)
+    if (v36 == 1) { //005a
+      if (f135) { //0061
+        goto(l86)
+        goto(l118)
+      }
+      v232 = 135
+      v229 = 33
+      v230 = 35
+    }
+l118:
+    if (v36 == 2) { //0076
+      if (f136) { //007d
+        goto(l86)
+        goto(l146)
+      }
+      v232 = 136
+      v229 = 36
+      v230 = 37
+    }
+l146:
+    if (v36 == 3) { //0092
+      if (f137) { //0099
+        goto(l86)
+        goto(l174)
+      }
+      v232 = 137
+      v229 = 38
+      v230 = 39
+    }
+l174:
+    if (v36 == 4) { //00ae
+      if (f138) { //00b5
+        goto(l86)
+        goto(l202)
+      }
+      v232 = 138
+      v229 = 40
+      v230 = 43
+    }
+l202:
+    random(3,10,v226)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(96)
+  load.view(11)
+  load.view(205)
+  load.view(206)
+  load.view(21)
+  load.view(20)
+  animate.obj(o3)
+  position(o3,38,129)
+  set.view(o3,96)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  draw(o3)
+  stop.update(o3)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,92,129)
+  set.view(o4,96)
+  set.loop(o4,1)
+  set.cel(o4,0)
+  set.priority(o4,10)
+  draw(o4)
+  stop.update(o4)
+  animate.obj(o1)
+  position(o1,123,123)
+  set.view(o1,205)
+  draw(o1)
+  wander(o1)
+  v222 = 33
+  animate.obj(o2)
+  position(o2,120,133)
+  set.view(o2,205)
+  draw(o2)
+  wander(o2)
+  v221 = 44
+  animate.obj(o5)
+  set.view(o5,21)
+  set.loop(o5,1)
+  set.cel(o5,0)
+  set.priority(o5,10)
+  position(o5,97,114)
+  ignore.objs(o5)
+  ignore.blocks(o5)
+  if (v44 == 30) { //0143
+    set(f48)
+  }
+  if (f48) { //014c
+    if (vPrevRoom == 7) { //0152
+      position(o0,39,131)
+      goto(l370)
+    }
+    if (vPrevRoom == 33) { //0160
+      position(o0,57,167)
+      goto(l370)
+    }
+    position(o0,57,v58)
+  }
+l370:
+  if (f47) { //0172
+    draw(o0)
+  }
+  observe.blocks(o0)
+  call(104)
+  reset(f34)
+  call(103)
+  show.pic()
+  return()
+}
+v39 = 0
+if (posn(o0,32,130,47,137)) { //0187
+  v39 = 3
+  goto(l452)
+}
+if (posn(o0,87,101,98,106)) { //0197
+  v39 = 2
+  goto(l452)
+}
+if (posn(o0,93,116,100,135)) { //01a7
+  v39 = 4
+  goto(l452)
+}
+if (posn(o0,81,116,87,135)) { //01b7
+  v39 = 5
+}
+l452:
+if (!fEnteredCommand) { //01c4
+  goto(l1677)
+}
+if ((said("examine", "bluff") || said("examine") || said("examine", "area") || said("examine", "abominable"))) { //01ce
+  print("The lone mountain rises from the forests of Llewdor to this cloud-encircled peak. Here is the somber house of Manannan, where you and he reside.")
+}
+if ((said("examine", "path") || said("examine", "down", "path"))) { //01ec
+  print("The treacherous path is the only route down the mountain. If you are contemplating taking it, you should be very cautious.")
+}
+if ((said("examine", "forest") || said("examine", "flower") || said("capture", "flower") || said("climb", "forest") || said("examine", "brush"))) { //0202
+  print("The foliage is very scant on this steep mountainside.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //0228
+  print("The sky is dark here due to the swirling clouds surrounding this summit.")
+}
+if ((said("examine", "cloud") || said("examine", "up", "cloud") || said("examine", "sky") || said("examine", "cloud", "sky") || said("examine", "up", "cloud", "sky"))) { //023e
+  print("Dark clouds surround this peak adding a cold, sinister feeling to this lonely mountain.")
+}
+if ((said("climb", "bluff") || said("climb", "down", "bluff"))) { //026c
+  print("The mountain is too steep to climb. Use the path.")
+}
+if (said("examine", "deck")) { //0282
+  print("The ground is hard and rocky on this lonely mountaintop.")
+}
+if ((said("examine", "building") || said("examine", "glass") || said("look in", "glass") || said("examine", "glass", "building"))) { //028e
+  print("This is the gloomy home of Manannan, the evil wizard who is your master.")
+}
+if ((said("examine", "door") || said("examine", "door", "building"))) { //02b0
+  print("The door of the wizard's house is closed at the moment.")
+}
+if ((said("bang", "door") || said("bang", "door", "building") || said("bang", "on", "door") || said("bang", "on", "building", "door"))) { //02c6
+  print("Why don't you just open it; you DO live here.")
+}
+if ((said("lift", "door") || said("lift", "door", "building"))) { //02ee
+  if (v39 == 3) { //0302
+    if (!f46) { //0309
+      set(f46)
+      start.update(o3)
+      end.of.loop(o3,f222)
+      goto(l796)
+    }
+    print("Not now!")
+l796:
+    goto(l801)
+  }
+  print("Your arms are not long enough to reach it from here.")
+}
+l801:
+if ((said("examine", "bird") || said("examine", "bird", "cage") || said("examine", "cage") || said("look in", "cage") || said("look in", "bird", "cage") || said("examine", "inside", "cage"))) { //0321
+  if (!(v225 > 0)) { //0351
+    print("A couple of chickens strut about their chicken coop. As all chickens do, they peck, scratch, and cluck. The poor things; they will end up as the old wizard's dinner one day. %m25")
+    goto(l864)
+  }
+  print("The chicken struggles in your arms, trying to peck you. Apparently, it doesn't enjoy being held.")
+}
+l864:
+if (said("call", "bird")) { //0360
+  print("The chickens pay no attention to you.")
+}
+if (said("kill", "bird")) { //036c
+  print("You never were very good at doing that. You'd really rather not.")
+}
+if (has(i8) && said("hear", "bird")) { //0378
+  print("Shhh.  If you're quiet, perhaps you'll hear them.")
+}
+if ((said("examine", "gate") || said("examine", "gate", "cage"))) { //0386
+  print("The gate is closed.")
+}
+if ((said("lift", "gate") || said("lift", "gate", "cage"))) { //039c
+  if (v39 != 5 && v39 != 4) { //03b0
+    print("Your arms are not long enough to reach it from here.")
+    goto(l977)
+  }
+  if (v225 > 0) { //03c1
+    set(f221)
+    print("The chicken flies out of your grasp, and again struts around the coop.")
+  }
+  set(f122)
+  v224 = 0
+}
+l977:
+if ((said("capture", "bird") || said("capture", "bird"))) { //03d1
+  if (!f227) { //03e3
+    print("You cannot reach the chickens.")
+    goto(l1087)
+  }
+  if (v225 > 0) { //03ef
+    print("What's wrong with the chicken you're holding?")
+    goto(l1087)
+  }
+  distance(o1,o0,v36)
+  if (v36 < 10) { //03ff
+    get.posn(o1,v227,v228)
+    v225 = 1
+    erase(o1)
+  }
+  if (!(v225 > 0)) { //040f
+    distance(o2,o0,v36)
+    if (v36 < 10) { //041b
+      get.posn(o2,v227,v228)
+      v225 = 2
+      erase(o2)
+    }
+  }
+  if (!(v225 > 0)) { //042b
+    print("The little varmint scoots out of reach.")
+    goto(l1087)
+  }
+  set(f46)
+  set.view(o0,20)
+  print("Gotcha! You've managed to catch a chicken. But, what are you going to do with it?")
+}
+l1087:
+if (v225 > 0 && (said("add", "bird") || said("add", "bird", "down") || said("throw", "bird"))) { //043f
+  set(f221)
+}
+if ((said("capture", "feather") || said("capture", "feather", "from", "bird") || said("capture", "bird", "feather") || said("pluck", "bird") || said("pluck", "feather") || said("pluck", "bird", "feather") || said("pluck", "feather", "from", "bird") || said("move", "feather") || said("move", "bird", "feather") || said("move", "feather", "from", "bird"))) { //045e
+  if (!(obj.in.room(i1,vCurrentRoom))) { //04b2
+    print("You already took a chicken feather.")
+    goto(l1237)
+  }
+  if (!(v225 > 0)) { //04bf
+    print("You have to catch a chicken first.")
+    goto(l1237)
+  }
+  get(i1)
+  vCurrentScore += 1
+  set(f221)
+  print("Tucking the chicken firmly under one arm, you gently pluck a small feather, then let it go.")
+}
+l1237:
+if ((said("examine", "bag") || said("look in", "bag") || said("examine", "feed", "bag") || said("look in", "feed", "bag") || said("examine", "bag", "feed") || said("look in", "bag", "feed") || said("examine", "bird", "feed", "bag") || said("look in", "bird", "feed", "bag") || said("examine", "bag", "bird", "feed") || said("look in", "bag", "bird", "feed"))) { //04d5
+  if (v39 != 2) { //052f
+    print("There is a bag of chicken feed behind the fence, beside the chicken coop.")
+    goto(l1342)
+  }
+  print("The bag behind the fence is full of chicken feed.")
+}
+l1342:
+if (said("drink", "bird")) { //053e
+  print("Sorry, Colonel; they're not even dead yet!")
+}
+if ((said("capture", "feed") || said("capture", "feed", "bag") || said("capture", "feed", "from", "bag") || said("capture", "flour") || said("capture", "flour", "bag") || said("capture", "flour", "from", "bag") || said("capture", "bird", "feed") || said("capture", "bird", "feed", "bag") || said("capture", "bird", "feed", "from", "bag"))) { //054a
+  print("You only need the chicken feed if you want to feed the chickens.")
+}
+if ((said("feed", "bird") || said("capture", "feed", "feed", "bird") || said("capture", "bird", "feed", "feed", "bird") || said("feed", "bird", "feed") || said("feed", "feed", "bird") || said("capture", "feed", "throw", "bird") || said("throw", "feed", "bird") || said("feed", "feed") || said("throw", "feed") || said("capture", "bird", "feed", "feed", "bird") || said("feed", "bird", "bird", "feed") || said("feed", "bird", "feed", "bird") || said("capture", "bird", "feed", "throw", "bird") || said("throw", "bird", "feed", "bird") || said("feed", "bird", "feed") || said("throw", "bird", "feed"))) { //05a0
+  if (v39 != 2) { //0636
+    print("You can't reach it from here.")
+    goto(l1677)
+  }
+  if (f46) { //0643
+    print("Not now!")
+    goto(l1677)
+  }
+  set(f46)
+  program.control()
+  stop.motion(o0)
+  reposition.to(o0,95,104)
+  v220 = 0
+  set(f228)
+  set(f35)
+  set.view(o0,21)
+  set.loop(o0,0)
+  v36 = 2
+  cycle.time(o0,v36)
+  v222 = 0
+  v221 = 0
+  follow.ego(o1,8,f223)
+  follow.ego(o2,10,f224)
+  ignore.objs(o2)
+  v223 = 17
+  if (v137 == 5) { //067d
+    v137 = 0
+    v110 = 0
+    v109 = 0
+  }
+}
+l1677:
+if (f45) { //068d
+  v223--
+  if (v223 == 1) { //0695
+    v223 = 0
+    v231 = 11
+    set.view(o0,0)
+    start.motion(o0)
+    reset(f35)
+    player.control()
+    reset(f46)
+    cycle.time(o0,v59)
+    reset(f228)
+    v220 = 0
+    reset(f7)
+    erase(o5)
+  }
+  v231--
+  if (v231 == 1) { //06ba
+    reset(f225)
+    reset(f226)
+    observe.objs(o1)
+    observe.objs(o2)
+    v222 = 2
+    v221 = 2
+  }
+}
+if (v223 > 0) { //06cf
+  if (f228) { //06d6
+    reset(f228)
+    v220++
+    if (v220 == 1) { //06e0
+      set.cel(o0,0)
+      set(f35)
+      end.of.loop(o0,f228)
+    }
+    if (v220 == 2) { //06ef
+      reset(f35)
+      set.cel(o5,0)
+      draw(o5)
+      end.of.loop(o5,f228)
+    }
+    if (v220 == 3) { //0700
+      v67 = 21
+      v64 = 2
+      v65 = 0
+      random(93,99,v37)
+      random(111,116,v38)
+      v66 = 10
+      v36 = 4
+      add.to.pic(v67,v64,v65,v37,v38,v66,v36)
+      v220 = 0
+      set(f228)
+      set(f7)
+    }
+  }
+}
+if (f223) { //072d
+  reset(f223)
+  stop.motion(o1)
+  set(f225)
+  set.view(o1,206)
+}
+if (f224) { //073c
+  reset(f224)
+  stop.motion(o2)
+  set(f226)
+  set.view(o2,206)
+  observe.objs(o2)
+}
+v222--
+if (v222 == 22) { //074f
+  normal.motion(o1)
+  stop.motion(o1)
+  set.view(o1,206)
+}
+if (v222 == 1) { //075d
+  v222 = 33
+  set.view(o1,205)
+  wander(o1)
+}
+v221--
+if (v221 == 15) { //076e
+  normal.motion(o2)
+  stop.motion(o2)
+  set.view(o2,206)
+}
+if (v221 == 1) { //077c
+  v221 = 44
+  set.view(o2,205)
+  wander(o2)
+}
+if (f45 && v229 > 0 && v44 == 0 && v47 == v226) { //078b
+  v226 = 0
+  set(v232)
+l1951:
+  print(v229)
+  if (v229 < v230) { //07a1
+    v229++
+    goto(l1951)
+  }
+}
+if (f122) { //07ad
+  reset(f122)
+  v224++
+  program.control()
+  if (v224 == 1) { //07b8
+    start.update(o4)
+    end.of.loop(o4,f41)
+    ignore.blocks(o0)
+    set(f46)
+    if (v39 == 5) { //07c8
+      v233 = 84
+      v234 = 125
+      v235 = 96
+      v236 = 125
+      set(f227)
+      goto(l2037)
+    }
+    if (v39 == 4) { //07e0
+      v233 = 96
+      v234 = 125
+      v235 = 84
+      v236 = 125
+      reset(f227)
+    }
+l2037:
+    v69 = 1
+    move.obj(o0,v233,v234,69,f122)
+  }
+  if (v224 == 2) { //07fe
+    move.obj(o0,v235,v236,69,f122)
+  }
+  if (v224 == 3) { //080b
+    observe.blocks(o0)
+    reverse.loop(o4,f122)
+  }
+  if (v224 == 4) { //0817
+    reset(f46)
+    player.control()
+    v224 = 0
+  }
+}
+if (f222) { //0824
+  reset(f222)
+  reset(f46)
+  set(f220)
+}
+if (fTriggerLine) { //0830
+  v33 = 6
+  if (v41 < 138) { //0839
+    set.priority(o0,5)
+    v34 = 146
+    goto(l2127)
+  }
+  set.priority(o0,14)
+  v34 = 166
+l2127:
+  call(103)
+}
+if (f221) { //0851
+  reset(f221)
+  reset(f46)
+  set.view(o0,0)
+  force.update(o0)
+  if (v225 == 1) { //0860
+    position(o1,227,v228)
+    draw(o1)
+    goto(l2166)
+  }
+  position(o2,227,v228)
+  draw(o2)
+l2166:
+  v225 = 0
+}
+if (f33) { //0879
+  set(f227)
+}
+call(104)
+call(103)
+if (f220) { //0885
+  new.room(7)
+}
+if (vWhichEgoBorder == 3) { //088d
+  new.room(33)
+}
+return()

@@ -1,4 +1,160 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(99)
+  v87 = 0
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f60) { //0013
+    load.logic(116)
+    set(f202)
+  }
+  set(f97)
+  if (f83) { //001f
+    load.logic(118)
+    set(f203)
+  }
+  if (vPrevRoom == 52 && !f84) { //0029
+    set(f83)
+    load.view(70)
+    load.view(101)
+  }
+  load.sound(2)
+  load.sound(11)
+  load.view(6)
+  load.view(7)
+  load.view(124)
+  animate.obj(o2)
+  set.view(o2,124)
+  set.cel(o2,1)
+  position(o2,2,79)
+  ignore.horizon(o2)
+  animate.obj(o3)
+  set.view(o3,124)
+  position(o3,128,79)
+  ignore.horizon(o3)
+  if (vPrevRoom == 52) { //005c
+    position(o0,112,70)
+    ignore.horizon(o0)
+    set.priority(o0,10)
+    set(f168)
+    ignore.blocks(o0)
+    set.view(o0,6)
+    v61 = 3
+    step.size(o0,v61)
+    sound(2,f61)
+    goto(l162)
+  }
+  if (vPrevRoom == 60) { //007f
+    position(o0,130,136)
+    if (f60) { //008a
+      start.motion(o8)
+      start.cycling(o8)
+    }
+    goto(l162)
+  }
+  if (vPrevRoom == 56) { //0097
+    position(o0,113,100)
+  }
+l162:
+  draw(o2)
+  draw(o3)
+  draw(o0)
+  if (vPrevRoom == 52) { //00a8
+    move.obj(o0,112,120,3,f201)
+    if (!f84) { //00b5
+      v204 = 60
+    }
+  }
+  if (!f47) { //00bf
+    set(f47)
+    vCurrentScore += 10
+  }
+  if (f202) { //00cb
+    call(116)
+  }
+  if (f203) { //00d3
+    call(118)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //00dd
+  print("You are in the secret passageways below the Horned King's dungeon.")
+}
+if (!f128 && !f129) { //00e5
+  goto(l289)
+}
+if (f129) { //00f2
+  goto(l289)
+}
+if (v202 == 1) { //00fb
+  print("\"I'm Taran, Assistant Pig-Keeper of Caer Dallben,\" you respond.")
+  v203 = 30
+  set(fSaidAccepted)
+  v202++
+  goto(l289)
+}
+if (v202 == 3) { //010e
+  print("\"What is down here?  Could there be a way to escape?\"")
+  v203 = 30
+  set(fSaidAccepted)
+  v202++
+  goto(l289)
+}
+l289:
+if (f201) { //0121
+  reset(f201)
+  reset(f168)
+  observe.blocks(o0)
+  set(f169)
+  observe.horizon(o0)
+  set.view(o0,7)
+  stop.motion(o0)
+  set(f133)
+  release.priority(o0)
+  v87 = 50
+  set(f106)
+}
+v87--
+if (v87 == 1) { //0141
+  set.view(o0,0)
+  v61 = 1
+  step.size(o0,v61)
+  start.motion(o0)
+  reset(f133)
+}
+if (f106 && v87 > 0) { //0155
+  sound(11,f106)
+}
+v204--
+if (v204 == 1) { //0163
+  set(f84)
+  print("You fall into a hallway below the Horned King's dungeon. There is a beautiful girl here who says, \"Oh, hello! You must be a Prince or a great warrior. I'm Princess Eilonwy, and this is my magic bauble.\"")
+  v202 = 1
+}
+v203--
+if (v203 == 1) { //0173
+  if (v202 == 2) { //017a
+    print("\"That's too bad. I was hoping for a great hero to get me out of this dismal place. Oh, well.\"")
+  }
+  if (v202 == 4) { //0183
+    print("\"No, I think not,\" Eilonwy replies, \"but there are many tunnels. Perhaps together we could find a way to escape!\"")
+  }
+  v202++
+}
+if (vWhichEgoBorder == 1) { //018e
+  new.room(56)
+}
+if (vWhichEgoBorder == 4) { //0197
+  new.room(58)
+}
+if (fTriggerLine) { //01a0
+  new.room(60)
+}
+if (f203) { //01a8
+  call(118)
+}
+if (f202) { //01b0
+  call(116)
+}
+return()

@@ -1,4 +1,236 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 74) { //000e
+    get.posn(o0,v60,v61)
+    v60 += 150
+    position(o0,60,v61)
+  }
+  if (vPrevRoom == 76) { //0020
+    position(o0,34,125)
+  }
+  ignore.objs(o0)
+  load.view(95)
+  if (!f138) { //002f
+    load.sound(1)
+    load.view(45)
+    animate.obj(o1)
+    set.view(o1,45)
+    position(o1,36,127)
+    set(f20)
+    follow.ego(o1,15,f21)
+    observe.blocks(o1)
+    v30 = 3
+    step.size(o1,v30)
+  }
+  load.sound(19)
+  load.view(46)
+  animate.obj(o2)
+  set.view(o2,46)
+  if (vPrevRoom == 76) { //005a
+    set.cel(o2,5)
+    goto(l106)
+  }
+  set.cel(o2,0)
+l106:
+  ignore.blocks(o2)
+  set.priority(o2,9)
+  position(o2,25,119)
+  draw(o2)
+  if (f20) { //0075
+    draw(o1)
+  }
+  draw(o0)
+  show.pic()
+  if (vPrevRoom == 76) { //0080
+    reverse.loop(o2,f203)
+    sound(19,f148)
+    goto(l146)
+  }
+  stop.update(o2)
+}
+l146:
+if (f203) { //0092
+  reset(f203)
+  stop.update(o2)
+}
+if (f20) { //009c
+  reset(f20)
+  sound(1,f148)
+}
+if (posn(o0,0,0,54,167)) { //00a7
+  observe.blocks(o0)
+  goto(l184)
+}
+ignore.blocks(o0)
+l184:
+if (f79 && !f22) { //00b8
+  set(f22)
+  print("Being invisible won't hide you from this rat's keen sense of smell.")
+}
+if (f138) { //00c5
+  if ((said("ANYWORD", "rat") || said("ANYWORD", "mouse"))) { //00cb
+    print("There is no rat here.")
+  }
+  if ((said("check", "cave") || said("check", "room"))) { //00df
+    print("It is very dark and dreary in here.")
+  }
+}
+if (!f138) { //00f3
+  distance(o0,o1,v70)
+  if (said("check", "rat")) { //00fe
+    print("It is a big rat with dripping teeth and small, greedy eyes.")
+  }
+  if ((said("check", "cave") || said("check", "room"))) { //010a
+    print("It is very dark and dreary.  The rat seems to like it here.")
+  }
+  if (said("check", "mouse")) { //011e
+    print("This is no mouse, this is a big, ugly rat!")
+  }
+  if (said("pet", "rat")) { //012a
+    print("What!  Are you crazy?")
+  }
+  if (said("kill", "rat")) { //0136
+    print("You can't.  He moves too quickly.")
+  }
+  if ((said("speak", "rat") || said("hello") || said("say", "hello"))) { //0142
+    print("The rat rasps, \"Treasure!  Treasure!  Give treasure, or no go door!  Give treasure NOW!\"")
+  }
+  if ((said("give", "treasure") || said("give", "rat", "treasure") || said("give", "treasure", "rat"))) { //015a
+    print("What kind of treasure would you like to give the  greedy rat?")
+  }
+  if (!f106) { //0178
+    if ((said("give", "bag") || said("give", "rat", "bag") || said("give", "bag", "rat"))) { //017f
+      if (f72 && v70 < 35) { //019b
+        print("The rat doesn't want a tattered pouch.")
+        goto(l427)
+      }
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+    }
+  }
+l427:
+  if (f106) { //01ab
+    if ((said("give", "diamond") || said("give", "rat", "diamond") || said("give", "diamond", "rat") || said("give", "bag") || said("give", "rat", "bag") || said("give", "bag", "rat"))) { //01b1
+      if (f106 && v70 > 15 && v70 < 35) { //01e3
+        print("The huge rat takes the treasure you have offered and scuttles away.")
+        move.obj(o1,46,105,0,f24)
+        drop(i15)
+        reset(f106)
+        set(f107)
+        vCurrentScore -= 6
+        goto(l517)
+      }
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+    }
+  }
+l517:
+  if ((said("give", "egg") || said("give", "rat", "egg") || said("give", "egg", "rat"))) { //0205
+    if (f110 && v70 > 15 && v70 < 35) { //0221
+      print("The huge rat takes the treasure you have offered and scuttles away.")
+      move.obj(o1,46,105,0,f24)
+      drop(i20)
+      reset(f110)
+      set(f111)
+      vCurrentScore -= 6
+      goto(l579)
+    }
+    print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+  }
+l579:
+  if ((said("give", "gold nut") || said("give", "rat", "gold nut") || said("give", "gold nut", "rat"))) { //0243
+    if (f127) { //025f
+      if (v70 > 15 && v70 < 35) { //0265
+        print("The rat doesn't want an ordinary walnut.")
+        goto(l630)
+      }
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+    }
+l630:
+    if (f108) { //0276
+      if (v70 > 15 && v70 < 35) { //027c
+        print("The huge rat takes the treasure you have offered and scuttles away.")
+        move.obj(o1,46,105,0,f24)
+        drop(i4)
+        reset(f108)
+        set(f109)
+        vCurrentScore -= 6
+        goto(l668)
+      }
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+    }
+  }
+l668:
+  if ((said("give", "sceptre") || said("give", "rat", "sceptre") || said("give", "sceptre", "rat"))) { //029c
+    if (f113 && v70 > 15 && v70 < 35) { //02b8
+      print("The huge rat takes the treasure you have offered and scuttles away.")
+      move.obj(o1,46,105,0,f24)
+      drop(i17)
+      reset(f113)
+      set(f114)
+      vCurrentScore -= 6
+      goto(l730)
+    }
+    print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+  }
+l730:
+  if ((said("give", "cheese") || said("give", "rat", "cheese") || said("give", "cheese", "rat") || said("feed", "cheese") || said("feed", "rat", "cheese") || said("feed", "cheese", "rat"))) { //02da
+    if (!f139) { //030c
+      print("That is a good idea, but you do not have any cheese.")
+    }
+    if (f139) { //0315
+      if (v70 > 15 && v70 < 35) { //031b
+        print("The rat drools at the sight of the cheese... and snatches it from your hand.  You might want to count your fingers.")
+        move.obj(o1,46,105,0,f24)
+        drop(i18)
+        reset(f139)
+        set(f140)
+        vCurrentScore -= 2
+        vCurrentScore += 4
+        goto(l830)
+      }
+      print("It appears you are afraid of the rat!  You must get closer to give anything to this rat!")
+    }
+  }
+}
+l830:
+if (f24) { //033e
+  reset(f24)
+  erase(o1)
+  set(f138)
+  print("The rat scrambles to the wall and seems to magically merge with it.")
+}
+if ((said("count", "finger") || said("check", "finger"))) { //034c
+  print("You count your fingers and are relieved to see you still have all of them.")
+}
+if (f21) { //0360
+  set.view(o0,95)
+  print("Be careful around this rat next time!  He's dangerous!!")
+  wander(o1)
+  set(f63)
+}
+distance(o0,o2,v71)
+if (said("open", "door")) { //0373
+  if (v71 < 25) { //037d
+    start.update(o2)
+    sound(19,f148)
+    print("The door slowly opens.")
+    end.of.loop(o2,f23)
+    goto(l915)
+  }
+  print("Get closer if you want to try.")
+}
+l915:
+if (f23) { //0393
+  new.room(76)
+}
+if (said("close", "door")) { //039b
+  print("It is already closed.")
+}
+if (said("check", "door")) { //03a7
+  print("The door is closed.")
+}
+if (vWhichEgoBorder == 2) { //03b3
+  new.room(74)
+}
+return()

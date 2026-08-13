@@ -34,14 +34,14 @@ func decompile(in []byte, name string) ([]byte, error) {
 	in = in[2:]
 	msgs := in[msgPtr:]
 	messages = parseMessages(msgs)
-	fmt.Printf("%d msgs\n", len(messages))
 	in = in[:msgPtr]
 	totalLen = len(in)
 
 	jumpTargets = map[int]bool{}
-	if err := decompileStmts(in, 0, io.Discard, 2); err != nil {
-		return nil, err
-	}
+	// Errors here are ignored: this pass only exists to collect jump targets
+	// for the real pass below, and whatever targets it found before failing
+	// are still useful. The real error (if any) comes from the second pass.
+	decompileStmts(in, 0, io.Discard, 2)
 
 	buf := bytes.Buffer{}
 	err := decompileStmts(in, 0, &buf, 2)
@@ -329,7 +329,7 @@ func decompTest(in []byte, idx int, w io.Writer) (int, error) {
 			num := uint16(get()) | uint16(get())<<8
 			args = append(args, wordNum(num))
 		}
-		writeLine(0, w, strings.Join(args, ", "))
+		writeLine(0, w, "%s", strings.Join(args, ", "))
 		writeLine(0, w, ")")
 	case 0xfd:
 		// special case: !(x == y) reads better as x != y
@@ -440,6 +440,7 @@ func main() {
 		gameDir := filepath.Join(gamesDir, e.Name())
 		if err := decompileGame(e.Name(), gameDir); err != nil {
 			fmt.Fprintf(os.Stderr, "%s: %v\n", e.Name(), err)
+			return
 		}
 	}
 }
@@ -477,16 +478,17 @@ func decompileGame(name, dir string) error {
 		}
 
 		out, decompErr := decompile(data, inPath)
-		if decompErr != nil {
-			fmt.Fprintf(os.Stderr, "  %s: %s: %v\n", name, e.Name(), decompErr)
-		}
 
 		outPath := filepath.Join(outDir, num+".txt")
-		if err := os.WriteFile(outPath, out, 0o644); err != nil {
-			return fmt.Errorf("writing %s: %w", outPath, err)
+		if len(out) > 0 {
+			if err := os.WriteFile(outPath, out, 0o644); err != nil {
+				return fmt.Errorf("writing %s: %w", outPath, err)
+			}
 		}
+
 		if decompErr != nil {
-			break
+			fmt.Fprintf(os.Stderr, "  %s: %s: %v\n", name, e.Name(), decompErr)
+			return decompErr
 		}
 
 	}

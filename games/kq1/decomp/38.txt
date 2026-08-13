@@ -1,4 +1,207 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(40)
+  load.sound(4)
+  load.sound(5)
+  if (f75) { //0014
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //001c
+    add.to.pic(62,0,0,36,84,0,0)
+  }
+  if ((f154 || v80 == 38)) { //002b
+    v92 = 84
+    set(f155)
+    load.pic(v92)
+    load.view(114)
+    load.view(103)
+    load.view(104)
+    load.view(74)
+    load.view(105)
+    load.logic(104)
+    load.sound(12)
+  }
+  if (vPrevRoom == 70 && f157) { //004b
+    set.view(o0,74)
+    position(o0,64,41)
+    move.obj(o0,64,41,0,f148)
+    set.priority(o0,8)
+  }
+  if (vPrevRoom == 70 && f158) { //0064
+    program.control()
+    ignore.horizon(o0)
+    set.priority(o0,15)
+    set.view(o0,105)
+    get.posn(o0,v60,v61)
+    if (v60 > 75) { //007a
+      position(o0,80,29)
+      goto(l140)
+    }
+    position(o0,65,29)
+l140:
+    get.posn(o0,v60,v61)
+    v61 = 106
+    v96 = 2
+    move.obj(o0,v60,v61,96,f22)
+  }
+  if (v80 == 38) { //009c
+    overlay.pic(v92)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "room")) { //00a8
+  print("Numerous flowers are growing in the fertile soil.")
+}
+if (f158 && !f23) { //00b4
+  set(f23)
+  set(f135)
+  sound(5,f24)
+}
+if (f22) { //00c4
+  stop.sound()
+  set(f23)
+  reset(f158)
+  reset(f135)
+  set.view(o0,114)
+  shake.screen(2)
+  set(f63)
+}
+if (said("check", "blossom")) { //00d8
+  print("What a pretty bed of wild flowers.")
+}
+if (said("smell", "blossom")) { //00e4
+  if (posn(o0,60,61,117,113)) { //00ee
+    print("The flowers' fragrance is enticing.")
+    goto(l255)
+  }
+  print("You will have to move closer to do that.")
+}
+l255:
+if (said("acquire", "blossom")) { //00ff
+  if (posn(o0,60,61,117,113)) { //0109
+    print("It would be a shame to pick the lovely wild flowers.")
+    goto(l282)
+  }
+  print("You will have to move closer to do that.")
+}
+l282:
+if (f154 && f155) { //011a
+  if (said("bury", "bean")) { //0122
+    reset(f154)
+    v80 = 38
+    set(f94)
+    drop(i25)
+    vCurrentScore += 2
+    print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!")
+    sound(12,f25)
+    overlay.pic(v92)
+    show.pic()
+  }
+}
+if (v80 == 38 && !f79) { //0140
+  if (said("climb", "beanstalk") && !f157) { //014a
+    if (posn(o0,52,76,103,97)) { //0157
+      erase(o0)
+      set.view(o0,74)
+      set(f157)
+      position(o0,71,77)
+      set.priority(o0,8)
+      draw(o0)
+      move.obj(o0,71,77,0,f148)
+      goto(l380)
+    }
+    print("You can't reach the beanstalk from here.")
+  }
+}
+l380:
+if (v80 != 38) { //017c
+  if (said("climb", "beanstalk")) { //0184
+    print("There is no beanstalk here to climb.")
+  }
+}
+if (f157) { //0190
+  if (fTriggerLine && posn(o0,60,78,93,80)) { //0196
+    erase(o0)
+    set.view(o0,0)
+    reset(f157)
+    position(o0,70,106)
+    release.priority(o0)
+    draw(o0)
+  }
+  if (fTriggerLine && !(posn(o0,60,78,93,80))) { //01b1
+    program.control()
+    set.priority(o0,15)
+    get.posn(o0,v60,v61)
+    erase(o0)
+    set.view(o0,105)
+    reset(f157)
+    position(o0,60,v61)
+    draw(o0)
+    v61 = 106
+    v96 = 2
+    move.obj(o0,v60,v61,96,f20)
+    set(f135)
+    sound(5,f198)
+  }
+}
+v30--
+if (f20) { //01e6
+  stop.sound()
+  reset(f20)
+  observe.blocks(o0)
+  release.priority(o0)
+  stop.motion(o0)
+  set.view(o0,103)
+  v30 = 20
+  set(f98)
+  shake.screen(2)
+  print("Ouch!")
+  set(f135)
+  sound(4,f159)
+}
+if (f159) { //0206
+  if (v30 > 0) { //020c
+    reset(f159)
+    sound(4,f159)
+  }
+}
+if (v30 == 1) { //0218
+  set.view(o0,104)
+  end.of.loop(o0,f21)
+}
+if (f21) { //0225
+  reset(f21)
+  reset(f98)
+  start.motion(o0)
+  set.view(o0,0)
+  release.priority(o0)
+  player.control()
+}
+if (vWhichEgoBorder != 0) { //0237
+  reset(f155)
+}
+if (vWhichEgoBorder == 1 && f157) { //0241
+  new.room(70)
+}
+if (vWhichEgoBorder == 1 && !f157) { //024c
+  new.room(43)
+}
+if (vWhichEgoBorder == 2) { //0258
+  new.room(37)
+}
+if (vWhichEgoBorder == 4) { //0261
+  new.room(39)
+}
+if (vWhichEgoBorder == 3) { //026a
+  new.room(27)
+}
+if (f75) { //0273
+  call(103)
+}
+if (v80 == 38) { //027b
+  call(104)
+}
+return()

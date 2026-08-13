@@ -1,5 +1,226 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v36 = 76
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+  if (v62 == 1) { //000b
+    v36 = 176
+  }
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  v57 = 66
+  v58 = 100
+  v32 = 131
+  v31 = 109
+  v56 = 2
+  set.horizon(72)
+  load.sound(1)
+  load.sound(11)
+  load.view(0)
+  load.view(3)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.logic(112)
+  load.logic(120)
+  load.view(229)
+  animate.obj(o4)
+  ignore.horizon(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,12,146)
+  set.view(o4,229)
+  set.loop(o4,0)
+  set.cel(o4,2)
+  set.priority(o4,13)
+  draw(o4)
+  animate.obj(o5)
+  ignore.horizon(o5)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  position(o5,39,146)
+  set.view(o5,229)
+  set.loop(o5,0)
+  set.cel(o5,4)
+  set.priority(o5,13)
+  draw(o5)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  position(o6,62,145)
+  set.view(o6,229)
+  set.loop(o6,0)
+  set.cel(o6,1)
+  set.priority(o6,13)
+  draw(o6)
+  animate.obj(o7)
+  ignore.horizon(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  position(o7,83,146)
+  set.view(o7,229)
+  set.loop(o7,0)
+  set.cel(o7,3)
+  set.priority(o7,13)
+  draw(o7)
+  v36 = 2
+  cycle.time(o4,v36)
+  v36 = 3
+  cycle.time(o5,v36)
+  v36 = 2
+  cycle.time(o6,v36)
+  v36 = 3
+  cycle.time(o7,v36)
+  if (v44 == 14) { //00c1
+    set.priority(o0,14)
+  }
+  if (f48) { //00cb
+    get.posn(o0,v40,v41)
+    if (v44 == 0) { //00d5
+      set.priority(o0,14)
+      if (v41 > 114) { //00df
+        v41 = 114
+      }
+      if (v41 < 92) { //00e9
+        v41 = 92
+      }
+      position(o0,40,v41)
+    }
+    if (v44 == 11) { //00f7
+      release.priority(o0)
+      if (v41 < 105) { //0100
+        ignore.blocks(o0)
+        goto(l270)
+      }
+      observe.blocks(o0)
+    }
+l270:
+    position(o0,40,v41)
+  }
+  if (v44 == 30) { //0112
+    set(f220)
+    set.view(o0,0)
+    set.priority(o0,14)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //0129
+    draw(o0)
+  }
+  v36 = 0
+  call(112)
+  call(120)
+  show.pic()
+  return()
+}
+if (v62 == 1 && !(v53 > 0) && v52 < 30 && v52 > 0) { //013a
+  v52 = 30
+}
+if (v62 > 1) { //014e
+  print("With a sinking feeling, you notice that the large ship is no longer tied to the pier. It looks like you missed the boat!")
+  stop.cycling(o0)
+  set(f44)
+}
+if (f33 && v44 == 0) { //015b
+  set.view(o0,0)
+  set.priority(o0,14)
+  v44 = 0
+}
+if (v44 == 11) { //016d
+  release.priority(o0)
+  if (v41 < 138) { //0176
+    ignore.blocks(o0)
+    goto(l388)
+  }
+  observe.blocks(o0)
+}
+l388:
+if (v44 == 0) { //0184
+  if (fTriggerLine && !f46) { //018b
+    set(f46)
+    sound(1,f238)
+    v44 = 6
+    ignore.blocks(o0)
+    set.view(o0,11)
+    if (v41 < 87) { //01a1
+      set.priority(o0,4)
+      v36 = 3
+      v38 = 135
+      move.obj(o0,v40,v38,36,f221)
+    }
+    if (v41 > 114) { //01b7
+      set.priority(o0,15)
+      v36 = 3
+      v38 = 167
+      move.obj(o0,v40,v38,36,f221)
+    }
+    if (posn(o0,106,91,128,113)) { //01cd
+      set.priority(o0,11)
+      v36 = 3
+      v38 = v41
+      v38 += 38
+      move.obj(o0,v40,v38,36,f221)
+    }
+  }
+}
+if (v44 == 6 && f221) { //01e9
+  reset(f46)
+  reset(f221)
+  release.priority(o0)
+  observe.blocks(o0)
+  set(f35)
+  set.view(o0,3)
+  v44 = 11
+  sound(11,f238)
+}
+reset(fEgoOnWater)
+if (v44 == 11) { //0207
+  set(fEgoOnWater)
+  if (v41 > 138) { //0210
+    observe.blocks(o0)
+    goto(l542)
+  }
+  ignore.blocks(o0)
+}
+l542:
+if (fEnteredCommand) { //021e
+  if ((said("examine", "ship") || said("examine", "bandit", "ship"))) { //0224
+    if (v62 == 1) { //0238
+      print("A large ship is tied to the dock.")
+      goto(l582)
+    }
+    print("What ship?")
+  }
+l582:
+  if ((said("board", "ship") || said("jump", "ship"))) { //0246
+    if (v62 == 1) { //0258
+      print("There is no way to do that.")
+      goto(l614)
+    }
+    print("What ship?")
+  }
+l614:
+  if (said("examine", "town")) { //0266
+    print("A charming village sits atop a bluff overlooking the ocean.")
+  }
+  if (said("examine", "dock")) { //0272
+    print("A weathered dock leads into the ocean.")
+  }
+}
+call(112)
+call(120)
+if (vWhichEgoBorder == 3) { //0282
+  new.room(30)
+}
+if (vWhichEgoBorder == 1) { //028b
+  v176 = vWhichEgoBorder
+  new.room(31)
+}
+if (vWhichEgoBorder == 4) { //0297
+  new.room(75)
+}
+if (vWhichEgoBorder == 2) { //02a0
+  v176 = vWhichEgoBorder
+  new.room(31)
+}
+return()

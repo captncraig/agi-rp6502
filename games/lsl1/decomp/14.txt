@@ -1,4 +1,253 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(44)
+  observe.blocks(o0)
+  load.view(57)
+  load.view(47)
+  load.sound(27)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.view(o3,57)
+  set.loop(o3,1)
+  set.cel(o3,0)
+  set.priority(o3,9)
+  v52 = 3
+  cycle.time(o3,v52)
+  position(o3,105,123)
+  draw(o3)
+  stop.cycling(o3)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,47)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,99,132)
+  draw(o1)
+  stop.cycling(o1)
+  cycle.time(o1,v85)
+  add.to.pic(47,1,0,99,141,0,4)
+  if (obj.in.room(i9,vCurrentRoom)) { //005a
+    animate.obj(o2)
+    ignore.blocks(o2)
+    ignore.objs(o2)
+    position(o2,48,115)
+    set.view(o2,57)
+    set.loop(o2,0)
+    set.cel(o2,0)
+    set.priority(o2,12)
+    draw(o2)
+    stop.update(o2)
+  }
+  if (vPrevRoom == 13) { //007b
+    v38 = 100
+    v39 = 123
+    goto(l145)
+  }
+  v38 = 76
+  set.loop(o0,3)
+l145:
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  sound(27,f40)
+  return()
+}
+reset(f202)
+if (posn(o0,95,110,104,127)) { //009e
+  set(f202)
+}
+reset(f200)
+if (posn(o0,90,125,150,150)) { //00ac
+  set(f200)
+}
+reset(f201)
+if (posn(o0,40,114,58,134)) { //00ba
+  set(f201)
+}
+if (!fEnteredCommand) { //00c6
+  goto(l836)
+}
+if ((said("examine") || said("examine", "area"))) { //00d0
+  print("You are in a dimly lit hallway. The paint peeling off the walls gives the cockroaches something to watch. An old table is pushed against the west wall. A filthy drunk sits on the filthy floor, leaning against the filthy wall.")
+}
+if ((said("examine", "brick", "rol") || said("caress", "brick") || said("catch", "brick"))) { //00e2
+  if (!f202) { //00fc
+    print("You spend hours carefully examining every brick. You find nothing.")
+    goto(l266)
+  }
+  print("Caught ya! Now open the door, then get your nose out of that manual and start playing this game the right way!")
+}
+l266:
+if (said("examine", "bouncer")) { //010a
+  print("He's a poor little lamb, who has lost his way...")
+  print("...and also his bladder control!")
+}
+if ((said("buy", "bouncer", "bite") || said("buy", "bite", "about", "bouncer"))) { //0118
+  if (!f200) { //0130
+    set(f54)
+    goto(l318)
+  }
+  print("There's no one selling anything here. Try the bartender out front.")
+}
+l318:
+if (said("increase", "door")) { //013e
+  if (!f202) { //0148
+    set(f54)
+    goto(l349)
+  }
+  set(f67)
+  stop.motion(o0)
+  set(f85)
+  end.of.loop(o3,f203)
+}
+l349:
+if ((f207 || said("ask", "bouncer") || said("ask", "bouncer", "rol"))) { //015d
+  reset(f207)
+  if (!f200) { //0175
+    set(f54)
+    goto(l393)
+  }
+  v201 = 5
+  v200 = 5
+  start.cycling(o1)
+}
+l393:
+if ((said("add", "bucks") || said("use", "bucks") || said("add", "bouncer", "bucks") || said("add", "bucks", "bouncer"))) { //0189
+  if (!f200) { //01ab
+    set(f54)
+    goto(l443)
+  }
+  v90--
+  print("He responds, \"Ya know, whad I really need is a good, sshhtiff belt!\"")
+}
+l443:
+if ((said("add", "shot") || said("add", "bouncer", "bite") || said("add", "bite", "bouncer") || said("add", "bite") || said("use", "shot") || said("add", "bouncer", "shot") || said("add", "shot", "bouncer"))) { //01bb
+  if (!(has(i7))) { //01f3
+    print("You have no drink to give him.")
+    goto(l547)
+  }
+  if (!f200) { //01ff
+    set(f54)
+    goto(l547)
+  }
+  drop(i7)
+  v200 = 5
+  start.cycling(o1)
+  if (!(obj.in.room(i8,vCurrentRoom))) { //0212
+    v201 = 15
+    goto(l547)
+  }
+  v201 = 6
+}
+l547:
+if ((said("examine", "above", "desk") || said("examine", "desk"))) { //0223
+  if (obj.in.room(i9,vCurrentRoom)) { //0237
+    print("There is a single, lovely, long-stemmed, red rose lying incongruously on the table.")
+    goto(l581)
+  }
+  print("You can remember when that table held a rose.")
+}
+l581:
+if (obj.in.room(i9,vCurrentRoom) && said("examine", "flower")) { //0245
+  print("There is a single, lovely, long-stemmed, red rose lying incongruously on the table.")
+}
+if (said("catch", "flower")) { //0254
+  if (!f201) { //025e
+    set(f54)
+    goto(l640)
+  }
+  if (!(obj.in.room(i9,vCurrentRoom))) { //026a
+    set(f55)
+    goto(l640)
+  }
+  set(f67)
+  vCurrentScore += 1
+  erase(o2)
+  get(i9)
+}
+l640:
+if ((said("add", "anyword", "bouncer") || said("add", "bouncer", "rol"))) { //0280
+  if (!f200) { //0296
+    set(f54)
+    goto(l676)
+  }
+  print("He's too drunk to want anything.")
+}
+l676:
+if ((said("help", "anyword", "bouncer", "rol") || said("help", "bouncer", "rol"))) { //02a4
+  if (!f200) { //02bc
+    set(f54)
+    goto(l714)
+  }
+  print("He's beyond help, but thirsty.")
+}
+l714:
+if ((said("aim", "bouncer", "rol") || said("wake", "bouncer", "rol") || said("beat", "bouncer", "rol"))) { //02ca
+  if (!f200) { //02e8
+    set(f54)
+    goto(l760)
+  }
+  print("\"Hey! Wake up!\"")
+  set(f207)
+}
+l760:
+if ((said("look in", "bouncer", "rol") || said("look in", "bra", "rol") || said("rob", "bouncer", "rol") || said("rob", "bucks", "rol") || said("catch", "billfold", "rol") || said("find", "bra", "rol") || said("find", "bouncer", "rol"))) { //02f8
+  if (!f200) { //0336
+    set(f54)
+    goto(l836)
+  }
+  print("You find nothing but odor.")
+}
+l836:
+if (f44) { //0344
+  v200--
+  if (v200 == 1) { //034c
+    set.cel(o1,0)
+    stop.cycling(o1)
+    print(v201)
+    if (v201 == 6) { //035a
+      print("Slurp! \"Ahhhh! That did hit the ol' spot!\"")
+      print("\"Ya know, ya mus' be ma only frien' in the whole world! Shhoooo, I'm gonna give ya my only posshhess... hhic!")
+      print("\"...my only posshhess... hhic!")
+      print("\"...my only posshhess... hhic!")
+      print("\"...my only posshhess... hhic!")
+      print("\"...all I got in the world.\n\nWhat'sha guy like me need witta TV remote control!?\"")
+      vCurrentScore += 2
+      get(i8)
+    }
+  }
+}
+if (!f204 && v38 == 101 && v39 == 133) { //0372
+  set(f204)
+  toggle(f205)
+  if (f205) { //0383
+    print("\"Geeze! Them pointy-toed shoes hurt!\"")
+    goto(l912)
+  }
+  print("\"Wadda ya tryin' to do; make me a soprano??\"")
+}
+l912:
+if (f59 && f200 && vPrevRoom == 13 && !f206) { //0390
+  set(f206)
+  start.cycling(o1)
+  v200 = 5
+  v201 = 2
+}
+if (f204) { //03a8
+  distance(o0,o1,v52)
+  if (v52 > 25) { //03b2
+    reset(f204)
+  }
+}
+if (vWhichEgoBorder == 3) { //03bb
+  v76 = 15
+}
+if (f203) { //03c5
+  reset(f85)
+  v76 = 13
+}
+return()

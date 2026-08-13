@@ -1,4 +1,286 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(37)
+  program.control()
+  load.view(106)
+  load.view(94)
+  load.view(6)
+  load.view(7)
+  load.view(28)
+  load.logic(117)
+  load.sound(2)
+  load.sound(11)
+  set(f87)
+  v65 = 3
+  v66 = 128
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o1)
+  animate.obj(o6)
+  animate.obj(o7)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o1)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  set.view(o2,106)
+  set.view(o3,106)
+  set.view(o4,106)
+  set.view(o5,106)
+  set.view(o1,106)
+  set.view(o6,106)
+  set.view(o7,94)
+  set.cel(o2,1)
+  set.cel(o4,1)
+  set.cel(o1,1)
+  set.loop(o2,0)
+  set.loop(o3,1)
+  set.loop(o4,1)
+  set.loop(o5,1)
+  set.loop(o1,1)
+  set.loop(o6,1)
+  v61 = 2
+  step.size(o2,v61)
+  cycle.time(o2,v61)
+  step.size(o3,v61)
+  cycle.time(o3,v61)
+  step.size(o4,v61)
+  cycle.time(o4,v61)
+  step.size(o5,v61)
+  cycle.time(o5,v61)
+  step.size(o1,v61)
+  cycle.time(o1,v61)
+  step.size(o6,v61)
+  cycle.time(o6,v61)
+  step.size(o7,v61)
+  cycle.time(o7,v61)
+  position(o2,11,117)
+  position(o3,109,65)
+  position(o4,116,76)
+  position(o5,144,74)
+  position(o1,127,125)
+  position(o6,148,117)
+  position(o7,135,90)
+  set.priority(o2,4)
+  set.priority(o3,4)
+  set.priority(o4,4)
+  set.priority(o5,12)
+  set.priority(o1,12)
+  set.priority(o6,12)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  draw(o1)
+  draw(o6)
+  if (!f41) { //00dc
+    set(f41)
+    vCurrentScore += 13
+  }
+  if (!f77) { //00e8
+    v201 = 88
+  }
+  v38 = 75
+  v39 = 34
+  position(o0,38,v39)
+  call(117)
+  show.pic()
+  return()
+}
+if (f130) { //0100
+  if (f204) { //0106
+    print("King Eiddileg is very small, but looks friendly.")
+    goto(l275)
+  }
+  print("You have descended into the hidden land of the Fair Folk.")
+}
+l275:
+if ((f103 || v65 == 8 || f152)) { //0113
+  set(fSaidAccepted)
+  goto(l506)
+}
+if (!f128 && !f129) { //0125
+  goto(l506)
+}
+if (f129) { //0132
+  goto(l353)
+}
+if (!f77 && f202) { //013b
+  reset(f202)
+  set(fSaidAccepted)
+  print("\"My name is Taran, Assistant Pig-Keeper of Caer Dallben,\" you reply. \"You requested help from Dallben the Mystic -- I am here to assist you.\"")
+  v202 = 27
+  goto(l712)
+}
+if (f77 && f204 && has(i15)) { //0150
+  set(fSaidAccepted)
+  print("\"Why don't you try using your new flying dust, Taran?\" says the King. \"Sprinkle it whenever you want to start or stop flying.\"")
+}
+goto(l506)
+l353:
+if (v60 == 15) { //0161
+  set(fSaidAccepted)
+  v60 = 0
+  v42 = 0
+  if (f64) { //0170
+    print("You sprinkle the flying dust over your head.")
+    goto(l381)
+  }
+  print("\"Just sprinkle the flying dust whenever you want to stop or start flying. Good luck, Taran.\"")
+l381:
+  set.priority(o0,14)
+  stop.motion(o0)
+  set.view(o0,28)
+  set.cel(o0,0)
+  v61 = 4
+  step.size(o0,v61)
+  cycle.time(o0,v61)
+  observe.horizon(o0)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  set(f133)
+  end.of.loop(o0,f208)
+  goto(l506)
+}
+if (!f77 && f204 && f211) { //019f
+  if (v60 == 14) { //01aa
+    set(fSaidAccepted)
+    drop(i14)
+    print("You offer the lute to King Eiddileg.")
+  }
+  if (v60 == 13) { //01b7
+    set(fSaidAccepted)
+    drop(i13)
+    print("You offer the harp to King Eiddileg.")
+  }
+  if (fSaidAccepted) { //01c4
+    v202 = 0
+    vCurrentScore += 10
+    v60 = 0
+    v42 = 0
+    v210 = 33
+    goto(l488)
+  }
+  if (v60 > 0) { //01dc
+    set(fSaidAccepted)
+    v203 = 2
+  }
+l488:
+  goto(l506)
+}
+if (f77 && f204 && !fSaidAccepted) { //01eb
+  set(fSaidAccepted)
+  print("\"There's no need to use anything else, Taran,\" says King Eiddileg. \"Just hurry! Find the Black Cauldron and destroy it!\"")
+}
+l506:
+v201--
+if (v201 == 24) { //01fc
+  draw(o7)
+  ignore.blocks(o7)
+  set(f204)
+  move.obj(o7,92,109,0,f201)
+}
+if (v201 == 1) { //020f
+  if (vPrevRoom == 23) { //0216
+    print("\"And just who is this falling into my Kingdom!!\" shouts King Eiddileg of the Fair Folk. \"That whirlpool was supposed to keep people out, not bring them in!\"")
+    goto(l548)
+  }
+  print("\"And just who is this falling into my Kingdom!!\" shouts King Eiddileg of the Fair Folk. \"That waterfall was supposed to keep people out!\"")
+}
+l548:
+if (f201) { //0224
+  reset(f201)
+  observe.blocks(o7)
+  wander(o7)
+  set(f202)
+}
+v202--
+if (v202 == 1) { //0234
+  v203 = 150
+  set(f211)
+  print("\"You?\" the King shouts in disbelief. \"The great Dallben sends me a Pig-Keeper -- and an Assistant Pig-Keeper, at that! I can't believe it. If you truly represent Dallben, you would offer me something to show your respect.\"")
+}
+v210--
+if (v210 == 1) { //0244
+  set(f77)
+  v201 = 0
+  reset(f201)
+  v202 = 0
+  v203 = 0
+  get(i15)
+  get(i19)
+  v69 = 4
+  print("\"Thank you for your gift, Taran,\" says King Eiddileg, \"you represent Dallben quite admirably. I'm so glad it's really you. Your remarkable Hen Wen is also here, and quite safe.")
+  v61 = v57
+  v61 += 27
+  print(v61)
+  print("\"Since you last saw Dallben, the Horned King has dispatched legions of warriors to find the Black Cauldron. If he succeeds in finding it, he'll destroy our civilization!")
+  print("\"Taran, I beg you:  find the Black Cauldron and DESTROY IT!")
+  print("\"I give you this magic mirror and enough Fair Folk flying dust for five flights.\"")
+  reset(f128)
+  reset(f129)
+  normal.motion(o0)
+  start.motion(o0)
+}
+if (f208) { //0277
+  reset(f208)
+  set(f103)
+  reset(f133)
+  start.motion(o0)
+  print("A strange feeling comes over you. Looking down, you notice you're floating in mid-air! You can fly!!")
+}
+v203--
+if (v203 == 1) { //0289
+  reset(f211)
+  program.control()
+  set.priority(o0,15)
+  stop.motion(o0)
+  set.view(o0,28)
+  set.cel(o0,0)
+  v61 = 4
+  cycle.time(o0,v61)
+  step.size(o0,v61)
+  ignore.horizon(o0)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  set(f133)
+  end.of.loop(o0,f207)
+  print("\"You have much to learn about the Fair Folk!\" says the King. \"Be gone, you imposter!!\"  King Eiddileg sprinkles you with a fine powder, and you float away, as light as a feather.")
+}
+if (f207) { //02b4
+  reset(f207)
+  set(f103)
+  reset(f133)
+  start.motion(o0)
+  move.obj(o0,78,38,4,f200)
+}
+l712:
+if (f200) { //02c8
+  vWhichEgoBorder = 1
+  set(f209)
+  player.control()
+}
+if (vWhichEgoBorder == 1) { //02d4
+  v65 = 0
+  get.posn(o0,v62,v63)
+  if (v62 > 70 && v62 < 85) { //02e2
+    if (f204 && !f209 && !f64) { //02ec
+      print("\"Goodbye, King Eiddileg,\" you say. \"I'll do my very best!\"")
+      set(f64)
+    }
+    reset(f103)
+    set.view(o0,0)
+    v61 = 1
+    step.size(o0,v61)
+    start.motion(o0)
+    new.room(vPrevRoom)
+  }
+}
+call(117)
+return()

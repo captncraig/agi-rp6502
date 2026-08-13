@@ -1,3 +1,360 @@
-if (!(isSet(f65)
-!!!
-&{%!e(string=incomplete condition: 0x23)}
+if (!f65) { //0002
+  set(f65)
+  erase(o12)
+  load.view(80)
+  load.view(87)
+  load.sound(11)
+  set.loop(o0,3)
+  stop.motion(o0)
+  stop.cycling(o0)
+  move.obj(o13,108,128,1,f242)
+  stop.update(o0)
+  if (v33 != 0) { //0022
+    stop.update(o14)
+  }
+}
+if (f242) { //002c
+  reset(f242)
+  set.view(o13,80)
+  set.loop(o13,2)
+  set.cel(o13,2)
+  stop.cycling(o13)
+  set(f104)
+}
+if (f243) { //0041
+  reset(f243)
+  if (v48 < 11) { //0049
+    reposition.to(o9,110,88)
+    move.obj(o9,110,69,1,f243)
+    set.cel(o9,0)
+    goto(l98)
+  }
+  erase(o9)
+}
+l98:
+if (f244) { //0062
+  reset(f244)
+  if (v48 < 11) { //006a
+    reposition.to(o2,120,87)
+    move.obj(o2,120,66,1,f244)
+    set.cel(o2,0)
+    goto(l131)
+  }
+  erase(o2)
+}
+l131:
+if (f240) { //0083
+  reset(f240)
+  if (v48 == 1 && v47 > 8) { //008b
+    set.cel(o7,0)
+    reposition.to(o7,71,54)
+    move.obj(o7,71,40,1,f241)
+    goto(l167)
+  }
+  erase(o7)
+}
+l167:
+if (f241) { //00a7
+  reset(f241)
+  move.obj(o7,71,38,1,f240)
+}
+if (f245) { //00b5
+  reset(f245)
+  current.loop(o4,v209)
+  if (v209 == 1) { //00c0
+    set.loop(o4,0)
+    goto(l208)
+  }
+  set.loop(o4,1)
+l208:
+  set.cel(o4,0)
+  end.of.loop(o4,f245)
+}
+if (!f108 && f104) { //00d6
+  set(f108)
+  set(f43)
+  reset(f104)
+  sound(11,f103)
+  vTimeSeconds = 0
+  set(f15)
+  if (vMonitorType != HERCULES) { //00ed
+    print.at("                                    \n\n",17,2,37)
+    display(18,3,"Old King Cole was a merry old soul,")
+    display(19,3,"    And a merry old soul was he;")
+    goto(l274)
+  }
+  print.at("                                    \n\n",20,2,37)
+  display(21,3,"Old King Cole was a merry old soul,")
+  display(22,3,"    And a merry old soul was he;")
+}
+l274:
+if (vTimeSeconds > 9 && f108 && !f109) { //0112
+  set(f109)
+  if (vMonitorType != HERCULES) { //0120
+    display(20,3,"He called for his pipe,")
+    goto(l307)
+  }
+  display(23,3,"He called for his pipe,")
+}
+l307:
+if (vTimeSeconds > 12 && f109 && !f110) { //0133
+  set(f110)
+  if (vMonitorType != HERCULES) { //0141
+    display(18,3,"                                   ")
+    display(19,3,"                                   ")
+    display(20,3,"                                   ")
+    display(18,3,"And he called for his bowl,")
+    goto(l364)
+  }
+  display(21,3,"                                   ")
+  display(22,3,"                                   ")
+  display(23,3,"                                   ")
+  display(21,3,"And he called for his bowl,")
+}
+l364:
+if (vTimeSeconds > 14 && f110 && !f111) { //016c
+  set(f111)
+  if (vMonitorType != HERCULES) { //017a
+    display(19,3,"And he called for his fiddlers")
+    display(20,3,"    three!")
+    goto(l405)
+  }
+  display(22,3,"And he called for his fiddlers")
+  display(23,3,"    three!")
+}
+l405:
+if (vTimeSeconds > 7 && v48 == 1) { //0195
+  set(f43)
+}
+if (vTimeSeconds > 10 && v48 == 2) { //01a1
+  set(f43)
+}
+if (vTimeSeconds > 13 && v48 == 4) { //01ad
+  set(f43)
+}
+v47--
+if (v47 == 1) { //01bb
+  set(f43)
+}
+if (f43) { //01c4
+  reset(f43)
+  v48++
+  if (v48 == 1) { //01ce
+    animate.obj(o8)
+    set.view(o8,132)
+    set.loop(o8,3)
+    set.cel(o8,1)
+    ignore.horizon(o8)
+    position(o8,78,51)
+    set.priority(o8,8)
+    draw(o8)
+    stop.cycling(o8)
+  }
+  if (v48 == 2) { //01ed
+    erase(o8)
+    add.to.pic(80,2,0,108,128,0,1)
+    add.to.pic(80,2,1,116,126,10,1)
+    add.to.pic(80,2,1,100,126,0,1)
+    animate.obj(o3)
+    animate.obj(o1)
+    animate.obj(o17)
+    set.view(o3,80)
+    set.view(o1,80)
+    set.view(o17,80)
+    set.loop(o3,7)
+    set.loop(o1,7)
+    set.loop(o17,7)
+    set.cel(o3,0)
+    set.cel(o1,0)
+    set.cel(o17,0)
+    ignore.blocks(o3)
+    ignore.blocks(o1)
+    ignore.blocks(o17)
+    ignore.objs(o3)
+    ignore.objs(o1)
+    ignore.objs(o17)
+    position(o3,97,123)
+    position(o1,105,125)
+    position(o17,113,123)
+    draw(o3)
+    draw(o1)
+    draw(o17)
+    stop.cycling(o3)
+    stop.cycling(o1)
+    stop.cycling(o17)
+    erase(o13)
+    stop.cycling(o4)
+    set.view(o4,80)
+    reposition.to(o4,73,62)
+    set.loop(o4,6)
+    set.cel(o4,0)
+    stop.cycling(o4)
+    erase(o18)
+    animate.obj(o7)
+    set.view(o7,80)
+    set.loop(o7,4)
+    set.cel(o7,0)
+    ignore.horizon(o7)
+    ignore.objs(o7)
+    position(o7,71,54)
+    draw(o7)
+    v209 = 4
+    cycle.time(o7,v209)
+    move.obj(o7,71,40,1,f241)
+  }
+  if (v48 == 3) { //0289
+    set.view(o4,132)
+    reposition.to(o4,70,63)
+    set.loop(o4,4)
+    set.cel(o4,1)
+    stop.cycling(o4)
+    v47 = 2
+  }
+  if (v48 == 4) { //02a2
+    add.to.pic(52,0,0,65,62,4,4)
+    set.view(o4,80)
+    start.cycling(o4)
+    reposition.to(o4,73,62)
+    set.loop(o4,5)
+    set.cel(o4,0)
+    v209 = 4
+    cycle.time(o4,v209)
+    set.cel(o3,1)
+    set.cel(o1,1)
+    set.cel(o17,1)
+  }
+  if (v48 == 5) { //02cf
+    set.view(o4,132)
+    stop.cycling(o4)
+    reposition.to(o4,70,61)
+    set.loop(o4,3)
+    set.cel(o4,0)
+    set.loop(o3,3)
+    set.loop(o1,3)
+    set.loop(o17,3)
+    set.cel(o3,0)
+    set.cel(o1,1)
+    set.cel(o17,2)
+    reposition.to(o3,96,111)
+    reposition.to(o1,104,113)
+    reposition.to(o17,112,111)
+    set.priority(o3,11)
+    set.priority(o1,12)
+    set.priority(o17,10)
+    v47 = 2
+  }
+  if (v48 == 6) { //030f
+    start.cycling(o3)
+    start.cycling(o1)
+    start.cycling(o17)
+    animate.obj(o9)
+    animate.obj(o2)
+    set.view(o9,87)
+    set.view(o2,87)
+    set.loop(o9,0)
+    set.cel(o9,0)
+    set.loop(o2,1)
+    set.cel(o2,2)
+    set.priority(o9,15)
+    set.priority(o2,15)
+    ignore.horizon(o9)
+    ignore.horizon(o2)
+    position(o9,110,88)
+    position(o2,120,75)
+    draw(o9)
+    draw(o2)
+    v209 = 5
+    cycle.time(o9,v209)
+    cycle.time(o2,v209)
+    move.obj(o9,110,69,1,f243)
+    move.obj(o2,120,68,1,f244)
+    v47 = 20
+  }
+  if (v48 == 7) { //0360
+    set.view(o4,80)
+    set.loop(o4,0)
+    set.cel(o4,0)
+    reposition.to(o4,73,68)
+    start.cycling(o4)
+    v209 = 2
+    cycle.time(o4,v209)
+    end.of.loop(o4,f245)
+    v47 = 2
+  }
+  if (v48 == 8) { //0382
+    erase(o19)
+    v47 = 30
+  }
+  if (v48 == 9) { //038e
+    start.cycling(o5)
+    set.loop(o5,1)
+    move.obj(o5,17,96,1,f43)
+    start.cycling(o6)
+    set.loop(o6,0)
+    move.obj(o6,133,96,1,f47)
+  }
+  if (v48 == 10) { //03ab
+    set.loop(o5,2)
+    set.cel(o5,1)
+    set.loop(o6,2)
+    set.cel(o6,1)
+    stop.cycling(o5)
+    stop.cycling(o6)
+    v47 = 3
+  }
+  if (v48 == 11) { //03c5
+    start.cycling(o5)
+    set.loop(o5,0)
+    move.obj(o5,40,96,1,f43)
+    start.cycling(o6)
+    set.loop(o6,1)
+    move.obj(o6,111,96,1,f47)
+  }
+  if (v48 == 12) { //03e2
+    stop.cycling(o5)
+    stop.cycling(o6)
+    set.loop(o5,2)
+    set.cel(o5,1)
+    set.loop(o6,2)
+    set.cel(o6,1)
+    v47 = 4
+  }
+  if (v48 == 13) { //03fc
+    add.to.pic(132,3,0,70,61,0,0)
+    add.to.pic(132,3,2,70,73,0,0)
+    erase(o4)
+    erase(o19)
+    stop.cycling(o3)
+    stop.cycling(o1)
+    stop.cycling(o17)
+    set.loop(o3,7)
+    set.cel(o3,1)
+    set.loop(o1,7)
+    set.cel(o1,1)
+    set.loop(o17,7)
+    set.cel(o17,1)
+    reposition.to(o3,97,123)
+    reposition.to(o1,105,125)
+    reposition.to(o17,113,123)
+    v47 = 4
+  }
+  if (v48 == 14) { //043e
+    set.cel(o3,0)
+    set.cel(o1,0)
+    set.cel(o17,0)
+    v47 = 6
+  }
+  if (v48 == 15) { //0451
+    stop.update(o5)
+    stop.update(o6)
+    add.to.pic(80,2,1,116,126,11,1)
+    add.to.pic(80,7,0,97,122,0,4)
+    add.to.pic(80,7,0,105,124,0,4)
+    add.to.pic(80,7,0,113,124,0,4)
+    erase(o3)
+    erase(o1)
+    erase(o17)
+    set(f114)
+  }
+}
+return()

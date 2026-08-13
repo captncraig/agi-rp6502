@@ -1,4 +1,399 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(114)
+  load.logic(94)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  position(o0,70,116)
+  if (v63 == 199) { //0014
+    set(f102)
+    set(f36)
+    reset(f101)
+    load.view(21)
+    load.view(176)
+    load.view(180)
+    animate.obj(o1)
+    animate.obj(o2)
+    animate.obj(o3)
+    set.view(o1,21)
+    set.view(o2,176)
+    set.view(o3,180)
+    position(o0,70,116)
+    position(o1,105,153)
+    position(o2,132,155)
+    position(o3,79,116)
+    set.loop(o1,3)
+    set.loop(o2,1)
+    set.loop(o3,2)
+    stop.cycling(o1)
+    stop.cycling(o2)
+    draw(o0)
+    draw(o2)
+    draw(o3)
+    draw(o1)
+    goto(l110)
+  }
+  if (!f39 && (f63 || f64)) { //005e
+    v52 = 4
+  }
+l110:
+  if (v134 > 0) { //006e
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+  }
+  if (f101) { //007f
+    v140 = 15
+    if (vPrevRoom != 57) { //0088
+      vCurrentScore += 1
+    }
+  }
+  call(94)
+  show.pic()
+  return()
+}
+if (!f224 && (vWhichEgoBorder == 2 || vWhichEgoBorder == 4)) { //0097
+  print("Where are you going?")
+  set(f224)
+}
+if (vWhichEgoBorder == 1 && !f224) { //00aa
+  if (v63 > 180) { //00b4
+    print("Where are you going?")
+    set(f224)
+    goto(l196)
+  }
+  new.room(57)
+}
+l196:
+if (!(vWhichEgoBorder > 0)) { //00c4
+  reset(f224)
+}
+if (f220) { //00ce
+  reset(f220)
+  v220++
+}
+if (f221) { //00d8
+  reset(f221)
+  v221++
+}
+if (f222) { //00e2
+  reset(f222)
+  v222++
+}
+if (f223) { //00ec
+  reset(f223)
+  v223++
+}
+reset(f228)
+distance(o0,o2,v152)
+if (v152 < v61) { //00fc
+  set(f228)
+  set(f109)
+}
+reset(f229)
+distance(o0,o3,v152)
+if (v152 < v61) { //010d
+  set(f229)
+  set(f109)
+}
+reset(f230)
+distance(o0,o1,v152)
+if (v152 < v61) { //011e
+  set(f230)
+  set(f109)
+}
+if (v63 > 0 && v63 < 190) { //0129
+  if (f30 && !f63) { //0133
+    print("\"Sonny, go stake out the picnic area.\"")
+    reset(f30)
+  }
+  if (f138) { //0140
+    reset(f138)
+    v140 = 40
+    if (!f39) { //014b
+      print("\"What's the matter? Let's get this show on the road!\"")
+      goto(l345)
+    }
+    print("\"Sonny, go stake out the picnic area.\"")
+  }
+}
+l345:
+if (v63 > 220 && v63 < 255 && f138) { //0159
+  print("\"Let's get these boys to jail.\"")
+  v140 = 20
+}
+if (v63 > 190) { //016a
+  if (v220 == 0) { //0171
+    move.obj(o0,70,132,1,f220)
+    set(f220)
+  }
+  if (v220 == 1) { //0180
+    set.loop(o1,1)
+    set(f221)
+  }
+  if (v220 == 2) { //018c
+    print("You mumble under your breath, \"Yeah, sure, Laura! You probably just grabbed the first white male you could find!\"")
+    move.obj(o0,70,164,1,f220)
+    set(f220)
+  }
+  if (v220 == 4) { //019d
+    move.obj(o0,120,164,1,f220)
+    v220++
+  }
+  if (v220 == 6) { //01ac
+    v220++
+  }
+  if (v221 == 1) { //01b5
+    print("Laura asks, \"What took you so long, Hot Rod? I picked up this loose end trying to take foot bail on you!\"")
+    start.cycling(o1)
+    move.obj(o1,118,155,1,f221)
+    v221++
+  }
+  if (v221 == 3) { //01c8
+    stop.cycling(o1)
+    set.loop(o1,0)
+    v221++
+  }
+  if (v223 == 0) { //01d6
+    move.obj(o3,79,139,1,f223)
+  }
+  if (v223 == 1) { //01e3
+    stop.cycling(o3)
+    set(f223)
+  }
+  if (v223 == 2) { //01ee
+    start.cycling(o3)
+    move.obj(o3,79,166,1,f223)
+  }
+  if (v223 == 3) { //01fd
+    move.obj(o3,135,166,1,f223)
+  }
+  if (v223 == 4) { //020a
+    move.obj(o3,133,163,1,f223)
+  }
+  if (v223 == 5) { //0217
+    stop.cycling(o3)
+    set.loop(o3,1)
+    set(f223)
+    v63 = 200
+  }
+}
+if (v221 == 200) { //0228
+  start.cycling(o1)
+  move.obj(o1,118,155,1,f221)
+}
+if (v221 == 201) { //0237
+  stop.cycling(o1)
+  sound(3,f154)
+  set.cel(o11,2)
+  draw(o11)
+  set(f221)
+}
+if (v221 == 202) { //024a
+  start.cycling(o2)
+  start.cycling(o3)
+  move.obj(o2,128,155,1,f222)
+  move.obj(o3,128,161,1,f223)
+  v221++
+}
+if (v222 == 201 && v223 == 201) { //0263
+  set.cel(o11,1)
+  erase(o2)
+  erase(o3)
+  v63 = 210
+  set(f46)
+  set(f222)
+  set(f223)
+}
+if (v221 == 225) { //027d
+  start.cycling(o1)
+  move.obj(o1,116,155,1,f221)
+  set(f221)
+}
+if (v221 == 227) { //028e
+  stop.cycling(o1)
+  print("Laura comments, \"Lt. Morgan will be real happy with this bust!\"")
+  reset(f36)
+  set(f221)
+}
+if (f63 && v221 == 228) { //029d
+  set.loop(o10,1)
+  set(f101)
+  erase(o1)
+  v140 = 15
+  v63 = 220
+  set(f221)
+}
+if (!fEnteredCommand) { //02b5
+  goto(l1608)
+}
+if ((f39 || has(i4))) { //02bf
+  if (v63 > 209 && v63 < 255) { //02c9
+    if (said("call")) { //02d3
+      print("You key your radio, \"Dispatch, this is 83-Nora-10. Be advised, Code-4 with two in custody.\"")
+    }
+  }
+}
+if (v63 > 0 && v63 < 255) { //02dd
+  if ((said("examine", "friend") || said("examine", "friend"))) { //02e7
+    print("Laura looks pretty good today.")
+  }
+  if ((said("answer", "broad") || said("answer", "friend"))) { //02fb
+    if (v63 < 190) { //030d
+      print("Laura says, \"Ok, Sonny, I'll move the car out of sight and monitor you for backup.\"")
+      goto(l807)
+    }
+    if (v63 < 211) { //0319
+      print("Laura asks, \"What took you so long, Hot Rod? I picked up this loose end trying to take foot bail on you!\"")
+      goto(l807)
+    }
+    print("Laura comments, \"Lt. Morgan will be real happy with this bust!\"")
+  }
+}
+l807:
+if (v63 > 199 && v63 < 211) { //0327
+  if ((said("o", "back", "d") || said("o", "back", "d", "auto") || said("o", "back", "auto", "d") || said("o", "d") || said("o", "d", "auto") || said("o", "auto", "d"))) { //0331
+    if (v63 == 200 && !f101 && !f227) { //0369
+      set(f227)
+      print("It might be wise to question these guys while they're still shaking.")
+      v63++
+      goto(l935)
+    }
+    if (posn(o0,120,160,135,164)) { //037f
+      if (f46) { //0389
+        print("You can't release these pushers here!")
+        goto(l935)
+      }
+      if (v220 < 200) { //0394
+        v220 = 200
+        v221 = 200
+        v222 = 200
+        v223 = 200
+      }
+    }
+  }
+l935:
+  if (said("c", "d")) { //03a7
+    if (v63 != 210) { //03b1
+      print("The door is already shut.")
+      goto(l977)
+    }
+    set(f46)
+    sound(4,f154)
+    set.cel(o11,0)
+    v86 = 0
+    v220 = 225
+    v221 = 225
+    v63++
+  }
+}
+l977:
+if (v63 > 199 && v63 < 210) { //03d1
+  if (said("examine", "colby")) { //03db
+    print("You would not buy a used car from this man.")
+  }
+  if ((said("examine", "art") || said("examine", "simms") || said("examine", "convict"))) { //03e7
+    print("The young man is dressed in dark clothes.")
+  }
+  if (f74 && said("examine", "id")) { //0401
+    print("The Jefferson High School Student Identification Card (in the name of Victor Simms) matches the general description of your suspect.")
+  }
+  if ((said("apprehend", "art") || said("apprehend", "convict") || said("apprehend", "colby") || said("apprehend", "simms"))) { //040f
+    if (!f109) { //042d
+      set(f113)
+      goto(l1083)
+    }
+    print("\"I place you under arrest!\"")
+  }
+l1083:
+  if ((said("examine", "right", "rol") || said("examine", "anyword", "right", "rol") || said("administer", "right", "rol") || said("administer", "anyword", "right", "rol") || said("right", "rol") || said("anyword", "right", "rol"))) { //043b
+    if (!f228 && !f229) { //0473
+      print("They can't hear you from here.")
+      goto(l1158)
+    }
+    set(f136)
+    call(72)
+  }
+l1158:
+  if ((said("interrogate", "simms", "rol") || said("answer", "simms", "rol") || said("ask", "simms", "rol") || said("interrogate", "convict", "rol") || said("interrogate", "art", "rol") || said("ask", "convict", "rol") || said("ask", "art", "rol") || said("answer", "convict", "rol") || said("answer", "art", "rol"))) { //0486
+    if (!f136) { //04d4
+      set(f140)
+      call(72)
+      goto(l1280)
+    }
+    if (!f225) { //04e2
+      set(f227)
+      set(f225)
+      print("Simms is reluctant but cooperative. You learn he has been selling to kids at Jefferson High School, including Officer Cobb's daughter, Kathy.")
+      goto(l1280)
+    }
+    print("\"I used to buy from a guy named Jose Martinez, but then Martinez introduced me to Don Colby here,\" Simms says, \"I haven't seen Martinez since.\"")
+    if (!f165) { //04f4
+      set(f165)
+      vCurrentScore += 2
+    }
+  }
+l1280:
+  if ((said("interrogate", "colby", "rol") || said("answer", "cocaine", "art") || said("answer", "colby", "rol") || said("ask", "colby", "rol"))) { //0500
+    if (!f136) { //0526
+      set(f140)
+      call(72)
+      goto(l1362)
+    }
+    if (!f226) { //0534
+      set(f227)
+      set(f226)
+      print("Colby refuses to answer any questions.")
+      goto(l1362)
+    }
+    print("After persistant questioning of Colby, you discover he buys his drugs from Leroy Pierson. He says Leroy's telephone number is 555-6537. He also asks that his cooperation be noted for consideration by the court.")
+    if (!f133) { //0546
+      set(f133)
+      vCurrentScore += 3
+    }
+  }
+l1362:
+  if ((said("who", "friend") || said("name", "friend") || said("friend", "name") || said("ask", "name") || said("ask", "who", "friend"))) { //0552
+    if (!f136) { //0578
+      set(f140)
+      call(72)
+      goto(l1428)
+    }
+    print("\"His name is Don Colby, Officer,\" says the shaking youngster. Colby glares at the boy.")
+    if (!f165) { //0588
+      set(f165)
+      vCurrentScore += 5
+    }
+  }
+l1428:
+  if ((said("enter", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "bonds", "rol") || said("move", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "use", "bonds", "rol"))) { //0594
+    print("\"Yes, sir!\"")
+  }
+  if ((said("find") || said("find", "art", "rol") || said("find", "colby", "rol") || said("find", "simms", "rol") || said("find", "convict", "rol"))) { //05de
+    print("You search the trembling youngster.")
+    if (!f74) { //060a
+      set(f74)
+      vCurrentScore += 3
+      print("The search reveals an identification card, and a small bag containing a white powdery substance.")
+      print("The contents of the bag appear to be cocaine!")
+      print("The Jefferson High School Student Identification Card (in the name of Victor Simms) matches the general description of your suspect.")
+      goto(l1569)
+    }
+    print("You find nothing more.")
+l1569:
+    if (!f93) { //0621
+      set(f93)
+      vCurrentScore += 3
+      print("Laura searches her suspect.")
+      print("She finds his gun, an envelope of money and little else.")
+      goto(l1590)
+    }
+    print("Laura says, \"I'll book this stuff into evidence.\"")
+  }
+}
+l1590:
+if ((said("examine") || said("examine", "accident"))) { //0636
+  print("From here, the park looks lovely. Perhaps you should enter it.")
+}
+l1608:
+call(94)
+return()

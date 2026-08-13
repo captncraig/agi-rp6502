@@ -1,5 +1,258 @@
-if (isSet(f5)) {
-  if (isSet(f42)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  if (f42) { //0008
+    reset(f42)
+    reset(f35)
+    reset(f36)
+    reset(f46)
+    set(f48)
+    if (vMonitorType != HERCULES) { //0018
+      clear.lines(22,24,c0)
+    }
+    vEgoView = 0
+    vCycleTime = 2
+    player.control()
+    accept.input()
+    v84 = 5
+    v127 = 1
+    if (f129) { //0032
+      v110 = 3
+      v109 = 0
+    }
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 96
+  v58 = 137
+  v32 = 39
+  v31 = 92
+  v100 = 81
+  v101 = 123
+  load.logic(104)
+  observe.blocks(o13)
+  load.view(230)
+  if (v44 == 23) { //0060
+    set(f46)
+    reset(f35)
+    reset(f36)
+    reset(f37)
+    reset(f38)
+    load.view(199)
+    load.view(29)
+    load.sound(36)
+    load.sound(2)
+    goto(l183)
+  }
+  if ((v127 == 1 || v127 == 3) && !(v137 > 0) && v128 != 20) { //007c
+    random(1,4,v36)
+    if (!f129) { //0094
+      v36 = 1
+    }
+    if (v36 == 1) { //009e
+      load.logic(105)
+      set(f98)
+      random(6,12,v125)
+      if (!f129) { //00ad
+        v125 = 6
+      }
+    }
+  }
+l183:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  position(o1,86,84)
+  set.view(o1,230)
+  draw(o1)
+  animate.obj(o2)
+  ignore.objs(o2)
+  position(o2,114,85)
+  set.view(o2,230)
+  set.cel(o2,1)
+  draw(o2)
+  if (v44 == 25) { //00da
+    set(f48)
+  }
+  if (f48) { //00e3
+    if (vPrevRoom == 3) { //00e9
+      set(f221)
+      set.priority(o0,14)
+      v40 = 95
+      v41 = 46
+      goto(l308)
+    }
+    if (vPrevRoom == 5) { //00fe
+      v40 = 97
+      v41 = 121
+      goto(l308)
+    }
+    if (vPrevRoom == 8) { //010e
+      v40 = 128
+      v41 = 140
+      goto(l308)
+    }
+    if (vPrevRoom == 34) { //011e
+      v40 = 95
+      v41 = 165
+      goto(l308)
+    }
+    v40 = v57
+    v41 = v58
+l308:
+    position(o0,40,v41)
+  }
+  if (v44 == 30) { //0138
+    position(o0,57,v58)
+    set(f48)
+  }
+  if (v44 == 23) { //0145
+    reset(f47)
+    set(f48)
+    v90 = 2
+    set.view(o0,29)
+    position(o0,97,131)
+    v59 = 1
+    v60 = 1
+    v61 = 1
+    program.control()
+    stop.motion(o0)
+    random(5,15,v220)
+  }
+  if (f47) { //016a
+    draw(o0)
+  }
+  if (v44 == 23) { //0172
+    set(f47)
+  }
+  call(104)
+  if (f98) { //017d
+    call(105)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0187
+  goto(l643)
+}
+if (v44 == 23) { //0191
+  print("Pant, pant, pant, pant, pant!!")
+  set(fSaidAccepted)
+}
+if ((said("examine", "area") || said("examine", "building") || said("examine") || said("examine", "hall"))) { //019c
+  print("This is the main entry room of the wizard's house. The front door is to the south, creaky stairs go upstairs, and doorways lead north and east.")
+}
+if (said("examine", "stair")) { //01ba
+  print("The stairway leading upward has wide steps. Several of them are very creaky, though. You always try to avoid them when going up or down these stairs.")
+}
+if (said("examine", "door")) { //01c6
+  print("The three doors lead outside, to the north, and to the east.")
+}
+if ((said("lift", "anyword", "door") || said("lift", "door") || said("lift", "door", "area") || said("lift", "anyword", "door", "area"))) { //01d2
+  if (posn(o0,86,163,109,167)) { //01f8
+    print("You open the front door of the house and go outside.")
+    new.room(34)
+    goto(l523)
+  }
+  print("You can't reach the door from there!")
+}
+l523:
+if ((said("close", "anyword", "door") || said("close", "door") || said("close", "door", "area") || said("close", "anyword", "door", "area"))) { //020b
+  print("The front door is already closed.")
+}
+if ((said("examine", "burn") || said("examine", "cage") || said("examine", "burn", "on", "cage") || said("examine", "burn", "cage"))) { //0233
+  print("There are two candles attached to the wall to light your way up the dim staircase.")
+}
+if ((said("capture", "burn") || said("capture", "burn", "off", "cage") || said("capture", "burn", "from", "cage") || said("capture", "burn", "cage"))) { //0259
+  print("The candles are firmly attached to the wall. Try as you might, you cannot get them free.")
+}
+l643:
+if (fEgoOnWater) { //0283
+  if ((vEgoDir == 1 || vEgoDir == 8 || vEgoDir == 2)) { //0289
+    reset(f221)
+  }
+  if ((vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //029a
+    set(f221)
+  }
+}
+if (f221) { //02ab
+  ignore.blocks(o0)
+  set.priority(o0,13)
+  goto(l701)
+}
+release.priority(o0)
+observe.blocks(o0)
+l701:
+if (f221 && fTriggerLine && posn(o0,45,87,62,107)) { //02bd
+  vEgoDir = 0
+  start.motion(o0)
+  reposition.to(o0,v42,v43)
+}
+if (f45) { //02d4
+  v220--
+  if (v220 == 1) { //02dc
+    random(5,15,v220)
+    random(0,3,v36)
+    set.loop(o0,v36)
+  }
+}
+if (v44 == 23) { //02ee
+  if (f33) { //02f5
+    set(f222)
+    set(f46)
+    program.control()
+    accept.input()
+    stop.motion(o0)
+    set(f35)
+    reset(f221)
+    print("Boy, do you hate these little sessions. But, \"No pain, no magic.\"")
+    v122 = vCycleTime
+    vCycleTime = 0
+    v36 = 5
+    cycle.time(o1,v36)
+    cycle.time(o2,v36)
+  }
+  if (f123) { //0318
+    reset(f123)
+    reset(f46)
+    v44 = 0
+    accept.input()
+    player.control()
+    start.motion(o0)
+    reset(f35)
+    set.view(o0,0)
+    v220 = 0
+    stop.sound()
+    reset(f222)
+    vCycleTime = v122
+    v36 = 1
+    cycle.time(o1,v36)
+    cycle.time(o2,v36)
+    print("Whew!")
+  }
+  if (f222) { //0342
+    sound(36,f222)
+  }
+}
+if (v44 != 125) { //034b
+  if (posn(o0,93,116,110,118)) { //0353
+    new.room(5)
+  }
+  if (posn(o0,131,134,140,144)) { //035f
+    new.room(8)
+  }
+  if (posn(o0,93,42,109,44)) { //036b
+    new.room(3)
+  }
+  if (vWhichEgoBorder == 3 && v44 != 27 && v44 != 25) { //0377
+    print("You open the front door of the house and go outside.")
+    new.room(34)
+  }
+}
+call(104)
+if (f98) { //038c
+  call(105)
+}
+return()

@@ -1,4 +1,390 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(57)
+  load.view(58)
+  load.sound(5)
+  load.sound(8)
+  if ((f89 || f183)) { //0016
+    load.view(25)
+    load.view(83)
+    animate.obj(o1)
+  }
+  if (!f172) { //0026
+    load.view(50)
+    animate.obj(o3)
+    set.view(o3,50)
+    position(o3,128,155)
+  }
+  animate.obj(o2)
+  set.view(o2,57)
+  position(o2,45,116)
+  stop.cycling(o2)
+  animate.obj(o4)
+  set.view(o4,58)
+  position(o4,89,115)
+  stop.cycling(o4)
+  draw(o2)
+  draw(o4)
+  if (!f172) { //0052
+    stop.cycling(o3)
+    draw(o3)
+  }
+  if (f183) { //005d
+    if (v89 == 0) { //0063
+      set.view(o1,25)
+    }
+    if (v89 == 1) { //006d
+      set.view(o1,83)
+    }
+    position(o1,68,104)
+    set.priority(o1,14)
+    draw(o1)
+    stop.update(o1)
+  }
+  if (vPrevRoom == 44) { //0082
+    position(o0,24,113)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f75) { //0090
+  reset(f75)
+  set(f130)
+  print("As soon as you entered the house the old goat ran away.")
+  vCurrentScore -= 5
+}
+if (said("jump")) { //009f
+  print("You dare not jump here or you would go through the floor!")
+}
+if ((said("check", "building") || said("check", "room"))) { //00a9
+  if (!f172) { //00bb
+    print("The cottage is run-down and sparsely furnished.  The only nice possession seems to be a fiddle in the corner.")
+    goto(l201)
+  }
+  print("The cottage is run-down and sparsely furnished.")
+}
+l201:
+if ((said("check", "doorway") || said("check", "floor"))) { //00c9
+  print("This family is so poor, they can't even repair the floor.")
+}
+if (said("check", "dwarf")) { //00dd
+  print("The woodcutter is thin and dressed in rags.")
+}
+if (said("check", "fairy")) { //00e9
+  print("The woodcutter's wife is skinny and poorly dressed.")
+}
+if (said("check", "people")) { //00f5
+  print("The woodcutter is thin and dressed in rags.")
+  print("The woodcutter's wife is skinny and poorly dressed.")
+}
+if (said("check", "table")) { //0103
+  if (!f183) { //010d
+    print("The woodcutter and his wife are sitting at the old oak table.")
+  }
+  if (f183 && v89 == 0) { //0116
+    print("There is an empty bowl sitting on the old oak table.")
+  }
+  if (f183 && v89 == 1) { //0121
+    print("There is a bowl of stew sitting on the old oak table.")
+  }
+}
+v30--
+if (said("speak", "dwarf")) { //012e
+  print("\"Welcome to my humble abode.\"")
+  if (!f20) { //013a
+    set(f20)
+    start.cycling(o2)
+    v30 = 18
+  }
+}
+if (said("speak", "fairy")) { //0148
+  if (!f183) { //0152
+    print("She replies, \"I'd like to offer you something, but we do not even have food for ourselves.\"")
+    goto(l352)
+  }
+  print("\"Make yourself at home in our humble home.\"")
+l352:
+  if (!f21) { //0160
+    set(f21)
+    start.cycling(o4)
+    v30 = 18
+  }
+}
+if (v30 == 1) { //016e
+  if (f20) { //0175
+    reset(f20)
+    stop.cycling(o2)
+  }
+  if (f21) { //017f
+    reset(f21)
+    stop.cycling(o4)
+  }
+  if (f24) { //0189
+    reset(f24)
+    stop.cycling(o2)
+    stop.cycling(o4)
+  }
+}
+if ((said("aid", "dwarf") || said("aid", "fairy") || said("aid", "people"))) { //0195
+  print("That would be very nice.  How do you want to help them?")
+}
+if ((said("kill", "dwarf") || said("kill", "fairy") || said("kill", "people") || said("attack", "ANYWORD"))) { //01af
+  print("What an abominable idea!  You should be ashamed of yourself for even suggesting such a thing!")
+  if (!f24) { //01cf
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+}
+if (said("check", "cabinet")) { //01df
+  print("It is closed, but in this house, all the cabinets are bare.")
+}
+if (said("open", "cabinet")) { //01eb
+  print("The cabinet is all but bare.")
+}
+if (said("check", "window")) { //01f7
+  print("The beautiful scenery outside is in contrast to the dreariness inside.")
+}
+if (said("break", "window")) { //0203
+  print("You should have more sympathy for these poor folks!")
+  if (!f24) { //020f
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+}
+if (f183) { //021f
+  if (said("acquire", "bowl")) { //0225
+    print("You have given the bowl to these poor people and it is now theirs.  You have no right to take it back.")
+    if (!f24) { //0231
+      set(f24)
+      start.cycling(o2)
+      start.cycling(o4)
+      v30 = 18
+    }
+  }
+  if (said("check", "bowl")) { //0241
+    print("The woodcutters admire the bowl as it sits on their table.")
+  }
+}
+if (!f106 && !f110 && !f108 && !f113) { //024d
+  if (said("give", "treasure")) { //025d
+    print("This is a nice thought, but unfortunately you have nothing to give these poor people.")
+  }
+}
+if ((f106 || f110 || f108 || f113)) { //0269
+  if (said("give", "treasure")) { //0277
+    print("What treasure do you wish to donate to them?")
+  }
+}
+if (f106 && (said("give", "diamond") || said("give", "bag"))) { //0283
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.")
+  if (!f24) { //0299
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f106)
+  drop(i15)
+  vCurrentScore -= 6
+}
+if (f110 && said("give", "egg")) { //02b0
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.")
+  if (!f24) { //02be
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f110)
+  drop(i20)
+  vCurrentScore -= 6
+}
+if (f108 && said("give", "gold nut")) { //02d5
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.")
+  if (!f24) { //02e3
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f108)
+  drop(i4)
+  vCurrentScore -= 6
+}
+if (f113 && said("give", "sceptre")) { //02fa
+  print("The woodcutter and his wife very gratefully accept the treasure.  \"This will help us for awhile,\" says the woodcutter.")
+  if (!f24) { //0308
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f113)
+  drop(i17)
+  vCurrentScore -= 6
+}
+if (f77 && said("give", "carrot")) { //031f
+  print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"")
+  if (!f24) { //032d
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f77)
+  drop(i3)
+  vCurrentScore -= 2
+}
+if (f154 && said("give", "bean")) { //0344
+  print("The woodcutter and his wife kindly accept your gift of food.  They offer a heartfelt \"Thank you.\"")
+  if (!f24) { //0352
+    set(f24)
+    start.cycling(o2)
+    start.cycling(o4)
+    v30 = 18
+  }
+  reset(f154)
+  drop(i25)
+  vCurrentScore -= 6
+}
+if (f89) { //0369
+  if (v89 == 0) { //036f
+    if ((said("give", "bowl") || said("give", "bowl", "dwarf") || said("give", "dwarf", "bowl") || said("give", "fairy", "bowl") || said("give", "bowl", "fairy") || said("drop", "bowl", "table"))) { //0376
+      set(f183)
+      reset(f89)
+      drop(i9)
+      vCurrentScore -= 3
+      vCurrentScore += 6
+      position(o1,68,104)
+      set.priority(o1,14)
+      set.view(o1,25)
+      draw(o1)
+      print("Puzzled, the couple wonders why you have given them a bowl.")
+      if (!f24) { //03c4
+        set(f24)
+        start.cycling(o2)
+        start.cycling(o4)
+        v30 = 18
+      }
+    }
+  }
+  if (v89 == 1) { //03d4
+    if ((said("give", "bowl") || said("give", "bowl", "dwarf") || said("give", "dwarf", "bowl") || said("give", "fairy", "bowl") || said("give", "bowl", "fairy") || said("drop", "bowl", "table") || said("give", "stew") || said("give", "stew", "dwarf") || said("give", "dwarf", "stew") || said("give", "fairy", "stew") || said("give", "stew", "fairy") || said("drop", "stew", "table"))) { //03db
+      set(f183)
+      reset(f89)
+      drop(i9)
+      vCurrentScore -= 3
+      vCurrentScore += 6
+      position(o1,68,104)
+      set.priority(o1,14)
+      set.view(o1,83)
+      draw(o1)
+      print("The woodcutter family is very grateful that you have given them a bowl of stew.  Now they will have at least one last meal.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.")
+      set(f185)
+      if (!f24) { //0459
+        set(f24)
+        start.cycling(o2)
+        start.cycling(o4)
+        v30 = 18
+      }
+    }
+  }
+}
+if (f183) { //0469
+  if (said("consume", "stew")) { //046f
+    if (v89 == 0) { //0479
+      print("Eat stew from an empty bowl?  The woodcutters are beginning to question your authenticity.")
+      goto(l1159)
+    }
+    print("The stew looks delicious, but it is no longer yours.  Now you will have to do without.")
+  }
+}
+l1159:
+if (f183 && v89 == 0) { //0487
+  if ((said("fill") || said("say", "fill") || said("fill", "bowl"))) { //0490
+    erase(o1)
+    set.view(o1,83)
+    draw(o1)
+    print("The couple is amazed and delighted as the bowl miraculously fills with a bubbling stew.  As a token of their gratitude, they offer their last earthly possession, the woodcutter's fiddle.")
+    v89 = 1
+    if (!f184) { //04b2
+      set(f184)
+      vCurrentScore += 2
+    }
+    set(f185)
+    if (!f24) { //04c0
+      set(f24)
+      start.cycling(o2)
+      start.cycling(o4)
+      v30 = 18
+    }
+  }
+}
+if (said("show", "ANYWORD")) { //04d0
+  print("The couple does not understand.")
+}
+if (!f172) { //04dc
+  if (said("check", "fiddle")) { //04e3
+    if (posn(o0,120,140,158,166)) { //04ed
+      print("The fiddle is a beautiful instrument made of polished wood.")
+      goto(l1278)
+    }
+    print("You cannot see it very well from here.")
+  }
+l1278:
+  if (said("steal", "fiddle")) { //04fe
+    if (posn(o0,120,140,158,166)) { //0508
+      print("What a terrible suggestion!  These people are poor and starving and you want to steal one of their last earthly possessions.")
+      goto(l1305)
+    }
+    print("I doubt that you will get away with it, but you will have to get closer to try.")
+  }
+l1305:
+  if (said("acquire", "fiddle")) { //0519
+    if (!f185) { //0523
+      print("You cannot take their last precious possession!")
+    }
+    if (posn(o0,120,140,158,166) && f185) { //052c
+      erase(o3)
+      set(f171)
+      set(f172)
+      print("The polished wood feels like satin -- it seems to still vibrate from the last song it played.")
+      get(i22)
+      vCurrentScore += 3
+    }
+    if (!(posn(o0,120,140,158,166)) && f185) { //0545
+      print("You are not close enough to reach it.")
+    }
+  }
+}
+if (fEgoOnWater && !f199) { //0554
+  ignore.blocks(o0)
+  set(f95)
+  stop.cycling(o0)
+  set(f199)
+  set.priority(o0,5)
+  get.posn(o0,v60,v61)
+  v61 = 166
+  v96 = 6
+  move.obj(o0,v60,v61,96,f23)
+  sound(5,f159)
+}
+if (f23) { //057b
+  reset(f23)
+  erase(o0)
+  print("These poor people can't even afford to repair the floor!  Sorry about that.")
+  set(f63)
+}
+if ((said("say", "hello") || said("say", "hello") || said("hello") || said("hello"))) { //0589
+  print("\"Hello\"")
+}
+if (fTriggerLine) { //05a5
+  new.room(44)
+}
+return()

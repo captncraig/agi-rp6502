@@ -1,9 +1,302 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
   v56 = 0
   v57 = 0
   v86 = 0
   v87 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(108)
+  call(108)
+  if ((v67 == 38 || v67 == 175)) { //0020
+    v57 = 118
+    load.logic(v57)
+    call(v57)
+    if ((!f42 || !f77)) { //0033
+      load.view(v40)
+    }
+  }
+  load.view(141)
+  load.view(134)
+  load.view(135)
+  load.sound(20)
+  load.sound(21)
+  load.sound(34)
+  if ((!(v63 > 0) || v63 == 255)) { //004d
+    load.view(133)
+    animate.obj(o5)
+    set.view(o5,133)
+    set.loop(o5,0)
+    set.priority(o5,4)
+    position(o5,37,97)
+    draw(o5)
+    stop.update(o5)
+    fix.loop(o5)
+  }
+  animate.obj(o19)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o8)
+  animate.obj(o11)
+  animate.obj(o2)
+  position(o0,139,115)
+  position(o19,135,115)
+  if (v67 == 137) { //0085
+    v56 = 58
+    goto(l190)
+  }
+  if ((v67 == 38 || v96 < 4)) { //0092
+    v56 = 59
+    goto(l190)
+  }
+  if (v67 == 175 && v96 < 6) { //00a4
+    v56 = 61
+    goto(l190)
+  }
+  if (v96 == 6) { //00b4
+    v56 = 62
+  }
+l190:
+  if (v56 > 0) { //00be
+    load.logic(v56)
+    call(v56)
+  }
+  set.view(o6,141)
+  set.view(o7,141)
+  set.view(o8,134)
+  set.view(o11,135)
+  set.loop(o11,2)
+  set.cel(o6,0)
+  set.cel(o7,1)
+  set.priority(o6,11)
+  set.priority(o7,10)
+  set.priority(o11,4)
+  stop.cycling(o6)
+  stop.cycling(o11)
+  ignore.blocks(o19)
+  ignore.blocks(o6)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  position(o6,134,125)
+  position(o7,139,124)
+  position(o8,53,104)
+  position(o11,110,82)
+  draw(o6)
+  set(f241)
+  ignore.blocks(o0)
+  draw(o0)
+  draw(o7)
+  draw(o8)
+  draw(o11)
+  stop.update(o7)
+  stop.update(o8)
+  show.pic()
+  return()
+}
+reset(f233)
+if (posn(o0,51,105,82,115)) { //0119
+  set(f233)
+  set(f109)
+}
+distance(o19,o0,v152)
+if (v152 < v61) { //012b
+  set(f233)
+  set(f109)
+}
+reset(f234)
+if (posn(o0,18,105,50,115)) { //0138
+  set(f234)
+  set(f109)
+}
+reset(f232)
+if (posn(o0,96,105,127,114)) { //0148
+  set(f232)
+  set(f109)
+}
+reset(f235)
+if (!(posn(o0,1,1,80,167)) && !(posn(o0,127,1,159,167))) { //0158
+  set(f235)
+}
+if (posn(o0,80,131,100,143) && !fTriggerLine) { //016c
+  set.priority(o0,11)
+  goto(l397)
+}
+if (fEgoObscured) { //017f
+  set.priority(o0,8)
+  goto(l397)
+}
+release.priority(o0)
+l397:
+if (posn(o0,140,114,159,126)) { //018d
+  accept.input()
+  new.room(41)
+}
+if (!f110 && f112) { //019a
+  v166--
+  v167--
+}
+if (f220) { //01a7
+  reset(f220)
+  v220++
+}
+if (f221) { //01b1
+  reset(f221)
+  v221++
+}
+if (f222) { //01bb
+  reset(f222)
+  v222++
+}
+if (!(v220 > 0)) { //01c5
+  move.obj(o0,115,115,1,f220)
+}
+if (f232) { //01d3
+  if ((said("answer") || said("answer", "art", "rol"))) { //01d9
+    reset(f223)
+  }
+  if (!f223) { //01ed
+    random(8,10,v152)
+    print(v152)
+    set(f223)
+  }
+}
+if ((said("examine", "accident") || said("examine", "cell") || said("examine"))) { //01fc
+  print("The jail is drab and depressing. The only reason the jailer works here is the vast variety of lifestyles that pass through.")
+}
+if (said("o", "d")) { //0214
+  if (posn(o0,127,114,159,126)) { //021e
+    if (!f241) { //0228
+      if (f46) { //022f
+        print("It seems you have some unfinished business here first.")
+        goto(l572)
+      }
+      set(f240)
+l572:
+      goto(l577)
+    }
+    print("You need to get closer.")
+l577:
+    goto(l582)
+  }
+  print("The jailer hollers, \"Get over there! I'll open the door!\"")
+}
+l582:
+if (said("c", "d")) { //0246
+  print("The jailer has control of this door.")
+}
+get.posn(o11,v144,v145)
+if ((v223 != v144 || v224 != v145)) { //0256
+  v223 = v144
+  v224 = v145
+  start.cycling(o11)
+  goto(l710)
+}
+stop.cycling(o11)
+if (v96 != 3) { //0271
+  v152 = v144
+  v144 -= 7
+  v152 += 13
+  if (v142 < v144) { //0282
+    set.loop(o11,1)
+    goto(l710)
+  }
+  if (v142 > v152) { //028f
+    set.loop(o11,0)
+    goto(l710)
+  }
+  set.loop(o11,2)
+  if (!f229 && !f46 && !f42) { //029f
+    set(f229)
+    if ((has(i5) || has(i14))) { //02ae
+      print("The Jailer says \"Bonds, you oughta know better than to bring your gun in here.\"")
+      if (vCurrentScore > 1) { //02ba
+        vCurrentScore -= 2
+        print("You're docked two points.")
+      }
+    }
+  }
+}
+l710:
+if ((!(v63 > 0) || v63 == 255)) { //02c6
+  if (f234) { //02d3
+    if (!(v222 > 0)) { //02d9
+      start.update(o5)
+      move.obj(o5,32,104,1,f222)
+      v222 = 1
+    }
+    if ((said("examine", "art") || said("examine", "convict"))) { //02ec
+      print("Bonecrusher Gajarian stares back at you through the bars. You never realized software pirates were SO ugly!")
+    }
+    if ((said("answer") || said("answer", "art", "rol"))) { //0300
+      random(3,7,v152)
+      print(v152)
+    }
+  }
+  if (v222 == 2) { //0318
+    stop.cycling(o5)
+    random(3,7,v152)
+    print(v152)
+    v222 = 3
+  }
+  if (!f234 && v222 == 3) { //032a
+    set.loop(o5,1)
+    start.cycling(o5)
+    move.obj(o5,32,97,1,f222)
+    v222 = 4
+  }
+  if (v222 == 5) { //0342
+    set.loop(o5,0)
+    set(f222)
+  }
+  if (v222 == 6) { //034e
+    stop.update(o5)
+    v222 = 0
+  }
+}
+if (v56 > 0) { //035a
+  call(v56)
+}
+if ((said("lock", "cell") || said("lock", "d") || said("lock", "convict") || said("lock", "art"))) { //0363
+  print("The jailer does that electronically.")
+}
+if ((said("book", "art") || said("book", "convict") || said("book", "drunk"))) { //0383
+  if (f46) { //039b
+    print("\"Book him for what?\" asks the jailer.")
+    goto(l936)
+  }
+  print("You don't have a suspect.")
+}
+l936:
+if (posn(o0,125,114,159,127) && !f46 && !f241 && !f242) { //03a8
+  set(f240)
+}
+if (!(posn(o0,125,114,159,127)) && f241 && !f242) { //03bd
+  set(f240)
+}
+if (f240) { //03cf
+  reset(f240)
+  if (f241) { //03d7
+    erase(o6)
+    observe.blocks(o0)
+    reset(f241)
+    goto(l1006)
+  }
+  draw(o6)
+  ignore.blocks(o0)
+  observe.objs(o6)
+  set(f241)
+l1006:
+  sound(21,f154)
+}
+if (f241 && posn(o0,128,120,150,125)) { //03f1
+  set.priority(o0,10)
+  goto(l1029)
+}
+release.priority(o0)
+l1029:
+if (v57 > 0) { //0405
+  call(v57)
+}
+call(108)
+return()

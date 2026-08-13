@@ -1,4 +1,140 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(14)
+  animate.obj(o13)
+  set.view(o13,14)
+  get.posn(o0,v60,v61)
+  object.on.land(o13)
+  if (vCurrentRoom == 7 && vPrevRoom == 8 && v61 < 65) { //0015
+    position(o13,1,42)
+    stop.motion(o13)
+    stop.cycling(o13)
+    ignore.horizon(o13)
+    ignore.blocks(o13)
+    set(f40)
+    draw(o13)
+    goto(l434)
+  }
+  if (vCurrentRoom == 7 && vPrevRoom == 10 && v60 < 20) { //0035
+    position(o13,1,42)
+    stop.motion(o13)
+    stop.cycling(o13)
+    ignore.horizon(o13)
+    ignore.blocks(o13)
+    set(f40)
+    draw(o13)
+    goto(l434)
+  }
+  if (vCurrentRoom == 17 && vPrevRoom == 18 && v61 < 65) { //0055
+    position(o13,1,45)
+    stop.motion(o13)
+    stop.cycling(o13)
+    ignore.horizon(o13)
+    ignore.blocks(o13)
+    set(f43)
+    draw(o13)
+    goto(l434)
+  }
+  if (vCurrentRoom == 17 && vPrevRoom == 32 && v60 < 50) { //0075
+    position(o13,1,45)
+    stop.motion(o13)
+    stop.cycling(o13)
+    ignore.horizon(o13)
+    ignore.blocks(o13)
+    set(f43)
+    draw(o13)
+    goto(l434)
+  }
+  if (v61 > 100) { //0095
+    v61 += 1
+    goto(l165)
+  }
+  v61 -= 1
+l165:
+  position(o13,60,v61)
+  v107 = 1
+  step.size(o13,v107)
+  draw(o13)
+  follow.ego(o13,10,f207)
+}
+distance(o0,o13,v40)
+if (v40 > 35) { //00b9
+  v107 = 1
+  step.size(o13,v107)
+  goto(l207)
+}
+v107 = 1
+step.size(o13,v107)
+l207:
+if (!f75) { //00cf
+  goto(l471)
+}
+if (f63) { //00d9
+  normal.motion(o13)
+  stop.motion(o13)
+  stop.cycling(o13)
+  goto(l471)
+}
+if ((f40 || f43)) { //00e8
+  goto(l434)
+}
+if (f76) { //00f5
+  ignore.blocks(o13)
+  goto(l471)
+  goto(l261)
+}
+observe.blocks(o13)
+l261:
+v41--
+if (v41 == 1) { //0107
+  if (v40 < 21) { //010e
+    set(f207)
+    goto(l304)
+  }
+  if (!f207 && !(v94 > 0)) { //011a
+    v41 = 0
+    start.cycling(o13)
+    start.motion(o13)
+    follow.ego(o13,10,f207)
+  }
+}
+l304:
+if (f207) { //0130
+  reset(f207)
+  v41 = 9
+  normal.motion(o13)
+  stop.motion(o13)
+  stop.cycling(o13)
+}
+if (v40 > 20 && v94 > 0 && !f66) { //0141
+  if (!f68 && vCurrentRoom != 1 && vCurrentRoom != 2 && vCurrentRoom != 41 && vCurrentRoom != 33 && vCurrentRoom != 34 && vCurrentRoom != 32 && vCurrentRoom != 25 && vCurrentRoom != 26 && vCurrentRoom != 39) { //014e
+    print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.")
+  }
+  set(f66)
+  start.cycling(o13)
+  wander(o13)
+}
+if (f66 && v40 < 25 && !(v94 > 0)) { //0181
+  reset(f66)
+  follow.ego(o13,10,f207)
+}
+if (f79 && !f42) { //0194
+  set(f42)
+  print("The goat, not being able to see you, wanders off.")
+  reset(f75)
+  wander(o13)
+  if (vWhichObjBorder != 0) { //01a5
+    erase(o13)
+  }
+}
+goto(l471)
+l434:
+distance(o0,o13,v40)
+if (f43 && v94 > 0 && !f66) { //01b6
+  set(f66)
+  print("The goat does not mind getting its feet wet,but will not swim in the water.  You should go back and lead the goat around the water.")
+}
+if (f43 && f66 && v40 < 25 && !(v94 > 0)) { //01c6
+  reset(f66)
+}
+l471:
+return()

@@ -1,4 +1,292 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x4e)}
+if (fNewRoom) { //0002
+  start.motion(o0)
+  set(f36)
+  prevent.input()
+  vCycleTime = 1
+  load.view(247)
+  load.view(207)
+  load.view(209)
+  load.view(201)
+  load.view(205)
+  load.view(245)
+  load.view(206)
+  load.view(13)
+  load.sound(5)
+  load.sound(16)
+  load.sound(34)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,247)
+  set.loop(o1,3)
+  position(o1,79,166)
+  draw(o1)
+  move.obj(o1,79,139,0,f138)
+  animate.obj(o2)
+  set.view(o2,207)
+  set.loop(o2,0)
+  fix.loop(o2)
+  position(o2,69,167)
+  animate.obj(o3)
+  set.view(o3,207)
+  set.loop(o3,1)
+  fix.loop(o3)
+  position(o3,76,167)
+  animate.obj(o4)
+  set.view(o4,207)
+  set.loop(o4,2)
+  fix.loop(o4)
+  position(o4,85,167)
+  animate.obj(o5)
+  set.priority(o5,12)
+  set.view(o5,206)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  cycle.time(o5,v124)
+  ignore.objs(o5)
+  ignore.blocks(o5)
+  position(o5,45,115)
+  draw(o5)
+  stop.cycling(o5)
+  set.loop(o0,3)
+  position(o0,72,167)
+  draw(o0)
+  show.pic()
+  return()
+}
+if ((said("call", "location") || said("administer", "location") || said("administer", "accident", "number") || said("administer", "number") || said("number") || said("call") || said("accident", "number") || said("call", "number") || said("call", "accident", "number"))) { //0092
+  if (!(has(i21))) { //00ce
+    print("You whisper a soft \"Room 404\" into your empty shirt pocket.")
+    goto(l237)
+  }
+  if (!f97) { //00da
+    v60 = vCurrentRoom
+    set(f97)
+    vCurrentScore += 2
+  }
+  print("You whisper a soft \"Room 404\" into your \"pen,\" to tip your backups of your location.")
+  print("You hope they have time to respond.")
+}
+l237:
+if (f138) { //00ed
+  reset(f138)
+  v139++
+  if (v139 == 1) { //00f7
+    stop.cycling(o1)
+    set.loop(o1,2)
+    force.update(o1)
+    print("\"Well, Mr. Banksten,\" says Bains, \"I have a little proposition for you that I know you'll love.\"")
+    v140 = 4
+  }
+  if (v139 == 2) { //010a
+    print("\"I'm interested,\" you reply.")
+    v222 = 2
+    v140 = 3
+  }
+  if (v139 == 3) { //0119
+    print("Just then, the telephone rings in the next room.")
+    sound(16,f152)
+    print("\"Fix yourself a drink while I answer the phone,\" says Bains.")
+    move.obj(o1,79,124,0,f138)
+    start.cycling(o1)
+  }
+  if (v139 == 4) { //012f
+    move.obj(o1,85,118,0,f138)
+  }
+  if (v139 == 5) { //013c
+    move.obj(o1,134,118,0,f138)
+    move.obj(o0,40,135,0,f152)
+  }
+  if (v139 == 6) { //014f
+    stop.sound()
+    v222 = 0
+    print("You step up to the bar and peruse the selection of beverages.")
+    set.loop(o1,1)
+    set.loop(o0,3)
+    v140 = 15
+  }
+  if (v139 == 7) { //0165
+    move.obj(o1,76,112,0,f138)
+  }
+  if (v139 == 8) { //0172
+    stop.cycling(o1)
+    set.view(o1,209)
+    set.loop(o1,0)
+    set.cel(o1,0)
+    v107 = 255
+    v108 = 0
+    repositon(o1,v107,v108)
+    cycle.time(o1,v124)
+    v140 = 4
+  }
+  if (v139 == 9) { //0194
+    sound(34,f152)
+    print.at("Bains draws his gun, and aims it directly at you! \"Hold it right there, PIG!\" he shouts. \"It seems one of our card-playing comrades recognizes your ugly mug from a minor misunderstanding he had with the heat a while back. You're about to find out just how much I hate cops!\"",2,3,35)
+    if (v60 == 65) { //01a3
+      v139 = 51
+      goto(l435)
+    }
+    v139 = 101
+  }
+l435:
+  if (v139 == 51) { //01b3
+    print("Just then, a knock on the door diverts Bains' attention!")
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    move.obj(o2,66,164,0,f138)
+    move.obj(o3,76,162,0,f138)
+    move.obj(o4,86,160,0,f138)
+  }
+  if (v139 == 52) { //01d4
+    stop.cycling(o2)
+  }
+  if (v139 == 53) { //01dd
+    stop.cycling(o3)
+  }
+  if (v139 == 54) { //01e6
+    stop.cycling(o4)
+    set(f157)
+    set.view(o0,205)
+    set.cel(o0,0)
+    force.update(o0)
+    cycle.time(o0,v124)
+    end.of.loop(o0,f138)
+    print.at("You dive to the floor and struggle to remove the derringer from your cane. A loud \"CRASH\" and the door flies open. Your backups have arrived!",2,3,35)
+    sound(5,f152)
+    end.of.loop(o1,f152)
+  }
+  if (v139 == 55) { //020a
+    reset(f157)
+    sound(5,f152)
+    add.to.pic(206,1,0,65,105,4,4)
+    v141 = 6
+  }
+  if (v139 == 56) { //0221
+    sound(5,f152)
+    add.to.pic(206,1,0,88,106,4,4)
+    v141 = 3
+  }
+  if (v139 == 57) { //0236
+    sound(5,f152)
+    add.to.pic(206,1,0,86,90,4,4)
+    v141 = 5
+  }
+  if (v139 == 58) { //024b
+    sound(5,f152)
+    end.of.loop(o5,f138)
+  }
+  if (v139 == 59) { //0258
+    sound(5,f152)
+    add.to.pic(206,1,0,78,100,4,4)
+    set.view(o1,201)
+    set.cel(o1,0)
+    v152 = 2
+    cycle.time(o1,v152)
+    end.of.loop(o1,f138)
+  }
+  if (v139 == 60) { //0279
+    v140 = 4
+  }
+  if (v139 == 61) { //0283
+    print("Bains is taken down in the barrage of gunfire.")
+    v140 = 4
+  }
+  if (v139 == 62) { //028f
+    print("In the twinkling of an eye, the shootout is over. Sprawled unconcious on the carpet with a near-fatal belly wound, lies Jessie Bains, \"the Death Angel!\"")
+    v140 = 10
+  }
+  if (v139 == 63) { //029b
+    new.room(103)
+  }
+  if (v139 == 101) { //02a4
+    sound(5,f152)
+    end.of.loop(o1,f138)
+    end.of.loop(o5,f152)
+  }
+  if (v139 == 102) { //02b4
+    set.cel(o1,0)
+    end.of.loop(o1,f152)
+    set(f157)
+    set.view(o0,245)
+    set.cel(o0,0)
+    v142 -= 12
+    reposition.to(o0,v142,v143)
+    v152 = 2
+    cycle.time(o0,v152)
+    sound(5,f152)
+    end.of.loop(o0,f138)
+  }
+  if (v139 == 103) { //02dc
+    reset(f157)
+    v140 = 4
+  }
+  if (v139 == 104) { //02e8
+    if (!(v60 > 0)) { //02ef
+      print("Unfortunately, your failure to transmit your location has resulted in your untimely demise.")
+      set(f140)
+      goto(l769)
+    }
+    v139 = 200
+  }
+l769:
+  if (v139 == 200) { //0301
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    move.obj(o2,66,164,0,f138)
+    move.obj(o3,76,162,0,f138)
+    move.obj(o4,86,160,0,f138)
+  }
+  if (v139 == 201) { //0320
+    stop.cycling(o2)
+  }
+  if (v139 == 202) { //0329
+    stop.cycling(o3)
+  }
+  if (v139 == 203) { //0332
+    stop.cycling(o4)
+    sound(5,f152)
+    set.cel(o1,0)
+    end.of.loop(o1,f138)
+  }
+  if (v139 == 204) { //0344
+    sound(5,f152)
+    add.to.pic(206,1,0,65,105,4,4)
+    v141 = 6
+  }
+  if (v139 == 205) { //0359
+    sound(5,f152)
+    add.to.pic(206,1,0,88,106,4,4)
+    v141 = 3
+  }
+  if (v139 == 206) { //036e
+    sound(5,f152)
+    add.to.pic(206,1,0,78,100,4,4)
+    set.view(o1,201)
+    set.cel(o1,0)
+    v152 = 2
+    cycle.time(o1,v152)
+    end.of.loop(o1,f138)
+  }
+  if (v139 == 207) { //038f
+    v140 = 4
+  }
+  if (v139 == 208) { //0399
+    print("Bains is taken down in the barrage of gunfire.")
+    v140 = 4
+  }
+  if (v139 == 209) { //03a5
+    print("Unfortunately, you transmitted your location to your backups a few seconds too late. Bains has been stopped, but you died in the line of duty.")
+    set(f140)
+  }
+}
+if (f112) { //03b0
+  v222--
+  if (v222 == 1) { //03b8
+    sound(16,f152)
+    v222 = 4
+  }
+}
+return()

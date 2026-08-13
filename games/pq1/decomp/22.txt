@@ -1,4 +1,19 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(27)
+  position(o12,75,40)
+  draw(o0)
+  draw(o12)
+  show.pic()
+  return()
+}
+if (posn(o0,85,124,113,131)) { //0014
+  v46 = 93
+  goto(l39)
+}
+v46 = 80
+l39:
+call(27)
+if ((said("examine") || said("examine", "accident") || said("examine", "city"))) { //0029
+  print("The freeway stretches out above this quiet neighborhood.")
+}
+return()

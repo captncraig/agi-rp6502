@@ -1,4 +1,276 @@
-if (isSet(f5)) {
-  if (v119 > 4
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v119 > 4 && v119 < 10) { //0008
+    new.room(19)
+  }
+  set.horizon(107)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(57)
+  load.view(136)
+  random(1,3,v52)
+  if (f30) { //0024
+    v52 = 1
+  }
+  if (v30 == 0 && v52 == 1 && obj.in.room(i5,vCurrentRoom)) { //002d
+    load.view(138)
+    animate.obj(o3)
+    set.view(o3,138)
+    position(o3,120,131)
+    random(4,7,v201)
+    object.on.land(o3)
+  }
+  animate.obj(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.view(o1,136)
+  set.loop(o1,1)
+  fix.loop(o1)
+  set.cel(o1,0)
+  stop.cycling(o1)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,136)
+  set.loop(o2,1)
+  fix.loop(o2)
+  set.cel(o2,1)
+  stop.cycling(o2)
+  if (f118) { //0071
+    add.to.pic(136,0,1,51,61,4,4)
+    goto(l150)
+  }
+  animate.obj(o4)
+  ignore.horizon(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.view(o4,136)
+  set.loop(o4,0)
+  position(o4,51,61)
+  draw(o4)
+l150:
+  if (vPrevRoom == 31) { //0096
+    v38 = 75
+    v39 = 109
+    set.loop(o0,2)
+    position(o1,57,108)
+    position(o2,88,108)
+    draw(o1)
+    draw(o2)
+    set(f201)
+    goto(l225)
+  }
+  position(o1,67,108)
+  draw(o1)
+  position(o2,78,108)
+  draw(o2)
+  if (vPrevRoom == 9) { //00c3
+    v38 = 0
+    v39 = 141
+    goto(l225)
+  }
+  if (vPrevRoom != 33) { //00d3
+    v38 = 77
+    v39 = 155
+  }
+l225:
+  position(o0,38,v39)
+  draw(o0)
+  object.on.anything(o0)
+  call(57)
+  show.pic()
+  return()
+}
+reset(f204)
+distance(o3,o0,v52)
+if (f205 && v52 < 25) { //00f3
+  set(f204)
+}
+reset(f200)
+if (posn(o0,63,100,86,113)) { //0100
+  set(f200)
+}
+if (v200 == 3) { //010c
+  distance(o3,o0,v52)
+  if (v52 < 255 && v52 > 20) { //0117
+    print("\"Hey, come back!\" says the man. \"Are you sure you don't want to buy an apple?\"")
+    set(f202)
+    v200 = 1
+    v201 = 0
+  }
+}
+if (!fEnteredCommand) { //012b
+  goto(l819)
+}
+if ((said("examine") || said("examine", "building") || said("examine", "area") || said("examine", "casino") || said("examine", "casino"))) { //0135
+  print("It's a casino!")
+}
+if ((said("examine", "bush") || said("look in", "bush") || said("look in", "pot") || said("examine", "pot"))) { //0159
+  print("They are nicely manicured, but of no help to you.")
+}
+if (said("increase", "door")) { //0179
+  if (f61) { //0183
+    reset(fSaidAccepted)
+    goto(l400)
+  }
+  print("They're automatic. Get closer.")
+}
+l400:
+if (said("examine", "brick")) { //0190
+  print("Isn't it wonderful what can be done with a few light bulbs?")
+}
+if ((said("examine", "glass") || said("examine", "glass") || said("examine", "door") || said("examine", "glass", "door") || said("look in", "glass"))) { //019c
+  print("Pretty flashy, eh?")
+}
+if (f205) { //01c4
+  if (said("examine", "bouncer")) { //01ca
+    print("He's yet another poor soul who donated his everything so the shrine of Lost Wages could continue to flourish.")
+  }
+  if (said("ask", "bouncer")) { //01d6
+    if (!f204) { //01e0
+      set(f54)
+      goto(l517)
+    }
+    if (has(i5)) { //01ec
+      print("\"Thanks a lot. See you later, pal.\"")
+      goto(l517)
+    }
+    if (v200 < 3) { //01f7
+      print("\"Apples. Apples! APPLES for sale!!\"")
+      goto(l517)
+    }
+    print("\"My pleasure was always the slot machines,\" he says. \"Say, are we going to stand here and chitchat all night, or am I going to make a sale?\"")
+  }
+l517:
+  if ((said("ask", "name") || said("ask", "bouncer", "about", "name") || said("catch", "name") || said("ask", "about", "name") || said("ask", "bouncer", "name") || said("name") || said("name", "bouncer") || said("bouncer", "name"))) { //0205
+    if (!f204) { //0241
+      set(f54)
+      goto(l591)
+    }
+    print("\"Why, Steve. Nice of you to ask,\" he responds.")
+  }
+l591:
+  if ((v200 == 2 || v200 == 3)) { //024f
+    if ((said("n") || said("catch", "lost", "rol") || said("board", "away", "rol") || said("copulate", "off", "rol") || said("n", "thank you"))) { //025b
+      print("\"Ok, be that way!\" he says, and disappears into the night.")
+      set(f202)
+      v200 = 3
+      v201 = 0
+    }
+  }
+  if ((said("ask", "last", "name") || said("last", "name") || said("last", "name", "bouncer") || said("bouncer", "last", "name"))) { //028d
+    if (!f204) { //02b1
+      set(f54)
+      goto(l703)
+    }
+    print("\"Well, my friends call me 'Woz,' but I don't consider you a friend.\"")
+  }
+l703:
+  if (said("catch", "barrel")) { //02bf
+    if (!f204) { //02c9
+      set(f54)
+      goto(l727)
+    }
+    print("\"Oh no, you don't!\" exclaims the man.")
+  }
+l727:
+  if (said("look in", "barrel")) { //02d7
+    if (!f204) { //02e1
+      set(f54)
+      goto(l751)
+    }
+    print("\"Say, you really did lose everything,\" you tell the man.")
+  }
+l751:
+  if ((said("buy", "rol") || said("add", "bucks", "bouncer") || said("buy", "rol"))) { //02ef
+    if (!f204) { //0309
+      set(f54)
+      goto(l819)
+    }
+    if (!(obj.in.room(i5,vCurrentRoom))) { //0315
+      print("\"You know,\" says the man, peering deep into his barrel, \"I'm all out! But thank you for your continued interest.\"")
+      goto(l819)
+    }
+    vCurrentScore += 3
+    print("\"Thank you very much, sir. Please call again, whenever you are in the neighborhood,\" says the man. And with that, he walks away into the night.")
+    get(i5)
+    v90--
+    set(f202)
+    v201 = 0
+    v200 = 3
+  }
+}
+l819:
+if (f44) { //0333
+  v201--
+  if (v201 == 1) { //033b
+    set(f202)
+  }
+}
+if (v200 == 3 && vWhichEgoBorder > 0) { //0344
+  print("\"I take that as a 'No,'\" he says pleasantly. \"Very well then, perhaps some other time.\"")
+}
+if (v200 == 4 && vBorderObj == 3) { //0350
+  set(f202)
+}
+if (f202) { //035c
+  reset(f202)
+  v200++
+  if (v200 == 1) { //0366
+    draw(o3)
+    set(f205)
+    v200 = 2
+  }
+  if (v200 == 2) { //0374
+    start.cycling(o3)
+    follow.ego(o3,8,f202)
+  }
+  if (v200 == 3) { //0381
+    v201 = 11
+    stop.cycling(o3)
+    print("\"Hello, sir. Would you help out a poor unfortunate by purchasing an apple?\"")
+    print("\"The price is reasonable: only $1.00.\"")
+    set(f69)
+  }
+  if (v200 == 4) { //0393
+    start.cycling(o3)
+    wander(o3)
+  }
+  if (v200 == 5) { //039e
+    erase(o3)
+    reset(f205)
+    v200 = 0
+  }
+}
+if (f200) { //03ac
+  ignore.blocks(o0)
+  observe.objs(o1)
+  observe.objs(o2)
+  observe.objs(o0)
+  if (!f201) { //03ba
+    set(f201)
+    move.obj(o1,57,108,1,f40)
+    move.obj(o2,88,108,1,f40)
+  }
+  goto(l1004)
+}
+observe.blocks(o0)
+if (f201) { //03d4
+  reset(f201)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  move.obj(o1,67,108,1,f40)
+  move.obj(o2,78,108,1,f40)
+}
+l1004:
+call(57)
+if (vWhichEgoBorder == 1) { //03ee
+  v76 = 31
+}
+if (vWhichEgoBorder == 2) { //03f8
+  v76 = 33
+}
+if (vWhichEgoBorder == 4) { //0402
+  v76 = 9
+}
+return()

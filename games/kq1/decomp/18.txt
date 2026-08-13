@@ -1,4 +1,216 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(46)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,26,138,0,0)
+  }
+  load.logic(101)
+  call(101)
+  random(0,250,v62)
+  if (v62 < 85 && !f82) { //002f
+    load.view(7)
+    animate.obj(o1)
+    set.view(o1,7)
+    position(o1,26,60)
+    observe.blocks(o1)
+    object.on.land(o1)
+    set(f22)
+  }
+  if (f22) { //004a
+l80:
+    random(0,250,v71)
+    if (v71 > 90) { //0054
+      goto(l80)
+    }
+  }
+  if (vPrevRoom == 15) { //005e
+    get.posn(o0,v60,v61)
+    if (v60 > 100) { //0069
+      position(o0,100,165)
+    }
+  }
+  if (vPrevRoom == 17 && fEgoOnWater) { //0074
+    get.posn(o0,v60,v61)
+    if (v61 < 111) { //0081
+      position(o0,142,122)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (f213) { //008f
+  reset(f213)
+  print("It seems the old goat has wandered off by himself and is no longer following you.")
+}
+v71--
+if (v71 == 1) { //009b
+  reset(f22)
+  draw(o1)
+  set(f20)
+  wander(o1)
+  print("Wandering on the banks of the lake, you see a cute little elf.")
+}
+if (said("check", "lake")) { //00ac
+  print("This is a clear mountain lake with some steep cliffs surrounding it.")
+}
+if (!f20) { //00b8
+  if (said("ANYWORD", "elf")) { //00bf
+    if (f21 && said("speak", "elf")) { //00c9
+      print("The elf has left since you were not very cordial to him.")
+      goto(l220)
+    }
+    print("There's no elf here.")
+  }
+l220:
+  if (said("check", "room")) { //00dc
+    print("There is a clear mountain lake and some trees here.")
+  }
+  if (f21 && said("speak", "elf")) { //00e8
+    print("The elf has left since you were not very cordial to him.")
+  }
+}
+if (f20) { //00f6
+  distance(o0,o1,v70)
+  if (said("check", "room")) { //0100
+    print("There is a very pretty lake nearby with a small little elf running along its shore.")
+  }
+  if (said("check", "elf")) { //010c
+    print("This is a small elf.  He looks very friendly.")
+  }
+  if ((said("kiss", "elf") || said("hug", "elf"))) { //0118
+    print("Silly!  You can't get close enough to do that.")
+  }
+  if ((said("kill", "elf") || said("capture", "elf"))) { //012c
+    set(f21)
+    erase(o1)
+    reset(f20)
+    print("I'm surprised at you!  That is very impolite!")
+  }
+  if (f67) { //0146
+    if ((said("cast", "dagger") || said("cast", "dagger", "elf"))) { //014c
+      set(f21)
+      erase(o1)
+      reset(f20)
+      print("I'm surprised at you!  That is very impolite!")
+    }
+  }
+  if (!f21 && (said("speak", "elf") || said("hello") || said("say", "hello"))) { //0168
+    if (v70 < 40) { //0181
+      print("The elf, impressed by your friendliness, gives you a magic ring.  \"Kind person, know that once, only once, this ring will make you invisible,\" he says and then disappears.")
+      get(i7)
+      set(f83)
+      vCurrentScore += 3
+      erase(o1)
+      reset(f20)
+      set(f82)
+      goto(l412)
+    }
+    print("You are too far away.")
+  }
+}
+l412:
+if (!fEgoOnWater) { //019c
+  ignore.blocks(o0)
+  goto(l426)
+}
+observe.blocks(o0)
+l426:
+block(100,95,139,100)
+if (!fEgoOnWater) { //01af
+  if ((posn(o0,129,95,159,105) || posn(o0,133,80,145,94))) { //01b6
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fTriggerLine) { //01cc
+  set(fEgoOnWater)
+  v76 = 255
+  if (posn(o0,128,64,159,85)) { //01db
+    v76 = 139
+    v77 = 84
+  }
+  if (posn(o0,97,88,118,95)) { //01eb
+    v76 = 97
+    v77 = 104
+  }
+  if (v76 == 255) { //01fb
+    v76 = 0
+    goto(l532)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l532:
+if (!(v94 > 0) && fEgoOnWater) { //0214
+  v76 = 255
+  if (posn(o0,119,86,146,95)) { //0221
+    v76 = 120
+    v77 = 104
+  }
+  if (v76 == 255) { //0231
+    v76 = 0
+    goto(l586)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l586:
+if (!f88 && !fEgoOnWater && !f116) { //024a
+  if ((said("drink", "water") || said("acquire", "drink"))) { //0257
+    if (posn(o0,81,87,159,167)) { //0269
+      print("There is nothing to compare with that refreshing taste.")
+      goto(l634)
+    }
+    print("You are not close enough to the water.")
+  }
+}
+l634:
+if (!f88 && f81 && !fEgoOnWater && said("acquire", "water")) { //027a
+  if (posn(o0,81,87,159,167)) { //028c
+    reset(f116)
+    print("The cold water gushes into the old bucket.")
+    get(i26)
+    set(f88)
+    if (!f91) { //029e
+      vCurrentScore += 2
+    }
+    set(f91)
+    goto(l687)
+  }
+  print("You are not close enough to the water.")
+}
+l687:
+if (vWhichEgoBorder != 0) { //02af
+  if (f66) { //02b7
+    reset(f66)
+    reset(f75)
+    set(f130)
+    set(f213)
+  }
+}
+if (vWhichEgoBorder == 1) { //02c5
+  new.room(31)
+}
+if (vWhichEgoBorder == 2) { //02ce
+  new.room(17)
+}
+if (vWhichEgoBorder == 4) { //02d7
+  new.room(19)
+}
+if (vWhichEgoBorder == 3) { //02e0
+  new.room(15)
+}
+if (f75) { //02e9
+  call(103)
+}
+call(101)
+return()

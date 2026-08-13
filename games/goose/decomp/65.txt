@@ -1,3 +1,249 @@
-if (!(isSet(f61)
-!!!
-&{%!e(string=incomplete condition: 0x1a)}
+if (!f61) { //0002
+  set(f61)
+  load.view(76)
+  load.sound(14)
+  ignore.objs(o4)
+  ignore.blocks(o4)
+  start.motion(o0)
+  start.cycling(o0)
+  get.posn(o0,v212,v213)
+  move.obj(o0,143,142,1,f122)
+  stop.update(o7)
+}
+if (f122) { //0023
+  reset(f122)
+  set.loop(o0,1)
+  erase(o12)
+  v220 = 10
+}
+v220--
+if (v220 == 1) { //0035
+  move.obj(o0,143,160,1,f43)
+}
+if (f240) { //0042
+  reset(f240)
+  stop.cycling(o4)
+}
+if (!f108 && v48 == 4) { //004c
+  set(f108)
+  set(f43)
+  sound(14,f103)
+  vTimeSeconds = 0
+  reset(f104)
+  set(f15)
+  print.at("                                  \n\n\n",0,2,36)
+  display(1,3,"There was a crooked man,")
+}
+if (vTimeSeconds > 2 && f108 && !f109) { //006d
+  set(f109)
+  display(2,3,"   and he went a crooked mile,")
+}
+if (vTimeSeconds > 5 && f109 && !f110) { //007f
+  set(f110)
+  display(3,3,"He found a crooked sixpence")
+  display(4,3,"   beside a crooked stile;")
+}
+if (vTimeSeconds > 11 && f110 && !f111) { //0095
+  set(f111)
+  display(1,3,"                                ")
+  display(2,3,"                                ")
+  display(3,3,"                                ")
+  display(4,3,"                                ")
+  display(1,3,"He bought a crooked cat,")
+}
+if (vTimeSeconds > 13 && f111 && !f112) { //00b7
+  set(f112)
+  display(2,3,"   which caught a crooked mouse,")
+}
+if (vTimeSeconds > 16 && f112 && !f113) { //00c9
+  set(f113)
+  display(3,3,"And they all lived together in a")
+  display(4,3,"   little crooked house.")
+}
+v47--
+if (v47 == 1) { //00e1
+  set(f43)
+}
+if (f43) { //00ea
+  reset(f43)
+  v48++
+  if (v48 == 1) { //00f4
+    set.loop(o0,3)
+    start.cycling(o4)
+    move.obj(o4,128,115,1,f43)
+  }
+  if (v48 == 2) { //0106
+    move.obj(o4,120,116,1,f43)
+  }
+  if (v48 == 3) { //0113
+    move.obj(o4,114,107,1,f43)
+  }
+  if (v48 == 4) { //0120
+    move.obj(o4,114,97,1,f47)
+  }
+  if (v48 == 5) { //012d
+    move.obj(o4,98,97,1,f43)
+  }
+  if (v48 == 6) { //013a
+    move.obj(o4,88,107,1,f43)
+  }
+  if (v48 == 7) { //0147
+    move.obj(o4,85,107,1,f43)
+  }
+  if (v48 == 8) { //0154
+    start.update(o11)
+    stop.cycling(o11)
+    set.cel(o11,1)
+    stop.cycling(o4)
+    v47 = 2
+  }
+  if (v48 == 9) { //0167
+    set.cel(o11,2)
+    animate.obj(o5)
+    set.view(o5,76)
+    set.loop(o5,3)
+    set.cel(o5,0)
+    ignore.objs(o5)
+    ignore.blocks(o5)
+    position(o5,77,108)
+    draw(o5)
+    move.obj(o5,88,108,2,f43)
+  }
+  if (v48 == 10) { //018c
+    set.loop(o4,0)
+    move.obj(o5,102,110,1,f43)
+  }
+  if (v48 == 11) { //019c
+    start.cycling(o4)
+    move.obj(o4,90,107,1,f47)
+    set.loop(o5,2)
+    move.obj(o5,98,108,1,f43)
+  }
+  if (v48 == 12) { //01b4
+    set.view(o4,76)
+    v209 = 2
+    cycle.time(o4,v209)
+    set.loop(o4,4)
+    set.cel(o4,0)
+    set.loop(o5,3)
+    move.obj(o5,106,112,2,f43)
+  }
+  if (v48 == 13) { //01d3
+    move.obj(o5,112,104,2,f43)
+  }
+  if (v48 == 14) { //01e0
+    v209 = 1
+    cycle.time(o4,v209)
+    start.cycling(o4)
+    set.view(o4,83)
+    set.loop(o4,0)
+    move.obj(o4,105,107,1,f47)
+    move.obj(o5,115,116,1,f43)
+  }
+  if (v48 == 15) { //0201
+    v209 = 2
+    cycle.time(o4,v209)
+    set.view(o4,76)
+    set.loop(o4,4)
+    set.cel(o4,0)
+    set.loop(o5,2)
+    move.obj(o5,110,106,2,f43)
+  }
+  if (v48 == 16) { //0220
+    set.loop(o5,2)
+    move.obj(o5,102,98,2,f43)
+  }
+  if (v48 == 17) { //0230
+    set.loop(o5,2)
+    move.obj(o5,94,114,1,f47)
+    v209 = 1
+    cycle.time(o4,v209)
+    set.view(o4,83)
+    set.loop(o4,0)
+    set.cel(o4,0)
+    move.obj(o4,115,115,1,f43)
+  }
+  if (v48 == 18) { //0255
+    move.obj(o4,135,115,1,f47)
+    set.loop(o5,3)
+    move.obj(o5,115,120,1,f43)
+  }
+  if (v48 == 19) { //026b
+    move.obj(o4,147,115,1,f43)
+    set.loop(o5,2)
+    move.obj(o5,100,110,1,f47)
+  }
+  if (v48 == 20) { //0281
+    erase(o4)
+    set.loop(o5,3)
+    move.obj(o5,110,118,1,f43)
+  }
+  if (v48 == 21) { //0293
+    set.loop(o5,3)
+    stop.cycling(o5)
+    set.view(o4,83)
+    position(o4,147,115)
+    set.loop(o4,1)
+    set.cel(o4,0)
+    draw(o4)
+    move.obj(o4,125,115,1,f47)
+    animate.obj(o6)
+    ignore.objs(o6)
+    set.view(o6,76)
+    set.loop(o6,0)
+    set.cel(o6,0)
+    ignore.objs(o6)
+    ignore.blocks(o6)
+    position(o6,147,125)
+    get.priority(o4,v209)
+    v209++
+    set.priority(o6,v209)
+    draw(o6)
+    move.obj(o6,132,116,1,f43)
+  }
+  if (v48 == 22) { //02d9
+    start.cycling(o5)
+    set.loop(o5,2)
+    move.obj(o5,98,113,1,f47)
+    move.obj(o6,105,113,2,f43)
+    move.obj(o4,120,115,1,f240)
+  }
+  if (v48 == 23) { //02f7
+    set.loop(o5,5)
+    erase(o6)
+    v47 = 16
+  }
+  if (v48 == 24) { //0306
+    position(o6,105,113)
+    draw(o6)
+    set.loop(o5,2)
+    move.obj(o5,90,106,2,f43)
+    move.obj(o6,97,107,1,f47)
+  }
+  if (v48 == 25) { //0322
+    get.priority(o5,v209)
+    v209++
+    set.priority(o5,v209)
+    get.priority(o6,v209)
+    v209--
+    set.priority(o6,v209)
+    move.obj(o5,75,105,2,f47)
+    move.obj(o6,74,107,2,f43)
+    start.cycling(o4)
+    move.obj(o4,90,107,1,f47)
+  }
+  if (v48 == 26) { //034d
+    erase(o5)
+    erase(o6)
+    move.obj(o4,75,107,1,f43)
+  }
+  if (v48 == 27) { //035e
+    erase(o4)
+    reverse.loop(o11,f43)
+  }
+  if (v48 == 28) { //036a
+    stop.update(o11)
+    set(f114)
+  }
+}
+return()

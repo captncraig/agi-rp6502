@@ -1,4 +1,49 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3d)}
+if (fNewRoom) { //0002
+  ignore.horizon(o0)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(105)
+  load.sound(5)
+  if (vPrevRoom == 56) { //0014
+    position(o0,145,109)
+  }
+  draw(o0)
+  show.pic()
+}
+if (fTriggerLine && !f21) { //0022
+  set(f21)
+  if (!f79) { //002d
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  v61 = 165
+  v96 = 6
+  sound(5,f159)
+  move.obj(o0,v60,v61,96,f22)
+}
+if (f22) { //0054
+  reset(f22)
+  erase(o0)
+}
+if (f159) { //005e
+  reset(f159)
+  set(f20)
+}
+if (f20) { //0068
+  reset(f20)
+  print("So you're walking on clouds, huh?  Unfortunately, that's an impossible task that cost you your life!")
+  erase(o0)
+  set(f63)
+}
+if (said("check", "ANYWORD")) { //0076
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.")
+}
+if (vWhichEgoBorder == 2) { //0082
+  new.room(56)
+}
+return()

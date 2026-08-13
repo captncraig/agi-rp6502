@@ -1,4 +1,245 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f34)
+  v56 = 7
+  v57 = 17
+  v58 = 147
+  v32 = 0
+  v31 = 0
+  load.sound(1)
+  load.sound(26)
+  load.sound(3)
+  if ((f186 || obj.in.room(i52,vCurrentRoom))) { //0025
+    load.logic(108)
+  }
+  load.logic(116)
+  if (obj.in.room(i52,vCurrentRoom)) { //0034
+    animate.obj(o12)
+    load.view(169)
+    set.view(o12,169)
+    stop.cycling(o12)
+    ignore.blocks(o12)
+    position(o12,9,131)
+    draw(o12)
+    stop.update(o12)
+  }
+  load.view(0)
+  load.view(11)
+  load.view(24)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (v44 == 14) { //0059
+    v41 = v58
+  }
+  if (f48) { //0063
+    if (v44 == 0) { //0069
+      get.posn(o0,v40,v41)
+      if (vPrevRoom == 84) { //0074
+        if (v41 > 128) { //007b
+          v41 = 150
+          goto(l139)
+        }
+        v41 = 114
+l139:
+        position(o0,40,v41)
+      }
+    }
+    if (v44 == 6) { //008f
+      set(f46)
+      set.priority(o0,13)
+      ignore.blocks(o0)
+      ignore.objs(o0)
+      position(o0,52,75)
+      move.obj(o0,52,155,3,f222)
+      sound(1,f238)
+    }
+  }
+  if (v44 == 30) { //00ac
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //00be
+    draw(o0)
+  }
+  animate.obj(o1)
+  if (f181) { //00c8
+    set(f220)
+    v223 = 22
+    load.view(166)
+    set.view(o1,166)
+    set.priority(o1,14)
+    set.loop(o1,0)
+    v36 = 6
+    cycle.time(o1,v36)
+    position(o1,95,133)
+    draw(o1)
+    goto(l297)
+  }
+  set(f81)
+  if (v62 != 4) { //00ef
+    load.view(157)
+    set.view(o1,157)
+    random(1,4,v36)
+    if (v36 > 2 && !f46) { //0100
+      set(f220)
+      set(f224)
+      v37 = 50
+      position(o1,37,v41)
+      draw(o1)
+    }
+    if (v36 == 2 && !f46) { //0117
+      set(f227)
+      stop.cycling(o1)
+      position(o1,78,127)
+    }
+  }
+l297:
+  show.pic()
+  return()
+}
+if (v40 > 88) { //012b
+  v220 = 2
+  goto(l315)
+}
+v220 = 1
+l315:
+call(116)
+v223--
+if (v223 == 1) { //013f
+  sound(3,f238)
+  set.cel(o1,0)
+  end.of.loop(o1,f221)
+}
+if (f221) { //014f
+  reset(f221)
+  v223 = 22
+  set.cel(o1,0)
+  stop.cycling(o1)
+}
+distance(o0,o1,v36)
+if (!f46 && f227 && v36 < 50) { //0163
+  reset(f227)
+  set(f220)
+  set(f224)
+  draw(o1)
+  start.cycling(o1)
+}
+if (f224) { //0179
+  reset(f224)
+  set(f225)
+  print("Oh no! One of the crew has spotted you! You'd better run.")
+  sound(26,f238)
+}
+if (f225) { //0188
+  if (f33) { //018e
+    if (v44 == 25) { //0194
+      print("Your magical transformation has frozen the pirate in his tracks.")
+      stop.cycling(o1)
+      normal.motion(o1)
+      stop.motion(o1)
+      reset(f226)
+      goto(l426)
+    }
+    reset(f223)
+  }
+l426:
+  if (!f223 && !f46) { //01aa
+    set(f223)
+    start.cycling(o1)
+    follow.ego(o1,8,f226)
+  }
+}
+if (f226) { //01bc
+  reset(f226)
+  stop.cycling(o1)
+  reset(f223)
+  if (!f46) { //01c8
+    print("The pirate growls, \"What ar' ya doin' snoopin' around me digs, laddie. I gotcha' now, boy!")
+    set(f199)
+    new.room(85)
+  }
+}
+if (f222) { //01d5
+  reset(f222)
+  set.view(o0,24)
+  reposition.to(o0,52,143)
+  program.control()
+  set(f44)
+}
+if ((f186 || obj.in.room(i52,vCurrentRoom))) { //01e7
+  call(108)
+}
+if (said("examine", "bandit")) { //01f4
+  if (f220) { //01fe
+    if (f181) { //0204
+      if (v220 == 2) { //020a
+        print("A pirate is fast asleep in his bunk.")
+        goto(l536)
+      }
+      print("You can't see it from here.")
+l536:
+      goto(l541)
+    }
+    print("You'd better leave before the pirate catches you.")
+l541:
+    goto(l546)
+  }
+  print("You don't see anyone else in the area.")
+}
+l546:
+if ((said("examine") || said("examine", "area"))) { //0222
+  if (v220 == 2) { //0232
+    print("This is where your average pirate sleeps. Actually, these bunks don't look much more comfortable than your own miserable cot used to be and the space is just as cramped.")
+    goto(l589)
+  }
+  if (!(obj.in.room(i52,vCurrentRoom))) { //023e
+    print("You have found yourself below the lower deck. They keep the ship's lifeboat stored here. There are open doorways at either end of the compartment.")
+    goto(l589)
+  }
+  print("%m2 There is a shovel lying by the lifeboat.")
+}
+l589:
+if ((said("examine", "below") || said("look in", "boat") || said("examine", "boat"))) { //024d
+  if (v220 == 2) { //0265
+    print("You can't see it from here.")
+    goto(l640)
+  }
+  if (!(obj.in.room(i52,vCurrentRoom))) { //0271
+    print("You scrutinize the boat inside and out, but find it to be empty and uninteresting.")
+    goto(l640)
+  }
+  print("%m3 There is a shovel lying by the lifeboat.")
+}
+l640:
+if ((said("look in", "door") || said("examine", "out", "door") || said("examine", "door"))) { //0280
+  if (v220 == 2) { //029a
+    print("You stare out the open doorway and see the wooden lifeboat.")
+    goto(l680)
+  }
+  print("You peer through the doorway and see rows of bunks. It must be the crew's quarters.")
+}
+l680:
+if ((said("look in", "bed") || said("examine", "on", "bed") || said("examine", "bed"))) { //02a8
+  if (v220 == 2) { //02c2
+    print("Rows of hard bunks line the walls of the crew's quarters. They don't look very inviting to lie upon. You can't imagine the pirates would get a good night's sleep down here in the cramped bow of the ship.")
+    goto(l720)
+  }
+  print("You can't see it from here.")
+}
+l720:
+if ((said("lay", "on", "bed") || said("capture", "on", "bed") || said("sleep", "on", "bed") || said("lay", "bed"))) { //02d0
+  if (v220 == 2) { //02f4
+    print("The beds look incredibly hard and uncomfortable. No, thank you.")
+    goto(l770)
+  }
+  print("You can't see it from here.")
+}
+l770:
+if (vWhichEgoBorder == 4) { //0302
+  new.room(83)
+}
+return()

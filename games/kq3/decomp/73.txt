@@ -1,4 +1,61 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v57 = 76
+  v58 = 160
+  set(f34)
+  if (f48) { //001b
+    if (vPrevRoom == 71) { //0021
+      position(o0,76,163)
+    }
+  }
+  if (!f198) { //002c
+    set(f198)
+    vCurrentScore += 4
+  }
+  if (v44 == 30) { //0038
+    set.view(o0,0)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //004a
+    draw(o0)
+  }
+  if (f182) { //0052
+    load.logic(119)
+    call(119)
+  }
+  show.pic()
+  move.obj(o0,71,120,1,f220)
+  return()
+}
+if (f182) { //0064
+  call(119)
+}
+if (f220 && !f221) { //006c
+  move.obj(o0,0,120,1,f220)
+  set(f221)
+}
+if (said("examine", "castle")) { //007d
+  print("You and Princess Rosella have entered a hallway of the dilapidated castle. Cracks mar the walls and dusty floor. Cobwebs drape an overhanging lamp. Sadly, your sister remarks, \"Alexander, I wish you could have seen it in better days. It wasn't always like this, you know.\"")
+}
+if (said("examine", "burn")) { //0089
+  print("Cobwebs have not been cleaned from the overhanging chandelier.")
+}
+if (said("examine", "door")) { //0095
+  print("The doors of this castle are wide open.")
+}
+if (vWhichEgoBorder == 3) { //00a1
+  new.room(71)
+}
+if (vWhichEgoBorder == 4) { //00aa
+  new.room(74)
+}
+if (f220 && f221) { //00b3
+  new.room(74)
+}
+return()

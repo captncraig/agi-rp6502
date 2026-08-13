@@ -1,4 +1,265 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 94
+  v58 = 131
+  v32 = 99
+  v31 = 136
+  v100 = 62
+  v101 = 121
+  load.logic(104)
+  if ((v127 == 1 || v127 == 3) && !(v137 > 0) && v128 != 20) { //0026
+    random(1,2,v36)
+    if (v36 == 1) { //003e
+      load.logic(105)
+      set(f98)
+      load.view(192)
+      random(1,2,v36)
+      if (v36 == 1) { //004f
+        set(f220)
+        set(f222)
+        v222 = 2
+        v125 = 0
+        goto(l109)
+      }
+      v32 = 28
+      v31 = 167
+      random(6,12,v125)
+    }
+  }
+l109:
+  if (obj.in.room(i10,vCurrentRoom)) { //006d
+    load.view(207)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (obj.in.room(i10,vCurrentRoom)) { //007c
+    animate.obj(o1)
+    ignore.objs(o1)
+    ignore.blocks(o1)
+    set.view(o1,207)
+    position(o1,103,135)
+    draw(o1)
+  }
+  if (v44 == 25) { //0092
+    set(f48)
+  }
+  if (f48) { //009b
+    if (vPrevRoom == 3) { //00a1
+      position(o0,38,158)
+      goto(l179)
+    }
+    position(o0,57,v58)
+  }
+l179:
+  if (f47) { //00b3
+    draw(o0)
+  }
+  call(104)
+  if (f98) { //00bd
+    call(105)
+    if (!f220) { //00c5
+      set.view(o15,190)
+      set.loop(o15,0)
+      goto(l244)
+    }
+    v128 = 102
+    set.view(o15,192)
+    v32 = 85
+    v31 = 135
+    set.cel(o15,0)
+    stop.cycling(o15)
+    position(o15,32,v31)
+    v36 = 2
+    cycle.time(o15,v36)
+    draw(o15)
+    set(f99)
+  }
+l244:
+  show.pic()
+  if (f99 && f220 && !f109) { //00f5
+    sound(27,f41)
+    print.at("You see Manannan spying on the poor citizens of Llewdor. He grunts, clicks his tongue, and mutters to himself. He is spying so intensely, he hasn't noticed you.",2,2,37)
+  }
+  return()
+}
+if (!fEnteredCommand) { //0109
+  goto(l530)
+}
+if ((said("examine", "area") || said("examine") || said("examine", "building") || said("examine", "tower") || said("examine", "area"))) { //0113
+  print("You have entered the musty tower of the old wizard's house. A polished brass telescope is directed out a window. From here, Manannan spies upon the poor occupants of Llewdor.")
+}
+if (said("examine", "deck")) { //0137
+  if (obj.in.room(i10,vCurrentRoom)) { //0141
+    print("You see nothing on the dusty floor but a dead fly.")
+    goto(l335)
+  }
+  print("You hope Manannan doesn't notice the floor needs sweeping.")
+}
+l335:
+if (said("examine", "spyglass")) { //014f
+  if (f220) { //0159
+    print("The wizard wouldn't like that.")
+    goto(l358)
+  }
+  print("Manannan has the brass telescope pointed out a window. It is well polished. He uses the telescope to keep tabs on the citizenry of Llewdor.")
+}
+l358:
+if (!f46 && (said("look in", "spyglass") || said("try", "spyglass"))) { //0166
+  if (f99) { //017b
+    print("The wizard wouldn't like that.")
+    goto(l395)
+  }
+  set(f122)
+  v39 = 0
+}
+l395:
+if (said("examine", "stair")) { //018b
+  print("There are narrow, steep stairs leading downwards.")
+}
+if (said("capture", "bug")) { //0197
+  if (!(obj.in.room(i10,vCurrentRoom))) { //01a1
+    print("You already took it.")
+    goto(l455)
+  }
+  if (!(posn(o0,95,134,112,139))) { //01ae
+    print("You are not close enough.")
+    goto(l455)
+  }
+  erase(o1)
+  get(i10)
+  vCurrentScore += 1
+  print("You pick up the dead fly and drop it into your hand. Disgustedly, you look at it. \"I don't want to carry around a dead fly,\" you think. Picking off its wings, you throw the rest away.")
+}
+l455:
+if ((said("move", "spyglass") || said("move", "spyglass", "glass"))) { //01c7
+  if (f220) { //01db
+    print("The wizard wouldn't like that.")
+    goto(l488)
+  }
+  print("You push and pull on the heavy brass telescope, but in vain. It's just too heavy for you.")
+}
+l488:
+if (said("capture", "spyglass")) { //01e8
+  print("The big brass telescope is much too heavy for you to carry.")
+}
+if (f220) { //01f4
+  if (said("examine", "enchanter")) { //01fa
+    print("The old white-bearded wizard is peering through his telescope. He hasn't noticed you.")
+  }
+  if (said("call", "enchanter")) { //0206
+    v129++
+  }
+}
+l530:
+v223--
+if (v223 == 1) { //0214
+  set(f122)
+}
+if (f122) { //021d
+  reset(f122)
+  v39++
+  program.control()
+  set(f46)
+  v69 = 1
+  if (v39 == 1) { //022d
+    if (posn(o0,42,120,110,131)) { //0234
+      v38 = 131
+      move.obj(o0,v40,v38,69,f122)
+      v39 = 4
+      goto(l621)
+    }
+    if (posn(o0,42,132,115,167)) { //024d
+      v38 = 139
+      move.obj(o0,v40,v38,69,f122)
+      goto(l621)
+    }
+    player.control()
+    start.motion(o0)
+    reset(f46)
+    print("You are not close enough.")
+    v39 = 0
+  }
+l621:
+  if (v39 == 2) { //026d
+    move.obj(o0,87,139,0,f122)
+  }
+  if (v39 == 3) { //027a
+    move.obj(o0,87,131,0,f122)
+    v39 = 4
+  }
+  if (v39 == 5) { //028a
+    move.obj(o0,87,129,0,f122)
+  }
+  if (v39 == 6) { //0297
+    move.obj(o0,85,129,0,f122)
+  }
+  if (v39 == 7) { //02a4
+    stop.motion(o0)
+    v223 = 22
+  }
+  if (v39 == 8) { //02b0
+    v39 = 0
+    reset(f46)
+    player.control()
+    start.motion(o0)
+    print("You put your eye to the glass. It amazes you how near everything seems. You can even see squirrels climbing faraway trees. No wonder the wizard knows all activities in Llewdor.")
+  }
+}
+if (f45) { //02c1
+  if (f99 && f220 && !f109) { //02c7
+    v222--
+    if (v222 == 5) { //02d4
+      start.cycling(o15)
+    }
+    if (v222 == 1) { //02dd
+      stop.cycling(o15)
+      set.cel(o15,0)
+      random(17,22,v68)
+      print(v68)
+      random(10,30,v222)
+    }
+  }
+}
+if (f99 && !f109) { //02f3
+  if (!f222 && !f220) { //02fc
+    set(f222)
+    v124 = 0
+    set(f101)
+  }
+  if (f101) { //030d
+    reset(f101)
+    v124++
+    if (v124 == 1) { //0317
+      move.obj(o15,63,130,1,f101)
+    }
+    if (v124 == 2) { //0324
+      move.obj(o15,88,130,1,f101)
+    }
+    if (v124 == 3) { //0331
+      move.obj(o15,88,133,1,f101)
+    }
+    if (v124 == 4) { //033e
+      move.obj(o15,85,133,1,f101)
+    }
+    if (v124 == 5) { //034b
+      v124 = 0
+      set(f220)
+      set.view(o15,192)
+      set.cel(o15,0)
+      stop.cycling(o15)
+      random(10,30,v222)
+    }
+  }
+}
+if (vWhichEgoBorder == 3 && v44 != 125 && v40 > 25 && v40 < 47) { //0363
+  new.room(3)
+}
+call(104)
+if (f98) { //0378
+  call(105)
+}
+return()

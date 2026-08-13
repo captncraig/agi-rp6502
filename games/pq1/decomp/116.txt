@@ -1,5 +1,145 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v33 = 1
-
-!!!
-&{%!e(string=unknown opcode: 0x4e)}
+  start.motion(o0)
+  set(f34)
+  load.view(96)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  show.pic()
+  status.line.off()
+  reset(f14)
+}
+if ((vEgoDir > 0 || f34)) { //001b
+  reset(f34)
+  if ((vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 5)) { //0028
+    v33++
+    if (v33 > 4) { //0039
+      v33 = 1
+    }
+  }
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 7)) { //0043
+    v33--
+    if (!(v33 > 0)) { //0054
+      v33 = 4
+    }
+  }
+  if (vEgoDir == 8) { //005f
+    v33 = 1
+  }
+  if (vEgoDir == 6) { //0069
+    v33 = 4
+  }
+  start.motion(o0)
+  set.text.attribute(0,15)
+  if (v33 == 1) { //0078
+    clear.text.rect(2,1,21,38,15)
+    display(3,1,"            THE LYTTON TRIBUNE        ")
+    display(5,1," DOPE IN THE CITY  \\| PRESIDENT HICKLE")
+    display(7,1,"The city of Lytton,\\|")
+    display(8,1,"once a beautiful,  \\|")
+    display(9,1,"peaceful, quiet    \\|")
+    display(10,1,"city with few major\\|")
+    display(11,1,"crime problems, is \\|")
+    display(12,1,"now experiencing   \\|")
+    display(13,1,"rapid growth and   \\|Smugsville, U.S.A.")
+    display(14,1,"prosperity. But,   \\|President Hickle")
+    display(15,1,"along with growth  \\|was in Smugsville")
+    display(16,1,"has come an alarm- \\|yesterday evening,")
+    display(17,1,"ing increase in the\\|observing the")
+    display(18,1,"crime rate that is \\|annual migration")
+    display(20,1,"     see Dope, pg 2\\|   see Birds, pg 2")
+    if (f56) { //00c1
+      add.to.pic(96,0,0,93,83,4,4)
+      goto(l218)
+    }
+    add.to.pic(96,0,0,93,91,4,4)
+  }
+l218:
+  if (v33 == 2) { //00da
+    clear.text.rect(2,1,21,38,15)
+    display(3,1,"   Birds, from pg 1\\|   Dope, from pg 1")
+    display(5,1,"of the red-bellied \\|threatening the")
+    display(6,1,"swamp coddlers.    \\|peace of Lytton.")
+    display(7,1,"The President, who \\|Police Sgt. John")
+    display(8,1,"has been a bird    \\|Dooley states that")
+    display(9,1,"lover since child- \\|dangerous drugs")
+    display(10,1,"hood, rates the    \\|are showing up on")
+    display(11,1,"mating dance of the\\|the streets and in")
+    display(12,1,"coddler as being   \\|our schools.")
+    display(13,1,"\"as spectacular as \\|The homicide rate")
+    display(14,1,"the golden-crowned \\|and prostitution")
+    display(15,1,"scum sucker.\" The  \\|are at a level the")
+    display(16,1,"President candidly \\|city has never")
+    display(17,1,"admitted that he   \\|seen. The Tribune")
+    display(18,1,"once skipped the   \\|has learned from a")
+    display(20,1,"    see Birds, pg 3\\|    see Dope, pg 3")
+  }
+  if (v33 == 3) { //0127
+    clear.text.rect(2,1,21,38,15)
+    display(3,1,"   Birds, from pg 2\\|   Dope, from pg 2")
+    display(5,1,"Geneva Arms Conven-\\|reliable source")
+    display(6,1,"tion to watch some \\|that a big-time")
+    display(7,1,"old coddlers mate. \\|drug dealer with a")
+    display(8,1,"The President says \\|street name of")
+    display(9,1,"a bill is presently\\|\"Death Angel\" may")
+    display(10,1,"before the Senate  \\|be responsible for")
+    display(11,1,"proclaiming Nat-   \\|the drug traffic.")
+    display(12,1,"ional Coddler Day! \\|")
+    display(13,1,"                   \\|  LPD OFFICER OF")
+    display(14,1,"      ESCAPED      \\| THE YEAR NOMINEES")
+    display(15,1,"Lytton City Jail   \\|Lytton PD Chief")
+    display(16,1,"reported the escape\\|Whipplestick has")
+    display(17,1,"of a female prison \\|nominated Sonny")
+    display(18,1,"inmate last night. \\|Bonds and Joe")
+    display(20,1,"  see Escaped, pg 4\\| see Nominee, pg 4")
+  }
+  if (v33 == 4) { //0174
+    clear.text.rect(2,1,21,38,15)
+    display(3,1," Escaped, from pg 3\\|Nominee, from pg 3")
+    display(5,1,"Floreen \"Flustered \\|")
+    display(6,1,"Flora\" Paxton flew \\|")
+    display(7,1,"the coop by hiding \\|")
+    display(8,1,"beneath a pile of  \\|")
+    display(9,1,"soiled prison      \\|")
+    display(10,1,"laundry in a hand- \\|")
+    display(11,1,"pushed basket.     \\|")
+    display(12,1,"                   \\|")
+    display(13,1,"KINGDOM OF DAVENTRY\\|Bonds and Walters")
+    display(14,1,"is now under siege \\|")
+    display(15,1,"by a renegade, 3-  \\|Walters for LPD")
+    display(16,1,"headed dragon. One \\|\"Officer of the")
+    display(17,1,"unidentified gnome \\|Year Award\" due to")
+    display(18,1,"stated the kingdom \\|outstanding effort")
+    display(19,1,"is in a \"state of  \\|and commitment in")
+    display(20,1,"emergency.\"        \\|crime prevention.")
+    add.to.pic(96,0,1,93,83,4,4)
+  }
+  set.text.attribute(15,0)
+}
+if (fEnteredCommand) { //01d0
+  set(f34)
+}
+if ((said("drop", "lytton tribune", "rol") || said("drop", "down", "lytton tribune", "rol") || said("examine", "away", "rol") || said("examine", "accident", "rol") || said("drop", "lytton tribune", "rol") || said("dont move", "examine", "rol") || said("dont move", "examine") || said("dont move", "lytton tribune") || said("c", "lytton tribune"))) { //01d8
+  new.room(4)
+}
+if ((said("preceding", "page", "rol") || said("move", "preceding", "page", "rol") || said("examine", "preceding", "page", "rol"))) { //0224
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33--
+  if (!(v33 > 0)) { //024c
+    v33 = 4
+  }
+}
+if ((said("move", "page", "rol") || said("examine", "page", "rol") || said("enter", "page", "rol"))) { //0257
+  set(f34)
+  print("You may also use the cursor keys to turn the pages.")
+  v33++
+  if (v33 > 4) { //027b
+    v33 = 1
+  }
+}
+if (said("examine", "lytton tribune")) { //0285
+  print("You ARE reading the paper.")
+}
+return()

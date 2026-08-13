@@ -4,11 +4,12 @@ __pycache__
 games/.DS_Store
 
 *.rp6502
-games/**/*.OVL
-games/**/*.COM
-games/**/AGI
-games/**/*.bin
-games/**/*_FONT
-games/**/*.cps
-games/**/*.bat
-games/**/*.opl
+games*/**/*.OVL
+games*/**/*.COM
+games*/**/AGI
+games*/**/*.bin
+games*/**/*_FONT
+games*/**/*.cps
+games*/**/*.bat
+games*/**/*.opl
+cmd/decomp/decomp

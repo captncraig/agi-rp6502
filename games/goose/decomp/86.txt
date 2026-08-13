@@ -1,3 +1,198 @@
-if (!(isSet(f50)
-!!!
-&{%!e(string=incomplete condition: 0x1c)}
+if (!f50) { //0002
+  set(f50)
+  load.view(38)
+  load.sound(12)
+  set.loop(o4,2)
+  set.cel(o4,2)
+  set.loop(o5,4)
+  set.cel(o5,2)
+  stop.cycling(o4)
+  stop.cycling(o5)
+  move.obj(o0,77,134,1,f122)
+}
+v47--
+if (v47 == 1) { //0027
+  set(f43)
+}
+if (f122) { //0030
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v212 == 77 && v213 == 134) { //003c
+    move.obj(o0,77,127,1,f122)
+    goto(l146)
+  }
+  if (v212 == 77 && v213 == 127 && !f240) { //004f
+    set.loop(o0,3)
+    set.cel(o0,3)
+    erase(o12)
+    add.to.pic(65,0,7,73,101,5,4)
+    animate.obj(o13)
+    set.view(o13,65)
+    set.loop(o13,1)
+    fix.loop(o13)
+    set.cel(o13,0)
+    position(o13,73,99)
+    draw(o13)
+    stop.cycling(o13)
+    move.obj(o0,90,150,1,f122)
+    goto(l146)
+  }
+  set.loop(o0,3)
+  set.cel(o0,3)
+  set(f104)
+}
+l146:
+if (!f108 && f104) { //0092
+  set(f43)
+  reset(f104)
+  set(f108)
+  sound(12,f103)
+  vTimeSeconds = 0
+  set(f15)
+  print.at("                                   \n\n\n",0,2,36)
+  display(1,5,"Jack Sprat could eat no fat,")
+}
+if (vTimeSeconds > 3 && f108 && !f109) { //00b2
+  set(f109)
+  display(2,5,"His wife could eat no lean;")
+}
+if (vTimeSeconds > 6 && f109 && !f110) { //00c4
+  set(f110)
+  display(3,5,"And so, between them both,")
+  display(4,5,"They licked the platter clean.")
+}
+if (f43) { //00da
+  reset(f43)
+  v48++
+  if (v48 == 1) { //00e4
+    set.loop(o4,0)
+    set.cel(o4,5)
+    reposition.to(o4,60,98)
+    force.update(o4)
+    animate.obj(o8)
+    set.view(o8,65)
+    set.loop(o8,3)
+    set.cel(o8,0)
+    position(o8,65,92)
+    set.priority(o8,10)
+    draw(o8)
+    v209 = 3
+    cycle.time(o8,v209)
+    v47 = 25
+  }
+  if (v48 == 2) { //0114
+    set.cel(o13,1)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    reposition.to(o4,60,100)
+    force.update(o4)
+    erase(o8)
+    animate.obj(o9)
+    set.view(o9,65)
+    set.loop(o9,5)
+    set.cel(o9,0)
+    position(o9,90,97)
+    draw(o9)
+    v209 = 3
+    cycle.time(o9,v209)
+    set.loop(o5,0)
+    set.cel(o5,6)
+    reposition.to(o5,90,100)
+    force.update(o5)
+    v47 = 25
+  }
+  if (v48 == 3) { //0152
+    set.cel(o13,2)
+    reposition.to(o5,92,100)
+    set.loop(o5,4)
+    set.cel(o5,0)
+    force.update(o5)
+    erase(o9)
+    v47 = 20
+  }
+  if (v48 == 4) { //016d
+    v209 = 1
+    cycle.time(o8,v209)
+    cycle.time(o9,v209)
+    set.loop(o4,0)
+    set.cel(o4,5)
+    reposition.to(o4,61,98)
+    force.update(o4)
+    set.loop(o8,3)
+    set.cel(o8,0)
+    draw(o8)
+    set.loop(o9,5)
+    set.cel(o9,0)
+    draw(o9)
+    set.loop(o5,0)
+    set.cel(o5,6)
+    reposition.to(o5,90,100)
+    force.update(o5)
+    v47 = 14
+  }
+  if (v48 == 5) { //01a8
+    set.cel(o13,3)
+    v47 = 14
+  }
+  if (v48 == 6) { //01b5
+    set.cel(o13,4)
+    v47 = 14
+  }
+  if (v48 == 7) { //01c2
+    set.cel(o13,5)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    reposition.to(o4,60,100)
+    set.loop(o5,4)
+    set.cel(o5,0)
+    reposition.to(o5,92,100)
+    erase(o9)
+    erase(o8)
+    v47 = 12
+  }
+  if (v48 == 8) { //01e7
+    reset(f43)
+    animate.obj(o6)
+    set.view(o6,65)
+    set.priority(o6,10)
+    set.loop(o6,6)
+    set.cel(o6,0)
+    position(o6,76,98)
+    v209 = 3
+    cycle.time(o6,v209)
+    draw(o6)
+    end.of.loop(o6,f43)
+  }
+  if (v48 == 9) { //020d
+    erase(o13)
+    erase(o6)
+    set.loop(o4,0)
+    set.cel(o4,2)
+    reposition.to(o4,56,102)
+    set.loop(o5,0)
+    set.cel(o5,3)
+    reposition.to(o5,92,105)
+    v47 = 20
+  }
+  if (v48 == 10) { //022f
+    animate.obj(o7)
+    set.view(o7,38)
+    set.cel(o7,0)
+    ignore.horizon(o7)
+    position(o7,58,88)
+    set.priority(o7,15)
+    draw(o7)
+    stop.update(o7)
+    display(8,18,"YUM!")
+    v47 = 20
+  }
+  if (v48 == 11) { //0252
+    erase(o7)
+    add.to.pic(65,0,2,56,102,4,4)
+    add.to.pic(65,0,3,92,105,4,4)
+    erase(o4)
+    erase(o5)
+    set(f114)
+  }
+}
+return()

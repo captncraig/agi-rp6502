@@ -1,4 +1,164 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  load.view(7)
+  v56 = 2
+  v32 = 27
+  v31 = 103
+  v57 = 20
+  v58 = 85
+  set(f56)
+  set.horizon(52)
+  load.logic(111)
+  load.logic(110)
+  load.logic(114)
+  if (v44 == 18) { //002a
+    load.view(35)
+    load.sound(6)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(221)
+  animate.obj(o1)
+  position(o1,101,61)
+  set.view(o1,221)
+  set.loop(o1,0)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  set.priority(o1,15)
+  draw(o1)
+  animate.obj(o2)
+  position(o2,103,118)
+  set.view(o2,221)
+  set.loop(o2,0)
+  set.cel(o2,1)
+  set.priority(o2,15)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  draw(o2)
+  animate.obj(o3)
+  position(o3,96,126)
+  set.view(o3,221)
+  set.loop(o3,1)
+  set.priority(o3,15)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  v36 = 2
+  cycle.time(o3,v36)
+  draw(o3)
+  animate.obj(o4)
+  position(o4,130,147)
+  set.view(o4,221)
+  set.loop(o4,2)
+  set.priority(o4,15)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  draw(o4)
+  if (f48) { //009a
+    if (vPrevRoom == 12) { //00a0
+      if (v41 > 103 && v41 < 108) { //00a7
+        v41 = 108
+      }
+      if (v41 > 114 && v41 < 121) { //00b4
+        v41 = 121
+      }
+      if (v41 > 57 && v41 < 61) { //00c1
+        v41 = 61
+      }
+    }
+    if (vPrevRoom == 14) { //00ce
+      if (v41 > 80 && v41 < 85) { //00d5
+        v41 = 85
+      }
+      if (v41 > 126 && v41 < 133) { //00e2
+        v41 = 133
+      }
+      if (v41 > 144) { //00ef
+        v41 = 144
+      }
+    }
+    if (vPrevRoom == 28 && v44 == 18) { //00f9
+      set(f46)
+      program.control()
+      prevent.input()
+      stop.motion(o0)
+      set.view(o0,35)
+      set(f35)
+      v220 = 5
+      set(f220)
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //0117
+    draw(o0)
+  }
+  call(110)
+  call(111)
+  call(114)
+  show.pic()
+  return()
+}
+reset(f75)
+if ((posn(o0,88,58,152,115) || posn(o0,59,48,88,58) || posn(o0,99,69,114,74) || posn(o0,92,61,107,69) || posn(o0,64,50,94,62) || posn(o0,125,116,155,141))) { //0129
+  set(f75)
+}
+reset(f90)
+if ((posn(o0,93,0,143,76) || posn(o0,103,77,145,167) || fEgoOnWater)) { //0157
+  set(f90)
+  set(f75)
+}
+if ((posn(o0,107,74,127,75) || posn(o0,112,90,116,97) || posn(o0,115,95,119,97) || posn(o0,116,98,126,106) || posn(o0,124,107,133,110) || posn(o0,127,111,138,115) || posn(o0,135,116,144,120) || posn(o0,140,121,149,123) || posn(o0,142,124,152,126) || posn(o0,133,126,144,127) || posn(o0,133,128,159,144))) { //016f
+  set(fEgoOnWater)
+}
+reset(f221)
+if (v41 < 74) { //01bb
+  reset(fEgoOnWater)
+  if (f75) { //01c4
+    reset(f75)
+    set(f221)
+  }
+}
+if (posn(o0,35,100,66,166) && said("anyword", "flower")) { //01ce
+  print("The flowers are pretty, but otherwise uninteresting to you.")
+}
+call(114)
+if ((said("examine") || said("examine", "forest"))) { //01e2
+  print("The many beautiful trees bring a sense of peace to this forest. You see an impassable mountain to the South.")
+}
+if (said("examine", "bluff")) { //01f4
+  print("That's the mountain upon which you live, Gwydion.")
+}
+if (f221 && (said("capture", "mud") || said("capture", "mud", "creek") || said("capture", "mud", "from", "creek") || said("capture", "mud", "from", "creek", "try", "ladle") || said("capture", "mud", "try", "ladle") || said("capture", "liquid", "creek") || said("capture", "liquid") || said("capture", "liquid", "cup") || said("capture", "drink", "liquid", "creek") || said("creek", "capture", "drink", "liquid") || said("capture", "drink", "liquid") || said("capture", "drink") || said("drink", "liquid") || said("drink"))) { //0200
+  print("Up here, the stream is nearly imperceptible, but it widens to the south.")
+}
+if (f45) { //027c
+  v220--
+  if (v220 == 1) { //0284
+    player.control()
+    accept.input()
+    reset(f46)
+    reset(f35)
+    reset(f220)
+    stop.sound()
+    start.motion(o0)
+    v44 = 0
+    set.view(o0,0)
+  }
+}
+if (f220 && v44 == 18) { //029c
+  sound(6,f220)
+}
+call(110)
+call(111)
+if (vWhichEgoBorder == 1) { //02ac
+  new.room(28)
+}
+if (vWhichEgoBorder == 4) { //02b5
+  new.room(12)
+}
+if (vWhichEgoBorder == 2) { //02be
+  new.room(14)
+}
+return()

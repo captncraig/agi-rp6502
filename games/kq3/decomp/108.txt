@@ -1,4 +1,152 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f240)
+  if ((vCurrentRoom == 48 || vCurrentRoom == 49)) { //000a
+    load.view(6)
+    animate.obj(o3)
+    load.view(161)
+    set.view(o3,161)
+    set.cel(o3,0)
+    set.priority(o3,4)
+    ignore.horizon(o3)
+    ignore.blocks(o3)
+    set(f240)
+  }
+}
+if (said("examine", "shovel")) { //002b
+  if (has(i52)) { //0035
+    show.obj(152)
+    goto(l66)
+  }
+  print("It's just an ordinary shovel.")
+}
+l66:
+if (said("capture", "shovel")) { //0042
+  if (f186) { //004c
+    print("You already have it.")
+    goto(l112)
+  }
+  distance(o0,o12,v240)
+  if (v240 > 12) { //005b
+    print("You can't get it from there.")
+    goto(l112)
+  }
+  get(i52)
+  set(f186)
+  erase(o12)
+  vCurrentScore += 1
+}
+l112:
+if ((said("try", "shovel") || said("dig", "hole", "try", "shovel") || said("dig", "hole") || said("dig") || said("dig", "hole", "deck", "try", "shovel") || said("dig", "beach") || said("dig", "treasure") || said("dig", "deck") || said("dig", "hole", "deck"))) { //0070
+  set(f242)
+}
+if (f242) { //00b8
+  if (vCurrentRoom != 48 && vCurrentRoom != 49) { //00be
+    print("Now is not the time to think about digging a hole!")
+    goto(l362)
+  }
+  if (!(has(i52))) { //00cf
+    print("You dig in the sand with your bare hands, but to no avail.")
+    goto(l362)
+  }
+  if (vCurrentRoom == 48 && !(posn(o0,120,81,153,138))) { //00db
+    print("You're too close to the ocean to dig. The hole would fill in too quickly.")
+    goto(l362)
+  }
+  if (vCurrentRoom == 49 && !(posn(o0,0,67,75,118))) { //00ee
+    print("You're too close to the ocean to dig. The hole would fill in too quickly.")
+    goto(l362)
+  }
+  if (v44 != 0) { //0101
+    print("")
+    goto(l362)
+  }
+  if (f46) { //010e
+    print("Now is not the time to think about digging a hole!")
+    goto(l362)
+  }
+  if (!(has(i53)) && posn(o0,55,82,56,83)) { //0119
+    goto(l312)
+  }
+  if (f194 && !(has(i53)) && posn(o0,48,80,63,88)) { //0129
+l312:
+    set(f243)
+    set.loop(o3,0)
+    goto(l325)
+  }
+  reset(f243)
+  set.loop(o3,1)
+l325:
+  if (!f181) { //0145
+    reset(f243)
+    set.loop(o3,1)
+  }
+  stop.motion(o0)
+  normal.motion(o0)
+  fix.loop(o3)
+  v241 = 1
+  get.posn(o0,v242,v243)
+  v242 += 4
+  v243 -= 1
+  position(o3,242,v243)
+  set(f241)
+l362:
+  reset(f242)
+}
+if (f241 && v241 == 1) { //016c
+  v241++
+  program.control()
+  set.view(o0,6)
+  set.cel(o0,0)
+  set(f35)
+  v36 = 2
+  cycle.time(o0,v36)
+  end.of.loop(o0,f241)
+}
+if (f241 && v241 == 2) { //0189
+  v241++
+  set.cel(o3,0)
+  draw(o3)
+  stop.cycling(o3)
+  set.cel(o0,0)
+  end.of.loop(o0,f241)
+}
+if (f241 && v241 == 3) { //01a1
+  current.cel(o3,v36)
+  if (v36 == 6) { //01ad
+    v241++
+    goto(l452)
+  }
+  v36++
+  set.cel(o3,v36)
+  set.cel(o0,0)
+  end.of.loop(o0,f241)
+}
+l452:
+if (f241 && v241 == 4) { //01c4
+  reset(f241)
+  if (f243) { //01cf
+    get(i53)
+    if (!f207) { //01d7
+      set(f207)
+      vCurrentScore += 7
+    }
+    print.at("You have uncovered a small chest. You remove it from the hole and open it. Inside you find precious gems and ingots of gold and silver. You close the chest and take it and its contents with you.",2,2,37)
+    goto(l496)
+  }
+  print.at("You dig and dig, but unfortunately... find nothing.",2,2,37)
+l496:
+  current.loop(o3,v64)
+  v65 = 7
+  v245 = 4
+  current.view(o3,v67)
+  set(f7)
+  add.to.pic(v67,v64,v65,v242,v243,v245,v245)
+  reset(f7)
+  erase(o3)
+  v36 = 1
+  cycle.time(o0,v36)
+  set.view(o0,0)
+  reset(f35)
+  player.control()
+}
+return()

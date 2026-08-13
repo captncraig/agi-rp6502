@@ -1,4 +1,100 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  v57 = 127
+  v58 = 96
+  set(f32)
+  load.logic(103)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0022
+    if (vPrevRoom == 49) { //0028
+      if (v40 < 18) { //002f
+        v40 = 18
+      }
+      goto(l115)
+    }
+    if (vPrevRoom == 51) { //003c
+      if (v41 < 55 && v41 > 47) { //0043
+        v41 = 47
+      }
+      if (v41 < 96 && v41 > 94) { //0050
+        v41 = 94
+      }
+      if (v41 < 87 && v41 > 84) { //005d
+        v41 = 87
+      }
+      goto(l115)
+    }
+    v40 = v57
+    v41 = v58
+l115:
+    position(o0,40,v41)
+  }
+  if (f47) { //0077
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0083
+  goto(l343)
+}
+if ((said("examine", "bluff") || said("examine", "top", "bluff") || said("examine", "up", "bluff") || said("examine") || said("examine", "area") || said("examine", "up"))) { //008d
+  print("You are at the foot of a high, snowy mountain range. A cliff looms before you with a tricky path winding its way up the steep face.")
+}
+if ((said("examine", "path") || said("examine", "up", "path"))) { //00bb
+  print("The narrow path winding up the steep cliff looks precarious and confusing. \"Must I climb this?\" you wonder.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00d1
+  print("The shrubbery is scant here, growing only between boulders.")
+}
+if (said("examine", "deck")) { //00f7
+  print("The ground is strewn with large boulders.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //0103
+  print("You look upward and see the mountain range looming toward the beautiful blue sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //0119
+  print("There are no climbable trees here.")
+}
+if (has(i52)) { //012f
+  if ((said("dig", "hole") || said("dig") || said("dig", "hole", "deck") || said("dig", "try", "shovel"))) { //0135
+    print("Not here.")
+  }
+}
+l343:
+v39 = 0
+if (v41 > 62) { //015a
+  v39 = 1
+  v34 = 120
+  goto(l384)
+}
+if (v40 < 80) { //016a
+  v39 = 2
+  v34 = 79
+  goto(l384)
+}
+v39 = 3
+v34 = 87
+l384:
+if (v44 == 0) { //0180
+  if (fEgoOnWater) { //0187
+    set.view(o0,1)
+    goto(l406)
+  }
+  set.view(o0,0)
+}
+l406:
+call(103)
+if (vWhichEgoBorder == 3) { //0198
+  new.room(49)
+}
+if (vWhichEgoBorder == 2) { //01a1
+  new.room(51)
+}
+return()

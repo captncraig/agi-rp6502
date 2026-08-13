@@ -1,6 +1,326 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v68 = 0
   v69 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(4)
+  load.sound(5)
+  set.horizon(41)
+  if (f75) { //001a
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0022
+    add.to.pic(62,0,0,18,140,0,0)
+  }
+  if ((f154 || v80 == 22)) { //0031
+    v92 = 84
+    set(f155)
+    load.pic(v92)
+    load.view(114)
+    load.view(103)
+    load.view(104)
+    load.view(74)
+    load.view(105)
+    load.logic(104)
+    load.sound(12)
+  }
+  if (vPrevRoom == 70 && f157) { //0051
+    set.view(o0,74)
+    position(o0,64,41)
+    move.obj(o0,64,41,0,f148)
+    set.priority(o0,8)
+  }
+  if (vPrevRoom == 70 && f158) { //006a
+    program.control()
+    ignore.horizon(o0)
+    set.priority(o0,15)
+    set.view(o0,105)
+    get.posn(o0,v60,v61)
+    if (v60 > 75) { //0080
+      position(o0,80,29)
+      goto(l146)
+    }
+    position(o0,65,29)
+l146:
+    get.posn(o0,v60,v61)
+    v61 = 106
+    v96 = 2
+    move.obj(o0,v60,v61,96,f28)
+  }
+  random(0,250,v62)
+  if (v62 < 125 && !f204) { //00a6
+    v31 = 4
+    step.size(o1,v31)
+    set(f20)
+    load.view(8)
+    load.view(89)
+    animate.obj(o1)
+    set.view(o1,8)
+    set.priority(o1,15)
+  }
+  if (f20) { //00c4
+l202:
+    random(0,250,v70)
+    if (v70 > 90) { //00ce
+      goto(l202)
+    }
+  }
+  if (vPrevRoom == 50) { //00d8
+    position(o0,142,83)
+  }
+  if (v80 == 22) { //00e3
+    overlay.pic(v92)
+  }
+  draw(o0)
+  if (vPrevRoom == 21) { //00ee
+    get.posn(o0,v100,v101)
+    if (v101 > 78 && v101 < 96) { //00f9
+      v101 = 96
+      goto(l278)
+    }
+    if (v101 > 61 && v101 < 79) { //0109
+      v101 = 61
+    }
+l278:
+    position(o0,100,v101)
+  }
+  show.pic()
+}
+if (said("check", "room")) { //011b
+  print("A large cave is at the edge of this meadow.")
+}
+if (f158 && !f29) { //0127
+  set(f29)
+  set(f135)
+  sound(5,f24)
+}
+if (f28) { //0137
+  stop.sound()
+  set(f29)
+  reset(f158)
+  reset(f135)
+  set.view(o0,114)
+  shake.screen(2)
+  set(f63)
+}
+if ((posn(o0,141,71,159,89) || f209 || f157 || f158 || f79)) { //014b
+  set(f145)
+  goto(l358)
+}
+reset(f145)
+l358:
+v70--
+if (v70 == 1 && !f158 && !f157) { //0168
+  set(f21)
+  position(o1,7,35)
+  v68 = 250
+  v69 = 3
+  draw(o1)
+  if (!f75) { //0183
+    print("High up in the sky you see a very large, friendly bird.")
+    wander(o1)
+  }
+  if (f75) { //018e
+    print("High up in the sky you see a very large, friendly bird, but it is afraid to come near you because of the goat.")
+    wander(o1)
+    set(f22)
+  }
+}
+v68--
+if (v68 == 0 && v69 > 0) { //019c
+  v69--
+  v68 = 250
+}
+if (v68 == 1 && v69 == 0) { //01ab
+  wander(o1)
+  set(f22)
+}
+if (!f22 && f21) { //01b9
+  get.posn(o1,v104,v105)
+  if (v105 > 115) { //01c6
+    v106 = 1
+    set.dir(o1,v106)
+    wander(o1)
+  }
+}
+if (f22 && vWhichObjBorder != 0) { //01d5
+  reset(f22)
+  reset(f21)
+  erase(o1)
+}
+distance(o0,o1,v71)
+get.posn(o0,v100,v101)
+get.posn(o1,v32,v33)
+v33 += 20
+if (v71 > 20 && v71 < 35 && v101 > v33 && f143 && !f22) { //01f4
+  reset(f143)
+  set(f145)
+  program.control()
+  erase(o1)
+  set.view(o0,89)
+  set(f209)
+  ignore.horizon(o0)
+  get.posn(o0,v60,v61)
+  if (v61 > 80) { //0218
+    v61 -= 70
+  }
+  v60 = 135
+  set.priority(o0,15)
+  move.obj(o0,v60,v61,31,f25)
+  set(f98)
+  if (!f204) { //0230
+    set(f204)
+    vCurrentScore += 3
+  }
+}
+if (!f21 && said("ANYWORD", "big bird")) { //023c
+  print("There is no bird.")
+}
+if (said("check", "cave")) { //024b
+  if (posn(o0,125,72,150,87)) { //0255
+    print("The opening to the cave is dark and ominous.")
+    goto(l614)
+  }
+  print("You vaguely see the outline of a cave entrance.")
+}
+l614:
+if (f21) { //0266
+  if (said("check", "big bird")) { //026c
+    print("This is a big condor.  Its graceful flight appears effortless.")
+  }
+  if (said("kill", "big bird")) { //0278
+    print("The bird is too high to kill.  Besides, it looks like a nice bird.")
+  }
+  if ((said("acquire", "big bird") || said("capture", "big bird"))) { //0284
+    print("How?")
+  }
+  if ((said("speak", "big bird") || said("hello") || said("say", "hello"))) { //0298
+    print("This bird doesn't talk much.")
+  }
+}
+if (f154 && f155) { //02b0
+  if (said("bury", "bean")) { //02b8
+    reset(f154)
+    v80 = 22
+    set(f94)
+    drop(i25)
+    vCurrentScore += 2
+    print("The beans immediately sprout roots that reach deep into the fertile soil... leaves unfold themselves to the warm, loving sun... a rumbling is felt... and a mighty beanstalk now stretches up into the sky!")
+    sound(12,f30)
+    overlay.pic(v92)
+    show.pic()
+  }
+}
+if (v80 == 22 && !f79) { //02d6
+  if (said("climb", "beanstalk") && !f157) { //02e0
+    if (posn(o0,52,76,103,97)) { //02ed
+      erase(o0)
+      set.view(o0,74)
+      set(f157)
+      position(o0,71,77)
+      set.priority(o0,8)
+      draw(o0)
+      move.obj(o0,71,77,0,f148)
+      goto(l786)
+    }
+    print("You can't reach the beanstalk from here.")
+  }
+}
+l786:
+if (v80 != 22) { //0312
+  if (said("climb", "beanstalk")) { //031a
+    print("There is no beanstalk here to climb.")
+  }
+}
+if (f157) { //0326
+  if (fTriggerLine && posn(o0,60,78,93,80)) { //032c
+    erase(o0)
+    set.view(o0,0)
+    reset(f157)
+    position(o0,70,106)
+    release.priority(o0)
+    draw(o0)
+  }
+  if (fTriggerLine && !(posn(o0,60,78,93,80))) { //0347
+    program.control()
+    set.priority(o0,15)
+    get.posn(o0,v60,v61)
+    erase(o0)
+    set.view(o0,105)
+    reset(f157)
+    position(o0,60,v61)
+    draw(o0)
+    v61 = 106
+    v96 = 2
+    move.obj(o0,v60,v61,96,f26)
+    set(f135)
+    sound(5,f198)
+  }
+}
+v30--
+if (f26) { //037c
+  stop.sound()
+  reset(f26)
+  observe.blocks(o0)
+  release.priority(o0)
+  stop.motion(o0)
+  set.view(o0,103)
+  v30 = 20
+  set(f98)
+  shake.screen(2)
+  print("Ouch!")
+  set(f135)
+  sound(4,f159)
+}
+if (f159) { //039c
+  if (v30 > 0) { //03a2
+    reset(f159)
+    sound(4,f159)
+  }
+}
+if (v30 == 1) { //03ae
+  set.view(o0,104)
+  end.of.loop(o0,f27)
+}
+if (f27) { //03bb
+  reset(f27)
+  reset(f98)
+  start.motion(o0)
+  set.view(o0,0)
+  release.priority(o0)
+  player.control()
+}
+if (vWhichEgoBorder != 0) { //03cd
+  reset(f155)
+}
+if (f25) { //03d7
+  print("Where could this giant bird be taking you?")
+  new.room(80)
+  reset(f155)
+}
+if (vWhichEgoBorder == 1 && f157) { //03e3
+  new.room(70)
+}
+if (vWhichEgoBorder == 1 && !f157) { //03ee
+  new.room(27)
+}
+if (vWhichEgoBorder == 2) { //03fa
+  new.room(21)
+}
+if (vWhichEgoBorder == 4) { //0403
+  new.room(23)
+}
+if (vWhichEgoBorder == 3) { //040c
+  new.room(11)
+}
+if (posn(o0,148,71,149,88)) { //0415
+  new.room(50)
+}
+if (f75) { //0421
+  call(103)
+}
+if (v80 == 22) { //0429
+  call(104)
+}
+return()

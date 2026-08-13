@@ -1,4 +1,234 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(56)
+  reset(f71)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(1)
+  load.view(14)
+  load.logic(101)
+  if (v57 > 0 && !(has(i18))) { //0018
+    set(f204)
+    load.view(74)
+    load.view(3)
+    load.view(4)
+  }
+  if (f108) { //002a
+    load.logic(116)
+    set(f201)
+    set(f95)
+  }
+  if (f204) { //0036
+    animate.obj(o10)
+    ignore.blocks(o10)
+    set.view(o10,3)
+    position(o10,123,103)
+    set.cel(o10,0)
+    stop.motion(o10)
+    v61 = 3
+    cycle.time(o10,v61)
+    animate.obj(o2)
+    set.view(o2,74)
+    position(o2,19,104)
+    set.priority(o2,4)
+    ignore.objs(o2)
+    draw(o2)
+    stop.update(o2)
+  }
+  if (vPrevRoom == 62) { //0064
+    v38 = 113
+    v39 = 92
+    set.view(o0,1)
+    move.obj(o0,110,92,0,f61)
+    goto(l186)
+  }
+  if (vPrevRoom == 24) { //007d
+    if (fEgoOnWater) { //0084
+      set.view(o0,1)
+      if (v39 > 75 && v39 < 78) { //008d
+        v39 = 78
+      }
+      goto(l186)
+    }
+    if (v39 > 59 && v39 < 72) { //009d
+      v39 = 59
+      goto(l186)
+    }
+    if (v39 > 149 && v39 < 155) { //00ad
+      v39 = 155
+    }
+  }
+l186:
+  position(o0,38,v39)
+  draw(o0)
+  call(101)
+  if (f201) { //00c2
+    call(116)
+  }
+  show.pic()
+  return()
+}
+reset(f208)
+reset(f207)
+if ((posn(o0,49,67,159,80) || posn(o0,26,73,48,167) || posn(o0,0,102,159,167))) { //00d0
+  set(f88)
+}
+if (posn(o0,28,139,159,163)) { //00ea
+  set(f117)
+  v76 = 0
+  v77 = 251
+}
+if (fEgoOnWater && !f71) { //00fc
+  observe.blocks(o0)
+  goto(l268)
+}
+ignore.blocks(o0)
+l268:
+if (fEgoOnWater && !(vWhichEgoBorder > 0) && vEgoDir > 0 && vEgoDir == v86 && v38 == v78 && v39 == v79) { //010c
+  if (!f206) { //0122
+    set(f206)
+    print("The rocks are too slippery to climb on.")
+  }
+  goto(l306)
+}
+reset(f206)
+l306:
+if (vEgoDir > 0 && !f128) { //0132
+  v200 = vEgoDir
+  if ((v200 == 2 || v200 == 4)) { //013f
+    v200 = 3
+  }
+  if ((v200 == 8 || v200 == 6)) { //014e
+    v200 = 7
+  }
+}
+if (f130) { //015d
+  if (f204) { //0163
+    print("You notice pig footprints near the water. The large rock in the center of the forest pool attracts your eye.")
+    goto(l368)
+  }
+  print("The cool lake and its smooth-topped stones makes a beautiful setting.")
+}
+l368:
+if (!f128 && !f129) { //0170
+  goto(l539)
+}
+if (f129) { //017d
+  goto(l539)
+}
+if ((f71 || fEgoOnWater)) { //0186
+  set(f207)
+}
+if (f108) { //0192
+  set(f207)
+  set(fSaidAccepted)
+  print("This is no time to mess around, Taran. Quick, get Hen Wen to safety!")
+}
+if (f205) { //019e
+  set(f208)
+  goto(l445)
+}
+if (posn(o0,33,90,42,107) && v200 == 3) { //01a9
+  set(f208)
+  goto(l445)
+}
+set(f207)
+l445:
+if (!f207 && f208) { //01bd
+  set(fSaidAccepted)
+  if (posn(o0,54,94,65,104) && v200 == 7) { //01c8
+    reset(f205)
+    goto(l476)
+  }
+  set(f205)
+l476:
+  if (v200 == 7) { //01dc
+    v62 = 236
+    v63 = 0
+    repositon(o0,v62,v63)
+    goto(l513)
+  }
+  if (v200 == 5) { //01f0
+    v62 = 0
+    v63 = 20
+    repositon(o0,v62,v63)
+  }
+l513:
+  set(f71)
+  set(f125)
+  set(f133)
+  ignore.blocks(o0)
+  program.control()
+  set.view(o0,14)
+  stop.motion(o0)
+  set.cel(o0,0)
+  end.of.loop(o0,f200)
+  cycle.time(o0,v107)
+  vEgoDir = 0
+}
+l539:
+if (f200) { //021b
+  reset(f200)
+  reset(f71)
+  reset(f125)
+  reset(f133)
+  start.motion(o0)
+  player.control()
+  set.view(o0,0)
+  cycle.time(o0,v105)
+  if (v200 == 1) { //0232
+    v62 = 0
+    v63 = 239
+    repositon(o0,v62,v63)
+  }
+  if (v200 == 3) { //0243
+    v62 = 20
+    v63 = 0
+    repositon(o0,v62,v63)
+  }
+}
+if (!f71 && fEgoOnWater) { //0254
+  reset(f205)
+}
+if (posn(o0,125,89,140,104) && !fEgoOnWater && !f202) { //025f
+  set(f202)
+  if (!f204) { //0271
+    print("At last you've made it to the top of this rock. You're undecided about what to do next.")
+    goto(l657)
+  }
+  erase(o0)
+  add.to.pic(3,1,0,123,103,4,4)
+  set.cel(o10,0)
+  draw(o10)
+  print("You feel a rumbling under your feet, and begin to spin around.")
+  end.of.loop(o10,f203)
+}
+l657:
+if (f203) { //0291
+  reset(f203)
+  set.view(o10,4)
+  start.cycling(o10)
+  v201 = 66
+}
+v201--
+if (v201 == 1) { //02a3
+  print("You take a deep breath and hold it until you are certain you are going to black out!")
+  new.room(62)
+}
+if (f201) { //02ae
+  call(116)
+}
+call(101)
+if (vWhichEgoBorder == 1) { //02b8
+  new.room(18)
+}
+if (vWhichEgoBorder == 3) { //02c1
+  new.room(3)
+}
+if (vWhichEgoBorder == 2) { //02ca
+  new.room(24)
+}
+if (vWhichEgoBorder == 4) { //02d3
+  new.room(22)
+}
+return()

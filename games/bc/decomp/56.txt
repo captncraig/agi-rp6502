@@ -1,4 +1,117 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f97)
+  if (f83) { //0010
+    load.logic(118)
+    set(f201)
+  }
+  if ((f60 || f108)) { //001a
+    load.logic(116)
+    set(f202)
+  }
+  v66 = 122
+  if (vPrevRoom == 69) { //002b
+    if (!f47) { //0032
+      set(f47)
+      vCurrentScore += 10
+    }
+    load.logic(106)
+    set(f203)
+    set(f122)
+    position(o0,74,45)
+    set.priority(o0,15)
+    goto(l96)
+  }
+  if (vPrevRoom == 55) { //004e
+    position(o0,13,142)
+    goto(l96)
+  }
+  position(o0,71,166)
+l96:
+  if (!f84 && f83) { //0060
+    set(f200)
+  }
+  if (f201) { //006b
+    call(118)
+  }
+  if (f202) { //0073
+    call(116)
+  }
+  if (f203) { //007b
+    call(106)
+  }
+  draw(o0)
+  show.pic()
+  return()
+}
+if (f130) { //0087
+  print("You are below the Horned King's dungeon. There is a hole in the ceiling that you can't reach.")
+}
+if (!f128 && !f129) { //008f
+  goto(l230)
+}
+if (f129) { //009c
+  goto(l230)
+}
+if (f200) { //00a5
+  if (v201 == 3) { //00ab
+    print("\"I'm Taran, Assistant Pig-Keeper of Caer Dallben,\" you respond.")
+    v202 = 27
+    set(fSaidAccepted)
+    v201++
+    goto(l230)
+  }
+  if (v201 == 5) { //00be
+    print("\"Where are we, anyway?  The last I remember, I was in the wine cellar upstairs.\"")
+    v202 = 27
+    set(fSaidAccepted)
+    v201++
+    goto(l230)
+  }
+  if (v201 == 7 && f60) { //00d1
+    print("\"This is my oracular pig, Hen Wen. I must get her to safety with the Fair Folk,\" you say.")
+    v202 = 27
+    set(fSaidAccepted)
+    v201++
+    goto(l230)
+  }
+}
+l230:
+if (!f122 && !f84 && f200) { //00e6
+  set(f84)
+  reset(f168)
+  v202 = 15
+  v201 = 2
+  print("There's a beautiful young girl here.")
+}
+v202--
+if (v202 == 1 && f200) { //0100
+  if (v201 == 2) { //0109
+    print("The young girl speaks, \"Hello! You must be a prince or a great warrior. I'm Princess Eilonwy, and this is my magic bauble.\"")
+  }
+  if (v201 == 4) { //0112
+    print("\"That's too bad. I was hoping for a great hero to get me out of this dismal place. Oh, well.\"")
+  }
+  if (v201 == 6) { //011b
+    print("\"Why, we're far below the castle now. Even the dungeon is up from here.\"")
+  }
+  v201++
+}
+if (vWhichEgoBorder == 3) { //0126
+  new.room(59)
+}
+if (posn(o0,0,0,11,167)) { //012f
+  new.room(55)
+}
+if (f202) { //013b
+  call(116)
+}
+if (f201) { //0143
+  call(118)
+}
+if (f203) { //014b
+  call(106)
+}
+return()

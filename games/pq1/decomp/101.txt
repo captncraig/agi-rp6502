@@ -1,3 +1,126 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x6c)}
+set.cursor.char("_")
+set.string(str0,"<")
+set.game.id("PQ")
+trace.info(105,11,6)
+set.text.attribute(15,0)
+vMaxScore = 245
+if (vComputerType == IBM_PC) { //0013
+  if (vMonitorType != HERCULES) { //001a
+    clear.lines(22,24,c0)
+    goto(l43)
+  }
+  set(f56)
+}
+l43:
+vCycleTime = 2
+configure.screen(1,23,0)
+disable.member(c27)
+v46 = 93
+v40 = 6
+v41 = 1
+v42 = 2
+v43 = 3
+v44 = 99
+v45 = 100
+v65 = 128
+v55 = 1
+v142 = 77
+v143 = 160
+position(o0,142,v143)
+v122 = 1
+v123 = 2
+v124 = 3
+v125 = 4
+v126 = 5
+v61 = 30
+if ((vComputerType == IBM_PC || vComputerType == 1 || vComputerType == 2 || vComputerType == 3)) { //006b
+  set(f104)
+  goto(l141)
+}
+set(f105)
+if (vComputerType == ATARI_ST) { //0084
+  set(f8)
+}
+l141:
+if (v90 > 0) { //008d
+  set(f155)
+  accept.input()
+  set(f81)
+  set(f14)
+  status.line.on()
+  vCycleTime = 0
+  new.room(v90)
+  goto(l188)
+}
+if (!fRestartGame) { //00a4
+  set(f151)
+  set(f36)
+  prevent.input()
+  reset(f14)
+  status.line.off()
+  goto(l188)
+}
+reset(f151)
+status.line.on()
+set(f14)
+return()
+l188:
+set.key(0,59,2)
+set.key(0,60,16)
+set.key(0,61,9)
+set.key(0,62,4)
+set.key(0,63,3)
+set.key(0,64,6)
+set.key(0,65,5)
+set.key(0,66,8)
+set.key(0,67,7)
+set.key(0,68,25)
+if (vComputerType == 2) { //00e4
+  set.key(61,0,38)
+  set.key(45,0,39)
+  set.key(43,0,38)
+}
+set.key(9,0,10)
+if (vComputerType == AMIGA) { //00fb
+  set.key(27,0,18)
+  goto(l269)
+}
+set.key(27,0,32)
+l269:
+set.key(3,0,17)
+set.key(4,0,34)
+set.key(5,0,9)
+set.key(10,0,15)
+set.key(18,0,12)
+set.key(19,0,28)
+set.key(0,32,14)
+set.key(0,18,21)
+set.key(0,23,37)
+set.key(0,38,40)
+set.key(0,50,13)
+set.key(0,25,19)
+set.key(0,47,20)
+set.key(0,45,11)
+set.key(0,44,1)
+if (vComputerType == 1) { //0149
+  set.key(49,0,2)
+  set.key(50,0,16)
+  set.key(51,0,9)
+  set.key(52,0,4)
+  set.key(53,0,3)
+  set.key(54,0,6)
+  set.key(55,0,5)
+  set.key(56,0,8)
+  set.key(57,0,7)
+  set.key(48,0,25)
+}
+set.key(1,1,32)
+if (f104) { //017c
+  set.key(1,2,10)
+  goto(l404)
+}
+if (vComputerType == ATARI_ST) { //0189
+  set.key(1,4,10)
+}
+l404:
+return()

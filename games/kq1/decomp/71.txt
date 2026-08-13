@@ -1,4 +1,74 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(30)
+  load.view(105)
+  load.view(74)
+  load.sound(5)
+  if (vPrevRoom == 72 && f157) { //0016
+    set.view(o0,74)
+    position(o0,66,40)
+    move.obj(o0,66,40,0,f148)
+  }
+  if (vPrevRoom == 72 && f158) { //002c
+    program.control()
+    set.view(o0,105)
+    get.posn(o0,v60,v61)
+    if (v60 > 75) { //003d
+      position(o0,90,29)
+      goto(l79)
+    }
+    position(o0,55,29)
+l79:
+    v61 = 166
+    v96 = 4
+    set.priority(o0,15)
+    move.obj(o0,v60,v61,96,f20)
+  }
+  if (vPrevRoom == 70) { //005e
+    set.view(o0,74)
+    position(o0,69,160)
+    move.obj(o0,69,160,0,f148)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f158 && !f20 && !f21) { //0075
+  sound(5,f159)
+  set(f21)
+}
+if (said("check", "beanstalk")) { //0086
+  print("You can no longer see the bottom... it seems to go  on forever!")
+}
+if (fTriggerLine && !f158) { //0092
+  program.control()
+  print("You have to be careful when you get so high on the foliage!")
+  get.posn(o0,v60,v61)
+  reset(f157)
+  set(f158)
+  erase(o0)
+  set.view(o0,105)
+  if (v60 > 75) { //00ab
+    v60 = 80
+    position(o0,60,v61)
+    draw(o0)
+  }
+  if (v60 < 76) { //00bb
+    v60 = 65
+    position(o0,60,v61)
+    draw(o0)
+  }
+  start.cycling(o0)
+  set(f98)
+  v61 = 166
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+}
+if (vWhichEgoBorder == 1) { //00db
+  new.room(72)
+}
+if ((f20 || posn(o0,0,166,159,167))) { //00e4
+  new.room(70)
+}
+return()

@@ -1,4 +1,92 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(111)
+  load.view(137)
+  set(f72)
+  if (f108) { //0014
+    load.logic(116)
+    set(f201)
+  }
+  animate.obj(o10)
+  ignore.blocks(o10)
+  set.view(o10,137)
+  position(o10,62,119)
+  v61 = 2
+  cycle.time(o10,v61)
+  if (vPrevRoom == 66) { //002f
+    last.cel(o10,v61)
+    set.cel(o10,v61)
+    draw(o10)
+    reverse.loop(o10,f202)
+    goto(l75)
+  }
+  set.cel(o10,0)
+  draw(o10)
+  stop.update(o10)
+l75:
+  animate.obj(o6)
+  ignore.horizon(o6)
+  set.view(o6,111)
+  position(o6,43,24)
+  v61 = 2
+  cycle.time(o6,v61)
+  draw(o6)
+  if (vPrevRoom == 66) { //005e
+    position(o0,65,121)
+    goto(l118)
+  }
+  position(o0,65,166)
+  move.obj(o0,65,164,0,f61)
+l118:
+  draw(o0)
+  if (f201) { //0078
+    call(116)
+  }
+  show.pic()
+  if (vPrevRoom != 66) { //0081
+    print("You emerge from the brambles into a clearing with a strange underground house.")
+  }
+  return()
+}
+if (f130) { //008c
+  set(fSaidAccepted)
+  if (posn(o0,63,120,75,125)) { //0094
+    print("The door doesn't appear to be locked.")
+    goto(l165)
+  }
+  print("The smoke rising from the chimney makes you think that someone is home.")
+}
+l165:
+if (!f128 && !f129) { //00a5
+  goto(l208)
+}
+if (f129) { //00b2
+  goto(l208)
+}
+if (posn(o0,63,119,75,128)) { //00bb
+  set(fSaidAccepted)
+  stop.motion(o0)
+  start.update(o10)
+  end.of.loop(o10,f200)
+  print("You open the door, peek inside, and carefully enter the underground house.")
+}
+l208:
+if (f200) { //00d0
+  reset(f200)
+  start.motion(o0)
+  new.room(66)
+}
+if (f202) { //00dc
+  reset(f202)
+  stop.update(o10)
+  print("You close the door.")
+}
+if (f201) { //00e8
+  call(116)
+}
+if (vWhichEgoBorder == 3) { //00f0
+  new.room(17)
+}
+return()

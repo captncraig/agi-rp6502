@@ -1,3 +1,177 @@
-if (!(isSet(f67)
-!!!
-&{%!e(string=incomplete condition: 0x6b)}
+if (!f67) { //0002
+  set(f67)
+  load.sound(17)
+  load.view(90)
+  load.sound(17)
+  get.posn(o0,v212,v213)
+  if (vPrevRoom == 25) { //0015
+    if (v212 > 75) { //001c
+      v45 = 115
+      v46 = 155
+      goto(l50)
+    }
+    v45 = 29
+    v46 = 155
+l50:
+    goto(l107)
+  }
+  if (vPrevRoom == 17) { //0035
+    if (v213 < 135) { //003c
+      v45 = 21
+      v46 = 132
+      goto(l82)
+    }
+    v45 = 27
+    v46 = 160
+l82:
+    goto(l107)
+  }
+  if (v213 < 135) { //0055
+    v45 = 124
+    v46 = 132
+    goto(l107)
+  }
+  v45 = 124
+  v46 = 160
+l107:
+  v209 = 1
+  move.obj(o0,v45,v46,209,f122)
+}
+if (f122) { //0074
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v212 > 75) { //0080
+    v45 = 116
+    v46 = 145
+    goto(l152)
+  }
+  set(f241)
+  v45 = 30
+  v46 = 145
+l152:
+  v209 = 1
+  move.obj(o0,v45,v46,209,f104)
+}
+if (!f108 && f104) { //00a1
+  set(f108)
+  set(f240)
+  reset(f104)
+  sound(17,f103)
+  vTimeSeconds = 0
+  erase(o12)
+  set(f15)
+  print.at("                                        \n\n\n\n\n",0,2,37)
+  display(1,3,"Ride a cockhorse to Banbury Cross,")
+}
+if (vTimeSeconds > 3 && f108 && !f109) { //00c3
+  set(f109)
+  display(2,3,"To see a fine lady upon a")
+  display(3,3,"    white horse.")
+}
+if (vTimeSeconds > 9 && f109 && !f110) { //00d9
+  set(f110)
+  display(4,3,"Rings on her fingers,")
+}
+if (vTimeSeconds > 11 && f110 && !f111) { //00eb
+  set(f111)
+  display(5,6,"and bells on her toes,")
+}
+if (vTimeSeconds > 14 && f111 && !f112) { //00fd
+  set(f112)
+  display(6,3,"She shall have music wherever")
+  display(7,3,"    she goes.")
+}
+v47--
+if (v47 == 1) { //0115
+  set(f240)
+}
+if (f240) { //011e
+  reset(f240)
+  v48++
+  if (v48 == 1) { //0128
+    if (!f241) { //012f
+      set.loop(o0,1)
+      goto(l319)
+    }
+    set.loop(o0,0)
+l319:
+    animate.obj(o4)
+    set.view(o4,90)
+    position(o4,0,118)
+    draw(o4)
+    move.obj(o4,37,118,0,f240)
+  }
+  if (v48 == 2) { //0150
+    move.obj(o4,56,137,0,f240)
+  }
+  if (v48 == 3) { //015d
+    move.obj(o4,70,146,0,f240)
+  }
+  if (v48 == 4) { //016a
+    stop.cycling(o4)
+    set.loop(o4,1)
+    set.cel(o4,0)
+    animate.obj(o6)
+    set.view(o6,90)
+    set.loop(o6,3)
+    set.cel(o6,0)
+    position(o6,79,136)
+    draw(o6)
+    stop.cycling(o6)
+    v47 = 10
+  }
+  if (v48 == 5) { //018f
+    animate.obj(o5)
+    set.view(o5,90)
+    set.loop(o5,2)
+    set.cel(o5,0)
+    position(o5,82,117)
+    set.priority(o5,15)
+    draw(o5)
+    v209 = 4
+    cycle.time(o5,v209)
+    v47 = 30
+  }
+  if (v48 == 6) { //01b3
+    erase(o5)
+    start.cycling(o6)
+    v47 = 30
+  }
+  if (v48 == 7) { //01c1
+    erase(o6)
+    start.cycling(o4)
+    set.loop(o4,0)
+    move.obj(o4,87,137,0,f240)
+  }
+  if (v48 == 8) { //01d5
+    move.obj(o4,95,129,0,f240)
+  }
+  if (v48 == 9) { //01e2
+    move.obj(o4,121,129,0,f240)
+  }
+  if (v48 == 10) { //01ef
+    move.obj(o4,138,115,0,f240)
+  }
+  if (v48 == 11) { //01fc
+    erase(o4)
+    if (f241) { //0205
+      move.obj(o0,44,131,1,f240)
+      goto(l538)
+    }
+    move.obj(o0,102,131,1,f240)
+  }
+l538:
+  if (v48 == 12) { //021a
+    move.obj(o0,76,130,1,f240)
+  }
+  if (v48 == 13) { //0227
+    set.loop(o0,3)
+    add.to.pic(60,0,0,75,110,11,4)
+    v47 = 10
+  }
+  if (v48 == 14) { //023c
+    set.loop(o0,2)
+    set(f114)
+  }
+}
+return()

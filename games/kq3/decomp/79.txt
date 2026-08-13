@@ -1,4 +1,138 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(116)
+  set(f34)
+  v57 = 107
+  v58 = 150
+  v32 = 70
+  v31 = 150
+  v56 = 7
+  load.sound(26)
+  load.sound(3)
+  load.view(0)
+  set.view(o0,0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (f48) { //002f
+    start.motion(o0)
+    vEgoDir = 7
+    if (v41 > 120) { //003a
+      position(o0,120,150)
+      goto(l76)
+    }
+    position(o0,86,125)
+l76:
+    get.posn(o0,v40,v41)
+    goto(l86)
+  }
+  v41 = v58
+l86:
+  if (f47) { //0056
+    draw(o0)
+  }
+  if (v44 == 14) { //005e
+    v41 = v58
+  }
+  animate.obj(o1)
+  load.view(158)
+  load.view(166)
+  if (f181) { //006e
+    v221 = 22
+    set.view(o1,166)
+    set.loop(o1,2)
+    v36 = 6
+    cycle.time(o1,v36)
+    set.priority(o1,14)
+    position(o1,20,152)
+    goto(l172)
+  }
+  set(f81)
+  v36 = 40
+  position(o1,36,v41)
+  set.view(o1,158)
+  sound(26,f238)
+  if (v44 == 0) { //009c
+    follow.ego(o1,10,f220)
+    goto(l172)
+  }
+  stop.cycling(o1)
+l172:
+  draw(o1)
+  show.pic()
+  return()
+}
+v221--
+if (v221 == 1) { //00b2
+  sound(3,f238)
+  set.cel(o1,0)
+  end.of.loop(o1,f221)
+}
+if (f221) { //00c2
+  reset(f221)
+  v221 = 22
+  stop.cycling(o1)
+}
+call(116)
+if (f33 && !f181) { //00d1
+  if (v44 != 0) { //00da
+    reset(f220)
+    stop.cycling(o1)
+    normal.motion(o1)
+    stop.motion(o1)
+    goto(l243)
+  }
+  start.cycling(o1)
+  follow.ego(o1,10,f220)
+}
+l243:
+if (f220) { //00f3
+  if (f46) { //00f9
+    stop.cycling(o1)
+    normal.motion(o1)
+    stop.motion(o1)
+    goto(l272)
+  }
+  reset(f220)
+  print("\"What d'ya think yer up ta, boy!?\"")
+  set(f199)
+  new.room(85)
+}
+l272:
+if ((said("examine") || said("examine", "area") || said("examine", "ship"))) { //0110
+  print("This is the galley of the pirate ship. A large iron stove dominates one wall. Pots, pans, and barrels surround it. There is a long dining table at the other end of the room.")
+}
+if (said("examine", "bandit")) { //0128
+  if (!f181) { //0132
+    print("Get out of here before the ship's cook cuts you up!")
+    goto(l320)
+  }
+  print("The ship's cook is fast asleep in the evening meal. His snores are so loud they seem to rattle the walls.")
+}
+l320:
+if (said("examine", "oven")) { //0140
+  print("It's just an old wood stove used for cooking. Nothing special about it.")
+}
+if (said("examine", "chamber pot")) { //014c
+  print("The pots and pans are used for cooking the pirate's meals.")
+}
+if (said("examine", "barrel")) { //0158
+  print("The barrel seems to be full of rum, but you have better things to do at the moment than drink.")
+}
+if (said("examine", "counter")) { //0164
+  print("The wooden dining table is not too clean. The remains of many meals are lodged between the oaken planks. Its top is deeply gouged and stained.")
+}
+if (said("examine", "below", "counter")) { //0170
+  print("It's obvious the pirate's eating habits are less than desirable. You see nothing but crumbs and stains under the table.")
+}
+if ((said("get in", "down") || said("get in", "counter") || said("get in", "down", "counter") || said("get in"))) { //017e
+  print("You have better things to do than sit around.")
+}
+if ((said("examine", "door") || said("examine", "out", "door"))) { //019e
+  print("The sight of the rolling swells make you a little queasy. To your relief, you see no pirates coming.")
+}
+if (fTriggerLine) { //01b4
+  new.room(80)
+}
+return()

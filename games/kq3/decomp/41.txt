@@ -1,4 +1,387 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v32 = 66
+  v31 = 163
+  v57 = 66
+  v58 = 144
+  load.view(0)
+  load.view(178)
+  load.view(31)
+  load.view(17)
+  load.view(85)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0029
+    if (vPrevRoom == 42) { //002f
+      v40 = 48
+      v41 = 68
+      goto(l69)
+    }
+    v40 = 67
+    v41 = 167
+l69:
+    position(o0,40,v41)
+  }
+  if (f47) { //0049
+    draw(o0)
+  }
+  animate.obj(o1)
+  set.view(o1,178)
+  position(o1,79,107)
+  draw(o1)
+  if ((vPrevRoom == 89 || vPrevRoom != 42) && (v190 == 0 || v190 == 3)) { //005c
+    random(1,2,v36)
+    if (v36 == 1) { //0075
+      v190 = 3
+      goto(l133)
+    }
+    v190 = 0
+  }
+l133:
+  if (v190 > 0) { //0085
+    animate.obj(o3)
+    set.priority(o3,12)
+    set.view(o3,85)
+    set.cel(o3,1)
+    ignore.objs(o3)
+    position(o3,99,111)
+    draw(o3)
+    stop.update(o3)
+    animate.obj(o4)
+    set.priority(o4,12)
+    set.view(o4,85)
+    set.cel(o4,0)
+    ignore.objs(o4)
+    position(o4,78,111)
+    draw(o4)
+    stop.update(o4)
+  }
+  if (v190 == 3) { //00b6
+    animate.obj(o2)
+    set.priority(o2,12)
+    set.view(o2,85)
+    set.cel(o2,2)
+    ignore.objs(o2)
+    position(o2,89,118)
+    draw(o2)
+    stop.update(o2)
+  }
+  animate.obj(o5)
+  set.view(o5,17)
+  if (f175) { //00d7
+    set.loop(o5,1)
+    goto(l230)
+  }
+  set.loop(o5,0)
+l230:
+  v36 = 3
+  cycle.time(o5,v36)
+  set.cel(o5,0)
+  position(o5,85,144)
+  draw(o5)
+  stop.update(o5)
+  show.pic()
+  return()
+}
+v226 = 0
+if (posn(o0,77,140,99,148)) { //00fc
+  v226 = 3
+}
+if (posn(o0,95,118,112,127)) { //0109
+  v226 = 2
+}
+if (posn(o0,63,120,73,129)) { //0116
+  v226 = 1
+}
+v220 = 0
+if (v190 > 0) { //0126
+  if (posn(o0,72,120,86,128)) { //012d
+    v220 = 1
+  }
+  if (posn(o0,87,120,108,143)) { //013a
+    v220 = 2
+  }
+  if (obj.in.room(i24,vCurrentRoom) && posn(o0,79,141,99,144)) { //0147
+    v220 = 3
+  }
+}
+if (said("examine", "below", "counter")) { //0157
+  print("You drop to your hands and knees and look under the pine table. You see nothing but a clean floor.")
+}
+if ((said("examine") || said("examine", "area") || said("examine", "building"))) { //0165
+  print("You are in the charming home of the Three Bears.  Mama Bear certainly does keep her house nice and cozy.")
+}
+if ((said("examine", "fire") || said("examine", "fireplace"))) { //017d
+  print("There is a cheery fire crackling in the fireplace, even though it's summer.")
+}
+if (said("lift", "glass")) { //0191
+  print("The window does not open.")
+}
+if ((said("examine", "out", "glass") || said("examine", "glass") || said("examine", "door") || said("examine", "out"))) { //019d
+  print("You see the forest and Mama Bear's flower garden outside.")
+}
+if (said("examine", "stair")) { //01bf
+  print("A rustic wooden stairway leads to the second floor.")
+}
+if (said("examine", "bench")) { //01cb
+  if (!(v226 > 0)) { //01d5
+    print("The chairs are arranged in a cozy conversational grouping around the dining table.")
+    if (f175) { //01df
+      print("It appears however, that a previous conversation may have gotten out of hand.")
+    }
+  }
+  if (v226 == 3) { //01e7
+    if (f175) { //01ee
+      print("There is only a splintered pile of wood that was once a small chair.")
+      goto(l507)
+    }
+    print("The cute little wooden chair looks sturdily built.")
+  }
+l507:
+  if (v226 == 2) { //01fb
+    print("The medium-sized chair looks very soft and comfortable.")
+  }
+  if (v226 == 1) { //0204
+    print("The wooden chair is very large, and solidly built. It must be Papa Bear's.")
+  }
+}
+if ((said("get in", "bench") || said("get in", "on", "bench") || said("get in"))) { //020d
+  if (!(v226 > 0)) { //0225
+    print("You can't reach it from here.")
+  }
+  if (v226 == 3) { //022f
+    if (f175) { //0236
+      print("%m6 You can't sit on that!")
+      goto(l584)
+    }
+    set(f175)
+    set(f220)
+    v222 = 0
+  }
+l584:
+  if (v226 == 2) { //0248
+    set(f220)
+    v222 = 100
+  }
+  if (v226 == 1) { //0254
+    set(f220)
+    v222 = 200
+  }
+}
+if (said("examine", "counter")) { //0260
+  if (!(v190 > 0)) { //026a
+    print("The large wooden table is clean and polished.")
+  }
+  if (v190 == 2) { //0274
+    print("%m2 %m27")
+  }
+  if (v190 == 3) { //027d
+    print("%m2 %m28")
+  }
+}
+if ((said("examine", "basin") || said("examine", "basin", "porridge") || said("examine", "porridge"))) { //0286
+  if (!(v190 > 0)) { //02a0
+    print("Where?")
+  }
+  if (v190 == 2) { //02aa
+    print("There are two bowls of porridge on the table. One is too hot, and the other is too cold.")
+  }
+  if (v190 == 3) { //02b3
+    print("There are three bowls of porridge on the table. You are surprised that bears eat porridge. You always thought they ate honey and berries.")
+  }
+}
+if ((said("drink", "basin") || said("drink", "basin", "porridge") || said("drink", "porridge"))) { //02bc
+  if (!(v190 > 0)) { //02d6
+    print("Where?")
+    goto(l787)
+  }
+  if (!(v220 > 0)) { //02e3
+    print("You're not close enough.")
+  }
+  if (v220 == 1) { //02ed
+    print("%m13much too hot.")
+  }
+  if (v220 == 2) { //02f6
+    print("%m13much too cold.")
+  }
+  if (v220 == 3) { //02ff
+    v190 = 2
+    start.update(o2)
+    erase(o2)
+    get(i24)
+    drop(i24)
+    print("%m13just right! You take another bite, then another, and another. Before you realize it, you have downed the entire bowl.")
+  }
+}
+l787:
+if ((said("capture", "basin") || said("capture", "basin", "porridge") || said("capture", "porridge"))) { //0313
+  if (!(v190 > 0)) { //032d
+    print("Where?")
+    goto(l875)
+  }
+  if (!(v220 > 0)) { //033a
+    print("You're not close enough.")
+  }
+  if (v220 == 1) { //0344
+    print("%m14much too hot.")
+  }
+  if (v220 == 2) { //034d
+    print("%m14much too cold.")
+  }
+  if (v220 == 3) { //0356
+    v190 = 2
+    start.update(o2)
+    erase(o2)
+    get(i24)
+    vCurrentScore += 2
+    print("%m14just right! So, you take it with you.")
+  }
+}
+l875:
+if (f45) { //036b
+  v225--
+  if (v225 == 1) { //0373
+    set(f220)
+  }
+}
+if (v222 == 4) { //037c
+  current.cel(o5,v36)
+  if (v36 == 4) { //0386
+    set(f220)
+  }
+}
+if (f220) { //038f
+  reset(f220)
+  v222++
+  v69 = 1
+  program.control()
+  prevent.input()
+  set(f46)
+  if (v222 == 1) { //03a0
+    if (v41 < 145) { //03a7
+      v222 = 2
+      goto(l957)
+    }
+    v37 = 77
+    move.obj(o0,v37,v41,69,f220)
+  }
+l957:
+  if (v222 == 2) { //03bd
+    v38 = 141
+    move.obj(o0,v40,v38,69,f220)
+  }
+  if (v222 == 3) { //03cd
+    v37 = 85
+    move.obj(o0,v37,v41,69,f220)
+  }
+  if (v222 == 4) { //03dd
+    erase(o0)
+    start.update(o5)
+    set.cel(o5,1)
+    end.of.loop(o5,f41)
+    start.cycling(o5)
+  }
+  if (v222 == 5) { //03f0
+    stop.cycling(o5)
+    v225 = 3
+  }
+  if (v222 == 6) { //03fc
+    print("This chair feels just right.")
+    v225 = 5
+  }
+  if (v222 == 7) { //0408
+    end.of.loop(o5,f220)
+  }
+  if (v222 == 8) { //0412
+    print("Oh, oh!")
+    v225 = 2
+  }
+  if (v222 == 9) { //041e
+    set.loop(o5,1)
+    position(o0,85,141)
+    draw(o0)
+    v222 = 0
+  }
+  if (v222 == 101) { //0431
+    stop.motion(o0)
+    get.posn(o0,v223,v224)
+    set.view(o0,31)
+    set.loop(o0,0)
+    set.cel(o0,0)
+    set.priority(o0,15)
+    reposition.to(o0,104,123)
+    set(f35)
+    v36 = 3
+    cycle.time(o0,v36)
+    end.of.loop(o0,f220)
+  }
+  if (v222 == 102) { //0459
+    reset(f35)
+    stop.cycling(o0)
+    v225 = 4
+  }
+  if (v222 == 103) { //0467
+    print("You sink deeply into the overstuffed chair... too deeply! This chair is much too soft.")
+    v225 = 4
+  }
+  if (v222 == 104) { //0473
+    set(f35)
+    reverse.loop(o0,f220)
+  }
+  if (v222 == 105) { //047f
+    set.view(o0,0)
+    set.loop(o0,1)
+    reposition.to(o0,100,124)
+    v222 = 0
+  }
+  if (v222 == 201) { //0493
+    stop.motion(o0)
+    set.view(o0,31)
+    set.loop(o0,1)
+    set.cel(o0,0)
+    set.priority(o0,15)
+    reposition.to(o0,60,117)
+    set(f35)
+    v36 = 3
+    cycle.time(o0,v36)
+    end.of.loop(o0,f220)
+  }
+  if (v222 == 202) { //04b7
+    reset(f35)
+    stop.cycling(o0)
+    v225 = 3
+  }
+  if (v222 == 203) { //04c5
+    print("You feel very small and uncomfortable in this big chair. This chair is much too hard.")
+    v225 = 3
+  }
+  if (v222 == 204) { //04d1
+    set(f35)
+    reverse.loop(o0,f220)
+  }
+  if (v222 == 205) { //04dd
+    set.view(o0,0)
+    set.loop(o0,0)
+    reposition.to(o0,65,127)
+    v222 = 0
+  }
+  if (v222 == 0) { //04f1
+    player.control()
+    accept.input()
+    release.priority(o0)
+    start.motion(o0)
+    vEgoDir = 0
+    reset(f35)
+    reset(f46)
+    cycle.time(o0,v59)
+  }
+}
+if (vWhichEgoBorder == 3 && v40 > 63 && v40 < 74) { //0508
+  new.room(28)
+}
+if (fTriggerLine) { //0517
+  new.room(42)
+}
+return()

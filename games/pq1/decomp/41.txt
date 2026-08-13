@@ -1,5 +1,709 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-  if (!(isSet(f39)
-!!!
-&{%!e(string=incomplete condition: 0xfc)}
+  if (!f39 && (f63 || f64)) { //000a
+    v52 = 4
+  }
+  if (f60) { //001a
+    set(f234)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(144)
+  load.view(145)
+  load.view(143)
+  load.view(146)
+  load.view(94)
+  load.sound(20)
+  load.sound(21)
+  load.sound(1)
+  load.sound(2)
+  load.logic(94)
+  load.logic(108)
+  animate.obj(o19)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  set.priority(o3,4)
+  set.priority(o5,4)
+  set.view(o3,145)
+  set.view(o4,144)
+  set.view(o5,143)
+  set.view(o6,146)
+  ignore.blocks(o19)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  set.loop(o4,1)
+  set.cel(o4,0)
+  set.cel(o5,0)
+  stop.cycling(o4)
+  stop.cycling(o5)
+  position(o3,112,100)
+  position(o4,75,87)
+  position(o5,87,105)
+  position(o6,113,53)
+  if (v67 == 137) { //007d
+    load.view(137)
+    load.view(138)
+    set.view(o19,138)
+  }
+  if (v67 == 38) { //008b
+    load.view(33)
+    set.view(o19,33)
+  }
+  if (v67 == 175 && f46) { //0097
+    load.view(21)
+    load.view(176)
+    load.view(180)
+    animate.obj(o2)
+    animate.obj(o1)
+    set.view(o2,21)
+    set.view(o19,180)
+    set.view(o1,176)
+    position(o2,118,155)
+    position(o19,128,161)
+    position(o1,128,155)
+    ignore.blocks(o2)
+    ignore.blocks(o1)
+  }
+  add.to.pic(144,0,2,106,89,4,4)
+  add.to.pic(144,0,1,13,54,6,6)
+  add.to.pic(144,0,0,71,97,4,4)
+  if (vPrevRoom == 40) { //00db
+    position(o0,91,106)
+    start.motion(o0)
+    set.loop(o0,2)
+    move.obj(o0,91,110,1,f220)
+    draw(o0)
+  }
+  if (!f39 && vPrevRoom != 40) { //00f3
+    position(o0,118,163)
+    draw(o0)
+  }
+  if (f60) { //0104
+    last.cel(o4,v152)
+    set.cel(o4,v152)
+  }
+  if ((f46 || v96 == 3 || v96 == 6)) { //0110
+    set(f237)
+  }
+  cycle.time(o6,v125)
+  v152 = 4
+  cycle.time(o4,v152)
+  cycle.time(o5,v152)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  draw(o6)
+  stop.update(o5)
+  stop.update(o4)
+  v226 = 2
+  call(94)
+  call(108)
+  show.pic()
+  return()
+}
+if (v96 == 7 && f112 && v120 == 5) { //0141
+  set(f140)
+  print("You were sent here to enlist Sweet Cheeks, and you leave after just a kiss?!")
+}
+if (posn(o0,85,102,97,104)) { //0151
+  new.room(40)
+}
+reset(f235)
+if (posn(o0,109,160,124,164)) { //015f
+  set(f235)
+}
+reset(f236)
+if (posn(o0,70,106,81,109)) { //016d
+  set(f236)
+}
+reset(f238)
+if (posn(o0,82,106,113,109)) { //017b
+  set(f238)
+}
+reset(f239)
+if (posn(o0,101,106,113,109)) { //0189
+  set(f239)
+}
+if (f63 && f235 && (said("enter", "rol") || said("sit") || said("sit", "auto") || said("get up") || said("enter", "auto") || said("climb", "auto"))) { //0195
+  set(f30)
+}
+if (f39 && (said("drive") || said("drive", "auto") || said("begin", "auto", "use", "car keys") || said("use", "auto", "car keys") || said("use", "car keys", "begin", "auto") || said("begin", "auto") || said("begin", "engine") || said("move", "car keys") || said("drive", "auto"))) { //01c1
+  if (f63) { //0207
+    print("First, close the door.")
+    goto(l532)
+  }
+  set(f30)
+}
+l532:
+if (f30) { //0214
+  if (f46 && (!f63 || !f39)) { //021a
+    print("You won't be going anywhere until you finish booking.")
+    reset(f30)
+  }
+  if (v63 == 221) { //022c
+    if (!f39) { //0233
+      print("\"Looks like you'll be a valued addition to narcotics, Bonds,\" says Laura.")
+      goto(l585)
+    }
+    if (f39 && f63) { //023f
+      print("\"Let's get back to the office. I've got work to do.\"")
+    }
+  }
+}
+l585:
+if (f220) { //0249
+  reset(f220)
+  v220++
+}
+if (f221) { //0253
+  reset(f221)
+  v221++
+}
+if (f222) { //025d
+  reset(f222)
+  v222++
+}
+if (f223) { //0267
+  reset(f223)
+  v223++
+}
+if (f224) { //0271
+  reset(f224)
+  v224++
+}
+distance(o0,o1,v227)
+distance(o0,o2,v228)
+distance(o0,o19,v229)
+distance(o0,o3,v230)
+if ((v227 < v61 || v228 < v61 || v229 < v61 || v230 < v61)) { //028b
+  set(f109)
+}
+if (f226 && f236) { //029f
+  start.update(o5)
+  sound(21,f154)
+  reverse.loop(o5,f227)
+  reset(f226)
+}
+if (f226) { //02b1
+  ignore.blocks(o0)
+  stop.update(o5)
+  goto(l704)
+}
+observe.blocks(o0)
+l704:
+if (f227) { //02c0
+  reset(f227)
+  stop.update(o5)
+  stop.update(o4)
+}
+if (f229) { //02cc
+  reset(f229)
+  toggle(f60)
+  accept.input()
+  stop.update(o4)
+}
+if (vPrevRoom == 40 && !f140 && !f238 && f42 && f234) { //02d9
+  print("Around here, failure to secure the gun locker door can be hazardous to your health!")
+  set(f140)
+}
+v226--
+if (v226 == 1) { //02f0
+  random(11,33,v226)
+  toggle(f225)
+  if (f225) { //02fd
+    start.cycling(o6)
+    goto(l778)
+  }
+  stop.cycling(o6)
+}
+l778:
+if (v224 == 0) { //030a
+  start.cycling(o3)
+  move.obj(o3,147,100,1,f224)
+  v224 = 1
+}
+if (v224 == 2) { //031c
+  move.obj(o3,131,119,1,f224)
+  v224 = 3
+}
+if (v224 == 4) { //032c
+  move.obj(o3,146,134,1,f224)
+  v224 = 5
+}
+if (v224 == 6) { //033c
+  move.obj(o3,125,100,1,f224)
+  v224 = 7
+}
+if (v224 == 8) { //034c
+  v224 = 0
+}
+if (v224 == 250) { //0356
+  stop.motion(o3)
+  set.loop(o3,2)
+  set(f224)
+}
+if (v224 == 251) { //0364
+  stop.update(o3)
+  v224++
+}
+if (v224 == 253) { //036f
+  stop.update(o3)
+  v224 = 0
+}
+if (!f46 && !(v32 > 0) && !f228 && v96 == 1 && f236) { //037b
+  print("You wonder, \"What did I do to fire Dooley's rockets?\"")
+  print("\"I wonder if little Miss Bare Bosoms filed a complaint?\"")
+  set(f228)
+}
+if (v67 == 137 && f46) { //0394
+  if (posn(o19,131,161,145,167) && !(v221 > 0)) { //039d
+    v250 = 0
+    print("\"See if you can walk up those stairs without falling down!\" you order the drunk.")
+    start.cycling(o19)
+    move.obj(o19,57,166,1,f221)
+    v221++
+  }
+  if (v221 == 2) { //03ba
+    move.obj(o19,57,122,1,f221)
+    print("\"Hic! Whacha mean, Ociffer?\" he replies. \"I walk like this even when I'm sober!!\"")
+    v221++
+  }
+  if (v221 == 4) { //03cb
+    print("\"Watch your step, Art! We don't want you falling down the stairs.\"")
+    move.obj(o19,65,121,1,f221)
+    v221++
+  }
+  if (v221 == 6) { //03dc
+    move.obj(o19,65,112,1,f221)
+    v221++
+  }
+  if (v221 == 8) { //03eb
+    set.loop(o19,0)
+    fix.loop(o19)
+    v221++
+  }
+  if (v221 == 9) { //03f9
+    move.obj(o19,69,112,1,f221)
+    v221++
+  }
+  if (v221 == 11) { //0408
+    move.obj(o19,67,114,1,f221)
+    v221++
+  }
+  if (v221 == 13) { //0417
+    move.obj(o19,70,107,1,f221)
+    v221++
+  }
+  if (v221 == 15) { //0426
+    move.obj(o19,69,110,1,f221)
+    v221++
+  }
+  if (v221 == 17) { //0435
+    move.obj(o19,88,107,1,f221)
+    v221++
+  }
+  if (v221 == 19) { //0444
+    print("\"Hic!\" says Art.")
+    move.obj(o19,88,106,1,f221)
+    v221++
+  }
+  if (v221 == 20) { //0455
+    set.loop(o19,3)
+    v221++
+  }
+}
+if (v67 == 38 && f46) { //0461
+  if (posn(o19,131,161,145,167) && !(v221 > 0)) { //046a
+    print("\"Get up those stairs, Dog Meat!\"")
+    start.cycling(o19)
+    move.obj(o19,86,165,1,f221)
+    v250 = 0
+    v221++
+  }
+  if (v221 == 2) { //0487
+    print("\"The world would be a lot better off without cops like you!\"")
+    print("\"Shut up and keep moving, Hoffman.\"")
+    v221++
+    move.obj(o19,56,138,1,f221)
+  }
+  if (v221 == 4) { //049a
+    move.obj(o19,57,123,1,f221)
+  }
+  if (v221 == 5) { //04a7
+    move.obj(o19,72,108,1,f221)
+    print("\"I guess this is your big bust for the day, huh, Pig?\"")
+    print("\"Seeing you in 'cuffs gives me a natural high, Punk!\"")
+    v221++
+  }
+  if (v221 == 7) { //04ba
+    move.obj(o19,87,106,1,f221)
+  }
+  if (v221 == 8) { //04c7
+    v221++
+    stop.cycling(o19)
+    print("\"You're going to find out this was a big waste of your time, and mine!\"")
+  }
+}
+if (v67 == 175 && f46) { //04d4
+  if (!f39 && f248 && !(v220 > 0)) { //04dd
+    sound(3,f154)
+    set.loop(o10,0)
+    set.cel(o10,2)
+    if (!f63) { //04f3
+      erase(o10)
+    }
+    reset(f101)
+    set.loop(o2,0)
+    stop.cycling(o2)
+    draw(o2)
+    v224 = 250
+    v220++
+  }
+  if (v220 == 1 && f64 && v87 == 4) { //050a
+    draw(o1)
+    move.obj(o1,135,154,1,f220)
+    move.obj(o19,135,162,1,f153)
+    v250 = 0
+    v220++
+  }
+  if (v220 == 3) { //0529
+    set.loop(o1,1)
+    set.loop(o19,1)
+    v220++
+  }
+  if (v220 == 4) { //0538
+    set.loop(o2,3)
+    move.obj(o1,80,140,1,f222)
+    move.obj(o19,70,162,1,f223)
+    v224 = 250
+    v220++
+    v221 = 1
+  }
+  if (v221 == 1) { //0556
+    start.cycling(o2)
+    move.obj(o2,80,136,1,f221)
+    v221++
+  }
+  if (v221 == 3) { //0567
+    stop.cycling(o2)
+    v221++
+    v140 = 5
+  }
+  if (v221 == 4 && v140 == 1 && !f226) { //0575
+    print("Laura says, \"Get the door, Sonny. I'll keep an eye on these boys.\"")
+    v140 = 15
+  }
+  if (v221 == 5) { //0587
+    start.cycling(o2)
+    move.obj(o2,51,130,1,f221)
+    v221++
+  }
+  if (v221 == 7) { //0598
+    move.obj(o2,93,106,1,f221)
+  }
+  if (v221 == 8) { //05a5
+    move.obj(o2,93,103,1,f221)
+  }
+  if (v221 == 9) { //05b2
+    stop.cycling(o2)
+    new.room(40)
+  }
+  if (v222 == 1) { //05bd
+    move.obj(o1,60,138,1,f222)
+  }
+  if (v222 == 2) { //05ca
+    set.loop(o1,3)
+    stop.cycling(o1)
+    v221 = 1
+    v222++
+  }
+  if (v222 == 4) { //05db
+    start.cycling(o1)
+    move.obj(o1,51,130,1,f222)
+    v221++
+    v222++
+  }
+  if (v222 == 6) { //05ee
+    move.obj(o1,93,106,1,f222)
+  }
+  if (v222 == 7) { //05fb
+    move.obj(o1,95,100,1,f222)
+  }
+  if (v222 == 8) { //0608
+    stop.cycling(o1)
+    v222++
+  }
+  if (v223 == 1) { //0613
+    move.obj(o19,51,135,1,f223)
+    v223++
+  }
+  if (v223 == 3 && f226) { //0622
+    v223++
+  }
+  if (v223 == 4) { //062d
+    move.obj(o19,51,130,1,f223)
+  }
+  if (v223 == 5) { //063a
+    move.obj(o19,90,106,1,f223)
+  }
+  if (v223 == 6) { //0647
+    move.obj(o19,88,98,1,f223)
+    print("%m42Hey, baby! You boys play basketball?\"")
+    v222++
+    v223++
+  }
+  if (v223 == 8) { //065a
+    set.priority(o19,4)
+    v223++
+  }
+}
+if (!fEnteredCommand) { //0666
+  goto(l2882)
+}
+if (v143 < 140) { //0670
+  if (said("o", "d")) { //0677
+    if (f238) { //0681
+      print("Only the jailer can open and close this door.")
+      goto(l1690)
+    }
+    if (f236) { //068c
+      goto(l1831)
+      goto(l1690)
+    }
+    set(f113)
+  }
+l1690:
+  if (said("c", "d")) { //069a
+    if (f238) { //06a4
+      print("Only the jailer can open and close this door.")
+      goto(l1725)
+    }
+    if (f236) { //06af
+      goto(l1913)
+      goto(l1725)
+    }
+    set(f113)
+  }
+}
+l1725:
+if ((said("knock", "cell", "d") || said("o", "cell", "d") || said("knock", "d"))) { //06bd
+  if (!f238) { //06d9
+    set(f113)
+    goto(l1767)
+  }
+  print("Only the jailer can open and close this door.")
+}
+l1767:
+if ((said("o", "locker", "rol") || said("unlock", "locker", "rol") || said("unlock", "automatic", "locker", "rol") || said("o", "automatic", "locker", "rol") || said("o", "locker", "d", "rol"))) { //06e7
+  if (!f236) { //071b
+    set(f113)
+    goto(l1851)
+  }
+l1831:
+  if (f60) { //0727
+    print("The gun locker is open.")
+    goto(l1851)
+  }
+  prevent.input()
+  start.update(o4)
+  sound(1,f154)
+  end.of.loop(o4,f229)
+}
+l1851:
+if ((said("lock", "d", "rol") || said("c", "automatic", "locker", "rol") || said("lock", "automatic", "locker", "rol") || said("lock", "locker", "rol") || said("c", "locker", "rol"))) { //073b
+  if (!f236) { //076d
+    set(f113)
+    goto(l1934)
+  }
+l1913:
+  if (!f60) { //0779
+    print("The gun locker is closed.")
+    goto(l1934)
+  }
+  prevent.input()
+  start.update(o4)
+  sound(2,f154)
+  reverse.loop(o4,f229)
+}
+l1934:
+if ((said("drop", "nightstick", "locker") || said("lock", "nightstick", "locker") || said("lock", "nightstick", "automatic", "locker") || said("drop", "nightstick", "automatic", "locker"))) { //078e
+  print("It belongs in your car.")
+}
+if ((said("drop", "automatic", "rol") || said("drop", "automatic", "locker", "rol") || said("drop", "automatic", "automatic", "locker", "rol") || said("lock", "automatic", "locker", "rol") || said("lock", "automatic", "automatic", "locker", "rol") || said("check", "automatic", "rol"))) { //07ba
+  if (!f236) { //07fc
+    set(f113)
+    goto(l2137)
+  }
+  if (!f60) { //0808
+    print("You must open the gun locker before you can put your weapon inside.")
+    goto(l2137)
+  }
+  if (has(i5)) { //0814
+    print("You place your revolver in the locker.")
+    put(i5,0)
+    set(f42)
+    if (!f185) { //0821
+      set(f185)
+      vCurrentScore += 2
+    }
+    goto(l2137)
+  }
+  if (has(i14)) { //0830
+    print("You place your revolver in the locker.")
+    put(i14,0)
+    set(f42)
+    if (!f185) { //083d
+      set(f185)
+      vCurrentScore += 2
+    }
+    goto(l2137)
+  }
+  if (f42) { //084c
+    print("Your service revolver is in the locker.")
+    goto(l2137)
+  }
+  print("You don't have a gun!")
+}
+l2137:
+if ((said("get", "automatic", "rol") || said("empty", "automatic", "rol") || said("get", "automatic", "locker", "rol") || said("get", "automatic", "from", "locker", "rol"))) { //0859
+  if (!f236) { //0885
+    set(f113)
+    goto(l2253)
+  }
+  if (!f60) { //0891
+    print("You must open the gun locker before you can retrieve your weapon.")
+    goto(l2253)
+  }
+  if ((has(i14) || has(i5))) { //089d
+    print("Your weapon is in your holster.")
+    goto(l2253)
+  }
+  if (f42) { //08ac
+    print("You remove and holster your weapon.")
+    if (obj.in.room(i5,vCurrentRoom)) { //08b4
+      get(i5)
+    }
+    if (obj.in.room(i14,vCurrentRoom)) { //08bd
+      get(i14)
+    }
+    reset(f42)
+    goto(l2253)
+  }
+  print("You don't have a gun!")
+}
+l2253:
+if ((said("move", "button") || said("call", "art") || said("ring", "d", "bell") || said("ring", "bell"))) { //08cd
+  if (!f239) { //08ed
+    set(f113)
+    goto(l2374)
+  }
+  if (!f237) { //08f9
+    print("You have no business in the jail at this time. The jailer knows it, and he won't let you in.")
+    goto(l2374)
+  }
+  if (f46 && v87 != 4) { //0905
+    print("Perhaps you should remove your prisoner from the car first.")
+    goto(l2374)
+  }
+  if (f226) { //0914
+    print("You can push the buzzer, but the door is already open.")
+    goto(l2374)
+  }
+  print("You push the buzzer. The jailer releases the electronic lock.")
+  start.update(o5)
+  sound(20,f154)
+  end.of.loop(o5,f226)
+  if (f46) { //0929
+    if (v67 != 175) { //092f
+      print("\"Follow me,\" you order your prisoner.")
+      goto(l2374)
+    }
+    set(f36)
+    start.motion(o0)
+    set.loop(o0,1)
+    v140 = 0
+  }
+}
+l2374:
+if (posn(o0,82,106,159,167)) { //0946
+  if ((said("hello") || said("answer", "art", "inside", "fence") || said("answer", "convict", "inside", "fence") || said("answer", "convict") || said("answer", "art"))) { //0950
+    random(15,17,v152)
+    print(v152)
+  }
+  if ((said("examine", "art") || said("examine", "anyword", "art"))) { //0980
+    print("He seems to be tireless! His stamina is only equaled by his sentence. From past encounters, you know his nickname is \"Slam Dunk Donnie.\"")
+  }
+}
+if ((said("examine") || said("examine", "cell") || said("examine", "accident"))) { //0996
+  print("This is the officer's booking entrance to the Lytton City Jail. In the exercise yard, a prisoner dribbles continuously. (He also bounces his basketball!)")
+}
+if ((said("examine", "d") || said("examine", "cell", "d"))) { //09ae
+  if (f238) { //09c2
+    print("The steel-plated door is bulletproof and as solid as a brick shipyard.")
+    goto(l2511)
+  }
+  set(f113)
+}
+l2511:
+if ((said("examine", "locker") || said("examine", "cell", "automatic", "locker") || said("examine", "automatic", "locker") || said("examine", "cell", "locker"))) { //09cf
+  if (f236) { //09f5
+    print("These lockers are used to store officers' weapons while they're inside the jail on business.")
+    goto(l2562)
+  }
+  set(f113)
+}
+l2562:
+if ((said("look in", "locker") || said("look in", "cell", "automatic", "locker") || said("look in", "automatic", "locker") || said("look in", "cell", "locker"))) { //0a02
+  if (!f236) { //0a28
+    set(f113)
+    goto(l2637)
+  }
+  if (!f60) { //0a34
+    print("You must open the gun locker before you can put your weapon inside.")
+    goto(l2637)
+  }
+  if (f42) { //0a40
+    print("Your service revolver is in the locker.")
+    goto(l2637)
+  }
+  print("The locker is empty.")
+}
+l2637:
+if ((said("examine", "fence") || said("examine", "fence", "cell") || said("examine", "cell", "fence"))) { //0a4d
+  print("There are gun lockers at the top of the stairs, a heavy, steel-plated door, and a pushbutton. A video surveillance camera slowly sweeps the area.")
+}
+if (said("examine", "button")) { //0a6b
+  if (f239) { //0a75
+    print("There is a pushbutton on the wall beside the jail door.")
+    goto(l2690)
+  }
+  set(f113)
+}
+l2690:
+if ((said("drop", "automatic", "auto") || said("enter", "automatic", "auto") || said("drop", "belt", "auto") || said("enter", "belt", "auto"))) { //0a82
+  print("Put your gun in the gun locker.")
+}
+if ((said("examine", "camera") || said("examine", "television", "camera"))) { //0aaa
+  print("Smile pretty.")
+}
+if (said("examine", "tower")) { //0ac0
+  print("So many prisoners escape from this jail, you wonder if anyone is ever assigned to that tower.")
+}
+if (f46 && (said("enter", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "bonds", "rol") || said("move", "rol") || said("enter", "auto", "rol") || said("enter", "cruise", "auto", "rol") || said("come", "use", "bonds", "rol"))) { //0acc
+  if (f248 && f64) { //0b16
+    print("\"Ok, ok! I'm comin'!\"")
+    goto(l2853)
+  }
+  reset(fSaidAccepted)
+}
+l2853:
+if (v67 == 38 && f46 && (said("find") || said("find", "art") || said("find", "convict"))) { //0b25
+  print("You should have thought of that when you had him on his belly!")
+}
+l2882:
+call(94)
+call(108)
+return()

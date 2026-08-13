@@ -1,4 +1,124 @@
-if (isSet(f5)) {
-  if (!(isSet(f189)
-!!!
-&{%!e(string=incomplete condition: 0x05)}
+if (fNewRoom) { //0002
+  if (!f189) { //0008
+    set(f189)
+    vCurrentScore += 1
+  }
+  if (!f39 && (f63 || f64)) { //0014
+    v52 = 4
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.logic(94)
+  load.sound(1)
+  load.sound(2)
+  load.view(126)
+  load.view(127)
+  load.view(94)
+  animate.obj(o1)
+  animate.obj(o2)
+  set.view(o1,126)
+  set.view(o2,126)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.loop(o1,1)
+  set.loop(o2,2)
+  ignore.blocks(o1)
+  ignore.blocks(o2)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  set.priority(o1,8)
+  set.priority(o2,4)
+  position(o1,79,85)
+  position(o2,80,84)
+  add.to.pic(126,0,1,66,81,4,4)
+  add.to.pic(126,0,0,65,82,8,8)
+  add.to.pic(127,0,0,27,12,5,5)
+  add.to.pic(127,0,1,69,12,5,5)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  draw(o1)
+  draw(o2)
+  stop.update(o1)
+  stop.update(o2)
+  v152 = 4
+  cycle.time(o1,v152)
+  cycle.time(o2,v152)
+  if (v134 > 0) { //0097
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l175)
+  }
+  position(o0,80,84)
+l175:
+  call(94)
+  show.pic()
+  return()
+}
+reset(f222)
+if (posn(o0,75,84,88,88)) { //00b5
+  set(f222)
+}
+reset(f221)
+if (posn(o0,1,144,159,167)) { //00c3
+  set(f221)
+}
+if (posn(o0,1,84,159,167)) { //00cf
+  set.priority(o1,4)
+  goto(l226)
+}
+set.priority(o1,8)
+l226:
+if (!fEnteredCommand) { //00e2
+  goto(l397)
+}
+if (!f221) { //00ec
+  if (said("examine", "d")) { //00f3
+    print("These doors open into the (sometimes) hallowed halls of justice.")
+  }
+  if (said("o", "d")) { //00ff
+    if (!f222) { //0109
+      set(f113)
+      goto(l295)
+    }
+    start.update(o1)
+    start.update(o2)
+    end.of.loop(o1,f220)
+    end.of.loop(o2,f152)
+    sound(1,f154)
+    set(f36)
+    stop.update(o0)
+    prevent.input()
+  }
+l295:
+  if (said("c", "d")) { //0127
+    print("The door IS closed.")
+  }
+}
+if ((said("examine") || said("examine", "accident"))) { //0133
+  print("The people of Lytton are very proud of this courthouse, built in 1873 by descendants of the towns' first settlers. The marble was imported all the way from West Lytton.")
+}
+if ((said("examine", "pane") || said("look in", "pane"))) { //0145
+  if (v143 > 90) { //0157
+    set(f113)
+    goto(l357)
+  }
+  print("There are people inside. They wonder why you're staring in the windows, instead of walking inside.")
+}
+l357:
+if ((said("examine", "down") || said("examine", "curb"))) { //0165
+  print("The hot sidewalk is contrasted by a cool, well manicured lawn.")
+}
+if ((said("examine", "up") || said("examine", "air"))) { //0179
+  print("You look up at a beautiful, cloudless sky and feel a gentle breeze ramble through your hair. You think to yourself, \"What a day.\"")
+}
+l397:
+if (f220) { //018d
+  reset(f36)
+  accept.input()
+  start.update(o0)
+  new.room(54)
+}
+call(94)
+return()

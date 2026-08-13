@@ -1,4 +1,472 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(133)
+  load.view(132)
+  load.view(4)
+  load.view(1)
+  load.view(135)
+  load.view(134)
+  add.to.pic(134,0,0,107,148,13,4)
+  add.to.pic(134,0,1,102,134,12,4)
+  add.to.pic(134,0,2,97,118,11,4)
+  add.to.pic(134,0,3,62,95,11,4)
+  add.to.pic(134,0,4,61,103,12,4)
+  add.to.pic(134,1,0,16,108,4,4)
+  add.to.pic(135,0,0,63,116,13,4)
+  add.to.pic(135,0,1,71,116,13,4)
+  add.to.pic(135,0,2,63,126,13,4)
+  add.to.pic(135,0,3,69,126,13,4)
+  add.to.pic(135,0,4,79,126,13,4)
+  add.to.pic(135,0,5,79,136,13,4)
+  add.to.pic(135,0,5,71,136,13,4)
+  add.to.pic(135,0,5,64,136,13,4)
+  discard.view(134)
+  discard.view(135)
+  animate.obj(o1)
+  set.view(o1,132)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,25,113)
+  draw(o1)
+  stop.update(o1)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  set.view(o2,133)
+  set.cel(o2,0)
+  position(o2,52,117)
+  stop.cycling(o2)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  set.view(o3,133)
+  set.cel(o3,1)
+  position(o3,73,96)
+  stop.cycling(o3)
+  animate.obj(o4)
+  ignore.blocks(o4)
+  set.view(o4,133)
+  set.cel(o4,2)
+  position(o4,136,130)
+  stop.cycling(o4)
+  animate.obj(o5)
+  ignore.blocks(o5)
+  set.view(o5,133)
+  set.cel(o5,3)
+  position(o5,108,95)
+  stop.cycling(o5)
+  animate.obj(o6)
+  ignore.blocks(o6)
+  set.view(o6,133)
+  set.cel(o6,4)
+  position(o6,88,124)
+  stop.cycling(o6)
+  animate.obj(o7)
+  ignore.objs(o7)
+  set.view(o7,133)
+  set.cel(o7,5)
+  position(o7,87,109)
+  stop.cycling(o7)
+  position(o0,15,156)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f202)
+if (fEgoOnWater) { //010b
+  set(f202)
+  set(f69)
+}
+reset(f205)
+if (posn(o0,50,112,81,116)) { //0117
+  set(f205)
+}
+reset(f203)
+if (posn(o0,55,150,85,157)) { //0125
+  set(f203)
+}
+if (!fEnteredCommand) { //0131
+  goto(l1058)
+}
+if ((said("examine") || said("examine", "area") || said("examine", "building"))) { //013b
+  print("You are in a 24-hour convenience store. There is a magazine rack near the front door, with a sign reading \"This no library -- no leeding.\" Except for the clerk standing behind the counter, the store appears to be deserted. A small sign graces the counter.")
+}
+if ((said("examine", "counter") || said("examine", "back", "counter"))) { //0153
+  print("The wall behind the clerk is blank and the counter is completely bare, except for a small sign. (You wonder where he keeps the slim jims.)")
+}
+if (said("examine", "brick")) { //0169
+  print("A small, discreetly hand-lettered sign says:\n\n\"Prophylactics For Sale\n       Ask Clerk\"")
+}
+if (said("examine", "bouncer")) { //0175
+  print("\"Nice turban, Leroy.\"")
+  print("He smiles back, pretending to understand.")
+}
+if (said("examine", "rack")) { //0183
+  if (f203) { //018d
+    print("There are many magazines on the rack, but your eyes immediately go to the ones with the naked girls on the cover.")
+    goto(l432)
+  }
+  if (f205) { //0198
+    print("That extra large jug of wine looks like a bargain.")
+    goto(l432)
+  }
+  if (f202) { //01a3
+    print("A small, discreetly hand-lettered sign says:\n\n\"Prophylactics For Sale\n       Ask Clerk\"")
+    goto(l432)
+  }
+  print("The shelves are filled with all the necessities of life: \"Dwinkies,\" \"Wallo-Wars,\" \"Loritos,\" various colas, cheap wine, and coffee. You don't see anything you really need in this part of the store.")
+}
+l432:
+if ((said("catch", "breath spray") || said("ask", "bouncer", "breath spray"))) { //01b0
+  if (!f202) { //01c4
+    print("That is located behind the counter. Ask the clerk.")
+    goto(l482)
+  }
+  if (has(i2)) { //01d0
+    print("You still have some.")
+    goto(l482)
+  }
+  print("\"Here, Meester,\" he says. \"Thees smells like chur brand!\"")
+  get(i2)
+  v200 += 3
+}
+l482:
+if ((said("catch", "champagne") || said("catch", "bottle", "champagne"))) { //01e2
+  if (!f205) { //01f6
+    print("The wine is on the left end of the back wall.")
+    goto(l542)
+  }
+  if (has(i16)) { //0202
+    print("Whew. One of those bottles is about all a guy needs, Larry.")
+    goto(l542)
+  }
+  if (obj.in.room(i16,vCurrentRoom)) { //020d
+    vCurrentScore += 1
+  }
+  get(i16)
+  v200 += 1
+  print("You grab a bottle of cheap wine, and wonder how they can make a profit selling this stuff for only a dollar a gallon!")
+}
+l542:
+if (said("catch", "centerfold")) { //021e
+  if (!f203) { //0228
+    print("The magazines are on the rack nearest the door.")
+    goto(l587)
+  }
+  if (!(obj.in.room(i17,vCurrentRoom))) { //0234
+    print("Nah. That's enough reading material for one game.")
+    goto(l587)
+  }
+  set(f67)
+  get(i17)
+  vCurrentScore += 1
+  v200 += 2
+}
+l587:
+if ((said("buy", "champagne") || said("buy", "breath spray") || said("buy", "centerfold"))) { //024b
+  if (v200 > 0) { //0263
+    reset(fSaidAccepted)
+    goto(l625)
+  }
+  print("Shouldn't you TAKE your purchases before paying for them?")
+}
+l625:
+if ((said("buy", "bouncer") || said("add", "bouncer", "bucks") || said("add", "bucks", "bouncer") || said("buy") || said("buy", "champagne") || said("buy", "breath spray") || said("buy", "centerfold"))) { //0271
+  if (!f202) { //02a3
+    print("Move to the counter when you are ready to pay for your selections.")
+    goto(l724)
+  }
+  if (!(v200 > 0)) { //02af
+    print("\"Ooooooh, Meester! Thank you for free money. What wonderful country thees is!!\"")
+    v90--
+    goto(l724)
+  }
+  if (v90 < v200) { //02be
+    print("Unfortunately, you only have $%v90.00. (Perhaps you can sneak out without paying.)")
+    goto(l724)
+  }
+  print("\"Oakie, doakie Meester! That'll be $%v200.00.\"")
+  print("\"Have a nice day.\"")
+  v90 -= v200
+  v200 = 0
+}
+l724:
+if ((said("buy", "condom") || said("ask", "bouncer", "condom", "rol") || said("ask", "bouncer", "about", "condom", "rol") || said("catch", "condom", "rol") || said("anyword", "condom", "rol") || said("condom", "rol") || said("buy", "one", "condom"))) { //02d4
+  if (!f202) { //0314
+    set(f54)
+    goto(l816)
+  }
+  if (has(i10)) { //0320
+    print("\"You haven't used your old one yet!\"")
+    goto(l816)
+  }
+  v65 = 100
+  set(f75)
+}
+l816:
+if ((said("increase", "cooler", "rol") || said("increase", "door", "rol"))) { //0330
+  print("There's nothing of interest inside.")
+}
+if ((said("catch", "booze") || said("catch", "shot") || said("catch", "beer"))) { //0348
+  print("Not here. This place is too expensive!")
+}
+if ((said("catch", "card") || said("catch", "rope") || said("catch", "aphrodisiac") || said("catch", "shot") || said("catch", "apple") || said("catch", "hammer") || said("buy", "card") || said("buy", "rope") || said("buy", "aphrodisiac") || said("buy", "shot") || said("buy", "apple") || said("buy", "hammer"))) { //0362
+  print("\"Sorry, no gottee!\"")
+}
+if ((said("catch", "rol") || said("buy", "rol"))) { //03b2
+  print("Nah. You'd just be wasting your money.")
+}
+if (!(has(i17)) && said("examine", "centerfold")) { //03c6
+  if (!f203) { //03d3
+    print("The magazines are on the rack nearest the door.")
+    goto(l993)
+  }
+  print("Hmm. That one looks particularly interesting.")
+}
+l993:
+if (said("examine", "centerfold", "rack")) { //03e1
+  if (!f203) { //03ed
+    set(f54)
+    goto(l1031)
+  }
+  if (!(has(i17))) { //03f9
+    print("Hmm. That one looks particularly interesting.")
+    goto(l1031)
+  }
+  print("Nah. That's enough reading material for one game.")
+}
+l1031:
+if ((said("ask", "bouncer", "rol") || said("ask", "about", "rol"))) { //0407
+  start.update(o1)
+  v202 = 5
+}
+l1058:
+if (f44) { //0422
+  v202--
+  if (v202 == 1) { //042a
+    stop.update(o1)
+    set.cel(o1,0)
+    force.update(o1)
+    random(58,64,v58)
+    print(v58)
+    print("Apparently the clerk is new to this country. He only knows a few English words.")
+  }
+}
+if (fTriggerLine && v200 > 0) { //0440
+  v65 = 0
+  set(f75)
+}
+if (f202 && v65 == 109) { //044e
+  set(f75)
+}
+if (!fSaidAccepted && v65 > 100 && fEnteredCommand) { //0459
+  set(f75)
+}
+if (f75) { //0467
+  reset(f75)
+  v65++
+  if (v65 == 1) { //0471
+    set(f36)
+    prevent.input()
+    stop.motion(o0)
+    set(f85)
+    start.update(o1)
+    set.loop(o1,1)
+    set.cel(o1,0)
+    reposition.to(o1,23,113)
+    cycle.time(o1,v86)
+    start.cycling(o1)
+    end.of.loop(o1,f75)
+  }
+  if (v65 == 2) { //0493
+    set(f34)
+    set.view(o0,1)
+    set.cel(o0,0)
+    reposition.to(o0,15,159)
+    cycle.time(o0,v85)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 3) { //04ac
+    reset(f34)
+    set.view(o0,4)
+    set.cel(o0,0)
+    reposition.to(o0,12,166)
+    if (v38 > 2) { //04bf
+      v38 -= 3
+    }
+    if (v39 < 160) { //04c9
+      v39 += 7
+    }
+    reposition.to(o0,v38,v39)
+    print("The clerk does not take kindly to your shoplifting. His shotgun makes a permanent impression on you. (And, IN you!)")
+    v67 = 4
+  }
+  if (v65 == 4) { //04dc
+    cycle.time(o0,v85)
+    set(f34)
+    end.of.loop(o0,f75)
+  }
+  if (v65 == 5) { //04eb
+    v76 = 8
+  }
+  if (v65 == 101) { //04f5
+    print("After looking around to make certain you're alone, you quietly ask the clerk if he has any available behind the counter.")
+    print("\"Sure, we got lubbers!\"")
+    print("(Obviously you've hit his area of expertise!)")
+    print("\"What kind lubber you want? Smooth or libbed?\"")
+    set.string(str1," ")
+    set.string(str2," ")
+    set.string(str3," ")
+    set.string(str4," ")
+    set.string(str5," ")
+    v67 = 9
+  }
+  if (v65 == 102) { //0516
+    if (said("smooth")) { //051d
+      set.string(str1,"smooth")
+      print("\"Colored or plain?\"")
+    }
+    if (said("libbed")) { //052a
+      set.string(str1,"libbed")
+      print("\"Colored or plain?\"")
+    }
+    if (!fSaidAccepted) { //0537
+      v65--
+      set(fSaidAccepted)
+      if (!f108) { //0542
+        print("\"What kind lubber you want? Smooth or libbed?\"")
+      }
+    }
+    v67 = 9
+  }
+  if (v65 == 103) { //054e
+    if (said("colored")) { //0555
+      set.string(str2,"colored")
+      print("\"Lubricated or rough-cut?\"")
+    }
+    if (said("plain")) { //0562
+      set.string(str2,"plain")
+      print("\"Lubricated or rough-cut?\"")
+    }
+    if (!fSaidAccepted) { //056f
+      v65--
+      set(fSaidAccepted)
+      if (!f108) { //057a
+        print("\"Colored or plain?\"")
+      }
+    }
+    v67 = 9
+  }
+  if (v65 == 104) { //0586
+    if (said("lubricated")) { //058d
+      set.string(str3,"lubricated")
+      print("\"Striped or plaid?\"")
+    }
+    if (said("rough")) { //059a
+      set.string(str3,"rough-cut")
+      print("\"Striped or plaid?\"")
+    }
+    if (!fSaidAccepted) { //05a7
+      v65--
+      set(fSaidAccepted)
+      if (!f108) { //05b2
+        print("\"Lubricated or rough-cut?\"")
+      }
+    }
+    v67 = 9
+  }
+  if (v65 == 105) { //05be
+    if (said("striped")) { //05c5
+      set.string(str4,"striped")
+      print("\"Peppermint or spearmint flavor?\"")
+    }
+    if (said("plaid")) { //05d2
+      set.string(str4,"plaid")
+      print("\"Peppermint or spearmint flavor?\"")
+    }
+    if (!fSaidAccepted) { //05df
+      v65--
+      set(fSaidAccepted)
+      if (!f108) { //05ea
+        print("\"Striped or plaid?\"")
+      }
+    }
+    v67 = 9
+  }
+  if (v65 == 106) { //05f6
+    if (said("peppermint")) { //05fd
+      set.string(str5,"peppermint")
+      print("\"Oakie, doakie Meester!\"")
+    }
+    if (said("spearmint")) { //060a
+      set.string(str5,"spearmint")
+      print("\"Oakie, doakie Meester!\"")
+    }
+    v67 = 3
+    if (!fSaidAccepted) { //061a
+      set(fSaidAccepted)
+      v65--
+      set(fSaidAccepted)
+      if (!f108) { //0627
+        print("\"Peppermint or spearmint flavor?\"")
+      }
+      v67 = 9
+    }
+  }
+  if (v65 == 107) { //0633
+    set(f200)
+    prevent.input()
+    print("\"Hey, everybody!! This weird-o just bought a %s5-flavored, %s4, %s3, %s2, %s1 lubber!!!\"")
+    stop.update(o0)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+    draw(o7)
+    v67 = 5
+  }
+  if (v65 == 108) { //0650
+    print.at("\n\"WHAT A PERVERT!!!\"\n",5,10,25)
+    erase(o2)
+    erase(o3)
+    erase(o4)
+    erase(o5)
+    erase(o6)
+    erase(o7)
+    start.update(o0)
+    v67 = 5
+  }
+  if (v65 == 109) { //066d
+    v200 += 5
+    if (!f202) { //0677
+      print("\"Hey, meester! Come over here, and get your lubber!!\"")
+      goto(l1670)
+    }
+    v65 = 110
+  }
+l1670:
+  if (v65 == 110) { //0686
+    if (obj.in.room(i10,vCurrentRoom)) { //068d
+      vCurrentScore += 4
+    }
+    print("He hands you the package, saying \"All together, that will be $%v200.00, prease.\"")
+    get(i10)
+    accept.input()
+    if (v90 < v200) { //069c
+      print("Unfortunately, you only have $%v90.00. (Perhaps you can sneak out without paying.)")
+      goto(l1712)
+    }
+    print("You give him the money, with a pleasant \"Thanks a lot, big mouth!\"")
+    v90 -= v200
+    v200 = 0
+  }
+}
+l1712:
+if (vWhichEgoBorder == 3) { //06b0
+  if (f200) { //06b7
+    print("\"Hey, Meester!!\" yells the clerk. \"I hope you enjoy your %s5-flavored, %s4, %s3, %s2, %s1 lubber!!!\"")
+  }
+  v76 = 22
+}
+return()

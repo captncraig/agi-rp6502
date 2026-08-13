@@ -1,4 +1,47 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f97)
+  if (f83) { //0010
+    load.logic(118)
+    set(f200)
+  }
+  if (f60) { //001a
+    load.logic(116)
+    set(f201)
+  }
+  if (vPrevRoom == 54) { //0024
+    position(o0,30,132)
+    goto(l54)
+  }
+  position(o0,135,132)
+l54:
+  draw(o0)
+  if (f200) { //0038
+    call(118)
+  }
+  if (f201) { //0040
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //004a
+  print("You are roaming around in hidden passageways beneath the Horned King's dungeon.")
+}
+if (fTriggerLine) { //0052
+  if (posn(o0,0,61,14,167)) { //0058
+    new.room(54)
+    goto(l105)
+  }
+  new.room(56)
+}
+l105:
+if (f201) { //0069
+  call(116)
+}
+if (f200) { //0071
+  call(118)
+}
+return()

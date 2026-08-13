@@ -1,4 +1,103 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  ignore.horizon(o0)
+  load.view(73)
+  set.view(o0,73)
+  load.view(114)
+  set(fEgoOnWater)
+  if (vPrevRoom == 49) { //0019
+    position(o0,75,26)
+    goto(l43)
+  }
+  position(o0,38,116)
+l43:
+  if (vPrevRoom == 51) { //002b
+    if (!f208) { //0032
+      set(f208)
+      vCurrentScore += 2
+    }
+  }
+  v68 = 250
+  v69 = 2
+  if (f81 && !f88) { //0044
+    set(f88)
+    get(i26)
+    if (!f91) { //0051
+      set(f91)
+      vCurrentScore += 2
+    }
+  }
+  draw(o0)
+  show.pic()
+  if (f79) { //0060
+    drop(i7)
+    vCurrentScore -= 3
+    print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
+    reset(f83)
+    reset(f79)
+    reset(f133)
+    set(f115)
+    v90 = 0
+    v91 = 0
+  }
+}
+v68--
+if (v68 == 0) { //007d
+  v69--
+  if (v69 > 0) { //0086
+    v68 = 250
+  }
+}
+if (v68 == 0 && v69 == 0 && !f22) { //0090
+  set(f22)
+  set.view(o0,114)
+  print("Not even you can hold your breath forever.  The well bottom has become your eternal resting place.")
+  ignore.blocks(o0)
+  get.posn(o0,v60,v61)
+  if (v61 < 141) { //00aa
+    move.obj(o0,65,140,1,f21)
+  }
+  if (v61 > 140) { //00b7
+    set(f21)
+  }
+}
+if (f21) { //00c0
+  reset(f21)
+  set(f63)
+}
+if (said("check", "water")) { //00ca
+  print("This looks like typical well water.")
+}
+if (said("check", "bottle")) { //00d6
+  print("It looks like this bottle has been here for a very long time.")
+}
+if (said("acquire", "bottle")) { //00e2
+  print("This is just an old, junky bottle.  You don't want it.")
+}
+if (said("check", "well")) { //00ee
+  print("You are at the bottom of the well.  Through the plants you spy what seems to be a hole in the side of the well.")
+}
+if (said("check", "doorway")) { //00fa
+  if (posn(o0,1,75,65,166)) { //0104
+    print("It is very difficult to tell where the hole might lead.")
+    goto(l277)
+  }
+  print("You are too far away to see clearly.")
+}
+l277:
+if (said("check", "can")) { //0115
+  print("The rusty old can has been here awhile.")
+}
+if (said("acquire", "can")) { //0121
+  print("You have no use for this old can.")
+}
+if (posn(o0,31,111,32,130)) { //012d
+  reset(fEgoOnWater)
+  new.room(51)
+}
+if (vWhichEgoBorder == 1) { //013b
+  new.room(49)
+}
+return()

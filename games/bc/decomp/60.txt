@@ -1,4 +1,355 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 50) { //000e
+    set(f200)
+    load.view(180)
+    load.sound(2)
+  }
+  load.view(124)
+  if (!f79) { //001d
+    animate.obj(o3)
+    set.view(o3,124)
+    position(o3,86,67)
+    draw(o3)
+    goto(l164)
+  }
+  add.to.pic(124,0,0,86,67,4,4)
+  discard.view(124)
+  set(f69)
+  load.view(30)
+  load.view(37)
+  load.view(33)
+  load.view(34)
+  load.view(98)
+  load.view(86)
+  load.view(87)
+  load.view(88)
+  load.sound(19)
+  load.sound(18)
+  load.sound(26)
+  if (f53) { //0054
+    load.view(45)
+    load.view(47)
+    animate.obj(o7)
+    ignore.objs(o7)
+    ignore.blocks(o7)
+    set.view(o7,45)
+    position(o7,7,64)
+    set.priority(o7,14)
+    v61 = 2
+    step.size(o7,v61)
+  }
+  animate.obj(o6)
+  ignore.objs(o6)
+  ignore.blocks(o6)
+  set.view(o6,30)
+  position(o6,65,127)
+  v61 = 2
+  cycle.time(o6,v61)
+  step.size(o6,v61)
+  draw(o6)
+  move.obj(o6,135,140,2,f214)
+  animate.obj(o9)
+  set.view(o9,86)
+  position(o9,77,127)
+  draw(o9)
+  animate.obj(o8)
+  ignore.blocks(o8)
+  set.view(o8,98)
+l164:
+  if (f200) { //00a4
+    set.priority(o0,14)
+    position(o0,20,64)
+    ignore.objs(o0)
+    goto(l186)
+  }
+  position(o0,14,140)
+l186:
+  draw(o0)
+  show.pic()
+  if (f79) { //00bd
+    sound(26,f61)
+  }
+  return()
+}
+if (f130) { //00c7
+  if (f79 && !f216) { //00cd
+    print("Hurry, Taran! There's no time to waste.")
+    goto(l221)
+  }
+  print("This is the Horned King's secret chamber, where the skeletons of hundreds of fallen soldiers lie waiting to become his army of the Cauldron-Born!")
+}
+l221:
+if (!f128 && !f129) { //00dd
+  goto(l336)
+}
+if (f129) { //00ea
+  goto(l265)
+}
+if (!f216 && posn(o0,39,57,66,71)) { //00f3
+  set(f219)
+  set(fTriggerLine)
+  set(fSaidAccepted)
+}
+goto(l336)
+l265:
+if (v60 == 12 && f79) { //0109
+  print("The powerful magic in this room has rendered your sword useless.")
+  set(fSaidAccepted)
+}
+if (v60 == 19 && f79 && !f200 && !f216) { //0116
+  set(fSaidAccepted)
+  set(f216)
+  reset(f208)
+  start.update(o6)
+  normal.motion(o6)
+  set.loop(o6,1)
+  force.update(o6)
+  print.at("\"Horned King! Look here,\" you shout!",1,2,37)
+  print.at("You hold the mirror directly in front of the Horned King's eyes. He sees not his face, but his true, inner self. The vision of his evilness is so overpowering that he runs to the evil cauldron and leaps inside.",1,2,37)
+  vCurrentScore += 25
+  stop.motion(o0)
+  ignore.objs(o6)
+  ignore.blocks(o6)
+  set.priority(o6,15)
+  move.obj(o6,82,129,2,f218)
+}
+l336:
+if (fTriggerLine && !f160 && f200) { //0150
+  if (posn(o0,0,53,15,74)) { //015b
+    new.room(50)
+    goto(l380)
+  }
+  if (f79 && (posn(o0,50,50,68,74) || f219)) { //016a
+    set(f202)
+  }
+l380:
+  set(f160)
+  if (!f202) { //017e
+    ignore.blocks(o0)
+    set.view(o0,180)
+    sound(2,f61)
+    if (v39 < 59) { //018d
+      set.priority(o0,13)
+    }
+    v63 = 135
+    set(f213)
+    v67 = 3
+    move.obj(o0,v38,v63,67,f201)
+    goto(l507)
+  }
+  set(f216)
+  if (f53) { //01aa
+    reset(f133)
+    stop.motion(o0)
+    draw(o7)
+    move.obj(o7,60,60,2,f211)
+    print.at("Suddenly, Gurgi appears behind you. \"Taran, stop!!\" exclaims Gurgi. \"Don't jump in awful cauldron. Great Master has many friends. Gurgi has no friends. Gurgi will give his life for his friend, Taran.\"",13,2,37)
+    get.priority(o0,v99)
+    if (v39 < 60) { //01c4
+      set.priority(o7,15)
+      goto(l468)
+    }
+    set.priority(o0,15)
+l468:
+    goto(l507)
+  }
+  reset(f219)
+  ignore.blocks(o0)
+  set.view(o0,180)
+  v61 = 2
+  step.size(o0,v61)
+  program.control()
+  set.loop(o0,0)
+  sound(2,f61)
+  ignore.objs(o0)
+  set.priority(o0,10)
+  move.obj(o0,82,126,2,f210)
+  print.at("You bravely leap into the evil vessel! The Black Cauldron explodes, sending smoke and flames high into the air.",13,2,37)
+}
+l507:
+if (f201) { //01fb
+  reset(f201)
+  reset(f160)
+  observe.blocks(o0)
+  observe.objs(o0)
+  set.view(o0,0)
+  v61 = 1
+  step.size(o0,v61)
+  start.motion(o0)
+  release.priority(o0)
+  reset(f200)
+  reset(f213)
+  observe.objs(o6)
+}
+if (f214) { //021c
+  reset(f214)
+  set.view(o6,33)
+  move.obj(o6,65,126,2,f215)
+}
+if (f215) { //022d
+  set(f222)
+  reset(f215)
+  set.view(o6,34)
+  set.cel(o6,0)
+  force.update(o6)
+  v61 = 4
+  cycle.time(o6,v61)
+  end.of.loop(o6,f203)
+  observe.blocks(o6)
+  print.at("Oh, no! The Horned King is lowering a skeleton into the Black Cauldron!!",1,2,37)
+}
+if (f203) { //024f
+  reset(f203)
+  reset(f222)
+  set(f207)
+  v200 = 22
+  v201 = 4
+  v61 = 2
+  cycle.time(o6,v61)
+  set.view(o6,30)
+  stop.update(o6)
+  force.update(o6)
+  set.view(o9,87)
+  set(f217)
+}
+v200--
+if (v200 == 1) { //0275
+  print.at("A skeleton rises from the pile of bones, and begins to march away!",1,2,37)
+}
+if (v201 > 0 && !f205) { //0281
+  set(f205)
+  position(o8,135,140)
+  draw(o8)
+  move.obj(o8,10,140,1,f206)
+}
+if (f206) { //0299
+  reset(f206)
+  reset(f205)
+  erase(o8)
+  v201--
+  if (v201 > 2) { //02a7
+    print.at("Another skeleton has risen from the pile of bones.",1,2,37)
+  }
+  if (!(v201 > 0)) { //02b3
+    if (!f216) { //02bb
+      set(f216)
+      v59 = 7
+    }
+  }
+}
+if (!f200 && !f213 && !f222 && !f208 && !f216) { //02c7
+  set(f208)
+  if (f79) { //02dc
+    start.update(o6)
+    reset(f218)
+    reset(f215)
+    normal.motion(o6)
+    start.cycling(o6)
+    follow.ego(o6,8,f209)
+    set.view(o6,30)
+  }
+}
+if (f209 && f208 && !f216) { //02f3
+  reset(f209)
+  reset(f208)
+  set(f216)
+  stop.motion(o0)
+  program.control()
+  erase(o8)
+  stop.motion(o6)
+  ignore.objs(o6)
+  set.priority(o6,15)
+  set.view(o6,37)
+  set.cel(o6,0)
+  v62 = v38
+  v63 = v39
+  v62 += 2
+  v63--
+  reposition.to(o6,v62,v63)
+  cycle.time(o6,v107)
+  start.cycling(o6)
+  end.of.loop(o6,f220)
+  v202 = 10
+}
+v202--
+if (v202 == 1) { //0332
+  erase(o0)
+}
+if (f220) { //033b
+  reset(f220)
+  ignore.objs(o6)
+  ignore.blocks(o6)
+  move.obj(o6,76,129,1,f221)
+}
+if (f221) { //034d
+  reset(f221)
+  set.view(o6,30)
+  set.loop(o6,0)
+  v59 = 8
+}
+if (f210) { //035e
+  reset(f210)
+  set(f218)
+  erase(o0)
+  vCurrentScore += 25
+  v35 = 2
+}
+if (f211) { //0370
+  reset(f211)
+  v201 = 0
+  set.view(o7,47)
+  step.size(o7,v107)
+  move.obj(o7,70,55,3,f223)
+  print.at("Before you can stop him, Gurgi runs past you, and leaps into the seething cauldron!!",16,2,37)
+}
+if (f223) { //038c
+  reset(f223)
+  set.priority(o7,10)
+  move.obj(o7,82,126,3,f212)
+}
+if (f212) { //039d
+  reset(f212)
+  set(f54)
+  set(f218)
+  erase(o7)
+  print.at("Your friend, Gurgi, has sacrificed his life for you. Tears come to your eyes as you remember your friend.",16,2,37)
+  vCurrentScore += 20
+}
+if (f218) { //03b3
+  reset(f218)
+  set.view(o9,88)
+  reset(f217)
+  sound(19,f204)
+  start.update(o6)
+  erase(o6)
+  if (f205) { //03c7
+    reset(f205)
+    erase(o8)
+    v201 = 0
+  }
+  shake.screen(2)
+  print.at("The cauldron begins to tremble violently, and emits a frightful roar, shaking the castle to its very foundations! The Horned King is destroyed!!",1,2,37)
+  shake.screen(7)
+  print.at("The castle walls tremble and shake. Stones fall, and pillars collapse around you.",1,2,37)
+  shake.screen(7)
+  if (!f49 && has(i12)) { //03e4
+    set(f49)
+    vCurrentScore += 13
+  }
+  if (!(v35 > 0)) { //03f2
+    new.room(32)
+  }
+}
+if (f217) { //03fc
+  sound(18,f217)
+}
+if (f204) { //0405
+  sound(19,f204)
+}
+if (posn(o0,0,131,4,153)) { //040e
+  new.room(59)
+}
+return()

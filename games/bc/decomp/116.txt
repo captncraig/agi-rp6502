@@ -1,4 +1,137 @@
-if (isSet(f5)) {
-  if (!(isSet(f108)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+if (fNewRoom) { //0002
+  if (!f108 && !f60) { //0008
+    return()
+  }
+  if (f60 && !f97) { //0013
+    return()
+  }
+  if (f122 && v66 == 200) { //001d
+    return()
+  }
+  if (f98) { //0027
+    return()
+  }
+  reset(f163)
+  animate.obj(o8)
+  load.view(40)
+  set.view(o8,40)
+  ignore.objs(o8)
+  if (vCurrentRoom == 38) { //0039
+    ignore.blocks(o8)
+  }
+  if (vCurrentRoom != 39 && vCurrentRoom != 42 && vCurrentRoom != 49) { //0042
+    object.on.land(o8)
+  }
+  if (vCurrentRoom == 58 && vPrevRoom == 51) { //0054
+    object.on.land(o8)
+    position(o8,79,136)
+    draw(o8)
+    goto(l180)
+  }
+  if (vCurrentRoom == 59 && vPrevRoom == 52) { //0069
+    position(o8,100,140)
+    draw(o8)
+    follow.ego(o8,5,f174)
+    goto(l180)
+  }
+  if (vCurrentRoom == 56 && vPrevRoom == 69 && f60) { //0080
+    position(o8,100,140)
+    draw(o8)
+    follow.ego(o8,5,f174)
+    goto(l180)
+  }
+  if (!f122 && !f123) { //0099
+    get.posn(o0,v62,v63)
+    v63 -= 1
+    position(o8,62,v63)
+    draw(o8)
+    stop.cycling(o8)
+    stop.motion(o8)
+  }
+l180:
+  return()
+}
+if (f98) { //00b5
+  reset(f98)
+  set(f59)
+  print("You left poor Hen Wen behind. She will surely be captured by the Horned King's evil gwythaints.")
+  reset(f108)
+}
+if (!f108 && !f60) { //00c3
+  return()
+}
+if (f60 && !f97) { //00ce
+  return()
+}
+if ((f122 || f30)) { //00d8
+  return()
+}
+if (f174) { //00e3
+  stop.cycling(o8)
+  stop.motion(o8)
+}
+distance(o0,o8,v53)
+if (v53 > 8) { //00f1
+  start.cycling(o8)
+  start.motion(o8)
+  follow.ego(o8,5,f174)
+  goto(l381)
+}
+get.posn(o8,v62,v63)
+v62 = 0
+if (f174 && (vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 8)) { //010a
+  if (!(v63 > v39)) { //011b
+    set.loop(o8,3)
+    v63 = 255
+    repositon(o8,v62,v63)
+    current.cel(o8,v61)
+    v61++
+    last.cel(o8,v62)
+    if (v61 > v62) { //0135
+      v61 = 0
+    }
+    set.cel(o8,v61)
+  }
+  goto(l381)
+}
+if (f174 && (vEgoDir == 5 || vEgoDir == 6 || vEgoDir == 4)) { //0145
+  if (!(v63 < v39)) { //0156
+    set.loop(o8,2)
+    v63 = 1
+    repositon(o8,v62,v63)
+    current.cel(o8,v61)
+    v61++
+    last.cel(o8,v62)
+    if (v61 > v62) { //0170
+      v61 = 0
+    }
+    set.cel(o8,v61)
+  }
+}
+l381:
+if (v53 > 16 && v53 < 23 && !fEgoOnWater && vCurrentRoom != 5) { //017d
+  get.posn(o8,v62,v63)
+  v38 -= v62
+  v61 = v39
+  v61 -= v63
+  if (v63 < v39) { //019b
+    v61 -= 2
+    goto(l427)
+  }
+  v61 += 2
+l427:
+  repositon(o8,v38,v61)
+}
+if (fEgoOnWater && !f132 && !f163 && vCurrentRoom != 8 && vCurrentRoom != 39 && vCurrentRoom != 42 && vCurrentRoom != 58 && vCurrentRoom != 49) { //01af
+  set(f163)
+  if (vCurrentRoom != 14) { //01d1
+    print("Hen Wen does not like the water and is afraid to follow you. You should lead her around or she will be lost.")
+  }
+}
+if (vWhichEgoBorder > 0 && f95) { //01db
+  distance(o8,o0,v61)
+  if (v61 > 26) { //01e8
+    set(f98)
+  }
+}
+return()

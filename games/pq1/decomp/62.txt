@@ -1,5 +1,179 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f223)
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(30)
+  load.view(147)
+  load.sound(38)
+  animate.obj(o10)
+  set.view(o10,30)
+  position(o10,57,98)
+  set.priority(o10,4)
+  animate.obj(o9)
+  set.view(o9,147)
+  position(o9,52,84)
+  set.priority(o9,15)
+  set.loop(o9,0)
+  set.cel(o9,0)
+  cycle.time(o9,v124)
+  if (v96 == 6) { //0031
+    prevent.input()
+    set(f36)
+    draw(o10)
+    stop.cycling(o10)
+  }
+  return()
+}
+reset(f237)
+if (posn(o0,44,105,74,126)) { //0042
+  set(f237)
+}
+if (v96 == 7 && f235 && v139 == 105) { //004e
+  set(f138)
+}
+if (v139 == 50) { //005c
+  if ((said("backup", "hotel", "rol") || said("backup", "operation", "rol") || said("backup", "use", "hotel", "rol") || said("backup", "use", "operation", "rol") || said("backup", "use", "undercover", "operation", "rol"))) { //0063
+    if (!f237) { //0099
+      print("She can't hear you from here.")
+      goto(l170)
+    }
+    v139 = 100
+    set(f138)
+  }
+l170:
+  if ((said("backup") || said("ask", "backup", "rol") || said("ask", "broad", "backup", "rol") || said("backup", "rol"))) { //00aa
+    if (!f237) { //00cc
+      print("She can't hear you from here.")
+      goto(l218)
+    }
+    print("\"Oh, please, tell me what to do.\"")
+  }
+l218:
+  if ((said("answer", "broad", "rol") || said("answer", "broad", "rol"))) { //00da
+    if (!f237) { //00f0
+      print("She can't hear you from here.")
+      goto(l254)
+    }
+    print("\"Oh please, get me out of this place.\"")
+  }
+}
+l254:
+if (!(v139 > 0) && v96 == 6 && v220 == 1) { //00fe
+  set(f138)
+}
+if (f138) { //010e
+  reset(f138)
+  v139++
+  if (v139 == 1) { //0118
+    print("\"Well, it's about time, Bonds!\" exclaims the jailer. \"That gal in cell one has been whining like a lonely puppy for you!\"")
+    print("\"Do your best to calm that girl down, will ya, Sonny? I don't get paid enough to listen to that crap!\"")
+    move.obj(o0,70,115,1,f138)
+    v141 = 40
+  }
+  if (v139 == 2) { //012c
+    print("As you approach cell one, Sweet Cheeks spots you and says...")
+    print("\"Oh, Precious! I'm so happy to see you!\"")
+  }
+  if (v139 == 3) { //0137
+    start.cycling(o10)
+    move.obj(o10,67,98,1,f138)
+  }
+  if (v139 == 4) { //0146
+    move.obj(o10,67,103,1,f138)
+  }
+  if (v139 == 5) { //0153
+    set.loop(o10,2)
+    stop.cycling(o10)
+    print("\"Please come here and talk to me! I need your help, Sonny.\"")
+    v141 = 11
+  }
+  if (v139 == 6) { //0164
+    print("\"I'm sorry, Sonny, but I got picked up by Operation Trick Trap.\"")
+    print("\"I know you warned me, but I thought the operation was over.\"")
+    start.cycling(o10)
+    move.obj(o10,55,103,1,f138)
+  }
+  if (v139 == 7) { //0177
+    stop.cycling(o10)
+    set.loop(o10,2)
+    move.obj(o0,54,112,1,f138)
+  }
+  if (v139 == 8) { //0189
+    print("\"I'll do anything to get out!\"")
+    move.obj(o0,54,106,1,f138)
+  }
+  if (v139 == 9) { //0198
+    sound(38,f152)
+    print("\"Oh, Sonny! If only I had someone like you to call my own!\"")
+    draw(o9)
+    v141 = 22
+  }
+  if (v139 == 10) { //01a9
+    set.loop(o9,1)
+    v140 = 4
+  }
+  if (v139 == 11) { //01b6
+    erase(o9)
+    fix.loop(o10)
+    start.cycling(o10)
+    move.obj(o10,58,101,1,f138)
+  }
+  if (v139 == 12) { //01c9
+    stop.cycling(o10)
+    v141 = 5
+  }
+  if (v139 == 13) { //01d5
+    print("\"Wow, Sweet Lips!\" you exclaim. \"Was that hot, or what?!\"")
+    v141 = 5
+  }
+  if (v139 == 14) { //01e1
+    print("\"I'm sorry, Precious. I just couldn't resist you!\"")
+    v141 = 5
+  }
+  if (v139 == 15) { //01ed
+    print("\"Oh please, get me out of this place.\"")
+    accept.input()
+    reset(f36)
+    start.motion(o0)
+    v96 = 7
+    v139 = 50
+  }
+  if (v139 == 101) { //0201
+    start.motion(o0)
+    prevent.input()
+    set(f36)
+    move.obj(o0,55,106,1,f138)
+  }
+  if (v139 == 102) { //0213
+    vCurrentScore += 5
+    print("\"Oh, Sonny, I'll help you do anything. Thank you so much!\"")
+    print("\"Oh, please, tell me what to do.\"")
+    start.cycling(o10)
+    move.obj(o10,55,103,1,f138)
+  }
+  if (v139 == 103) { //0229
+    set.loop(o0,3)
+    stop.cycling(o10)
+    set.cel(o9,0)
+    sound(38,f152)
+    draw(o9)
+    v141 = 40
+  }
+  if (v139 == 104) { //0240
+    erase(o9)
+    v140 = 4
+  }
+  if (v139 == 105) { //024c
+    print("Embarrassed, you feel as though all the blood in your body has rushed to your face.")
+    print("You explain the arrangements of Sweet Cheek's immediate release to her.")
+    print("\"Sweet Cheeks, as soon as you're released, I want you to go to the police station for a meeting with Lieutenant Morgan.\"")
+    reset(f36)
+    accept.input()
+    v35 = 6
+    v91 = 1
+  }
+  if (v139 == 106) { //0262
+    print("\"Hey, Sonny!\" says the jailer in a loud voice, \"You been messing with my female prisoners or did you just start wearing lipstick today?\"")
+    print("\"Lt. Morgan just called. He's sending a car over for Sweet Cheeks.\"")
+    v96 = 199
+  }
+}
+return()

@@ -1,5 +1,117 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v240 = 143
-
-!!!
-&{%!e(string=unknown opcode: 0x00)}
+  return()
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //000c
+  goto(l173)
+}
+set(f120)
+v103++
+if ((said("add", "bit", "saffron", "essence") || said("add", "saffron", "capsule", "essence") || said("add", "bit", "saffron", "capsule", "essence") || said("add", "bit", "saffron", "capsule") || said("add", "saffron", "essence") || said("add", "saffron", "capsule"))) { //001e
+  if ((!(has(i11)) || !(has(i12)))) { //005e
+    print("It is difficult to use that which you do not have.")
+    goto(l126)
+  }
+  drop(i11)
+  print("You carefully sprinkle the precious saffron into the vial of rose petal essence.")
+  if (v103 == 1) { //0073
+    reset(f120)
+    v103++
+  }
+}
+l126:
+if ((said("aim", "rod") || said("aim", "magic", "rod"))) { //007e
+  if (!(has(i37))) { //0092
+    print("It is difficult to use that which you do not have.")
+    goto(l173)
+  }
+  print("You wave the magic wand over the vial of rose petal essence.")
+  if (v103 == 3) { //00a0
+    drop(i12)
+    get(i39)
+    reset(f120)
+  }
+}
+l173:
+if (!f120 && v104 < 4 && v103 == 2) { //00ad
+  set(f120)
+  prevent.input()
+  set.text.attribute(0,15)
+  set.string(str1," ")
+  if (v104 == 0) { //00c3
+    overlay.pic(v240)
+    show.pic()
+    set.string(str2,"oh winged spirits, set me free")
+    if (vMonitorType == HERCULES) { //00d0
+      open.dialogue()
+      get.string(str1," ",15,1,30)
+      goto(l231)
+    }
+    get.string(str1," ",13,1,30)
+l231:
+    if (compare.strings(str1,str2)) { //00e7
+      reset(f120)
+    }
+  }
+  if (v104 == 1) { //00f0
+    set.string(str2,"of earthly bindings, just like thee.")
+    if (vMonitorType == HERCULES) { //00fa
+      open.dialogue()
+      get.string(str1," ",16,1,36)
+      goto(l273)
+    }
+    get.string(str1," ",14,1,36)
+l273:
+    if (compare.strings(str1,str2)) { //0111
+      reset(f120)
+    }
+  }
+  if (v104 == 2) { //011a
+    set.string(str2,"in this essence, behold the might")
+    if (vMonitorType == HERCULES) { //0124
+      open.dialogue()
+      get.string(str1," ",17,1,33)
+      goto(l315)
+    }
+    get.string(str1," ",15,1,33)
+l315:
+    if (compare.strings(str1,str2)) { //013b
+      reset(f120)
+    }
+  }
+  if (v104 == 3) { //0144
+    set.string(str2,"to grant the precious gift of flight.")
+    if (vMonitorType == HERCULES) { //014e
+      open.dialogue()
+      get.string(str1," ",18,1,37)
+      goto(l357)
+    }
+    get.string(str1," ",16,1,37)
+l357:
+    if (compare.strings(str1,str2)) { //0165
+      reset(f120)
+    }
+  }
+  set.text.attribute(15,0)
+  v104++
+  set.string(str1," ")
+  set.string(str2," ")
+  if ((f120 || v104 == 4)) { //0179
+    if (vMonitorType == HERCULES) { //0184
+      close.dialogue()
+    }
+    draw.pic(vCurrentRoom)
+    show.pic()
+    accept.input()
+  }
+}
+v36 = v103
+v36++
+if (v36 == 4 && !f120) { //0195
+  v103 = 255
+}
+if (f120) { //01a2
+  v105 = 38
+  v106 = 1
+}
+return()

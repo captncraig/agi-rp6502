@@ -1,4 +1,340 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((v76 > 0 || v75 > 0) && (vPrevRoom == 39 || vPrevRoom == 40)) { //0008
+    v72 = vPrevRoom
+    new.room(87)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  v56 = 2
+  set(f67)
+  set.horizon(56)
+  v32 = 137
+  v31 = 100
+  random(2,3,v36)
+  if (v36 == 2) { //0037
+    v57 = 117
+    v58 = 100
+    goto(l77)
+  }
+  v57 = 28
+  v58 = 151
+l77:
+  load.view(0)
+  load.view(232)
+  load.view(94)
+  load.logic(111)
+  load.logic(103)
+  load.view(220)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(220,0,0,112,37,14,4)
+  add.to.pic(220,1,0,82,71,14,5)
+  discard.view(220)
+  animate.obj(o2)
+  set.view(o2,94)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  set.priority(o2,8)
+  position(o2,117,81)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o3)
+  set.view(o3,94)
+  set.loop(o3,1)
+  set.cel(o3,0)
+  set.priority(o3,11)
+  stop.cycling(o3)
+  ignore.objs(o3)
+  position(o3,75,129)
+  draw(o3)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  set.priority(o1,14)
+  set.view(o1,232)
+  set.loop(o1,1)
+  v36 = 5
+  cycle.time(o1,v36)
+  position(o1,32,15)
+  draw(o1)
+  if ((vPrevRoom == 39 || vPrevRoom == 40)) { //00b8
+    set(f48)
+  }
+  if (f48) { //00c6
+    if (vPrevRoom == 39) { //00cc
+      v40 = 80
+      v41 = 129
+      start.cycling(o3)
+      last.cel(o3,v36)
+      set.cel(o3,v36)
+      reverse.loop(o3,f229)
+    }
+    if (vPrevRoom == 40) { //00e4
+      v40 = 119
+      v41 = 84
+      start.update(o2)
+      last.cel(o2,v36)
+      set.cel(o2,v36)
+      start.update(o2)
+      reverse.loop(o2,f235)
+    }
+    if (vPrevRoom == 23) { //00fe
+      if (v41 > 57 && v41 < 61) { //0105
+        v41 = 61
+      }
+    }
+    if (vPrevRoom == 25) { //0112
+      if (v41 < 91) { //0119
+        v41 = 91
+      }
+    }
+    if (vPrevRoom == 20) { //0123
+      v40 = 90
+      v41 = 66
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //0134
+    draw(o0)
+  }
+  call(103)
+  call(111)
+  show.pic()
+  return()
+}
+reset(f236)
+if ((posn(o0,98,84,108,91) || posn(o0,127,84,141,91) || posn(o0,84,110,99,123) || posn(o0,38,139,53,152) || posn(o0,11,132,37,144))) { //0144
+  set(f236)
+}
+if ((posn(o0,109,84,131,96) || posn(o0,80,106,96,110)) && vEgoView != 26 && vEgoView != 25) { //016a
+  set.priority(o0,9)
+  goto(l396)
+}
+release.priority(o0)
+l396:
+if (posn(o0,111,114,141,118) && v44 != 26 && v44 != 25 && (vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 6 || vEgoDir == 7)) { //018c
+  v38 = 119
+  reposition.to(o0,v40,v38)
+}
+v39 = 0
+if (posn(o0,64,123,82,131)) { //01b6
+  v39 = 2
+}
+if (posn(o0,68,124,70,130)) { //01c3
+  v39 = 1
+}
+if (posn(o0,108,83,126,86)) { //01d0
+  v39 = 3
+}
+if (posn(o0,145,131,158,167)) { //01dd
+  v39 = 4
+}
+if (v44 == 25) { //01ea
+  if (posn(o0,115,76,126,82) && f232) { //01f1
+    set(f233)
+  }
+  if (posn(o0,68,116,73,131) && f226) { //01ff
+    set(f227)
+  }
+}
+if (!f222 && vEgoDir == 3 && v40 == 30 && v41 == 151) { //020d
+  set(f222)
+  print("Ouch!")
+}
+observe.blocks(o0)
+if (f226 && posn(o0,60,124,86,131)) { //0223
+  ignore.blocks(o0)
+}
+if (fEnteredCommand) { //0231
+  if (said("examine", "deck")) { //0237
+    print("The soft grass of the forest has been replaced by the coarse grass of the seashore.")
+  }
+  if ((said("examine") || said("examine", "town") || said("examine", "building"))) { //0243
+    print("You have entered a quaint, seaside town. Smoke curls lazily from the houses and shops overlooking the ocean. A pier stretches out into the bay. Near the pier, you notice a store and a tavern.")
+  }
+  if (said("examine", "shop")) { //025b
+    print("The store is on the south side of the pier.")
+  }
+  if (said("examine", "forest")) { //0267
+    print("The trees are not as large, being so near the coast.")
+  }
+  if (said("examine", "bar")) { //0273
+    print("The tavern is on the north side of the pier.")
+  }
+  if (said("examine", "door")) { //027f
+    print("It's just a door; it opens and closes.")
+  }
+  if (said("examine", "dock")) { //028b
+    if (v62 == 1) { //0295
+      print("%m5 There is a ship tied to the dock.")
+      goto(l675)
+    }
+    print("The pier is made of rough, but sturdy, timbers, and stretches out into the bay.")
+  }
+l675:
+  if (said("examine", "below", "dock")) { //02a3
+    print("Waves lap gently against the pilings. But, there is nothing else interesting down there.")
+  }
+  if ((said("examine", "anchor") || said("capture", "anchor"))) { //02b1
+    print("The old, rusted anchor is much too heavy to move.")
+  }
+  if ((said("examine", "glass") || said("look in", "glass") || said("examine", "glass", "anyword"))) { //02c5
+    if (f236) { //02df
+      print("You peer into the window, but cannot make out any details of the dim interior.")
+      goto(l748)
+    }
+    print("Wouldn't it help to be near a window?")
+  }
+l748:
+  if ((said("lift", "glass") || said("break", "glass"))) { //02ec
+    print("If you want to enter, why not try the door?")
+  }
+  if ((said("bang", "anyword", "door") || said("bang", "door", "anyword") || said("bang", "door") || said("bang"))) { //0300
+    if ((v39 == 3 || v39 == 2)) { //0320
+      print("You don't have to knock, just open the door and go in.")
+      goto(l819)
+    }
+    print("You are not close enough.")
+  }
+l819:
+  if ((said("lift", "bar", "door") || said("lift", "door") || said("lift", "door", "bar"))) { //0333
+    if (v39 == 3) { //034f
+      if (f232) { //0356
+        print("The door is already open.")
+        goto(l867)
+      }
+      set(f230)
+l867:
+      goto(l888)
+    }
+    reset(fSaidAccepted)
+    if (v39 != 2 && said("lift", "door")) { //0368
+      print("You are not close enough.")
+    }
+  }
+l888:
+  if ((said("lift", "shop", "door") || said("lift", "door") || said("lift", "door", "shop"))) { //0378
+    if (v39 != 2) { //0394
+      print("You are not close enough.")
+      goto(l942)
+    }
+    if (f226) { //03a1
+      print("The door is already open.")
+      goto(l942)
+    }
+    set(f224)
+  }
+l942:
+  if ((said("close", "bar", "door") || said("close", "door") || said("close", "door", "bar"))) { //03ae
+    if (v39 == 3) { //03ca
+      if (!f232) { //03d1
+        print("The door is already closed.")
+        goto(l991)
+      }
+      set(f234)
+l991:
+      goto(l1012)
+    }
+    reset(fSaidAccepted)
+    if (v39 != 2 && said("close", "door")) { //03e4
+      print("You are not close enough.")
+    }
+  }
+l1012:
+  if ((said("close", "shop", "door") || said("close", "door") || said("close", "door", "shop"))) { //03f4
+    if (v39 != 2) { //0410
+      print("You are not close enough.")
+      goto(l1067)
+    }
+    if (!f226) { //041d
+      print("The door is already open.")
+      goto(l1067)
+    }
+    set(f228)
+  }
+}
+l1067:
+if (f230) { //042b
+  reset(f230)
+  set.priority(o0,9)
+  start.update(o2)
+  end.of.loop(o2,f231)
+}
+if (f231) { //043b
+  reset(f231)
+  set(f232)
+  stop.update(o2)
+  release.priority(o0)
+}
+if (f234) { //0449
+  reset(f234)
+  set.priority(o0,9)
+  start.update(o2)
+  reverse.loop(o2,f235)
+}
+if (f235) { //0459
+  reset(f235)
+  reset(f232)
+  stop.update(o2)
+  release.priority(o0)
+}
+if (f224) { //0467
+  reset(f224)
+  start.cycling(o3)
+  end.of.loop(o3,f225)
+}
+if (f225) { //0474
+  reset(f225)
+  set(f226)
+  stop.cycling(o3)
+}
+if (f228) { //0480
+  reset(f228)
+  start.cycling(o3)
+  reverse.loop(o3,f229)
+}
+if (f229) { //048d
+  reset(f229)
+  reset(f226)
+  stop.cycling(o3)
+}
+if (v39 == 3 && f232 && v44 != 26 && (vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 8)) { //0499
+  set(f233)
+}
+if (v39 == 1 && v44 != 26 && f226) { //04b3
+  set(f227)
+}
+if (fTriggerLine && v39 == 4) { //04c2
+  v40 = 145
+  reposition.to(o0,v40,v41)
+  v33 = 6
+}
+if (f221) { //04d5
+  new.room(30)
+}
+if (f227) { //04dd
+  new.room(39)
+}
+if (f233) { //04e5
+  new.room(40)
+}
+if (vWhichEgoBorder == 1) { //04ed
+  new.room(19)
+}
+if (vWhichEgoBorder == 4) { //04f6
+  new.room(23)
+}
+if (vWhichEgoBorder == 2) { //04ff
+  new.room(25)
+}
+if (vWhichEgoBorder == 3) { //0508
+  if (v44 == 6) { //050f
+    new.room(30)
+    goto(l1309)
+  }
+  new.room(29)
+}
+l1309:
+call(103)
+call(111)
+return()

@@ -1,4 +1,96 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(50)
+  load.logic(108)
+  if (f108) { //000c
+    load.logic(116)
+    set(f202)
+    random(0,255,v61)
+    if (v61 < 125) { //001a
+      load.logic(114)
+      set(f201)
+    }
+  }
+  if (vPrevRoom == 21) { //0025
+    position(o0,145,165)
+  }
+  if (vPrevRoom == 17) { //0030
+    get.posn(o0,v62,v63)
+    if (v63 < 142) { //003b
+      position(o0,140,150)
+      goto(l77)
+    }
+    position(o0,145,165)
+  }
+l77:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f103) { //0053
+    set.priority(o0,15)
+  }
+  draw(o0)
+  call(108)
+  if (f201) { //0060
+    call(114)
+  }
+  if (f202) { //0068
+    call(116)
+  }
+  show.pic()
+  if (!f103) { //0071
+    print("You are at the northeast corner of Morva Marsh. It's a dismal, gloomy swamp with dangerous bogs.")
+  }
+  return()
+}
+if (!(vWhichEgoBorder > 0)) { //007b
+  reset(f200)
+}
+if (f130) { //0085
+  print("You are at the northeast corner of Morva Marsh. It's a dismal, gloomy swamp with dangerous bogs.")
+}
+if (f103) { //008d
+  goto(l172)
+}
+if (!f128 && !f129) { //0096
+  goto(l172)
+}
+if (f129) { //00a3
+  goto(l172)
+}
+l172:
+if (f201) { //00ac
+  call(114)
+}
+call(108)
+if (f202) { //00b6
+  call(116)
+}
+if (vWhichEgoBorder == 4) { //00be
+  new.room(15)
+}
+if (vWhichEgoBorder == 3) { //00c7
+  new.room(21)
+}
+if (vWhichEgoBorder == 1) { //00d0
+  if (!f103) { //00d7
+    new.room(11)
+    goto(l238)
+  }
+  if (!f200) { //00e3
+    set(f200)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+l238:
+if (vWhichEgoBorder == 2) { //00ee
+  if (!f103) { //00f5
+    new.room(17)
+    goto(l268)
+  }
+  if (!f200) { //0101
+    set(f200)
+    print("There is no need for you to fly away in that direction.")
+  }
+}
+l268:
+return()

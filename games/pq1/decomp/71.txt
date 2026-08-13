@@ -1,8 +1,368 @@
-if (isSet(f5)) {
-  if (isSet(f111)) {
-    v1 = 75
+if (fNewRoom) { //0002
+  if (f111) { //0008
+    vPrevRoom = 75
     v31 = 190
+  }
+  if (f155 && !(v170 > 0)) { //0014
+    v170 = 100
+  }
+  prevent.input()
+  set(f36)
+  load.view(225)
+  load.view(247)
+  load.view(227)
+  load.view(231)
+  load.sound(34)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  set.view(o1,247)
+  set.loop(o1,2)
+  stop.cycling(o1)
+  ignore.blocks(o1)
+  position(o1,77,128)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.view(o2,225)
+  set.cel(o2,0)
+  set.priority(o2,4)
+  v152 = 4
+  cycle.time(o2,v152)
+  position(o2,133,141)
+  draw(o2)
+  stop.update(o2)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.priority(o3,12)
+  set.view(o3,227)
+  set.loop(o3,2)
+  set.cel(o3,1)
+  stop.cycling(o3)
+  position(o3,58,143)
+  draw(o3)
+  stop.update(o3)
+  start.motion(o0)
+  if (vPrevRoom == 75) { //0081
+    set(f36)
+    set(f156)
+    set(f227)
+    set(f228)
+    stop.cycling(o0)
+    ignore.blocks(o0)
+    prevent.input()
+    set.view(o0,227)
+    set.loop(o0,3)
+    set.cel(o0,1)
+    position(o0,88,135)
+    v140 = 4
+    goto(l207)
+  }
+  reset(f36)
+  accept.input()
+  v111 = v170
+  if (v170 > 50) { //00ae
+    v111 -= 50
+  }
+  v112 = v170
+  if (v112 < 200) { //00bb
+    v112 += 30
+  }
+  v172 = 0
+  position(o0,74,167)
+  v31 = 180
+l207:
+  draw(o0)
+  show.pic()
+  if (f227) { //00d2
+    set(f14)
+    status.line.on()
+  }
+  return()
 }
-  if (isSet(f155)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+reset(f222)
+if (posn(o0,52,120,98,147)) { //00de
+  set(f222)
+}
+distance(o0,o1,v221)
+if (v221 < v61) { //00ee
+  set(f109)
+}
+reset(f225)
+if ((posn(o0,50,129,75,138) || posn(o0,66,124,83,145))) { //00f9
+  set(f109)
+  set(f225)
+}
+if (v139 > 4 && (said("come", "accident", "rol") || said("how", "accident", "rol") || said("accident", "rol"))) { //010f
+  print("\"How would you like to join me in my suite for a drink, Whitey?\" asks Frank. \"I've a business proposition to discuss with you.\"")
+}
+if ((said("sit") || said("sit", "down") || said("sit", "bench") || said("use", "bench") || said("get", "bench"))) { //0130
+  if (f228) { //0152
+    print("%m11standing.")
+    goto(l351)
+  }
+  set(f30)
+}
+l351:
+if ((said("get up") || said("get up", "up") || said("use", "bench") || said("get", "out", "bench") || said("get", "up"))) { //015f
+  if (!f228) { //0183
+    print("%m11standing.")
+    goto(l401)
+  }
+  set(f30)
+}
+l401:
+if ((said("examine") || said("examine", "accident"))) { //0191
+  print("Three men are seated around a lone card table in the middle of the room.")
+}
+if ((said("examine", "ceiling") || said("examine", "up"))) { //01a3
+  print("A single, shaded light hangs over the table.")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //01b7
+  print("The floor is bare.")
+}
+if ((said("hello") || said("hello", "art") || said("answer") || said("answer", "art"))) { //01cb
+  if (f222) { //01e5
+    print("\"Hello, Mr. Banksten. Come on over and have a seat.\"")
+    goto(l498)
+  }
+  print("Mr. Banksten")
+}
+l498:
+if (said("examine", "below", "counter")) { //01f2
+  print("You sneak a glance under the table, but see nothing unusual.")
+}
+if (said("apprehend", "art")) { //0200
+  print("If you do that now, you may not remember anything for the rest of your life.")
+}
+if (said("o", "d")) { //020c
+  if (!(posn(o0,122,135,130,143))) { //0216
+    set(f113)
+    goto(l560)
+  }
+  if (v225 != 2) { //0226
+    print("Don't leave now!")
+  }
+}
+l560:
+if ((said("ante", "rol") || said("anyword", "play", "card", "rol") || said("play", "card", "rol"))) { //0230
+  if (!f228) { //024e
+    random(4,5,v152)
+    print(v152)
+  }
+}
+if (f30) { //025b
+  reset(f30)
+  if (f225) { //0263
+    random(4,5,v152)
+    print(v152)
+    goto(l739)
+  }
+  if (!(posn(o0,88,130,95,137))) { //0272
+    print("If you sit here, you'll miss the chair and hit the floor.")
+    goto(l739)
+  }
+  if (!f228) { //0282
+    if (vPrevRoom == 75) { //0289
+      print("The game is over; greater things await you elsewhere.")
+      goto(l693)
+    }
+    ignore.blocks(o0)
+    stop.motion(o0)
+    stop.cycling(o0)
+    set(f36)
+    set(f156)
+    prevent.input()
+    set.cel(o0,1)
+    set.view(o0,227)
+    set.loop(o0,3)
+    reposition.to(o0,88,135)
+    set(f228)
+    v139 = 100
+    v140 = 4
+l693:
+    goto(l739)
+  }
+  if ((v139 < 5 || v139 > 99)) { //02b8
+    print("Don't leave now!")
+    goto(l739)
+  }
+  set(f94)
+  set.view(o0,v39)
+  reposition.to(o0,88,137)
+  observe.blocks(o0)
+  reset(f36)
+  reset(f156)
+  reset(f228)
+  if (v139 == 11) { //02da
+    set(f138)
+  }
+}
+l739:
+if (fEnteredCommand && !fSaidAccepted && (v139 == 1 || v139 == 5)) { //02e3
+  if ((said("ok", "rol") || said("anyword", "ok", "rol"))) { //02f4
+    set(f138)
+    v139++
+  }
+  if ((said("no", "rol") || said("anyword", "no", "rol"))) { //030c
+    set(f138)
+    v139 = 254
+  }
+  if (!fSaidAccepted) { //0325
+    set(fSaidAccepted)
+    print("\"A simple 'yes' or 'no' would suffice, Whitey!\"")
+    v140 = 2
+  }
+}
+if (f138) { //0333
+  reset(f138)
+  v139++
+  if (v139 == 1) { //033d
+    if (v31 == 190) { //0344
+      vCurrentScore += 3
+      reset(f138)
+      print("\"Well, %m1,\" says Frank. \"You're a poker player after my own heart!\"")
+      print("Frank then asks, \"Whitey (if I may call you that), I understand you may be looking for work?\"")
+      accept.input()
+      v140 = 20
+      goto(l879)
+    }
+    v140 = 4
+    v139 = 254
+    if (v31 == 185) { //0361
+      print("\"I have no respect for someone who plays poker as badly as you%m31")
+      goto(l879)
+    }
+    print("\"I have no respect for quiters%m31")
+  }
+l879:
+  if (v139 == 2) { //036f
+    print("%m20Are you interested?\"")
+    v140 = 20
+    v139 = 1
+  }
+  if (v139 == 3) { //037e
+    prevent.input()
+    print("\"Very good! I like your style.\"")
+    start.update(o3)
+    v140 = 3
+  }
+  if (v139 == 4) { //038d
+    set.cel(o3,0)
+    draw(o1)
+    v140 = 3
+  }
+  if (v139 == 5) { //039c
+    stop.update(o3)
+    print("\"How would you like to join me in my suite for a drink, Whitey?\" asks Frank. \"I've a business proposition to discuss with you.\"")
+    accept.input()
+    v140 = 20
+  }
+  if (v139 == 6) { //03ab
+    print("%m20What do ya say?\"")
+    v140 = 20
+    v139 = 5
+  }
+  if (v139 == 7) { //03ba
+    v140 = 0
+    print("\"Great! Follow me.\"")
+    start.cycling(o1)
+    move.obj(o1,99,128,0,f138)
+  }
+  if (v139 == 8) { //03ce
+    move.obj(o1,112,141,0,f138)
+  }
+  if (v139 == 9) { //03db
+    move.obj(o1,129,141,0,f138)
+  }
+  if (v139 == 10) { //03e8
+    stop.cycling(o1)
+    start.update(o2)
+    end.of.loop(o2,f138)
+  }
+  if (v139 == 11) { //03f6
+    stop.update(o2)
+    v225 = 2
+    v139 = 12
+  }
+  if (v139 == 12) { //0405
+    if (f228) { //040c
+      print("%m20Let's go, shall we?\"")
+      v140 = 10
+      v139 = 11
+      goto(l1064)
+    }
+    v140 = 0
+    start.cycling(o1)
+    move.obj(o1,141,141,0,f138)
+  }
+l1064:
+  if (v139 == 13) { //0428
+    erase(o1)
+  }
+  if (v139 == 101) { //0431
+    print("Frank welcomes you back to the game...")
+    print("\"Hello again, %m1. I believe you know everyone here.\"")
+    print("This time, you look carefully at Frank as he shuffles the cards. Cold chills race down your spine and a blast of adrenalin surges through your body as you realize he exactly matches the description of Jessie Bains!")
+    sound(34,f138)
+    print("\"The Death Angel!\"")
+    if (!f9) { //0443
+      reset(f138)
+      v140 = 4
+    }
+  }
+  if (v139 == 102) { //044f
+    new.room(75)
+  }
+  if (v139 == 255) { //0458
+    print("Well, you blew that one!")
+    print("Your undercover assignment has quickly ended, and now you're locked in a room with these guys!")
+    print("Better luck next time.")
+    set(f140)
+  }
+}
+v220--
+if (v220 == 1) { //0469
+  start.update(o2)
+  reverse.loop(o2,f220)
+}
+if (f220) { //0475
+  reset(f220)
+  stop.update(o2)
+  if (v225 == 2) { //047f
+    v225 = 0
+    goto(l1183)
+  }
+  if (v225 == 1) { //048c
+    reset(f36)
+    set(f94)
+    new.room(78)
+    goto(l1183)
+  }
+  v225 = 2
+}
+l1183:
+if (vWhichEgoBorder == 3) { //049f
+  if (!f224) { //04a6
+    print("Don't leave now!")
+    set(f224)
+  }
+  goto(l1206)
+}
+reset(f224)
+l1206:
+if (!f228) { //04b6
+  if (v225 == 2 && posn(o0,124,133,139,143)) { //04bd
+    ignore.blocks(o0)
+    goto(l1233)
+  }
+  observe.blocks(o0)
+}
+l1233:
+if (posn(o0,139,133,159,143)) { //04d1
+  new.room(78)
+}
+return()

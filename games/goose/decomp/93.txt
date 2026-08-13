@@ -1,3 +1,115 @@
-if (!(isSet(f56)
-!!!
-&{%!e(string=incomplete condition: 0x14)}
+if (!f56) { //0002
+  set(f56)
+  load.sound(8)
+  set.loop(o4,0)
+  set.cel(o4,1)
+  force.update(o4)
+  erase(o6)
+  move.obj(o0,108,130,1,f122)
+}
+if (f122) { //001d
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v212 != 92) { //0029
+    erase(o12)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    move.obj(o0,92,154,1,f122)
+    goto(l73)
+  }
+  set.loop(o0,3)
+  set(f104)
+  set(f117)
+}
+l73:
+if (!f108 && f104) { //0049
+  set(f108)
+  set(f43)
+  reset(f104)
+  sound(8,f103)
+  vTimeSeconds = 0
+  set(f15)
+  print.at("                                  \n\n\n\n\n",1,3,36)
+  display(2,4,"Little Jack Horner")
+  display(3,4,"   Sat in the corner,")
+}
+if (vTimeSeconds > 4 && f108 && !f109) { //006d
+  set(f109)
+  display(4,4,"Eating of Christmas pie;")
+}
+if (vTimeSeconds > 10 && f109 && !f110) { //007f
+  set(f110)
+  display(5,4,"He put in his thumb,")
+}
+if (vTimeSeconds > 15 && f110 && !f111) { //0091
+  set(f111)
+  display(6,4,"   And pulled out a plum,")
+}
+if (vTimeSeconds > 17 && f111 && !f112) { //00a3
+  set(f112)
+  display(7,4,"And said, 'What a good boy am I!'")
+}
+if (v48 == 4 && vTimeSeconds > 4) { //00b5
+  set(f43)
+}
+if (v48 == 6 && vTimeSeconds > 15) { //00c1
+  set(f43)
+}
+v47--
+if (v47 == 1) { //00cf
+  set(f43)
+}
+if (f43) { //00d8
+  reset(f43)
+  v48++
+  if (v48 == 1) { //00e2
+    reposition.to(o4,115,129)
+    set.loop(o4,1)
+    fix.loop(o4)
+    v47 = 4
+  }
+  if (v48 == 2) { //00f5
+    v209 = 1
+    cycle.time(o4,v209)
+    start.cycling(o4)
+    move.obj(o4,109,115,1,f43)
+  }
+  if (v48 == 3) { //010a
+    stop.cycling(o4)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    v47 = 6
+  }
+  if (v48 == 4) { //011c
+    add.to.pic(71,0,6,109,115,10,4)
+    ignore.objs(o4)
+    ignore.blocks(o4)
+    set.cel(o4,1)
+    reposition.to(o4,109,108)
+    set.priority(o4,12)
+  }
+  if (v48 == 5) { //0139
+    v209 = 5
+    cycle.time(o4,v209)
+    start.cycling(o4)
+    end.of.loop(o4,f43)
+  }
+  if (v48 == 6) { //014b
+    stop.cycling(o4)
+  }
+  if (v48 == 7) { //0154
+    reposition.to(o4,109,115)
+    set.loop(o4,0)
+    set.cel(o4,5)
+    v47 = 30
+  }
+  if (v48 == 8) { //0168
+    add.to.pic(71,0,5,109,115,10,4)
+    erase(o4)
+    v47 = 30
+  }
+  if (v48 == 9) { //017c
+    set(f114)
+  }
+}
+return()

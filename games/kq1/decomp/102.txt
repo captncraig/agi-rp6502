@@ -1,3 +1,418 @@
-if (!(isSet(f2)
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (!fEnteredCommand) { //0002
+  goto(l2314)
+}
+if (fSaidAccepted) { //000c
+  goto(l2314)
+}
+if (fEnteredCommand && vUnknownWord > 0) { //0015
+  if (vUnknownWord == 1) { //001e
+    print("I don't understand \"%w1\".")
+  }
+  if (vUnknownWord == 2) { //0027
+    print("I don't understand \"%w2\".")
+  }
+  if (vUnknownWord == 3) { //0030
+    print("I don't understand \"%w3\".")
+  }
+  reset(fEnteredCommand)
+  goto(l2314)
+}
+if ((said("look for", "ANYWORD") || said("look for", "ANYWORD", "ANYWORD"))) { //003e
+  print("Well.  Go look for it.")
+}
+if (!f67 && !f70) { //0054
+  if (vCurrentRoom != 3 && said("acquire", "dagger")) { //005e
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 3 && said("check", "dagger")) { //006e
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "dagger") && !(said("acquire", "dagger")) && !(said("check", "dagger"))) { //007e
+    print("You do not have it.")
+  }
+}
+if (!f77 && vCurrentRoom != 15 && vCurrentRoom != 16) { //0098
+  if (said("ANYWORD", "carrot") && !(said("acquire", "carrot"))) { //00a7
+    print("You do not have a carrot.")
+  }
+  if (said("acquire", "carrot")) { //00ba
+    print("You will have to find it before you can get it.")
+  }
+}
+if (!f127 && !f108) { //00c6
+  if (vCurrentRoom != 30 && said("acquire", "gold nut")) { //00d0
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 30 && said("check", "gold nut")) { //00e0
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "gold nut") && !(said("acquire", "gold nut")) && !(said("check", "gold nut"))) { //00f0
+    print("You do not have it.")
+  }
+}
+if (!f81) { //010a
+  if (vCurrentRoom != 12 && said("acquire", "water")) { //0111
+    print("You have no container for water.")
+  }
+  if (vCurrentRoom != 12 && said("acquire", "bucket")) { //0121
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 12 && (said("check", "bucket") || said("climb", "bucket") || said("enter", "bucket") || said("go down", "bucket"))) { //0131
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "bucket") && !(said("acquire", "bucket")) && !(said("check", "bucket")) && !(said("climb", "bucket")) && !(said("enter", "bucket")) && !(said("go down", "bucket"))) { //0155
+    print("You do not have it.")
+  }
+}
+if (!f123 && vCurrentRoom != 47) { //0184
+  if (vCurrentRoom != 47 && said("acquire", "mushroom")) { //018f
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 47 && said("check", "mushroom")) { //019f
+    print("You do not have it.")
+  }
+  if (said("consume", "mushroom")) { //01af
+    print("You can't eat the mushroom if you don't have it!")
+  }
+  if (said("ANYWORD", "mushroom") && !(said("acquire", "mushroom")) && !(said("check", "mushroom")) && !(said("consume", "mushroom"))) { //01bb
+    print("You do not have it.")
+  }
+}
+if (!f83) { //01dc
+  if (said("acquire", "ring")) { //01e3
+    print("You will have to find it before you can get it.")
+  }
+  if (said("ANYWORD", "ring") && !(said("acquire", "ring"))) { //01ef
+    print("You do not have it.")
+  }
+}
+if (!f154) { //0202
+  if (vCurrentRoom != 40 && said("acquire", "bean")) { //0209
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 40 && said("check", "bean")) { //0219
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "bean") && !(said("acquire", "bean")) && !(said("check", "bean"))) { //0229
+    print("You do not have it.")
+  }
+}
+if (!f89) { //0243
+  if (vCurrentRoom != 31 && vCurrentRoom != 79 && said("acquire", "bowl")) { //024a
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 31 && vCurrentRoom != 79 && said("check", "bowl")) { //025e
+    print("You do not have any stew.")
+  }
+  if (said("fill")) { //0272
+    print("Fill what?")
+  }
+  if (vCurrentRoom != 79 && said("consume", "stew")) { //027c
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "bowl") && !(said("acquire", "bowl")) && !(said("check", "bowl")) && !(said("fill")) && !(said("consume", "stew"))) { //028c
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "stew") && !(said("consume", "stew"))) { //02b2
+    print("You do not have it.")
+  }
+}
+if (!f93) { //02c5
+  if (vCurrentRoom != 34 && said("acquire", "pebbles")) { //02cc
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 34 && said("check", "pebbles")) { //02dc
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "pebbles") && !(said("acquire", "pebbles")) && !(said("check", "pebbles"))) { //02ec
+    print("You do not have it.")
+  }
+}
+if (!f104) { //0306
+  if (vCurrentRoom != 58 && (said("acquire", "chest") || said("acquire", "coin"))) { //030d
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 58 && (said("check", "chest") || said("check", "coin"))) { //0325
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "chest") && !(said("check", "chest")) && !(said("acquire", "chest"))) { //033d
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "coin") && !(said("check", "coin")) && !(said("acquire", "coin"))) { //0357
+    print("You do not have it.")
+  }
+}
+if (!f84) { //0371
+  if (vCurrentRoom != 40 && said("acquire", "gold key")) { //0378
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 40 && said("check", "gold key")) { //0388
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "gold key") && !(said("acquire", "gold key")) && !(said("check", "gold key"))) { //0398
+    print("You do not have it.")
+  }
+}
+if (!f170) { //03b2
+  if (vCurrentRoom != 65 && said("acquire", "note")) { //03b9
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 65 && said("check", "note")) { //03c9
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "note") && !(said("acquire", "note")) && !(said("check", "note"))) { //03d9
+    print("You do not have it.")
+  }
+}
+if (!f139) { //03f3
+  if (vCurrentRoom != 65 && said("acquire", "cheese")) { //03fa
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 65 && said("check", "cheese")) { //040a
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "cheese") && !(said("acquire", "cheese")) && !(said("check", "cheese"))) { //041a
+    print("You do not have it.")
+  }
+}
+if (!f87) { //0434
+  if (vCurrentRoom != 24 && said("acquire", "clover")) { //043b
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 24 && said("check", "clover")) { //044b
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "clover") && !(said("acquire", "clover")) && !(said("check", "clover"))) { //045b
+    print("You do not have it.")
+  }
+}
+if (!f97) { //0475
+  if (vCurrentRoom != 62 && said("acquire", "sling")) { //047c
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 62 && said("check", "sling")) { //048c
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "sling") && !(said("acquire", "sling")) && !(said("check", "sling"))) { //049c
+    print("You do not have it.")
+  }
+}
+if (!f102) { //04b6
+  if (vCurrentRoom != 77 && said("acquire", "shield")) { //04bd
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 77 && said("check", "shield")) { //04cd
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "shield") && !(said("acquire", "shield")) && !(said("check", "shield"))) { //04dd
+    print("You do not have it.")
+  }
+}
+if (!f113) { //04f7
+  if (vCurrentRoom != 77 && said("acquire", "sceptre")) { //04fe
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 77 && said("check", "sceptre")) { //050e
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "sceptre") && !(said("acquire", "sceptre")) && !(said("check", "sceptre"))) { //051e
+    print("You do not have it.")
+  }
+}
+if (!f72) { //0538
+  if (vCurrentRoom != 6 && said("acquire", "bag")) { //053f
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 6 && said("check", "bag")) { //054f
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "bag") && !(said("acquire", "bag")) && !(said("check", "bag"))) { //055f
+    print("You do not have it.")
+  }
+}
+if (!f106) { //0579
+  if (vCurrentRoom != 6 && said("acquire", "diamond")) { //0580
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 6 && said("check", "diamond")) { //0590
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "diamond") && !(said("acquire", "diamond")) && !(said("check", "diamond"))) { //05a0
+    print("You do not have it.")
+  }
+}
+if (!f110) { //05ba
+  if (vCurrentRoom != 63 && said("acquire", "egg")) { //05c1
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 63 && said("check", "egg")) { //05d1
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "egg") && !(said("acquire", "egg")) && !(said("check", "egg"))) { //05e1
+    print("You do not have it.")
+  }
+}
+if (!f171) { //05fb
+  if (vCurrentRoom != 79 && said("acquire", "fiddle")) { //0602
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 79 && said("check", "fiddle")) { //0612
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "fiddle") && !(said("acquire", "fiddle")) && !(said("check", "fiddle"))) { //0622
+    print("You do not have it.")
+  }
+}
+if (!f100) { //063c
+  if (vCurrentRoom != 51 && said("acquire", "mirror")) { //0643
+    print("You will have to find it before you can get it.")
+  }
+  if (vCurrentRoom != 51 && said("check", "mirror")) { //0653
+    print("You do not have it.")
+  }
+  if (said("ANYWORD", "mirror") && !(said("acquire", "mirror")) && !(said("check", "mirror"))) { //0663
+    print("You do not have it.")
+  }
+}
+if (f171) { //067d
+  if (said("play", "fiddle")) { //0683
+    print("You can't do that--at least not now!")
+  }
+}
+if (said("play", "ANYWORD")) { //068f
+  print("You have better things to do than to play all day.")
+}
+if (said("use", "ax")) { //069b
+  print("You do not have it.")
+}
+if (said("use", "ANYWORD")) { //06a7
+  print("What do you wish to do with it???")
+}
+if (said("ANYWORD", "dwarf")) { //06b3
+  print("There is no \"%w2\" here.")
+  goto(l2314)
+}
+if (said("ANYWORD", "fairy")) { //06c2
+  print("There is no \"%w2\" here.")
+  goto(l2314)
+}
+if (said("check")) { //06d1
+  print("You need to be more specific.")
+}
+if (said("check", "river")) { //06db
+  print("The stream may not be safe to cross.")
+}
+if (said("check", "room")) { //06e7
+  print("You need to be more specific.")
+}
+if (said("check", "door")) { //06f3
+  print("There is no door here.")
+}
+if (!f88 && said("check", "water")) { //06ff
+  print("You do not have any water.")
+}
+if (said("check", "tree")) { //070e
+  if ((vCurrentRoom < 49 || vCurrentRoom == 56 || vCurrentRoom == 57 || vCurrentRoom == 58 || vCurrentRoom == 59 || vCurrentRoom == 60 || vCurrentRoom == 61 || vCurrentRoom == 69)) { //0718
+    random(1,3,v112)
+    if (v112 == 1) { //073a
+      print("This is a very beautiful tree.")
+    }
+    if (v112 == 2) { //0743
+      print("This is just a normal tree, but very pretty.")
+    }
+    if (v112 == 3) { //074c
+      print("You admire the beauty of the tree.")
+    }
+    goto(l1882)
+  }
+  print("There is no \"%w2\" here to look at.")
+}
+l1882:
+if (said("check", "boulder")) { //075a
+  if (vCurrentRoom < 49) { //0764
+    random(1,3,v113)
+    if (v113 == 1) { //076f
+      print("This is a very nice looking rock.")
+    }
+    if (v113 == 2) { //0778
+      print("There is nothing extraordinary about this rock.")
+    }
+    if (v113 == 3) { //0781
+      print("This is your ordinary rock.")
+    }
+    goto(l1935)
+  }
+  print("There is no \"%w2\" here to look at.")
+}
+l1935:
+if ((said("check", "ANYWORD") || said("look around"))) { //078f
+  print("You see nothing special.")
+}
+if (said("acquire", "ANYWORD") && !(said("acquire"))) { //07a1
+  print("You cannot get the \"%w2\". At least not now!")
+}
+if (said("drop", "ANYWORD")) { //07b2
+  print("There is no reason to do that.")
+}
+if (said("consume", "ANYWORD")) { //07be
+  if ((said("consume", "dwarf") || said("consume", "fairy"))) { //07c8
+    print("You can't do that.")
+    goto(l2017)
+  }
+  print("The \"%w2\" doesn't appeal just now.")
+}
+l2017:
+if (said("acquire")) { //07e1
+  print("Just say what you wish to get.")
+}
+if (said("climb")) { //07eb
+  print("What would you like to climb?")
+}
+if (said("climb", "ANYWORD")) { //07f5
+  print("No. That would just waste time.")
+}
+if (said("enter", "ANYWORD")) { //0801
+  print("You can try to go there.")
+}
+if (said("feed", "ANYWORD")) { //080d
+  print("That would be inappropriate at this time.")
+}
+if (said("hello", "ANYWORD")) { //0819
+  print("Hello.\"")
+}
+if ((said("say", "hello") || said("hello"))) { //0825
+  print("There is nobody here but you!")
+  goto(l2118)
+}
+if (said("say", "ANYWORD")) { //083a
+  print("OK. \"%w2\"")
+}
+l2118:
+if (said("find", "dwarf")) { //0846
+  print("You will have to find him yourself.")
+  goto(l2160)
+}
+if (said("find", "fairy")) { //0855
+  print("You will have to find her yourself.")
+  goto(l2160)
+}
+if (said("find", "ANYWORD")) { //0864
+  print("You will have to find it yourself.")
+}
+l2160:
+if (said("get on", "ANYWORD")) { //0870
+  print("Not right now!")
+}
+if ((said("speak", "elf") || said("speak", "dwarf") || said("speak", "dwarf") || said("speak", "witch") || said("speak", "wolf") || said("speak", "fairy") || said("speak", "big bird") || said("speak", "goat") || said("speak", "troll") || said("speak", "dwarf") || said("speak", "dragon") || said("speak", "giant") || said("speak", "rat") || said("speak", "leprechaun") || said("speak", "king") || said("speak", "dwarf") || said("speak", "dwarf") || said("speak", "fairy"))) { //087c
+  print("There is no \"%w2\" here.")
+  goto(l2314)
+}
+if (said("speak", "ANYWORD")) { //08f3
+  print("You get no response from the \"%w2\".")
+}
+if (fSaidAccepted) { //08ff
+  goto(l2314)
+}
+print("You can't do that--at least not now!")
+l2314:
+return()

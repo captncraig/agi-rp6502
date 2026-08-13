@@ -1,6 +1,104 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
   v56 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  v33 = 1
+  vEgoDir = 0
+  start.motion(o0)
+  set(f34)
+  show.pic()
+  reset(f14)
+}
+if ((vEgoDir > 0 || f34)) { //001e
+  reset(f34)
+  if ((vEgoDir == 3 || vEgoDir == 4 || vEgoDir == 5)) { //002b
+    v33++
+    if (v33 > 4) { //003c
+      v33 = 1
+    }
+  }
+  if ((vEgoDir == 1 || vEgoDir == 2 || vEgoDir == 7)) { //0046
+    v33--
+    if (!(v33 > 0)) { //0057
+      v33 = 4
+    }
+  }
+  if (vEgoDir == 8) { //0062
+    v33 = 1
+  }
+  if (vEgoDir == 6) { //006c
+    v33 = 4
+  }
+  start.motion(o0)
+  set.text.attribute(0,15)
+  if (v33 == 1) { //007b
+    clear.text.rect(3,16,19,35,15)
+    display(4,16,"$2,000.00 col. R.G. ")
+    display(6,16,"set up H.D. gambling")
+    display(8,16,"blackjack         X ")
+    display(10,16,"initiate plan for   ")
+    display(11,16,"  dealer R.O.     X ")
+    display(13,16,"meet J.M. & L.W.  X ")
+    display(15,16,"Cindy $100.00     X ")
+  }
+  if (v33 == 2) { //00a4
+    clear.text.rect(3,16,19,35,15)
+    display(4,16,"Ammo              X ")
+    display(8,16,"meet N/W boss       ")
+    display(12,16,"3:00 lunch Robert G.")
+  }
+  if (v33 == 3) { //00bd
+    clear.text.rect(3,16,19,35,15)
+    display(5,16,"discipline pimp 1   ")
+    display(7,16,"discipline pimp 2   ")
+    display(11,16,"terminate L.W.    X ")
+    display(13,16,"terminate J.M.    X ")
+  }
+  if (v33 == 4) { //00da
+    clear.text.rect(3,16,19,35,15)
+    display(4,16,"       Sunday       ")
+    display(6,16,"poker with J.B.   X ")
+    display(8,16,"evaluation of drug  ")
+    display(9,16,"  saturation plan X ")
+    display(11,16,"cash profit total   ")
+    display(13,16,"phone East Coast    ")
+    display(15,16,"meet Gutless Wonder ")
+    display(17,16,"initiate Plan 3     ")
+  }
+  set.text.attribute(15,0)
+}
+if (!fEnteredCommand) { //010a
+  goto(l593)
+}
+set(f34)
+if ((said("move", "page", "rol") || said("following", "page", "rol") || said("examine", "following", "page", "rol") || said("examine", "following", "page", "rol"))) { //0116
+  print("You may also use the cursor keys to turn the pages.")
+  v33++
+  if (v33 > 4) { //0144
+    v33 = 1
+  }
+}
+if ((said("move", "back", "page", "rol") || said("preceding", "page", "rol") || said("examine", "preceding", "page", "rol") || said("examine", "back", "page", "rol"))) { //014e
+  print("You may also use the cursor keys to turn the pages.")
+  v33--
+  if (!(v33 > 0)) { //017e
+    v33 = 4
+  }
+}
+if ((said("administer", "book", "rol") || said("administer", "note", "art", "rol") || said("administer", "art", "book", "rol") || said("administer", "art", "note", "rol") || said("c", "book", "rol") || said("c", "note", "rol") || said("c", "black", "book", "rol") || said("c", "black", "note", "rol") || said("examine", "accident", "rol") || said("examine", "away", "rol") || said("examine", "box", "rol") || said("drop", "book", "rol") || said("drop", "note", "rol") || said("drop", "art", "book", "rol") || said("drop", "art", "note", "rol") || said("drop", "black", "book", "rol") || said("drop", "black", "note", "rol") || said("drop", "note", "rol") || said("drop", "book", "rol"))) { //0189
+  if (vPrevRoom == 8) { //0239
+    print("You leave the suspect's black book undisturbed, to be impounded with the car.")
+    v141 = 4
+  }
+  if (vPrevRoom == 6) { //0245
+    print("After browsing through the suspect's personal address book, you return it to evidence.")
+    v141 = 4
+  }
+}
+l593:
+if (f138) { //0251
+  reset(f138)
+  new.room(vPrevRoom)
+}
+return()

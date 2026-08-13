@@ -1,4 +1,664 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((v76 > 0 || v75 > 0) && vPrevRoom == 41) { //0008
+    v72 = vPrevRoom
+    new.room(87)
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 2
+  set(f71)
+  set.horizon(55)
+  v31 = 0
+  random(1,2,v36)
+  if (v36 == 1) { //0031
+    v57 = 10
+    v58 = 73
+    goto(l71)
+  }
+  v57 = 135
+  v58 = 83
+l71:
+  load.logic(111)
+  load.view(95)
+  load.view(232)
+  random(1,9,v36)
+  if (v36 == 1) { //0051
+    v221 = 50
+    goto(l136)
+  }
+  if (v36 == 2) { //005e
+    v221 = 100
+    goto(l136)
+  }
+  if (v36 < 5) { //006b
+    v221 = 150
+    goto(l136)
+  }
+  if (v36 < 7) { //0078
+    v221 = 200
+    goto(l136)
+  }
+  v221 = 250
+l136:
+  if ((f46 || vPrevRoom == 41 || v44 == 30)) { //0088
+    v221 = 250
+  }
+  if (vPrevRoom == 42) { //0099
+    v221 = 70
+  }
+  if (f31 && v96 > 0) { //00a3
+    v221 = v96
+    v96 = 0
+  }
+  if (v221 == 50) { //00b2
+    load.view(80)
+    load.view(82)
+    load.view(84)
+    load.sound(34)
+    animate.obj(o1)
+    animate.obj(o2)
+    animate.obj(o3)
+    ignore.objs(o1)
+    ignore.objs(o2)
+    ignore.objs(o3)
+  }
+  if (v221 == 100) { //00cd
+    load.view(80)
+    load.view(82)
+    load.view(84)
+    load.view(11)
+    load.view(35)
+    load.sound(1)
+    load.sound(6)
+    load.sound(34)
+    load.sound(12)
+    animate.obj(o1)
+    animate.obj(o2)
+    animate.obj(o3)
+    ignore.objs(o1)
+    ignore.objs(o2)
+    ignore.objs(o3)
+  }
+  if (v221 == 150) { //00f2
+    load.view(80)
+    load.view(82)
+    load.view(86)
+    load.view(83)
+    load.view(11)
+    load.view(35)
+    load.sound(1)
+    load.sound(6)
+    load.sound(12)
+    animate.obj(o1)
+    animate.obj(o2)
+    ignore.objs(o1)
+    ignore.objs(o2)
+  }
+  if ((v221 == 200 || v221 == 70)) { //0113
+    load.view(80)
+    load.view(11)
+    load.view(35)
+    load.sound(1)
+    load.sound(6)
+    load.sound(12)
+    animate.obj(o1)
+    ignore.objs(o1)
+  }
+  if (v221 == 250) { //012f
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o4)
+  set.view(o4,95)
+  set.cel(o4,0)
+  v36 = 3
+  cycle.time(o4,v36)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  set.priority(o4,9)
+  position(o4,77,109)
+  draw(o4)
+  stop.update(o4)
+  animate.obj(o5)
+  set.view(o5,232)
+  set.loop(o5,0)
+  set.cel(o5,0)
+  v36 = 4
+  cycle.time(o5,v36)
+  ignore.horizon(o5)
+  ignore.blocks(o5)
+  position(o5,108,10)
+  draw(o5)
+  if (v44 == 25) { //0174
+    set(f48)
+  }
+  if (f48) { //017d
+    if ((vPrevRoom == 41 || vPrevRoom == 42)) { //0183
+      v40 = 73
+      v41 = 118
+    }
+    if (vPrevRoom == 27) { //0195
+      if (v41 > 92 && v41 < 97) { //019c
+        v41 = 92
+      }
+    }
+    if (vPrevRoom == 29) { //01a9
+      if (v41 > 70 && v41 < 74) { //01b0
+        v41 = 70
+      }
+      if (v41 > 142 && v41 < 147) { //01bd
+        v41 = 142
+      }
+    }
+    position(o0,40,v41)
+  }
+  if (f47) { //01ce
+    draw(o0)
+  }
+  if (v221 == 70) { //01d6
+    program.control()
+    prevent.input()
+    v220 = 70
+    set(f227)
+  }
+  if (v221 == 150) { //01e4
+    v225 = 1
+    set.view(o2,86)
+    position(o2,40,130)
+    v36 = 6
+    cycle.time(o2,v36)
+    object.on.water(o2)
+    draw(o2)
+  }
+  if ((v221 == 50 || v221 == 100)) { //01ff
+    v225 = 4
+    program.control()
+    stop.motion(o0)
+    set.view(o1,80)
+    set.view(o2,82)
+    set.view(o3,84)
+    if (v221 == 50) { //021a
+      v220 = 50
+      set(f227)
+      set(f220)
+    }
+    if (v221 == 100) { //0228
+      v220 = 100
+      position(o1,148,166)
+      draw(o1)
+      set.loop(o1,1)
+      move.obj(o1,137,155,1,f227)
+    }
+  }
+  call(111)
+  show.pic()
+  if ((v221 == 50 || v221 == 100)) { //0244
+    sound(34,f228)
+  }
+  return()
+}
+v39 = 0
+if (posn(o0,0,94,95,167)) { //0257
+  v39 = 4
+}
+if (fEgoOnWater) { //0264
+  v39 = 1
+}
+if (posn(o0,70,108,84,118)) { //026d
+  v39 = 3
+}
+if ((posn(o0,84,115,96,125) || posn(o0,97,98,111,121))) { //027a
+  v39 = 5
+}
+if (fEnteredCommand) { //028f
+  if (said("examine", "bear")) { //0295
+    if (!(v225 > 0)) { //029f
+      print("Where?")
+    }
+    if (v225 == 1) { //02a9
+      print("%m1 To your surprise, you see a bear, wearing a dress, working in the garden. It must be Mama Bear!")
+    }
+    if (v225 == 2) { //02b2
+      print("He doesn't seem happy to see you.")
+    }
+    if (v225 == 4) { //02bb
+      print("You see three fully-clothed bears!")
+    }
+  }
+  if (said("call", "bear")) { //02c4
+    if (!(v225 > 0)) { //02ce
+      print("Where?")
+      goto(l787)
+    }
+    if (v225 == 4) { //02db
+      print("Evidently, they don't hear you.")
+      goto(l787)
+    }
+    if (v225 == 1) { //02e7
+      v226++
+      if (v226 == 1) { //02f0
+        sound(12,f41)
+        print("Your cordial greeting annoys the bear, and she growls back, \"Grrrrrrrrrrrrreetings yourrrrrrrrrrself, young man. Stay out of my garden!\"")
+        goto(l787)
+      }
+      if (v226 == 2) { //02ff
+        sound(12,f41)
+        print("Again, you speak to the bear. \"Grrrrrrrrrrr!\" she growls menacingly. \"We don't take to strangers here. Go away!\"")
+        goto(l787)
+      }
+      sound(12,f41)
+      print("Insistently, you talk to the bear yet again. She ignores you, but you hear a constant low growl from deep within her.")
+    }
+l787:
+    if (v225 > 0 && said("capture", "bear")) { //0313
+      print("It is utterly impossible for you to catch a big bear.")
+    }
+    if (v225 > 0 && said("kill", "bear")) { //0322
+      print("How could you hurt a big bear? You couldn't.")
+    }
+    if (v225 > 0 && said("embrace", "bear")) { //0331
+      print("A strange idea.")
+    }
+  }
+  if ((said("examine", "flower") || said("look in", "flower") || said("examine", "dew", "flower"))) { //0340
+    if (v39 == 1) { //035a
+      print("You carefully peek into the pretty flowers of the flower garden. Drops of glistening dew have gathered within their soft petals.")
+      goto(l884)
+    }
+    if (v221 == 150) { //0366
+      print("%m1 To your surprise, you see a bear, wearing a dress, working in the garden. It must be Mama Bear!")
+      goto(l884)
+    }
+    print("There are lovely flowers growing in this well-tended garden. Their sweet scent and beautiful colors delight you.")
+  }
+l884:
+  if ((said("examine", "garden") || said("examine", "flower", "garden") || said("examine", "flower") || said("examine", "flower", "flower", "garden"))) { //0374
+    if (v221 == 150) { //0398
+      print("%m1 To your surprise, you see a bear, wearing a dress, working in the garden. It must be Mama Bear!")
+      goto(l934)
+    }
+    print("There are lovely flowers growing in this well-tended garden. Their sweet scent and beautiful colors delight you.")
+  }
+l934:
+  if ((said("examine", "building") || said("examine"))) { //03a6
+    print("This is the comfortable home of the Three Bears. A well-tended flower garden grows out front.")
+  }
+  if ((said("examine", "area") || said("look in", "glass") || said("examine", "glass"))) { //03b8
+    if (v39 == 5) { //03d0
+      print("You peer through the window, but the inside is dimly lit and you cannot make out any details.")
+      goto(l990)
+    }
+    print("You need to move closer.")
+  }
+l990:
+  if ((said("examine", "door") || said("examine", "door", "building"))) { //03de
+    print("The heavy wooden door is closed.")
+  }
+  if ((said("capture", "flower") || said("capture", "flower", "flower", "garden"))) { //03f4
+    if (v39 == 1) { //040a
+      print("You wouldn't want to spoil the lovely flower bed by picking one!")
+      goto(l1048)
+    }
+    print("You need to move closer.")
+  }
+l1048:
+  if (v39 == 1 && (said("examine", "dew") || said("examine", "dew", "flower"))) { //0418
+    print("The dew is beautiful.")
+  }
+  if ((said("capture", "dew") || said("capture", "dew", "flower") || said("capture", "dew", "flower", "garden") || said("capture", "dew", "thimble") || said("capture", "dew", "flower", "thimble") || said("capture", "thimble", "dew") || said("capture", "thimble", "dew", "flower") || said("capture", "dew", "flower", "garden") || said("capture", "dew", "from", "flower") || said("capture", "dew", "from", "flower", "garden") || said("capture", "dew", "flower", "thimble") || said("capture", "dew", "from", "flower", "garden", "thimble") || said("capture", "thimble", "dew") || said("capture", "thimble", "dew", "from", "flower") || said("capture", "thimble", "dew", "from", "flower", "garden"))) { //0431
+    if (v39 != 1) { //04cd
+      print("You need to move closer.")
+      goto(l1283)
+    }
+    if (has(i7)) { //04da
+      print("Your thimble is already full of dew.")
+      goto(l1283)
+    }
+    if (!(has(i6))) { //04e5
+      print("You must have a thimble in order to get a thimbleful of dew.")
+      goto(l1283)
+    }
+    drop(i6)
+    get(i7)
+    print("Holding the silver thimble beneath a dew-filled flower, you gently tip the flower so its dew runs into the thimble. You move from flower to flower, repeating the process until your thimble is brimming with dew.")
+    if (!f103) { //04f7
+      set(f103)
+      vCurrentScore += 1
+    }
+  }
+l1283:
+  if (!f46 && (said("bang") || said("bang", "on", "door") || said("bang", "door") || said("bang", "door", "building") || said("bang", "on", "building", "door"))) { //0503
+    if (v39 != 3) { //0530
+      print("You need to move closer.")
+      goto(l1373)
+    }
+    if (v221 == 250) { //053d
+      print("You rap lightly on the door of the charming house.")
+      print("No reply.")
+      print("You knock again, louder.")
+      print("Again, there is no response.")
+      print("Perhaps no one is home?")
+      goto(l1373)
+    }
+    v220 = 201
+    stop.motion(o0)
+    program.control()
+    prevent.input()
+    start.update(o4)
+    end.of.loop(o4,f227)
+  }
+l1373:
+  if (!f46 && (said("lift", "door") || said("move", "knob") || said("move", "door", "knob") || said("move", "knob", "door") || said("move", "door", "handle") || said("move", "handle", "door"))) { //055d
+    if (v39 != 3) { //0592
+      print("You need to move closer.")
+      goto(l1463)
+    }
+    if ((v221 == 250 || v221 == 50)) { //059f
+      set(f220)
+      set(f226)
+      goto(l1463)
+    }
+    v220 = 201
+    set(f227)
+  }
+l1463:
+  if (said("examine", "bluff")) { //05b7
+    print("You see a lone mountain peak in the distance. Dark clouds swirl around its summit.")
+  }
+}
+if (v221 == 150 && v39 == 1 && !(v220 > 0)) { //05c3
+  v220 = 150
+  set(f227)
+}
+if (v39 != 1 && v220 == 151) { //05d6
+  accept.input()
+  v220 = 0
+  set.view(o2,86)
+  normal.motion(o2)
+  stop.motion(o2)
+}
+if (f45) { //05ec
+  v222--
+  if (v222 == 1) { //05f4
+    set(f227)
+  }
+  v223--
+  if (v39 == 4 && !(v220 > 0) && v221 == 150 && !(v223 > 0)) { //05ff
+    v223 = 10
+    print("Mama Bear growls at you as you near the flower bed. Better stay away from it... and HER!")
+  }
+}
+if (f220) { //0616
+  reset(f220)
+  start.update(o4)
+  end.of.loop(o4,f222)
+}
+if (f222) { //0623
+  reset(f222)
+  set(f221)
+  stop.update(o4)
+  if ((v220 == 106 || v220 == 50)) { //062f
+    set(f227)
+  }
+}
+if (f223) { //063d
+  reset(f223)
+  reset(f221)
+  start.update(o4)
+  reverse.loop(o4,f224)
+}
+if (f224) { //064c
+  reset(f224)
+  stop.update(o4)
+}
+if (f227) { //0656
+  reset(f227)
+  v220++
+  program.control()
+  prevent.input()
+  set(f46)
+  if (v220 == 51) { //0664
+    stop.motion(o0)
+    position(o1,75,124)
+    set.loop(o1,0)
+    draw(o1)
+    v225 = 4
+    move.obj(o1,84,124,1,f227)
+  }
+  if (v220 == 52) { //067f
+    position(o2,75,124)
+    set.loop(o2,0)
+    draw(o2)
+    move.obj(o2,106,124,1,f227)
+    move.obj(o1,95,124,1,f227)
+  }
+  if (v220 == 53) { //069b
+    position(o3,75,124)
+    set.loop(o3,0)
+    draw(o3)
+    move.obj(o3,106,124,1,f227)
+    move.obj(o1,106,124,1,f227)
+    print.at("What's this? Three clothed bears??\n\nYou hear Papa Bear exclaim, \"What a beautiful day for a stroll through the forest.\"",2,2,37)
+    set(f223)
+  }
+  if (v220 == 54) { //06be
+    move.obj(o1,148,166,1,f227)
+  }
+  if (v220 == 55) { //06cb
+    move.obj(o2,148,166,1,f227)
+  }
+  if (v220 == 56) { //06d8
+    move.obj(o3,149,167,1,f227)
+  }
+  if (v220 == 57) { //06e5
+    erase(o1)
+  }
+  if (v220 == 58) { //06ee
+    erase(o2)
+  }
+  if (v220 == 59) { //06f7
+    erase(o3)
+    v225 = 0
+    v221 = 250
+    stop.sound()
+    reset(f228)
+    v220 = 0
+  }
+  if (v220 == 71) { //070c
+    set(f221)
+    v225 = 2
+    set.view(o1,80)
+    set.loop(o1,2)
+    set.cel(o1,0)
+    set.priority(o1,10)
+    ignore.objs(o1)
+    ignore.blocks(o1)
+    position(o1,74,110)
+    draw(o1)
+    print("\"AND STAY OUT!!!\"")
+    v220 = 205
+  }
+  if (v220 == 101) { //0733
+    stop.motion(o0)
+    v225 = 4
+    move.obj(o1,128,146,1,f227)
+    position(o2,148,166)
+    set.loop(o2,1)
+    draw(o2)
+    move.obj(o2,106,124,1,f227)
+  }
+  if (v220 == 102) { //0754
+    move.obj(o1,106,124,1,f227)
+    position(o3,149,167)
+    set.loop(o3,1)
+    draw(o3)
+    move.obj(o3,106,124,1,f227)
+    print.at("There are three fully-clothed bears coming!\n\nYou hear Mama Bear say, \"Thank you, Dear. That was a lovely walk.\"",2,2,37)
+  }
+  if (v220 == 103) { //0775
+    move.obj(o1,75,124,1,f227)
+  }
+  if (v220 == 104) { //0782
+    move.obj(o2,75,125,1,f41)
+  }
+  if (v220 == 105) { //078f
+    move.obj(o3,75,126,1,f41)
+  }
+  if (v220 == 106) { //079c
+    set(f220)
+  }
+  if (v220 == 107) { //07a5
+    move.obj(o1,75,120,1,f227)
+  }
+  if (v220 == 108) { //07b2
+    erase(o1)
+    move.obj(o2,75,120,1,f227)
+  }
+  if (v220 == 109) { //07c1
+    erase(o2)
+    move.obj(o3,75,120,1,f227)
+  }
+  if (v220 == 110) { //07d0
+    erase(o3)
+    set(f223)
+    v221 = 200
+    v225 = 0
+    stop.sound()
+    reset(f228)
+    v220 = 0
+  }
+  if (v220 == 151) { //07e7
+    sound(12,f41)
+    print("Oh, dear! You have annoyed Mama Bear by trampling her precious flowers.")
+    stop.motion(o0)
+    set.view(o2,82)
+    follow.ego(o2,10,f227)
+  }
+  if (v220 == 152) { //07fc
+    stop.motion(o2)
+    set.view(o2,83)
+    set.cel(o2,0)
+    end.of.loop(o2,f41)
+    set.view(o0,11)
+    sound(1,f41)
+    set.priority(o0,15)
+    ignore.objs(o0)
+    v38 = 166
+    v69 = 3
+    move.obj(o0,v40,v38,69,f227)
+    v221 = 0
+  }
+  if (v220 == 153) { //0828
+    erase(o0)
+    v44 = 18
+    vWhichEgoBorder = 3
+    v220 = 0
+  }
+  if (v220 == 202) { //083a
+    start.update(o4)
+    end.of.loop(o4,f227)
+  }
+  if (v220 == 203) { //0846
+    set(f221)
+    v225 = 2
+    set.view(o1,80)
+    set.loop(o1,2)
+    set.cel(o1,0)
+    set.priority(o1,10)
+    ignore.objs(o1)
+    ignore.blocks(o1)
+    position(o1,74,110)
+    draw(o1)
+    stop.cycling(o1)
+    v222 = 4
+  }
+  if (v220 == 204) { //086d
+    print.at("\"SCRAM!!\" growls Papa Bear. \"We're not interested!\"",2,4,37)
+    set.cel(o1,0)
+    v36 = 4
+    cycle.time(o1,v36)
+    start.cycling(o1)
+    sound(12,f41)
+    v222 = 6
+  }
+  if (v220 == 205) { //088a
+    v36 = 1
+    cycle.time(o1,v36)
+    set.view(o1,80)
+    set.loop(o1,2)
+    set.cel(o1,0)
+    stop.cycling(o1)
+    set.view(o0,11)
+    set(f35)
+    set.priority(o0,15)
+    ignore.blocks(o0)
+    move.obj(o0,86,133,3,f227)
+    sound(1,f41)
+  }
+  if (v220 == 206) { //08b5
+    set.view(o0,35)
+    stop.motion(o0)
+    v44 = 18
+    v224 = 5
+    set(f225)
+    v222 = 3
+  }
+  if (v220 == 207) { //08cc
+    erase(o1)
+    set(f223)
+    v220 = 0
+    if (v221 == 150) { //08da
+      v225 = 1
+      goto(l2282)
+    }
+    v225 = 0
+  }
+l2282:
+  if (v220 == 0 && v44 != 18) { //08ea
+    player.control()
+    accept.input()
+    start.motion(o0)
+    reset(f46)
+  }
+}
+if (f45) { //08fb
+  v224--
+  if (v224 == 1) { //0903
+    player.control()
+    accept.input()
+    reset(f46)
+    reset(f35)
+    reset(f225)
+    release.priority(o0)
+    stop.sound()
+    start.motion(o0)
+    v44 = 0
+    set.view(o0,0)
+    observe.blocks(o0)
+  }
+}
+if (f225 && v44 == 18) { //091f
+  sound(6,f225)
+}
+if (f228 && v225 > 0) { //092b
+  sound(34,f228)
+}
+call(111)
+if (f226 && f221) { //0939
+  new.room(41)
+}
+if (vWhichEgoBorder == 3) { //0943
+  new.room(13)
+}
+if (vWhichEgoBorder == 1) { //094c
+  new.room(23)
+}
+if (vWhichEgoBorder == 4) { //0955
+  new.room(27)
+}
+if (vWhichEgoBorder == 2) { //095e
+  new.room(29)
+}
+return()

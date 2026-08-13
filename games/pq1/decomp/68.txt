@@ -1,5 +1,965 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(217)
+  load.view(252)
+  load.view(230)
+  load.view(231)
+  load.view(226)
+  load.view(255)
+  load.logic(73)
+  animate.obj(o2)
+  animate.obj(o1)
+  set.view(o2,230)
+  set.view(o1,252)
+  ignore.blocks(o2)
+  position(o1,88,84)
+  v152 = 4
+  cycle.time(o1,v152)
+  ignore.objs(o1)
+  set.priority(o1,4)
+  v152 = 4
+  cycle.time(o1,v152)
+  draw(o1)
+  if (vPrevRoom == 78) { //0041
+    set.cel(o1,4)
+    position(o0,93,85)
+    reverse.loop(o1,f225)
+    goto(l112)
+  }
+  set.cel(o1,0)
+  stop.update(o1)
+  if (vPrevRoom == 64) { //005a
+    position(o0,119,83)
+  }
+  if (vPrevRoom == 69) { //0065
+    position(o0,2,148)
+  }
+l112:
+  position(o2,137,140)
+  if (v31 > 99 && v31 < 103) { //0074
+    load.view(30)
+    animate.obj(o15)
+    if (v31 < 101) { //0082
+      load.view(233)
+      load.view(234)
+      animate.obj(o4)
+      animate.obj(o5)
+      set.view(o15,30)
+      set.view(o4,234)
+      set.view(o5,233)
+      ignore.blocks(o4)
+      ignore.blocks(o5)
+      position(o2,116,152)
+      position(o15,92,152)
+      position(o4,124,86)
+      position(o5,132,78)
+      set.loop(o15,0)
+      set.cel(o15,0)
+      goto(l202)
+    }
+    set.view(o15,231)
+    set.cel(o15,1)
+    ignore.blocks(o15)
+    position(o15,61,112)
+    force.update(o15)
+    set(f232)
+    v223 = 13
+l202:
+    draw(o15)
+    stop.update(o15)
+    add.to.pic(255,0,0,61,112,10,1)
+    add.to.pic(255,0,1,88,114,10,1)
+    goto(l241)
+  }
+  add.to.pic(226,1,0,60,112,10,1)
+  add.to.pic(226,1,1,85,114,10,1)
+l241:
+  set.loop(o2,1)
+  draw(o2)
+  stop.cycling(o2)
+  add.to.pic(217,0,0,33,100,9,1)
+  add.to.pic(217,0,0,66,113,10,1)
+  add.to.pic(217,0,0,23,125,11,1)
+  add.to.pic(226,0,2,28,98,9,1)
+  add.to.pic(226,0,3,51,98,9,1)
+  add.to.pic(226,0,0,17,124,11,1)
+  add.to.pic(226,0,1,40,124,11,1)
+  draw(o0)
+  if (f84) { //0132
+    call(73)
+  }
+  show.pic()
+  return()
+}
+if (posn(o0,123,74,159,89)) { //013c
+  reset(f91)
+  new.room(64)
+}
+if (vWhichEgoBorder == 4) { //014a
+  if (f84) { //0151
+    print("Sweet Cheeks says, \"Baby, you can go in that ol' storeroom if you want to, but I'm gonna wait out here!\"")
+  }
+  new.room(69)
+}
+reset(f153)
+if (posn(o0,85,84,100,90)) { //015d
+  set(f153)
+}
+reset(f227)
+if (posn(o0,18,116,48,130)) { //016b
+  set(f227)
+}
+reset(f228)
+if (posn(o0,59,107,90,117)) { //0179
+  set(f228)
+}
+distance(o0,o2,v152)
+if (v152 < v61) { //0189
+  set(f109)
+}
+distance(o0,o4,v152)
+if (v152 < v61) { //0196
+  set(f109)
+}
+distance(o0,o5,v152)
+if (v152 < v61) { //01a3
+  set(f109)
+}
+distance(o0,o15,v152)
+if ((v152 < v61 || f232)) { //01b0
+  set(f109)
+}
+if ((f224 || posn(o0,27,93,36,103) || posn(o0,50,93,59,103) || posn(o0,17,117,25,128) || posn(o0,40,117,49,128))) { //01bd
+  set(f109)
+}
+if (posn(o0,87,140,159,152)) { //01df
+  set.priority(o0,11)
+  goto(l497)
+}
+release.priority(o0)
+l497:
+if (!f91 && (posn(o0,86,116,112,131) || posn(o0,113,116,140,130) || posn(o0,86,132,120,167))) { //01f1
+  set(f224)
+  goto(l550)
+}
+reset(f224)
+if (v220 == 1) { //0213
+  v220++
+}
+if (v220 == 23) { //021c
+  v220 = 0
+}
+l550:
+if (f220) { //0226
+  reset(f220)
+  v220++
+}
+if (f221) { //0230
+  reset(f221)
+  v223++
+}
+if (f112 && !f110) { //023a
+  v168--
+  v169--
+}
+get.posn(o2,v144,v145)
+if ((v221 != v144 || v222 != v145)) { //024b
+  start.cycling(o2)
+  v221 = v144
+  v222 = v145
+  goto(l614)
+}
+stop.cycling(o2)
+l614:
+if (f224 && (!(v220 > 0) || v220 == 5 || v220 == 14)) { //0266
+  start.update(o2)
+  if (v143 < 119) { //027a
+    if (v142 < 116) { //0281
+      v142 = 116
+    }
+    v222 = 132
+    move.obj(o2,v142,v222,122,f220)
+    v147 = 3
+    goto(l700)
+  }
+  if (v143 < 136) { //029a
+    move.obj(o2,116,132,0,f220)
+    v147 = 1
+    goto(l700)
+  }
+  v143 -= 4
+  v221 = 116
+  move.obj(o2,v221,v143,122,f220)
+  v147 = 1
+l700:
+  v220++
+}
+if (v220 == 2) { //02be
+  if (f224 && !(v168 > 0)) { //02c5
+    set.loop(o2,v147)
+    print("\"What'll it be?\"")
+    v168 = 10
+    goto(l742)
+  }
+  if (!f224) { //02da
+    print("Woody says, \"If you decide you want a drink, I'm at your service.")
+    v220 = 20
+  }
+}
+l742:
+if (v220 == 3) { //02e6
+  set.loop(o2,2)
+  v220++
+  v168 = 7
+  if (v31 == 101) { //02f5
+    v220 = 50
+  }
+}
+if (v220 == 4 && !(v168 > 0)) { //02ff
+  v220++
+}
+if (v220 == 7) { //030c
+  v220++
+  accept.input()
+  reset(f36)
+  set.loop(o2,v147)
+  if (f229) { //031b
+    print("\"Here you go, Sir. That'll be on the house!\"")
+    reset(f229)
+    v220 = 20
+    goto(l833)
+  }
+  if (!(vEgoView > 0)) { //032b
+    print("Remember the policeman's commandment: \"Thou Shalt Not Drink On Duty.\"")
+    set(f140)
+    stop.cycling(o2)
+    v220 = 255
+    goto(l833)
+  }
+  print("\"Here you are, sir,\" says the bartender. \"That'll be five dollars, please.\"")
+}
+l833:
+if (v220 == 8 && !f224) { //0341
+  print("\"So you can't pay, eh? Get lost, chump!\"")
+  v220 = 20
+}
+if (v220 == 9) { //0350
+  prevent.input()
+  set(f36)
+  move.obj(o2,134,167,0,f220)
+  v220 = 11
+}
+if (v220 == 12) { //0363
+  v168 = 7
+  v220++
+}
+if (v220 == 13 && !(v168 > 0)) { //036f
+  v220++
+}
+if (v220 == 16) { //037c
+  set.loop(o2,v147)
+  print("\"Here is your change, sir.\"")
+  if (v229 == 100) { //0388
+    v170 += 9
+    v171 += 5
+  }
+  v229 = 0
+  v220 = 20
+}
+if (v220 == 20) { //039b
+  v168 = 0
+  move.obj(o2,139,139,0,f220)
+  v220++
+}
+if (v220 == 22) { //03ad
+  accept.input()
+  reset(f36)
+  set.loop(o2,1)
+  v220++
+  v168 = 0
+}
+if (v31 == 101 && !(v223 > 0)) { //03bf
+  print("Sweet Cheeks pretends she has just noticed you. \"Whitey, is that YOU?\" she shouts.")
+  if (v143 < 119) { //03cc
+    start.update(o15)
+    move.obj(o15,92,118,0,f221)
+    v223 = 1
+    goto(l1027)
+  }
+  get.posn(o15,v144,v145)
+  if (v143 < v145) { //03e5
+    v143 += 1
+    goto(l1013)
+  }
+  v143 -= 1
+l1013:
+  v107 = 92
+  start.update(o15)
+  move.obj(o15,v107,v143,122,f221)
+  v223 = 3
+}
+l1027:
+if (v223 == 2) { //0403
+  get.posn(o0,v142,v143)
+  v142 -= 8
+  v108 = 118
+  move.obj(o15,v142,v108,122,f221)
+  v223++
+}
+if (v223 == 4) { //041c
+  print("\"Oh, Whitey, it's so good to see you,\" says Sweet Cheeks, playing her role to the hilt. \"It's been such a long, long time!\"")
+  print("\"Come on, Cheeks,\" you say, \"let's sit at that table over there.\"")
+  move.obj(o0,90,115,0,f231)
+  move.obj(o15,60,115,1,f221)
+  v223++
+}
+if (v223 == 6) { //0435
+  set.view(o15,231)
+  set.cel(o15,1)
+  ignore.blocks(o15)
+  reposition.to(o15,61,112)
+  stop.update(o15)
+  force.update(o15)
+  set(f232)
+  v223++
+  v168 = 10
+}
+if (v223 == 7 && v168 == 1) { //0453
+  move.obj(o2,87,167,0,f220)
+  v220 = 50
+  v223++
+}
+if ((v220 == 51 || v220 == 61)) { //0468
+  move.obj(o2,75,119,0,f220)
+  v220++
+}
+if (v220 == 53) { //047c
+  if (f229) { //0483
+    print("\"Here you go, Sir. That'll be on the house!\"")
+    v220 = 63
+    goto(l1174)
+  }
+  accept.input()
+  print("\"Here you are, sir,\" says the bartender. \"That'll be five dollars, please.\"")
+  v220++
+}
+l1174:
+if (v220 == 55) { //0496
+  move.obj(o2,87,167,0,f220)
+  v220++
+}
+if (v220 == 57) { //04a5
+  move.obj(o2,134,167,0,f220)
+  v220++
+}
+if (v220 == 59) { //04b4
+  set.loop(o2,2)
+  draw(o4)
+  draw(o5)
+  start.cycling(o4)
+  start.cycling(o5)
+  move.obj(o4,91,119,0,f222)
+  move.obj(o5,91,119,0,f223)
+  v220++
+}
+if (f222) { //04d4
+  reset(f222)
+  v226++
+  if (v226 == 1) { //04de
+    move.obj(o4,91,160,0,f222)
+  }
+  if (v226 == 2) { //04eb
+    stop.cycling(o4)
+    set.loop(o4,0)
+    set.loop(o2,1)
+  }
+  if (v226 == 3) { //04fa
+    start.cycling(o4)
+    move.obj(o4,0,157,0,f222)
+  }
+  if (v226 == 4) { //0509
+    erase(o4)
+  }
+}
+if (f223) { //0512
+  reset(f223)
+  v227++
+  if (v227 == 1) { //051c
+    move.obj(o5,89,141,0,f223)
+  }
+  if (v227 == 2) { //0529
+    stop.cycling(o5)
+    v168 = 5
+    set.loop(o2,1)
+  }
+  if (v227 == 3) { //0538
+    start.cycling(o5)
+    set.loop(o2,2)
+    move.obj(o5,0,153,0,f223)
+  }
+  if (v227 == 4) { //054a
+    erase(o5)
+  }
+}
+if (v227 == 2 && v168 == 1) { //0553
+  set(f222)
+  set(f223)
+  v168--
+}
+if (v226 == 4 && v227 == 4) { //0563
+  print("\"You know, Sonny,\" says Sweet Cheeks softly, \"I've seen four guys go in that door since I got here!\"")
+  move.obj(o2,87,167,0,f220)
+  v226 = 255
+  v227 = 255
+}
+if (v220 == 63) { //057b
+  stop.cycling(o2)
+  if (!f229) { //0584
+    print("\"Here is your change, sir.\"")
+    if (v229 == 100) { //058d
+      v170 += 9
+      v171 += 5
+      v229 = 0
+    }
+  }
+  reset(f229)
+  print("\"Well, how about it, Sweet Cheeks?\" the bartender says. \"Are you going to introduce me to your new friend?\"")
+  print("\"Woody, I'd like you to meet Jimmy Lee Banksten, but everyone I know calls him 'Whitey,'\" says Sweet Cheeks. \"Whitey's a dear, old friend that I haven't seen for over a year.\"")
+  print("She then excuses herself to powder her (already heavily-powdered) nose.")
+  prevent.input()
+  start.update(o15)
+  set.view(o15,30)
+  reposition.to(o15,60,107)
+  move.obj(o15,126,88,0,f221)
+  reset(f232)
+  v223 = 8
+  v220++
+}
+if (v223 == 9) { //05bc
+  print("The bartender asks you what you do for a living. \"I'm presently unemployed; just taking it easy, you know. Enjoying life, and looking for a good time,\" you tell him.")
+  print("\"I just finished doing a little time for embezzlement and haven't had a chance to land a job yet,\" you tell Woody. Acting surprised at your slip, you lower your voice and say, \"but I'd sure appreciate your keeping that information under your hat, ok?\" Woody assures you that you can trust him.")
+  v223++
+  v169 = 5
+}
+if (v223 == 10 && v169 == 1) { //05cc
+  reposition.to(o15,125,78)
+  move.obj(o15,60,106,0,f221)
+  v169--
+}
+if (v223 == 11) { //05e2
+  set.view(o15,231)
+  set.cel(o15,1)
+  ignore.blocks(o15)
+  reposition.to(o15,61,112)
+  stop.cycling(o15)
+  set(f232)
+  v223++
+  v169 = 3
+}
+if (v223 == 12 && v169 == 1) { //05fe
+  print("Sweet Cheeks returns. Even after the drinks, and your conversation with the bartender, Woody Roberts is tight-lipped about any back room gambling.")
+  print("\"Say, Sweet Cheeks,\" you say loudly. \"How'd you like to go to Vegas with me for the weekend?\" Sweet Cheeks acts quite excited as she accepts your offer.")
+  accept.input()
+  move.obj(o2,87,167,0,f220)
+  v223++
+  v169 = 3
+}
+if (v220 == 65) { //0618
+  move.obj(o2,134,167,0,f220)
+  v220++
+}
+if (v220 == 67) { //0627
+  v220 = 20
+  v31 = 102
+}
+if (v220 == 200) { //0634
+  start.cycling(o2)
+  move.obj(o2,134,167,0,f220)
+  set(f91)
+  v220++
+}
+if (v220 == 202) { //0647
+  move.obj(o2,87,167,0,f220)
+  v220++
+}
+if (v220 == 204) { //0656
+  move.obj(o2,0,155,0,f220)
+  v220++
+}
+if (v220 == 206) { //0665
+  erase(o2)
+  v220++
+}
+if (v223 == 100) { //0670
+  start.update(o15)
+  set.view(o15,30)
+  reposition.to(o15,60,107)
+  observe.blocks(o15)
+  move.obj(o15,96,107,0,f221)
+  start.cycling(o15)
+  v31 = 103
+  reset(f232)
+  set(f84)
+  v223++
+}
+if (v223 == 102) { //0693
+  follow.ego(o15,10,f85)
+  set(f84)
+  v223++
+}
+if ((said("buy", "chug", "rol") || said("buy", "rol") || said("get", "chug", "rol") || said("chug", "rol"))) { //06a2
+  print("\"What'll it be?\"")
+}
+if ((said("caffeine", "rol") || said("buy", "caffeine", "rol") || said("buy", "creek", "rol") || said("creek", "rol"))) { //06c6
+  if (!f224) { //06e8
+    print("It seems no one notices you.")
+    goto(l1801)
+  }
+  if ((v220 == 2 || v220 == 23)) { //06f4
+    set(f233)
+    set(f229)
+    goto(l1801)
+  }
+  print("\"Just one moment, Sir.\"")
+}
+l1801:
+if ((said("beer", "rol") || said("buy", "beer", "rol"))) { //0709
+  if (!f224) { //071d
+    print("It seems no one notices you.")
+    goto(l1852)
+  }
+  if ((v220 == 2 || v220 == 23)) { //0729
+    set(f233)
+    goto(l1852)
+  }
+  print("\"Just one moment, Sir.\"")
+}
+l1852:
+if (v220 == 2) { //073c
+  if (said("no", "rol")) { //0743
+    print("Woody says, \"If you decide you want a drink, I'm at your service.")
+    v220 = 20
+  }
+}
+if ((said("pay") || said("administer", "art", "bills") || said("anyword", "pay") || said("pay", "anyword") || said("administer", "bills") || said("pay", "bills") || said("administer", "bills", "rol") || said("pay", "bills", "rol"))) { //0752
+  if ((v220 == 8 || v220 == 54)) { //078c
+    set(f234)
+    goto(l2033)
+  }
+  if (!f224) { //079d
+    print("It seems no one notices you.")
+    goto(l2033)
+  }
+  if (v31 < 102) { //07a9
+    set(f235)
+    goto(l2033)
+  }
+  if (v31 == 102) { //07b5
+    set(f236)
+    goto(l2033)
+  }
+  if (v31 < 104) { //07c1
+    print("Woody glances left, then right. He looks you straight in the eyes and whispers, \"Come back after you ditch the broad, and I'll see what I can do.\"")
+    v220 = 20
+    goto(l2033)
+  }
+  if ((v31 == 160 || v31 == 175)) { //07d0
+    set(f238)
+    print("Woody says, \"Oh, that's all right, Mr. Banksten. You're good around here.\"")
+    goto(l2033)
+  }
+  if (v31 == 170) { //07e3
+    print("\"Come back later, if you want in the big game.\"")
+    goto(l2033)
+  }
+  set(f237)
+}
+l2033:
+if ((said("information") || said("administer", "information", "rol") || said("administer", "art", "information", "rol") || said("information", "art", "rol"))) { //07f1
+  if ((v220 == 8 || v220 == 54 || !f224)) { //0815
+    set(f235)
+    goto(l2091)
+  }
+  print("It seems no one notices you.")
+}
+l2091:
+if ((said("card") || said("play", "card") || said("answer", "about", "bills") || said("answer", "about", "card") || said("examine", "bills") || said("examine", "bills", "art") || said("examine", "art", "bills") || said("administer", "art", "two", "hundred", "rol") || said("pay", "art", "two", "hundred", "rol") || said("administer", "two", "hundred", "rol") || said("pay", "two", "hundred", "rol") || said("information", "art", "two", "hundred", "rol") || said("information", "two", "hundred", "rol") || said("ask", "art", "card") || said("information", "art", "card") || said("answer", "art", "card") || said("art", "card", "bills") || said("administer", "art", "bills", "card") || said("bribe", "art", "card"))) { //082b
+  if (!f224) { //08d5
+    print("It seems no one notices you.")
+    goto(l2345)
+  }
+  if (v31 < 102) { //08e1
+    print("\"I have no idea what you're talking about!\"")
+    goto(l2345)
+  }
+  if (v31 == 102) { //08ed
+    set(f236)
+    goto(l2345)
+  }
+  if (v31 < 104) { //08f9
+    print("Woody glances left, then right. He looks you straight in the eyes and whispers, \"Come back after you ditch the broad, and I'll see what I can do.\"")
+    v220 = 20
+    goto(l2345)
+  }
+  if ((v31 == 160 || v31 == 175)) { //0908
+    set(f238)
+    print("Woody says, \"Oh, that's all right, Mr. Banksten. You're good around here.\"")
+    goto(l2345)
+  }
+  if (v31 == 170) { //091b
+    print("\"Come back later, if you want in the big game.\"")
+    goto(l2345)
+  }
+  set(f237)
+}
+l2345:
+if (said("frank", "sent", "bonds")) { //0929
+  if (v220 > 199) { //0935
+    print("\"Ok, Mr. Banksten,\" says Woody. \"Let's go.\"")
+    goto(l2432)
+  }
+  if (!f224) { //0941
+    print("It seems no one notices you.")
+    goto(l2432)
+  }
+  if (v31 < 160) { //094d
+    print("\"I have no idea what you're talking about!\"")
+    v220 = 20
+    goto(l2432)
+  }
+  if (v31 < 104) { //095c
+    print("Woody glances left, then right. He looks you straight in the eyes and whispers, \"Come back after you ditch the broad, and I'll see what I can do.\"")
+    v220 = 20
+    goto(l2432)
+  }
+  if ((v31 == 160 || v31 == 175)) { //096b
+    set(f238)
+    print("\"Nice to see you again, Mr. Banksten. Please, follow me.\"")
+    goto(l2432)
+  }
+  print("\"Come back later, if you want in the big game.\"")
+}
+l2432:
+if (f233) { //0980
+  reset(f233)
+  print("\"Ok. Coming right up.\"")
+  if (v31 > 99 && v31 < 101) { //098a
+    v31 = 101
+  }
+  v220 = 2
+  v168 = 7
+  prevent.input()
+  set(f36)
+  start.motion(o0)
+  move.obj(o2,134,167,1,f220)
+}
+if (f234) { //09a8
+  reset(f234)
+  v220++
+  if (v171 > 4) { //09b2
+    print("\"Thank You!\"")
+    set(f255)
+    v171 -= 5
+    goto(l2564)
+  }
+  if (v170 > 9) { //09c3
+    set(f255)
+    print("You slip a marked hundred from your wallet and hand it to the bartender.")
+    print("\"Thank you, sir,\" he says. \"I'll be right back with your change.\"")
+    v170 -= 10
+    v229 = 100
+    goto(l2564)
+  }
+  if (v89 > 5) { //09d9
+    print("\"Thank You!\"")
+    v89 -= 5
+    set(f255)
+    goto(l2564)
+  }
+  print("\"So you can't pay, eh? Get lost, chump!\"")
+  if (v220 == 55) { //09ec
+    print("\"Some people!!\"")
+    move.obj(o2,87,167,0,f220)
+    v220 = 64
+    goto(l2564)
+  }
+  v220 = 20
+}
+l2564:
+if (f235) { //0a04
+  reset(f235)
+  print("\"Gee! Thanks, Mac!\"")
+  if (v171 > 0) { //0a0e
+    v171 -= 1
+    goto(l2621)
+  }
+  if (v170 > 0) { //0a1b
+    v170 -= 1
+    v171 += 9
+    goto(l2621)
+  }
+  if (v89 > 0) { //0a2b
+    v89 -= 1
+    goto(l2621)
+  }
+  print("\"Thanks for nothing!\"")
+  v220 = 20
+}
+l2621:
+if (f236) { //0a3d
+  reset(f236)
+  if ((v170 > 1 || v89 > 19)) { //0a45
+    if (v170 > 1) { //0a51
+      v170 -= 2
+      goto(l2657)
+    }
+    v89 -= 20
+l2657:
+    vCurrentScore += 3
+    print("You slip the bartender a twenty... and then, it happens!")
+    print("In a suddenly soft voice, the bartender asks, \"Whitey, exactly what are you looking for in the way of a good time?\"")
+    print("\"Just about anything,\" you tell him, \"but women, gambling, and money top the list.\"")
+    print("\"Well, Whitey,\" Woody whispers, \"there IS a little card game in our back room that is available by invitation only. It's pretty serious; it'll cost ya two hundred just to get into the game.\"")
+    print("He continues, \"If you think you can handle it, come back a little later with the two hundred, and I'll see what I can do for ya.\" With your heart pounding, you offer him your thanks, and assure him you'll be right back after you finish with Sweet Cheeks.")
+    v31 = 103
+    v223 = 100
+    v220 = 20
+    goto(l2731)
+  }
+  if (v171 > 0) { //0a7a
+    v171 -= 1
+    goto(l2731)
+  }
+  print("\"Gee! Thanks, Mac!\"")
+  if (v170 > 0) { //0a89
+    v170 -= 1
+    v171 += 9
+    goto(l2731)
+  }
+  if (v89 > 0) { //0a99
+    v89 -= 1
+    goto(l2731)
+  }
+  print("\"Thanks for nothing!\"")
+  v220 = 20
+}
+l2731:
+if (f237) { //0aab
+  reset(f237)
+  if (v170 < 20) { //0ab3
+    stop.cycling(o2)
+    print("\"Hey, buddy, this ain't no charity show!\"")
+    print("\"I told you, Whitey,\" says Woody, \"I've gotta see two hundred cash just to open the door.\"")
+    set(f140)
+    goto(l2767)
+  }
+  set(f238)
+  vCurrentScore += 1
+  v170 -= 20
+  print("\"So, you want to try your luck,\" says Woody. \"Come on, Whitey. Follow me.\"")
+}
+l2767:
+if (f238) { //0acf
+  reset(f238)
+  v220 = 200
+}
+if ((said("sit") || said("accident") || said("sit", "down") || said("sit", "bench") || said("use", "bench") || said("get", "bench") || said("get up") || said("get up", "up") || said("use", "bench") || said("get", "out", "bench") || said("get", "up"))) { //0ada
+  set(f30)
+}
+if (f30) { //0b20
+  reset(f30)
+  if (!f230) { //0b28
+    if (f224) { //0b2f
+      print("There are no empty stools at the bar.")
+      goto(l2953)
+    }
+    if ((posn(o0,84,107,95,117) || posn(o0,55,105,67,116))) { //0b3a
+      if (v31 < 100 && v31 > 103) { //0b4c
+        print("\"Excuse me, sir, but I'd rather you not sit in my lap. REALLY, dahrling! Some people!\"")
+        print("\"Some people!!\"")
+        goto(l2911)
+      }
+      print("This is no time to fool around. Sweet Cheeks is nervously watching your every move.")
+l2911:
+      goto(l2953)
+    }
+    if ((posn(o0,27,93,36,103) || posn(o0,50,93,59,103) || posn(o0,17,117,25,128) || posn(o0,40,117,49,128))) { //0b62
+      print("\"Excuse me, sir, but I'd rather you not sit in my lap. REALLY, dahrling! Some people!\"")
+      print("\"Some people!!\"")
+      goto(l2953)
+    }
+    print("Great idea: make yourself unnoticed by sitting on the floor!")
+l2953:
+    goto(l2985)
+  }
+  if (v31 == 102) { //0b8c
+    print("Just before leaving the cocktail lounge, you ask Sweet Cheeks to remain at the table, while you try to get Woody to open up.")
+    reset(f230)
+    start.update(o0)
+    observe.blocks(o0)
+    set.view(o0,13)
+    set.loop(o0,1)
+    set.cel(o0,0)
+    goto(l2985)
+  }
+  print("It would benefit you to stay put for the moment.")
+}
+l2985:
+if (f231) { //0ba9
+  reset(f231)
+  set(f230)
+  set(f36)
+  ignore.blocks(o0)
+  reposition.to(o0,86,114)
+  set.view(o0,231)
+  set.cel(o0,0)
+  stop.update(o0)
+  force.update(o0)
+}
+if (!f84 && v31 > 99 && v31 < 103) { //0bc5
+  if (said("examine", "broad")) { //0bd2
+    print("Sweet Cheeks is her normal, outgoing, bubbly self. She has dressed to the nines for her assignment, and is wearing an enticing perfume.")
+  }
+}
+if ((said("answer", "art") || said("call", "art"))) { //0bde
+  if ((f224 || v220 > 199 || v220 > 49)) { //0bf0
+    if (v31 < 102) { //0bfe
+      print("\"I'm here to push booze, Buddy. What can I getcha?\"")
+      goto(l3084)
+    }
+    print("\"You must not be all bad, Whitey; not when you know a cute, little number like that Sweet Cheeks!\"")
+l3084:
+    goto(l3089)
+  }
+  print("It seems no one notices you.")
+}
+l3089:
+if ((said("blow", "rol") || said("anyword", "breast", "rol") || said("anyword", "cunt", "rol") || said("anyword", "blow", "rol") || said("hug", "broad", "rol") || said("anyword", "anyword", "blow", "rol"))) { //0c11
+  if ((f84 || f232)) { //0c47
+    print("\"Why, Sonny! What a wonderful thought; but now ain't the time, Honey!\"")
+    goto(l3160)
+  }
+  set(f113)
+}
+l3160:
+if (said("answer", "broad")) { //0c58
+  if ((f84 || f232)) { //0c62
+    random(71,73,v152)
+    print(v152)
+    goto(l3206)
+  }
+  if (f109) { //0c75
+    random(53,55,v152)
+    print(v152)
+    goto(l3206)
+  }
+  print("It seems no one notices you.")
+}
+l3206:
+if ((said("chug") || said("chug", "rol"))) { //0c86
+  if (f255) { //0c96
+    print("You swig the rancid fluid until you see the bottom of the glass.")
+    reset(f255)
+    goto(l3237)
+  }
+  print("You have to buy one first.")
+}
+l3237:
+if (said("continue", "change")) { //0ca5
+  print("OK. You do!")
+}
+if ((said("examine", "down") || said("examine", "curb") || said("examine", "carpet"))) { //0cb1
+  print("The floor is covered by a plush, red carpet.")
+}
+if ((said("examine") || said("examine", "accident"))) { //0ccb
+  print("Around the dimly-lit lounge, people sit at tables. Behind the bar stands the bartender.")
+}
+if (said("examine", "by standers")) { //0cdd
+  print("They're engrossed in their own, little worlds.")
+}
+if ((said("examine") || said("examine", "accident") || said("examine", "accident"))) { //0ce9
+  print("Around the dimly-lit lounge, people sit at tables. Behind the bar stands the bartender.")
+}
+if (said("examine", "accident")) { //0d01
+  print("Constructed in the late 1800's, imported from France, this bar has had enough beverage passed across it to float the City of Lytton in alcohol.")
+}
+if (said("examine", "fence")) { //0d0d
+  print("The walls are adorned in an attractive fashion.")
+}
+if (said("examine", "d")) { //0d19
+  print("The only door is that darling, little, red, padded, vinyl number over there.")
+}
+if (said("examine", "art")) { //0d25
+  print("He's the kind of guy you'd expect to find working the bar in a place like this.")
+}
+if (said("examine", "counter")) { //0d31
+  print("The tables look ordinary, except for the wear of years of serious drinking.")
+}
+if ((said("o", "d") || said("c", "d") || said("hit", "d") || said("knock", "d"))) { //0d3d
+  if (f153) { //0d5b
+    if (v31 < 100) { //0d61
+      print("Hmm... the door is locked!")
+      goto(l3452)
+    }
+    if (f84) { //0d6d
+      print("\"Hey, Whitey,\" says Sweet Cheeks. \"When you've been walkin' the streets as long as I have, you don't need to climb stairs! What'cha say we take the elevator?\"")
+      set(f239)
+      goto(l3452)
+    }
+    print("Push on it.")
+l3452:
+    goto(l3457)
+  }
+  set(f113)
+}
+l3457:
+if (said("unlock", "d")) { //0d81
+  if (f153) { //0d8b
+    if (v31 < 100) { //0d91
+      print("This is private property. It's locked; don't mess with it!")
+      goto(l3500)
+    }
+    if (f84) { //0d9d
+      print("\"Hey, Whitey,\" says Sweet Cheeks. \"When you've been walkin' the streets as long as I have, you don't need to climb stairs! What'cha say we take the elevator?\"")
+      set(f239)
+      goto(l3500)
+    }
+    print("Push on it.")
+  }
+}
+l3500:
+if (!f226 && !f239 && posn(o0,88,84,95,84)) { //0dac
+  if (v31 < 100) { //0dbc
+    print("Hmm... the door is locked!")
+    set(f239)
+    goto(l3556)
+  }
+  if (f84) { //0dca
+    print("\"Hey, Whitey,\" says Sweet Cheeks. \"When you've been walkin' the streets as long as I have, you don't need to climb stairs! What'cha say we take the elevator?\"")
+    set(f239)
+    goto(l3556)
+  }
+  start.update(o1)
+  end.of.loop(o1,f225)
+  set(f36)
+  stop.cycling(o0)
+  stop.motion(o0)
+  set(f226)
+}
+l3556:
+if (f225) { //0de4
+  reset(f225)
+  if (f226) { //0dec
+    new.room(78)
+    goto(l3577)
+  }
+  stop.update(o1)
+}
+l3577:
+if (f84) { //0df9
+  call(73)
+}
+return()

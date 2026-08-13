@@ -1,4 +1,371 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3d)}
+if (fNewRoom) { //0002
+  ignore.horizon(o0)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(105)
+  load.view(114)
+  load.sound(1)
+  load.sound(5)
+  load.sound(9)
+  load.sound(18)
+  v33 = 0
+  if (f97) { //001f
+    load.view(102)
+    animate.obj(o15)
+    set.view(o15,102)
+  }
+  if (!f104 && !f169) { //002c
+    load.view(37)
+    animate.obj(o2)
+    set.view(o2,37)
+    load.view(36)
+    load.view(52)
+    load.view(68)
+    load.view(77)
+  }
+  if ((f104 || f169)) { //0045
+    load.view(68)
+    load.view(66)
+    load.view(77)
+  }
+  if (v86 == 0) { //0055
+    animate.obj(o1)
+    set.view(o1,36)
+    position(o1,91,71)
+    follow.ego(o1,10,f22)
+    set(f23)
+    v30 = 250
+    v31 = 2
+  }
+  if (v86 == 2) { //0071
+    animate.obj(o1)
+    set.view(o1,66)
+    position(o1,91,71)
+    follow.ego(o1,10,f22)
+    set(f23)
+  }
+  if (v86 == 4) { //0087
+    animate.obj(o1)
+    set.view(o1,77)
+    position(o1,73,113)
+    set.cel(o1,3)
+    stop.cycling(o1)
+    step.size(o1,v33)
+    animate.obj(o2)
+    set.view(o2,37)
+    position(o2,75,114)
+    draw(o2)
+  }
+  if (v86 == 5) { //00aa
+    animate.obj(o1)
+    set.view(o1,77)
+    position(o1,73,113)
+    set.cel(o1,3)
+    stop.cycling(o1)
+    step.size(o1,v33)
+  }
+  draw(o1)
+  draw(o0)
+  show.pic()
+}
+if ((v86 == 0 || v86 == 2)) { //00c7
+  if (!f26) { //00d3
+    set(f26)
+    sound(1,f148)
+  }
+}
+if (f22 && f23) { //00df
+  if (f79) { //00e7
+    reset(f22)
+    reset(f23)
+    print("The giant cannot see you since you are invisible.")
+    wander(o1)
+    goto(l320)
+  }
+  if (f102) { //00f8
+    reset(f22)
+    reset(f23)
+    print("You are fortunate that you have the magic shield or this giant would cause problems for you.")
+    wander(o1)
+    goto(l320)
+  }
+  if (f73) { //0109
+    reset(f22)
+    reset(f23)
+    print("The fairy godmother's spell is protecting you.")
+    wander(o1)
+    goto(l320)
+  }
+  if (!f102 && !f79 && !f73) { //011a
+    if ((v86 == 0 || v86 == 2)) { //0127
+      reset(f22)
+      reset(f23)
+      set.view(o0,114)
+      print("Be a little more careful next time.  This giant is mean!")
+      wander(o1)
+      set(f63)
+    }
+  }
+}
+l320:
+if (fTriggerLine) { //0140
+  set(f199)
+  reset(fTriggerLine)
+  program.control()
+  if (!f79) { //014b
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  sound(5,f159)
+  erase(o0)
+}
+if (f159) { //015e
+  reset(f159)
+  set(f20)
+}
+if (f20) { //0168
+  reset(f20)
+  print("You know you can't walk on clouds.")
+  set(f63)
+}
+if (said("check", "giant")) { //0174
+  if (v86 == 2) { //017e
+    print("The giant is enormous!  He does look rather stupid, though.")
+  }
+  if (v86 == 0) { //0187
+    print("The enormous giant has been carrying that heavy chest for longer than he can remember.")
+  }
+  if (v86 == 1) { //0190
+    print("The giant is sleeping with a chest.")
+  }
+  if (v86 == 3) { //0199
+    print("The huge giant has fallen asleep and is now snoring loudly.")
+  }
+  if (v86 == 4) { //01a2
+    print("The giant lies dead on the ground and there is a chest beside him.")
+  }
+  if (v86 == 5) { //01ab
+    print("The giant has been slain by a little pebble to the forehead.")
+  }
+}
+if ((said("speak", "giant") || said("hello") || said("say", "hello"))) { //01b4
+  if ((v86 == 2 || v86 == 0)) { //01ca
+    print("The giant is in no mood for talking.")
+  }
+  if ((v86 == 1 || v86 == 3)) { //01d8
+    print("It is not a good idea to wake a sleeping giant.")
+  }
+  if ((v86 == 4 || v86 == 5)) { //01e6
+    print("A dead giant does not have a lot to say.")
+  }
+}
+if (!f104 && !f169) { //01f4
+  if (said("check", "chest")) { //01fe
+    print("The magic chest appears to have been fashioned from ebony and rimmed on the edges with gold.")
+  }
+}
+if (!f104) { //020a
+  if ((said("acquire", "chest") || said("acquire", "chest", "giant"))) { //0211
+    if (v86 == 0) { //0225
+      print("The giant is protecting the magic chest.")
+    }
+    if (f169) { //022e
+      print("There is no chest around here to get.")
+    }
+    distance(o0,o1,v70)
+    if (v86 == 1) { //023a
+      if (v70 > 30) { //0241
+        print("There is no way you can get the chest from here!")
+        goto(l614)
+      }
+      erase(o1)
+      set.view(o1,68)
+      stop.motion(o1)
+      draw(o1)
+      print("Very carefully, you slip the magic chest from the sleeping giant's arms.")
+      set(f104)
+      set(f169)
+      vCurrentScore += 8
+      get(i2)
+      v74++
+      v86 = 3
+    }
+l614:
+    distance(o0,o2,v62)
+    if (v86 == 4) { //026a
+      if (v62 > 30) { //0271
+        print("There is no way you can get the chest from here!")
+        goto(l655)
+      }
+      erase(o2)
+      print("It's easy to take a magic chest from a dead giant.")
+      set(f104)
+      set(f169)
+      vCurrentScore += 8
+      get(i2)
+      v74++
+      v86 = 5
+    }
+  }
+}
+l655:
+if (f97) { //028f
+  distance(o0,o1,v71)
+  if ((said("use", "sling") || said("a", "sling"))) { //0299
+    if (!f93) { //02ab
+      print("You need some kind of small rock to use the sling.")
+    }
+    if (f93 && v71 < 20) { //02b4
+      print("The giant is to close for the slingshot to be effective.  I would suggest you RUN!")
+    }
+    if (f93 && !f169 && !f79 && v86 == 0 && v71 > 19 && !f199) { //02bf
+      reset(f23)
+      get.posn(o0,v100,v101)
+      position(o15,100,v101)
+      erase(o0)
+      draw(o15)
+      sound(18,f148)
+      end.of.loop(o15,f24)
+      print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.")
+      reset(f93)
+      drop(i13)
+      vCurrentScore -= 1
+    }
+    if (f93 && f169 && !f79 && v86 == 2 && v71 > 19) { //02f1
+      reset(f23)
+      get.posn(o0,v100,v101)
+      position(o15,100,v101)
+      erase(o0)
+      draw(o15)
+      sound(18,f148)
+      end.of.loop(o15,f25)
+      print("You put the pebble in the sling, take careful aim, and luckily hit the giant in the forehead!  He falls down dead.")
+      reset(f93)
+      drop(i13)
+      vCurrentScore -= 1
+    }
+    if (f93 && !f169 && f79) { //031f
+      if ((v86 == 0 || v86 == 2)) { //032a
+        print("Not when you're invisible!")
+      }
+    }
+    if (f93) { //0338
+      if ((v86 == 1 || v86 == 3)) { //033e
+        print("It would be rather cowardly of you to kill a giant while he is asleep!")
+      }
+    }
+  }
+}
+if (f24) { //034c
+  reset(f24)
+  erase(o15)
+  set.view(o0,0)
+  position(o0,100,v101)
+  draw(o0)
+  erase(o1)
+  set.view(o1,77)
+  step.size(o1,v33)
+  draw(o1)
+  end.of.loop(o1,f148)
+  get.posn(o1,v60,v61)
+  position(o2,60,v61)
+  draw(o2)
+  v86 = 4
+  vCurrentScore += 3
+}
+if (f25) { //037c
+  reset(f25)
+  erase(o15)
+  set.view(o0,0)
+  position(o0,100,v101)
+  draw(o0)
+  erase(o1)
+  set.view(o1,77)
+  step.size(o1,v33)
+  draw(o1)
+  end.of.loop(o1,f148)
+  v86 = 5
+}
+if (f67) { //039f
+  if ((said("use", "dagger") || said("cast", "dagger"))) { //03a5
+    reset(f67)
+    drop(i1)
+    print("I don't believe it!  How could you miss something so big?")
+    vCurrentScore -= 5
+  }
+}
+if (said("kill", "giant")) { //03c0
+  if (v86 == 0) { //03ca
+    print("How?")
+  }
+  if (v86 == 2) { //03d3
+    print("There is no reason to kill the giant.")
+  }
+  if ((v86 == 1 || v86 == 3)) { //03dc
+    print("It would be rather cowardly of you to kill a giant while he is asleep!")
+  }
+  if ((v86 == 4 || v86 == 5)) { //03ea
+    print("The giant has been slain by a little pebble to the forehead.")
+  }
+}
+if ((said("check", "room") || said("check", "clouds"))) { //03f8
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.")
+}
+if (v86 == 0) { //040c
+  v30--
+  if (v30 == 0) { //0415
+    if (v31 > 0) { //041c
+      v31--
+      v30 = 250
+    }
+  }
+}
+if (v30 == 1 && v31 == 0) { //0428
+  reset(f23)
+  v30 = 0
+  stop.motion(o1)
+  erase(o1)
+  set.view(o1,52)
+  step.size(o1,v33)
+  draw(o1)
+  v86 = 1
+  if (!f205) { //0446
+    set(f205)
+    vCurrentScore += 7
+  }
+  print("What luck!  The huge giant fell fast asleep!")
+}
+if ((v86 == 1 || v86 == 3)) { //0454
+  if (!f28) { //0460
+    set(f28)
+    sound(9,f27)
+  }
+  if (f27) { //046c
+    reset(f27)
+    reset(f28)
+  }
+}
+if (f63) { //0476
+  goto(l1206)
+}
+if (vWhichEgoBorder != 0) { //047f
+  if (v86 == 1) { //0487
+    v86 = 0
+  }
+  if (v86 == 3) { //0491
+    v86 = 2
+  }
+}
+if (vWhichEgoBorder == 2) { //049b
+  new.room(59)
+}
+if (vWhichEgoBorder == 4) { //04a4
+  new.room(57)
+}
+if (vWhichEgoBorder == 3) { //04ad
+  new.room(61)
+}
+l1206:
+return()

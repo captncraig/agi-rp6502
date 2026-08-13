@@ -1,4 +1,109 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x21)}
+if (fNewRoom) { //0002
+  animate.obj(o7)
+  set.view(o7,29)
+  set.loop(o7,1)
+  position(o7,60,156)
+  step.time(o7,124)
+  cycle.time(o7,v124)
+  draw(o7)
+  if (v48 == 10) { //001c
+    v230 = 1
+    v231 = 2
+    v232 = 3
+    v233 = 4
+    goto(l84)
+  }
+  if (v48 == 30) { //0032
+    v230 = 8
+    v231 = 9
+    v232 = 10
+    v233 = 11
+    goto(l84)
+  }
+  v230 = 15
+  v231 = 16
+  v232 = 17
+  v233 = 18
+l84:
+  return()
+}
+distance(o0,o7,v152)
+if (v152 < v61) { //0059
+  set(f109)
+}
+if (said("examine", "art", "rol")) { //0062
+  if (!f109) { //006e
+    set(f113)
+    goto(l124)
+  }
+  print("He doesn't clean very well, but he sure cleans slow!")
+}
+l124:
+if ((said("hello") || said("answer", "art"))) { //007c
+  if (!f109) { //008c
+    set(f113)
+    goto(l202)
+  }
+  if (!f225) { //0098
+    print(v230)
+    set(f225)
+    goto(l202)
+  }
+  if (!f226) { //00a6
+    print(v231)
+    set(f226)
+    goto(l202)
+  }
+  if (!f227) { //00b4
+    print(v232)
+    set(f227)
+    goto(l202)
+  }
+  print(v233)
+  reset(f225)
+  reset(f226)
+  reset(f227)
+}
+l202:
+if (!f224 && v152 < 12) { //00ca
+  set(f224)
+  if (v48 == 10) { //00d6
+    random(5,7,v152)
+    print(v152)
+    goto(l273)
+  }
+  if (v48 == 30) { //00e6
+    random(12,14,v152)
+    print(v152)
+    goto(l273)
+  }
+  if (v48 == 40 && vPrevRoom == 47 && v39 == 13) { //00f6
+    print("\"Woooo wheeee! Lookee whats we gots here!\" laughs Jefferson.")
+    v48 = 50
+    goto(l273)
+  }
+  random(19,21,v152)
+  print(v152)
+}
+l273:
+if (!f109) { //0111
+  reset(f224)
+}
+if (v220 == 0) { //011a
+  v129 = 1
+  random(21,60,v144)
+  random(145,166,v145)
+  move.obj(o7,v144,v145,129,f220)
+  v220++
+}
+if (v220 == 2) { //0134
+  v129 = 1
+  random(70,110,v144)
+  random(145,166,v145)
+  move.obj(o7,v144,v145,129,f220)
+  v220++
+}
+if (v220 == 4) { //014e
+  v220 = 0
+}
+return()

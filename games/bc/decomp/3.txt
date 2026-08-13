@@ -1,4 +1,70 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(74)
+  if ((f59 || v57 > 0)) { //000a
+    random(0,255,v61)
+    if (v61 < 88) { //0019
+      load.logic(104)
+      set(f201)
+    }
+  }
+  if (f108) { //0024
+    load.logic(116)
+    set(f200)
+    set(f95)
+    random(0,255,v61)
+    if (v61 < 125) { //0034
+      load.logic(114)
+      set(f202)
+    }
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 8 && v38 > 127) { //0045
+    v38 = 127
+  }
+  position(o0,38,v39)
+  draw(o0)
+  if (f201) { //0058
+    call(104)
+    position(o7,146,141)
+  }
+  if (f200) { //0064
+    call(116)
+  }
+  if (f202) { //006c
+    call(114)
+  }
+  show.pic()
+  return()
+}
+if (f130 && !f78) { //0076
+  if (posn(o0,0,95,159,167)) { //007f
+    print("You enjoy walking through the peaceful meadows of Caer Dallben.")
+    goto(l144)
+  }
+  print("The large trees seem to welcome you. Many swinging vines hang from the branches.")
+}
+l144:
+if (f202) { //0090
+  call(114)
+}
+if (f200) { //0098
+  call(116)
+}
+if (f201) { //00a0
+  call(104)
+}
+if (vWhichEgoBorder == 1) { //00a8
+  new.room(23)
+}
+if (vWhichEgoBorder == 3) { //00b1
+  new.room(8)
+}
+if (vWhichEgoBorder == 4) { //00ba
+  new.room(2)
+}
+if (vWhichEgoBorder == 2) { //00c3
+  new.room(4)
+}
+return()

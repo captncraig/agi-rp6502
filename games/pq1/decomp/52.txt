@@ -1,4 +1,326 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f121)
+  load.sound(1)
+  load.sound(2)
+  load.view(66)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  ignore.blocks(o1)
+  set.priority(o1,4)
+  set.view(o1,66)
+  set.loop(o1,0)
+  set.cel(o1,0)
+  position(o1,51,120)
+  draw(o1)
+  stop.update(o1)
+  v152 = 4
+  cycle.time(o1,v152)
+  if (v134 > 0) { //0036
+    set.loop(o0,v147)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l122)
+  }
+  position(o0,80,140)
+  if (vPrevRoom == 43) { //004e
+    position(o0,54,120)
+  }
+  if (vPrevRoom == 49) { //0059
+    position(o0,129,120)
+  }
+  if (vPrevRoom == 7) { //0064
+    position(o0,15,137)
+  }
+  if (vPrevRoom == 6) { //006f
+    position(o0,150,140)
+  }
+l122:
+  add.to.pic(66,1,0,79,125,11,0)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f225)
+if (posn(o0,68,121,99,128)) { //0088
+  set(f225)
+}
+if (f223) { //0094
+  reset(f223)
+  toggle(f222)
+  stop.update(o1)
+}
+reset(f226)
+if (posn(o0,11,130,16,144)) { //00a2
+  set(f226)
+}
+if (!f226) { //00ae
+  reset(f224)
+  if (f222) { //00b7
+    ignore.blocks(o0)
+    goto(l196)
+  }
+  observe.blocks(o0)
+l196:
+  goto(l253)
+}
+if (fTriggerLine && !f224) { //00c7
+  set(f224)
+  observe.blocks(o0)
+  if (!(v39 > 0)) { //00d4
+    ignore.blocks(o0)
+    goto(l253)
+  }
+  if (has(i4) && v39 != 8) { //00e1
+    print("You'd better return that radio extender. It makes an unsightly bulge in your trousers!")
+    goto(l253)
+  }
+  if (has(i1)) { //00f0
+    print("Sonny, you can't use the patrol car now. You'd better return the keys to the key board.")
+    goto(l253)
+  }
+  ignore.blocks(o0)
+}
+l253:
+if (posn(o0,50,116,64,119)) { //00fd
+  new.room(43)
+}
+if (posn(o0,124,116,138,119)) { //0109
+  new.room(49)
+}
+if (posn(o0,11,130,14,144)) { //0115
+  new.room(7)
+}
+if (vWhichEgoBorder == 2) { //0121
+  new.room(6)
+}
+if (f138 && v98 == 4 && v31 < 3 && vPrevRoom == 6) { //012a
+  v117 = 0
+  set(f140)
+  if (v39 == 0) { //013e
+    print("Although you're anxious to get on your beat, missing Sgt. Dooley's briefing is not wise.")
+    goto(l332)
+  }
+  print("So! Did you decide to just skip work today, or what?")
+}
+l332:
+reset(f220)
+if (posn(o0,70,120,115,128)) { //014e
+  set(f220)
+}
+if (!fEnteredCommand) { //015a
+  goto(l1255)
+}
+if (said("o", "d")) { //0164
+  if (posn(o0,50,120,64,125)) { //016e
+    if (f222) { //0178
+      print("It IS open!")
+      goto(l395)
+    }
+    start.update(o1)
+    end.of.loop(o1,f223)
+    sound(1,f154)
+l395:
+    goto(l423)
+  }
+  if ((posn(o0,16,131,29,144) || posn(o0,120,120,140,132))) { //018e
+    print("A sign on the door says, \"This door to remain open during business hours.\"")
+    goto(l423)
+  }
+  set(f113)
+}
+l423:
+if (said("c", "d")) { //01a7
+  if (posn(o0,50,120,64,125)) { //01b1
+    if (!f222) { //01bb
+      print("The door is closed.")
+      goto(l463)
+    }
+    start.update(o1)
+    reverse.loop(o1,f223)
+    sound(2,f154)
+l463:
+    goto(l491)
+  }
+  if ((posn(o0,16,131,29,144) || posn(o0,120,120,140,132))) { //01d2
+    print("A sign on the door says, \"This door to remain open during business hours.\"")
+    goto(l491)
+  }
+  set(f113)
+}
+l491:
+if ((posn(o0,16,131,29,144) || posn(o0,120,120,140,132))) { //01eb
+  if (said("examine", "d")) { //01fd
+    print("A sign on the door says, \"This door to remain open during business hours.\"")
+  }
+}
+if ((said("get", "memo", "rol") || said("get", "blank", "memo", "rol"))) { //0209
+  if (!f220) { //0221
+    set(f113)
+    goto(l572)
+  }
+  if (!(v96 > 0)) { //022d
+    print("You don't need to submit a memo at this time. But, if you did, this would be a perfect place to do it!")
+    goto(l572)
+  }
+  print("They must remain on the table.")
+}
+l572:
+if ((said("request", "transfer", "rol") || said("print", "envelope", "rol") || said("print", "note", "rol") || said("print", "memo", "rol"))) { //023c
+  if (!f220) { //0262
+    set(f113)
+    goto(l675)
+  }
+  if (!(v96 > 0)) { //026e
+    print("You don't need to submit a memo at this time. But, if you did, this would be a perfect place to do it!")
+    goto(l675)
+  }
+  if (!f131) { //027b
+    if (!f221) { //0282
+      print("You write out a request for transfer to the \"Narcotics Division.\"")
+      set(f221)
+      goto(l658)
+    }
+    print("Carefully you double-check your request.")
+l658:
+    goto(l675)
+  }
+  if (v31 < 4) { //0295
+    print("Your prior request for transfer is still current.")
+    goto(l675)
+  }
+  print("Your request for transfer has been granted. No further memos are required.")
+}
+l675:
+if ((said("administer", "memo", "rol") || said("administer", "envelope", "rol") || said("administer", "note", "rol") || said("administer", "memo", "rol") || said("drop", "basket", "rol") || said("drop", "memo", "basket", "rol") || said("move", "memo", "rol") || said("drop", "memo", "basket", "rol") || said("drop", "basket", "rol"))) { //02a3
+  if (!f220) { //02f5
+    set(f113)
+    goto(l825)
+  }
+  if (!(v96 > 0)) { //0301
+    print("You don't need to submit a memo at this time. But, if you did, this would be a perfect place to do it!")
+    goto(l825)
+  }
+  if (!f131) { //030e
+    if (!f221) { //0315
+      print("Submitting a blank memo will get you nowhere.")
+      goto(l808)
+    }
+    print("You place your request into the \"In\" basket.")
+    set(f131)
+    vCurrentScore += 2
+l808:
+    goto(l825)
+  }
+  if (v31 < 4) { //032b
+    print("Your prior request for transfer is still current.")
+    goto(l825)
+  }
+  print("Your request for transfer has been granted. No further memos are required.")
+}
+l825:
+if (said("examine", "below", "counter")) { //0339
+  if (!f220) { //0345
+    set(f113)
+    goto(l853)
+  }
+  print("You look under the table and conclude...")
+  print("...Everyone here must chew gum!")
+}
+l853:
+if ((said("climb", "counter") || said("climb", "on", "counter"))) { //0355
+  if (!f220) { //0369
+    set(f113)
+    goto(l887)
+  }
+  print("Climbing up on this table would rip the crotch right out of your trousers!")
+}
+l887:
+if ((said("examine", "counter") || said("examine", "on", "counter"))) { //0377
+  if (!f220) { //038b
+    set(f113)
+    goto(l921)
+  }
+  print("On the table is a basket marked \"In.\" This is where you submit your reports and memos. Next to the basket is a pad of blank memos.")
+}
+l921:
+if ((said("examine", "basket", "rol") || said("examine", "memo", "basket", "rol") || said("look in", "basket", "rol"))) { //0399
+  if (!f220) { //03b9
+    set(f113)
+    goto(l1001)
+  }
+  if (f131) { //03c5
+    if (f221) { //03cb
+      print("Your freshly-written request for transfer is in the \"In\" basket.")
+      goto(l996)
+    }
+    if (v31 < 4) { //03d6
+      print("Your request is being processed in the usual bureaucratic manner. Having been removed by the officially-designated individual, it is at this very moment being distributed, in triplicate, to the LPD brass.")
+      goto(l996)
+    }
+    print("Your request for transfer has been granted. No further memos are required.")
+l996:
+    goto(l1001)
+  }
+  print("The basket is empty.")
+}
+l1001:
+if ((said("get", "basket") || said("get", "about", "basket"))) { //03e9
+  if (!f220) { //03fd
+    set(f113)
+    goto(l1035)
+  }
+  print("Sorry, but the \"In\" basket stays here!")
+}
+l1035:
+if ((said("examine", "memo", "rol") || said("examine", "blank", "memo", "rol") || said("examine", "accident", "memo", "rol"))) { //040b
+  if (!f220) { //042d
+    set(f113)
+    goto(l1097)
+  }
+  if (f221 && !f131) { //0439
+    print("It looks good enough to submit!")
+    goto(l1097)
+  }
+  print("On the table you see a stack of blank office memos.")
+}
+l1097:
+if ((said("examine") || said("examine", "accident"))) { //0449
+  print("There is a table against the far wall below a photograph. The three doorways lead to Lt. Morgan's office, to the outside, and to the Narcotics Office.")
+}
+if (said("examine", "painting")) { //045b
+  print("A group photograph of the Lytton Superior Court Justices hangs on the wall.")
+}
+if (said("get", "painting", "rol")) { //0467
+  print("You really don't need it.")
+}
+if (said("examine", "pane")) { //0475
+  print("You try to look through the window but you can't see in, since the blinds are shut.")
+}
+if (said("knock", "on", "pane")) { //0481
+  if (!f225) { //048d
+    set(f113)
+    goto(l1179)
+  }
+  print("Knocking on the window brings no response.")
+}
+l1179:
+if (said("break", "pane")) { //049b
+  print("No way. Cops don't break windows!")
+}
+if ((said("examine", "up") || said("examine", "ceiling"))) { //04a7
+  print("It's another acoustic ceiling, complete with florescent lighting.")
+}
+if ((said("examine", "down") || said("examine", "curb"))) { //04bb
+  print("Below your feet is a clean, gray-tiled floor.")
+}
+if (said("o", "pane")) { //04cf
+  print("This window does not open.")
+}
+if (said("print", "report")) { //04db
+  print("You don't need to write any reports right now, but if you did, this would be a perfect place to do it!")
+}
+l1255:
+return()

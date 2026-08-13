@@ -1,4 +1,63 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(98)
+  set(f97)
+  if (f83) { //000c
+    load.logic(118)
+    set(f200)
+  }
+  if (f60) { //0016
+    load.logic(116)
+    set(f201)
+  }
+  load.view(124)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  set.view(o2,124)
+  position(o2,21,77)
+  ignore.horizon(o2)
+  animate.obj(o3)
+  set.view(o3,124)
+  position(o3,151,86)
+  ignore.horizon(o3)
+  if (vPrevRoom == 54) { //003e
+    position(o0,30,99)
+    goto(l101)
+  }
+  if (vPrevRoom == 58) { //004c
+    get.posn(o0,v62,v63)
+    if (v63 < 121) { //0057
+      v63 = 121
+      position(o0,62,v63)
+    }
+  }
+l101:
+  draw(o2)
+  draw(o3)
+  draw(o0)
+  if (f200) { //006b
+    call(118)
+  }
+  if (f201) { //0073
+    call(116)
+  }
+  show.pic()
+  return()
+}
+if (f130) { //007d
+  print("You are roaming around in the hidden passageways beneath the Horned King's dungeon.")
+}
+if (vWhichEgoBorder == 1) { //0085
+  new.room(54)
+}
+if (vWhichEgoBorder == 2) { //008e
+  new.room(58)
+}
+if (f201) { //0097
+  call(116)
+}
+if (f200) { //009f
+  call(118)
+}
+return()

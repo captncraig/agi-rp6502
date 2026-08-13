@@ -1,4 +1,326 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(58)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (vPrevRoom == 76) { //0010
+    position(o0,87,67)
+  }
+  if (vPrevRoom == 78) { //001b
+    position(o0,9,95)
+  }
+  if (!f188) { //0026
+    load.view(49)
+  }
+  if (!f189) { //002f
+    load.view(48)
+  }
+  if (!f186) { //0038
+    load.sound(21)
+    load.view(47)
+    load.view(79)
+  }
+  if (!f187) { //0045
+    load.view(81)
+    load.view(54)
+  }
+  if (!f186) { //0050
+    add.to.pic(79,1,0,94,156,14,0)
+    add.to.pic(79,1,0,120,156,14,0)
+    add.to.pic(79,1,0,106,144,13,0)
+    add.to.pic(79,1,0,128,156,14,0)
+    add.to.pic(79,1,0,111,78,7,0)
+    add.to.pic(79,0,0,57,72,7,0)
+    add.to.pic(79,0,0,45,77,7,0)
+    add.to.pic(79,0,0,36,88,8,0)
+    add.to.pic(79,0,0,16,140,12,0)
+    add.to.pic(79,0,0,30,150,13,0)
+  }
+  if (!f187) { //00a7
+    animate.obj(o16)
+    set.view(o16,54)
+    position(o16,121,98)
+    set.priority(o16,10)
+    ignore.blocks(o16)
+    draw(o16)
+    if (f186) { //00be
+      set(f20)
+      v30 = 27
+    }
+  }
+  if (!f186) { //00c9
+    animate.obj(o2)
+    set.view(o2,47)
+    position(o2,56,108)
+    if (!f87) { //00d9
+      set(f21)
+      follow.ego(o2,5,f22)
+      goto(l235)
+    }
+    wander(o2)
+l235:
+    ignore.blocks(o2)
+    draw(o2)
+  }
+  if (!f188) { //00ef
+    animate.obj(o1)
+    set.view(o1,49)
+    position(o1,131,128)
+    draw(o1)
+  }
+  if (f187 && !f189) { //0101
+    animate.obj(o3)
+    set.view(o3,48)
+    position(o3,115,106)
+    draw(o3)
+  }
+  draw(o0)
+  show.pic()
+}
+if (!f186) { //0118
+  if (!f26) { //011f
+    set(f26)
+    sound(21,f27)
+  }
+  if (f27) { //012b
+    reset(f26)
+    reset(f27)
+  }
+}
+if (!f186 && f87) { //0135
+  observe.blocks(o0)
+  if (posn(o0,80,110,139,141)) { //0140
+    if (!f25) { //014a
+      print("The King's magic prevents you from getting close enough to harm him.")
+      set(f25)
+    }
+  }
+}
+if (f186 && !f187) { //0155
+  ignore.blocks(o0)
+  if (posn(o0,31,110,158,98)) { //0160
+    if (!f25) { //016a
+      print("The King's magic prevents you from getting close enough to harm him.")
+      set(f25)
+    }
+  }
+}
+if (f186 && f187) { //0175
+  ignore.blocks(o0)
+}
+v30--
+if (f20 && v30 == 1) { //0181
+  v30 = 0
+  erase(o16)
+  set.view(o16,81)
+  position(o16,115,117)
+  set.loop(o16,1)
+  draw(o16)
+  move.obj(o16,33,114,0,f23)
+  animate.obj(o3)
+  set.view(o3,48)
+  position(o3,115,106)
+  draw(o3)
+  print("After his followers have danced away, the King of the leprechauns realizes he can lead best by following, and leaves, forgetting his beautiful sceptre.")
+}
+if (f23) { //01ae
+  reset(f23)
+  move.obj(o16,5,85,0,f24)
+}
+if (f24) { //01bc
+  set(f187)
+  reset(f20)
+  reset(f24)
+  erase(o16)
+}
+if (f21) { //01ca
+  reset(f21)
+  print("I hope you can escape from the leprechauns, but it doesn't look good for you.")
+}
+if (f22) { //01d4
+  reset(f22)
+  print("The leprechaun, with much support from his peers, catches you and refuses to let go.  I think you will be here for a long, long time.")
+  stop.motion(o0)
+  set(f95)
+  stop.cycling(o0)
+  stop.motion(o2)
+  stop.cycling(o2)
+  set(f63)
+}
+if (f171) { //01ea
+  if (said("play", "fiddle")) { //01f0
+    if (!f186) { //01fa
+      print("You find playing the fiddle here very fun, but the dance floor is in the other room.")
+      goto(l520)
+    }
+    print("You play a little tune on the fiddle to amuse yourself.")
+  }
+}
+l520:
+if (said("check", "throne")) { //0208
+  if (!f20 && !f186) { //0212
+    print("The King of the leprechauns is sitting on the stone throne.")
+    goto(l547)
+  }
+  print("This is a rather simple stone throne, compared to King Edward's.")
+}
+l547:
+if (!f186 && f87) { //0223
+  if (said("check", "leprechaun")) { //022c
+    print("The little green men do not seem to be noticing you; perhaps because of the fourleaf clover.")
+  }
+  if ((said("speak", "leprechaun") || said("hello") || said("say", "hello"))) { //0238
+    print("I would not try talking to the leprechauns.  You might say the wrong thing.")
+  }
+  if (said("kill", "leprechaun")) { //0250
+    print("You would not get all of them before they got you.")
+  }
+}
+if (!f186 && !f87) { //025c
+  if (said("ANYWORD", "leprechaun")) { //0266
+    print("The leprechauns seem irritated by your invasion of their territory.  I would be real careful about what I say and do right now!")
+  }
+}
+if (f186) { //0272
+  if (said("ANYWORD", "leprechaun")) { //0278
+    print("There aren't any leprechauns here.")
+  }
+}
+if (!f187) { //0284
+  if (!f20) { //028b
+    if ((said("check", "king") || said("check", "king", "leprechaun") || said("check", "leprechaun", "king"))) { //0292
+      if (!f188) { //02ae
+        print("The King of the leprechauns is sitting on the stone throne. The magic shield is next to the throne.")
+        goto(l700)
+      }
+      print("The King of the leprechauns is sitting on the stone throne.")
+    }
+  }
+l700:
+  if (f20) { //02bc
+    if ((said("check", "king") || said("check", "king", "leprechaun") || said("check", "leprechaun", "king"))) { //02c2
+      print("The King is leaving.")
+    }
+  }
+  if ((said("speak", "king") || said("hello") || said("say", "hello"))) { //02e0
+    print("The leprechaun King ignores your words.")
+  }
+}
+if (f187) { //02f8
+  if (said("ANYWORD", "king")) { //02fe
+    print("The King of the leprechauns is no longer here.")
+  }
+}
+if ((said("check", "cave") || said("check", "room"))) { //030a
+  if (f188 && f189) { //031c
+    print("This is the throne room of the leprechaun King.")
+  }
+  if ((f20 || f187)) { //0326
+    if (f188 && !f189) { //0330
+      print("This is the throne room of the leprechaun King.  There is a sceptre next to the throne.")
+    }
+    if (!f188 && !f189) { //033b
+      print("This is the throne room of the leprechaun King.  There is a shield and a sceptre near the throne.")
+    }
+  }
+  if (!f20 && !f187) { //0347
+    if (!f188) { //0351
+      print("This is the throne room of the leprechaun King.  There is a shield next to the throne.")
+    }
+  }
+}
+if (said("check", "stairs")) { //035a
+  if (posn(o0,56,10,60,156)) { //0364
+    print("The stairs go up a narrow tunnel.")
+    goto(l885)
+  }
+  print("To see the stairs, you have to get closer.")
+}
+l885:
+if (!f102 && f188) { //0375
+  if (said("check", "shield")) { //037e
+    print("I think there might have been a shield here once, but someone has since taken it.")
+  }
+  if (said("acquire", "shield")) { //038a
+    print("The shield is no longer here.")
+  }
+}
+if (!f188) { //0396
+  if (said("check", "shield")) { //039d
+    if (posn(o0,121,118,144,138)) { //03a7
+      print("It is made of titanium and is rimmed with jewels.")
+      goto(l952)
+    }
+    print("You need to get closer to see it clearly.")
+  }
+l952:
+  if (said("acquire", "shield")) { //03b8
+    if (posn(o0,121,118,144,138)) { //03c2
+      erase(o1)
+      if (f186) { //03ce
+        print("You take the magic shield and carefully put it in your pocket.")
+        goto(l987)
+      }
+      print("As inconspicuously as possible, you add the shield to what you are carrying.")
+l987:
+      set(f188)
+      set(f102)
+      get(i21)
+      vCurrentScore += 8
+      v74++
+      goto(l1003)
+    }
+    print("You must be closer to do that.")
+  }
+}
+l1003:
+if (f189 && !f113) { //03eb
+  if (said("check", "sceptre")) { //03f4
+    print("I see no sceptre in the vicinity.")
+  }
+  if (said("acquire", "sceptre")) { //0400
+    print("There is no sceptre in sight to get.")
+  }
+}
+if (!f189) { //040c
+  if (posn(o0,103,100,142,142)) { //0413
+    if ((f187 || f20)) { //041d
+      if (said("check", "sceptre")) { //0427
+        print("The sceptre is fashioned from gold and silver, and accented with emeralds.")
+      }
+      if (said("acquire", "sceptre")) { //0433
+        erase(o3)
+        set(f189)
+        set(f113)
+        print("Eagerly, you pick up the sceptre.")
+        get(i17)
+        vCurrentScore += 6
+      }
+    }
+    if (!f187 && !f20) { //044a
+      if (said("check", "sceptre")) { //0454
+        print("I see no sceptre right here.")
+      }
+      if (said("acquire", "sceptre")) { //0460
+        print("I see no sceptre to get around here.")
+      }
+    }
+  }
+  if (!(posn(o0,103,100,142,142))) { //046c
+    if ((said("check", "sceptre") || said("acquire", "sceptre"))) { //0477
+      print("You must be closer to do that.")
+    }
+  }
+}
+if (vWhichEgoBorder != 0) { //048b
+  if (f20) { //0493
+    set(f187)
+  }
+}
+if (vWhichEgoBorder == 1) { //049b
+  new.room(76)
+}
+if (posn(o0,0,0,1,167)) { //04a4
+  new.room(78)
+}
+return()

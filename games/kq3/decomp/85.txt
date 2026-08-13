@@ -1,4 +1,174 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f34)
+  if (vPrevRoom == 77) { //0010
+    v84 = 0
+  }
+  v57 = 60
+  v58 = 147
+  v32 = 85
+  v31 = 148
+  v56 = 7
+  load.sound(1)
+  load.logic(109)
+  call(109)
+  load.logic(116)
+  load.view(30)
+  load.view(0)
+  load.view(36)
+  load.view(37)
+  load.view(11)
+  load.view(24)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (v44 == 6) { //0042
+    set.view(o0,11)
+    position(o0,103,33)
+  }
+  if (v44 == 15) { //0050
+    set.view(o0,30)
+    position(o0,110,20)
+    set.loop(o0,0)
+    fix.loop(o0)
+  }
+  if (v44 == 0) { //0063
+    if (f48) { //006a
+      get.posn(o0,v40,v41)
+      if ((f199 || vPrevRoom == 77)) { //0074
+        reset(f223)
+        if (f199) { //0081
+          v187++
+          if (v187 == 2) { //0089
+            v183 = 1
+            new.room(82)
+          }
+        }
+        v226 = 1
+        v227 = 83
+l155:
+        if (v226 < 55) { //009b
+          if (v226 == 8) { //00a2
+            v226++
+            goto(l155)
+          }
+          get.room(v226,v228)
+          if (v228 == 255) { //00b1
+            set(f185)
+            set(f223)
+            put(v226,v227)
+          }
+          v226++
+          goto(l155)
+        }
+        start.motion(o0)
+        set.loop(o0,2)
+        position(o0,57,v58)
+        goto(l233)
+      }
+      if (vPrevRoom == 86) { //00d0
+        if (v41 > 144) { //00d7
+          position(o0,146,145)
+          goto(l233)
+        }
+        position(o0,146,138)
+      }
+    }
+l233:
+    release.loop(o0)
+  }
+  if (v44 == 30) { //00eb
+    set(f48)
+    position(o0,57,v58)
+    set.view(o0,0)
+    set(f47)
+  }
+  if (f47) { //00fd
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+if (f223 && f199) { //0107
+  reset(f223)
+  print("Adding insult to injury, all of your belongings have been taken from you again!")
+}
+if (v44 == 15 && fTriggerLine) { //0113
+  set.view(o0,11)
+  v44 = 6
+}
+if (v44 == 6 && !f46) { //0122
+  sound(1,f238)
+  set(f46)
+  get.posn(o0,v40,v41)
+  v41 = 120
+  ignore.blocks(o0)
+  set.priority(o0,13)
+  v36 = 3
+  move.obj(o0,v40,v41,36,f222)
+}
+if (f222) { //0146
+  stop.sound()
+  reset(f222)
+  set.view(o0,24)
+  reposition.to(o0,104,125)
+  set(f44)
+}
+if (v44 == 15 && !(obj.in.box(o0,108,20,118,94))) { //0158
+  prevent.input()
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  release.loop(o0)
+  start.motion(o0)
+  set.view(o0,0)
+  set.loop(o0,3)
+  v38 = 124
+  v225 = 6
+  move.obj(o0,v40,v38,225,f220)
+  set.scan.start()
+  if (f220) { //0182
+    reset(f220)
+    v44 = 201
+    set.priority(o0,13)
+    observe.blocks(o0)
+    observe.objs(o0)
+    accept.input()
+    reset.scan.start()
+  }
+  return()
+}
+call(109)
+call(116)
+if ((said("examine", "area") || said("examine") || said("examine", "carry"))) { //019b
+  print("You are in the dank cargo hold of the pirate ship. With caution, you look around the dim surroundings. Mostly, you see stacks of wooden crates. Looking upward, you notice a rope ladder dangling partway through an opening in the hold ceiling. The ladder is directly over the largest crate.")
+}
+if (said("examine", "hole")) { //01b3
+  print("You see the opening for the cargo hold high above you. A thin rope ladder hangs halfway down.")
+}
+if ((said("board", "carry") || said("climb", "out", "carry"))) { //01bf
+  print("Good idea! How?")
+}
+if ((said("examine", "up") || said("examine", "up", "ladder") || said("examine", "ladder"))) { //01d5
+  if (v44 == 201) { //01ef
+    print("The ladder is just out of reach.")
+  }
+  if (v44 == 15) { //01f8
+    print("The ladder is sagging under your weight.")
+  }
+  if ((v44 == 0 || v44 == 200)) { //0201
+    print("The ladder is far above you.")
+  }
+}
+if (vWhichEgoBorder == 2) { //020f
+  new.room(86)
+}
+if (v44 == 15 && vWhichEgoBorder == 1) { //0218
+  if (!f204) { //0222
+    vCurrentScore += 2
+    set(f204)
+  }
+  reset(f199)
+  new.room(83)
+}
+return()

@@ -1,4 +1,610 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  set.horizon(40)
+  v57 = 58
+  v58 = 124
+  v32 = 11
+  v31 = 54
+  v101 = 0
+  load.logic(104)
+  load.view(35)
+  load.view(11)
+  load.view(231)
+  load.sound(6)
+  load.sound(1)
+  load.view(88)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(88,0,0,82,141,15,4)
+  add.to.pic(88,0,1,123,140,15,4)
+  add.to.pic(88,0,2,98,133,15,4)
+  add.to.pic(88,0,3,100,144,15,4)
+  discard.view(88)
+  animate.obj(o1)
+  ignore.horizon(o1)
+  ignore.blocks(o1)
+  ignore.objs(o1)
+  position(o1,49,58)
+  set.view(o1,231)
+  draw(o1)
+  animate.obj(o2)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,115,33)
+  set.view(o2,231)
+  draw(o2)
+  if (v44 == 25) { //007b
+    set(f48)
+  }
+  if (f48) { //0084
+    if (vPrevRoom == 43) { //008a
+      if (!(v105 > 0)) { //0091
+        v39 = 3
+        position(o0,104,133)
+        start.motion(o0)
+        goto(l210)
+      }
+      set(f229)
+      load.view(v105)
+      set.view(o0,v105)
+      set.loop(o0,v106)
+      fix.loop(o0)
+      if (v106 == 3) { //00b1
+        position(o0,52,143)
+        goto(l195)
+      }
+      position(o0,57,143)
+l195:
+      set.priority(o0,15)
+      set(f35)
+      program.control()
+      stop.motion(o0)
+      set(f46)
+      draw(o0)
+      v220 = 5
+l210:
+      goto(l275)
+    }
+    if (vPrevRoom == 9) { //00d5
+      if (v44 == 6) { //00dc
+        load.view(24)
+        v39 = 0
+        position(o0,40,42)
+        set(f37)
+        set.view(o0,11)
+        ignore.blocks(o0)
+        move.obj(o0,43,135,3,f220)
+        set(f35)
+        set.priority(o0,15)
+        sound(1,f41)
+        draw(o0)
+        goto(l275)
+      }
+      set(f228)
+      ignore.blocks(o0)
+      reset(f37)
+      v39 = 1
+      position(o0,30,42)
+    }
+  }
+l275:
+  if (v44 == 30) { //0113
+    position(o0,57,v58)
+    set(f48)
+  }
+  if (f47) { //0120
+    draw(o0)
+  }
+  call(104)
+  show.pic()
+  return()
+}
+if (fTriggerLine && posn(o0,35,143,55,167)) { //012c
+  reset(fTriggerLine)
+  if ((vEgoDir == 7 || vEgoDir == 8 || vEgoDir == 6)) { //013a
+    set(f228)
+    ignore.blocks(o0)
+    goto(l340)
+  }
+  reset(f228)
+  observe.blocks(o0)
+}
+l340:
+if (f229) { //0154
+  set.priority(o0,15)
+  set(f35)
+  v39 = 4
+  goto(l409)
+}
+if (f228) { //0165
+  v39 = 1
+  set.priority(o0,14)
+  goto(l409)
+}
+release.priority(o0)
+if (posn(o0,92,139,119,139)) { //0176
+  v39 = 3
+  goto(l409)
+}
+if (posn(o0,58,90,96,109)) { //0186
+  v39 = 2
+  goto(l409)
+}
+v39 = 0
+l409:
+if (!fEnteredCommand) { //0199
+  goto(l3340)
+}
+if ((said("examine", "book") || said("read", "book") || said("examine", "abominable", "book"))) { //01a3
+  print("Covered with gold trimmings, the old book's leather cover is cracked and worn, its pages yellowed and brittle. The title, however, is clear: %m32.\"")
+  print("You eagerly thumb through page after page of what you assume to be magic formulas. The ink of the old handwriting is faint, and barely readable.")
+  print("Most of the formulas are indecipherable, but a few are in a language you know. You treat the old book with great care as you can tell it contains recipes for some very old and powerful magic spells. Your hands shake as you realize this book could be the key to your escape from the evil Manannan.")
+}
+if (v39 != 3) { //01c3
+  if ((said("book", "anyword") || said("anyword", "book") || said("book", "anyword", "anyword") || said("anyword", "book", "anyword") || said("anyword", "anyword", "book") || said("lift", "book", "book", "anyword") || said("lift", "book", "book", "anyword") || said("move", "book", "anyword") || said("move", "book") || said("lift", "book", "book", "anyword"))) { //01cb
+    print("You can't reach the book from here.")
+  }
+  goto(l1055)
+}
+if ((said("move", "book", "ii") || said("move", "book", "book", "ii") || said("examine", "book", "ii") || said("read", "book", "ii") || said("lift", "book", "ii") || said("lift", "book", "book", "ii"))) { //0226
+  v102 = 121
+}
+if ((said("move", "book", "iv") || said("move", "book", "book", "iv") || said("examine", "book", "iv") || said("read", "book", "iv") || said("lift", "book", "iv") || said("lift", "book", "book", "iv"))) { //0263
+  v102 = 122
+}
+if ((said("move", "book", "vii") || said("move", "book", "book", "vii") || said("examine", "book", "vii") || said("read", "book", "vii") || said("lift", "book", "vii") || said("lift", "book", "book", "vii"))) { //02a0
+  v102 = 123
+}
+if ((said("move", "book", "xiv") || said("move", "book", "book", "xiv") || said("examine", "book", "xiv") || said("read", "book", "xiv") || said("lift", "book", "xiv") || said("lift", "book", "book", "xiv"))) { //02dd
+  v102 = 124
+}
+if ((said("move", "book", "xxv") || said("move", "book", "book", "xxv") || said("examine", "book", "xxv") || said("read", "book", "xxv") || said("lift", "book", "xxv") || said("lift", "book", "book", "xxv"))) { //031a
+  v102 = 125
+}
+if ((said("move", "book", "lxxxiv") || said("move", "book", "book", "lxxxiv") || said("examine", "book", "lxxxiv") || said("read", "book", "lxxxiv") || said("lift", "book", "lxxxiv") || said("lift", "book", "book", "lxxxiv"))) { //0357
+  v102 = 126
+}
+if ((said("move", "book", "clxix") || said("move", "book", "book", "clxix") || said("examine", "book", "clxix") || said("read", "book", "clxix") || said("lift", "book", "clxix") || said("lift", "book", "book", "clxix"))) { //0394
+  v102 = 127
+}
+if ((said("move", "book", "rol") || said("move", "book", "book", "rol") || said("examine", "book", "rol") || said("read", "book", "rol") || said("move", "book", "book", "rol") || said("lift", "book", "book", "rol") || said("lift", "book", "rol") || said("read", "book", "rol"))) { //03d1
+  print("Not being an experienced sorcerer, most spells in this book are too complicated for you to understand.")
+}
+l1055:
+if ((said("examine", "area") || said("examine", "building") || said("examine") || said("examine", "lab"))) { //041f
+  print("You look in awe around this torch-lit underground room. It appears to be a laboratory... a \"wizard's\" laboratory.")
+  print("Against the earthen walls there are rows of shelves holding numerous jars which contain strange, unknown ingredients.")
+  print("The shelves also hold skeletons of small animals and birds, some human skulls and bones, and other odd instruments, whose use you do not know. %m8 %m7")
+}
+if ((said("examine", "counter") || said("examine", "top", "counter") || said("examine", "counter", "top"))) { //0441
+  if (posn(o0,77,95,128,120)) { //045d
+    print("The wizard's desk is curiously empty. You have no further interest in it.")
+    goto(l1134)
+  }
+  print("%m8 Atop the oak table are a large leather-bound book, a mortar and pestle, a little brazier holding charcoal, and a flint, plus measuring cups, beakers, flasks, and stirrers.")
+}
+l1134:
+if (said("examine", "below", "counter")) { //046e
+  print("You lean down and peek under the table. You see nothing but an earthen floor.")
+}
+if ((said("examine", "stair") || said("examine", "up", "stair"))) { //047c
+  print("The narrow stone steps lead up to the wizard's study.")
+}
+if (said("capture", "flint")) { //0492
+  print("The flint%m52")
+}
+if (said("examine", "flint")) { //049e
+  print("The flint is used for lighting the brazier.")
+}
+if (said("examine", "beaker")) { //04aa
+  print("There are many measuring, stirring, and mixing implements on the laboratory table.")
+}
+if (said("capture", "beaker")) { //04b6
+  print("You consider taking it, but decide there is no need to carry it%m38")
+}
+if (said("capture", "charcoal")) { //04c2
+  print("The charcoal%m52")
+}
+if (said("examine", "burn")) { //04ce
+  print("The burning torches throw flickering shadows across the walls, making the room even more ominous.")
+}
+if (said("examine", "bookcase")) { //04da
+  print("You curiously gaze at the strange jars of ingredients, the animal and human bones, and other odd implements which line the rows of shelves. You see jars of ingredients resting on labeled shelves... shelves bearing such ghastly names as \"Powdered Fish Bone,\" \"Nightshade Juice,\" \"Mandrake Root Powder,\" \"Saffron,\" \"Toad Spittle,\" and \"Toadstool Powder.\"")
+}
+if (said("close", "book")) { //04e6
+  print("The wizard would notice if the book were closed.")
+}
+if (said("lift", "book")) { //04f2
+  print("It's already open.")
+}
+if (said("capture", "book")) { //04fe
+  if (v128 != 20) { //0508
+    print("Manannan would be very suspicious if he were to discover %m32\" missing.")
+    goto(l1303)
+  }
+  print("There are many measuring, stirring, and mixing implements on the laboratory table.")
+}
+l1303:
+if ((said("form", "magic") || said("cast", "magic") || said("knead", "magic") || said("form", "magic", "spell") || said("cast", "magic", "spell") || said("knead", "magic", "spell"))) { //0517
+  print("You must open %m32\" to the proper page to read the instructions for a magic spell.")
+}
+if ((said("examine", "beaker") || said("look in", "beaker") || said("lift", "beaker") || said("capture", "cap", "off", "beaker") || said("capture", "cap", "from", "beaker") || said("capture", "cap", "beaker"))) { //0549
+  print("You have no flask.")
+}
+if (said("examine", "equipment")) { //057f
+  print("There is much equipment here: a mortar and pestle, a charcoal brazier and flint, measuring cups, beakers, flasks, stirrers, and many jars and vials of strange ingredients.")
+}
+if (said("capture", "fish oil")) { //058b
+  print("Where?")
+}
+if ((said("capture", "burn") || said("capture", "burn", "off", "cage") || said("capture", "burn", "cage") || said("capture", "burn", "anyword", "cage"))) { //0597
+  print("The torches are firmly attached to the earthen wall. You cannot loosen them.")
+}
+if (f221) { //05c1
+  reset(f221)
+  if ((said("bone", "flour") || said("fish", "flour") || said("bone"))) { //05c9
+    set(f222)
+  }
+  if ((said("night shade", "juice") || said("night shade"))) { //05e1
+    set(f223)
+  }
+  if ((said("mandrake", "root", "flour") || said("mandrake", "flour") || said("mandrake") || said("mandrake", "root"))) { //05f3
+    set(f224)
+  }
+  if ((said("saffron") || said("saffron", "flour"))) { //0613
+    set(f227)
+  }
+  if ((said("frog", "spit") || said("frog") || said("spit"))) { //0625
+    set(f225)
+  }
+  if ((said("mushroom", "flour") || said("mushroom"))) { //063b
+    set(f226)
+  }
+}
+if (said("anyword", "burn")) { //064d
+  print("The torches will not help you.")
+}
+if ((said("capture", "bottle", "flour", "from", "bookcase") || said("capture", "bottle", "from", "bookcase") || said("capture", "bottle", "bookcase") || said("capture", "bottle") || said("capture", "flour") || said("capture", "flour", "bookcase") || said("capture", "flour", "from", "bookcase"))) { //0659
+  if (v39 != 2) { //069b
+    print("You can't reach it from here.")
+    goto(l1737)
+  }
+  if ((obj.in.room(i5,vCurrentRoom) || obj.in.room(i17,vCurrentRoom) || obj.in.room(i21,vCurrentRoom) || obj.in.room(i31,vCurrentRoom) || obj.in.room(i11,vCurrentRoom) || obj.in.room(i28,vCurrentRoom))) { //06a8
+    print("There are many jars of ingredients on the laboratory shelves. Which do you want?")
+    set(f221)
+    goto(l1737)
+  }
+  print("You already have all the jars of ingredients you are likely to need. You have no interest in any other.")
+}
+l1737:
+if ((said("capture", "bone", "flour") || said("capture", "bottle", "bone", "flour") || said("capture", "bottle", "bone") || said("capture", "bone", "bottle") || said("capture", "bone") || said("capture", "fish", "bone") || said("capture", "bone", "bookcase") || said("capture", "bottle", "bone", "bookcase") || said("capture", "bone", "bottle", "bookcase") || said("capture", "bottle", "from", "bookcase") || said("capture", "bottle", "bone", "from", "bookcase") || said("capture", "bone", "flour", "from", "bookcase") || said("capture", "bone", "bottle", "from", "bookcase"))) { //06c9
+  if (v39 != 2) { //0749
+    print("You can't reach it from here.")
+    goto(l1880)
+  }
+  set(f222)
+}
+l1880:
+if ((said("capture", "juice") || said("capture", "night shade", "juice") || said("capture", "juice", "bookcase") || said("capture", "night shade", "juice", "bookcase") || said("capture", "juice", "from", "bookcase") || said("capture", "bottle", "juice", "from", "bookcase") || said("capture", "night shade", "juice", "from", "bookcase") || said("capture", "bottle", "night shade", "juice", "bookcase") || said("capture", "bottle", "night shade", "juice") || said("capture", "bottle", "night shade", "juice", "from", "bookcase") || said("capture", "night shade", "juice", "bottle", "bookcase") || said("capture", "night shade", "juice", "bottle", "from", "bookcase"))) { //0758
+  if (v39 != 2) { //07de
+    print("You can't reach it from here.")
+    goto(l2029)
+  }
+  set(f223)
+}
+l2029:
+if ((said("capture", "mandrake", "flour") || said("capture", "mandrake", "flour", "bookcase") || said("capture", "mandrake", "flour", "from", "bookcase") || said("capture", "mandrake", "flour", "bottle", "bookcase") || said("capture", "mandrake", "flour", "bottle", "from", "bookcase") || said("capture", "bottle", "mandrake", "flour", "bookcase") || said("capture", "bottle", "mandrake", "flour", "from", "bookcase") || said("capture", "mandrake") || said("capture", "mandrake", "root", "flour") || said("capture", "mandrake", "root", "flour", "bookcase") || said("capture", "mandrake", "root", "flour", "from", "bookcase") || said("capture", "mandrake", "root", "flour", "bottle", "bookcase") || said("capture", "mandrake", "root", "flour", "bottle", "from", "bookcase") || said("capture", "bottle", "mandrake", "root") || said("capture", "bottle", "mandrake", "root", "flour") || said("capture", "bottle", "mandrake", "root", "flour", "bookcase") || said("capture", "bottle", "mandrake", "root", "flour", "from", "bookcase"))) { //07ed
+  if (v39 != 2) { //08c1
+    print("You can't reach it from here.")
+    goto(l2256)
+  }
+  set(f224)
+}
+l2256:
+if ((said("capture", "saffron") || said("capture", "saffron", "bookcase") || said("capture", "saffron", "from", "bookcase") || said("capture", "saffron", "bottle", "bookcase") || said("capture", "saffron", "bottle", "from", "bookcase") || said("capture", "bottle", "saffron", "bookcase") || said("capture", "bottle", "saffron", "from", "bookcase") || said("capture", "bottle", "saffron") || said("capture", "bottle", "saffron", "bookcase") || said("capture", "bottle", "saffron", "from", "bookcase"))) { //08d0
+  if (v39 != 2) { //0938
+    print("You can't reach it from here.")
+    goto(l2375)
+  }
+  set(f227)
+}
+l2375:
+if ((said("capture", "mushroom", "flour") || said("capture", "mushroom") || said("capture", "mushroom", "flour", "bookcase") || said("capture", "bottle", "mushroom", "flour", "bookcase") || said("capture", "mushroom", "flour", "from", "bookcase") || said("capture", "bottle", "mushroom", "flour", "from", "bookcase") || said("capture", "bottle", "mushroom", "flour") || said("capture", "bottle", "mushroom", "flour", "bookcase") || said("capture", "mushroom", "flour", "bottle", "bookcase") || said("capture", "mushroom", "flour", "bottle", "from", "bookcase"))) { //0947
+  if (v39 != 2) { //09bb
+    print("You can't reach it from here.")
+    goto(l2506)
+  }
+  set(f226)
+}
+l2506:
+if ((said("capture", "bottle", "spit", "from", "bookcase") || said("capture", "spit") || said("capture", "frog", "spit") || said("capture", "spit", "bookcase") || said("capture", "spit", "from", "bookcase") || said("capture", "frog", "spit") || said("capture", "frog", "spit", "bookcase") || said("capture", "frog", "spit", "from", "bookcase") || said("capture", "bottle", "frog", "spit", "from", "bookcase") || said("capture", "bottle", "frog", "spit", "bookcase") || said("capture", "bottle", "frog", "spit") || said("capture", "frog", "spit", "bottle", "from", "bookcase") || said("capture", "frog", "spit", "bottle", "bookcase") || said("capture", "bottle", "frog", "spit", "bookcase") || said("capture", "bottle", "frog", "spit", "from", "bookcase") || said("capture", "frog", "spit", "bottle", "from", "bookcase"))) { //09ca
+  if (v39 != 2) { //0a80
+    print("You can't reach it from here.")
+    goto(l2703)
+  }
+  set(f225)
+}
+l2703:
+if ((said("capture", "mortar") || said("capture", "mortar", "from", "counter") || said("capture", "mortar", "off", "counter"))) { //0a8f
+  print("%m36mortar and pestle%m38")
+}
+if ((said("examine", "mortar") || said("examine", "mortar", "counter") || said("look in", "mortar"))) { //0ab1
+  if (v39 != 3) { //0acb
+    print("You are not close enough.")
+    goto(l2778)
+  }
+  print("The mortar is a bowl-shaped implement made of stone. The pestle is a rounded stone that fits into the mortar. The mortar and pestle are used for grinding things into a powder. They are resting on the oak table.")
+}
+l2778:
+if (said("try", "mortar")) { //0ada
+  if (v39 != 3) { //0ae4
+    print("You can't reach it from here.")
+    goto(l2803)
+  }
+  print("What would you do with the mortar and pestle?")
+}
+l2803:
+if ((said("crumble", "anyword", "mortar") || said("add", "anyword", "mortar"))) { //0af3
+  if (v39 != 3) { //0b09
+    print("You can't reach it from here.")
+    goto(l2840)
+  }
+  print("You consider doing that, but then realize it wouldn't work.")
+}
+l2840:
+if ((said("capture", "brazier") || said("capture", "brazier", "from", "counter") || said("capture", "brazier", "off", "counter") || said("capture", "charcoal", "brazier") || said("capture", "charcoal", "brazier", "from", "counter") || said("capture", "charcoal", "brazier", "off", "counter"))) { //0b18
+  print("%m36charcoal brazier%m38")
+}
+if ((said("try", "brazier") || said("try", "charcoal", "brazier"))) { //0b5a
+  if (v39 != 3) { //0b6e
+    print("You can't reach it from here.")
+    goto(l2941)
+  }
+  print("What would you do with the brazier?")
+}
+l2941:
+if ((said("burn", "brazier") || said("burn", "charcoal", "brazier") || said("burn", "charcoal"))) { //0b7d
+  if (v39 != 3) { //0b97
+    print("You can't reach it from here.")
+    goto(l3002)
+  }
+  if ((v107 > 0 || v108 > 0)) { //0ba4
+    print("It is already burning.")
+    goto(l3002)
+  }
+  print("You fill the brazier with charcoal from the small supply Manannan keeps here and strike the flint on it. Soon, the brazier burns hotly.")
+  v108 = 3
+}
+l3002:
+if ((said("add", "anyword", "on", "brazier") || said("add", "anyword", "on", "top", "brazier") || said("boil", "anyword", "on", "brazier") || said("boil", "anyword", "on", "top", "brazier") || said("add", "anyword", "on", "brazier", "boil") || said("add", "anyword", "on", "top", "brazier", "boil") || said("add", "anyword", "on", "charcoal", "brazier") || said("add", "anyword", "on", "top", "charcoal", "brazier") || said("boil", "anyword", "on", "charcoal", "brazier") || said("boil", "anyword", "on", "top", "charcoal", "brazier") || said("add", "anyword", "on", "charcoal", "brazier", "boil") || said("add", "anyword", "on", "top", "charcoal", "brazier", "boil"))) { //0bba
+  if (v39 != 3) { //0c58
+    print("You can't reach it from here.")
+    goto(l3175)
+  }
+  print("%m50 Now is not the proper time.")
+}
+l3175:
+if ((said("examine", "brazier") || said("examine", "brazier", "counter") || said("look in", "brazier") || said("examine", "charcoal", "brazier") || said("examine", "charcoal", "brazier", "counter") || said("look in", "charcoal", "brazier"))) { //0c67
+  if (v39 != 3) { //0c9b
+    print("You are not close enough.")
+    goto(l3261)
+  }
+  print("Resting on the table is a small metal brazier. It holds charcoal and is used for heating or cooking things.")
+  if ((v107 > 0 || v108 > 0)) { //0caa
+    print("%m54 You could heat things quickly with the brazier, right now.")
+    goto(l3261)
+  }
+  print("%m66stone cold.")
+}
+l3261:
+if ((said("capture", "charcoal") || said("capture", "charcoal", "from", "brazier"))) { //0cbd
+  if (v39 != 3) { //0cd3
+    print("You can't reach it from here.")
+    goto(l3298)
+  }
+  print("The charcoal")
+}
+l3298:
+if (said("examine", "charcoal")) { //0ce2
+  if (v39 != 3) { //0cec
+    print("You are not close enough.")
+    goto(l3340)
+  }
+  if ((v107 > 0 || v108 > 0)) { //0cf9
+    print("%m66very hot!")
+    goto(l3340)
+  }
+  print("%m66stone cold.")
+}
+l3340:
+if (f45 && v107 == 1 && !(v108 > 0)) { //0d0c
+  print("The brazier has burned all the charcoal, and is now cool.")
+}
+if (f222) { //0d1b
+  reset(f221)
+  reset(f222)
+  if (obj.in.room(i5,vCurrentRoom)) { //0d25
+    print("%m3labeled \"Powdered Fish Bone\"%m12")
+    get(i5)
+    vCurrentScore += 1
+    goto(l3395)
+  }
+  if (has(i5)) { //0d36
+    print("You already have it.")
+    goto(l3395)
+  }
+  print("You already took it.")
+}
+l3395:
+if (f223) { //0d43
+  reset(f221)
+  reset(f223)
+  if (obj.in.room(i17,vCurrentRoom)) { //0d4d
+    print("%m3of \"Nightshade Juice\"%m12")
+    get(i17)
+    vCurrentScore += 1
+    goto(l3435)
+  }
+  if (has(i17)) { //0d5e
+    print("You already have it.")
+    goto(l3435)
+  }
+  print("You already took it.")
+}
+l3435:
+if (f224) { //0d6b
+  reset(f221)
+  reset(f224)
+  if (obj.in.room(i21,vCurrentRoom)) { //0d75
+    print("%m3labeled \"Mandrake Root Powder\"%m12")
+    get(i21)
+    vCurrentScore += 1
+    goto(l3475)
+  }
+  if (has(i21)) { //0d86
+    print("You already have it.")
+    goto(l3475)
+  }
+  print("You already took it.")
+}
+l3475:
+if (f227) { //0d93
+  reset(f221)
+  reset(f227)
+  if (obj.in.room(i11,vCurrentRoom)) { //0d9d
+    print("%m3labeled \"Saffron\"%m12")
+    get(i11)
+    vCurrentScore += 1
+    goto(l3515)
+  }
+  if (has(i11)) { //0dae
+    print("You already have it.")
+    goto(l3515)
+  }
+  print("You already took it.")
+}
+l3515:
+if (f225) { //0dbb
+  reset(f221)
+  reset(f225)
+  if (obj.in.room(i31,vCurrentRoom)) { //0dc5
+    print("%m3labeled \"Toad Spittle\"%m12")
+    get(i31)
+    vCurrentScore += 1
+    goto(l3555)
+  }
+  if (has(i31)) { //0dd6
+    print("You already have it.")
+    goto(l3555)
+  }
+  print("You already took it.")
+}
+l3555:
+if (f226) { //0de3
+  reset(f221)
+  reset(f226)
+  if (obj.in.room(i28,vCurrentRoom)) { //0ded
+    print("%m3of \"Toadstool Powder\"%m12")
+    get(i28)
+    vCurrentScore += 1
+    goto(l3595)
+  }
+  if (has(i28)) { //0dfe
+    print("You already have it.")
+    goto(l3595)
+  }
+  print("You already took it.")
+}
+l3595:
+if (fTriggerLine) { //0e0b
+  if (v39 == 1) { //0e11
+    set(f37)
+    set.view(o0,11)
+    ignore.blocks(o0)
+    move.obj(o0,43,135,3,f220)
+    set(f35)
+    set.priority(o0,15)
+    sound(1,f41)
+    program.control()
+  }
+}
+if (f220) { //0e2e
+  reset(f220)
+  if (v44 == 6) { //0e36
+    set.view(o0,24)
+    reset(f35)
+    stop.cycling(o0)
+    set(f44)
+    goto(l3677)
+  }
+  set.view(o0,35)
+  stop.motion(o0)
+  v36 = 0
+  step.size(o0,v36)
+  stop.sound()
+  v221 = 5
+  v44 = 18
+  set(f230)
+}
+l3677:
+if (f45) { //0e5d
+  v221--
+  if (v221 == 1) { //0e65
+    player.control()
+    accept.input()
+    reset(f46)
+    reset(f35)
+    reset(f230)
+    stop.sound()
+    start.motion(o0)
+    v44 = 0
+    set.view(o0,0)
+    v36 = 1
+    step.size(o0,v36)
+    reset(f37)
+    observe.blocks(o0)
+    release.priority(o0)
+    reset(f228)
+  }
+}
+if (f230 && v44 == 18) { //0e8b
+  sound(6,f230)
+}
+if (f45) { //0e97
+  v220--
+  if (f229 && v220 == 1) { //0e9f
+    set(f44)
+    start.cycling(o0)
+    if (v105 == 38) { //0eac
+      v68 = 57
+      goto(l3772)
+    }
+    v68 = 61
+l3772:
+    v68 += v106
+    print(v68)
+    if (v68 == 60) { //0ec1
+      v36 = 3
+      cycle.time(o0,v36)
+    }
+  }
+}
+if (v44 != 125) { //0ece
+  if (vWhichEgoBorder == 1 && v44 == 25 && v40 > 46 && v40 < 75) { //0ed6
+    new.room(9)
+  }
+  if (vWhichEgoBorder == 1) { //0ee8
+    new.room(9)
+  }
+}
+if (v102 > 0) { //0ef1
+  print("With trembling hands you turn the pages of %m32,\" and prepare to follow its instructions precisely.")
+  new.room(43)
+}
+call(104)
+return()

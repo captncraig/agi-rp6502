@@ -1,4 +1,369 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(39)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(61)
+  load.view(62)
+  load.view(63)
+  load.view(64)
+  animate.obj(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  position(o2,24,132)
+  set.view(o2,61)
+  set.priority(o2,10)
+  v52 = 3
+  cycle.time(o2,v52)
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  position(o3,70,136)
+  set.view(o3,64)
+  animate.obj(o1)
+  if (f56) { //003d
+    set(f90)
+    set.view(o1,62)
+    set.loop(o1,2)
+    position(o1,70,132)
+    draw(o3)
+    random(3,9,v202)
+    goto(l123)
+  }
+  if (vPrevRoom == 17) { //0058
+    set.view(o1,63)
+    position(o1,100,135)
+    set(f210)
+    goto(l123)
+  }
+  set.view(o1,62)
+  set.loop(o1,0)
+  position(o1,42,135)
+  move.obj(o1,116,135,1,f201)
+l123:
+  draw(o1)
+  set.loop(o0,0)
+  if (vPrevRoom == 17) { //0080
+    set.cel(o2,0)
+    draw(o2)
+    stop.update(o2)
+    v38 = 71
+    v39 = 55
+    goto(l172)
+  }
+  last.cel(o2,v52)
+  set.cel(o2,v52)
+  draw(o2)
+  reverse.loop(o2,f204)
+  v38 = 26
+  v39 = 136
+  stop.motion(o0)
+  set(f85)
+l172:
+  position(o0,38,v39)
+  draw(o0)
+  show.pic()
+  return()
+}
+reset(f209)
+distance(o0,o1,v52)
+if (v52 < 13) { //00ba
+  set(f209)
+  set(f69)
+}
+reset(f205)
+if (posn(o0,22,123,33,137)) { //00c7
+  set(f205)
+}
+reset(f202)
+if (posn(o0,65,137,80,143)) { //00d5
+  set(f202)
+}
+reset(f212)
+if (posn(o0,65,132,76,143)) { //00e3
+  set(f212)
+}
+reset(f207)
+if (posn(o0,105,131,133,139)) { //00f1
+  set(f207)
+}
+if (!fEnteredCommand) { //00fd
+  goto(l1625)
+}
+if ((said("examine") || said("examine", "area"))) { //0107
+  print("The bar's storage room is almost empty. Its most significant feature is a big, mean-looking dude.")
+}
+if ((said("examine", "box") || said("increase", "box") || said("look in", "box"))) { //0119
+  print("They're boxes, all right.")
+}
+if ((said("catch", "box") || said("move", "box") || said("climb", "box") || said("climb", "on", "box") || said("use", "box"))) { //0133
+  print("What does this look like, the ship's hold in \"King's Quest III?\"")
+}
+if (said("examine", "door")) { //015b
+  print("It's the door from the bar. Its far side looks better than this side.")
+}
+if ((said("examine", "stair", "rol") || said("examine", "up", "rol"))) { //0167
+  print("You wonder what palace of earthly delights resides above you.")
+}
+if (said("examine", "bouncer")) { //017f
+  print("He's no rocket scientist!")
+}
+if ((said("aim", "control", "bouncer") || said("use", "control", "on", "bouncer"))) { //018b
+  print("He's unaffected by the remote control.")
+}
+if (said("examine", "television")) { //01a5
+  if (!f56) { //01af
+    print("Its screen is blank; much like the pimp's mind.")
+    goto(l457)
+  }
+  if (!f90) { //01bb
+    print("%m56program.")
+    goto(l457)
+  }
+  print("Get your mind back on the game, Larry!")
+}
+l457:
+if ((said("buy", "rol") || said("buy", "blond") || said("buy", "ass") || said("buy", "copulate") || said("buy", "clit") || said("add", "one", "bucks") || said("add", "one", "bucks", "bouncer") || said("add", "bouncer", "one", "bucks") || said("add", "bouncer", "bucks") || said("add", "bucks", "bouncer") || said("add", "bucks"))) { //01c9
+  if (f90) { //021f
+    print("There is no need to pay; he's pleasantly distracted. Help yourself!")
+    goto(l604)
+  }
+  if (!f209) { //022a
+    set(f54)
+    goto(l604)
+  }
+  if (v90 < 100) { //0236
+    print("You don't have enough money.")
+    goto(l604)
+  }
+  set(f208)
+  reset(f206)
+  v90 -= 100
+  print("\"Thanks,\" he growls. \"Remember, no refunds!\"")
+  set.view(o1,62)
+  move.obj(o1,100,135,1,f211)
+  if (f63) { //0254
+    print("\"You like that stuff, eh, boy?\"")
+  }
+}
+l604:
+if ((said("bang", "anyword", "door") || said("bang", "door", "anyword") || said("bang", "door") || said("bang"))) { //025c
+  if (!f205) { //027c
+    set(f54)
+    goto(l650)
+  }
+  print("Evidently no one in the bar wants to play \"Knock, knock\" with you.")
+}
+l650:
+if (said("increase", "door")) { //028a
+  if (!f205) { //0294
+    set(f54)
+    goto(l683)
+  }
+  set(f67)
+  stop.motion(o0)
+  set(f85)
+  start.update(o2)
+  end.of.loop(o2,f203)
+}
+l683:
+if ((said("move", "on", "television") || said("move", "television", "on") || said("television", "on"))) { //02ab
+  if (!f202) { //02c7
+    set(f54)
+    goto(l736)
+  }
+  if (f56) { //02d3
+    print("It already is!")
+    goto(l736)
+  }
+  print("The knob is broken off. There's no way to turn it.")
+}
+l736:
+if ((said("move", "off", "television") || said("move", "television", "off") || said("television", "off"))) { //02e0
+  if (!f202) { //02fc
+    set(f54)
+    goto(l790)
+  }
+  if (!f56) { //0308
+    print("It already is!")
+    goto(l790)
+  }
+  print("The knob is broken off. There's no way to turn it.")
+}
+l790:
+if ((said("use", "control") || said("use", "control", "off") || said("use", "control", "on") || said("use", "control", "move", "television", "on") || said("use", "control", "move", "television", "off") || said("use", "control", "rol") || said("move", "button", "control", "rol") || said("move", "button", "on", "control", "rol") || said("move", "control", "rol") || said("move", "control", "on") || said("move", "control", "off") || said("move", "control", "television", "on") || said("move", "control", "television", "off") || said("move", "control", "move", "television", "on") || said("move", "control", "move", "television", "off") || said("move", "control", "move", "on", "television") || said("move", "control", "move", "off", "television") || said("move", "on", "television", "use", "control") || said("move", "off", "television", "use", "control") || said("move", "television", "on", "use", "control") || said("move", "television", "off", "use", "control"))) { //0316
+  if (!(has(i8))) { //03f4
+    set(f68)
+    goto(l1066)
+  }
+  if (v39 > 144) { //0400
+    print("The remote control seems ineffectual from this angle.")
+    goto(l1066)
+  }
+  if (f56) { //040c
+    print("Evidently the remote control's off button is broken.")
+    goto(l1066)
+  }
+  vCurrentScore += 3
+  draw(o3)
+  print("You click the power switch on the remote control.")
+  set(f56)
+  v202 = 5
+  v82 = 14
+  random(33,77,v200)
+}
+l1066:
+if ((said("attach", "bouncer", "use", "rope") || said("attach", "up", "bouncer"))) { //042a
+  if (!(has(i20))) { //0442
+    set(f68)
+    goto(l1104)
+  }
+  print("He's too strong for you, Larry.")
+}
+l1104:
+if ((said("ask", "bouncer") || said("bargain", "rol") || said("ask", "hello"))) { //0450
+  if (f90) { //0468
+    print("He ignores you. It looks like he's \"engrossed\" in something right now.")
+    goto(l1145)
+  }
+  print("\"Ya wanna go upstairs?\" he says in a scholarly voice, \"ya gotta pays da price!\"")
+  print("\"$100.00, cash up front, no refunds.\"")
+  print("He certainly has a pleasing manner about him.")
+}
+l1145:
+if ((said("beat", "up", "bouncer", "rol") || said("beat", "bouncer", "rol") || said("use", "hammer", "rol") || said("attach", "bouncer") || said("attach", "up", "bouncer") || said("attach", "up", "bouncer", "use", "rope") || said("use", "rope", "attach", "up", "bouncer") || said("use", "rope", "attach", "bouncer") || said("attach", "up", "bouncer", "rope") || said("attach", "bouncer", "rope") || said("fight", "bouncer", "rol"))) { //0479
+  print("He's far too big, and you're far too wimpy.")
+}
+if ((said("move") || said("move", "out", "way") || said("move", "away") || said("catch", "away") || said("move", "bouncer"))) { //04e5
+  print("\"Ya wanna go upstairs?\" he says in a scholarly voice, \"ya gotta pays da price!\"")
+  print("\"$100.00, cash up front, no refunds.\"")
+  print("He certainly has a pleasing manner about him.")
+}
+if ((said("add", "bouncer", "control", "rol") || said("add", "control", "bouncer", "rol"))) { //050f
+  print("Its operation is beyond his mental capacities.")
+}
+if ((said("move", "channel") || said("use", "control", "move", "channel") || said("move", "television", "channel") || said("move", "channel", "television") || said("move", "television", "channel", "use", "control") || said("move", "channel", "television", "use", "control") || said("move", "channel", "use", "control") || said("move", "television", "channel", "control") || said("move", "channel", "control") || said("use", "control", "move", "television", "channel") || said("alter", "channel") || said("use", "control", "alter", "channel") || said("alter", "television", "channel") || said("alter", "channel", "television") || said("alter", "television", "channel", "use", "control") || said("alter", "channel", "television", "use", "control") || said("alter", "channel", "use", "control") || said("alter", "television", "channel", "control") || said("alter", "channel", "control") || said("use", "control", "alter", "television", "channel"))) { //052b
+  if (!(has(i8))) { //05f1
+    print("The knob is broken off. There's no way to turn it.")
+    goto(l1589)
+  }
+  if (!f56) { //05fd
+    print("The TV is off.")
+    goto(l1589)
+  }
+  if (v39 > 144) { //0609
+    print("The remote control seems ineffectual from this angle.")
+    goto(l1589)
+  }
+  if (v82 == 21) { //0615
+    print("Nah. He's having a good time!")
+    goto(l1589)
+  }
+  if (v200 > 0) { //0621
+    print("Slow down. You're gonna blow the punch line!")
+    goto(l1589)
+  }
+  print("You click the channel selector on the remote control.")
+  v82++
+  random(23,39,v200)
+}
+l1589:
+if (said("examine", "brick")) { //0635
+  print("The walls do a good job of separating the floor from the ceiling.")
+}
+if (said("examine", "burn")) { //0641
+  print("It's just hanging around.")
+}
+if (said("examine", "clit")) { //064d
+  print("Wait 'til you get upstairs.")
+}
+l1625:
+if ((!f212 || !f90)) { //0659
+  v201 = 0
+  goto(l1668)
+}
+if (!(v201 > 0)) { //066b
+  v201 = 2
+}
+v201--
+if (v201 == 1) { //0678
+  print("\"Hey! Outta da way!!\"")
+  v201 = 22
+}
+l1668:
+v200--
+if (v200 == 20) { //0686
+  print(v82)
+}
+if (v200 == 10) { //068f
+  if (v82 != 21) { //0696
+    v52 = v82
+    v52 += 20
+    print(v52)
+    goto(l1716)
+  }
+  reset(f206)
+  set.view(o1,62)
+  move.obj(o1,70,135,1,f200)
+}
+l1716:
+if (v200 == 1) { //06b4
+  if (v82 != 21) { //06bb
+    print("The pimp seems vaguely interested, but not enough to leave his post by the stairs.")
+  }
+}
+if (f211) { //06c5
+  reset(f211)
+  set.view(o1,63)
+  print("\"Have a nice lay.\"")
+}
+if (f200) { //06d2
+  reset(f200)
+  set(f90)
+  set.loop(o1,2)
+  reposition.to(o1,70,132)
+  force.update(o1)
+  if (!f98) { //06e5
+    set(f98)
+    vCurrentScore += 8
+  }
+  print("It appears you've finally reached the pimp's cultural level.")
+}
+if (f210) { //06f3
+  if (v38 < 90 && v39 > 110) { //06f9
+    reset(f210)
+    print("\"Pretty good stuff, eh, boy?\" laughs the pimp.")
+    set.view(o1,62)
+    set.loop(o1,0)
+    move.obj(o1,116,135,1,f201)
+  }
+}
+if (f201) { //0713
+  reset(f201)
+  set(f206)
+  set.view(o1,63)
+}
+if (!f208 && f206 && f207) { //0720
+  set(f208)
+  print("The pimp growls, \"You got no business goin' up these stairs, little man!\"")
+}
+v202--
+if (f56 && v202 == 1) { //0731
+  random(4,16,v202)
+  random(1,4,v52)
+  cycle.time(o3,v52)
+}
+if (f204) { //0745
+  reset(f204)
+  stop.update(o2)
+  start.motion(o0)
+  reset(f85)
+}
+if (f203) { //0753
+  reset(f85)
+  v76 = 15
+}
+if ((v39 < 42 || vWhichEgoBorder == 1)) { //075e
+  v76 = 17
+}
+return()

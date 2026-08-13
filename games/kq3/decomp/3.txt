@@ -1,4 +1,129 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 43
+  v58 = 135
+  v32 = 125
+  v31 = 140
+  v100 = 72
+  v101 = 118
+  load.logic(104)
+  if ((v127 == 1 || v127 == 3) && v44 != 27 && !(v137 > 0) && v128 != 20) { //0026
+    random(1,2,v36)
+    if (v36 == 1) { //0042
+      load.logic(105)
+      set(f98)
+      random(6,12,v125)
+    }
+  }
+  if (v44 == 27) { //0051
+    set(f46)
+    load.view(27)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v44 == 25) { //0062
+    set(f48)
+  }
+  if (f48) { //006b
+    if (vPrevRoom == 7) { //0071
+      release.priority(o0)
+      v40 = 90
+      v41 = 167
+      goto(l192)
+    }
+    if (vPrevRoom == 2) { //0083
+      v40 = 40
+      v41 = 120
+      goto(l192)
+    }
+    if (vPrevRoom == 1) { //0093
+      v40 = 133
+      v41 = 54
+      goto(l192)
+    }
+    if (vPrevRoom == 4) { //00a3
+      v40 = 133
+      if (v41 < 133) { //00ad
+        v41 = 133
+      }
+      goto(l192)
+    }
+    v40 = v57
+    v41 = v58
+l192:
+    position(o0,40,v41)
+  }
+  if (v44 == 27) { //00c4
+    set.view(o0,27)
+    v59 = 12
+    cycle.time(o0,v59)
+    v60 = 12
+    step.time(o0,60)
+    if (vPrevRoom == 106) { //00da
+      reset(f47)
+      set(f48)
+      set(f46)
+      v90 = 2
+      position(o0,57,v58)
+    }
+  }
+  observe.blocks(o0)
+  observe.objs(o0)
+  if (f47) { //00f2
+    draw(o0)
+  }
+  if (v44 == 27) { //00fa
+    set(f47)
+  }
+  call(104)
+  if (f98) { //0105
+    call(105)
+  }
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //010f
+  goto(l353)
+}
+if ((said("examine", "area") || said("examine", "building") || said("examine") || said("examine", "hall"))) { //0119
+  print("This hallway is on the second level of the old wizard's house. There are two stairways here. One goes up and the other leads down. An open doorway is to the north.")
+}
+if ((said("examine", "stair") || said("examine", "up", "stair") || said("examine", "down", "stair"))) { //0137
+  print("There are two sets of stairs here. The stairway leading upward is steep and narrow. The stairway going down is wider, but rather creaky.")
+}
+if (said("examine", "door")) { //0155
+  print("There is a doorway leading into a room to the north.")
+}
+l353:
+if (f33 && v44 == 27) { //0161
+  player.control()
+  start.motion(o0)
+  reset(f35)
+  reset(f36)
+  reset(f37)
+  reset(f38)
+  print("Suddenly, you feel squishy and slimy, with an awful weight on your back. Your tentacled eyes swivel around to see your shell. OH, NO! He's turned you into a snail!")
+}
+if (v44 != 125) { //0177
+  if (vWhichEgoBorder == 3 && v40 > 84 && v40 < 105) { //017f
+    new.room(7)
+  }
+  if (posn(o0,38,90,53,118)) { //018e
+    new.room(2)
+  }
+  if (posn(o0,120,50,139,52)) { //019a
+    new.room(1)
+  }
+  if (posn(o0,139,133,159,166)) { //01a6
+    new.room(4)
+  }
+}
+call(104)
+if (f98) { //01b4
+  call(105)
+}
+return()

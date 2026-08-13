@@ -1,3 +1,28 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if ((fNewRoom || !fEnteredCommand)) { //0002
+  return()
+}
+if ((said("examine", "area") || said("examine"))) { //000e
+  print("The soft, loamy soil of the forest here gives way to the sands of the great desert stretching off to the west.")
+}
+if (said("examine", "flower")) { //0020
+  print("The flowers are pretty, but otherwise uninteresting to you.")
+}
+if (said("examine", "forest")) { //002c
+  print("The trees here cast a refreshing shade.")
+}
+if ((said("examine", "flower") || said("smell", "flower"))) { //0038
+  print("There are no flowers in this area.")
+}
+if (said("examine", "deck")) { //004c
+  print("The soft, loamy soil of the forest here gives way to the sands of the great desert stretching off to the west.")
+}
+if (said("examine", "sky")) { //0058
+  print("The clear, blue sky is brilliant with an occasional white cloud.")
+}
+if ((said("capture", "flower") || said("capture", "flower"))) { //0064
+  print("There are no wildflowers to pick here.")
+}
+if (said("climb", "forest")) { //0078
+  print("None of these trees are suitable for climbing.")
+}
+return()

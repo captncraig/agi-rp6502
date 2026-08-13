@@ -1,4 +1,71 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set(f57)
+  v56 = 5
+  set.horizon(37)
+  v57 = 30
+  v58 = 90
+  if (f182) { //001b
+    load.logic(119)
+  }
+  load.view(0)
+  load.view(11)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.sound(1)
+  if (f48) { //002e
+  }
+  if (f47) { //0034
+    draw(o0)
+  }
+  show.pic()
+  if (f182) { //003d
+    call(119)
+  }
+}
+if (v44 == 0 && vWhichEgoBorder == 1) { //0045
+  set(fTriggerLine)
+}
+if (fTriggerLine) { //0051
+  print("You have skillfully detected the boundaries of cloud land. The rest of your quest will go quickly...")
+  erase(o0)
+  v220 = 5
+  sound(1,f238)
+  set.scan.start()
+  if (f45) { //0062
+    v220--
+  }
+  if (!(v220 > 0)) { //006a
+    stop.sound()
+    print("...downward!")
+    reset.scan.start()
+    set(f44)
+  }
+  return()
+}
+if (f182) { //0079
+  call(119)
+}
+if (v71 == 1) { //0081
+  v71 = 0
+  drop(i54)
+  print("As you unroll the delicate map, it crumbles in the intense heat!")
+}
+if ((said("examine") || said("examine", "cloud"))) { //008f
+  print("Looking around, you see clouds surrounding this small bit of land like a white, cottony sea. Charred stumps of trees spoil the scene.")
+}
+if ((said("examine", "brush") || said("examine", "forest") || said("examine", "flower") || said("capture", "flower") || said("climb", "forest"))) { //00a1
+  print("All of the trees and plants in this area have been burnt to stumps by the evil three-headed dragon!")
+}
+if (said("examine", "deck")) { //00c7
+  print("The ground is moist from the constant presence of clouds, but yet the trees are burnt and blackened.")
+}
+if ((said("examine", "up") || said("examine", "up", "sky") || said("examine", "sky"))) { //00d3
+  print("The sky is blue and cloudless above this strange cloud land.")
+}
+if (vWhichEgoBorder == 2) { //00ef
+  new.room(66)
+}
+return()

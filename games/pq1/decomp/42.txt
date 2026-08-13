@@ -1,4 +1,425 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(26)
+  load.view(73)
+  load.sound(1)
+  load.sound(2)
+  animate.obj(o1)
+  set.view(o1,26)
+  ignore.blocks(o1)
+  position(o1,122,137)
+  if (v134 > 0) { //0021
+    set.loop(o0,0)
+    position(o0,134,v135)
+    v134 = 0
+    goto(l68)
+  }
+  position(o0,70,143)
+  if (vPrevRoom == 6) { //0039
+    position(o0,124,138)
+  }
+l68:
+  if (v32 == 1) { //0044
+    set(f225)
+    load.view(107)
+    load.sound(39)
+    animate.obj(o2)
+    load.view(88)
+    set.view(o2,88)
+    set.priority(o2,11)
+    position(o2,67,100)
+    draw(o2)
+    set(f7)
+    v222 = 100
+    v146 = 107
+    v147 = 0
+l108:
+    v222--
+    if (v222 > 0) { //006e
+      random(0,1,v148)
+      random(56,110,v144)
+      random(104,129,v145)
+      add.to.pic(v146,v147,v148,v144,v145,v125,v125)
+      goto(l108)
+    }
+    reset(f7)
+    set.loop(o1,1)
+    draw(o1)
+    sound(39,f230)
+    goto(l169)
+  }
+  position(o1,76,116)
+  set.loop(o1,2)
+  stop.cycling(o1)
+  draw(o1)
+  set(f227)
+  v226 = 6
+l169:
+  if (f130 && v31 < 4) { //00a9
+    set(f225)
+    animate.obj(o4)
+    set.view(o4,73)
+    set.loop(o4,3)
+    position(o4,76,101)
+    set.priority(o4,11)
+    stop.cycling(o4)
+    draw(o4)
+    v140 = 5
+  }
+  animate.obj(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.priority(o3,11)
+  set.view(o3,73)
+  set.loop(o3,1)
+  set.cel(o3,0)
+  position(o3,128,140)
+  stop.cycling(o3)
+  draw(o3)
+  stop.update(o3)
+  v152 = 4
+  cycle.time(o3,v152)
+  observe.blocks(o0)
+  draw(o0)
+  show.pic()
+  return()
+}
+if (f112 && v120 == 5 && !f119 && f227) { //00f2
+  print("\"Sonny! Are you going to be late for briefing again?\"")
+}
+if (posn(o0,134,127,150,141)) { //0102
+  new.room(6)
+}
+if (posn(o1,70,108,83,118) && (!(v32 > 0) || v32 == 255)) { //010e
+  block(67,108,84,119)
+  goto(l298)
+}
+unblock()
+l298:
+if (posn(o0,60,108,90,119)) { //012a
+  observe.blocks(o0)
+  goto(l321)
+}
+if (f229) { //0139
+  ignore.blocks(o0)
+}
+l321:
+reset(f224)
+if (posn(o0,104,115,116,122)) { //0143
+  set(f224)
+}
+distance(o0,o1,v225)
+if (v225 < v61) { //0153
+  set(f109)
+}
+if (f220) { //015c
+  reset(f220)
+  v220++
+}
+if (f221) { //0166
+  reset(f221)
+  v221++
+}
+if (v32 > 0 && v32 < 255) { //0170
+  v222++
+  if (v222 < 150) { //017c
+    set(f108)
+    set(f7)
+    v146 = 107
+    v147 = 0
+    random(0,1,v148)
+    random(56,110,v144)
+    random(104,129,v145)
+    add.to.pic(v146,v147,v148,v144,v145,v125,v125)
+    reset(f108)
+    reset(f7)
+  }
+  if (!f220) { //01a5
+    follow.ego(o1,10,f220)
+    v32 = 3
+  }
+  if (!f222 && posn(o0,110,0,110,166) && v32 == 3) { //01b3
+    print.at("You can hardly believe your eyes. A full-grown chicken, with its legs tied together, is flapping about and clucking raucously, right on Sgt. Dooley's desk! Feathers fly everywhere! But that's not the worst: unfortunately, the chicken has lost control of her bodily functions.",2,3,35)
+    print.at("The mysterious \"Gremlin\" has struck Sgt. Dooley again!",2,3,35)
+    set(f222)
+    observe.blocks(o1)
+    v140 = 5
+  }
+  if (v220 > 0 && f138) { //01d4
+    print.at("\"Sonny! If I find out you are that inconsiderate, worthless 'Gremlin,' I'll hang you out to dry!!\"",2,3,35)
+    reset(f138)
+    v140 = 30
+  }
+  get.posn(o1,v144,v145)
+  if ((v153 != v144 || v154 != v145)) { //01eb
+    v153 = v144
+    v154 = v145
+    start.cycling(o1)
+    goto(l518)
+  }
+  stop.cycling(o1)
+l518:
+  if ((said("get", "chicken", "rol") || said("carry", "chicken", "rol"))) { //0206
+    print("Nah, you don't want to do that. Who'd dirty their clean uniform by picking up a chicken that just relieved herself all over Sgt. Dooley's desk?")
+  }
+  if (said("get", "feather")) { //021e
+    print("Do that in \"King's Quest III.\"")
+  }
+  if (said("examine", "chicken")) { //022a
+    print("You think to yourself, \"This is one excited chicken,\" as you watch it flop, squirt and cluck around on Dooley's desk. You bite your lip trying to keep from laughing.")
+  }
+  if (said("answer", "chicken")) { //0236
+    print("\"CLUCK!!\"")
+  }
+  if (said("fire", "chicken")) { //0242
+    print("What a cruel thought.")
+  }
+  if ((said("answer", "art") || said("answer", "friend"))) { //024e
+    print("Dooley shouts, \"I swear if I catch that 'gremlin,' whoever he is, I'm gonna make hamburger out of him!\"")
+  }
+  if (said("answer", "chicken", "rol")) { //0262
+    print("Before you say anything, you think back a few years and remember that Lytton PD officer who received a disability retirement because the blood stopped circulating in his brain. He also talked to chickens!")
+  }
+}
+if (f130 && v31 < 4 && f138) { //0270
+  reset(f138)
+  v139++
+  if (v139 == 1) { //027f
+    print("\"Hello, Sonny! I have a memo here concerning you. Let me read it to you.\"")
+    v140 = 4
+  }
+  if (v139 == 2) { //028b
+    reposition.to(o1,76,114)
+    set.loop(o1,2)
+    set.view(o1,73)
+    cycle.time(o1,v124)
+    start.cycling(o1)
+    erase(o4)
+    v140 = 4
+  }
+  if (v139 == 3) { //02a6
+    print("As Sgt. Dooley starts to read, his eyes begin to sting and water profusely.")
+    v140 = 4
+  }
+  if (v139 == 4) { //02b2
+    draw(o4)
+    set(f231)
+    set.view(o1,26)
+    set.loop(o1,1)
+    cycle.time(o1,v122)
+    v221 = 1
+    v140 = 10
+  }
+  if (v139 == 5) { //02cc
+    print("\"Get out of my way!\" screams Dooley. \"I think my eyeballs are comin' out of my head!\"")
+    v140 = 10
+    v139 = 4
+  }
+}
+if (f130 && v31 < 4) { //02db
+  if (v221 == 1) { //02e4
+    move.obj(o1,98,118,2,f221)
+  }
+  if (v221 == 2) { //02f1
+    print("Sgt. Dooley races for the bathroom, cursing the \"Gremlin\" for spraying the memo with mace!")
+    move.obj(o1,120,136,2,f221)
+    start.update(o3)
+    end.of.loop(o3,f228)
+    sound(1,f154)
+    v221++
+  }
+  if (v221 == 4) { //030a
+    print("On his way out, Dooley yells, \"Read the memo yourself, Sonny -- if you can.\"")
+    move.obj(o1,136,136,2,f221)
+    v221++
+  }
+  if (v221 == 6) { //031b
+    print("From the hallway comes uncontrolled laughter, as Dooley declares, \"When I find who that 'Gremlin' is, I swear I'll kill him!\"")
+    erase(o1)
+    reset(f227)
+    v140 = 0
+    v139 = 6
+    v221++
+  }
+}
+if (f112) { //0330
+  v226--
+  if (f227 && v226 == 1) { //0338
+    if (v35 == 9) { //0341
+      print("\"I heard you were going undercover at Hotel Delphoria, Sonny!\"")
+      goto(l866)
+    }
+    if (!(v139 > 0) && !(v222 > 0)) { //034d
+      random(2,3,v131)
+      print(v131)
+      v226 = 33
+    }
+  }
+}
+l866:
+if (!fEnteredCommand) { //0362
+  goto(l1391)
+}
+if (f231 && said("get", "memo", "rol")) { //036c
+  if (!(posn(o0,55,116,98,124))) { //037a
+    set(f113)
+    goto(l908)
+  }
+  print("You can't; that thing is dripping with mace.")
+}
+l908:
+if (f231 && said("examine", "memo", "rol")) { //038c
+  if (posn(o0,72,111,86,119)) { //039a
+    if (f131) { //03a4
+      print("\"Interdepartmental Memo\n\nFrom: Lt. James Morgan, Narcotics.\n\nRe: Officer Bonds\n\nOfficer Bonds' request for a temporary transfer to the Narcotics Department has been approved. Bonds is to report to my office ASAP in suitable street clothes.\"")
+      goto(l945)
+    }
+    print("\"Interdepartmental Memo\n\nFrom: Lt. James Morgan, Narcotics.\n\nRe: Officer Bonds\n\nDue to our extreme manpower shortage, Officer Bonds is hereby temporarily transferred to the Narcotics Department. Bonds is to report to my office ASAP in suitable street clothes.\"")
+l945:
+    if (!f163) { //03b1
+      set(f163)
+      v31 = 4
+      vCurrentScore += 2
+    }
+    goto(l980)
+  }
+  if (posn(o0,68,122,88,124)) { //03c3
+    print("You may be smart, but you can't read a memo upside down!")
+    goto(l980)
+  }
+  set(f113)
+}
+l980:
+if (said("o", "d")) { //03d4
+  if (posn(o0,117,128,134,140)) { //03de
+    if (f229) { //03e8
+      print("It IS open.")
+      goto(l1019)
+    }
+    start.update(o3)
+    end.of.loop(o3,f228)
+    sound(1,f154)
+l1019:
+    goto(l1024)
+  }
+  print("You're too far from the door.")
+}
+l1024:
+if (said("c", "d")) { //0400
+  if (posn(o0,117,128,134,140)) { //040a
+    if (fTriggerLine) { //0414
+      print("Closing the door now would be rather painful.")
+      goto(l1075)
+    }
+    if (!f229) { //041f
+      print("It IS closed.")
+      goto(l1075)
+    }
+    start.update(o3)
+    reverse.loop(o3,f228)
+    sound(2,f154)
+l1075:
+    goto(l1080)
+  }
+  print("You're too far from the door.")
+}
+l1080:
+if (said("examine")) { //0438
+  print("\"Are you sizin' up my office, or what?\"")
+}
+if (said("hello")) { //0442
+  print("\"Well, hello, Mr. Bonds.\"")
+}
+if (said("examine", "accident")) { //044c
+  print("This is Sgt. Dooley's office. Many butts have been chewed out in this room.")
+}
+if (said("get", "book")) { //0458
+  print("You don't need the books.")
+}
+if (said("examine", "book")) { //0464
+  print("They belong to Sgt. Dooley. Don't bother them.")
+}
+if (said("examine", "counter")) { //0470
+  print("Dooley keeps his desk neat and orderly.")
+}
+if (f227 && (said("examine", "art") || said("examine", "friend"))) { //047c
+  print("Sgt. Dooley, the old veteran, barks a lot, but rarely bites.")
+}
+if (!f225 && f227 && (said("answer", "art") || said("answer", "friend"))) { //0492
+  print("\"Bonds!\" Dooley growls. \"Aren't you assigned enough work to do? Go on, get out of here!\"")
+}
+if (said("examine", "file", "cabinet")) { //04ab
+  if (!f224) { //04b7
+    set(f113)
+    goto(l1221)
+  }
+  print("This file cabinet is crammed full of personnel records and officer evaluations.")
+}
+l1221:
+if (said("elevator", "blind")) { //04c5
+  print("Forget it!")
+}
+if (said("o", "file", "cabinet")) { //04d1
+  if (f224) { //04dd
+    print("The file cabinet is off-limits to all except Sgt. Dooley, the Chief of Police, and the Department of Internal Affairs.")
+    goto(l1258)
+  }
+  set(f113)
+}
+l1258:
+if (said("examine", "painting")) { //04ea
+  if (posn(o0,95,109,113,117)) { //04f4
+    print("\"Certificate of Accomplishment for Outstanding Achievement in the Leadership of City of Lytton Community Youth Programs\"")
+    goto(l1285)
+  }
+  set(f113)
+}
+l1285:
+if (said("examine", "trophy")) { //0505
+  if (posn(o0,36,109,56,118)) { //050f
+    print("The inscription on the trophy reads...\n\n\"Sgt. John Dooley\n   Third Place\n   Fifth Annual\n Pygmy Goat Races\"")
+    goto(l1312)
+  }
+  set(f113)
+}
+l1312:
+if (said("examine", "bookcase")) { //0520
+  if (posn(o0,36,109,58,120)) { //052a
+    print("In the bookcase are various volumes of Official Departmental Procedures and General Orders guaranteed to cure insomnia.")
+    goto(l1339)
+  }
+  set(f113)
+}
+l1339:
+if (said("examine", "painting")) { //053b
+  if (posn(o0,111,115,118,126)) { //0545
+    print("The photograph of Sgt. Dooley and Chief Whipplestick amuses you.")
+    goto(l1366)
+  }
+  set(f113)
+}
+l1366:
+if (said("examine", "pane")) { //0556
+  print("You see the brickwork of an exterior wall.")
+}
+if (!fSaidAccepted && !f225) { //0562
+  v226 = 6
+}
+l1391:
+if (f228) { //056f
+  reset(f228)
+  stop.update(o3)
+  toggle(f229)
+  if (f229) { //057b
+    ignore.blocks(o0)
+    goto(l1416)
+  }
+  observe.blocks(o0)
+}
+l1416:
+if (f230) { //0588
+  sound(39,f230)
+}
+return()

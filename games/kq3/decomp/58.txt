@@ -1,4 +1,91 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 4
+  set(f63)
+  v57 = 60
+  v58 = 111
+  set.horizon(1)
+  load.logic(103)
+  v34 = 166
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //0027
+    if (vPrevRoom == 57) { //002d
+      position(o0,0,138)
+      goto(l70)
+    }
+    if (vPrevRoom == 59) { //003b
+      position(o0,152,155)
+    }
+  }
+l70:
+  if (f47) { //0046
+    draw(o0)
+  }
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0052
+  goto(l240)
+}
+if ((said("examine", "bluff") || said("examine", "up", "bluff") || said("examine") || said("examine", "up") || said("examine", "area") || said("examine", "down"))) { //005c
+  print("You carefully make your way down the eastern side of these mountains. The path travels along the top of a narrow ridge. Looking back, you see the snowy peaks through which you so recently journeyed. Whew! You wipe your brow as you feel the worst is now behind you.")
+}
+if (said("examine", "path")) { //0088
+  print("You are walking along a steep ridgetop on a treacherous path. One wrong step could mean instant death. Be careful!")
+}
+if ((said("examine", "brush") || said("examine", "forest"))) { //0094
+  print("You see numerous evergreen trees and bushes. The forest is very tranquil.")
+}
+if (said("examine", "deck")) { //00a8
+  print("The ground is covered with a crunchy carpet of pine needles.")
+}
+if (said("examine", "sky")) { //00b4
+  print("Looking back, you see snow-capped peaks thrusting their way upward toward an azure sky.")
+}
+if ((said("climb", "forest") || said("climb", "up", "forest"))) { //00c0
+  print("There are no climbable trees here.")
+}
+if ((said("capture", "flower") || said("capture", "flower") || said("examine", "flower"))) { //00d6
+  print("You see no flowers around here.")
+}
+l240:
+v39 = 0
+if (fTriggerLine) { //00f3
+  if (v41 < 116) { //00f9
+    v39 = 1
+    set.priority(o0,4)
+    goto(l309)
+  }
+  if (posn(o0,143,138,159,145)) { //0109
+    v39 = 2
+    set.priority(o0,9)
+    goto(l309)
+  }
+  if (posn(o0,126,127,144,139)) { //011c
+    v39 = 3
+    set.priority(o0,9)
+    goto(l309)
+  }
+  v39 = 4
+  set.priority(o0,14)
+}
+l309:
+call(103)
+if (vWhichEgoBorder == 4) { //0137
+  if ((v44 == 25 || v44 == 26)) { //013e
+    vWhichEgoBorder = 0
+    v71 = 5
+    goto(l341)
+  }
+  new.room(57)
+}
+l341:
+if (vWhichEgoBorder == 2) { //0155
+  new.room(59)
+}
+return()

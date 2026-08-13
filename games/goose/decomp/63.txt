@@ -1,3 +1,242 @@
-if (!(isSet(f54)
-!!!
-&{%!e(string=incomplete condition: 0x2b)}
+if (!f54) { //0002
+  set(f54)
+  reset(f103)
+  load.sound(9)
+  load.sound(54)
+  ignore.objs(o13)
+  set.loop(o4,1)
+  set.cel(o4,1)
+  stop.cycling(o4)
+  erase(o12)
+  if (posn(o0,70,160,105,167)) { //001d
+    move.obj(o0,70,167,1,f122)
+    stop.cycling(o13)
+    goto(l52)
+  }
+  set(f122)
+}
+l52:
+if (f122) { //0034
+  reset(f122)
+  get.posn(o0,v212,v213)
+  if (v213 == 167) { //0040
+    set.loop(o0,3)
+  }
+  stop.cycling(o0)
+  stop.motion(o0)
+  start.cycling(o13)
+  get.posn(o13,v38,v39)
+  if (posn(o13,0,90,160,115)) { //0054
+    if (v38 > 100) { //005e
+      move.obj(o13,136,150,1,f240)
+      goto(l135)
+    }
+    set.cel(o4,2)
+    if (v38 > 35) { //0071
+      move.obj(o13,48,117,1,f240)
+      goto(l135)
+    }
+    move.obj(o13,20,117,1,f240)
+l135:
+    goto(l163)
+  }
+  if (v38 < 100) { //008a
+    set.cel(o4,2)
+    move.obj(o13,85,161,1,f43)
+    goto(l163)
+  }
+  move.obj(o13,114,156,1,f43)
+}
+l163:
+if (f240) { //00a3
+  reset(f240)
+  get.posn(o13,v38,v39)
+  if (v38 < 100) { //00af
+    move.obj(o13,85,161,1,f43)
+    goto(l197)
+  }
+  move.obj(o13,114,156,1,f43)
+}
+l197:
+if (f242) { //00c5
+  reset(f242)
+  stop.motion(o13)
+  stop.cycling(o13)
+}
+if (!f108 && f104) { //00d1
+  set(f108)
+  reset(f104)
+  stop.update(o6)
+  set(f15)
+  print.at("                                   \n\n\n",1,2,37)
+  display(2,2,"Mary had a little lamb,")
+  display(3,2,"  its' fleece was as white as snow.")
+}
+if (vTimeSeconds > 10 && f108 && !f109) { //00ef
+  set(f109)
+  display(4,2,"Wherever Mary went, the lamb was")
+  display(5,2,"  sure to go.")
+}
+if (vTimeSeconds > 16 && f109 && !f110) { //0105
+  set(f110)
+  clear.text.rect(2,2,5,36,15)
+  display(2,2,"It followed her to school one day,")
+  display(3,2,"  which was against the rule.")
+}
+if (vTimeSeconds > 23 && f110 && !f111) { //0121
+  set(f111)
+  display(4,2,"It made the children laugh and play")
+  display(5,2,"  to see a lamb at school.")
+}
+if (vTimeSeconds > 16 && v48 == 5) { //0137
+  set(f43)
+}
+if (f241 && v48 == 1) { //0143
+  sound(54,f241)
+}
+if (f103) { //014f
+  if (!f243) { //0155
+    set(f243)
+    sound(9,f103)
+  }
+}
+v47--
+if (v47 == 1) { //0163
+  set(f43)
+}
+if (f43) { //016c
+  reset(f43)
+  v48++
+  if (v48 == 1) { //0176
+    get.posn(o13,v38,v39)
+    if (v38 == 114) { //0181
+      set.loop(o13,1)
+      goto(l401)
+    }
+    set.loop(o13,0)
+l401:
+    set.cel(o13,0)
+    stop.cycling(o13)
+    set.loop(o4,1)
+    set.cel(o4,3)
+    set.cel(o7,0)
+    start.update(o7)
+    start.cycling(o7)
+    v209 = 2
+    cycle.time(o7,v209)
+    sound(54,f241)
+    v47 = 50
+  }
+  if (v48 == 2) { //01af
+    vTimeSeconds = 0
+    sound(9,f103)
+    set(f104)
+    stop.update(o7)
+    stop.cycling(o7)
+    start.update(o11)
+    stop.cycling(o11)
+    set.cel(o11,1)
+    stop.cycling(o13)
+    v47 = 5
+  }
+  if (v48 == 3) { //01ce
+    set.cel(o11,2)
+    v47 = 5
+  }
+  if (v48 == 4) { //01db
+    stop.update(o11)
+    animate.obj(o5)
+    set.view(o5,69)
+    set.loop(o5,3)
+    set.cel(o5,0)
+    position(o5,87,111)
+    draw(o5)
+    stop.cycling(o5)
+    v47 = 20
+  }
+  if (v48 == 5) { //01fa
+    set.loop(o4,1)
+    set.cel(o4,4)
+    reposition.to(o4,99,155)
+    erase(o8)
+    move.obj(o5,75,118,1,f47)
+  }
+  if (v48 == 6) { //0213
+    set.cel(o5,1)
+    start.cycling(o4)
+    v209 = 1
+    cycle.time(o4,v209)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    move.obj(o4,95,152,1,f43)
+  }
+  if (v48 == 7) { //0231
+    move.obj(o4,87,137,1,f43)
+    start.cycling(o13)
+    move.obj(o13,92,145,1,f242)
+  }
+  if (v48 == 8) { //0246
+    stop.cycling(o4)
+    set.loop(o4,1)
+    set.cel(o4,5)
+    normal.motion(o13)
+    stop.motion(o13)
+    stop.cycling(o13)
+    set.view(o13,69)
+    set.loop(o13,1)
+    set.cel(o13,6)
+    v47 = 15
+  }
+  if (v48 == 9) { //0267
+    start.cycling(o4)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    move.obj(o4,87,111,1,f43)
+  }
+  if (v48 == 10) { //027c
+    erase(o4)
+    set.cel(o5,2)
+    v47 = 3
+  }
+  if (v48 == 11) { //028b
+    move.obj(o5,87,112,1,f43)
+    set.view(o13,47)
+    set.loop(o13,1)
+    start.cycling(o13)
+    move.obj(o13,87,111,1,f47)
+  }
+  if (v48 == 12) { //02a6
+    erase(o5)
+    set.view(o13,47)
+    set.loop(o13,1)
+    start.cycling(o13)
+    move.obj(o13,87,111,1,f43)
+  }
+  if (v48 == 13) { //02bd
+    erase(o13)
+    start.update(o11)
+    set.cel(o11,1)
+    v47 = 5
+  }
+  if (v48 == 14) { //02ce
+    set.cel(o11,0)
+    v47 = 5
+  }
+  if (v48 == 15) { //02db
+    stop.update(o11)
+    animate.obj(o9)
+    set.view(o9,69)
+    set.loop(o9,4)
+    set.cel(o9,0)
+    position(o9,122,126)
+    set.priority(o9,15)
+    draw(o9)
+    stop.cycling(o9)
+    v47 = 40
+  }
+  if (v48 == 16) { //02fd
+    erase(o9)
+    set(f114)
+  }
+}
+return()

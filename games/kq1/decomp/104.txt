@@ -1,4 +1,14 @@
-if (v80 == v0) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x0e)}
+if (v80 == vCurrentRoom) { //0002
+  if (said("climb", "beanstalk")) { //0009
+    if (f157) { //0013
+      print("You are already climbing the beanstalk.")
+    }
+    if (f79) { //001b
+      print("You can't do that when you are invisible!")
+    }
+  }
+  if (said("check", "beanstalk")) { //0023
+    print("It is a mighty beanstalk that stretches to the sky.")
+  }
+}
+return()

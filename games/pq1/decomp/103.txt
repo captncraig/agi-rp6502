@@ -1,5 +1,309 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(1)
+  prevent.input()
+  status.line.off()
+  reset(f14)
+  set(f36)
+  load.view(125)
+  load.view(136)
+  load.view(132)
+  load.view(130)
+  load.view(131)
+  load.view(19)
+  load.sound(29)
+  load.sound(34)
+  v220 = 55
+  load.pic(v220)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.blocks(o1)
+  set.view(o1,136)
+  position(o1,41,105)
+  set.loop(o1,2)
+  set.cel(o1,0)
+  animate.obj(o2)
+  set.view(o2,125)
+  set.priority(o2,10)
+  ignore.objs(o2)
+  position(o2,74,80)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  cycle.time(o2,v124)
+  animate.obj(o3)
+  set.view(o3,132)
+  position(o3,99,113)
+  cycle.time(o3,v124)
+  animate.obj(o4)
+  position(o4,46,138)
+  set.priority(o4,13)
+  set.view(o4,19)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  stop.cycling(o4)
+  animate.obj(o5)
+  position(o5,98,138)
+  set.priority(o5,13)
+  set.view(o5,19)
+  set.loop(o5,1)
+  set.cel(o5,0)
+  stop.cycling(o5)
+  vCycleTime = 2
+  v141 = 11
+  v145 = 20
+  v144 = 8
+  show.pic()
+  return()
+}
+if (f138) { //0095
+  reset(f138)
+  v139++
+  set.text.attribute(15,0)
+  if (v139 == 1) { //00a2
+    v145--
+    if (v145 < 7) { //00ab
+      v140 = 4
+      goto(l304)
+    }
+    v139--
+    v141 = 11
+    v131 = 1
+    v152 = v145
+    display(v152,v144,v131)
+    if (v145 < 19) { //00c7
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 18) { //00d6
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 17) { //00e5
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 16) { //00f4
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 15) { //0103
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 14) { //0112
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+    if (v145 < 13) { //0121
+      v152++
+      v131++
+      display(v152,v144,v131)
+    }
+  }
+l304:
+  if (v139 == 2) { //0130
+    show.pic()
+    sound(29,f152)
+    display(2,10,"Charge:")
+    display(3,8,"ILLEGAL GAMBLING")
+    v140 = 4
+  }
+  if (v139 == 3) { //0146
+    print("Hotel Delphoria bartender Woody Roberts turned State's evidence and, as a witness for the prosecution (in return for a suspended sentence and three years probation), provided convincing testimony concerning the gambling activities of Jessie Bains, Otto Lipshitz, and Gene \"the Bambino\" Bamboni.")
+    display(2,8,"                       ")
+    display(3,8,"                       ")
+    v140 = 4
+  }
+  if (v139 == 4) { //015a
+    sound(29,f152)
+    display(2,10,"Charge:")
+    display(3,8,"DRUG TRAFFICKING")
+    v140 = 4
+  }
+  if (v139 == 5) { //016f
+    print("Drug pusher Donald D. Colby turned State's evidence and, as a witness for the prosecution (in return for a suspended sentence and five years probation), provided convincing testimony concerning the Bains' narcotics distribution network.")
+    display(2,8,"                       ")
+    display(3,8,"                       ")
+    v140 = 4
+  }
+  if (v139 == 6) { //0183
+    sound(29,f152)
+    display(2,10,"Charge:")
+    display(3,8,"ATTEMPTED MURDER")
+    v140 = 4
+  }
+  if (v139 == 7) { //0198
+    print("Lytton PD Detectives Bonds, Anglin, and Smith, presented eyewitness testimony concerning the shoot-out at the Hotel Delphoria.")
+    display(2,8,"                       ")
+    display(3,8,"                       ")
+    v140 = 4
+  }
+  if (v139 == 8) { //01ac
+    sound(29,f152)
+    display(2,10,"Charge:")
+    display(3,8,"FIRST DEGREE MURDER")
+    v140 = 4
+  }
+  if (v139 == 9) { //01c1
+    print("Ballistic tests provided a positive match between Bains' .32-caliber automatic handgun and the weapon used to murder Jason Taselli.")
+    display(2,8,"                       ")
+    display(3,8,"                       ")
+    v140 = 4
+  }
+  if (v139 == 10) { //01d5
+    v139 = 11
+  }
+  if (v139 == 11) { //01df
+    print("And now, the results of that trial...")
+    v140 = 4
+  }
+  if (v139 == 12) { //01eb
+    v220 = 55
+    draw.pic(v220)
+    draw(o1)
+    stop.update(o1)
+    draw(o2)
+    start.cycling(o2)
+    draw(o3)
+    draw(o4)
+    stop.update(o4)
+    draw(o5)
+    stop.update(o5)
+    add.to.pic(131,0,0,5,125,11,4)
+    add.to.pic(130,0,0,73,155,13,4)
+    show.pic()
+    status.line.on()
+    set(f14)
+    v140 = 4
+  }
+  if (v139 == 13) { //0220
+    stop.update(o2)
+    set.cel(o2,0)
+    force.update(o2)
+    print("The Honorable Judge Kim Palmer asks the foreman of the jury, \"Ladies and gentlemen of the jury, have you reached your verdict?\"")
+    v140 = 4
+  }
+  if (v139 == 14) { //0233
+    print("The foreman answers, \"Yes, we have, Your Honor.\"")
+    v140 = 4
+  }
+  if (v139 == 15) { //023f
+    print("\"Bailiff, please bring the jury's verdict to me.\"")
+    v141 = 14
+  }
+  if (v139 == 16) { //024b
+    start.update(o1)
+    move.obj(o1,31,115,1,f138)
+  }
+  if (v139 == 17) { //025a
+    stop.cycling(o1)
+    v141 = 15
+  }
+  if (v139 == 18) { //0266
+    start.cycling(o1)
+    move.obj(o1,114,115,1,f138)
+  }
+  if (v139 == 19) { //0275
+    move.obj(o1,114,101,1,f138)
+  }
+  if (v139 == 20) { //0282
+    move.obj(o1,95,101,1,f138)
+  }
+  if (v139 == 21) { //028f
+    move.obj(o1,93,99,1,f138)
+  }
+  if (v139 == 22) { //029c
+    move.obj(o1,87,99,1,f138)
+  }
+  if (v139 == 23) { //02a9
+    stop.update(o1)
+    set.loop(o2,2)
+    set.cel(o2,0)
+    stop.cycling(o2)
+    start.update(o2)
+    v141 = 12
+  }
+  if (v139 == 24) { //02bf
+    set.cel(o2,1)
+    v141 = 12
+  }
+  if (v139 == 25) { //02cc
+    set.loop(o2,1)
+    set.cel(o2,1)
+    v140 = 3
+  }
+  if (v139 == 26) { //02dc
+    set.loop(o2,0)
+    set.cel(o2,0)
+    stop.update(o2)
+    force.update(o2)
+    print("\"Bailiff, please read the jury's verdict to the court.\"")
+    set.loop(o1,2)
+    force.update(o1)
+    v140 = 4
+  }
+  if (v139 == 27) { //02f7
+    print("\n\"%m28\n\n%m9.\n\n\n%m20\"\n")
+    v140 = 4
+  }
+  if (v139 == 28) { //0303
+    print("\n\"%m28\n\n%m11.\n\n\n%m20\"\n")
+    v140 = 4
+  }
+  if (v139 == 29) { //030f
+    print("\n\"%m28\n\n%m13.\n\n\n%m20\"\n")
+    v140 = 4
+  }
+  if (v139 == 30) { //031b
+    print("\n\"%m28\n\n%m15.\n\n\n%m20\"\n")
+    v140 = 4
+  }
+  if (v139 == 31) { //0327
+    print("\"Mr. Bains, please rise for sentencing. Do you have any last statement before I pronounce sentencing?\"")
+    set.cel(o4,1)
+    set.cel(o5,1)
+    force.update(o4)
+    force.update(o5)
+    v140 = 4
+  }
+  if (v139 == 32) { //033d
+    sound(34,f152)
+    print("Bains looks straight into your eyes. \"No, your Honor.\"\n\nThen, under his breath, he hisses across the aisle, \"Bonds, you're a dead man!\"")
+    v140 = 4
+    start.cycling(o2)
+    start.update(o2)
+  }
+  if (v139 == 33) { //0350
+    stop.cycling(o2)
+    set.cel(o2,0)
+    print("Staring intently at Bains, Judge Palmer says firmly, \"Jessie Hiram Bains, you are hereby sentenced to a total of 97 years in the State Penitentiary, without possibility of parole.\"")
+    v140 = 4
+  }
+  if (v139 == 34) { //0361
+    set.cel(o5,0)
+    force.update(o5)
+    print("The courtroom erupts in spontaneous applause. You smile broadly, until you catch Bains glaring holes through your skull! You know your life is not yet free of \"the Death Angel!\"")
+    v140 = 8
+  }
+  if (v139 == 35) { //0372
+    unanimate.all()
+    draw.pic(vCurrentRoom)
+    show.pic()
+    status.line.off()
+    reset(f14)
+    v140 = 4
+  }
+  if (v139 == 36) { //0383
+    print("Three days pass.\n\nWith Bains safely ensconced in the State Penitentiary at Vacaville, the City of Lytton is once again a quiet, peaceful community freed from the grasp of \"the Death Angel.\"")
+    vCurrentScore += 4
+    new.room(104)
+  }
+}
+return()

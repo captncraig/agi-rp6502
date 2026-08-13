@@ -1,0 +1,1473 @@
+if (vErrorCode > 0) { //0002
+  call(98)
+}
+if (f12) { //000b
+  set(f14)
+  set(f34)
+  disable.member(c27)
+  if (!f56) { //0017
+    clear.lines(22,22,c0)
+    clear.lines(24,24,c0)
+  }
+}
+if (!(vCurrentRoom > 0)) { //0026
+  if (!fRestartGame) { //002e
+    script.size(250)
+    set.menu("Sierra")
+    set.menu.member("About PQ  ",c26)
+    set.menu.member("Help  <F1>",c2)
+    set.menu("File")
+    set.menu.member("Save     <F5>",c3)
+    set.menu.member("Restore  <F7>",c5)
+    set.menu.member("-------------",c27)
+    set.menu.member("Restart  <F9>",c7)
+    set.menu.member("-------------",c27)
+    set.menu.member("Quit  <Alt-Z>",c1)
+    set.menu("Action")
+    set.menu.member("Inventory      <Tab>",c10)
+    set.menu.member("See Object  <Ctrl-S>",c28)
+    set.menu.member("Dispatcher  <Ctrl-D>",c34)
+    set.menu("Special")
+    set.menu.member("Sound On/Off       <F2>",c16)
+    if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //0063
+      set.menu.member("Graphics Mode  <Ctrl-R>",c12)
+    }
+    if (vComputerType == ATARI_ST) { //0075
+      set.menu.member("Joystick/Mouse <Ctrl-J>",c15)
+      goto(l133)
+    }
+    set.menu.member("Joystick       <Ctrl-J>",c15)
+l133:
+    set.menu.member("Pause Game             ",c18)
+    if (vComputerType != AMIGA) { //0088
+      set.menu("Speed")
+      set.menu.member("Normal ",c30)
+      set.menu.member("Slow   ",c31)
+      set.menu.member("Fast   ",c29)
+      set.menu.member("Fastest",c35)
+      set.menu.member("-------",c27)
+      set.menu.member("Slower ",c36)
+    }
+    submit.menu()
+  }
+  call(101)
+  if (fRestartGame) { //00a7
+    new.room(6)
+  }
+  new.room(1)
+}
+if (fNewRoom) { //00b1
+  call(100)
+  if (f155) { //00b9
+    load.logic(99)
+    load.logic(105)
+    set(f10)
+  }
+  if (!(vCurrentRoom < 10) && !(vCurrentRoom > 25)) { //00c5
+    load.logic(117)
+    call(117)
+    goto(l221)
+  }
+  load.view(v39)
+  set.view(o0,v39)
+l221:
+  call(vCurrentRoom)
+}
+get.posn(o0,v142,v143)
+reset(f109)
+if (f158) { //00e5
+  reset(fTriggerLine)
+}
+if ((controller(c32) || said("menu"))) { //00ed
+  menu.input()
+  set(f34)
+}
+if (controller(c12)) { //00fc
+  toggle.monitor()
+  set(f34)
+}
+if (controller(c17)) { //0105
+  cancel.line()
+}
+if (controller(c9)) { //010c
+  echo.line()
+}
+if (v31 < 254) { //0113
+  if (controller(c4)) { //011a
+    set(f30)
+  }
+  if (controller(c6)) { //0122
+    set(f31)
+  }
+  if (controller(c8)) { //012a
+    set(f32)
+  }
+  if (controller(c25)) { //0132
+    set(f33)
+  }
+}
+if ((controller(c16) || said("sound", "rol"))) { //013a
+  toggle(f9)
+}
+if (vComputerType == 2) { //014a
+  if (controller(c38)) { //0151
+    vSoundVolume--
+  }
+  if (controller(c39) && vSoundVolume < 15) { //0159
+    vSoundVolume++
+  }
+}
+if (v31 < 254 && (controller(c34) || said("call", "friend") || said("call") || said("use", "call") || said("answer", "call") || said("call", "backup") || said("request", "backup") || said("answer", "backup") || said("call", "dispatch"))) { //0164
+  set.string(str3,"call")
+  parse(str3)
+}
+if ((controller(c18) || said("pause") || said("pause", "game"))) { //01a2
+  pause()
+  set(f34)
+}
+if (controller(c2)) { //01b7
+  if ((f159 || f36)) { //01bd
+    print("You can't see the Help Screen right now. Try again elsewhere.")
+    goto(l464)
+  }
+  call(102)
+  set(f34)
+}
+l464:
+if ((controller(c5) || said("restore") || said("restore", "game"))) { //01d0
+  stop.sound()
+  restore.game()
+  set(f34)
+}
+if (controller(c20)) { //01e6
+  print("\n      Police Quest\n\n   in Pursuit of the\n      Death Angel\n\n      by Jim Walls\n\n  Ver 2.0A     10/23/87   \n")
+  version()
+  set(f34)
+}
+if ((controller(c7) || said("restart") || said("begin", "above") || said("restart", "game"))) { //01f1
+  restart.game()
+  set(f34)
+}
+if ((controller(c10) || said("inv"))) { //020c
+  status()
+  set(f34)
+}
+if (controller(c14)) { //021b
+  toggle(f155)
+  if (!f155) { //0223
+    reset(f10)
+    goto(l576)
+  }
+  load.logic(99)
+  load.logic(105)
+  set(f10)
+  print("\n      Police Quest\n\n   in Pursuit of the\n      Death Angel\n\n      by Jim Walls\n\n  Ver 2.0A     10/23/87   \n")
+  version()
+  accept.input()
+  accept.input()
+  normal.motion(o0)
+  reset(f36)
+  set(f34)
+}
+l576:
+if (controller(c15)) { //0240
+  init.joy()
+  set(f34)
+}
+if ((controller(c1) || said("quit"))) { //0249
+  stop.sound()
+  if (f155) { //0256
+    quit(1)
+    goto(l613)
+  }
+  quit(0)
+  set(f34)
+}
+l613:
+if ((controller(c28) || said("examine", "inv"))) { //0265
+  set(f13)
+  status()
+  if (vStatusItem > 0 && vStatusItem != 255) { //0276
+    v152 = vStatusItem
+    v152 += 40
+    show.obj(v152)
+  }
+  reset(f13)
+  set(f34)
+}
+if (controller(c26)) { //028d
+  if (vTimeDays > 0) { //0293
+    print("%m1%m103%v14 days, %v13 hours, %v12 minutes and %v11 seconds.\n")
+    goto(l685)
+  }
+  if (vTimeHours > 0) { //029f
+    print("%m1%m103%v13 hours, %v12 minutes and %v11 seconds.\n")
+    goto(l685)
+  }
+  print("%m1%m103%v12 minutes and %v11 seconds.\n")
+l685:
+  set(f34)
+}
+reset(f106)
+if ((controller(c36) || said("slower"))) { //02b1
+  set(f106)
+  vCycleTime++
+  if (vCycleTime > 3) { //02c1
+    vCycleTime = 0
+  }
+}
+if (said("faster")) { //02cb
+  set(f106)
+  if (vCycleTime > 0) { //02d5
+    vCycleTime--
+    goto(l740)
+  }
+  vCycleTime = 3
+}
+l740:
+if ((controller(c31) || said("slow"))) { //02e4
+  set(f106)
+  vCycleTime = 3
+}
+if ((controller(c30) || said("normal"))) { //02f5
+  set(f106)
+  vCycleTime = 2
+}
+if ((controller(c29) || said("fast"))) { //0306
+  set(f106)
+  vCycleTime = 1
+}
+if ((controller(c35) || said("fastest"))) { //0317
+  set(f106)
+  vCycleTime = 0
+}
+if (f106) { //0328
+  reset(f106)
+  if (!f56) { //0330
+    v131 = 81
+    v131 += vCycleTime
+    clear.text.rect(24,0,24,15,0)
+    v145 = 24
+    v144 = 0
+    display(v145,v144,v131)
+    v132 = 6
+  }
+}
+if (f140) { //0350
+  reset(f140)
+  v31 = 255
+  load.sound(31)
+  stop.cycling(o0)
+  stop.motion(o0)
+  program.control()
+  accept.input()
+  disable.member(c3)
+  v180 = 44
+}
+if (v31 == 255) { //0368
+  v180--
+  if (v180 == 1) { //0371
+    reset(f154)
+    sound(31,f152)
+    print("Thanks for playing\n\"Police Quest.\"\n\nNext time, don't make\nthis mistake again!")
+  }
+  if (fEnteredCommand && !fSaidAccepted) { //037f
+    print("Since you're dead...\n\nall you can do is restore a saved game or start over.")
+  }
+  if (!(vCurrentRoom < 10) && !(vCurrentRoom > 25)) { //038a
+    call(117)
+    call(vCurrentRoom)
+  }
+  if (f155) { //039a
+    call(99)
+  }
+  return()
+}
+if ((controller(c3) || f107 || said("save", "game") || said("save"))) { //03a3
+  if (f108) { //03b7
+    if (!f107) { //03bd
+      set(f107)
+      print("Just a moment, please...")
+      set(f34)
+    }
+    goto(l978)
+  }
+  reset(f107)
+  save.game()
+  set(f34)
+}
+l978:
+if (f55) { //03d2
+  reset(f157)
+}
+if (vEgoDir == v106 && v142 == v104 && v143 == v105) { //03da
+  stop.cycling(o0)
+  goto(l1006)
+}
+start.cycling(o0)
+l1006:
+if ((!(vEgoDir > 0) || f156)) { //03ee
+  stop.cycling(o0)
+}
+if (f157) { //03fc
+  start.cycling(o0)
+}
+if (vKeyPressed != v102) { //0404
+  set(f110)
+  v103 = 0
+  v102 = vKeyPressed
+}
+if (vKeyPressed == 13) { //0414
+  reset(f110)
+}
+v141--
+if (v141 == 1) { //041f
+  set(f138)
+}
+if (vTimeSeconds != v133) { //0428
+  v133 = vTimeSeconds
+  set(f112)
+  v132--
+  v120++
+  if (v132 == 1) { //0439
+    clear.text.rect(24,0,24,15,0)
+  }
+  if (f110) { //0446
+    v103++
+    if (v103 > 1) { //044e
+      reset(f110)
+    }
+  }
+  if (!f110) { //0457
+    v140--
+  }
+  if (v140 == 1) { //0460
+    set(f138)
+  }
+}
+if (!fNewRoom) { //0469
+  if (!(vCurrentRoom < 10) && !(vCurrentRoom > 25)) { //0470
+    call(117)
+  }
+  call(vCurrentRoom)
+}
+if (f155) { //0480
+  call(99)
+}
+if (vCurrentRoom == 75) { //0488
+  goto(l5402)
+}
+if (f113) { //0492
+  reset(f113)
+  set(f34)
+  print("You're not close enough.")
+}
+if (f114) { //049e
+  reset(f114)
+  set(f34)
+  print("You already have it.")
+}
+if (f115) { //04aa
+  reset(f115)
+  set(f34)
+  print("You don't have it.")
+}
+if (f170) { //04b6
+  reset(f170)
+  set(f34)
+  print("You don't have them.")
+}
+if (f116) { //04c2
+  reset(f116)
+  set(f34)
+  print("Ok.")
+}
+if (f30) { //04ce
+  reset(f30)
+  set(f34)
+  print("The F4%m11")
+}
+if (f31) { //04da
+  reset(f31)
+  set(f34)
+  print("The F6%m11")
+}
+if (f32) { //04e6
+  reset(f32)
+  set(f34)
+  print("The F8%m11")
+}
+if (f33) { //04f2
+  reset(f33)
+  set(f34)
+  print("The F10%m11")
+}
+if ((fSaidAccepted || !fEnteredCommand)) { //04fe
+  goto(l5402)
+}
+set(f34)
+if (!(vUnknownWord > 0) && f81) { //050e
+  log("Locals missed it!")
+}
+if (said("who", "wrote", "game")) { //051a
+  print("Jim Walls, Greg Rowland, Al Lowe, Mark Crowe, Scott Murphy, Ken Williams, Jerry Moore, Jeff Stephenson, Chris Iden and Bob Heitman.")
+}
+if (said("find", "beat", "rol")) { //0528
+  print("Your beat covers from Palm Street to Parkway Drive, and from River Road to Clearwater Drive.")
+}
+if ((said("hello") || said("hello", "anyword"))) { //0536
+  print("\"Hello.\"")
+}
+if ((said("bye", "rol") || said("anyword", "bye", "rol"))) { //0548
+  print("\"'Bye.\"")
+}
+if (said("thank", "rol")) { //055e
+  print("\"You're welcome.\"")
+}
+if ((said("examine", "clothes") || said("look in", "clothes") || said("find", "clothes"))) { //056a
+  print("Your clothes are stylish, but the pockets are empty.")
+}
+if (said("call")) { //0584
+  if (has(i21)) { //058c
+    print("Your backups ARE listening.")
+    goto(l1462)
+  }
+  if (!f39 && !(has(i4))) { //0597
+    print("What are you going to do? Scream, and pray that Dispatch will hear you?")
+    goto(l1462)
+  }
+  if (f39 && v39 == 17) { //05a6
+    print("This car has a tape player, but no police radio.")
+    goto(l1462)
+  }
+  print("Captain Whipplestick comes on the air and advises you to review proper radio procedures in%m17")
+}
+l1462:
+if ((said("administer", "clothes", "rol") || said("empty", "clothes", "rol") || said("get", "off", "clothes", "rol") || said("get", "clothes", "off", "rol") || said("drop", "clothes", "rol"))) { //05b6
+  if (!f39 && !f36) { //05e8
+    load.view(5)
+    set.view(o0,5)
+    if ((vEgoView == 13 || vEgoView == 7)) { //05f7
+      v152 = 1
+      goto(l1548)
+    }
+    v152 = 0
+l1548:
+    set.cel(o0,v152)
+    force.update(o0)
+  }
+  set(f140)
+  load.sound(13)
+  sound(13,f154)
+  print("An interesting approach -- but fatal!")
+}
+if (said("drop", "car keys", "rol")) { //061a
+  if (has(i1)) { //0626
+    print("Not here!")
+    goto(l1609)
+  }
+  if (has(i2)) { //0631
+    print("Not here!")
+    goto(l1609)
+  }
+  if (has(i3)) { //063c
+    print("Not here!")
+    goto(l1609)
+  }
+  set(f115)
+}
+l1609:
+if ((said("use", "car keys") || said("get", "car keys"))) { //0649
+  if (has(i1)) { //065b
+    print("How can you do that?")
+    goto(l1662)
+  }
+  if (has(i2)) { //0666
+    print("How can you do that?")
+    goto(l1662)
+  }
+  if (has(i3)) { //0671
+    print("How can you do that?")
+    goto(l1662)
+  }
+  set(f115)
+}
+l1662:
+if (said("examine", "car keys")) { //067e
+  if (has(i1)) { //0688
+    show.obj(41)
+    goto(l1707)
+  }
+  if (has(i2)) { //0693
+    show.obj(42)
+    goto(l1707)
+  }
+  if (has(i3)) { //069e
+    show.obj(43)
+    goto(l1707)
+  }
+  set(f115)
+}
+l1707:
+if ((said("administer", "car keys", "rol") || said("administer", "anyword", "car keys", "rol"))) { //06ab
+  if (!f109) { //06c3
+    set(f113)
+    goto(l1790)
+  }
+  if (has(i1)) { //06cf
+    print("\"Hey, thanks a lot!\"")
+    print("But now you'll NEVER get it back!")
+    drop(i1)
+    goto(l1790)
+  }
+  if (has(i3)) { //06de
+    print("\"Hey, thanks a lot!\"")
+    print("But now you'll NEVER get it back!")
+    drop(i3)
+    goto(l1790)
+  }
+  if (has(i2)) { //06ed
+    print("\"Hey, thanks a lot!\"")
+    print("But now you'll NEVER get it back!")
+    drop(i2)
+    goto(l1790)
+  }
+  set(f115)
+}
+l1790:
+if ((f39 || has(i4)) && (said("move", "call", "rol") || said("move", "on", "call", "rol") || said("move", "off", "call", "rol"))) { //06fe
+  set(f116)
+}
+if (has(i4) && said("drop", "call", "rol")) { //0728
+  print("Not here!")
+}
+if (said("examine", "call")) { //0738
+  if (has(i4)) { //0742
+    show.obj(44)
+    goto(l1871)
+  }
+  set(f115)
+}
+l1871:
+if ((said("administer", "call", "rol") || said("administer", "anyword", "call", "rol"))) { //074f
+  if ((!f109 || !(has(i4)))) { //0767
+    print("How can you do that?")
+    goto(l1918)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i4)
+}
+l1918:
+if ((said("load", "automatic") || said("drop", "ammo", "automatic") || said("load", "automatic", "use", "ammo"))) { //077e
+  if (has(i14)) { //079c
+    print("It is loaded. You have %v34 shells left.")
+    goto(l2017)
+  }
+  if (!(has(i5))) { //07a7
+    print("What are you going to load? %m93")
+    goto(l2017)
+  }
+  if (!(has(i6))) { //07b3
+    print("You have no ammunition.")
+    goto(l2017)
+  }
+  if (f39) { //07bf
+    print("Handling your weapon while driving is dangerous.")
+    goto(l2017)
+  }
+  drop(i6)
+  drop(i5)
+  get(i14)
+  print("You rip out the speed loader and load your weapon.")
+  v34 = 6
+  if (!f142) { //07d5
+    set(f142)
+    vCurrentScore += 4
+  }
+}
+l2017:
+if ((said("empty", "automatic") || said("get", "ammo", "from", "automatic") || said("empty", "ammo") || said("empty", "ammo", "automatic"))) { //07e1
+  print("It's more valuable to you as it is!")
+}
+if ((said("draw", "automatic") || said("drop", "automatic", "belt") || said("drop", "automatic", "away") || said("dont move", "use", "automatic") || said("aim", "automatic", "rol") || said("empty", "automatic", "belt"))) { //0807
+  if (!(has(i5)) && !(has(i14))) { //083b
+    print("You're unarmed.")
+    goto(l2135)
+  }
+  if (f39) { //084a
+    print("%m87 You'll blow out a window!")
+    goto(l2135)
+  }
+  print("%m87 Please review proper gun handling procedures in%m17")
+}
+l2135:
+if ((said("use", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire", "automatic", "rol") || said("fire") || said("fire") || said("fire", "art") || said("fire", "convict") || said("fire", "art") || said("fire", "convict") || said("fire", "on", "art") || said("fire", "on", "convict"))) { //0857
+  if (has(i5)) { //08a5
+    print("Click! (Dry firing an empty gun is good practice for proper grip.)")
+    goto(l2264)
+  }
+  if (!(has(i14))) { //08b0
+    set(f115)
+    goto(l2264)
+  }
+  if (f39) { //08bc
+    print("%m87 You'll blow out a window!")
+    goto(l2264)
+  }
+  if (f162) { //08c7
+    print("Now?!")
+    goto(l2264)
+  }
+  erase(o0)
+  print("As you blow off your right leg, you resolve that, in the future, you will DRAW your weapon before you FIRE it!")
+  set(f140)
+}
+l2264:
+if ((said("examine", "belt") || said("examine", "automatic"))) { //08d8
+  if (has(i5)) { //08ea
+    show.obj(45)
+    goto(l2306)
+  }
+  if (has(i14)) { //08f5
+    show.obj(54)
+    goto(l2306)
+  }
+  set(f115)
+}
+l2306:
+if ((said("administer", "automatic", "rol") || said("administer", "anyword", "automatic", "rol"))) { //0902
+  if (!f109) { //091a
+    print("How can you do that?")
+    goto(l2371)
+  }
+  if (!(has(i5)) && !(has(i14))) { //0926
+    set(f115)
+    goto(l2371)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i5)
+  drop(i14)
+  print("A police officer without a weapon, is like being...")
+  print("...up a creek without a paddle!")
+  set(f140)
+}
+l2371:
+if ((said("get", "off", "belt") || said("drop", "belt") || said("empty", "belt"))) { //0943
+  if (!(has(i5)) && !(has(i14))) { //095d
+    set(f115)
+    goto(l2414)
+  }
+  print("Nah. Just wear it.")
+}
+l2414:
+if (said("drop", "automatic", "rol")) { //096e
+  if (!(has(i5)) && !(has(i14))) { //097a
+    set(f115)
+    goto(l2449)
+  }
+  drop(i5)
+  drop(i14)
+  print("...up a creek without a paddle!")
+  set(f140)
+}
+l2449:
+if (said("drop", "ammo", "rol")) { //0991
+  if (has(i6)) { //099d
+    drop(i6)
+    print("As Chief Whipplestick would say, \"A cop without ammo is like a bullet without powder!\"")
+    set(f140)
+    goto(l2478)
+  }
+  set(f115)
+}
+l2478:
+if (said("examine", "ammo")) { //09ae
+  if (has(i14)) { //09b8
+    show.obj(54)
+    goto(l2512)
+  }
+  if (has(i6)) { //09c3
+    show.obj(46)
+    goto(l2512)
+  }
+  set(f115)
+}
+l2512:
+if ((said("administer", "ammo", "rol") || said("administer", "anyword", "ammo", "rol"))) { //09d0
+  if ((!f109 || !(has(i6)))) { //09e8
+    print("How can you do that?")
+    goto(l2563)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i6)
+  print("As Chief Whipplestick would say, \"A cop without ammo is like a bullet without powder!\"")
+  set(f140)
+}
+l2563:
+if (said("drop", "briefcase", "rol")) { //0a03
+  if (has(i7)) { //0a0f
+    print("Not here!")
+    goto(l2588)
+  }
+  set(f115)
+}
+l2588:
+if ((said("use", "briefcase") || said("get", "briefcase"))) { //0a1c
+  if (has(i7)) { //0a2e
+    print("How can you do that?")
+    goto(l2619)
+  }
+  set(f115)
+}
+l2619:
+if (said("examine", "briefcase")) { //0a3b
+  if (has(i7)) { //0a45
+    show.obj(47)
+    goto(l2642)
+  }
+  set(f115)
+}
+l2642:
+if (said("c", "briefcase")) { //0a52
+  if (!(has(i7))) { //0a5c
+    set(f115)
+    goto(l2666)
+  }
+  print("Your briefcase IS closed.")
+}
+l2666:
+if ((said("o", "briefcase") || said("look in", "briefcase"))) { //0a6a
+  if (!(has(i7))) { //0a7c
+    set(f115)
+    goto(l2720)
+  }
+  if ((f102 || f36)) { //0a88
+    print("Now?!")
+    goto(l2720)
+  }
+  get.posn(o0,v134,v135)
+  current.loop(o0,v147)
+  new.room(38)
+}
+l2720:
+if ((said("administer", "briefcase", "rol") || said("administer", "anyword", "briefcase", "rol"))) { //0aa0
+  if ((!f109 || !(has(i7)))) { //0ab8
+    print("How can you do that?")
+    goto(l2767)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i7)
+}
+l2767:
+if (said("drop", "note", "rol")) { //0acf
+  if (has(i8)) { //0adb
+    print("Not here!")
+    goto(l2792)
+  }
+  set(f115)
+}
+l2792:
+if ((said("use", "note") || said("get", "note") || said("print", "note"))) { //0ae8
+  if (!(has(i8))) { //0b00
+    print("On the back of your hand?")
+    goto(l2925)
+  }
+  if (!(has(i9))) { //0b0c
+    if (has(i21)) { //0b13
+      print("You can't write with a radio!")
+      goto(l2848)
+    }
+    print("Using what?")
+l2848:
+    goto(l2925)
+  }
+  if (!f180) { //0b23
+    set(f180)
+    vCurrentScore += 1
+  }
+  prevent.input()
+  set.string(str10," ")
+  set.string(str11," ")
+  set.string(str12," ")
+  if (!f56) { //0b39
+    clear.lines(23,23,c0)
+  }
+  get.string(str10,"Note: ",23,0,30)
+  if (!f56) { //0b4a
+    clear.lines(23,23,c0)
+  }
+  get.string(str11,"Note: ",23,0,30)
+  if (!f56) { //0b5b
+    clear.lines(23,23,c0)
+  }
+  get.string(str12,"Note: ",23,0,30)
+  accept.input()
+}
+l2925:
+if ((said("examine", "note") || said("o", "note") || said("examine", "note"))) { //0b6d
+  if (has(i8)) { //0b85
+    show.obj(48)
+    goto(l2962)
+  }
+  set(f115)
+}
+l2962:
+if ((said("administer", "note", "rol") || said("administer", "anyword", "note", "rol"))) { //0b92
+  if ((!f109 || !(has(i8)))) { //0baa
+    print("How can you do that?")
+    goto(l3009)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i8)
+}
+l3009:
+if (said("drop", "pen", "rol")) { //0bc1
+  if (has(i9)) { //0bcd
+    print("Not here!")
+    goto(l3034)
+  }
+  set(f115)
+}
+l3034:
+if (said("use", "pen")) { //0bda
+  if (has(i9)) { //0be4
+    print("How can you do that?")
+    goto(l3057)
+  }
+  set(f115)
+}
+l3057:
+if (said("examine", "pen")) { //0bf1
+  if (has(i9)) { //0bfb
+    show.obj(49)
+    goto(l3080)
+  }
+  set(f115)
+}
+l3080:
+if ((said("administer", "pen", "rol") || said("administer", "anyword", "pen", "rol"))) { //0c08
+  if ((!f109 || !(has(i9)))) { //0c20
+    print("How can you do that?")
+    goto(l3127)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i9)
+}
+l3127:
+if (said("drop", "pinch book", "rol")) { //0c37
+  if (has(i10)) { //0c43
+    print("Not here!")
+    goto(l3152)
+  }
+  set(f115)
+}
+l3152:
+if ((said("use", "pinch book") || said("print", "pinch book") || said("print", "citation"))) { //0c50
+  if (has(i10)) { //0c68
+    print("How can you do that?")
+    goto(l3189)
+  }
+  set(f115)
+}
+l3189:
+if (said("examine", "pinch book")) { //0c75
+  if (has(i10)) { //0c7f
+    show.obj(50)
+    goto(l3212)
+  }
+  set(f115)
+}
+l3212:
+if ((said("administer", "pinch book", "rol") || said("administer", "anyword", "pinch book", "rol"))) { //0c8c
+  if ((!f109 || !(has(i10)))) { //0ca4
+    print("How can you do that?")
+    goto(l3259)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i10)
+}
+l3259:
+if (said("drop", "lytton tribune", "rol")) { //0cbb
+  if (has(i11)) { //0cc7
+    print("Not here!")
+    goto(l3284)
+  }
+  set(f115)
+}
+l3284:
+if (said("use", "lytton tribune")) { //0cd4
+  if (has(i11)) { //0cde
+    print("How can you do that?")
+    goto(l3307)
+  }
+  set(f115)
+}
+l3307:
+if (said("examine", "lytton tribune")) { //0ceb
+  if (has(i11)) { //0cf5
+    show.obj(51)
+    goto(l3330)
+  }
+  set(f115)
+}
+l3330:
+if ((said("administer", "lytton tribune", "rol") || said("administer", "anyword", "lytton tribune", "rol"))) { //0d02
+  if ((!f109 || !(has(i11)))) { //0d1a
+    print("How can you do that?")
+    goto(l3377)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i11)
+}
+l3377:
+if (said("drop", "billfold", "rol")) { //0d31
+  if (has(i12)) { //0d3d
+    print("Not here!")
+    goto(l3402)
+  }
+  set(f115)
+}
+l3402:
+if ((said("use", "billfold") || said("get", "billfold"))) { //0d4a
+  if (has(i12)) { //0d5c
+    print("How can you do that?")
+    goto(l3433)
+  }
+  set(f115)
+}
+l3433:
+if ((said("examine", "billfold") || said("count", "about", "bills") || said("look in", "billfold"))) { //0d69
+  if (has(i12)) { //0d83
+    show.obj(52)
+    goto(l3472)
+  }
+  set(f115)
+}
+l3472:
+if (said("count", "bills")) { //0d90
+  if (has(i20)) { //0d9a
+    show.obj(60)
+    goto(l3506)
+  }
+  if (has(i12)) { //0da5
+    show.obj(52)
+    goto(l3506)
+  }
+  set(f115)
+}
+l3506:
+if ((said("administer", "billfold", "rol") || said("administer", "anyword", "billfold", "rol"))) { //0db2
+  if ((!f109 || !(has(i12)))) { //0dca
+    print("How can you do that?")
+    goto(l3559)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i12)
+  v89 = 0
+  v97 = 0
+}
+l3559:
+if (said("get", "nightstick")) { //0de7
+  print("Please refer to%m17")
+}
+if (said("drop", "nightstick", "rol")) { //0df3
+  if (has(i13)) { //0dff
+    print("Not here!")
+    goto(l3596)
+  }
+  set(f115)
+}
+l3596:
+if ((said("use", "nightstick") || said("get", "nightstick"))) { //0e0c
+  if (has(i13)) { //0e1e
+    print("How can you do that?")
+    goto(l3627)
+  }
+  set(f115)
+}
+l3627:
+if (said("examine", "nightstick")) { //0e2b
+  if (has(i13)) { //0e35
+    show.obj(53)
+    goto(l3650)
+  }
+  set(f115)
+}
+l3650:
+if ((said("administer", "nightstick", "rol") || said("administer", "anyword", "nightstick", "rol"))) { //0e42
+  if ((!f109 || !(has(i13)))) { //0e5a
+    print("How can you do that?")
+    goto(l3697)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i13)
+}
+l3697:
+if (said("drop", "hoffman", "file", "rol")) { //0e71
+  if (has(i15)) { //0e7f
+    print("Not here!")
+    goto(l3724)
+  }
+  set(f115)
+}
+l3724:
+if ((said("use", "hoffman", "file") || said("get", "hoffman", "file"))) { //0e8c
+  if (has(i15)) { //0ea2
+    print("How can you do that?")
+    goto(l3759)
+  }
+  set(f115)
+}
+l3759:
+if (said("examine", "hoffman", "file")) { //0eaf
+  if (has(i15)) { //0ebb
+    show.obj(55)
+    goto(l3784)
+  }
+  set(f115)
+}
+l3784:
+if ((said("administer", "hoffman", "file", "rol") || said("administer", "anyword", "hoffman", "file", "rol"))) { //0ec8
+  if ((!f109 || !(has(i15)))) { //0ee4
+    print("How can you do that?")
+    goto(l3835)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i15)
+}
+l3835:
+if (said("drop", "flyer", "rol")) { //0efb
+  if (has(i16)) { //0f07
+    print("Not here!")
+    goto(l3860)
+  }
+  set(f115)
+}
+l3860:
+if ((said("use", "flyer") || said("get", "flyer"))) { //0f14
+  if (has(i16)) { //0f26
+    print("How can you do that?")
+    goto(l3891)
+  }
+  set(f115)
+}
+l3891:
+if (said("examine", "flyer")) { //0f33
+  if (has(i16)) { //0f3d
+    show.obj(56)
+    goto(l3914)
+  }
+  set(f115)
+}
+l3914:
+if ((said("administer", "flyer", "rol") || said("administer", "anyword", "flyer", "rol"))) { //0f4a
+  if ((!f109 || !(has(i16)))) { //0f62
+    print("How can you do that?")
+    goto(l3961)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i16)
+}
+l3961:
+if ((said("use", "clothes") || said("get", "clothes"))) { //0f79
+  if (has(i17)) { //0f8b
+    print("How can you do that?")
+    goto(l3992)
+  }
+  set(f115)
+}
+l3992:
+if (said("examine", "clothes")) { //0f98
+  if (has(i17)) { //0fa2
+    show.obj(57)
+    goto(l4015)
+  }
+  set(f115)
+}
+l4015:
+if (said("drop", "cane", "rol")) { //0faf
+  if (has(i18)) { //0fbb
+    print("You shouldn't have done that!")
+    set(f140)
+    goto(l4042)
+  }
+  set(f115)
+}
+l4042:
+if ((said("use", "cane") || said("get", "cane"))) { //0fca
+  if (has(i18)) { //0fdc
+    print("How can you do that?")
+    goto(l4073)
+  }
+  set(f115)
+}
+l4073:
+if (said("examine", "cane")) { //0fe9
+  if (has(i18)) { //0ff3
+    show.obj(58)
+    goto(l4096)
+  }
+  set(f115)
+}
+l4096:
+if ((said("administer", "cane", "rol") || said("administer", "anyword", "cane", "rol"))) { //1000
+  if ((!f109 || !(has(i18)))) { //1018
+    print("How can you do that?")
+    goto(l4145)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i18)
+  set(f140)
+}
+l4145:
+if (said("drop", "bleach", "rol")) { //1031
+  if (has(i19)) { //103d
+    print("You shouldn't have done that!")
+    set(f140)
+    goto(l4172)
+  }
+  set(f115)
+}
+l4172:
+if ((said("use", "bleach") || said("get", "bleach"))) { //104c
+  if (has(i19)) { //105e
+    print("How can you do that?")
+    goto(l4203)
+  }
+  set(f115)
+}
+l4203:
+if (said("examine", "bleach")) { //106b
+  if (has(i19)) { //1075
+    show.obj(59)
+    goto(l4226)
+  }
+  set(f115)
+}
+l4226:
+if ((said("administer", "bleach", "rol") || said("administer", "anyword", "bleach", "rol"))) { //1082
+  if ((!f109 || !(has(i19)))) { //109a
+    print("How can you do that?")
+    goto(l4273)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i19)
+}
+l4273:
+if (said("drop", "bills", "rol")) { //10b1
+  if (has(i20)) { //10bd
+    print("Not here!")
+    goto(l4298)
+  }
+  set(f115)
+}
+l4298:
+if ((said("use", "bills") || said("get", "bills"))) { //10ca
+  if (has(i20)) { //10dc
+    print("How can you do that?")
+    goto(l4329)
+  }
+  set(f115)
+}
+l4329:
+if ((said("examine", "bills") || said("examine", "marked", "bills") || said("count", "marked", "bills"))) { //10e9
+  if (has(i20)) { //1105
+    show.obj(60)
+    goto(l4370)
+  }
+  set(f115)
+}
+l4370:
+if ((said("administer", "bills", "rol") || said("administer", "marked", "bills", "rol") || said("administer", "anyword", "marked", "bills", "rol") || said("administer", "anyword", "bills", "rol"))) { //1112
+  if ((!f109 || !(has(i20)))) { //1140
+    print("How can you do that?")
+    goto(l4445)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i20)
+  v170 = 0
+  v171 = 0
+}
+l4445:
+if (said("drop", "bug", "rol")) { //115d
+  if (has(i21)) { //1169
+    print("Not here!")
+    goto(l4470)
+  }
+  set(f115)
+}
+l4470:
+if (said("get", "bug")) { //1176
+  if (has(i21)) { //1180
+    print("How can you do that?")
+    goto(l4493)
+  }
+  set(f115)
+}
+l4493:
+if (said("examine", "bug")) { //118d
+  if (has(i21)) { //1197
+    show.obj(61)
+    goto(l4516)
+  }
+  set(f115)
+}
+l4516:
+if ((said("administer", "bug", "rol") || said("administer", "anyword", "bug", "rol"))) { //11a4
+  if ((!f109 || !(has(i21)))) { //11bc
+    print("How can you do that?")
+    goto(l4563)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i21)
+}
+l4563:
+if (said("drop", "room key", "rol")) { //11d3
+  if (has(i22)) { //11df
+    print("Not here!")
+    goto(l4588)
+  }
+  set(f115)
+}
+l4588:
+if ((said("use", "room key") || said("get", "room key"))) { //11ec
+  if (has(i22)) { //11fe
+    print("How can you do that?")
+    goto(l4619)
+  }
+  set(f115)
+}
+l4619:
+if (said("examine", "room key")) { //120b
+  if (has(i22)) { //1215
+    show.obj(62)
+    goto(l4642)
+  }
+  set(f115)
+}
+l4642:
+if ((said("administer", "room key", "rol") || said("administer", "anyword", "room key", "rol"))) { //1222
+  if ((!f109 || !(has(i22)))) { //123a
+    print("How can you do that?")
+    goto(l4689)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i22)
+}
+l4689:
+if (said("drop", "warrant", "rol")) { //1251
+  if (has(i23)) { //125d
+    print("Not here!")
+    goto(l4714)
+  }
+  set(f115)
+}
+l4714:
+if ((said("use", "warrant") || said("get", "warrant"))) { //126a
+  if (has(i23)) { //127c
+    print("How can you do that?")
+    goto(l4745)
+  }
+  set(f115)
+}
+l4745:
+if (said("examine", "warrant")) { //1289
+  if (has(i23)) { //1293
+    show.obj(63)
+    goto(l4768)
+  }
+  set(f115)
+}
+l4768:
+if ((said("administer", "warrant", "rol") || said("administer", "anyword", "warrant", "rol"))) { //12a0
+  if ((!f109 || !(has(i23)))) { //12b8
+    print("How can you do that?")
+    goto(l4815)
+  }
+  print("\"Hey, thanks a lot!\"")
+  print("But now you'll NEVER get it back!")
+  drop(i23)
+}
+l4815:
+if (said("drop", "cuff", "rol")) { //12cf
+  if (has(i24)) { //12db
+    print("Not here!")
+    goto(l4840)
+  }
+  set(f115)
+}
+l4840:
+if (said("examine", "cuff")) { //12e8
+  if (has(i24)) { //12f2
+    show.obj(64)
+    goto(l4863)
+  }
+  set(f115)
+}
+l4863:
+if ((said("administer", "cuff", "rol") || said("administer", "anyword", "cuff", "rol"))) { //12ff
+  if ((!f109 || !(has(i24)))) { //1317
+    print("How can you do that?")
+    goto(l4912)
+  }
+  drop(i24)
+  print("Give away your handcuffs?")
+  print("No way!")
+  set(f140)
+}
+l4912:
+if ((said("anyword", "cuff", "rol") || said("cuff", "rol"))) { //1330
+  if (has(i24)) { //1344
+    print("%m8to do that.")
+    goto(l4945)
+  }
+  set(f115)
+}
+l4945:
+if (!fSaidAccepted && fEnteredCommand && vUnknownWord > 0) { //1351
+  set(fSaidAccepted)
+  v152 = vUnknownWord
+  v152 += 50
+  print(v152)
+  if (f81) { //1367
+    if (vUnknownWord == 1) { //136d
+      log("%m50%w1?")
+    }
+    if (vUnknownWord == 2) { //1376
+      log("%m50%w2?")
+    }
+    if (vUnknownWord == 3) { //137f
+      log("%m50%w3?")
+    }
+    if (vUnknownWord == 4) { //1388
+      log("%m50%w4?")
+    }
+    if (vUnknownWord == 5) { //1391
+      log("%m50%w5?")
+    }
+    if (vUnknownWord == 6) { //139a
+      log("%m50%w6?")
+    }
+    if (vUnknownWord == 7) { //13a3
+      log("%m50%w7?")
+    }
+    if (vUnknownWord == 8) { //13ac
+      log("%m50%w8?")
+    }
+  }
+}
+if (said("leak", "on", "rol")) { //13b5
+  print("Do you have a kidney problem?")
+}
+if (said("crap", "on", "rol")) { //13c3
+  print("My gawd! Do you have a weak sphincter?")
+}
+if ((said("blow", "rol") || said("anyword", "blow", "rol"))) { //13d1
+  print("My, what a filthy mind you have!")
+}
+if (said("enter")) { //13e7
+  print("Go where?")
+}
+if (said("drop", "rol")) { //13f1
+  print("Why do that?")
+}
+if ((said("answer", "rol") || said("anyword", "answer", "rol"))) { //13fd
+  if (!f109) { //1411
+    print("There's no one nearby.")
+    goto(l5151)
+  }
+  print("\"Hello.\"")
+}
+l5151:
+if (said("anyword", "lamp", "rol")) { //141f
+  print("You find them quite illuminating!")
+}
+if (said("anyword", "curb", "rol")) { //142d
+  print("It holds you up (which, in this case, is not a felony).")
+}
+if (said("anyword", "ceiling", "rol")) { //143b
+  print("Yep, it's still up there!")
+}
+if (said("anyword", "fence", "rol")) { //1449
+  print("These walls do a fine job of holding up the ceiling.")
+}
+if (said("examine", "clothes")) { //1457
+  print("You are wearing blue polyester and gabardine trousers, a long-sleeve shirt, and shiny black shoes.")
+}
+if ((said("examine", "rol") || said("look in", "rol"))) { //1463
+  print("You see nothing special.")
+}
+if (said("get", "rol")) { //1477
+  print("%m8it.")
+}
+if (said("enter", "rol")) { //1483
+  print("Just do that yourself.")
+}
+if (said("use", "rol")) { //148f
+  print("What would you do with it?")
+}
+if (said("bite", "rol")) { //149b
+  print("Once you tasted it, you wouldn't want it!")
+}
+if (said("c", "rol")) { //14a7
+  print("%m8to close it.")
+}
+if (said("o", "rol")) { //14b3
+  print("%m8to open it.")
+}
+if (said("climb", "rol")) { //14bf
+  print("If you climb that, Sgt. Dooley will climb your back!")
+}
+if (said("move", "rol")) { //14cb
+  print("%m8to move it.")
+}
+if (said("print", "rol")) { //14d7
+  print("Save your writing for reports.")
+}
+if (said("knock", "rol")) { //14e3
+  print("There's no answer.")
+}
+if (said("apprehend", "rol")) { //14ef
+  print("That's not necessary at this time.")
+}
+if (said("sit", "rol")) { //14fb
+  print("You don't have time to relax.")
+}
+if (fEnteredCommand && !fSaidAccepted) { //1507
+  print("How can you do that?")
+  if (f81) { //1512
+    log("Everybody missed!")
+  }
+}
+l5402:
+get.posn(o0,v104,v105)
+v106 = vEgoDir
+reset(f112)
+v121++
+if (f36) { //1525
+  program.control()
+  goto(l5424)
+}
+player.control()
+l5424:
+if (controller(c32)) { //1530
+  set(f34)
+}
+return()

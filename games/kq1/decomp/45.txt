@@ -1,4 +1,76 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(43)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,77,83,0,0)
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("check", "building")) { //002a
+  print("This old cottage is sagging and in great need of repair.")
+}
+if (said("check", "stump")) { //0036
+  print("The trees were cut from these stumps long ago.")
+}
+if ((said("speak", "dwarf") || said("speak", "fairy"))) { //0042
+  if (posn(o0,11,119,45,146)) { //0054
+    print("You need to go inside to do that.")
+    goto(l101)
+  }
+  print("You can't do that now.")
+}
+l101:
+if ((said("check", "dwarf") || said("check", "fairy"))) { //0065
+  if (posn(o0,11,119,45,146)) { //0077
+    print("Perhaps you should go inside the house for a better look.")
+    goto(l136)
+  }
+  print("You could get a much better view if you were a little bit closer.")
+}
+l136:
+if ((said("check", "window") || said("look in", "window"))) { //0088
+  if (posn(o0,11,119,45,146)) { //009a
+    print("When you look in the window, you see a poor, starving woodcutter and his wife.")
+    goto(l171)
+  }
+  print("You could get a much better view if you were a little bit closer.")
+}
+l171:
+if (said("break", "window")) { //00ab
+  if (posn(o0,11,119,45,146)) { //00b5
+    print("There isn't a glass pane in this window.")
+    goto(l198)
+  }
+  print("You are not close enough.")
+}
+l198:
+if (said("climb", "window")) { //00c6
+  if (posn(o0,11,119,45,146)) { //00d0
+    print("You should really try to find the door.")
+    goto(l225)
+  }
+  print("You are not close enough.")
+}
+l225:
+if (vWhichEgoBorder == 1) { //00e1
+  new.room(4)
+}
+if (vWhichEgoBorder == 2) { //00ea
+  new.room(46)
+}
+if (vWhichEgoBorder == 4) { //00f3
+  new.room(44)
+}
+if (vWhichEgoBorder == 3) { //00fc
+  new.room(36)
+}
+if (f75) { //0105
+  call(103)
+}
+return()

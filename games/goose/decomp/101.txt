@@ -1,3 +1,55 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+if (vCurrentRoom == 0) { //0002
+  configure.screen(1,23,0)
+  set.cursor.char("_")
+  set.string(str0,"<")
+  set(f9)
+  set.menu(" Info ")
+  set.menu.member("Help    ",c2)
+  set.menu.member("About MG",c12)
+  set.menu(" Game ")
+  set.menu.member("Put away my game      ",c3)
+  set.menu.member("Begin where I left off",c4)
+  set.menu.member("Begin a brand new game",c5)
+  set.menu.member("Quit this game        ",c1)
+  set.menu(" Special ")
+  set.menu.member("Sound ON/OFF",c9)
+  if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //002f
+    set.menu.member("RGB monitor ",c6)
+  }
+  set.menu.member("Joystick    ",c8)
+  if (vComputerType != AMIGA) { //0044
+    set.menu(" Speed ")
+    set.menu.member("Fastest",c14)
+    set.menu.member("Fast   ",c15)
+    set.menu.member("Normal ",c16)
+    set.menu.member("Slow   ",c17)
+  }
+  submit.menu()
+  set.key(0,59,2)
+  set.key(0,60,9)
+  set.key(19,0,9)
+  set.key(0,63,3)
+  set.key(0,65,4)
+  set.key(0,67,5)
+  set.key(0,32,7)
+  set.key(10,0,8)
+  set.key(18,0,6)
+  set.key(0,44,1)
+  set.key(43,0,19)
+  set.key(61,0,19)
+  set.key(45,0,20)
+  if (vComputerType == AMIGA) { //008f
+    set.key(27,0,10)
+    goto(l161)
+  }
+  set.key(27,0,18)
+l161:
+  if (vComputerType == 1) { //00a1
+    set.key(49,0,2)
+    set.key(50,0,9)
+    set.key(53,0,3)
+    set.key(55,0,4)
+    set.key(57,0,5)
+  }
+}
+return()

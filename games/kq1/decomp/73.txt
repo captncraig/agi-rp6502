@@ -1,4 +1,86 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(4)
+  load.sound(5)
+  load.view(105)
+  load.view(103)
+  load.view(104)
+  if (vPrevRoom == 48) { //0018
+    position(o0,90,63)
+    set.view(o0,105)
+    ignore.blocks(o0)
+    set(f98)
+    start.cycling(o0)
+    move.obj(o0,90,142,4,f20)
+    if (f79) { //0032
+      set(f23)
+      reset(f79)
+      reset(f83)
+      drop(i7)
+      vCurrentScore -= 3
+      set(f115)
+    }
+    if (f120) { //0045
+      reset(f120)
+      v82 = 0
+      set(f24)
+    }
+  }
+  if (vPrevRoom == 74) { //0052
+    position(o0,77,165)
+  }
+  draw(o0)
+  show.pic()
+}
+if (!f20 && !f22 && vPrevRoom == 48) { //0060
+  sound(5,f159)
+  set(f22)
+}
+if (said("check", "doorway")) { //0072
+  print("The warm sunlight falls through the hole in the ceiling.  Unfortunately, you can't reach it.")
+}
+if (said("check", "cave")) { //007e
+  print("The dark tunnel leads off to the south.")
+}
+if (f20) { //008a
+  reset(f20)
+  stop.sound()
+  observe.blocks(o0)
+  set.view(o0,103)
+  program.control()
+  shake.screen(1)
+  print("OUCH!")
+  v30 = 36
+  sound(4,f159)
+}
+if (f159) { //00a3
+  if (v30 > 0) { //00a9
+    reset(f159)
+    sound(4,f159)
+  }
+}
+if (v30 == 1) { //00b5
+  set.view(o0,104)
+  end.of.loop(o0,f21)
+}
+if (f21) { //00c2
+  reset(f21)
+  set.view(o0,0)
+  reset(f98)
+  player.control()
+  if (f23) { //00d0
+    reset(f23)
+    print("While falling through the hole, the magic ring fell off your finger.  Dangerous creatures can see you now!")
+  }
+  if (f24) { //00da
+    reset(f24)
+    print("When you fell through the hole, you felt a streching sensation and are back to your normal size.")
+  }
+}
+v30--
+if (posn(o0,0,166,159,167)) { //00e6
+  new.room(74)
+}
+return()

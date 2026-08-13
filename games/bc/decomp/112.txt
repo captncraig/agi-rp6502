@@ -1,4 +1,186 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(27)
+  load.sound(11)
+  animate.obj(o9)
+  object.on.land(o9)
+  if ((has(i12) || vCurrentRoom == 37)) { //0010
+    load.view(60)
+  }
+  v34 = 0
+  reset(f96)
+  reset(f112)
+  reset(f73)
+  reset(f63)
+  random(0,255,v61)
+  if (!f34 && (v61 < 125 || has(i12))) { //002c
+    load.view(61)
+    load.view(62)
+    set(f231)
+    random(0,255,v230)
+  }
+  if (f37) { //0044
+    v34 = 1
+    load.view(61)
+    load.view(62)
+    set.view(o9,61)
+  }
+  if (f120) { //0054
+    v34 = 2
+    load.view(56)
+    load.view(58)
+    set.view(o9,56)
+  }
+  if (f31) { //0064
+    v34 = 3
+    load.view(30)
+    load.view(37)
+    set.view(o9,30)
+  }
+  return()
+}
+if (!f129) { //0075
+  goto(l162)
+}
+if (f96 && v60 == 19) { //007f
+  set(fSaidAccepted)
+  if (f37) { //008a
+    print("The henchman stares blankly into the mirror, too stupid to see anything in it.")
+    goto(l162)
+  }
+  if (f120) { //0095
+    print("Creeper is too busy and ignores the mirror.")
+    goto(l162)
+  }
+  print("The Horned King is so busy chasing you that he doesn't notice his reflection in the mirror.")
+}
+l162:
+if (!f96 && f34 && (f37 || f120 || f31)) { //00a2
+  v230 = 2
+}
+v230--
+if (v230 == 1) { //00b8
+  set(f96)
+  set(f100)
+  sound(27,f61)
+  if (f34) { //00c6
+    position(o9,30,v31)
+    goto(l213)
+  }
+  set(f37)
+l213:
+  if (f37) { //00d5
+    v34 = 1
+    load.view(61)
+    set.view(o9,61)
+    goto(l255)
+  }
+  if (f120) { //00e6
+    v34 = 2
+    load.view(56)
+    set.view(o9,56)
+    goto(l255)
+  }
+  v34 = 3
+  load.view(30)
+  set.view(o9,30)
+l255:
+  draw(o9)
+  follow.ego(o9,8,f112)
+  if (vCurrentRoom == 39) { //0105
+    observe.blocks(o9)
+  }
+  goto(l554)
+}
+if (f112 && !f63) { //0111
+  reset(f112)
+  set(f63)
+  stop.motion(o0)
+  if (v34 == 1) { //0120
+    load.view(62)
+    set.view(o9,62)
+    goto(l323)
+  }
+  if (v34 == 2) { //012f
+    load.view(58)
+    set.view(o9,58)
+    goto(l323)
+  }
+  load.view(37)
+  set.view(o9,37)
+l323:
+  v61 = 2
+  cycle.time(o9,v61)
+  set.cel(o9,0)
+  end.of.loop(o9,f233)
+  v235 = 7
+  stop.motion(o0)
+  program.control()
+}
+v235--
+if (v235 == 1) { //0157
+  erase(o0)
+  if (f120) { //0160
+    v63 = 0
+    v62 = 248
+    repositon(o9,v62,v63)
+  }
+}
+if (f233) { //0170
+  if (f108) { //0176
+    print("By allowing the pig and yourself to be captured, the Horned King has won!")
+    v59 = 1
+    goto(l406)
+  }
+  if (has(i12)) { //0184
+    print("By failing to react quickly enough, you've allowed the henchman to capture the Magic Sword.")
+    drop(i12)
+    v59 = 1
+    goto(l406)
+  }
+  new.room(52)
+}
+l406:
+if (f100) { //0196
+  if (!f63 && (fEgoObscured || f122)) { //019c
+    if ((vCurrentRoom == 38 || vCurrentRoom == 47 || vCurrentRoom == 40)) { //01a9
+      reset(f100)
+      get.posn(o9,v62,v63)
+      if (vCurrentRoom == 38) { //01be
+        v62 = 145
+        goto(l478)
+      }
+      if (vCurrentRoom == 47) { //01cb
+        v62 = 80
+        v63 = 95
+        goto(l478)
+      }
+      v62 = 2
+l478:
+      v67 = 1
+      move.obj(o9,v62,v63,67,f237)
+      goto(l494)
+    }
+    reset(f100)
+    wander(o9)
+  }
+l494:
+  goto(l527)
+}
+if (f96 && !fEgoObscured && !(v80 > 0) && v65 != 3 && v65 != 8 && !f100) { //01f1
+  follow.ego(o9,8,f112)
+  set(f100)
+}
+l527:
+if (f237) { //020f
+  reset(f237)
+  reset(f96)
+  reset(f100)
+  if (vCurrentRoom == 47) { //021b
+    reset(f34)
+    reset(f37)
+  }
+  erase(o9)
+  print("The henchman can't see you and leaves.")
+}
+l554:
+return()

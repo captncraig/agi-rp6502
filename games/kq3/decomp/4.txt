@@ -1,4 +1,797 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 110
+  v58 = 149
+  v31 = 0
+  v100 = 52
+  v101 = 131
+  load.logic(104)
+  load.view(15)
+  load.view(9)
+  load.sound(3)
+  load.view(33)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (v44 == 25) { //0031
+    set(f48)
+  }
+  if (f48) { //003a
+    if (vPrevRoom == 3) { //0040
+      v40 = 14
+      position(o0,40,v41)
+      goto(l85)
+    }
+    position(o0,57,v58)
+  }
+l85:
+  if (v44 == 22) { //0055
+    reset(f47)
+    set(f48)
+    v90 = 2
+    v44 = 0
+    set(f223)
+    set.view(o0,0)
+    position(o0,57,v58)
+  }
+  if (f47) { //006f
+    draw(o0)
+  }
+  if (f223) { //0077
+    set(f47)
+  }
+  call(104)
+  show.pic()
+  if (f223) { //0082
+    reset(f35)
+  }
+  return()
+}
+reset(f225)
+if (posn(o0,84,139,94,162)) { //008d
+  set(f225)
+}
+reset(f224)
+if (v40 > 77) { //009b
+  set(f224)
+}
+if ((!fEnteredCommand || !f224 || v44 == 7)) { //00a4
+  goto(l2267)
+}
+v226 = 0
+if (has(i1) && said("add", "bird", "feather", "rol")) { //00b9
+  v226 = 1
+}
+if (has(i2) && said("add", "cat", "fur", "rol")) { //00cc
+  v226 = 2
+}
+if (has(i3) && said("add", "dog", "fur", "rol")) { //00df
+  v226 = 3
+}
+if (has(i4) && said("add", "reptile skin", "rol")) { //00f2
+  v226 = 4
+}
+if (has(i5) && said("add", "fish", "bone", "flour", "rol")) { //0103
+  v226 = 5
+}
+if (has(i6) && said("add", "thimble", "rol")) { //0118
+  v226 = 6
+}
+if (has(i7) && (said("add", "thimble", "rol") || said("add", "dew", "rol"))) { //0129
+  v226 = 7
+}
+if (has(i8) && said("add", "compound", "ball", "rol")) { //0144
+  print("You consider removing the dough pieces from your ears, but decide they are too fragile. You carefully comb your scraggly hair over them so the wizard cannot detect them.")
+}
+if (has(i9) && said("add", "eagle", "feather", "rol")) { //0156
+  v226 = 9
+}
+if (has(i10) && said("add", "bug", "rol")) { //0169
+  v226 = 10
+}
+if (has(i11) && said("add", "saffron", "rol")) { //017a
+  v226 = 11
+}
+if (has(i12) && said("add", "essence", "rol")) { //018b
+  v226 = 12
+}
+if (has(i13) && said("add", "grains of salt", "rol")) { //019c
+  v226 = 13
+}
+if (has(i14) && said("add", "amber", "rock", "rol")) { //01ad
+  v226 = 14
+}
+if (has(i15) && said("add", "mistletoe", "rol")) { //01c0
+  v226 = 15
+}
+if (has(i16) && (said("add", "amber", "rock", "rol") || said("add", "magic", "rock", "rol"))) { //01d1
+  v226 = 16
+}
+if (has(i17) && said("add", "night shade", "juice", "rol")) { //01f0
+  v226 = 17
+}
+if (has(i18) && said("add", "acorn", "rol")) { //0203
+  v226 = 18
+}
+if (has(i19) && (said("add", "drain", "pouch", "rol") || said("add", "pouch", "rol"))) { //0214
+  v226 = 19
+}
+if (has(i20) && (said("add", "pouch", "rol") || said("add", "sleep", "flour", "rol"))) { //0231
+  v226 = 20
+}
+if (has(i21) && (said("add", "mandrake", "root", "flour", "rol") || said("add", "mandrake", "root", "rol") || said("add", "root", "rol"))) { //024e
+  v226 = 21
+}
+if (has(i22) && said("add", "fish oil", "rol")) { //0277
+  v226 = 22
+}
+if (has(i23) && (said("add", "cookie", "rol") || said("add", "cat", "cookie", "rol"))) { //0288
+  v226 = 23
+}
+if ((has(i25) || has(i24)) && said("add", "porridge", "rol")) { //02a5
+  if (has(i25)) { //02b7
+    v226 = 25
+  }
+  if (has(i24)) { //02c0
+    v226 = 24
+  }
+}
+if (has(i25) && said("add", "poison", "porridge", "rol")) { //02c9
+  if (has(i25)) { //02d9
+    v226 = 25
+  }
+}
+if (has(i26) && (said("add", "bay", "liquid", "rol") || said("add", "liquid", "rol"))) { //02e2
+  v226 = 26
+}
+if (has(i27) && said("add", "mud", "rol")) { //02ff
+  v226 = 27
+}
+if (has(i28) && said("add", "mushroom", "flour", "rol")) { //0310
+  v226 = 28
+}
+if (has(i29) && said("add", "bottle", "rol")) { //0323
+  v226 = 29
+}
+if (has(i30) && (said("add", "brew", "rol") || said("add", "bottle", "rol"))) { //0334
+  v226 = 30
+}
+if (has(i31) && (said("add", "frog", "spit", "rol") || said("add", "spit", "rol"))) { //034f
+  v226 = 31
+}
+if (has(i32) && said("add", "lard", "rol")) { //036c
+  v226 = 32
+}
+if (has(i33) && said("add", "dagger", "rol")) { //037d
+  v226 = 33
+}
+if (has(i34) && said("add", "cactii", "rol")) { //038e
+  v226 = 34
+}
+if (has(i36) && said("add", "ointment", "rol")) { //039f
+  v226 = 36
+}
+if (has(i37) && (said("add", "rod", "rol") || said("add", "magic", "rod", "rol"))) { //03b0
+  v226 = 37
+}
+if (has(i38) && said("add", "key", "rol")) { //03cd
+  v226 = 38
+}
+if (has(i40) && said("add", "basin", "rol")) { //03de
+  v226 = 40
+}
+if (has(i41) && said("add", "ladle", "rol")) { //03ef
+  v226 = 41
+}
+if (has(i42) && said("add", "cup", "rol")) { //0400
+  v226 = 42
+}
+if (has(i43) && said("add", "looking glass", "rol")) { //0411
+  v226 = 43
+}
+if ((has(i48) || has(i47)) && (said("add", "coin purse", "rol") || said("add", "coin", "rol") || said("add", "coin", "coin", "rol"))) { //0422
+  if (has(i48)) { //0448
+    v226 = 48
+  }
+  if (has(i47)) { //0451
+    v226 = 47
+  }
+}
+if (has(i49) && said("add", "bread", "rol")) { //045a
+  v226 = 49
+}
+if (has(i50) && said("add", "apple", "rol")) { //046b
+  v226 = 50
+}
+if (has(i51) && said("add", "chop", "rol")) { //047c
+  v226 = 51
+}
+if (has(i54) && (said("add", "map", "rol") || said("add", "magic", "map", "rol"))) { //048d
+  v226 = 54
+}
+if (v226 > 0) { //04aa
+  v225 = 3
+  set(f122)
+  v39 = 0
+  goto(l3127)
+}
+v227 = 0
+if (obj.in.room(i1,vCurrentRoom) && said("capture", "bird", "feather", "rol")) { //04bf
+  v227 = 1
+}
+if (obj.in.room(i2,vCurrentRoom) && said("capture", "cat", "fur", "rol")) { //04d3
+  v227 = 2
+}
+if (obj.in.room(i3,vCurrentRoom) && said("capture", "dog", "fur", "rol")) { //04e7
+  v227 = 3
+}
+if (obj.in.room(i4,vCurrentRoom) && said("capture", "reptile skin", "rol")) { //04fb
+  v227 = 4
+}
+if (obj.in.room(i5,vCurrentRoom) && said("capture", "fish", "bone", "flour", "rol")) { //050d
+  v227 = 5
+}
+if (obj.in.room(i6,vCurrentRoom) && said("capture", "thimble", "rol")) { //0523
+  v227 = 6
+}
+if (obj.in.room(i7,vCurrentRoom) && (said("capture", "thimble", "rol") || said("capture", "dew", "rol"))) { //0535
+  v227 = 7
+}
+if (obj.in.room(i9,vCurrentRoom) && said("capture", "eagle", "feather", "rol")) { //0551
+  v227 = 9
+}
+if (obj.in.room(i10,vCurrentRoom) && said("capture", "bug", "rol")) { //0565
+  v227 = 10
+}
+if (obj.in.room(i11,vCurrentRoom) && said("capture", "saffron", "rol")) { //0577
+  v227 = 11
+}
+if (obj.in.room(i12,vCurrentRoom) && said("capture", "essence", "rol")) { //0589
+  v227 = 12
+}
+if (obj.in.room(i13,vCurrentRoom) && said("capture", "grains of salt", "rol")) { //059b
+  v227 = 13
+}
+if (obj.in.room(i14,vCurrentRoom) && said("capture", "amber", "rock", "rol")) { //05ad
+  v227 = 14
+}
+if (obj.in.room(i15,vCurrentRoom) && said("capture", "mistletoe", "rol")) { //05c1
+  v227 = 15
+}
+if (obj.in.room(i16,vCurrentRoom) && (said("capture", "amber", "rock", "rol") || said("capture", "magic", "rock", "rol"))) { //05d3
+  v227 = 16
+}
+if (obj.in.room(i17,vCurrentRoom) && said("capture", "night shade", "juice", "rol")) { //05f3
+  v227 = 17
+}
+if (obj.in.room(i18,vCurrentRoom) && said("capture", "acorn", "rol")) { //0607
+  v227 = 18
+}
+if (obj.in.room(i19,vCurrentRoom) && (said("capture", "drain", "pouch", "rol") || said("capture", "pouch", "rol"))) { //0619
+  v227 = 19
+}
+if (obj.in.room(i20,vCurrentRoom) && (said("capture", "pouch", "rol") || said("capture", "sleep", "flour", "rol"))) { //0637
+  v227 = 20
+}
+if (obj.in.room(i21,vCurrentRoom) && (said("capture", "mandrake", "root", "flour", "rol") || said("capture", "mandrake", "root", "rol") || said("capture", "root", "rol"))) { //0655
+  v227 = 21
+}
+if (obj.in.room(i22,vCurrentRoom) && said("capture", "fish oil", "rol")) { //067f
+  v227 = 22
+}
+if (obj.in.room(i23,vCurrentRoom) && (said("capture", "cookie", "rol") || said("capture", "cat", "cookie", "rol"))) { //0691
+  v227 = 23
+}
+if ((obj.in.room(i25,vCurrentRoom) || obj.in.room(i24,vCurrentRoom)) && said("capture", "porridge", "rol")) { //06af
+  if (obj.in.room(i25,vCurrentRoom)) { //06c3
+    v227 = 25
+  }
+  if (obj.in.room(i24,vCurrentRoom)) { //06cd
+    v227 = 24
+  }
+}
+if (obj.in.room(i25,vCurrentRoom) && said("capture", "poison", "porridge")) { //06d7
+  v227 = 25
+}
+if (obj.in.room(i26,vCurrentRoom) && (said("capture", "bay", "liquid", "rol") || said("capture", "liquid", "rol"))) { //06e9
+  v227 = 26
+}
+if (obj.in.room(i27,vCurrentRoom) && said("capture", "mud", "rol")) { //0707
+  v227 = 27
+}
+if (obj.in.room(i28,vCurrentRoom) && said("capture", "mushroom", "flour", "rol")) { //0719
+  v227 = 28
+}
+if (obj.in.room(i29,vCurrentRoom) && said("capture", "bottle", "rol")) { //072d
+  v227 = 29
+}
+if (obj.in.room(i30,vCurrentRoom) && (said("capture", "brew", "rol") || said("capture", "bottle", "rol"))) { //073f
+  v227 = 30
+}
+if (obj.in.room(i31,vCurrentRoom) && (said("capture", "frog", "spit", "rol") || said("capture", "spit", "rol"))) { //075b
+  v227 = 31
+}
+if (obj.in.room(i32,vCurrentRoom) && said("capture", "lard", "rol")) { //0779
+  v227 = 32
+}
+if (obj.in.room(i33,vCurrentRoom) && said("capture", "dagger", "rol")) { //078b
+  v227 = 33
+}
+if (obj.in.room(i34,vCurrentRoom) && said("capture", "cactii", "rol")) { //079d
+  v227 = 34
+}
+if (obj.in.room(i36,vCurrentRoom) && said("capture", "ointment", "rol")) { //07af
+  v227 = 36
+}
+if (obj.in.room(i37,vCurrentRoom) && (said("capture", "magic", "rod", "rol") || said("capture", "rod", "rol"))) { //07c1
+  v227 = 37
+}
+if (obj.in.room(i38,vCurrentRoom) && said("capture", "key", "rol")) { //07df
+  v227 = 38
+}
+if (obj.in.room(i40,vCurrentRoom) && said("capture", "basin", "rol")) { //07f1
+  v227 = 40
+}
+if (obj.in.room(i41,vCurrentRoom) && said("capture", "ladle", "rol")) { //0803
+  v227 = 41
+}
+if (obj.in.room(i42,vCurrentRoom) && said("capture", "cup", "rol")) { //0815
+  v227 = 42
+}
+if (obj.in.room(i43,vCurrentRoom) && said("capture", "looking glass", "rol")) { //0827
+  v227 = 43
+}
+if ((obj.in.room(i48,vCurrentRoom) || obj.in.room(i47,vCurrentRoom)) && (said("capture", "coin purse", "rol") || said("capture", "coin", "rol") || said("capture", "coin", "coin", "rol"))) { //0839
+  if (obj.in.room(i48,vCurrentRoom)) { //0861
+    v227 = 48
+  }
+  if (obj.in.room(i47,vCurrentRoom)) { //086b
+    v227 = 47
+  }
+}
+if (obj.in.room(i49,vCurrentRoom) && said("capture", "bread", "rol")) { //0875
+  v227 = 49
+}
+if (obj.in.room(i50,vCurrentRoom) && said("capture", "apple", "rol")) { //0887
+  v227 = 50
+}
+if (obj.in.room(i51,vCurrentRoom) && said("capture", "chop", "rol")) { //0899
+  v227 = 51
+}
+if (obj.in.room(i54,vCurrentRoom) && (said("capture", "map", "rol") || said("capture", "magic", "map", "rol"))) { //08ab
+  v227 = 54
+}
+if (v227 > 0) { //08c9
+  v225 = 4
+  set(f122)
+  v39 = 0
+  goto(l3127)
+}
+l2267:
+if (!fEnteredCommand) { //08db
+  goto(l3127)
+}
+if (v44 == 7) { //08e5
+  if ((said("capture", "up") || said("board", "bed") || said("capture", "up", "from", "bed") || said("wake") || said("wake", "board", "bed") || said("capture", "up", "bed") || said("board", "bed"))) { //08ec
+    v39 = 8
+    set(f122)
+    goto(l2350)
+  }
+  print("Shhhh! You're trying to sleep.")
+  set(fSaidAccepted)
+}
+l2350:
+if ((said("examine", "cage") || said("examine", "building") || said("examine", "area") || said("examine") || said("examine", "drapery"))) { //092e
+  if (!f224) { //0950
+    print("You have always admired this lovely tapestry. It adds one of the few bright spots to this dreary house.")
+    goto(l2398)
+  }
+  reset(fSaidAccepted)
+}
+l2398:
+if ((said("examine", "back", "drapery") || said("examine", "below", "drapery"))) { //095e
+  if (posn(o0,52,131,77,137)) { //0974
+    print("You lift the bottom of the tapestry and peer behind it. The wall is filled with cracks. You can see why Manannan would hang a tapestry here. (There are also dozens of charcoal- scribbled drawings, diagrams, maps, and notes to programmers, with the legend \"King's Quest IV,\" but you're uninterested in this, since you presently have your hands full with \"King's Quest III.\") You lower the tapestry and smooth out the wrinkles.")
+    goto(l2448)
+  }
+  if (f224) { //0983
+    print("How can you see it through your bedroom wall?")
+    goto(l2448)
+  }
+  print("You are not close enough.")
+}
+l2448:
+if ((said("examine", "area") || said("examine") || said("examine", "bedroom"))) { //0990
+  if (!f224) { //09a6
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2484)
+  }
+  print("This is your own pitiful bed chamber. Compared to Manannan's fine room, yours is almost a cell. The bed is hard and uncomfortable with only a threadbare blanket and a small, flat pillow. The other furnishings are junk. But, as poor as it is, it's your own haven, as the wizard never enters it.")
+}
+l2484:
+if ((said("examine", "bureau") || said("examine", "cabinet"))) { //09b4
+  if (!f224) { //09c6
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2516)
+  }
+  print("Your dresser is a piece of junk. It's full of nicks and scratches, and one drawer is completely missing.")
+}
+l2516:
+if ((said("examine", "on", "bureau") || said("examine", "above", "bureau") || said("examine", "on", "above", "bureau") || said("examine", "on", "cabinet") || said("examine", "above", "cabinet") || said("examine", "on", "above", "cabinet"))) { //09d4
+  if (!f224) { //0a0e
+    print("You are not close enough.")
+    goto(l2588)
+  }
+  print("There is nothing you want there.")
+}
+l2588:
+if ((said("look in", "bureau") || said("lift", "bureau") || said("look in", "cabinet") || said("lift", "cabinet") || said("examine", "drawer") || said("lift", "drawer"))) { //0a1c
+  if (!f224) { //0a46
+    print("You are not close enough.")
+    goto(l2644)
+  }
+  print("You have nothing of any interest in your dresser drawer.")
+}
+l2644:
+if ((said("examine", "looking glass") || said("look in", "looking glass"))) { //0a54
+  if (!f224) { //0a66
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2676)
+  }
+  print("You look into the cracked mirror hanging on the wall. Your reflection shows a tall, handsome lad dressed in dirty rags.")
+l2676:
+  if (has(i43)) { //0a74
+    reset(fSaidAccepted)
+  }
+}
+if (said("lift", "door")) { //0a7c
+  if (!f225) { //0a86
+    print("You are not close enough.")
+    goto(l2719)
+  }
+  if (f223) { //0a92
+    print("You twist the door knob on the bedroom door, but to your frustration, find it locked.")
+    goto(l2719)
+  }
+  print("The door is already open.")
+}
+l2719:
+if (said("close", "door")) { //0a9f
+  if (f223) { //0aa9
+    print("The door is already closed.")
+    goto(l2742)
+  }
+  print("You start to close the door, but, so as not to arouse the wizard's suspicions, you leave it open.")
+}
+l2742:
+if (said("unlock", "door")) { //0ab6
+  if (f223) { //0ac0
+    print("You don't have a key that unlocks this door. It seems you are at the mercy of the miserable old wizard.")
+    goto(l2765)
+  }
+  print("The door is not locked. It's not even closed!")
+}
+l2765:
+if ((said("capture", "bolt") || said("capture", "door", "bolt") || said("capture", "bolt", "door"))) { //0acd
+  if (f223) { //0ae9
+    print("You have nothing with which to pick a lock.")
+    goto(l2806)
+  }
+  print("The door is not locked. It's not even closed!")
+}
+l2806:
+if (said("examine", "door")) { //0af6
+  if (f223) { //0b00
+    print("The door is closed.")
+    goto(l2829)
+  }
+  print("The door is wide open.")
+}
+l2829:
+if ((said("break", "door") || said("break", "down", "door") || said("break", "lift", "door"))) { //0b0d
+  if (!f225) { //0b29
+    print("You are not close enough.")
+    goto(l2882)
+  }
+  if (f223) { //0b35
+    print("You throw your body against the locked door, but in vain. The door is too strong for you to break.")
+    goto(l2882)
+  }
+  print("The door is not locked. It's not even closed!")
+}
+l2882:
+if ((said("break", "glass") || said("break", "lift", "glass"))) { //0b42
+  if (!f224) { //0b56
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2916)
+  }
+  print("That would do you no good. The wizard anticipated your escape and placed iron bars outside your window.")
+}
+l2916:
+if (said("examine", "bed")) { //0b64
+  if (!f224) { //0b6e
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2940)
+  }
+  print("The bed is nothing more than a cot, hard and cold, and is difficult to sleep on. Your pillow is small, flat, and made of old rags.")
+}
+l2940:
+if (said("examine", "below", "bed")) { //0b7c
+  if (!f224) { //0b88
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l2972)
+  }
+  v225 = 1
+  set(f122)
+  v39 = 0
+}
+l2972:
+if ((said("lay", "bed") || said("board", "bed") || said("lay", "on", "bed") || said("board", "sleep") || said("board", "sleep", "on", "bed") || said("sleep", "on", "bed") || said("sleep", "bed") || said("capture", "on", "bed"))) { //0b9c
+  if (!f224) { //0bdc
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l3063)
+  }
+  if (v44 == 0) { //0be8
+    v225 = 7
+    set(f122)
+    v39 = 0
+  }
+}
+l3063:
+if (said("add", "all", "rol")) { //0bf7
+  if (!f224) { //0c03
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l3095)
+  }
+  v225 = 3
+  set(f122)
+  v39 = 0
+}
+l3095:
+if (said("capture", "all", "rol")) { //0c17
+  if (!f224) { //0c23
+    print("You might try that over there in your bedroom, but not here in the hall.")
+    goto(l3127)
+  }
+  v225 = 4
+  set(f122)
+  v39 = 0
+}
+l3127:
+v222--
+if (v222 == 1) { //0c39
+  set(f122)
+}
+if (f122) { //0c42
+  reset(f122)
+  v39++
+  program.control()
+  prevent.input()
+  set(f46)
+  set(f35)
+  if (v39 == 1) { //0c52
+    if (posn(o0,88,120,115,167)) { //0c59
+      v39++
+      goto(l3182)
+    }
+    move.obj(o0,111,152,0,f122)
+  }
+l3182:
+  if (v39 == 2) { //0c6e
+    move.obj(o0,111,133,0,f122)
+  }
+  if (v39 == 3) { //0c7b
+    v59 = 2
+    cycle.time(o0,v59)
+    stop.motion(o0)
+    if (v225 == 7) { //0c8a
+      set.priority(o0,15)
+      set.view(o0,15)
+      reposition.to(o0,119,131)
+      last.cel(o0,v36)
+      set.cel(o0,v36)
+      reverse.loop(o0,f122)
+      goto(l3251)
+    }
+    set.view(o0,33)
+    set.loop(o0,0)
+    set.cel(o0,0)
+    end.of.loop(o0,f122)
+  }
+l3251:
+  if (v39 == 4) { //0cb3
+    v222 = 11
+    stop.motion(o0)
+    reset(f35)
+  }
+  if (v39 == 5) { //0cc1
+    stop.motion(o0)
+    if (v225 != 7) { //0cca
+      v222 = 11
+      reset(f35)
+      goto(l3316)
+    }
+    set(f221)
+    set.view(o0,9)
+    reposition.to(o0,123,131)
+    set.cel(o0,0)
+    accept.input()
+    v224 = 44
+    reset(f222)
+    v39 = 0
+    v44 = 7
+    print("You lie down on your hard bed, stretch, then curl up, trying hard to get comfortable. Your thin blanket and small pillow do not help much.")
+l3316:
+    if (v225 == 1) { //0cf4
+      if (f118) { //0cfb
+        print("You bend down and peek under the bed. Your possessions are still safely hidden.")
+        goto(l3336)
+      }
+      print("You lean down and poke your head under the bed. You see nothing but cobwebs and dust.")
+    }
+l3336:
+    if (v225 == 3) { //0d08
+      v36 = vCurrentRoom
+      if (v226 > 0) { //0d12
+        print("You get on your hands and knees and shove it under the bed. It will be safe from the wizard's sharp eyes there.")
+        set(f118)
+        put(v226,vCurrentRoom)
+        goto(l3427)
+      }
+      v220 = 1
+l3366:
+      get.room(v220,v221)
+      if (v221 == 255) { //0d29
+        put(v220,vCurrentRoom)
+        set(f118)
+      }
+      v220++
+      if (v220 == 8) { //0d37
+        v220++
+      }
+      if (v220 < 55) { //0d40
+        goto(l3366)
+      }
+      if (f118) { //0d4a
+        print("You get on your hands and knees and quickly shove all your possessions under the bed. They will be safe from the wizard's sharp eyes there.")
+        if (!f93) { //0d52
+          set(f93)
+          vCurrentScore += 4
+        }
+        goto(l3427)
+      }
+      print("Obviously, you have nothing to hide, Gwydion!")
+    }
+l3427:
+    if (v225 == 4) { //0d63
+      if (!f118) { //0d6a
+        print("There's nothing under the bed.")
+        goto(l3547)
+      }
+      if (v227 > 0) { //0d76
+        v36 = 255
+        get.room(v227,v221)
+        if (v221 != 4) { //0d83
+          print("You drop down, reach under the bed, and then realize you've never put it there!")
+          goto(l3509)
+        }
+        print("Dropping to your knees, you reach under the bed and retrieve it.")
+        put(v227,v36)
+        reset(f118)
+        v220 = 1
+l3482:
+        get.room(v220,v221)
+        if (v221 == 4) { //0d9d
+          set(f118)
+          v220 = 55
+        }
+        v220++
+        if (v220 < 55) { //0dab
+          goto(l3482)
+        }
+l3509:
+        goto(l3547)
+      }
+      reset(f118)
+      v36 = 255
+      v220 = 1
+l3520:
+      get.room(v220,v221)
+      if (v221 == 4) { //0dc3
+        put(v220,v36)
+      }
+      v220++
+      if (v220 < 55) { //0dcf
+        goto(l3520)
+      }
+      print("Dropping to your knees, you reach under the bed and retrieve all of your possessions.")
+    }
+  }
+l3547:
+  if (v39 == 6) { //0ddb
+    set(f35)
+    last.cel(o0,v36)
+    set.cel(o0,v36)
+    reverse.loop(o0,f122)
+  }
+  if (v39 == 7) { //0ded
+    v39 = 10
+  }
+  if (v39 == 8) { //0df7
+  }
+  if (v39 == 9) { //0dfe
+    set.view(o0,15)
+    reposition.to(o0,118,130)
+    set.cel(o0,0)
+    end.of.loop(o0,f122)
+    set(f35)
+    v224 = 0
+  }
+  if (v39 == 10) { //0e17
+    v39 = 0
+    player.control()
+    accept.input()
+    reset(f46)
+    release.priority(o0)
+    reset(f35)
+    start.motion(o0)
+    v44 = 0
+    set.view(o0,0)
+    set.loop(o0,1)
+    reposition.to(o0,111,133)
+    v59 = 1
+    cycle.time(o0,v59)
+    if (f221) { //0e3e
+      reset(f221)
+      print("You gratefully rise from your hard old bed, stretching your aching muscles.")
+    }
+  }
+}
+if (v44 == 7) { //0e48
+  v224--
+  if (v224 == 1) { //0e51
+    set(f35)
+    end.of.loop(o0,f222)
+    sound(3,f41)
+    v224 = 22
+  }
+  if (f222) { //0e63
+    reset(f222)
+    set.cel(o0,0)
+    reset(f35)
+    stop.cycling(o0)
+  }
+}
+if (f33) { //0e72
+  reset(f35)
+  reset(f36)
+  reset(f37)
+  reset(f38)
+  if (f223 && v44 != 25) { //0e80
+    print("You suddenly find yourself in your own little room. You notice that the door is closed.")
+  }
+}
+if (f123) { //0e8c
+  reset(f123)
+  reset(f223)
+  print("You hear a CLICK at the bedroom door. The old wizard has decided to free you by magically unlocking your door.")
+}
+if (f223) { //0e98
+  observe.blocks(o0)
+  goto(l3749)
+}
+ignore.blocks(o0)
+l3749:
+if (v44 != 125) { //0ea5
+  if (posn(o0,11,131,12,165)) { //0ead
+    new.room(3)
+  }
+  if (posn(o0,47,0,69,43)) { //0eb9
+    new.room(1)
+  }
+}
+call(104)
+return()

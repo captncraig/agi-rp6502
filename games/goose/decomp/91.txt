@@ -1,3 +1,194 @@
-if (!(isSet(f52)
-!!!
-&{%!e(string=incomplete condition: 0x12)}
+if (!f52) { //0002
+  set(f52)
+  erase(o12)
+  load.sound(2)
+  move.obj(o0,128,151,1,f122)
+  move.obj(o13,112,154,1,f240)
+}
+if (f122) { //001b
+  reset(f122)
+  set(f117)
+  set(f104)
+}
+if (f240) { //0027
+  reset(f240)
+  stop.cycling(o13)
+}
+if (!f108 && f104) { //0031
+  set(f108)
+  sound(2,f103)
+  vTimeSeconds = 0
+  reset(f104)
+  set(f43)
+  set(f15)
+  print.at("                            \n\n\n\n",0,5,30)
+  display(1,6,"Hickory, dickory, dock!")
+}
+if (vTimeSeconds > 2 && f108 && !f109) { //0051
+  set(f109)
+  display(2,6,"The mouse ran up the clock;")
+}
+if (vTimeSeconds > 6 && f109 && !f110) { //0063
+  set(f110)
+  display(3,6,"The clock struck one,")
+}
+if (vTimeSeconds > 10 && f110 && !f111) { //0075
+  set(f111)
+  display(4,6,"And down he run,")
+}
+if (vTimeSeconds > 13 && f111 && !f112) { //0087
+  set(f112)
+  display(5,6,"Hickory, dickory, dock!")
+}
+v47--
+if (v47 == 1) { //009b
+  set(f43)
+}
+if (v48 == 5 && vTimeSeconds > 6) { //00a4
+  set(f43)
+}
+if (f43) { //00b0
+  reset(f43)
+  v48++
+  if (v48 == 1) { //00ba
+    start.cycling(o13)
+    set.cel(o4,1)
+    set.loop(o13,3)
+    move.obj(o13,110,121,1,f43)
+  }
+  if (v48 == 2) { //00cf
+    set.loop(o13,0)
+    move.obj(o13,78,119,1,f43)
+  }
+  if (v48 == 3) { //00df
+    set.priority(o13,15)
+    set.view(o13,82)
+    set.loop(o13,0)
+    set.cel(o13,0)
+    reposition.to(o13,77,123)
+    move.obj(o13,77,80,2,f43)
+  }
+  if (v48 == 4) { //00fc
+    set.cel(o4,2)
+    set.view(o13,43)
+    set.loop(o13,0)
+    set.cel(o13,0)
+    reposition.to(o13,71,64)
+    move.obj(o13,67,64,1,f43)
+  }
+  if (v48 == 5) { //0119
+    set.view(o13,82)
+    set.loop(o13,2)
+    set.cel(o13,0)
+    reposition.to(o13,67,63)
+    stop.cycling(o13)
+    v47 = 10
+  }
+  if (v48 == 6) { //0132
+    set.cel(o13,1)
+    v47 = 10
+  }
+  if (v48 == 7) { //013f
+    set.cel(o4,3)
+    start.update(o8)
+    reposition.to(o8,66,122)
+    reposition.to(o4,66,80)
+    reposition.to(o5,69,97)
+    v47 = 2
+  }
+  if (v48 == 8) { //015a
+    set.loop(o13,2)
+    set.cel(o13,1)
+    reposition.to(o8,65,122)
+    reposition.to(o4,65,80)
+    reposition.to(o5,68,97)
+    v47 = 2
+  }
+  if (v48 == 9) { //0176
+    reposition.to(o8,66,122)
+    reposition.to(o13,67,62)
+    reposition.to(o4,66,80)
+    reposition.to(o5,69,97)
+    set.cel(o13,2)
+    v47 = 2
+  }
+  if (v48 == 10) { //0193
+    reposition.to(o8,65,122)
+    reposition.to(o13,67,61)
+    reposition.to(o4,65,80)
+    reposition.to(o5,68,97)
+    v47 = 2
+  }
+  if (v48 == 11) { //01ad
+    reposition.to(o8,66,122)
+    reposition.to(o13,67,60)
+    reposition.to(o4,66,80)
+    reposition.to(o5,69,97)
+    v47 = 2
+  }
+  if (v48 == 12) { //01c7
+    reposition.to(o8,65,122)
+    reposition.to(o13,67,59)
+    reposition.to(o4,65,80)
+    reposition.to(o5,68,97)
+    v47 = 2
+  }
+  if (v48 == 13) { //01e1
+    reposition.to(o8,66,122)
+    reposition.to(o13,67,60)
+    reposition.to(o4,66,80)
+    reposition.to(o5,69,97)
+    v47 = 2
+  }
+  if (v48 == 14) { //01fb
+    reposition.to(o8,65,122)
+    reposition.to(o13,67,61)
+    reposition.to(o4,65,80)
+    reposition.to(o5,68,97)
+    v47 = 2
+  }
+  if (v48 == 15) { //0215
+    reposition.to(o8,66,122)
+    reposition.to(o13,67,62)
+    reposition.to(o4,66,80)
+    reposition.to(o5,69,97)
+    v47 = 2
+  }
+  if (v48 == 16) { //022f
+    reposition.to(o8,65,122)
+    reposition.to(o13,67,63)
+    reposition.to(o4,65,80)
+    reposition.to(o5,68,97)
+    v47 = 2
+  }
+  if (v48 == 17) { //0249
+    start.cycling(o13)
+    set.view(o13,43)
+    set.loop(o13,1)
+    set.cel(o13,0)
+    reposition.to(o13,67,63)
+    move.obj(o13,70,63,1,f43)
+  }
+  if (v48 == 18) { //0265
+    set.view(o13,82)
+    set.loop(o13,1)
+    set.cel(o13,0)
+    reposition.to(o13,77,77)
+    move.obj(o13,77,126,4,f43)
+  }
+  if (v48 == 19) { //027f
+    set.view(o13,43)
+    set.loop(o13,2)
+    reposition.to(o13,76,123)
+    move.obj(o13,72,127,3,f43)
+  }
+  if (v48 == 20) { //0296
+    set.loop(o13,0)
+    move.obj(o13,36,128,3,f43)
+  }
+  if (v48 == 21) { //02a6
+    erase(o13)
+    set(f114)
+  }
+}
+return()

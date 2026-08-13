@@ -1,7 +1,222 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v200 = 35
   v201 = 50
-  if (isSet(f108)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+  if (f108) { //000e
+    reset(f108)
+    set(f59)
+    set(f209)
+    v94 = 240
+  }
+  v66 = 200
+  load.logic(117)
+  load.sound(2)
+  load.view(11)
+  load.view(6)
+  load.view(148)
+  load.view(149)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o2)
+  set.view(o2,148)
+  position(o2,30,30)
+  ignore.horizon(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  set.priority(o2,15)
+  v61 = 4
+  step.size(o2,v61)
+  animate.obj(o3)
+  set.view(o3,148)
+  position(o3,60,30)
+  ignore.horizon(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  set.priority(o3,15)
+  v61 = 4
+  step.size(o3,v61)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  set.view(o6,149)
+  position(o6,48,65)
+  set.priority(o6,4)
+  if (f65) { //0074
+    draw(o6)
+  }
+  if (v38 < 20) { //007c
+    v38 = 20
+    goto(l147)
+  }
+  if (v38 > 128) { //0089
+    v38 = 128
+  }
+l147:
+  if (vPrevRoom == 38) { //0093
+    v38 = 60
+    v39 = 74
+  }
+  position(o0,38,v39)
+  v64 = 7
+  call(117)
+  show.pic()
+  if (f209) { //00aa
+    print("You have slipped outside onto the castle wall. Hen Wen was left behind and has surely been captured by the henchmen.")
+  }
+  return()
+}
+if (f152) { //00b3
+  goto(l533)
+}
+if (f130) { //00bc
+  if (!(posn(o0,33,0,63,75))) { //00c2
+    print("You are hanging from the castle wall by your fingertips, as henchmen throw rocks at you!")
+    goto(l223)
+  }
+  if (f65) { //00d2
+    print("You are at an ancient castle window.")
+    goto(l223)
+  }
+  print("There seems to be an old window here, but it's covered with thick vines.")
+}
+l223:
+if (!f128 && !f129) { //00df
+  goto(l316)
+}
+if (f129) { //00ec
+  goto(l274)
+}
+if (posn(o0,33,0,63,75)) { //00f5
+  set(fSaidAccepted)
+  if (!f65) { //0101
+    print("Since you've removed the vines covering the window, you could climb in the window.")
+    goto(l271)
+  }
+  print("You can't get through the vines.")
+}
+l271:
+goto(l316)
+l274:
+if (v60 == 11) { //0112
+  set(fSaidAccepted)
+  if (!(posn(o0,33,0,63,85))) { //011b
+    print("Using the dagger, you easily prune the vines. You seem to have a better grasp on the situation now.")
+    goto(l316)
+  }
+  if (f65) { //012b
+    print("You trim away a few more vines.")
+    goto(l316)
+  }
+  print("This dagger easily cuts through these vines.")
+  set(f65)
+  draw(o6)
+}
+l316:
+if (v65 == 7 && fTriggerLine && !f152) { //013c
+  print("You cannot hold onto the smooth stones!")
+}
+if (v39 > 77) { //014a
+  v200--
+  if (v200 == 1) { //0153
+    random(20,128,v62)
+    v63 = 20
+    position(o2,62,v63)
+    draw(o2)
+    v63 = 166
+    v67 = 4
+    move.obj(o2,v62,v63,67,f200)
+    set(f206)
+    v211 = v62
+    v211 -= 8
+    v212 = v62
+    v212 += 9
+    v210 = 20
+    v209 = 20
+    v209 += 32
+  }
+  v201--
+  if (v201 == 1) { //018c
+    random(20,128,v62)
+    v63 = 20
+    position(o3,62,v63)
+    draw(o3)
+    v63 = 166
+    v67 = 4
+    move.obj(o3,v62,v63,67,f201)
+    set(f207)
+    v213 = v62
+    v213 -= 8
+    v214 = v62
+    v214 += 9
+    v216 = 20
+    v215 = 20
+    v215 += 32
+  }
+}
+if (f206) { //01c3
+  if (v38 > v211 && v38 < v212) { //01c9
+    if (v209 > v39 && v210 < v39) { //01d3
+      set(f202)
+      set(f203)
+      print("Ow! The rock crashes into you! You push backwards off the wall, attempting a swan dive into the moat.")
+      v64 = 3
+    }
+  }
+  v209 += 4
+  v210 += 4
+}
+if (f207) { //01ec
+  if (v38 > v213 && v38 < v214) { //01f2
+    if (v215 > v39 && v216 < v39) { //01fc
+      set(f202)
+      set(f203)
+      print("Ow! The rock crashes into you! You push backwards off the wall, attempting a swan dive into the moat.")
+      v64 = 3
+    }
+  }
+  v215 += 4
+  v216 += 4
+}
+l533:
+if (f200) { //0215
+  reset(f200)
+  set(f202)
+  random(20,100,v200)
+}
+if (f201) { //0223
+  reset(f201)
+  set(f203)
+  random(20,100,v201)
+}
+if (f202) { //0231
+  reset(f202)
+  erase(o2)
+  reset(f200)
+  reset(f206)
+  v210 = 0
+  v209 = 0
+}
+if (f203) { //0245
+  reset(f203)
+  erase(o3)
+  reset(f201)
+  reset(f207)
+  v216 = 0
+  v215 = 0
+}
+call(117)
+if (vWhichEgoBorder == 3) { //025b
+  new.room(35)
+}
+if (f65 && posn(o0,43,0,53,90)) { //0264
+  v65 = 0
+  print("Cleverly, you slip through the forgotten window into the Horned King's castle.")
+  v110 = 0
+  new.room(38)
+}
+if (vWhichEgoBorder == 1 && !f208) { //027a
+  set(f208)
+  print("Ouch! You ram your head into the overhanging parapet.")
+}
+return()

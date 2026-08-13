@@ -1,4 +1,151 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(93)
+  load.view(70)
+  load.sound(13)
+  set(f122)
+  reset(f147)
+}
+if ((f174 || f63)) { //0012
+  goto(l476)
+}
+if (f68 && v94 == 1) { //001f
+  set(f44)
+  if ((said("swim") || said("enter", "swim") || said("swim", "ANYWORD") || controller(c5))) { //002a
+    if ((vCurrentRoom == 1 || vCurrentRoom == 2)) { //0042
+      print("Unfortunately, with the moat population swimming is not possible.")
+      goto(l85)
+    }
+    print("The swift current does not allow for swimming.")
+  }
+}
+l85:
+if (v94 == 1) { //0055
+  if (!f45) { //005c
+    set(f45)
+    sound(13,f46)
+  }
+  if (f46) { //0068
+    reset(f46)
+    reset(f45)
+  }
+}
+if (fEgoOnWater) { //0072
+  if (v94 == 0) { //0078
+    set(f98)
+    stop.motion(o0)
+    v93 = 250
+    v94 = 1
+    if (f134) { //0089
+      repositon(o0,v76,v77)
+      goto(l152)
+    }
+    object.on.water(o0)
+l152:
+    get.posn(o0,v76,v77)
+    if (v76 > 139) { //009c
+      erase(o0)
+      set.view(o0,93)
+      draw(o0)
+      if (f120) { //00aa
+        reset(f120)
+        v82 = 0
+        print("It appears you have become normal size again.")
+      }
+      if (f79) { //00b7
+        v90 = 0
+        v91 = 0
+        reset(f79)
+        reset(f83)
+        reset(f133)
+        set(f115)
+        drop(i7)
+        vCurrentScore -= 3
+        print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
+      }
+      goto(l256)
+    }
+    set.view(o0,93)
+    if (f120) { //00d8
+      reset(f120)
+      v82 = 0
+      print("It appears you have become normal size again.")
+    }
+    if (f79) { //00e5
+      v90 = 0
+      v91 = 0
+      reset(f79)
+      reset(f83)
+      reset(f133)
+      set(f115)
+      drop(i7)
+      vCurrentScore -= 3
+      print("Thrashing around in the water has caused you to lose the magic ring and become visible again.")
+    }
+l256:
+    if (f68) { //0100
+      v95 = 50
+    }
+    goto(l318)
+  }
+  if (!f68 && v94 != 2 && !f44) { //010c
+    if ((said("swim") || said("enter", "swim") || said("swim", "ANYWORD") || controller(c5))) { //011a
+      set.view(o0,70)
+      start.motion(o0)
+      stop.sound()
+      v94 = 2
+      goto(l476)
+    }
+  }
+}
+l318:
+if (!f147 && !f44) { //013e
+  if ((said("swim") || said("enter", "swim") || said("swim", "ANYWORD") || controller(c5))) { //0148
+    set(f147)
+    if (!fEgoOnWater) { //0162
+      print("You need to be in the water in order to swim.")
+      goto(l377)
+    }
+    if (fEgoOnWater && v94 == 2) { //016e
+      print("You are already swimming!")
+    }
+  }
+l377:
+  goto(l389)
+}
+if (!(controller(c5))) { //017c
+  reset(f147)
+}
+l389:
+if (v94 == 1 && !(v95 > 0)) { //0185
+  if (v93 == 0) { //0190
+    set(f44)
+    print("You splash around in the water for a while but seem  to have forgotten how to swim. Unfortunately, you drown.")
+    v95 = 50
+    goto(l419)
+  }
+  v93--
+}
+l419:
+if (!fEgoOnWater && v94 == 2) { //01a3
+  reset(f98)
+  v94 = 0
+  set.view(o0,0)
+  if (f136) { //01b5
+    repositon(o0,v76,v77)
+    goto(l452)
+  }
+  object.on.land(o0)
+}
+l452:
+reset(f134)
+reset(f136)
+v76 = 0
+v77 = 0
+v95--
+if (v95 == 1) { //01d0
+  erase(o0)
+  stop.sound()
+  set(f63)
+}
+l476:
+return()

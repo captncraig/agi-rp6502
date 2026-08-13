@@ -1,4 +1,48 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x03)}
+if (fNewRoom) { //0002
+  if (v31 < 4) { //0008
+    if (f131) { //000f
+      v148 = 3
+      goto(l30)
+    }
+    v148 = 2
+l30:
+    goto(l36)
+  }
+  v148 = 4
+l36:
+  v146 = 77
+  v144 = 52
+  v145 = 66
+  v150 = 4
+  add.to.pic(v146,v127,v148,v144,v145,v150,v150)
+  return()
+}
+if (!fEnteredCommand) { //0039
+  return()
+}
+if (f238) { //0041
+  reset(f238)
+  if (v31 > 3) { //0049
+    print("You no longer receive your mail here.")
+    goto(l131)
+  }
+  if (f241) { //0055
+    print("Your message box, often called a pigeonhole, is empty.")
+    goto(l131)
+  }
+  if (f242) { //0060
+    print("It looks like Steve finally cleaned out his box.")
+    goto(l131)
+  }
+  if (f243) { //006b
+    print("Well, Sonny, an empty pigeonhole is better than one full of subpoenas.")
+    goto(l131)
+  }
+  if (f244) { //0076
+    print("Jack's pigeonhole holds several birthday cards.")
+    goto(l131)
+  }
+  set(f238)
+}
+l131:
+return()

@@ -1,5 +1,25 @@
 v159 = 179
 v160 = 0
-
-!!!
-&{%!e(string=unknown opcode: 0x0a)}
+l8:
+rindirect(v161,v159)
+if (v161 != v201) { //000b
+  v152 = v159
+  v64 = 180
+  call(81)
+  if (v160 == 0) { //001b
+    v253 = v152
+    goto(l56)
+  }
+  if (v160 == 1) { //0028
+    v254 = v152
+    goto(l56)
+  }
+  v255 = v152
+l56:
+  v160++
+}
+if (v159 < 183) { //003a
+  v159++
+  goto(l8)
+}
+return()

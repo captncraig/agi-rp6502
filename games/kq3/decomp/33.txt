@@ -1,4 +1,143 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1f)}
+if (fNewRoom) { //0002
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  v56 = 1
+  v57 = 12
+  v58 = 92
+  v32 = 137
+  v31 = 69
+  set.horizon(49)
+  load.logic(103)
+  reset(f32)
+  v34 = 166
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (f48) { //002d
+    if (vPrevRoom == 34) { //0033
+      position(o0,17,51)
+      goto(l85)
+    }
+    if (vPrevRoom == 18) { //0041
+      position(o0,22,167)
+      start.motion(o0)
+      goto(l85)
+    }
+    position(o0,57,v58)
+  }
+l85:
+  if (f47) { //0055
+    draw(o0)
+  }
+  reset(f37)
+  call(103)
+  show.pic()
+  return()
+}
+if (!fEnteredCommand) { //0063
+  goto(l289)
+}
+if ((said("examine", "path") || said("examine", "up", "path") || said("examine") || said("examine", "down", "path"))) { //006d
+  print("The winding path spirals steeply down the mountainside. It leads from the wizard's house at the top, to the forests of Llewdor below.")
+}
+if ((said("examine", "sky") || said("examine", "up", "sky"))) { //008f
+  print("The sky is darker near the top of the mountain as there are dark, swirling clouds surrounding its summit.")
+}
+if ((said("examine", "cloud") || said("examine", "up", "cloud") || said("examine", "sky") || said("examine", "cloud", "sky") || said("examine", "up", "cloud", "sky"))) { //00a5
+  print("Dark clouds surround the mountain peak, adding a cold and sinister feeling.")
+}
+if ((said("examine", "bluff") || said("examine", "abominable"))) { //00d3
+  print("The lone mountain, with its steep path, rises from the forests of Llewdor to a cloud-encircled peak.")
+}
+if ((said("examine", "forest") || said("examine", "flower") || said("capture", "flower") || said("climb", "forest") || said("examine", "brush"))) { //00e7
+  print("The foliage is very scant on this steep mountainside.")
+}
+if ((said("examine", "area") || said("examine", "building"))) { //010d
+  print("It is very difficult to see the wizard's house from this viewpoint.")
+}
+l289:
+v39 = 0
+if (fTriggerLine) { //0124
+  v33 = 6
+  if (posn(o0,9,60,18,78)) { //012d
+    v39 = 1
+    v40 += 6
+    reposition.to(o0,v40,v41)
+    set.priority(o0,6)
+  }
+  if (!(v39 > 0) && (posn(o0,0,0,21,59) || posn(o0,0,60,8,68))) { //0144
+    v39 = 2
+    set.priority(o0,4)
+  }
+  if (!(v39 > 0) && posn(o0,7,79,31,87)) { //0160
+    v39 = 3
+    set.priority(o0,6)
+  }
+  if (!(v39 > 0) && posn(o0,0,89,53,100)) { //0174
+    v39 = 4
+    set.priority(o0,8)
+  }
+  if (!(v39 > 0) && (posn(o0,47,75,72,80) || posn(o0,46,81,56,88))) { //0188
+    v39 = 5
+    set.priority(o0,7)
+  }
+  if (!(v39 > 0) && posn(o0,54,65,59,74)) { //01a4
+    v39 = 6
+    v40 += 6
+    reposition.to(o0,v40,v41)
+    set.priority(o0,6)
+  }
+  if (!(v39 > 0) && posn(o0,140,64,154,71)) { //01bf
+    v39 = 7
+    set.priority(o0,5)
+    v40 = 145
+    reposition.to(o0,v40,v41)
+  }
+  if (!(v39 > 0) && posn(o0,62,84,115,89)) { //01da
+    v39 = 8
+    set.priority(o0,7)
+  }
+  if (!(v39 > 0) && posn(o0,54,87,62,130)) { //01ee
+    v39 = 9
+    v40 -= 8
+    reposition.to(o0,v40,v41)
+    set.priority(o0,8)
+  }
+  if (!(v39 > 0) && posn(o0,77,95,132,131)) { //0209
+    v39 = 10
+    set.priority(o0,8)
+  }
+  if (!(v39 > 0) && (posn(o0,65,132,123,157) || posn(o0,29,153,65,167))) { //021d
+    v39 = 11
+    set.priority(o0,13)
+  }
+  if (!(v39 > 0) && posn(o0,12,145,29,167)) { //0239
+    v39 = 12
+    v40 -= 8
+    reposition.to(o0,v40,v41)
+    set.priority(o0,11)
+  }
+  if (!(v39 > 0) && posn(o0,29,141,49,147)) { //0254
+    v39 = 13
+    set.priority(o0,11)
+  }
+  if (!(v39 > 0) && posn(o0,49,130,63,146)) { //0268
+    v39 = 14
+    v40 -= 8
+    reposition.to(o0,v40,v41)
+    set.priority(o0,12)
+  }
+  if (!(v39 > 0) && posn(o0,32,65,120,74)) { //0283
+    v39 = 15
+    set.priority(o0,6)
+  }
+}
+if (vWhichEgoBorder == 3) { //0297
+  new.room(18)
+}
+if (vWhichEgoBorder == 1) { //02a0
+  new.room(34)
+}
+call(103)
+return()

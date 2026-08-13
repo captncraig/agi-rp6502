@@ -1,5 +1,492 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v36 = 75
-  if (
-!!!
-&{%!e(string=unknown condition: 0x01)}
+  if (v62 == 1) { //000b
+    v36 = 175
+  }
+  load.pic(v36)
+  draw.pic(v36)
+  discard.pic(v36)
+  load.view(0)
+  load.view(11)
+  load.view(3)
+  load.view(24)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  set.horizon(72)
+  v56 = 2
+  v32 = 32
+  v31 = 79
+  v57 = 119
+  v58 = 100
+  load.logic(112)
+  load.logic(120)
+  load.sound(1)
+  load.sound(11)
+  load.sound(26)
+  load.view(229)
+  animate.obj(o4)
+  ignore.horizon(o4)
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,7,146)
+  set.view(o4,229)
+  set.loop(o4,0)
+  set.cel(o4,2)
+  set.priority(o4,13)
+  draw(o4)
+  animate.obj(o5)
+  ignore.horizon(o5)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  position(o5,37,146)
+  set.view(o5,229)
+  set.loop(o5,0)
+  set.cel(o5,4)
+  set.priority(o5,13)
+  draw(o5)
+  animate.obj(o6)
+  ignore.horizon(o6)
+  ignore.blocks(o6)
+  ignore.objs(o6)
+  position(o6,68,146)
+  set.view(o6,229)
+  set.loop(o6,0)
+  set.cel(o6,1)
+  set.priority(o6,13)
+  draw(o6)
+  animate.obj(o7)
+  ignore.horizon(o7)
+  ignore.blocks(o7)
+  ignore.objs(o7)
+  position(o7,102,147)
+  set.view(o7,229)
+  set.loop(o7,0)
+  set.cel(o7,3)
+  set.priority(o7,13)
+  draw(o7)
+  animate.obj(o8)
+  ignore.horizon(o8)
+  ignore.blocks(o8)
+  ignore.objs(o8)
+  position(o8,135,146)
+  set.view(o8,229)
+  set.loop(o8,0)
+  set.cel(o8,0)
+  set.priority(o8,13)
+  draw(o8)
+  v36 = 2
+  cycle.time(o4,v36)
+  v36 = 3
+  cycle.time(o5,v36)
+  v36 = 2
+  cycle.time(o6,v36)
+  v36 = 3
+  cycle.time(o7,v36)
+  v36 = 2
+  cycle.time(o8,v36)
+  if (v62 == 1) { //00e5
+    animate.obj(o3)
+    load.view(155)
+    set.view(o3,155)
+    set.priority(o3,12)
+    position(o3,23,90)
+    set.cel(o3,0)
+    stop.cycling(o3)
+    draw(o3)
+    stop.update(o3)
+    animate.obj(o2)
+    load.view(165)
+    load.view(163)
+    set.view(o2,165)
+    set.cel(o2,0)
+    if (f79) { //010f
+      position(o2,18,73)
+      ignore.objs(o3)
+      goto(l293)
+    }
+    position(o2,23,85)
+    set.priority(o2,13)
+l293:
+    stop.cycling(o2)
+    draw(o2)
+    stop.update(o2)
+    if (f79) { //012b
+      v221 = 10
+      v222 = 8
+      v50 = 100
+      reset(f177)
+      animate.obj(o1)
+      load.view(156)
+      set.view(o1,156)
+      position(o1,54,70)
+      set.priority(o1,12)
+      stop.cycling(o1)
+      set.loop(o1,1)
+      draw(o1)
+      stop.update(o1)
+      animate.obj(o9)
+      load.view(159)
+      set.view(o9,159)
+      ignore.horizon(o9)
+      position(o9,130,46)
+      draw(o9)
+      move.obj(o9,65,46,1,f229)
+    }
+  }
+  if (v44 == 14) { //0168
+    set.priority(o0,13)
+    set(f220)
+  }
+  if (f48) { //0174
+    get.posn(o0,v40,v41)
+    if (v44 == 0) { //017e
+      set.priority(o0,13)
+      set(f220)
+      if (v41 > 114) { //018a
+        v41 = 114
+      }
+      if (v41 < 92) { //0194
+        v41 = 92
+      }
+      position(o0,40,v41)
+    }
+    if (v44 == 11) { //01a2
+      reset(f220)
+      release.priority(o0)
+      set(f35)
+      if (v41 > 138) { //01af
+        observe.blocks(o0)
+        goto(l445)
+      }
+      ignore.blocks(o0)
+    }
+l445:
+    position(o0,40,v41)
+  }
+  if (v44 == 30) { //01c1
+    set(f220)
+    set.view(o0,0)
+    set.priority(o0,13)
+    set(f48)
+    position(o0,57,v58)
+    set(f47)
+  }
+  if (f47) { //01d8
+    draw(o0)
+  }
+  v36 = 0
+  call(112)
+  show.pic()
+  return()
+}
+if (v62 == 1 && !(v53 > 0) && v52 < 30 && v52 > 0) { //01e7
+  v52 = 30
+}
+if (v62 > 1) { //01fb
+  print("With a sinking feeling, you notice that the large ship is no longer tied to the pier. It looks like you missed the boat!")
+  stop.cycling(o0)
+  set(f44)
+}
+if (posn(o0,28,71,37,77)) { //0208
+  if (v44 == 0 && !f46) { //0212
+    set(f46)
+    v224 = 10
+    set(f229)
+  }
+}
+if (f45 && v225 > 0) { //0223
+  if (!f46) { //022c
+    v225--
+  }
+  if (v225 == 0) { //0235
+    set(f229)
+  }
+}
+if (f229 && v224 == 0) { //023e
+  v224++
+  reposition.to(o9,62,57)
+  v225 = 2
+  reset(f229)
+}
+if (f229 && v224 == 1) { //0252
+  v224++
+  move.obj(o9,47,57,1,f229)
+}
+if (f229 && v224 == 2) { //0263
+  v224++
+  reset(f229)
+  print("\"You'd bet'er get aboard boy, or we'll sail without ya.\"")
+  stop.cycling(o9)
+  stop.update(o9)
+  v225 = 15
+}
+if (f229 && v224 == 3) { //0279
+  v224++
+  reset(f229)
+  print("You hear one of the sailors shout down to you, \"Get yer self aboard, laddie. We be sailin' on th' tide, wi' or wi'out ye.\"")
+  v225 = 15
+}
+if (f229 && v224 == 4) { //028b
+  reset(f229)
+  print("From the deck of the ship you hear, \"Are ye deaf, or just daft, boyo? I said come aboard a'fore we leave ye here.\"")
+}
+if (f229 && v224 == 10) { //0298
+  v224++
+  stop.motion(o0)
+  set.priority(o0,12)
+  start.update(o3)
+  program.control()
+  v36 = 6
+  cycle.time(o3,v36)
+  end.of.loop(o3,f229)
+}
+if (f229 && v224 == 11) { //02b4
+  v224++
+  print("As the gangplank is drawn in you hear the Captain shout to his men, \"Take 'is things an put 'im in the 'old until I figures out what ta do with 'im.\"")
+  start.update(o2)
+  end.of.loop(o2,f41)
+  start.update(o1)
+  start.cycling(o1)
+  sound(26,f238)
+  move.obj(o1,35,70,1,f229)
+}
+if (f229 && v224 == 12) { //02d3
+  v224++
+  vCurrentScore += 2
+  reset(f229)
+  print("You have a sneaking suspicion that you have made a big mistake. These are pirates!")
+  player.control()
+  reset(f46)
+  new.room(77)
+}
+if (f33) { //02ea
+  if (v44 == 0) { //02f0
+    set(f220)
+    set.priority(o0,13)
+    goto(l781)
+  }
+  if (f177) { //02ff
+    normal.motion(o2)
+    stop.motion(o2)
+    stop.cycling(o2)
+    reset(f230)
+  }
+}
+l781:
+if (v44 == 0) { //030d
+  if (fTriggerLine && !f46) { //0314
+    set(f46)
+    reset(f220)
+    v44 = 6
+    sound(1,f238)
+    ignore.blocks(o0)
+    set.view(o0,11)
+    start.motion(o0)
+    if (v41 < 85) { //032e
+      set.priority(o0,4)
+      v36 = 3
+      v38 = 135
+      move.obj(o0,v40,v38,36,f221)
+    }
+    if (v41 > 115) { //0344
+      set.priority(o0,15)
+      v36 = 3
+      v38 = 167
+      move.obj(o0,v40,v38,36,f221)
+    }
+  }
+}
+if (v44 == 6 && f221) { //035a
+  reset(f46)
+  reset(f221)
+  release.priority(o0)
+  observe.blocks(o0)
+  set(f35)
+  set.view(o0,3)
+  v44 = 11
+  sound(11,f238)
+}
+reset(fEgoOnWater)
+if (v44 == 11) { //0378
+  set(fEgoOnWater)
+  if (v41 > 138) { //0381
+    observe.blocks(o0)
+    release.priority(o0)
+    goto(l916)
+  }
+  ignore.blocks(o0)
+  set.priority(o0,4)
+}
+l916:
+if (!f46 && f45 && v227 > 0) { //0394
+  v227--
+  distance(o2,o0,v36)
+  if (v227 == 0) { //03a6
+    if (v36 < 30) { //03ad
+      set(f177)
+      print("\"That's it!\" he shouts. \"I warned ya to quit hangin' aroun'.\"")
+      goto(l957)
+    }
+    v227++
+  }
+}
+l957:
+if (f177 && !f230 && v44 == 0) { //03bd
+  set(f230)
+  v227 = 0
+  start.update(o2)
+  start.cycling(o2)
+  set.view(o2,163)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  follow.ego(o2,10,f227)
+}
+if (!f46 && f230 && v44 != 0) { //03dd
+  get.posn(o2,v37,v38)
+  if (v37 == v40) { //03ee
+    stop.cycling(o2)
+    goto(l1029)
+  }
+  v36 = 1
+  start.cycling(o2)
+  move.obj(o2,v40,v38,36,f227)
+}
+l1029:
+if (f227 && v44 == 0) { //0405
+  if (f46) { //040e
+    reset(f227)
+    stop.cycling(o2)
+    normal.motion(o2)
+    stop.motion(o2)
+    goto(l1109)
+  }
+  set(f46)
+  reset(f227)
+  reset(f230)
+  program.control()
+  stop.motion(o0)
+  get.posn(o0,v40,v41)
+  get.posn(o2,v37,v38)
+  v38 = v41
+  v38 -= 2
+  ignore.blocks(o2)
+  reposition.to(o2,v37,v38)
+  prevent.input()
+  set.view(o2,165)
+  set.cel(o2,0)
+  v36 = 2
+  cycle.time(o2,v36)
+  set.priority(o0,14)
+  end.of.loop(o2,f228)
+  v44 = 29
+  v223 = 50
+}
+l1109:
+if (f228) { //0455
+  reset(f228)
+  set.view(o0,24)
+  print.at("The old seaman draws his sharp cutlass, runs you clean through, and you drop to the dock... dead.",2,2,37)
+}
+v223--
+if (v223 == 1) { //0467
+  stop.cycling(o0)
+  set(f44)
+}
+if (fEnteredCommand) { //0472
+  if ((said("examine", "ship") || said("examine", "bandit", "ship"))) { //0478
+    if (v62 == 1) { //048c
+      print("A large ship is tied to the dock.")
+      goto(l1178)
+    }
+    print("What ship?")
+  }
+l1178:
+  if (v62 == 1 && (said("board", "ship") || said("jump", "ship"))) { //049a
+    if (f79) { //04af
+      print("Sounds like a good idea. Just walk across the gang plank.")
+      goto(l1212)
+    }
+    print("There is no way to do that.")
+  }
+l1212:
+  if (said("examine", "town")) { //04bc
+    print("A charming village sits atop a bluff overlooking the ocean.")
+  }
+  if ((said("call", "try", "bandit") || said("call", "bandit"))) { //04c8
+    if (v62 == 1) { //04dc
+      if (!f220) { //04e3
+        print("Nobody can hear you!")
+        goto(l1320)
+      }
+      if (f79) { //04ef
+        print("\"Climb aboard, laddie! We won't be awaiting all day for ye.\"")
+        goto(l1320)
+      }
+      v222++
+      if (v222 == 1) { //04fc
+        print("You politely speak to the old sailor on the dock. In response, he growls, \"Quit yer yammerin', boy. I ain't got no time fer ya. I gotta keep trespassers away from this here jolly-boat. Scram!\"")
+      }
+      if (v222 == 2) { //0505
+        v227 = 8
+        print("Insistently, you speak to the old salt again. He seems displeased as he snarls, \"I'm warnin' ya, boy. I gots a tricky sword hand. Better go away afore I cain't stop meself!\"")
+      }
+      if (v222 == 3) { //0511
+        v227 = 0
+        print("\"That's it!\" he shouts. \"I warned ya to quit hangin' aroun'.\"")
+        set(f177)
+      }
+      if (v222 > 3) { //051f
+        print("You had better stop talking, and run for your life.")
+      }
+l1320:
+      goto(l1325)
+    }
+    print("There is nobody here but you.")
+  }
+l1325:
+  if (said("examine", "bandit")) { //052d
+    if (v62 == 1) { //0537
+      if (!f79) { //053e
+        print("The life of a seaman has definitely taken its toll on this grizzled old sea dog. His skin is brown and cracked from years in the salty air, his voice rasps from too many smokes and too much rum, and he stoops from countless swabbings of countless decks. His clothes are none too clean, either.")
+        goto(l1356)
+      }
+      print("The Captain and his crew are waiting for you to come aboard.")
+l1356:
+      goto(l1361)
+    }
+    print("There is nobody here but you.")
+  }
+l1361:
+  if (said("examine", "dock")) { //0551
+    print("A weathered dock leads into the ocean.")
+  }
+  if ((said("capture", "bandit") || said("kill", "bandit"))) { //055d
+    if (!f79) { //056f
+      print("You're no match for him.")
+      goto(l1405)
+    }
+    print("Surely, you jest?")
+  }
+}
+l1405:
+call(112)
+call(120)
+if (vWhichEgoBorder > 0 && f230) { //0581
+  if (!f46) { //058a
+    print("\"Ya better skedaddle, sonny!\"")
+  }
+}
+if (vWhichEgoBorder == 3) { //0593
+  new.room(30)
+}
+if (vWhichEgoBorder == 1) { //059c
+  v176 = vWhichEgoBorder
+  new.room(31)
+}
+if (vWhichEgoBorder == 4) { //05a8
+  new.room(25)
+}
+if (vWhichEgoBorder == 2) { //05b1
+  new.room(76)
+}
+return()

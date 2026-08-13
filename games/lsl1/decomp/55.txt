@@ -1,3 +1,77 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+set.text.attribute(1,7)
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(1,9,"Leisure Suit Larry in")
+display(2,5,"the Land of the Lounge Lizards")
+display(5,11,"KEYBOARD COMMANDS")
+display(9,1,"Use arrows or number keys to move")
+display(10,1,"Larry.")
+display(13,1,"Press ESC to use the menus.")
+display(14,1,"Press ENTER to choose from a menu,")
+display(15,1,"or ESC to return to the game.")
+display(18,1,"Some menu choices list a function key")
+display(19,1,"\"shortcut\" beside their name.")
+display(22,1,"For a Hint Book, call (209) 683-6858.")
+display(23,1," (For a good time, call the author!)")
+l61:
+if (!(have.key())) { //003d
+  goto(l61)
+}
+vKeyPressed = 0
+set.text.attribute(15,0)
+text.screen()
+display(1,9,"Leisure Suit Larry in")
+display(2,5,"the Land of the Lounge Lizards")
+display(5,11,"JOYSTICK COMMANDS")
+display(9,1,"Point joystick in desired direction")
+display(10,1,"to move Larry.")
+display(13,1,"Press top button to use the menus.")
+display(14,1,"Press other button to see the status")
+display(15,1,"screen.")
+display(18,1,"Some menu choices list a function key")
+display(19,1,"\"shortcut\" beside their name.")
+if (f101) { //0075
+l123:
+  if (!(have.key())) { //007b
+    goto(l123)
+  }
+  vKeyPressed = 0
+  set.text.attribute(15,0)
+  text.screen()
+  display(1,9,"Leisure Suit Larry in")
+  display(2,5,"the Land of the Lounge Lizards")
+  display(5,13,"MOUSE COMMANDS")
+  display(9,1,"Put cursor where you want Larry to")
+  if (vComputerType == ATARI_ST) { //009b
+    display(10,1,"go, then click left button.")
+    display(13,1,"Press right button to use menus.")
+    goto(l211)
+  }
+  if ((vComputerType == APPLE_2_GS || vComputerType == 6)) { //00ad
+    display(10,1,"go, then click the button.")
+    goto(l211)
+  }
+  if (vComputerType == AMIGA) { //00c0
+    display(10,1,"go, then click left button.")
+    display(13,1,"Press left button in the window")
+    display(14,1,"bar to use menus.")
+  }
+l211:
+  display(18,1,"Some menu choices list a function key")
+  display(19,1,"\"shortcut\" beside their name.")
+}
+display(23,7,"Press any key to return to game.")
+l223:
+if (!(have.key())) { //00df
+  goto(l223)
+}
+vKeyPressed = 0
+set.text.attribute(15,0)
+accept.input()
+status.line.on()
+graphics()
+set(fSaidAccepted)
+return()

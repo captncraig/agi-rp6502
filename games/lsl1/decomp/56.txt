@@ -1,3 +1,139 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if ((v229 == 1 || v229 == 3 || v229 == 2)) { //0002
+  if (!(v235 < 249)) { //0011
+    v33 = 106
+    v232 = v235
+    v232 -= 249
+    goto(l66)
+  }
+  if (!(v235 < 243)) { //0025
+    v33 = 152
+    v232 = v235
+    v232 -= 243
+    goto(l66)
+  }
+  v33 = 45
+  v232 = v235
+  v232 -= 237
+l66:
+  if (v232 == 0) { //0042
+    v32 = 28
+  }
+  if (v232 == 1) { //004c
+    v32 = 46
+  }
+  if (v232 == 2) { //0056
+    v32 = 64
+  }
+  if (v232 == 3) { //0060
+    v32 = 82
+  }
+  if (v232 == 4) { //006a
+    v32 = 100
+  }
+  if (v232 == 5) { //0074
+    v32 = 118
+  }
+  rindirect(v232,v235)
+  goto(l191)
+l132:
+  if (v229 == 2) { //0084
+    v53 = 156
+    v55 = 0
+    goto(l167)
+  }
+  if (v229 == 3) { //0094
+    v53 = 157
+    v55 = 0
+    goto(l167)
+  }
+  v53 = v230
+l167:
+  v54 = 0
+  v57 = 4
+  add.to.pic(v53,v54,v55,v32,v33,v57,v57)
+  sound(6,f40)
+}
+if (v229 == 4) { //00b8
+l191:
+  v55 = v232
+  if (v232 < 13) { //00c2
+    v230 = 154
+    goto(l245)
+  }
+  if (v232 < 26) { //00cf
+    v230 = 152
+    v55 -= 13
+    goto(l245)
+  }
+  if (v232 < 39) { //00df
+    v230 = 153
+    v55 -= 26
+    goto(l245)
+  }
+  v230 = 155
+  v55 -= 39
+l245:
+  v231 = v55
+  v231 += 2
+  if (v231 > 13) { //00fb
+    v231 = 1
+    set(f252)
+  }
+  if (v231 > 10) { //0107
+    v231 = 10
+  }
+  if (v229 != 4) { //0111
+    goto(l132)
+  }
+}
+if (v229 == 5) { //011c
+  v52 = 250
+  v52 -= v228
+  if (v52 > v90) { //0129
+    v90 += v228
+    goto(l323)
+  }
+  v228 = 250
+  v228 -= v90
+  v90 = 250
+  print("Congratulations, you've broken the bank. This casino has a limit of $250.00 per person, and you've reached it. No more for you, Larry!")
+  set(f255)
+l323:
+  v228 = 0
+  v229 = 6
+}
+if (v229 == 6) { //0149
+  if (vMonitorType == HERCULES) { //0150
+    clear.lines(24,24,c0)
+    v33 = 24
+    goto(l360)
+  }
+  clear.lines(21,21,c0)
+  v33 = 21
+l360:
+  if (v236 == 1) { //0168
+    v58 = 1
+    goto(l389)
+  }
+  if (v236 == 2) { //0175
+    v58 = 2
+    goto(l389)
+  }
+  v58 = 3
+l389:
+  v32 = 0
+  display(v33,v32,v58)
+  v229 = 7
+}
+if (v229 == 7) { //018f
+  if (f32 && f30) { //0196
+    v217 = v223
+    v218 = v224
+    v216 = v222
+    set.text.attribute(6,0)
+    display(24,0,"Dealer=%v222   Player=%v223   Split=%v224   ")
+    set.text.attribute(15,0)
+  }
+}
+v229 = 0
+return()

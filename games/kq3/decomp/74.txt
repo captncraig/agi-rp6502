@@ -1,4 +1,312 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(34)
+  prevent.input()
+  program.control()
+  load.sound(24)
+  load.view(0)
+  load.view(73)
+  load.view(71)
+  load.view(72)
+  load.view(73)
+  load.view(187)
+  load.view(77)
+  load.view(69)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.view(o0,0)
+  position(o0,149,122)
+  draw(o0)
+  move.obj(o0,82,122,1,f41)
+  animate.obj(o1)
+  position(o1,152,109)
+  set.view(o1,73)
+  set.loop(o1,1)
+  ignore.objs(o1)
+  draw(o1)
+  move.obj(o1,82,109,1,f220)
+  animate.obj(o2)
+  position(o2,38,91)
+  set.view(o2,71)
+  set.loop(o2,0)
+  set.cel(o2,3)
+  stop.cycling(o2)
+  ignore.blocks(o2)
+  ignore.objs(o2)
+  draw(o2)
+  animate.obj(o3)
+  position(o3,42,85)
+  set.view(o3,72)
+  set.loop(o3,0)
+  set.cel(o3,3)
+  stop.cycling(o3)
+  draw(o3)
+  ignore.blocks(o3)
+  ignore.objs(o3)
+  animate.obj(o4)
+  position(o4,63,54)
+  set.view(o4,187)
+  set.loop(o4,0)
+  set.cel(o4,0)
+  stop.cycling(o4)
+  v36 = 4
+  cycle.time(o4,v36)
+  draw(o4)
+  stop.update(o4)
+  animate.obj(o5)
+  position(o5,16,89)
+  set.view(o5,187)
+  set.loop(o5,2)
+  fix.loop(o5)
+  set.cel(o5,0)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  draw(o5)
+  stop.update(o5)
+  v221 = 2
+  set(f221)
+  show.pic()
+  return()
+}
+prevent.input()
+program.control()
+if (v71 > 0) { //00b4
+  print("This is no time for that!")
+  v71 = 0
+}
+if (f45) { //00c0
+  v221--
+  if (v221 == 1) { //00c8
+    set(f220)
+  }
+}
+if (f220) { //00d1
+  reset(f220)
+  v220++
+  if (v220 == 1) { //00db
+    print("Shyly, nervously, you enter the throne room with your sister, Princess Rosella.")
+    v221 = 3
+  }
+  if (v220 == 2) { //00e7
+    print("Before the twin thrones at the far end of the room stand your parents, King Graham and Queen Valanice.")
+  }
+  if (v220 == 3) { //00f0
+    start.cycling(o2)
+    start.cycling(o3)
+    start.cycling(o1)
+    start.cycling(o0)
+    move.obj(o3,45,85,1,f220)
+    move.obj(o1,66,93,1,f224)
+    move.obj(o2,50,103,1,f222)
+    move.obj(o0,63,103,1,f220)
+  }
+  if (v220 == 4) { //0117
+    start.cycling(o3)
+    move.obj(o3,53,93,1,f223)
+  }
+  if (v220 == 5) { //0126
+    start.cycling(o2)
+    start.cycling(o3)
+    start.cycling(o1)
+    start.cycling(o0)
+    move.obj(o1,63,93,1,f224)
+    move.obj(o3,57,93,1,f220)
+    move.obj(o2,54,103,1,f222)
+    move.obj(o0,60,103,1,f225)
+  }
+  if (v220 == 6) { //014d
+    stop.cycling(o3)
+    print("Graham and Valanice are overjoyed to see you. \"Alexander, is that truly you? Where have you been all these years?\" your mother exclaims. Adds your father, \"I'm so proud of both of you!\"")
+    v221 = 3
+  }
+  if (v220 == 7) { //015b
+    start.cycling(o3)
+    v36 = 3
+    cycle.time(o3,v36)
+    set.view(o3,69)
+    set.loop(o3,3)
+    set.cel(o3,2)
+    erase(o1)
+    start.cycling(o2)
+    v36 = 4
+    cycle.time(o2,v36)
+    set.view(o2,69)
+    set.loop(o2,0)
+    erase(o0)
+    v221 = 4
+  }
+  if (v220 == 8) { //0188
+    set.view(o2,71)
+    set.view(o3,72)
+    set.loop(o3,0)
+    stop.cycling(o2)
+    stop.cycling(o3)
+    draw(o1)
+    draw(o0)
+    start.cycling(o1)
+    start.cycling(o0)
+    move.obj(o1,57,98,1,f220)
+    move.obj(o0,66,98,1,f41)
+  }
+  if (v220 == 9) { //01b0
+    move.obj(o1,60,103,1,f220)
+    move.obj(o0,63,93,1,f41)
+  }
+  if (v220 == 10) { //01c3
+    v36 = 3
+    cycle.time(o3,v36)
+    set.view(o3,69)
+    set.loop(o3,1)
+    set.cel(o3,2)
+    start.cycling(o3)
+    erase(o0)
+    v36 = 4
+    cycle.time(o2,v36)
+    set.view(o2,69)
+    set.loop(o2,2)
+    start.cycling(o2)
+    erase(o1)
+    v221 = 4
+  }
+  if (v220 == 11) { //01f0
+    stop.update(o2)
+    stop.update(o3)
+    set.view(o2,71)
+    set.view(o3,72)
+    set.loop(o3,0)
+    force.update(o2)
+    force.update(o3)
+    draw(o1)
+    draw(o0)
+    start.cycling(o1)
+    start.cycling(o0)
+    move.obj(o1,57,98,1,f220)
+    move.obj(o0,66,98,1,f41)
+    print("Hugs and kisses abound. What a joyous family reunion! You are home at last!")
+  }
+  if (v220 == 12) { //021e
+    move.obj(o1,63,93,1,f224)
+    move.obj(o0,60,103,1,f225)
+    v221 = 4
+  }
+  if (v220 == 13) { //0234
+    start.cycling(o0)
+    start.cycling(o1)
+    move.obj(o0,82,122,1,f220)
+    move.obj(o1,82,109,1,f224)
+  }
+  if (v220 == 14) { //024b
+    move.obj(o0,87,122,1,f220)
+  }
+  if (v220 == 15) { //0258
+    set.loop(o1,1)
+    set.loop(o0,1)
+    stop.update(o2)
+    stop.update(o1)
+    stop.update(o0)
+    force.update(o1)
+    force.update(o0)
+    force.update(o2)
+    print("King Graham points toward the mirror. \"That was once a magic mirror, son,\" he tells you sadly. \"But, on the night you disappeared from your cradle, it clouded up; and has remained that way ever since.\"")
+    v221 = 5
+  }
+  if (v220 == 16) { //0276
+    start.update(o4)
+    start.cycling(o4)
+    end.of.loop(o4,f220)
+  }
+  if (v220 == 17) { //0284
+    v36 = 3
+    cycle.time(o4,v36)
+    start.cycling(o4)
+    set.loop(o4,1)
+    v221 = 6
+  }
+  if (v220 == 18) { //0299
+    print("Before your astonished eyes, the magic mirror clears, and shines anew with brilliant clarity. Queen Valanice cries in delight, \"The terrible dragon is dead, our children are home, and the future looks happy for us all!\"")
+    v221 = 3
+  }
+  if (v220 == 19) { //02a5
+    start.update(o2)
+    start.cycling(o2)
+    v36 = 1
+    cycle.time(o2,v36)
+    move.obj(o2,42,111,1,f220)
+  }
+  if (v220 == 20) { //02bc
+    move.obj(o2,19,111,1,f220)
+  }
+  if (v220 == 21) { //02c9
+    start.update(o5)
+    erase(o5)
+    print("King Graham lovingly retrieves his old adventurer's hat with the red feather.")
+    move.obj(o2,42,111,1,f220)
+  }
+  if (v220 == 22) { //02dc
+    print("His voice is choked with emotion as he tells you, \"Alexander, Rosella,  believe it or not, this old hat and I have been through a lot together. Now, it's time he had a new travelling companion.\" He flings his adventurer's hat in your direction.")
+    move.obj(o2,50,103,1,f220)
+  }
+  if (v220 == 23) { //02eb
+    stop.cycling(o2)
+    stop.update(o2)
+    set.cel(o2,3)
+    force.update(o2)
+    position(o5,55,81)
+    draw(o5)
+    move.obj(o5,72,64,1,f220)
+  }
+  if (v220 == 24) { //0307
+    print("Up and up it gently arcs. You raise your arms to catch it, and, at the same time, so does Princess Rosella! Down it comes, nearer and nearer...")
+    start.update(o1)
+    start.update(o0)
+    set.view(o1,77)
+    set.view(o0,77)
+    set.loop(o1,1)
+    set.loop(o0,0)
+    start.cycling(o1)
+    start.cycling(o0)
+    set(f35)
+    move.obj(o5,82,73,1,f220)
+  }
+  if (v220 == 25) { //032c
+    stop.cycling(o5)
+    stop.motion(o5)
+    stop.cycling(o0)
+    reset(f35)
+    stop.cycling(o1)
+    set.cel(o0,1)
+    set.cel(o1,1)
+    v221 = 3
+  }
+  if (v220 == 26) { //0346
+    print("The End\n\n")
+    print("The End\n\n  ???")
+    v221 = 7
+  }
+  if (v220 == 27) { //0354
+    print("Congratulations on your successful completion of \"King's Quest III!!\" We hope you have enjoyed playing as much as we enjoyed creating it for you.")
+    print("We're sure you'll enjoy the other three-dimensional, graphic animated adventure games from Sierra: \"King's Quest,\" \"King's Quest II,\" \"The Black Cauldron,\" \"Space Quest, Chapter One,\" and (coming soon) \"Police Quest,\" and \"Space Quest, Chapter Two.\"")
+    print("And, just for the adults in your family, we recommend \"Leisure Suit Larry in the Land of the Lounge Lizards,\" Sierra's first PG13-rated game.")
+    print("Again, congratulations, and may the adventuring continue with \"King's Quest IV!\"")
+  }
+}
+if (f222) { //0363
+  reset(f222)
+  stop.cycling(o2)
+}
+if (f223) { //036d
+  reset(f223)
+  stop.cycling(o3)
+}
+if (f224) { //0377
+  reset(f224)
+  stop.cycling(o1)
+}
+if (f225) { //0381
+  reset(f225)
+  stop.cycling(o0)
+}
+if (f221) { //038b
+  sound(24,f221)
+}
+return()

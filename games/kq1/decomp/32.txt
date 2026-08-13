@@ -1,4 +1,95 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  set.horizon(40)
+  if (f75) { //0010
+    load.logic(103)
+  }
+  if (v65 == vCurrentRoom) { //0018
+    add.to.pic(62,0,0,101,137,0,0)
+  }
+  if (vPrevRoom == 33) { //0027
+    get.posn(o0,v60,v61)
+    if (v60 > 130) { //0032
+      position(o0,140,41)
+    }
+    if (v60 > 88 && v60 < 131) { //003d
+      position(o0,88,41)
+    }
+  }
+  load.logic(101)
+  call(101)
+  set(f68)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (fEgoOnWater && !f20) { //0056
+  set(f20)
+  print("Oh No!  That's such a dangerous river... the current is too strong... you won't be able to escape!")
+}
+if (said("check", "river")) { //0063
+  print("The river flows swiftly between steep banks.")
+}
+if ((said("check", "across") || said("check", "across", "river"))) { //006f
+  print("On the far side of the river is a green meadow.")
+  set(fSaidAccepted)
+}
+if (said("acquire", "water")) { //0087
+  if (f81 && !f88) { //0091
+    print("The bank is dangerously steep;  there are safer ways to  reach water.")
+  }
+}
+if (!f88) { //009c
+  if ((said("drink", "water") || said("acquire", "drink"))) { //00a3
+    print("The bank is dangerously steep;  there are safer ways to  reach water.")
+  }
+}
+if (!fEgoOnWater) { //00b7
+  if ((posn(o0,110,53,133,83) || posn(o0,100,39,106,57))) { //00be
+    set(fEgoOnWater)
+    set(f134)
+  }
+}
+if (!(v94 > 0) && fEgoOnWater) { //00d4
+  v76 = 255
+  if (posn(o0,100,32,138,59)) { //00e1
+    v76 = 112
+    v77 = 52
+  }
+  if (posn(o0,101,60,132,90)) { //00f1
+    v76 = 117
+    v77 = 76
+  }
+  if (posn(o0,133,54,159,89)) { //0101
+    v76 = 140
+    v77 = 86
+  }
+  if (v76 == 255) { //0111
+    v76 = 0
+    goto(l298)
+  }
+  get.posn(o0,v60,v61)
+  v76 -= v60
+  v77 -= v61
+  set(f134)
+}
+l298:
+if (vWhichEgoBorder == 1) { //012a
+  new.room(33)
+}
+if (vWhichEgoBorder == 2) { //0133
+  new.room(25)
+}
+if (vWhichEgoBorder == 4) { //013c
+  new.room(31)
+}
+if (vWhichEgoBorder == 3) { //0145
+  new.room(17)
+}
+if (f75) { //014e
+  call(103)
+}
+call(101)
+return()

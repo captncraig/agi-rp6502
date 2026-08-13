@@ -1,4 +1,76 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3d)}
+if (fNewRoom) { //0002
+  ignore.horizon(o0)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(5)
+  load.view(105)
+  if (vPrevRoom == 57) { //0014
+    get.posn(o0,v60,v61)
+    if (v61 > 154) { //001f
+      position(o0,150,153)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (fTriggerLine && posn(o0,0,0,159,83)) { //002d
+  set(f199)
+  reset(fTriggerLine)
+  program.control()
+  if (!f79) { //003e
+    set.view(o0,105)
+  }
+  start.cycling(o0)
+  set(f98)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  get.posn(o0,v60,v61)
+  v61 += 40
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+}
+if (fTriggerLine && posn(o0,0,84,159,167)) { //0062
+  set(f199)
+  set(f95)
+  program.control()
+  stop.cycling(o0)
+  get.posn(o0,v60,v61)
+  get.priority(o0,v30)
+  set.priority(o0,v30)
+  v61 += 9
+  v96 = 4
+  move.obj(o0,v60,v61,96,f20)
+}
+if (!f20 && f199 && !f21) { //008b
+  sound(5,f159)
+  set(f21)
+}
+if (f20) { //009c
+  erase(o0)
+  reset(f199)
+  reset(f20)
+  stop.sound()
+  print("You should know you can't walk on clouds.")
+  set(f63)
+}
+if (said("check", "blossom")) { //00ad
+  print("These flowers look different than any you have ever seen before.")
+  goto(l200)
+}
+if (said("check", "ANYWORD")) { //00bc
+  print("You are in the Land of the Clouds.  It is rumored that a giant lives up here.")
+}
+l200:
+if (vWhichEgoBorder == 2) { //00c8
+  new.room(57)
+}
+if (vWhichEgoBorder == 4) { //00d1
+  if (f94) { //00d8
+    new.room(72)
+    goto(l229)
+  }
+  new.room(64)
+}
+l229:
+return()

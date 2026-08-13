@@ -1,5 +1,215 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v56 = 2
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(65)
+  v32 = 90
+  v31 = 0
+  v57 = 21
+  v58 = 69
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.view(0)
+  load.view(23)
+  load.view(24)
+  load.view(248)
+  load.view(243)
+  load.view(248)
+  load.view(244)
+  load.view(245)
+  load.view(246)
+  load.logic(128)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(128)
+  if (vPrevRoom != vCurrentRoom) { //0038
+    reset(f201)
+    v174 = 0
+    v175 = 0
+    if (v44 == 14) { //0048
+      vPrevRoom = 32
+    }
+    v178 = vPrevRoom
+    v177 = 60
+  }
+  if (f47) { //0058
+    draw(o0)
+  }
+  v66 = 0
+  v221 = 0
+  random(1,3,v36)
+  v64 = 0
+  v67 = 243
+l112:
+  if (v36 > 0) { //0070
+    v36--
+    random(0,137,v37)
+    random(112,165,v38)
+    random(0,3,v65)
+    add.to.pic(v67,v64,v65,v37,v38,v66,v221)
+    goto(l112)
+  }
+  random(1,6,v36)
+  v67 = 244
+  v64 = 0
+l154:
+  if (v36 > 0) { //009a
+    v36--
+    random(0,148,v37)
+    random(86,160,v38)
+    random(0,2,v65)
+    add.to.pic(v67,v64,v65,v37,v38,v66,v221)
+    goto(l154)
+  }
+  random(0,4,v65)
+  v64 = 0
+  v67 = 245
+  if (v65 < 2) { //00c4
+    random(1,140,v37)
+    random(90,110,v38)
+    add.to.pic(v67,v64,v65,v37,v38,v66,v221)
+  }
+  if (v65 == 2) { //00db
+    random(1,120,v37)
+    random(90,140,v38)
+    add.to.pic(v67,v64,v65,v37,v38,v66,v221)
+  }
+  v67 = 248
+  random(1,10,v36)
+  if (v36 < 4) { //00f9
+    set(f224)
+    animate.obj(o1)
+    load.view(248)
+    set.view(o1,248)
+    v38 = 4
+    cycle.time(o1,v38)
+    ignore.horizon(o1)
+    random(20,100,v37)
+    v38 = 20
+    position(o1,37,v38)
+    set.loop(o1,0)
+    draw(o1)
+  }
+  v221 = 0
+  v66 = 5
+  random(1,10,v36)
+  v36--
+  v64 = 0
+  v65 = 0
+  v38 = 44
+  v67 = 246
+  add.to.pic(v67,v64,v65,v177,v38,v66,v221)
+  show.pic()
+  return()
+}
+if (said("examine", "deck")) { //0143
+  print("The hot ground is parched and dry.")
+}
+if (said("examine", "bluff")) { //014f
+  print("The mountain to the north seems to float on the horizon.")
+}
+if ((said("drink") || said("capture", "drink") || said("drink", "liquid") || said("drink", "bay", "liquid"))) { //015b
+  if (has(i26)) { //0179
+    print("Drinking the salty ocean water intensifies your thirst.")
+    drop(i26)
+    goto(l392)
+  }
+  print("You have no water. Your desperate mind must be playing tricks on you.")
+}
+l392:
+if ((said("examine") || said("examine", "desert"))) { //0188
+  if (!f201) { //0198
+    print("You have entered a great desert.")
+    goto(l422)
+  }
+  print("You look around and see no familiar landmarks. A tight knot of fear begins to form in your stomach as you realize you don't know how to get out of this desert.")
+}
+l422:
+if ((said("capture", "bird") || said("examine", "bird"))) { //01a6
+  print("You see buzzards circling high above you.")
+}
+call(128)
+if (f45) { //01bc
+  if (v174 < 60) { //01c2
+    v174++
+    goto(l467)
+  }
+  v174 = 0
+  v175++
+}
+l467:
+if (v175 == 2 && v174 == 0) { //01d3
+  v174++
+  print.at("You are getting very hot and tired. You'd better find your way out of this desert soon.",2,2,37)
+}
+if (v44 == 0 && v175 == 3 && v174 == 0) { //01e4
+  v174++
+  program.control()
+  start.motion(o0)
+  set(f35)
+  set(f46)
+  if (!f31) { //01fa
+    prevent.input()
+  }
+  set.view(o0,23)
+  set.cel(o0,0)
+  v36 = 2
+  cycle.time(o0,v36)
+  end.of.loop(o0,f221)
+}
+if (f221) { //0211
+  reset(f221)
+  set(f46)
+  set.view(o0,24)
+  v220 = 100
+  print.at("You can't take the relentless sun anymore, and collapse from heat stroke. Miserably, you die in this dreadful desert.",2,2,37)
+  program.control()
+}
+v220--
+if (v220 == 1) { //0229
+  stop.cycling(o0)
+  set(f44)
+}
+if (v44 == 26) { //0234
+  v226 = 6
+  goto(l580)
+}
+v226 = 15
+l580:
+if (vWhichEgoBorder == 4) { //0244
+  set(f201)
+  v177 += 2
+  if (v177 > 118) { //0250
+    v177 = 118
+  }
+  new.room(32)
+}
+if ((vWhichEgoBorder == 1 || vWhichEgoBorder == 3)) { //025c
+  set(f201)
+  new.room(32)
+}
+if (vWhichEgoBorder == 2) { //026c
+  if (!f201) { //0273
+    new.room(v178)
+    goto(l698)
+  }
+  v177 -= 2
+  random(1,15,v36)
+  if (v36 < v226) { //0286
+    new.room(32)
+    goto(l698)
+  }
+  random(1,4,v36)
+  if (v36 == 1) { //0296
+    new.room(11)
+  }
+  if (v36 == 2) { //029f
+    new.room(16)
+  }
+  if (v36 == 3) { //02a8
+    new.room(21)
+  }
+  if (v36 == 4) { //02b1
+    new.room(26)
+  }
+}
+l698:
+return()

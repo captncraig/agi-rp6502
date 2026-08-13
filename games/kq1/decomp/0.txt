@@ -1,0 +1,909 @@
+if (vErrorCode > 0) { //0002
+  call(98)
+}
+if (vCurrentRoom == 0) { //000b
+  set.game.id("KQ1")
+  script.size(100)
+  vMaxScore = 158
+  v88 = 2
+  vCycleTime = v88
+  if (fRestartGame) { //001f
+    new.room(1)
+    goto(l153)
+  }
+  set.menu("Info")
+  set.menu.member("About KQ",c19)
+  set.menu.member("Help    ",c18)
+  set.menu("File")
+  set.menu.member("Save Game      <F5>",c1)
+  set.menu.member("Restore Game   <F7>",c2)
+  set.menu.member("-------------------",c20)
+  set.menu.member("Restart Game   <F9>",c3)
+  set.menu.member("-------------------",c20)
+  set.menu.member("Quit        <Alt Z>",c6)
+  set.menu("Game")
+  set.menu.member("See Object     <F4>",c21)
+  set.menu.member("Inventory     <Tab>",c4)
+  set.menu("Action ")
+  set.menu.member("Swim  =",c5)
+  set.menu.member("Jump  0",c7)
+  set.menu.member("Duck  -",c8)
+  set.menu("Special")
+  set.menu.member("Sound On/Off       <F2>",c17)
+  if (vComputerType != AMIGA) { //005e
+    if (vComputerType == ATARI_ST) { //0066
+      set.menu.member("Joystick/Mouse <Ctrl J>",c11)
+      goto(l136)
+    }
+    if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //0073
+      set.menu.member("Graphics Mode  <Ctrl R>",c15)
+    }
+    set.menu.member("Reset Joystick <Ctrl J>",c11)
+  }
+l136:
+  set.menu.member("Pause             <Esc>",c14)
+  set.menu("Speed")
+  set.menu.member("Normal",c23)
+  set.menu.member("Fast  ",c22)
+  set.menu.member("Slow  ",c24)
+  submit.menu()
+  new.room(83)
+}
+l153:
+if (vCurrentRoom == 52) { //0099
+  set(fEgoOnWater)
+}
+if ((fNewRoom || f12)) { //00a2
+  if (vCurrentRoom != 83) { //00ac
+    set(f8)
+    disable.member(c20)
+    set(f14)
+    vJoystickSensitivity = 3
+  }
+}
+if (fNewRoom) { //00bd
+  animate.obj(o0)
+  load.view(0)
+  if (vCurrentRoom == 52) { //00c7
+    vEgoView = 0
+  }
+  if (vCurrentRoom == 65 && vPrevRoom == 80) { //00d1
+    vEgoView = 105
+  }
+  if ((f200 || f143)) { //00de
+    reset(f200)
+    reset(f143)
+    reset(f98)
+    vEgoView = 0
+  }
+  if (vPrevRoom == 10 && vCurrentRoom != 11) { //00f1
+    if (f75) { //00fc
+      vEgoView = 0
+    }
+  }
+  if (vPrevRoom == 11 && vCurrentRoom != 10) { //0105
+    if (f75) { //0110
+      vEgoView = 0
+    }
+  }
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  load.logic(102)
+  if (f171) { //0120
+    load.sound(8)
+  }
+  if (vCurrentRoom != 53 && vCurrentRoom != 58 && vCurrentRoom != 49 && vCurrentRoom != 51 && vCurrentRoom != 52 && vCurrentRoom != 12 && vCurrentRoom != 10 && vCurrentRoom != 11) { //0128
+    load.view(75)
+    load.view(87)
+  }
+  load.view(110)
+  if (vCurrentRoom != 83) { //0152
+    configure.screen(1,22,0)
+  }
+  if ((f123 || f120)) { //015e
+    load.view(60)
+  }
+  if ((f75 || v65 > 0)) { //016a
+    load.view(62)
+  }
+  reset(f190)
+  observe.objs(o0)
+  observe.blocks(o0)
+  reset(f122)
+  reset(f68)
+  reset(f148)
+  reset(f159)
+  reset(f198)
+  reset(f199)
+  reset(f156)
+  reset(f145)
+  v62 = 0
+  v70 = 0
+  v71 = 0
+  v45 = 20
+l409:
+  reset(v45)
+  v45++
+  if (v45 < 45) { //019d
+    goto(l409)
+  }
+  v45 = 30
+l426:
+  lindirectn(v45,0)
+  v45++
+  if (v45 < 45) { //01af
+    goto(l426)
+  }
+  set.string(str0,">")
+  set.cursor.char("_")
+}
+get.posn(o0,v100,v101)
+if (controller(c25) && vCurrentRoom != 83) { //01c2
+  menu.input()
+}
+if (controller(c10)) { //01cd
+  load.logic(99)
+  set(f190)
+  print("VERSION 2.0F")
+  version()
+}
+if ((said("fast") || controller(c22))) { //01da
+  v88 = 0
+  vCycleTime = v88
+}
+if ((said("normal") || controller(c23))) { //01ec
+  v88 = 2
+  vCycleTime = v88
+}
+if ((said("slow") || controller(c24))) { //01fe
+  v88 = 4
+  vCycleTime = v88
+}
+if ((said("quit") || controller(c6))) { //0210
+  stop.sound()
+  quit(0)
+}
+if ((said("restore", "game") || controller(c2))) { //021f
+  restore.game()
+}
+if ((said("restart", "game") || controller(c3))) { //022e
+  restart.game()
+}
+if (controller(c4)) { //023d
+  status()
+}
+if (controller(c21)) { //0244
+  set(f13)
+  status()
+  if (vStatusItem > 0 && vStatusItem != 255) { //024d
+    v62 = vStatusItem
+    v62 += 116
+    if (v62 == 125 && v89 == 1) { //025e
+      v62++
+    }
+    if ((v62 == 127 || v62 == 142) && f88 && !fEgoOnWater) { //026a
+      v62 = 128
+    }
+    show.obj(v62)
+  }
+  reset(f13)
+}
+if (controller(c19)) { //0282
+  print("King's Quest was designed by Roberta Williams.")
+}
+if (controller(c18)) { //028a
+  call(92)
+}
+if (controller(c17)) { //0292
+  toggle(f9)
+}
+if (controller(c15)) { //029a
+  toggle.monitor()
+}
+if (controller(c11)) { //02a1
+  init.joy()
+}
+if (controller(c12)) { //02a8
+  cancel.line()
+}
+if (f63) { //02af
+  if (!f197) { //02b5
+    load.logic(100)
+    load.sound(2)
+    v97 = 40
+    set(f197)
+  }
+  program.control()
+  stop.motion(o0)
+  disable.member(c1)
+  disable.member(c14)
+  disable.member(c5)
+  disable.member(c7)
+  disable.member(c8)
+  call(100)
+  return()
+}
+if ((vCurrentRoom > 52 || vCurrentRoom == 3 || vCurrentRoom == 6 || vCurrentRoom == 9 || vCurrentRoom == 10 || vCurrentRoom == 11 || vCurrentRoom == 12 || vCurrentRoom == 13 || vCurrentRoom == 14 || vCurrentRoom == 15 || vCurrentRoom == 16 || vCurrentRoom == 19 || vCurrentRoom == 21 || vCurrentRoom == 22 || vCurrentRoom == 24 || vCurrentRoom == 27 || vCurrentRoom == 28 || vCurrentRoom == 29 || vCurrentRoom == 30 || vCurrentRoom == 31 || vCurrentRoom == 35 || vCurrentRoom == 36 || vCurrentRoom == 38 || vCurrentRoom == 44 || vCurrentRoom == 45 || vCurrentRoom == 46 || vCurrentRoom == 48 || vCurrentRoom == 50 || vCurrentRoom == 51)) { //02d5
+  if ((said("swim") || said("enter", "swim") || said("swim", "ANYWORD") || controller(c5))) { //0332
+    print("You need to be in water to swim.")
+  }
+}
+if (vEgoDir == 0) { //034c
+  if (f98) { //0353
+    start.cycling(o0)
+    goto(l864)
+  }
+  stop.cycling(o0)
+l864:
+  goto(l897)
+}
+if (!f95 && !f200) { //0363
+  if (vEgoDir == v110 && v100 == v108 && v101 == v109) { //036d
+    stop.cycling(o0)
+    goto(l897)
+  }
+  start.cycling(o0)
+}
+l897:
+if ((said("save", "game") || controller(c1))) { //0381
+  save.game()
+}
+if (controller(c13)) { //0390
+  echo.line()
+}
+if (controller(c14)) { //0397
+  pause()
+}
+if (vCurrentRoom == 21) { //039e
+  goto(l1097)
+}
+if ((said("jump") || controller(c7))) { //03a8
+  if (!f143 && !f157 && !f158 && !f79 && !f120 && vCurrentRoom != 79 && !fEgoOnWater && !f145 && !f200 && !(v94 > 0) && vCurrentRoom != 29 && vCurrentRoom != 13 && vCurrentRoom != 53 && vCurrentRoom != 58 && vCurrentRoom != 49 && vCurrentRoom != 52 && vCurrentRoom != 63 && vCurrentRoom != 80 && vCurrentRoom != 48 && vCurrentRoom != 73 && vCurrentRoom != 65 && vCurrentRoom != 12 && vCurrentRoom != 14 && vCurrentRoom != 10 && vCurrentRoom != 11 && vCurrentRoom != 51) { //03b4
+    set(f143)
+    stop.motion(o0)
+    set.cel(o0,0)
+    v102 = 2
+    cycle.time(o0,v102)
+    set.view(o0,75)
+    set(f98)
+    end.of.loop(o0,f144)
+    goto(l1074)
+  }
+  print("There is no reason to do that now.")
+}
+l1074:
+if (f144) { //0432
+  reset(f143)
+  reset(f144)
+  reset(f98)
+  v103 = 1
+  cycle.time(o0,v103)
+  start.motion(o0)
+  set.view(o0,0)
+}
+l1097:
+if ((said("duck") || controller(c8))) { //0449
+  if (!f200 && !f157 && !f158 && !f79 && !f120 && !fEgoOnWater && !f145 && !(v94 > 0) && !f143 && !f146 && vCurrentRoom != 29 && vCurrentRoom != 12 && vCurrentRoom != 53 && vCurrentRoom != 58 && vCurrentRoom != 49 && vCurrentRoom != 52 && vCurrentRoom != 63 && vCurrentRoom != 80 && vCurrentRoom != 48 && vCurrentRoom != 73 && vCurrentRoom != 65 && vCurrentRoom != 79 && vCurrentRoom != 14 && vCurrentRoom != 10 && vCurrentRoom != 11 && vCurrentRoom != 13 && vCurrentRoom != 51 && !f142) { //0455
+    set(f200)
+    set.view(o0,87)
+    set(f98)
+    start.cycling(o0)
+    end.of.loop(o0,f201)
+    goto(l1239)
+  }
+  if (!f202) { //04ce
+    print("There is no reason to do that now.")
+  }
+}
+l1239:
+if (f201) { //04d7
+  stop.cycling(o0)
+  stop.motion(o0)
+  set(f202)
+  reset(f201)
+  reset(f98)
+}
+if (f202) { //04e7
+  if ((said("stand") || controller(c8) || said("jump") || controller(c7))) { //04ed
+    reset(f200)
+    reset(f202)
+    start.motion(o0)
+    set.view(o0,0)
+    start.cycling(o0)
+  }
+}
+if (said("thank", "ANYWORD")) { //050a
+  print("You're welcome!")
+}
+if (f67) { //0516
+  if (said("check", "dagger")) { //051c
+    show.obj(117)
+  }
+  if (said("acquire", "dagger")) { //0528
+    print("You already have it.")
+  }
+  if (said("cast", "dagger")) { //0534
+    if (vCurrentRoom != 18 && vCurrentRoom != 25 && vCurrentRoom != 29 && vCurrentRoom != 39 && vCurrentRoom != 41 && vCurrentRoom != 46 && vCurrentRoom != 51 && vCurrentRoom != 58) { //053e
+      print("There is no reason to throw the dagger.")
+      goto(l1385)
+    }
+    reset(fSaidAccepted)
+  }
+}
+l1385:
+if (f70 && v65 != vCurrentRoom) { //0569
+  if (said("ANYWORD", "dagger")) { //0573
+    print("You had the dagger and lost it.  Sorry.")
+  }
+}
+if (f70 && v65 == vCurrentRoom) { //057f
+  if (said("ANYWORD", "dagger")) { //0588
+    print("You don't want the dagger anymore.")
+  }
+}
+if (f118 && said("consume", "carrot")) { //0594
+  print("You already ate the carrot.")
+}
+if (f77) { //05a2
+  if (said("consume", "carrot")) { //05a8
+    if (!f75) { //05b2
+      print("Mmmm!  There's nothing like a crisp, fresh carrot.")
+      drop(i3)
+      reset(f77)
+      reset(f117)
+      vCurrentScore -= 2
+      set(f118)
+    }
+    if (f75) { //05c6
+      print("Seeing how much the goat likes that carrot, eating it may be hazardous to your health.")
+    }
+  }
+  if (said("check", "carrot")) { //05ce
+    show.obj(119)
+  }
+  if (said("acquire", "carrot")) { //05da
+    print("You already have a carrot.")
+  }
+  if (f75) { //05e6
+    if (vCurrentRoom != 10 && vCurrentRoom != 11) { //05ec
+      if ((said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat"))) { //05f8
+        print("The goat quickly eats the carrot and disappears.")
+        drop(i3)
+        reset(f77)
+        reset(f117)
+        vCurrentScore -= 2
+        erase(o13)
+        set(f130)
+        reset(f75)
+      }
+    }
+    if ((vCurrentRoom == 10 || vCurrentRoom == 11)) { //063b
+      if ((said("feed", "carrot") || said("feed", "goat", "carrot") || said("feed", "carrot", "goat") || said("give", "carrot") || said("give", "goat", "carrot") || said("give", "carrot", "goat"))) { //0647
+        print("There is no reason to do that now.")
+      }
+    }
+    if ((said("show", "carrot") || said("show", "carrot", "goat") || said("show", "goat", "carrot"))) { //067b
+      print("It is not nice to tease the goat.")
+    }
+  }
+}
+if (f108) { //0699
+  if ((said("open", "gold nut") || said("crack", "gold nut"))) { //069f
+    print("You have already opened the walnut.")
+  }
+  if (said("consume", "gold nut")) { //06b3
+    print("Don't do that!  This walnut is not edible since it is pure gold.")
+  }
+  if (said("check", "gold nut")) { //06bf
+    show.obj(120)
+  }
+}
+if (f127) { //06cb
+  if (said("consume", "gold nut")) { //06d1
+    print("Ouch!  It would be much easier if you opened the walnut first.")
+  }
+  if (said("check", "gold nut")) { //06dd
+    show.obj(139)
+  }
+  if ((said("open", "gold nut") || said("crack", "gold nut"))) { //06e9
+    if (vCurrentRoom == 30) { //06fb
+      sound(14,f148)
+    }
+    print("When you open the walnut, you discover the nut inside is pure gold!")
+    reset(f127)
+    set(f108)
+    drop(i23)
+    get(i4)
+    vCurrentScore += 3
+  }
+}
+if (vCurrentRoom != 49 && said("dive", "ANYWORD")) { //0712
+  if (v94 > 0) { //0720
+    print("The water is very deep here. Without aid, it is impossible to swim under the water for any length of time.")
+    goto(l1838)
+  }
+  print("You need to be in the water to try that.")
+}
+l1838:
+if (v63 == 0 && v64 == 0 && f73) { //072e
+  print("\"Ye best be careful, young Graham.  The mystic protective spell of mine has weakened and departed.\"")
+  reset(f73)
+  goto(l1879)
+}
+v64--
+if (v64 == 0) { //0743
+  v63--
+  if (v63 != 0) { //074c
+    v64 = 250
+  }
+}
+l1879:
+if (f81 && f88 && said("check", "bucket")) { //0757
+  show.obj(128)
+}
+if (f81 && f88 && !fEgoOnWater) { //0767
+  if ((said("acquire", "bucket") || said("acquire", "water"))) { //0772
+    print("You already have it.")
+  }
+  if (said("check", "water")) { //0786
+    show.obj(128)
+  }
+  if ((said("drink", "water") || said("acquire", "drink"))) { //0792
+    set(f116)
+    print("You drain the bucket of water to quench your thirst.")
+    reset(f88)
+    drop(i26)
+    vCurrentScore -= 2
+    reset(f91)
+  }
+}
+if (fEgoOnWater && (said("drink", "water") || said("acquire", "drink"))) { //07b1
+  print("You open your mouth while swimming and quench your thirst.")
+}
+if (f81 && !f88) { //07c7
+  if (fEgoOnWater) { //07d0
+    if ((said("acquire", "water") || said("fill", "bucket"))) { //07d6
+      reset(f116)
+      print("With difficulty, you fill the bucket while swimming.")
+      get(i26)
+      set(f88)
+      if (!f91) { //07f0
+        vCurrentScore += 2
+      }
+      set(f91)
+    }
+  }
+  if (said("check", "bucket")) { //07fc
+    show.obj(127)
+  }
+}
+if (f123) { //0808
+  if (said("acquire", "mushroom")) { //080e
+    print("You already have it.")
+  }
+  if (said("check", "mushroom")) { //081a
+    show.obj(140)
+  }
+  if (said("consume", "mushroom")) { //0826
+    if (f79) { //0830
+      print("You try, but being invisible makes it impossible.")
+    }
+    if (!f157 && !f158 && !f79 && !f180 && !f181 && !f175 && vCurrentRoom != 21 && vCurrentRoom != 22 && vCurrentRoom != 80 && vCurrentRoom != 65 && vCurrentRoom != 14 && vCurrentRoom != 63 && !(v94 > 0) && vCurrentRoom != 12 && vCurrentRoom != 73 && vCurrentRoom != 74 && vCurrentRoom != 75) { //0838
+      print("As soon as you swallow the first bite, you have this strange shrinking feeling...  It's true!  You are now no bigger than a mouse!")
+      set.view(o0,60)
+      v82 = 200
+      drop(i24)
+      reset(f123)
+      set(f124)
+      set(f120)
+      vCurrentScore -= 1
+      if (vCurrentRoom == 78) { //088d
+        vCurrentScore += 3
+      }
+      goto(l2204)
+    }
+    print("Now is not a good time to try and eat the mushroom.")
+  }
+}
+l2204:
+if (f120 && v82 > 0) { //089c
+  v82--
+  if (v82 == 1 && vCurrentRoom != 36 && vCurrentRoom != 78) { //08a7
+    set.view(o0,0)
+    print("You feel a stretching sensation... Oh, you're back to your original size.")
+    reset(f120)
+  }
+}
+if (f83) { //08bd
+  if (said("check", "ring")) { //08c3
+    show.obj(123)
+  }
+  if (said("acquire", "ring")) { //08cf
+    print("You already have it.")
+  }
+  if ((said("put on", "ring") || said("acquire", "ring", "pocket") || said("acquire", "ring", "pocket"))) { //08db
+    if (f133) { //08f7
+      print("The ring is already on your finger.")
+    }
+    if (!f133) { //08ff
+      set(f133)
+      print("You slip the beautiful ring on one of your fingers.")
+    }
+  }
+  if (said("remove", "ring")) { //090a
+    if (!f133) { //0914
+      print("You are not wearing the ring.")
+    }
+    if (f133 && !f79) { //091d
+      drop(i7)
+      vCurrentScore -= 3
+      print("I don't know why, but you drop the magic ring.")
+      reset(f83)
+      reset(f133)
+      set(f115)
+    }
+    if (f133 && f79) { //0933
+      drop(i7)
+      vCurrentScore -= 3
+      print("When the ring disappears, you reappear!")
+      set.view(o0,0)
+      reset(f83)
+      reset(f79)
+      reset(f133)
+      set(f115)
+      v90 = 0
+      v91 = 0
+    }
+  }
+  if (said("rub", "ring")) { //0953
+    if (!f133) { //095d
+      print("The magic ring is still in your pocket.  You can't rub it there.")
+    }
+    if (f133 && f75) { //0966
+      print("You rub the magic ring but the goat seems to have a strange effect on it.")
+    }
+    if (f133 && f79) { //0970
+      print("There is no need to rub the ring as you are already invisible.")
+    }
+    if (f133 && !f75 && !f79) { //097a
+      if (vCurrentRoom != 65 && !f157 && !f158 && !(v94 > 0) && vCurrentRoom != 63 && vCurrentRoom != 80 && vCurrentRoom != 49 && vCurrentRoom != 51 && vCurrentRoom != 52 && vCurrentRoom != 12 && vCurrentRoom != 79 && !f209 && !f142 && !f120) { //0986
+        set.view(o0,110)
+        print("When you rub the magic ring, you mysteriously disappear, except for your footprints.")
+        set(f79)
+        v90 = 250
+        v91 = 10
+      }
+      if ((vCurrentRoom == 65 || f157 || f158 || v94 > 0 || vCurrentRoom == 63 || vCurrentRoom == 80 || vCurrentRoom == 49 || vCurrentRoom == 51 || vCurrentRoom == 52 || vCurrentRoom == 12 || vCurrentRoom == 79 || f209 || f142 || f120)) { //09ca
+        print("You're too busy right now to rub the ring.")
+      }
+    }
+  }
+}
+if (f79) { //09f7
+  v90--
+  if (v90 == 0) { //09ff
+    if (v91 > 0) { //0a06
+      v91--
+      v90 = 250
+    }
+  }
+}
+if (v90 == 1 && v91 == 0) { //0a12
+  v90 = 0
+  set.view(o0,0)
+  reset(f83)
+  drop(i7)
+  reset(f133)
+  set(f115)
+  reset(f79)
+  print("The spell to make you invisible has expired and you are once again visible to dangerous creatures, but, the ring has now disappeared.")
+  vCurrentScore -= 3
+}
+if (f154) { //0a31
+  if (said("check", "bean")) { //0a37
+    show.obj(141)
+  }
+  if (said("consume", "bean")) { //0a43
+    print("You're going to be sorry!!  These were magic beans!")
+    vCurrentScore -= 5
+    drop(i25)
+    reset(f154)
+  }
+  if (said("bury", "bean")) { //0a56
+    if (vCurrentRoom != 6 && vCurrentRoom != 22 && vCurrentRoom != 31 && vCurrentRoom != 35 && vCurrentRoom != 38) { //0a60
+      print("That is not a bad idea, but this is not a very suitable place to plant these beans.  Why don't you try it elsewhere?")
+      goto(l2687)
+    }
+    reset(fSaidAccepted)
+  }
+}
+l2687:
+if (f89) { //0a7f
+  if (v89 == 1) { //0a85
+    if (said("consume", "stew")) { //0a8c
+      if (vCurrentRoom == 79) { //0a96
+        print("It is very inconsiderate to eat in front of these poor, starving people.  The pains of guilt set in on you.")
+        goto(l2724)
+      }
+      print("You eat every bite of the delicious stew.")
+l2724:
+      v89 = 0
+      reset(f184)
+      vCurrentScore -= 2
+      goto(l2955)
+    }
+    if (said("taste", "stew")) { //0aaf
+      print("Even a small portion of the stew is very appetizing.")
+    }
+    if (said("check", "stew")) { //0abb
+      print("The stew is chock full of vegetables and meat.")
+    }
+    if ((said("check", "bowl") || said("look in", "bowl"))) { //0ac7
+      show.obj(126)
+    }
+    if ((said("fill") || said("acquire", "stew") || said("say", "fill"))) { //0adb
+      print("You already have a full bowl of stew.")
+    }
+  }
+  if (v89 == 0) { //0af3
+    if ((said("check", "bowl") || said("look in", "bowl"))) { //0afa
+      show.obj(125)
+    }
+    if ((said("read", "bowl") || said("read", "word") || said("check", "word") || said("read", "bottom", "bowl") || said("check", "bottom", "bowl"))) { //0b0e
+      print("The word on the bottom of the bowl says \"fill\".")
+      if (!f184) { //0b38
+        set(f184)
+        vCurrentScore += 1
+      }
+    }
+    if ((said("fill") || said("say", "fill"))) { //0b44
+      if (vCurrentRoom == 79) { //0b54
+        print("The bowl fills with the delicious stew, but the woodcutters are unaware of it.")
+        goto(l2914)
+      }
+      print("After uttering that strange word, the bowl starts quivering and immediately fills up with a delicious, hot stew.")
+l2914:
+      v89 = 1
+      if (!f184) { //0b65
+        set(f184)
+        vCurrentScore += 2
+      }
+    }
+    if ((said("consume", "stew") || said("taste", "stew") || said("check", "stew"))) { //0b71
+      print("You do not have any stew.")
+    }
+  }
+}
+l2955:
+if (f93) { //0b8b
+  if (said("check", "pebbles")) { //0b91
+    show.obj(129)
+  }
+  if (said("cast", "pebbles")) { //0b9d
+    print("You throw one of your pebbles.")
+  }
+  if (said("acquire", "pebbles")) { //0ba9
+    print("You already have it.")
+  }
+}
+if (f104) { //0bb5
+  if (said("acquire", "chest")) { //0bbb
+    print("You already have it.")
+  }
+  if ((said("check", "chest") || said("look in", "chest"))) { //0bc7
+    show.obj(118)
+  }
+  if (said("open", "chest")) { //0bdb
+    print("You are dazzled by the countless supply of gold coins spilling from the magic chest.  You quickly close the chest.")
+  }
+  if (said("acquire", "coin")) { //0be7
+    print("You are already carrying an endless supply of gold coins in the magic chest.")
+  }
+  if (said("check", "coin")) { //0bf3
+    print("You open the chest and admire the gold coins for a moment. You then close the chest.")
+  }
+}
+if (!f75) { //0bff
+  if (!(v65 > 0) && vCurrentRoom != 10 && vCurrentRoom != 11) { //0c06
+    if (said("ANYWORD", "goat")) { //0c16
+      print("There is no goat here.")
+    }
+  }
+  if (v65 > 0 && vCurrentRoom != 10 && vCurrentRoom != 11) { //0c22
+    if (said("ANYWORD", "goat")) { //0c31
+      print("You've already killed the goat.")
+    }
+  }
+}
+if (f75) { //0c3d
+  if (!f67 && said("kill", "goat")) { //0c43
+    print("You don't have any way to kill the old goat.")
+  }
+  if (f67 && said("kill", "goat")) { //0c52
+    if (vCurrentRoom != 25 && vCurrentRoom != 39 && vCurrentRoom != 41) { //0c5e
+      if ((vCurrentRoom == 10 || vCurrentRoom == 11)) { //0c6e
+        get.posn(o0,v60,v61)
+        print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.")
+        set.view(o0,0)
+        set.view(o13,62)
+        position(o13,60,v61)
+        draw(o13)
+        v65 = vCurrentRoom
+        v98 = 0
+        step.size(o13,v98)
+        drop(i1)
+        vCurrentScore -= 5
+        reset(f67)
+        reset(f75)
+        set(f70)
+        goto(l3264)
+      }
+      print("You hurl the dagger at the old goat... he tries to avoid the flying dagger, but your aim is true... as the dagger strikes, he slumps to the ground... dead.")
+      erase(o13)
+      set.view(o13,62)
+      draw(o13)
+      v65 = vCurrentRoom
+      v98 = 0
+      step.size(o13,v98)
+      drop(i1)
+      vCurrentScore -= 5
+      reset(f67)
+      reset(f75)
+      set(f70)
+    }
+  }
+l3264:
+  if (said("check", "goat")) { //0cc0
+    print("The old goat, trotting briskly, seems happy to be with you.")
+  }
+  if (said("speak", "goat")) { //0ccc
+    print("The goat is not much for conversation.")
+  }
+}
+if (f84) { //0cd8
+  if (said("check", "gold key")) { //0cde
+    show.obj(121)
+  }
+  if (said("acquire", "gold key")) { //0cea
+    print("You already have it.")
+  }
+}
+if (f170) { //0cf6
+  if (said("check", "note")) { //0cfc
+    show.obj(122)
+  }
+  if ((said("read", "note") || said("read", "message") || said("read", "message", "note"))) { //0d08
+    print("The note reads, \"Sometimes it is wise to think backwards.\"")
+    if (!f196) { //0d24
+      set(f196)
+      vCurrentScore += 1
+    }
+  }
+  if (said("acquire", "note")) { //0d30
+    print("You already have it.")
+  }
+}
+if (f139) { //0d3c
+  if (said("acquire", "cheese")) { //0d42
+    print("You already have it.")
+  }
+  if (said("check", "cheese")) { //0d4e
+    show.obj(134)
+  }
+  if (said("consume", "cheese")) { //0d5a
+    print("Mmmm!  That Swiss cheese was as delicious as it looked.")
+    drop(i18)
+    reset(f139)
+    vCurrentScore -= 2
+  }
+}
+if (f87) { //0d6d
+  if (said("check", "clover")) { //0d73
+    show.obj(124)
+  }
+  if (said("acquire", "clover")) { //0d7f
+    print("You already have it.")
+  }
+}
+if (f97) { //0d8b
+  if (said("acquire", "sling")) { //0d91
+    print("You already have it.")
+  }
+  if (said("check", "sling")) { //0d9d
+    show.obj(130)
+  }
+}
+if (f102) { //0da9
+  if (said("acquire", "shield")) { //0daf
+    print("You already have it.")
+  }
+  if (said("check", "shield")) { //0dbb
+    show.obj(137)
+  }
+}
+if (f113) { //0dc7
+  if (said("acquire", "sceptre")) { //0dcd
+    print("You already have it.")
+  }
+  if (said("check", "sceptre")) { //0dd9
+    show.obj(133)
+  }
+}
+if (f106) { //0de5
+  if (said("acquire", "diamond")) { //0deb
+    print("You already have it.")
+  }
+  if ((said("check", "diamond") || said("check", "bag"))) { //0df7
+    show.obj(131)
+  }
+  if (said("open", "bag")) { //0e0b
+    print("You have already opened the pouch.")
+  }
+}
+if (f72) { //0e17
+  if (said("acquire", "bag")) { //0e1d
+    print("You already have it.")
+  }
+  if (said("check", "bag")) { //0e29
+    show.obj(132)
+  }
+  if (!f106) { //0e35
+    if ((said("open", "bag") || said("look in", "bag"))) { //0e3c
+      print("Cautiously, you open the pouch and see many sparkling and flashing diamonds!  Quickly, you close it again so as not to lose any.")
+      get(i15)
+      drop(i16)
+      vCurrentScore += 3
+      set(f106)
+      reset(f72)
+    }
+  }
+}
+if (f110) { //0e5b
+  if (said("acquire", "egg")) { //0e61
+    print("You already have it.")
+  }
+  if (said("check", "egg")) { //0e6d
+    show.obj(136)
+  }
+  if (said("consume", "egg")) { //0e79
+    print("This egg will be tough to crack.")
+  }
+}
+if (f171) { //0e85
+  if (said("acquire", "fiddle")) { //0e8b
+    print("You already have it.")
+  }
+  if (said("check", "fiddle")) { //0e97
+    show.obj(138)
+  }
+  if (vCurrentRoom != 76 && vCurrentRoom != 77 && vCurrentRoom != 53 && vCurrentRoom != 65 && vCurrentRoom != 80 && vCurrentRoom != 49 && vCurrentRoom != 52 && vCurrentRoom != 12 && v94 != 1 && v94 != 2 && !f209 && !f142 && !f157 && !f180 && !f158 && !f175 && !f211) { //0ea3
+    if (said("play", "fiddle")) { //0ee4
+      set(f211)
+      print("You play a lively, toe-tapping tune on the fiddle.")
+      sound(8,f212)
+    }
+  }
+}
+if (f212) { //0ef5
+  reset(f212)
+  reset(f211)
+}
+if (f100) { //0eff
+  if (said("acquire", "mirror")) { //0f05
+    print("You already have it.")
+  }
+  if ((said("check", "mirror") || said("look in", "mirror"))) { //0f11
+    show.obj(135)
+  }
+}
+if (v74 == 3) { //0f25
+  reset(f125)
+}
+if (f190) { //0f2e
+  call(99)
+}
+call(vCurrentRoom)
+call(102)
+get.posn(o0,v108,v109)
+v110 = vEgoDir
+return()

@@ -1,4 +1,339 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  if (!f165) { //000e
+    load.view(34)
+  }
+  if (v75 == 1) { //0017
+    load.view(61)
+  }
+  if (v75 == 0) { //0020
+    load.view(33)
+    load.view(61)
+    load.view(82)
+    load.sound(1)
+    load.sound(7)
+  }
+  load.view(35)
+  if (vPrevRoom == 52) { //0033
+    set.view(o0,0)
+    reset(f98)
+    v94 = 0
+    position(o0,133,136)
+    if (!f167) { //0046
+      set(f167)
+      vCurrentScore += 1
+    }
+  }
+  if (vPrevRoom == 50) { //0052
+    position(o0,9,138)
+  }
+  if (!f165) { //005d
+    animate.obj(o1)
+    set.view(o1,34)
+    position(o1,38,108)
+    draw(o1)
+    stop.update(o1)
+  }
+  if (v75 == 2) { //0071
+    animate.obj(o2)
+    set.view(o2,35)
+    ignore.blocks(o2)
+    position(o2,8,127)
+    draw(o2)
+    stop.cycling(o2)
+  }
+  if (v75 != 2) { //0087
+    animate.obj(o2)
+    set.view(o2,35)
+    ignore.blocks(o2)
+    position(o2,3,127)
+    draw(o2)
+    stop.cycling(o2)
+    animate.obj(o3)
+    if (v75 == 1) { //00a0
+      add.to.pic(61,0,0,40,152,0,0)
+    }
+    if (v75 == 0) { //00af
+      set.view(o3,33)
+      position(o3,40,120)
+      v30 = 3
+      step.size(o3,v30)
+      draw(o3)
+      observe.blocks(o3)
+      follow.ego(o3,20,f20)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+get.posn(o0,v60,v61)
+if (v60 > 15) { //00d2
+  ignore.blocks(o0)
+}
+if (v60 < 16) { //00db
+  if (v75 == 2) { //00e2
+    ignore.blocks(o0)
+    goto(l240)
+  }
+  observe.blocks(o0)
+}
+l240:
+if (v75 == 0 && !f24) { //00f0
+  set(f24)
+  sound(1,f25)
+}
+if (v75 == 0 && f25) { //00ff
+  current.loop(o3,v31)
+  if (v31 == 0) { //010b
+    sound(7,f148)
+    goto(l281)
+  }
+  stop.sound()
+}
+l281:
+if (f20 && v75 == 0) { //0119
+  reset(f20)
+  set.view(o0,82)
+  if (f102) { //0127
+    print("Your shield melted from the intensity of the dragon's flames!  You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!")
+    goto(l308)
+  }
+  print("You should know about these fire-breathing dragons!  Maybe next time you will be a little more careful!")
+l308:
+  set(f63)
+}
+if (said("check", "room")) { //0136
+  if (!f165 && v75 == 0) { //0140
+    print("The ferocious fire-breathing dragon is protecting the magic mirror.")
+  }
+  if (!f165 && v75 == 1) { //014c
+    print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.")
+  }
+  if (!f165 && v75 == 2) { //0158
+    print("There is a large granite boulder and a magic mirror!! in the cave.")
+  }
+}
+if (said("check", "cave")) { //0164
+  if (!f165 && v75 == 0) { //016e
+    print("A green, scaly dragon breathing hot fire and smoke is protecting the mirror.")
+  }
+  if (f165 && v75 == 1) { //017a
+    print("In this large cavern, there is a slimy dead dragon, an opening on one side, and a large boulder in the other.")
+  }
+  if (!f165 && v75 == 1) { //0185
+    print("There is a dead dragon, a large boulder, and a seemingly ordinary mirror in the cave.")
+  }
+  if (!f165 && v75 == 2) { //0191
+    print("There is a large granite boulder and a magic mirror!! in the cave.")
+  }
+  if (f165 && v75 == 2) { //019d
+    print("The cavern is empty, save for a couple of openings on either side.")
+  }
+}
+if (said("check", "dragon")) { //01a8
+  if (v75 == 2) { //01b2
+    print("There is no dragon here.")
+  }
+  if (v75 == 0) { //01bb
+    print("This ferocious, fire-breathing dragon with sharp, green scales and a long tail is protecting the magic mirror. Watch out for the flames!")
+  }
+  if (v75 == 1) { //01c4
+    print("You see the once powerful dragon lying lifeless before you.")
+  }
+}
+if (said("find", "dragon")) { //01cd
+  if (v75 == 2) { //01d7
+    print("There is no dragon here.")
+  }
+  if ((v75 == 0 || v75 == 1)) { //01e0
+    print("I think you found the dragon!")
+  }
+}
+if ((said("check", "stalactite") || said("check", "stalactite"))) { //01ee
+  print("It took millenniums for these stalagmites and stalactites to form.")
+}
+if (said("check", "boulder")) { //0202
+  print("This boulder is a huge chunk of granite.")
+}
+if ((said("move", "boulder") || said("move", "boulder"))) { //020e
+  print("This boulder is far too heavy to move.")
+}
+if (v75 == 0) { //0222
+  if ((said("check", "doorway") || said("look in", "doorway"))) { //0229
+    print("A strange watery light issues from the hole.")
+  }
+  if ((said("speak", "dragon") || said("hello") || said("say", "hello"))) { //023d
+    print("This dragon does not respond to reason.")
+  }
+}
+if (v75 != 0) { //0255
+  if ((said("check", "doorway") || said("look in", "doorway"))) { //025d
+    if (posn(o0,1,1,75,166)) { //026f
+      print("The hole seems to lead further into the cave.")
+      goto(l640)
+    }
+    print("A strange watery light issues from the hole.")
+  }
+}
+l640:
+if (v75 == 1) { //0280
+  if (said("acquire", "dagger")) { //0287
+    print("The mere thought of retrieving the dagger repulses you.")
+  }
+}
+if (f67) { //0293
+  if (said("use", "dagger")) { //0299
+    print("How?")
+  }
+}
+if (said("kill", "dragon")) { //02a5
+  if (v75 == 2) { //02af
+    print("How?")
+  }
+  if (v75 == 1) { //02b8
+    print("This dragon had only one life and you have taken it.")
+  }
+  if (v75 == 0) { //02c1
+    if (posn(o0,105,96,145,166)) { //02c8
+      print("You can't do that from here.!")
+      goto(l729)
+    }
+    print("How do you wish to accomplish that?")
+  }
+}
+l729:
+if (f81) { //02d9
+  if (said("cast", "bucket")) { //02df
+    print("You throw your bucket on the cavern floor.")
+    reset(f81)
+    drop(i11)
+    vCurrentScore -= 2
+    if (f88) { //02f2
+      reset(f88)
+      drop(i26)
+      reset(f91)
+      vCurrentScore -= 2
+    }
+  }
+}
+if (!f100 && f165) { //0301
+  if (said("ANYWORD", "mirror")) { //030a
+    print("There is no mirror here.")
+  }
+}
+if (!f100 && !f165) { //0316
+  if (said("steal", "mirror") && v75 == 0) { //0320
+    print("With that dragon here?  No way!")
+  }
+  if (posn(o0,26,104,59,127)) { //032f
+    if (said("check", "mirror")) { //0339
+      if (v75 == 0) { //0343
+        print("The dragon is protecting the magic mirror.")
+      }
+      if ((v75 == 2 || v75 == 1)) { //034c
+        print("The magic mirror is framed with ornate mahogany wood, polished to a high sheen.")
+      }
+    }
+    if (said("acquire", "mirror")) { //035a
+      if (v75 == 0) { //0364
+        print("I do not think that you can get close enough to the magic mirror with the dragon here.")
+      }
+      if ((v75 == 2 || v75 == 1)) { //036d
+        start.update(o1)
+        erase(o1)
+        set(f100)
+        set(f165)
+        get(i19)
+        print("Carefully, you pick up the magic mirror.")
+        v74++
+        vCurrentScore += 8
+      }
+    }
+  }
+  if (!(posn(o0,26,104,59,127))) { //038a
+    if (said("check", "mirror")) { //0395
+      print("You could get a much better view if you were closer.")
+    }
+    if (said("acquire", "mirror")) { //03a1
+      print("You are not close enough to reach it.")
+    }
+  }
+}
+if (!f88) { //03ad
+  if ((said("douse", "dragon") || said("cast", "water") || said("cast", "water", "dragon"))) { //03b4
+    if (v75 != 2) { //03ce
+      print("You have nothing with which to douse a dragon.")
+    }
+    if (v75 == 2) { //03d8
+      print("There is no dragon here.")
+    }
+  }
+}
+if (posn(o0,105,96,145,166) && v75 == 0) { //03e1
+  if (f67 && (said("cast", "dagger") || said("cast", "dagger", "dragon"))) { //03ee
+    reset(f67)
+    print("The dagger sings through the air, but falls short of the dragon.  You should have been closer.")
+    drop(i1)
+    vCurrentScore -= 5
+  }
+  if (f88 && (said("cast", "water") || said("cast", "water", "dragon") || said("douse", "dragon"))) { //040d
+    reset(f88)
+    print("You throw your water, but to no avail.  It lands on the floor and is quickly absorbed.")
+    drop(i26)
+    vCurrentScore -= 2
+    reset(f91)
+  }
+}
+if (!(posn(o0,105,96,145,166)) && v75 == 0) { //0434
+  if (f88 && (said("cast", "water") || said("cast", "water", "dragon") || said("douse", "dragon"))) { //0442
+    reset(f88)
+    print("The water hits the dragon squarely in the mouth, extinguishing its roaring flames.  No fire!  How mortified and embarrassed the dragon is!  Moving a huge boulder in leaving, the dragon creeps off to sulk.")
+    drop(i26)
+    vCurrentScore -= 2
+    vCurrentScore += 7
+    set.loop(o3,1)
+    reset(f91)
+    move.obj(o3,40,137,0,f21)
+    v75 = 2
+  }
+  if (f67 && (said("cast", "dagger") || said("cast", "dagger", "dragon"))) { //0478
+    ignore.blocks(o3)
+    reset(f67)
+    print("Nervously, you throw the dagger at the dragon and strike it in the heart.  Death for the dragon is instant.")
+    drop(i1)
+    vCurrentScore -= 5
+    vCurrentScore += 3
+    erase(o3)
+    set.view(o3,61)
+    v30 = 0
+    step.size(o3,v30)
+    draw(o3)
+    stop.motion(o3)
+    stop.cycling(o3)
+    v75 = 1
+  }
+}
+if (f21) { //04b0
+  reset(f21)
+  start.cycling(o2)
+  end.of.loop(o2,f22)
+}
+if (f22) { //04bd
+  ignore.blocks(o3)
+  reset(f22)
+  stop.cycling(o2)
+  move.obj(o3,4,137,0,f23)
+}
+if (f23) { //04cf
+  reset(f23)
+  erase(o3)
+}
+if (vWhichEgoBorder == 2) { //04d9
+  new.room(52)
+}
+if (posn(o0,0,0,1,167)) { //04e2
+  new.room(50)
+}
+return()

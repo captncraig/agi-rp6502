@@ -1,4 +1,505 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(6)
+  load.sound(1)
+  load.sound(26)
+  load.sound(3)
+  load.logic(116)
+  call(116)
+  set(f34)
+  v57 = 127
+  v58 = 115
+  v32 = 130
+  v31 = 138
+  v56 = 7
+  animate.obj(o3)
+  load.view(160)
+  set.view(o3,160)
+  ignore.blocks(o3)
+  position(o3,38,165)
+  stop.cycling(o3)
+  if (f188) { //003a
+    set.cel(o3,3)
+    goto(l73)
+  }
+  set.cel(o3,0)
+l73:
+  draw(o3)
+  stop.update(o3)
+  if (v62 != 4) { //004d
+    animate.obj(o4)
+    if (f181) { //0057
+      v227 = 22
+      load.view(166)
+      set.view(o4,166)
+      v36 = 6
+      cycle.time(o4,v36)
+      position(o4,68,148)
+      set.priority(o4,14)
+      set.loop(o4,0)
+      goto(l196)
+    }
+    load.view(167)
+    load.view(159)
+    set.view(o4,159)
+    ignore.blocks(o4)
+    random(1,3,v36)
+    if (vPrevRoom == 82) { //0085
+      v36 = 1
+    }
+    if (f46) { //008f
+      v36 = 1
+    }
+    if (v36 == 3) { //0098
+      v226 = 3
+      set.view(o4,167)
+      position(o4,69,117)
+      v222 = 66
+      goto(l196)
+    }
+    random(10,40,v221)
+    position(o4,12,129)
+    v226 = 0
+    if (v36 == 1) { //00ba
+      v221 = 0
+    }
+l196:
+    draw(o4)
+    if (v226 == 0) { //00c6
+      stop.update(o4)
+    }
+  }
+  load.view(0)
+  load.view(11)
+  load.view(30)
+  load.view(35)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+  if (v44 == 15) { //00dc
+    v44 = 15
+    ignore.horizon(o0)
+    ignore.blocks(o0)
+    if (vPrevRoom == 80) { //00ea
+      position(o0,145,55)
+      goto(l252)
+    }
+    position(o0,142,133)
+l252:
+    set.priority(o0,11)
+    set.view(o0,30)
+    set.loop(o0,0)
+    fix.loop(o0)
+    goto(l325)
+  }
+  set.view(o0,0)
+  get.posn(o0,v40,v41)
+  if (vPrevRoom == 84) { //0111
+    if (v41 > 134) { //0118
+      v41 = 137
+      goto(l296)
+    }
+    v41 = 110
+l296:
+    position(o0,40,v41)
+  }
+  if (vPrevRoom == 82) { //012c
+    position(o0,28,125)
+  }
+  if (vPrevRoom == 80) { //0137
+    position(o0,120,55)
+    set.view(o0,11)
+  }
+l325:
+  if (v44 == 30) { //0145
+    set.view(o0,0)
+    position(o0,57,v58)
+    set(f48)
+    set(f47)
+  }
+  if (f47) { //0157
+    draw(o0)
+  }
+  show.pic()
+  return()
+}
+call(116)
+v227--
+if (v227 == 1) { //0165
+  sound(3,f238)
+  set.cel(o4,0)
+  end.of.loop(o4,f227)
+}
+if (f227) { //0175
+  reset(f227)
+  v227 = 22
+  stop.cycling(o4)
+}
+if (v40 > 90) { //0182
+  v220 = 1
+  goto(l402)
+}
+v220 = 0
+l402:
+if (v221 > 0 && f45) { //0192
+  v221--
+  if (v221 == 0) { //019d
+    set(f225)
+  }
+}
+get.posn(o4,v37,v38)
+if (v226 == 1) { //01aa
+  if (v37 > 32) { //01b1
+    set(f226)
+    goto(l447)
+  }
+  reset(f226)
+l447:
+  goto(l469)
+}
+if ((v226 == 2 || v226 == 3)) { //01c2
+  set(f226)
+  goto(l469)
+}
+reset(f226)
+l469:
+if (v220 == 0 && v44 == 0 && f226) { //01d5
+  v226 = 4
+  set(f225)
+  print("The Captain doesn't want you snooping in his quarters. You're in trouble now!")
+  prevent.input()
+}
+if (!f46 && v226 == 0 && f225) { //01e9
+  reset(f225)
+  v226 = 1
+  start.update(o4)
+  move.obj(o4,40,129,1,f225)
+  sound(26,f238)
+}
+if (v226 == 1 && f225) { //0205
+  reset(f225)
+  v226 = 2
+  move.obj(o4,69,117,1,f225)
+}
+if (v226 == 2 && f225) { //0219
+  reset(f225)
+  v226 = 3
+  set.view(o4,167)
+  reposition.to(o4,69,117)
+  v222 = 66
+}
+if (v226 == 3) { //0231
+  v222--
+  if (v222 == 21) { //023a
+    start.cycling(o4)
+  }
+  if (v222 == 1) { //0243
+    v222 = 66
+    stop.cycling(o4)
+  }
+}
+if (v226 == 4 && f225) { //024f
+  reset(f225)
+  v226 = 5
+  stop.motion(o0)
+  set.view(o4,159)
+  program.control()
+  start.cycling(o4)
+  follow.ego(o4,10,f225)
+}
+if (v226 == 5 && f225) { //0269
+  v226++
+  reset(f225)
+  set(f199)
+  if (v187 == 1) { //0278
+    print("\"Yer more trouble than yer worth!\" the Captain thunders. \"'Tis the plank fer ya now!\"")
+    goto(l646)
+  }
+  print("\"I'll not tolerate ya snoopin' around me quarters!\" the Captain thunders. \"If I ketch ya in here again ya'll walk the plank!\"")
+l646:
+  player.control()
+  accept.input()
+  new.room(85)
+}
+if (v44 == 6) { //028a
+  v37 = 6
+  v38 = 124
+  goto(l1597)
+}
+if (v44 == 15 && !(obj.in.box(o0,140,33,153,166))) { //029a
+  v44 = 6
+  v37 = 3
+  v38 = 144
+  goto(l1597)
+}
+if (v44 == 0 && fTriggerLine) { //02b4
+  v44 = 6
+  sound(1,f238)
+  set.view(o0,11)
+  reposition.to(o0,130,125)
+  set(f35)
+  set.priority(o0,10)
+  move.obj(o0,130,165,3,f220)
+  set.scan.start()
+  if (f220) { //02d6
+    reset.scan.start()
+    new.room(85)
+  }
+  return()
+}
+if (obj.in.box(o0,140,125,153,133)) { //02e0
+  if (v44 == 15) { //02ea
+    if (vEgoDir != 1 && vEgoDir != 5 && vEgoDir != 0) { //02f1
+      v44 = 0
+      release.loop(o0)
+      observe.blocks(o0)
+      observe.horizon(o0)
+      release.priority(o0)
+      set.view(o0,0)
+      reposition.to(o0,141,134)
+      start.motion(o0)
+    }
+    goto(l816)
+  }
+  start.motion(o0)
+  reposition.to(o0,142,133)
+  ignore.horizon(o0)
+  ignore.blocks(o0)
+  set.priority(o0,11)
+  set.view(o0,30)
+  v44 = 15
+  set.loop(o0,0)
+  fix.loop(o0)
+}
+l816:
+if ((said("examine", "area") || said("examine"))) { //0330
+  if (v220 == 0) { //0340
+    print("This must be the Captain's cabin. He seems to be a bit more tidy than his mates, as the room is clean and orderly. Against one wall rests his bunk with a large chest at its foot. Across the room is his desk with a chart tacked to the wall.")
+  }
+  if (v220 == 1) { //0349
+    print("You look curiously around. Out a porthole you see the swell of the ocean. A device for turning the ship's rudder sets in the floor. A rope ladder extends up through an opening in the ceiling.")
+  }
+}
+if ((said("look in", "carry") || said("examine", "carry"))) { //0352
+  if (v220 == 1) { //0364
+    print("You peer into the dark opening. It's impossible to make out any details.")
+    goto(l882)
+  }
+  print("You can't see that very well from here.")
+}
+l882:
+if (said("examine", "below", "bed")) { //0372
+  print("You see nothing you haven't seen before.")
+}
+if (said("examine", "bed")) { //0380
+  if (v220 == 0) { //038a
+    if (f181 && v62 != 4) { //0391
+      print("The captain is snoring peacefully in his bunk.")
+      goto(l930)
+    }
+    print("The Captain's bunk has been very neatly made. You look it over carefully, but find nothing of interest.")
+l930:
+    goto(l935)
+  }
+  print("You can't see that very well from here.")
+}
+l935:
+if ((said("examine", "bandit", "on", "bed") || said("examine", "bandit", "bed") || said("examine", "bandit"))) { //03a7
+  if (v220 == 0) { //03c5
+    print("The captain is snoring peacefully in his bunk.")
+    goto(l979)
+  }
+  print("You can't see anything from here.")
+}
+l979:
+if (said("examine", "ladder")) { //03d3
+  if (v220 == 1) { //03dd
+    print("The rope ladder is still there.")
+    goto(l1003)
+  }
+  print("You can't see that very well from here.")
+}
+l1003:
+if ((said("examine", "out", "hole") || said("examine", "hole"))) { //03eb
+  if (v220 == 1) { //03ff
+    print("You see the rise and fall of the ocean as you gaze out the porthole.")
+    goto(l1037)
+  }
+  print("You can't see that very well from here.")
+}
+l1037:
+if (f188) { //040d
+  stop.update(o3)
+}
+if ((said("examine", "chest") || said("capture", "all", "rol") || said("look in", "chest"))) { //0415
+  if (v220 == 1) { //042f
+    print("You can't see that very well from here.")
+    goto(l1169)
+  }
+  if (!f188) { //043b
+    print("The chest at the foot of the Captain's bunk is closed.")
+    goto(l1169)
+  }
+  distance(o0,o3,v36)
+  if (v36 > 18) { //044b
+    print("The open chest bears closer examination.")
+    goto(l1169)
+  }
+  if (f185) { //0457
+    reset(f185)
+    print("You've found all of your missing possessions! You take them with you.")
+    if (!f206) { //0461
+      vCurrentScore += 3
+      set(f206)
+    }
+    v36 = 1
+    v224 = 255
+l1139:
+    if (v36 < 55) { //0473
+      get.room(v36,v225)
+      if (v225 == vCurrentRoom) { //047d
+        put(v36,v224)
+      }
+      v36++
+      goto(l1139)
+    }
+    goto(l1169)
+  }
+  print("You look in the chest and find nothing.")
+}
+l1169:
+if ((said("look in", "counter") || said("look in", "drawer") || said("examine", "counter"))) { //0491
+  if (v220 == 0 && posn(o0,63,112,83,120)) { //04a9
+    print("You gaze with interest at the Captain's desk. The desk top is very neat, holding only writing implements. Curiously, you open a drawer or two. There is nothing of interest among the charts and logbooks. Quickly, you close them again.")
+    goto(l1213)
+  }
+  print("You can't see that very well from here.")
+}
+l1213:
+if ((said("examine", "chart") || said("examine", "chart", "on", "cage"))) { //04bd
+  if (v220 == 0) { //04d3
+    print("You stare at the chart tacked to the wall. It traces the route the ship is now sailing. It leaves Llewdor, crossing a wide ocean, and arriving at the foot of a mountain range. An \"X\" has been marked at the arrival point.")
+    goto(l1249)
+  }
+  print("You can't see that very well from here.")
+}
+l1249:
+if ((said("lift", "up", "chest") || said("lift", "cap") || said("lift", "cap", "chest") || said("lift", "chest"))) { //04e1
+  if (f188) { //0503
+    print("The chest is already open.")
+    goto(l1318)
+  }
+  distance(o0,o3,v36)
+  if (v36 > 18) { //0512
+    print("How do you propose to do that from where you're standing?")
+    goto(l1318)
+  }
+  start.update(o3)
+  set.cel(o3,0)
+  end.of.loop(o3,f188)
+}
+l1318:
+if ((said("close", "cap") || said("close", "cap", "chest") || said("close", "chest"))) { //0526
+  if (!f188) { //0540
+    print("The chest is already closed.")
+    goto(l1393)
+  }
+  distance(o0,o3,v36)
+  if (v36 > 18) { //0550
+    print("How do you propose to do that from where you're standing?")
+    goto(l1393)
+  }
+  start.update(o3)
+  set.cel(o3,3)
+  reverse.loop(o3,f188)
+  set.scan.start()
+  if (f188) { //0565
+    reset(f188)
+    stop.update(o3)
+    reset.scan.start()
+  }
+  return()
+}
+l1393:
+if ((said("lay", "on", "bed") || said("capture", "on", "bed") || said("sleep", "on", "bed") || said("lay", "on", "bed") || said("lay", "bed"))) { //0571
+  if (v220 == 0) { //059d
+    print("You really have better things to do than lie around. It would be wise to get out of there.")
+    goto(l1451)
+  }
+  print("How do you propose to do that from where you're standing?")
+}
+l1451:
+if ((said("get in", "on", "bench") || said("get in", "bench"))) { //05ab
+  if (v220 == 0) { //05bf
+    print("You really have better things to do than sit around. It would be wise to get out of there.")
+    goto(l1485)
+  }
+  print("How do you propose to do that from where you're standing?")
+}
+l1485:
+if ((said("look in", "door") || said("examine", "door"))) { //05cd
+  if (v220 == 0) { //05df
+    print("Through one doorway, you see the rope ladder snaking its way down into the cargo hold. Out the other, you see nothing but the endless ocean.")
+    goto(l1517)
+  }
+  print("You can't see that very well from here.")
+}
+l1517:
+if ((said("examine", "glass") || said("examine", "out", "glass"))) { //05ed
+  if (v220 == 0) { //0601
+    print("You look out the window and see the bright, blue ocean.")
+    goto(l1551)
+  }
+  print("You can't see that very well from here.")
+}
+l1551:
+if (v44 == 15 && v41 < 50) { //060f
+  new.room(80)
+}
+if (v44 == 15 && v41 > 143) { //061b
+  new.room(85)
+}
+if (obj.in.box(o0,11,114,29,130)) { //0627
+  new.room(82)
+}
+if (vWhichEgoBorder == 2) { //0633
+  new.room(84)
+}
+return()
+l1597:
+set.view(o0,11)
+sound(1,f238)
+ignore.blocks(o0)
+move.obj(o0,v40,v38,37,f220)
+set.scan.start()
+if (f220) { //064c
+  release.priority(o0)
+  reset(f220)
+  program.control()
+  v44 = 18
+  sound(6,f224)
+  v223 = 5
+  set.view(o0,35)
+  set(f35)
+  set.scan.start()
+  if (f45) { //0666
+    v223--
+  }
+  program.control()
+  if (!(v223 > 0)) { //066f
+    reset(f35)
+    player.control()
+    set.view(o0,0)
+    observe.blocks(o0)
+    release.priority(o0)
+    release.loop(o0)
+    v44 = 0
+    reset.scan.start()
+  }
+  if (v223 > 0 && f224) { //0687
+    sound(6,f224)
+  }
+  return()
+}
+return()

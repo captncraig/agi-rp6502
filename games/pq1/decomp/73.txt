@@ -1,4 +1,157 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f85)
+  reset(f86)
+  load.view(30)
+  animate.obj(o15)
+  set.view(o15,30)
+  get.posn(o0,v142,v143)
+  if (!f87) { //0017
+    if (vCurrentRoom == 67) { //001e
+      v144 = 69
+      v145 = 167
+      goto(l55)
+    }
+    v144 = v142
+    v145 = v143
+    v145 -= 1
+l55:
+    position(o15,144,v145)
+    current.loop(o0,v147)
+    set.loop(o15,v147)
+    v240 = 18
+    if (vPrevRoom == 69) { //0044
+      v142 += 10
+      v143 -= 1
+      v147 = 1
+      position(o15,142,v143)
+      set.loop(o15,v147)
+      v240 = 2
+    }
+  }
+}
+distance(o0,o15,v241)
+if (v241 < v61) { //0062
+  set(f109)
+}
+if (f88) { //006b
+  reset(f88)
+  get.posn(o0,v142,v143)
+  v143 -= 1
+  position(o15,142,v143)
+  current.loop(o0,v147)
+  set.loop(o15,v147)
+  if (f87) { //0084
+    reset(f87)
+    set(f89)
+    set(f244)
+    set(f86)
+    normal.motion(o15)
+    set.loop(o15,2)
+    set.cel(o15,0)
+    if (vCurrentRoom == 64) { //009a
+      position(o15,69,85)
+    }
+    if (vCurrentRoom == 66) { //00a5
+      position(o15,88,123)
+    }
+  }
+  draw(o15)
+  stop.cycling(o15)
+  set(f86)
+}
+v240--
+if (v240 == 1) { //00b8
+  draw(o15)
+  if (vCurrentRoom == 67) { //00c1
+    v139 = 100
+    move.obj(o15,41,139,0,f138)
+    goto(l216)
+  }
+  stop.cycling(o15)
+  set(f86)
+}
+l216:
+if (f85) { //00d8
+  reset(f85)
+  stop.cycling(o15)
+  set(f86)
+}
+if (f86) { //00e4
+  if (f89 && !f244) { //00ea
+    reset(f86)
+    set(f243)
+    v244 = 0
+    goto(l282)
+  }
+  if (!f89 && f244) { //00fd
+    reset(f244)
+    goto(l282)
+  }
+  if (v241 > 18) { //010b
+    reset(f86)
+    start.cycling(o15)
+    follow.ego(o15,10,f85)
+  }
+}
+l282:
+if (f243) { //011a
+  reset(f243)
+  v244++
+  if (v244 == 1) { //0124
+    start.cycling(o15)
+    if (vCurrentRoom == 64) { //012d
+      v144 = 68
+      goto(l317)
+    }
+    v144 = 87
+l317:
+    move.obj(o15,v144,v243,122,f243)
+  }
+  if (v244 == 2) { //0143
+    if (vCurrentRoom == 64) { //014a
+      v145 = 85
+      goto(l346)
+    }
+    v145 = 123
+l346:
+    move.obj(o15,v242,v145,122,f243)
+  }
+  if (v244 == 3) { //0160
+    set(f86)
+    set(f244)
+  }
+}
+get.posn(o15,v144,v145)
+if ((v242 != v144 || v243 != v145)) { //016f
+  start.cycling(o15)
+  v242 = v144
+  v243 = v145
+  goto(l394)
+}
+stop.cycling(o15)
+l394:
+if (said("remain", "here")) { //018a
+  print("\"I'm with you Big Guy!\"")
+}
+if ((said("blow", "rol") || said("cunt", "rol") || said("asshole", "rol") || said("anyword", "blow", "rol") || said("anyword", "cunt", "rol") || said("anyword", "asshole", "rol") || said("get", "change") || said("change") || said("change", "broad") || said("broad", "about", "change") || said("pay", "broad") || said("administer", "bills", "about", "broad") || said("hug", "broad") || said("citation", "broad") || said("administer", "hair", "rol") || said("administer", "anyword", "hair", "rol"))) { //0196
+  print("\"That sounds like a good idea, Honey!\" says Sweet Cheeks Marie, \"but I thought we were on duty!\"")
+}
+if (said("examine", "broad")) { //020e
+  print("Sweet Cheeks is, hmmmm, an intensely good-looking female-type unit. As you ogle her shapely figure, your imagination numbs your conscious mind, sending you into a lecherous dream world.")
+}
+if (said("find", "broad")) { //021a
+  print("\"Whee!\"")
+}
+if (said("answer", "broad")) { //0226
+  print("\"Isn't this fun, darlin'?\" Sweet Cheeks whispers into your ear.")
+}
+if ((said("answer", "cocaine") || said("ask", "bains"))) { //0232
+  print("\"All I know is what I told you at Wino Willy's, Sweet Pea!\"")
+}
+if ((said("ask", "number") || said("administer", "bonds", "phone", "number") || said("bonds", "phone", "number") || said("phone", "number"))) { //0246
+  print("\"Why, darlin', street corners ain't got phones!\"")
+}
+if (said("cuff", "broad")) { //026c
+  print("\"Honey, I only do mink-lined handcuffs.\"")
+}
+return()

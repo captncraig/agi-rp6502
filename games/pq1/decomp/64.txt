@@ -1,5 +1,422 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f102)
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+  set.horizon(5)
+  load.view(222)
+  load.view(219)
+  load.sound(18)
+  load.logic(74)
+  if (f84) { //0014
+    load.logic(73)
+    load.view(228)
+    goto(l35)
+  }
+  load.view(229)
+l35:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  animate.obj(o1)
+  ignore.objs(o1)
+  ignore.blocks(o1)
+  if (f84) { //002f
+    set.view(o1,228)
+    goto(l62)
+  }
+  set.view(o1,229)
+l62:
+  set.priority(o1,4)
+  if (vPrevRoom != 66) { //0041
+    position(o1,66,87)
+    set.loop(o1,0)
+    set.cel(o1,0)
+    draw(o1)
+    stop.update(o1)
+    goto(l115)
+  }
+  position(o1,66,6)
+  set.loop(o1,1)
+  set.cel(o1,5)
+  draw(o1)
+  stop.cycling(o1)
+  move.obj(o1,66,87,0,f220)
+  v220 = 3
+  set(f221)
+l115:
+  animate.obj(o2)
+  set.view(o2,222)
+  position(o2,150,106)
+  observe.blocks(o0)
+  if (vPrevRoom == 68) { //007e
+    position(o0,24,97)
+    goto(l158)
+  }
+  if (vPrevRoom == 63) { //008c
+    position(o0,61,167)
+    goto(l158)
+  }
+  position(o0,76,110)
+l158:
+  if (vPrevRoom != 66) { //009e
+    draw(o0)
+  }
+  if (f84) { //00a8
+    call(73)
+  }
+  add.to.pic(219,0,0,115,112,13,4)
+  show.pic()
+  return()
+}
+reset(f229)
+if (posn(o0,89,112,151,158)) { //00bc
+  set(f229)
+}
+reset(f89)
+if ((posn(o0,63,82,79,86) || obj.in.box(o0,61,76,89,87))) { //00ca
+  set(f89)
+}
+distance(o0,o2,v222)
+if (v222 < v61) { //00e2
+  set(f109)
+}
+if (!(posn(o0,99,121,113,144)) && v221 > 0 && v221 < 10) { //00eb
+  print("\"Just ring if I may be of assistance. Goodbye.\"")
+  v140 = 0
+  set(f138)
+}
+if (f138) { //0103
+  reset(f138)
+  v221 = 10
+  start.cycling(o2)
+  move.obj(o2,126,106,0,f222)
+}
+if (posn(o0,94,83,114,99)) { //0116
+  set.priority(o0,8)
+  if (f84) { //0123
+    reset(f85)
+    reset(f86)
+    stop.cycling(o15)
+    stop.motion(o15)
+  }
+  goto(l319)
+}
+release.priority(o0)
+if (!f89) { //0136
+  set(f86)
+}
+l319:
+if (f222) { //013f
+  reset(f222)
+  if (v221 == 11) { //0147
+    erase(o2)
+    v221 = 0
+    reset(f227)
+  }
+  if (v221 == 10) { //0155
+    move.obj(o2,150,106,0,f222)
+    v221 = 11
+  }
+  if (v221 == 2) { //0165
+    stop.motion(o2)
+    stop.cycling(o2)
+    set.loop(o2,1)
+    force.update(o2)
+    v221 = 3
+    print("\"Good day, Sir!\" says the desk clerk in his best, plastic voice. \"How may I help you?\"")
+    v140 = 20
+  }
+  if (v221 == 1) { //017d
+    move.obj(o2,126,123,0,f222)
+    v221 = 2
+  }
+}
+if (f223) { //018d
+  reset(f223)
+  prevent.input()
+  set(f36)
+  start.update(o1)
+  set.cel(o1,1)
+  end.of.loop(o1,f220)
+  erase(o0)
+  v220 = 1
+}
+if (f224) { //01a5
+  reset(f224)
+  stop.update(o1)
+  reset(f36)
+  accept.input()
+  v220 = 0
+}
+if (f220) { //01b5
+  reset(f220)
+  if (v220 == 3) { //01bd
+    reverse.loop(o1,f224)
+    set(f225)
+  }
+  if (v220 == 2) { //01c9
+    v101 = 1
+    new.room(66)
+  }
+  if (v220 == 1) { //01d5
+    set.loop(o1,1)
+    set.cel(o1,0)
+    stop.cycling(o1)
+    move.obj(o1,66,6,0,f220)
+    v220 = 2
+    set(f221)
+  }
+}
+if (f225) { //01ef
+  current.cel(o1,v152)
+  if (v152 == 1) { //01f8
+    reset(f225)
+    start.motion(o0)
+    set.loop(o0,2)
+    set.cel(o0,0)
+    if (f87) { //0209
+      set(f88)
+      position(o0,76,85)
+      goto(l540)
+    }
+    position(o0,72,85)
+l540:
+    draw(o0)
+  }
+}
+if (f221) { //021e
+  get.posn(o1,v144,v145)
+  if (v220 == 2) { //0228
+    if (v145 == 44) { //022f
+      set.cel(o1,1)
+    }
+    if (v145 == 36) { //0239
+      set.cel(o1,2)
+    }
+    if (v145 == 31) { //0243
+      set.cel(o1,3)
+    }
+    if (v145 == 24) { //024d
+      set.cel(o1,4)
+    }
+    if (v145 == 16) { //0257
+      set.cel(o1,5)
+    }
+  }
+  if (v220 == 3) { //0261
+    if (v145 == 44) { //0268
+      set.loop(o1,0)
+      set.cel(o1,5)
+    }
+    if (v145 == 35) { //0275
+      set.cel(o1,1)
+    }
+    if (v145 == 30) { //027f
+      set.cel(o1,2)
+    }
+    if (v145 == 23) { //0289
+      set.cel(o1,3)
+    }
+    if (v145 == 15) { //0293
+      set.cel(o1,4)
+    }
+  }
+}
+if (f89) { //029d
+  if ((said("examine") || said("examine", "accident") || said("examine", "fence") || said("examine", "button") || said("examine", "elevator"))) { //02a3
+    print("The front wall of the elevator has four buttons marked \"One,\" \"Two,\" \"Three,\" and \"Four.\" What could they possibly do?")
+  }
+  if ((said("move", "one") || said("one"))) { //02c7
+    print("You are already on that floor.")
+  }
+  if ((said("move", "two") || said("two"))) { //02d9
+    v101 = 1
+    v100 = 2
+    set(f223)
+  }
+  if ((said("move", "three") || said("three"))) { //02f1
+    v101 = 1
+    v100 = 3
+    set(f223)
+  }
+  if ((said("move", "four") || said("four"))) { //0309
+    v101 = 1
+    v100 = 4
+    set(f223)
+  }
+  if (said("move", "button", "rol")) { //0321
+    print("Which floor number?")
+  }
+  if (f223) { //032f
+    if (v31 < 100) { //0335
+      print("You have no business here. Get back to the business of crime stopping.")
+      v101 = 0
+      v100 = 0
+      reset(f223)
+      goto(l855)
+    }
+    if (f84) { //0349
+      set(f87)
+      erase(o15)
+      reset(f85)
+      reset(f86)
+    }
+  }
+}
+l855:
+if ((said("examine") || said("examine", "accident") || said("examine", "lobby"))) { //0357
+  print("This is the lobby of the Hotel Delphoria. It is decorated in the style of the era in which it was constructed, its prime days long gone. There is a desk to the east and an elevator to the north.")
+}
+if ((said("examine", "counter") || said("examine", "counter", "top") || said("examine", "above", "counter"))) { //036f
+  print("The marble desk top is empty except for a bell. Behind the desk are the hotel's mailboxes.")
+}
+if ((said("examine", "carpet") || said("examine", "curb") || said("examine", "down"))) { //038d
+  print("\"D\"")
+}
+if ((said("examine", "ceiling") || said("examine", "up"))) { //03a7
+  print("Majestic, isn't it!")
+}
+if (v221 > 0 && (said("examine", "art") || said("examine", "counter", "art"))) { //03bb
+  print("The desk clerk appears to be a neat and clean-looking gent.")
+}
+if ((said("examine", "box") || said("examine", "box"))) { //03d4
+  if (!f229) { //03e6
+    set(f113)
+    goto(l1012)
+  }
+  print("The mailboxes are used by hotel personnel only.")
+}
+l1012:
+if ((said("examine", "bell") || said("examine", "button") || said("examine", "bell", "counter") || said("examine", "bell", "on", "counter") || said("examine", "counter"))) { //03f4
+  if (posn(o0,99,121,113,144)) { //041e
+    print("The bell is metal and small. The button on top, when pressed, causes it to ring.")
+    goto(l1071)
+  }
+  set(f113)
+}
+l1071:
+if ((said("ring", "bell") || said("ring") || said("ring", "bell", "counter") || said("ring", "bell", "on", "counter") || said("ring", "counter", "bell") || said("move", "button"))) { //042f
+  if (posn(o0,99,121,113,144)) { //045f
+    if (!f227) { //0469
+      set(f227)
+      sound(18,f154)
+      draw(o2)
+      move.obj(o2,126,106,0,f222)
+      v221 = 1
+      goto(l1157)
+    }
+    print("Don't get impatient!")
+l1157:
+    goto(l1177)
+  }
+  if (posn(o0,61,76,89,87)) { //0488
+    print("That's a pretty general statement.")
+    goto(l1177)
+  }
+  set(f113)
+}
+l1177:
+if ((said("rent", "accident") || said("check in", "rol") || said("get", "accident") || said("get", "accident", "car keys") || said("administer", "bills", "art") || said("check in") || said("check in", "about", "accident") || said("sign", "check in") || said("check", "rol") || said("bonds", "rent", "accident") || said("buy", "accident") || said("administer", "bonds", "accident") || said("rent", "bonds", "accident") || said("do", "accident"))) { //0499
+  if (v221 == 3) { //04fd
+    if (!(has(i22))) { //0504
+      print("\"We have a vacancy in Room 204, on the second floor. All our rooms are very clean and nicely furnished, with telephones and queen-sized beds,\" says the desk clerk. \"That will be $100.00, please.\"")
+      v221 = 4
+      v140 = 25
+      goto(l1318)
+    }
+    print("\"I'm sorry, sir, but we have no vacancies at this time,\" says the desk clerk. \"Please check back with us tomorrow.\"")
+    v140 = 0
+    v221 = 10
+    start.cycling(o2)
+    move.obj(o2,126,106,0,f222)
+l1318:
+    goto(l1323)
+  }
+  print("No one heard you.")
+}
+l1323:
+if ((said("ask", "art", "phone") || said("call", "cab", "rol") || said("phone", "cab", "rol"))) { //052b
+  if (v221 != 3) { //0549
+    print("No one heard you.")
+    goto(l1368)
+  }
+  print("\"I'm sorry, Sir,\" responds the desk clerk, \"but you'll have to use the telephone in your room.\"")
+}
+l1368:
+if (v221 == 4) { //0558
+  if ((said("pay", "art") || said("pay", "art", "one", "bills") || said("pay", "art", "bills") || said("pay", "accident") || said("pay", "bills") || said("pay", "one", "bills") || said("administer", "bills", "art") || said("administer", "one", "bills", "art") || said("administer", "art", "one", "bills") || said("administer", "art", "bills"))) { //055f
+    if (v170 > 9) { //05b5
+      v170 -= 10
+      set(f226)
+      goto(l1500)
+    }
+    if (v89 > 99) { //05c4
+      v89 -= 100
+      set(f226)
+      goto(l1500)
+    }
+    print("Embarrassed, you admit to the desk clerk, \"Uh, it appears you've caught me a little short.\"")
+    print("\"I'll BET you're a little short,\" snaps the clerk, \"and not just in the wallet!\"")
+    set(f138)
+    v140 = 0
+l1500:
+    if (f226) { //05dc
+      if (v39 == 13) { //05e2
+        set.string(str3,"Jimmy Lee Banksten.")
+        goto(l1522)
+      }
+      set.string(str3,"Jonathan Doe.")
+l1522:
+      print("You hand the clerk $100.00. He asks you to fill out the registration card. You do, under the name of %s3")
+      print("\"Thank you very much, sir. Here are your keys. I hope you enjoy your stay!\"")
+      print("After you fill out the register, the desk clerk says, \"Just take the elevator to the second floor. Your room is to the right.\"")
+      if (f84) { //05f8
+        print("\"I hope you get your money's worth, Buddy!\" says the desk clerk. \"Hey, Sweet Cheeks! Remember: no more jello in the bathtub, okay?\"")
+      }
+      if (obj.in.room(i22,vCurrentRoom)) { //0600
+        vCurrentScore += 3
+      }
+      get(i22)
+    }
+    v140 = 0
+    v221 = 10
+    start.cycling(o2)
+    set.loop(o2,0)
+    move.obj(o2,126,106,0,f222)
+    reset(f226)
+  }
+}
+if (v221 > 0 && (said("answer", "art") || said("answer", "counter", "art"))) { //061f
+  print("\"Good day, Sir!\" says the desk clerk in his best, plastic voice. \"How may I help you?\"")
+}
+if (said("get", "bell")) { //0638
+  print("It's not yours. Leave it alone.")
+}
+call(74)
+if (vWhichEgoBorder != 3) { //0646
+  reset(f228)
+  goto(l1665)
+}
+if (f84) { //0653
+  if (!f228) { //0659
+    print("\"Hey, Baby! Let's go up to the room! Come on!!\"")
+    set(f228)
+  }
+  goto(l1665)
+}
+if (v31 > 103) { //0667
+  if (!f228) { //066e
+    set(f228)
+    print("Your mission is in the Hotel Delphoria. Nothing elsewhere will help you in your capture of the Death Angel!")
+  }
+  goto(l1665)
+}
+v101 = 1
+new.room(63)
+l1665:
+if (posn(o0,0,0,20,107)) { //0681
+  v101 = 1
+  new.room(68)
+}
+if (f84) { //0690
+  call(73)
+}
+return()
