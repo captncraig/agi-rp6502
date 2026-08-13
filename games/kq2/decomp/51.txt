@@ -1,4 +1,250 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(38)
+  load.view(39)
+  load.view(40)
+  load.view(43)
+  load.view(41)
+  load.view(189)
+  load.sound(4)
+  animate.obj(o3)
+  animate.obj(o4)
+  v94 = 5
+  cycle.time(o3,v94)
+  v94 = 3
+  cycle.time(o4,v94)
+  v94 = 2
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  load.view(35)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  add.to.pic(35,0,0,30,122,10,10)
+  discard.view(35)
+  ignore.objs(o3)
+  set.priority(o3,15)
+  position(o3,5,110)
+  stop.cycling(o3)
+  if (f95) { //004c
+    if (f96) { //0052
+      set.view(o3,39)
+      goto(l97)
+    }
+    set.view(o3,38)
+l97:
+    set.cel(o3,0)
+    draw(o3)
+    goto(l116)
+  }
+  set.view(o3,38)
+  set.cel(o3,0)
+  draw(o3)
+  end.of.loop(o3,f169)
+l116:
+  ignore.blocks(o4)
+  ignore.objs(o4)
+  position(o4,25,101)
+  if (f97) { //007c
+    set.view(o4,40)
+    goto(l139)
+  }
+  set.view(o4,43)
+l139:
+  draw(o4)
+  sound(4,f169)
+  ignore.objs(o0)
+  set.priority(o0,11)
+  position(o0,130,100)
+  draw(o0)
+  show.pic()
+}
+if ((said("examine", "clam") || said("look in", "clam"))) { //009c
+  if (f95) { //00ae
+    print("The huge %w2 behind Neptune is wide open.")
+    goto(l187)
+  }
+  print("The enormous %w2 behind King Neptune is tightly shut.")
+}
+l187:
+if (said("examine", "count dracula")) { //00bb
+  print("King Neptune is tall and imposing, with a flowing robe and long greenish-gray beard. A crown fashioned of shells and pearls adorns his head.")
+}
+if ((said("examine", "lake") || said("examine"))) { //00c7
+  print("The bottom of the sea is teeming with fish and plant life. King Neptune rules this mighty underwater empire.")
+}
+if (said("examine", "magic seahorse")) { //00d9
+  print("This is a larger than average seahorse! It has a little saddle attached to its back.")
+}
+if (said("break", "clam")) { //00e5
+  print("There is no need to hurt the %w2.")
+}
+if ((said("abracadabra", "anyword") || said("open", "sesame"))) { //00f1
+  print("That might work with some clams, but not this one!")
+}
+if (said("acquire", "clam")) { //0105
+  print("This is an immense %w2! You couldn't carry it with you.")
+}
+if (!f96) { //0111
+  if ((said("acquire", "key") || said("acquire", "gold", "key"))) { //0118
+    if (!f95) { //012c
+      print("The %w2 is inside the large clam. You have to open the clam to retrieve the %w2.")
+      goto(l339)
+    }
+    if (posn(o0,0,112,28,142)) { //0138
+      print("OK.")
+      get(i61)
+      vCurrentScore += 5
+      set.view(o3,39)
+      set(f96)
+      goto(l339)
+    }
+    print("You are not close enough.")
+  }
+}
+l339:
+if (said("close", "clam")) { //0153
+  if (f95) { //015d
+    print("The %w2 will close when it is ready.")
+    goto(l362)
+  }
+  print("The huge %w2 is already closed.")
+}
+l362:
+if ((said("acquire", "magic seahorse") || said("capture", "magic seahorse"))) { //016a
+  print("This is a larger than average seahorse! It has a saddle attached to its back.")
+}
+if ((said("climb", "magic seahorse") || said("sit", "magic seahorse"))) { //017e
+  print("No!")
+}
+if (said("pat", "magic seahorse")) { //0192
+  print("Ahhhh.........")
+}
+if (said("speak", "magic seahorse")) { //019e
+  print("Does it look like Mr. Ed to you?")
+}
+if ((said("speak", "count dracula") || said("hello", "anyword") || said("anyword", "hello"))) { //01aa
+  print("Glub, glub, glub, glub ....... !!!!!!")
+}
+if ((said("acquire", "count dracula") || said("capture", "count dracula"))) { //01c4
+  print("I beg your pardon!?")
+}
+if ((said("kill", "count dracula") || said("fight", "count dracula"))) { //01d8
+  print("Hurting King Neptune would not be a wise thing to do. If he doesn't get you, then his fish will.")
+}
+if (f97 && posn(o0,0,0,80,160)) { //01ec
+  if (!f95 && !f32) { //01f8
+    print("With a cold look in his eye, King Neptune takes the rusty trident and points it at you.")
+    set.view(o4,41)
+    end.of.loop(o4,f31)
+    set(f32)
+  }
+}
+if ((said("wave", "rusty trident", "count dracula") || said("point", "rusty trident", "count dracula"))) { //020c
+  print("OK.")
+  goto(l953)
+}
+distance(o0,o4,v94)
+if (v94 > 60) { //022b
+  if ((said("open", "clam") || said("give", "anyword", "count dracula") || said("give", "count dracula") || said("wave", "rusty trident") || said("point", "rusty trident"))) { //0232
+    print("You are not close enough.")
+    goto(l953)
+  }
+}
+if ((said("give", "rusty trident", "count dracula") || said("give", "count dracula", "rusty trident"))) { //025d
+  if (has(i51)) { //0273
+    drop(i51)
+    if (f95) { //027b
+      print("With a cold look in his eye, King Neptune takes the rusty trident and points it at you.")
+      set.view(o4,41)
+      end.of.loop(o4,f31)
+      goto(l669)
+    }
+    print("Reverently, King Neptune accepts his lost trident from you. He gives you a bottle, then waves the trident in front of the huge clam, which opens and reveals ... a large golden key!")
+    set.view(o4,40)
+    set(f97)
+    get(i64)
+    vCurrentScore += 4
+    reverse.loop(o3,f95)
+    set(f95)
+l669:
+    goto(l674)
+  }
+  print("You don't have one to give to King Neptune.")
+}
+l674:
+if ((said("give", "treasure", "count dracula") || said("give", "count dracula", "treasure"))) { //02a2
+  if ((has(i56) || has(i58) || has(i53) || has(i57) || has(i59))) { //02b8
+    print("Which treasure would you like to give to King Neptune?")
+    goto(l719)
+  }
+  print("You don't have one to give to King Neptune.")
+}
+l719:
+if (!(has(i56)) && said("give", "diamond and sapphire tiara", "count dracula")) { //02cf
+  print("You don't have one to give to King Neptune.")
+}
+if (!(has(i53)) && said("give", "bracelet", "count dracula")) { //02e0
+  print("You don't have one to give to King Neptune.")
+}
+if (!(has(i59)) && said("give", "brooch", "count dracula")) { //02f1
+  print("You don't have one to give to King Neptune.")
+}
+if (!(has(i57)) && said("give", "diamond and sapphire necklace", "count dracula")) { //0302
+  print("You don't have one to give to King Neptune.")
+}
+if (!(has(i58)) && said("give", "earrings", "count dracula")) { //0313
+  print("You don't have one to give to King Neptune.")
+}
+if (!fSaidAccepted && said("give", "anyword")) { //0324
+  if ((said("give", "count dracula", "anyword") || said("give", "anyword", "count dracula"))) { //0331
+    print("King Neptune solemnly shakes his head at your offer. A look of dismay clouds his face.")
+    goto(l846)
+  }
+  print("You must specify who you wish to give it to.")
+}
+l846:
+if ((said("open", "clam") || said("pry", "clam"))) { //034e
+  if (f95) { //0360
+    print("The huge clam is already open.")
+    goto(l877)
+  }
+  print("The large %w2 is shut tight. Try as you might, you cannot succeed in opening it.")
+}
+l877:
+if ((said("wave", "rusty trident") || said("point", "rusty trident"))) { //036d
+  if (!f95) { //037f
+    if (!(has(i51))) { //0386
+      print("You don't have it.")
+      goto(l924)
+    }
+    print("You wave the crusty %w2 in front of the immense clam and slowly it opens ... revealing a large golden key!")
+    reverse.loop(o3,f169)
+    set(f95)
+    vCurrentScore += 2
+l924:
+    goto(l929)
+  }
+  print("The huge clam is already open.")
+}
+l929:
+if (said("get off", "magic seahorse")) { //03a1
+  print("The magic seahorse helps you breathe underwater. Without it, you would die.")
+}
+if (said("examine", "dolphin")) { //03ad
+  print("You can see many beautiful creatures at the bottom of the sea.")
+}
+l953:
+if (f31) { //03b9
+  print("You feel a powerful surge of electricity, and then ... nothing. You have died at the bottom of the ocean.")
+  reset(f31)
+  set.view(o0,189)
+  set(f50)
+}
+if (vWhichEgoBorder == 2) { //03c8
+  release.priority(o0)
+  v64 = 2
+  vEgoDir = 3
+  program.control()
+  new.room(52)
+}
+return()

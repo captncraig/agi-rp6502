@@ -1,4 +1,45 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(8)
+  load.logic(164)
+  load.logic(165)
+  load.view(98)
+  load.view(8)
+  load.view(65)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(164)
+  call(165)
+  if (f107) { //001c
+    position(o0,0,37)
+    set.view(o0,98)
+    v94 = 2
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    program.control()
+    move.obj(o0,120,65,0,f31)
+    set.priority(o0,15)
+  }
+  if (!f136) { //003c
+    draw(o0)
+  }
+  show.pic()
+}
+if (f107) { //0046
+  if (f31) { //004c
+    reset(f31)
+    reset(f107)
+    set.view(o0,0)
+    v94 = 1
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    player.control()
+    release.priority(o0)
+    reset(f148)
+  }
+}
+if (vWhichEgoBorder == 2) { //0067
+  new.room(56)
+}
+call(164)
+call(165)
+return()

@@ -1,4 +1,79 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.view(1)
+  load.view(97)
+  load.view(104)
+  if ((has(i72) || has(i76))) { //0010
+    load.view(65)
+    load.view(98)
+  }
+  load.sound(25)
+  load.logic(152)
+  load.logic(101)
+  draw.pic(vCurrentRoom)
+  position(o7,0,50)
+  call(152)
+  call(101)
+  if ((fRestartGame || vPrevRoom > 96)) { //002e
+    position(o0,100,100)
+    goto(l90)
+  }
+  if (vPrevRoom == 43) { //0040
+    if (v95 != 0) { //0047
+      position(o0,10,60)
+      goto(l90)
+    }
+    position(o0,110,40)
+  }
+l90:
+  v30 = 0
+  v31 = 3
+  draw(o0)
+  show.pic()
+  status.line.on()
+  clear.lines(22,24,c0)
+  accept.input()
+  set(f14)
+}
+if (!f32 && fEnteredCommand) { //006b
+  set(f32)
+}
+if (!f146 && !f32) { //0076
+  if (vEgoDir != 0) { //0080
+    set(f32)
+    goto(l168)
+  }
+  v30--
+  if (v30 == 0) { //008f
+    v31--
+    v30 = 250
+    if (v31 == 0 && v30 == 250) { //009b
+      status.line.off()
+      new.room(97)
+    }
+  }
+}
+l168:
+if (fEgoOnWater && !(v95 > 0) && posn(o0,15,46,40,54)) { //00a8
+  set(f116)
+  v67 = 12
+  v68 = 54
+}
+if (vWhichEgoBorder != 0) { //00c0
+  set(f146)
+}
+if (vWhichEgoBorder == 1) { //00ca
+  new.room(43)
+}
+if (vWhichEgoBorder == 2) { //00d3
+  new.room(2)
+}
+if (vWhichEgoBorder == 4) { //00dc
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //00e5
+  new.room(8)
+}
+call(152)
+call(101)
+return()

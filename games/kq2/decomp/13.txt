@@ -1,4 +1,174 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(97)
+  load.view(104)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(101)
+  load.logic(158)
+  load.logic(154)
+  load.pic(vCurrentRoom)
+  call(101)
+  call(154)
+  draw.pic(vCurrentRoom)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater) { //002f
+  if ((posn(o0,75,99,128,123) || posn(o0,76,74,120,98) || posn(o0,83,46,113,73) || posn(o0,77,45,87,58) || posn(o0,121,78,129,86) || posn(o0,80,77,118,92) || posn(o0,80,93,122,101) || posn(o0,121,65,141,79))) { //0036
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater && !fTriggerLine) { //0070
+  get.posn(o0,v67,v68)
+  if (posn(o0,0,60,13,68)) { //0081
+    v67 = 3
+    v68 = 75
+    set(f116)
+  }
+  if (posn(o0,77,45,87,58)) { //0093
+    v67 = 83
+    v68 = 51
+    set(f116)
+  }
+  if (posn(o0,82,45,98,53)) { //00a5
+    v67 = 92
+    v68 = 53
+    set(f116)
+  }
+  if (posn(o0,99,45,116,53)) { //00b7
+    v67 = 108
+    v68 = 53
+    set(f116)
+  }
+  if (posn(o0,117,45,128,53)) { //00c9
+    v67 = 114
+    v68 = 54
+    set(f116)
+  }
+  if (posn(o0,132,65,147,76)) { //00db
+    v67 = 130
+    v68 = 72
+    set(f116)
+  }
+  if (posn(o0,14,60,66,68)) { //00ed
+    v67 = 6
+    v68 = 71
+    set(f116)
+  }
+  if (posn(o0,22,69,36,78)) { //00ff
+    v67 = 18
+    v68 = 82
+    set(f116)
+  }
+  if (posn(o0,37,69,51,78)) { //0111
+    v67 = 34
+    v68 = 83
+    set(f116)
+  }
+  if (posn(o0,119,53,143,57)) { //0123
+    v67 = 110
+    v68 = 54
+    set(f116)
+  }
+  if (posn(o0,112,58,135,69)) { //0135
+    v67 = 115
+    v68 = 71
+    set(f116)
+  }
+  if (posn(o0,65,109,159,134)) { //0147
+    v67 += 251
+    v68 += 250
+    set(f116)
+  }
+  if (posn(o0,107,78,134,102)) { //0159
+    set(f116)
+    get.posn(o0,v67,v68)
+    v67 -= 20
+  }
+  if (posn(o0,115,77,159,107)) { //016c
+    set(f116)
+    v68 += 6
+    v67 -= 12
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater && fTriggerLine) { //0180
+  if (posn(o0,107,78,134,102)) { //018c
+    set(f116)
+    get.posn(o0,v67,v68)
+    v67 -= 20
+  }
+}
+if (fTriggerLine && v95 == 2 && vEgoDir > 1 && vEgoDir < 5) { //019f
+  reset(fEgoOnWater)
+  set(f118)
+  get.posn(o0,v67,v68)
+  if (v68 < 84) { //01b6
+    v67 = 135
+    v68 = 78
+    goto(l460)
+  }
+  v67 = 129
+  v68 = 90
+}
+l460:
+if (said("examine", "lake")) { //01cc
+  print("This is a pretty little pond set among the trees. A group of boulders are reflected in the clear water.")
+}
+if (said("examine", "boulder")) { //01d8
+  print("There is a small opening at the base of one of the large boulders.")
+}
+if ((said("examine", "hole") || said("look in", "hole"))) { //01e4
+  if (!(posn(o0,39,57,55,84))) { //01f6
+    print("You can't see into the opening from where you are.")
+    goto(l544)
+  }
+  if (!f66) { //0206
+    if (!f156) { //020d
+      vCurrentScore += 1
+      set(f156)
+    }
+    print("There is a glittering diamond and sapphire brooch lying on the ground in the opening between the rocks!")
+    goto(l544)
+  }
+  print("There is nothing in the opening at the base of the rock.")
+}
+l544:
+if ((said("acquire", "brooch") || said("acquire", "jewelry"))) { //0220
+  if (!f66) { //0232
+    if (posn(o0,39,57,55,84)) { //0239
+      print("You get the brooch.")
+      get(i59)
+      set(f66)
+      vCurrentScore += 7
+      goto(l593)
+    }
+    print("You can't reach it from here!")
+l593:
+    goto(l598)
+  }
+  print("It's not there.")
+}
+l598:
+if (vWhichEgoBorder == 1) { //0256
+  new.room(6)
+}
+if (vWhichEgoBorder == 2) { //025f
+  new.room(14)
+}
+if (vWhichEgoBorder == 4) { //0268
+  new.room(12)
+}
+if (vWhichEgoBorder == 3) { //0271
+  new.room(20)
+}
+call(151)
+call(101)
+call(158)
+call(154)
+return()

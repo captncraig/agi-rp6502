@@ -1,4 +1,121 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(55)
+  load.logic(101)
+  load.view(97)
+  load.view(104)
+  load.view(36)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(101)
+  animate.obj(o3)
+  set.view(o3,36)
+  position(o3,50,50)
+  draw(o0)
+  show.pic()
+  if (vPrevRoom != 50) { //0024
+    v73 = vPrevRoom
+    v51 = 1
+  }
+}
+if (v51 > 2 && v33 == 0) { //0032
+  program.control()
+  print("You are so far out to sea, you have no chance of ever getting back. You can no longer swim.")
+  set.view(o0,104)
+  stop.motion(o0)
+  start.motion(o0)
+  v94 = 2
+  cycle.time(o0,v94)
+  v33 = 50
+}
+v33--
+if (v33 == 1) { //0051
+  erase(o0)
+  set(f50)
+  goto(l374)
+}
+if (said("examine", "lake")) { //005f
+  print("The clear blue ocean is very calm. You look out over its vastness, seeing nothing but endless water.")
+}
+if (said("examine", "dolphin")) { //006b
+  print("A large, colorful fish playfully leaps out of the water around you.")
+}
+if ((said("capture", "dolphin") || said("acquire", "dolphin"))) { //0077
+  print("It is very hard to catch fish while swimming.")
+}
+if (said("drink", "lake")) { //008b
+  print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+}
+if (said("look under", "lake")) { //0097
+  print("You dip your head under the ocean water. You see nothing but colorful fish and seaweed.")
+}
+if (f31) { //00a3
+  reset(f31)
+  reset(f32)
+  erase(o3)
+  random(0,255,v34)
+}
+if (!f31 && !f32) { //00b3
+  v34--
+  if (v34 == 0) { //00bf
+l198:
+    random(0,255,v31)
+    if ((v31 < 45 || v31 > 130)) { //00ca
+      goto(l198)
+    }
+l217:
+    random(0,255,v32)
+    if ((v32 < 60 || v32 > 130)) { //00dd
+      goto(l217)
+    }
+    set.cel(o3,0)
+    position(o3,31,v32)
+    distance(o3,o0,v230)
+    if (v230 > 20) { //00f7
+      draw(o3)
+      end.of.loop(o3,f31)
+      set(f32)
+    }
+  }
+}
+if (vWhichEgoBorder == 1) { //0105
+  if (v73 == 1) { //010c
+    v73 = 43
+    goto(l297)
+  }
+  if (v73 == 43) { //0119
+    v73 = 36
+    goto(l297)
+  }
+  v73 -= 7
+l297:
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //012b
+  if (v73 == 43) { //0132
+    v73 = 1
+    goto(l335)
+  }
+  if (v73 == 15) { //013f
+    v73 = 22
+    goto(l335)
+  }
+  v73 += 7
+l335:
+  new.room(50)
+}
+if (vWhichEgoBorder == 4) { //0151
+  v51 += 1
+  new.room(50)
+}
+if (vWhichEgoBorder == 2) { //015d
+  v51--
+  if (v51 == 0) { //0166
+    new.room(v73)
+    goto(l372)
+  }
+  new.room(50)
+}
+l372:
+call(101)
+l374:
+return()

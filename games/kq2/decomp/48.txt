@@ -1,4 +1,117 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(40)
+  load.logic(155)
+  load.logic(151)
+  load.sound(29)
+  load.view(8)
+  load.view(107)
+  if ((has(i72) || has(i76))) { //0014
+    load.view(65)
+    load.view(98)
+  }
+  animate.obj(o2)
+  set.view(o2,107)
+  set.cel(o2,0)
+  ignore.blocks(o2)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 6) { //0030
+    get.posn(o0,v105,v106)
+    if (v105 > 90) { //003b
+      v105 = 90
+      position(o0,105,v106)
+    }
+  }
+  get.posn(o0,v105,v106)
+  if (vPrevRoom == 41) { //004d
+    if (v105 > 9 && v105 < 32) { //0054
+      position(o0,7,41)
+    }
+  }
+  draw(o0)
+  position(o2,92,118)
+  set.priority(o2,9)
+  draw(o2)
+  stop.update(o2)
+  show.pic()
+}
+if (f30) { //0070
+  reset(f30)
+  print("Oh, dear! What a shame. The rickety old bridge collapses as you attempt crossing it. You have fallen to your death.")
+  set(f50)
+  goto(l316)
+}
+if (!fEnteredCommand) { //007f
+  goto(l181)
+}
+if (said("examine", "canyon")) { //0089
+  print("The deep gorge has a bridge spanning it. Oh, my! It's a long way down, isn't it!")
+}
+if (said("examine", "bridge")) { //0095
+  print("The bridge spanning the chasm seems to be unstable and  tottery. Are you entertaining thoughts of crossing it?")
+}
+if (said("y")) { //00a1
+  print("Then go on, my brave fellow.")
+}
+if (said("no")) { //00ab
+  print("That may be wise. You never know.")
+}
+l181:
+if (f125) { //00b5
+  goto(l316)
+}
+if (fTriggerLine && posn(o0,87,91,115,122) && v56 > 6) { //00be
+  v56 = 0
+  program.control()
+  start.update(o2)
+  end.of.loop(o2,f32)
+  set.cel(o2,1)
+  erase(o0)
+  set(f142)
+}
+if (f34 && f35) { //00dd
+  v56 += 1
+  vCurrentScore += 1
+  reset(f34)
+  reset(f35)
+}
+if (posn(o0,58,97,76,119)) { //00ef
+  set(f34)
+}
+if (posn(o0,134,84,150,96)) { //00fb
+  set(f35)
+}
+if (f32) { //0107
+  reset(f32)
+  set.priority(o0,7)
+  set.view(o0,8)
+  v94 = 2
+  cycle.time(o0,v94)
+  v94 = 3
+  step.size(o0,v94)
+  position(o0,100,128)
+  draw(o0)
+  ignore.objs(o0)
+  sound(29,f169)
+  move.obj(o0,100,166,2,f31)
+}
+if (f31) { //0132
+  erase(o0)
+  set(f30)
+}
+l316:
+if (vWhichEgoBorder == 1) { //013c
+  new.room(41)
+}
+if (vWhichEgoBorder == 2) { //0145
+  new.room(49)
+}
+if (vWhichEgoBorder == 4) { //014e
+  new.room(47)
+}
+if (vWhichEgoBorder == 3) { //0157
+  new.room(6)
+}
+call(155)
+call(151)
+return()

@@ -1,4 +1,165 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((vCurrentRoom == 77 || vCurrentRoom == 82 || vCurrentRoom == 87)) { //0008
+    set(f34)
+  }
+  if ((vCurrentRoom == 79 || vCurrentRoom == 84 || vCurrentRoom == 89)) { //0019
+    set(f35)
+  }
+  if (vCurrentRoom == 78) { //002a
+    set(f36)
+  }
+  if (vCurrentRoom == 88) { //0033
+    set(f37)
+  }
+  return()
+}
+if (v59 == 1) { //003d
+  erase(o0)
+  set(f50)
+}
+v59--
+if (v63 == 2) { //004a
+  set(f92)
+  v63 = 3
+  v59 = 25
+  print("The water is too turbulent to swim in. You have just drowned.")
+}
+if (!fEnteredCommand && !(controller(c22))) { //005b
+  goto(l693)
+}
+if (said("examine", "island") && (vCurrentRoom == 79 || vCurrentRoom == 84 || vCurrentRoom == 89)) { //0068
+  print("The small island offshore has only a few bushes and one large tree growing on it.")
+  goto(l160)
+}
+if ((said("examine") || said("examine", "island"))) { //0082
+  print("You can see that the island is really quite small. The foliage is remarkable, though. Plants and flowers have overgrown it, some growing very large in contrast to the tiny island.")
+  if (vCurrentRoom == 78 && !f122) { //0094
+    print("A glint of metal catches your eye. You look toward the direction of the glint and see an amulet lying on the ground!")
+  }
+}
+l160:
+if (said("examine", "sky")) { //00a0
+  print("The sky above this crazy world is a gorgeous pink. Where am I? you wonder.")
+}
+if (said("acquire", "lake")) { //00ac
+  print("You have no need to carry water.")
+}
+get.posn(o0,v105,v106)
+if (!fSaidAccepted && (said("acquire", "drink") || said("drink", "lake"))) { //00bc
+  if (vCurrentRoom == 77) { //00d1
+    if ((posn(o0,90,48,159,48) || posn(o0,75,59,93,77) || posn(o0,55,78,84,113) || posn(o0,70,144,88,167))) { //00d8
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l253)
+    }
+    print("You need to be a little closer to drink the water.")
+l253:
+    goto(l492)
+  }
+  if (vCurrentRoom == 78) { //0100
+    if ((posn(o0,53,57,112,80) || posn(o0,35,81,124,122) || v106 < 57)) { //0107
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l291)
+    }
+    print("You need to be a little closer to drink the water.")
+l291:
+    goto(l492)
+  }
+  if (vCurrentRoom == 79) { //0126
+    if ((posn(o0,0,48,38,55) || posn(o0,35,56,77,67) || posn(o0,66,68,92,88) || posn(o0,59,89,104,113) || posn(o0,72,114,118,144) || posn(o0,80,145,119,167))) { //012d
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l350)
+    }
+    print("You need to be a little closer to drink the water.")
+l350:
+    goto(l492)
+  }
+  if (vCurrentRoom == 82) { //0161
+    if (v105 < 95) { //0168
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l374)
+    }
+    print("You need to be a little closer to drink the water.")
+l374:
+    goto(l492)
+  }
+  if (vCurrentRoom == 84) { //0179
+    if (v105 > 54) { //0180
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l398)
+    }
+    print("You need to be a little closer to drink the water.")
+l398:
+    goto(l492)
+  }
+  if (vCurrentRoom == 87) { //0191
+    if ((posn(o0,69,32,111,56) || posn(o0,38,57,88,142) || posn(o0,89,104,159,167))) { //0198
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l439)
+    }
+    print("You need to be a little closer to drink the water.")
+l439:
+    goto(l492)
+  }
+  if (vCurrentRoom == 88) { //01ba
+    if (v106 > 134) { //01c1
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l463)
+    }
+    print("You need to be a little closer to drink the water.")
+l463:
+    goto(l492)
+  }
+  if (vCurrentRoom == 89) { //01d2
+    if ((v105 > 55 || v106 > 135)) { //01d9
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l492)
+    }
+    print("You need to be a little closer to drink the water.")
+  }
+}
+l492:
+if ((f35 || f34 || f36 || f37)) { //01ec
+  if ((said("examine", "beach") || said("examine", "grass") || said("examine", "lake"))) { //01fa
+    print("You are captivated by the beauty of the beach. The dazzling, rainbowlike ocean washes upon it. The blue sand sparkles like finely ground sapphires!")
+  }
+  if ((vCurrentRoom != 78 || v106 < 65)) { //0214
+    if ((said("swim", "anyword") || said("enter", "swim") || controller(c22))) { //0221
+      print("The water is much too turbulent for swimming. If you were to try you would almost certainly drown.")
+      set(fSaidAccepted)
+    }
+  }
+  if ((said("dolphin", "anyword") || said("enter", "fishing") || said("capture", "dolphin") || said("cast", "fishing net"))) { //0239
+    print("You catch nothing.")
+  }
+}
+if (said("examine", "tree")) { //0259
+  print("The trees on this small island are tall, with spreading branches and huge fanlike leaves.")
+}
+if (said("examine", "bush")) { //0265
+  print("The island is completely overgrown with foliage. Huge leaves, flowers, and clinging vines are everywhere.")
+}
+if (said("examine", "blossom")) { //0271
+  print("The brilliant flowers are as big as you are!")
+}
+if (said("examine", "boulder")) { //027d
+  print("The rocks on this island appear to contain large amounts of quartz.")
+}
+if (said("climb", "tree")) { //0289
+  print("The trees are too difficult to climb because of their enormous size.")
+}
+if ((said("acquire", "blossom") || said("acquire", "blossom"))) { //0295
+  print("The flowers are too large to carry around with you.")
+}
+if (said("smell", "blossom")) { //02a9
+  print("The sweet aroma of the huge flowers permeates the air.")
+}
+l693:
+if (v63 == 1) { //02b5
+  reposition.to(o0,v67,v68)
+  set.view(o0,104)
+  v94 = 2
+  cycle.time(o0,v94)
+  v63 = 2
+  stop.motion(o0)
+}
+return()

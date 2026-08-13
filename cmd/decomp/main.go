@@ -436,9 +436,7 @@ func main() {
 		if !e.IsDir() {
 			continue
 		}
-		if e.Name() != "sqi" {
-			continue
-		}
+
 		gameDir := filepath.Join(gamesDir, e.Name())
 		if err := decompileGame(e.Name(), gameDir); err != nil {
 			fmt.Fprintf(os.Stderr, "%s: %v\n", e.Name(), err)

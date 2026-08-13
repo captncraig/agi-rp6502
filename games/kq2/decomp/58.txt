@@ -1,4 +1,58 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0x09)}
+if (fNewRoom) { //0002
+  if (has(i72)) { //0008
+    load.view(65)
+    load.sound(8)
+  }
+  if (!f111) { //0012
+    load.view(48)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  if (!f111) { //0021
+    set.priority(o3,15)
+    set.view(o3,48)
+    position(o3,125,135)
+    draw(o3)
+  }
+  get.posn(o0,v105,v106)
+  if (v106 > 98) { //0038
+    v106 = 98
+    position(o0,105,v106)
+  }
+  draw(o0)
+  show.pic()
+}
+if ((said("examine", "cave") || said("examine") || said("look in", "cave"))) { //0049
+  if (f111) { //005f
+    print("The dark damp cave is empty and uninteresting.")
+    goto(l108)
+  }
+  print("You see a large golden key lying on a rock in the damp cave!")
+}
+l108:
+if (said("examine", "boulder")) { //006c
+  if (f111) { //0076
+    print("The large, flat rock is empty.")
+    goto(l131)
+  }
+  print("There is a golden key on the rock.")
+}
+l131:
+if (!f111 && (said("acquire", "key") || said("acquire", "gold", "key"))) { //0083
+  distance(o0,o3,v94)
+  if (v94 > 30) { //009e
+    print("You'll have to move closer to the key.")
+    goto(l181)
+  }
+  get(i61)
+  set(f111)
+  vCurrentScore += 5
+  erase(o3)
+  print("OK.")
+}
+l181:
+if (vWhichEgoBorder == 4) { //00b5
+  new.room(57)
+}
+return()

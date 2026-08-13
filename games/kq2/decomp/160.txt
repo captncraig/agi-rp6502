@@ -1,3 +1,178 @@
-if (!(isSet(f238)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (!f238 && fNewRoom) { //0002
+  set(f238)
+  reset(f132)
+  random(0,255,v241)
+  if (v241 < 100) { //0013
+    set(f234)
+    random(40,255,v58)
+    random(1,3,v59)
+    load.view(115)
+    load.view(18)
+    load.view(112)
+    load.view(95)
+    load.view(19)
+    load.sound(27)
+    v94 = 2
+    step.size(o4,v94)
+    animate.obj(o4)
+    set.view(o4,18)
+    object.on.land(o4)
+    if (vCurrentRoom == 19) { //003d
+      position(o4,140,80)
+    }
+    if (vCurrentRoom == 20) { //0048
+      position(o4,33,63)
+    }
+    if (vCurrentRoom == 21) { //0053
+      position(o4,80,126)
+    }
+    if (vCurrentRoom == 26) { //005e
+      position(o4,102,85)
+    }
+    if (vCurrentRoom == 27) { //0069
+      position(o4,84,126)
+    }
+    if (vCurrentRoom == 28) { //0074
+      position(o4,72,143)
+    }
+  }
+  return()
+}
+if (!f132 && f234) { //0080
+  v58--
+  if (v58 == 1) { //008b
+    v59--
+    if (v59 == 0 && v88 != 1) { //0094
+      set(f132)
+      draw(o4)
+      follow.ego(o4,5,f232)
+      set(f236)
+      sound(5,f169)
+      if (v55 == 0 && v57 == 0) { //00ac
+        print("You have run into an evil enchanter! Get out of there fast, before he turns you into something!")
+        goto(l189)
+      }
+      print("You have run into an evil enchanter! Let's hope the fairy's spell works!")
+l189:
+      goto(l195)
+    }
+    v58 = 250
+  }
+}
+l195:
+if (!f132) { //00c3
+  goto(l542)
+}
+if (!fEnteredCommand) { //00cd
+  goto(l295)
+}
+if (said("examine", "count dracula")) { //00d7
+  print("The enchanter is tall and stately with a black flowing robe and a long white beard. He has an evil gleam in his piercing black eyes.")
+}
+if (said("acquire", "count dracula")) { //00e3
+  print("The evil enchanter is magic! There is nothing you can do!")
+}
+if (said("capture", "bitch")) { //00ef
+  print("The evil enchanter is magic! There is nothing you can do!")
+}
+if (said("speak", "count dracula")) { //00fb
+  print("Stopping to talk to the wicked enchanter could be big trouble!")
+}
+if ((said("hello", "anyword") || said("say", "hello"))) { //0107
+  print("Stopping to talk to the wicked enchanter could be big trouble!")
+}
+if (said("kill", "count dracula")) { //011b
+  print("The evil enchanter is magic! There is nothing you can do!")
+}
+l295:
+if (vCurrentRoom == 20) { //0127
+  if (posn(o0,72,107,114,145)) { //012e
+    set(fEgoObscured)
+  }
+  if (posn(o4,72,132,86,144)) { //013a
+    if (!f236) { //0144
+      get.posn(o4,v105,v106)
+      v67 -= v105
+      v68 -= v106
+      repositon(o4,v67,v68)
+    }
+    goto(l352)
+  }
+  get.posn(o4,v67,v68)
+}
+l352:
+if ((fEgoObscured || f148)) { //0160
+  if (f236) { //016a
+    wander(o4)
+    reset(f236)
+  }
+  goto(l388)
+}
+if (!f236) { //0177
+  follow.ego(o4,5,f232)
+  set(f236)
+}
+l388:
+if (f232 && v88 == 0) { //0184
+  reset(f232)
+  if (v55 == 0 && v57 == 0) { //018f
+    reset(f55)
+    set(f181)
+    program.control()
+    stop.motion(o0)
+    start.motion(o0)
+    v94 = 3
+    step.time(o4,94)
+    set.view(o4,112)
+    set.cel(o4,0)
+    end.of.loop(o4,f231)
+    get.priority(o4,v94)
+    v94 += 1
+    set.priority(o0,v94)
+    goto(l451)
+  }
+  set.view(o4,115)
+  end.of.loop(o4,f237)
+}
+l451:
+if (f237) { //01c3
+  reset(f237)
+  erase(o4)
+  reset(f234)
+  reset(f132)
+}
+if (f231) { //01d1
+  reset(f231)
+  set(f92)
+  if (vCurrentRoom == 20) { //01db
+    ignore.blocks(o0)
+  }
+  set.view(o0,95)
+  end.of.loop(o0,f233)
+}
+if (f233) { //01ea
+  reset(f233)
+  set.view(o4,19)
+  erase(o0)
+  wander(o4)
+  v96 = 3
+  start.cycling(o4)
+  set(f235)
+  v240 = 100
+  print("Poooooof!!! The evil enchanter has turned you into a cute little froggy. Ribbit, ribbit!")
+}
+v240--
+if (v240 == 1) { //0207
+  set(f50)
+}
+if (f235) { //0210
+  reset(f235)
+  sound(27,f235)
+}
+goto(l554)
+l542:
+if (said("anyword", "count dracula")) { //021e
+  print("He's not here.")
+}
+l554:
+return()

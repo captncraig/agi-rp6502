@@ -1,4 +1,66 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(170)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.view(104)
+  set.horizon(0)
+  ignore.horizon(o0)
+  draw(o0)
+  show.pic()
+}
+if (fTriggerLine && !f94) { //0019
+  set(f94)
+  v63 = 1
+  get.posn(o0,v67,v68)
+  if (v68 < 50) { //002b
+    if (v67 < 25) { //0032
+      v67 = 0
+      goto(l66)
+    }
+    v67 -= 6
+l66:
+    v68 += 4
+    goto(l171)
+  }
+  if (v68 < 71) { //0048
+    v67 += 12
+    v68 += 4
+    goto(l171)
+  }
+  if (v68 < 90) { //0058
+    v67 += 10
+    v68 += 6
+    goto(l171)
+  }
+  if (v68 < 102) { //0068
+    v67 += 15
+    v68 += 2
+    goto(l171)
+  }
+  if (v68 < 131) { //0078
+    v67 += 12
+    v68 += 6
+    goto(l171)
+  }
+  if (v68 < 144) { //0088
+    v67 += 12
+    v68 += 6
+    goto(l171)
+  }
+  v67 += 10
+  if (v68 < 162) { //009b
+    v68 += 6
+    goto(l171)
+  }
+  v68 = 167
+}
+l171:
+if (vWhichEgoBorder == 4) { //00ab
+  new.room(78)
+}
+if (vWhichEgoBorder == 3) { //00b4
+  new.room(84)
+}
+call(170)
+return()

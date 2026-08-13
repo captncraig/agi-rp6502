@@ -1,4 +1,235 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(165)
+  load.logic(164)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.view(66)
+  load.view(46)
+  load.view(47)
+  load.view(44)
+  load.view(45)
+  load.view(91)
+  load.view(8)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(165)
+  call(164)
+  animate.obj(o3)
+  v94 = 3
+  cycle.time(o3,v94)
+  ignore.horizon(o3)
+  position(o3,115,100)
+  if (!f136) { //003e
+    get.posn(o0,v105,v106)
+    if (v106 < 50) { //0049
+      v106 = 50
+      goto(l96)
+    }
+    if (v106 > 148) { //0056
+      v106 = 148
+    }
+l96:
+    position(o0,105,v106)
+  }
+  draw(o0)
+  if (!f108 && !f109 && !f110) { //0066
+    set.view(o3,44)
+    set(f31)
+    goto(l154)
+  }
+  if (f108) { //007b
+    ignore.objs(o0)
+    set.view(o3,66)
+    set.priority(o3,5)
+    goto(l154)
+  }
+  if (f109 && !f110) { //008c
+    set.view(o3,46)
+    set(f32)
+  }
+l154:
+  if (!f110) { //009a
+    draw(o3)
+  }
+  show.pic()
+  if (!f108 && !f109 && !f110) { //00a4
+    print("Look out! There is a poisonous viper blocking your path!")
+  }
+}
+if (said("examine", "snake")) { //00b3
+  if (f31) { //00bd
+    print("The snake appears to be about ten feet long. It is coiled and ready to strike.")
+    goto(l213)
+  }
+  if (f108) { //00c8
+    print("The huge snake is deceased.")
+    goto(l213)
+  }
+  print("There is no snake here!")
+}
+l213:
+if (f31 && !f35 && !f136 && !f125 && posn(o0,100,80,111,115)) { //00d5
+  set(f35)
+  set(f179)
+  set.view(o3,45)
+  end.of.loop(o3,f34)
+}
+if (f34) { //00f4
+  reset(f34)
+  set.view(o0,91)
+  print("The snake has struck you dead.")
+  set(f50)
+}
+if ((!fEnteredCommand || fSaidAccepted || f35)) { //0103
+  goto(l797)
+}
+if (!f32 && (said("speak", "snake") || said("hello", "anyword") || said("kiss", "snake") || said("say", "hello"))) { //0113
+  if (f31) { //0134
+    print("SSSsssssss! SSssstay away or I will ssssssstrike!")
+    goto(l332)
+  }
+  if (f108) { //013f
+    print("The huge snake is deceased.")
+    goto(l332)
+  }
+  print("There is no snake here!")
+}
+l332:
+if (!f109 && (said("acquire", "snake") || said("capture", "snake"))) { //014c
+  if (f31) { //0161
+    print("Are you joking!")
+    goto(l366)
+  }
+  print("Why would you want a dead snake? Ugh!!")
+}
+l366:
+if (f31 && (said("feed", "snake") || said("feed", "anyword", "snake"))) { //016e
+  print("The serpent only wants to eat YOU!")
+}
+if (!fSaidAccepted && f31 && (said("feed", "anyword") || said("give", "anyword"))) { //0186
+  print("The snake has no use for it. He is interested in only one thing. Getting rid of YOU!")
+}
+if (said("kill", "snake")) { //019f
+  if (!(posn(o0,71,72,107,120))) { //01a9
+    print("You are too far away.")
+    goto(l480)
+  }
+  if (f31) { //01b9
+    if (has(i50)) { //01bf
+      ignore.objs(o0)
+      print("Brandishing the sharp sword, you quickly slash the viper into ribbons.")
+      set(f108)
+      reset(f31)
+      set.priority(o3,5)
+      set.view(o3,66)
+      vCurrentScore += 2
+      goto(l475)
+    }
+    print("This is a very large snake. You don't have any weapons strong enough to kill it.")
+l475:
+    goto(l480)
+  }
+  print("The huge snake is deceased.")
+}
+l480:
+if (f37 && said("snake")) { //01e0
+  goto(l495)
+}
+reset(f37)
+l495:
+if ((said("cast", "bridle", "snake") || said("drop", "bridle", "snake") || f37)) { //01ef
+  reset(f37)
+  if (!(posn(o0,71,72,137,120))) { //0209
+    print("You are too far away.")
+    goto(l586)
+  }
+  if (f31) { //0219
+    if (has(i77)) { //021f
+      drop(i77)
+      vCurrentScore += 5
+      set.view(o3,46)
+      reset(f31)
+      set(f109)
+      set(f32)
+      print("You toss the leather bridle onto the coiled snake. Instantly, there stands before you not a snake, but a beautiful winged horse wearing the bridle!")
+      goto(l570)
+    }
+    print("You don't have it.")
+l570:
+    goto(l586)
+  }
+  if (has(i77)) { //023d
+    print("You put the bridle on the dead snake. Nothing happens. You pick the bridle up again.")
+    goto(l586)
+  }
+  print("The huge snake is deceased.")
+l586:
+  goto(l603)
+}
+if (said("cast", "bridle")) { //024d
+  print("Where do you want to throw the bridle?")
+  set(f37)
+}
+l603:
+if (!f32) { //025b
+  goto(l797)
+}
+if (f110 && (said("anyword", "flying horse") || said("anyword", "anyword", "flying horse"))) { //0265
+  print("The horse is flying away, and pays no attention to you.")
+  goto(l797)
+}
+if (said("examine", "flying horse")) { //0280
+  print("This is a handsome white horse! It has beautiful wings of delicate white feathers. The leather bridle is around the winged horse's head.")
+}
+if (said("speak", "flying horse")) { //028c
+  print("\"Thank you, kind sir, for saving me. An evil enchanter turned me into a snake when I refused to be his steed. To repay you, here is a magic sugar cube that will guard against poisonous brambles.\"")
+  get(i79)
+  vCurrentScore += 2
+  set(f110)
+  set.priority(o3,15)
+  ignore.objs(o3)
+  v94 = 2
+  step.size(o3,v94)
+  set.view(o3,47)
+  move.obj(o3,115,60,0,f36)
+}
+if ((said("get on", "flying horse") || said("sit", "flying horse"))) { //02b3
+  print("The winged horse has a very independent nature. It doesn't want a rider on its back.")
+}
+if ((said("acquire", "flying horse") || said("capture", "flying horse"))) { //02c7
+  print("The white horse is much too big and strong for you to hold it.")
+}
+if (said("kill", "flying horse")) { //02db
+  print("Why would you want to kill a beautiful horse like that?")
+}
+if ((said("feed", "flying horse") || said("feed", "anyword", "flying horse"))) { //02e7
+  print("The flying horse is not particularly hungry, thank you.")
+}
+if (said("pat", "flying horse")) { //02fd
+  print("The beautiful white horse lets you stroke its velvety soft nose.")
+}
+if ((said("hello", "anyword") || said("say", "hello"))) { //0309
+  print("The flying horse bobs its head up and down in greeting.")
+}
+l797:
+if (vWhichEgoBorder == 4) { //031d
+  set.view(o0,0)
+  new.room(55)
+}
+if (vWhichEgoBorder == 2) { //0329
+  new.room(57)
+}
+if (f33) { //0332
+  reset(f33)
+  reset(f32)
+  erase(o3)
+}
+if (f36) { //033e
+  reset(f36)
+  move.obj(o3,0,60,0,f33)
+}
+call(165)
+call(164)
+return()

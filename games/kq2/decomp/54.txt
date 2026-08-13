@@ -1,5 +1,79 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f94)
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(14)
+  load.view(37)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o4)
+  set.view(o4,37)
+  ignore.objs(o0)
+  set.view(o0,14)
+  v94 = 2
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  if (v64 == 4) { //0025
+    position(o0,62,50)
+    set.loop(o0,1)
+    move.obj(o0,62,70,0,f34)
+    goto(l70)
+  }
+  position(o0,0,100)
+  move.obj(o0,38,100,0,f35)
+l70:
+  draw(o0)
+l72:
+  random(0,255,v32)
+  if (v32 > 50) { //004c
+    goto(l72)
+  }
+l86:
+  random(0,255,v33)
+  if ((v33 > 100 || v33 < 60)) { //005a
+    goto(l86)
+  }
+  position(o4,32,v33)
+  wander(o4)
+  draw(o4)
+  show.pic()
+}
+if (f34) { //0072
+  reset(f34)
+  if (v64 == 4) { //007a
+    move.obj(o0,38,100,0,f35)
+    goto(l144)
+  }
+  move.obj(o0,62,50,0,f31)
+}
+l144:
+if (f35) { //0090
+  reset(f35)
+  if (v64 == 4) { //0098
+    move.obj(o0,0,100,0,f31)
+    goto(l174)
+  }
+  move.obj(o0,62,70,0,f34)
+}
+l174:
+if (f31) { //00ae
+  if (v64 == 4) { //00b4
+    set.view(o0,0)
+    new.room(53)
+    goto(l200)
+  }
+  set.view(o0,0)
+  new.room(15)
+}
+l200:
+if ((said("examine", "lake") || said("examine") || said("look in", "lake"))) { //00c8
+  print("The bottom of the sea is teeming with fish and plant life. King Neptune rules this mighty underwater empire.")
+}
+if (said("examine", "dolphin")) { //00e0
+  print("You can see many beautiful creatures at the bottom of the sea.")
+}
+if ((said("acquire", "dolphin") || said("capture", "dolphin"))) { //00ec
+  print("You are not able to catch fish while riding a magic seahorse. Just enjoy the beauty of the underwater world.")
+}
+if (said("get off", "magic seahorse")) { //0100
+  print("The magic seahorse helps you breathe underwater. Without it, you would die.")
+}
+return()

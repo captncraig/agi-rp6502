@@ -1,3 +1,27 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0x0e)}
+if (said("examine", "brambles")) { //0002
+  print("The brambles are covered with poisoned spiked thorns that mean instant death to anyone punctured by one.")
+}
+if ((said("acquire", "brambles") || said("acquire", "brambles"))) { //000e
+  print("You would be crazy to touch the thorns.")
+}
+if (said("cut", "brambles") && has(i50)) { //0022
+  print("The brambles are too thick for the sword to cut through.")
+}
+if (said("cut", "brambles") && !(has(i50))) { //0030
+  print("You would be crazy to touch the thorns.")
+}
+if (!fTriggerLine) { //003f
+  goto(l104)
+}
+if (v54 == 0 && v66 == 0) { //0049
+  print("You have been poisoned by the thorns and can no longer continue the game.")
+  set(f50)
+  set.view(o0,91)
+  v67 = 0
+  v68 = 6
+  repositon(o0,v67,v68)
+  normal.motion(o0)
+  stop.motion(o0)
+}
+l104:
+return()

@@ -1,4 +1,184 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(61)
+  load.view(178)
+  load.view(187)
+  load.view(179)
+  load.view(176)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  animate.obj(o2)
+  set.view(o2,61)
+  v94 = 2
+  cycle.time(o2,v94)
+  position(o2,115,118)
+  draw(o2)
+  ignore.objs(o0)
+  position(o0,27,113)
+  draw(o0)
+  add.to.pic(187,0,0,20,56,12,0)
+  add.to.pic(178,0,0,70,100,0,0)
+  set.priority(o3,15)
+  set.view(o3,176)
+  position(o3,50,138)
+  draw(o3)
+  show.pic()
+  print("A little old lady in the antique shop says, \"How may I help you?\"")
+}
+if (!fEnteredCommand) { //0050
+  goto(l710)
+}
+if ((said("examine", "antique shop") || said("examine"))) { //005a
+  print("You are inside a cute little antique shop. Old furniture and knickknacks clutter the place. Against a wall, a glass display case holds many small items. A little old lady asks if she can help you.")
+}
+if (said("examine", "bitch")) { //006c
+  print("The little old lady is tiny, with twinkling blue eyes. Her white hair is done up in a neat bun on top of her head. She is sitting in an old rocking chair.")
+}
+if (said("examine", "antique")) { //0078
+  print("You glance around the antique shop, and your eye falls on an old oil lamp. There is something about it that appeals to you.")
+}
+if (said("buy", "antique")) { //0084
+  print("The old oil lamp looks like an interesting item.")
+}
+if ((said("speak", "bitch") || said("hello", "anyword") || said("y", "anyword") || said("say", "hello"))) { //0090
+  print("The little old lady motions toward an old oil lamp. \"This is a new item in my shop,\" she says. \"I thought you might be interested in it.\"")
+}
+if (said("no", "anyword")) { //00b0
+  print("The little old lady nods and then goes about her business.")
+}
+if (!f101 && said("acquire", "lamp")) { //00bc
+  print("You can't just take the lamp. You have to buy it.")
+}
+if (!f101 && said("steal", "lamp")) { //00cb
+  print("That wouldn't be very nice, would it? You have to buy the lamp.")
+}
+if ((said("acquire", "bitch") || said("capture", "bitch") || said("kill", "bitch"))) { //00da
+  print("A good chap like you doesn't do things like that.")
+}
+if (said("buy", "lamp")) { //00f4
+  print("\"The oil lamp is expensive,\" the little old lady says. \"It will cost you two treasures.\" \"There is an alternative, though,\" she says. \"The old hag, Hagatha, stole my precious nightingale. If you can return it to me, then I will give you the oil lamp.\"")
+}
+reset(f31)
+if ((said("give", "treasure", "bitch") || said("give", "bitch", "treasure"))) { //0102
+  if ((has(i56) || has(i58) || has(i53) || has(i57) || has(i59))) { //0118
+    print("Which treasure would you like to give to the little old lady?")
+    goto(l303)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l303:
+  goto(l710)
+}
+if ((said("give", "diamond and sapphire tiara", "bitch") || said("give", "bitch", "diamond and sapphire tiara"))) { //0132
+  if (has(i56)) { //0148
+    drop(i56)
+    vCurrentScore -= 7
+    set(f31)
+    goto(l346)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l346:
+  goto(l641)
+}
+if ((said("give", "brooch", "bitch") || said("give", "bitch", "brooch"))) { //015d
+  if (has(i59)) { //0173
+    drop(i59)
+    vCurrentScore -= 7
+    set(f31)
+    goto(l389)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l389:
+  goto(l641)
+}
+if ((said("give", "earrings", "bitch") || said("give", "bitch", "earrings"))) { //0188
+  if (has(i58)) { //019e
+    drop(i58)
+    vCurrentScore -= 7
+    set(f31)
+    goto(l432)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l432:
+  goto(l641)
+}
+if ((said("give", "bracelet", "bitch") || said("give", "bitch", "bracelet"))) { //01b3
+  if (has(i53)) { //01c9
+    drop(i53)
+    vCurrentScore -= 7
+    set(f31)
+    goto(l475)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l475:
+  goto(l641)
+}
+if ((said("give", "diamond and sapphire necklace", "bitch") || said("give", "bitch", "diamond and sapphire necklace"))) { //01de
+  if (has(i57)) { //01f4
+    drop(i57)
+    vCurrentScore -= 7
+    set(f31)
+    goto(l518)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l518:
+  goto(l641)
+}
+if ((said("give", "bird", "bitch") || said("give", "bitch", "bird") || said("give", "bird cage", "bitch") || said("give", "bitch", "bird cage"))) { //0209
+  if (has(i70)) { //022f
+    print("You hand the birdcage with the nightingale to the little old lady. \"My precious!\" she exclaims. In gratitude she gives you the oil lamp. \"Good luck,\" she says. She hastens you out the door and closes up shop.")
+    vCurrentScore += 6
+    get(i72)
+    drop(i70)
+    reset(f71)
+    set(f101)
+    erase(o3)
+    v32 = 40
+    goto(l599)
+  }
+  if (has(i71)) { //024a
+    print("You show the empty birdcage to the little old lady. \"Where's my little bird!\" she exclaims in dismay. \"I don't want an empty cage!\"")
+    goto(l599)
+  }
+  print("You do not have the treasure to give to the little old lady.")
+l599:
+  goto(l641)
+}
+if ((said("give", "anyword", "bitch") || said("give", "bitch", "anyword"))) { //025a
+  print("\"That won't do!\" the little old lady snaps.")
+  goto(l641)
+}
+if (said("give", "anyword")) { //0275
+  print("You must specify who you wish to give it to.")
+}
+l641:
+if (f31) { //0281
+  if (f102) { //0287
+    reset(f102)
+    print("The little old lady takes the second treasure. She motions for you to take the old oil lamp, which you do. \"May it bring you good luck!\" she exclaims. She then hustles you out the door.")
+    get(i72)
+    vCurrentScore += 5
+    reset(f71)
+    set(f101)
+    erase(o3)
+    v32 = 40
+    goto(l678)
+  }
+  print("The little old lady gladly takes your offered treasure. \"That is one treasure,\" she says. \"I need one more for the oil lamp.\"")
+  set(f102)
+}
+l678:
+if (said("acquire", "antique")) { //02a6
+  print("Only the old oil lamp interests you.")
+}
+if ((said("examine", "cabinet") || said("look in", "cabinet"))) { //02b2
+  print("You see antique knickknacks in the display case. Nothing there interests you.")
+}
+l710:
+if (posn(o0,0,0,12,120)) { //02c6
+  new.room(20)
+}
+v32--
+if (v32 == 1) { //02d4
+  new.room(20)
+}
+return()

@@ -1,4 +1,92 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(29)
+  load.view(102)
+  load.view(8)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 46) { //0012
+    position(o0,31,113)
+    set.loop(o0,0)
+  }
+  if (vPrevRoom == 73) { //0020
+    set.view(o0,102)
+    v94 = 2
+    step.size(o0,v94)
+    set(f31)
+  }
+  draw(o0)
+  show.pic()
+}
+if (fTriggerLine) { //0035
+  reset(fTriggerLine)
+  if (f125) { //003d
+    goto(l304)
+  }
+  erase(o0)
+  if (posn(o0,82,108,103,120)) { //0048
+    if (f31) { //0052
+      set.view(o0,0)
+      v94 = 1
+      step.size(o0,v94)
+      position(o0,90,108)
+      release.priority(o0)
+      reset(f31)
+      goto(l126)
+    }
+    set.view(o0,102)
+    v94 = 2
+    step.size(o0,v94)
+    set(f31)
+    set.priority(o0,13)
+    position(o0,92,120)
+l126:
+    goto(l179)
+  }
+  program.control()
+  set(f92)
+  set.priority(o0,15)
+  set.view(o0,8)
+  v94 = 2
+  cycle.time(o0,v94)
+  v94 = 3
+  step.size(o0,v94)
+  sound(29,f169)
+  reset(f31)
+  set(f125)
+  get.posn(o0,v105,v106)
+  v74 = v105
+  v106 = 200
+  v108 = 5
+  vCycleTime = 2
+  move.obj(o0,v105,v106,108,f169)
+l179:
+  draw(o0)
+}
+if ((said("look down", "anyword") || said("examine", "ladder"))) { //00b5
+  print("When you look down, you see the bottom of the ladder in an underground tunnel.")
+}
+if ((said("examine", "antique shop") || said("examine") || said("examine", "tree") || said("examine", "room"))) { //00c9
+  print("This is a room inside the hollowed-out trunk of a large tree. A door goes to the outside. A narrow ladder leads down through a hole in the ground.")
+}
+if ((said("get on", "ladder") || said("climb", "ladder"))) { //00e7
+  if (!f31) { //00f9
+    print("You can get on the ladder yourself.")
+    goto(l263)
+  }
+  print("You are climbing the ladder.")
+}
+l263:
+if (said("examine", "door")) { //0107
+  print("Through the open door you see the woodland in which this tree grows.")
+}
+if (posn(o0,30,0,30,167)) { //0113
+  new.room(46)
+}
+if (vWhichEgoBorder == 3) { //011f
+  if (f31) { //0126
+    release.priority(o0)
+  }
+  new.room(73)
+}
+l304:
+return()

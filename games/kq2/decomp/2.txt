@@ -1,4 +1,34 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.logic(153)
+  load.logic(151)
+  if ((has(i72) || has(i76))) { //000e
+    load.view(65)
+    load.view(98)
+  }
+  call(153)
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "fence")) { //0023
+  print("You see a low white fence.")
+}
+if (said("anyword", "fence") && !(said("enter", "fence")) && !(said("examine", "fence"))) { //002f
+  print("You should do nothing with the fence!")
+}
+if (vWhichEgoBorder == 1) { //0049
+  new.room(44)
+}
+if (vWhichEgoBorder == 2) { //0052
+  new.room(3)
+}
+if (vWhichEgoBorder == 4) { //005b
+  new.room(1)
+}
+if (vWhichEgoBorder == 3) { //0064
+  new.room(9)
+}
+call(153)
+call(151)
+return()

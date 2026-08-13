@@ -1,4 +1,55 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(8)
+  if ((has(i72) || has(i76))) { //000a
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(155)
+  load.logic(162)
+  load.logic(151)
+  load.pic(vCurrentRoom)
+  call(162)
+  draw.pic(vCurrentRoom)
+  ignore.blocks(o0)
+  if (vPrevRoom == 48) { //0026
+    get.posn(o0,v105,v106)
+    if (v105 > 21 && v105 < 55) { //0031
+      position(o0,10,167)
+      goto(l80)
+    }
+    if (v105 > 54 && v105 < 120) { //0042
+      position(o0,120,167)
+    }
+l80:
+    goto(l125)
+  }
+  if (vPrevRoom == 42) { //0053
+    get.posn(o0,v105,v106)
+    if (v106 > 51 && v106 < 106) { //005e
+      position(o0,153,106)
+      goto(l125)
+    }
+    if (v106 > 40 && v106 < 52) { //006f
+      position(o0,152,40)
+    }
+  }
+l125:
+  draw(o0)
+  show.pic()
+}
+if (vWhichEgoBorder == 1) { //0080
+  new.room(34)
+}
+if (vWhichEgoBorder == 2) { //0089
+  new.room(42)
+}
+if (vWhichEgoBorder == 4) { //0092
+  new.room(40)
+}
+if (vWhichEgoBorder == 3) { //009b
+  new.room(48)
+}
+call(155)
+call(162)
+call(151)
+return()

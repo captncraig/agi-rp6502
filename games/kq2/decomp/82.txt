@@ -1,4 +1,23 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(169)
+  load.logic(170)
+  call(169)
+  call(170)
+}
+if (fTriggerLine && !f94) { //0010
+  set(f94)
+  v63 = 1
+  get.posn(o0,v67,v68)
+  v67 -= 20
+  if (v68 < 162) { //0025
+    v68 += 6
+    goto(l53)
+  }
+  v68 = 167
+}
+l53:
+if (!fNewRoom) { //0035
+  call(169)
+  call(170)
+}
+return()

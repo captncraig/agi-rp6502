@@ -1,5 +1,236 @@
-if (isSet(f5)) {
-  if (isSet(f75)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  if (f75) { //0008
+    load.view(24)
+    load.view(23)
+  }
+  load.view(92)
+  load.view(104)
+  load.view(91)
+  if ((has(i72) || has(i76))) { //0018
+    load.view(65)
+    load.view(98)
+  }
+  set(f64)
+  load.logic(156)
+  load.logic(101)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(156)
+  call(101)
+  if (f75) { //0034
+    if ((vPrevRoom == 25 || !f138)) { //003a
+      animate.obj(o3)
+    }
+  }
+  v94 = 3
+  cycle.time(o3,v94)
+  ignore.blocks(o0)
+  if (vPrevRoom == 25) { //0050
+    v95 = 2
+    position(o0,88,140)
+    set.view(o3,23)
+    position(o3,69,70)
+    set(f176)
+    move.obj(o3,88,126,0,f34)
+    set.view(o0,104)
+    v94 = 2
+    cycle.time(o0,v94)
+    set.loop(o3,0)
+    set.priority(o3,4)
+    draw(o3)
+    goto(l162)
+    goto(l134)
+  }
+  set(f35)
+l134:
+  if (f75 && !f138) { //0086
+    set(f36)
+    set.view(o3,24)
+    set.loop(o3,0)
+    set.cel(o3,0)
+    position(o3,88,126)
+    draw(o3)
+    stop.update(o3)
+  }
+l162:
+  if (vPrevRoom != 25) { //00a2
+    draw(o0)
+  }
+  show.pic()
+}
+if (!fEgoOnWater) { //00ad
+  if ((posn(o0,0,62,38,121) || posn(o0,126,77,156,118))) { //00b4
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if ((!f35 || !fEnteredCommand || fSaidAccepted)) { //00ca
+  goto(l794)
+}
+if (!f36) { //00db
+  goto(l794)
+}
+if (said("examine", "boat")) { //00e5
+  print("The small wooden rowboat looks old and rotted from traversing the poisoned lake.")
+}
+if (said("examine", "count dracula")) { //00f1
+  print("The shrouded ghoul looks very frightening. His hands are little more than claws, and his face is completely hidden inside the hood of the shroud. He is standing in a small boat.")
+}
+if (f76) { //00fd
+  set(f31)
+}
+if (f68 && f70) { //0105
+  set(f31)
+}
+if (!f31 && (said("enter", "boat") || said("climb", "boat") || said("get in", "boat") || said("board", "boat") || said("get on", "boat"))) { //010f
+  print("The spooky fiend holds out a bony claw, as if in request for a payment of some kind.")
+}
+if (f31 && (said("enter", "boat") || said("climb", "boat") || said("get in", "boat") || said("board", "boat") || said("get on", "boat"))) { //0138
+  distance(o0,o3,v94)
+  if (v94 > 15) { //0162
+    print("You are too far away.")
+    goto(l406)
+  }
+  if (f70 && f68) { //016e
+    print("The shrouded ghoul looks at the ruby ring on your finger and the black cloak around your neck. He motions for you to enter the boat, which you do. You must have fooled him into thinking you were someone else.")
+    goto(l381)
+  }
+  print("You climb carefully into the old boat. The shrouded ghoul paddles it across the lake to the ominous island.")
+l381:
+  reset(f35)
+  set(f176)
+  erase(o0)
+  program.control()
+  start.update(o3)
+  set.view(o3,23)
+  set.loop(o3,1)
+  start.cycling(o3)
+  set(f147)
+  move.obj(o3,69,74,0,f32)
+}
+l406:
+if ((said("speak", "count dracula") || said("hello", "anyword") || said("anyword", "hello"))) { //0196
+  print("You are greeted by stony silence from the frightening ghoul.")
+}
+if (said("acquire", "boat")) { //01b0
+  print("The ghoul will not let you take the boat.")
+}
+if (said("kill", "count dracula")) { //01bc
+  print("You can't kill something that is already dead.")
+}
+if ((said("acquire", "count dracula") || said("capture", "count dracula"))) { //01c8
+  print("It is impossible to catch a ghoul.")
+}
+if ((said("give", "treasure", "count dracula") || said("give", "count dracula", "treasure") || said("give", "treasure"))) { //01dc
+  print("Which treasure would you like to give the ghoul?")
+  goto(l794)
+}
+if ((said("give", "diamond and sapphire necklace", "count dracula") || said("give", "count dracula", "diamond and sapphire necklace"))) { //01fd
+  if (has(i57)) { //0213
+    drop(i57)
+    goto(l782)
+    goto(l550)
+  }
+  print("You don't have it.")
+  goto(l794)
+}
+l550:
+if ((said("give", "bracelet", "count dracula") || said("give", "count dracula", "bracelet"))) { //0226
+  if (has(i53)) { //023c
+    drop(i53)
+    goto(l782)
+    goto(l591)
+  }
+  print("You don't have it.")
+  goto(l794)
+}
+l591:
+if ((said("give", "diamond and sapphire tiara", "count dracula") || said("give", "count dracula", "diamond and sapphire tiara"))) { //024f
+  if (has(i56)) { //0265
+    drop(i56)
+    goto(l782)
+    goto(l632)
+  }
+  print("You don't have it.")
+  goto(l794)
+}
+l632:
+if ((said("give", "earrings", "count dracula") || said("give", "count dracula", "earrings"))) { //0278
+  if (has(i58)) { //028e
+    drop(i58)
+    goto(l782)
+    goto(l673)
+  }
+  print("You don't have it.")
+  goto(l794)
+}
+l673:
+if ((said("give", "brooch", "count dracula") || said("give", "count dracula", "brooch"))) { //02a1
+  if (has(i59)) { //02b7
+    drop(i59)
+    goto(l782)
+    goto(l714)
+  }
+  print("You don't have it.")
+  goto(l794)
+}
+l714:
+if ((said("give", "diamond and sapphire tiara") || said("give", "bracelet") || said("give", "earrings") || said("give", "brooch") || said("give", "diamond and sapphire necklace"))) { //02ca
+  print("You must specify who you wish to give it to.")
+  goto(l794)
+}
+if ((said("give", "anyword", "count dracula") || said("give", "count dracula", "anyword"))) { //02f3
+  print("The silent fiend slowly shakes his head. He is not interested in it.")
+}
+goto(l794)
+l782:
+print("The shrouded ghoul takes your treasure. Silently, he gestures toward the boat.")
+start.update(o3)
+end.of.loop(o3,f33)
+set(f76)
+vCurrentScore -= 7
+l794:
+if (f34) { //031a
+  v95 = 0
+  reset(f176)
+  reset(f34)
+  set.view(o3,24)
+  position(o3,88,126)
+  set.loop(o3,0)
+  set.cel(o3,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  set.view(o0,0)
+  draw(o0)
+  set(f35)
+  set(f36)
+  stop.cycling(o3)
+  reset(f76)
+}
+if (f32) { //0347
+  reset(f147)
+  release.priority(o3)
+  new.room(25)
+}
+if (f33) { //0353
+  reset(f33)
+  reverse.loop(o3,f169)
+}
+if (vWhichEgoBorder != 0) { //035e
+  reset(f64)
+}
+if (vWhichEgoBorder == 1) { //0368
+  new.room(25)
+}
+if (vWhichEgoBorder == 2) { //0371
+  new.room(33)
+}
+if (vWhichEgoBorder == 4) { //037a
+  new.room(31)
+}
+if (vWhichEgoBorder == 3) { //0383
+  new.room(39)
+}
+call(156)
+call(101)
+return()

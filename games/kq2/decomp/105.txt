@@ -1,4 +1,35 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(98)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom < 50) { //000e
+    position(o0,0,100)
+    move.obj(o0,137,100,0,f31)
+    set.loop(o0,0)
+    goto(l50)
+  }
+  position(o0,137,100)
+  move.obj(o0,0,100,0,f32)
+  set.loop(o0,1)
+l50:
+  v94 = 2
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  draw(o0)
+  show.pic()
+}
+if (f31) { //003e
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  new.room(55)
+}
+if (f32) { //0052
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  new.room(20)
+}
+return()

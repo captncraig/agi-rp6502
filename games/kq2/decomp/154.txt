@@ -1,3 +1,107 @@
-if (!(isSet(f242)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (!f242 && fNewRoom) { //0002
+  set(f242)
+  reset(f60)
+  if (!(v55 > 0) && !(v57 > 0)) { //000f
+    random(0,255,v94)
+    if (v94 < 125) { //001f
+      set(f243)
+      load.view(6)
+      load.view(117)
+      load.sound(33)
+      animate.obj(o7)
+      set.view(o7,6)
+      set.priority(o7,15)
+      ignore.objs(o7)
+      position(o7,80,20)
+      random(40,255,v58)
+      random(0,2,v59)
+    }
+  }
+  return()
+}
+if (!f60 && f243) { //0045
+  v58--
+  if (v58 == 1) { //0050
+    v59--
+    if (!fEgoObscured && v59 == 0) { //0059
+      set(f60)
+      follow.ego(o7,10,f240)
+      draw(o7)
+      print("A beautiful fairy floats down from the sky!")
+      goto(l115)
+    }
+    v58 = 250
+  }
+}
+l115:
+if (!f239) { //0073
+  if (f240) { //007a
+    set(f239)
+    set(f241)
+    set.view(o7,117)
+    print("The fairy starts to sprinkle fairy dust on you. \"Good King Graham, I am here to help you,\" she says. \"I give you a protective spell against certain evil elements; but beware, for it lasts only a short time.\"")
+    v55 = 250
+    v57 = 75
+    v71 = 75
+  }
+  goto(l159)
+}
+if (f60) { //0095
+  follow.ego(o7,10,f240)
+}
+l159:
+v71--
+if (v71 == 1) { //00a1
+  erase(o7)
+  reset(f60)
+  reset(f243)
+}
+if (f241 && v71 > 0) { //00ae
+  reset(f241)
+  sound(33,f241)
+}
+if (!fEnteredCommand) { //00bc
+  goto(l368)
+}
+if (!f60 && said("examine", "bitch")) { //00c6
+  print("There is no one here! Perhaps you are starting to see things.")
+  goto(l368)
+}
+if ((said("hello", "bitch") || said("speak", "bitch") || said("say", "hello"))) { //00d8
+  if (!f60) { //00f0
+    print("There is no one here! Perhaps you have started talking to yourself.")
+    goto(l254)
+  }
+  reset(fSaidAccepted)
+}
+l254:
+if (!f60 && said("anyword", "bitch")) { //00fe
+  print("You are the only one here.")
+  goto(l368)
+}
+if (said("examine", "bitch")) { //0110
+  print("The pixielike fairy has golden blonde hair, translucent wings, and an endless supply of fairy dust!")
+}
+if (said("acquire", "bitch")) { //011c
+  print("It is impossible to catch a fairy.")
+}
+if (said("capture", "bitch")) { //0128
+  print("It is impossible to catch a fairy.")
+}
+if (said("speak", "bitch")) { //0134
+  print("The kind and beautiful fairy tells you that she is there to help you with your quest.")
+}
+if (said("hello", "anyword")) { //0140
+  print("The lovely fairy nods her head in greeting.")
+}
+if (said("kill", "bitch")) { //014c
+  print("It is impossible to catch a fairy.")
+}
+if (said("kiss", "bitch")) { //0158
+  print("It is impossible to catch a fairy.")
+}
+if (said("embrace", "bitch")) { //0164
+  print("It is impossible to catch a fairy.")
+}
+l368:
+return()

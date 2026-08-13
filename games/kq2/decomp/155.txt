@@ -1,3 +1,64 @@
-if (isSet(f3)
-!!!
-&{%!e(string=incomplete condition: 0xfd)}
+if (fTriggerLine && !f119) { //0002
+  if (vCurrentRoom == 48 && (posn(o0,87,91,115,122) || f142)) { //000b
+    goto(l214)
+  }
+  set(f119)
+  reset(f55)
+  reset(fTriggerLine)
+  set(f125)
+  ignore.blocks(o0)
+  set.view(o0,8)
+  v94 = 2
+  cycle.time(o0,v94)
+  v94 = 3
+  step.size(o0,v94)
+  get.priority(o0,v94)
+  if (vCurrentRoom == 48 && (posn(o0,12,63,45,71) || posn(o0,46,114,75,119) || posn(o0,70,142,99,143) || posn(o0,102,158,113,167))) { //003b
+    goto(l169)
+  }
+  if (vCurrentRoom == 41 && (posn(o0,76,108,102,119) || posn(o0,137,108,157,119) || posn(o0,129,132,151,143))) { //005f
+    goto(l169)
+  }
+  if (vCurrentRoom == 7 && (posn(o0,45,56,65,59) || posn(o0,80,76,97,83))) { //007d
+    goto(l169)
+  }
+  if (vCurrentRoom == 49 && (posn(o0,18,134,32,143))) { //0095
+    goto(l169)
+  }
+  v94--
+l169:
+  if (v94 < 4) { //00a9
+    v94 = 4
+  }
+  if (vCurrentRoom == 42) { //00b3
+    v94 = 4
+  }
+  set.priority(o0,v94)
+  get.posn(o0,v94,v70)
+  v70 = 167
+  v108 = 3
+  move.obj(o0,v94,v70,108,f120)
+  v69 = 30
+  sound(29,f169)
+}
+l214:
+v69--
+if ((v69 == 1 || f120)) { //00d8
+  reset(f120)
+  erase(o0)
+  set(f50)
+  print("Whoops! King Graham has fallen into the chasm, ending his quest.")
+}
+if (vCurrentRoom != 48 && said("examine", "canyon")) { //00eb
+  print("Don't get too close to the chasm. You just might fall in!")
+}
+if ((said("jump", "across", "canyon") || said("jump", "canyon") || said("enter", "across", "canyon"))) { //00fb
+  print("It would be very hazardous to your health to try a thing like that!")
+}
+if (vCurrentRoom != 48 && (said("climb", "canyon") || said("cross", "canyon"))) { //0119
+  print("It would be very hazardous to your health to try a thing like that!")
+}
+if (said("look down", "anyword")) { //0131
+  print("Better be careful. It's a long way down!")
+}
+return()

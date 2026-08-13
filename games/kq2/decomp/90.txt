@@ -1,4 +1,150 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(85)
+  load.view(103)
+  load.sound(2)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  position(o0,99,156)
+  set.loop(o0,3)
+  move.obj(o0,99,156,0,f39)
+  draw(o0)
+  animate.obj(o2)
+  set.view(o2,85)
+  v94 = 2
+  cycle.time(o2,v94)
+  if (v61 == 1) { //002c
+    position(o2,70,133)
+    stop.cycling(o2)
+    goto(l72)
+  }
+  start.cycling(o2)
+  position(o2,42,112)
+  move.obj(o2,70,117,0,f34)
+l72:
+  draw(o2)
+  vCurrentScore += v79
+  v79 = 0
+  show.pic()
+  if (v61 != 1) { //0051
+    if (!(v61 > 0)) { //0059
+      print("You have found her! The girl from the magic mirror! She is even more beautiful than you had imagined!")
+    }
+    v61 = 0
+  }
+}
+if (!fEnteredCommand) { //0066
+  goto(l372)
+}
+if (v33 == 1) { //0070
+  if ((said("graham") || said("anyword", "graham"))) { //0077
+    v33 = 2
+    print("Oh, Graham, I am forever grateful to you!")
+  }
+}
+if ((said("examine") || said("examine", "room") || said("examine", "antique shop"))) { //008c
+  print("The room at the top of the tower is very tiny. You are angered at the thought of Valanice having been imprisoned in this small room.")
+}
+if (said("examine", "bitch")) { //00a4
+  print("She is even more lovely than she appeared in the mirror. Her long auburn hair tumbles in luscious waves down her back. She has the bluest eyes you've ever seen and soft creamy skin.")
+}
+if (said("examine", "window")) { //00b0
+  print("You see the view of the colorful ocean crashing onto the blue shore of the island.")
+}
+if ((said("acquire", "bitch") || said("capture", "bitch"))) { //00bc
+  print("Don't be so rough! Valanice is very grateful to you for rescuing her. She will follow you anywhere! Except, of course, down those dreadful stairs. She is deathly afraid of them.")
+}
+if (said("kill", "bitch")) { //00d0
+  print("ARE YOU OUT OF YOUR GOURD???? I thought you wanted to win this game! Don't ever try something like that again!")
+}
+if ((said("embrace", "bitch") || said("kiss", "bitch"))) { //00dc
+  ignore.objs(o0)
+  distance(o0,o2,v94)
+  if (v94 > 10) { //00f4
+    print("Come closer, kind sir.")
+    set(f31)
+    goto(l260)
+  }
+  set(f37)
+}
+l260:
+if ((said("hello") || said("hello", "anyword") || said("anyword", "hello"))) { //0104
+  print("Hello.")
+}
+if ((said("marry", "bitch") || said("marry"))) { //011c
+  if ((!f167 || v33 != 2)) { //012c
+    set(f167)
+    print("Don't be impatient; you just met. Take some time, and get acquainted.")
+    goto(l322)
+  }
+  print("Yes, of course I will!")
+}
+l322:
+if (said("love")) { //0142
+  print("I love you, too!")
+}
+if (fSaidAccepted && v33 == 1) { //014c
+  v33 = 0
+}
+if (said("speak", "bitch")) { //0158
+  if (!(v33 > 0)) { //0162
+    print("My name is Valanice, what is your name?")
+    v33 = 1
+    goto(l372)
+  }
+  print("This is no time for small talk!")
+}
+l372:
+if (f31) { //0174
+  distance(o0,o2,v94)
+  if (v94 < 10) { //017e
+    reset(f31)
+    set(f37)
+  }
+}
+if (f37) { //0189
+  reset(f37)
+  get.posn(o0,v105,v106)
+  if (v106 < 133) { //0195
+    move.obj(o0,79,132,0,f33)
+    goto(l427)
+  }
+  move.obj(o0,79,134,0,f33)
+}
+l427:
+if (f33) { //01ab
+  sound(2,f39)
+  reset(f33)
+  erase(o0)
+  stop.motion(o0)
+  set.view(o2,103)
+  v94 = 3
+  cycle.time(o2,v94)
+  end.of.loop(o2,f32)
+}
+if (f32) { //01c6
+  observe.objs(o0)
+  print("You tentatively embrace the beautiful girl. Your lips meet hers, and you are both in ecstasy. This was well worth playing the game for!")
+  reset(f32)
+  set.view(o2,85)
+  v94 = 2
+  cycle.time(o2,v94)
+  draw(o0)
+  start.motion(o0)
+  player.control()
+}
+if (posn(o0,95,160,120,167)) { //01e0
+  new.room(91)
+}
+if (f34) { //01ec
+  move.obj(o2,70,117,0,f35)
+  reset(f34)
+}
+if (f35) { //01fa
+  move.obj(o2,70,133,0,f36)
+  reset(f35)
+}
+if (f36) { //0208
+  stop.cycling(o2)
+  reset(f36)
+}
+return()

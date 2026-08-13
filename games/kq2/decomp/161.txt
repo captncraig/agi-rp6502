@@ -1,3 +1,134 @@
-if (!(isSet(f230)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (!f230 && fNewRoom) { //0002
+  reset(f127)
+  set(f230)
+  random(0,255,v94)
+  if ((v94 < 80 || f129)) { //0013
+    set(f237)
+    load.view(25)
+    load.view(115)
+    load.view(26)
+    animate.obj(o6)
+    set.view(o6,26)
+    v94 = 2
+    cycle.time(o6,v94)
+    step.size(o6,v94)
+    object.on.land(o6)
+    if (vCurrentRoom == 30) { //0036
+      position(o6,107,59)
+    }
+    if (vCurrentRoom == 31) { //0041
+      position(o6,36,125)
+    }
+    if (vCurrentRoom == 37) { //004c
+      position(o6,46,69)
+    }
+    if (vCurrentRoom == 38) { //0057
+      position(o6,112,92)
+    }
+    if (vCurrentRoom == 44) { //0062
+      position(o6,25,120)
+    }
+    if (vCurrentRoom == 45) { //006d
+      position(o6,77,60)
+    }
+    random(40,255,v58)
+    random(0,2,v59)
+  }
+  return()
+}
+if (!f127 && f237) { //0081
+  v58--
+  if (v58 == 1) { //008c
+    v59--
+    if (v59 == 0) { //0095
+      set(f127)
+      follow.ego(o6,5,f231)
+      set(f236)
+      sound(5,f169)
+      print("The old hag, Hagatha, is nearby! You can hear her cackling and smacking her gums as she comes closer. She would love to have you for dinner, and I don't mean as a guest!")
+      draw(o6)
+      goto(l177)
+    }
+    v58 = 250
+  }
+}
+l177:
+if (!f127) { //00b1
+  goto(l432)
+}
+if (!fEnteredCommand) { //00bb
+  goto(l281)
+}
+if (said("examine", "bitch")) { //00c5
+  print("This is the ugliest old lady you have ever seen. She's toothless with warts all over her face and has matted gray hair. Her clawlike hands are gripping a walking stick.")
+}
+if ((said("speak", "bitch") || said("hello", "anyword") || said("say", "hello"))) { //00d1
+  print("The old hag cackles, chortles, and mutters under her breath (which smells so bad you almost faint).")
+}
+if ((said("acquire", "bitch") || said("capture", "bitch") || said("kill", "bitch"))) { //00eb
+  print("You would be a fool to try. Hagatha is far more powerful than she seems.")
+}
+if ((said("kiss", "bitch") || said("embrace", "bitch"))) { //0105
+  print("What a revolting thought!")
+}
+l281:
+if ((fEgoObscured || f148)) { //0119
+  if (f236) { //0123
+    wander(o6)
+    reset(f236)
+  }
+  goto(l317)
+}
+if (!f236) { //0130
+  follow.ego(o6,5,f231)
+  set(f236)
+}
+l317:
+if (f231) { //013d
+  reset(f231)
+  if (v55 == 0 && v57 == 0) { //0145
+    set(f233)
+    reset(f55)
+    program.control()
+    v94 = 1
+    cycle.time(o6,v94)
+    step.size(o6,v94)
+    set.view(o6,25)
+    erase(o0)
+    v58 = 40
+    goto(l377)
+  }
+  v94 = 1
+  cycle.time(o6,v94)
+  step.size(o6,v94)
+  set.view(o6,115)
+  end.of.loop(o6,f235)
+  print("You have been caught by the hag! Fortunately, you were protected by a magic spell so she left without harming you!")
+}
+l377:
+v58--
+if (f235) { //017b
+  reset(f237)
+  reset(f127)
+  reset(f235)
+  erase(o6)
+}
+if (f233 && v58 == 0) { //0189
+  reset(f233)
+  v94 = 1
+  cycle.time(o6,v94)
+  step.size(o6,v94)
+  set.view(o6,115)
+  end.of.loop(o6,f232)
+}
+if (f232) { //01a3
+  set(f103)
+  new.room(69)
+}
+goto(l444)
+l432:
+if (said("anyword", "bitch")) { //01b0
+  print("She's not here!")
+}
+l444:
+return()

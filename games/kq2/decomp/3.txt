@@ -1,4 +1,212 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(21)
+  load.view(4)
+  load.view(5)
+  if ((has(i72) || has(i76))) { //0010
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(153)
+  load.logic(151)
+  draw.pic(vCurrentRoom)
+  call(153)
+  animate.obj(o2)
+  animate.obj(o3)
+  set.view(o2,5)
+  set.cel(o2,0)
+  set.view(o3,4)
+  ignore.blocks(o3)
+  ignore.blocks(o2)
+  position(o2,69,107)
+  position(o3,9,110)
+  set.priority(o3,11)
+  if (vPrevRoom == 70) { //0042
+    position(o0,73,110)
+  }
+  if (f54) { //004d
+    set.cel(o3,3)
+    goto(l92)
+  }
+  set.cel(o3,0)
+l92:
+  if (vPrevRoom == 4 && posn(o0,152,125,159,140)) { //005c
+    position(o0,158,143)
+  }
+  if (vPrevRoom == 4 && posn(o0,152,80,159,98)) { //006d
+    position(o0,158,76)
+  }
+  draw(o0)
+  draw(o3)
+  draw(o2)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  stop.update(o2)
+  stop.update(o3)
+  show.pic()
+}
+get.posn(o0,v105,v106)
+if (v105 > 12) { //0091
+  observe.blocks(o0)
+  observe.objs(o0)
+  goto(l180)
+}
+if (posn(o0,0,117,17,124) && f54) { //009f
+  observe.blocks(o0)
+  goto(l178)
+}
+ignore.blocks(o0)
+l178:
+ignore.objs(o0)
+l180:
+if (!fEnteredCommand) { //00b4
+  goto(l604)
+}
+if (said("examine", "antique shop")) { //00be
+  print("The cozy cottage is located in a thick wood. A patio shades the front entrance and flowers adorn a window box.")
+}
+if (said("examine", "door")) { //00ca
+  print("The door of the little cottage is closed.")
+}
+if (said("examine", "box")) { //00d6
+  print("The mailbox has the words Grandma's House on it.")
+}
+if (said("acquire", "box")) { //00e2
+  print("The mailbox is firmly attached to the post.")
+}
+if ((said("examine", "window") || said("look in", "window"))) { //00ee
+  if (posn(o0,30,90,65,111)) { //0100
+    print("You can see inside when you look through the window. It is hard to see any detail, though.")
+    goto(l273)
+  }
+  print("You are too far away.")
+}
+l273:
+if (!(said("knock", "door"))) { //0111
+  goto(l305)
+}
+distance(o0,o2,v94)
+if (v94 > 20) { //0123
+  print("You are too far away.")
+  goto(l305)
+}
+print("You knock loudly on the door and hear a muffled, \"Come in.\"")
+l305:
+if ((f148 || v88 != 0)) { //0131
+  goto(l358)
+}
+if (!(said("open", "door"))) { //0140
+  goto(l358)
+}
+distance(o0,o2,v94)
+if (v94 > 20) { //0152
+  print("You are too far away.")
+  goto(l358)
+}
+start.update(o2)
+end.of.loop(o2,f31)
+sound(21,f169)
+l358:
+distance(o0,o3,v94)
+if (v94 > 40 && (said("open", "box") || said("close", "box") || said("look in", "box"))) { //016a
+  print("You are too far away.")
+}
+if (said("look in", "box")) { //0187
+  if (f54) { //0191
+    if (f57) { //0197
+      print("The mailbox is empty.")
+      goto(l420)
+    }
+    print("There is a basket of goodies in the mailbox.")
+l420:
+    goto(l425)
+  }
+  print("The mailbox is closed. You cannot look in it.")
+}
+l425:
+if (said("acquire", "basket")) { //01a9
+  if (f54) { //01b3
+    if (f57) { //01b9
+      print("The mailbox is empty.")
+      goto(l463)
+    }
+    get(i63)
+    vCurrentScore += 2
+    set(f57)
+    set(f65)
+    print("OK.")
+l463:
+    goto(l468)
+  }
+  print("Where do you think it could be?")
+}
+l468:
+if (said("open", "box")) { //01d4
+  if (f54) { //01de
+    print("The mailbox is already open.")
+    goto(l506)
+  }
+  if (!f153) { //01e9
+    vCurrentScore += 1
+    set(f153)
+  }
+  start.update(o3)
+  end.of.loop(o3,f56)
+}
+l506:
+if (said("close", "box")) { //01fa
+  if (f54) { //0204
+    reset(f54)
+    start.update(o3)
+    reverse.loop(o3,f58)
+    goto(l534)
+  }
+  print("The mailbox is already closed.")
+}
+l534:
+if ((said("break", "window") || said("break", "door"))) { //0216
+  print("There is no need to do that. The door is unlocked.")
+}
+if (said("examine", "fence")) { //022a
+  print("You see a low white fence.")
+}
+if (said("anyword", "fence") && !(said("enter", "fence")) && !(said("examine", "fence"))) { //0236
+  print("You should do nothing with the fence.")
+}
+if (said("anyword", "flower box")) { //0250
+  print("You see nothing special about the flower box.")
+}
+l604:
+if (f58) { //025c
+  reset(f58)
+  stop.update(o3)
+}
+if (f56) { //0266
+  set(f54)
+  reset(f56)
+  stop.update(o3)
+  if (f57) { //0272
+    print("When you open the mailbox you see that it is empty.")
+    goto(l639)
+  }
+  print("Lo and behold, when you open the mailbox you see a basket of goodies!")
+}
+l639:
+if (f31) { //027f
+  new.room(70)
+}
+if (vWhichEgoBorder == 1) { //0287
+  new.room(45)
+}
+if (vWhichEgoBorder == 2) { //0290
+  new.room(4)
+}
+if (vWhichEgoBorder == 4) { //0299
+  new.room(2)
+}
+if (vWhichEgoBorder == 3) { //02a2
+  new.room(10)
+}
+call(153)
+call(151)
+return()

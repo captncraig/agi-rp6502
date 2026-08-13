@@ -1,5 +1,207 @@
-if (isSet(f5)) {
-  if (isSet(f100)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  if (f100) { //0008
+    reset(f34)
+    reset(f32)
+    goto(l25)
+  }
+  set(f34)
+  set(f32)
+l25:
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  discard.pic(vCurrentRoom)
+  load.sound(6)
+  load.view(101)
+  load.view(91)
+  if (!f100) { //0025
+    load.view(75)
+    animate.obj(o2)
+    v94 = 3
+    cycle.time(o2,v94)
+    set.view(o2,75)
+    set.cel(o2,0)
+    position(o2,70,81)
+  }
+  if (!f100) { //0040
+    draw(o2)
+    stop.cycling(o2)
+  }
+  position(o0,70,167)
+  vEgoDir = 1
+  draw(o0)
+  show.pic()
+  sound(6,f169)
+}
+if ((!fEnteredCommand || fSaidAccepted)) { //0058
+  goto(l617)
+}
+if (!fSaidAccepted && f38 && said("anyword", "anyword")) { //0066
+  if (f37) { //0075
+    if ((said("pray", "anyword") || said("pray"))) { //007b
+      print("You already are.")
+      goto(l146)
+    }
+    print("Please be quiet while praying.")
+l146:
+    goto(l187)
+  }
+  if ((said("pray", "anyword") || said("pray"))) { //0095
+    reset(fSaidAccepted)
+    goto(l187)
+  }
+  if (said("bow", "anyword")) { //00aa
+    print("You already are.")
+    goto(l187)
+  }
+  print("You should not talk while kneeling at the altar. It shows a lack of respect.")
+l187:
+  if (fSaidAccepted) { //00bb
+  }
+}
+if ((said("examine", "antique shop") || said("examine"))) { //00c1
+  if (f100) { //00d1
+    print("The chapel of the monastery is plain and unadorned. Rows of pews lead toward an altar, which is topped by a large cross.")
+    goto(l234)
+  }
+  if (!f32) { //00dc
+    print("The chapel of the monastery is plain and unadorned. A monk in simple clothing is standing next to the altar. He looks kindly at you.")
+    goto(l234)
+  }
+  print("The chapel of the monastery is plain and unadorned. A monk in simple clothing is bent in prayer toward the cross on the altar.")
+}
+l234:
+if (!(has(i69)) && (said("examine", "cross") || said("look up", "cross"))) { //00ea
+  print("The wooden cross is plain and simple. An altar of polished oak supports it.")
+}
+if (said("examine", "altar")) { //0101
+  print("There is a large wooden cross atop the oaken altar.")
+}
+if (!(posn(o0,50,81,92,83)) && (said("bow", "anyword") || said("pray", "anyword") || said("pray"))) { //010d
+  if (f34) { //012a
+    print("Come, join me at the altar, my friend, says the monk.")
+    goto(l311)
+  }
+  print("Shouldn't you go to the altar to pray?")
+l311:
+  goto(l403)
+}
+if ((said("pray") || said("pray", "anyword"))) { //013a
+  if (!f154) { //014a
+    set(f154)
+    vCurrentScore += 2
+  }
+  start.cycling(o0)
+  set(f92)
+  print("You kneel near the altar. Bowing your head, you pray.")
+  set(f37)
+  if (!f38) { //015e
+    set.view(o0,101)
+    end.of.loop(o0,f31)
+    v94 = 4
+    cycle.time(o2,v94)
+  }
+  set(f38)
+  set(f36)
+}
+if (said("bow", "anyword")) { //0175
+  start.cycling(o0)
+  set(f92)
+  print("You kneel near the altar. You look up at the wooden cross.")
+  set.view(o0,101)
+  v94 = 4
+  cycle.time(o2,v94)
+  end.of.loop(o0,f31)
+  set(f38)
+}
+l403:
+if (has(i69) && said("acquire", "cross")) { //0193
+  print("You already have a cross.")
+}
+if (!f34) { //01a1
+  if (said("anyword", "count dracula")) { //01a8
+    print("You are the only one in the chapel.")
+  }
+  goto(l637)
+}
+if (said("examine", "count dracula")) { //01b7
+  print("The monk is dressed in a simple ankle-length robe. A belt of thin leather is tied around his ample waist. He walks on worn sandals.")
+}
+if ((said("acquire", "count dracula") || said("capture", "count dracula"))) { //01c3
+  print("What do you think you would accomplish by doing that?")
+}
+if (said("kill", "count dracula")) { //01d7
+  print("Anyone who would kill a man of the cloth doesn't deserve to play this game. Therefore, we will end it.")
+  set.view(o0,91)
+  set(f50)
+}
+if ((said("speak", "count dracula") || said("hello", "anyword") || said("say", "hello"))) { //01e8
+  if (f32) { //0200
+    print("You speak to the praying monk but he does not respond. He seems deep in worship.")
+    goto(l525)
+  }
+  print("Can I be of service? the monk asks. What name do you go by?")
+}
+l525:
+if (said("yell", "count dracula") && f32) { //020d
+  print("You shout at the praying monk. He pays no attention. The monk is deep in prayer.")
+}
+if (!f100 && !f32 && (said("graham") || said("my name", "graham"))) { //021b
+  print("The kindly monk explains that he has heard of you and your quest. Here is my cross. It will protect you from evil, he says. He removes a chain with a silver cross from around his neck and gives it to you. The monk then resumes his prayers.")
+  get(i69)
+  vCurrentScore += 2
+  reverse.loop(o2,f169)
+  set(f100)
+  set(f32)
+  reset(f33)
+}
+if (said("sit", "anyword")) { //0241
+  print("You don't have time to sit around.")
+}
+if (said("pat", "count dracula")) { //024d
+  distance(o0,o2,v94)
+  if (v94 > 20) { //025b
+    print("Your arms will not reach.")
+    goto(l617)
+  }
+  print("You tap the monk on his shoulder but it does no good. He is very deep in prayer.")
+}
+l617:
+if (f33 && f32 && !f100) { //0269
+  start.cycling(o2)
+  end.of.loop(o2,f169)
+  print("The plump monk lifts his head from prayer and seems to notice you for the first time. He stands and asks your name.")
+  reset(f32)
+}
+l637:
+if (f31) { //027d
+  reset(f92)
+  reset(f31)
+  v58 = 30
+}
+if (v58 > 0) { //028a
+  stop.cycling(o0)
+}
+v58--
+if (v58 == 1) { //0295
+  set(f92)
+  reverse.loop(o0,f35)
+}
+if (f35) { //02a1
+  reset(f35)
+  reset(f92)
+  reset(f37)
+  reset(f38)
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o2,v94)
+  set.loop(o0,3)
+  player.control()
+  if (f36) { //02bc
+    set(f33)
+    reset(f36)
+  }
+}
+if (vWhichEgoBorder == 3) { //02c6
+  new.room(6)
+}
+return()

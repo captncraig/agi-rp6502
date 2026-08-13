@@ -1,4 +1,88 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(97)
+  load.view(104)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(158)
+  load.logic(161)
+  load.logic(101)
+  load.pic(vCurrentRoom)
+  call(161)
+  call(101)
+  draw.pic(vCurrentRoom)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater) { //002f
+  if ((posn(o0,56,125,70,152) || posn(o0,57,93,88,114) || posn(o0,57,93,90,133) || posn(o0,76,89,94,104) || posn(o0,40,133,57,147) || posn(o0,0,46,35,58))) { //0036
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater) { //0064
+  get.posn(o0,v67,v68)
+  if (posn(o0,60,112,95,134)) { //0072
+    v67 = 70
+    v68 = 122
+    set(f116)
+  }
+  if (posn(o0,92,89,103,107)) { //0084
+    v67 = 84
+    v68 = 102
+    set(f116)
+  }
+  if (posn(o0,34,42,72,52)) { //0096
+    v67 = 38
+    v68 = 56
+    set(f116)
+  }
+  if (posn(o0,35,145,59,156)) { //00a8
+    v67 = 37
+    v68 = 142
+    set(f116)
+  }
+}
+if (v95 == 2 && fTriggerLine) { //00ba
+  reset(fEgoOnWater)
+  get.posn(o0,v67,v68)
+  v67 += 15
+  set(f118)
+}
+if (!(posn(o0,72,115,144,167)) && (said("look in", "branch") || said("look in", "chest") || said("examine", "chest") || said("examine", "branch") || said("acquire", "diamond and sapphire necklace"))) { //00ce
+  print("You are too far from the log.")
+}
+if ((said("examine", "branch") || said("look in", "branch") || said("examine", "stump") || said("look in", "stump") || said("examine", "chest") || said("look in", "chest"))) { //00fb
+  if (!f83) { //0125
+    print("When you peer into the old hollow log, you see a flashing necklace of diamonds and sapphires!")
+    goto(l307)
+  }
+  print("This is just an old hollow log.")
+}
+l307:
+if (!f83 && said("acquire", "diamond and sapphire necklace")) { //0133
+  set(f83)
+  vCurrentScore += 7
+  get(i57)
+  print("You pick it up and carry it with you.")
+}
+if (vWhichEgoBorder == 1) { //0149
+  new.room(31)
+}
+if (vWhichEgoBorder == 2) { //0152
+  new.room(39)
+}
+if (vWhichEgoBorder == 4) { //015b
+  new.room(37)
+}
+if (vWhichEgoBorder == 3) { //0164
+  new.room(45)
+}
+call(151)
+call(158)
+call(161)
+call(101)
+return()

@@ -1,3 +1,100 @@
-if (!(isSet(f171)
-!!!
-&{%!e(string=incomplete condition: 0x20)}
+if (!f171) { //0002
+  set(f171)
+  accept.input()
+  load.sound(7)
+  if (f60) { //000e
+    erase(o4)
+  }
+  if (v92 != 5 && v75 != 5) { //0016
+    start.cycling(o0)
+    stop.motion(o0)
+  }
+  v58 = 25
+}
+if (vCurrentRoom == 61) { //0029
+  if (!f48) { //0030
+    position(o5,44,25)
+    set(f48)
+    goto(l70)
+  }
+  position(o5,108,25)
+  reset(f48)
+l70:
+  goto(l102)
+}
+if (vCurrentRoom == 64) { //0049
+  if (!f48) { //0050
+    position(o5,63,26)
+    set(f48)
+    goto(l102)
+  }
+  position(o5,91,26)
+  reset(f48)
+}
+l102:
+v58--
+if (v58 == 1) { //0068
+  sound(7,f129)
+}
+if (f129 && !f49) { //0072
+  reset(f129)
+  set(f49)
+  if (vCurrentScore < 50) { //007f
+    print("Ken and Roberta Williams wish to thank you for playing King's Quest. We are very sorry that you did not succeed and hope you will fare better next time. Good luck.")
+    goto(l153)
+  }
+  if (vCurrentScore < 100) { //008b
+    print("Ken and Roberta Williams wish to thank you for playing King's Quest. We are pleased to see that you are doing so well and hope that your score will keep improving.")
+    goto(l153)
+  }
+  print("Ken and Roberta Williams wish to thank you for playing King's Quest. We are delighted by your score and hope you are enjoying the game.")
+}
+l153:
+if ((said("quit") || controller(c21))) { //0099
+  stop.sound()
+  quit(1)
+}
+if ((said("restore") || controller(c19))) { //00a8
+  stop.sound()
+  restore.game()
+}
+if ((said("restart") || controller(c20))) { //00b6
+  stop.sound()
+  restart.game()
+}
+if (controller(c12)) { //00c4
+  stop.sound()
+  status()
+}
+if (controller(c15)) { //00cc
+  menu.input()
+}
+if ((controller(c16) || said("pause"))) { //00d3
+  pause()
+}
+if ((controller(c1) || said("aid") || said("aid", "a"))) { //00e0
+  call(95)
+}
+if (controller(c3)) { //00f4
+  echo.line()
+}
+if (controller(c9)) { //00fb
+  cancel.line()
+}
+if (controller(c10)) { //0102
+  init.joy()
+}
+if (controller(c11)) { //0109
+  toggle.monitor()
+}
+if (controller(c2)) { //0110
+  toggle(f9)
+}
+if (f161) { //0118
+  call(99)
+}
+if (!fSaidAccepted && said("anyword", "anyword")) { //0120
+  stop.sound()
+  print("As you are dead, I can only permit you to: Restore Game, Restart Game or Take Inventory. Sorry.")
+}
+return()

@@ -1,4 +1,145 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(23)
+  load.sound(29)
+  load.view(102)
+  load.view(8)
+  load.view(91)
+  load.view(109)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 72) { //0018
+    if (f125) { //001f
+      set.priority(o0,15)
+      reset(f31)
+      sound(29,f35)
+      v106 = 25
+      position(o0,74,v106)
+      v106 = 130
+      set(f92)
+      v108 = 5
+      move.obj(o0,v74,v106,108,f32)
+      program.control()
+      goto(l90)
+    }
+    set(f31)
+    set.priority(o0,14)
+    position(o0,95,40)
+    ignore.blocks(o0)
+    v94 = 2
+    step.size(o0,v94)
+    set.view(o0,102)
+l90:
+    goto(l95)
+  }
+  reset(f31)
+l95:
+  reset(f32)
+  draw(o0)
+  show.pic()
+}
+if (fTriggerLine) { //0064
+  reset(fTriggerLine)
+  if (f31) { //006c
+    if (posn(o0,95,115,112,123)) { //0072
+      set.view(o0,0)
+      v94 = 1
+      cycle.time(o0,v94)
+      step.size(o0,v94)
+      reposition.to(o0,103,130)
+      reset(f31)
+      observe.blocks(o0)
+      release.priority(o0)
+      goto(l195)
+    }
+    program.control()
+    set(f92)
+    ignore.blocks(o0)
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+    reset(f31)
+    set(f125)
+    sound(29,f35)
+    get.posn(o0,v94,v70)
+    v33 = v70
+    v70 = 130
+    v108 = 5
+    move.obj(o0,v94,v70,108,f32)
+l195:
+    goto(l250)
+  }
+  if (!f125) { //00c6
+    if (posn(o0,95,115,112,123) && vEgoDir == 1) { //00cd
+      v94 = 2
+      step.size(o0,v94)
+      set.view(o0,102)
+      v94 = 1
+      cycle.time(o0,v94)
+      v94 = 2
+      step.size(o0,v94)
+      set(f31)
+      reposition.to(o0,98,110)
+      set.priority(o0,14)
+      ignore.blocks(o0)
+    }
+  }
+}
+l250:
+if (f32) { //00fa
+  stop.sound()
+  reset(f32)
+  reset(f125)
+  if (v33 < 60) { //0105
+    set.view(o0,91)
+    set(f50)
+    goto(l292)
+  }
+  set.view(o0,109)
+  v94 = 2
+  cycle.time(o0,v94)
+  set(f92)
+  v58 = 50
+  set(f34)
+}
+l292:
+if (f34 && v58 > 0) { //0124
+  reset(f34)
+  sound(23,f34)
+}
+v58--
+if (v58 > 0) { //0134
+  program.control()
+}
+if (v58 == 1) { //013c
+  reset(f125)
+  observe.blocks(o0)
+  release.priority(o0)
+  reset(f31)
+  reset(f92)
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  player.control()
+}
+if ((said("examine", "ladder") || said("look up"))) { //015a
+  print("The ladder goes up through a hole in the ground. You cannot see the top of the ladder.")
+}
+if (!fSaidAccepted && (said("examine", "antique shop") || said("examine", "room") || said("examine"))) { //016c
+  print("You are in a musty underground passageway. There is a narrow ladder leading up through a hole in the ground.")
+}
+if (!f31 && said("get on", "ladder")) { //0187
+  print("Just go toward the ladder.")
+}
+if (vWhichEgoBorder == 2) { //0196
+  new.room(74)
+}
+if (vWhichEgoBorder == 1) { //019f
+  observe.blocks(o0)
+  release.priority(o0)
+  set.view(o0,0)
+  new.room(72)
+}
+return()

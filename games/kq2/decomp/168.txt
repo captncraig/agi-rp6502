@@ -1,4 +1,18 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x83)}
+if (fNewRoom) { //0002
+  program.control()
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  move.obj(o0,200,108,2,f169)
+  show.pic()
+  return()
+}
+if (said("examine", "dolphin")) { //0017
+  print("No time for that!")
+}
+if (vWhichEgoBorder == 2) { //0023
+  v94 = vCurrentRoom
+  v94 += 1
+  new.room(v94)
+}
+return()

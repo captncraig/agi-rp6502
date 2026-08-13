@@ -1,4 +1,374 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((!f105 || !(has(i80)))) { //0008
+    v58 = 0
+    reset(f105)
+  }
+  v59 = 0
+  v107 = 0
+  animate.obj(o4)
+  set.view(o4,80)
+  v94 = 2
+  cycle.time(o4,v94)
+  set.cel(o4,0)
+  return()
+}
+v58--
+if (v58 == 1 && f105) { //0030
+  v58 = 200
+  v104--
+  if (v104 == 0) { //003e
+    reset(f105)
+    if (f231) { //0047
+      stop.cycling(o4)
+      set.view(o4,86)
+      print("Oh, dear, the beautiful golden fish has died. What a pity.")
+      goto(l91)
+    }
+    drop(i80)
+    print("Oh, dear, the beautiful fish has died. With a mighty heave, you throw the dead fish back into the sea. Slowly, it sinks to the bottom.")
+  }
+}
+l91:
+if (v59 == 1) { //005b
+  erase(o0)
+  set(f50)
+}
+v59--
+if (v107 == 2) { //0068
+  v107 = 3
+  v59 = 25
+  print("The water is too turbulent to swim in. You have just drowned.")
+}
+if (v107 == 1) { //0077
+  if (posn(o0,0,0,159,163)) { //007e
+    v67 = 0
+    v68 = 5
+    repositon(o0,v67,v68)
+  }
+  set(f92)
+  set.view(o0,104)
+  v94 = 2
+  cycle.time(o0,v94)
+  stop.motion(o0)
+  v107 = 2
+}
+get.posn(o0,v105,v106)
+if (fTriggerLine && !(v107 > 0)) { //00a6
+  if (f232) { //00b0
+    reset(f232)
+    distance(o0,o4,v94)
+    if (v94 < 30) { //00bc
+      program.control()
+      erase(o4)
+      v67 = 115
+      v68 = 108
+      v67 -= v105
+      v68 -= v106
+      repositon(o0,v67,v68)
+      set.view(o0,82)
+      v94 = 3
+      step.size(o0,v94)
+      v94 = 2
+      cycle.time(o0,v94)
+      set.cel(o0,0)
+      move.obj(o0,160,108,2,f169)
+      vCurrentScore += 1
+    }
+    goto(l285)
+  }
+  if (has(i80)) { //00f4
+    drop(i80)
+    print("Holding on tightly to the struggling fish, you jump into the turbulent water and disappear under the waves. Then...")
+    goto(l1251)
+    goto(l285)
+  }
+  v107 = 1
+  if (vCurrentRoom == 85 && posn(o0,25,141,97,167)) { //0107
+    erase(o0)
+    goto(l285)
+  }
+  ignore.blocks(o0)
+  object.on.water(o0)
+}
+l285:
+if (!fEnteredCommand && !(controller(c22))) { //011d
+  goto(l1299)
+}
+if (fEnteredCommand && f182) { //012a
+  print("No time for that!")
+  reset(fEnteredCommand)
+}
+if (f231) { //0136
+  if (said("examine", "dolphin")) { //013c
+    if (f105) { //0146
+      print("The large fish is covered with shimmering golden scales. Its graceful fins and tail are almost translucent. Right now, the beautiful fish is writhing in agony.")
+      goto(l339)
+    }
+    print("The large and formerly beautiful fish now lies motionless in the odd sunlight. You begin to notice a distinct and unforgettable aroma filling the air.")
+  }
+}
+l339:
+if (said("examine", "lake")) { //0153
+  print("This is an ocean unlike any you've ever seen before. It has a rainbow quality, changing colors with the movement of the water. This sea is raging and frothing as if in a storm.")
+}
+if (said("examine", "sky")) { //015f
+  print("The sky above this crazy world is a gorgeous pink. Where am I? you wonder.")
+}
+if (said("examine", "boulder")) { //016b
+  print("The rocks are rather drab; unlike the bright blue sand on the beach.")
+}
+if ((said("examine") || said("examine", "beach") || said("examine", "grass"))) { //0177
+  print("The sand on the sparkling beach is a deep blue. The bright sunlight, from a gorgeous pink sky, dances across it. Cliffs tower above the beach.")
+  if (vCurrentRoom == 75 && !f113) { //018f
+    print("There is a fishing net in a pile on the beach.")
+  }
+}
+if ((said("examine", "cliff") || said("climb", "cliff"))) { //019b
+  print("The blue cliffs towering above the beach are totally unclimbable.")
+}
+if (said("acquire", "lake")) { //01af
+  print("You have no need to carry water.")
+}
+if (!fSaidAccepted && (said("acquire", "drink") || said("drink", "lake"))) { //01bb
+  if (vCurrentRoom != 85) { //01d0
+    if (v105 > 89) { //01d8
+      print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+      goto(l486)
+    }
+    print("You need to be a little closer to drink the water.")
+l486:
+    goto(l536)
+  }
+  if (v105 > 114 && v106 < 60) { //01e9
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l536)
+  }
+  if (v105 > 89 && v106 > 59 && v106 < 147) { //01f8
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l536)
+  }
+  if (v106 > 146) { //020a
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l536)
+  }
+  print("You need to be a little closer to drink the water.")
+}
+l536:
+if ((said("enter", "swim") || said("swim", "anyword") || controller(c22))) { //0218
+  print("The iridescent ocean is very turbulent. You cannot swim in it.")
+}
+if (vCurrentRoom == 75 && !f113 && said("acquire", "fishing net")) { //022e
+  if (!(posn(o0,49,91,75,115))) { //023e
+    print("You can't reach it from here.")
+    goto(l601)
+  }
+  print("You reach down and retrieve the fishing net.")
+  get(i75)
+  set(f113)
+  vCurrentScore += 1
+  erase(o2)
+}
+l601:
+if (has(i75) && (said("dolphin", "anyword") || said("enter", "fishing") || said("cast", "fishing net") || said("capture", "dolphin") || said("dolphin"))) { //0259
+  reset(f233)
+  if (vCurrentRoom != 85) { //027f
+    if (v105 > 89) { //0287
+      set(f233)
+    }
+    goto(l701)
+  }
+  if (v105 > 114 && v106 < 60) { //0293
+    set(f233)
+    goto(l701)
+  }
+  if (v105 > 89 && v106 > 59 && v106 < 147) { //02a2
+    set(f233)
+    goto(l701)
+  }
+  if (v106 > 146) { //02b4
+    set(f233)
+  }
+l701:
+  if (!f233) { //02bd
+    print("You need to be closer to the sea to cast your net.")
+    goto(l715)
+  }
+  reset(fSaidAccepted)
+}
+l715:
+if (has(i75) && f233 && (said("dolphin", "anyword") || said("enter", "fishing") || said("cast", "fishing net") || said("capture", "dolphin") || said("dolphin"))) { //02cb
+  random(30,0,v94)
+  if ((v94 > 90 || f231 || has(i80) || f232)) { //02f5
+    print("You fish, and fish, and fish ... However, no matter how hard you try, you don't seem to be able to catch anything.")
+    goto(l820)
+  }
+  print("You cast the fishing net into the wild sea. Upon retrieving it, you see you have caught a large golden fish! It falls from the net and flops helplessly on the beach.")
+  position(o4,45,108)
+  set(f105)
+  set.view(o4,80)
+  v94 = 2
+  cycle.time(o4,v94)
+  start.cycling(o4)
+  draw(o4)
+  set(f231)
+  v104 = 3
+  v58 = 200
+  if (!(v97 > 0)) { //0326
+    v97 = 1
+    vCurrentScore += 2
+  }
+}
+l820:
+if (f231) { //0334
+  distance(o0,o4,v94)
+  if (said("acquire", "dolphin")) { //033e
+    if (v94 > 30) { //0348
+      print("You can't reach it from here.")
+      goto(l871)
+    }
+    reset(f231)
+    erase(o4)
+    if (f105) { //0358
+      print("You grab the flopping fish. Its mouth is wide open and its gills are extended. With difficulty, you hold the fish as it twists and turns in your hands.")
+      get(i80)
+      goto(l871)
+    }
+    print("Holding your nose, you pick up the dead, stinking fish. Yucchhhh! With a mighty heave, you throw the fish back into the sea. Slowly, it sinks to the bottom.")
+l871:
+    goto(l909)
+  }
+  if (f105 && has(i50) && said("kill", "dolphin")) { //036a
+    if (v94 > 30) { //0378
+      print("You can't reach it from here.")
+      goto(l909)
+    }
+    reset(f105)
+    stop.cycling(o4)
+    set.view(o4,86)
+    print("You plunge your sword into the writhing fish, instantly killing it!")
+  }
+}
+l909:
+if ((said("get on", "dolphin") || said("climb", "dolphin"))) { //038d
+  if (has(i80)) { //039f
+    print("You are carrying the fish. How could you ride it?")
+    goto(l965)
+  }
+  if (f231) { //03aa
+    print("The fish is flopping on the beach. How could you ride it?")
+    goto(l965)
+  }
+  if (f232) { //03b5
+    erase(o4)
+    goto(l1251)
+    goto(l965)
+  }
+  print("What fish?")
+}
+l965:
+if ((said("speak", "dolphin") || said("hello", "anyword") || said("say", "hello"))) { //03c5
+  if ((has(i80) || f231)) { //03dd
+    print("The gasping fish is unable to utter a sound.")
+    goto(l1017)
+  }
+  if (f232) { //03ec
+    print("The golden fish calls out to you, Come! Come ride on my back! I can help you!")
+    goto(l1017)
+  }
+  reset(fSaidAccepted)
+}
+l1017:
+if (!fSaidAccepted && said("kill", "dolphin")) { //03f9
+  if (has(i80)) { //0406
+    print("You don't need to kill the golden fish. It will die shortly anyway.")
+    goto(l1054)
+  }
+  if (f232) { //0411
+    print("You could never catch the fish to kill it.")
+    goto(l1054)
+  }
+  reset(fSaidAccepted)
+}
+l1054:
+if (said("consume", "dolphin")) { //041e
+  if (has(i80)) { //0428
+    print("This fish is not very edible. You wouldn't like it.")
+    goto(l1077)
+  }
+  print("You don't have the fish.")
+}
+l1077:
+if (said("kiss", "dolphin")) { //0435
+  if (has(i80)) { //043f
+    print("No, nothing happens. Great idea, though!")
+    goto(l1114)
+  }
+  if (!f105 && f231) { //044a
+    print("Yucccchhhhh!! Who wants to kiss a dead fish!")
+    goto(l1114)
+  }
+  print("You don't have the fish.")
+}
+l1114:
+if ((said("aid", "dolphin") || said("cast", "back", "dolphin") || said("cast", "dolphin", "back") || said("cast", "dolphin", "lake") || said("cast", "dolphin", "lake") || said("drop", "dolphin", "lake") || said("drop", "dolphin", "lake") || said("rescue", "dolphin") || said("cast", "dolphin"))) { //045a
+  if (has(i80)) { //04a2
+    print("You throw the poor gasping fish back into the iridescent water. Gratefully, it calls to you, In return for saving my life, I wish to offer you a ride across this ocean.")
+    v58 = 0
+    drop(i80)
+    position(o4,115,108)
+    set.view(o4,81)
+    v94 = 3
+    cycle.time(o4,v94)
+    set(f232)
+    draw(o4)
+    if (v97 == 1) { //04c0
+      vCurrentScore += 3
+      v97 = 2
+    }
+    goto(l1248)
+  }
+  if (!f105 && f231) { //04d0
+    print("It is too late to save the golden fish. It is now dead.")
+    goto(l1248)
+  }
+  print("You don't have the fish.")
+}
+l1248:
+goto(l1299)
+l1251:
+program.control()
+reset(f232)
+set.view(o0,82)
+v94 = 3
+step.size(o0,v94)
+v94 = 2
+cycle.time(o0,v94)
+set.cel(o0,0)
+v67 = 115
+v68 = 108
+v67 -= v105
+v68 -= v106
+repositon(o0,v67,v68)
+move.obj(o0,160,108,2,f169)
+vCurrentScore += 1
+set(f94)
+l1299:
+if (vWhichEgoBorder > 0 && !(v107 > 0)) { //0513
+  observe.blocks(o0)
+  if (vWhichEgoBorder == 2) { //0520
+    v94 = vCurrentRoom
+    v94 += 1
+    new.room(v94)
+  }
+  if (vWhichEgoBorder == 1) { //052f
+    v94 = vCurrentRoom
+    v94 -= 5
+    new.room(v94)
+  }
+  if (vWhichEgoBorder == 3 && vCurrentRoom != 85) { //053e
+    v94 = vCurrentRoom
+    v94 += 5
+    new.room(v94)
+  }
+}
+return()

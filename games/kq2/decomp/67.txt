@@ -1,4 +1,567 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(99)
+  load.view(58)
+  v31 = 96
+  load.pic(v31)
+  animate.obj(o4)
+  random(0,255,v106)
+  if (f129) { //0017
+    v106 = 0
+  }
+  if (v106 < 128 && v92 != 2) { //0020
+    v92 = 1
+    v91 = 0
+    animate.obj(o3)
+    v94 = 2
+    step.size(o3,v94)
+    release.priority(o3)
+    load.view(53)
+    load.view(59)
+    load.view(51)
+    load.view(52)
+    load.view(57)
+    load.view(60)
+    set.view(o4,57)
+    set.cel(o4,0)
+    goto(l113)
+  }
+  if (v92 != 2) { //0050
+    v92 = 0
+  }
+  set.view(o4,58)
+  if (v91 == 2) { //005e
+    set.cel(o4,0)
+    goto(l113)
+  }
+  set.cel(o4,3)
+  v91 = 1
+l113:
+  position(o0,132,130)
+  if (f106) { //0075
+    v30 = 1
+    reset(f162)
+    load.pic(vCurrentRoom)
+    draw.pic(vCurrentRoom)
+    discard.pic(vCurrentRoom)
+    ignore.blocks(o4)
+    position(o4,65,95)
+    draw(o4)
+    stop.update(o4)
+    goto(l166)
+  }
+  v30 = 0
+  set(f162)
+  set.view(o0,99)
+  draw.pic(v31)
+  set.priority(o0,12)
+  set.priority(o3,4)
+  set.priority(o4,4)
+l166:
+  draw(o0)
+  show.pic()
+}
+if (v35 > 0) { //00a9
+  discard.view(60)
+  discard.view(57)
+  discard.view(52)
+  discard.view(51)
+  discard.view(59)
+  if (v35 == 6) { //00ba
+    discard.view(53)
+  }
+  v35 = 0
+}
+v32--
+if (v92 == 1 && v32 == 0 && v91 == 1) { //00c8
+  start.update(o4)
+  set.cel(o4,0)
+  set.view(o4,60)
+  v94 = 2
+  cycle.time(o4,v94)
+  end.of.loop(o4,f39)
+  v92 = 3
+  print("Count Dracula is awake! Run before it's too late!")
+}
+if (f39) { //00eb
+  reset(f39)
+  v34 = 2
+  set.view(o4,58)
+  set.cel(o4,3)
+  set.view(o3,51)
+  position(o3,73,107)
+  draw(o3)
+  set(f38)
+  follow.ego(o3,4,f34)
+  force.update(o4)
+}
+if (f34) { //010d
+  print("You are caught in Dracula's grasp! Saliva drips off the end of his sharp fangs.")
+  reset(f34)
+  if (f69) { //0117
+    print("Suddenly, he is aware of the silver cross you are wearing around your neck!")
+    set(f37)
+    goto(l337)
+  }
+  if (!f106) { //0124
+    set.priority(o0,4)
+  }
+  prevent.input()
+  erase(o3)
+  stop.motion(o0)
+  v67 = 250
+  v68 = 0
+  repositon(o0,v67,v68)
+  set.view(o0,53)
+  v94 = 3
+  cycle.time(o0,v94)
+  set(f92)
+  set.cel(o0,0)
+  end.of.loop(o0,f35)
+  v35 = 5
+}
+l337:
+if (f35) { //0151
+  stop.cycling(o0)
+  reset(f92)
+  print("You feel them sink into the soft flesh of your neck, and then ... nothing.")
+  reset(f35)
+  v92 = 5
+  set(f50)
+}
+if (v34 == 2 && f37) { //0164
+  v34 = 0
+  goto(l1883)
+}
+if (f36) { //0173
+  erase(o3)
+  reset(f38)
+  reset(f36)
+  v35 = 6
+}
+v33--
+if (v33 == 1) { //0184
+  force.update(o4)
+  set.view(o4,58)
+  set.cel(o4,3)
+  reset(f92)
+  start.motion(o0)
+  set.view(o0,0)
+  set.loop(o0,1)
+  get.posn(o0,v105,v106)
+  v67 = 76
+  v68 = 107
+  v67 -= v105
+  v68 -= v106
+  repositon(o0,v67,v68)
+  v35 = 6
+  print("You place the pointed stake on Count Dracula's chest. Quickly, using the mallet, you pound the stake through his heart. Dracula disintegrates into a pile of dust. A small silver key is left behind in the coffin.")
+}
+if (f33) { //01b6
+  reset(f33)
+  stop.motion(o0)
+  set.cel(o0,0)
+  get.posn(o0,v105,v106)
+  v67 = 65
+  v68 = 107
+  v67 -= v105
+  v68 -= v106
+  repositon(o0,v67,v68)
+  set.view(o0,59)
+  v33 = 25
+  vCurrentScore += 4
+  vCurrentScore += v80
+}
+if (!f106) { //01e3
+  if (v30 == 1) { //01ea
+    v30 = 2
+    set(f162)
+    if (f38) { //01f6
+      erase(o3)
+    }
+    draw.pic(v31)
+    show.pic()
+    set.priority(o0,12)
+    set.view(o0,99)
+    set.priority(o3,4)
+    set.priority(o4,4)
+    stop.update(o4)
+    force.update(o4)
+    if (f38) { //0211
+      draw(o3)
+    }
+    goto(l543)
+  }
+  goto(l1932)
+}
+l543:
+if (!fEnteredCommand) { //021f
+  goto(l1989)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //0229
+  print("There is a beautiful, ornate coffin to one side of this dreadful room. Dust is everywhere, cobwebs fill the corners, and a sickly odor permeates the air.")
+}
+if (said("acquire", "casket")) { //0241
+  print("You don't think you could carry around a heavy %w2, do you?")
+}
+if ((said("get in", "casket") || said("enter", "casket") || said("climb", "casket"))) { //024d
+  print("That is truly crazy!")
+}
+if (!(said("examine", "casket")) && !(said("look in", "casket"))) { //0267
+  goto(l718)
+}
+if (!(posn(o0,50,105,97,109))) { //027c
+  print("At this distance the candle does not provide enough light for you to see much detail.")
+  goto(l1989)
+}
+if (v91 != 1) { //028c
+  print("The lid of the beautifully carved coffin is closed.")
+  goto(l1989)
+}
+if (v92 == 1) { //0299
+  print("Quaking, you look into the beautiful coffin. A vampire is lying asleep within it! It must be Count Dracula!")
+  goto(l1989)
+  goto(l682)
+}
+print("Trembling with fear, you peer into the ornate coffin. Finding it unoccupied, you see the interior is lined with shiny red satin.")
+l682:
+if (!f137) { //02aa
+  print("A red satin pillow lies at one end.")
+  goto(l703)
+}
+if (!f138) { //02b6
+  print("Against the red satin, you notice a large golden key!")
+}
+l703:
+if (!f139 && v92 == 2) { //02bf
+  print("A small silver key is lying within the coffin!")
+}
+goto(l1989)
+l718:
+if (!(said("open", "casket")) && !(said("open", "lid"))) { //02ce
+  goto(l799)
+}
+if (v91 == 1) { //02e3
+  print("The lid to the coffin is already up.")
+  goto(l796)
+}
+if (!(posn(o0,50,105,97,115))) { //02ef
+  print("To do that, you will need to get closer.")
+  goto(l796)
+}
+start.update(o4)
+end.of.loop(o4,f169)
+v91 = 1
+if (v92 != 1) { //0307
+  print("Nervously, you lift the heavy lid of the elegant coffin. You peek into its red satin interior. The coffin is unoccupied.")
+  goto(l682)
+  goto(l796)
+}
+print("With trepidation, you lift the heavy lid of the beautifully carved coffin. Your heart beats wildly when you see a vampire lying asleep within it! It must be Count Dracula!")
+v32 = 100
+l796:
+goto(l1989)
+l799:
+if (!(said("close", "casket")) && !(said("close", "lid"))) { //031f
+  goto(l863)
+}
+if (v91 != 1) { //0334
+  print("The lid to the coffin is already closed.")
+  goto(l860)
+}
+if (!(posn(o0,50,105,97,115))) { //0341
+  print("To do that, you will need to get closer.")
+  goto(l860)
+}
+start.update(o4)
+reverse.loop(o4,f169)
+v91 = 2
+v32 = 0
+l860:
+goto(l1989)
+l863:
+if (said("acquire", "cushion")) { //035f
+  if (has(i74)) { //0369
+    print("You already have.")
+    goto(l938)
+  }
+  if ((v91 != 1 || f137)) { //0374
+    print("You don't see one here.")
+    goto(l938)
+  }
+  if (!(posn(o0,50,105,97,115))) { //0385
+    print("To do that, you will need to get closer.")
+    goto(l938)
+  }
+  if (v92 == 1) { //0395
+    print("That was truly a dumb thing to do! Run before he catches you!")
+    v32 = 0
+    goto(l938)
+  }
+  print("You remove the shiny red %w2 from the coffin. Lo and behold, a large gold key was under the %w2!")
+  get(i74)
+  set(f137)
+}
+l938:
+if (v91 == 1) { //03aa
+  if (v92 == 2) { //03b1
+    if (!f139) { //03b8
+      if ((!f137 || f138)) { //03bf
+        goto(l1083)
+        goto(l979)
+      }
+      goto(l1125)
+    }
+  }
+l979:
+  if (f137 && !f138) { //03d3
+    goto(l1041)
+  }
+}
+if ((said("acquire", "key") || said("acquire", "gold", "key") || said("acquire", "silver", "key") || said("acquire", "keys") || said("acquire", "both", "keys"))) { //03df
+  print("You don't see one here.")
+  goto(l1989)
+}
+goto(l1421)
+l1041:
+if ((said("acquire", "key") || said("acquire", "gold", "key"))) { //0411
+  if (!(posn(o0,50,105,97,115))) { //0425
+    print("To do that, you will need to get closer.")
+    goto(l1080)
+  }
+  goto(l1294)
+}
+l1080:
+goto(l1343)
+l1083:
+if ((said("acquire", "key") || said("acquire", "silver", "key"))) { //043b
+  if (!(posn(o0,50,105,97,115))) { //044f
+    print("To do that, you will need to get closer.")
+    goto(l1122)
+  }
+  goto(l1308)
+}
+l1122:
+goto(l1343)
+l1125:
+if (said("acquire", "key")) { //0465
+  print("There are two keys in the coffin. Do you want the gold one or the silver one?")
+  set(f32)
+  goto(l1989)
+}
+if (said("acquire", "gold", "key")) { //0476
+  goto(l1294)
+}
+if (f32 && (said("gold", "one") || said("gold", "key") || said("acquire", "gold", "one"))) { //0485
+  goto(l1294)
+}
+if (said("acquire", "silver", "key")) { //04a4
+  goto(l1308)
+}
+if (f32 && (said("silver", "one") || said("silver", "key") || said("acquire", "silver", "one"))) { //04b3
+  goto(l1308)
+}
+if ((said("acquire", "keys") || said("acquire", "both", "keys"))) { //04d2
+  goto(l1322)
+}
+if (f32 && said("acquire", "both", "them")) { //04e9
+  goto(l1322)
+}
+if (!fSaidAccepted && said("anyword", "anyword")) { //04fa
+  reset(fSaidAccepted)
+  reset(f32)
+}
+goto(l1421)
+l1294:
+print("OK.")
+get(i61)
+set(f138)
+reset(f32)
+vCurrentScore += 5
+goto(l1989)
+l1308:
+print("OK.")
+get(i83)
+set(f139)
+reset(f32)
+vCurrentScore += 2
+goto(l1989)
+l1322:
+print("OK.")
+get(i61)
+set(f138)
+get(i83)
+set(f139)
+reset(f32)
+vCurrentScore += 5
+vCurrentScore += 2
+goto(l1989)
+l1343:
+if ((said("acquire", "keys") || said("acquire", "both", "keys"))) { //053f
+  print("There is only one key here.")
+  goto(l1989)
+  goto(l1421)
+}
+if ((said("anyword", "key") || said("anyword", "anyword", "key"))) { //055b
+  if (!(said("examine", "key")) && !(said("examine", "anyword", "key"))) { //056f
+    print("You don't see one here.")
+    goto(l1989)
+    goto(l1421)
+  }
+  reset(fSaidAccepted)
+}
+l1421:
+if ((said("show", "cross") || said("show", "count dracula", "cross"))) { //058d
+  if (!(has(i69))) { //05a1
+    print("You don't have it!")
+    goto(l1989)
+  }
+}
+if (v92 == 1 && v91 == 1) { //05ad
+  if ((said("speak", "count dracula") || said("hello", "anyword") || said("say", "hello") || said("show", "cross") || said("show", "count dracula", "cross"))) { //05b7
+    print("Count Dracula is fast asleep in his coffin. He pays you no heed.")
+    goto(l1698)
+  }
+  if ((said("acquire", "count dracula") || said("capture", "count dracula"))) { //05e2
+    print("That is truly crazy!")
+    goto(l1698)
+  }
+  if (!(posn(o0,50,105,97,115))) { //05f9
+    if ((said("wake", "count dracula") || said("kill", "count dracula") || said("pound", "pole", "count dracula"))) { //0604
+      print("To do that, you will need to get closer.")
+      goto(l1583)
+    }
+    if (said("examine", "count dracula")) { //0623
+      print("At this distance the candle does not provide enough light for you to see much detail.")
+    }
+l1583:
+    goto(l1698)
+  }
+  if (said("wake", "count dracula")) { //0632
+    print("That was truly a dumb thing to do! Run before he catches you!")
+    v32 = 0
+    goto(l1698)
+  }
+  if ((said("kill", "count dracula") || said("pound", "pole", "count dracula"))) { //0644
+    if (has(i54) && has(i60) && !(said("kill", "count dracula", "knife"))) { //0658
+      set(f92)
+      move.obj(o0,76,107,0,f33)
+      v32 = 250
+      v92 = 2
+      goto(l1683)
+    }
+    if (has(i50) && !(said("pound", "pole", "count dracula"))) { //067a
+      print("You plunge the sword into Count Dracula's sleeping body. Oh, dear! It has no effect. You just woke him up.")
+      v32 = 0
+      goto(l1683)
+    }
+    print("You have no way of killing Count Dracula. You are in mortal danger!")
+l1683:
+    goto(l1698)
+  }
+  if (said("examine", "count dracula")) { //0696
+    print("Count Dracula is tall and elegantly dressed with a black cloak wrapped around him. His face and hands are chalk white. His lips are blood red.")
+  }
+l1698:
+  goto(l1989)
+}
+l1701:
+if (v92 == 3) { //06a5
+  if ((said("speak", "count dracula") || said("hello", "anyword") || said("say", "hello"))) { //06ac
+    print("You don't want to chitchat with Count Dracula!")
+    goto(l1824)
+  }
+  if ((said("show", "cross") || said("show", "count dracula", "cross"))) { //06c9
+    set(f37)
+    goto(l1824)
+  }
+  if ((said("kill", "count dracula") || said("pound", "pole", "count dracula"))) { //06e2
+    print("You have no way of killing Count Dracula. You are in mortal danger!")
+    goto(l1824)
+  }
+  if (said("examine", "count dracula")) { //06fb
+    print("Count Dracula is tall and elegantly dressed with a black cloak wrapped around him. His face and hands are chalk white. His lips are blood red.")
+    goto(l1824)
+  }
+  if ((said("anyword", "count dracula") || said("anyword", "anyword", "count dracula"))) { //070a
+    print("You don't have time! Run for your life!")
+  }
+l1824:
+  goto(l1989)
+}
+if ((said("anyword", "count dracula") || said("anyword", "anyword", "count dracula") || said("show", "cross"))) { //0723
+  if ((v92 != 1 || v91 == 3)) { //073d
+    print("There is no one here but you.")
+    goto(l1880)
+  }
+  if (v91 == 2) { //074f
+    print("Count Dracula is fast asleep in his coffin. He pays you no heed.")
+  }
+}
+l1880:
+goto(l1989)
+l1883:
+print("Count Dracula is terrified of the cross. He turns into a bat and flies away.")
+force.update(o4)
+set.cel(o4,3)
+set.view(o4,58)
+set.view(o3,52)
+v94 = 2
+cycle.time(o3,v94)
+step.size(o3,v94)
+ignore.blocks(o3)
+ignore.objs(o3)
+start.cycling(o3)
+set.priority(o3,11)
+v92 = 4
+move.obj(o3,137,80,0,f36)
+vCurrentScore += v80
+v80 = 0
+goto(l1989)
+l1932:
+if (!fSaidAccepted && !(said("light", "candle"))) { //078c
+  if (said("examine", "anyword")) { //079a
+    print("It is pitch black in here! You can't see a thing!")
+    goto(l1989)
+  }
+  if (said("show", "cross")) { //07a9
+    goto(l1701)
+    goto(l1989)
+  }
+  if (said("anyword", "anyword")) { //07b9
+    print("You can't do that while stumbling around in the dark.")
+  }
+}
+l1989:
+if (!fSaidAccepted && said("examine", "anyword")) { //07c5
+  if (v92 == 3) { //07d2
+    print("You don't have time! Run for your life!")
+    goto(l2028)
+  }
+  if (v92 == 1) { //07de
+    print("Are you crazy? Dracula hangs out here, and you want to stand around looking at things?")
+    goto(l2028)
+  }
+  reset(fSaidAccepted)
+}
+l2028:
+if (vWhichEgoBorder == 2) { //07ec
+  observe.objs(o3)
+  release.priority(o0)
+  release.priority(o3)
+  force.update(o4)
+  release.priority(o4)
+  if (v92 == 0) { //07fd
+    random(0,100,v106)
+    if (v106 < 128) { //0808
+      v92 = 61
+      goto(l2072)
+    }
+    v92 = 64
+  }
+l2072:
+  if (v92 == 3) { //0818
+    v92 = 71
+  }
+  new.room(66)
+}
+return()

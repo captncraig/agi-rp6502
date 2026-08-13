@@ -1,4 +1,95 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(0)
+  load.logic(170)
+  load.logic(101)
+  load.view(97)
+  load.view(104)
+  load.view(83)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(170)
+  call(101)
+  ignore.horizon(o0)
+  ignore.objs(o0)
+  draw(o0)
+  if (!f122) { //0022
+    animate.obj(o2)
+    set.view(o2,83)
+    position(o2,16,88)
+    set.priority(o2,4)
+    draw(o2)
+  }
+  show.pic()
+  if (!f122) { //0038
+    print("A glint of metal catches your eye. You look toward the direction of the glint and see an amulet lying on the ground!")
+  }
+}
+if (!fEgoOnWater) { //0041
+  if ((posn(o0,54,100,86,119) || posn(o0,54,84,87,99) || posn(o0,57,70,73,83) || posn(o0,100,87,112,102))) { //0048
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater) { //006a
+  get.posn(o0,v67,v68)
+  if (posn(o0,49,80,59,106)) { //0078
+    v67 = 56
+    v68 = 94
+  }
+  if (posn(o0,57,72,72,79)) { //0088
+    v67 = 68
+    v68 = 78
+  }
+  if (posn(o0,112,86,119,104)) { //0098
+    v67 = 94
+    v68 = 100
+  }
+  set(f116)
+}
+if (fTriggerLine && !f94) { //00aa
+  erase(o0)
+  set.view(o0,104)
+  v94 = 2
+  cycle.time(o0,v94)
+  if (v95 != 2) { //00be
+    get.posn(o0,v105,v106)
+    if (v105 > 5) { //00ca
+      v67 = 250
+    }
+    v68 = 250
+    repositon(o0,v67,v68)
+  }
+  v95 = 0
+  draw(o0)
+  set(f94)
+  v86 = 25
+  stop.motion(o0)
+}
+if (!f122 && said("acquire", "amulet")) { //00e7
+  distance(o0,o2,v105)
+  if (v105 > 15) { //00f8
+    print("You can't reach the amulet from here.")
+    goto(l271)
+  }
+  erase(o2)
+  get(i81)
+  vCurrentScore += 3
+  set(f122)
+  print("OK.")
+}
+l271:
+if (vWhichEgoBorder == 3) { //010f
+  observe.objs(o0)
+  new.room(83)
+}
+if (vWhichEgoBorder == 2) { //011a
+  observe.objs(o0)
+  new.room(79)
+}
+if (vWhichEgoBorder == 4) { //0125
+  observe.objs(o0)
+  new.room(77)
+}
+call(170)
+call(101)
+return()

@@ -1,4 +1,135 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(25)
+  load.logic(152)
+  load.logic(101)
+  load.view(62)
+  load.view(97)
+  load.view(104)
+  load.view(20)
+  load.view(21)
+  if ((has(i72) || has(i76))) { //001a
+    load.view(65)
+    load.view(98)
+  }
+  draw.pic(vCurrentRoom)
+  position(o7,10,70)
+  call(152)
+  call(101)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o3,20)
+  set.view(o4,21)
+  position(o3,100,100)
+  position(o4,100,100)
+  ignore.blocks(o7)
+  if (vPrevRoom == 15) { //0046
+    get.posn(o0,v105,v106)
+    if (v105 > 81) { //0051
+      v105 -= 80
+      goto(l123)
+    }
+    if (v105 > 60) { //005e
+      v105 -= 59
+      goto(l123)
+    }
+    if (v105 > 40) { //006b
+      v105 -= 35
+      goto(l123)
+    }
+    v105 = 5
+l123:
+    v106 = 37
+    position(o0,105,v106)
+  }
+  if (vPrevRoom == 29) { //0082
+    get.posn(o0,v105,v106)
+    if (v105 < 120) { //008d
+      if (v105 > 3) { //0094
+        v105 -= 4
+        goto(l164)
+      }
+      v105 = 0
+    }
+l164:
+    position(o0,105,v106)
+  }
+  if (!f72) { //00a8
+    draw(o3)
+  }
+  if (f72 && !f73) { //00b1
+    draw(o4)
+  }
+  draw(o0)
+  show.pic()
+}
+if (posn(o0,0,0,80,167)) { //00bf
+  ignore.objs(o0)
+  goto(l208)
+}
+observe.objs(o0)
+l208:
+if ((said("examine", "beach") || said("examine", "grass") || said("examine"))) { //00d0
+  if (f73) { //00e6
+    print("It is a beautiful sandy beach.")
+    goto(l254)
+  }
+  if (f72) { //00f1
+    print("There is a beautiful diamond and sapphire bracelet lying in the sand!")
+    goto(l254)
+  }
+  print("You notice a pretty clamshell lying on the sandy beach.")
+}
+l254:
+if (!f72 && said("examine", "clam")) { //00fe
+  print("You notice a pretty clamshell lying on the sandy beach.")
+}
+if (said("open", "clam")) { //010d
+  if (f72) { //0117
+    print("You open the clamshell and discover that it is empty. There is nothing special about it.")
+    goto(l292)
+  }
+  print("You need to get the clam first.")
+}
+l292:
+if (!f72 && said("acquire", "clam")) { //0124
+  distance(o0,o3,v94)
+  if (v94 > 15) { //0135
+    print("You can't reach it from here.")
+    goto(l331)
+  }
+  print("When you pick up the clamshell, you see that there was a sparkling sapphire and diamond bracelet under it!")
+  get(i82)
+  erase(o3)
+  draw(o4)
+  set(f72)
+}
+l331:
+if (f72 && !f73 && said("acquire", "bracelet")) { //014b
+  distance(o0,o4,v94)
+  if (v94 > 15) { //015e
+    print("You can't reach it from here.")
+    goto(l373)
+  }
+  print("OK.")
+  set(f73)
+  get(i53)
+  vCurrentScore += 7
+  erase(o4)
+}
+l373:
+if (vWhichEgoBorder == 1) { //0175
+  new.room(15)
+}
+if (vWhichEgoBorder == 2) { //017e
+  new.room(23)
+}
+if (vWhichEgoBorder == 4) { //0187
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //0190
+  new.room(29)
+}
+call(152)
+call(101)
+return()

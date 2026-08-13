@@ -1,4 +1,43 @@
-if (isSet(f64)) {
-
-!!!
-&{%!e(string=unknown opcode: 0xfe)}
+if (f64) { //0002
+  goto(l156)
+}
+if (!fEnteredCommand) { //000b
+  goto(l156)
+}
+if (vCurrentRoom != 23 && vCurrentRoom != 46 && said("examine", "tree")) { //0015
+  random(0,255,v94)
+  if (v94 < 100) { //002b
+    print("Many trees shade your way as you journey through the land of Kolyma.")
+    goto(l69)
+  }
+  if (v94 < 200) { //0037
+    print("Don't worry about the trees, they are not about to leave.")
+    goto(l69)
+  }
+  print("The trees appear to be rooted to the ground.")
+l69:
+  goto(l156)
+}
+if (said("climb", "tree")) { //0048
+  print("Climbing trees will not find you a bride!")
+}
+if (said("anyword", "blossom")) { //0054
+  print("There are not many flowers here.")
+}
+if (said("anyword", "bush")) { //0060
+  print("There are not many bushes or shrubs here.")
+}
+if (said("examine", "branch")) { //006c
+  print("You see pieces of scattered wood lying around. The wood is of no importance.")
+}
+if (said("examine", "stump")) { //0078
+  print("Here and there you see the stumps of trees. You wonder if beavers have been here.")
+}
+if (said("examine", "grass")) { //0084
+  print("There is plenty of green grass throughout the countryside of Kolyma.")
+}
+if (said("climb", "boulder")) { //0090
+  print("There is no reason to climb the rocks.")
+}
+l156:
+return()

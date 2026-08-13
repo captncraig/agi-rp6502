@@ -1,4 +1,86 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(97)
+  load.view(104)
+  load.view(92)
+  load.view(91)
+  if ((has(i72) || has(i76))) { //0010
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(101)
+  load.logic(156)
+  load.logic(151)
+  load.logic(158)
+  load.logic(154)
+  load.pic(vCurrentRoom)
+  call(101)
+  call(156)
+  call(154)
+  draw.pic(vCurrentRoom)
+  ignore.blocks(o0)
+  if (vPrevRoom == 19) { //0034
+    get.posn(o0,v105,v106)
+    if (v105 < 63) { //003f
+      v105 = 63
+      position(o0,105,v106)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater) { //0050
+  if ((posn(o0,105,78,111,91) || posn(o0,111,74,118,94) || posn(o0,118,71,131,98) || posn(o0,131,69,142,98) || posn(o0,142,65,159,99))) { //0057
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater) { //007f
+  get.posn(o0,v67,v68)
+  if ((posn(o0,105,78,111,91) || posn(o0,111,74,118,94))) { //008d
+    v67 = 116
+    v68 = 83
+    set(f116)
+  }
+  if (posn(o0,118,71,131,98)) { //00a7
+    v67 = 125
+    v68 = 83
+    set(f116)
+  }
+  if (posn(o0,131,69,142,98)) { //00b9
+    v67 = 139
+    v68 = 83
+    set(f116)
+  }
+  if (posn(o0,142,65,159,99)) { //00cb
+    v67 = 144
+    v68 = 83
+    set(f116)
+  }
+}
+if (posn(o0,0,0,100,167)) { //00dd
+  set(f64)
+  goto(l238)
+}
+reset(f64)
+l238:
+if (vWhichEgoBorder != 0) { //00ee
+  reset(f64)
+}
+if (vWhichEgoBorder == 1) { //00f8
+  new.room(5)
+}
+if (vWhichEgoBorder == 2) { //0101
+  new.room(13)
+}
+if (vWhichEgoBorder == 4) { //010a
+  new.room(11)
+}
+if (vWhichEgoBorder == 3) { //0113
+  new.room(19)
+}
+call(101)
+call(156)
+call(151)
+call(158)
+call(154)
+return()

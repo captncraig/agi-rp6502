@@ -1,4 +1,838 @@
-if (isSet(f12)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x69)}
+if (f12) { //0002
+  clear.lines(22,22,c0)
+}
+if (vErrorCode > 0) { //000c
+  call(98)
+  quit(1)
+}
+v102 = v100
+v103 = v101
+get.posn(o0,v100,v101)
+if (f50) { //0021
+  reset(f50)
+  set(f170)
+  disable.member(c18)
+  disable.member(c22)
+  load.logic(100)
+}
+if (vCurrentRoom == 0) { //0031
+  call(180)
+  vEgoView = 0
+  if (fRestartGame) { //003d
+    new.room(1)
+    goto(l115)
+  }
+  set.menu("Info")
+  set.menu.member("Help     ",c1)
+  set.menu.member("About KQ2",c26)
+  set.menu("File")
+  set.menu.member("Save Game      <F5>",c18)
+  set.menu.member("Restore Game   <F7>",c19)
+  set.menu("Game")
+  set.menu.member("Inventory     <Tab>",c12)
+  set.menu.member("Pause         <Esc>",c16)
+  set.menu.member("Restart Game   <F9>",c20)
+  set.menu.member("Quit               ",c21)
+  set.menu("Actions")
+  set.menu.member("Swim     =",c22)
+  set.menu("Sound")
+  set.menu.member("Toggle Sound   <F2>",c2)
+  submit.menu()
+  new.room(97)
+}
+l115:
+if (fNewRoom) { //0073
+  reset(f149)
+  observe.objs(o0)
+  stop.sound()
+  v88 = 0
+  reset(f130)
+  reset(f115)
+  reset(f64)
+  reset(f128)
+  v76 = 30
+l140:
+  lindirectn(v76,0)
+  reset(v76)
+  if (v76 < 49) { //0091
+    v76++
+    goto(l140)
+    goto(l180)
+  }
+  v76 = 230
+l163:
+  lindirectn(v76,0)
+  reset(v76)
+  if (v76 < 249) { //00a8
+    v76++
+    goto(l163)
+  }
+l180:
+  v58 = 0
+  v59 = 0
+  v69 = 0
+  v70 = 0
+  v71 = 0
+  v82 = 0
+  v94 = 0
+  reset(f161)
+  set(f55)
+  if ((vCurrentRoom == 35 || vCurrentRoom == 7 || vCurrentRoom == 42 || vCurrentRoom == 41 || vCurrentRoom == 48 || vCurrentRoom == 49 || vCurrentRoom == 55 || vCurrentRoom == 56 || vCurrentRoom == 57)) { //00cd
+    load.sound(29)
+  }
+  if ((vCurrentRoom == 39 || vCurrentRoom == 40 || vCurrentRoom == 46 || vCurrentRoom == 47 || vCurrentRoom == 30 || vCurrentRoom == 31 || vCurrentRoom == 37 || vCurrentRoom == 38 || vCurrentRoom == 44 || vCurrentRoom == 45 || vCurrentRoom == 19 || vCurrentRoom == 20 || vCurrentRoom == 21 || vCurrentRoom == 26 || vCurrentRoom == 27 || vCurrentRoom == 28)) { //00f0
+    load.sound(5)
+  }
+  if (vCurrentRoom < 60) { //0128
+    load.sound(8)
+  }
+  if (f161) { //0131
+    load.logic(99)
+  }
+  animate.obj(o0)
+  load.view(0)
+  load.view(vEgoView)
+  set.view(o0,vEgoView)
+}
+if (said("tester")) { //0142
+  toggle(f178)
+  clear.lines(24,24,c0)
+}
+if (f178) { //0150
+  get.posn(o0,v112,v113)
+  display(24,16,"%v112,%v113    ")
+}
+if (v100 == v102 && v101 == v103 && vEgoDir == v99) { //015e
+  stop.cycling(o0)
+  goto(l370)
+}
+start.cycling(o0)
+l370:
+if (vEgoDir == 0) { //0172
+  stop.cycling(o0)
+}
+if (f92) { //017b
+  start.cycling(o0)
+}
+v99 = vEgoDir
+if (controller(c15)) { //0186
+  menu.input()
+}
+if ((said("rescue") || controller(c18))) { //018d
+  stop.sound()
+  save.game()
+}
+if (!f170) { //019b
+  if ((said("restore") || controller(c19))) { //01a2
+    stop.sound()
+    restore.game()
+  }
+  if ((said("restart") || controller(c20))) { //01b0
+    stop.sound()
+    restart.game()
+  }
+  if ((said("status") || controller(c12))) { //01be
+    status()
+  }
+  if ((controller(c1) || said("aid") || said("aid", "a"))) { //01cb
+    call(95)
+  }
+}
+if ((controller(c16) || said("pause"))) { //01df
+  pause()
+}
+if (controller(c26)) { //01ec
+  print("King's Quest ][ was designed by Roberta Williams.")
+}
+if (controller(c3)) { //01f4
+  echo.line()
+}
+if (controller(c9)) { //01fb
+  cancel.line()
+}
+if (controller(c10)) { //0202
+  init.joy()
+}
+if (controller(c11)) { //0209
+  toggle.monitor()
+}
+if (controller(c2)) { //0210
+  toggle(f9)
+}
+if ((controller(c21) || said("quit"))) { //0218
+  stop.sound()
+  if (f161) { //0225
+    quit(1)
+    goto(l562)
+  }
+  quit(0)
+}
+l562:
+if (controller(c24)) { //0232
+  vSoundVolume--
+}
+if (controller(c25)) { //023a
+  if (vSoundVolume < 15) { //0240
+    vSoundVolume++
+  }
+}
+if ((said("fast", "speak") || controller(c13))) { //0249
+  print("%s4")
+  version()
+  if (!f161) { //025a
+    load.logic(99)
+    set(f161)
+  }
+}
+if ((said("fast") || controller(c27))) { //0265
+  vCycleTime = 0
+}
+if ((said("normal") || controller(c28))) { //0274
+  vCycleTime = 2
+}
+if ((said("slow") || controller(c29))) { //0283
+  vCycleTime = 4
+}
+if (!f170) { //0292
+  call(vCurrentRoom)
+  goto(l672)
+}
+call(100)
+l672:
+if (f161) { //02a0
+  call(99)
+}
+v55--
+if (v55 == 0 && v57 == 1) { //02aa
+  print("Beware! The fairy's spell has worn off.")
+}
+if (v55 == 0 && v57 > 0) { //02b6
+  v57--
+  if (v57 != 0) { //02c2
+    v55 = 250
+  }
+}
+v54--
+if (v54 == 0) { //02cf
+  v66--
+  if (v66 == 1) { //02d8
+    if (vCurrentRoom < 97) { //02df
+      print("You feel a sudden tingling sensation. Could it be that the effects of the sugar cube have worn off?")
+    }
+    goto(l758)
+  }
+  if (v66 != 0) { //02eb
+    v54 = 250
+  }
+}
+l758:
+if (f131) { //02f6
+  reset(f92)
+  reset(f131)
+  reset(f147)
+  observe.horizon(o0)
+  release.priority(o0)
+  set(f107)
+  new.room(105)
+}
+v88--
+if (v88 == 1) { //030c
+  player.control()
+  set.view(o0,0)
+  reposition.to(o0,v114,v115)
+  reset(f92)
+  if (vCurrentRoom == 20) { //031d
+    observe.blocks(o0)
+  }
+  if (v87 == 1) { //0326
+    print("When you rub the tarnished brass lamp, you hear a POOOOFF and a genie appears! \"Master,\" he says, \"I leave a gift for you. A magic carpet!\" The genie then poofs back into the lamp.")
+  }
+  if (v87 == 2) { //032f
+    print("When you rub the lamp, you hear a loud POOOOFF and a genie magically appears. \"Master,\" he says, \"I leave a gift for you. A beautiful sword!\" The genie then disappears in a puff of smoke.")
+  }
+  if (v87 == 3) { //0338
+    print("Using your sleeve as a cloth you rub the lamp, causing the genie to appear again. \"Master,\" he says, \"I leave a gift for you. A leather bridle!\" The genie then pops back into the lamp.")
+    print("Oh, no! The lamp has disappeared from your hands!")
+  }
+  if (vCurrentRoom == 5) { //0343
+    reset(f177)
+  }
+}
+if (f63) { //034c
+  reset(f63)
+  v88 = 70
+  sound(8,f169)
+}
+if (f148) { //035a
+  ignore.objs(o0)
+}
+if (!fEnteredCommand) { //0362
+  goto(l3436)
+}
+if (said("acquire", "bouquet") && vCurrentRoom != 2 && vCurrentRoom != 3 && vCurrentRoom != 4 && vCurrentRoom != 9 && vCurrentRoom != 10 && vCurrentRoom != 16) { //036c
+  if (!(has(i52))) { //038e
+    print("Where do you think it could be?")
+    goto(l924)
+  }
+  print("You already have it.")
+}
+l924:
+if (said("thank", "anyword")) { //039c
+  print("You're welcome!")
+}
+if (said("smell", "bouquet")) { //03a8
+  if (has(i52)) { //03b2
+    print("The bouquet of flowers is very fragrant.")
+    goto(l959)
+  }
+  print("You are not carrying it.")
+}
+l959:
+if (said("consume", "basket")) { //03bf
+  if (has(i63)) { //03c9
+    print("Yum, yum. The snacks from the goody basket are sure tasty.")
+    vCurrentScore -= 2
+    drop(i63)
+    get(i62)
+    goto(l1000)
+  }
+  if (has(i62)) { //03db
+    print("The basket of goodies is empty because you ate all of it.")
+    goto(l1000)
+  }
+  print("You are not carrying it.")
+}
+l1000:
+if (vCurrentRoom != 3 && said("acquire", "basket")) { //03e8
+  if (has(i62)) { //03f6
+    print("The basket of goodies is empty because you ate all of it.")
+    goto(l1027)
+  }
+  reset(fSaidAccepted)
+}
+l1027:
+if (vCurrentRoom != 51) { //0403
+  if ((said("point", "rusty trident") || said("wave", "rusty trident"))) { //040b
+    print("With disappointment, you see that nothing happens.")
+  }
+}
+if (said("use", "anyword")) { //041f
+  print("What do you wish to do with it???")
+}
+if (said("who", "programmed", "game")) { //042b
+  print("Ken, Roberta, Sol, Jeff, Chris, Doug, Mark, Al, Scott and Dale.")
+}
+if (said("what is", "graham", "last name")) { //0439
+  print("Cracker.")
+}
+if ((said("acquire", "boulder") || said("move", "boulder") || said("move", "boulder") || said("move", "boulder"))) { //0447
+  print("The rocks are too large and heavy.")
+}
+if (said("dive", "anyword")) { //0467
+  if (v95 > 0) { //0471
+    print("The water is very deep here. Without aid, it is impossible to swim under the water for any length of time.")
+    goto(l1151)
+  }
+  print("You need to be in the water to try that.")
+}
+l1151:
+if (said("play", "anyword")) { //047f
+  print("You have better things to do than to play all day.")
+}
+if (vCurrentRoom > 49 && (vCurrentRoom < 55 || vCurrentRoom > 58)) { //048b
+  goto(l1327)
+}
+if (!(has(i72))) { //049d
+  goto(l1327)
+}
+if (said("pat", "lamp")) { //04a7
+  if ((v95 > 0 || f180 || f119 || f125 || f176 || fEgoOnWater || f92 || f148 || f179 || f127 || f132 || f128 || !f55 || v88 != 0)) { //04b1
+    print("Nothing happens.")
+    goto(l1327)
+    goto(l1327)
+  }
+  if (vCurrentRoom == 20) { //04df
+    ignore.blocks(o0)
+  }
+  if (vCurrentRoom == 5) { //04e8
+    set(f177)
+  }
+  program.control()
+  get.posn(o0,v114,v115)
+  set.view(o0,65)
+  set.cel(o0,0)
+  set(f92)
+  end.of.loop(o0,f63)
+  if (v87 == 0) { //0501
+    get(i76)
+    vCurrentScore += 2
+    v87 = 1
+    goto(l1327)
+  }
+  if (v87 == 1) { //0513
+    get(i50)
+    vCurrentScore += 2
+    v87 = 2
+    goto(l1327)
+  }
+  get(i77)
+  vCurrentScore += 2
+  drop(i72)
+  v87 = 3
+}
+l1327:
+if (!fSaidAccepted && !(has(i72)) && said("pat", "lamp")) { //052f
+  print("You are not carrying it.")
+}
+if (has(i59) && said("put on", "brooch")) { //0541
+  print("The color of the brooch clashes with your outfit. Better leave it off.")
+}
+if (vCurrentRoom != 67 && (said("hammer", "hammer") || said("pound", "hammer"))) { //054f
+  print("You look around but see that there is no reason to use a mallet just now.")
+}
+if (has(i63) && said("acquire", "basket")) { //0567
+  print("You already have the goodies. They are right in the basket!")
+}
+if (has(i81)) { //0575
+  if (said("pat", "amulet")) { //057b
+    print("You rub the Tiger's Eye stone on the front of the amulet, but nothing happens.")
+    goto(l1476)
+  }
+  if (said("wave", "amulet")) { //058a
+    print("You wave the bronze amulet in the air, but nothing happens.")
+    goto(l1476)
+  }
+  if ((said("home", "anyword") || said("anyword", "home") || said("home"))) { //0599
+    drop(i81)
+    print("You murmur the word home. A tingling sensation envelops your body. You black out for a second ... when you come to, you see you are somewhere else!")
+    if (vCurrentRoom == 90) { //05b3
+      vCurrentScore += 3
+      new.room(107)
+      goto(l1476)
+    }
+    new.room(106)
+  }
+}
+l1476:
+if ((has(i64) || has(i65))) { //05c4
+  if (said("open", "bottle")) { //05ce
+    print("The glass bottle is already open.")
+  }
+}
+if (has(i64) && said("acquire", "cloth")) { //05da
+  print("You pull a large piece of cloth out of the bottle.")
+  get(i65)
+  vCurrentScore += 2
+  get(i73)
+  drop(i64)
+}
+if (has(i79) && said("consume", "cube")) { //05f1
+  print("After swallowing the magic sugar cube, you get a feeling of invincibility.")
+  drop(i79)
+  if (!f157) { //0601
+    vCurrentScore += 1
+    set(f157)
+  }
+  v54 = 0
+  v66 = 75
+}
+if (said("light", "candle")) { //0613
+  if (f106) { //061d
+    print("The candle is already lit.")
+    goto(l1615)
+  }
+  if (!(has(i78))) { //0628
+    print("You are not carrying it.")
+    goto(l1615)
+  }
+  if (vCurrentRoom != 60 && vCurrentRoom != 61 && vCurrentRoom != 63 && vCurrentRoom != 74) { //0634
+    print("There is no way for you to light the candle.")
+    goto(l1615)
+  }
+  reset(fSaidAccepted)
+}
+l1615:
+if (f106 && has(i78) && said("blow", "candle")) { //064f
+  print("You pucker up your lips and blow out the candle.")
+  reset(f106)
+}
+if (has(i56) && said("put on", "diamond and sapphire tiara")) { //0661
+  print("The tiara would better fit a daintier head than yours.")
+}
+if (has(i66) && said("consume", "ham")) { //066f
+  print("Mmmmmm! The smoked ham was delicious! It sure hit the spot.")
+  drop(i66)
+}
+if ((said("look in", "basket") || said("open", "basket"))) { //067f
+  if (has(i63)) { //0691
+    print("You look in the basket of goodies and see many good things to eat: cookies, fruit, crackers, and sandwiches.")
+    goto(l1705)
+  }
+  if (has(i62)) { //069c
+    print("The basket of goodies is empty because you ate all of it.")
+    goto(l1705)
+  }
+  reset(fSaidAccepted)
+}
+l1705:
+if (has(i55) && said("put on", "ring")) { //06a9
+  if (!f68) { //06b5
+    if (!f160) { //06bc
+      if (f70) { //06c3
+        set(f160)
+        vCurrentScore += 3
+      }
+    }
+    print("You are now wearing the beautiful ruby ring.")
+    set(f68)
+    goto(l1751)
+  }
+  print("You're already wearing it.")
+}
+l1751:
+if (f68 && said("remove", "ring")) { //06d7
+  reset(f68)
+  print("OK.")
+}
+if (has(i53) && said("put on", "bracelet")) { //06e7
+  print("The glittering bracelet is too small for your wrist.")
+}
+if (has(i57) && said("put on", "diamond and sapphire necklace")) { //06f5
+  print("You try to place it around your neck, but it doesn't fit.")
+}
+if (has(i72)) { //0703
+  if (said("look in", "lamp")) { //0709
+    print("The old oil lamp is empty inside.")
+    goto(l1828)
+  }
+  if (said("light", "lamp")) { //0718
+    print("The oil lamp is empty. You cannot light it.")
+  }
+}
+l1828:
+if (!(v88 > 0) && !f151 && vCurrentRoom < 50 && !f179 && !f119 && !f180 && !f125 && !f176 && !fEgoOnWater && !f92 && !f148 && f55 && has(i76) && !(v95 > 0) && (said("get on", "carpet") || said("fly", "carpet"))) { //0724
+  set.priority(o0,15)
+  set(f147)
+  set.view(o0,98)
+  v94 = 2
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  ignore.horizon(o0)
+  get.posn(o0,v89,v90)
+  v90 = 30
+  set(f148)
+  v94 = 0
+  move.obj(o0,v89,v90,94,f131)
+  set(f92)
+  vCurrentScore += 4
+  set(f151)
+  reset(f127)
+  reset(f132)
+  reset(f128)
+}
+if (vCurrentRoom < 50 && vCurrentRoom != 18 && has(i76) && said("sit", "carpet")) { //0792
+  print("If you wish to ride on the magic carpet, then just say so.")
+}
+if (has(i77) && said("put on", "bridle")) { //07a7
+  print("You put the bridle over your head. Nothing happens. Don't you feel silly?")
+}
+if (has(i70) && said("open", "bird cage")) { //07b5
+  print("You open the pretty birdcage and the nightingale swoops out. The bird is gone. You have nothing but an empty birdcage.")
+  drop(i70)
+  vCurrentScore -= 2
+  get(i71)
+}
+if (has(i68) && said("put on", "black cape")) { //07ca
+  if (!f70) { //07d6
+    print("With a flourish, you fling the black cloak around your neck and fasten it.")
+    if (!f160) { //07df
+      if (f68) { //07e6
+        set(f160)
+        vCurrentScore += 3
+      }
+    }
+    set(f70)
+    goto(l2040)
+  }
+  print("You're already wearing it.")
+}
+l2040:
+if (f70 && said("remove", "black cape")) { //07f8
+  print("OK.")
+  reset(f70)
+}
+if (has(i69) && said("put on", "cross")) { //0808
+  if (!f69) { //0814
+    print("You place the silver cross and chain around your neck and wear it as a necklace.")
+    if (!f159) { //081d
+      vCurrentScore += 2
+      set(f159)
+    }
+    set(f69)
+    goto(l2096)
+  }
+  print("You're already wearing it.")
+}
+l2096:
+if (f69 && said("remove", "cross")) { //0830
+  reset(f69)
+  print("OK.")
+}
+if (has(i67) && (said("consume", "broth") || said("drink", "broth"))) { //0840
+  print("Hungrily, you eat the tasty chicken soup. Aaaaahhhh! You feel very satisfied. You throw away the useless empty pot.")
+  drop(i67)
+}
+if (has(i58) && said("put on", "earrings")) { //0858
+  print("The earrings were made for more delicate ears than yours.")
+}
+if ((said("examine", "anyword") || said("examine", "anyword", "anyword"))) { //0866
+  reset(fSaidAccepted)
+  if (f162) { //087c
+    goto(l2901)
+    goto(l2206)
+  }
+  if (vCurrentRoom == 67 && v92 != 0 && v92 != 2 && v92 != 4) { //0888
+    goto(l2901)
+  }
+l2206:
+  goto(l2212)
+}
+goto(l2901)
+l2212:
+if (said("examine", "boulder") && vCurrentRoom != 15 && vCurrentRoom != 13 && vCurrentRoom != 58 && vCurrentRoom != 75 && vCurrentRoom != 80 && vCurrentRoom != 85 && (vCurrentRoom < 77 || vCurrentRoom > 93)) { //08a4
+  print("The rocks are the usual sort of rocks, nothing special.")
+}
+if (has(i81) && (said("examine", "amulet") || said("read", "amulet"))) { //08d0
+  show.obj(113)
+}
+if (has(i64) && (said("examine", "bottle") || said("look in", "bottle"))) { //08e6
+  show.obj(123)
+}
+if (has(i65) && (said("examine", "bottle") || said("look in", "bottle"))) { //08fc
+  show.obj(153)
+}
+if (has(i73) && said("examine", "cloth")) { //0912
+  show.obj(154)
+}
+if (has(i79) && said("examine", "cube")) { //0920
+  show.obj(150)
+}
+if (has(i61) && has(i83)) { //092e
+  if (said("examine", "key")) { //0936
+    print("You'll have to specify which key you wish to look at.")
+  }
+}
+if (has(i61)) { //0942
+  if ((said("examine", "gold", "key") || said("examine", "key"))) { //0948
+    show.obj(144)
+  }
+}
+if (has(i83)) { //095e
+  if ((said("examine", "silver", "key") || said("examine", "key"))) { //0964
+    show.obj(143)
+  }
+}
+if (has(i78) && said("examine", "candle")) { //097a
+  if (f106) { //0986
+    show.obj(126)
+    goto(l2451)
+  }
+  show.obj(165)
+}
+l2451:
+if (has(i56) && said("examine", "diamond and sapphire tiara")) { //0993
+  show.obj(129)
+}
+if (has(i66) && said("examine", "ham")) { //09a1
+  show.obj(128)
+}
+if (has(i74) && said("examine", "cushion")) { //09af
+  show.obj(155)
+}
+if (has(i52) && said("examine", "bouquet")) { //09bd
+  show.obj(146)
+}
+if (has(i63) && said("examine", "basket")) { //09cb
+  show.obj(152)
+}
+if (has(i62) && said("examine", "basket")) { //09d9
+  show.obj(140)
+}
+if (has(i55) && said("examine", "ring")) { //09e7
+  show.obj(147)
+}
+if (has(i82) && vCurrentRoom != 51 && said("examine", "clam")) { //09f5
+  show.obj(137)
+}
+if (has(i53) && said("examine", "bracelet")) { //0a07
+  show.obj(136)
+}
+if (has(i51) && said("examine", "rusty trident")) { //0a15
+  show.obj(120)
+}
+if (has(i57) && said("examine", "diamond and sapphire necklace")) { //0a23
+  show.obj(158)
+}
+if (has(i60) && said("examine", "hammer")) { //0a31
+  show.obj(121)
+}
+if (has(i72) && said("examine", "lamp")) { //0a3f
+  show.obj(135)
+}
+if (vCurrentRoom != 70 && has(i76) && said("examine", "carpet")) { //0a4d
+  show.obj(125)
+}
+if (has(i50) && said("examine", "knife")) { //0a5f
+  show.obj(142)
+}
+if (has(i77) && said("examine", "bridle")) { //0a6d
+  show.obj(130)
+}
+if ((said("examine", "bird") || said("examine", "bird cage"))) { //0a7b
+  if (has(i71)) { //0a8d
+    if (said("examine", "bird cage")) { //0a93
+      show.obj(141)
+      goto(l2724)
+    }
+    reset(fSaidAccepted)
+l2724:
+    goto(l2766)
+  }
+  if (has(i70)) { //0aa7
+    if (v65 == 2) { //0aad
+      print("The cage is covered.")
+      goto(l2761)
+    }
+    if (!f149) { //0ab9
+      load.sound(22)
+      set(f149)
+    }
+    sound(22,f169)
+    show.obj(131)
+l2761:
+    goto(l2766)
+  }
+  reset(fSaidAccepted)
+}
+l2766:
+if (has(i68) && said("examine", "black cape")) { //0ace
+  show.obj(148)
+}
+if (has(i69) && said("examine", "cross")) { //0adc
+  show.obj(157)
+}
+if (has(i67)) { //0aea
+  if (said("examine", "broth")) { //0af0
+    show.obj(132)
+    goto(l2831)
+  }
+  if (said("examine", "cauldron") && vCurrentRoom != 69) { //0aff
+    show.obj(132)
+  }
+}
+l2831:
+if (has(i58) && said("examine", "earrings")) { //0b0f
+  show.obj(139)
+}
+if (has(i75) && said("examine", "fishing net")) { //0b1d
+  show.obj(133)
+}
+if (has(i80) && said("examine", "dolphin")) { //0b2b
+  show.obj(50)
+}
+if (has(i59) && said("examine", "brooch")) { //0b39
+  show.obj(138)
+}
+if (has(i54) && said("examine", "pole")) { //0b47
+  show.obj(149)
+}
+l2901:
+if ((said("examine", "knife") || said("examine", "rusty trident") || said("examine", "bouquet") || said("examine", "bracelet") || said("examine", "pole") || said("examine", "ring") || said("examine", "diamond and sapphire tiara") || said("examine", "diamond and sapphire necklace") || said("examine", "earrings") || said("examine", "brooch") || said("examine", "hammer") || said("examine", "key") || said("examine", "gold") || said("examine", "silver") || said("examine", "basket") || said("examine", "bottle") || said("examine", "ham") || said("examine", "broth") || said("examine", "black cape") || said("examine", "cross") || said("examine", "bird cage") || said("examine", "lamp") || said("examine", "cloth") || said("examine", "cushion") || said("examine", "fishing net") || said("examine", "carpet") || said("examine", "bridle") || said("examine", "candle") || said("examine", "cube") || said("examine", "dolphin") || said("examine", "amulet") || said("examine", "clam") || said("examine", "bird"))) { //0b55
+  print("You are not carrying it.")
+  goto(l3134)
+}
+if (!(vUnknownWord > 0) && (said("examine", "anyword") || said("look in", "anyword"))) { //0c26
+  print("You see nothing special.")
+}
+l3134:
+if (said("acquire", "anyword") && !(said("acquire"))) { //0c3e
+  print("You cannot get the %w2. At least not now!")
+}
+if (said("drop", "anyword")) { //0c4f
+  print("There is no reason to do that.")
+}
+if (said("consume", "anyword")) { //0c5b
+  if ((said("consume", "count dracula") || said("consume", "bitch"))) { //0c65
+    print("You can't do that.")
+    goto(l3221)
+  }
+  if ((said("consume", "cube") || said("consume", "basket"))) { //0c7c
+    print("You are not carrying it.")
+    goto(l3221)
+  }
+  print("The %w2 doesn't appeal just now.")
+}
+l3221:
+if (said("acquire")) { //0c95
+  print("Just say what you wish to get.")
+}
+if (said("climb", "anyword")) { //0c9f
+  print("No. That would just waste time.")
+}
+if (said("enter", "anyword")) { //0cab
+  print("You can try to go there.")
+}
+if (said("feed", "anyword")) { //0cb7
+  print("That would be inappropriate at this time.")
+}
+if (said("hello", "anyword")) { //0cc3
+  print("Hello.")
+}
+if ((said("say", "hello") || said("hello"))) { //0ccf
+  print("There is nobody here but you!")
+  goto(l3312)
+}
+if (said("say", "anyword")) { //0ce4
+  print("OK. %w2.")
+}
+l3312:
+if (said("find", "count dracula")) { //0cf0
+  print("You will have to find him yourself.")
+  goto(l3354)
+}
+if (said("find", "bitch")) { //0cff
+  print("You will have to find her yourself.")
+  goto(l3354)
+}
+if (said("find", "anyword")) { //0d0e
+  print("You will have to find it yourself.")
+}
+l3354:
+if (said("get on", "anyword")) { //0d1a
+  print("You're not able to ride the %w2 at this time.")
+}
+if (said("speak", "anyword")) { //0d26
+  print("You get no response from the %w2.")
+}
+if (fEnteredCommand && !fSaidAccepted && vUnknownWord > 0) { //0d32
+  reset(fEnteredCommand)
+  if (vUnknownWord == 1) { //0d40
+    print("I don't understand \"%w1\"")
+  }
+  if (vUnknownWord == 2) { //0d49
+    print("I don't understand \"%w2\"")
+  }
+  if (vUnknownWord == 3) { //0d52
+    print("I don't understand \"%w3\"")
+  }
+}
+if (fEnteredCommand && !fSaidAccepted) { //0d5b
+  random(139,141,v94)
+  print(v94)
+  reset(fEnteredCommand)
+}
+l3436:
+if (f148) { //0d6c
+  ignore.objs(o0)
+}
+return()

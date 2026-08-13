@@ -1,4 +1,74 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(0)
+  load.logic(166)
+  load.sound(3)
+  load.view(134)
+  if (vCurrentRoom == v92) { //0010
+    load.view(51)
+    load.view(52)
+    load.view(53)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(166)
+  animate.obj(o2)
+  set.view(o2,134)
+  set.priority(o2,9)
+  position(o2,44,25)
+  draw(o2)
+  start.cycling(o2)
+  if (vPrevRoom == 64) { //0033
+    position(o0,125,123)
+    goto(l92)
+  }
+  if (vPrevRoom == 60) { //0041
+    position(o0,23,123)
+    goto(l92)
+  }
+  position(o0,73,163)
+  set.loop(o0,3)
+  set.cel(o0,0)
+  sound(3,f169)
+l92:
+  draw(o0)
+  show.pic()
+}
+if (!f31) { //005f
+  position(o2,44,25)
+  set(f31)
+  goto(l117)
+}
+position(o2,108,25)
+reset(f31)
+l117:
+if (!fEnteredCommand) { //0075
+  goto(l171)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //007f
+  print("This castle is really creepy! Cracks cover the walls, cobwebs fill the corners. A chilly draft runs through the halls.")
+}
+if ((said("examine", "stairs") || said("examine", "ramp"))) { //0097
+  print("Through the archway to the west, you see a ramp that spirals up and out of sight.")
+}
+l171:
+if (v92 != 5 && (fTriggerLine || vWhichEgoBorder == 3)) { //00ab
+  if ((v92 == 1 || v92 == 3)) { //00ba
+    v92 = 0
+  }
+  stop.sound()
+  if (vWhichEgoBorder == 3) { //00ca
+    new.room(18)
+    goto(l239)
+  }
+  get.posn(o0,v94,v106)
+  if (v94 > 80) { //00da
+    new.room(64)
+    goto(l239)
+  }
+  if (v94 < 80) { //00e6
+    new.room(60)
+  }
+}
+l239:
+call(166)
+return()

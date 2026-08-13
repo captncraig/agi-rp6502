@@ -1,4 +1,50 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(0)
+  ignore.horizon(o0)
+  load.logic(169)
+  load.logic(170)
+  call(169)
+  call(170)
+}
+if (fTriggerLine && !f94) { //0014
+  v63 = 1
+  set(f94)
+  get.posn(o0,v67,v68)
+  if (v68 < 51) { //0026
+    if (v67 > 147) { //002d
+      v67 = 141
+      goto(l61)
+    }
+    v67 -= 6
+l61:
+    v68 -= 8
+    goto(l134)
+  }
+  if (v68 < 61) { //0043
+    v67 -= 15
+    v68 -= 2
+    goto(l134)
+  }
+  if (v68 < 109) { //0053
+    v67 -= 13
+    v68 += 6
+    goto(l134)
+  }
+  if (v68 < 148) { //0063
+    v67 -= 20
+    v68 += 6
+    goto(l134)
+  }
+  v67 -= 17
+  if (v68 < 162) { //0076
+    v68 += 6
+    goto(l134)
+  }
+  v68 = 167
+}
+l134:
+if (!fNewRoom) { //0086
+  call(169)
+  call(170)
+}
+return()

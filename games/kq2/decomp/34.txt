@@ -1,4 +1,109 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(104)
+  load.view(97)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(158)
+  load.logic(101)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(101)
+  ignore.blocks(o0)
+  get.posn(o0,v105,v106)
+  if (v105 > 94 && v105 < 151 && vPrevRoom == 41) { //002c
+    v106 = 150
+    goto(l81)
+  }
+  if (v106 < 52 && (vPrevRoom == 33 || vPrevRoom == 35)) { //003f
+    v106 = 52
+  }
+l81:
+  position(o0,105,v106)
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater) { //0058
+  if ((posn(o0,106,67,136,112) || posn(o0,86,80,135,105) || posn(o0,70,46,97,64) || posn(o0,70,65,98,99) || posn(o0,35,92,67,103))) { //005f
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater) { //0087
+  get.posn(o0,v67,v68)
+  if (posn(o0,125,43,131,48)) { //0095
+    v67 = 106
+    v68 = 49
+    set(f116)
+  }
+  if (posn(o0,93,43,124,48)) { //00a7
+    v67 = 93
+    v68 = 55
+    set(f116)
+  }
+  if (posn(o0,67,45,92,52)) { //00b9
+    v67 = 67
+    v68 = 57
+    set(f116)
+  }
+  if (posn(o0,39,45,66,52)) { //00cb
+    v67 = 55
+    v68 = 56
+    set(f116)
+  }
+  if (posn(o0,39,53,57,61)) { //00dd
+    v67 = 39
+    v68 = 67
+    set(f116)
+  }
+  if (posn(o0,18,58,38,66)) { //00ef
+    v67 = 18
+    v68 = 71
+    set(f116)
+  }
+  if (posn(o0,0,59,17,67)) { //0101
+    v67 = 1
+    v68 = 71
+    set(f116)
+  }
+  if (posn(o0,98,53,108,65)) { //0113
+    v67 = 91
+    v68 = 70
+    set(f116)
+  }
+  if (posn(o0,109,49,126,54)) { //0125
+    v67 = 90
+    v68 = 55
+    set(f116)
+  }
+  if (posn(o0,0,91,159,127)) { //0137
+    if (posn(o0,5,91,159,127)) { //0141
+      v67 += 251
+    }
+    v68 += 248
+    set(f116)
+  }
+  if (posn(o0,131,53,146,74)) { //0153
+    v67 = 118
+    v68 = 70
+    set(f116)
+  }
+}
+if (vWhichEgoBorder == 1) { //0165
+  new.room(27)
+}
+if (vWhichEgoBorder == 2) { //016e
+  new.room(35)
+}
+if (vWhichEgoBorder == 4) { //0177
+  new.room(33)
+}
+if (vWhichEgoBorder == 3) { //0180
+  new.room(41)
+}
+call(151)
+call(158)
+call(101)
+return()

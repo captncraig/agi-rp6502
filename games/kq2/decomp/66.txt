@@ -1,5 +1,296 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   v84 = 4
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+  load.logic(166)
+  load.sound(23)
+  load.sound(29)
+  load.view(109)
+  load.view(99)
+  load.view(100)
+  if (v92 > 66) { //0017
+    load.view(51)
+    load.view(52)
+    load.view(53)
+    animate.obj(o3)
+    v84 = 1
+    goto(l59)
+  }
+  load.view(173)
+  animate.obj(o2)
+  v94 = 3
+  step.size(o2,v94)
+  object.on.water(o2)
+  set.view(o2,173)
+l59:
+  v33 = 95
+  load.pic(v33)
+  if (vPrevRoom == 65) { //0040
+    if (v60 > 0) { //0047
+      reset(f31)
+      load.view(91)
+      position(o0,45,32)
+      move.obj(o0,45,108,4,f30)
+      v84 = 1
+      goto(l102)
+    }
+    position(o0,73,37)
+l102:
+    goto(l109)
+  }
+  position(o0,11,150)
+l109:
+  if (f106) { //006d
+    v30 = 1
+    reset(f162)
+    load.view(8)
+    load.pic(vCurrentRoom)
+    draw.pic(vCurrentRoom)
+    discard.pic(vCurrentRoom)
+    goto(l157)
+  }
+  v30 = 0
+  set(f162)
+  v84 = 1
+  set.view(o0,99)
+  draw.pic(v33)
+  set.priority(o0,12)
+  if (v92 > 66) { //0093
+    set.priority(o3,4)
+  }
+l157:
+  draw(o0)
+  show.pic()
+}
+if (!f35 && f36 && (v60 > 0 || v31 > 0)) { //00a0
+  reset(f36)
+  sound(29,f31)
+}
+if (v84 == 2) { //00b6
+  random(0,255,v106)
+  if (v106 < 125) { //00c1
+    position(o2,36,132)
+    goto(l211)
+  }
+  position(o2,96,129)
+l211:
+  draw(o2)
+  ignore.objs(o2)
+  wander(o2)
+  v84 = 3
+  goto(l263)
+}
+random(0,255,v106)
+if (v84 == 4) { //00e3
+  if (v106 < 3) { //00ea
+    v84 = 2
+  }
+  goto(l263)
+}
+if (v84 == 3 && v106 < 15) { //00f7
+  move.obj(o2,81,159,0,f33)
+}
+l263:
+if (f33) { //0107
+  if (v84 == 5) { //010d
+    move.obj(o2,36,132,0,f33)
+    v84 = 6
+    goto(l358)
+  }
+  if (v84 == 7) { //0120
+    move.obj(o2,96,129,0,f33)
+    v84 = 6
+    goto(l358)
+  }
+  if (v84 == 6) { //0133
+    erase(o2)
+    observe.objs(o2)
+    reset(f33)
+    v84 = 4
+    goto(l358)
+  }
+  random(0,255,v106)
+  if (v106 < 125) { //014a
+    move.obj(o2,36,153,0,f33)
+    v84 = 5
+    goto(l358)
+  }
+  move.obj(o2,96,144,0,f33)
+  v84 = 7
+}
+l358:
+if (posn(o0,106,33,147,52)) { //0166
+  set.horizon(30)
+  goto(l375)
+}
+set.horizon(36)
+l375:
+if (!(v31 > 0)) { //0177
+  if ((posn(o0,93,56,98,68) || posn(o0,62,107,69,112) || posn(o0,72,137,78,143))) { //017f
+    if ((vEgoDir == 0 || vEgoDir == 1 || vEgoDir == 5)) { //0197
+      ignore.blocks(o0)
+      goto(l429)
+    }
+    observe.blocks(o0)
+l429:
+    goto(l582)
+  }
+  if (fTriggerLine) { //01b0
+    ignore.blocks(o0)
+    v31 = 1
+    get.posn(o0,v105,v106)
+    if (posn(o0,64,35,92,65)) { //01bf
+      v106 = 92
+      v106 -= v105
+      v106 += 79
+      goto(l536)
+    }
+    if (posn(o0,85,65,124,97)) { //01d5
+      if (v105 > 112) { //01df
+        v105 = 112
+      }
+      v106 = 135
+      set.priority(o0,15)
+      goto(l536)
+    }
+    if (posn(o0,70,88,84,110)) { //01f2
+      v106 = v105
+      v106 -= 70
+      v106 += 125
+      goto(l536)
+    }
+    if (posn(o0,25,109,70,138)) { //0208
+      v106 = 146
+      set.priority(o0,15)
+    }
+l536:
+    if (f106) { //0218
+      set.view(o0,8)
+      v94 = 2
+      cycle.time(o0,v94)
+      v94 = 3
+      step.size(o0,v94)
+      goto(l566)
+    }
+    set.view(o0,100)
+    v60 = 0
+l566:
+    sound(29,f31)
+    move.obj(o0,v105,v106,82,f30)
+    set(f92)
+    goto(l582)
+  }
+  observe.blocks(o0)
+}
+l582:
+if (f30) { //0246
+  reset(f30)
+  stop.motion(o0)
+  if (v60 > 0) { //0250
+    if (!f106) { //0257
+      erase(o0)
+      print("Whoops! You slipped and fell down the narrow stairs in the darkness. What a way to die! Next time, use a light.")
+      goto(l619)
+    }
+    stop.sound()
+    set.view(o0,91)
+    print("You slip from the narrow stairs and fall to your death on the rocks below.")
+l619:
+    set(f50)
+    goto(l653)
+  }
+  v32 = 50
+  if (f106) { //0273
+    set.view(o0,109)
+    sound(23,f34)
+    set(f35)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 1
+    step.size(o0,v94)
+  }
+}
+l653:
+v32--
+if (v32 == 1) { //028f
+  stop.sound()
+  reset(f35)
+  reset(f31)
+  v67 = 4
+  v68 = 0
+  repositon(o0,v67,v68)
+  observe.blocks(o0)
+  if (f106) { //02a7
+    set.view(o0,0)
+    v94 = 1
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    goto(l712)
+  }
+  set.view(o0,99)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+l712:
+  set.loop(o0,2)
+  start.motion(o0)
+  reset(f92)
+  v31 = 0
+  release.priority(o0)
+}
+if (!f106) { //02d4
+  if (v30 == 1) { //02db
+    v30 = 2
+    set(f162)
+    if (v92 == 3) { //02e7
+      erase(o3)
+    }
+    draw.pic(v33)
+    show.pic()
+    set.priority(o0,12)
+    set.view(o0,99)
+    v94 = 1
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    reset(f33)
+    v84 = 1
+    if (v92 == 3) { //0307
+      set.priority(o3,4)
+      draw(o3)
+    }
+    goto(l793)
+  }
+  goto(l910)
+}
+l793:
+if (!fEnteredCommand) { //0319
+  goto(l910)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room") || said("examine", "stairs"))) { //0323
+  print("Narrow, slippery stairs descend into this empty room. Your nose detects a foul odor coming from a doorway to the west.")
+  if (v84 > 4 && v84 != 1) { //0341
+    print("A rat darts across the cold stone floor and into a crack in the wall.")
+  }
+}
+if (said("examine", "rat")) { //034e
+  if (v84 > 4 && v84 != 1) { //0358
+    print("The rat darts nervously across the floor.")
+    goto(l874)
+  }
+  print("You don't see a rat, but you hear scurrying sounds coming from the cracks in the wall.")
+}
+l874:
+if ((said("acquire", "rat") || said("capture", "rat"))) { //036a
+  if (v84 > 4 && v84 != 1) { //037c
+    print("The rat moves too quickly for you ever to catch it.")
+    goto(l910)
+  }
+  print("You don't see a rat, but you hear scurrying sounds coming from the cracks in the wall.")
+}
+l910:
+if (posn(o0,9,137,9,152) && v92 < 66 && v92 != 3) { //038e
+  new.room(67)
+}
+if (vWhichEgoBorder == 1) { //03a1
+  new.room(65)
+}
+call(166)
+return()

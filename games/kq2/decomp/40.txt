@@ -1,4 +1,60 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((has(i72) || has(i76))) { //0008
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(162)
+  load.pic(vCurrentRoom)
+  call(162)
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "tree")) { //0023
+  print("There is a sizable hole in one of the pine trees.")
+}
+if ((said("examine", "hole") || said("look in", "hole"))) { //002f
+  if (posn(o0,71,74,95,104)) { //0041
+    if (!f84) { //004b
+      print("When you peek into the hole of the pine tree, you see a mallet lying there.")
+      goto(l89)
+    }
+    print("When you peer into the hole of the old pine tree, you see that it is empty.")
+l89:
+    goto(l94)
+  }
+  print("You cannot see into the hole from here.")
+}
+l94:
+if (said("acquire", "hammer")) { //005e
+  if (!f84) { //0068
+    if (posn(o0,72,36,96,108)) { //006f
+      print("You pick up the mallet and carry it with you.")
+      vCurrentScore += 2
+      get(i60)
+      set(f84)
+      goto(l135)
+    }
+    print("You cannot reach it from here.")
+l135:
+    goto(l140)
+  }
+  print("You have already taken the mallet from the hole in the tree.")
+}
+l140:
+if (vWhichEgoBorder == 1) { //008c
+  new.room(33)
+}
+if (vWhichEgoBorder == 2) { //0095
+  new.room(41)
+}
+if (vWhichEgoBorder == 4) { //009e
+  new.room(39)
+}
+if (vWhichEgoBorder == 3) { //00a7
+  new.room(47)
+}
+call(151)
+call(162)
+return()

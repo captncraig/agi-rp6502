@@ -1,4 +1,98 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+if (fNewRoom) { //0002
+  prevent.input()
+  set(f33)
+  v59 = 75
+  load.sound(1)
+  load.sound(33)
+  load.view(75)
+  load.view(105)
+  load.view(106)
+  load.view(180)
+  load.view(181)
+  load.view(182)
+  load.view(183)
+  load.view(184)
+  load.view(185)
+  load.view(186)
+  load.view(117)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  stop.cycling(o3)
+  stop.cycling(o2)
+  ignore.objs(o0)
+  ignore.objs(o2)
+  release.priority(o0)
+  set.view(o4,117)
+  set.view(o3,75)
+  set.view(o2,106)
+  set.view(o0,105)
+  v94 = 2
+  cycle.time(o0,v94)
+  position(o2,74,150)
+  position(o0,80,90)
+  position(o3,72,79)
+  position(o4,67,125)
+  set.priority(o4,15)
+  v94 = 71
+  load.pic(v94)
+  draw.pic(v94)
+  discard.pic(v94)
+  sound(1,f169)
+  add.to.pic(180,0,0,95,95,10,0)
+  add.to.pic(181,0,0,39,107,11,0)
+  add.to.pic(186,0,0,26,119,12,0)
+  add.to.pic(184,0,0,102,119,13,0)
+  add.to.pic(183,0,0,26,131,15,0)
+  add.to.pic(185,0,0,37,95,13,0)
+  add.to.pic(182,0,0,106,107,11,0)
+  set.loop(o0,1)
+  set.loop(o2,1)
+  set.loop(o4,0)
+  draw(o0)
+  draw(o2)
+  draw(o3)
+  show.pic()
+  move.obj(o2,72,79,0,f169)
+  move.obj(o2,74,150,0,f169)
+  stop.motion(o0)
+  stop.cycling(o0)
+  reset(f92)
+  program.control()
+  print("Congratulations, King Graham! You have won the hand of beautiful Valanice. May you two live happily ever after!")
+}
+if (!f34) { //00c6
+  set.loop(o0,1)
+  move.obj(o0,80,90,0,f169)
+}
+if (f31) { //00d6
+  reset(f31)
+  v58 = 175
+}
+if (v58 == 50) { //00e1
+  print("The monk declares you man and wife.")
+}
+v58--
+if (v58 == 1) { //00ec
+  set.loop(o0,0)
+  set.loop(o2,0)
+  move.obj(o2,74,166,0,f32)
+  move.obj(o0,80,166,0,f169)
+  set(f34)
+}
+v59--
+if (v59 == 1) { //0109
+  end.of.loop(o3,f169)
+  move.obj(o2,74,90,0,f31)
+}
+get.posn(o0,v105,v106)
+if (v106 == 100) { //011d
+  draw(o4)
+}
+if (v106 > 99 && f33) { //0126
+  sound(33,f33)
+}
+if (f32) { //0132
+  new.room(106)
+}
+return()

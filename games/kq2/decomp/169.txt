@@ -1,4 +1,91 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(23)
+  load.view(108)
+  load.view(109)
+  load.view(104)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vCurrentRoom == 87 && vPrevRoom == 82) { //0014
+    position(o0,118,38)
+  }
+  if (vCurrentRoom == 87 && vPrevRoom == 88 && posn(o0,0,140,159,167)) { //0022
+    position(o0,152,139)
+  }
+  if (vCurrentRoom == 82 && vPrevRoom == 77 && posn(o0,0,0,89,167)) { //0036
+    position(o0,90,38)
+  }
+  if (vCurrentRoom == 79 && vPrevRoom == 78 && posn(o0,0,0,159,61)) { //004a
+    position(o0,1,62)
+  }
+  draw(o0)
+  v94 = vCurrentRoom
+  v94--
+  if (v94 == vPrevRoom) { //0065
+    program.control()
+    v63 = 4
+    move.obj(o0,160,108,2,f169)
+    start.cycling(o0)
+    goto(l126)
+  }
+  v63 = 0
+l126:
+  show.pic()
+  return()
+}
+if (fTriggerLine) { //0080
+  if (!f33 && !f31 && v63 == 4) { //0086
+    set.view(o0,108)
+    v94 = 3
+    step.size(o0,v94)
+    v94 = 2
+    cycle.time(o0,v94)
+    draw(o0)
+    move.obj(o0,120,100,2,f31)
+    set(f33)
+  }
+}
+if (f33 && f31) { //00ac
+  reset(f31)
+  set.view(o0,109)
+  v108 = 1
+  step.size(o0,v108)
+  v94 = 2
+  cycle.time(o0,v94)
+  set(f34)
+  start.cycling(o0)
+  set(f92)
+  v58 = 30
+}
+if (f34 && v58 > 0) { //00ce
+  reset(f34)
+  sound(23,f34)
+}
+v58--
+if (v58 == 1) { //00de
+  set.view(o0,0)
+  v94 = 1
+  step.size(o0,v94)
+  cycle.time(o0,v94)
+  v63 = 0
+  player.control()
+  start.motion(o0)
+  reset(f92)
+  reset(f94)
+  reset(f33)
+}
+if (vWhichEgoBorder == 1) { //00fd
+  v94 = vCurrentRoom
+  v94 -= 5
+  new.room(v94)
+}
+if (vWhichEgoBorder == 3) { //010c
+  v94 = vCurrentRoom
+  v94 += 5
+  new.room(v94)
+}
+if (vWhichEgoBorder == 2) { //011b
+  v94 = vCurrentRoom
+  v94 += 1
+  new.room(v94)
+}
+return()

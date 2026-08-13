@@ -1,4 +1,116 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(0)
+  load.logic(166)
+  load.view(134)
+  load.view(56)
+  if (vCurrentRoom == v92) { //0010
+    load.view(51)
+    load.view(52)
+    load.view(53)
+  }
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(166)
+  if (!f140) { //0023
+    animate.obj(o2)
+    set.view(o2,56)
+    set.priority(o2,12)
+    position(o2,65,98)
+    stop.cycling(o2)
+    draw(o2)
+  }
+  animate.obj(o3)
+  set.view(o3,134)
+  set.priority(o3,9)
+  position(o3,63,26)
+  draw(o3)
+  start.cycling(o3)
+  if (vPrevRoom == 65) { //004a
+    position(o0,128,119)
+    goto(l112)
+  }
+  if (vPrevRoom == 61) { //0058
+    position(o0,25,119)
+    goto(l112)
+  }
+  position(o0,80,85)
+  set.loop(o0,2)
+  set.cel(o0,0)
+l112:
+  ignore.objs(o0)
+  draw(o0)
+  show.pic()
+}
+if (!f31) { //0075
+  position(o3,63,26)
+  set(f31)
+  goto(l139)
+}
+position(o3,91,26)
+reset(f31)
+l139:
+if (!fEnteredCommand) { //008b
+  goto(l316)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //0095
+  print("This is the dingy dining room of the drafty old castle. Ants crawl among old bits of food. Dust covers a dilapidated table top.")
+  if (!f140) { //00ad
+    print("A delicious-looking smoked ham is on the table.")
+  }
+}
+if (said("examine", "stairs")) { //00b6
+  print("The stairway appears to lead down into the dark depths of the castle.")
+}
+if (said("examine", "chair")) { //00c2
+  print("The chairs are old and worn.")
+}
+if (said("examine", "table")) { //00ce
+  print("The table top is completely covered with dust. Scratches scar the legs of the table. Chairs with torn padding accompany it.")
+  if (!f140) { //00da
+    print("A delicious-looking smoked ham is on the table.")
+  }
+}
+if ((said("sit", "table") || said("sit", "chair") || said("sit") || said("sit", "chair"))) { //00e3
+  print("The worn chairs look uninviting to sit upon.")
+}
+if (said("acquire", "ham")) { //0101
+  if (!f140) { //010b
+    if (posn(o0,50,102,108,138)) { //0112
+      print("OK.")
+      get(i66)
+      set(f140)
+      erase(o2)
+      vCurrentScore += 2
+      goto(l300)
+    }
+    print("To do that, you will need to get closer.")
+l300:
+    goto(l316)
+  }
+  if (has(i66)) { //012f
+    print("You don't see one here.")
+    goto(l316)
+  }
+  print("You already have it.")
+}
+l316:
+if (fTriggerLine && v92 != 5) { //013c
+  get.posn(o0,v105,v106)
+  if ((v92 == 1 || v92 == 3)) { //014a
+    v92 = 0
+  }
+  if (v106 < 100) { //0159
+    new.room(63)
+    goto(l378)
+  }
+  if (v105 > 80) { //0165
+    new.room(65)
+    goto(l378)
+  }
+  if (v105 < 80) { //0171
+    new.room(61)
+  }
+}
+l378:
+call(166)
+return()

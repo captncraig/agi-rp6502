@@ -1,4 +1,36 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(151)
+  load.logic(162)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.pic(vCurrentRoom)
+  call(162)
+  draw.pic(vCurrentRoom)
+  draw(o0)
+  show.pic()
+}
+if (said("look in", "branch")) { //0023
+  if (posn(o0,0,118,96,167)) { //002d
+    print("You look in the old log but see nothing special.")
+    goto(l62)
+  }
+  print("You are too far away.")
+}
+l62:
+if (vWhichEgoBorder == 1) { //003e
+  new.room(32)
+}
+if (vWhichEgoBorder == 2) { //0047
+  new.room(40)
+}
+if (vWhichEgoBorder == 4) { //0050
+  new.room(38)
+}
+if (vWhichEgoBorder == 3) { //0059
+  new.room(46)
+}
+call(151)
+call(162)
+return()

@@ -1,5 +1,59 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f94)
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+  load.view(14)
+  load.view(124)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o4)
+  set.view(o4,124)
+  set.priority(o4,11)
+  v94 = 2
+  cycle.time(o4,v94)
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  set.view(o0,14)
+  if (v64 == 4) { //0029
+    position(o0,120,100)
+    move.obj(o0,0,100,0,f31)
+    goto(l71)
+  }
+  position(o0,0,100)
+  move.obj(o0,130,100,0,f31)
+l71:
+  draw(o0)
+l73:
+  random(0,255,v32)
+  if (v32 > 100) { //004d
+    goto(l73)
+  }
+l87:
+  random(0,255,v33)
+  if ((v33 > 100 || v33 < 60)) { //005b
+    goto(l87)
+  }
+  position(o4,32,v33)
+  draw(o4)
+  wander(o4)
+  show.pic()
+}
+if (f31) { //0073
+  if (v64 == 4) { //0079
+    new.room(51)
+    goto(l135)
+  }
+  new.room(53)
+}
+l135:
+if ((said("examine", "lake") || said("examine") || said("look in", "lake"))) { //0087
+  print("The bottom of the sea is teeming with fish and plant life. King Neptune rules this mighty underwater empire.")
+}
+if (said("examine", "dolphin")) { //009f
+  print("You can see many beautiful creatures at the bottom of the sea.")
+}
+if ((said("acquire", "dolphin") || said("capture", "dolphin"))) { //00ab
+  print("You are not able to catch fish while riding a magic seahorse. Just enjoy the beauty of the underwater world.")
+}
+if (said("get off", "magic seahorse")) { //00bf
+  print("The magic seahorse helps you breathe underwater. Without it, you would die.")
+}
+return()

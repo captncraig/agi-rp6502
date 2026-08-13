@@ -1,4 +1,69 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((has(i72) || has(i76))) { //0008
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(160)
+  load.logic(163)
+  load.logic(151)
+  load.pic(vCurrentRoom)
+  call(160)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 20) { //0022
+    get.posn(o0,v105,v106)
+    if (v106 > 72 && v106 < 120) { //002d
+      v106 = 72
+      position(o0,105,v106)
+    }
+  }
+  if (vPrevRoom == 14) { //003e
+    get.posn(o0,v105,v106)
+    if (v105 > 84) { //0049
+      v105 = 84
+      v106 = 37
+      position(o0,105,v106)
+    }
+  }
+  if (vPrevRoom == 28) { //005a
+    get.posn(o0,v105,v106)
+    if (v105 > 85) { //0065
+      v105 = 130
+      position(o0,105,v106)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "antique shop")) { //0076
+  print("You are looking at the back of a quaint little antique shop. It is yellow with a bright red roof. There are lovely curtains in the window.")
+}
+if ((said("examine", "window") || said("look in", "window"))) { //0082
+  if (posn(o0,9,119,27,146)) { //0094
+    print("You can see inside when you look through the window. It is hard to tell details, though.")
+    goto(l165)
+  }
+  print("You are too far away.")
+}
+l165:
+if (said("break", "window")) { //00a5
+  print("You could get caught for breaking and entering. That would not be wise.")
+}
+if (said("open", "window")) { //00b1
+  print("The window does not open.")
+}
+if (vWhichEgoBorder == 1) { //00bd
+  new.room(14)
+}
+if (vWhichEgoBorder == 2) { //00c6
+  new.room(15)
+}
+if (vWhichEgoBorder == 4) { //00cf
+  new.room(20)
+}
+if (vWhichEgoBorder == 3) { //00d8
+  new.room(28)
+}
+call(160)
+call(163)
+call(151)
+return()

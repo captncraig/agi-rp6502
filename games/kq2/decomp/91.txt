@@ -1,4 +1,303 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(88)
+  load.view(89)
+  load.view(90)
+  load.view(177)
+  load.view(188)
+  load.view(8)
+  load.view(87)
+  load.sound(31)
+  load.sound(21)
+  load.sound(29)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,87)
+  v94 = 3
+  cycle.time(o3,v94)
+  set.priority(o3,5)
+  ignore.blocks(o3)
+  position(o3,80,120)
+  set.cel(o3,0)
+  if (vPrevRoom == 90) { //0037
+    reverse.loop(o3,f169)
+    set.loop(o0,2)
+    position(o0,88,124)
+    move.obj(o0,88,124,0,f169)
+    goto(l96)
+  }
+  stop.cycling(o3)
+  position(o0,64,164)
+  set.loop(o0,3)
+  move.obj(o0,64,164,0,f169)
+l96:
+  draw(o3)
+  draw(o0)
+  animate.obj(o2)
+  if (v75 == 0 && !f37) { //0066
+    set.view(o2,88)
+    v94 = 3
+    cycle.time(o2,v94)
+    set(f35)
+    v34 = 16
+    goto(l158)
+  }
+  if (v75 == 2) { //0081
+    set.view(o2,188)
+    v94 = 6
+    cycle.time(o2,v94)
+    goto(l158)
+  }
+  if (v75 == 3) { //0094
+    set.view(o2,89)
+  }
+l158:
+  position(o2,88,142)
+  draw(o2)
+  ignore.objs(o2)
+  show.pic()
+}
+if (f172) { //00a7
+  set.cel(o2,0)
+  reset(f172)
+}
+get.posn(o0,v105,v106)
+if (v106 < 124) { //00b6
+  observe.objs(o0)
+  goto(l196)
+}
+ignore.objs(o0)
+l196:
+v34--
+if (v34 == 1) { //00c6
+  print("Be careful!!! There is a huge lion with dripping fangs at the top of the stairs. He has a hungry look in his eye!")
+}
+if (f32) { //00cf
+  print("CRUNCH! SNARL! CHOMP! Well, you made a nice meal for the hungry lion! SMACK! SLURP!")
+  stop.cycling(o0)
+  reset(f92)
+  v75 = 5
+  set(f50)
+}
+if (!f125) { //00e0
+  if (fTriggerLine && v75 < 4) { //00e7
+    stop.sound()
+    v74 = v105
+    v106 = 200
+    ignore.blocks(o0)
+    ignore.objs(o0)
+    set.priority(o0,11)
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+    set(f125)
+    vCycleTime = 2
+    v108 = 5
+    move.obj(o0,v105,v106,108,f169)
+    set(f92)
+    sound(29,f36)
+    goto(l308)
+  }
+  if (v75 == 0 && f35) { //0123
+    sound(31,f37)
+    reset(f35)
+    end.of.loop(o2,f172)
+  }
+l308:
+  goto(l314)
+}
+goto(l1240)
+l314:
+if (v75 == 0 && posn(o0,82,122,115,137)) { //013a
+  stop.motion(o0)
+  v75 = 4
+  set.view(o0,90)
+  v94 = 2
+  cycle.time(o0,v94)
+  get.posn(o0,v105,v106)
+  v67 = 83
+  v68 = 142
+  v67 -= v105
+  v68 -= v106
+  repositon(o0,v67,v68)
+  set(f92)
+  end.of.loop(o0,f32)
+  erase(o2)
+}
+if (f33) { //0170
+  reset(f33)
+  set.view(o2,188)
+  v94 = 6
+  cycle.time(o2,v94)
+  start.cycling(o2)
+  v75 = 2
+}
+if ((!fEnteredCommand || v75 > 3)) { //0186
+  goto(l1240)
+}
+if ((said("cast", "knife") || said("cast", "knife", "hungry lion"))) { //0195
+  print("Swords don't fly very well. Think again.")
+}
+if ((said("examine") || said("examine", "room") || said("examine", "antique shop"))) { //01ab
+  print("You are at the top of the wooden steps in the quartz tower. A door leads off to the north.")
+  if (v75 == 0) { //01c3
+    print("A hungry-looking lion guards the door.")
+    goto(l477)
+  }
+  if (v75 == 2) { //01cf
+    print("A lion is sleeping near the door.")
+    goto(l477)
+  }
+  print("A dead lion is lying near the door.")
+}
+l477:
+if (said("examine", "door")) { //01dd
+  print("The heavy door is closed.")
+}
+if (said("examine", "stairs")) { //01e9
+  print("The wooden steps spiral steeply downward.")
+}
+if ((said("acquire", "hungry lion") || said("capture", "hungry lion"))) { //01f5
+  if (v75 != 3) { //0207
+    print("There is no way you could hold an enormous lion.")
+    goto(l534)
+  }
+  print("The large lion has succumbed from the blow of your sword. He is dead.")
+}
+l534:
+if (v75 == 0) { //0216
+  if ((said("open", "door") || said("knock", "door"))) { //021d
+    print("You can't. A huge hungry lion blocks the door. You had better not get too close!")
+    goto(l954)
+  }
+  if (said("examine", "hungry lion")) { //0234
+    print("This is the BIGGEST lion you have ever seen! He could eat you with two bites of his powerful jaws. His tail thumps repeatedly on the floor.")
+    goto(l954)
+  }
+  if ((said("speak", "hungry lion") || said("hello", "anyword") || said("say", "hello"))) { //0243
+    print("The huge lion just snarls at you. You might be irritating him.")
+    goto(l954)
+  }
+  if ((said("kill", "hungry lion") || said("kill", "hungry lion", "knife") || said("stab", "hungry lion") || said("stab", "hungry lion", "knife"))) { //0260
+    if (!(has(i50))) { //0282
+      print("You have nothing with which to kill a lion.")
+      goto(l680)
+    }
+    if (v105 > 75) { //028e
+      stop.sound()
+      print("With one mighty heave of your sword, you fatally wound the large lion. He slumps to the floor.")
+      set.view(o2,89)
+      v75 = 3
+      vCurrentScore += 2
+      drop(i50)
+      goto(l680)
+    }
+    print("You must get closer to do that.")
+l680:
+    goto(l954)
+  }
+  if ((said("pat", "hungry lion") || said("kiss", "hungry lion") || said("embrace", "hungry lion"))) { //02ab
+    print("That would be a wrong move!")
+    goto(l954)
+  }
+  if ((said("feed", "ham") || said("feed", "hungry lion", "ham") || said("feed", "hungry lion") || said("feed", "ham", "hungry lion") || said("give", "ham") || said("give", "ham", "hungry lion") || said("give", "hungry lion", "ham") || said("cast", "ham") || said("cast", "ham", "hungry lion") || said("cast", "hungry lion", "ham"))) { //02c8
+    if (has(i66)) { //0316
+      stop.sound()
+      vCurrentScore += 4
+      drop(i66)
+      stop.cycling(o2)
+      set.view(o2,177)
+      v94 = 2
+      cycle.time(o2,v94)
+      end.of.loop(o2,f33)
+      v75 = 1
+      print("Hungrily, the lion gobbles down the smoked ham and then falls fast asleep.")
+      goto(l826)
+    }
+    print("You are not carrying it.")
+l826:
+    goto(l954)
+  }
+  if ((said("feed", "broth") || said("feed", "hungry lion", "broth") || said("give", "broth") || said("give", "hungry lion", "broth") || said("cast", "broth") || said("cast", "hungry lion", "broth"))) { //033d
+    if (has(i67)) { //036d
+      print("There is not enough sustenance in chicken soup to satisfy a hungry lion.")
+      goto(l890)
+    }
+    print("You are not carrying it.")
+l890:
+    goto(l954)
+  }
+  if ((said("feed", "basket") || said("feed", "hungry lion", "basket") || said("give", "basket") || said("give", "hungry lion", "basket") || said("cast", "basket") || said("cast", "hungry lion", "basket"))) { //037d
+    if (has(i63)) { //03ad
+      print("The lion sniffs the goodies in the basket but is not interested in them.")
+      goto(l954)
+    }
+    print("You are not carrying it.")
+  }
+l954:
+  goto(l1018)
+}
+if (said("open", "door")) { //03bd
+  if (posn(o0,78,119,98,130)) { //03c7
+    sound(21,f36)
+    end.of.loop(o3,f31)
+    goto(l988)
+  }
+  print("You must get closer to do that.")
+l988:
+  goto(l1018)
+}
+if (said("knock", "door")) { //03df
+  if (posn(o0,78,119,98,130)) { //03e9
+    print("A sweet voice from behind the heavy door begs, Help me, please help me!")
+    goto(l1018)
+  }
+  print("You must get closer to do that.")
+}
+l1018:
+if (v75 == 3 && !fSaidAccepted && (said("anyword", "hungry lion") || said("anyword", "anyword", "hungry lion") || said("give", "anyword") || said("feed", "anyword") || said("cast", "anyword"))) { //03fa
+  print("The large lion has succumbed from the blow of your sword. He is dead.")
+  goto(l1240)
+}
+if (v75 == 2) { //042b
+  if ((said("kill", "hungry lion") || said("kill", "hungry lion", "knife") || said("stab", "hungry lion") || said("stab", "hungry lion", "knife"))) { //0432
+    if (!(has(i50))) { //0454
+      print("You have nothing with which to kill a lion.")
+      goto(l1145)
+    }
+    if (v105 > 75) { //0460
+      print("With one mighty heave of your sword, you fatally wound the large lion. He slumps to the floor.")
+      set.view(o2,89)
+      v75 = 3
+      vCurrentScore -= 3
+      drop(i50)
+      goto(l1145)
+    }
+    print("You must get closer to do that.")
+l1145:
+    goto(l1208)
+  }
+  if ((said("pat", "hungry lion") || said("kiss", "hungry lion") || said("wake", "hungry lion") || said("embrace", "hungry lion"))) { //047c
+    print("That would be a wrong move!")
+    goto(l1208)
+  }
+  if (!fSaidAccepted && (said("anyword", "hungry lion") || said("anyword", "anyword", "hungry lion"))) { //049f
+    print("The lion is sound asleep.")
+  }
+l1208:
+  goto(l1240)
+}
+if (!fSaidAccepted && (said("give", "anyword") || said("feed", "anyword") || said("cast", "anyword"))) { //04bb
+  print("The lion sniffs at it but does not appear interested.")
+}
+l1240:
+get.posn(o0,v105,v106)
+if (f31) { //04dc
+  new.room(90)
+}
+if (vWhichEgoBorder == 3) { //04e4
+  new.room(92)
+}
+return()

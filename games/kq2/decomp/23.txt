@@ -1,4 +1,52 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.view(22)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(157)
+  load.logic(151)
+  draw.pic(vCurrentRoom)
+  call(157)
+  call(151)
+  animate.obj(o2)
+  set.view(o2,22)
+  position(o2,73,111)
+  if (!f74) { //002d
+    draw(o2)
+  }
+  draw(o0)
+  show.pic()
+}
+if (!f74 && said("examine", "tree")) { //0039
+  print("There is a stake leaning against a tree.")
+}
+if (!f74 && said("acquire", "pole")) { //0048
+  distance(o0,o2,v94)
+  if (v94 > 15) { //0059
+    print("You are too far away.")
+    goto(l112)
+  }
+  vCurrentScore += 2
+  get(i54)
+  erase(o2)
+  set(f74)
+  print("OK.")
+}
+l112:
+if (vWhichEgoBorder == 1) { //0070
+  new.room(16)
+}
+if (vWhichEgoBorder == 2) { //0079
+  new.room(24)
+}
+if (vWhichEgoBorder == 4) { //0082
+  new.room(22)
+}
+if (vWhichEgoBorder == 3) { //008b
+  new.room(30)
+}
+call(157)
+call(151)
+return()

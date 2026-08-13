@@ -1,4 +1,182 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(29)
+  load.logic(166)
+  load.view(8)
+  load.view(54)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,54)
+  if (v93 == 2) { //0019
+    set.cel(o3,3)
+    goto(l41)
+  }
+  set.cel(o3,0)
+l41:
+  position(o3,124,126)
+  set.priority(o3,11)
+  draw(o3)
+  stop.cycling(o3)
+  position(o0,47,165)
+  set.loop(o0,0)
+  move.obj(o0,47,165,0,f169)
+  draw(o0)
+  ignore.objs(o0)
+  set.horizon(96)
+  show.pic()
+}
+if (fTriggerLine) { //0048
+  if (!(posn(o0,80,0,159,167))) { //004e
+    sound(29,f169)
+    set(f92)
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+    v60 = 1
+    set.priority(o0,15)
+    move.obj(o0,36,154,4,f145)
+    goto(l126)
+  }
+  set(f35)
+l126:
+  goto(l131)
+}
+reset(f35)
+l131:
+if (f34) { //0083
+  reset(f34)
+  if (v93 == 1) { //008b
+    v93 = 2
+    if (!f143) { //0095
+      print("With a creak and a groan, the old lid opens, dragging cobwebs with it.")
+      print("Looking into the interior of the musty chest, you see a dazzling diamond and sapphire tiara!")
+      goto(l167)
+    }
+    print("You open the heavy lid of the dusty old chest and peer into it.")
+    print("It is empty.")
+l167:
+    goto(l173)
+  }
+  v93 = 1
+}
+l173:
+if (!fEnteredCommand) { //00ad
+  goto(l508)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //00b7
+  print("There is not much here at the top of the tower but an aging chest against the wall.")
+}
+if (said("look in", "chest")) { //00cf
+  if (v93 != 2) { //00d9
+    print("The dusty old chest is closed.")
+    goto(l244)
+  }
+  if (!f143) { //00e6
+    print("Looking into the interior of the musty chest, you see a dazzling diamond and sapphire tiara!")
+    goto(l244)
+  }
+  print("It is empty.")
+}
+l244:
+if (said("examine", "chest")) { //00f4
+  if (v93 != 2) { //00fe
+    print("The dusty old chest is closed.")
+    goto(l269)
+  }
+  print("The dusty old chest is open.")
+}
+l269:
+if (said("unlock", "chest")) { //010d
+  if (v93 == 0) { //0117
+    if (has(i83)) { //011e
+      if (f35) { //0124
+        print("With hands trembling, you fit the little silver key into the lock. Slowly, you turn it until you hear a click. The old chest is now unlocked.")
+        v93 = 1
+        vCurrentScore++
+        goto(l310)
+      }
+      print("You can't reach it from where you are standing.")
+l310:
+      goto(l315)
+    }
+    print("You do not have the key that will unlock this old chest.")
+l315:
+    goto(l320)
+  }
+  print("The aging chest is already unlocked.")
+}
+l320:
+if (said("open", "chest")) { //0140
+  if (v93 != 2) { //014a
+    if (f35) { //0152
+      if (v93 == 0) { //0158
+        print("The old chest is locked shut. You need to unlock it.")
+        goto(l359)
+      }
+      end.of.loop(o3,f34)
+l359:
+      goto(l364)
+    }
+    print("You can't reach it from where you are standing.")
+l364:
+    goto(l369)
+  }
+  print("The aging chest is already open.")
+}
+l369:
+if (said("close", "chest")) { //0171
+  if (v93 == 2) { //017b
+    if (f35) { //0182
+      reverse.loop(o3,f34)
+      goto(l400)
+    }
+    print("You can't reach it from where you are standing.")
+l400:
+    goto(l405)
+  }
+  print("The aging chest is already closed.")
+}
+l405:
+if (said("acquire", "diamond and sapphire tiara")) { //0195
+  if (!f143 && v93 == 2) { //019f
+    if (f35) { //01a9
+      print("You pick it up and carry it with you.")
+      get(i56)
+      set(f143)
+      vCurrentScore += 7
+      goto(l445)
+    }
+    print("You can't reach it from where you are standing.")
+l445:
+    goto(l461)
+  }
+  if (has(i56)) { //01c0
+    print("You already have it.")
+    goto(l461)
+  }
+  print("You don't see it here.")
+}
+l461:
+if (said("acquire", "chest")) { //01cd
+  print("You couldn't possibly carry this heavy chest around with you.")
+}
+if (said("break", "chest")) { //01d9
+  if (f35) { //01e3
+    print("This old chest is stronger than it looks.")
+    goto(l496)
+  }
+  print("You can't reach it from where you are standing.")
+}
+l496:
+if (said("examine", "stairs")) { //01f0
+  print("The stairs spiral steeply downward. Be careful, you don't want to fall.")
+}
+l508:
+if ((posn(o0,41,164,46,167) || v60 > 0)) { //01fc
+  observe.objs(o0)
+  new.room(63)
+}
+call(166)
+return()

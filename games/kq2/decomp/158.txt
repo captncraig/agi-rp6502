@@ -1,4 +1,60 @@
-if (isSet(f64)) {
-
-!!!
-&{%!e(string=unknown opcode: 0xfe)}
+if (f64) { //0002
+  goto(l306)
+}
+if (vCurrentRoom != 13 && said("examine", "lake")) { //000b
+  print("What a lovely little lake! Its sparkling water looks so clean and fresh.")
+}
+if (said("enter", "lake")) { //001b
+  print("Do you want to swim in the lake?")
+}
+if (said("acquire", "lake")) { //0027
+  print("There is no reason for you to obtain water. Why don't you just drink some water if you are really that thirsty?")
+}
+if (v95 > 0 && said("look under", "lake")) { //0033
+  print("You dip your head under the clear blue water. You see the bottom of the lake.")
+}
+if ((said("acquire", "drink") || said("drink", "lake"))) { //0042
+  if (vCurrentRoom == 9 && (posn(o0,0,42,79,145) || posn(o0,80,36,159,145))) { //0054
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 10 && posn(o0,0,0,58,95)) { //006e
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 12 && (posn(o0,100,61,130,104) || posn(o0,131,52,159,120))) { //0080
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 13 && (posn(o0,0,46,62,145) || posn(o0,63,28,159,143))) { //009a
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 14 && posn(o0,0,86,83,138)) { //00b4
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 33 && posn(o0,126,53,159,117)) { //00c6
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 34 && (posn(o0,0,30,75,117) || posn(o0,76,31,159,136))) { //00d8
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 35 && posn(o0,0,75,50,127)) { //00f2
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 37 && (posn(o0,44,27,159,81) || posn(o0,63,82,159,160))) { //0104
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  if (vCurrentRoom == 38 && posn(o0,0,33,109,167)) { //011e
+    print("Ahhhhh! The clear lake water is so refreshing.")
+    goto(l306)
+  }
+  print("You need to be a little closer to drink the water.")
+}
+l306:
+return()

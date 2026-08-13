@@ -1,4 +1,102 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f93)
+  return()
+}
+if (f147) { //000b
+  goto(l545)
+}
+if (!f64) { //0014
+  goto(l545)
+}
+if (said("examine", "bush")) { //001e
+  print("The bushes are nothing but leafless dry sticks.")
+}
+if (said("anyword", "blossom")) { //002a
+  print("What flowers? Why would you think flowers could grow around this stinking lake?")
+}
+if (said("look across", "lake")) { //0036
+  print("There is a desolate island in the middle of the poisoned lake.")
+}
+if ((said("examine", "lake") || said("examine", "lake"))) { //0042
+  print("This lake is foul and stinking! It may be poisoned. All vegetation looks dead around it.")
+}
+if ((said("acquire", "lake") || said("acquire", "lake"))) { //0056
+  print("There is no reason for you to carry around this foul water.")
+}
+if (said("examine", "island")) { //006a
+  print("There is a dreary-looking castle on the island.")
+}
+if ((said("cross", "lake") || said("enter", "island"))) { //0076
+  print("The lake is foul and toxic. How could you get across it?")
+}
+if (said("examine", "antique shop")) { //008a
+  if (vCurrentRoom == 32) { //0094
+    print("The castle on the island looks dark and forbidding. It is surrounded by thorns and brambles. You wonder who would live there.")
+    goto(l162)
+  }
+  print("It is difficult to see any details of the castle from here.")
+}
+l162:
+if ((said("acquire", "drink") || said("drink", "lake"))) { //00a2
+  if (vCurrentRoom == 10 && (posn(o0,93,157,119,167) || posn(o0,101,143,125,156) || posn(o0,109,130,159,142) || posn(o0,124,119,159,129))) { //00b4
+    goto(l479)
+  }
+  if (vCurrentRoom == 11 && posn(o0,0,103,159,167)) { //00d8
+    goto(l479)
+  }
+  if (vCurrentRoom == 12 && (posn(o0,0,124,36,167) || posn(o0,37,135,55,167) || posn(o0,56,142,75,167))) { //00e8
+    goto(l479)
+  }
+  if (vCurrentRoom == 17 && (posn(o0,95,0,159,51) || posn(o0,96,52,131,72) || posn(o0,78,73,121,95) || posn(o0,60,96,118,167))) { //0106
+    goto(l479)
+  }
+  if (vCurrentRoom == 19 && (posn(o0,0,0,65,76) || posn(o0,0,77,75,107) || posn(o0,0,108,93,167))) { //012a
+    goto(l479)
+  }
+  if (vCurrentRoom == 24 && (posn(o0,72,0,159,96) || posn(o0,51,97,159,167))) { //0148
+    goto(l479)
+  }
+  if (vCurrentRoom == 25 && posn(o0,0,145,159,167)) { //0160
+    goto(l479)
+  }
+  if (vCurrentRoom == 26 && (posn(o0,0,0,92,81) || posn(o0,0,82,82,167))) { //0170
+    goto(l479)
+  }
+  if (vCurrentRoom == 31 && (posn(o0,38,0,79,93) || posn(o0,40,94,114,122) || posn(o0,115,101,159,124))) { //0188
+    goto(l479)
+  }
+  if (vCurrentRoom == 32 && posn(o0,0,0,159,136)) { //01a6
+    goto(l479)
+  }
+  if (vCurrentRoom == 33 && (posn(o0,0,0,80,85) || posn(o0,0,86,78,100) || posn(o0,0,101,70,110) || posn(o0,0,111,50,130))) { //01b6
+    goto(l479)
+  }
+  print("You need to be a little closer to drink the water.")
+  goto(l519)
+l479:
+  print("You bend over and take a deep drink of the stinking water. Oh, dear, the lake is toxic! You die of extreme poisoning.")
+  set(f147)
+  get.posn(o0,v67,v68)
+  if (v68 < 45) { //01e7
+    v67 = 0
+    v68 = 5
+    repositon(o0,v67,v68)
+  }
+  program.control()
+  set(f92)
+  set.view(o0,92)
+  v94 = 3
+  cycle.time(o0,v94)
+  end.of.loop(o0,f93)
+}
+l519:
+if ((said("examine", "tree") || said("examine", "tree") || said("climb", "tree"))) { //0207
+  print("The trees around the poisoned lake are dead.")
+}
+l545:
+if (f93) { //0221
+  set.priority(o0,15)
+  set.view(o0,91)
+  set(f50)
+}
+return()

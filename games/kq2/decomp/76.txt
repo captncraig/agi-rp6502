@@ -1,4 +1,6 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(168)
+  observe.objs(o0)
+}
+call(168)
+return()

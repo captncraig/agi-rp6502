@@ -1,4 +1,91 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(21)
+  load.view(7)
+  if ((has(i72) || has(i76))) { //000e
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(154)
+  call(154)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,7)
+  set.cel(o3,0)
+  ignore.blocks(o3)
+  position(o3,64,146)
+  set.priority(o3,13)
+  draw(o3)
+  stop.update(o3)
+  if (vPrevRoom == 48) { //0039
+    get.posn(o0,v105,v106)
+    if (v106 > 12 && v106 < 25) { //0044
+      v106 = 25
+      position(o0,105,v106)
+    }
+  }
+  if (vPrevRoom == 71) { //0055
+    position(o0,70,150)
+  }
+  draw(o0)
+  show.pic()
+}
+if ((said("examine", "antique shop") || said("examine"))) { //0063
+  print("This is an old monastery. The monks living here often help travelers in need.")
+}
+if ((said("examine", "window") || said("look in", "window"))) { //0075
+  if (posn(o0,2,140,22,160)) { //0087
+    print("You can see inside when you look in the window. It is hard to see details, though.")
+    goto(l152)
+  }
+  print("You are too far away to see in the window.")
+}
+l152:
+if (said("break", "window")) { //0098
+  print("There is no need to do that. The door is unlocked.")
+}
+if (said("examine", "door")) { //00a4
+  print("The monastery door is made of very thick wood held together by iron bars.")
+}
+if ((f148 || v88 != 0 || !(said("open", "door")))) { //00b0
+  goto(l222)
+}
+distance(o0,o3,v94)
+if (v94 > 20) { //00ca
+  print("Your arms are too short to reach the door from here!")
+  goto(l222)
+}
+start.update(o3)
+sound(21,f169)
+end.of.loop(o3,f61)
+l222:
+if (f61) { //00de
+  reset(f61)
+  new.room(71)
+}
+if (!(said("knock", "door"))) { //00e8
+  goto(l264)
+}
+distance(o0,o3,v94)
+if (v94 > 20) { //00fa
+  print("Your arms are too short to reach the door from here!")
+  goto(l264)
+}
+print("It is not necessary to knock at a church door. All are welcome.")
+l264:
+if (vWhichEgoBorder == 1) { //0108
+  new.room(48)
+}
+if (vWhichEgoBorder == 2) { //0111
+  new.room(7)
+}
+if (vWhichEgoBorder == 4) { //011a
+  new.room(5)
+}
+if (vWhichEgoBorder == 3) { //0123
+  new.room(13)
+}
+call(151)
+call(154)
+return()

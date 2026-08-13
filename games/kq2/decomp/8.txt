@@ -1,4 +1,49 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(25)
+  load.view(122)
+  if ((has(i72) || has(i76))) { //000e
+    load.view(65)
+    load.view(98)
+  }
+  load.view(97)
+  load.view(104)
+  load.logic(152)
+  load.logic(101)
+  draw.pic(vCurrentRoom)
+  call(152)
+  call(101)
+  ignore.objs(o0)
+  if (vPrevRoom == 15) { //002c
+    get.posn(o0,v105,v106)
+    if (v105 > 15) { //0037
+      v105 -= 14
+      position(o0,105,v106)
+    }
+  }
+  draw(o0)
+  show.pic()
+}
+if (fEgoOnWater && !(v95 > 0) && posn(o0,21,104,34,124)) { //0048
+  set(f116)
+  v67 = 15
+  v68 = 120
+}
+if (vWhichEgoBorder != 0) { //0060
+  observe.objs(o0)
+}
+if (vWhichEgoBorder == 1) { //006a
+  new.room(1)
+}
+if (vWhichEgoBorder == 2) { //0073
+  new.room(9)
+}
+if (vWhichEgoBorder == 4) { //007c
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //0085
+  new.room(15)
+}
+call(152)
+call(101)
+return()

@@ -1,4 +1,81 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(167)
+  load.view(79)
+  load.view(80)
+  load.view(81)
+  load.view(82)
+  load.view(86)
+  load.view(104)
+  load.view(175)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(167)
+  if (!f113) { //001e
+    animate.obj(o2)
+    set.view(o2,79)
+    set.priority(o2,4)
+    position(o2,40,100)
+    draw(o2)
+  }
+  animate.obj(o3)
+  set.view(o3,175)
+  v94 = 2
+  cycle.time(o3,v94)
+  start.cycling(o3)
+  ignore.blocks(o3)
+  position(o3,57,59)
+  draw(o3)
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "water fall")) { //004b
+  print("The lavender waterfall tumbles down from the towering blue cliffs.")
+}
+get.posn(o0,v105,v106)
+if ((said("acquire", "drink", "water fall") || said("drink", "water fall") || said("drink", "lake", "water fall"))) { //005b
+  if (v105 < 90) { //0077
+    if (posn(o0,60,61,70,65)) { //007e
+      print("Ahhhhh! The lavender water is strangely refreshing.")
+      goto(l143)
+    }
+    print("You need to be a little closer to drink the water.")
+  }
+}
+l143:
+if (posn(o0,60,58,70,60)) { //008f
+  ignore.objs(o0)
+  if (fTriggerLine) { //009b
+    set(f182)
+    v107 = 3
+    ignore.blocks(o0)
+    set.priority(o0,4)
+    set.view(o0,104)
+    v94 = 2
+    cycle.time(o0,v94)
+    position(o0,62,64)
+    move.obj(o0,125,64,3,f150)
+    print("You fall into the swift water and are washed out to sea where you drown.")
+  }
+  goto(l209)
+}
+if (!f113) { //00c3
+  ignore.objs(o0)
+  goto(l209)
+}
+observe.objs(o0)
+l209:
+if (vWhichEgoBorder == 3) { //00d1
+  if (v105 < 60) { //00d8
+    v105 += 40
+    goto(l245)
+  }
+  if (v105 < 80) { //00e5
+    v105 += 25
+    goto(l245)
+  }
+  v105 += 15
+l245:
+  position(o0,105,v106)
+}
+call(167)
+return()

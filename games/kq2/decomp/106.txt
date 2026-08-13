@@ -1,4 +1,118 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(105)
+  load.view(106)
+  load.view(174)
+  load.view(116)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o2)
+  animate.obj(o4)
+  animate.obj(o3)
+  ignore.horizon(o3)
+  if (vPrevRoom == 107) { //001c
+    set.view(o0,105)
+    v94 = 2
+    cycle.time(o0,v94)
+    goto(l50)
+  }
+  set.view(o0,0)
+l50:
+  set.view(o2,106)
+  set.view(o4,174)
+  v94 = 2
+  cycle.time(o0,v94)
+  set.cel(o4,0)
+  set.view(o3,116)
+  position(o0,110,152)
+  position(o2,117,152)
+  position(o4,105,119)
+  position(o3,116,18)
+  if (vPrevRoom == 107) { //0054
+    set.loop(o0,1)
+    goto(l100)
+  }
+  set.loop(o0,3)
+l100:
+  set.loop(o2,1)
+  move.obj(o0,110,120,0,f169)
+  move.obj(o2,117,120,0,f33)
+  v58 = 50
+  draw(o0)
+  if (vPrevRoom == 107) { //0078
+    draw(o2)
+  }
+  draw(o4)
+  start.cycling(o3)
+  draw(o3)
+  show.pic()
+  end.of.loop(o4,f32)
+}
+if (f32) { //008b
+  reset(f32)
+}
+v58--
+if (v58 == 1) { //0095
+  set.priority(o0,3)
+  set.priority(o2,3)
+  reverse.loop(o4,f31)
+}
+if (f31) { //00a5
+  reset(f31)
+  if (vPrevRoom == 107) { //00ad
+    vMessageTimer = 15
+    print("If you have enjoyed this game, please ask your dealer about availability of:")
+    v31 = 40
+    goto(l199)
+  }
+  vMessageTimer = 10
+  print("It is unfortunate that you have returned to Daventry without a bride.")
+  v32 = 30
+}
+l199:
+v31--
+v32--
+v33--
+v34--
+v35--
+if (v31 == 1) { //00d1
+  vMessageTimer = 15
+  print("\"King's Quest III--To heir is human, to really foul things up takes a computer\".")
+  v32 = 30
+}
+if (v32 == 1) { //00e0
+  vMessageTimer = 15
+  print("Thank you from the King's Quest development team:")
+  v33 = 15
+}
+if (v33 == 1) { //00ef
+  vMessageTimer = 15
+  print("Ken, Roberta, Sol, Jeff, Chris, Scott, Doug, Mark, Al, and Dale.")
+  v34 = 30
+}
+if (v34 == 1) { //00fe
+  vMessageTimer = 15
+  print("Thank you from the King's Quest quality assurance team:")
+  v35 = 15
+}
+if (v35 == 1) { //010d
+  vMessageTimer = 15
+  print("Larry, Susan, and Russell.")
+  v32 = 30
+}
+if (f33) { //011c
+  reset(f33)
+  stop.cycling(o2)
+}
+if ((said("restore") || controller(c19))) { //0126
+  restore.game()
+}
+if ((said("restart") || controller(c20))) { //0133
+  restart.game()
+}
+if (controller(c12)) { //0140
+  status()
+}
+if (!fSaidAccepted && said("anyword", "anyword")) { //0147
+  print("At this point, I can only permit you to: Restore Game, Restart the Game or Take Inventory. Sorry.")
+}
+return()

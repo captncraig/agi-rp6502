@@ -1,4 +1,156 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f91)
+  v62 = 0
+  if (vCurrentRoom != 15) { //000d
+    animate.obj(o7)
+    ignore.blocks(o7)
+    ignore.objs(o7)
+    if (vCurrentRoom == 1) { //001b
+      set.view(o7,1)
+    }
+    if (vCurrentRoom == 8) { //0025
+      set.view(o7,122)
+      position(o7,6,113)
+    }
+    if (vCurrentRoom == 22) { //0033
+      set.view(o7,62)
+      v94 = 2
+      cycle.time(o7,v94)
+    }
+    if (vCurrentRoom == 29) { //0043
+      set.view(o7,111)
+      v94 = 2
+      cycle.time(o7,v94)
+    }
+    if (vCurrentRoom == 36) { //0053
+      set.view(o7,96)
+    }
+    if (vCurrentRoom == 43) { //005d
+      set.view(o7,118)
+      v94 = 2
+      cycle.time(o7,v94)
+    }
+    set.cel(o7,0)
+    stop.cycling(o7)
+    draw(o7)
+    random(5,80,v62)
+    reset(f90)
+  }
+  return()
+}
+v62--
+if (v62 == 1) { //007d
+  set(f90)
+  end.of.loop(o7,f91)
+  if (!(v88 > 0)) { //0089
+    sound(25,f44)
+  }
+}
+if (f91) { //0094
+  reset(f91)
+  reset(f90)
+  set.cel(o7,0)
+  random(5,80,v62)
+}
+if (f41) { //00a5
+  v40--
+}
+if (f41 && v40 == 0) { //00ad
+  reset(f41)
+  print("Ok. You are all through digging. You find nothing.")
+  start.motion(o0)
+}
+if (f41 && vEgoDir != 0) { //00bc
+  if (!f43) { //00c6
+    set(f43)
+    print("You can't possibly dig while walking. Stand still.")
+  }
+}
+if (vEgoDir == 0 && f43) { //00d1
+  reset(f43)
+}
+if (said("dig", "anyword")) { //00dc
+  if (vEgoDir != 0) { //00e6
+    print("You can't possibly dig while walking. Stand still.")
+    goto(l250)
+  }
+  vMessageTimer = 16
+  print("Dig...Dig...Dig...")
+  print("Ok. You are all through digging. You find nothing.")
+}
+l250:
+if (said("examine", "beach") && vCurrentRoom != 22 && vCurrentRoom != 36) { //00fa
+  print("The glittering white sand of the beach feels warm from the sun. The azure water of the ocean laps up to its edge.")
+}
+if (said("examine", "bush")) { //010e
+  print("The plants grow well in the moist sea air.")
+}
+if (said("examine", "blossom")) { //011a
+  print("The flowers are a beautiful contrast to the blue ocean.")
+}
+if (said("acquire", "beach")) { //0126
+  print("Sifting through the sand, you notice nothing of interest.")
+}
+if ((said("acquire", "blossom") || said("acquire", "blossom"))) { //0132
+  print("The flowers are of no interest.")
+}
+if (said("smell", "blossom")) { //0146
+  print("The flowers give a sweet smell to the air.")
+}
+if ((said("suntan", "anyword") || said("anyword", "suntan"))) { //0152
+  print("King Graham is not dressed for tanning.")
+}
+if ((said("drink", "lake") || said("acquire", "drink"))) { //0166
+  if (vCurrentRoom == 1 && (posn(o0,0,0,57,61) || posn(o0,0,62,81,101) || posn(o0,0,102,75,117) || posn(o0,0,118,68,137) || posn(o0,0,138,60,157))) { //0178
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 8 && (posn(o0,0,0,46,82) || posn(o0,0,83,57,120) || posn(o0,0,121,78,167))) { //01a4
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 15 && (posn(o0,0,0,83,52) || posn(o0,0,53,111,86) || posn(o0,0,87,152,103) || posn(o0,0,104,159,145) || posn(o0,0,146,151,167))) { //01c4
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 22 && (posn(o0,0,0,72,82) || posn(o0,0,83,91,167))) { //01f0
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 29 && (posn(o0,0,0,85,85) || posn(o0,0,86,92,167))) { //020a
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 36 && (posn(o0,0,0,90,100) || posn(o0,0,101,80,136) || posn(o0,0,137,66,167))) { //0224
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  if (vCurrentRoom == 43 && (posn(o0,0,0,93,51) || posn(o0,0,52,114,99) || posn(o0,0,100,135,167))) { //0244
+    print("YECCHHH!! You cough and choke from the briny water of the ocean.")
+    goto(l614)
+  }
+  print("You need to be a little closer to drink the water.")
+}
+l614:
+if (said("acquire", "lake")) { //0266
+  print("You have no need to carry water.")
+}
+if (said("examine", "lake")) { //0272
+  print("The calm water of the clear blue ocean looks inviting.")
+}
+if (said("examine", "wave")) { //027e
+  print("You see waves crashing upon the rocks.")
+}
+if (said("examine", "tree")) { //028a
+  print("The leaning palm trees sway in the ocean breeze.")
+}
+if (said("climb", "tree")) { //0296
+  print("There are nothing but green coconuts in the palm trees and the trees are too slippery to climb.")
+}
+if (v95 > 0 && said("look under", "lake")) { //02a2
+  print("You dip your head under the ocean water. You see nothing but colorful fish and seaweed.")
+}
+if (!fSaidAccepted && said("climb", "boulder")) { //02b1
+  print("The rocks along the ocean are too dangerous to climb.")
+}
+return()

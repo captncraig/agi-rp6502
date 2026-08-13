@@ -1,4 +1,32 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.view(8)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(154)
+  load.logic(155)
+  load.logic(163)
+  call(154)
+  call(163)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 49) { //0026
+    position(o0,95,38)
+  }
+  draw(o0)
+  show.pic()
+}
+if (vWhichEgoBorder == 4) { //0034
+  new.room(6)
+}
+if (vWhichEgoBorder == 1) { //003d
+  new.room(49)
+}
+if (vWhichEgoBorder == 3) { //0046
+  new.room(14)
+}
+call(154)
+call(155)
+call(163)
+return()

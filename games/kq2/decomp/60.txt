@@ -1,4 +1,300 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(20)
+  load.sound(23)
+  load.sound(29)
+  load.logic(166)
+  load.view(8)
+  load.view(109)
+  load.view(91)
+  load.view(134)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(166)
+  animate.obj(o2)
+  set.view(o2,134)
+  position(o2,37,29)
+  start.cycling(o2)
+  draw(o2)
+  if (vPrevRoom == 61) { //002b
+    position(o0,140,163)
+    reset(f31)
+    goto(l68)
+  }
+  position(o0,118,32)
+  set.priority(o0,14)
+  set(f31)
+l68:
+  draw(o0)
+  show.pic()
+}
+if (f39) { //0047
+  reset(f39)
+  print("You fall to your death on the hard stone floor.")
+  set(f50)
+}
+if (v34 > 0) { //0053
+  goto(l586)
+}
+if (posn(o0,95,132,134,132)) { //005d
+  v31 = 1
+  set.priority(o0,12)
+  goto(l149)
+}
+if (v31 == 1) { //0070
+  v31 = 0
+  get.posn(o0,v105,v106)
+  if (v106 > 132) { //007e
+    release.priority(o0)
+    observe.blocks(o0)
+    reset(f30)
+    goto(l149)
+  }
+  set.priority(o0,12)
+  ignore.blocks(o0)
+  set(f30)
+}
+l149:
+if (posn(o0,18,82,50,82)) { //0095
+  v31 = 2
+  set.priority(o0,14)
+  set(f31)
+  goto(l212)
+}
+if (v31 == 2) { //00aa
+  v31 = 0
+  get.posn(o0,v105,v106)
+  if (v106 > 82) { //00b8
+    set.priority(o0,14)
+    set(f31)
+    reset(f30)
+    observe.blocks(o0)
+    goto(l212)
+  }
+  set.priority(o0,12)
+  reset(f31)
+  set(f30)
+  ignore.blocks(o0)
+}
+l212:
+if (f31) { //00d4
+  if ((posn(o0,74,81,74,81) || posn(o0,75,80,75,80))) { //00da
+    v30 = 3
+    goto(l480)
+    goto(l305)
+  }
+  if ((posn(o0,79,76,79,76) || posn(o0,80,75,80,75) || posn(o0,81,73,81,73) || posn(o0,82,72,82,72) || posn(o0,83,71,83,71) || posn(o0,84,69,84,69) || posn(o0,85,68,85,68) || posn(o0,86,67,86,67))) { //00f5
+    v30 = 2
+    goto(l480)
+  }
+}
+l305:
+if (!fTriggerLine) { //0131
+  goto(l860)
+}
+if (posn(o0,84,30,102,42)) { //013b
+  v30 = 1
+  goto(l480)
+}
+if (posn(o0,79,42,97,66)) { //014b
+  v30 = 2
+  goto(l480)
+}
+if ((posn(o0,63,77,73,81) || posn(o0,69,82,74,83) || posn(o0,67,83,68,84) || posn(o0,63,85,66,85))) { //015b
+  v30 = 3
+  goto(l480)
+}
+if ((posn(o0,47,76,62,81) || posn(o0,47,82,62,87))) { //017f
+  v30 = 4
+  goto(l480)
+}
+if (posn(o0,72,83,94,105) && !f31) { //0197
+  v30 = 5
+  goto(l480)
+}
+if (posn(o0,90,106,104,134)) { //01aa
+  v30 = 6
+  goto(l480)
+}
+if (posn(o0,100,130,108,143)) { //01ba
+  v30 = 7
+  goto(l480)
+}
+if (posn(o0,103,144,109,153) && vEgoDir > 4) { //01ca
+  v30 = 8
+  goto(l480)
+}
+goto(l860)
+l480:
+if (!(v34 > 0)) { //01e0
+  ignore.blocks(o0)
+  v34 = 1
+  if (v30 != 8) { //01ed
+    sound(29,f34)
+    set(f92)
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+  }
+  if (v30 == 1) { //0209
+    move.obj(o0,92,80,4,f32)
+    set.priority(o0,12)
+    goto(l586)
+  }
+  if (v30 == 2) { //021c
+    move.obj(o0,85,80,4,f32)
+    set.priority(o0,13)
+    goto(l586)
+  }
+  if (v30 > 2 && v30 < 6) { //022f
+    set(f32)
+    set.priority(o0,12)
+    goto(l586)
+  }
+  if (v30 > 5) { //0241
+    set(f32)
+  }
+}
+l586:
+if (v34 == 1 && f32) { //024a
+  v34 = 2
+  if (v30 < 3) { //0256
+    move.obj(o0,88,166,4,f32)
+    goto(l707)
+  }
+  if (v30 == 3) { //0266
+    move.obj(o0,67,148,4,f32)
+    goto(l707)
+  }
+  if (v30 == 4) { //0276
+    move.obj(o0,52,148,4,f32)
+    goto(l707)
+  }
+  if (v30 == 5) { //0286
+    move.obj(o0,81,144,4,f32)
+    goto(l707)
+  }
+  if (v30 == 6) { //0296
+    move.obj(o0,90,152,4,f32)
+    goto(l707)
+  }
+  if (v30 == 7) { //02a6
+    move.obj(o0,94,152,4,f32)
+    goto(l707)
+  }
+  if (v30 == 8) { //02b6
+    move.obj(o0,102,154,2,f32)
+  }
+}
+l707:
+if (v34 == 2) { //02c3
+  if (f32) { //02ca
+    v34 = 3
+    if (v30 == 8) { //02d3
+      reset(f32)
+      goto(l774)
+    }
+    stop.motion(o0)
+    if (v30 < 3) { //02e1
+      stop.sound()
+      set.view(o0,91)
+      set(f39)
+      set(f38)
+      goto(l774)
+    }
+    set.view(o0,109)
+    v94 = 2
+    cycle.time(o0,v94)
+    v35 = 50
+    set(f33)
+    reset(f34)
+    sound(23,f37)
+  }
+}
+l774:
+if (f37 && v35 > 1) { //0306
+  sound(23,f37)
+}
+if (!f38 && v34 == 3) { //0312
+  if (!(v35 > 0)) { //031c
+    if (v30 != 8) { //0324
+      start.motion(o0)
+      v67 = 4
+      v68 = 0
+      repositon(o0,v67,v68)
+      set.view(o0,0)
+      v94 = 1
+      cycle.time(o0,v94)
+      step.size(o0,v94)
+      set.loop(o0,2)
+    }
+    v34 = 0
+    reset(f92)
+    observe.blocks(o0)
+    release.priority(o0)
+    reset(f31)
+    v31 = 0
+    reset(f30)
+    goto(l860)
+  }
+  v35--
+}
+l860:
+if (f30 && !fTriggerLine) { //035c
+  get.posn(o0,v32,v33)
+  goto(l890)
+}
+if (f30 && !(v34 > 0)) { //036c
+  position(o0,32,v33)
+}
+l890:
+if (!fEnteredCommand) { //037a
+  goto(l1045)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //0384
+  print("There is a ramp spiraling up toward the top of a gloomy tower. A torch blazes on the wall.")
+}
+if ((said("examine", "ramp") || said("examine", "stairs"))) { //039c
+  print("The ramp spirals steeply upward. Be careful, you don't want to fall.")
+}
+if (said("examine", "torch")) { //03b0
+  print("The torch lends the only warmth to this dreary castle.")
+}
+if (said("acquire", "torch")) { //03bc
+  if (posn(o0,35,62,49,74)) { //03c6
+    print("The torch is firmly attached to the wall. Try as you might, you cannot budge it.")
+    goto(l983)
+  }
+  print("You can't do that from where you are standing.")
+}
+l983:
+if (!fSaidAccepted && said("light", "candle")) { //03d7
+  if (has(i78)) { //03e4
+    if (posn(o0,35,62,49,74)) { //03ea
+      if (!f106) { //03f4
+        set(f106)
+        print("You hold your candle up to the blazing torch. It catches! Your candle is now lit.")
+        if (!f158) { //03ff
+          vCurrentScore += 1
+          set(f158)
+        }
+      }
+      goto(l1040)
+    }
+    print("You can't do that from where you are standing.")
+l1040:
+    goto(l1045)
+  }
+  print("You are not carrying it.")
+}
+l1045:
+get.posn(o0,v94,v33)
+if (fTriggerLine && v94 > 145) { //0419
+  new.room(61)
+}
+if (vWhichEgoBorder == 1) { //0424
+  new.room(59)
+}
+call(166)
+return()

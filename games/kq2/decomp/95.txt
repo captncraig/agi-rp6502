@@ -1,3 +1,46 @@
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+prevent.input()
+status.line.off()
+text.screen()
+vKeyPressed = 0
+reset(fSaidAccepted)
+display(2,1,"            KING'S QUEST II")
+display(3,1,"                 Help")
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0012
+  display(6,1,"    F1 or HELP Displays this message.")
+  goto(l41)
+}
+display(6,1,"    F1 Displays this message.")
+l41:
+display(7,1,"    F2 Turns the sound off and on.")
+display(8,1,"    F3 Retypes the last line typed.")
+display(9,1,"    F5 Saves your current game.")
+display(10,1,"    F7 Restores a saved game.")
+display(11,1,"    F9 Restarts the game.")
+display(14,1,"     = Makes King Graham swim.")
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //0041
+  display(15,1,"   TAB Shows status screen. (see below)")
+  goto(l88)
+}
+display(15,1,"   TAB Shows the status screen.")
+l88:
+display(16,1,"   ESC Pauses the game.")
+display(17,1,"Ctrl-J Sets up your joystick.")
+if (vComputerType == IBM_PC) { //0060
+  display(18,1,"Ctrl-R Toggles RGB monitor modes.")
+}
+if ((vComputerType == ATARI_ST || vComputerType == AMIGA)) { //006b
+  display(18,1,"Double clicking joystick button or\n right mouse button also shows status\n screen.")
+}
+if (vComputerType == 2) { //007b
+  display(21,1,"    +  Increases volume.")
+  display(22,1,"    -  Decreases volume.")
+}
+l138:
+if (!(have.key())) { //008a
+  goto(l138)
+}
+accept.input()
+status.line.on()
+graphics()
+set(fSaidAccepted)
+return()

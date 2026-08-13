@@ -1,5 +1,97 @@
-if (isSet(f5)) {
+if (fNewRoom) { //0002
   set(f115)
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+  reset(f124)
+  return()
+}
+if ((f147 || v51 > 2 || v86 > 0)) { //000d
+  goto(l298)
+}
+if (!f124) { //001e
+  if ((said("swim", "anyword") || said("enter", "swim") || said("swim") || controller(c22))) { //0025
+    set(f124)
+    if (!fEgoOnWater) { //003f
+      print("You need to be in the water in order to swim.")
+      goto(l91)
+    }
+    if (fEgoOnWater && v95 == 2) { //004b
+      print("You are already swimming!")
+      goto(l91)
+    }
+    reset(fSaidAccepted)
+  }
+l91:
+  goto(l103)
+}
+if (!(controller(c22))) { //005e
+  reset(f124)
+}
+l103:
+if (fEgoOnWater) { //0067
+  if (!(v95 > 0)) { //006d
+    set(f92)
+    v52 = 250
+    v95 = 1
+    if (f116) { //007d
+      reposition.to(o0,v67,v68)
+      goto(l140)
+    }
+    object.on.water(o0)
+l140:
+    get.posn(o0,v67,v68)
+    set.view(o0,104)
+    v94 = 2
+    cycle.time(o0,v94)
+    stop.motion(o0)
+    if (f64) { //009b
+      v86 = 25
+    }
+    goto(l221)
+  }
+  if (!f64 && (said("swim") || said("enter", "swim") || said("swim", "anyword") || controller(c22))) { //00a7
+    set.view(o0,97)
+    v94 = 1
+    cycle.time(o0,v94)
+    start.motion(o0)
+    get.posn(o0,v67,v68)
+    v82 = 0
+    move.obj(o0,v67,v68,82,f169)
+    v95 = 2
+  }
+}
+l221:
+if (v95 == 1 && !(v86 > 0)) { //00dd
+  if (v52 == 0) { //00e8
+    print("You splash around in the water for a while but seem to have forgotten how to swim. Unfortunately, you drown.")
+    v86 = 25
+    goto(l249)
+  }
+  v52--
+}
+l249:
+if (!fEgoOnWater && v95 == 2) { //00f9
+  reset(f92)
+  v95 = 0
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  if (f118) { //0111
+    reposition.to(o0,v67,v68)
+    goto(l288)
+  }
+  object.on.land(o0)
+}
+l288:
+reset(f116)
+reset(f118)
+v67 = 0
+v68 = 0
+l298:
+v86--
+if (f64 && v86 == 10) { //012c
+  print("This is a poisoned lake! Too bad, you die of extreme poisoning.")
+}
+if (v86 == 1) { //0137
+  erase(o0)
+  set(f50)
+}
+return()

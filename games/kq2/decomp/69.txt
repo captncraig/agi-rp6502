@@ -1,4 +1,344 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f127)
+  load.view(115)
+  load.view(63)
+  load.view(67)
+  load.view(68)
+  load.view(69)
+  load.view(70)
+  load.view(26)
+  load.view(25)
+  load.view(164)
+  load.view(64)
+  load.sound(22)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o2)
+  v94 = 3
+  cycle.time(o2,v94)
+  step.size(o2,v94)
+  animate.obj(o3)
+  start.cycling(o3)
+  v94 = 2
+  cycle.time(o3,v94)
+  animate.obj(o4)
+  if (vPrevRoom == 44) { //003b
+    position(o0,1,119)
+  }
+  if (f103) { //0046
+    program.control()
+    set.view(o2,115)
+    position(o2,80,115)
+    reverse.loop(o2,f36)
+    draw(o2)
+    position(o3,80,120)
+    v94 = 2
+    cycle.time(o3,v94)
+    set.view(o3,69)
+    draw(o3)
+    goto(l162)
+  }
+  random(0,255,v69)
+  if ((v69 > 205 || f127 || v57 > 0)) { //006f
+    set.view(o3,69)
+    position(o3,80,120)
+    draw(o3)
+    reset(f31)
+    reset(f127)
+    goto(l160)
+  }
+  set(f31)
+  stop.motion(o2)
+  v94 = 2
+  cycle.time(o2,v94)
+  set.view(o2,68)
+  position(o2,80,120)
+  draw(o2)
+l160:
+  draw(o0)
+l162:
+  position(o4,100,100)
+  if (!f104) { //00a6
+    if (v65 == 2) { //00ad
+      set.view(o4,70)
+      goto(l207)
+    }
+    if (f135) { //00ba
+      set.view(o4,164)
+      goto(l207)
+    }
+    v94 = 2
+    cycle.time(o4,v94)
+    set.view(o4,63)
+l207:
+    draw(o4)
+  }
+  show.pic()
+}
+if (v33 == 1) { //00d2
+  get.posn(o5,v105,v106)
+  if (v105 < 53) { //00dd
+    set.priority(o5,10)
+    v33 = 2
+  }
+}
+if (!fEnteredCommand) { //00ea
+  goto(l1057)
+}
+if (!f31 && said("anyword", "bitch")) { //00f4
+  print("She's not here.")
+  goto(l1057)
+}
+if ((said("kiss", "bitch") || said("embrace", "bitch"))) { //0106
+  print("Smack, hug, woopie!, yuck, barf, gag.")
+}
+if ((said("examine", "cauldron") || said("look in", "cauldron") || said("examine", "cauldron") || said("look in", "cauldron"))) { //011a
+  print("The iron cauldron is bubbling with a nasty smelling brew. A hot fire burns underneath.")
+}
+if (said("examine", "brew")) { //013a
+  print("The brew in the iron cauldron is a sickly yellow color. Hot steam rises from it. The odor is almost unbearable. You believe it to be a broth made from human flesh and bone.")
+}
+if ((said("drink", "brew") || said("consume", "brew") || said("smell", "brew"))) { //0146
+  print("Yuck!!! Don't do that!")
+}
+if (said("examine", "skull")) { //0160
+  print("There are many human skulls in Hagatha's cave. She has a taste for human flesh.")
+}
+if (v33 > 0 && said("examine", "bird")) { //016c
+  print("The nightingale is flying toward the cave entrance.")
+  goto(l416)
+}
+if (!f104 && (said("examine", "bird") || said("examine", "bird cage"))) { //017e
+  if (f135) { //0193
+    print("It's just an empty birdcage.")
+    goto(l416)
+  }
+  print("The beautiful nightingale is in a gilded cage.")
+}
+l416:
+if ((said("examine", "cave") || said("look in", "cave") || said("examine"))) { //01a0
+  if (f31) { //01b6
+    if (f104) { //01bc
+      print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. Hagatha is busily stirring her brew and muttering to herself. As she has very bad eyesight, she hasn't noticed you.")
+      goto(l468)
+    }
+    if (f135) { //01c7
+      print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. Hagatha is busily stirring her brew and muttering to herself. As she has very bad eyesight, she hasn't noticed you. You see a gilded cage.")
+      goto(l468)
+    }
+    print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. Hagatha is busily stirring her brew and muttering to herself. As she has very bad eyesight, she hasn't noticed you. You see a nightingale in a gilded cage.")
+l468:
+    goto(l495)
+  }
+  if (f104) { //01d7
+    print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. A cauldron with a bubbling brew fills the cave with a putrid odor.")
+    goto(l495)
+  }
+  if (f135) { //01e2
+    print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. A cauldron with a bubbling brew fills the cave with a putrid aroma. You see a gilded cage.")
+    goto(l495)
+  }
+  print("You look around this dreary cave. Fear grips you as you notice human skulls lining the wall. A cauldron with a bubbling brew fills the cave with a putrid aroma. You see a nightingale in a gilded cage.")
+}
+l495:
+if (v65 != 2 && !f104 && !f135 && said("listen", "bird")) { //01ef
+  print("The nightingale flits about in the gilded cage; not making a sound.")
+}
+if (said("examine", "bitch")) { //0205
+  print("This is the ugliest old lady you have ever seen. She's toothless, with warts all over her face, and she has matted gray hair. She stirs her brew with a stick held by clawlike hands.")
+}
+if ((f103 || f32)) { //0211
+  goto(l1057)
+}
+if (!(v34 > 0) && has(i70) && f31 && v65 != 2 && (said("examine", "bird") || said("examine", "bird cage"))) { //021e
+  print("Unfortunately, this alerts the hag to your presence.")
+  v34 = 1
+}
+if (!f104 && (said("acquire", "bird") || said("acquire", "bird cage"))) { //0241
+  distance(o0,o4,v94)
+  if (v94 > 20) { //025a
+    print("You'll have to go closer!")
+    goto(l671)
+  }
+  set(f104)
+  erase(o4)
+  if (f135) { //026a
+    get(i71)
+    print("You take the cage.")
+    goto(l671)
+  }
+  vCurrentScore += 2
+  get(i70)
+  if (v65 == 2) { //027c
+    print("Quietly, you pick up the covered birdcage with the nightingale. To your relief, the bird remains silent.")
+    goto(l671)
+  }
+  sound(22,f169)
+  if (!(v34 > 0) && f31) { //028b
+    v34 = 1
+    print("You quietly pick up the birdcage with the nightingale. Suddenly, the nightingale bursts out in song, alerting the old hag to your presence.")
+    goto(l671)
+  }
+  print("You pick up the gilded birdcage with the nightingale in it. The little bird starts singing prettily. A moment later it stops.")
+}
+l671:
+if (!(v34 > 0) && (said("speak", "bitch") || said("hello", "anyword") || said("say", "hello"))) { //029f
+  print("What a mistake you made!! You gave yourself away! Now Hagatha knows you are here.")
+  v34 = 1
+}
+if ((said("acquire", "bitch") || said("capture", "bitch"))) { //02c0
+  print("What would you do with her if you had her?")
+}
+if ((said("kill", "bitch") || said("move", "bitch", "cauldron"))) { //02d4
+  print("The old hag is stronger than she looks. You shouldn't try it.")
+}
+if ((said("cover", "bird") || said("cover", "bird cage") || said("drop", "black cape", "bird cage") || said("drop", "cloth", "bird cage"))) { //02ea
+  if (f104) { //030c
+    print("There is no need for you to do that now.")
+    goto(l885)
+  }
+  distance(o0,o4,v94)
+  if (v94 > 20 && (has(i68) || has(i73))) { //031b
+    print("You'll have to go closer!")
+    goto(l1057)
+  }
+  if (has(i68) && (!(has(i73)) || said("cover", "anyword", "black cape") || said("drop", "black cape"))) { //032d
+    print("You try using the black cloak to cover the birdcage, but it is the wrong shape. It slips off.")
+    goto(l885)
+  }
+  if (has(i73)) { //034b
+    if (f135) { //0351
+      print("OK.")
+      goto(l872)
+    }
+    print("You drape the cloth over the birdcage. Hopefully, this will keep the nightingale quiet.")
+    if (v65 == 0) { //035e
+      vCurrentScore += 2
+    }
+l872:
+    drop(i73)
+    set.view(o4,70)
+    v65 = 2
+    goto(l885)
+  }
+  print("You have nothing to cover a birdcage with.")
+}
+l885:
+if (v65 == 2 && (said("remove", "cloth") || said("acquire", "cloth"))) { //0375
+  get(i73)
+  v65 = 1
+  if (f135) { //038f
+    print("OK.")
+    set.view(o4,164)
+    goto(l948)
+  }
+  v94 = 2
+  cycle.time(o4,v94)
+  set.view(o4,63)
+  sound(22,f169)
+  if (f31) { //03a9
+    print("Without thinking, you remove the cloth from the birdcage. Immediately, the nightingale sings, alerting Hagatha to your presence.")
+    v34 = 1
+  }
+}
+l948:
+if (!f104 && !f135 && (said("open", "bird cage") || said("let", "bird", "a"))) { //03b4
+  distance(o0,o4,v94)
+  if (v94 > 25) { //03d2
+    print("You'll have to go closer!")
+    goto(l1033)
+  }
+  set.view(o4,164)
+  print("Oh, no! When you opened the cage, the bird flew away.")
+  set(f135)
+  v33 = 0
+  animate.obj(o5)
+  position(o5,95,105)
+  v94 = 2
+  cycle.time(o4,v94)
+  v94 = 3
+  step.size(o4,v94)
+  set.view(o5,64)
+  ignore.blocks(o5)
+  ignore.objs(o5)
+  draw(o5)
+  move.obj(o5,0,80,0,f37)
+}
+l1033:
+if (said("acquire", "brew")) { //0409
+  print("You wouldn't want any of Hagatha's brew.")
+}
+if (said("acquire", "skull")) { //0415
+  print("Yechhh!!! What a terrible thought!")
+}
+l1057:
+if (f37) { //0421
+  reset(f37)
+  v33 = 0
+  erase(o5)
+}
+if (vWhichEgoBorder == 4) { //042e
+  new.room(44)
+}
+if (v34 == 1) { //0437
+  v34++
+  erase(o2)
+  set.view(o3,69)
+  set.view(o2,26)
+  position(o3,80,120)
+  position(o2,80,115)
+  draw(o2)
+  draw(o3)
+  follow.ego(o2,5,f32)
+}
+if (f32) { //0458
+  reset(f32)
+  print("She grabs you and throws you into her cauldron. She will love to have you for dinner. heh, heh, heh!")
+  erase(o0)
+  set.view(o2,25)
+  v58 = 20
+  set(f34)
+}
+if (f34) { //046c
+  if (v58 == 1) { //0472
+    set.view(o2,115)
+    set.cel(o2,0)
+    end.of.loop(o2,f35)
+    reset(f34)
+  }
+  v58--
+}
+if (f35) { //0486
+  reset(f35)
+  v67 = 80
+  v68 = 115
+  get.posn(o2,v105,v106)
+  v67 -= v105
+  v68 -= v106
+  repositon(o2,v67,v68)
+  reverse.loop(o2,f36)
+}
+if (f36) { //04a5
+  reset(f36)
+  set.view(o2,25)
+  start.cycling(o2)
+  v59 = 15
+}
+v59--
+if (v59 == 1) { //04b7
+  stop.motion(o0)
+  erase(o2)
+  erase(o3)
+  position(o0,80,120)
+  v94 = 2
+  cycle.time(o0,v94)
+  set.view(o0,67)
+  draw(o0)
+  set(f92)
+  v36 = 30
+}
+v36--
+if (v36 == 2) { //04da
+  set(f50)
+}
+return()

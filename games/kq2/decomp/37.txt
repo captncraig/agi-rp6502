@@ -1,4 +1,90 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((has(i72) || has(i76))) { //0008
+    load.view(65)
+    load.view(98)
+  }
+  load.view(97)
+  load.view(104)
+  load.logic(151)
+  load.logic(158)
+  load.logic(161)
+  load.logic(101)
+  load.pic(vCurrentRoom)
+  call(161)
+  call(101)
+  draw.pic(vCurrentRoom)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater) { //002f
+  if ((posn(o0,54,55,81,65) || posn(o0,77,51,115,68) || posn(o0,93,69,115,76) || posn(o0,102,74,136,104) || posn(o0,125,47,151,103) || posn(o0,116,104,151,147))) { //0036
+    set(fEgoOnWater)
+    set(f116)
+  }
+}
+if (!(v95 > 0) && fEgoOnWater) { //0064
+  get.posn(o0,v67,v68)
+  if (posn(o0,54,55,81,57)) { //0072
+    v67 = 0
+    v68 = 2
+    set(f116)
+  }
+  if (posn(o0,56,51,70,64)) { //0084
+    v67 = 61
+    v68 = 64
+    set(f116)
+  }
+  if (posn(o0,71,46,96,56)) { //0096
+    v67 = 79
+    v68 = 59
+    set(f116)
+  }
+  if (posn(o0,107,43,126,51)) { //00a8
+    v67 = 104
+    v68 = 55
+    set(f116)
+  }
+  if (posn(o0,127,40,159,51)) { //00ba
+    v67 = 130
+    v68 = 55
+    set(f116)
+  }
+  if (posn(o0,104,141,128,152)) { //00cc
+    v67 = 105
+    v68 = 142
+    set(f116)
+  }
+  if (posn(o0,142,149,159,152)) { //00de
+    v67 = 139
+    v68 = 144
+    set(f116)
+  }
+  if (posn(o0,72,70,94,87)) { //00f0
+    v67 = 86
+    v68 = 83
+    set(f116)
+  }
+  if (posn(o0,68,88,77,104)) { //0102
+    v67 = 76
+    v68 = 95
+    set(f116)
+  }
+}
+if (vWhichEgoBorder == 1) { //0114
+  new.room(30)
+}
+if (vWhichEgoBorder == 2) { //011d
+  new.room(38)
+}
+if (vWhichEgoBorder == 4) { //0126
+  new.room(36)
+}
+if (vWhichEgoBorder == 3) { //012f
+  new.room(44)
+}
+call(151)
+call(158)
+call(161)
+call(101)
+return()

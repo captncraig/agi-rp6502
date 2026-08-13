@@ -1,4 +1,242 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x77)}
+if (fNewRoom) { //0002
+  prevent.input()
+  set.string(str4,"Version 2.0J")
+  v58 = 0
+  load.sound(0)
+  load.view(55)
+  load.view(34)
+  load.view(161)
+  load.view(163)
+  load.view(160)
+  load.view(166)
+  load.view(200)
+  load.pic(vCurrentRoom)
+  v94 = 98
+  load.pic(v94)
+  v94 = 104
+  load.pic(v94)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,55)
+  v94 = 2
+  step.size(o3,v94)
+  position(o3,10,156)
+  draw(o3)
+  move.obj(o3,75,156,0,f32)
+  animate.obj(o2)
+  set.view(o2,200)
+  v94 = 2
+  cycle.time(o2,v94)
+  set.loop(o2,0)
+  set.cel(o2,0)
+  position(o2,60,60)
+  animate.obj(o1)
+  set.view(o1,160)
+  v94 = 2
+  cycle.time(o1,v94)
+  position(o1,33,82)
+  set.cel(o1,0)
+  v30 = 1
+  show.pic()
+  display(1,1,"King's Quest ][ - Romancing The Throne")
+  display(22,5,"(c) 1987 Sierra On-Line Inc.")
+  display(23,14,"Version 2.0J")
+  v38 = 9
+}
+v38--
+if ((v38 == 1 || f48)) { //0080
+  if (v39 < 2) { //008b
+    sound(0,f48)
+    v39++
+  }
+}
+if (f32) { //0097
+  set.view(o3,34)
+  v94 = 2
+  cycle.time(o3,v94)
+  set.cel(o3,0)
+  end.of.loop(o3,f33)
+  reset(f32)
+}
+if (f33) { //00ae
+  reverse.loop(o3,f34)
+  reset(f33)
+}
+if (f34) { //00b9
+  set.view(o3,55)
+  v94 = 1
+  cycle.time(o3,v94)
+  start.cycling(o3)
+  move.obj(o3,139,156,0,f31)
+  reset(f34)
+}
+if (f31) { //00d2
+  erase(o3)
+  reset(f31)
+  v58 = 40
+  v94 = 98
+  draw.pic(v94)
+  clear.lines(1,24,c0)
+  display(1,11,"King's Quest ][")
+  display(3,8,"Romancing The Throne")
+  display(5,3,"Designed & Written by:")
+  display(6,17,"Roberta Williams")
+  display(8,3,"Game Logic:")
+  display(8,17,"Ken Williams")
+  display(9,17,"Sol Ackerman")
+  display(10,17,"Chris Iden")
+  display(12,17,"Scott Murphy")
+  display(11,17,"Dale Carlson")
+  display(14,3,"Programming:")
+  display(14,17,"Jeff Stephenson")
+  display(15,17,"Chris Iden")
+  display(17,3,"Scenery:")
+  display(17,17,"Doug MacNeill")
+  display(19,3,"Animation:")
+  display(19,17,"Mark Crowe")
+  display(21,3,"Music:")
+  display(21,17,"Al Lowe")
+}
+v58--
+if (v58 == 1) { //0136
+  v94 = 104
+  draw.pic(v94)
+  draw(o2)
+  stop.cycling(o2)
+  draw(o1)
+  stop.cycling(o1)
+  show.pic()
+  clear.lines(22,24,c0)
+  vMessageTimer = 20
+  print.at("Sir Graham is now King of Daventry. Under his wise rule, Daventry is prosperous. He is loved by his people.",15,6,0)
+  vMessageTimer = 20
+  print.at("Unfortunately, there is a problem. King Graham needs a queen for companionship and to provide an heir to the throne.",15,5,0)
+  vMessageTimer = 18
+  print.at("He has searched high and low for the right maiden, but he remains alone.",15,6,0)
+  end.of.loop(o1,f41)
+}
+if (f39) { //016a
+  reset(f39)
+  if (v30 == 1) { //0172
+    vMessageTimer = 18
+    print.at("An idea comes to him! He goes to the magic mirror and looks into its depths.",15,5,0)
+    end.of.loop(o2,f47)
+    v30 = 2
+  }
+}
+if (f41) { //0187
+  reset(f41)
+  set.view(o1,161)
+  v94 = 1
+  cycle.time(o1,v94)
+  step.size(o1,v94)
+  v105 = 3
+  v106 = 0
+  repositon(o1,v105,v106)
+  set.cel(o1,3)
+  set.loop(o1,0)
+  start.cycling(o1)
+  move.obj(o1,62,93,0,f35)
+  set(f44)
+}
+if (f44) { //01b5
+  get.posn(o1,v105,v106)
+  if (v105 > 55) { //01bf
+    reset(f44)
+    end.of.loop(o2,f47)
+    v30 = 1
+  }
+}
+if (f35) { //01ce
+  reset(f35)
+  v37 = 50
+  set.loop(o1,2)
+  set.loop(o2,2)
+  set.cel(o2,0)
+  stop.cycling(o2)
+  set(f39)
+}
+if (f47) { //01e6
+  reset(f47)
+  if (v30 == 5) { //01ee
+    stop.update(o2)
+  }
+  if (v30 == 3) { //01f7
+    vMessageTimer = 18
+    print.at("The scene then changes to show a beautiful girl locked within the tower! Graham now knows what to do.",15,5,0)
+    set.loop(o2,1)
+    set.loop(o1,1)
+    start.cycling(o1)
+    end.of.loop(o2,f47)
+    move.obj(o1,45,90,0,f45)
+    v30 = 5
+  }
+  if (v30 == 2) { //021a
+    vMessageTimer = 18
+    print.at("He sees a vision of a quartz tower. To reach it he must pass through a magic door in the nearby land of Kolyma.",15,5,0)
+    set.loop(o2,3)
+    set.cel(o2,0)
+    end.of.loop(o2,f47)
+    v30 = 3
+  }
+}
+if (f45) { //0235
+  reset(f45)
+  move.obj(o1,33,82,0,f36)
+}
+if (f36) { //0243
+  reset(f36)
+  set.view(o1,160)
+  v94 = 2
+  cycle.time(o1,v94)
+  v105 = 253
+  v106 = 0
+  repositon(o1,v105,v106)
+  reverse.loop(o1,f42)
+}
+if (f42) { //0261
+  reset(f42)
+  set.view(o1,163)
+  v94 = 3
+  cycle.time(o1,v94)
+  end.of.loop(o1,f37)
+}
+if (f37) { //0275
+  reset(f37)
+  set.view(o1,166)
+  v94 = 2
+  cycle.time(o1,v94)
+  end.of.loop(o1,f43)
+}
+if (f43) { //0289
+  reset(f43)
+  set.view(o1,0)
+  v94 = 1
+  cycle.time(o1,v94)
+  v105 = 3
+  v106 = 0
+  repositon(o1,v105,v106)
+  set.cel(o1,3)
+  set.loop(o1,0)
+  start.cycling(o1)
+  move.obj(o1,70,98,0,f40)
+}
+if (f40) { //02b2
+  reset(f40)
+  move.obj(o1,152,114,0,f38)
+}
+if (f38) { //02c0
+  erase(o1)
+  vMessageTimer = 16
+  print.at("Bravely, he sets off to find the land of Kolyma and the beautiful maiden.",15,5,0)
+  set(f46)
+}
+if ((have.key() || f46)) { //02d2
+  set.text.attribute(15,0)
+  clear.lines(22,24,c0)
+  player.control()
+  position(o0,100,100)
+  reset(f92)
+  new.room(1)
+}
+return()

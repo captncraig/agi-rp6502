@@ -1,4 +1,84 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(25)
+  load.logic(152)
+  load.logic(101)
+  load.view(111)
+  load.view(97)
+  if ((has(i72) || has(i76))) { //0014
+    load.view(65)
+    load.view(98)
+  }
+  load.view(104)
+  draw.pic(vCurrentRoom)
+  position(o7,16,101)
+  call(152)
+  call(101)
+  ignore.objs(o0)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (!fEgoOnWater && !fTriggerLine) { //0035
+  if (posn(o0,53,65,71,81)) { //003f
+    set(fEgoOnWater)
+    set(f116)
+    v67 = 56
+    v68 = 69
+  }
+  if (posn(o0,19,66,52,84)) { //0053
+    set(fEgoOnWater)
+  }
+}
+if (!fEgoOnWater && fTriggerLine) { //005f
+  set.view(o0,104)
+  v94 = 2
+  cycle.time(o0,v94)
+  get.posn(o0,v67,v68)
+  if (posn(o0,18,73,52,87)) { //0075
+    v67 = 31
+    v68 = 75
+    goto(l212)
+  }
+  if (posn(o0,18,85,38,93)) { //0088
+    v67 = 24
+    v68 = 108
+    goto(l212)
+  }
+  if (posn(o0,39,87,65,98)) { //009b
+    v67 = 43
+    v68 = 115
+    goto(l212)
+  }
+  if (posn(o0,66,90,83,121)) { //00ae
+    v67 = 61
+    v68 = 118
+    goto(l212)
+  }
+  if (v68 > 151 && v68 < 165) { //00c1
+    v67 -= 30
+    goto(l212)
+  }
+  v67 -= 20
+l212:
+  set(f116)
+  set(fEgoOnWater)
+}
+if (vWhichEgoBorder != 0) { //00d8
+  observe.objs(o0)
+}
+if (vWhichEgoBorder == 1) { //00e2
+  new.room(22)
+}
+if (vWhichEgoBorder == 2) { //00eb
+  new.room(30)
+}
+if (vWhichEgoBorder == 4) { //00f4
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //00fd
+  new.room(36)
+}
+call(101)
+call(152)
+return()

@@ -1,4 +1,107 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(151)
+  load.sound(22)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  random(0,255,v94)
+  if ((v94 < 20 || f129)) { //001e
+    load.view(27)
+    load.sound(24)
+    set(f34)
+    set(f36)
+    set(f37)
+  }
+  load.pic(vCurrentRoom)
+  if (!f37) { //0035
+    load.logic(161)
+    call(161)
+  }
+  draw.pic(vCurrentRoom)
+  if (f34) { //0042
+    animate.obj(o3)
+    set.view(o3,27)
+    position(o3,120,101)
+    v94 = 2
+    step.size(o3,v94)
+    cycle.time(o3,v94)
+    set.cel(o3,0)
+    draw(o3)
+    stop.cycling(o3)
+    move.obj(o3,40,101,0,f31)
+  }
+  if (vPrevRoom == 69) { //0067
+    position(o0,124,100)
+  }
+  draw(o0)
+  show.pic()
+  if (vPrevRoom == 69) { //0075
+    if (v65 == 2 && has(i70)) { //007c
+      v65 = 1
+      print("As you leave the dark cave, you remove the cloth from the cage.")
+      sound(22,f169)
+      get(i73)
+    }
+  }
+}
+if (f34 && !f35) { //008f
+  reset(f34)
+  sound(24,f34)
+}
+if (f31) { //009d
+  reset(f31)
+  start.cycling(o3)
+  end.of.loop(o3,f33)
+}
+if (f33) { //00aa
+  reset(f33)
+  stop.cycling(o3)
+  move.obj(o3,120,101,0,f32)
+}
+if (f32) { //00ba
+  set(f35)
+  reset(f32)
+  reset(f36)
+  erase(o3)
+}
+if ((said("examine", "cave") || said("examine"))) { //00c8
+  print("This forbidding cave is the home of Hagatha, the wicked old hag. There are human skulls on stakes at the entrance. This is not a reassuring sign.")
+}
+if (said("look in", "cave")) { //00da
+  if (posn(o0,90,73,159,121)) { //00e4
+    print("You see nothing but darkness when you peer into the cave.")
+    goto(l245)
+  }
+  print("You can't see into the cave from there.")
+}
+l245:
+if (said("examine", "skull")) { //00f5
+  print("The skulls probably belong to unfortunate travelers who fell into Hagatha's clutches. She has a taste for human flesh, you know.")
+}
+if (said("acquire", "skull")) { //0101
+  print("Yecchhhhh! What a horrible thought! Why would you want to do such a terrible thing?")
+}
+if (f36 && said("anyword", "batman")) { //010d
+  print("He must have gotten lost. I do not think he belongs in this story.")
+}
+if (posn(o0,125,89,126,104)) { //011b
+  new.room(69)
+}
+if (vWhichEgoBorder == 1) { //0127
+  new.room(37)
+}
+if (vWhichEgoBorder == 4) { //0130
+  new.room(43)
+}
+if (vWhichEgoBorder == 3) { //0139
+  new.room(2)
+}
+if (vWhichEgoBorder == 2) { //0142
+  new.room(45)
+}
+call(151)
+if (!f37) { //014d
+  call(161)
+}
+return()

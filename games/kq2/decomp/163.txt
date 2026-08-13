@@ -1,3 +1,23 @@
-if (!(isSet(f2)
-!!!
-&{%!e(string=incomplete condition: 0x03)}
+if (!fEnteredCommand) { //0002
+  goto(l99)
+}
+if (said("examine", "tree")) { //000c
+  print("There are many lovely pine and spruce trees near these mountains.")
+}
+if (said("anyword", "tree") && !(said("examine", "tree"))) { //0018
+  print("You have better things to do.")
+}
+if (said("anyword", "cliff")) { //002b
+  print("The mountain range is wild and rugged. It would be impossible to cross, unless you could fly like a bird.")
+}
+if (said("examine", "blossom")) { //0037
+  print("There are not many flowers around here.")
+}
+if ((said("acquire", "blossom") || said("smell", "blossom"))) { //0043
+  print("You have better things to do.")
+}
+if (said("examine", "bush")) { //0057
+  print("There are not many bushes around here.")
+}
+l99:
+return()

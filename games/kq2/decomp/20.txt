@@ -1,4 +1,139 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(21)
+  load.view(65)
+  load.view(98)
+  load.view(114)
+  load.logic(151)
+  load.logic(160)
+  load.pic(vCurrentRoom)
+  call(160)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,114)
+  set.cel(o3,0)
+  set.priority(o3,10)
+  position(o3,94,114)
+  ignore.blocks(o3)
+  ignore.objs(o0)
+  if (vPrevRoom == 68) { //002d
+    set.loop(o0,1)
+    position(o0,87,117)
+    goto(l94)
+  }
+  if (vPrevRoom == 105) { //003e
+    set.priority(o0,15)
+    v94 = 2
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    set.view(o0,98)
+    position(o0,45,40)
+    move.obj(o0,45,70,0,f32)
+  }
+l94:
+  draw(o0)
+  draw(o3)
+  stop.cycling(o3)
+  if (f134) { //0064
+    if (f101) { //006a
+      reset(f71)
+      goto(l119)
+    }
+    set(f71)
+  }
+l119:
+  show.pic()
+}
+if (!fEnteredCommand) { //0078
+  goto(l370)
+}
+if (said("examine", "antique shop")) { //0082
+  print("This is a quaint little antique shop. There is a sign in the window.")
+}
+if ((said("examine", "sign") || said("read", "sign"))) { //008e
+  if (f71) { //00a0
+    print("The sign says \"open.\"")
+    goto(l173)
+  }
+  print("The sign says \"closed.\"")
+}
+l173:
+if ((said("examine", "window") || said("look in", "window"))) { //00ad
+  if (posn(o0,80,122,120,145)) { //00bf
+    print("You can see inside when you look through the window. It is hard to tell details, though.")
+    goto(l208)
+  }
+  print("You are too far away.")
+}
+l208:
+if (said("examine", "door")) { //00d0
+  print("The door to the antique store is closed.")
+}
+if ((f148 || v88 != 0)) { //00dc
+  goto(l350)
+}
+if (said("open", "door")) { //00eb
+  if (!f71) { //00f5
+    print("The antique store is closed. You cannot enter it.")
+    goto(l278)
+  }
+  if (posn(o0,86,109,98,122)) { //0101
+    sound(21,f169)
+    end.of.loop(o3,f31)
+    goto(l278)
+  }
+  print("You are too far away.")
+}
+l278:
+if ((said("knock", "door") || said("knock"))) { //0116
+  if (!f71) { //0126
+    print("You rap loudly on the door but get no reply.")
+    goto(l323)
+  }
+  if (posn(o0,86,109,98,122)) { //0132
+    print("You rap loudly on the door and hear a cheery, \"Come on in.\"")
+    goto(l323)
+  }
+  print("You are too far away.")
+}
+l323:
+if (said("unlock", "door")) { //0143
+  if (posn(o0,86,109,98,122)) { //014d
+    print("You can't unlock the door. You don't have a key that fits.")
+    goto(l350)
+  }
+  print("You are too far away.")
+}
+l350:
+if ((said("break", "window") || said("break", "door"))) { //015e
+  print("You could get caught for \"breaking and entering.\" That would not be wise.")
+}
+l370:
+if (f31) { //0172
+  reset(f31)
+  new.room(68)
+}
+if (f32) { //017c
+  observe.objs(o0)
+  release.priority(o0)
+  set.view(o0,0)
+  reset(f32)
+  reset(f148)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+}
+if (vWhichEgoBorder == 1) { //0196
+  new.room(13)
+}
+if (vWhichEgoBorder == 2) { //019f
+  new.room(21)
+}
+if (vWhichEgoBorder == 4) { //01a8
+  new.room(19)
+}
+if (vWhichEgoBorder == 3) { //01b1
+  new.room(27)
+}
+call(151)
+call(160)
+return()

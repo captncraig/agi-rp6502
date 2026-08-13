@@ -1,4 +1,43 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(8)
+  load.logic(165)
+  load.logic(164)
+  if ((has(i72) || has(i76))) { //000e
+    load.view(98)
+    load.view(65)
+  }
+  load.view(8)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(165)
+  call(164)
+  if (!f136) { //0026
+    if (vPrevRoom == 58) { //002d
+      position(o0,129,90)
+    }
+    draw(o0)
+  }
+  show.pic()
+}
+if (said("examine", "cave")) { //003b
+  print("There is a large cave opening in the steep mountain side.")
+}
+if (said("look in", "cave")) { //0047
+  get.posn(o0,v105,v106)
+  if ((v106 < 70 || v106 > 110)) { //0055
+    print("You cannot see into the cave from where you are standing.")
+    goto(l104)
+  }
+  print("You see nothing but darkness when you peer into the cave.")
+}
+l104:
+if (vWhichEgoBorder == 4) { //0068
+  set.view(o0,0)
+  new.room(56)
+}
+if (vWhichEgoBorder == 2) { //0074
+  new.room(58)
+}
+call(165)
+call(164)
+return()

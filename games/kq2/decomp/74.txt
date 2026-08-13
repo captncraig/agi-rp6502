@@ -1,4 +1,230 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(78)
+  load.view(28)
+  load.view(76)
+  load.view(77)
+  load.view(115)
+  load.sound(5)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  animate.obj(o2)
+  v94 = 3
+  cycle.time(o2,v94)
+  animate.obj(o4)
+  v94 = 3
+  step.size(o4,v94)
+  position(o3,47,111)
+  if (f112) { //002e
+    set.view(o3,77)
+    goto(l61)
+  }
+  set.view(o3,76)
+l61:
+  draw(o3)
+  random(0,255,v94)
+  reset(f33)
+  if (v55 == 0 && v57 == 0) { //0045
+    if (v94 < 185) { //004f
+      set(f33)
+      set.view(o4,28)
+      position(o4,50,119)
+      follow.ego(o4,7,f34)
+      draw(o4)
+    }
+  }
+  set.priority(o2,12)
+  position(o2,105,141)
+  set.view(o2,78)
+  if (v85 == 0) { //006f
+    set.cel(o2,0)
+    goto(l127)
+  }
+  set.cel(o2,3)
+l127:
+  ignore.objs(o2)
+  ignore.objs(o4)
+  ignore.objs(o0)
+  draw(o2)
+  stop.cycling(o2)
+  get.posn(o0,v105,v106)
+  if (v106 < 117) { //008d
+    v106 = 117
+    position(o0,105,v106)
+  }
+  draw(o0)
+  show.pic()
+  if (f33) { //009e
+    sound(5,f169)
+    print("You have stumbled onto the home of the thieving dwarf! Unfortunately for you, he is home!")
+  }
+}
+if ((said("examine", "antique shop") || said("examine", "room") || said("examine"))) { //00a9
+  if (f112) { //00bf
+    print("It seems you have entered the underground home of the little dwarf. It is cozy, with a fire crackling in the hearth. There is a trunk tucked away in the corner.")
+    goto(l204)
+  }
+  print("It seems you have entered the underground home of the little dwarf. It is cozy, with a fire crackling in the hearth. A pot of chicken soup bubbling above the fire gives a delicious aroma to the room. There is a trunk tucked away in the corner.")
+}
+l204:
+if (said("examine", "fire")) { //00cc
+  if (f112) { //00d6
+    print("The fire is crackling merrily in the fireplace.")
+    goto(l227)
+  }
+  print("There is a pot of chicken soup boiling over the fire.")
+}
+l227:
+if (said("examine", "chest")) { //00e3
+  print("The trunk looks old and worn. The hinges are loose.")
+}
+if (said("examine", "cap")) { //00ef
+  print("The stocking hats of the dwarf are sitting on the table.")
+}
+if (!fSaidAccepted && said("anyword", "cap")) { //00fb
+  print("Those hats wouldn't fit you.")
+}
+if ((said("open", "chest") || said("lift", "lid"))) { //010a
+  if (!(posn(o0,95,120,122,147))) { //011c
+    print("You are too far away.")
+    goto(l324)
+  }
+  if (v85 == 1) { //012c
+    print("The trunk lid is already open.")
+  }
+  if (v85 == 0) { //0135
+    end.of.loop(o2,f169)
+    v85 = 1
+    set(f36)
+  }
+}
+l324:
+if ((said("close", "chest") || said("close", "lid"))) { //0144
+  if (!(posn(o0,95,120,122,147))) { //0156
+    print("You are too far away.")
+    goto(l380)
+  }
+  if (v85 == 0) { //0166
+    print("The lid of the trunk is already closed.")
+  }
+  if (v85 == 1) { //016f
+    reverse.loop(o2,f169)
+    v85 = 0
+  }
+}
+l380:
+if (said("look in", "chest")) { //017c
+  if (v85 != 1) { //0186
+    print("You will have to open it to see inside.")
+    goto(l474)
+  }
+  if ((f78 || !f133 || f80 || f77 || f81 || f79)) { //0193
+    print("You look inside and notice...")
+    if ((f78 || !f133)) { //01a8
+      print("earrings")
+    }
+    if (f80) { //01b5
+      print("bracelet")
+    }
+    if (f77) { //01bd
+      print("necklace")
+    }
+    if (f81) { //01c5
+      print("brooch")
+    }
+    if (f79) { //01cd
+      print("tiara")
+    }
+    goto(l474)
+  }
+  print("You look inside and notice...nothing.")
+}
+l474:
+if (!f112 && (said("acquire", "broth") || said("acquire", "cauldron"))) { //01da
+  distance(o0,o3,v94)
+  if (v94 > 15) { //01f3
+    print("You are too far away.")
+    goto(l523)
+  }
+  print("You grab the wooden handle of the bubbling pot of chicken soup. You take the pot with you.")
+  get(i67)
+  set.view(o3,77)
+  set(f112)
+  vCurrentScore += 2
+}
+l523:
+if (v85 == 1 && said("acquire", "earrings")) { //020b
+  if ((f78 || !f133)) { //0218
+    set(f133)
+    reset(f78)
+    print("You reach into the trunk and get it.")
+    get(i58)
+    vCurrentScore += 7
+    goto(l563)
+  }
+  reset(fSaidAccepted)
+}
+l563:
+if (v85 == 1 && f80 && said("acquire", "bracelet")) { //0233
+  print("You reach into the trunk and get it.")
+  reset(f80)
+  get(i53)
+  vCurrentScore += 7
+}
+if (v85 == 1 && f77 && said("acquire", "diamond and sapphire necklace")) { //024b
+  reset(f77)
+  print("You reach into the trunk and get it.")
+  get(i57)
+  vCurrentScore += 7
+}
+if (v85 == 1 && f81 && said("acquire", "brooch")) { //0263
+  print("You reach into the trunk and get it.")
+  reset(f81)
+  get(i59)
+  vCurrentScore += 7
+}
+if (v85 == 1 && f79 && said("acquire", "diamond and sapphire tiara")) { //027b
+  reset(f79)
+  print("You reach into the trunk and get it.")
+  get(i56)
+  vCurrentScore += 7
+}
+if (posn(o0,40,113,64,130) && said("light", "candle")) { //0293
+  set(f106)
+}
+if (posn(o0,40,113,64,120)) { //02a5
+  if (!f37) { //02af
+    print("OUCH!!!! This fire is HOT! You're going to burn yourself.")
+    set(f37)
+  }
+  goto(l703)
+}
+reset(f37)
+l703:
+if (vWhichEgoBorder == 4) { //02bf
+  new.room(73)
+}
+if (f34) { //02c8
+  reset(f34)
+  set.view(o0,115)
+  if (posn(o0,16,117,60,167)) { //02d3
+    erase(o0)
+    get.posn(o0,v105,v106)
+    v105 -= 15
+    position(o0,105,v106)
+    draw(o0)
+  }
+  stop.motion(o0)
+  set(f92)
+  end.of.loop(o0,f35)
+  set.priority(o0,15)
+  ignore.objs(o0)
+}
+if (f35) { //02f8
+  reset(f92)
+  reset(f35)
+  set.view(o0,0)
+  release.priority(o0)
+  new.room(46)
+}
+return()

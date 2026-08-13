@@ -1,4 +1,56 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(104)
+  load.view(91)
+  load.view(97)
+  load.view(92)
+  if ((has(i72) || has(i76))) { //0010
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(156)
+  load.logic(101)
+  load.logic(158)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(156)
+  call(101)
+  ignore.blocks(o0)
+  draw(o0)
+  show.pic()
+}
+if (posn(o0,0,0,106,167)) { //0033
+  set(f64)
+  goto(l68)
+}
+reset(f64)
+l68:
+if (!fEgoOnWater && posn(o0,11,73,30,115)) { //0044
+  set(fEgoOnWater)
+  set(f116)
+}
+if (fEgoOnWater && !(v95 > 0) && !f64) { //0055
+  v67 = 139
+  v68 = 91
+  set(f116)
+}
+if (vWhichEgoBorder != 0) { //006a
+  reset(f64)
+}
+if (vWhichEgoBorder == 1) { //0074
+  new.room(26)
+}
+if (vWhichEgoBorder == 2) { //007d
+  new.room(34)
+}
+if (vWhichEgoBorder == 4) { //0086
+  new.room(32)
+}
+if (vWhichEgoBorder == 3) { //008f
+  new.room(40)
+}
+call(151)
+call(156)
+call(101)
+call(158)
+return()

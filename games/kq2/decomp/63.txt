@@ -1,4 +1,189 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(30)
+  load.logic(166)
+  load.sound(23)
+  load.sound(29)
+  load.view(8)
+  load.view(91)
+  load.view(109)
+  load.view(134)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(166)
+  animate.obj(o3)
+  set.view(o3,134)
+  position(o3,124,32)
+  if (v60 > 0) { //0027
+    set(f40)
+    position(o0,72,32)
+    move.obj(o0,72,146,4,f33)
+    release.priority(o0)
+    goto(l103)
+  }
+  if (vPrevRoom == 64) { //003f
+    position(o0,50,165)
+    goto(l103)
+  }
+  position(o0,88,33)
+  if (!(v60 > 0)) { //0051
+    set.priority(o0,14)
+    set(f34)
+    set.loop(o0,0)
+    move.obj(o0,88,33,0,f38)
+  }
+l103:
+  draw(o0)
+  draw(o3)
+  start.cycling(o3)
+  show.pic()
+}
+if (v60 > 0 && f40) { //006e
+  reset(f40)
+  sound(29,f37)
+}
+if (f33) { //007c
+  reset(f33)
+  stop.motion(o0)
+  if (v60 == 1) { //0086
+    stop.sound()
+    set.view(o0,91)
+    print("You fall to your death on the hard stone floor.")
+    set(f50)
+    goto(l170)
+  }
+  set.view(o0,109)
+  v94 = 2
+  cycle.time(o0,v94)
+  v33 = 50
+  set(f36)
+  observe.blocks(o0)
+  reset(f39)
+}
+l170:
+if (f36 && v33 > 0) { //00aa
+  reset(f36)
+  sound(23,f36)
+}
+v33--
+if (v33 == 1) { //00ba
+  reset(f36)
+  v67 = 2
+  v68 = 0
+  repositon(o0,v67,v68)
+  start.motion(o0)
+  observe.blocks(o0)
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  set.loop(o0,2)
+  reset(f92)
+  v60 = 0
+}
+if (f34 && fTriggerLine && !(v60 > 0)) { //00e5
+  get.posn(o0,v105,v106)
+  if (v106 < 147) { //00f5
+    set(f169)
+    v60 = 0
+    if (v106 < 88) { //0101
+      v60 = 1
+    }
+    if (v105 > 94) { //010b
+      v105 = 94
+    }
+    v106 = 146
+    set(f40)
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+    move.obj(o0,v105,v106,82,f33)
+    set(f92)
+    ignore.blocks(o0)
+    set(f39)
+  }
+  release.priority(o0)
+  reset(f34)
+}
+if (posn(o0,70,152,77,167)) { //0139
+  if (vEgoDir > 1 && vEgoDir < 5) { //0143
+    set(f34)
+    set.priority(o0,14)
+    goto(l355)
+  }
+  if (vEgoDir > 5 && vEgoDir < 8) { //0155
+    reset(f34)
+    release.priority(o0)
+  }
+}
+l355:
+if ((posn(o0,64,149,69,167) || v60 > 0)) { //0163
+  ignore.blocks(o0)
+  goto(l431)
+}
+if (f34) { //0177
+  if (vEgoDir < 5 && posn(o0,70,140,110,151)) { //017d
+    observe.blocks(o0)
+    goto(l419)
+  }
+  if (vEgoDir > 4 && posn(o0,70,138,110,149)) { //018f
+    observe.blocks(o0)
+    goto(l419)
+  }
+  ignore.blocks(o0)
+l419:
+  goto(l431)
+}
+if (!f39) { //01a6
+  observe.blocks(o0)
+}
+l431:
+if (!fEnteredCommand) { //01af
+  goto(l578)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //01b9
+  print("There is a stairway spiraling up toward the top of a gloomy tower. A torch blazes on the wall.")
+}
+if (said("examine", "stairs")) { //01d1
+  print("The stairs spiral steeply upward. Be careful, you don't want to fall.")
+}
+if (said("examine", "torch")) { //01dd
+  print("The torch lends the only warmth to this dreary castle.")
+}
+if (said("acquire", "torch")) { //01e9
+  if (posn(o0,121,55,133,75)) { //01f3
+    print("The torch is firmly attached to the wall. Try as you might, you cannot budge it.")
+    goto(l516)
+  }
+  print("You can't do that from where you are standing.")
+}
+l516:
+if (!fSaidAccepted && said("light", "candle")) { //0204
+  if (has(i78)) { //0211
+    if (posn(o0,121,55,133,75)) { //0217
+      if (!f106) { //0221
+        set(f106)
+        print("You hold your candle up to the blazing torch. It catches! Your candle is now lit.")
+        if (!f158) { //022c
+          vCurrentScore += 1
+          set(f158)
+        }
+      }
+      goto(l573)
+    }
+    print("You can't do that from where you are standing.")
+l573:
+    goto(l578)
+  }
+  print("You are not carrying it.")
+}
+l578:
+if (vWhichEgoBorder == 1) { //0242
+  new.room(62)
+}
+if (vWhichEgoBorder == 3 && posn(o0,41,167,57,167)) { //024b
+  new.room(64)
+}
+call(166)
+return()

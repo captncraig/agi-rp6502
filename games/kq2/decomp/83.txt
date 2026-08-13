@@ -1,4 +1,108 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(170)
+  load.view(84)
+  load.sound(21)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(170)
+  animate.obj(o2)
+  position(o2,40,157)
+  set.view(o2,84)
+  v94 = 2
+  cycle.time(o2,v94)
+  ignore.blocks(o2)
+  set.cel(o2,0)
+  draw(o2)
+  stop.update(o2)
+  if (vPrevRoom == 93) { //002c
+    position(o0,49,160)
+    set.loop(o0,0)
+    start.update(o2)
+    reverse.loop(o2,f169)
+    goto(l109)
+  }
+  if (vPrevRoom == 88) { //0042
+    get.posn(o0,v105,v106)
+    if (v105 < 74) { //004d
+      position(o0,10,160)
+      goto(l109)
+    }
+    if (v105 > 106) { //005b
+      position(o0,120,163)
+      goto(l109)
+    }
+    position(o0,50,165)
+  }
+l109:
+  draw(o0)
+  show.pic()
+}
+if (!fEnteredCommand) { //0070
+  goto(l334)
+}
+if (said("examine", "antique shop")) { //007a
+  if (f123) { //0084
+    print("The tower was built of creamy, opaque quartz blocks. You see a tiny window near the top.")
+    goto(l145)
+  }
+  print("The tower is built of creamy, opaque quartz blocks. You see a tiny window near the top. A delicate hand, waving a hanky, appears from the window.")
+}
+l145:
+if (said("climb", "antique shop")) { //0091
+  print("There are no footholds or handholds in the tower walls. It would be impossible to climb it.")
+}
+if ((said("acquire", "bitch") || said("rescue", "bitch") || said("aid", "bitch") || said("rescue", "bitch"))) { //009d
+  print("You must do that from inside the quartz tower.")
+}
+if ((said("examine", "window") || said("look up", "window") || said("look in", "window"))) { //00bd
+  if (f123) { //00d5
+    print("You see nothing of interest from the window.")
+    goto(l226)
+  }
+  print("You see a small hand waving a hanky from the window at the top of the tower.")
+}
+l226:
+if (said("examine", "bitch")) { //00e2
+  print("You cannot see the girl's face. You can only see her hand waving from the window at the top of the quartz tower.")
+}
+if ((said("speak", "bitch") || said("say", "hello") || said("hello"))) { //00ee
+  print("The maiden cannot hear you from up in the tower.")
+}
+if (said("examine", "door")) { //0106
+  print("The thick door is fashioned from a wood unknown to you.")
+}
+if (said("open", "door")) { //0112
+  if (posn(o0,40,150,60,167)) { //011c
+    start.update(o2)
+    end.of.loop(o2,f30)
+    sound(21,f169)
+    goto(l307)
+  }
+  print("King Graham may be a hero, but even he can't open a door from THIS far away!")
+}
+l307:
+if (said("knock", "door")) { //0133
+  if (posn(o0,40,150,60,167)) { //013d
+    print("You hear what sounds like a distant roar.")
+    goto(l334)
+  }
+  print("You need to get closer to the door.")
+}
+l334:
+if (f30) { //014e
+  new.room(93)
+}
+if (vWhichEgoBorder == 1) { //0156
+  new.room(78)
+}
+if (vWhichEgoBorder == 2) { //015f
+  new.room(84)
+}
+if (vWhichEgoBorder == 4) { //0168
+  new.room(82)
+}
+if (vWhichEgoBorder == 3) { //0171
+  new.room(88)
+}
+call(170)
+return()

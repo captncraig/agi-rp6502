@@ -1,4 +1,108 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(21)
+  load.view(33)
+  if ((has(i72) || has(i76))) { //000c
+    load.view(65)
+    load.view(98)
+  }
+  if (vPrevRoom == 74) { //001a
+    load.view(115)
+  }
+  load.logic(151)
+  load.logic(162)
+  load.pic(vCurrentRoom)
+  call(162)
+  draw.pic(vCurrentRoom)
+  animate.obj(o3)
+  set.view(o3,33)
+  v94 = 3
+  cycle.time(o3,v94)
+  set.cel(o3,0)
+  ignore.blocks(o3)
+  set.priority(o3,11)
+  position(o3,102,123)
+  draw(o3)
+  stop.update(o3)
+  ignore.objs(o0)
+  if ((vPrevRoom == 72 || vPrevRoom == 74)) { //004a
+    position(o0,98,125)
+    set.loop(o0,1)
+  }
+  if (vPrevRoom == 74) { //005d
+    stop.motion(o0)
+    set(f92)
+    set.view(o0,115)
+    reverse.loop(o0,f32)
+  }
+  draw(o0)
+  show.pic()
+  if (vPrevRoom == 74) { //0071
+    print("He has caught you and thrown you out! Instantly, you find yourself outside the treehouse.")
+  }
+}
+if (f32) { //007a
+  reset(f92)
+  reset(f32)
+  set.view(o0,0)
+  set.loop(o0,1)
+  start.motion(o0)
+  v68 = 0
+  v67 = 10
+  repositon(o0,v67,v68)
+}
+if (!fEnteredCommand) { //0096
+  goto(l282)
+}
+if (said("examine", "tree")) { //00a0
+  if (said("examine", "tree", "hole")) { //00aa
+    reset(fSaidAccepted)
+    goto(l189)
+  }
+  print("What is this! There is a little door built into the trunk of a large tree.")
+}
+l189:
+if (said("examine", "door")) { //00bd
+  print("The door in the tree is closed at the moment.")
+}
+if (!(said("knock", "door"))) { //00c9
+  goto(l233)
+}
+distance(o0,o3,v94)
+if (v94 > 20) { //00db
+  print("You can't reach the door from here.")
+  goto(l233)
+}
+print("You rap on the treehouse door, wait a moment, but get no response.")
+l233:
+if ((f148 || v88 != 0 || !(said("open", "door")))) { //00e9
+  goto(l282)
+}
+distance(o0,o3,v94)
+if (v94 > 20) { //0103
+  print("You can't reach the door from here.")
+  goto(l282)
+}
+start.update(o3)
+set.view(o3,33)
+sound(21,f169)
+end.of.loop(o3,f31)
+l282:
+if (f31) { //011a
+  reset(f31)
+  new.room(72)
+}
+if (vWhichEgoBorder == 1) { //0124
+  new.room(39)
+}
+if (vWhichEgoBorder == 2) { //012d
+  new.room(47)
+}
+if (vWhichEgoBorder == 4) { //0136
+  new.room(45)
+}
+if (vWhichEgoBorder == 3) { //013f
+  new.room(4)
+}
+call(151)
+call(162)
+return()

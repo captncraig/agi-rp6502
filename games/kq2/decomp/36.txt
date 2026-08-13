@@ -1,4 +1,95 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  load.sound(25)
+  load.logic(152)
+  load.logic(101)
+  load.view(96)
+  load.view(29)
+  load.view(97)
+  if ((has(i72) || has(i76))) { //0016
+    load.view(65)
+    load.view(98)
+  }
+  load.view(104)
+  draw.pic(vCurrentRoom)
+  position(o7,1,50)
+  call(152)
+  call(101)
+  animate.obj(o3)
+  ignore.blocks(o0)
+  ignore.objs(o0)
+  if (vPrevRoom == 43) { //0036
+    get.posn(o0,v105,v106)
+    if (v105 < 120) { //0041
+      v105 += 23
+    }
+    position(o0,105,v106)
+  }
+  set.priority(o3,4)
+  set.view(o3,29)
+  position(o3,130,140)
+  if (!f82) { //0059
+    draw(o3)
+  }
+  draw(o0)
+  show.pic()
+}
+if ((said("examine", "beach") || said("examine") || said("examine", "grass"))) { //0065
+  if (!f82) { //007b
+    print("You notice a rusty trident lying in the grass.")
+    goto(l150)
+  }
+  if (!(v95 > 0)) { //0087
+    print("A carpet of green grass rolls up to the water's edge. It feels spongy beneath your feet.")
+    goto(l150)
+  }
+  print("A carpet of green grass rolls up to the water's edge.")
+}
+l150:
+if (!f82 && said("acquire", "rusty trident")) { //0096
+  distance(o0,o3,v94)
+  if (v94 > 30) { //00a7
+    print("You are too far away.")
+    goto(l190)
+  }
+  print("You pick it up and carry it with you.")
+  set(f82)
+  erase(o3)
+  get(i51)
+  vCurrentScore += 3
+}
+l190:
+if (fTriggerLine && !fEgoOnWater) { //00be
+  get.posn(o0,v67,v68)
+  set.view(o0,104)
+  v94 = 2
+  cycle.time(o0,v94)
+  if (posn(o0,72,33,84,45)) { //00d4
+    v67 = 48
+    v68 = 45
+    goto(l234)
+  }
+  v67 -= 20
+l234:
+  set(f116)
+  set(fEgoOnWater)
+}
+if (!fEgoOnWater && posn(o0,0,33,33,57)) { //00ee
+  set(f116)
+  set(fEgoOnWater)
+}
+if (vWhichEgoBorder == 1) { //00ff
+  new.room(29)
+}
+if (vWhichEgoBorder == 2) { //0108
+  new.room(37)
+}
+if (vWhichEgoBorder == 4) { //0111
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //011a
+  new.room(43)
+}
+call(152)
+call(101)
+return()

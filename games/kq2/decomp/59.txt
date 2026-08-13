@@ -1,4 +1,131 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(166)
+  load.view(49)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(166)
+  animate.obj(o2)
+  set.view(o2,49)
+  if (v98 == 1) { //0017
+    set.cel(o2,2)
+    goto(l39)
+  }
+  set.cel(o2,0)
+l39:
+  ignore.blocks(o2)
+  position(o2,34,114)
+  draw(o2)
+  stop.cycling(o2)
+  position(o0,121,158)
+  draw(o0)
+  show.pic()
+}
+if (f31) { //0038
+  reset(f31)
+  if (v98 == 0) { //0040
+    v98 = 1
+    if (!f141) { //004a
+      print("There is a candle lying in the drawer of the old dresser.")
+      goto(l88)
+    }
+    print("The drawer of the old dresser is empty.")
+l88:
+    goto(l94)
+  }
+  v98 = 0
+}
+l94:
+if (!fEnteredCommand) { //005e
+  goto(l427)
+}
+if ((said("examine") || said("examine", "antique shop") || said("examine", "room"))) { //0068
+  print("The musty bedchamber is at the top of a tower. It has the smell of mold and old moth balls. There is a sagging bed and an old dresser in the room.")
+}
+if (said("examine", "bed")) { //0080
+  print("The bed is lumpy and sagging in the middle. A faded old quilt covers it.")
+}
+if (said("examine", "bureau")) { //008c
+  print("The old dresser is scratched and nicked. You can tell it was once a fine piece of furniture. There are several drawers in the dresser.")
+}
+if (said("look in", "drawer")) { //0098
+  if (v98 == 0) { //00a2
+    print("The dresser drawer is closed.")
+    goto(l188)
+  }
+  if (!f141) { //00ae
+    print("There is a candle lying in the drawer of the old dresser.")
+    goto(l188)
+  }
+  print("The drawer of the old dresser is empty.")
+}
+l188:
+if (said("examine", "drawer")) { //00bc
+  if (v98 == 0) { //00c6
+    print("The dresser drawer is closed.")
+    goto(l212)
+  }
+  print("The dresser drawer is open.")
+}
+l212:
+if ((said("open", "drawer") || said("open", "bureau"))) { //00d4
+  if (v98 == 0) { //00e6
+    if (fTriggerLine) { //00ed
+      end.of.loop(o2,f31)
+      goto(l251)
+    }
+    print("You can't reach it from where you are standing.")
+l251:
+    goto(l256)
+  }
+  print("The drawer is already open.")
+}
+l256:
+if (said("close", "drawer")) { //0100
+  if (v98 == 1) { //010a
+    if (fTriggerLine) { //0111
+      reverse.loop(o2,f31)
+      goto(l287)
+    }
+    print("You can't reach it from where you are standing.")
+l287:
+    goto(l292)
+  }
+  print("The drawer is already closed.")
+}
+l292:
+if (said("acquire", "candle")) { //0124
+  if (!f141 && v98 == 1) { //012e
+    distance(o0,o2,v67)
+    if ((fTriggerLine || v67 < 20)) { //013c
+      print("You pick it up and carry it with you.")
+      get(i78)
+      set(f141)
+      vCurrentScore += 2
+      goto(l341)
+    }
+    print("You can't reach it from where you are standing.")
+l341:
+    goto(l357)
+  }
+  if (has(i78)) { //0158
+    print("You already have it.")
+    goto(l357)
+  }
+  print("You don't see one here.")
+}
+l357:
+if ((said("lie", "bed") || said("get on", "bed") || said("sit", "bed") || said("get in", "bed") || said("enter", "bed"))) { //0165
+  print("The bed looks too lumpy and dusty. You wouldn't want to.")
+}
+if ((said("examine", "stairs") || said("examine", "ramp"))) { //018b
+  print("The ramp spirals steeply downward. Be careful--you don't want to fall.")
+}
+if (said("acquire", "quilt")) { //019f
+  print("The quilt is old and tattered; you wouldn't want it.")
+}
+l427:
+if (posn(o0,116,162,135,167)) { //01ab
+  new.room(60)
+}
+call(166)
+return()

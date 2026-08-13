@@ -1,4 +1,59 @@
-if (isSet(f5)) {
-  if (
-!!!
-&{%!e(string=unknown condition: 0xfc)}
+if (fNewRoom) { //0002
+  if ((has(i72) || has(i76))) { //0008
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(151)
+  load.logic(161)
+  load.pic(vCurrentRoom)
+  call(161)
+  draw.pic(vCurrentRoom)
+  v33 = 0
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "tree")) { //0026
+  print("You are in a grove of giant trees. A sign appears to be attached to the back of one of the trees.")
+}
+if ((said("examine", "sign") || said("read", "sign"))) { //0032
+  set.text.attribute(0,15)
+  text.screen()
+  v31 = 0
+  v32 = 0
+  v33 = 2
+l81:
+  display(v31,v32,v33)
+  if (v33 < 26) { //0055
+    v31++
+    v33++
+    goto(l81)
+  }
+}
+if (v33 > 25) { //0063
+  vKeyPressed = 0
+l109:
+  if (have.key()) { //006d
+    v33 = 0
+    set.text.attribute(15,0)
+    graphics()
+    print("King Graham scratches his head in puzzlement at this confusing message. It doesn't appear to be a part of his quest.")
+    goto(l129)
+  }
+  goto(l109)
+}
+l129:
+if (vWhichEgoBorder == 1) { //0081
+  new.room(23)
+}
+if (vWhichEgoBorder == 2) { //008a
+  new.room(31)
+}
+if (vWhichEgoBorder == 4) { //0093
+  new.room(29)
+}
+if (vWhichEgoBorder == 3) { //009c
+  new.room(37)
+}
+call(151)
+call(161)
+return()

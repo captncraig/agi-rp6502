@@ -1,4 +1,179 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(31)
+  load.view(8)
+  load.view(30)
+  load.view(31)
+  load.view(32)
+  if ((has(i72) || has(i76))) { //0012
+    load.view(65)
+    load.view(98)
+  }
+  load.logic(163)
+  load.logic(155)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 35) { //0028
+    position(o0,15,32)
+  }
+  draw(o0)
+  animate.obj(o2)
+  v94 = 3
+  cycle.time(o2,v94)
+  ignore.blocks(o2)
+  position(o2,85,100)
+  if (!f85) { //0043
+    set.view(o2,30)
+    goto(l96)
+  }
+  if (!f86) { //0050
+    set.view(o2,31)
+    goto(l96)
+  }
+  set.view(o2,32)
+l96:
+  set.cel(o2,0)
+  draw(o2)
+  stop.update(o2)
+  show.pic()
+}
+if (!f85 && posn(o0,54,98,84,102)) { //0068
+  ignore.objs(o0)
+  goto(l124)
+}
+observe.objs(o0)
+l124:
+if (!fEnteredCommand) { //007c
+  goto(l588)
+}
+if (f35 && !(said("y"))) { //0086
+  reset(f35)
+}
+distance(o0,o2,v94)
+if (v94 > 25) { //0097
+  if ((said("anyword", "door") || said("anyword", "key hole") || said("anyword", "inscription"))) { //009e
+    print("You are too far away from the door.")
+    goto(l588)
+  }
+}
+get.posn(o0,v105,v106)
+if (v106 < 100) { //00bf
+  if ((said("anyword", "door") || said("anyword", "key hole") || said("anyword", "inscription"))) { //00c6
+    print("You are on the wrong side of the door to do that.")
+    goto(l588)
+  }
+}
+if (!(has(i61)) && said("unlock", "door")) { //00e3
+  print("You can't. You don't have the key.")
+}
+if (said("knock", "door")) { //00f2
+  print("You don't really expect someone to answer the door, do you?")
+}
+if ((said("examine", "key hole") || said("look in", "key hole"))) { //00fe
+  print("You look through the keyhole and see nothing but a dazzling light.")
+}
+if (said("examine", "door")) { //0112
+  print("This is a magical door! If you can open it, the door will lead you to your heart's desire. There is an inscription on the door.")
+}
+if (f85 && said("close", "door")) { //011e
+  print("If you close the door, it will lock again. Why would you want to do that?")
+}
+if (said("break", "door")) { //012c
+  print("This is a magic door. It is impervious to damage.")
+}
+if (f86) { //0138
+  goto(l498)
+}
+if (f85) { //0141
+  goto(l414)
+}
+if (!f85 && said("open", "door")) { //014a
+  print("The door is locked. You cannot open it, no matter how hard you try.")
+}
+if (has(i61) && said("unlock", "door")) { //0159
+  drop(i61)
+  vCurrentScore += 7
+  start.update(o2)
+  set.view(o2,30)
+  end.of.loop(o2,f173)
+  print("The key to the first door fits easily into the keyhole. You turn the key and, PRESTO, the door opens, and the key disappears ... revealing a second door with another inscription!")
+}
+if (f35 && said("y")) { //0174
+  print("The inscription reads: Whosoever chooses to seek the key for this door will undoubtedly make a splash.")
+  set(f67)
+}
+if ((said("read", "inscription") || said("examine", "inscription") || said("read", "door"))) { //0182
+  print("The inscription reads: Whosoever chooses to seek the key for this door will undoubtedly make a splash.")
+  set(f67)
+}
+l414:
+if (!f86 && said("open", "door")) { //019e
+  print("The second door is locked. You cannot open it, no matter how hard you try.")
+}
+if (has(i61) && said("unlock", "door")) { //01ad
+  drop(i61)
+  vCurrentScore += 7
+  start.update(o2)
+  set.view(o2,31)
+  end.of.loop(o2,f174)
+  print("The key to the second door fits easily into the keyhole. You turn the key and, SHAZAM, the door opens, and the second gold key disappears ... revealing a third door with yet another inscription!")
+}
+if (f35 && said("y")) { //01c8
+  print("The inscription reads: Whosoever chooses to seek the key for this door should set their sights high.")
+  set(f134)
+}
+if ((said("read", "inscription") || said("examine", "inscription") || said("read", "door"))) { //01d6
+  set(f134)
+  print("The inscription reads: Whosoever chooses to seek the key for this door should set their sights high.")
+}
+l498:
+if (!f87 && said("open", "door")) { //01f2
+  print("The third door is locked. You cannot open it no matter how hard you try.")
+}
+if (has(i61) && !f148 && v88 == 0 && said("unlock", "door")) { //0201
+  drop(i61)
+  vCurrentScore += 7
+  start.update(o2)
+  set.view(o2,32)
+  end.of.loop(o2,f175)
+  print("The key to the third door fits easily into the keyhole. You turn the key and, PRESTO, the door opens, and again the key disappears ... revealing a world unlike any you've ever seen before!")
+}
+if (f35 && said("y")) { //0222
+  print("Whosoever chooses to seek the last key must have a stout heart.")
+  set(f75)
+}
+if ((said("read", "inscription") || said("examine", "inscription") || said("read", "door"))) { //0230
+  print("Whosoever chooses to seek the last key must have a stout heart.")
+  set(f75)
+}
+l588:
+if (f173) { //024c
+  reset(f173)
+  set(f85)
+  stop.update(o2)
+}
+if (f174) { //0258
+  reset(f174)
+  set(f86)
+  stop.update(o2)
+}
+if (f175) { //0264
+  reset(f175)
+  set(f87)
+  position(o0,80,80)
+  new.room(80)
+}
+if (vWhichEgoBorder == 1) { //0274
+  new.room(35)
+}
+if (vWhichEgoBorder == 2) { //027d
+  new.room(42)
+}
+if (vWhichEgoBorder == 4) { //0286
+  new.room(41)
+}
+if (vWhichEgoBorder == 3) { //028f
+  new.room(49)
+}
+call(163)
+call(155)
+return()

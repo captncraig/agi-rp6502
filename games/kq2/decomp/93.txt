@@ -1,4 +1,188 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(8)
+  load.view(91)
+  load.view(109)
+  load.sound(23)
+  load.sound(29)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (vPrevRoom == 92) { //0016
+    if (!f125) { //001d
+      set(f32)
+      position(o0,75,60)
+      set.loop(o0,1)
+      move.obj(o0,75,60,0,f169)
+      goto(l93)
+    }
+    set(f37)
+    set(f33)
+    set.priority(o0,5)
+    ignore.horizon(o0)
+    v106 = 25
+    position(o0,74,v106)
+    set.priority(o0,9)
+    v106 = 160
+    v105 = v74
+    vCycleTime = 2
+    v108 = 5
+    move.obj(o0,v105,v106,108,f31)
+    ignore.blocks(o0)
+l93:
+    goto(l125)
+  }
+  position(o0,105,166)
+  set.loop(o0,3)
+  move.obj(o0,105,166,0,f169)
+  set.priority(o0,5)
+  reset(f32)
+  set.horizon(144)
+  if (v61 == 1) { //0074
+    v61++
+  }
+l125:
+  draw(o0)
+  show.pic()
+}
+if (f125) { //0080
+  if (f31) { //0086
+    if (f33) { //008c
+      stop.sound()
+      set.view(o0,91)
+      get.posn(o0,v105,v106)
+      v67 = 247
+      v68 = 0
+      repositon(o0,v67,v68)
+      print("You land on the hard floor of the tower and are instantly killed.")
+      set(f50)
+      goto(l201)
+    }
+    set.view(o0,109)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 1
+    step.size(o0,v94)
+    v58 = 40
+    reset(f32)
+    stop.motion(o0)
+    reset(f31)
+    reset(f125)
+    set(f34)
+    set.horizon(144)
+l201:
+    goto(l213)
+  }
+  if (f37) { //00cc
+    sound(29,f35)
+  }
+l213:
+  goto(l561)
+}
+if (f34 && v58 > 0) { //00d8
+  reset(f34)
+  sound(23,f34)
+}
+v58--
+if (v58 == 1) { //00e8
+  set.view(o0,0)
+  v94 = 1
+  cycle.time(o0,v94)
+  step.size(o0,v94)
+  start.motion(o0)
+  reset(f92)
+}
+if (!f125) { //00ff
+  if (!f32) { //0106
+    if ((posn(o0,58,144,86,167))) { //010d
+      ignore.blocks(o0)
+      goto(l288)
+    }
+    observe.blocks(o0)
+l288:
+    goto(l310)
+  }
+  get.posn(o0,v105,v106)
+  if (v106 < 96) { //0127
+    release.priority(o0)
+    goto(l310)
+  }
+  set.priority(o0,13)
+l310:
+  if (vEgoDir != 0 && f36) { //0136
+    reset(f36)
+    if (vEgoDir < 6) { //0142
+      reset(f32)
+      set.priority(o0,5)
+      set.horizon(144)
+      goto(l348)
+    }
+    set(f32)
+    observe.blocks(o0)
+    set.priority(o0,13)
+    set.horizon(32)
+  }
+l348:
+  if (fTriggerLine) { //015c
+    if (posn(o0,97,157,97,167)) { //0162
+      set(f36)
+      goto(l439)
+    }
+    get.posn(o0,v105,v106)
+    if (f32 && v106 < 157) { //0175
+      if (v106 < 100) { //017e
+        set(f33)
+        goto(l396)
+      }
+      reset(f33)
+l396:
+      print("You lost your footing on the narrow stairway.")
+      set(f92)
+      set(f125)
+      set(f37)
+      set.priority(o0,9)
+      set.view(o0,8)
+      v94 = 2
+      cycle.time(o0,v94)
+      v94 = 3
+      step.size(o0,v94)
+      v106 = 160
+      vCycleTime = 2
+      v108 = 5
+      move.obj(o0,v105,v106,108,f31)
+      ignore.blocks(o0)
+    }
+  }
+}
+l439:
+if (!fEnteredCommand) { //01b7
+  goto(l532)
+}
+if ((said("examine", "window") || said("look up", "window"))) { //01c1
+  get.posn(o0,v105,v106)
+  if (v106 < 70) { //01d7
+    print("You see the strange island surrounded by the colorful sea.")
+    goto(l500)
+  }
+  if (v105 < 80 && !f32) { //01e3
+    print("You can't see out the window from here.")
+    goto(l500)
+  }
+  print("From where you are standing, you can only see the gorgeous pink sky through the window.")
+}
+l500:
+if ((said("examine", "room") || said("examine", "antique shop"))) { //01f4
+  print("Narrow steps spiral up the white quartz tower. The entrance to the tower is at the bottom of the stairs.")
+}
+if (said("examine", "stairs")) { //0208
+  print("The wooden steps spiral dizzily upward.")
+}
+l532:
+get.posn(o0,v105,v106)
+if (v106 < 60 && f32) { //0218
+  release.priority(o0)
+  new.room(92)
+}
+if (posn(o0,104,167,113,167)) { //0225
+  new.room(83)
+}
+l561:
+return()

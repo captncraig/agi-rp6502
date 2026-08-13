@@ -1,4 +1,21 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(167)
+  load.view(80)
+  load.view(81)
+  load.view(82)
+  load.view(86)
+  load.view(104)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(167)
+  position(o0,95,37)
+  draw(o0)
+  show.pic()
+}
+if (vWhichEgoBorder == 1) { //0021
+  get.posn(o0,v105,v106)
+  v105 -= 40
+  position(o0,105,v106)
+}
+call(167)
+return()

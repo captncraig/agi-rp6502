@@ -1,4 +1,216 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(11)
+  load.sound(21)
+  load.sound(32)
+  load.view(15)
+  load.view(16)
+  load.view(94)
+  load.view(17)
+  load.view(93)
+  load.view(91)
+  load.logic(156)
+  load.logic(159)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(156)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  set.view(o4,15)
+  set.view(o0,0)
+  set.view(o2,16)
+  set.view(o3,16)
+  set.cel(o4,0)
+  set.priority(o4,5)
+  position(o4,68,142)
+  position(o2,67,130)
+  position(o3,73,115)
+  position(o0,49,166)
+  v94 = 2
+  cycle.time(o4,v94)
+  cycle.time(o2,v94)
+  cycle.time(o3,v94)
+  if (vPrevRoom == 61) { //0058
+    position(o0,71,146)
+    set.loop(o0,2)
+  }
+  ignore.blocks(o0)
+  draw(o0)
+  draw(o4)
+  stop.cycling(o4)
+  if (f126) { //006e
+    draw(o2)
+    draw(o3)
+  }
+  show.pic()
+  if (f126) { //0079
+    print("There are two spooky ghosts guarding the door of the gloomy castle. This situation looks bad.")
+    follow.ego(o2,10,f30)
+    wander(o3)
+    sound(11,f40)
+  }
+}
+if ((!fEnteredCommand || f32 || f36 || f37)) { //008a
+  goto(l409)
+}
+if ((said("examine", "antique shop") || said("examine"))) { //009c
+  print("The castle looks cold and forbidding. Two dark towers rise on either side of it. The castle is surrounded by deadly thorns and brambles.")
+}
+if (said("examine", "door")) { //00ae
+  print("The heavy wooden door of the castle is closed.")
+}
+if (said("examine", "island")) { //00ba
+  print("There is a dark castle set in the middle of the dismal island. Thorns and brambles grow everywhere. The stink of the foul lake is oppressive.")
+}
+if (has(i72) && said("pat", "lamp")) { //00c6
+  print("You rub and rub, but nothing happens!")
+}
+if (has(i76) && said("anyword", "carpet")) { //00d4
+  print("Evil forces prevent you from doing that.")
+}
+if (!f126) { //00e2
+  goto(l306)
+}
+if (said("examine", "ghost")) { //00ec
+  print("These ghostly apparitions guard an evil being lurking within the castle walls.")
+}
+if ((said("capture", "ghost") || said("acquire", "ghost"))) { //00f8
+  print("Are you kidding!? How do you capture a ghost?")
+}
+if (said("kill", "ghost")) { //010c
+  print("Don't you know that spooks are already dead?")
+}
+if ((said("speak", "ghost") || said("hello", "anyword") || said("say", "hello"))) { //0118
+  print("When you speak to the ghosts they utter a mournful wail.")
+}
+l306:
+if (f126) { //0132
+  if (said("anyword", "door")) { //0138
+    print("The ghosts won't let you reach the door.")
+    goto(l397)
+  }
+}
+if ((said("open", "door") || said("knock", "door"))) { //0147
+  distance(o0,o4,v41)
+  if (v41 > 15) { //015d
+    print("Your arms won't reach.")
+    goto(l397)
+    goto(l385)
+  }
+  if (said("knock", "door")) { //016c
+    print("When you knock on the wooden door of the castle, the sound echoes inside. There is no answer.")
+    goto(l385)
+  }
+  sound(21,f169)
+  end.of.loop(o4,f33)
+}
+l385:
+if (said("anyword", "tree")) { //0181
+  print("There are no trees on this island. Only brambles and thorns.")
+}
+l397:
+if (said("give", "anyword")) { //018d
+  print("The spooks want nothing but you gone!")
+}
+l409:
+if (f30) { //0199
+  reset(f30)
+  if (f68 && f70) { //01a1
+    print("The two spirits are fooled by the black cloak and the large ruby ring that you are wearing. They slowly float away.... Maybe you remind them of someone else.")
+    goto(l457)
+    goto(l454)
+  }
+  if (f69) { //01b1
+    print("The two spirits are afraid of the silver cross you are wearing around your neck. They slowly float away and disappear.")
+    goto(l457)
+    goto(l454)
+  }
+  reset(f126)
+  set(f32)
+  print("Oh, no! The two spooks float toward you and enter your body. In a trance, you walk toward the thorn covered brambles.")
+  program.control()
+}
+l454:
+goto(l474)
+l457:
+reset(f126)
+set.view(o2,17)
+set.view(o3,17)
+end.of.loop(o2,f38)
+end.of.loop(o3,f169)
+goto(l474)
+l474:
+if (f32) { //01da
+  reset(f32)
+  set.view(o2,17)
+  set.cel(o2,0)
+  set.view(o3,17)
+  set.cel(o3,0)
+  end.of.loop(o2,f38)
+  end.of.loop(o3,f169)
+  set.view(o0,93)
+  v94 = 2
+  cycle.time(o0,v94)
+  set(f92)
+  set.cel(o0,0)
+  end.of.loop(o0,f36)
+}
+if (f36) { //0205
+  reset(f36)
+  set(f37)
+  set.view(o0,94)
+  v94 = 3
+  cycle.time(o0,v94)
+  get.posn(o0,v67,v68)
+  v67 = 0
+  if (v68 < 146) { //021f
+    v68 = 146
+  }
+  if (v66 > 1) { //0229
+    v54 = 0
+    v66 = 2
+  }
+  move.obj(o0,v67,v68,41,f31)
+}
+if (f37 && !f31) { //023c
+  get.posn(o0,v67,v68)
+  if (v68 < 146 && v67 == v42 && v68 == v43) { //0249
+    v43 += 1
+    v67 = 0
+    v68 = 1
+    repositon(o0,v67,v68)
+    stop.motion(o0)
+    goto(l622)
+  }
+  v42 = v67
+  v43 = v68
+}
+l622:
+if (f44) { //026e
+  reset(f44)
+  stop.update(o3)
+  stop.update(o2)
+}
+if (f38) { //027a
+  reset(f38)
+  set(f44)
+  set.priority(o3,4)
+  set.priority(o2,4)
+}
+if (f33) { //028a
+  new.room(61)
+}
+if (vWhichEgoBorder == 3) { //0292
+  observe.blocks(o0)
+  new.room(25)
+}
+if (f126 && f41) { //029d
+  sound(32,f41)
+}
+if (f40) { //02a8
+  reset(f40)
+  set(f41)
+}
+call(156)
+call(159)
+return()

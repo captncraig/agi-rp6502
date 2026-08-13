@@ -1,4 +1,146 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x14)}
+if (fNewRoom) { //0002
+  load.logic(166)
+  load.sound(29)
+  load.view(0)
+  load.view(8)
+  load.view(99)
+  load.view(100)
+  load.pic(vCurrentRoom)
+  v33 = 94
+  load.pic(v33)
+  draw.pic(vCurrentRoom)
+  call(166)
+  if (vPrevRoom == 64) { //001f
+    position(o0,26,61)
+    goto(l49)
+  }
+  position(o0,136,167)
+l49:
+  if (f106) { //0031
+    v30 = 1
+    reset(f162)
+    goto(l88)
+  }
+  v30 = 0
+  if (vPrevRoom == 66) { //0042
+    set(f162)
+    set.view(o0,99)
+    goto(l86)
+  }
+  set.view(o0,0)
+  reset(f162)
+l86:
+  draw.pic(v33)
+l88:
+  draw(o0)
+  show.pic()
+}
+if (f35 && !f37 && !f106 && posn(o0,50,107,159,167)) { //005b
+  set.view(o0,100)
+  set(f37)
+}
+if (fTriggerLine && !f35) { //0072
+  if (vEgoDir > 0 && vEgoDir < 4) { //007b
+    get.priority(o0,v32)
+    v32--
+    set.priority(o0,v32)
+  }
+  set(f38)
+  set(f35)
+  get.posn(o0,v105,v106)
+  v106 = 167
+  if (!f162) { //0098
+    set.view(o0,8)
+    v94 = 2
+    cycle.time(o0,v94)
+    v94 = 3
+    step.size(o0,v94)
+    goto(l182)
+  }
+  set.view(o0,100)
+  set(f37)
+l182:
+  move.obj(o0,v105,v106,82,f34)
+  set(f92)
+}
+if (f35 && f38) { //00be
+  reset(f38)
+  sound(29,f36)
+}
+if (f34) { //00cb
+  if (v105 > 64 && v105 < 115 && f106) { //00d1
+    v60 = 0
+    new.room(66)
+    goto(l249)
+  }
+  stop.sound()
+  stop.motion(o0)
+  erase(o0)
+  if (f162) { //00ea
+    print("Whoops! You slipped and fell down the narrow stairs in the darkness. What a way to die! Next time, use a light.")
+    goto(l247)
+  }
+  print("You slip from the narrow stairs and fall to your death on the rocks below.")
+l247:
+  set(f50)
+}
+l249:
+if (!f106) { //00f9
+  if (v30 == 1) { //0100
+    stop.sound()
+    v30 = 2
+    draw.pic(v33)
+    show.pic()
+  }
+  get.posn(o0,v105,v106)
+  if (!f35) { //0112
+    if (v105 < 71 && f162) { //0119
+      set.view(o0,0)
+      v94 = 1
+      cycle.time(o0,v94)
+      step.size(o0,v94)
+      reset(f162)
+    }
+    if (v105 > 70 && !f162) { //0130
+      set.view(o0,99)
+      v94 = 1
+      cycle.time(o0,v94)
+      step.size(o0,v94)
+      set(f162)
+      goto(l409)
+    }
+    goto(l376)
+  }
+  if (v30 == 2) { //014e
+    if (v105 < 71) { //0155
+      set.view(o0,8)
+      v94 = 2
+      cycle.time(o0,v94)
+      v94 = 3
+      step.size(o0,v94)
+      goto(l371)
+    }
+    set.view(o0,100)
+    set(f37)
+l371:
+    draw(o0)
+    v30 = 3
+  }
+}
+l376:
+if (!f162 && (said("examine") || said("examine", "antique shop") || said("examine", "room") || said("examine", "stairs"))) { //0178
+  print("These stairs are narrow and slippery; both sides slope away precipitously. A foul stench wafts up to you from the gloomy darkness into which the stairs descend.")
+}
+l409:
+if (v30 == 2) { //0199
+  draw(o0)
+  v30 = 3
+}
+if (vWhichEgoBorder == 4) { //01a5
+  new.room(64)
+}
+if (vWhichEgoBorder == 3) { //01ae
+  new.room(66)
+}
+call(166)
+return()

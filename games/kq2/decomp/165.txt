@@ -1,6 +1,46 @@
-if (isSet(f5)) {
-  if (isSet(f136)) {
+if (fNewRoom) { //0002
+  if (f136) { //0008
     v94 = 2
-
-!!!
-&{%!e(string=unknown opcode: 0x4c)}
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    set.priority(o0,15)
+    position(o0,137,65)
+    set.view(o0,98)
+    draw(o0)
+    move.obj(o0,0,65,0,f249)
+  }
+  return()
+}
+if ((said("fly", "carpet") || said("get on", "carpet"))) { //002a
+  if (vCurrentRoom == 57 && right.posn(o0,116,76,159,104)) { //003c
+    print("It wouldn't be safe to ride the carpet until you are all the way out of the cave. Only wierd QA types do that.")
+    goto(l128)
+  }
+  if (!f179 && !f180 && !f125 && !f92 && !f148) { //004e
+    set(f136)
+    ignore.horizon(o0)
+    v94 = 2
+    cycle.time(o0,v94)
+    step.size(o0,v94)
+    set.view(o0,98)
+    set.loop(o0,1)
+    set.priority(o0,15)
+    program.control()
+    move.obj(o0,0,65,0,f249)
+    set(f148)
+  }
+}
+l128:
+if (f249) { //0080
+  release.priority(o0)
+  if (vCurrentRoom == 55) { //0088
+    reset(f136)
+    new.room(105)
+    goto(l158)
+  }
+  v94 = vCurrentRoom
+  v94 -= 1
+  new.room(v94)
+}
+l158:
+return()

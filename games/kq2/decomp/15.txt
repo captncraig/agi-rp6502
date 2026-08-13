@@ -1,4 +1,317 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x62)}
+if (fNewRoom) { //0002
+  load.sound(10)
+  load.pic(vCurrentRoom)
+  load.logic(152)
+  load.logic(101)
+  load.view(10)
+  load.view(11)
+  load.view(97)
+  load.view(104)
+  load.view(12)
+  load.view(13)
+  load.view(110)
+  draw.pic(vCurrentRoom)
+  call(152)
+  call(101)
+  v108 = 2
+  cycle.time(o2,v108)
+  animate.obj(o3)
+  animate.obj(o2)
+  v108 = 2
+  cycle.time(o3,v108)
+  position(o2,7,60)
+  set.priority(o2,14)
+  set.view(o2,10)
+  if (f67 && !f96) { //003e
+    set(f31)
+    sound(10,f169)
+    draw(o2)
+    goto(l81)
+  }
+l81:
+  if (vPrevRoom == 22) { //0051
+    get.posn(o0,v105,v106)
+    if (v105 > 39) { //005c
+      v105 += 80
+      goto(l128)
+    }
+    if (v105 > 60) { //0069
+      v105 += 59
+      goto(l128)
+    }
+    if (v105 < 38) { //0076
+      v105 += 30
+    }
+l128:
+    position(o0,105,v106)
+  }
+  if (vPrevRoom == 54) { //0084
+    v95 = 2
+    set(f92)
+    position(o0,0,100)
+    set.view(o0,13)
+    reverse.loop(o0,f36)
+  }
+  if (vPrevRoom == 50) { //009a
+    get.posn(o0,v105,v106)
+    if (v106 > 67 && v106 < 76) { //00a5
+      v106 = 76
+    }
+    position(o0,105,v106)
+  }
+  draw(o0)
+  show.pic()
+}
+if (f36) { //00b9
+  reset(f36)
+  erase(o0)
+  position(o3,0,100)
+  set.view(o3,12)
+  set.loop(o3,1)
+  set.cel(o3,0)
+  draw(o3)
+  end.of.loop(o3,f37)
+  set.view(o0,97)
+  position(o0,20,100)
+  draw(o0)
+  v95 = 2
+  reset(f33)
+}
+if (f37) { //00e3
+  reset(f37)
+  erase(o3)
+}
+if ((posn(o0,0,21,50,85) || posn(o0,0,89,70,137))) { //00ed
+  set(fEgoOnWater)
+}
+if (fEgoOnWater && !(v95 > 0)) { //0101
+  get.posn(o0,v67,v68)
+  if (posn(o0,37,31,63,49)) { //010f
+    v67 = 32
+    v68 = 43
+    set(f116)
+  }
+  if (posn(o0,32,50,68,57)) { //0121
+    v67 = 41
+    v68 = 55
+    set(f116)
+  }
+}
+if (!(posn(o0,0,0,80,100))) { //0133
+  if (!fSaidAccepted && said("anyword", "bitch")) { //013e
+    if ((said("find", "bitch") || said("examine", "bitch") || said("speak", "bitch"))) { //014b
+      reset(fSaidAccepted)
+      goto(l365)
+    }
+    print("You are too far away.")
+    goto(l1250)
+  }
+}
+l365:
+if (f31) { //016d
+  if (said("examine", "boulder")) { //0173
+    print("Can you believe it! There is a mermaid reclining on a large rock offshore!")
+    goto(l467)
+  }
+  if (said("examine", "bitch")) { //0182
+    print("The mermaid has long flowing hair covering most of her upper body. The green scales on her fish tail are sparkling like emeralds as she slowly waves it back and forth. She beckons with her hand.")
+    goto(l467)
+  }
+  if ((said("enter", "boulder") || said("climb", "boulder") || said("get on", "boulder"))) { //0191
+    print("There is no room for you on this rock. It is occupied already.")
+    goto(l467)
+  }
+  if ((said("kill", "bitch") || said("capture", "bitch") || said("acquire", "bitch"))) { //01ae
+    print("Wrong move! You frightened the poor mermaid. She dives into the water and disappears.")
+    cycle.time(o2,v108)
+    set.view(o2,11)
+    end.of.loop(o2,f32)
+    reset(f31)
+  }
+l467:
+  goto(l512)
+}
+if (said("examine", "boulder")) { //01d6
+  print("There is a large rock in the ocean a short way from shore. Small waves lap at the edges.")
+  goto(l512)
+}
+if (said("examine", "bitch")) { //01e5
+  print("She's not there.")
+  goto(l512)
+}
+if (said("follow", "bitch")) { //01f4
+  print("It would be impossible for you to follow a mermaid in the ocean!")
+}
+l512:
+if (f32) { //0200
+  reset(f32)
+  reset(f31)
+  erase(o2)
+}
+if (!f31) { //020c
+  goto(l1024)
+}
+if (said("speak", "bitch")) { //0216
+  print("The mermaid does not reply. She gives you a quizzical look and continues waving her fish tail.")
+}
+if ((said("hello") || said("say", "hello"))) { //0222
+  print("The mermaid does not reply. She gives you a quizzical look and continues waving her fish tail.")
+}
+if ((said("embrace", "bitch") || said("kiss", "bitch"))) { //0234
+  print("Don't get too close! You might frighten her.")
+}
+if (!(posn(o0,0,40,50,90))) { //0248
+  if (said("give", "anyword", "bitch")) { //0253
+    print("You are too far away.")
+    goto(l1250)
+  }
+}
+if ((said("give", "treasure", "bitch") || said("give", "bitch", "treasure"))) { //0264
+  print("Which treasure would you like to give to the mermaid?")
+}
+if (has(i59) && (said("give", "brooch", "bitch") || said("give", "bitch", "brooch"))) { //027c
+  drop(i59)
+  set(f35)
+}
+if (has(i56) && (said("give", "diamond and sapphire tiara", "bitch") || said("give", "bitch", "diamond and sapphire tiara"))) { //0298
+  drop(i56)
+  set(f35)
+}
+if (has(i57) && (said("give", "diamond and sapphire necklace", "bitch") || said("give", "bitch", "diamond and sapphire necklace"))) { //02b4
+  drop(i57)
+  set(f35)
+}
+if (has(i53) && (said("give", "bracelet", "bitch") || said("give", "bitch", "bracelet"))) { //02d0
+  drop(i53)
+  set(f35)
+}
+if (has(i58) && (said("give", "earrings", "bitch") || said("give", "bitch", "earrings"))) { //02ec
+  drop(i58)
+  set(f35)
+}
+if (f35) { //0308
+  print("The mermaid gladly takes your treasure. In return, she summons forth from the sea a magic seahorse! Maybe you could ride it.")
+}
+if (has(i52) && (said("give", "bouquet", "bitch") || said("give", "bitch", "bouquet") || said("give", "blossom", "bitch") || said("give", "bitch", "blossom"))) { //0310
+  drop(i52)
+  print("You graciously offer the beautiful bouquet of wildflowers to the mermaid. She loves the flowers! She then summons forth a magic seahorse! Maybe you could ride it.")
+  set(f35)
+  set(f39)
+}
+if (has(i51) && (said("give", "rusty trident", "bitch") || said("give", "bitch", "rusty trident"))) { //0340
+  print("You hand the rusty trident to the mermaid. Oh, no! She dives into the water and disappears with it! Now she's gone.")
+  vCurrentScore -= 3
+  drop(i51)
+  set.view(o2,11)
+  end.of.loop(o2,f32)
+  set(f97)
+}
+if (!fSaidAccepted && (said("give", "bouquet") || said("give", "blossom") || said("give", "rusty trident") || said("give", "diamond and sapphire necklace") || said("give", "brooch") || said("give", "diamond and sapphire tiara") || said("give", "earrings") || said("give", "bracelet"))) { //0367
+  if (said("give", "anyword", "bitch")) { //03a0
+    print("You aren't carrying it.")
+    goto(l947)
+  }
+  print("You must specify who you wish to give it to.")
+}
+l947:
+if (!fSaidAccepted && said("give", "anyword", "bitch")) { //03b3
+  print("The mermaid looks at your offering distastefully. She is not interested in it.")
+}
+if (f35) { //03c4
+  position(o3,7,87)
+  set.view(o3,12)
+  set.cel(o3,5)
+  draw(o3)
+  reverse.loop(o3,f169)
+  v58 = 25
+  reset(f35)
+  if (f39) { //03de
+    vCurrentScore += 2
+    goto(l1005)
+  }
+  vCurrentScore -= 7
+l1005:
+  set(f33)
+}
+v58--
+if (v58 == 1) { //03f1
+  set.view(o2,11)
+  end.of.loop(o2,f32)
+  reset(f31)
+}
+l1024:
+if (!f33) { //0400
+  goto(l1250)
+}
+if (said("examine", "magic seahorse")) { //040a
+  print("This is a larger than average seahorse! It has a little saddle attached to its back. The seahorse tosses its head expectantly.")
+}
+if ((said("acquire", "magic seahorse") || said("capture", "magic seahorse"))) { //0416
+  print("The magic seahorse is already here for your use.")
+}
+if (said("y") && f38) { //042a
+  reset(f38)
+  goto(l1099)
+}
+if ((said("get on", "magic seahorse") || said("get on", "flying horse"))) { //0439
+l1099:
+  distance(o0,o3,v94)
+  if (v94 > 20) { //044f
+    print("You are too far away.")
+    goto(l1160)
+    goto(l1160)
+  }
+  if (!(v33 > 0)) { //045e
+    v33 = 0
+    vCurrentScore += 2
+  }
+  print("Quick as a flash, it glides under the water with you on its back!")
+  erase(o3)
+  program.control()
+  erase(o0)
+  position(o0,10,100)
+  set.view(o0,110)
+  set.cel(o0,0)
+  draw(o0)
+  end.of.loop(o0,f34)
+  v64 = 4
+  vEgoDir = 7
+}
+l1160:
+if (f34) { //0488
+  reset(f34)
+  set.view(o0,0)
+  new.room(54)
+}
+if (said("pat", "magic seahorse")) { //0495
+  print("You gently pat the seahorse's nose.")
+}
+if (said("speak", "magic seahorse")) { //04a1
+  print("Don't you know that seahorses can't talk!")
+}
+if (!f31 && (said("say", "hello") || said("hello"))) { //04ad
+  print("Don't you know that seahorses can't talk!")
+}
+if (fSaidAccepted && f38) { //04c2
+  reset(f38)
+}
+if ((said("climb", "magic seahorse") || said("sit", "magic seahorse"))) { //04cc
+  print("Do you wish to ride the magic seahorse?")
+  set(f38)
+}
+l1250:
+if (vWhichEgoBorder == 1) { //04e2
+  new.room(8)
+}
+if (vWhichEgoBorder == 2) { //04eb
+  new.room(16)
+}
+if (vWhichEgoBorder == 4) { //04f4
+  new.room(50)
+}
+if (vWhichEgoBorder == 3) { //04fd
+  new.room(22)
+}
+call(152)
+call(101)
+return()

@@ -1,4 +1,61 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x0d)}
+if (fNewRoom) { //0002
+  reset(f120)
+  return()
+}
+if ((said("examine", "cliff") || said("examine", "cliff"))) { //000b
+  if (vCurrentRoom == 55) { //001d
+    print("There are steep cliffs on three sides of this mountain top. Don't get too near the edge!")
+    goto(l43)
+  }
+  print("You are walking on a narrow mountain top with steep cliffs on two sides.")
+}
+l43:
+if (said("examine", "tree")) { //002b
+  print("There are a few pine and fir trees on this mountain top.")
+}
+if (said("examine", "blossom")) { //0037
+  print("There are not many flowers around here.")
+}
+if (said("acquire", "blossom")) { //0043
+  print("The flowers are of no interest.")
+}
+if (said("climb", "tree")) { //004f
+  print("It would be fun to stop and climb trees for a while, but don't you have something better to do?")
+}
+if (said("climb", "boulder")) { //005b
+  print("Don't be silly. Climbing on rocks is kid stuff.")
+}
+if ((said("climb", "cliff") || said("climb", "cliff") || said("climb") || said("look down", "anyword"))) { //0067
+  print("The cliffs are too steep! Climbing them could mean death.")
+}
+if (fTriggerLine && !f125) { //0085
+  reset(fTriggerLine)
+  set(f180)
+  set(f125)
+  ignore.blocks(o0)
+  set.view(o0,8)
+  v94 = 2
+  cycle.time(o0,v94)
+  v94 = 3
+  step.size(o0,v94)
+  get.priority(o0,v94)
+  get.posn(o0,v105,v106)
+  if (v106 < 90) { //00ac
+    v94--
+  }
+  set.priority(o0,v94)
+  get.posn(o0,v94,v70)
+  v70 = 167
+  v108 = 3
+  move.obj(o0,v94,v70,108,f120)
+  v69 = 30
+  sound(29,f169)
+}
+v69--
+if ((v69 == 1 || f120)) { //00d0
+  reset(f120)
+  erase(o0)
+  set(f50)
+  print("It seems you have fallen to your death from this high mountain top.")
+}
+return()

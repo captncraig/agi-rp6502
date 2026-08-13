@@ -1,4 +1,197 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x18)}
+if (fNewRoom) { //0002
+  load.pic(vCurrentRoom)
+  random(0,255,v94)
+  if (v94 < 125) { //000e
+    load.view(71)
+    load.view(72)
+    load.view(73)
+    load.sound(5)
+    set.view(o3,71)
+    v58 = 20
+    set(f31)
+    sound(5,f169)
+    goto(l48)
+  }
+  load.view(74)
+  set.view(o3,74)
+l48:
+  animate.obj(o3)
+  draw.pic(vCurrentRoom)
+  position(o3,25,90)
+  draw(o3)
+  stop.motion(o3)
+  position(o0,14,157)
+  draw(o0)
+  show.pic()
+  if (f31) { //0043
+    print("Oh dear! A wolf in grandma's clothing is in the bed! Get out of there, fast!")
+    goto(l80)
+  }
+  stop.update(o3)
+}
+l80:
+if (!f31) { //0050
+  goto(l161)
+}
+v58--
+if (v58 == 1) { //005c
+  set.view(o3,72)
+  v94 = 3
+  step.size(o3,v94)
+  v105 = 0
+  v106 = 18
+  repositon(o3,v105,v106)
+  start.motion(o3)
+  follow.ego(o3,7,f32)
+}
+if (f33) { //007c
+  reset(f33)
+  print("The wolf pounces on you! My, what big TEETH he has! Good enough to eat you with, my dear.")
+  set(f50)
+}
+if (f32) { //0088
+  reset(f32)
+  erase(o3)
+  set.view(o0,73)
+  set(f92)
+  start.cycling(o0)
+  set(f33)
+  program.control()
+  stop.motion(o0)
+}
+goto(l864)
+l161:
+if (fEnteredCommand && !fSaidAccepted && !(posn(o0,22,102,62,117))) { //00a1
+  if ((said("give", "anyword", "bitch") || said("look under", "bed") || said("feed", "anyword", "bitch"))) { //00b1
+    print("You are too far away.")
+    goto(l864)
+    goto(l215)
+  }
+  reset(fSaidAccepted)
+}
+l215:
+if ((said("examine", "antique shop") || said("examine"))) { //00d7
+  print("This is the home of Grandma. It is comfortably furnished. Frilly curtains cover the windows. Flowers are in vases. Grandma is lying on a brass bed in a cloud of pillows and coverlets.")
+}
+if (said("examine", "bitch")) { //00e9
+  print("Grandma looks pale and weak. She must be ailing. She is dressed in a warm flannel nightgown. White curls peek out from under a flannel nightcap.")
+}
+if (said("examine", "bed")) { //00f5
+  print("Grandma is lying in an elegant brass bed. Mounds of pillows and blankets surround her.")
+}
+if (said("examine", "window")) { //0101
+  print("You can see the woods when you look out the window.")
+}
+if ((said("speak", "bitch") || said("hello", "anyword") || said("say", "hello"))) { //010d
+  if (f98) { //0125
+    print("\"Thank you for your generosity, good sir,\" Grandma says. \"The chicken soup has warmed my poor old bones.\"")
+    goto(l306)
+  }
+  print("Grandma is very weak. Her voice wavers as she says, \"Good day, kind sir. I would like to offer you a cup of tea, but as you can see, I am ailing.\"")
+}
+l306:
+if (said("anyword", "door")) { //0132
+  print("The door is already open.")
+}
+if ((said("acquire", "bitch") || said("capture", "bitch"))) { //013e
+  print("That wouldn't be very nice.")
+}
+if (said("kill", "bitch")) { //0152
+  print("You are supposed to be the good guy. Good guys don't kill kindly little old grandmas.")
+}
+if ((said("kiss", "bitch") || said("embrace", "bitch"))) { //015e
+  print("Watch it! Whatever she has might be catching.")
+}
+if ((said("aid", "bitch") || said("acquire", "aid", "bitch"))) { //0172
+  print("What would you like to do for poor sick old Grandma?")
+}
+if ((said("give", "broth", "bitch") || said("give", "bitch", "broth") || said("feed", "broth", "bitch") || said("feed", "bitch", "broth"))) { //0188
+  if (has(i67)) { //01ae
+    print("You feed the hot chicken soup to ailing Grandma. \"I feel much better,\" she says. \"In return for your kindness, I have something for you. Look under the bed.\"")
+    drop(i67)
+    vCurrentScore += 2
+    set(f98)
+    goto(l450)
+  }
+  print("You don't have it.")
+l450:
+  goto(l864)
+}
+if ((said("give", "ham", "bitch") || said("give", "bitch", "ham") || said("feed", "ham", "bitch") || said("feed", "bitch", "ham"))) { //01c5
+  if (has(i66)) { //01eb
+    print("Grandma shakes her head. \"I can't chew ham. It is too tough for my teeth.\"")
+    goto(l504)
+  }
+  print("You don't have it.")
+l504:
+  goto(l864)
+}
+if ((said("give", "basket", "bitch") || said("give", "bitch", "basket") || said("feed", "basket", "bitch") || said("feed", "bitch", "basket"))) { //01fb
+  if (has(i63)) { //0221
+    print("Grandma looks at the basket of goodies. \"This belongs to my granddaughter,\" she declares. \"You ought to return it to her.\"")
+    goto(l569)
+  }
+  if (has(i62)) { //022c
+    print("The basket is empty because you ate all the goodies. What would Grandma do with an empty basket?")
+    goto(l569)
+  }
+  print("You don't have it.")
+l569:
+  goto(l864)
+}
+if ((said("give", "bouquet", "bitch") || said("give", "bitch", "bouquet") || said("give", "blossom", "bitch") || said("give", "bitch", "blossom"))) { //023c
+  if (has(i52)) { //0262
+    print("\"Thank you for your kind offer of flowers, but I already have enough flowers around the house,\" Grandma says.")
+    goto(l623)
+  }
+  print("You don't have it.")
+l623:
+  goto(l864)
+}
+if ((said("give", "treasure", "bitch") || said("give", "bitch", "treasure") || said("give", "diamond and sapphire tiara", "bitch") || said("give", "bitch", "diamond and sapphire tiara") || said("give", "bracelet", "bitch") || said("give", "bitch", "bracelet") || said("give", "earrings", "bitch") || said("give", "bitch", "earrings") || said("give", "brooch", "bitch") || said("give", "bitch", "brooch") || said("give", "diamond and sapphire necklace", "bitch") || said("give", "bitch", "diamond and sapphire necklace"))) { //0272
+  if ((has(i56) || has(i53) || has(i58) || has(i59) || has(i57))) { //02d8
+    print("Grandma shakes her head. \"I don't need treasures to be happy,\" she declares. You keep it.\"")
+    goto(l751)
+  }
+  print("You don't have it.")
+l751:
+  goto(l864)
+}
+if ((said("give", "anyword", "bitch") || said("give", "bitch", "anyword"))) { //02f2
+  print("Grandma appears not to be interested in it.")
+  goto(l808)
+}
+if (said("give", "anyword")) { //030d
+  print("You must specify who you wish to give it to.")
+  goto(l808)
+}
+if (said("feed", "anyword")) { //031c
+  print("You must specify who you wish to feed it to.")
+}
+l808:
+if (said("look under", "bed")) { //0328
+  if (!f99) { //0332
+    if (f98) { //0339
+      print("You drop to your hands and knees and peer under the bed. A large ruby ring and a black cloak are hidden there. You take them into your possession.")
+      set(f99)
+      get(i55)
+      get(i68)
+      vCurrentScore += 4
+      goto(l847)
+    }
+    print("It would not be polite to do that.")
+l847:
+    goto(l852)
+  }
+  print("You peek under the bed but see only dust.")
+}
+l852:
+if (said("examine", "carpet")) { //0354
+  print("The colorful rug appears to have been handmade.")
+}
+l864:
+if (vWhichEgoBorder == 3 && !f33) { //0360
+  position(o0,80,110)
+  new.room(3)
+}
+return()

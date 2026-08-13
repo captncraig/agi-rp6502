@@ -1,3 +1,19 @@
-if (
-!!!
-&{%!e(string=unknown condition: 0x0e)}
+if (said("examine", "tree")) { //0002
+  print("This is a heavily wooded area. It would be easy to get lost among the trees.")
+}
+if (said("examine", "blossom")) { //000e
+  print("Many flowers beautify these woods.")
+}
+if (said("acquire", "blossom")) { //001a
+  print("You have better things to do than to dilly-dally around picking flowers.")
+}
+if (said("climb", "tree")) { //0026
+  print("It would be fun to climb trees for a while, but you really have better things to do.")
+}
+if (said("smell", "blossom")) { //0032
+  print("The lovely smell of wildflowers is all around you in these woods.")
+}
+if (said("climb", "boulder")) { //003e
+  print("Stopping to climb rocks would only delay you in your quest for a bride.")
+}
+return()

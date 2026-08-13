@@ -1,4 +1,90 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x1e)}
+if (fNewRoom) { //0002
+  load.view(8)
+  load.sound(29)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  if (f125) { //0010
+    set(f32)
+    ignore.blocks(o0)
+    ignore.horizon(o0)
+    set.priority(o0,9)
+    v106 = 30
+    position(o0,74,v106)
+    v106 = 200
+    v108 = 5
+    vCycleTime = 2
+    move.obj(o0,v74,v106,108,f169)
+    goto(l92)
+  }
+  if (vPrevRoom == 91) { //0038
+    position(o0,75,50)
+    set.loop(o0,1)
+    move.obj(o0,75,50,4,f169)
+    goto(l92)
+  }
+  position(o0,75,137)
+  set.loop(o0,1)
+  move.obj(o0,75,137,0,f169)
+l92:
+  draw(o0)
+  show.pic()
+}
+get.posn(o0,v105,v106)
+if (!f125) { //0063
+  if (v106 < 80) { //006a
+    release.priority(o0)
+    goto(l121)
+  }
+  set.priority(o0,13)
+l121:
+  goto(l136)
+}
+if (f32) { //007c
+  sound(29,f31)
+}
+goto(l258)
+l136:
+if (fTriggerLine) { //0088
+  set(f32)
+  ignore.blocks(o0)
+  set(f92)
+  set(f125)
+  set.priority(o0,9)
+  set.view(o0,8)
+  v94 = 2
+  cycle.time(o0,v94)
+  v94 = 3
+  step.size(o0,v94)
+  print("You lost your footing on the narrow stairway.")
+  get.posn(o0,v105,v106)
+  v106 = 200
+  vCycleTime = 2
+  v108 = 5
+  move.obj(o0,v105,v106,108,f169)
+  v74 = v105
+}
+if (!fEnteredCommand) { //00c0
+  goto(l258)
+}
+if ((said("examine") || said("examine", "room") || said("examine", "antique shop"))) { //00ca
+  print("Wooden steps spiral up the white tower. The entrance to the tower is at the bottom of the stairs.")
+}
+if (said("examine", "stairs")) { //00e2
+  print("The wooden steps spiral dizzily upward.")
+}
+if ((said("examine", "window") || said("look up", "window"))) { //00ee
+  print("You see the strange island surrounded by the colorful sea.")
+}
+l258:
+get.posn(o0,v105,v106)
+if (v106 < 50 && !f125) { //0106
+  release.priority(o0)
+  new.room(91)
+}
+if ((vWhichEgoBorder == 3 || v106 > 137)) { //0114
+  if (!f125) { //0120
+    set.view(o0,0)
+  }
+  new.room(93)
+}
+return()

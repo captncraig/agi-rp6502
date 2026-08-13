@@ -1,4 +1,65 @@
-if (isSet(f5)) {
-
-!!!
-&{%!e(string=unknown opcode: 0x3f)}
+if (fNewRoom) { //0002
+  set.horizon(37)
+  load.logic(170)
+  load.view(104)
+  load.pic(vCurrentRoom)
+  draw.pic(vCurrentRoom)
+  call(170)
+  get.posn(o0,v105,v106)
+  if (vPrevRoom == 83) { //0018
+    if (v105 > 96) { //001f
+      v105 = 112
+      v106 = 42
+      goto(l53)
+    }
+    v105 = 89
+    v106 = 42
+l53:
+    goto(l66)
+  }
+  if (v106 < 38) { //0038
+    v106 = 38
+  }
+l66:
+  position(o0,105,v106)
+  draw(o0)
+  show.pic()
+}
+if (said("examine", "antique shop")) { //0049
+  print("You notice a tower in the middle of the small island. From this distance it is difficult to see any details.")
+}
+if (fTriggerLine && !f94) { //0055
+  set(f94)
+  v63 = 1
+  get.posn(o0,v67,v68)
+  if (v67 > 97) { //0067
+    erase(o0)
+    v63 = 2
+    goto(l147)
+  }
+  if (v67 > 77) { //0076
+    v67 = 77
+    goto(l147)
+  }
+  if (v67 < 6) { //0083
+    v67 = 0
+    goto(l147)
+  }
+  v67 -= 6
+l147:
+  v68 = 167
+}
+if (vWhichEgoBorder == 1) { //0096
+  new.room(83)
+}
+if (vWhichEgoBorder == 3) { //009f
+  new.room(78)
+}
+if (vWhichEgoBorder == 2) { //00a8
+  new.room(89)
+}
+if (vWhichEgoBorder == 4) { //00b1
+  new.room(87)
+}
+call(170)
+return()

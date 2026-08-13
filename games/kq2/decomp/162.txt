@@ -1,3 +1,146 @@
-if (!(isSet(f231)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (!f231 && fNewRoom) { //0002
+  set(f231)
+  reset(f128)
+  random(0,255,v94)
+  if ((v94 < 80 || f129)) { //0013
+    set(f40)
+    load.view(28)
+    load.view(115)
+    load.sound(5)
+    animate.obj(o2)
+    set.view(o2,28)
+    v94 = 3
+    step.size(o2,v94)
+    if (vCurrentRoom == 41) { //0031
+      position(o2,35,45)
+    }
+    if (vCurrentRoom == 46) { //003c
+      position(o2,32,56)
+    }
+    if (vCurrentRoom == 47) { //0047
+      position(o2,67,95)
+    }
+    if (vCurrentRoom == 39) { //0052
+      position(o2,44,79)
+    }
+    if (vCurrentRoom == 40) { //005d
+      position(o2,22,89)
+    }
+    random(40,255,v58)
+    random(0,2,v59)
+  }
+  return()
+}
+if (!f128 && f40) { //0071
+  v58--
+  if (v58 == 1) { //007c
+    v59--
+    if (v59 == 0) { //0085
+      set(f128)
+      follow.ego(o2,5,f38)
+      set(f42)
+      sound(5,f169)
+      print("You have come upon a quick little dwarf! Dwarves have a bad reputation for stealing treasure.")
+      draw(o2)
+      goto(l161)
+    }
+    v58 = 250
+  }
+}
+l161:
+if (!f128) { //00a1
+  goto(l260)
+}
+if (!fEnteredCommand) { //00ab
+  goto(l257)
+}
+if (said("examine", "count dracula")) { //00b5
+  print("The dwarf is a very small fellow. For being so little, he is very fast.")
+}
+if ((said("acquire", "count dracula") || said("capture", "count dracula"))) { //00c1
+  print("The dwarf is too fast on his feet. You could never catch him.")
+}
+if (said("speak", "count dracula")) { //00d5
+  print("The dwarf doesn't have time to chat with you. He's too busy running around; possibly with your treasure.")
+}
+if ((said("hello", "anyword") || said("say", "hello"))) { //00e1
+  print("The dwarf doesn't have time to chat with you. He's too busy running around; possibly with your treasure.")
+}
+if (said("kill", "count dracula")) { //00f5
+  print("The dwarf is too fast on his feet. You could never catch him.")
+}
+l257:
+goto(l272)
+l260:
+if (said("anyword", "count dracula")) { //0104
+  print("He's not here.")
+}
+l272:
+if ((fEgoObscured || f148)) { //0110
+  if (f42) { //011a
+    wander(o2)
+    reset(f42)
+  }
+  goto(l308)
+}
+if (!f42) { //0127
+  follow.ego(o2,5,f38)
+  set(f42)
+}
+l308:
+if (f38) { //0134
+  set.view(o2,115)
+  reset(f37)
+  end.of.loop(o2,f37)
+  reset(f38)
+  if (v55 == 0 && v57 == 0) { //0144
+    set(f41)
+    print("Oh, no! The dwarf caught you. You should check to see if he stole anything....!")
+    goto(l343)
+  }
+  print("The dwarf seems to have left you alone, thanks to your protective spell!")
+}
+l343:
+if (f37) { //0157
+  erase(o2)
+  reset(f37)
+  reset(f128)
+  reset(f40)
+}
+if (!f41) { //0165
+  goto(l449)
+}
+if (has(i57)) { //016f
+  vCurrentScore -= 7
+  drop(i57)
+  set(f77)
+  goto(l447)
+}
+if (has(i53)) { //017f
+  vCurrentScore -= 7
+  drop(i53)
+  set(f80)
+  goto(l447)
+}
+if (has(i58)) { //018f
+  vCurrentScore -= 7
+  drop(i58)
+  set(f78)
+  goto(l447)
+}
+if (has(i56)) { //019f
+  vCurrentScore -= 7
+  drop(i56)
+  set(f79)
+  goto(l447)
+}
+if (has(i59)) { //01af
+  vCurrentScore -= 7
+  drop(i59)
+  set(f81)
+  goto(l447)
+}
+l447:
+reset(f41)
+l449:
+return()

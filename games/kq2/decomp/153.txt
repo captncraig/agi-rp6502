@@ -1,3 +1,179 @@
-if (!(isSet(f248)
-!!!
-&{%!e(string=incomplete condition: 0x07)}
+if (!f248 && fNewRoom) { //0002
+  set(f248)
+  reset(f53)
+  if (vCurrentRoom != 3 && !f59) { //000f
+    random(0,250,v94)
+    if ((v94 < 80 || f129)) { //001e
+      set(f38)
+      animate.obj(o2)
+      load.view(3)
+      load.view(2)
+      random(40,255,v58)
+      random(0,2,v59)
+      if (vCurrentRoom == 2) { //0039
+        position(o2,140,140)
+      }
+      if (vCurrentRoom == 3) { //0044
+        position(o2,140,150)
+      }
+      if (vCurrentRoom == 4) { //004f
+        position(o2,40,140)
+      }
+      if (vCurrentRoom == 9) { //005a
+        position(o2,20,150)
+      }
+      if (vCurrentRoom == 10) { //0065
+        position(o2,25,125)
+      }
+      if (vCurrentRoom == 16) { //0070
+        position(o2,120,60)
+      }
+      object.on.land(o2)
+      set.view(o2,2)
+    }
+  }
+  return()
+}
+if (!f53 && f38) { //0081
+  v58--
+  if (v58 == 1) { //008c
+    v59--
+    if (v59 == 0) { //0095
+      set(f53)
+      wander(o2)
+      draw(o2)
+      print("What is this! It appears you have run into Little Red Riding Hood! She looks a little troubled.")
+      goto(l170)
+    }
+    v58 = 250
+  }
+}
+l170:
+if (!f53) { //00aa
+  goto(l525)
+}
+distance(o0,o2,v94)
+if (v94 > 110) { //00b8
+  if (said("anyword", "bitch")) { //00bf
+    print("You are too far away from her.")
+  }
+}
+if (f59 && said("acquire", "bouquet")) { //00cb
+  print("You already have it.")
+}
+if (said("follow", "bitch")) { //00d9
+  print("No!")
+}
+if (said("acquire", "bitch")) { //00e5
+  print("Now, that wouldn't be very nice, would it?")
+}
+if (said("kill", "bitch")) { //00f1
+  print("That would be incredibly nasty!")
+}
+if (said("kiss", "bitch")) { //00fd
+  print("You don't need to be kissing little girls.")
+}
+if (said("embrace", "bitch")) { //0109
+  print("You are a stranger to Little Red Riding Hood. You shouldn't hug her.")
+}
+if (!f59 && (said("acquire", "bouquet") || said("steal", "bouquet"))) { //0115
+  print("It would not be nice to take the bouquet of flowers away from the little girl.")
+}
+if (said("examine", "bitch")) { //012c
+  print("Little Red Riding Hood is a sweet little girl. She has long blond locks peeking out from her red cape and hood.")
+}
+if (said("speak", "bitch")) { //0138
+  if (f59) { //0142
+    print("Little Red Riding Hood is overjoyed to have her basket of goodies back. Thank you, Mister, she exclaims. Now I can take the goodies to my sick grandma.")
+    goto(l335)
+  }
+  print("Tearfully, Little Red Riding Hood explains that someone stole her basket of goodies while she was picking a bouquet of flowers. Could you please help her find it?")
+}
+l335:
+if ((said("hello", "anyword") || said("say", "hello"))) { //014f
+  if (f59) { //0161
+    print("Shyly, Little Red Riding Hood returns your hello.")
+    goto(l366)
+  }
+  print("Shyly, Little Red Riding Hood returns your hello. She looks a little upset.")
+}
+l366:
+if (said("capture", "bitch")) { //016e
+  print("Now, that wouldn't be very nice, would it?")
+}
+if ((said("give", "basket", "bitch") || said("give", "bitch", "basket"))) { //017a
+  if (v94 > 25) { //0190
+    print("You are too far away from her.")
+    goto(l672)
+  }
+  if (has(i62)) { //019c
+    print("You ate the goodies out of the basket! Why would you think she would want it now?")
+    goto(l448)
+  }
+  if (has(i63)) { //01a7
+    drop(i63)
+    get(i52)
+    set.view(o2,3)
+    set(f59)
+    print("Gratefully, Little Red Riding Hood accepts the basket of goodies. In return, she gives you her bouquet of flowers.")
+    vCurrentScore += 4
+    goto(l448)
+  }
+  reset(fSaidAccepted)
+l448:
+  goto(l490)
+}
+if ((said("give", "anyword", "bitch") || said("give", "bitch", "anyword"))) { //01c3
+  print("Little Red Riding Hood is not interested in it.")
+  goto(l490)
+}
+if (said("give", "anyword")) { //01de
+  print("You must specify who you wish to give it to.")
+}
+l490:
+if ((said("acquire", "basket") || said("steal", "basket"))) { //01ea
+  if (f57 && !(has(i63)) && !(has(i62))) { //01fc
+    print("You gave the basket of goodies to Little Red Riding Hood. It's hers now. You can't take it!")
+  }
+}
+goto(l591)
+l525:
+if (said("anyword", "bitch")) { //020d
+  print("There is nobody here but you.")
+}
+if (!f59) { //0219
+  if ((said("acquire", "bouquet") || said("steal", "bouquet"))) { //0220
+    print("There is no one here to get it from.")
+  }
+}
+if (said("give", "basket")) { //0234
+  if ((has(i63) || has(i62))) { //023e
+    print("There is nobody here to give it to.")
+    goto(l591)
+  }
+  print("You do not have it to give.")
+}
+l591:
+if (f64) { //024f
+  goto(l672)
+}
+if (said("examine", "tree")) { //0258
+  print("This is a heavily wooded area. It would be easy to get lost among the trees.")
+}
+if (said("examine", "blossom")) { //0264
+  print("Many flowers beautify these woods.")
+}
+if (said("acquire", "blossom")) { //0270
+  print("You have better things to do than to dilly-dally around picking flowers.")
+}
+if (said("climb", "tree")) { //027c
+  print("It would be fun to climb trees for a while, but you really have better things to do.")
+}
+if (said("smell", "blossom")) { //0288
+  print("The lovely fragrance of wildflowers is all around you in these woods.")
+}
+if (said("examine", "bush")) { //0294
+  print("There are many bushes and shrubs among the trees.")
+}
+l672:
+return()
