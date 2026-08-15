@@ -1,6 +1,35 @@
 #ifndef _VGA_H
 #define _VGA_H
 
+#include <stdint.h>
+#include <rp6502.h>
+
+#define PIC_LOAD_SIZE (256)
+
+typedef struct __attribute__((packed)) {
+    uint8_t bitmap[320UL*168/2];
+    uint8_t text[40UL*25*2];
+    vga_mode3_config_t config0;
+    vga_mode1_config_t config1;
+    uint16_t palette[16];
+    uint8_t logic_exe[1024]; // currently executing logic scratch
+    uint8_t sound_exe[4*40*5]; // active sound buffer. 40 notes each for 4 voices.
+    // OPT: we may find loading cels JIT is too slow at render time. If we have xram to spare, 
+    // keeping full views loaded dynamically could save read time at render.
+    uint8_t view_cel_load[1024UL*3]; // space for one cel to be rendered
+    uint8_t pic_load[PIC_LOAD_SIZE];
+} xram_layout_t;
+
+#define BG_VRAM_START       offsetof(xram_layout_t, bitmap)
+#define TEXT_VRAM_START     offsetof(xram_layout_t, text)
+#define CONFIG0_VRAM_START  offsetof(xram_layout_t, config0)
+#define CONFIG1_VRAM_START  offsetof(xram_layout_t, config1)
+#define PALETTE_VRAM_START  offsetof(xram_layout_t, palette)
+#define LOGIC_VRAM_START    offsetof(xram_layout_t, logic_exe)
+#define VIEW_VRAM_START     offsetof(xram_layout_t, view_cel_load)
+#define SOUND_VRAM_START    offsetof(xram_layout_t, sound_exe)
+#define PIC_VRAM_START      offsetof(xram_layout_t, pic_load)
+
 void init_video();
 
 // r,g,b are 6-bit (0-63) channels, matching the EGA table below.

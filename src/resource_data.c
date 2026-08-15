@@ -1,9 +1,9 @@
 #include "resource_data.h"
 #include "error.h"
-#include "banking.h"
 #include <fcntl.h>
 #include <rp6502.h>
 #include <stdio.h>
+#include <stdint.h>
 #include <unistd.h>
 #include <time.h>
 
@@ -20,6 +20,7 @@ unsigned int resource_size(resource_entry_t e) {
 
 int index_file_handle = -1;
 int data_file_handle = -1;
+// todo: we may need an additional handle for async stuff like audio
 resource_entry_t load_entry;
 
 int init_resource_data(){
@@ -45,7 +46,7 @@ static const unsigned int type_index_offset[4] = {
   3 * RESOURCE_SLOTS * sizeof(resource_entry_t),
 };
 
-resource_entry_t getResourceIndex(unsigned char type, unsigned char num){
+resource_entry_t getResourceIndex(uint8_t type, uint8_t num){
   // calculate offset. each index is 5 bytes.
   // Multiply by 5 with a shift and add.
   unsigned int offset = type_index_offset[type] + (num << 2) + num;
@@ -63,46 +64,19 @@ resource_entry_t getResourceIndex(unsigned char type, unsigned char num){
   return load_entry;
 }
 
-#define NUM_RESOURCE_BANKS 5
-typedef struct {
-  unsigned char type;
-  unsigned char num;
-} resource_bank_slot_t;
-resource_bank_slot_t resource_bank_tenants[NUM_RESOURCE_BANKS];
-unsigned char resource_banks_used = 0;
-
-char *resourceNames[]={"LOGIC", "PIC", "VIEW", "SOUND"};
-
-unsigned char load_resource(unsigned char type, unsigned char num){
-  if (resource_banks_used >= NUM_RESOURCE_BANKS){
-    fatalf("No more resource banks available\n");
-    return 0xFF;
+void seek_resource(unsigned long addr){
+  if (f_lseek(addr, SEEK_SET, data_file_handle) == -1){
+    fatalf("seek error %lx", addr);
   }
-  unsigned char thisBank = resource_banks_used++;
-  infof("Loading %s %d into bank %d\n", resourceNames[type], num, thisBank);
-  getResourceIndex(type, num);
-  unsigned long offset = resource_offset(load_entry);
-  unsigned int size = resource_size(load_entry);
-  push_bank(thisBank);
-  int start = clock();
-  long seekResult = f_lseek(offset, SEEK_SET, data_file_handle);
-  if (seekResult < 0) {
-    errorf("seeking in data: %ld\n", seekResult);
-  }
-  int nRead = read(data_file_handle, RESOURCE_ADDR, size);
-  if (nRead != size) {
-    errorf("reading from data: %d\n", nRead);
-  }
-  infof("Loaded %04x bytes %x %x %x %d ms \n", size, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2], clock() - start);
-  pop_bank();
-  return thisBank;
 }
 
-unsigned char load_logic(unsigned char num){
-  unsigned char bank = load_resource(RESOURCE_TYPE_LOGIC, num);
-  push_bank(bank);
+int load_xstack(unsigned count) {
+  ria_push_int(count);
+  ria_set_ax(data_file_handle);
+  int ax = ria_call_int(RIA_OP_READ_XSTACK);
+  return ax;
+}
 
-
-  pop_bank();
-  return bank;
+int data_file(){
+  return data_file_handle;
 }

@@ -3,9 +3,9 @@
 #include <fcntl.h>
 
 #include "resource_data.h"
-#include "banking.h"
 #include "error.h"
 #include "vga.h"
+#include "pics/pic.h"
 
 // AGI Memory layout:
 // 0x0000-0x7fff: C managed code and data
@@ -26,15 +26,12 @@ int main(void)
         return 1;
     }
 
-    init_banks();
-    if (init_resource_data()){
-        printf("!!\n");
-        return 1;
-    }
-    unsigned char bank = load_resource(RESOURCE_TYPE_LOGIC, 0);
-    change_bank(bank);
-    infof("Loaded %d %x %x %x \n", bank, RESOURCE_ADDR[0], RESOURCE_ADDR[1], RESOURCE_ADDR[2]);
+    init_resource_data();
     init_video();
+    clear_screen();
+    draw_pic(80);
+    show_pic();
+
 
     while(1){
         // do stuff that could fatalf at any time.
