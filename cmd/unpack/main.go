@@ -32,8 +32,13 @@ func main() {
 func unpackGame(name, dir string) error {
 	outDir := filepath.Join(dir, "unpacked")
 
+	dirs, err := agires.LoadDirectories(dir)
+	if err != nil {
+		return err
+	}
+
 	for _, rt := range agires.ResourceTypes {
-		if err := unpackResourceType(dir, outDir, rt); err != nil {
+		if err := unpackResourceType(dir, outDir, rt, dirs); err != nil {
 			fmt.Fprintf(os.Stderr, "%s: %s: %v\n", name, rt.Label, err)
 		}
 	}
@@ -41,27 +46,36 @@ func unpackGame(name, dir string) error {
 	return nil
 }
 
-func unpackResourceType(gameDir, outDir string, rt agires.ResourceType) error {
-	dirPath, err := agires.FindFileCaseInsensitive(gameDir, rt.DirName)
-	if err != nil {
-		return err
-	}
-
-	dirData, err := os.ReadFile(dirPath)
-	if err != nil {
-		return err
-	}
-
+func unpackResourceType(gameDir, outDir string, rt agires.ResourceType, dirs *agires.Directories) error {
 	typeDir := filepath.Join(outDir, rt.Label)
 	if err := os.MkdirAll(typeDir, 0o755); err != nil {
 		return err
 	}
 
-	for _, res := range agires.ParseDir(dirData) {
-		data, err := agires.ReadData(gameDir, res)
+	for _, res := range dirs.Entries[rt.Label] {
+		data, err := agires.ReadData(gameDir, res, dirs.Version)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "  %s.%d: %v\n", rt.Label, res.Number, err)
 			continue
+		}
+
+		// Normalize LOGIC message text to plaintext here so that decomp and
+		// the runtime never have to care about AGI's XOR obfuscation. AGI v2
+		// always encrypts it; v3 encrypts it only for resources stored
+		// uncompressed, leaving LZW-compressed ones as plaintext already.
+		if rt.Label == "logic" {
+			encrypted := dirs.Version == 2
+			if dirs.Version == 3 {
+				info, err := agires.ReadInfo(gameDir, res, dirs.Version)
+				if err != nil {
+					fmt.Fprintf(os.Stderr, "  %s.%d: %v\n", rt.Label, res.Number, err)
+					continue
+				}
+				encrypted = !info.Compressed
+			}
+			if encrypted {
+				data = agires.DecryptLogicMessages(data)
+			}
 		}
 		outPath := filepath.Join(typeDir, strconv.Itoa(res.Number)+".bin")
 		if err := os.WriteFile(outPath, data, 0o644); err != nil {

@@ -1,0 +1,29 @@
+if (fNewRoom) { //0002
+  if (!fRestartGame) { //0008
+    set.menu("Sierra   ")
+    set.menu.member("About Manhunter",c30)
+    set.menu.member("Help <F1>",c2)
+    set.menu("File   ")
+    set.menu.member("Save <F5>   ",c3)
+    set.menu.member("Restore <F7>",c4)
+    set.menu.member("------------",c0)
+    set.menu.member("Restart <F9>",c5)
+    set.menu.member("Quit <Alt Z>",c1)
+    set.menu("Action   ")
+    set.menu.member("Travel <F3>    ",c21)
+    set.menu.member("Robe <Tab>",c29)
+    set.menu("Special   ")
+    set.menu.member("Sound on/off <F2>",c12)
+    set.menu.member("Joystick <Ctrl J>",c11)
+    set.menu.member("Pause <Esc>",c14)
+    set.menu.member("Hard Arcade",c41)
+    set.menu.member("Normal Arcade",c42)
+    set.menu.member("Easy Arcade",c43)
+    if (vComputerType == IBM_PC && vMonitorType != EGA && vMonitorType != HERCULES) { //0044
+      set.menu.member("RGB Toggle",c8)
+    }
+    submit.menu()
+    set(f14)
+  }
+}
+return()

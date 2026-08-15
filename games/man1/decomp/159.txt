@@ -1,0 +1,155 @@
+if (fNewRoom) { //0002
+  vCycleTime = 2
+  prevent.input()
+  program.control()
+  status.line.off()
+  configure.screen(1,23,0)
+  vCurrentRoom = 159
+  v55 = 0
+  v50 = 3
+  v59 = 0
+  set.cursor.char("")
+  v32 = 130
+  load.pic(v32)
+  draw.pic(v32)
+  discard.pic(v32)
+  v90 = 4
+  v91 = 19
+  v92 = 129
+  v98 = 221
+  vKeyPressed = 0
+  v95 = 0
+  v106 = 176
+  v107 = 102
+  v108 = 108
+  v109 = 178
+  v110 = 8
+  v111 = 178
+  v112 = 97
+  v113 = 191
+  v114 = 185
+  v115 = 121
+  v116 = 107
+  v117 = 72
+  v118 = 121
+  v119 = 83
+  v120 = 102
+  v121 = 121
+  v122 = 99
+  v123 = 124
+  v124 = 141
+  v125 = 57
+  v126 = 9
+  v127 = 111
+  v128 = 95
+  v129 = 73
+  v130 = 117
+  v131 = 121
+  v132 = 205
+  v133 = 178
+  v134 = 67
+  v135 = 174
+  v136 = 26
+  v137 = 222
+  v138 = 197
+  v139 = 184
+  v140 = 132
+  v141 = 105
+  v142 = 194
+  v143 = 56
+  v144 = 89
+  v145 = 51
+  v146 = 117
+  v147 = 137
+  v148 = 5
+  v149 = 206
+  v150 = 3
+  v151 = 189
+  v152 = 110
+  v153 = 85
+  v154 = 139
+  v155 = 112
+  v156 = 206
+  v157 = 119
+  v158 = 26
+  v159 = 109
+  v160 = 29
+  v161 = 27
+  set(f151)
+  reset(f152)
+  reset(f153)
+  reset(f154)
+  reset(f155)
+  show.pic()
+}
+if (f151 && v42 < 34) { //00ee
+  goto(l445)
+  put(vTimeHours,v151)
+  set(f154)
+  set(f15)
+  print.at(v96,5,5,30)
+}
+if (vKeyPressed != 0 && f154 && v98 < 236 && !f155) { //0106
+  if ((vKeyPressed == 8) && (v98 > 221)) { //0116
+    vKeyPressed = 0
+    v98--
+    v90--
+    display(v91,v90,v92)
+    goto(l369)
+  }
+  if (vKeyPressed == 13) { //0132
+    v98--
+    set(f155)
+    reset(f154)
+    goto(l369)
+  }
+  if ((vKeyPressed > 96) && (vKeyPressed < 123)) { //0142
+    vKeyPressed -= 32
+  }
+  if (vKeyPressed > 64 && vKeyPressed < 91) { //0153
+    v97 = vKeyPressed
+    v97 += 85
+    display(v91,v90,v97)
+    v90++
+    lindirectv(v98,vKeyPressed)
+    vKeyPressed = 0
+    v98++
+  }
+l369:
+  goto(l386)
+}
+if (v98 > 234 && f154 && !f155) { //0174
+  set(f152)
+}
+l386:
+if (f155 && v98 > 220) { //0182
+  rindirect(v97,v98)
+  v95 += v97
+  v98--
+  goto(l421)
+}
+if (f155 && v98 < 221) { //0196
+  reset(f154)
+  reset(f155)
+  set(f153)
+}
+l421:
+if (f153) { //01a5
+  reset(f153)
+  vKeyPressed = 0
+  set(f152)
+  v96 += 100
+  rindirect(v32,v96)
+  if (v95 == v32) { //01b8
+    player.control()
+    accept.input()
+    set(fNewRoom)
+    call(90)
+    new.room(153)
+  }
+}
+if (f152) { //01c7
+  print("Sorry Manhunter, that is not the correct answer.  If you do not have a Manhunter's Field Guide ask your sector's supervising Orb for one or contact Sierra's Customer Support Dept.  The phone number is printed on your original disk label.  Thank you.")
+  quit(1)
+}
+return()

@@ -1,0 +1,101 @@
+if (fNewRoom) { //0002
+  v54 = 1
+  set.cursor.char("")
+  v95 = 2
+  reset(f40)
+  reset(f29)
+  vEgoDir = 0
+  v48 = 0
+  v69 = 0
+  load.sound(1)
+  v32 = 102
+  load.pic(v32)
+  v32 = 117
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(4)
+  load.view(8)
+  set.view(o2,8)
+  animate.obj(o2)
+  position(o0,140,168)
+  position(o2,78,85)
+  ignore.objs(o0)
+  ignore.objs(o2)
+  fix.loop(o2)
+  v46 = 3
+  cycle.time(o2,v46)
+  set.loop(o0,1)
+  set.loop(o2,2)
+  v46 = 2
+  step.size(o0,v46)
+  set.priority(o0,14)
+  set.priority(o2,5)
+  v46 = 1
+  set.dir(o2,v46)
+  draw(o2)
+  draw(o0)
+  show.pic()
+  add.to.pic(4,0,0,8,159,12,4)
+  set(f117)
+  push.script()
+}
+if (v50 == 0) { //0070
+  if ((controller(c31) || controller(c32))) { //0077
+    clear.lines(23,24,c0)
+    set(f75)
+    new.room(v64)
+  }
+  if (controller(c20)) { //0089
+    sound(1,f25)
+    if (v48 == 9) { //0092
+      v47 = 0
+      v50 = 2
+      set.loop(o0,4)
+      v55 = 101
+    }
+  }
+  get.posn(o2,v30,v31)
+  if (v47 == 0) { //00a9
+    if (vBorderObj == 2) { //00b0
+      erase(o2)
+      v32 = 102
+      draw.pic(v32)
+      add.to.pic(4,0,0,8,159,12,4)
+      position(o2,78,167)
+      draw(o2)
+      show.pic()
+      v47 = 1
+      v95 = 1
+    }
+  }
+  if (v47 == 1) { //00d3
+    if (v31 == 92) { //00da
+      v46 = 0
+      set.dir(o2,v46)
+      v47 = 2
+      v49 = 2
+      vTimeSeconds = 0
+    }
+  }
+  if (v47 == 2 && v49 < vTimeSeconds) { //00f0
+    unanimate.all()
+    set.loop(o0,4)
+    v50 = 1
+    v47 = 0
+    erase(o0)
+    set(f15)
+    print("Zooming in....")
+    v55 = 107
+    position(o0,75,120)
+    draw(o0)
+  }
+}
+if (f117) { //0113
+  reset(f117)
+  clear.lines(23,24,c0)
+  display(24,1,"Press C to close MAD.")
+  if (v69 == 9) { //0123
+    display(23,1,"Exit to Main Menu...")
+  }
+}
+return()

@@ -1,0 +1,309 @@
+if (fNewRoom) { //0002
+  reset(f26)
+  reset(f151)
+  reset(f21)
+  reset(f29)
+  reset(f31)
+  v58 = 29
+  v45 = 0
+  v46 = 0
+  v91 = 1
+  v48 = 0
+  v61 = 0
+  set(f33)
+  load.sound(1)
+  load.sound(20)
+  load.sound(48)
+  load.sound(16)
+  load.view(4)
+  load.view(135)
+  set.view(o1,135)
+  v32 = 112
+  load.pic(v32)
+  draw.pic(v32)
+  animate.obj(o1)
+  position(o0,128,152)
+  position(o1,44,70)
+  set.loop(o0,1)
+  set.loop(o1,1)
+  v44 = 2
+  step.size(o0,v44)
+  set.priority(o0,14)
+  set.priority(o1,5)
+  ignore.blocks(o0)
+  set.cursor.char("")
+  show.pic()
+  draw(o1)
+  v47 = 1
+  vTimeSeconds = 0
+  push.script()
+}
+if (v48 == 0) { //0066
+  sound(20,f22)
+  if (v47 < vTimeSeconds) { //0070
+    erase(o1)
+    position(o1,54,70)
+    set.view(o1,4)
+    set.loop(o1,2)
+    v48 = 0
+    v32 = 112
+    discard.pic(v32)
+    v32 = 132
+    load.pic(v32)
+    draw.pic(v32)
+    add.to.pic(4,0,0,8,159,5,4)
+    draw(o1)
+    reset(f32)
+    v48 = 1
+    v45 = 1
+    sound(48,f22)
+    v61 = 1
+    set(f33)
+    show.pic()
+    v47 = 6
+    vTimeSeconds = 0
+  }
+}
+if (v48 == 1) { //00b3
+  sound(20,f22)
+  if (controller(c20)) { //00bd
+    sound(1,f22)
+    erase(o1)
+    erase(o0)
+    v46 = 0
+    v48 = 2
+    v45 = 0
+    set(f21)
+    v61 = 53
+    set(f33)
+  }
+}
+if (v48 == 2) { //00da
+  if (v45 == 0) { //00e1
+    if (controller(c20) && !f21) { //00e8
+      v45 = 1
+      set(f21)
+      v61 = 17
+      set(f33)
+    }
+    if (v45 != 1) { //00fb
+      reset(f21)
+    }
+  }
+  if (v45 == 1) { //0105
+    if (controller(c20) && !f21) { //010c
+l277:
+      accept.input()
+      set.cursor.char("_")
+      clear.lines(23,24,c0)
+      display(3,5,"                            ")
+      display(23,1,"Type a full name, then press <ENTER>.")
+      if (v91 == 1) { //0124
+        get.string(str1,"Name 1:",2,2,20)
+      }
+      if (v91 == 2) { //0131
+        get.string(str1,"Name 2:",2,2,20)
+      }
+      if (v91 == 3) { //013e
+        get.string(str1,"Name 3:",2,2,20)
+      }
+      v91++
+      parse(str1)
+      set.cursor.char("")
+      prevent.input()
+      display(2,2,"                            ")
+      clear.lines(23,24,c0)
+      if (v55 == 1 && v91 < 3) { //015a
+        goto(l277)
+      }
+      if (v55 == 2 && v91 < 3) { //0167
+        goto(l277)
+      }
+      v45 = 1
+      v61 = 54
+      set(f33)
+      v48 = 3
+      set(f21)
+    }
+    if (v48 != 3) { //0181
+      reset(f21)
+    }
+  }
+}
+if (v48 == 3) { //018b
+  if (v45 == 1) { //0192
+    if (controller(c20) && !f21) { //0199
+      v45 = 2
+      set(f21)
+      v61 = 21
+      set(f33)
+    }
+    if (v45 != 2) { //01ac
+      reset(f21)
+    }
+  }
+  if (v45 == 2) { //01b6
+    if (controller(c20) && !f21) { //01bd
+      v45 = 3
+      set(f21)
+      v61 = 22
+      set(f33)
+    }
+    if (v45 != 3) { //01d0
+      reset(f21)
+    }
+  }
+  if (v45 == 3) { //01da
+    if (controller(c20) && !f21) { //01e1
+      if (v55 == 1 && v53 == 8) { //01ea
+        v61 = 0
+        set(f33)
+        goto(l673)
+      }
+      pop.script()
+      clear.lines(23,24,c0)
+      v61 = 0
+      set(f33)
+      v32 = 206
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      if (v55 == 1) { //020f
+        add.to.pic(135,0,1,42,53,13,4)
+      }
+      if (v55 == 2) { //021e
+        add.to.pic(135,0,0,43,53,13,4)
+      }
+      add.to.pic(135,0,2,56,53,13,4)
+      show.pic()
+      v47 = 3
+      vTimeSeconds = 0
+      v45 = 4
+      set(f21)
+      ???(1)
+      push.script()
+    }
+    if (v45 != 4) { //0244
+      reset(f21)
+    }
+  }
+  if (v45 == 4) { //024e
+    if (v47 < vTimeSeconds) { //0255
+      v32 = 83
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      show.pic()
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 5
+    }
+  }
+  if (v45 == 5) { //026f
+    if (v47 < vTimeSeconds) { //0276
+      sound(16,f22)
+      v32 = 91
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      show.pic()
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 6
+    }
+  }
+  if (v45 == 6) { //0293
+    if (v47 < vTimeSeconds) { //029a
+l673:
+      sound(16,f22)
+      v32 = 92
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      show.pic()
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 7
+      v61 = 0
+      set(f33)
+    }
+  }
+  if (v45 == 7) { //02bc
+    if (v47 < vTimeSeconds) { //02c3
+      v32 = 39
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      show.pic()
+      v61 = 0
+      set(f33)
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 8
+    }
+  }
+  if (v45 == 8) { //02e2
+    if (v47 < vTimeSeconds) { //02e9
+      new.room(126)
+    }
+  }
+}
+if (f33) { //02f2
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 1) { //02fe
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 17) { //0309
+    display(3,5,"Report suspect's name...      ")
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 21) { //0318
+    display(9,5,"   Return Home Immediately.   ")
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 22) { //0327
+    display(9,5,"Wait There for Further Orders.")
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 50) { //0336
+    display(3,11,"                            ")
+    set.text.attribute(15,0)
+    set.text.attribute(12,0)
+    display(6,6,"The End is Near.")
+    display(8,15,"The Way is Clear.")
+    display(10,6,"Destroy the Lady,")
+    display(12,15,"Before They are Ready.")
+    set.text.attribute(15,0)
+  }
+  if (v61 == 51) { //035a
+    display(6,6,"                            ")
+    display(8,6,"                            ")
+    display(10,6,"                            ")
+    display(12,6,"                            ")
+    set.text.attribute(13,0)
+    display(6,8,"Phil is Trouble   ")
+    display(8,11,"He's a Double.     ")
+    display(10,14,"He's an Eye,      ")
+    display(12,17,"That's no Lie!        ")
+    set.text.attribute(15,0)
+  }
+  if (v61 == 52) { //0387
+    display(6,6,"                            ")
+    display(8,6,"                            ")
+    display(10,6,"                            ")
+    display(12,6,"                            ")
+    display(23,1,"Press <ENTER> to continue.")
+    v48 = 3
+    v45 = 1
+  }
+  if (v61 == 53) { //03a8
+    display(3,5,"You have had sufficient time.")
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 54) { //03b7
+    display(9,5,"Your reply is being processed.")
+    display(23,1,"Press <ENTER> to continue.")
+  }
+}
+return()

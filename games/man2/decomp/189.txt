@@ -1,0 +1,102 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  if (f105) { //0015
+    set(f33)
+  }
+  v60 = 0
+  v57 = vCurrentRoom
+  v45 = 1
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(191)
+  v32 = 149
+  load.pic(v32)
+  draw.pic(v32)
+  discard.pic(v32)
+  v44 = 3
+  cycle.time(o0,v44)
+  v44 = 6
+  step.size(o0,v44)
+  v47 = 1
+  vTimeSeconds = 0
+  show.pic()
+  push.script()
+}
+if ((controller(c24) || controller(c33))) { //004e
+  if (f105) { //0058
+    set(f100)
+    reset(f104)
+    new.room(178)
+  }
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //0068
+  if (v45 == 5 && v47 < vTimeSeconds) { //006f
+    new.room(195)
+  }
+  if (v45 == 4 && v47 < vTimeSeconds) { //007b
+    pop.script()
+    v32 = 64
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    sound(191,f22)
+    show.pic()
+    pop.script()
+    v32 = 65
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    sound(191,f22)
+    show.pic()
+    v45 = 5
+    v47 = 1
+    vTimeSeconds = 0
+  }
+  if (v45 == 3 && v47 < vTimeSeconds) { //00aa
+    pop.script()
+    v32 = 102
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    show.pic()
+    v45 = 4
+    v47 = 1
+    vTimeSeconds = 0
+  }
+  if (v45 == 2 && v47 < vTimeSeconds) { //00c8
+    pop.script()
+    v32 = 160
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    show.pic()
+    v45 = 3
+    v47 = 1
+    vTimeSeconds = 0
+  }
+  if (v45 == 1 && v47 < vTimeSeconds) { //00e6
+    pop.script()
+    v32 = 151
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    show.pic()
+    v47 = 1
+    vTimeSeconds = 0
+    v45 = 2
+  }
+}
+reset(f21)
+if (f33) { //0106
+  reset(f33)
+  clear.lines(23,24,c0)
+  display(23,1,"Press S to skip.")
+}
+return()

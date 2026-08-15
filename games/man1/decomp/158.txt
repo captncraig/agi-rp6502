@@ -1,0 +1,128 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  vCycleTime = 1
+  v65 = 29
+  reset(f75)
+  reset(f28)
+  reset(f29)
+  v47 = 0
+  v50 = 0
+  vEgoDir = 0
+  v48 = 0
+  load.sound(1)
+  load.sound(71)
+  load.view(129)
+  v32 = 157
+  load.pic(v32)
+  draw.pic(v32)
+  set.view(o1,129)
+  set.view(o2,129)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o1,66,135)
+  position(o2,66,122)
+  ignore.objs(o0)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  v46 = 3
+  cycle.time(o1,v46)
+  set.loop(o0,1)
+  set.loop(o1,2)
+  set.loop(o2,1)
+  fix.loop(o1)
+  v46 = 1
+  step.size(o0,v46)
+  v46 = 2
+  step.size(o1,v46)
+  set.priority(o0,14)
+  set.priority(o1,4)
+  set.priority(o2,7)
+  show.pic()
+  v49 = 1
+  vTimeSeconds = 0
+  push.script()
+}
+if (v50 == 0 && v49 < vTimeSeconds) { //0075
+  v32 = 157
+  discard.pic(v32)
+  pop.script()
+  v32 = 74
+  load.pic(v32)
+  draw.pic(v32)
+  show.pic()
+  v49 = 1
+  vTimeSeconds = 0
+  v50 = 1
+}
+if (v50 == 1 && v49 < vTimeSeconds) { //0096
+  v32 = 74
+  discard.pic(v32)
+  pop.script()
+  v32 = 75
+  load.pic(v32)
+  draw.pic(v32)
+  draw(o2)
+  show.pic()
+  v49 = 2
+  vTimeSeconds = 0
+  v50 = 2
+  v47 = 0
+}
+if (v50 == 2) { //00bc
+  get.posn(o1,v30,v31)
+  if (v49 < vTimeSeconds && v47 == 0) { //00c7
+    sound(71,f25)
+    reposition.to(o2,63,122)
+    set.loop(o2,0)
+    v46 = 1
+    set.dir(o1,v46)
+    draw(o1)
+    v47 = 1
+  }
+  if (v31 < 78 && v47 == 1) { //00e6
+    erase(o2)
+    v46 = 8
+    set.dir(o1,v46)
+    v47 = 2
+  }
+  if (v47 == 2) { //00fb
+    	get.dir(o1,v46)
+    if (v46 == 7) { //0105
+      v46 = 8
+      set.dir(o1,v46)
+      goto(l283)
+    }
+    v46 = 7
+    set.dir(o1,v46)
+l283:
+    if (v30 < 23) { //011b
+      v46 = 2
+      set.dir(o1,v46)
+      set.priority(o1,8)
+      v47 = 3
+    }
+  }
+  if (v47 == 3) { //012e
+    	get.dir(o1,v46)
+    if (v46 == 2) { //0138
+      v46 = 3
+      set.dir(o1,v46)
+      v46 = 2
+      step.size(o1,v46)
+      goto(l346)
+    }
+    v46 = 2
+    set.dir(o1,v46)
+    v46 = 1
+    step.size(o1,v46)
+l346:
+    if (v31 < 20) { //015a
+      v50 = 0
+      set(f118)
+      set(f119)
+      new.room(154)
+    }
+  }
+}
+get.posn(o1,v30,v31)
+return()

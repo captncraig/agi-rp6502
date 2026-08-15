@@ -1,0 +1,110 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 3
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 6
+  set(f33)
+  v60 = 0
+  set(f31)
+  v57 = vCurrentRoom
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  v32 = 249
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(97)
+  set.view(o0,1)
+  set.view(o1,97)
+  set.view(o2,97)
+  set.view(o3,97)
+  set.view(o4,97)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  position(o0,75,141)
+  position(o1,116,46)
+  position(o2,85,65)
+  position(o3,137,109)
+  position(o4,127,115)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  v44 = 3
+  cycle.time(o0,v44)
+  fix.loop(o4)
+  stop.cycling(o1)
+  stop.cycling(o3)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.loop(o2,0)
+  set.cel(o1,0)
+  v44 = 5
+  step.size(o0,v44)
+  set.priority(o1,8)
+  set.priority(o2,6)
+  set.priority(o3,7)
+  set.priority(o4,5)
+  draw(o0)
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o1,v33,v34)
+get.posn(o2,v35,v36)
+get.posn(o3,v37,v38)
+if (v48 == 0) { //00a9
+  if (v30 > 27 && v30 < 122 && v31 > 127 && v31 < 157 && v46 != 1) { //00b0
+    sound(1,f22)
+    v61 = 6
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.view(o0,49)
+    set.loop(o0,0)
+    reposition.to(o0,75,141)
+  }
+  if (v46 == 1) { //00dc
+    if ((v30 < 28 || v30 > 121 || v31 < 128 || v31 > 156)) { //00e3
+      v61 = 15
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.view(o0,1)
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f21) { //0106
+    if (v46 == 0) { //010f
+      set.view(o0,1)
+      set.loop(o0,4)
+      v59 = 1
+      v52 = 139
+    }
+    if (v46 == 1) { //0122
+      set.view(o0,1)
+      set.loop(o0,4)
+      v59 = 0
+      v52 = 123
+    }
+  }
+}
+reset(f21)
+if (f33) { //0137
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //0143
+    display(23,1,"Press <ENTER> to play the THREE ACES game.")
+  }
+  if (v61 == 15) { //014e
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

@@ -1,0 +1,226 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 1
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v57 = vCurrentRoom
+  v94 = 0
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(194)
+  load.sound(195)
+  v32 = 39
+  load.pic(v32)
+  draw.pic(v32)
+  discard.pic(v32)
+  load.view(179)
+  set.view(o1,179)
+  set.view(o2,179)
+  set.view(o3,179)
+  set.view(o4,179)
+  set.view(o5,179)
+  set.view(o6,179)
+  set.view(o7,179)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o7)
+  fix.loop(o1)
+  fix.loop(o2)
+  fix.loop(o3)
+  fix.loop(o4)
+  fix.loop(o5)
+  fix.loop(o6)
+  fix.loop(o7)
+  position(o1,142,51)
+  position(o2,1,94)
+  position(o3,1,94)
+  position(o4,1,94)
+  position(o5,1,92)
+  position(o6,1,92)
+  position(o7,1,92)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  v44 = 3
+  cycle.time(o0,v44)
+  set.loop(o1,0)
+  set.loop(o2,1)
+  set.loop(o3,1)
+  set.loop(o4,1)
+  set.loop(o5,1)
+  set.loop(o6,1)
+  set.loop(o7,1)
+  v44 = 1
+  step.size(o1,v44)
+  step.size(o2,v44)
+  step.size(o3,v44)
+  step.size(o4,v44)
+  step.size(o5,v44)
+  step.size(o6,v44)
+  step.size(o7,v44)
+  set.priority(o1,5)
+  set.priority(o2,5)
+  set.priority(o3,5)
+  set.priority(o4,5)
+  set.priority(o5,4)
+  set.priority(o6,4)
+  set.priority(o7,4)
+  v47 = 2
+  vTimeSeconds = 0
+  show.pic()
+  set.text.attribute(4,0)
+  display(10,13,"Meanwhile...")
+  set.text.attribute(15,0)
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o1,v33,v34)
+get.posn(o2,v35,v36)
+get.posn(o3,v37,v38)
+get.posn(o4,v39,v40)
+get.posn(o5,v90,v91)
+get.posn(o6,v92,v93)
+if (v48 == 0) { //010c
+  if (v45 == 17 && v47 < vTimeSeconds) { //0113
+    new.room(196)
+  }
+  if (v45 == 16) { //011f
+    vCycleTime = 2
+    start.cycling(o2)
+    set.loop(o2,3)
+    v47 = 2
+    vTimeSeconds = 0
+    v45 = 17
+  }
+  if (v45 == 15) { //0137
+    vCycleTime = 4
+    erase(o1)
+    set.cel(o2,8)
+    v45 = 16
+  }
+  if (v45 == 14) { //0149
+    vCycleTime = 8
+    set.cel(o2,7)
+    v45 = 15
+  }
+  if (v45 == 13) { //0159
+    reposition.to(o2,79,65)
+    set.cel(o2,6)
+    set.priority(o2,5)
+    v45 = 14
+  }
+  if (v45 == 12) { //016d
+    set.cel(o2,5)
+    v45 = 13
+  }
+  if (v45 == 11) { //017a
+    reposition.to(o2,77,68)
+    set.cel(o2,4)
+    v45 = 12
+  }
+  if (v45 == 10) { //018b
+    set.cel(o2,3)
+    v45 = 11
+  }
+  if (v45 == 9) { //0198
+    set.cel(o2,2)
+    v45 = 10
+  }
+  if (v45 == 8) { //01a5
+    set.cel(o2,1)
+    v45 = 9
+  }
+  if (v45 == 7 && v35 > 75) { //01b2
+    sound(195,f22)
+    draw(o7)
+    reposition.to(o2,77,95)
+    v44 = 0
+    set.dir(o2,v44)
+    set.dir(o3,v44)
+    set.dir(o4,v44)
+    set.dir(o5,v44)
+    set.dir(o6,v44)
+    stop.cycling(o2)
+    set.loop(o2,2)
+    set.cel(o2,0)
+    set.priority(o2,8)
+    v45 = 8
+    vCycleTime = 3
+  }
+  if (v45 == 6 && v35 > 60) { //01e8
+    draw(o6)
+    v44 = 3
+    set.dir(o6,v44)
+    v45 = 7
+  }
+  if (v45 == 5 && v35 > 50) { //01fd
+    draw(o5)
+    v44 = 3
+    set.dir(o5,v44)
+    v45 = 6
+  }
+  if (v45 == 4 && v35 > 35) { //0212
+    draw(o4)
+    v44 = 3
+    set.dir(o4,v44)
+    v45 = 5
+  }
+  if (v45 == 3 && v35 > 17) { //0227
+    draw(o3)
+    v44 = 3
+    set.dir(o3,v44)
+    v45 = 4
+  }
+  if (v94 == 1 && v33 < 74) { //023c
+    reposition.to(o1,70,51)
+    v44 = 0
+    set.dir(o1,v44)
+    v94 = 0
+  }
+  if (v45 == 2 && v33 < 84) { //0253
+    draw(o2)
+    v44 = 3
+    set.dir(o2,v44)
+    v94 = 1
+    v45 = 3
+  }
+  if (v45 == 1 && v47 < vTimeSeconds) { //026b
+    sound(194,f22)
+    draw(o1)
+    v44 = 7
+    set.dir(o1,v44)
+    v45 = 2
+  }
+  if (v45 == 0 && v47 < vTimeSeconds) { //0283
+    pop.script()
+    v32 = 63
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    show.pic()
+    v45 = 1
+    v47 = 1
+    vTimeSeconds = 0
+    set(f21)
+  }
+}
+reset(f21)
+if (f33) { //02a5
+  reset(f33)
+  clear.lines(23,24,c0)
+}
+return()

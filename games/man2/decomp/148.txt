@@ -1,0 +1,193 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 4
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v58 = 29
+  reset(f31)
+  reset(f29)
+  v57 = vCurrentRoom
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(100)
+  if (v59 == 0) { //0036
+    v32 = 154
+    load.pic(v32)
+  }
+  v32 = 127
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(100)
+  load.view(101)
+  load.view(78)
+  set.view(o0,49)
+  set.view(o1,101)
+  set.view(o3,101)
+  set.view(o2,100)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  position(o0,100,165)
+  position(o2,73,101)
+  position(o3,73,104)
+  position(o1,73,104)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  fix.loop(o1)
+  fix.loop(o3)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  stop.cycling(o1)
+  set.loop(o0,3)
+  set.loop(o1,2)
+  set.loop(o2,0)
+  set.loop(o3,2)
+  if (v59 == 1) { //008d
+    set.loop(o3,3)
+  }
+  set.cel(o1,1)
+  set.cel(o2,0)
+  set.cel(o3,0)
+  v44 = 7
+  step.size(o0,v44)
+  step.size(o3,v44)
+  step.size(o1,v44)
+  set.priority(o3,5)
+  set.priority(o1,5)
+  set.priority(o2,4)
+  draw(o0)
+  draw(o2)
+  add.to.pic(78,1,0,65,117,4,4)
+  show.pic()
+  v47 = 3
+  vTimeSeconds = 0
+  sound(100,f22)
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o1,v33,v34)
+get.posn(o3,v35,v36)
+if (v48 == 0) { //00d8
+  if (f22) { //00df
+    sound(100,f22)
+  }
+  if (v45 == 7) { //00e8
+    	get.dir(o3,v44)
+    if (v44 == 7 && v50 > 2) { //00f2
+      v44 = 6
+      set.dir(o3,v44)
+      v50 = 0
+      goto(l270)
+    }
+    v44 = 7
+    set.dir(o3,v44)
+l270:
+    v50++
+    if (v35 < 8) { //0110
+      erase(o3)
+      set.view(o0,1)
+      set.loop(o0,4)
+      draw(o0)
+      v59 = 0
+      set(f31)
+      set(f29)
+      v52 = 137
+    }
+  }
+  if (v45 == 6 && v47 < vTimeSeconds) { //012b
+    v44 = 7
+    set.dir(o3,v44)
+    set.loop(o3,0)
+    if (v59 == 1) { //013e
+      set.loop(o3,4)
+    }
+    start.cycling(o3)
+    v45 = 7
+  }
+  if (v45 == 5 && v33 > 150) { //014d
+    erase(o1)
+    draw(o3)
+    v47 = 1
+    vTimeSeconds = 0
+    v45 = 6
+  }
+  if (v45 == 51 && v47 < vTimeSeconds) { //0164
+    draw(o3)
+    v47 = 1
+    vTimeSeconds = 0
+    v45 = 6
+  }
+  if (v45 == 4 && v47 < vTimeSeconds) { //0179
+    v44 = 3
+    set.dir(o1,v44)
+    set.loop(o1,1)
+    start.cycling(o1)
+    v45 = 5
+  }
+  if (v45 == 3 && v47 < vTimeSeconds) { //0191
+    v32 = 127
+    draw.pic(v32)
+    draw(o2)
+    draw(o1)
+    draw(o0)
+    add.to.pic(78,1,0,65,117,4,4)
+    show.pic()
+    v47 = 1
+    vTimeSeconds = 0
+    v45 = 4
+  }
+  if (v45 == 2 && v47 < vTimeSeconds) { //01b8
+    v32 = 154
+    draw.pic(v32)
+    erase(o0)
+    erase(o2)
+    erase(o1)
+    show.pic()
+    v47 = 3
+    vTimeSeconds = 0
+    v45 = 3
+  }
+  if (v45 == 1) { //01d7
+    set.cel(o2,2)
+    if (v59 == 0) { //01e1
+      draw(o1)
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 2
+      goto(l505)
+    }
+    v45 = 51
+  }
+l505:
+  if (v45 == 0 && v47 < vTimeSeconds) { //01f9
+    set.cel(o2,1)
+    v45 = 1
+  }
+}
+reset(f21)
+if (f33) { //020b
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //0217
+    display(23,1,"A broken chain.")
+  }
+  if (v61 == 7) { //0222
+    display(23,1,"These doors are chained and locked!")
+  }
+  if (v61 == 13) { //022d
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 15) { //0238
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

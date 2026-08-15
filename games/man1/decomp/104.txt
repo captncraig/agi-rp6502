@@ -1,0 +1,289 @@
+if (fNewRoom) { //0002
+  v50 = 0
+  v47 = 0
+  v58 = 3
+  set.cursor.char("")
+  load.sound(4)
+  load.sound(10)
+  if (v50 == 0) { //0017
+    set(f24)
+    v53 = 0
+    reset(f20)
+    v32 = 130
+    load.pic(v32)
+    v32 = 129
+    load.pic(v32)
+    v32 = 145
+    load.pic(v32)
+    v32 = 143
+    load.pic(v32)
+    v32 = 169
+    load.pic(v32)
+    set(f151)
+  }
+  load.view(23)
+  load.view(24)
+  load.view(25)
+  load.view(18)
+  set.view(o3,23)
+  set.view(o5,24)
+  set.view(o4,25)
+  set.view(o6,18)
+  animate.obj(o3)
+  animate.obj(o5)
+  animate.obj(o4)
+  animate.obj(o6)
+  position(o3,154,109)
+  position(o5,56,115)
+  position(o4,58,47)
+  position(o6,0,125)
+  stop.cycling(o3)
+  stop.cycling(o5)
+  stop.cycling(o6)
+  fix.loop(o3)
+  fix.loop(o5)
+  fix.loop(o6)
+  set.loop(o3,0)
+  set.loop(o5,0)
+  set.loop(o4,0)
+  set.loop(o6,1)
+  set.cel(o3,0)
+  set.cel(o5,0)
+  set.cel(o4,0)
+  set.cel(o6,0)
+  v46 = 3
+  step.size(o3,v46)
+  v46 = 1
+  set.dir(o5,v46)
+  set.priority(o3,5)
+  set.priority(o5,5)
+  set.priority(o6,5)
+  vCycleTime = 3
+}
+if (v50 == 0) { //00a8
+  if (v47 == 8 && v49 < vTimeSeconds) { //00af
+    v32 = 143
+    draw.pic(v32)
+    show.pic()
+    v49 = 1
+    vTimeSeconds = 0
+    v47 = 9
+  }
+  if (v47 == 7) { //00c8
+    erase(o6)
+    v47 = 8
+    v49 = 1
+    vTimeSeconds = 0
+  }
+  if (v47 == 6) { //00da
+    reposition.to(o6,75,143)
+    set.cel(o6,5)
+    v47 = 7
+  }
+  if (v47 == 5) { //00eb
+    reposition.to(o6,68,141)
+    set.cel(o6,4)
+    v47 = 6
+  }
+  if (v47 == 4) { //00fc
+    reposition.to(o6,57,139)
+    set.cel(o6,3)
+    v47 = 5
+  }
+  if (v47 == 3) { //010d
+    reposition.to(o6,41,135)
+    set.cel(o6,2)
+    v47 = 4
+  }
+  if (v47 == 2) { //011e
+    reposition.to(o6,24,131)
+    set.cel(o6,1)
+    v47 = 3
+  }
+  if (v47 == 1 && v49 < vTimeSeconds) { //012f
+    draw(o6)
+    v47 = 2
+  }
+  if (v47 == 0) { //013e
+    v49 = 4
+    vTimeSeconds = 0
+    v32 = 145
+    draw.pic(v32)
+    if (v60 == 1) { //0150
+      add.to.pic(18,2,1,70,115,13,4)
+l351:
+      if (v49 > vTimeSeconds) { //015f
+        goto(l351)
+      }
+    }
+    if (v60 == 1) { //0169
+      add.to.pic(18,2,0,44,167,13,4)
+    }
+    if (v60 == 2) { //0178
+      add.to.pic(18,2,2,71,167,13,4)
+    }
+    if (v60 == 3) { //0187
+      add.to.pic(18,2,3,70,167,13,4)
+    }
+    if (v60 == 4) { //0196
+      add.to.pic(18,2,4,70,167,13,4)
+    }
+    show.pic()
+    v49 = 4
+    vTimeSeconds = 0
+    v47 = 1
+  }
+  if (v47 == 9 && v49 < vTimeSeconds) { //01af
+    v32 = 169
+    draw.pic(v32)
+    show.pic()
+    v49 = 1
+    vTimeSeconds = 0
+    v47 = 10
+  }
+  if (v47 == 10 && v49 < vTimeSeconds) { //01c8
+    v32 = 130
+    draw.pic(v32)
+    draw(o5)
+    show.pic()
+    v47 = 0
+    v49 = 2
+    vTimeSeconds = 0
+l483:
+    if (v49 > vTimeSeconds) { //01e3
+      goto(l483)
+    }
+    v50 = 1
+    sound(10,f25)
+  }
+}
+if (v50 == 1) { //01f3
+  if (f151) { //01fa
+    sound(10,f25)
+    get.posn(o5,v30,v31)
+    if (v31 < 66) { //0207
+      v46 = 0
+      set.dir(o5,v46)
+      v50 = 2
+      v32 = 129
+      draw.pic(v32)
+      show.pic()
+      set.cel(o5,1)
+    }
+  }
+}
+if (v50 == 2) { //0220
+  if (v47 == 6) { //0227
+    v47 = 0
+    v50 = 0
+    clear.lines(23,24,c0)
+    new.room(117)
+  }
+  if (v47 == 5) { //023a
+    erase(o4)
+    draw(o5)
+    set.cel(o5,1)
+    draw(o5)
+    if (v52 == 1) { //024a
+      set.cel(o5,0)
+      v47 = 6
+    }
+    if (v52 == 0) { //0257
+      v52++
+    }
+    if (v47 == 6) { //0260
+      v52 = 0
+    }
+  }
+  if (v47 == 4) { //026a
+    current.cel(o4,v46)
+    if (v46 == 2) { //0274
+      v46 = 7
+      step.size(o4,v46)
+    }
+    if (v46 == 1) { //0281
+      v47 = 5
+    }
+  }
+  if (v47 == 3) { //028b
+    current.cel(o4,v46)
+    if (v46 == 0) { //0295
+      normal.cycle(o4)
+    }
+    if (v46 == 2) { //029e
+      reverse.cycle(o4)
+    }
+    if (v49 < vTimeSeconds) { //02a7
+      display(23,1,"Press <ENTER> to continue.")
+      if (v60 == 1) { //02b2
+        print("  Attention Manhunter!  \n There was an explosion\n at Bellevue Hospital! \n      Investigate.")
+      }
+      if (v60 == 2) { //02bb
+        print("  Attention Manhunter.  \n   Maintenance robot\n      missing from\n Grand Central Station.\n      Investigate.")
+        print("        Warning:       \n The maintenance robot\n will self-destruct if\n  it is tampered with!")
+      }
+      if (v60 == 3) { //02c6
+        print("  Attention Manhunter.  \n  Dead Orb reported\n at Greenwood Cemetery.\n      Investigate.")
+      }
+      if (v60 == 4) { //02cf
+        print("  Attention Manhunter.  \n    Illegal access at\nthe Alliance computer.\n      Investigate.")
+        print("     Congratulations!     \n  After this assignment,  \nyou are being transferred\n       to Chicago!")
+      }
+      clear.lines(23,24,c0)
+      set.loop(o4,0)
+      set.cel(o4,0)
+      reverse.cycle(o4)
+      v46 = 1
+      set.dir(o4,v46)
+      reposition.to(o4,59,85)
+      v47 = 4
+    }
+  }
+  if (v47 == 2) { //02f3
+    set.loop(o4,1)
+    set.cel(o4,1)
+    reposition.to(o4,41,100)
+    v46 = 0
+    set.dir(o4,v46)
+    vTimeSeconds = 0
+    v49 = 2
+    v47 = 3
+    sound(4,f25)
+  }
+  if (v47 == 1) { //0316
+    current.cel(o4,v46)
+    if (v46 == 1) { //0320
+      v46 = 16
+      step.size(o4,v46)
+    }
+    if (v46 == 2) { //032d
+      v52 = 0
+      v47 = 2
+    }
+  }
+  if (v47 == 0) { //033a
+    if (v52 == 2) { //0341
+      erase(o5)
+      draw(o4)
+      vTimeSeconds = 0
+      v49 = 1
+l850:
+      if (v49 > vTimeSeconds) { //0352
+        goto(l850)
+      }
+      v46 = 5
+      set.dir(o4,v46)
+      v46 = 7
+      step.size(o4,v46)
+      v47 = 1
+    }
+    if (v52 == 1) { //036b
+      set.cel(o5,1)
+      v52++
+    }
+    if (v52 == 0) { //0377
+      v52++
+    }
+  }
+}
+return()

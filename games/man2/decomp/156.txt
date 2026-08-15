@@ -1,0 +1,369 @@
+if (fNewRoom) { //0002
+  hold.key()
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  set(f21)
+  v60 = 0
+  reset(f154)
+  if (f31) { //0016
+    set(f154)
+  }
+  reset(f155)
+  if (f29) { //0020
+    set(f155)
+  }
+  v58 = 29
+  reset(f31)
+  reset(f29)
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  v61 = 50
+  if (v57 == 118) { //003e
+    v61 = 51
+  }
+  if (v57 == 127) { //0048
+    v61 = 52
+  }
+  if (v57 == 103) { //0052
+    v61 = 54
+  }
+  if (v57 == 117) { //005c
+    v61 = 55
+  }
+  if (v57 == 113) { //0066
+    v61 = 56
+  }
+  if (v57 == 110) { //0070
+    v61 = 57
+  }
+  if (v57 == 102) { //007a
+    v61 = 58
+  }
+  if (v57 == 119) { //0084
+    v61 = 59
+  }
+  if (v57 == 122) { //008e
+    v61 = 60
+  }
+  if (v57 == 104) { //0098
+    v61 = 61
+  }
+  if (v57 == 131) { //00a2
+    v61 = 62
+  }
+  if (v57 == 164) { //00ac
+    v61 = 63
+  }
+  if (v57 == 165) { //00b6
+    v61 = 60
+  }
+  if (v57 == 149) { //00c0
+    v61 = 64
+  }
+  if (v57 == 133) { //00ca
+    v61 = 65
+  }
+  if (v57 == 171) { //00d4
+    v61 = 66
+  }
+  if (v57 == 123) { //00de
+    v61 = 67
+  }
+  if (v57 == 180) { //00e8
+    if (f78) { //00ef
+      v61 = 72
+      goto(l254)
+    }
+    v61 = 73
+  }
+l254:
+  if (v57 == 161) { //00fe
+    v61 = 74
+  }
+  if (v57 == 179) { //0108
+    v61 = 79
+  }
+  if (v57 == 183) { //0112
+    v61 = 81
+  }
+  if (v57 == 132) { //011c
+    v61 = 84
+  }
+  if (v65 == 1) { //0126
+    v61 = 53
+  }
+  if (v65 == 2) { //0130
+    v61 = 68
+  }
+  if (v65 == 3) { //013a
+    v61 = 60
+  }
+  if (v65 == 4) { //0144
+    v61 = 69
+  }
+  if (v65 == 5) { //014e
+    if (!f67) { //0155
+      v61 = 70
+      goto(l357)
+    }
+    v61 = 71
+l357:
+    v57 = 176
+    v59 = 0
+  }
+  if (v65 == 6) { //016b
+    v61 = 75
+  }
+  if (v65 == 7) { //0175
+    v61 = 76
+  }
+  if (v65 == 8) { //017f
+    v61 = 77
+  }
+  if (v65 == 9) { //0189
+    v61 = 78
+  }
+  if (v65 == 10) { //0193
+    v61 = 54
+  }
+  if (v65 == 11) { //019d
+    v61 = 80
+  }
+  if (v65 == 12) { //01a7
+    v61 = 82
+  }
+  if (v65 == 13) { //01b1
+    v61 = 83
+  }
+  if (v65 == 14) { //01bb
+    v61 = 85
+  }
+  set(f33)
+  v65 = 0
+  load.sound(1)
+  v32 = 81
+  load.pic(v32)
+  draw.pic(v32)
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //01d9
+  if (controller(c20) && !f21) { //01e0
+    sound(1,f22)
+    if (v61 != 50) { //01ec
+      pop.script()
+      v32 = 81
+      draw.pic(v32)
+      show.pic()
+      v61 = 50
+      set(f33)
+      goto(l557)
+    }
+    clear.lines(23,24,c0)
+    reset(f31)
+    if (f154) { //0209
+      set(f31)
+    }
+    reset(f29)
+    if (f155) { //0213
+      set(f29)
+    }
+    if (f106) { //021b
+      reset(f106)
+      v48 = 2
+      v45 = 0
+      new.room(101)
+    }
+    new.room(v57)
+  }
+}
+l557:
+reset(f21)
+if (f33) { //022f
+  reset(f33)
+  clear.lines(23,24,c0)
+  set.text.attribute(0,15)
+  if (v61 == 50) { //023e
+    display(17,6,"Now, let's back up to a few")
+    display(18,8,"minutes before you made")
+    display(19,9,"your fatal mistake...")
+  }
+  if (v61 == 51) { //0251
+    display(17,9,"That was so disgusting")
+    display(19,8,"even we wouldn't show it!")
+  }
+  if (v61 == 52) { //0260
+    display(18,12,"A perfect fit!")
+    v61 = 50
+  }
+  if (v61 == 53) { //026e
+    display(17,9,"Uh Oh, you just used")
+    display(19,11,"your last flash!")
+    v61 = 50
+  }
+  if (v61 == 54) { //0280
+    display(17,9,"Robots are hazardous")
+    display(19,11,"to your health!")
+  }
+  if (v61 == 55) { //028f
+    display(17,13,"Spin to win")
+    display(18,18,"or")
+    display(19,10,"You'll die again!")
+  }
+  if (v61 == 56) { //02a2
+    display(17,11,"Rats and bats,")
+    display(18,11,"that's no lie.")
+    display(19,11,"They eat your face")
+    display(20,11,"and then you die!")
+  }
+  if (v61 == 57) { //02b9
+    display(17,12,"You should let")
+    display(19,10,"a sleeping rat lie!")
+  }
+  if (v61 == 58) { //02c8
+    display(16,8,"That wasn't a thought")
+    display(17,10,"that just entered")
+    display(18,13,"your head!")
+    display(19,9,"You better turn fast")
+    display(20,8,"or you'll end up dead!")
+  }
+  if (v61 == 59) { //02e3
+    display(17,9,"Isn't it remarkable")
+    display(18,12,"how fast acid")
+    display(19,11,"dissolves flesh!")
+  }
+  if (v61 == 60) { //02f6
+    display(17,7,"Don't just stand there,")
+    display(19,12,"do something!")
+  }
+  if (v61 == 61) { //0305
+    display(17,9,"This robot is quick")
+    display(19,9,"but there is a trick.")
+  }
+  if (v61 == 62) { //0314
+    display(17,11,"He must not have")
+    display(19,11,"liked your looks.")
+  }
+  if (v61 == 63) { //0323
+    display(17,9,"Instead of being the")
+    display(18,9,"main course, offer")
+    display(19,9,"them an appetizer...")
+  }
+  if (v61 == 64) { //0336
+    display(17,9,"You were just in time")
+    display(19,13,"for dessert!")
+  }
+  if (v61 == 65) { //0345
+    display(17,12,"He didn't seem")
+    display(18,15,"to be in")
+    display(19,10,"a very good mood...")
+  }
+  if (v61 == 66) { //0358
+    display(17,12,"Nice of you to")
+    display(19,10,"drop in for dinner!")
+  }
+  if (v61 == 67) { //0367
+    display(17,13,"Sometimes he")
+    display(18,13,"fakes a move,")
+    display(19,13,"halfway thru.")
+  }
+  if (v61 == 68) { //037a
+    display(17,10,"Death is just a hop,")
+    display(19,9,"skip and dissolve away!")
+  }
+  if (v61 == 69) { //0389
+    display(17,11,"Too far ahead,")
+    display(18,11,"they ate your face!")
+    display(19,11,"Don't be dead,")
+    display(20,11,"it ain't no race.")
+  }
+  if (v61 == 70) { //03a0
+    display(17,11,"Maybe you need to")
+    display(19,10,"lighten your load!?!")
+  }
+  if (v61 == 71) { //03af
+    display(17,12,"You didn't get")
+    display(19,7,"something that you need...")
+    v61 = 50
+  }
+  if (v61 == 72) { //03c1
+    display(17,12,"You didn't get")
+    display(19,7,"something that you need...")
+    v61 = 50
+  }
+  if (v61 == 73) { //03d3
+    display(17,7,"Jumping Jack should flash")
+    display(19,9,"the gas, gas, gas...")
+  }
+  if (v61 == 74) { //03e2
+    display(17,9,"Its not the fall that")
+    display(18,9,"hurts, its the sudden")
+    display(19,9,"stop at the bottom...")
+  }
+  if (v61 == 75) { //03f5
+    display(17,11,"It must not have")
+    display(19,11,"liked your looks.")
+  }
+  if (v61 == 76) { //0404
+    v57 = 188
+    display(17,11,"  Hell of a place")
+    display(18,11," to have visitors!")
+    display(19,11,"    Try doing")
+    display(20,11,"something else first.")
+  }
+  if (v61 == 77) { //041e
+    display(17,6,"There is a Manhunter in Hell.")
+    display(18,6,"He isn't doing too well.")
+    display(19,6,"No way out, but he will shout")
+    display(20,6,"when the slaves ring his bell!")
+  }
+  if (v61 == 78) { //0435
+    display(17,8,"Oh, no! Innocent slaves")
+    display(18,8,"charbroiled in lava!")
+    display(19,8,"We can't let that happen!")
+  }
+  if (v61 == 79) { //0448
+    display(17,11,"Maybe you should make")
+    display(19,11,"a friend first.")
+  }
+  if (v61 == 80) { //0457
+    display(17,9,"Mmmmm. Roasted Manhunter.")
+    display(19,9,"Pass the salt!")
+  }
+  if (v61 == 81) { //0466
+    display(17,11,"Hit some lava,")
+    display(18,11,"up to your ears.")
+    display(19,11,"A little more careful,")
+    display(20,11,"you'll shed no tears.")
+  }
+  if (v61 == 82) { //047d
+    display(17,10,"You opened the gates.")
+    display(18,10,"You flooded Hell.")
+    display(19,10,"In came the lava.")
+    display(20,10,"Boy, did you yell!")
+  }
+  if (v61 == 83) { //0494
+    v61 = 50
+    display(18,10,"OK, you figured that")
+    display(19,10,"  one out but what")
+    display(20,10,"   does it mean??")
+  }
+  if (v61 == 84) { //04aa
+    display(18,10,"    That guy has")
+    display(19,10,"a shocking personality!")
+  }
+  if (v61 == 85) { //04b9
+    v61 = 50
+    set(f106)
+    display(17,10,"Are you cheating?")
+    display(18,10,"You don't learn that")
+    display(19,10,"name until tomorrow!")
+  }
+  set.text.attribute(15,0)
+  display(23,1,"Press <ENTER> to continue.")
+}
+return()

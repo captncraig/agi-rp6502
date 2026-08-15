@@ -1,0 +1,225 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v58 = 29
+  set(f31)
+  set(f29)
+  v57 = vCurrentRoom
+  reset(f153)
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(95)
+  v32 = 127
+  load.pic(v32)
+  v32 = 108
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(78)
+  set.view(o0,1)
+  set.view(o1,78)
+  set.view(o2,78)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o0,100,165)
+  position(o2,65,119)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  v44 = 3
+  cycle.time(o0,v44)
+  v44 = 2
+  cycle.time(o1,v44)
+  fix.loop(o1)
+  stop.cycling(o2)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.loop(o2,1)
+  v44 = 6
+  step.size(o0,v44)
+  v44 = 3
+  step.size(o1,v44)
+  set.priority(o1,6)
+  set.priority(o2,6)
+  draw(o0)
+  if (v59 == 1) { //008c
+    v61 = 15
+    push.script()
+    goto(l324)
+  }
+  show.pic()
+  v47 = 5
+  vTimeSeconds = 0
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o1,v33,v34)
+if (v48 == 0) { //00aa
+  if (!f153) { //00b1
+    random(0,200,v41)
+    if (v41 < 5) { //00bc
+      set(f153)
+      position(o1,53,55)
+      v44 = 5
+      set.dir(o1,v44)
+      draw(o1)
+    }
+    goto(l226)
+  }
+  if (v34 > 152) { //00d4
+    sound(95,f22)
+    erase(o1)
+    reset(f153)
+  }
+l226:
+  if (v30 > 36 && v30 < 52 && v31 > 135 && v31 < 161 && v46 != 1) { //00e2
+    sound(1,f22)
+    v61 = 15
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,2)
+    reposition.to(o0,44,154)
+  }
+  if (v46 == 1) { //010b
+    if ((v30 < 37 || v30 > 51 || v31 < 136 || v31 > 160)) { //0112
+      clear.lines(23,24,c0)
+      v61 = 0
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (controller(c20) && !f21) { //0134
+    if (v46 == 1) { //013d
+l324:
+      pop.script()
+      v59 = 1
+      sound(16,f22)
+      reset(f153)
+      set.loop(o0,3)
+      reposition.to(o0,77,166)
+      v30 = 77
+      v31 = 166
+      v46 = 0
+      v32 = 127
+      draw.pic(v32)
+      erase(o1)
+      if (f81) { //0164
+        position(o2,69,93)
+        set.cel(o2,1)
+        goto(l379)
+      }
+      position(o2,65,117)
+      set.cel(o2,0)
+l379:
+      draw(o2)
+      show.pic()
+      v48 = 1
+      set(f21)
+    }
+  }
+}
+if (v48 == 1) { //0183
+  if (v30 > 56 && v30 < 79 && v31 > 112 && v31 < 135 && v46 != 1 && !f81) { //018a
+    sound(1,f22)
+    v61 = 6
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.view(o0,49)
+    set.loop(o0,2)
+    reposition.to(o0,69,126)
+  }
+  if (v46 == 1) { //01b9
+    if ((v30 < 57 || v30 > 78 || v31 < 113 || v31 > 134)) { //01c0
+      v61 = 15
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.view(o0,1)
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 54 && v30 < 85 && v31 > 65 && v31 < 111 && v46 != 2) { //01e3
+    sound(1,f22)
+    if (!f81) { //01fa
+      v61 = 15
+      goto(l522)
+    }
+    v61 = 7
+l522:
+    set(f33)
+    vEgoDir = 0
+    v46 = 2
+    if (!f81) { //0212
+      set.loop(o0,2)
+      goto(l549)
+    }
+    set.view(o0,49)
+    set.loop(o0,2)
+l549:
+    reposition.to(o0,70,98)
+  }
+  if (v46 == 2) { //0229
+    if ((v30 < 55 || v30 > 84 || v31 < 66 || v31 > 110)) { //0230
+      v61 = 15
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.view(o0,1)
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f21) { //0253
+    if (v46 == 0) { //025c
+      pop.script()
+      v59 = 0
+      sound(16,f22)
+      v61 = 0
+      set(f33)
+      set.loop(o0,1)
+      reposition.to(o0,100,165)
+      v30 = 100
+      v31 = 165
+      v46 = 0
+      v48 = 0
+      v32 = 108
+      draw.pic(v32)
+      show.pic()
+      set(f21)
+    }
+    if (v46 == 2 && !f81) { //028a
+      v59 = 0
+      sound(16,f22)
+      set.loop(o0,4)
+      v52 = 144
+    }
+  }
+}
+reset(f21)
+if (f33) { //02a2
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //02ae
+    display(23,1,"A broken chain.")
+  }
+  if (v61 == 7) { //02b9
+    display(23,1,"These doors are chained and locked!")
+  }
+  if (v61 == 13) { //02c4
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 15) { //02cf
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

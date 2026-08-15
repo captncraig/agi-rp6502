@@ -1,0 +1,264 @@
+if (fNewRoom) { //0002
+  v58 = 28
+  v57 = vCurrentRoom
+  v48 = 1
+  v46 = 0
+  set.cursor.char("")
+  set(f21)
+  reset(f151)
+  set(f31)
+  load.sound(1)
+  load.sound(16)
+  load.sound(18)
+  load.view(72)
+  load.view(73)
+  v32 = 79
+  load.pic(v32)
+  v32 = 59
+  load.pic(v32)
+  v32 = 58
+  load.pic(v32)
+  v32 = 57
+  load.pic(v32)
+  draw.pic(v32)
+  set.view(o0,1)
+  set.view(o1,72)
+  set.view(o2,73)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o0,77,168)
+  position(o1,59,137)
+  position(o2,27,86)
+  set.loop(o0,3)
+  v61 = 15
+  set(f33)
+  v44 = 2
+  step.size(o0,v44)
+  set.priority(o0,14)
+  set.priority(o1,4)
+  set.priority(o2,5)
+  draw(o0)
+  if (f63) { //006e
+    draw(o1)
+  }
+  if (v59 == 1) { //0076
+    push.script()
+    goto(l337)
+  }
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 1) { //0087
+  if (v30 > 55 && v30 < 115 && v31 > 99 && v31 < 136 && v46 != 1) { //008e
+    v61 = 7
+    set(f33)
+    sound(1,f22)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,0)
+    reposition.to(o0,88,117)
+  }
+  if (v46 == 1) { //00b7
+    if ((v30 < 56 || v30 > 114 || v31 < 100 || v31 > 135)) { //00be
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+      v61 = 15
+      set(f33)
+    }
+  }
+  if (v30 > 46 && v30 < 64 && v31 > 131 && v31 < 153 && v46 != 2 && f63) { //00de
+    v61 = 6
+    set(f33)
+    sound(1,f22)
+    vEgoDir = 0
+    v46 = 2
+    set.loop(o0,5)
+    reposition.to(o0,57,144)
+  }
+  if (v46 == 2) { //0109
+    if ((v30 < 47 || v30 > 63 || v31 < 132 || v31 > 152)) { //0110
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+      v61 = 15
+      set(f33)
+    }
+  }
+  if (controller(c20) && !f21) { //0130
+    if (v46 == 0) { //0139
+      v52 = 135
+      set.loop(o0,4)
+      set(f62)
+    }
+    if (v46 == 1) { //0148
+      set(f151)
+l337:
+      pop.script()
+      sound(16,f22)
+      v61 = 8
+      set(f33)
+      reposition.to(o0,10,167)
+      set.loop(o0,3)
+      v32 = 59
+      draw.pic(v32)
+      if (f63) { //0166
+        erase(o1)
+      }
+      if (f64) { //016e
+        draw(o2)
+      }
+      show.pic()
+      if (f151) { //0177
+        reset(f151)
+        sound(18,f22)
+      }
+      v59 = 1
+      v46 = 0
+      v48 = 2
+      set(f21)
+    }
+    if (v46 == 2) { //018d
+      pop.script()
+      sound(16,f22)
+      set.loop(o0,3)
+      v46 = 0
+      v61 = 9
+      set(f33)
+      reset(f63)
+      get("Driver's License")
+      v32 = 79
+      draw.pic(v32)
+      erase(o0)
+      erase(o1)
+      show.pic()
+      v48 = 3
+      set(f21)
+    }
+  }
+}
+if (v48 == 2 && v52 != 101) { //01b6
+  if (v30 > 13 && v30 < 43 && v31 > 53 && v31 < 121 && v46 != 1 && f64) { //01c1
+    sound(1,f22)
+    v61 = 11
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,5)
+    reposition.to(o0,33,87)
+  }
+  if (v46 == 1) { //01ec
+    if ((v30 < 14 || v30 > 42 || v31 < 54 || v31 > 120)) { //01f3
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+      v61 = 15
+      set(f33)
+    }
+  }
+  if (controller(c20) && !f21) { //0213
+    if (v46 == 0) { //021c
+      pop.script()
+      v59 = 0
+      sound(16,f22)
+      v61 = 15
+      set(f33)
+      set.loop(o0,3)
+      v32 = 57
+      draw.pic(v32)
+      if (f63) { //0237
+        draw(o1)
+      }
+      if (f64) { //023f
+        erase(o2)
+      }
+      show.pic()
+      v48 = 1
+      reposition.to(o0,77,168)
+      set(f21)
+    }
+    if (v46 == 1) { //0251
+      pop.script()
+      sound(1,f22)
+      v61 = 10
+      set(f33)
+      reposition.to(o0,77,167)
+      set.loop(o0,3)
+      v46 = 0
+      v48 = 4
+      v32 = 58
+      draw.pic(v32)
+      erase(o0)
+      if (f64) { //0275
+        erase(o2)
+      }
+      show.pic()
+      reset(f64)
+      get("Empty Flask")
+      set(f103)
+      v48 = 4
+      set(f21)
+    }
+  }
+}
+if (v48 == 3) { //0289
+  if (controller(c20) && !f21) { //0290
+    sound(16,f22)
+    v61 = 15
+    set(f33)
+    v48 = 1
+    v32 = 57
+    draw.pic(v32)
+    position(o0,77,168)
+    set.loop(o0,3)
+    draw(o0)
+    show.pic()
+  }
+}
+if (v48 == 4) { //02b3
+  if (controller(c20) && !f21) { //02ba
+    v61 = 15
+    set(f33)
+    v48 = 2
+    v32 = 59
+    draw.pic(v32)
+    position(o0,10,167)
+    set.loop(o0,3)
+    draw(o0)
+    if (f64) { //02d9
+      erase(o2)
+    }
+    show.pic()
+  }
+}
+reset(f21)
+if (f33) { //02e4
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 5) { //02f0
+    display(23,1,"Press <> to continue.")
+  }
+  if (v61 == 6) { //02fb
+    display(23,1,"Press <ENTER> to take the driver's license.")
+  }
+  if (v61 == 7) { //0306
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 8) { //0311
+    display(23,1,"Press <ENTER> to back up.")
+  }
+  if (v61 == 9) { //031c
+    display(23,1,"Press <ENTER> to put the driver's license in your robe.")
+  }
+  if (v61 == 10) { //0327
+    display(23,1,"Press <ENTER> to put the flask in your robe.")
+  }
+  if (v61 == 11) { //0332
+    display(23,1,"Press <ENTER> to take the flask.")
+  }
+  if (v61 == 15) { //033d
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

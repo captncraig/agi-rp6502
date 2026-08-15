@@ -1,0 +1,143 @@
+if (fNewRoom) { //0002
+  set(f75)
+  v64 = vCurrentRoom
+  set.cursor.char("")
+  reset(f22)
+  reset(f28)
+  reset(f29)
+  v69 = 0
+  v58 = 14
+  v47 = 0
+  v51 = 1
+  v48 = 0
+  v50 = 0
+  load.sound(1)
+  load.sound(5)
+  load.sound(8)
+  load.sound(73)
+  load.sound(135)
+  v32 = 247
+  load.pic(v32)
+  v32 = 190
+  load.pic(v32)
+  draw.pic(v32)
+  position(o0,77,167)
+  set.loop(o0,1)
+  v46 = 3
+  step.size(o0,v46)
+  draw(o0)
+  if (v66 == 1) { //004c
+    goto(l264)
+  }
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v50 == 0) { //005c
+  if (v30 > 34 && v30 < 91 && v31 > 65 && v31 < 134 && v48 != 1) { //0063
+    v48 = 1
+    reposition.to(o0,67,109)
+    set.loop(o0,2)
+    vEgoDir = 0
+    sound(1,f25)
+    v69 = 7
+    set(f117)
+  }
+  if (v48 == 1) { //008c
+    if ((v30 < 35 || v30 > 90 || v31 < 66 || v31 > 133)) { //0093
+      v48 = 0
+      set.loop(o0,1)
+      sound(1,f25)
+      clear.lines(23,24,c0)
+      v69 = 0
+    }
+  }
+  if (v30 > 10 && v30 < 25 && v31 > 54 && v31 < 82 && v48 != 2) { //00b5
+    v48 = 2
+    sound(135,f25)
+    v69 = 10
+    set(f117)
+  }
+  if (v48 == 2) { //00d4
+    if ((v30 < 11 || v30 > 24 || v31 < 55 || v31 > 81)) { //00db
+      v48 = 0
+      v69 = 0
+      set(f117)
+    }
+  }
+  if (controller(c20)) { //00f5
+    if (v48 == 1) { //00fb
+      sound(5,f25)
+      v66 = 1
+l264:
+      pop.script()
+      set(f22)
+      v50 = 1
+      vEgoDir = 0
+      v48 = 0
+      v69 = 7
+      set(f117)
+      reposition.to(o0,30,20)
+      set.loop(o0,3)
+      v30 = 77
+      v31 = 20
+      v32 = 247
+      draw.pic(v32)
+      show.pic()
+      sound(73,f25)
+    }
+  }
+}
+if (v50 == 1) { //012f
+  if (f25) { //0136
+    sound(73,f25)
+  }
+  if (v30 > 72 && v30 < 88 && v31 > 106 && v31 < 128 && v48 != 2) { //013f
+    v48 = 2
+    sound(135,f25)
+    set.loop(o0,1)
+    v69 = 9
+    set(f117)
+  }
+  if (v48 == 2) { //0161
+    if ((v30 < 73 || v30 > 87 || v31 < 107 || v31 > 127)) { //0168
+      v48 = 0
+      v69 = 7
+      set(f117)
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f22) { //0185
+    if (v48 == 0) { //018e
+      pop.script()
+      sound(5,f25)
+      set(f22)
+      v50 = 0
+      vEgoDir = 0
+      v48 = 0
+      clear.lines(23,24,c0)
+      v69 = 0
+      set.loop(o0,1)
+      reposition.to(o0,4,17)
+      v32 = 190
+      draw.pic(v32)
+      show.pic()
+      v66 = 0
+    }
+  }
+}
+if (f117) { //01bb
+  reset(f117)
+  clear.lines(23,24,c0)
+  if (v69 == 7) { //01c7
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+  if (v69 == 9) { //01d2
+    display(23,1,"Artificial flowers.")
+  }
+  if (v69 == 10) { //01dd
+    display(23,1,"The acid rain has eaten the words off of this sign.")
+  }
+}
+reset(f22)
+return()

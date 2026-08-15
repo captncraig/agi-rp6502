@@ -1,0 +1,167 @@
+if (fNewRoom) { //0002
+  set(f31)
+  v57 = vCurrentRoom
+  set(f41)
+  v61 = 15
+  set(f33)
+  v46 = 0
+  v48 = 0
+  set.cursor.char("")
+  set(f21)
+  load.sound(1)
+  load.sound(16)
+  v32 = 30
+  load.pic(v32)
+  v32 = 29
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(68)
+  set.view(o0,1)
+  set.view(o1,68)
+  animate.obj(o1)
+  position(o0,77,168)
+  position(o1,99,168)
+  ignore.objs(o0)
+  ignore.objs(o1)
+  set.loop(o0,3)
+  v44 = 2
+  step.size(o0,v44)
+  set.priority(o0,14)
+  set.priority(o1,5)
+  draw(o0)
+  if (f61) { //0055
+    draw(o1)
+  }
+  if (v59 == 2) { //005d
+    push.script()
+    goto(l310)
+  }
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //006e
+  if (v30 > 46 && v30 < 73 && v31 > 102 && v31 < 134 && v46 != 1) { //0075
+    sound(1,f22)
+    v61 = 7
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,0)
+    reposition.to(o0,61,118)
+  }
+  if (v46 == 1) { //009e
+    if ((v30 < 47 || v30 > 72 || v31 < 103 || v31 > 133)) { //00a5
+      clear.lines(23,24,c0)
+      v61 = 15
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 89 && v30 < 121 && v31 > 115 && v46 != 2 && f61) { //00c9
+    sound(1,f22)
+    v61 = 9
+    set(f33)
+    vEgoDir = 0
+    v46 = 2
+    set.loop(o0,5)
+    reposition.to(o0,107,166)
+  }
+  if (v46 == 2) { //00f1
+    if ((v30 < 90 || v30 > 120 || v31 < 116)) { //00f8
+      clear.lines(23,24,c0)
+      v61 = 15
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20)) { //0119
+    if (v46 == 0) { //011f
+      set.loop(o0,4)
+      v52 = 103
+    }
+    if (v46 == 1) { //012c
+      sound(16,f22)
+l310:
+      pop.script()
+      v59 = 2
+      reposition.to(o0,78,167)
+      v46 = 0
+      v32 = 30
+      draw.pic(v32)
+      erase(o1)
+      show.pic()
+      set.loop(o0,3)
+      v61 = 15
+      set(f33)
+      v48 = 1
+      set(f21)
+    }
+    if (v46 == 2) { //0156
+      pop.script()
+      sound(16,f22)
+      v46 = 0
+      get("Mallet")
+      erase(o1)
+      reset(f61)
+      set.loop(o0,3)
+      v61 = 10
+      set(f33)
+      set(f21)
+      v48 = 2
+      v32 = 86
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      erase(o1)
+      erase(o0)
+      show.pic()
+    }
+  }
+}
+if (v48 == 1) { //0185
+  if (controller(c20) && !f21) { //018c
+    if (v46 == 0) { //0195
+      sound(16,f22)
+      v59 = 0
+      set.loop(o0,4)
+      v52 = 109
+    }
+  }
+}
+if (v48 == 2) { //01a8
+  if (controller(c20) && !f21) { //01af
+    sound(16,f22)
+    v59 = 0
+    set.loop(o0,4)
+    v52 = 109
+  }
+}
+reset(f21)
+if (f33) { //01c6
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 5) { //01d2
+    display(23,1,"Press <> to continue.")
+  }
+  if (v61 == 7) { //01dd
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 8) { //01e8
+    display(23,1,"Press <ENTER> to take the note.")
+  }
+  if (v61 == 9) { //01f3
+    display(23,1,"Press <ENTER> to take the mallet.")
+  }
+  if (v61 == 10) { //01fe
+    display(23,1,"Press <ENTER> to put the mallet in your robe.")
+  }
+  if (v61 == 15) { //0209
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

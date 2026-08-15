@@ -649,14 +649,14 @@ var functions = map[byte]fDef{
 		name: "mul",
 		args: []argType{argVar, argVar},
 	},
-	// 0xa7: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
-	// 0xa8: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
+	0xa7: {
+		name: "div",
+		args: []argType{argVar, argNum},
+	},
+	0xa8: {
+		name: "div",
+		args: []argType{argVar, argVar},
+	},
 	0xa9: {
 		name: "close.window",
 		args: []argType{},
@@ -665,14 +665,14 @@ var functions = map[byte]fDef{
 		name: "set.simple",
 		args: []argType{argNum},
 	},
-	// 0xab: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
-	// 0xac: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
+	0xab: {
+		name: "push.script",
+		args: []argType{},
+	},
+	0xac: {
+		name: "pop.script",
+		args: []argType{},
+	},
 	0xad: {
 		name: "hold.key",
 		args: []argType{},
@@ -689,10 +689,10 @@ var functions = map[byte]fDef{
 	// 	name: "",
 	// 	args: []argType{},
 	// },
-	// 0xb1: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
+	0xb1: {
+		name: "???",
+		args: []argType{argNum},
+	},
 	// 0xb2: {
 	// 	name: "",
 	// 	args: []argType{},
@@ -705,10 +705,10 @@ var functions = map[byte]fDef{
 	// 	name: "",
 	// 	args: []argType{},
 	// },
-	// 0xb5: {
-	// 	name: "",
-	// 	args: []argType{},
-	// },
+	0xb5: {
+		name: "release.key",
+		args: []argType{},
+	},
 	// 0xb6: {
 	// 	name: "",
 	// 	args: []argType{},

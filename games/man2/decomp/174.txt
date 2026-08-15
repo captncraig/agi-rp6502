@@ -1,0 +1,120 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  vCycleTime = 1
+  reset(f25)
+  set(f151)
+  v61 = 0
+  load.sound(1)
+  v32 = 10
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(26)
+  load.view(4)
+  load.view(2)
+  load.view(47)
+  load.view(12)
+  if (v51 == 2) { //0027
+    set.view(o2,12)
+    goto(l55)
+  }
+  set.view(o2,2)
+l55:
+  if (v51 == 3) { //0037
+    set.view(o3,12)
+    goto(l71)
+  }
+  set.view(o3,2)
+l71:
+  animate.obj(o2)
+  animate.obj(o3)
+  position(o2,54,81)
+  position(o3,55,82)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  fix.loop(o2)
+  fix.loop(o3)
+  v44 = 3
+  cycle.time(o2,v44)
+  cycle.time(o3,v44)
+  if (v51 == 2) { //0064
+    set.loop(o2,2)
+    goto(l116)
+  }
+  set.loop(o2,3)
+l116:
+  if (v51 == 3) { //0074
+    set.loop(o3,2)
+    goto(l132)
+  }
+  set.loop(o3,3)
+l132:
+  set.priority(o2,4)
+  set.priority(o3,4)
+  v44 = 1
+  set.dir(o2,v44)
+  set.dir(o3,v44)
+  draw(o2)
+  draw(o3)
+  show.pic()
+  add.to.pic(4,0,0,8,159,12,4)
+  set(f33)
+}
+get.posn(o2,v35,v36)
+get.posn(o3,v37,v38)
+if ((controller(c31) || controller(c32))) { //00aa
+  clear.lines(23,24,c0)
+  set(f31)
+  new.room(v57)
+}
+if (v48 == 0) { //00bc
+  if (v45 == 0) { //00c3
+    if (v36 == 74) { //00ca
+      v44 = 3
+      set.dir(o2,v44)
+      set.dir(o3,v44)
+    }
+    if (v35 == 78) { //00da
+      v44 = 1
+      set.dir(o2,v44)
+      set.dir(o3,v44)
+      v45 = 1
+    }
+  }
+  if (v45 == 1) { //00ed
+    if (v36 == 63) { //00f4
+      v44 = 3
+      set.dir(o2,v44)
+      set.dir(o3,v44)
+    }
+    if (v35 == 96) { //0104
+      v44 = 0
+      set.dir(o2,v44)
+      set.dir(o3,v44)
+      erase(o0)
+      set(f15)
+      print("Zooming in....")
+      program.control()
+      set.loop(o0,4)
+      position(o0,75,120)
+      draw(o0)
+      stop.motion(o0)
+      v56 = 1
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 2
+    }
+  }
+  if (v45 == 2 && v47 < vTimeSeconds) { //0132
+    player.control()
+    v52 = 173
+  }
+}
+if (f33) { //0140
+  reset(f33)
+  clear.lines(23,24,c0)
+  display(24,1,"Press C to close MAD.")
+  if (v61 == 9) { //0150
+    display(23,1,"Exit to Main Menu...")
+  }
+}
+return()

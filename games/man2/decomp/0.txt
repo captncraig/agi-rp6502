@@ -1,0 +1,590 @@
+if (fNewRoom) { //0002
+  v41 = 0
+  v46 = 0
+  v44 = 0
+  v50 = 0
+  vSoundVolume = 0
+  vEgoDir = 0
+  v52 = 0
+  set.game.id("MH2")
+  vCycleTime = 1
+  reset(f150)
+  set(f13)
+  load.view(1)
+  load.view(49)
+  set.view(o0,1)
+  animate.obj(o0)
+  fix.loop(o0)
+  ignore.objs(o0)
+  set.priority(o0,14)
+  v44 = 2
+  cycle.time(o0,v44)
+  set.horizon(1)
+  reset(f23)
+  reset(f22)
+  prevent.input()
+}
+if (v52 > 0) { //0043
+  clear.lines(23,24,c0)
+}
+if (v52 == 101) { //004e
+  v52 = 0
+  new.room(101)
+}
+if (v52 == 102) { //005a
+  v52 = 0
+  new.room(102)
+}
+if (v52 == 103) { //0066
+  v52 = 0
+  new.room(103)
+}
+if (v52 == 104) { //0072
+  v52 = 0
+  new.room(104)
+}
+if (v52 == 105) { //007e
+  v52 = 0
+  new.room(105)
+}
+if (v52 == 106) { //008a
+  v52 = 0
+  new.room(106)
+}
+if (v52 == 107) { //0096
+  v52 = 0
+  new.room(107)
+}
+if (v52 == 108) { //00a2
+  v52 = 0
+  new.room(108)
+}
+if (v52 == 109) { //00ae
+  v52 = 0
+  new.room(109)
+}
+if (v52 == 110) { //00ba
+  v52 = 0
+  new.room(110)
+}
+if (v52 == 111) { //00c6
+  v52 = 0
+  new.room(111)
+}
+if (v52 == 112) { //00d2
+  v52 = 0
+  new.room(112)
+}
+if (v52 == 113) { //00de
+  v52 = 0
+  new.room(113)
+}
+if (v52 == 115) { //00ea
+  v52 = 0
+  new.room(115)
+}
+if (v52 == 116) { //00f6
+  v52 = 0
+  new.room(116)
+}
+if (v52 == 117) { //0102
+  v52 = 0
+  new.room(117)
+}
+if (v52 == 118) { //010e
+  v52 = 0
+  new.room(118)
+}
+if (v52 == 123) { //011a
+  v52 = 0
+  new.room(123)
+}
+if (v52 == 124) { //0126
+  v52 = 0
+  new.room(124)
+}
+if (v52 == 125) { //0132
+  v52 = 0
+  new.room(125)
+}
+if (v52 == 127) { //013e
+  v52 = 0
+  new.room(127)
+}
+if (v52 == 128) { //014a
+  v52 = 0
+  new.room(128)
+}
+if (v52 == 129) { //0156
+  v52 = 0
+  new.room(129)
+}
+if (v52 == 130) { //0162
+  v52 = 0
+  new.room(130)
+}
+if (v52 == 131) { //016e
+  v52 = 0
+  new.room(131)
+}
+if (v52 == 132) { //017a
+  v52 = 0
+  new.room(132)
+}
+if (v52 == 133) { //0186
+  v52 = 0
+  new.room(133)
+}
+if (v52 == 134) { //0192
+  v52 = 0
+  new.room(134)
+}
+if (v52 == 135) { //019e
+  v52 = 0
+  new.room(135)
+}
+if (v52 == 136) { //01aa
+  v52 = 0
+  new.room(136)
+}
+if (v52 == 137) { //01b6
+  v52 = 0
+  new.room(137)
+}
+if (v52 == 138) { //01c2
+  v52 = 0
+  new.room(138)
+}
+if (v52 == 139) { //01ce
+  v52 = 0
+  new.room(139)
+}
+if (v52 == 140) { //01da
+  v52 = 0
+  new.room(140)
+}
+if (v52 == 141) { //01e6
+  v52 = 0
+  new.room(141)
+}
+if (v52 == 142) { //01f2
+  v52 = 0
+  new.room(142)
+}
+if (v52 == 143) { //01fe
+  v52 = 0
+  new.room(143)
+}
+if (v52 == 144) { //020a
+  v52 = 0
+  new.room(144)
+}
+if (v52 == 145) { //0216
+  v52 = 0
+  new.room(145)
+}
+if (v52 == 146) { //0222
+  v52 = 0
+  new.room(146)
+}
+if (v52 == 147) { //022e
+  v52 = 0
+  new.room(147)
+}
+if (v52 == 148) { //023a
+  v52 = 0
+  new.room(148)
+}
+if (v52 == 149) { //0246
+  v52 = 0
+  new.room(149)
+}
+if (v52 == 151) { //0252
+  v52 = 0
+  new.room(151)
+}
+if (v52 == 152) { //025e
+  v52 = 0
+  new.room(152)
+}
+if (v52 == 153) { //026a
+  v52 = 0
+  new.room(153)
+}
+if (v52 == 156) { //0276
+  v52 = 0
+  new.room(156)
+}
+if (v52 == 157) { //0282
+  v52 = 0
+  new.room(157)
+}
+if (v52 == 162) { //028e
+  v52 = 0
+  new.room(162)
+}
+if (v52 == 163) { //029a
+  v52 = 0
+  new.room(163)
+}
+if (v52 == 164) { //02a6
+  v52 = 0
+  new.room(164)
+}
+if (v52 == 165) { //02b2
+  v52 = 0
+  new.room(165)
+}
+if (v52 == 166) { //02be
+  v52 = 0
+  new.room(166)
+}
+if (v52 == 168) { //02ca
+  v52 = 0
+  new.room(168)
+}
+if (v52 == 169) { //02d6
+  v52 = 0
+  new.room(169)
+}
+if (v52 == 171) { //02e2
+  v52 = 0
+  new.room(171)
+}
+if (v52 == 173) { //02ee
+  v52 = 0
+  new.room(173)
+}
+if (v52 == 174) { //02fa
+  v52 = 0
+  new.room(174)
+}
+if (v52 == 176) { //0306
+  v52 = 0
+  new.room(176)
+}
+if (v52 == 177) { //0312
+  v52 = 0
+  new.room(177)
+}
+if (v52 == 178) { //031e
+  v52 = 0
+  new.room(178)
+}
+if (v52 == 179) { //032a
+  v52 = 0
+  new.room(179)
+}
+if (v52 == 183) { //0336
+  v52 = 0
+  new.room(183)
+}
+if (v52 == 184) { //0342
+  v52 = 0
+  new.room(184)
+}
+if (v52 == 191) { //034e
+  v52 = 0
+  new.room(191)
+}
+if (v52 == 194) { //035a
+  v52 = 0
+  new.room(194)
+}
+if (vErrorCode > 0) { //0366
+  print(vErrorCode)
+  quit(0)
+}
+if (vCurrentRoom == 0) { //0371
+  call(160)
+  new.room(159)
+}
+if (vCurrentRoom != 159) { //037c
+  if (controller(c37)) { //0384
+    vSoundVolume--
+  }
+  if (controller(c38)) { //038c
+    if (vSoundVolume < 15) { //0392
+      vSoundVolume++
+    }
+  }
+  if ((controller(c19))) { //039b
+    set(f14)
+    menu.input()
+  }
+  if (controller(c21)) { //03a6
+    if (!f29) { //03ac
+      print("   You can not Travel  \n      at this time.\nPress <ENTER> to continue.")
+      set(f33)
+      goto(l1000)
+    }
+    if (vCurrentRoom == 114) { //03ba
+      clear.lines(23,24,c0)
+      display(23,1,"Press <ENTER> to continue.")
+      print("You have already selected Travel!")
+      set(f33)
+      goto(l1000)
+    }
+    load.sound(17)
+    sound(17,f22)
+    unanimate.all()
+    erase(o0)
+    set(f15)
+    print("Stand by to Travel")
+    hold.key()
+    ???(1)
+    set.text.attribute(15,0)
+    clear.lines(23,24,c0)
+    new.room(114)
+  }
+l1000:
+  if (controller(c12)) { //03e8
+    toggle(f9)
+    if (f9) { //03f0
+      print("Sound is now on.")
+      goto(l1021)
+    }
+    print("Sound is now off.")
+l1021:
+    set(f33)
+  }
+  if (controller(c8)) { //03ff
+    toggle.monitor()
+  }
+  if (controller(c40)) { //0406
+    version()
+  }
+  if (controller(c29)) { //040d
+    status()
+    set(f33)
+    if (vCurrentRoom == 146) { //0416
+      set(f34)
+    }
+  }
+  if ((controller(c3) || controller(c16))) { //041f
+    set(f33)
+    if (vCurrentRoom == 126) { //042b
+      pop.script()
+    }
+    if ((vCurrentRoom == 126 || vCurrentRoom == 154 || vCurrentRoom == 146)) { //0433
+      if (vCurrentRoom == 126) { //0442
+        set(f35)
+      }
+      set(f34)
+    }
+    set.cursor.char("_")
+    set(f33)
+    set(f100)
+    save.game()
+    set.cursor.char("")
+    set(f33)
+  }
+  if (controller(c4)) { //0458
+    clear.lines(23,24,c0)
+    set.cursor.char("_")
+    set(f33)
+    restore.game()
+    set.cursor.char("")
+    set(f33)
+  }
+  if (controller(c5)) { //046b
+    clear.lines(23,24,c0)
+    set(f33)
+    restart.game()
+  }
+  if (controller(c30)) { //0478
+    print(" MANHUNTER:SAN FRANCISCO   \n\n           by\n\n Dave Murry, Barry Murry\n      & Dee Dee Murry\n\n\n\nver 3.02    7/26/89")
+    set(f33)
+    if (vCurrentRoom == 146) { //0482
+      set(f34)
+    }
+  }
+  if (controller(c2)) { //048b
+    print("        HELP\n\n <F1> = Help \n <F2> = Sound on/off \n <F3> = Travel \n <F5> = Save \n <F7> = Restore \n <F9> = Restart \n <Esc> = Menu on/off \n <Tab> = Inventory \n <Alt Z> = Quit \n <Ctrl J> = Joystick \n <C> = MAD\n")
+    set(f33)
+    if (vCurrentRoom == 146) { //0495
+      set(f34)
+    }
+  }
+  if (controller(c11)) { //049e
+    init.joy()
+  }
+  if (controller(c14)) { //04a5
+    pause()
+    set(f33)
+  }
+  if (controller(c41)) { //04ae
+    set(f39)
+    reset(f101)
+    print("This arcade sequence will now be hard.")
+    set(f33)
+  }
+  if (controller(c42)) { //04bc
+    reset(f39)
+    reset(f101)
+    print("This arcade sequence will now be normal.")
+    set(f33)
+  }
+  if (controller(c43)) { //04ca
+    reset(f39)
+    set(f101)
+    print("This arcade sequence will now be easy.")
+    set(f33)
+  }
+  if (controller(c7)) { //04d8
+    status()
+    set(f33)
+    if (vCurrentRoom == 146) { //04e1
+      set(f34)
+    }
+  }
+  if (controller(c1)) { //04ea
+    stop.sound()
+    set(f33)
+    quit(0)
+    set(f33)
+  }
+  if (controller(c15)) { //04f7
+    stop.sound()
+    set(f33)
+    quit(0)
+    set(f33)
+  }
+  if ((controller(c31) || controller(c32))) { //0504
+    if (vCurrentRoom != 101 && vCurrentRoom != 105 && vCurrentRoom != 106 && vCurrentRoom != 129 && vCurrentRoom != 130 && vCurrentRoom != 151 && vCurrentRoom != 152 && vCurrentRoom != 157 && vCurrentRoom != 173 && vCurrentRoom != 174) { //050e
+      vStatusItem = 14
+    }
+  }
+  if (vStatusItem == 14 && vCurrentRoom != 155) { //053d
+    if (f31) { //0548
+      hold.key()
+      clear.lines(23,24,c0)
+      v48 = 2
+      v45 = 0
+      set.view(o0,1)
+      set.loop(o0,4)
+      v52 = 101
+      set(f21)
+      goto(l1387)
+    }
+    print(v58)
+    set(f33)
+l1387:
+    vStatusItem = 255
+  }
+  if (vStatusItem > 0 && vStatusItem != 14 && vCurrentRoom != 155 && vStatusItem < 255) { //056e
+    reset(f150)
+    if (v57 == 116 && v48 == 2 && v46 == 2 && vStatusItem == 15) { //0582
+      set(f150)
+    }
+    if (v57 == 143 && v48 == 2 && vStatusItem == 11) { //0594
+      set(f150)
+    }
+    if (v57 == 136 && v48 == 3 && vStatusItem == 13 && f71) { //05a3
+      set(f150)
+    }
+    if (v57 == 134 && v48 == 2 && vStatusItem == 5) { //05b4
+      set(f150)
+    }
+    if (v57 == 164 && v45 > 42 && vStatusItem == 18) { //05c3
+      set(f150)
+    }
+    if (v57 == 168 && v48 == 2 && vStatusItem == 9) { //05d2
+      set(f150)
+    }
+    if (v57 == 171 && v48 == 0 && v45 == 6 && vStatusItem == 17 && f95) { //05e1
+      set(f150)
+    }
+    if (v57 == 164 && v45 == 45 && vStatusItem == 17 && f95) { //05f5
+      set(f150)
+    }
+    if (v57 == 133 && v48 == 3 && v45 == 0 && f95 && vStatusItem == 17) { //0606
+      set(f150)
+    }
+    if (v57 == 110 && v48 == 7 && vStatusItem == 17 && f95) { //061a
+      set(f150)
+    }
+    if (v57 == 172 && v48 == 1 && vStatusItem == 23) { //062b
+      set(f150)
+    }
+    if (v57 == 176 && v48 == 1 && vStatusItem == 16 && v46 == 6) { //063a
+      set(f150)
+    }
+    if (v57 == 176 && v48 == 2 && vStatusItem == 26) { //064c
+      set(f150)
+    }
+    if (v57 == 176 && v48 == 4 && v45 < 10 && vStatusItem == 25) { //065b
+      vTimeSeconds = 5
+      set(f150)
+    }
+    if (v57 == 180 && v48 > 1 && v48 < 4 && vStatusItem == 19) { //0670
+      if (v48 == 3) { //0680
+        v48 = 2
+      }
+      set(f150)
+    }
+    if (v57 == 175 && v48 == 2 && v45 == 1 && vStatusItem == 23) { //068c
+      set(f150)
+    }
+    if (v57 == 147 && v48 == 1 && v69 == 0 && vStatusItem == 7) { //069e
+      set(f150)
+    }
+    if (v57 == 127 && v48 == 1 && vStatusItem == 7) { //06b0
+      set(f150)
+    }
+    if (v57 == 131 && v48 == 1 && vStatusItem == 22) { //06bf
+      set(f150)
+    }
+    if (v57 == 127 && v48 == 1 && vStatusItem == 6) { //06ce
+      set(f150)
+    }
+    if (v57 == 118 && vStatusItem == 6) { //06dd
+      if ((v48 == 1 || v48 == 3)) { //06e7
+        set(f150)
+      }
+    }
+    if (v57 == 132 && v48 == 2 && vStatusItem == 8 && f59) { //06f5
+      set(f150)
+    }
+    if (v57 == 172 && v48 == 1 && vStatusItem == 23) { //0706
+      set(f150)
+    }
+    if (v57 == 175 && v48 == 2 && v45 == 1 && vStatusItem == 23) { //0715
+      set(f150)
+    }
+    if (v57 == 139 && v48 == 2 && vStatusItem == 10) { //0727
+      set(f150)
+    }
+    if (f150) { //0736
+      reset(f150)
+      goto(l1894)
+    }
+    if (f31 && vCurrentRoom != 155) { //0741
+      hold.key()
+      clear.lines(23,24,c0)
+      set.view(o0,1)
+      set.loop(o0,4)
+      sound(1,f22)
+      new.room(155)
+      goto(l1894)
+    }
+    v32 = 32
+    print(v32)
+    vStatusItem = 255
+  }
+l1894:
+  if (f30) { //0766
+    reset(f30)
+    if (vStatusItem != 255 && vStatusItem != 0) { //076e
+      clear.lines(23,24,c0)
+      print("You need to put this object\naway before you look\n at something else.")
+      vStatusItem = 255
+      set(f33)
+    }
+  }
+  if (vStatusItem != 255) { //0785
+    set(f30)
+  }
+}
+call(vCurrentRoom)
+return()

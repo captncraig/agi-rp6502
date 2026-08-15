@@ -1,0 +1,245 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v58 = 29
+  reset(f31)
+  reset(f29)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v57 = vCurrentRoom
+  v90 = 0
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(36)
+  v32 = 161
+  load.pic(v32)
+  v32 = 102
+  load.pic(v32)
+  v32 = 160
+  load.pic(v32)
+  draw.pic(v32)
+  set.view(o0,1)
+  position(o0,77,165)
+  v44 = 3
+  cycle.time(o0,v44)
+  set.loop(o0,1)
+  v44 = 6
+  step.size(o0,v44)
+  draw(o0)
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //0068
+  if (v47 < vTimeSeconds) { //006f
+    if (v90 == 9) { //0076
+      v61 = 19
+      v90 = 0
+      set(f21)
+    }
+    if (v90 == 8) { //0085
+      v61 = 18
+      v90 = 9
+      set(f21)
+    }
+    if (v90 == 7) { //0094
+      v61 = 17
+      v90 = 8
+      set(f21)
+    }
+    if (v90 == 6) { //00a3
+      v61 = 16
+      v90 = 7
+    }
+    if (v90 == 5) { //00b0
+      v61 = 14
+      v90 = 6
+    }
+    if (v90 == 4) { //00bd
+      v61 = 12
+      v90 = 5
+    }
+    if (v90 == 3) { //00ca
+      v61 = 11
+      v90 = 4
+    }
+    if (v90 == 2) { //00d7
+      v61 = 10
+      v90 = 3
+    }
+    if (v90 == 1) { //00e4
+      v61 = 7
+      v90 = 2
+    }
+    if (v90 == 0 && !f21) { //00f1
+      v61 = 6
+      v90 = 1
+    }
+    set(f33)
+    v47 = 2
+    vTimeSeconds = 0
+  }
+  if (v30 > 147 && v46 != 2) { //0109
+    sound(1,f22)
+    v61 = 15
+    set(f33)
+    vEgoDir = 0
+    v46 = 2
+    set.loop(o0,6)
+    reposition.to(o0,148,146)
+  }
+  if (v46 == 2) { //0129
+    if (v30 < 148) { //0130
+      clear.lines(23,24,c0)
+      v61 = 0
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (v30 > 41 && v30 < 74 && v31 > 86 && v31 < 122 && v46 != 3) { //0147
+    sound(1,f22)
+    v61 = 8
+    set(f33)
+    vEgoDir = 0
+    v46 = 3
+    set.loop(o0,2)
+    reposition.to(o0,60,103)
+  }
+  if (v46 == 3) { //0170
+    if ((v30 < 42 || v30 > 73 || v31 < 87 || v31 > 121)) { //0177
+      v61 = 0
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (controller(c20) && !f21) { //0197
+    if (v46 == 2) { //01a0
+      sound(16,f22)
+      set.loop(o0,4)
+      v59 = 0
+      v52 = 147
+    }
+    if (v46 == 3) { //01b3
+      sound(16,f22)
+      pop.script()
+      set(f92)
+      clear.lines(23,24,c0)
+      v59 = 2
+      erase(o0)
+      if (v55 == 3) { //01c9
+        v32 = 48
+        load.pic(v32)
+        v32 = 42
+        load.pic(v32)
+        v61 = 0
+        v48 = 2
+        v47 = 2
+        vTimeSeconds = 0
+        v32 = 102
+        goto(l517)
+      }
+      position(o0,78,167)
+      v30 = 78
+      v31 = 167
+      set.view(o0,1)
+      set.loop(o0,3)
+      v61 = 15
+      v48 = 1
+      v32 = 161
+l517:
+      draw.pic(v32)
+      if (v55 != 3) { //0207
+        draw(o0)
+      }
+      v45 = 0
+      v46 = 0
+      set(f33)
+      set(f21)
+      show.pic()
+      if (v55 == 3) { //021c
+        sound(36,f22)
+      }
+    }
+  }
+}
+if (v48 == 1) { //0226
+  if (controller(c20) && !f21) { //022d
+    clear.lines(23,24,c0)
+    new.room(149)
+  }
+}
+if (v48 == 2 && v52 != 101) { //023c
+  if (v45 == 2) { //0247
+    v52 = 156
+  }
+  if (v45 == 1) { //0251
+    v32 = 48
+    draw.pic(v32)
+    show.pic()
+    v45 = 2
+  }
+  if (v45 == 0 && v47 < vTimeSeconds) { //0261
+    v32 = 42
+    draw.pic(v32)
+    show.pic()
+    v45 = 1
+  }
+}
+reset(f21)
+if (f33) { //0276
+  reset(f33)
+  if (v61 == 0) { //027e
+    clear.lines(23,24,c0)
+  }
+  if (v61 == 6) { //0289
+    display(2,20,"   Life on Earth ")
+  }
+  if (v61 == 7) { //0294
+    display(2,20,"   is improving  ")
+  }
+  if (v61 == 10) { //029f
+    display(2,20,"     each day.   ")
+  }
+  if (v61 == 11) { //02aa
+    display(2,20,"   The benefits  ")
+  }
+  if (v61 == 12) { //02b5
+    display(2,20,"   of Orb rule   ")
+  }
+  if (v61 == 14) { //02c0
+    display(2,20," will be apparent")
+  }
+  if (v61 == 16) { //02cb
+    display(2,20,"  to the people  ")
+  }
+  if (v61 == 17) { //02d6
+    display(2,20,"     of Earth    ")
+  }
+  if (v61 == 18) { //02e1
+    display(2,20,"    very soon.   ")
+  }
+  if (v61 == 19) { //02ec
+    display(2,20,"                ")
+  }
+  if (v61 == 8) { //02f7
+    display(23,1,"Press <ENTER> to climb in the chimney.")
+  }
+  if (v61 == 13) { //0302
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 15) { //030d
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

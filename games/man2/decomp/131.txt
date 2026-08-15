@@ -1,0 +1,399 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  reset(f153)
+  v61 = 0
+  set(f33)
+  set(f91)
+  v90 = 0
+  v60 = 0
+  set(f31)
+  set(f29)
+  v57 = vCurrentRoom
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(112)
+  load.sound(113)
+  load.sound(114)
+  load.sound(115)
+  load.sound(131)
+  v32 = 111
+  load.pic(v32)
+  v32 = 129
+  load.pic(v32)
+  v32 = 78
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(64)
+  load.view(80)
+  load.view(118)
+  set.view(o0,1)
+  set.view(o1,64)
+  set.view(o2,64)
+  set.view(o4,64)
+  set.view(o3,80)
+  set.view(o5,64)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o4)
+  animate.obj(o3)
+  animate.obj(o5)
+  position(o0,20,165)
+  position(o1,41,88)
+  position(o2,80,88)
+  position(o4,80,1)
+  position(o3,98,115)
+  position(o5,59,105)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o4)
+  ignore.objs(o3)
+  ignore.objs(o5)
+  v44 = 3
+  cycle.time(o0,v44)
+  fix.loop(o3)
+  fix.loop(o4)
+  fix.loop(o1)
+  fix.loop(o2)
+  stop.cycling(o3)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  stop.cycling(o5)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.loop(o2,0)
+  set.loop(o4,1)
+  set.loop(o3,0)
+  set.loop(o5,3)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  set.cel(o3,0)
+  set.cel(o5,0)
+  v44 = 3
+  step.size(o4,v44)
+  step.size(o3,v44)
+  v44 = 6
+  step.size(o0,v44)
+  set.priority(o0,14)
+  set.priority(o1,6)
+  set.priority(o2,6)
+  set.priority(o4,8)
+  set.priority(o3,7)
+  set.priority(o5,7)
+  draw(o0)
+  if (v59 == 1) { //00ee
+    push.script()
+    goto(l604)
+  }
+  draw(o5)
+  show.pic()
+  v47 = 1
+  vTimeSeconds = 0
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o3,v35,v36)
+if (v48 == 0) { //010b
+  get.posn(o4,v33,v34)
+  if (!f153 && v47 < vTimeSeconds) { //0116
+    set(f153)
+    set.loop(o4,1)
+    position(o4,80,1)
+    v34 = 1
+    v44 = 5
+    set.dir(o4,v44)
+    draw(o4)
+    v90 = 1
+  }
+  if (v90 == 1 && v34 > 37) { //0137
+    v44 = 1
+    step.size(o4,v44)
+    v44 = 6
+    set.dir(o4,v44)
+    v90 = 2
+  }
+  if (v90 == 2 && v34 > 47) { //0150
+    v44 = 3
+    step.size(o4,v44)
+    v44 = 5
+    set.dir(o4,v44)
+    v90 = 3
+  }
+  if (v90 == 9) { //0169
+    erase(o4)
+    reset(f153)
+    v47 = 1
+    vTimeSeconds = 0
+    v90 = 0
+  }
+  if (v90 == 8) { //017d
+    set.cel(o4,5)
+    set.cel(o5,0)
+    v90 = 9
+  }
+  if (v90 == 7) { //018d
+    set.cel(o4,4)
+    set.cel(o5,1)
+    v90 = 8
+  }
+  if (v90 == 6) { //019d
+    set.cel(o4,3)
+    set.cel(o5,2)
+    v90 = 7
+  }
+  if (v90 == 5) { //01ad
+    set.cel(o4,2)
+    set.cel(o5,1)
+    v90 = 6
+  }
+  if (v90 == 4) { //01bd
+    set.cel(o4,1)
+    set.cel(o5,2)
+    v90 = 5
+  }
+  if (v90 == 3 && v34 > 95) { //01cd
+    sound(112,f22)
+    v44 = 0
+    set.dir(o4,v44)
+    erase(o4)
+    stop.cycling(o4)
+    set.loop(o4,2)
+    set.cel(o4,0)
+    position(o4,67,97)
+    set.loop(o5,3)
+    set.cel(o5,0)
+    draw(o4)
+    v90 = 4
+  }
+  if (v30 > 67 && v30 < 99 && v31 > 56 && v31 < 136 && v46 != 1) { //01f9
+    sound(1,f22)
+    v61 = 13
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,0)
+    reposition.to(o0,87,83)
+  }
+  if (v46 == 1) { //0222
+    if ((v30 < 68 || v30 > 98 || v31 < 57 || v31 > 135)) { //0229
+      v61 = 0
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (controller(c20) && !f21) { //0249
+    if (v46 == 1) { //0252
+      sound(16,f22)
+l604:
+      pop.script()
+      v59 = 1
+      set(f84)
+      set.loop(o0,3)
+      reposition.to(o0,77,166)
+      v30 = 77
+      v31 = 166
+      v61 = 12
+      set(f33)
+      v46 = 0
+      v32 = 129
+      draw.pic(v32)
+      draw(o1)
+      draw(o2)
+      erase(o4)
+      erase(o5)
+      show.pic()
+      v48 = 1
+      set(f21)
+    }
+  }
+}
+if (v48 == 1) { //028a
+  if (vStatusItem == 22 && f84) { //0291
+    sound(1,f22)
+    vStatusItem = 255
+    reset(f84)
+    v32 = 131
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    show.pic()
+  }
+  if (v30 > 22 && v30 < 128 && v31 > 39 && v31 < 107 && v46 != 1) { //02ac
+    sound(1,f22)
+    v61 = 6
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.loop(o0,5)
+    reposition.to(o0,74,72)
+  }
+  if (v46 == 1) { //02d5
+    if ((v30 < 23 || v30 > 127 || v31 < 40 || v31 > 106)) { //02dc
+      v61 = 12
+      set(f33)
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f21) { //02fc
+    if (v46 == 0) { //0305
+      pop.script()
+      v59 = 0
+      sound(16,f22)
+      set.loop(o0,1)
+      reposition.to(o0,77,166)
+      v30 = 77
+      v31 = 166
+      set(f84)
+      reset(f153)
+      v47 = 1
+      vTimeSeconds = 0
+      set.loop(o5,3)
+      set.cel(o5,0)
+      v46 = 0
+      v32 = 78
+      draw.pic(v32)
+      erase(o1)
+      erase(o2)
+      draw(o5)
+      show.pic()
+      v48 = 0
+      set(f21)
+    }
+    if (v46 == 1) { //0344
+      v59 = 2
+      sound(113,f22)
+      v61 = 0
+      set(f33)
+      erase(o0)
+      reset(f29)
+      reset(f31)
+      v58 = 29
+      v46 = 0
+      v47 = 1
+      vTimeSeconds = 0
+      v48 = 2
+      v45 = 0
+      set(f21)
+    }
+  }
+}
+if (v48 == 2 && v52 != 101) { //0370
+  get.posn(o1,v33,v34)
+  if (v45 == 0 && v47 < vTimeSeconds) { //037f
+    sound(114,f22)
+    v44 = 7
+    set.dir(o1,v44)
+    v44 = 3
+    set.dir(o2,v44)
+    v45 = 1
+  }
+  if (v45 == 1 && v33 < 4) { //039b
+    v44 = 0
+    set.dir(o1,v44)
+    set.dir(o2,v44)
+    v45 = 2
+    v47 = 1
+    vTimeSeconds = 0
+  }
+  if (v45 == 2 && v47 < vTimeSeconds) { //03b7
+    pop.script()
+    v59 = 0
+    v32 = 111
+    draw.pic(v32)
+    erase(o1)
+    erase(o2)
+    draw(o3)
+    v45 = 3
+    if (f84) { //03d3
+      v45 = 3
+      v47 = 1
+      vTimeSeconds = 0
+      goto(l1025)
+    }
+    add.to.pic(118,0,0,102,115,5,4)
+    stop.cycling(o3)
+    set.view(o3,118)
+    set.loop(o3,1)
+    set.cel(o3,0)
+    v45 = 9
+    v47 = 3
+    vTimeSeconds = 0
+l1025:
+    show.pic()
+  }
+  if (v45 == 3 && v47 < vTimeSeconds) { //0402
+    sound(115,f22)
+    v47 = 1
+    vTimeSeconds = 0
+    set.loop(o3,1)
+    set.cel(o3,0)
+    v45 = 4
+  }
+  if (v45 == 5) { //041e
+    v47 = 1
+    vTimeSeconds = 0
+    set.cel(o3,2)
+    v45 = 6
+  }
+  if (v45 == 4 && v47 < vTimeSeconds) { //0431
+    set.cel(o3,1)
+    v45 = 5
+  }
+  if (v45 == 6 && v47 < vTimeSeconds) { //0441
+    sound(131,f22)
+    start.cycling(o3)
+    v45 = 7
+  }
+  if (v45 == 7) { //0453
+    current.cel(o3,v44)
+    if (v44 == 11) { //045d
+      stop.cycling(o3)
+      v45 = 8
+      v47 = 1
+      vTimeSeconds = 0
+    }
+  }
+  if (v45 == 8 && v47 < vTimeSeconds) { //046f
+    new.room(156)
+  }
+  if (v45 == 9 && v47 < vTimeSeconds) { //047b
+    sound(16,f22)
+    start.cycling(o3)
+    v44 = 3
+    set.dir(o3,v44)
+    v45 = 10
+  }
+  if (v45 == 10 && v35 > 133) { //0493
+    set.loop(o0,4)
+    v52 = 164
+  }
+}
+reset(f21)
+if (f33) { //04a5
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //04b1
+    display(23,1,"Press <SPACEBAR> to Knock.")
+  }
+  if (v61 == 12) { //04bc
+    display(23,1,"Press <ENTER> to back up.")
+  }
+  if (v61 == 13) { //04c7
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v61 == 15) { //04d2
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

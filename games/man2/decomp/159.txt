@@ -1,0 +1,18 @@
+if (fNewRoom) { //0002
+  vCycleTime = 2
+  prevent.input()
+  program.control()
+  status.line.off()
+  configure.screen(1,23,0)
+  v52 = 0
+  v48 = 3
+  v54 = 0
+  set.cursor.char("")
+  vCurrentRoom = 153
+  player.control()
+  accept.input()
+  set(fNewRoom)
+  call(90)
+  new.room(153)
+}
+return()

@@ -1,0 +1,237 @@
+if (fNewRoom) { //0002
+  hold.key()
+  reset(f31)
+  vCycleTime = 4
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v57 = vCurrentRoom
+  v90 = 0
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(140)
+  load.sound(141)
+  load.sound(142)
+  v32 = 190
+  load.pic(v32)
+  v32 = 189
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(114)
+  load.view(133)
+  set.view(o1,114)
+  set.view(o2,133)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o0,100,165)
+  position(o1,96,141)
+  position(o2,41,93)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  v44 = 3
+  cycle.time(o0,v44)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.loop(o0,1)
+  set.loop(o1,2)
+  set.loop(o2,1)
+  set.cel(o1,1)
+  set.cel(o2,3)
+  v44 = 6
+  step.size(o0,v44)
+  v44 = 4
+  step.size(o2,v44)
+  set.priority(o1,5)
+  set.priority(o2,6)
+  if (v59 == 1) { //008d
+    v61 = 0
+    set(f33)
+    push.script()
+    goto(l576)
+  }
+  show.pic()
+  v47 = 3
+  vTimeSeconds = 0
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o2,v33,v34)
+if (v48 == 0) { //00ad
+  if (v45 == 0 && v47 < vTimeSeconds) { //00b4
+    sound(141,f22)
+    v32 = 190
+    draw.pic(v32)
+    draw(o1)
+    show.pic()
+    v47 = 2
+    vTimeSeconds = 0
+    v45 = 21
+    set(f21)
+  }
+  if (v45 == 21 && v47 < vTimeSeconds && !f21) { //00d4
+    sound(142,f22)
+    v45 = 2
+  }
+  if (v45 == 2) { //00e7
+    if (v47 < vTimeSeconds) { //00ee
+      v32 = 154
+      load.pic(v32)
+      draw.pic(v32)
+      discard.pic(v32)
+      erase(o1)
+      show.pic()
+      v47 = 1
+      vTimeSeconds = 0
+      v45 = 3
+    }
+  }
+  if (v45 == 3 && v47 < vTimeSeconds) { //010a
+    v32 = 197
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    add.to.pic(114,2,2,42,89,5,4)
+    erase(o0)
+    draw(o2)
+    show.pic()
+    sound(16,f22)
+    v46 = 0
+    v48 = 4
+    v45 = 0
+    set(f21)
+  }
+}
+if (v48 == 3) { //0138
+  if (v30 > 64 && v30 < 85 && v31 > 106 && v31 < 150 && v46 != 1) { //013f
+    sound(1,f22)
+    v61 = 15
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    reposition.to(o0,76,138)
+    set.loop(o0,2)
+  }
+  if (v46 == 1) { //0168
+    if ((v30 < 65 || v30 > 84 || v31 < 107 || v31 > 149)) { //016f
+      clear.lines(23,24,c0)
+      v61 = 0
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (v30 > 90 && v30 < 112 && v31 > 116 && v31 < 155 && v46 != 2 && f58) { //0191
+    sound(1,f22)
+    v61 = 13
+    set(f33)
+    vEgoDir = 0
+    v46 = 2
+    reposition.to(o0,95,145)
+    set.loop(o0,5)
+  }
+  if (v46 == 2) { //01bc
+    if ((v30 < 91 || v30 > 111 || v31 < 117 || v31 > 154)) { //01c3
+      clear.lines(23,24,c0)
+      v61 = 0
+      sound(1,f22)
+      v46 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (controller(c20) && !f21) { //01e5
+    if (v46 == 1) { //01ee
+      sound(16,f22)
+      set.loop(o0,4)
+      v59 = 0
+      v52 = 134
+    }
+    if (v46 == 2) { //0201
+      pop.script()
+      sound(1,f22)
+      erase(o1)
+      clear.lines(23,24,c0)
+      set.loop(o0,1)
+      v46 = 0
+      v61 = 0
+      set(f33)
+      reset(f58)
+      get("Walking Stick")
+      vStatusItem = 8
+      new.room(155)
+    }
+  }
+}
+if (v48 == 4) { //0226
+  if (f22) { //022d
+    sound(16,f22)
+  }
+  if (v45 == 4 && v33 > 149) { //0236
+l576:
+    pop.script()
+    v59 = 1
+    v32 = 191
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    erase(o2)
+    position(o0,77,166)
+    set.view(o0,1)
+    set.loop(o0,1)
+    draw(o0)
+    if (f58) { //025b
+      draw(o1)
+    }
+    erase(o2)
+    show.pic()
+    v46 = 0
+    v48 = 3
+    v45 = 0
+  }
+  if (v45 == 3) { //026f
+    set.loop(o2,0)
+    start.cycling(o2)
+    v44 = 3
+    set.dir(o2,v44)
+    v45 = 4
+  }
+  if (v45 == 2) { //0284
+    reposition.to(o2,41,108)
+    set.cel(o2,0)
+    v45 = 3
+  }
+  if (v45 == 1) { //0295
+    reposition.to(o2,41,101)
+    set.cel(o2,1)
+    v45 = 2
+  }
+  if (v45 == 0 && !f21) { //02a6
+    reposition.to(o2,41,97)
+    set.cel(o2,2)
+    v45 = 1
+  }
+}
+reset(f21)
+if (f33) { //02bc
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //02c8
+    display(23,1,"Several hours later...")
+  }
+  if (v61 == 7) { //02d3
+    display(23,1,"This door is locked.")
+  }
+  if (v61 == 13) { //02de
+    display(23,1,"Press <ENTER> to take the walking stick.")
+  }
+  if (v61 == 15) { //02e9
+    display(23,1,"Press <ENTER> to move in the direction of the arrow.")
+  }
+}
+return()

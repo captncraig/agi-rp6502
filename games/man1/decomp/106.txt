@@ -1,0 +1,620 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  set(f151)
+  v50 = 0
+  v48 = 0
+  v69 = 0
+  load.sound(1)
+  load.sound(5)
+  load.sound(8)
+  load.sound(9)
+  load.sound(12)
+  load.sound(38)
+  load.sound(39)
+  load.sound(135)
+  v32 = 27
+  load.pic(v32)
+  v32 = 26
+  load.pic(v32)
+  v32 = 112
+  load.pic(v32)
+  v32 = 113
+  load.pic(v32)
+  v32 = 105
+  load.pic(v32)
+  v32 = 107
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(7)
+  load.view(49)
+  set.view(o1,7)
+  set.view(o2,7)
+  set.view(o3,7)
+  set.view(o5,7)
+  set.view(o6,7)
+  set.view(o7,7)
+  set.view(o8,7)
+  set.view(o9,7)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o8)
+  animate.obj(o9)
+  position(o0,20,149)
+  position(o1,72,133)
+  position(o2,113,136)
+  position(o3,72,93)
+  position(o5,73,33)
+  position(o6,103,73)
+  position(o7,135,144)
+  position(o8,123,55)
+  position(o9,80,73)
+  ignore.objs(o0)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o5)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  ignore.objs(o8)
+  ignore.objs(o9)
+  fix.loop(o1)
+  fix.loop(o5)
+  fix.loop(o6)
+  fix.loop(o7)
+  fix.loop(o8)
+  fix.loop(o9)
+  stop.cycling(o3)
+  stop.cycling(o2)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.loop(o2,2)
+  set.loop(o3,2)
+  set.loop(o5,3)
+  set.loop(o6,3)
+  set.loop(o7,3)
+  set.loop(o8,3)
+  set.loop(o9,3)
+  set.cel(o2,1)
+  set.cel(o3,0)
+  v46 = 6
+  step.size(o0,v46)
+  set.priority(o0,14)
+  set.priority(o1,5)
+  set.priority(o2,8)
+  set.priority(o3,8)
+  set.priority(o5,8)
+  set.priority(o6,5)
+  set.priority(o7,8)
+  set.priority(o8,5)
+  set.priority(o9,8)
+  wander(o5)
+  wander(o6)
+  wander(o7)
+  wander(o8)
+  wander(o9)
+  draw(o0)
+  show.pic()
+  push.script()
+  if (v66 == 1) { //0107
+    goto(l388)
+  }
+  if (v66 == 2) { //0111
+    goto(l618)
+  }
+}
+get.posn(o0,v30,v31)
+if (v50 == 0) { //011f
+  if (v30 > 61 && v30 < 93 && v31 > 99 && v31 < 158 && v48 != 1) { //0126
+    sound(1,f25)
+    v69 = 6
+    set(f117)
+    vEgoDir = 0
+    v48 = 1
+    set.loop(o0,2)
+    reposition.to(o0,75,138)
+  }
+  if (v48 == 1) { //014f
+    if ((v30 < 62 || v30 > 92 || v31 < 100 || v31 > 157)) { //0156
+      clear.lines(23,24,c0)
+      v69 = 0
+      sound(1,f25)
+      v48 = 0
+      set.loop(o0,1)
+    }
+  }
+  if (controller(c20) && v48 == 1 && !f22) { //0178
+l388:
+    pop.script()
+    sound(5,f25)
+    v48 = 0
+    v66 = 1
+    sound(1,f25)
+    reposition.to(o0,155,80)
+    v30 = 155
+    if (f76) { //0198
+      v32 = 27
+      goto(l423)
+    }
+    v32 = 26
+l423:
+    draw.pic(v32)
+    show.pic()
+    set.loop(o0,3)
+    v50 = 1
+    set(f22)
+  }
+}
+if (v50 == 1) { //01b2
+  if (v30 > 20 && v30 < 119 && v48 != 1 && f76) { //01b9
+    sound(1,f25)
+    v69 = 6
+    set(f117)
+    vEgoDir = 0
+    v48 = 1
+    set.loop(o0,2)
+    reposition.to(o0,37,130)
+  }
+  if (v48 == 1) { //01de
+    if ((v30 < 21 || v30 > 118)) { //01e5
+      sound(1,f25)
+      v48 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 31 && v30 < 47 && v31 > 132 && v48 != 2 && !f76) { //01fa
+    v69 = 12
+    set(f117)
+    sound(135,f25)
+    v48 = 2
+    set.loop(o0,1)
+  }
+  if (v48 == 2) { //021c
+    if ((v30 < 32 || v30 > 46 || v31 < 133)) { //0223
+      v48 = 0
+      set.loop(o0,3)
+      v69 = 6
+      set(f117)
+    }
+  }
+  if (controller(c20) && !f22) { //023d
+    if (v48 == 0) { //0246
+      sound(5,f25)
+      v69 = 0
+      v50 = 0
+      reposition.to(o0,20,149)
+      set.loop(o0,1)
+      v32 = 107
+      draw.pic(v32)
+      show.pic()
+    }
+    if (v48 == 1) { //0263
+l618:
+      pop.script()
+      v48 = 0
+      v66 = 2
+      sound(38,f25)
+      v32 = 105
+      draw.pic(v32)
+      reposition.to(o0,20,149)
+      v30 = 20
+      v31 = 149
+      set.loop(o0,3)
+      draw(o1)
+      draw(o2)
+      show.pic()
+      v69 = 6
+      set(f117)
+      v50 = 2
+      set(f22)
+    }
+  }
+}
+if (v50 == 2) { //0295
+  if (!f151) { //029c
+    if ((vComputerType != IBM_PC || vMonitorType > 1)) { //02a3
+      sound(39,f25)
+    }
+  }
+  if (f152) { //02b3
+    sound(9,f25)
+    get.posn(o1,v33,v34)
+    if (v33 < 42) { //02c0
+      v46 = 0
+      set.dir(o1,v46)
+      stop.sound()
+      reset(f152)
+      reset(f25)
+    }
+    if (v33 > 71) { //02d2
+      v46 = 0
+      set.dir(o1,v46)
+      stop.sound()
+      reset(f152)
+    }
+  }
+  if (v30 > 65 && v30 < 103 && v31 > 38 && v31 < 148 && v48 != 1 && !f151) { //02e2
+    sound(1,f25)
+    v69 = 7
+    set(f117)
+    v48 = 1
+    reposition.to(o0,83,88)
+    set.view(o0,1)
+    set.loop(o0,0)
+    vEgoDir = 0
+  }
+  if (v48 == 1) { //0311
+    if ((v30 < 66 || v30 > 102 || v31 < 39 || v31 > 147)) { //0318
+      sound(1,f25)
+      v69 = 6
+      set(f117)
+      v48 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 103 && v30 < 116 && v31 > 78 && v31 < 96 && v48 != 2) { //0338
+    sound(1,f25)
+    v69 = 8
+    set(f117)
+    v48 = 2
+    reposition.to(o0,112,91)
+    set.view(o0,49)
+    set.loop(o0,0)
+    vEgoDir = 0
+  }
+  if (v48 == 2) { //0364
+    if ((v30 < 104 || v30 > 115 || v31 < 79 || v31 > 95)) { //036b
+      sound(1,f25)
+      v69 = 6
+      set(f117)
+      v48 = 0
+      set.view(o0,1)
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 105 && v30 < 126 && v31 > 109 && v31 < 149 && v48 != 3) { //038e
+    reposition.to(o0,114,135)
+    set.loop(o0,0)
+    sound(1,f25)
+    v69 = 7
+    set(f117)
+    v48 = 3
+    vEgoDir = 0
+  }
+  if (v48 == 3) { //03b7
+    if ((v30 < 106 || v30 > 125 || v31 < 110 || v31 > 148)) { //03be
+      sound(1,f25)
+      v69 = 6
+      set(f117)
+      v48 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (v30 > 126 && v31 > 114 && v48 != 7) { //03de
+    sound(135,f25)
+    v69 = 10
+    set(f117)
+    set.loop(o0,1)
+    v48 = 7
+  }
+  if (v48 == 7) { //03fa
+    if ((v30 < 127 || v31 < 115)) { //0401
+      v69 = 6
+      set(f117)
+      v48 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f22) { //0418
+    sound(1,f25)
+    if (v48 == 0) { //0424
+      sound(5,f25)
+      v50 = 1
+      reposition.to(o0,68,162)
+      v32 = 27
+      draw.pic(v32)
+      erase(o2)
+      erase(o1)
+      show.pic()
+    }
+    if (v48 == 1) { //043f
+      if (f152) { //0446
+        v46 = 0
+        set.dir(o1,v46)
+        stop.sound()
+        reset(f152)
+        if (f151) { //0455
+          reposition.to(o1,72,133)
+          goto(l1126)
+        }
+        reposition.to(o1,41,133)
+      }
+l1126:
+      v46 = 3
+      step.size(o0,v46)
+      set.loop(o0,3)
+      v69 = 6
+      set(f117)
+      v32 = 112
+      draw.pic(v32)
+      draw(o5)
+      draw(o6)
+      draw(o7)
+      draw(o8)
+      draw(o9)
+      erase(o1)
+      erase(o2)
+      show.pic()
+      stop.cycling(o0)
+      reposition.to(o0,5,60)
+      draw(o0)
+      v48 = 0
+      v50 = 3
+      sound(8,f25)
+    }
+    if (v48 == 2) { //0499
+      sound(12,f25)
+      if (f151) { //04a3
+        set(f152)
+        v46 = 7
+        set.dir(o1,v46)
+        reset(f151)
+        goto(l1216)
+      }
+      set(f152)
+      v46 = 3
+      set.dir(o1,v46)
+      set(f151)
+    }
+l1216:
+    if (v48 == 3) { //04c0
+      sound(5,f25)
+      if (f152) { //04ca
+        v46 = 0
+        set.dir(o1,v46)
+        stop.sound()
+        reset(f152)
+        if (f151) { //04d9
+          reposition.to(o1,72,133)
+          goto(l1258)
+        }
+        reposition.to(o1,41,133)
+      }
+l1258:
+      set.loop(o0,3)
+      v48 = 0
+      v69 = 6
+      set(f117)
+      reposition.to(o0,5,60)
+      v32 = 113
+      draw.pic(v32)
+      erase(o1)
+      erase(o2)
+      add.to.pic(7,4,1,45,62,5,4)
+      add.to.pic(7,4,0,46,96,5,4)
+      add.to.pic(7,5,0,89,110,5,4)
+      if (!f33) { //051a
+        draw(o3)
+      }
+      show.pic()
+      v50 = 4
+    }
+    set(f22)
+  }
+}
+if (v50 == 3) { //0529
+  if ((vComputerType != IBM_PC || vMonitorType > 1)) { //0530
+    sound(39,f25)
+  }
+  v42 = 1
+l1347:
+  if (v42 == 1) { //0543
+    get.posn(o5,v33,v34)
+    	get.dir(o5,v46)
+  }
+  if (v42 == 2) { //0551
+    get.posn(o6,v33,v34)
+    	get.dir(o6,v46)
+  }
+  if (v42 == 3) { //055f
+    get.posn(o7,v33,v34)
+    	get.dir(o7,v46)
+  }
+  if (v42 == 4) { //056d
+    get.posn(o8,v33,v34)
+    	get.dir(o8,v46)
+  }
+  if (v42 == 5) { //057b
+    get.posn(o9,v33,v34)
+    	get.dir(o9,v46)
+  }
+  if (v33 < 35) { //0589
+    if (v46 == 8) { //0590
+      v46 = 2
+    }
+    if (v46 == 7) { //059a
+      random(1,5,v46)
+    }
+    if (v46 == 6) { //05a5
+      v46 = 4
+    }
+  }
+  if (v33 > 126) { //05af
+    if (v46 == 2) { //05b6
+      v46 = 8
+    }
+    if (v46 == 3) { //05c0
+      random(5,8,v46)
+    }
+    if (v46 == 4) { //05cb
+      v46 = 6
+    }
+  }
+  if (v34 > 159) { //05d5
+    if (v46 == 4) { //05dc
+      v46 = 2
+    }
+    if (v46 == 5) { //05e6
+      random(1,3,v46)
+    }
+    if (v46 == 6) { //05f1
+      v46 = 8
+    }
+  }
+  if (v34 < 35) { //05fb
+    if (v46 == 8) { //0602
+      v46 = 6
+    }
+    if (v46 == 1) { //060c
+      random(3,6,v46)
+    }
+    if (v46 == 2) { //0617
+      v46 = 4
+    }
+    random(1,50,v43)
+    if (v43 < 25) { //0625
+      if (v42 == 1) { //062c
+        set.priority(o5,5)
+      }
+      if (v42 == 2) { //0636
+        set.priority(o6,5)
+      }
+      if (v42 == 3) { //0640
+        set.priority(o7,5)
+      }
+      if (v42 == 4) { //064a
+        set.priority(o8,5)
+      }
+      if (v42 == 5) { //0654
+        set.priority(o9,5)
+      }
+      goto(l1683)
+    }
+    if (v42 == 1) { //0661
+      set.priority(o5,8)
+    }
+    if (v42 == 2) { //066b
+      set.priority(o6,8)
+    }
+    if (v42 == 3) { //0675
+      set.priority(o7,8)
+    }
+    if (v42 == 4) { //067f
+      set.priority(o8,8)
+    }
+    if (v42 == 5) { //0689
+      set.priority(o9,8)
+    }
+  }
+l1683:
+  if (v42 == 1) { //0693
+    set.dir(o5,v46)
+  }
+  if (v42 == 2) { //069d
+    set.dir(o6,v46)
+  }
+  if (v42 == 3) { //06a7
+    set.dir(o7,v46)
+  }
+  if (v42 == 4) { //06b1
+    set.dir(o8,v46)
+  }
+  if (v42 == 5) { //06bb
+    set.dir(o9,v46)
+  }
+  v42++
+  if (v42 < 6) { //06c7
+    goto(l1347)
+  }
+  if (v30 > 55 && v30 < 65 && v31 > 109 && v31 < 125 && v48 != 1) { //06d1
+    sound(135,f25)
+    v69 = 11
+    set(f117)
+    v48 = 1
+    set.loop(o0,1)
+  }
+  if (v48 == 1) { //06f3
+    if ((v30 < 56 || v30 > 64 || v31 < 110 || v31 > 124)) { //06fa
+      v48 = 0
+      set.loop(o0,3)
+      v69 = 6
+      set(f117)
+    }
+  }
+  if (controller(c20) && !f22 && v48 == 0) { //0717
+    sound(5,f25)
+    erase(o5)
+    erase(o6)
+    erase(o7)
+    erase(o8)
+    erase(o9)
+    goto(l618)
+  }
+}
+if (v50 == 4) { //0733
+  if (v30 > 62 && v30 < 92 && v31 > 68 && v31 < 110 && v48 != 1 && !f33) { //073a
+    reposition.to(o0,72,96)
+    set.loop(o0,5)
+    sound(1,f25)
+    v69 = 9
+    set(f117)
+    v48 = 1
+    vEgoDir = 0
+  }
+  if (v48 == 1) { //0766
+    if ((v30 < 63 || v30 > 91 || v31 < 69 || v31 > 109)) { //076d
+      sound(1,f25)
+      v69 = 6
+      set(f117)
+      v48 = 0
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f22) { //078d
+    if (v48 == 0) { //0796
+      sound(5,f25)
+      erase(o3)
+      goto(l618)
+    }
+    if (v48 == 1) { //07a5
+      erase(o3)
+      get("Key")
+      set(f33)
+      set.loop(o0,3)
+      v48 = 0
+      sound(1,f25)
+      v69 = 6
+      set(f117)
+    }
+  }
+}
+if (f117) { //07c0
+  reset(f117)
+  clear.lines(23,24,c0)
+  if (v69 == 6) { //07cc
+    display(23,1,"Press <ENTER> to move in direction of arrow.")
+  }
+  if (v69 == 7) { //07d7
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+  if (v69 == 8) { //07e2
+    display(23,1,"Press <ENTER> to press button.")
+  }
+  if (v69 == 9) { //07ed
+    display(23,1,"Press <ENTER> to take the key.")
+  }
+  if (v69 == 10) { //07f8
+    display(23,1,"Only clothes in these drawers.")
+  }
+  if (v69 == 11) { //0803
+    display(23,1,"This P looks like it was carved with a dull knife.")
+  }
+  if (v69 == 12) { //080e
+    display(23,1,"This door is locked.")
+  }
+}
+reset(f22)
+return()

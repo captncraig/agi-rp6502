@@ -1,0 +1,490 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  set(f22)
+  reset(f31)
+  v58 = 31
+  reset(f24)
+  reset(f25)
+  v45 = 0
+  v46 = 0
+  v61 = 0
+  load.sound(1)
+  load.sound(20)
+  load.sound(21)
+  v32 = 103
+  load.pic(v32)
+  v32 = 132
+  load.pic(v32)
+  if (v48 != 3) { //002e
+    draw.pic(v32)
+  }
+  load.view(26)
+  load.view(4)
+  load.view(50)
+  load.view(51)
+  load.view(53)
+  load.view(54)
+  load.view(55)
+  set.view(o1,26)
+  set.view(o2,26)
+  set.view(o3,26)
+  set.view(o4,26)
+  set.view(o5,26)
+  set.view(o9,26)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o9)
+  position(o0,128,153)
+  position(o1,65,90)
+  position(o2,123,153)
+  position(o3,121,139)
+  position(o4,116,153)
+  position(o5,120,139)
+  position(o9,125,54)
+  ignore.objs(o0)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o9)
+  v44 = 3
+  cycle.time(o1,v44)
+  cycle.time(o2,v44)
+  cycle.time(o3,v44)
+  cycle.time(o4,v44)
+  cycle.time(o5,v44)
+  cycle.time(o9,v44)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.loop(o2,1)
+  set.loop(o3,2)
+  set.loop(o4,3)
+  set.loop(o5,6)
+  set.loop(o9,0)
+  v44 = 2
+  step.size(o0,v44)
+  set.priority(o0,14)
+  set.priority(o1,8)
+  set.priority(o2,8)
+  set.priority(o3,8)
+  set.priority(o4,8)
+  set.priority(o5,8)
+  set.priority(o9,5)
+  ignore.blocks(o0)
+  if (v48 == 2) { //00d5
+    draw(o0)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+  }
+  add.to.pic(4,0,0,8,159,5,4)
+  show.pic()
+  if (v48 == 0) { //00ed
+    sound(21,f22)
+    draw(o1)
+    v61 = 1
+  }
+  set(f33)
+  push.script()
+}
+if (f24) { //00ff
+  sound(1,f22)
+  v61 = 0
+  clear.lines(23,23,c0)
+  v46 = 0
+  set.view(o0,1)
+  set.loop(o0,1)
+  v49 = 2
+  reset(f24)
+}
+if (f25) { //011d
+  set.view(o0,49)
+  set.loop(o0,0)
+  vEgoDir = 0
+  sound(1,f22)
+  reset(f25)
+}
+if (v48 == 0) { //0131
+  if (f22) { //0138
+    sound(21,f22)
+  }
+  if (controller(c20)) { //0141
+    set(f31)
+    set(f24)
+    v44 = 2
+    step.size(o0,v44)
+    erase(o1)
+    erase(o0)
+    clear.lines(23,23,c0)
+    display(23,1,"Press <ENTER> to continue.")
+    v61 = 1
+    if (v55 == 2) { //0160
+      print("Tracker has locked on target. Location: Pier 5.")
+    }
+    if (v55 == 3) { //0169
+      print("Tracker has locked on Target. Location: Ghirardelli Square.")
+    }
+    position(o0,76,115)
+    draw(o0)
+    v45 = 0
+    v51 = 1
+    set.loop(o0,4)
+    v56 = 0
+    if (v55 == 2) { //0184
+      v48 = 2
+      v52 = 130
+    }
+    if (v55 == 3) { //0191
+      v48 = 0
+      v52 = 173
+    }
+  }
+}
+if (v48 == 2) { //019e
+  get.posn(o0,v30,v31)
+  if (v47 < vTimeSeconds) { //01a9
+    if (f153) { //01b0
+      display(10,12,"Awaiting Input")
+      reset(f153)
+      goto(l453)
+    }
+    display(10,12,"               ")
+    set(f153)
+l453:
+    vTimeSeconds = 0
+    v47 = 1
+  }
+  if ((controller(c31) || controller(c32))) { //01cb
+    clear.lines(23,24,c0)
+    set(f31)
+    new.room(v57)
+  }
+  if (controller(c20) && !f21) { //01dd
+    sound(20,f22)
+    if (v46 == 11) { //01e9
+      pop.script()
+      clear.lines(23,24,c0)
+      display(23,1,"Type a full name or BYE.")
+      v46 = 0
+      set(f24)
+      erase(o3)
+      erase(o4)
+      v48 = 3
+      ???(0)
+      goto(l862)
+    }
+    if (v46 == 12) { //020a
+      clear.lines(23,24,c0)
+      display(23,1,"Press <ENTER> to continue.")
+      erase(o0)
+      if (v55 == 1 && v56 == 0) { //021b
+        print("Tracker has locked on Target. Location: Bank of Canton, Chinatown.")
+      }
+      if (v55 == 2 && v56 == 0) { //0227
+        print("Tracker has locked on Target. Location: Pier 5.")
+      }
+      if (v55 == 3 && v56 == 0) { //0233
+        print("Tracker has locked on Target. Location: Ghirardelli Square.")
+      }
+      v45 = 0
+      set.view(o0,1)
+      set.loop(o0,4)
+      if (v55 == 1) { //0248
+        v52 = 106
+      }
+      if (v55 == 2) { //0252
+        if (v56 < 3) { //0259
+          v52 = 130
+        }
+        if ((v56 == 4 || v56 == 5 || v56 == 7)) { //0263
+          v52 = 151
+        }
+        if (v56 == 6) { //0275
+          v52 = 152
+        }
+        if ((v56 == 8 || v56 == 9)) { //027f
+          v52 = 157
+        }
+      }
+      if (v55 == 3) { //028e
+        v52 = 173
+      }
+    }
+  }
+  if (v31 > 152 && v46 != 12 && v48 != 3) { //0298
+    set(f25)
+    v61 = 28
+    set(f33)
+    v46 = 12
+  }
+  if (v46 == 12) { //02b1
+    if (v31 < 150) { //02b8
+      set(f24)
+    }
+  }
+  if (v31 < 146 && v46 != 11 && v48 != 5) { //02c1
+    set(f25)
+    v61 = 13
+    set(f33)
+    v46 = 11
+  }
+  if (v46 == 11) { //02da
+    if (v31 > 145) { //02e1
+      set(f24)
+    }
+  }
+}
+if (v48 == 3) { //02ea
+  current.cel(o9,v44)
+  if (v44 == 6) { //02f4
+    reverse.cycle(o9)
+  }
+  if (v44 == 0) { //02fd
+    normal.cycle(o9)
+  }
+  get.posn(o0,v30,v31)
+  if (controller(c20)) { //030a
+    sound(20,f22)
+    if (v46 == 9) { //0313
+      pop.script()
+l795:
+      reposition.to(o0,128,152)
+      v30 = 128
+      v31 = 152
+      ???(1)
+      erase(o0)
+      erase(o9)
+      erase(o2)
+      erase(o5)
+      v32 = 132
+      draw.pic(v32)
+      add.to.pic(4,0,0,8,159,5,4)
+      set(f33)
+      draw(o3)
+      draw(o4)
+      v48 = 2
+      vStatusItem = 255
+      set.view(o0,1)
+      set.loop(o0,1)
+      draw(o0)
+      v46 = 0
+      v61 = 0
+      show.pic()
+    }
+    if (v46 == 13) { //0357
+l862:
+      pop.script()
+      v45 = 0
+      erase(o2)
+      erase(o5)
+      erase(o9)
+      v32 = 103
+      draw.pic(v32)
+      add.to.pic(4,0,0,8,159,5,4)
+      show.pic()
+      accept.input()
+      set.cursor.char("_")
+      erase(o0)
+      display(23,1,"Type a full name or BYE.")
+      get.string(str1,"Name: ",2,2,20)
+      parse(str1)
+      set.cursor.char("")
+      sound(20,f22)
+      if (said("pete", "brown")) { //038c
+        set(f26)
+        set.view(o9,50)
+        set.loop(o9,0)
+        v45 = 1
+        draw(o9)
+        v61 = 100
+        set(f33)
+      }
+      if (said("noah", "goring")) { //03a8
+        if (v55 == 1) { //03b2
+          v65 = 14
+          new.room(156)
+        }
+        set(f26)
+        set(f76)
+        set.view(o9,51)
+        set.loop(o9,0)
+        v45 = 1
+        draw(o9)
+        v61 = 102
+        set(f33)
+      }
+      if (said("mic", "stone")) { //03d2
+        set(f26)
+        set.view(o9,53)
+        set.loop(o9,0)
+        v45 = 1
+        draw(o9)
+        v61 = 103
+        set(f33)
+      }
+      if (said("tad", "timov")) { //03ee
+        set(f50)
+        set(f26)
+        set.view(o9,54)
+        set.loop(o9,0)
+        v45 = 1
+        draw(o9)
+        v61 = 104
+        set(f33)
+      }
+      if (said("zac", "west")) { //040c
+        if (v55 == 1) { //0416
+          v65 = 14
+          new.room(156)
+        }
+        set(f77)
+        set(f26)
+        set.view(o9,55)
+        set.loop(o9,0)
+        v45 = 1
+        draw(o9)
+        v61 = 105
+        set(f33)
+      }
+      if (said("bye")) { //0436
+        prevent.input()
+        ???(1)
+        goto(l795)
+      }
+      if (v45 == 0) { //0444
+        clear.text.rect(2,2,3,27,0)
+        v61 = 1
+        set(f33)
+        print("No one by that name in the city!")
+        reposition.to(o0,40,155)
+        goto(l862)
+      }
+      if (f26) { //045f
+        v46 = 0
+        set.view(o0,1)
+        set.loop(o0,1)
+        reposition.to(o0,130,138)
+        clear.lines(23,23,c0)
+        draw(o2)
+        draw(o5)
+        reset(f26)
+      }
+      draw(o0)
+      prevent.input()
+    }
+  }
+  if (v31 < 146 && v46 != 13) { //047f
+    set(f25)
+    clear.lines(23,23,c0)
+    display(23,1,"Press <ENTER> to try another name.")
+    v46 = 13
+  }
+  if (v46 == 13) { //0497
+    if (v31 > 145) { //049e
+      sound(1,f22)
+      clear.lines(23,23,c0)
+      v46 = 0
+      set.view(o0,1)
+      set.loop(o0,1)
+      v49 = 2
+    }
+  }
+  if (v31 > 153 && v46 != 9 && v46 != 10 && v48 != 0) { //04b8
+    set(f25)
+    clear.lines(23,23,c0)
+    v46 = 9
+    clear.lines(23,23,c0)
+    display(23,1,"Exit to Main Menu...")
+    set(f33)
+  }
+  if (v46 == 9) { //04de
+    if (v31 < 154) { //04e5
+      sound(1,f22)
+      clear.lines(23,23,c0)
+      v46 = 0
+      set.view(o0,1)
+      set.loop(o0,1)
+      v49 = 2
+    }
+  }
+}
+if (f33) { //04ff
+  reset(f33)
+  reset(f24)
+  if (v61 < 100) { //0509
+    clear.lines(23,23,c0)
+  }
+  if (v48 != 3 && v48 != 0) { //0514
+    display(24,1,"Press C to close MAD.")
+  }
+  if (v48 == 3) { //0524
+    if (v46 == 13) { //052b
+      display(23,1,"Press <ENTER> to try another name.")
+    }
+    if (v46 == 9) { //0536
+      display(23,1,"Exit to Main Menu...")
+    }
+  }
+  if (v61 == 1) { //0541
+    display(23,1,"Press <ENTER> to continue.")
+  }
+  if (v61 == 13) { //054c
+    display(23,1,"Information on City Occupants")
+  }
+  if (v61 == 28) { //0557
+    display(23,1,"Tracks City Occupants")
+  }
+  if (v61 == 100) { //0562
+    display(2,2,"Name: Peter Brown         ")
+    display(4,2,"Address: Lombard St.")
+    display(6,2,"Age: 22")
+    display(8,2,"ID #: 072051")
+    display(10,2,"Job: Manhunter")
+  }
+  if (v61 == 101) { //057d
+    display(2,2,"Name: Phillipe Cook       ")
+    display(4,2,"Address: ")
+    display(6,2,"Age: 26")
+    display(8,2,"ID #: 111007")
+    display(10,2,"Job: Public Servant")
+  }
+  if (v61 == 102) { //0598
+    display(2,2,"Name: Noah Goring         ")
+    display(4,2,"Address: Montgomery St.")
+    display(6,2,"Age: 54")
+    display(8,2,"ID #: 100461")
+    display(10,2,"Job: Genetic Research Scientist")
+  }
+  if (v61 == 103) { //05b3
+    display(2,2,"Name: Mic Stone           ")
+    display(4,2,"Address: Address Unknown")
+    display(6,2,"Age: 39")
+    display(8,2,"ID #: 020551")
+    display(10,2,"Job: Experiment Volunteer")
+  }
+  if (v61 == 104) { //05ce
+    display(2,2,"Name: Tad Timov           ")
+    display(4,2,"Address:Broadway & Columbus")
+    display(6,2,"Age: 36")
+    display(8,2,"ID #: 091156")
+    display(10,2,"Job: Head of Bank Security")
+  }
+  if (v61 == 105) { //05e9
+    display(2,2,"Name: Zac West            ")
+    display(4,2,"Address: 145 Jefferson St.")
+    display(6,2,"Age: 35")
+    display(8,2,"ID #: 100880")
+    display(10,2,"Job: Experiment Volunteer")
+  }
+  if (v61 == 106) { //0604
+    display(6,2,"UCUCC")
+    display(8,2,"843769")
+    display(8,2,"No notes in memory.")
+  }
+}
+reset(f21)
+return()

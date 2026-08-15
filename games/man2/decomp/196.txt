@@ -1,0 +1,172 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 3
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v90 = 0
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v57 = vCurrentRoom
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(194)
+  load.sound(196)
+  v32 = 85
+  load.pic(v32)
+  draw.pic(v32)
+  discard.pic(v32)
+  load.view(185)
+  set.view(o1,185)
+  set.view(o2,185)
+  set.view(o3,185)
+  set.view(o4,185)
+  set.view(o5,185)
+  set.view(o6,185)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  position(o1,32,24)
+  position(o2,39,26)
+  position(o3,47,24)
+  position(o4,129,107)
+  position(o5,133,103)
+  position(o6,145,105)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o6)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  fix.loop(o1)
+  fix.loop(o2)
+  fix.loop(o3)
+  fix.loop(o4)
+  fix.loop(o5)
+  fix.loop(o6)
+  set.loop(o1,3)
+  set.loop(o2,3)
+  set.loop(o3,3)
+  set.loop(o4,1)
+  set.loop(o5,0)
+  set.loop(o6,1)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  set.cel(o3,0)
+  v44 = 3
+  step.size(o4,v44)
+  step.size(o5,v44)
+  step.size(o6,v44)
+  v44 = 6
+  step.size(o1,v44)
+  step.size(o2,v44)
+  step.size(o3,v44)
+  set.priority(o4,5)
+  set.priority(o5,5)
+  set.priority(o6,5)
+  v47 = 1
+  vTimeSeconds = 0
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+get.posn(o4,v33,v34)
+get.posn(o1,v35,v36)
+if (v48 == 0) { //00df
+  if (v45 == 0 && v47 < vTimeSeconds) { //00e6
+    sound(194,f22)
+    v44 = 7
+    set.dir(o4,v44)
+    set.dir(o5,v44)
+    set.dir(o6,v44)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+    v45 = 1
+  }
+  if (v45 == 1 && v33 < 81) { //0108
+    sound(196,f22)
+    v44 = 5
+    set.dir(o1,v44)
+    set.dir(o2,v44)
+    set.dir(o3,v44)
+    draw(o1)
+    draw(o2)
+    draw(o3)
+    v45 = 2
+  }
+  if (v45 == 7) { //012a
+    vCycleTime = 3
+    set.loop(o1,2)
+    set.loop(o2,2)
+    set.loop(o3,2)
+    start.cycling(o1)
+    start.cycling(o2)
+    start.cycling(o3)
+    v47 = 2
+    vTimeSeconds = 0
+    v45 = 8
+  }
+  if (v45 == 6) { //014c
+    set.cel(o1,2)
+    set.cel(o2,2)
+    set.cel(o3,2)
+    v45 = 7
+  }
+  if (v45 == 5) { //015f
+    set.cel(o1,1)
+    set.cel(o2,1)
+    set.cel(o3,1)
+    v45 = 6
+  }
+  if (v45 == 4) { //0172
+    vCycleTime = 5
+    reposition.to(o1,26,122)
+    reposition.to(o2,33,122)
+    reposition.to(o3,41,122)
+    v45 = 5
+  }
+  if (v45 == 3) { //018b
+    reposition.to(o1,26,111)
+    reposition.to(o2,33,112)
+    reposition.to(o3,41,111)
+    v45 = 4
+  }
+  if (v45 == 2 && v36 > 79) { //01a1
+    v44 = 0
+    set.dir(o1,v44)
+    set.dir(o2,v44)
+    set.dir(o3,v44)
+    erase(o4)
+    erase(o5)
+    erase(o6)
+    reposition.to(o1,26,103)
+    reposition.to(o2,33,105)
+    reposition.to(o3,41,103)
+    set.loop(o1,4)
+    set.loop(o2,4)
+    set.loop(o3,4)
+    set.cel(o1,0)
+    set.cel(o2,0)
+    set.cel(o3,0)
+    v45 = 3
+  }
+  if (v45 == 8 && v47 < vTimeSeconds) { //01de
+    new.room(192)
+  }
+}
+reset(f21)
+if (f33) { //01ec
+  reset(f33)
+  clear.lines(23,24,c0)
+}
+return()

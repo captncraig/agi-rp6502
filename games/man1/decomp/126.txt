@@ -1,0 +1,692 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  vCycleTime = 2
+  v69 = 0
+  v91 = 0
+  reset(f179)
+  v96 = 0
+  set(f22)
+  reset(f151)
+  reset(f152)
+  reset(f153)
+  reset(f154)
+  reset(f155)
+  reset(f156)
+  reset(f157)
+  reset(f158)
+  reset(f159)
+  reset(f160)
+  reset(f161)
+  reset(f162)
+  reset(f167)
+  reset(f168)
+  reset(f169)
+  reset(f170)
+  reset(f171)
+  reset(f172)
+  reset(f173)
+  reset(f174)
+  reset(f175)
+  reset(f176)
+  reset(f177)
+  reset(f178)
+  reset(f166)
+  reset(f75)
+  v65 = 29
+  reset(f61)
+  reset(f28)
+  reset(f113)
+  v47 = 0
+  v92 = 0
+  v50 = 0
+  load.sound(1)
+  load.sound(32)
+  load.sound(15)
+  load.sound(34)
+  load.sound(22)
+  load.sound(33)
+  load.view(28)
+  load.view(53)
+  v32 = 160
+  load.pic(v32)
+  v32 = 185
+  load.pic(v32)
+  draw.pic(v32)
+  set.view(o0,28)
+  set.view(o1,53)
+  set.view(o2,53)
+  set.view(o3,53)
+  set.view(o4,53)
+  set.view(o5,53)
+  set.view(o6,53)
+  set.view(o7,53)
+  set.view(o8,53)
+  set.view(o9,53)
+  set.view(o10,53)
+  set.view(o11,53)
+  set.view(o12,53)
+  set.view(o13,53)
+  set.view(o14,53)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  animate.obj(o7)
+  animate.obj(o8)
+  animate.obj(o9)
+  animate.obj(o10)
+  animate.obj(o11)
+  animate.obj(o12)
+  animate.obj(o13)
+  animate.obj(o14)
+  position(o0,136,161)
+  position(o1,17,28)
+  position(o2,81,10)
+  position(o3,71,20)
+  position(o4,91,30)
+  position(o5,61,10)
+  position(o6,71,10)
+  position(o7,91,10)
+  position(o8,61,20)
+  position(o9,81,20)
+  position(o10,91,20)
+  position(o11,61,30)
+  position(o12,71,30)
+  position(o13,81,30)
+  ignore.objs(o0)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  ignore.objs(o8)
+  ignore.objs(o9)
+  ignore.objs(o10)
+  ignore.objs(o11)
+  ignore.objs(o12)
+  ignore.objs(o13)
+  ignore.objs(o14)
+  release.loop(o0)
+  set.loop(o0,1)
+  set.loop(o1,2)
+  set.loop(o2,4)
+  set.loop(o3,4)
+  set.loop(o4,4)
+  set.loop(o5,4)
+  set.loop(o6,4)
+  set.loop(o7,4)
+  set.loop(o8,4)
+  set.loop(o9,4)
+  set.loop(o10,4)
+  set.loop(o11,4)
+  set.loop(o12,4)
+  set.loop(o13,4)
+  set.loop(o14,0)
+  set.cel(o0,3)
+  set.priority(o1,8)
+  set.priority(o2,5)
+  set.priority(o3,5)
+  set.priority(o4,5)
+  set.priority(o5,5)
+  set.priority(o6,5)
+  set.priority(o7,5)
+  set.priority(o8,5)
+  set.priority(o9,5)
+  set.priority(o10,5)
+  set.priority(o11,5)
+  set.priority(o12,5)
+  set.priority(o13,5)
+  set.priority(o14,5)
+  stop.cycling(o0)
+  stop.cycling(o1)
+  show.pic()
+  v69 = 50
+  set(f117)
+  v49 = 2
+  vTimeSeconds = 0
+  sound(33,f25)
+  ???(0)
+  push.script()
+}
+if (v49 < vTimeSeconds && !f41) { //018d
+  pop.script()
+  ???(1)
+  reset(f61)
+  fix.loop(o0)
+  vEgoDir = 0
+  v47 = 0
+  v50 = 3
+  clear.lines(23,24,c0)
+  new.room(157)
+}
+get.posn(o0,v35,v36)
+if (v50 == 0) { //01b1
+  if (f25) { //01b8
+    sound(33,f25)
+  }
+  if (controller(c20) && !f22) { //01c1
+    pop.script()
+    stop.sound()
+    v69 = 15
+    set(f117)
+    ???(1)
+    set(f22)
+    v50 = 1
+    v32 = 160
+    draw.pic(v32)
+    draw(o0)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+    draw(o7)
+    draw(o8)
+    draw(o9)
+    draw(o10)
+    draw(o11)
+    draw(o12)
+    draw(o13)
+    show.pic()
+  }
+}
+if (v50 == 1) { //01f8
+  if (controller(c20) && !f22) { //01ff
+    set(f61)
+    set(f75)
+    sound(1,f25)
+    clear.lines(23,24,c0)
+    set.loop(o0,4)
+    new.room(122)
+  }
+  if (vEgoDir > 0) { //0218
+    start.cycling(o0)
+    v47 = 0
+    v50 = 2
+    clear.lines(23,24,c0)
+    v69 = 0
+    release.key()
+  }
+}
+if (v50 == 2) { //022f
+  if (vEgoDir == 0 && !f166) { //0236
+    vEgoDir = v39
+  }
+  if (v92 > 0) { //0243
+    vEgoDir = 0
+  }
+  if (vEgoDir > 0 && f166 && v92 == 0) { //024d
+    reset(f166)
+    start.cycling(o0)
+  }
+  v39 = vEgoDir
+  current.cel(o0,v46)
+  if (v46 == 3) { //0263
+    reverse.cycle(o0)
+  }
+  if (v46 == 0) { //026c
+    normal.cycle(o0)
+  }
+  if (v35 > 73 && v35 < 82 && v36 > 92 && v36 < 104 && !f151) { //0275
+    v91 = 1
+    set(f151)
+    set(f28)
+  }
+  if (v35 > 93 && v35 < 101 && v36 > 51 && v36 < 66 && !f152) { //028f
+    v91 = 2
+    set(f152)
+    set(f28)
+  }
+  if (v35 > 23 && v35 < 31 && v36 > 39 && v36 < 46 && !f153) { //02a9
+    v91 = 3
+    set(f153)
+    set(f28)
+  }
+  if (v35 > 23 && v35 < 31 && v36 > 155 && v36 < 166 && !f154) { //02c3
+    v91 = 4
+    set(f154)
+    set(f28)
+  }
+  if (v35 > 13 && v35 < 21 && v36 > 125 && v36 < 136 && !f155) { //02dd
+    v91 = 5
+    set(f155)
+    set(f28)
+  }
+  if (v35 > 23 && v35 < 31 && v36 > 79 && v36 < 86 && !f156) { //02f7
+    v91 = 6
+    set(f156)
+    set(f28)
+  }
+  if (v35 > 13 && v35 < 21 && v36 > 59 && v36 < 66 && !f157) { //0311
+    v91 = 7
+    set(f157)
+    set(f28)
+  }
+  if (v35 > 53 && v35 < 61 && v36 > 123 && v36 < 136 && !f158) { //032b
+    v91 = 8
+    set(f158)
+    set(f28)
+  }
+  if (v35 > 53 && v35 < 61 && v36 > 82 && v36 < 96 && !f159) { //0345
+    v91 = 9
+    set(f159)
+    set(f28)
+  }
+  if (v35 > 113 && v35 < 121 && v36 > 129 && v36 < 136 && !f160) { //035f
+    v91 = 10
+    set(f160)
+    set(f28)
+  }
+  if (v35 > 133 && v35 < 141 && v36 > 95 && v36 < 106 && !f161) { //0379
+    v91 = 11
+    set(f161)
+    set(f28)
+  }
+  if (v35 > 123 && v35 < 131 && v36 > 55 && v36 < 66 && !f162) { //0393
+    v91 = 12
+    set(f162)
+    set(f28)
+  }
+  if (f28) { //03ad
+    reset(f28)
+    sound(32,f25)
+    position(o1,17,28)
+    v92 = 1
+    vEgoDir = 0
+    set(f166)
+    stop.cycling(o0)
+    set.cel(o0,2)
+    set(f113)
+  }
+  if (fTriggerLine) { //03cb
+    sound(15,f25)
+    if (v47 == 0) { //03d4
+      erase(o1)
+      v92 = 0
+      v91 = 0
+      vEgoDir = 0
+      erase(o0)
+      set.view(o0,53)
+      set.loop(o0,1)
+      fix.loop(o0)
+      draw(o0)
+      move.obj(o0,136,161,4,f163)
+      v50 = 4
+      v47 = 1
+      hold.key()
+    }
+  }
+  if (v92 > 0) { //03ff
+    v52++
+    if (v52 > 2) { //0408
+      v52 = 0
+      v92++
+    }
+  }
+  if (v92 == 6) { //0414
+    sound(22,f25)
+    erase(o1)
+    set.cel(o1,0)
+    v96 = v91
+    if (v91 == 1) { //0426
+      erase(o2)
+      set.loop(o2,0)
+      set(f167)
+    }
+    if (v91 == 2) { //0434
+      erase(o3)
+      set.loop(o3,0)
+      set(f168)
+    }
+    if (v91 == 3) { //0442
+      erase(o4)
+      set.loop(o4,0)
+      set(f169)
+    }
+    if (v91 == 4) { //0450
+      erase(o5)
+      set.loop(o5,0)
+      set(f170)
+    }
+    if (v91 == 5) { //045e
+      erase(o6)
+      set.loop(o6,0)
+      set(f171)
+    }
+    if (v91 == 6) { //046c
+      set.loop(o7,0)
+      erase(o7)
+      set(f172)
+    }
+    if (v91 == 7) { //047a
+      set.loop(o8,0)
+      erase(o8)
+      set(f173)
+    }
+    if (v91 == 8) { //0488
+      set.loop(o9,0)
+      erase(o9)
+      set(f174)
+    }
+    if (v91 == 9) { //0496
+      set.loop(o10,0)
+      erase(o10)
+      set(f175)
+    }
+    if (v91 == 10) { //04a4
+      set.loop(o11,0)
+      erase(o11)
+      set(f176)
+    }
+    if (v91 == 11) { //04b2
+      set.loop(o12,0)
+      erase(o12)
+      set(f177)
+    }
+    if (v91 == 12) { //04c0
+      set.loop(o13,0)
+      erase(o13)
+      set(f178)
+    }
+    set(f113)
+    v92 = 0
+  }
+  if (v92 == 5) { //04d3
+    set.cel(o1,4)
+    if (v91 == 1) { //04dd
+      reposition.to(o1,82,9)
+    }
+    if (v91 == 2) { //04e8
+      reposition.to(o1,72,19)
+    }
+    if (v91 == 3) { //04f3
+      reposition.to(o1,92,29)
+    }
+    if (v91 == 4) { //04fe
+      reposition.to(o1,62,9)
+    }
+    if (v91 == 5) { //0509
+      reposition.to(o1,72,9)
+    }
+    if (v91 == 6) { //0514
+      reposition.to(o1,92,9)
+    }
+    if (v91 == 7) { //051f
+      reposition.to(o1,62,19)
+    }
+    if (v91 == 8) { //052a
+      reposition.to(o1,82,19)
+    }
+    if (v91 == 9) { //0535
+      reposition.to(o1,92,19)
+    }
+    if (v91 == 10) { //0540
+      reposition.to(o1,62,29)
+    }
+    if (v91 == 11) { //054b
+      reposition.to(o1,72,29)
+    }
+    if (v91 == 12) { //0556
+      reposition.to(o1,82,29)
+    }
+  }
+  if (v92 == 4) { //0561
+    set.cel(o1,3)
+    reposition.to(o1,55,20)
+  }
+  if (v92 == 3) { //056f
+    set.cel(o1,2)
+    reposition.to(o1,45,21)
+  }
+  if (v92 == 2) { //057d
+    set.cel(o1,1)
+    reposition.to(o1,31,26)
+  }
+  if (v92 == 1) { //058b
+    draw(o1)
+    v92 = 2
+  }
+}
+if (v50 == 4) { //0597
+  if (v47 == 1 && f163) { //059e
+    v47 = 2
+    v49 = 1
+    vTimeSeconds = 1
+    reposition.to(o0,136,162)
+    set.loop(o0,3)
+  }
+  if (v47 == 2) { //05b7
+    vEgoDir = 0
+    if (v49 < vTimeSeconds) { //05c1
+      pop.script()
+      sound(34,f25)
+      v32 = 160
+      draw.pic(v32)
+      reset(f151)
+      reset(f152)
+      reset(f153)
+      reset(f154)
+      reset(f155)
+      reset(f156)
+      reset(f157)
+      reset(f158)
+      reset(f159)
+      reset(f160)
+      reset(f161)
+      reset(f162)
+      reset(f167)
+      reset(f168)
+      reset(f169)
+      reset(f170)
+      reset(f171)
+      reset(f172)
+      reset(f173)
+      reset(f174)
+      reset(f175)
+      reset(f176)
+      reset(f177)
+      reset(f178)
+      set.loop(o2,4)
+      set.loop(o3,4)
+      set.loop(o4,4)
+      set.loop(o5,4)
+      set.loop(o6,4)
+      set.loop(o7,4)
+      set.loop(o8,4)
+      set.loop(o9,4)
+      set.loop(o10,4)
+      set.loop(o11,4)
+      set.loop(o12,4)
+      set.loop(o13,4)
+      position(o2,81,10)
+      position(o3,71,20)
+      position(o4,91,30)
+      position(o5,61,10)
+      position(o6,71,10)
+      position(o7,91,10)
+      position(o8,61,20)
+      position(o9,81,20)
+      position(o10,91,20)
+      position(o11,61,30)
+      position(o12,71,30)
+      position(o13,81,30)
+      draw(o2)
+      draw(o3)
+      draw(o4)
+      draw(o5)
+      draw(o6)
+      draw(o7)
+      draw(o8)
+      draw(o9)
+      draw(o10)
+      draw(o11)
+      draw(o12)
+      draw(o13)
+      erase(o14)
+      reset(f179)
+      vEgoDir = 0
+      reposition.to(o0,136,160)
+      set.view(o0,28)
+      set.loop(o0,1)
+      set.cel(o0,3)
+      stop.cycling(o0)
+      show.pic()
+      release.loop(o0)
+      reset(fTriggerLine)
+      v50 = 1
+      v69 = 15
+      set(f117)
+    }
+  }
+}
+if (f113) { //0690
+  reset(f113)
+  pop.script()
+  if (v50 > 0) { //0699
+    v32 = 160
+    draw.pic(v32)
+  }
+  if (f151 && v91 == 1) { //06a5
+    v33 = 78
+    v34 = 99
+  }
+  if (f152 && v91 == 2) { //06b4
+    v33 = 98
+    v34 = 59
+  }
+  if (f153 && v91 == 3) { //06c3
+    v33 = 28
+    v34 = 39
+  }
+  if (f154 && v91 == 4) { //06d2
+    v33 = 28
+    v34 = 159
+  }
+  if (f155 && v91 == 5) { //06e1
+    v33 = 18
+    v34 = 129
+  }
+  if (f156 && v91 == 6) { //06f0
+    v33 = 28
+    v34 = 79
+  }
+  if (f157 && v91 == 7) { //06ff
+    v33 = 18
+    v34 = 59
+  }
+  if (f158 && v91 == 8) { //070e
+    v33 = 58
+    v34 = 129
+  }
+  if (f159 && v91 == 9) { //071d
+    v33 = 58
+    v34 = 89
+  }
+  if (f160 && v91 == 10) { //072c
+    v33 = 118
+    v34 = 129
+  }
+  if (f161 && v91 == 11) { //073b
+    v33 = 138
+    v34 = 99
+  }
+  if (f162 && v91 == 12) { //074a
+    v33 = 128
+    v34 = 59
+  }
+  if (!f179) { //0759
+    if (f123) { //0760
+      reset(f123)
+      goto(l1907)
+    }
+    position(o14,33,v34)
+    set(f179)
+    draw(o14)
+l1907:
+    goto(l2066)
+  }
+  if (v96 == 1) { //0776
+    position(o2,33,v34)
+    draw(o2)
+  }
+  if (v96 == 2) { //0783
+    position(o3,33,v34)
+    draw(o3)
+  }
+  if (v96 == 3) { //0790
+    position(o4,33,v34)
+    draw(o4)
+  }
+  if (v96 == 4) { //079d
+    position(o5,33,v34)
+    draw(o5)
+  }
+  if (v96 == 5) { //07aa
+    position(o6,33,v34)
+    draw(o6)
+  }
+  if (v96 == 6) { //07b7
+    position(o7,33,v34)
+    draw(o7)
+  }
+  if (v96 == 7) { //07c4
+    position(o8,33,v34)
+    draw(o8)
+  }
+  if (v96 == 8) { //07d1
+    position(o9,33,v34)
+    draw(o9)
+  }
+  if (v96 == 9) { //07de
+    position(o10,33,v34)
+    draw(o10)
+  }
+  if (v96 == 10) { //07eb
+    position(o11,33,v34)
+    draw(o11)
+  }
+  if (v96 == 11) { //07f8
+    position(o12,33,v34)
+    draw(o12)
+  }
+  if (v96 == 12) { //0805
+    position(o13,33,v34)
+    draw(o13)
+  }
+l2066:
+  if (f169) { //0812
+    hold.key()
+    v50 = 5
+    v47 = 0
+    v55 = 157
+  }
+  show.pic()
+}
+if (f117) { //0823
+  reset(f117)
+  clear.lines(23,24,c0)
+  if (v69 == 15) { //082f
+    display(23,1,"Press <ENTER> to back up.")
+  }
+  if (v69 == 50) { //083a
+    set.text.attribute(14,0)
+    display(2,4,"..HALLS, WALLS, BALLS & DOLLS..")
+    set.text.attribute(13,0)
+    display(5,8,"Find the Path to the End")
+    display(7,11,"of the Many Halls,")
+    display(9,7,"The Correct Path leads you")
+    display(11,10,"to the Kewpie Dolls.")
+    display(13,7,"If You Don't want to Die,")
+    display(15,9,"Don't Touch the Walls.")
+    display(17,9,"Step on Magic Squares")
+    display(19,10,"To throw the Balls.")
+    set.text.attribute(15,0)
+    display(23,1,"Press <ENTER> to continue.")
+  }
+}
+reset(f22)
+return()

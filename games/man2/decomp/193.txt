@@ -1,0 +1,81 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v57 = vCurrentRoom
+  v90 = 0
+  v48 = 0
+  v45 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  v32 = 238
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(169)
+  set.view(o0,49)
+  set.view(o1,169)
+  animate.obj(o1)
+  position(o0,77,165)
+  position(o1,68,136)
+  ignore.objs(o1)
+  v44 = 3
+  cycle.time(o0,v44)
+  fix.loop(o1)
+  set.loop(o0,3)
+  set.loop(o1,0)
+  v44 = 6
+  step.size(o0,v44)
+  set.priority(o1,5)
+  draw(o0)
+  draw(o1)
+  show.pic()
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //006c
+  if (v30 > 49 && v30 < 104 && v31 > 62 && v31 < 120 && v46 != 1) { //0073
+    sound(1,f22)
+    v61 = 13
+    set(f33)
+    vEgoDir = 0
+    v46 = 1
+    set.view(o0,1)
+    set.loop(o0,0)
+    reposition.to(o0,75,93)
+  }
+  if (v46 == 1) { //009f
+    if ((v30 < 50 || v30 > 103 || v31 < 63 || v31 > 119)) { //00a6
+      clear.lines(23,24,c0)
+      v61 = 0
+      sound(1,f22)
+      v46 = 0
+      set.view(o0,49)
+      set.loop(o0,3)
+    }
+  }
+  if (controller(c20) && !f21) { //00cb
+    if (v46 == 1) { //00d4
+      set.loop(o0,4)
+      position(o0,77,130)
+      draw(o0)
+      set(f104)
+      v52 = 178
+    }
+  }
+}
+reset(f21)
+if (f33) { //00eb
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 13) { //00f7
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+}
+return()

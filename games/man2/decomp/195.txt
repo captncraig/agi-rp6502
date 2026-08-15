@@ -1,0 +1,213 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 1
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v90 = 0
+  v61 = 0
+  if (f105) { //0018
+    set(f33)
+  }
+  v60 = 0
+  v57 = vCurrentRoom
+  v45 = 0
+  v48 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(190)
+  v32 = 212
+  load.pic(v32)
+  draw.pic(v32)
+  discard.pic(v32)
+  load.view(183)
+  load.view(184)
+  set.view(o1,184)
+  set.view(o2,184)
+  set.view(o3,184)
+  set.view(o4,184)
+  set.view(o5,184)
+  set.view(o6,184)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  animate.obj(o4)
+  animate.obj(o5)
+  animate.obj(o6)
+  position(o1,4,118)
+  position(o2,50,117)
+  position(o3,69,118)
+  position(o4,140,119)
+  position(o5,7,116)
+  position(o6,40,114)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  ignore.objs(o4)
+  ignore.objs(o5)
+  ignore.objs(o6)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  stop.cycling(o3)
+  stop.cycling(o4)
+  stop.cycling(o5)
+  stop.cycling(o6)
+  set.loop(o1,3)
+  set.loop(o2,0)
+  set.loop(o3,1)
+  set.loop(o4,2)
+  set.loop(o5,0)
+  set.loop(o6,1)
+  set.cel(o1,0)
+  set.cel(o2,0)
+  set.cel(o3,0)
+  set.cel(o4,0)
+  set.cel(o5,0)
+  set.cel(o6,0)
+  draw(o1)
+  draw(o2)
+  draw(o3)
+  draw(o4)
+  draw(o5)
+  draw(o6)
+  v47 = 1
+  vTimeSeconds = 0
+  show.pic()
+  push.script()
+}
+if ((controller(c24) || controller(c33))) { //00c7
+  if (f105) { //00d1
+    set(f100)
+    reset(f104)
+    new.room(178)
+  }
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //00e1
+  if (v45 == 2 && v47 < vTimeSeconds) { //00e8
+    if (v90 == 3) { //00f2
+      new.room(190)
+    }
+    pop.script()
+    if (v90 == 2) { //00fc
+      v32 = 1
+    }
+    if (v90 == 1) { //0106
+      v32 = 127
+    }
+    if (v90 == 0) { //0110
+      v32 = 37
+    }
+    load.pic(v32)
+    draw.pic(v32)
+    discard.pic(v32)
+    erase(o1)
+    erase(o2)
+    erase(o3)
+    erase(o4)
+    erase(o5)
+    erase(o6)
+    if (v90 == 0) { //012c
+      set.view(o1,183)
+      set.view(o2,183)
+      set.view(o3,183)
+      set.view(o4,183)
+      set.view(o5,183)
+      set.view(o6,183)
+      position(o1,25,146)
+      position(o2,42,146)
+      position(o3,54,144)
+      position(o4,59,148)
+      position(o5,40,152)
+      position(o6,87,150)
+      set.loop(o1,5)
+      set.loop(o2,0)
+      set.loop(o3,6)
+      set.loop(o4,4)
+      set.loop(o5,2)
+      set.loop(o6,7)
+    }
+    if (v90 == 1) { //016f
+      position(o1,32,135)
+      position(o2,48,131)
+      position(o3,60,134)
+      position(o4,89,136)
+      position(o5,103,129)
+      position(o6,123,131)
+      set.loop(o1,4)
+      set.loop(o2,2)
+      set.loop(o3,6)
+      set.loop(o4,2)
+      set.loop(o5,0)
+      set.loop(o6,4)
+    }
+    if (v90 == 2) { //01a0
+      position(o1,4,163)
+      position(o2,14,165)
+      position(o3,43,164)
+      position(o4,73,166)
+      position(o5,101,163)
+      position(o6,127,165)
+      set.loop(o1,7)
+      set.loop(o2,5)
+      set.loop(o3,3)
+      set.loop(o4,3)
+      set.loop(o5,1)
+      set.loop(o6,7)
+    }
+    set.cel(o1,0)
+    set.cel(o2,0)
+    set.cel(o3,0)
+    set.cel(o4,0)
+    set.cel(o5,0)
+    set.cel(o6,0)
+    draw(o1)
+    draw(o2)
+    draw(o3)
+    draw(o4)
+    draw(o5)
+    draw(o6)
+    show.pic()
+    v45 = 0
+    v47 = 1
+    vTimeSeconds = 0
+    v90++
+    set(f21)
+  }
+  if (v45 == 1 && v47 < vTimeSeconds) { //01fd
+    stop.cycling(o1)
+    stop.cycling(o2)
+    stop.cycling(o3)
+    stop.cycling(o4)
+    stop.cycling(o5)
+    stop.cycling(o6)
+    set.cel(o1,1)
+    set.cel(o2,1)
+    set.cel(o3,1)
+    set.cel(o4,1)
+    set.cel(o5,1)
+    set.cel(o6,1)
+    v47 = 1
+    vTimeSeconds = 0
+    v45 = 2
+  }
+  if (v45 == 0 && v47 < vTimeSeconds) { //022e
+    sound(190,f22)
+    start.cycling(o1)
+    start.cycling(o2)
+    start.cycling(o3)
+    start.cycling(o4)
+    start.cycling(o5)
+    start.cycling(o6)
+    v47 = 2
+    vTimeSeconds = 0
+    v45 = 1
+  }
+}
+reset(f21)
+if (f33) { //0252
+  reset(f33)
+  clear.lines(23,24,c0)
+  display(23,1,"Press S to skip.")
+}
+return()

@@ -1,0 +1,218 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  vCycleTime = 3
+  reset(f75)
+  reset(f28)
+  reset(f29)
+  reset(f40)
+  v47 = 0
+  v50 = 0
+  vEgoDir = 0
+  v48 = 0
+  load.sound(1)
+  load.sound(123)
+  load.view(117)
+  load.view(144)
+  load.view(124)
+  v32 = 130
+  load.pic(v32)
+  draw.pic(v32)
+  v49 = 3
+  vTimeSeconds = 0
+  set.view(o4,144)
+  set.view(o1,117)
+  set.view(o2,117)
+  set.view(o3,117)
+  animate.obj(o4)
+  animate.obj(o1)
+  animate.obj(o2)
+  animate.obj(o3)
+  position(o4,118,160)
+  position(o1,60,148)
+  position(o2,60,153)
+  position(o3,61,133)
+  ignore.objs(o4)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  ignore.objs(o3)
+  set.loop(o4,0)
+  set.loop(o1,0)
+  set.loop(o2,2)
+  set.loop(o3,4)
+  set.cel(o2,0)
+  fix.loop(o4)
+  fix.loop(o1)
+  fix.loop(o2)
+  fix.loop(o3)
+  v46 = 2
+  cycle.time(o3,v46)
+  v46 = 3
+  step.size(o4,v46)
+  stop.cycling(o2)
+  set.priority(o4,4)
+  set.priority(o1,7)
+  set.priority(o2,8)
+  set.priority(o3,8)
+  show.pic()
+  display(9,14,"Meanwhile,")
+  display(11,11,"in another part")
+  display(13,12,"of the city...")
+  push.script()
+}
+get.posn(o1,v30,v31)
+get.posn(o4,v33,v34)
+if (v47 == 0 && v49 < vTimeSeconds) { //00ab
+  pop.script()
+  v32 = 76
+  load.pic(v32)
+  draw.pic(v32)
+  show.pic()
+  v47 = 1
+  v49 = 2
+  vTimeSeconds = 0
+}
+if (v47 == 1 && v49 < vTimeSeconds) { //00c7
+  v32 = 76
+  discard.pic(v32)
+  pop.script()
+  v32 = 79
+  load.pic(v32)
+  draw.pic(v32)
+  v46 = 7
+  set.dir(o4,v46)
+  draw(o4)
+  v47 = 2
+  show.pic()
+}
+if (v47 == 2) { //00ea
+  if (v33 < 81) { //00f1
+    v46 = 1
+    set.dir(o4,v46)
+    v47 = 3
+  }
+}
+if (v47 == 3) { //0101
+  	get.dir(o4,v46)
+  if (v46 == 1) { //010b
+    v46 = 8
+    set.dir(o4,v46)
+    goto(l289)
+  }
+  v46 = 1
+  set.dir(o4,v46)
+l289:
+  if (v34 < 75) { //0121
+    erase(o4)
+    v32 = 79
+    discard.pic(v32)
+    pop.script()
+    v47 = 4
+    v59 = 0
+    v49 = 1
+    vTimeSeconds = 0
+    v32 = 77
+    load.pic(v32)
+    draw.pic(v32)
+    draw(o1)
+    draw(o2)
+    draw(o3)
+    show.pic()
+  }
+}
+if (v47 == 4 && v49 < vTimeSeconds) { //014a
+  set.cel(o2,1)
+  v49 = 1
+  vTimeSeconds = 0
+  v47 = 5
+}
+if (v47 == 5 && v49 < vTimeSeconds) { //0160
+  set.cel(o2,2)
+  v49 = 1
+  vTimeSeconds = 0
+  v47 = 6
+}
+if (v47 == 6 && v49 < vTimeSeconds) { //0176
+  vCycleTime = 2
+  draw(o3)
+  v49 = 1
+  vTimeSeconds = 0
+  v47 = 7
+}
+if (v47 == 7 && v49 < vTimeSeconds) { //018e
+  sound(123,f25)
+  v46 = 2
+  step.size(o1,v46)
+  step.size(o3,v46)
+  v46 = 1
+  set.dir(o1,v46)
+  set.dir(o3,v46)
+  erase(o2)
+  v47 = 8
+}
+if (v47 == 8 && v31 < 34) { //01b2
+  v32 = 77
+  discard.pic(v32)
+  pop.script()
+  v32 = 62
+  load.pic(v32)
+  draw.pic(v32)
+  erase(o1)
+  erase(o3)
+  set.view(o1,124)
+  set.view(o3,124)
+  position(o1,102,167)
+  position(o3,104,166)
+  v31 = 167
+  v46 = 3
+  step.size(o1,v46)
+  step.size(o3,v46)
+  v46 = 1
+  set.dir(o1,v46)
+  set.dir(o3,v46)
+  set.loop(o1,1)
+  set.loop(o3,4)
+  draw(o1)
+  draw(o3)
+  show.pic()
+  v49 = 2
+  vTimeSeconds = 0
+  v47 = 9
+}
+if (v47 == 9 && v31 < 38) { //0204
+  v32 = 62
+  discard.pic(v32)
+  pop.script()
+  v32 = 63
+  load.pic(v32)
+  draw.pic(v32)
+  v46 = 2
+  step.size(o1,v46)
+  step.size(o3,v46)
+  set.priority(o1,4)
+  set.priority(o3,5)
+  set.loop(o1,2)
+  set.loop(o3,3)
+  reposition.to(o1,106,125)
+  reposition.to(o3,107,118)
+  v31 = 125
+  show.pic()
+  v47 = 10
+  v59 = 0
+  reset(f119)
+}
+if (v47 == 10 && v31 < 73) { //0244
+  pop.script()
+  v32 = 130
+  draw.pic(v32)
+  show.pic()
+  display(10,10,"Back in the cockpit")
+  display(12,12,"of your ship...")
+  v47 = 11
+  v49 = 2
+  vTimeSeconds = 0
+}
+if (v47 == 11 && v49 < vTimeSeconds) { //0266
+  new.room(154)
+}
+reset(f22)
+return()

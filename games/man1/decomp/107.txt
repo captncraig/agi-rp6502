@@ -1,0 +1,319 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  reset(f40)
+  vEgoDir = 0
+  v48 = 0
+  v49 = 3
+  vTimeSeconds = 0
+  v69 = 0
+  load.sound(1)
+  load.sound(2)
+  load.sound(3)
+  load.sound(4)
+  load.sound(8)
+  set(f36)
+  v32 = 101
+  load.pic(v32)
+  v32 = 135
+  load.pic(v32)
+  if (v50 == 1) { //0031
+    v32 = 101
+  }
+  draw.pic(v32)
+  load.view(8)
+  load.view(2)
+  load.view(125)
+  set.view(o2,8)
+  set.view(o6,125)
+  set.view(o7,2)
+  animate.obj(o2)
+  animate.obj(o6)
+  animate.obj(o7)
+  position(o0,10,150)
+  if (v50 == 1) { //0056
+    position(o2,119,133)
+    goto(l104)
+  }
+  position(o2,73,90)
+l104:
+  position(o6,154,155)
+  position(o7,73,77)
+  ignore.objs(o0)
+  ignore.objs(o2)
+  ignore.objs(o6)
+  ignore.objs(o7)
+  fix.loop(o2)
+  fix.loop(o6)
+  v46 = 2
+  cycle.time(o2,v46)
+  v46 = 3
+  cycle.time(o7,v46)
+  set.loop(o0,1)
+  set.loop(o2,0)
+  set.loop(o6,2)
+  set.loop(o7,4)
+  v46 = 2
+  step.size(o0,v46)
+  set.priority(o0,14)
+  set.priority(o2,5)
+  set.priority(o7,7)
+  set.priority(o6,7)
+  draw(o0)
+  v46 = 7
+  set.dir(o6,v46)
+  if (v50 == 0) { //00ae
+    draw(o6)
+    v69 = 16
+    goto(l191)
+  }
+  set(f25)
+l191:
+  set(f117)
+  draw(o2)
+  show.pic()
+}
+if ((controller(c31) || controller(c32))) { //00c4
+  set.text.attribute(15,0)
+  clear.lines(23,24,c0)
+  set(f75)
+  new.room(v64)
+}
+if ((controller(c24) || controller(c33))) { //00d9
+  if (v50 == 0) { //00e3
+    v47 = 0
+    clear.lines(23,24,c0)
+    new.room(112)
+  }
+}
+if (v50 == 0) { //00f3
+  get.posn(o2,v30,v31)
+  if (v47 < 4) { //00fe
+    get.posn(o6,v33,v34)
+  }
+  if (v47 == 0) { //0109
+    if (v33 < 86) { //0110
+      v46 = 1
+      set.dir(o6,v46)
+      v47 = 1
+    }
+  }
+  if (v47 == 1) { //0120
+    if (v34 < 51) { //0127
+      v46 = 7
+      set.dir(o6,v46)
+      v47 = 2
+    }
+  }
+  if (v47 == 2) { //0137
+    if (v33 < 75) { //013e
+      v46 = 5
+      set.dir(o6,v46)
+      v47 = 3
+    }
+  }
+  if (v47 == 3) { //014e
+    if (v34 > 75) { //0155
+      erase(o6)
+      draw(o7)
+      if (!f40) { //0160
+        vTimeSeconds = 0
+        set(f40)
+        v49 = 2
+        goto(l384)
+      }
+      if (v49 < vTimeSeconds) { //0172
+        erase(o7)
+        v47 = 5
+        reset(f40)
+      }
+    }
+  }
+l384:
+  if (v47 == 5) { //0180
+    v46 = 7
+    set.dir(o2,v46)
+    v47 = 6
+  }
+  if (v47 == 6) { //0190
+    if (v30 == 58) { //0197
+      v46 = 6
+      set.dir(o2,v46)
+    }
+    if (v31 == 107) { //01a4
+      v46 = 7
+      set.dir(o2,v46)
+      v47 = 7
+    }
+  }
+  if (v47 == 7) { //01b4
+    if (v30 == 26) { //01bb
+      v46 = 8
+      set.dir(o2,v46)
+    }
+    if (v30 == 18) { //01c8
+      v46 = 1
+      set.dir(o2,v46)
+      v47 = 8
+    }
+  }
+  if (v47 == 8) { //01d8
+    if (v31 == 91) { //01df
+      v46 = 7
+      set.dir(o2,v46)
+      v47 = 9
+    }
+  }
+  if (v47 == 9) { //01ef
+    if (v30 < 6) { //01f6
+      if (!f40) { //01fd
+        erase(o0)
+        set.loop(o0,4)
+        set.cel(o0,0)
+        set(f15)
+        print("The Target is Descending in the Elevator.")
+        position(o0,125,120)
+        draw(o0)
+        vEgoDir = 0
+        vTimeSeconds = 0
+        set(f40)
+        v49 = 2
+        goto(l599)
+      }
+      if (v49 == vTimeSeconds) { //0224
+        set.loop(o0,1)
+      }
+      if (v49 < vTimeSeconds) { //022e
+        display(23,1,"Press <ENTER> to continue.")
+        print("The Target exits elevator at Ground Floor.")
+        clear.lines(23,24,c0)
+        v69 = 0
+        reset(f40)
+        set.view(o2,2)
+        set.loop(o2,1)
+        reposition.to(o2,9,90)
+        v46 = 3
+        set.dir(o2,v46)
+        v47 = 10
+      }
+    }
+  }
+l599:
+  if (v47 == 10) { //0257
+    if (v30 > 19) { //025e
+      v46 = 1
+      set.dir(o2,v46)
+      v47 = 11
+    }
+  }
+  if (v47 == 11) { //026e
+    if (v31 < 30) { //0275
+      set.view(o2,8)
+      set.loop(o2,1)
+      v47 = 12
+    }
+  }
+  if (v47 == 12) { //0285
+    if (v31 < 20) { //028c
+      v46 = 3
+      set.dir(o2,v46)
+    }
+    if (vBorderObj == 2) { //0299
+      erase(o2)
+      v47 = 0
+      v50 = 0
+      erase(o0)
+      set(f15)
+      print("Zooming out...")
+      position(o0,75,120)
+      draw(o0)
+      clear.lines(23,24,c0)
+      set.loop(o0,4)
+      v55 = 112
+    }
+  }
+}
+if (v50 == 1) { //02be
+  get.posn(o2,v30,v31)
+  if (v47 == 0) { //02c9
+    if (v49 < vTimeSeconds) { //02d0
+      v46 = 7
+      set.dir(o2,v46)
+      v47 = 1
+    }
+  }
+  if (v47 == 1) { //02e0
+    if (v30 == 88) { //02e7
+      v46 = 1
+      set.dir(o2,v46)
+    }
+    if (v31 == 95) { //02f4
+      v46 = 8
+      set.dir(o2,v46)
+    }
+    if (v30 == 60) { //0301
+      v46 = 7
+      set.dir(o2,v46)
+    }
+    if (v30 == 22) { //030e
+      v46 = 0
+      set.dir(o2,v46)
+      v49 = 1
+      vTimeSeconds = 0
+      v47 = 2
+    }
+  }
+  if (v47 == 2) { //0324
+    if (v49 < vTimeSeconds) { //032b
+      v46 = 4
+      set.dir(o2,v46)
+      v47 = 3
+    }
+  }
+  if (v47 == 3) { //033b
+    if (v30 == 39) { //0342
+      v46 = 5
+      set.dir(o2,v46)
+    }
+    if (v31 == 102) { //034f
+      v46 = 0
+      set.dir(o2,v46)
+      v49 = 1
+      vTimeSeconds = 0
+      v47 = 4
+    }
+  }
+  if (v47 == 4 && v49 < vTimeSeconds) { //0365
+    v46 = 6
+    set.dir(o2,v46)
+    v47 = 5
+  }
+  if (v47 == 5) { //0378
+    if (v30 == 31) { //037f
+      v46 = 0
+      set.dir(o2,v46)
+      v49 = 2
+      vTimeSeconds = 0
+      v47 = 6
+    }
+  }
+  if (v47 == 6 && v49 < vTimeSeconds) { //0395
+    clear.lines(23,24,c0)
+    display(23,1,"To exit the Tracker and return to the Main Menu...Press <ENTER>.")
+    print("Target movement ends at this point.")
+    clear.lines(23,24,c0)
+    set.loop(o0,4)
+    v63 = 0
+    v47 = 0
+    v50 = 2
+    v55 = 101
+  }
+}
+if (f117) { //03bc
+  reset(f117)
+  clear.lines(23,24,c0)
+  display(24,1,"Press C to close MAD.")
+  if (v69 == 16) { //03cc
+    display(23,1,"Press S to skip.")
+  }
+}
+return()

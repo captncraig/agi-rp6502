@@ -1,0 +1,157 @@
+if (fNewRoom) { //0002
+  set.cursor.char("")
+  set(f22)
+  reset(f28)
+  v47 = 0
+  v50 = 0
+  v48 = 0
+  load.sound(1)
+  load.sound(71)
+  load.view(130)
+  v32 = 114
+  load.pic(v32)
+  v32 = 110
+  load.pic(v32)
+  draw.pic(v32)
+  set.view(o1,130)
+  set.view(o2,130)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o1,150,66)
+  position(o2,27,16)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  set.loop(o1,0)
+  set.loop(o2,0)
+  fix.loop(o1)
+  fix.loop(o2)
+  set.priority(o1,5)
+  set.priority(o2,5)
+  v46 = 2
+  step.size(o1,v46)
+  step.size(o2,v46)
+  v46 = 7
+  set.dir(o1,v46)
+  show.pic()
+  v69 = 0
+  set(f117)
+  set(f22)
+  draw(o1)
+  push.script()
+}
+get.posn(o1,v30,v31)
+get.posn(o2,v33,v34)
+if (v50 == 0) { //0071
+  if (v47 == 0 && v30 < 119) { //0078
+    draw(o2)
+    v46 = 4
+    set.dir(o2,v46)
+    v47 = 1
+  }
+  if (v47 == 1 && v30 < 76) { //008d
+    sound(1,f25)
+    v46 = 2
+    set.dir(o2,v46)
+    v46 = 4
+    set.dir(o1,v46)
+    v47 = 2
+  }
+  if (v47 == 3) { //00a9
+    v32 = 110
+    draw.pic(v32)
+    show.pic()
+    v47 = 4
+  }
+  if (v47 == 2) { //00b9
+    if (v34 < 15) { //00c0
+      erase(o2)
+    }
+    if (v31 > 120) { //00c9
+      v32 = 114
+      draw.pic(v32)
+      erase(o1)
+      show.pic()
+      sound(71,f25)
+      v47 = 3
+    }
+  }
+  if (v47 == 4) { //00de
+    unanimate.all()
+    v32 = 80
+    load.pic(v32)
+    draw.pic(v32)
+    show.pic()
+    v69 = 0
+    set(f117)
+    v47 = 5
+    v49 = 1
+    vTimeSeconds = 0
+  }
+  if (v47 == 5 && v49 < vTimeSeconds) { //00fc
+    v32 = 80
+    discard.pic(v32)
+    pop.script()
+    v32 = 12
+    load.pic(v32)
+    draw.pic(v32)
+    show.pic()
+    v69 = 50
+    set(f117)
+    ???(0)
+    set(f22)
+    if (v67 == 0) { //011d
+      v47 = 7
+      goto(l301)
+    }
+    v47 = 8
+  }
+l301:
+  if (v47 == 7) { //012d
+    if (controller(c20) && !f22) { //0134
+      sound(1,f25)
+      v32 = 12
+      draw.pic(v32)
+      show.pic()
+      v69 = 52
+      set(f117)
+      set(f22)
+      v47 = 8
+    }
+  }
+  if (v47 == 8) { //0150
+    if (controller(c20) && !f22) { //0157
+      v47 = 0
+      v50 = 0
+      ???(1)
+      clear.lines(23,24,c0)
+      if (f107) { //016c
+        new.room(151)
+        goto(l377)
+      }
+      new.room(154)
+    }
+  }
+}
+l377:
+if (f117) { //0179
+  reset(f117)
+  clear.lines(23,24,c0)
+  if (v69 > 49) { //0185
+    display(23,1,"Press <ENTER> to continue.")
+    set.text.attribute(0,15)
+  }
+  if (v69 == 50) { //0193
+    display(5,3,"We told you that Phil is trouble!")
+    v67 = 1
+  }
+  if (v69 == 52) { //01a1
+    display(3,2,"Now, let's back up to a few")
+    display(5,2,"minutes before you made")
+    display(7,2,"your fatal mistake...")
+  }
+  if (v69 > 49) { //01b4
+    set.text.attribute(15,0)
+  }
+}
+reset(f22)
+return()

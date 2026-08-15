@@ -6,6 +6,11 @@ import "os"
 // the game's OBJECT file. Used to annotate get/drop/put's argItem arguments.
 var itemNames map[byte]string
 
+// agiMessageKey is the fixed XOR key AGI obfuscates the OBJECT file with.
+// (Logic message text uses the same key, but that is undone upstream in
+// cmd/unpack, so it is only needed here.)
+var agiMessageKey = []byte("Avis Durgan")
+
 // loadObjects parses an OBJECT file and populates itemNames. It should be
 // called once per game, before decompiling that game's logics.
 //

@@ -1,0 +1,129 @@
+if (fNewRoom) { //0002
+  hold.key()
+  vCycleTime = 3
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 0
+  set(f33)
+  v60 = 0
+  v58 = 29
+  set(f31)
+  v57 = vCurrentRoom
+  v48 = 0
+  v45 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  load.sound(56)
+  v32 = 238
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(169)
+  set.view(o0,49)
+  set.view(o1,169)
+  set.view(o2,169)
+  animate.obj(o1)
+  animate.obj(o2)
+  position(o0,77,165)
+  position(o1,108,124)
+  position(o2,68,136)
+  ignore.objs(o1)
+  ignore.objs(o2)
+  v44 = 3
+  cycle.time(o0,v44)
+  fix.loop(o1)
+  fix.loop(o2)
+  stop.cycling(o1)
+  stop.cycling(o2)
+  set.loop(o0,3)
+  set.loop(o1,1)
+  set.loop(o2,1)
+  set.cel(o1,0)
+  set.cel(o1,1)
+  v44 = 6
+  step.size(o0,v44)
+  set.priority(o1,5)
+  set.priority(o2,9)
+  draw(o0)
+  draw(o1)
+  draw(o2)
+  show.pic()
+  v47 = 2
+  vTimeSeconds = 0
+  push.script()
+}
+get.posn(o0,v30,v31)
+if (v48 == 0) { //0095
+  if (v45 == 6) { //009c
+    if (v30 > 49 && v30 < 104 && v31 > 62 && v31 < 120 && v46 != 1) { //00a3
+      sound(1,f22)
+      v61 = 13
+      set(f33)
+      vEgoDir = 0
+      v46 = 1
+      set.view(o0,1)
+      set.loop(o0,0)
+      reposition.to(o0,75,93)
+    }
+    if (v46 == 1) { //00cf
+      if ((v30 < 50 || v30 > 103 || v31 < 63 || v31 > 119)) { //00d6
+        clear.lines(23,24,c0)
+        v61 = 0
+        sound(1,f22)
+        v46 = 0
+        set.view(o0,49)
+        set.loop(o0,3)
+      }
+    }
+    if (controller(c20) && !f21) { //00fb
+      if (v46 == 1) { //0104
+        set.loop(o0,4)
+        position(o0,77,130)
+        draw(o0)
+        set(f104)
+        v52 = 178
+      }
+    }
+  }
+  if (v45 == 5) { //0119
+    erase(o1)
+    set.loop(o2,0)
+    start.cycling(o2)
+    v45 = 6
+  }
+  if (v45 == 4) { //012a
+    sound(56,f22)
+    reposition.to(o1,76,123)
+    set.cel(o1,4)
+    v45 = 5
+  }
+  if (v45 == 3) { //013e
+    reposition.to(o1,82,124)
+    v45 = 4
+  }
+  if (v45 == 2) { //014c
+    reposition.to(o1,88,124)
+    v45 = 3
+  }
+  if (v45 == 1) { //015a
+    reposition.to(o1,94,124)
+    set.cel(o1,3)
+    v45 = 2
+  }
+  if (v45 == 0 && v47 < vTimeSeconds) { //016b
+    reposition.to(o1,104,124)
+    set.cel(o1,2)
+    v45 = 1
+  }
+}
+reset(f21)
+if (f33) { //0181
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 13) { //018d
+    display(23,1,"Press <ENTER> for a closer look.")
+  }
+}
+return()

@@ -1,0 +1,75 @@
+if (fNewRoom) { //0002
+  vCycleTime = 2
+  set.cursor.char("")
+  reset(f24)
+  reset(f25)
+  v61 = 6
+  set(f33)
+  v59 = 0
+  v57 = vCurrentRoom
+  v48 = 0
+  v45 = 0
+  vEgoDir = 0
+  v46 = 0
+  load.sound(1)
+  load.sound(16)
+  v32 = 55
+  load.pic(v32)
+  draw.pic(v32)
+  load.view(14)
+  load.view(71)
+  set.view(o1,71)
+  set.view(o0,49)
+  animate.obj(o1)
+  position(o0,80,80)
+  position(o1,140,126)
+  ignore.objs(o1)
+  v44 = 2
+  step.size(o1,v44)
+  fix.loop(o1)
+  set.loop(o0,1)
+  set.loop(o1,0)
+  set.priority(o1,5)
+  v44 = 7
+  set.dir(o1,v44)
+  draw(o1)
+  draw(o0)
+  show.pic()
+  sound(16,f22)
+  push.script()
+}
+get.posn(o1,v30,v31)
+if (v48 == 0) { //006d
+  if (f22) { //0074
+    sound(16,f22)
+  }
+  if (vEgoDir == 3) { //007d
+    set.loop(o1,1)
+    vEgoDir = 0
+    v44 = 3
+    set.dir(o1,v44)
+  }
+  if (vEgoDir == 7) { //0090
+    set.loop(o1,0)
+    vEgoDir = 0
+    v44 = 7
+    set.dir(o1,v44)
+  }
+  if (v30 > 143) { //00a3
+    v48 = 1
+    v52 = 115
+  }
+  if (v30 < 8) { //00b0
+    v52 = 117
+    v59 = 1
+  }
+}
+reset(f21)
+if (f33) { //00bf
+  reset(f33)
+  clear.lines(23,24,c0)
+  if (v61 == 6) { //00cb
+    display(23,0,"Press <Left> for forward, <Right> to backup.")
+  }
+}
+return()
