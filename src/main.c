@@ -26,11 +26,15 @@ int main(void)
         return 1;
     }
 
-    init_resource_data();
+     init_resource_data();
     init_video();
-    clear_screen();
-    draw_pic(80);
-    show_pic();
+    while(1){
+    for (int i = 1; i<100; i++){
+        clear_screen();
+        if (draw_pic(i) != -1){show_pic();}
+    }
+}
+   
 
 
     while(1){

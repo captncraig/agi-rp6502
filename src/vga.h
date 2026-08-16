@@ -18,6 +18,8 @@ typedef struct __attribute__((packed)) {
     // keeping full views loaded dynamically could save read time at render.
     uint8_t view_cel_load[1024UL*3]; // space for one cel to be rendered
     uint8_t pic_load[PIC_LOAD_SIZE];
+    uint8_t viz_data[160UL*168/2];
+    uint8_t pri_data[160UL*168/2];
 } xram_layout_t;
 
 #define BG_VRAM_START       offsetof(xram_layout_t, bitmap)
@@ -29,6 +31,8 @@ typedef struct __attribute__((packed)) {
 #define VIEW_VRAM_START     offsetof(xram_layout_t, view_cel_load)
 #define SOUND_VRAM_START    offsetof(xram_layout_t, sound_exe)
 #define PIC_VRAM_START      offsetof(xram_layout_t, pic_load)
+#define VIZ_VRAM_START      offsetof(xram_layout_t, viz_data)
+#define PRI_VRAM_START      offsetof(xram_layout_t, pri_data)
 
 void init_video();
 

@@ -28,7 +28,7 @@ static uint8_t get_next(){
     if (!n_loaded){
         uint16_t chunk = pic_size < PIC_LOAD_SIZE ? pic_size : PIC_LOAD_SIZE;
         int n = read_xram(PIC_VRAM_START, chunk, data_file());
-        infof("Loaded %d bytes for pic\n", n);
+        //infof("Loaded %d bytes for pic\n", n);
         RIA.addr0 = PIC_VRAM_START;
         n_loaded = chunk;
     }
@@ -143,10 +143,10 @@ void draw_line(uint8_t x1,uint8_t y1,uint8_t x2,uint8_t y2){
     } while (i > 0);
 }
 
-// Worst-case frontier for a 160x168 screen is bounded by total pixel count,
-// but real AGI fills never come close to that. Sized generously with a hard
-// overflow guard rather than trusting it never happens.
-#define FILL_STACK_SIZE 9000
+// Span-based (scanline) fill: the stack holds one seed pixel per contiguous
+// empty run discovered on a row, not one entry per pixel, so it needs far
+// fewer slots than the old pixel-at-a-time stack.
+#define FILL_STACK_SIZE 512
 static uint8_t fill_stack_x[FILL_STACK_SIZE];
 static uint8_t fill_stack_y[FILL_STACK_SIZE];
 
@@ -165,57 +165,64 @@ static void fill_push(uint16_t *count, uint8_t x, uint8_t y){
     }
 }
 
+// Scans row y across [lx,rx], pushing one seed per contiguous empty run.
+static void fill_scan(uint8_t lx, uint8_t rx, uint8_t y, uint16_t *count){
+    bool added = false;
+    for (uint8_t x = lx; ; x++){
+        if (!pixel_empty(x,y)){
+            added = false;
+        } else if (!added){
+            fill_push(count, x, y);
+            added = true;
+        }
+        if (x == rx) break;
+    }
+}
+
 uint32_t flood_fill(uint8_t x,uint8_t y){
     uint16_t stack_count = 0;
     uint32_t fills = 0;
     if (!pixel_empty(x,y)){
         return 0;
     }
-    set_pixel(x,y);
-    fills++;
     fill_push(&stack_count, x, y);
     while(stack_count){
         stack_count--;
         x = fill_stack_x[stack_count];
         y = fill_stack_y[stack_count];
+        if (!pixel_empty(x,y)){
+            continue; // already covered by an earlier span this round
+        }
 
-        if (x > 0 && pixel_empty(x-1,y)){
-            set_pixel(x-1,y);
+        uint8_t lx = x;
+        while (lx > 0 && pixel_empty(lx-1,y)) lx--;
+        uint8_t rx = x;
+        while (rx < 159 && pixel_empty(rx+1,y)) rx++;
+
+        for (uint8_t xx = lx; xx <= rx; xx++){
+            set_pixel(xx,y);
             fills++;
-            fill_push(&stack_count, x-1, y);
         }
-        if (x < 159 && pixel_empty(x+1,y)){
-            set_pixel(x+1,y);
-            fills++;
-            fill_push(&stack_count, x+1, y);
-        }
-        if (y > 0 && pixel_empty(x,y-1)){
-            set_pixel(x,y-1);
-            fills++;
-            fill_push(&stack_count, x, y-1);
-        }
-        if (y < 167 && pixel_empty(x,y+1)){
-            set_pixel(x,y+1);
-            fills++;
-            fill_push(&stack_count, x, y+1);
-        }
-    };
+
+        if (y > 0) fill_scan(lx, rx, y-1, &stack_count);
+        if (y < 167) fill_scan(lx, rx, y+1, &stack_count);
+    }
     return fills;
 }
 
-void draw_pic(uint8_t num){
+int draw_pic(uint8_t num){
     if (!row_table_ready){
         init_row_table();
     }
     resource_entry_t entry = getResourceIndex(RESOURCE_TYPE_PIC, num);
     if(!RESOURCE_PRESENT(entry)){
-        fatalf("Pic no exist %d\n", num);
+        errorf("Pic no exist %d\n", num);
+        return -1;
     }
     seek_resource(resource_offset(entry));
     pic_size = resource_size(entry);
     n_loaded = 0;
     fill_stack_watermark = 0;
-    infof("Pic %d ready. %d bytes\n", num, pic_size);
     RIA.step0 = 1;
     bool peeked = false;
     uint8_t peek;
@@ -235,20 +242,20 @@ void draw_pic(uint8_t num){
             case 0xf0:
                 vis_on = true;
                 vis_color = get_next() & 0x0f;
-                infof("Viz color %x\n", vis_color);
+                //infof("Viz color %x\n", vis_color);
                 break;
             case 0xf1:
                 vis_on = false;
-                infof("Viz off\n");
+                //infof("Viz off\n");
                 break;
             case 0xf2:
                 pri_on = true;
                 pri_color = get_next() & 0x0f;
-                infof("Pri color %x\n", pri_color);
+                //infof("Pri color %x\n", pri_color);
                 break;
             case 0xf3:
                 pri_on = false;
-                infof("Pri off\n");
+                //infof("Pri off\n");
                 break;
             case 0xf4: // y-corner: vertical step, then horizontal, alternating
                 x1 = get_next();
@@ -313,7 +320,7 @@ void draw_pic(uint8_t num){
                     }
                     y2 = get_next();
                     draw_line(x1,y1,x2,y2);
-                    infof("Line %d,%d -> %d,%d\n", x1,y1,x2,y2);
+                    //infof("Line %d,%d -> %d,%d\n", x1,y1,x2,y2);
                     x1 = x2;
                     y1 = y2;
                 }
@@ -342,7 +349,7 @@ void draw_pic(uint8_t num){
                     y2 = (uint8_t)ny;
 
                     draw_line(x1,y1,x2,y2);
-                    infof("Short line %d,%d -> %d,%d\n", x1,y1,x2,y2);
+                    //infof("Short line %d,%d -> %d,%d\n", x1,y1,x2,y2);
                     x1 = x2;
                     y1 = y2;
                 }
@@ -357,17 +364,19 @@ void draw_pic(uint8_t num){
                         break;
                     }
                     y1 = get_next();
-                    infof("Flood %d,%d ", x1,y1);
-                    infof("(%ld)\n", flood_fill(x1,y1));
+                    //infof("Flood %d,%d ", x1,y1);
+                    flood_fill(x1,y1);
+                    //infof("(%ld)\n", flood_fill(x1,y1));
                 }
                 break;
             default:
                 infof("Pic opcode %x\n", op);
-                infof("Fill stack watermark: %u, draw time: %lu ms\n", fill_stack_watermark, (unsigned long)(clock() - start));
-                return;
+                //infof("Fill stack watermark: %u, draw time: %lu ms\n", fill_stack_watermark, (unsigned long)(clock() - start));
+                return 0;
         }
     }
-    infof("Fill stack watermark: %u, draw time: %lu ms\n", fill_stack_watermark, (unsigned long)(clock() - start));
+    infof("Pic %d done in %lu ms\n", num, (unsigned long)(clock() - start));
+    return 0;
 }
 
 static uint8_t nibble_hi[256];
