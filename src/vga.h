@@ -5,8 +5,19 @@
 #include <rp6502.h>
 
 #define PIC_LOAD_SIZE (256)
+typedef struct
+{
+    unsigned int freq;
+    unsigned char duty;
+    unsigned char vol_attack;
+    unsigned char vol_decay;
+    unsigned char wave_release;
+    unsigned char pan_gate;
+    unsigned char unused;
+} ria_psg_t;
 
 typedef struct __attribute__((packed)) {
+    ria_psg_t psg [8];
     uint8_t bitmap[320UL*168/2];
     uint8_t text[40UL*25*2];
     vga_mode3_config_t config0;
@@ -22,6 +33,7 @@ typedef struct __attribute__((packed)) {
     uint8_t pri_data[160UL*168/2];
 } xram_layout_t;
 
+#define SOUND_START         offsetof(xram_layout_t, psg)
 #define BG_VRAM_START       offsetof(xram_layout_t, bitmap)
 #define TEXT_VRAM_START     offsetof(xram_layout_t, text)
 #define CONFIG0_VRAM_START  offsetof(xram_layout_t, config0)

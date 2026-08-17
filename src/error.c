@@ -2,8 +2,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-jmp_buf fatal_jmp_buf;
-
 #if ERRORF_ENABLED
 int errorf(const char *format, ...){
     printf("\x1b[32mERROR:\x1b[0m ");
@@ -32,5 +30,5 @@ int fatalf(const char *format, ...){
     va_start(args, format);
     int n = vprintf(format, args);
     va_end(args);
-    longjmp(fatal_jmp_buf, 1);
+    return n;
 }

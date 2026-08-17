@@ -299,6 +299,38 @@ func FindFileCaseInsensitive(dir, target string) (string, error) {
 	return "", fmt.Errorf("%s not found in %s", target, dir)
 }
 
+// ReadRaw returns the unparsed bytes of the VOL file starting at the given
+// entry's offset, running to the end of the file. Unlike ReadData, it makes
+// no assumptions about the resource header being valid or present, so it
+// still returns something to inspect for entries that fail ReadData's
+// signature or bounds checks (e.g. a corrupt directory entry).
+func ReadRaw(gameDir string, entry Entry) ([]byte, error) {
+	volPath, err := FindVolFile(gameDir, entry.Volume)
+	if err != nil {
+		return nil, err
+	}
+
+	f, err := os.Open(volPath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+
+	info, err := f.Stat()
+	if err != nil {
+		return nil, err
+	}
+	if int64(entry.Offset) >= info.Size() {
+		return nil, fmt.Errorf("offset %d beyond end of file (size %d)", entry.Offset, info.Size())
+	}
+
+	raw := make([]byte, info.Size()-int64(entry.Offset))
+	if _, err := f.ReadAt(raw, int64(entry.Offset)); err != nil {
+		return nil, err
+	}
+	return raw, nil
+}
+
 // FindVolFile locates the VOL file for the given volume number. AGI v2
 // games name these "vol.N"; AGI v3 games prefix them with the game's short
 // ID (e.g. "Mhvol.0", "mh2vol.3"), so this matches on the "vol.N" suffix

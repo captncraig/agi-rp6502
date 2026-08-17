@@ -38,7 +38,7 @@ func unpackGame(name, dir string) error {
 	}
 
 	for _, rt := range agires.ResourceTypes {
-		if err := unpackResourceType(dir, outDir, rt, dirs); err != nil {
+		if err := unpackResourceType(name, dir, outDir, rt, dirs); err != nil {
 			fmt.Fprintf(os.Stderr, "%s: %s: %v\n", name, rt.Label, err)
 		}
 	}
@@ -46,7 +46,7 @@ func unpackGame(name, dir string) error {
 	return nil
 }
 
-func unpackResourceType(gameDir, outDir string, rt agires.ResourceType, dirs *agires.Directories) error {
+func unpackResourceType(gameName, gameDir, outDir string, rt agires.ResourceType, dirs *agires.Directories) error {
 	typeDir := filepath.Join(outDir, rt.Label)
 	if err := os.MkdirAll(typeDir, 0o755); err != nil {
 		return err
@@ -55,7 +55,13 @@ func unpackResourceType(gameDir, outDir string, rt agires.ResourceType, dirs *ag
 	for _, res := range dirs.Entries[rt.Label] {
 		data, err := agires.ReadData(gameDir, res, dirs.Version)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "  %s.%d: %v\n", rt.Label, res.Number, err)
+			fmt.Fprintf(os.Stderr, "  %s: %s.%d: %v\n", gameName, rt.Label, res.Number, err)
+			if raw, rawErr := agires.ReadRaw(gameDir, res); rawErr == nil {
+				outPath := filepath.Join(typeDir, strconv.Itoa(res.Number)+".bin")
+				if werr := os.WriteFile(outPath, raw, 0o644); werr != nil {
+					fmt.Fprintf(os.Stderr, "  %s: %s.%d: writing raw fallback: %v\n", gameName, rt.Label, res.Number, werr)
+				}
+			}
 			continue
 		}
 
@@ -68,7 +74,7 @@ func unpackResourceType(gameDir, outDir string, rt agires.ResourceType, dirs *ag
 			if dirs.Version == 3 {
 				info, err := agires.ReadInfo(gameDir, res, dirs.Version)
 				if err != nil {
-					fmt.Fprintf(os.Stderr, "  %s.%d: %v\n", rt.Label, res.Number, err)
+					fmt.Fprintf(os.Stderr, "  %s: %s.%d: %v\n", gameName, rt.Label, res.Number, err)
 					continue
 				}
 				encrypted = !info.Compressed
@@ -80,6 +86,14 @@ func unpackResourceType(gameDir, outDir string, rt agires.ResourceType, dirs *ag
 		outPath := filepath.Join(typeDir, strconv.Itoa(res.Number)+".bin")
 		if err := os.WriteFile(outPath, data, 0o644); err != nil {
 			return fmt.Errorf("writing %s: %w", outPath, err)
+		}
+
+		if rt.Label == "sound" {
+			riaPath := filepath.Join(typeDir, strconv.Itoa(res.Number)+".ria.bin")
+			riaData := agires.ConvertSoundToRia(data)
+			if err := os.WriteFile(riaPath, riaData, 0o644); err != nil {
+				return fmt.Errorf("writing %s: %w", riaPath, err)
+			}
 		}
 	}
 

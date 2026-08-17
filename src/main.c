@@ -6,41 +6,21 @@
 #include "error.h"
 #include "vga.h"
 #include "pics/pic.h"
-
-// AGI Memory layout:
-// 0x0000-0x7fff: C managed code and data
-// 0x8000-0xbfff: Banked memory
-//     Bank 0: 
-//     Bank 1: Graphics Screen (160x200, 4bpp)
-//     Bank 2: Priority Screen (160x200, 4bpp)
-//     Banks 3-63: Dynamically loaded game resources
-
-void crashout(){
-    // change video back to console, stop event loop, whatever.
-}
+#include "sound/sound.h"
 
 int main(void)
 {
-    if (setjmp(fatal_jmp_buf)) {
-        crashout();
-        return 1;
-    }
-
-     init_resource_data();
+    init_resource_data();
     init_video();
     while(1){
-    for (int i = 1; i<100; i++){
-        clear_screen();
-        if (draw_pic(i) != -1){show_pic();}
+        for (int i = 1; i<100; i++){
+            clear_screen();
+            if (draw_pic(i) != -1){show_pic();}
+        }
     }
-}
-   
-
-
     while(1){
         // do stuff that could fatalf at any time.
     }
-    
     return 0;
 }
     

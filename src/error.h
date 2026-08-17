@@ -1,12 +1,6 @@
 #ifndef _ERROR_H
 #define _ERROR_H
 
-#include <setjmp.h>
-
-// jump target for fatalf; set this up with setjmp() before running any code
-// that might call fatalf, then check its return value to detect a fatal error.
-extern jmp_buf fatal_jmp_buf;
-
 #ifndef ERRORF_ENABLED
 #define ERRORF_ENABLED 1
 #endif
