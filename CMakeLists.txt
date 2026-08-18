@@ -47,7 +47,7 @@ add_link_options(--no-default-config "--config=${RP6502_LOCAL_LINK_CFG}" "-Wl,--
 
 add_executable(agi)
 rp6502_asset(agi help src/help.txt)
-rp6502_executable(agi DATA file RESET file)
+rp6502_executable(agi DATA file RESET file IRQ file)
 target_sources(agi PRIVATE
     src/main.c
     src/resource_data.c

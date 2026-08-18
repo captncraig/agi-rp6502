@@ -39,5 +39,6 @@ __stack = 0xFF00;
 OUTPUT_FORMAT {
     SHORT(0x0200)
     SHORT(_start)
+    SHORT(irq_isr)
     TRIM(code)
 }

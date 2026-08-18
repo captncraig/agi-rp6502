@@ -436,13 +436,13 @@ int draw_pic(uint8_t num){
     if (!row_table_ready){
         init_row_table();
     }
-    resource_entry_t entry = getResourceIndex(RESOURCE_TYPE_PIC, num);
+    resource_entry_t entry = resource_index.pics[num];
     if(!RESOURCE_PRESENT(entry)){
         errorf("Pic no exist %d\n", num);
         return -1;
     }
-    seek_resource(resource_offset(entry));
-    pic_size = resource_size(entry);
+    seek_resource(entry.offset);
+    pic_size = entry.size;
     n_loaded = 0;
     fill_stack_watermark = 0;
     RIA.step0 = 1;

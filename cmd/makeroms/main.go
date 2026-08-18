@@ -7,15 +7,13 @@ import (
 	"path/filepath"
 	"slices"
 	"strings"
-
-	"github.com/captncraig/agi-rp6502/pkg/agires"
 )
 
 const (
 	gamesDir  = "games"
 	baseRom   = "build/agi.rp6502"
 	outDir    = "build/games"
-	indexAddr = "index.bin"
+	bank0Addr = "$8000"
 	rp6502py  = "tools/rp6502.py"
 )
 
@@ -50,9 +48,9 @@ func main() {
 }
 
 func makeRom(name, dir string) error {
-	indexPath := filepath.Join(dir, "index.bin")
+	bank0Path := filepath.Join(dir, "bank0.bin")
 	dataPath := filepath.Join(dir, "data.bin")
-	if _, err := os.Stat(indexPath); err != nil {
+	if _, err := os.Stat(bank0Path); err != nil {
 		return nil
 	}
 	if _, err := os.Stat(dataPath); err != nil {
@@ -64,8 +62,8 @@ func makeRom(name, dir string) error {
 	outPath := filepath.Join(outDir, name+".rp6502")
 
 	// outPath differs from baseRom, so this only ever reads baseRom.
-	if err := runRp6502("-a", indexAddr, "-o", outPath, "create", indexPath, baseRom); err != nil {
-		return fmt.Errorf("embedding index: %w", err)
+	if err := runRp6502("-a", bank0Addr, "-o", outPath, "create", bank0Path, baseRom); err != nil {
+		return fmt.Errorf("embedding bank0: %w", err)
 	}
 
 	// rp6502.py reads all inputs (including outPath below) fully into memory
@@ -74,46 +72,9 @@ func makeRom(name, dir string) error {
 		return fmt.Errorf("embedding data: %w", err)
 	}
 
-	if _, err := embedIfPresent(dir, outPath, "words.tok"); err != nil {
-		return err
-	}
-	if _, err := embedIfPresent(dir, outPath, "object"); err != nil {
-		return err
-	}
-	// Raw dirs and vols instead of our calculated ones. But meh.
-	// for _, rt := range agires.ResourceTypes {
-	// 	if _, err := embedIfPresent(dir, outPath, rt.DirName); err != nil {
-	// 		return err
-	// 	}
-	// }
-	// for vol := 0; ; vol++ {
-	// 	name := fmt.Sprintf("vol.%d", vol)
-	// 	found, err := embedIfPresent(dir, outPath, name)
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// 	if !found {
-	// 		break
-	// 	}
-	// }
-
 	fmt.Printf("  -> %s\n", outPath)
 
 	return nil
-}
-
-// embedIfPresent looks up name in dir case-insensitively and, if found,
-// embeds it into outPath under its lowercase name. It reports whether the
-// file was found.
-func embedIfPresent(dir, outPath, name string) (bool, error) {
-	path, err := agires.FindFileCaseInsensitive(dir, name)
-	if err != nil {
-		return false, nil
-	}
-	if err := runRp6502("-a", name, "-o", outPath, "create", path, outPath); err != nil {
-		return false, fmt.Errorf("embedding %s: %w", name, err)
-	}
-	return true, nil
 }
 
 func runRp6502(args ...string) error {
