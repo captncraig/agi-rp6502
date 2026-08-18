@@ -1,0 +1,12 @@
+[submodule "llvm-mos-sdk"]
+	path = llvm-mos-sdk
+	url = git@github.com:llvm-mos/llvm-mos-sdk.git
+	branch = main
+[submodule "picocomputer.github.io"]
+	path = picocomputer.github.io
+	url = git@github.com:picocomputer/picocomputer.github.io.git
+	branch = main
+[submodule "rp6502"]
+	path = rp6502
+	url = git@github.com:captncraig/rp6502.git
+	branch = stretched
